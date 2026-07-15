@@ -1,0 +1,95 @@
+:root {
+  color-scheme: light dark;
+  --bg: #fff;
+  --fg: #111;
+  --muted: #666;
+  --grid: #e3e3e3;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #151515;
+    --fg: #eee;
+    --muted: #999;
+    --grid: #333;
+  }
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font: 15px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+}
+header {
+  padding: 20px 24px 8px;
+}
+h1 {
+  margin: 0;
+  font-size: 20px;
+}
+.meta {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 4px;
+}
+main {
+  padding: 8px 24px 48px;
+}
+.product {
+  margin-top: 28px;
+}
+.product h2 {
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 4px;
+}
+.legend {
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+.months {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+}
+.month h3 {
+  margin: 0 0 6px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 30px);
+  gap: 3px;
+}
+.dow {
+  font-size: 10px;
+  color: var(--muted);
+  text-align: center;
+}
+.cell {
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: #0d0d0d;
+  background: var(--grid);
+}
+.cell.empty {
+  background: transparent;
+}
+.cell.sold {
+  outline: 2px solid #c0392b;
+  outline-offset: -2px;
+}
+.err {
+  color: #c0392b;
+  padding: 12px 0;
+}

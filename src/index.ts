@@ -22,10 +22,18 @@ export default {
       });
     }
 
-    // Force a poll of both products now — handy right after deploy.
+    // Force a poll of both products now — handy right after deploy. This is a
+    // side-effecting endpoint, so gate it behind POLL_KEY (fail closed if the
+    // secret isn't configured). Pass ?key=… or an x-poll-key header.
     if (url.pathname === "/poll") {
-      const rap = await runPoll(env, "rap");
-      const main = await runPoll(env, "main");
+      const provided = url.searchParams.get("key") ?? req.headers.get("x-poll-key");
+      if (!env.POLL_KEY || provided !== env.POLL_KEY) {
+        return new Response("forbidden", { status: 403 });
+      }
+      const [rap, main] = await Promise.all([
+        runPoll(env, "rap"),
+        runPoll(env, "main"),
+      ]);
       return Response.json({ ok: true, rap_changed: rap, main_changed: main });
     }
 

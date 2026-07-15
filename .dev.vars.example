@@ -1,0 +1,6 @@
+# Local-only secrets loaded by `wrangler dev`. Copy to .dev.vars (gitignored).
+#
+# Gates the manual poll trigger:
+#   curl "http://localhost:8787/poll?key=$POLL_KEY"
+# In production set the real secret with: wrangler secret put POLL_KEY
+POLL_KEY=localdev

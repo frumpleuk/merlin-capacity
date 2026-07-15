@@ -2,6 +2,9 @@ export interface Env {
   DB: D1Database;
   BUCKET: R2Bucket;
   ASSETS: Fetcher;
+  /** Secret gating the manual /poll trigger. Set via `wrangler secret put
+   *  POLL_KEY` (prod) or .dev.vars (local). If unset, /poll is denied. */
+  POLL_KEY?: string;
 }
 
 export type Product = "main" | "rap";

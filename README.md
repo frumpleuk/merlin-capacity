@@ -35,18 +35,25 @@ npm install
 npm run db:migrate:local
 ```
 
+The manual `/poll` trigger is gated by a secret. For local dev, provide it via
+`.dev.vars` (wrangler loads it automatically):
+
+```sh
+cp .dev.vars.example .dev.vars   # POLL_KEY=localdev
+```
+
 Two ways to run locally (no Cloudflare login needed — D1/R2 are simulated):
 
 ```sh
 # A) UI iteration with hot reload:
 npm run dev:api      # terminal 1: Worker + simulated D1/R2 on :8787
 npm run dev:web      # terminal 2: Vite dev server (HMR), proxies data to :8787
-curl localhost:8787/poll   # populate data (cron doesn't fire locally)
+curl "localhost:8787/poll?key=localdev"   # populate data (cron doesn't fire locally)
 # open the Vite URL it prints (e.g. http://localhost:5173)
 
 # B) Whole thing as it deploys (built assets + Worker together):
 npm run preview      # builds, then wrangler dev
-curl localhost:8787/poll
+curl "localhost:8787/poll?key=localdev"
 # open http://localhost:8787
 ```
 
@@ -62,16 +69,20 @@ npx wrangler r2 bucket create merlin-capacity
 
 # Create tables (remote)
 npm run db:migrate
+
+# Set the secret that gates the manual /poll trigger
+npx wrangler secret put POLL_KEY
 ```
 
 ## Deploy (manual)
 
 `npm run deploy` builds the frontend and runs `wrangler deploy`. The cron then
-runs within a minute; force a first poll immediately if you don't want to wait:
+runs within a minute; force a first poll immediately if you don't want to wait
+(the `/poll` trigger requires the `POLL_KEY` secret set above):
 
 ```sh
 npm run deploy
-curl https://merlin-capacity.<your-subdomain>.workers.dev/poll
+curl "https://merlin-capacity.<your-subdomain>.workers.dev/poll?key=<POLL_KEY>"
 ```
 
 Then open the Worker URL for the heatmap.

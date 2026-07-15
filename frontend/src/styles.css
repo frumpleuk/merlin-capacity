@@ -57,19 +57,51 @@ main {
   margin-bottom: 8px;
 }
 
-/* Tap/click detail — replaces desktop-only hover tooltips. */
-.detail {
+/* Tap detail, pinned to the bottom of the viewport so it's always visible
+   however far down the calendar you've scrolled (replaces hover tooltips). */
+.detail-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 12px;
   font-size: 13px;
-  padding: 8px 10px;
-  border-radius: 8px;
   background: var(--card);
-  margin: 0 0 12px;
+  border-top: 1px solid var(--grid);
+  box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.12);
+  padding: 10px 16px;
+  padding-bottom: calc(10px + env(safe-area-inset-bottom));
 }
-.detail.placeholder {
+.detail-text {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.detail-text strong {
+  font-variant-numeric: tabular-nums;
+}
+.detail-product {
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  font-weight: 600;
   color: var(--muted);
 }
-.detail strong {
-  font-variant-numeric: tabular-nums;
+.detail-close {
+  flex: none;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 4px;
+}
+/* Keep the last row of days clear of the fixed bar. */
+main.with-bar {
+  padding-bottom: 96px;
 }
 
 /* Months tile on desktop, stack to one column on narrow screens. */

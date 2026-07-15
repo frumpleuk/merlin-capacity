@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
-import { loadProducts, type ProductFile } from "./api";
-import { ProductCalendar } from "./Heatmap";
+import { loadProducts, type Product, type ProductFile } from "./api";
+import { DetailBar, ProductCalendar } from "./Heatmap";
+
+type Selection = { product: Product; iso: string } | null;
 
 export function App() {
   const [files, setFiles] = useState<ProductFile[] | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [sel, setSel] = useState<Selection>(null);
 
   useEffect(() => {
     let alive = true;
@@ -27,11 +30,21 @@ export function App() {
     };
   }, []);
 
+  const onSelect = (product: Product, iso: string) =>
+    setSel((prev) =>
+      prev && prev.product === product && prev.iso === iso ? null : { product, iso },
+    );
+
   const updated = files?.length
     ? files
         .map((f) => f.generated_at)
         .sort()
         .at(-1)
+    : null;
+
+  // Resolve the selected day against the latest data (so the bar updates live).
+  const selDay = sel
+    ? files?.find((f) => f.product === sel.product)?.days[sel.iso] ?? null
     : null;
 
   return (
@@ -46,12 +59,25 @@ export function App() {
               : "Loading…"}
         </div>
       </header>
-      <main>
+      <main className={selDay ? "with-bar" : undefined}>
         {error && <div className="err">{error}</div>}
         {files?.map((f) => (
-          <ProductCalendar key={f.product} file={f} />
+          <ProductCalendar
+            key={f.product}
+            file={f}
+            selectedIso={sel?.product === f.product ? sel.iso : null}
+            onSelect={onSelect}
+          />
         ))}
       </main>
+      {sel && selDay && (
+        <DetailBar
+          product={sel.product}
+          iso={sel.iso}
+          o={selDay}
+          onClose={() => setSel(null)}
+        />
+      )}
     </>
   );
 }

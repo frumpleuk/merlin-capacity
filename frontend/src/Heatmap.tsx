@@ -1,5 +1,4 @@
-import { useState } from "react";
-import type { DayObs, ProductFile } from "./api";
+import type { DayObs, Product, ProductFile } from "./api";
 
 const DOW = ["M", "T", "W", "T", "F", "S", "S"];
 
@@ -31,30 +30,15 @@ function longDate(iso: string): string {
   });
 }
 
-/** Tap/click detail — the mobile-friendly replacement for hover tooltips. */
-function Detail({ iso, o }: { iso: string; o: DayObs }) {
-  const pct = o.capacity > 0 ? Math.round((o.available / o.capacity) * 100) : null;
-  return (
-    <div className="detail" aria-live="polite">
-      <strong>{longDate(iso)}</strong>
-      {" — "}
-      available <strong>{o.available.toLocaleString()}</strong> of{" "}
-      <strong>{o.capacity.toLocaleString()}</strong>
-      {pct !== null && ` (${pct}% left)`}, used{" "}
-      <strong>{o.used.toLocaleString()}</strong>
-    </div>
-  );
-}
-
 function Month({
   mk,
   days,
-  selected,
+  selectedIso,
   onSelect,
 }: {
   mk: string;
   days: Record<string, DayObs>;
-  selected: string | null;
+  selectedIso: string | null;
   onSelect: (iso: string) => void;
 }) {
   const first = new Date(`${mk}-01T00:00:00Z`);
@@ -75,7 +59,7 @@ function Month({
       continue;
     }
     const cls =
-      "cell" + (o.available === 0 ? " sold" : "") + (selected === iso ? " sel" : "");
+      "cell" + (o.available === 0 ? " sold" : "") + (selectedIso === iso ? " sel" : "");
     cells.push(
       <div
         key={iso}
@@ -112,18 +96,20 @@ function Month({
   );
 }
 
-export function ProductCalendar({ file }: { file: ProductFile }) {
-  const [selected, setSelected] = useState<string | null>(null);
+export function ProductCalendar({
+  file,
+  selectedIso,
+  onSelect,
+}: {
+  file: ProductFile;
+  selectedIso: string | null;
+  onSelect: (product: Product, iso: string) => void;
+}) {
   const dates = Object.keys(file.days).sort();
   const totalAvail = dates.reduce((a, d) => a + (file.days[d].available || 0), 0);
 
   const byMonth: Record<string, Record<string, DayObs>> = {};
   for (const d of dates) (byMonth[d.slice(0, 7)] ??= {})[d] = file.days[d];
-
-  const toggle = (iso: string) =>
-    setSelected((prev) => (prev === iso ? null : iso));
-
-  const selDay = selected ? file.days[selected] : null;
 
   return (
     <section className="product">
@@ -132,11 +118,6 @@ export function ProductCalendar({ file }: { file: ProductFile }) {
         {dates.length} dates · {totalAvail.toLocaleString()} tickets available ·
         tap a day for detail
       </div>
-      {selDay ? (
-        <Detail iso={selected!} o={selDay} />
-      ) : (
-        <div className="detail placeholder">Tap a day to see its numbers</div>
-      )}
       <div className="months">
         {Object.keys(byMonth)
           .sort()
@@ -145,11 +126,42 @@ export function ProductCalendar({ file }: { file: ProductFile }) {
               key={mk}
               mk={mk}
               days={byMonth[mk]}
-              selected={selected}
-              onSelect={toggle}
+              selectedIso={selectedIso}
+              onSelect={(iso) => onSelect(file.product, iso)}
             />
           ))}
       </div>
     </section>
+  );
+}
+
+/** Fixed bar pinned to the bottom of the viewport, so the tapped day's numbers
+ *  are always visible no matter how far down the calendar you've scrolled. */
+export function DetailBar({
+  product,
+  iso,
+  o,
+  onClose,
+}: {
+  product: Product;
+  iso: string;
+  o: DayObs;
+  onClose: () => void;
+}) {
+  const pct = o.capacity > 0 ? Math.round((o.available / o.capacity) * 100) : null;
+  return (
+    <div className="detail-bar" role="status" aria-live="polite">
+      <div className="detail-text">
+        <span className="detail-product">{product}</span>{" "}
+        <strong>{longDate(iso)}</strong> — available{" "}
+        <strong>{o.available.toLocaleString()}</strong> of{" "}
+        <strong>{o.capacity.toLocaleString()}</strong>
+        {pct !== null && ` (${pct}% left)`}, used{" "}
+        <strong>{o.used.toLocaleString()}</strong>
+      </div>
+      <button className="detail-close" onClick={onClose} aria-label="Close detail">
+        ×
+      </button>
+    </div>
   );
 }

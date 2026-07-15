@@ -1,0 +1,29 @@
+{
+  "name": "merlin-capacity",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "dev:api": "wrangler dev",
+    "dev:web": "vite",
+    "preview": "npm run build && wrangler dev",
+    "deploy": "npm run build && wrangler deploy",
+    "typecheck": "tsc --noEmit && tsc -p frontend/tsconfig.json --noEmit",
+    "db:migrate": "wrangler d1 migrations apply merlin-capacity --remote",
+    "db:migrate:local": "wrangler d1 migrations apply merlin-capacity --local"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250620.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "typescript": "^5.5.0",
+    "vite": "^5.4.0",
+    "wrangler": "^3.114.0"
+  }
+}

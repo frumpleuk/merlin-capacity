@@ -1,3 +1,4 @@
+import { useState } from "react";
 import type { DayObs, ProductFile } from "./api";
 
 const DOW = ["M", "T", "W", "T", "F", "S", "S"];
@@ -20,7 +21,42 @@ function monthLabel(mk: string): string {
   });
 }
 
-function Month({ mk, days }: { mk: string; days: Record<string, DayObs> }) {
+function longDate(iso: string): string {
+  return new Date(`${iso}T00:00:00Z`).toLocaleDateString("en-GB", {
+    weekday: "short",
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+}
+
+/** Tap/click detail — the mobile-friendly replacement for hover tooltips. */
+function Detail({ iso, o }: { iso: string; o: DayObs }) {
+  const pct = o.capacity > 0 ? Math.round((o.available / o.capacity) * 100) : null;
+  return (
+    <div className="detail" aria-live="polite">
+      <strong>{longDate(iso)}</strong>
+      {" — "}
+      available <strong>{o.available.toLocaleString()}</strong> of{" "}
+      <strong>{o.capacity.toLocaleString()}</strong>
+      {pct !== null && ` (${pct}% left)`}, used{" "}
+      <strong>{o.used.toLocaleString()}</strong>
+    </div>
+  );
+}
+
+function Month({
+  mk,
+  days,
+  selected,
+  onSelect,
+}: {
+  mk: string;
+  days: Record<string, DayObs>;
+  selected: string | null;
+  onSelect: (iso: string) => void;
+}) {
   const first = new Date(`${mk}-01T00:00:00Z`);
   const lead = (first.getUTCDay() + 6) % 7; // Mon = 0
   const daysInMonth = new Date(
@@ -38,15 +74,23 @@ function Month({ mk, days }: { mk: string; days: Record<string, DayObs> }) {
       cells.push(<div key={iso} className="cell empty" />);
       continue;
     }
+    const cls =
+      "cell" + (o.available === 0 ? " sold" : "") + (selected === iso ? " sel" : "");
     cells.push(
       <div
         key={iso}
-        className={`cell${o.available === 0 ? " sold" : ""}`}
+        className={cls}
         style={{ background: colour(o.available, o.capacity) }}
-        title={
-          `${iso}\navailable: ${o.available.toLocaleString()}\n` +
-          `capacity: ${o.capacity.toLocaleString()}\nused: ${o.used.toLocaleString()}`
-        }
+        onClick={() => onSelect(iso)}
+        role="button"
+        tabIndex={0}
+        aria-label={`${iso}: ${o.available} available of ${o.capacity}`}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            onSelect(iso);
+          }
+        }}
       >
         {day}
       </div>,
@@ -69,24 +113,41 @@ function Month({ mk, days }: { mk: string; days: Record<string, DayObs> }) {
 }
 
 export function ProductCalendar({ file }: { file: ProductFile }) {
+  const [selected, setSelected] = useState<string | null>(null);
   const dates = Object.keys(file.days).sort();
   const totalAvail = dates.reduce((a, d) => a + (file.days[d].available || 0), 0);
 
   const byMonth: Record<string, Record<string, DayObs>> = {};
   for (const d of dates) (byMonth[d.slice(0, 7)] ??= {})[d] = file.days[d];
 
+  const toggle = (iso: string) =>
+    setSelected((prev) => (prev === iso ? null : iso));
+
+  const selDay = selected ? file.days[selected] : null;
+
   return (
     <section className="product">
       <h2>{file.product}</h2>
       <div className="legend">
         {dates.length} dates · {totalAvail.toLocaleString()} tickets available ·
-        red outline = sold out · hover a day for detail
+        tap a day for detail
       </div>
+      {selDay ? (
+        <Detail iso={selected!} o={selDay} />
+      ) : (
+        <div className="detail placeholder">Tap a day to see its numbers</div>
+      )}
       <div className="months">
         {Object.keys(byMonth)
           .sort()
           .map((mk) => (
-            <Month key={mk} mk={mk} days={byMonth[mk]} />
+            <Month
+              key={mk}
+              mk={mk}
+              days={byMonth[mk]}
+              selected={selected}
+              onSelect={toggle}
+            />
           ))}
       </div>
     </section>

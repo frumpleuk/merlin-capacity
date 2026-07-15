@@ -1,4 +1,4 @@
-import type { DayObs, Product, ProductFile } from "./api";
+import type { DayObs, ProductFile } from "./api";
 
 const DOW = ["M", "T", "W", "T", "F", "S", "S"];
 
@@ -103,47 +103,38 @@ export function ProductCalendar({
 }: {
   file: ProductFile;
   selectedIso: string | null;
-  onSelect: (product: Product, iso: string) => void;
+  onSelect: (iso: string) => void;
 }) {
   const dates = Object.keys(file.days).sort();
-  const totalAvail = dates.reduce((a, d) => a + (file.days[d].available || 0), 0);
-
   const byMonth: Record<string, Record<string, DayObs>> = {};
   for (const d of dates) (byMonth[d.slice(0, 7)] ??= {})[d] = file.days[d];
 
   return (
-    <section className="product">
-      <h2>{file.product}</h2>
-      <div className="legend">
-        {dates.length} dates · {totalAvail.toLocaleString()} tickets available ·
-        tap a day for detail
-      </div>
-      <div className="months">
-        {Object.keys(byMonth)
-          .sort()
-          .map((mk) => (
-            <Month
-              key={mk}
-              mk={mk}
-              days={byMonth[mk]}
-              selectedIso={selectedIso}
-              onSelect={(iso) => onSelect(file.product, iso)}
-            />
-          ))}
-      </div>
-    </section>
+    <div className="months">
+      {Object.keys(byMonth)
+        .sort()
+        .map((mk) => (
+          <Month
+            key={mk}
+            mk={mk}
+            days={byMonth[mk]}
+            selectedIso={selectedIso}
+            onSelect={onSelect}
+          />
+        ))}
+    </div>
   );
 }
 
 /** Fixed bar pinned to the bottom of the viewport, so the tapped day's numbers
  *  are always visible no matter how far down the calendar you've scrolled. */
 export function DetailBar({
-  product,
+  label,
   iso,
   o,
   onClose,
 }: {
-  product: Product;
+  label: string;
   iso: string;
   o: DayObs;
   onClose: () => void;
@@ -152,7 +143,7 @@ export function DetailBar({
   return (
     <div className="detail-bar" role="status" aria-live="polite">
       <div className="detail-text">
-        <span className="detail-product">{product}</span>{" "}
+        <span className="detail-product">{label}</span>{" "}
         <strong>{longDate(iso)}</strong> — available{" "}
         <strong>{o.available.toLocaleString()}</strong> of{" "}
         <strong>{o.capacity.toLocaleString()}</strong>

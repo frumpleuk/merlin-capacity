@@ -2,8 +2,9 @@ name = "merlin-capacity"
 main = "src/index.ts"
 compatibility_date = "2026-07-01"
 
-# --- Static frontend (Vite build output; run `npm run build` first) ---
-assets = { directory = "./dist", binding = "ASSETS" }
+# --- Static frontend (Vite build output; run `npm run build` first).
+#     SPA fallback so client-routed deep links (e.g. /alton_towers/rap) resolve. ---
+assets = { directory = "./dist", binding = "ASSETS", not_found_handling = "single-page-application" }
 
 # --- Poll cadence. One cron a minute polls both products (RAP + main).
 #     Cron granularity bottoms out at 1 minute, which is plenty here.

@@ -1,0 +1,24 @@
+name = "merlin-capacity"
+main = "src/index.ts"
+compatibility_date = "2026-07-01"
+
+# --- Static frontend (Vite build output; run `npm run build` first) ---
+assets = { directory = "./dist", binding = "ASSETS" }
+
+# --- Poll cadence. One cron a minute polls both products (RAP + main).
+#     Cron granularity bottoms out at 1 minute, which is plenty here.
+#     Stays in the free tier; the only limit to watch is D1's 100k writes/day
+#     (delta-only writes keep us well under except on very churny days). ---
+[triggers]
+crons = ["* * * * *"]
+
+# --- History / source of truth ---
+[[d1_databases]]
+binding = "DB"
+database_name = "merlin-capacity"
+database_id = "REPLACE_WITH_D1_ID"   # `wrangler d1 create merlin-capacity`
+
+# --- Precomputed served JSON + diff baseline ---
+[[r2_buckets]]
+binding = "BUCKET"
+bucket_name = "merlin-capacity"       # `wrangler r2 bucket create merlin-capacity`

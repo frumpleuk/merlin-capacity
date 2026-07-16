@@ -7,7 +7,8 @@ export interface Env {
   POLL_KEY?: string;
 }
 
-export type Product = "main" | "rap";
+/** A product key: 'main', 'rap', or a special-event key. */
+export type Product = string;
 
 /** One day's numbers for one product. */
 export interface DayObs {

@@ -1,5 +1,5 @@
-import { ALTON, HOST } from "./config";
-import type { DayObs, Product, Snapshot } from "./types";
+import { HOST, type ParkConfig, type ProductConfig } from "./config";
+import type { DayObs, Snapshot } from "./types";
 
 const USER_AGENT =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 " +
@@ -13,22 +13,26 @@ export interface FetchResult {
   datesSeen: number;
 }
 
-function buildPayload(product: Product, startDate: string, endDate: string) {
-  const p = ALTON.products[product];
+function buildPayload(
+  park: ParkConfig,
+  product: ProductConfig,
+  startDate: string,
+  endDate: string,
+) {
   return {
-    P: p.P,
-    extra_movie: p.extra_movie,
+    P: product.P,
+    extra_movie: product.extra_movie,
     identify_customer_types: 1,
     min_capacity: 0, // capture sold-out dates too — that's where releases show
     version: "2",
     start_date: startDate,
     end_date: endDate,
     display_zero_capacity: "1",
-    include_times: p.include_times,
+    include_times: product.include_times,
     request_type: "GetMerchantPackageEventDates",
     _version: "6.31.6",
     application_id: "1500",
-    merchant_id: ALTON.merchantId,
+    merchant_id: park.merchantId,
     machine_id: "500",
     agent_id: "5",
     user_id: "5",
@@ -37,17 +41,17 @@ function buildPayload(product: Product, startDate: string, endDate: string) {
   };
 }
 
-function headers() {
+function headers(park: ParkConfig) {
   return {
     accept: "application/json, text/plain, */*",
     "accept-language": "en-GB,en-US;q=0.9,en;q=0.8",
     "com-accessopassport-app-id": "1500",
     "com-accessopassport-client": "accesso26",
     "com-accessopassport-language": "en-gb",
-    "com-accessopassport-merchant-id": ALTON.merchantId,
+    "com-accessopassport-merchant-id": park.merchantId,
     "content-type": "application/json;charset=UTF-8",
-    origin: ALTON.origin,
-    referer: `${ALTON.origin}/`,
+    origin: park.origin,
+    referer: `${park.origin}/`,
     "user-agent": USER_AGENT,
   };
 }
@@ -64,14 +68,15 @@ interface ApiDay {
  * but we defensively sum should it ever return several.
  */
 export async function fetchProduct(
-  product: Product,
+  park: ParkConfig,
+  product: ProductConfig,
   startDate: string,
   endDate: string,
 ): Promise<FetchResult> {
   const resp = await fetch(HOST, {
     method: "POST",
-    headers: headers(),
-    body: JSON.stringify(buildPayload(product, startDate, endDate)),
+    headers: headers(park),
+    body: JSON.stringify(buildPayload(park, product, startDate, endDate)),
   });
 
   const empty = (apiStatus: string): FetchResult => ({

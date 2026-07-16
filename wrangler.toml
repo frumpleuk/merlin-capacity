@@ -2,6 +2,13 @@ name = "merlin-capacity"
 main = "src/index.ts"
 compatibility_date = "2026-07-01"
 
+# --- Custom subdomain. `custom_domain = true` makes `wrangler deploy` create the
+#     DNS record and provision the TLS cert in the frumple.co.uk zone (already on
+#     Cloudflare). Independent of the apex Hugo site — separate DNS record. ---
+routes = [
+  { pattern = "merlin.frumple.co.uk", custom_domain = true }
+]
+
 # --- Static frontend (Vite build output; run `npm run build` first).
 #     SPA fallback so client-routed deep links (e.g. /alton_towers/rap) resolve. ---
 assets = { directory = "./dist", binding = "ASSETS", not_found_handling = "single-page-application" }
@@ -17,7 +24,7 @@ crons = ["* * * * *"]
 [[d1_databases]]
 binding = "DB"
 database_name = "merlin-capacity"
-database_id = "REPLACE_WITH_D1_ID"   # `wrangler d1 create merlin-capacity`
+database_id = "5e01c308-630f-4409-a303-4262e8f503c5"
 
 # --- Precomputed served JSON + diff baseline ---
 [[r2_buckets]]

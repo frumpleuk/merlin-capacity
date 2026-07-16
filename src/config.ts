@@ -109,7 +109,24 @@ export const PARKS: ParkConfig[] = [
         include_times: true,
         P: [{ CT: [{ id: "14036", qty: 1 }], event_id: "2659", id: "90339" }],
       },
-      // main tickets: needs fresh ids (2025 CT 14209 / event 2399 now FAILED).
+      {
+        // Main tickets — customer_type 14209, event 2399. Current summer
+        // packages (112514/112515/112527) + last year's autumn/winter ones,
+        // giving full July→December coverage.
+        key: "main",
+        intervalMinutes: 5,
+        extra_movie: "",
+        include_times: false,
+        P: [
+          { CT: [{ id: "14209", qty: 1 }], event_id: "2399", id: "112514" },
+          { CT: [{ id: "14209", qty: 1 }], event_id: "2399", id: "112515" },
+          { CT: [{ id: "14209", qty: 1 }], event_id: "2399", id: "112527" },
+          { CT: [{ id: "14209", qty: 1 }], event_id: "2399", id: "80504" },
+          { CT: [{ id: "14209", qty: 1 }], event_id: "2399", id: "3760" },
+          { CT: [{ id: "14209", qty: 1 }], event_id: "2399", id: "3762" },
+          { CT: [{ id: "14209", qty: 1 }], event_id: "2399", id: "3765" },
+        ],
+      },
     ],
   },
   {

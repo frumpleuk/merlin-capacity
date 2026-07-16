@@ -38,7 +38,10 @@ export const PARKS: ParkDef[] = [
   {
     key: "legoland",
     label: "Legoland Windsor",
-    products: [{ key: "rap", label: "RAP" }],
+    products: [
+      { key: "rap", label: "RAP" },
+      { key: "main", label: "Main tickets" },
+    ],
   },
   {
     key: "chessington",

@@ -46,7 +46,10 @@ export const PARKS: ParkDef[] = [
   {
     key: "chessington",
     label: "Chessington",
-    products: [{ key: "rap", label: "RAP" }],
+    products: [
+      { key: "rap", label: "RAP" },
+      { key: "main", label: "Main tickets" },
+    ],
   },
 ];
 

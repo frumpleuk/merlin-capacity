@@ -141,7 +141,22 @@ export const PARKS: ParkConfig[] = [
         include_times: true,
         P: [{ CT: [{ id: "14036", qty: 1 }], event_id: "2654", id: "90810" }],
       },
-      // main tickets: needs fresh ids (2025 CT 231 / event 2506 now FAILED).
+      {
+        // Main tickets — customer_type 231, event 2506. Current summer package
+        // (112810) + last year's autumn/winter ones, giving July→November
+        // coverage (the park closes for winter).
+        key: "main",
+        intervalMinutes: 5,
+        extra_movie: "",
+        include_times: false,
+        P: [
+          { CT: [{ id: "231", qty: 1 }], event_id: "2506", id: "112810" },
+          { CT: [{ id: "231", qty: 1 }], event_id: "2506", id: "80819" },
+          { CT: [{ id: "231", qty: 1 }], event_id: "2506", id: "80821" },
+          { CT: [{ id: "231", qty: 1 }], event_id: "2506", id: "80825" },
+          { CT: [{ id: "231", qty: 1 }], event_id: "2506", id: "80823" },
+        ],
+      },
     ],
   },
 ];

@@ -21,8 +21,8 @@ export const PARKS: ParkDef[] = [
     key: "alton_towers",
     label: "Alton Towers",
     products: [
-      { key: "rap", label: "RAP" },
       { key: "main", label: "Main tickets" },
+      { key: "rap", label: "RAP" },
       // Special events (Scarefest, Fireworks, …) slot in here once the poller
       // captures them, e.g. { key: "scarefest", label: "Scarefest" }.
     ],
@@ -31,24 +31,24 @@ export const PARKS: ParkDef[] = [
     key: "thorpe_park",
     label: "Thorpe Park",
     products: [
-      { key: "rap", label: "RAP" },
       { key: "main", label: "Main tickets" },
+      { key: "rap", label: "RAP" },
     ],
   },
   {
     key: "legoland",
     label: "Legoland Windsor",
     products: [
-      { key: "rap", label: "RAP" },
       { key: "main", label: "Main tickets" },
+      { key: "rap", label: "RAP" },
     ],
   },
   {
     key: "chessington",
     label: "Chessington",
     products: [
-      { key: "rap", label: "RAP" },
       { key: "main", label: "Main tickets" },
+      { key: "rap", label: "RAP" },
     ],
   },
 ];

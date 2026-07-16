@@ -4,9 +4,14 @@ Tracks Merlin theme-park ticket availability over time on Cloudflare,
 serverless. Runs comfortably in the **free tier**.
 
 Parks and products are pure config in `src/config.ts` (backend) and
-`frontend/src/catalog.ts` (nav). Currently: RAP for Alton Towers, Thorpe Park,
-Legoland Windsor, and Chessington; main tickets for Alton (the other parks'
-main package ids need re-capturing — see `src/config.ts`).
+`frontend/src/catalog.ts` (nav). Currently: RAP and main tickets for Alton
+Towers, Thorpe Park, Legoland Windsor, and Chessington.
+
+Main-ticket package ids rotate seasonally, so they aren't hardcoded — the poller
+rediscovers them from accesso's public catalog and caches the result (see
+[Autodiscovery](#autodiscovery) and [`docs/accesso-api.md`](docs/accesso-api.md),
+which documents the reverse-engineered API). RAP ids are hardcoded because RAP
+isn't in the catalog.
 
 - **Poller** — a 1-minute **cron** iterates every park × product, polling each
   on its own cadence (`intervalMinutes`). No Durable Object; cron's 1-min
@@ -18,6 +23,18 @@ main package ids need re-capturing — see `src/config.ts`).
   That same file is also the diff baseline for the next poll, so there's no
   separate state store, and RAP and main never race on a shared write. No DB on
   the hot path.
+
+### Autodiscovery
+
+Main-ticket package ids rotate seasonally. Rather than hardcoding them, a `main`
+product declares only its stable `event_id` + `customerType` (a `discover` spec
+in `src/config.ts`). On poll, the worker derives the package list from the park's
+public bootstrap catalog and caches it in R2 (`catalog/<park>/<product>.json`),
+refreshing at most twice a day (`DISCOVERY_TTL_MS`) so the 3 MB catalog
+fetch/parse stays off the hot path. If the catalog is unreachable or a park is
+mid-rotation, the last cached list keeps serving; a product with no list and no
+cache logs `NO_PACKAGES` and is skipped. RAP stays hardcoded — it isn't in the
+catalog. See [`docs/accesso-api.md`](docs/accesso-api.md).
 
 ## What it captures
 
@@ -115,8 +132,12 @@ Builds won't run migrations on its own). No API-token secret to manage.
   use `*/2 * * * *` to halve the write volume if you ever approach D1's
   100k-writes/day free limit.
 - Horizon: `HORIZON_DAYS` in `src/config.ts`.
-- Package/event IDs go stale over time — refresh them in `src/config.ts` when a
-  product starts returning `status: FAILED` (visible in the `poll_log` table).
+- Discovery cache lifetime: `DISCOVERY_TTL_MS` in `src/config.ts`.
+- Main-ticket ids are rediscovered automatically (see [Autodiscovery](#autodiscovery)).
+  RAP ids are hardcoded — refresh them in `src/config.ts` if RAP starts returning
+  `status: FAILED` (visible in the `poll_log` table). A main product logging
+  `NO_PACKAGES` means the catalog's event/CT filter matched nothing; check the
+  park's `bootstrapSlug` and the `discover` spec against `docs/accesso-api.md`.
 
 ## Inspecting history
 

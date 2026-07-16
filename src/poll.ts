@@ -1,5 +1,6 @@
 import { HORIZON_DAYS, type ParkConfig, type ProductConfig } from "./config";
 import { appendDeltas, logPoll, readSnapshot, writeProductFile } from "./db";
+import { resolvePackages } from "./discover";
 import { diffSnapshots, fetchProduct } from "./merlin";
 import type { Env } from "./types";
 
@@ -20,8 +21,17 @@ export async function runPoll(
   const start = ymd(now);
   const end = ymd(now + HORIZON_DAYS * 86_400_000);
 
+  // Resolve the packages to query — hardcoded (RAP) or rediscovered from the
+  // catalog (main). No packages means discovery couldn't produce a list and
+  // there's no cached fallback; log it and skip rather than sending an empty query.
+  const P = await resolvePackages(env.BUCKET, park, product, now);
+  if (P.length === 0) {
+    await logPoll(env.DB, park.key, product.key, 0, "NO_PACKAGES", 0, 0, observedAt);
+    return 0;
+  }
+
   const prev = await readSnapshot(env.BUCKET, park.key, product.key);
-  const res = await fetchProduct(park, product, start, end);
+  const res = await fetchProduct(park, product, P, start, end);
 
   let changed = 0;
   if (res.ok) {

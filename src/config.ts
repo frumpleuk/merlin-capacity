@@ -12,7 +12,31 @@
 export const HOST =
   "https://ecomm.api.meg-eu.accessoticketing.com/api/request/getmerchantpackageeventdates";
 
+/** The public, unauthenticated catalog blob for a park (see docs/accesso-api.md).
+ *  We derive main-ticket package ids from this instead of hardcoding them. */
+export const bootstrapUrl = (slug: string) =>
+  `https://ecomm.api.meg-eu.accessoticketing.com/static-api/bootstrap?m=${slug}&l=en-gb`;
+
+export const USER_AGENT =
+  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 " +
+  "(KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36";
+
 export const HORIZON_DAYS = 150;
+
+/** How long a discovered package list is reused before re-deriving from the
+ *  catalog. Package ids rotate at most seasonally, so twice a day is ample and
+ *  keeps the 3 MB bootstrap fetch/parse well off the hot path. */
+export const DISCOVERY_TTL_MS = 12 * 60 * 60 * 1000;
+
+/** How to find a product's packages in the bootstrap catalog, in place of a
+ *  hardcoded `P`. event_id + customerType are stable per park; only the package
+ *  ids rotate, and this rediscovers them. Defaults match a standard day ticket. */
+export interface DiscoverSpec {
+  event_id: string;
+  customerType: string;
+  packageClass?: string; // default "Daily Tickets"
+  name?: string; // exact package `name`, default "1 Day Ticket"
+}
 
 export interface ProductConfig {
   key: string; // matches the R2 file: calendar/<park>/<key>.json
@@ -21,13 +45,20 @@ export interface ProductConfig {
   intervalMinutes: number;
   extra_movie: string;
   include_times: boolean;
-  P: unknown[]; // package/customer-type selectors sent to the API
+  /** Static package/customer-type selectors sent to the API. Used for products
+   *  the catalog doesn't list (RAP). Exactly one of `P` / `discover` is set. */
+  P?: unknown[];
+  /** Or: rediscover the selectors from the catalog each TTL (main tickets). */
+  discover?: DiscoverSpec;
 }
 
 export interface ParkConfig {
   key: string;
   merchantId: string;
   origin: string;
+  /** Bootstrap catalog slug (NOT the subdomain — e.g. Chessington is
+   *  ME-WACHESSINGTON, not ME-CWOA). From the park's landing-page `bootstrap?m=`. */
+  bootstrapSlug: string;
   products: ProductConfig[];
 }
 
@@ -36,24 +67,17 @@ export const PARKS: ParkConfig[] = [
     key: "alton_towers",
     merchantId: "800",
     origin: "https://me-twalton.tickets.altontowers.com",
+    bootstrapSlug: "ME-TWALTON",
     products: [
       {
-        // Main park tickets — customer_type 14143. Server merges the price
-        // bands into one entry per date, so we send the full known set.
+        // Main park tickets — customer_type 14143, event 2502. Package ids are
+        // rediscovered from the catalog; the server merges them into one entry
+        // per date.
         key: "main",
         intervalMinutes: 5,
         extra_movie: "",
         include_times: false,
-        P: [
-          { CT: [{ id: "14143", qty: 1 }], event_id: "2502", id: "96905" },
-          { CT: [{ id: "14143", qty: 1 }], event_id: "2502", id: "96906" },
-          { CT: [{ id: "14143", qty: 1 }], event_id: "2502", id: "96907" },
-          { CT: [{ id: "14143", qty: 1 }], event_id: "2502", id: "96908" },
-          { CT: [{ id: "14143", qty: 1 }], event_id: "2502", id: "112896" },
-          { CT: [{ id: "14143", qty: 1 }], event_id: "2502", id: "112897" },
-          { CT: [{ id: "14143", qty: 1 }], event_id: "2502", id: "112898" },
-          { CT: [{ id: "14143", qty: 1 }], event_id: "2502", id: "112899" },
-        ],
+        discover: { event_id: "2502", customerType: "14143" },
       },
       {
         // Ride Access Pass — customer_type 14036, event 2531. Hard pool
@@ -70,6 +94,7 @@ export const PARKS: ParkConfig[] = [
     key: "thorpe_park",
     merchantId: "105",
     origin: "https://me-tpr.tickets.thorpepark.com",
+    bootstrapSlug: "ME-TPR",
     products: [
       {
         key: "rap",
@@ -79,21 +104,13 @@ export const PARKS: ParkConfig[] = [
         P: [{ CT: [{ id: "14036", qty: 1 }], event_id: "2658", id: "77728" }],
       },
       {
-        // Main tickets — customer_type 13621, event 2507. Superset of the
-        // current summer packages (112637/112641) and last year's still-valid
-        // autumn/winter packages, giving full July→December coverage.
+        // Main tickets — customer_type 13621, event 2507. Package ids
+        // rediscovered from the catalog.
         key: "main",
         intervalMinutes: 5,
         extra_movie: "",
         include_times: false,
-        P: [
-          { CT: [{ id: "13621", qty: 1 }], event_id: "2507", id: "112637" },
-          { CT: [{ id: "13621", qty: 1 }], event_id: "2507", id: "112641" },
-          { CT: [{ id: "13621", qty: 1 }], event_id: "2507", id: "80843" },
-          { CT: [{ id: "13621", qty: 1 }], event_id: "2507", id: "80845" },
-          { CT: [{ id: "13621", qty: 1 }], event_id: "2507", id: "80844" },
-          { CT: [{ id: "13621", qty: 1 }], event_id: "2507", id: "78840" },
-        ],
+        discover: { event_id: "2507", customerType: "13621" },
       },
     ],
   },
@@ -101,6 +118,7 @@ export const PARKS: ParkConfig[] = [
     key: "legoland",
     merchantId: "700",
     origin: "https://me-llwindsor.tickets.legoland.co.uk",
+    bootstrapSlug: "ME-LLWINDSOR",
     products: [
       {
         key: "rap",
@@ -110,22 +128,14 @@ export const PARKS: ParkConfig[] = [
         P: [{ CT: [{ id: "14036", qty: 1 }], event_id: "2659", id: "90339" }],
       },
       {
-        // Main tickets — customer_type 14209, event 2399. Current summer
-        // packages (112514/112515/112527) + last year's autumn/winter ones,
-        // giving full July→December coverage.
+        // Main tickets — customer_type 14209, event 2399. Package ids
+        // rediscovered from the catalog. Legoland's standard dated day ticket is
+        // named "Online Saver", not "1 Day Ticket".
         key: "main",
         intervalMinutes: 5,
         extra_movie: "",
         include_times: false,
-        P: [
-          { CT: [{ id: "14209", qty: 1 }], event_id: "2399", id: "112514" },
-          { CT: [{ id: "14209", qty: 1 }], event_id: "2399", id: "112515" },
-          { CT: [{ id: "14209", qty: 1 }], event_id: "2399", id: "112527" },
-          { CT: [{ id: "14209", qty: 1 }], event_id: "2399", id: "80504" },
-          { CT: [{ id: "14209", qty: 1 }], event_id: "2399", id: "3760" },
-          { CT: [{ id: "14209", qty: 1 }], event_id: "2399", id: "3762" },
-          { CT: [{ id: "14209", qty: 1 }], event_id: "2399", id: "3765" },
-        ],
+        discover: { event_id: "2399", customerType: "14209", name: "Online Saver" },
       },
     ],
   },
@@ -133,6 +143,7 @@ export const PARKS: ParkConfig[] = [
     key: "chessington",
     merchantId: "6400",
     origin: "https://me-cwoa.tickets.chessington.com",
+    bootstrapSlug: "ME-WACHESSINGTON",
     products: [
       {
         key: "rap",
@@ -142,20 +153,13 @@ export const PARKS: ParkConfig[] = [
         P: [{ CT: [{ id: "14036", qty: 1 }], event_id: "2654", id: "90810" }],
       },
       {
-        // Main tickets — customer_type 231, event 2506. Current summer package
-        // (112810) + last year's autumn/winter ones, giving July→November
-        // coverage (the park closes for winter).
+        // Main tickets — customer_type 231, event 2506. Package ids
+        // rediscovered from the catalog. Park closes for winter.
         key: "main",
         intervalMinutes: 5,
         extra_movie: "",
         include_times: false,
-        P: [
-          { CT: [{ id: "231", qty: 1 }], event_id: "2506", id: "112810" },
-          { CT: [{ id: "231", qty: 1 }], event_id: "2506", id: "80819" },
-          { CT: [{ id: "231", qty: 1 }], event_id: "2506", id: "80821" },
-          { CT: [{ id: "231", qty: 1 }], event_id: "2506", id: "80825" },
-          { CT: [{ id: "231", qty: 1 }], event_id: "2506", id: "80823" },
-        ],
+        discover: { event_id: "2506", customerType: "231" },
       },
     ],
   },

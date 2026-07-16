@@ -1,9 +1,5 @@
-import { HOST, type ParkConfig, type ProductConfig } from "./config";
+import { HOST, USER_AGENT, type ParkConfig, type ProductConfig } from "./config";
 import type { DayObs, Snapshot } from "./types";
-
-const USER_AGENT =
-  "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 " +
-  "(KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36";
 
 export interface FetchResult {
   ok: boolean;
@@ -16,11 +12,12 @@ export interface FetchResult {
 function buildPayload(
   park: ParkConfig,
   product: ProductConfig,
+  P: unknown[],
   startDate: string,
   endDate: string,
 ) {
   return {
-    P: product.P,
+    P,
     extra_movie: product.extra_movie,
     identify_customer_types: 1,
     min_capacity: 0, // capture sold-out dates too — that's where releases show
@@ -70,13 +67,14 @@ interface ApiDay {
 export async function fetchProduct(
   park: ParkConfig,
   product: ProductConfig,
+  P: unknown[],
   startDate: string,
   endDate: string,
 ): Promise<FetchResult> {
   const resp = await fetch(HOST, {
     method: "POST",
     headers: headers(park),
-    body: JSON.stringify(buildPayload(park, product, startDate, endDate)),
+    body: JSON.stringify(buildPayload(park, product, P, startDate, endDate)),
   });
 
   const empty = (apiStatus: string): FetchResult => ({

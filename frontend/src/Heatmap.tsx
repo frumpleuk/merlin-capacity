@@ -144,11 +144,10 @@ export function DetailBar({
     <div className="detail-bar" role="status" aria-live="polite">
       <div className="detail-text">
         <span className="detail-product">{label}</span>{" "}
-        <strong>{longDate(iso)}</strong> — available{" "}
-        <strong>{o.available.toLocaleString()}</strong> of{" "}
-        <strong>{o.capacity.toLocaleString()}</strong>
-        {pct !== null && ` (${pct}% left)`}, used{" "}
-        <strong>{o.used.toLocaleString()}</strong>
+        <strong>{longDate(iso)}</strong>: <strong>{o.available.toLocaleString()}</strong> of{" "}
+        <strong>{o.capacity.toLocaleString()}</strong> available
+        {pct !== null && `, ${pct}% left`}. Used{" "}
+        <strong>{o.used.toLocaleString()}</strong>.
       </div>
       <button className="detail-close" onClick={onClose} aria-label="Close detail">
         ×

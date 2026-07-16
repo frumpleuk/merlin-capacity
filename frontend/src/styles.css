@@ -35,23 +35,20 @@ h1 {
   margin: 0;
   font-size: 19px;
 }
-.topbar {
+.parks {
   display: flex;
-  align-items: baseline;
-  gap: 12px;
   flex-wrap: wrap;
+  gap: 4px 16px;
+  margin-top: 8px;
 }
-.park-name {
-  color: var(--muted);
+.park-link {
   font-size: 14px;
+  color: var(--muted);
+  text-decoration: none;
 }
-header select {
-  font: inherit;
-  padding: 4px 6px;
-  background: var(--card);
+.park-link.active {
   color: var(--fg);
-  border: 1px solid var(--grid);
-  border-radius: 6px;
+  font-weight: 600;
 }
 .tabs {
   display: flex;

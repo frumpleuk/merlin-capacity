@@ -42,9 +42,7 @@ export function CalendarPage() {
   if (file === null) {
     return (
       <main>
-        <div className="empty">
-          No data yet for {productDef.label} — the poller may not cover this yet.
-        </div>
+        <div className="empty">No data yet for {productDef.label}.</div>
       </main>
     );
   }
@@ -57,8 +55,8 @@ export function CalendarPage() {
     <>
       <main className={selDay ? "with-bar" : undefined}>
         <div className="page-meta">
-          Updated {new Date(file.generated_at).toLocaleString("en-GB")} ·{" "}
-          {dates.length} dates · {total.toLocaleString()} available
+          Updated {new Date(file.generated_at).toLocaleString("en-GB")}.{" "}
+          {dates.length} dates, {total.toLocaleString()} tickets available.
         </div>
         <ProductCalendar
           file={file}

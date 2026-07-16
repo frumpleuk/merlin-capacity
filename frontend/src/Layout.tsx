@@ -1,34 +1,25 @@
-import { NavLink, Outlet, useNavigate, useParams } from "react-router-dom";
+import { Link, NavLink, Outlet, useParams } from "react-router-dom";
 import { findPark, PARKS } from "./catalog";
 
 export function Layout() {
   const { park } = useParams();
-  const navigate = useNavigate();
   const parkDef = findPark(park) ?? PARKS[0];
 
   return (
     <>
       <header>
-        <div className="topbar">
-          <h1>Merlin Capacity</h1>
-          {PARKS.length > 1 ? (
-            <select
-              value={parkDef.key}
-              onChange={(e) => {
-                const p = PARKS.find((x) => x.key === e.target.value)!;
-                navigate(`/${p.key}/${p.products[0].key}`);
-              }}
+        <h1>Merlin Capacity</h1>
+        <nav className="parks">
+          {PARKS.map((p) => (
+            <Link
+              key={p.key}
+              to={`/${p.key}/${p.products[0].key}`}
+              className={"park-link" + (p.key === parkDef.key ? " active" : "")}
             >
-              {PARKS.map((p) => (
-                <option key={p.key} value={p.key}>
-                  {p.label}
-                </option>
-              ))}
-            </select>
-          ) : (
-            <span className="park-name">{parkDef.label}</span>
-          )}
-        </div>
+              {p.label}
+            </Link>
+          ))}
+        </nav>
         <nav className="tabs">
           {parkDef.products.map((pr) => (
             <NavLink

@@ -13,6 +13,9 @@ export interface ParkDef {
   products: ProductDef[];
 }
 
+// Only list products the poller actually captures. Main tickets for the
+// non-Alton parks need fresh package ids (their 2025 ids return FAILED), so
+// they're RAP-only until those are captured — see src/config.ts.
 export const PARKS: ParkDef[] = [
   {
     key: "alton_towers",
@@ -23,6 +26,21 @@ export const PARKS: ParkDef[] = [
       // Special events (Scarefest, Fireworks, …) slot in here once the poller
       // captures them, e.g. { key: "scarefest", label: "Scarefest" }.
     ],
+  },
+  {
+    key: "thorpe_park",
+    label: "Thorpe Park",
+    products: [{ key: "rap", label: "RAP" }],
+  },
+  {
+    key: "legoland",
+    label: "Legoland Windsor",
+    products: [{ key: "rap", label: "RAP" }],
+  },
+  {
+    key: "chessington",
+    label: "Chessington",
+    products: [{ key: "rap", label: "RAP" }],
   },
 ];
 

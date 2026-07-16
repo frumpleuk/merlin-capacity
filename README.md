@@ -1,11 +1,16 @@
 # merlin-capacity
 
-Tracks Alton Towers ticket availability over time on Cloudflare, serverless.
-Runs comfortably in the **free tier**.
+Tracks Merlin theme-park ticket availability over time on Cloudflare,
+serverless. Runs comfortably in the **free tier**.
 
-- **Poller** — a 1-minute **cron** polls the accesso availability API for both
-  products (RAP + main tickets). No Durable Object; cron's 1-min granularity is
-  enough.
+Parks and products are pure config in `src/config.ts` (backend) and
+`frontend/src/catalog.ts` (nav). Currently: RAP for Alton Towers, Thorpe Park,
+Legoland Windsor, and Chessington; main tickets for Alton (the other parks'
+main package ids need re-capturing — see `src/config.ts`).
+
+- **Poller** — a 1-minute **cron** iterates every park × product, polling each
+  on its own cadence (`intervalMinutes`). No Durable Object; cron's 1-min
+  granularity is enough.
 - **History** — changed days only are appended to **D1** (`observation`), so the
   table is a pure change-log. RAP batch releases show up as `capacity` jumping.
 - **Serving** — each poll writes a precomputed `calendar/<park>/<product>.json`

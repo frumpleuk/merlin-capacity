@@ -66,6 +66,54 @@ export const PARKS: ParkConfig[] = [
       },
     ],
   },
+  {
+    key: "thorpe_park",
+    merchantId: "105",
+    origin: "https://me-tpr.tickets.thorpepark.com",
+    products: [
+      {
+        key: "rap",
+        intervalMinutes: 1,
+        extra_movie: "date",
+        include_times: true,
+        P: [{ CT: [{ id: "14036", qty: 1 }], event_id: "2658", id: "77728" }],
+      },
+      // main tickets: 2025 package ids return status:FAILED — needs fresh
+      // event/package ids captured from the live booking site, then:
+      // { key: "main", intervalMinutes: 5, extra_movie: "", include_times: false,
+      //   P: [ { CT: [{ id: "13621", qty: 1 }], event_id: "2507", id: "…" }, … ] },
+    ],
+  },
+  {
+    key: "legoland",
+    merchantId: "700",
+    origin: "https://me-llwindsor.tickets.legoland.co.uk",
+    products: [
+      {
+        key: "rap",
+        intervalMinutes: 1,
+        extra_movie: "date",
+        include_times: true,
+        P: [{ CT: [{ id: "14036", qty: 1 }], event_id: "2659", id: "90339" }],
+      },
+      // main tickets: needs fresh ids (2025 CT 14209 / event 2399 now FAILED).
+    ],
+  },
+  {
+    key: "chessington",
+    merchantId: "6400",
+    origin: "https://me-cwoa.tickets.chessington.com",
+    products: [
+      {
+        key: "rap",
+        intervalMinutes: 1,
+        extra_movie: "date",
+        include_times: true,
+        P: [{ CT: [{ id: "14036", qty: 1 }], event_id: "2654", id: "90810" }],
+      },
+      // main tickets: needs fresh ids (2025 CT 231 / event 2506 now FAILED).
+    ],
+  },
 ];
 
 /** Every (park, product) pair, flattened — used to force a full manual poll. */

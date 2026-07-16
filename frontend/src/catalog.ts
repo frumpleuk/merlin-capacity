@@ -30,7 +30,10 @@ export const PARKS: ParkDef[] = [
   {
     key: "thorpe_park",
     label: "Thorpe Park",
-    products: [{ key: "rap", label: "RAP" }],
+    products: [
+      { key: "rap", label: "RAP" },
+      { key: "main", label: "Main tickets" },
+    ],
   },
   {
     key: "legoland",

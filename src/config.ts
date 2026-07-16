@@ -78,10 +78,23 @@ export const PARKS: ParkConfig[] = [
         include_times: true,
         P: [{ CT: [{ id: "14036", qty: 1 }], event_id: "2658", id: "77728" }],
       },
-      // main tickets: 2025 package ids return status:FAILED — needs fresh
-      // event/package ids captured from the live booking site, then:
-      // { key: "main", intervalMinutes: 5, extra_movie: "", include_times: false,
-      //   P: [ { CT: [{ id: "13621", qty: 1 }], event_id: "2507", id: "…" }, … ] },
+      {
+        // Main tickets — customer_type 13621, event 2507. Superset of the
+        // current summer packages (112637/112641) and last year's still-valid
+        // autumn/winter packages, giving full July→December coverage.
+        key: "main",
+        intervalMinutes: 5,
+        extra_movie: "",
+        include_times: false,
+        P: [
+          { CT: [{ id: "13621", qty: 1 }], event_id: "2507", id: "112637" },
+          { CT: [{ id: "13621", qty: 1 }], event_id: "2507", id: "112641" },
+          { CT: [{ id: "13621", qty: 1 }], event_id: "2507", id: "80843" },
+          { CT: [{ id: "13621", qty: 1 }], event_id: "2507", id: "80845" },
+          { CT: [{ id: "13621", qty: 1 }], event_id: "2507", id: "80844" },
+          { CT: [{ id: "13621", qty: 1 }], event_id: "2507", id: "78840" },
+        ],
+      },
     ],
   },
   {

@@ -45,10 +45,39 @@ export interface HoursFile {
   days: Record<string, HoursDay>;
 }
 
-/** Fetch a park's opening-hours file from R2. Returns null if absent/empty. */
-export async function loadHours(park: string): Promise<HoursFile | null> {
-  const r = await fetch(`/calendar/${park}/hours.json`, { cache: "no-store" });
+/** One product's precomputed file for a single month ('YYYY-MM'). Same shape as
+ *  the forward file; past months are frozen at each date's final value. */
+export async function loadProductMonth(
+  park: string,
+  product: string,
+  month: string,
+): Promise<ProductFile | null> {
+  const r = await fetch(`/calendar/${park}/${product}/${month}.json`, { cache: "no-store" });
+  if (!r.ok) return null;
+  const f = (await r.json()) as ProductFile;
+  return Object.keys(f.days || {}).length > 0 ? f : null;
+}
+
+/** A park's opening hours for a single month ('YYYY-MM'). */
+export async function loadHoursMonth(
+  park: string,
+  month: string,
+): Promise<HoursFile | null> {
+  const r = await fetch(`/calendar/${park}/hours/${month}.json`, { cache: "no-store" });
   if (!r.ok) return null;
   const f = (await r.json()) as HoursFile;
   return Object.keys(f.days || {}).length > 0 ? f : null;
+}
+
+export interface ParkIndex {
+  minMonth: string; // 'YYYY-MM'
+  maxMonth: string;
+}
+
+/** The range of months for which data exists — the calendar's nav bounds. */
+export async function loadParkIndex(park: string): Promise<ParkIndex | null> {
+  const r = await fetch(`/calendar/${park}/index.json`, { cache: "no-store" });
+  if (!r.ok) return null;
+  const f = (await r.json()) as ParkIndex;
+  return f.minMonth && f.maxMonth ? f : null;
 }

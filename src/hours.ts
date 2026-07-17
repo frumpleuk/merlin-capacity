@@ -1,6 +1,5 @@
 import { USER_AGENT, type OpeningHoursConfig, type ParkConfig } from "./config";
-import { writeHoursFile } from "./db";
-import { logPoll } from "./db";
+import { logPoll, writeHoursMonths } from "./db";
 import type { Env } from "./types";
 
 /** One location's entry for a single day, cleaned and classified. */
@@ -121,7 +120,7 @@ export async function runHoursPoll(env: Env, park: ParkConfig): Promise<number> 
   const observedAt = new Date().toISOString();
   const res = await fetchHours(park.openingHours);
   if (res.ok) {
-    await writeHoursFile(env.BUCKET, park.key, res.snapshot, observedAt);
+    await writeHoursMonths(env.BUCKET, park.key, res.snapshot, observedAt);
   }
   await logPoll(
     env.DB,

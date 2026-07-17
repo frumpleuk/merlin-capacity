@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { DayObs, HoursDay, HoursFile, LocationHours, ProductFile } from "./api";
 import { colour, longDate, monthLabel } from "./Heatmap";
 import { useMediaQuery } from "./useMediaQuery";
@@ -221,7 +221,6 @@ function MonthGrid({
 
   return (
     <div className="rc-month">
-      <h3>{monthLabel(mk)}</h3>
       <div className="rc-grid">
         {DOW.map((l, i) => (
           <div key={i} className="rc-dow">
@@ -234,27 +233,39 @@ function MonthGrid({
   );
 }
 
-function MonthScroll({
-  details,
-  onSelect,
-  selectedIso,
+/** Prev/next month header, shared by desktop and mobile. */
+function MonthNav({
+  month,
+  onPrev,
+  onNext,
+  canPrev,
+  canNext,
 }: {
-  details: Map<string, DayDetail>;
-  onSelect: (iso: string) => void;
-  selectedIso: string | null;
+  month: string;
+  onPrev: () => void;
+  onNext: () => void;
+  canPrev: boolean;
+  canNext: boolean;
 }) {
-  const months = [...new Set([...details.keys()].map((iso) => iso.slice(0, 7)))].sort();
   return (
-    <div className="rc-months">
-      {months.map((mk) => (
-        <MonthGrid
-          key={mk}
-          mk={mk}
-          details={details}
-          onSelect={onSelect}
-          selectedIso={selectedIso}
-        />
-      ))}
+    <div className="rc-nav">
+      <button
+        className="rc-nav-btn"
+        onClick={onPrev}
+        disabled={!canPrev}
+        aria-label="Previous month"
+      >
+        ‹
+      </button>
+      <h2 className="rc-nav-label">{monthLabel(month)}</h2>
+      <button
+        className="rc-nav-btn"
+        onClick={onNext}
+        disabled={!canNext}
+        aria-label="Next month"
+      >
+        ›
+      </button>
     </div>
   );
 }
@@ -263,24 +274,18 @@ function MonthScroll({
 
 function Agenda({ details }: { details: Map<string, DayDetail> }) {
   const isos = [...details.keys()].sort();
-  let lastMonth = "";
   return (
     <div className="rc-agenda">
       {isos.map((iso) => {
         const d = details.get(iso)!;
-        const mk = iso.slice(0, 7);
-        const header = mk !== lastMonth ? ((lastMonth = mk), monthLabel(mk)) : null;
         const event = d.event ? getEventIcon(d.event) : null;
         return (
-          <div key={iso}>
-            {header && <h3 className="rc-agenda-month">{header}</h3>}
-            <div className="rc-agenda-day">
-              <div className="rc-agenda-date">
-                {longDate(iso)}
-                {event && <span className="rc-agenda-eventtag"> {event}</span>}
-              </div>
-              <DayBody d={d} />
+          <div className="rc-agenda-day" key={iso}>
+            <div className="rc-agenda-date">
+              {longDate(iso)}
+              {event && <span className="rc-agenda-eventtag"> {event}</span>}
             </div>
+            <DayBody d={d} />
           </div>
         );
       })}
@@ -312,33 +317,55 @@ export function ParkCalendar({
   main,
   rap,
   hours,
+  month,
+  loading,
+  onPrev,
+  onNext,
+  canPrev,
+  canNext,
 }: {
   main: ProductFile | null;
   rap: ProductFile | null;
   hours: HoursFile | null;
+  month: string;
+  loading?: boolean;
+  onPrev: () => void;
+  onNext: () => void;
+  canPrev: boolean;
+  canNext: boolean;
 }) {
   const isDesktop = useMediaQuery("(min-width: 820px)");
   const [selected, setSelected] = useState<string | null>(null);
+  // A tapped day belongs to the current month — clear it when navigating away.
+  useEffect(() => setSelected(null), [month]);
+
   const details = mergeDetails(main, rap, hours);
-
-  if (details.size === 0) {
-    return <div className="empty">No data yet for this park.</div>;
-  }
-
   const selDay = selected ? details.get(selected) ?? null : null;
-
-  if (!isDesktop) {
-    return <Agenda details={details} />;
-  }
 
   return (
     <>
-      <MonthScroll
-        details={details}
-        selectedIso={selected}
-        onSelect={(iso) => setSelected((prev) => (prev === iso ? null : iso))}
+      <MonthNav
+        month={month}
+        onPrev={onPrev}
+        onNext={onNext}
+        canPrev={canPrev}
+        canNext={canNext}
       />
-      {selDay && <DaySheet d={selDay} onClose={() => setSelected(null)} />}
+      {loading ? (
+        <div className="page-meta">Loading…</div>
+      ) : details.size === 0 ? (
+        <div className="empty">No data for {monthLabel(month)}.</div>
+      ) : isDesktop ? (
+        <MonthGrid
+          mk={month}
+          details={details}
+          selectedIso={selected}
+          onSelect={(iso) => setSelected((prev) => (prev === iso ? null : iso))}
+        />
+      ) : (
+        <Agenda details={details} />
+      )}
+      {isDesktop && selDay && <DaySheet d={selDay} onClose={() => setSelected(null)} />}
     </>
   );
 }

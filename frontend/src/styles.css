@@ -189,18 +189,44 @@ main.with-bar {
 
 /* ── Rich per-park calendar ────────────────────────────────────────────────── */
 
-/* Desktop: continuous scroll of month grids with multi-line cells. */
-.rc-months {
-  margin-top: 12px;
-  padding-bottom: 140px; /* clear the fixed day sheet */
+/* Month navigation header (prev / label / next). */
+.rc-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 12px 0 4px;
 }
-.rc-month {
-  margin-bottom: 20px;
-}
-.rc-month h3 {
-  margin: 0 0 8px;
-  font-size: 15px;
+.rc-nav-label {
+  margin: 0;
+  font-size: 16px;
   font-weight: 600;
+  min-width: 11ch;
+  text-align: center;
+}
+.rc-nav-btn {
+  border: 1px solid var(--grid);
+  background: var(--card);
+  color: var(--fg);
+  border-radius: 8px;
+  width: 40px;
+  height: 36px;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.rc-nav-btn:hover:not(:disabled) {
+  border-color: var(--muted);
+}
+.rc-nav-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+/* Desktop: one month grid of multi-line cells. */
+.rc-month {
+  padding-bottom: 140px; /* clear the fixed day sheet */
 }
 .rc-grid {
   display: grid;
@@ -308,11 +334,6 @@ main.with-bar {
 /* Mobile: day-by-day agenda list. */
 .rc-agenda {
   margin-top: 8px;
-}
-.rc-agenda-month {
-  margin: 16px 0 8px;
-  font-size: 15px;
-  font-weight: 600;
 }
 .rc-agenda-day {
   border: 1px solid var(--grid);

@@ -1,5 +1,12 @@
 import { HORIZON_DAYS, type ParkConfig, type ProductConfig } from "./config";
-import { appendDeltas, logPoll, readSnapshot, writeProductFile } from "./db";
+import {
+  appendDeltas,
+  logPoll,
+  readSnapshot,
+  updateParkIndex,
+  writeProductFile,
+  writeProductMonths,
+} from "./db";
 import { resolvePackages } from "./discover";
 import { diffSnapshots, fetchProduct } from "./merlin";
 import type { Env } from "./types";
@@ -39,7 +46,17 @@ export async function runPoll(
     changed = deltas.length;
     if (changed > 0) {
       await appendDeltas(env.DB, park.key, product.key, deltas, observedAt);
+      // The big forward file (diff baseline + drill-down heatmap) …
       await writeProductFile(env.BUCKET, park.key, product.key, res.snapshot, observedAt);
+      // … and the per-month files the calendar reads (these carry history).
+      const months = await writeProductMonths(
+        env.BUCKET,
+        park.key,
+        product.key,
+        res.snapshot,
+        observedAt,
+      );
+      await updateParkIndex(env.BUCKET, park.key, months, observedAt);
     }
   }
 

@@ -2,10 +2,11 @@ import { HORIZON_DAYS, type ParkConfig, type ProductConfig } from "./config";
 import {
   appendDeltas,
   logPoll,
+  putMonthFile,
+  readMonthSnapshot,
   readSnapshot,
   updateParkIndex,
   writeProductFile,
-  writeProductMonths,
 } from "./db";
 import { resolvePackages } from "./discover";
 import { diffSnapshots, fetchProduct } from "./merlin";
@@ -48,14 +49,16 @@ export async function runPoll(
       await appendDeltas(env.DB, park.key, product.key, deltas, observedAt);
       // The big forward file (diff baseline + drill-down heatmap) …
       await writeProductFile(env.BUCKET, park.key, product.key, res.snapshot, observedAt);
-      // … and the per-month files the calendar reads (these carry history).
-      const months = await writeProductMonths(
-        env.BUCKET,
-        park.key,
-        product.key,
-        res.snapshot,
-        observedAt,
-      );
+      // … and the per-month calendar files, regenerated from D1 (the source of
+      // truth). Only the months this poll actually changed are rebuilt — keeps
+      // R2 writes low even with a full-year horizon. A month rebuild pulls the
+      // whole month from the log, so the current month keeps its already-past
+      // days and past months freeze once they stop receiving deltas.
+      const months = [...new Set(deltas.map((d) => d.date.slice(0, 7)))];
+      for (const m of months) {
+        const monthSnap = await readMonthSnapshot(env.DB, park.key, product.key, m);
+        await putMonthFile(env.BUCKET, park.key, product.key, m, monthSnap, observedAt);
+      }
       await updateParkIndex(env.BUCKET, park.key, months, observedAt);
     }
   }

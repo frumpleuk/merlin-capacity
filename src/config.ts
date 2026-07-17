@@ -21,7 +21,11 @@ export const USER_AGENT =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 " +
   "(KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36";
 
-export const HORIZON_DAYS = 150;
+// Fetch a full year ahead. The API only returns dates that are actually on
+// sale (currently ~5–6 months out), so this doesn't inflate responses — it just
+// stops us truncating what IS on sale (e.g. Legoland into late December) and
+// auto-captures next year's dates as each park releases them.
+export const HORIZON_DAYS = 365;
 
 /** How long a discovered package list is reused before re-deriving from the
  *  catalog. Package ids rotate at most seasonally, so twice a day is ample and

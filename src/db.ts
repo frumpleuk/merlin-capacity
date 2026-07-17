@@ -141,27 +141,72 @@ async function mergeMonthFile<T>(
   await bucket.put(objectKey, body, { httpMetadata: { contentType: "application/json" } });
 }
 
-/** Write the forward snapshot into per-month product files (merged). */
-export async function writeProductMonths(
+/**
+ * A month's snapshot rebuilt from D1: the LAST observation per event_date in
+ * that month. D1 is the source of truth, so the served month file is a pure
+ * projection of the log — reproducible and never divergent. Past dates in the
+ * current month are included here (they're in the log) even though they've left
+ * the forward fetch window.
+ */
+export async function readMonthSnapshot(
+  db: D1Database,
+  park: string,
+  product: Product,
+  month: string,
+): Promise<Snapshot> {
+  const start = `${month}-01`;
+  const end = `${month}-31`; // string compare: '-31' >= any real day, < next month
+  const { results } = await db
+    .prepare(
+      `SELECT o.event_date AS d, o.capacity, o.available, o.used, o.package_ids
+         FROM observation o
+         JOIN (SELECT event_date, MAX(observed_at) AS mx
+                 FROM observation
+                WHERE park = ? AND product = ? AND event_date >= ? AND event_date <= ?
+                GROUP BY event_date) L
+           ON o.event_date = L.event_date AND o.observed_at = L.mx
+        WHERE o.park = ? AND o.product = ? AND o.event_date >= ? AND o.event_date <= ?`,
+    )
+    .bind(park, product, start, end, park, product, start, end)
+    .all<{
+      d: string;
+      capacity: number;
+      available: number;
+      used: number;
+      package_ids: string | null;
+    }>();
+
+  const snapshot: Snapshot = {};
+  for (const r of results) {
+    snapshot[r.d] = {
+      capacity: r.capacity,
+      available: r.available,
+      used: r.used,
+      packageIds: r.package_ids ?? "",
+    };
+  }
+  return snapshot;
+}
+
+/** Overwrite one month's product file with a snapshot (from D1). */
+export async function putMonthFile(
   bucket: R2Bucket,
   park: string,
   product: Product,
+  month: string,
   snapshot: Snapshot,
   generatedAt: string,
-): Promise<string[]> {
-  const months = byMonth(snapshot);
-  await Promise.all(
-    [...months].map(([mk, days]) =>
-      mergeMonthFile(
-        bucket,
-        `calendar/${park}/${product}/${mk}.json`,
-        { park, product, month: mk },
-        days,
-        generatedAt,
-      ),
-    ),
-  );
-  return [...months.keys()];
+): Promise<void> {
+  const body = JSON.stringify({
+    park,
+    product,
+    month,
+    generated_at: generatedAt,
+    days: snapshot,
+  });
+  await bucket.put(`calendar/${park}/${product}/${month}.json`, body, {
+    httpMetadata: { contentType: "application/json" },
+  });
 }
 
 /** Write opening hours into per-month files (merged), same freezing behaviour —

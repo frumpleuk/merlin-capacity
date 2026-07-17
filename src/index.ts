@@ -1,7 +1,15 @@
 import { allProducts, dueProducts, HOURS_INTERVAL_MINUTES, PARKS } from "./config";
+import { rebuildMonthsFromD1 } from "./db";
 import { runHoursPoll } from "./hours";
 import { runPoll } from "./poll";
 import type { Env } from "./types";
+
+/** How often the cron re-derives the forward month files from D1, so a product
+ *  that's been static since deploy (no deltas → no per-poll rewrite) still gets
+ *  its current/future month files. Cheap: only the forward window, from D1. */
+const REBUILD_INTERVAL_MINUTES = 30;
+
+const currentMonth = (ms: number) => new Date(ms).toISOString().slice(0, 7);
 
 export default {
   // One cron a minute. Each product polls on its own cadence (intervalMinutes),
@@ -15,6 +23,17 @@ export default {
     // Opening hours change rarely — refresh every HOURS_INTERVAL_MINUTES.
     if (epochMinute % HOURS_INTERVAL_MINUTES === 0) {
       jobs.push(...PARKS.map((park) => runHoursPoll(env, park)));
+    }
+    // Periodically re-derive the forward month files from D1 (self-heal any
+    // product whose data has been static and so got no per-poll rewrite).
+    if (epochMinute % REBUILD_INTERVAL_MINUTES === 0) {
+      const from = currentMonth(event.scheduledTime);
+      const at = new Date(event.scheduledTime).toISOString();
+      jobs.push(
+        ...allProducts().map(({ park, product }) =>
+          rebuildMonthsFromD1(env.DB, env.BUCKET, park.key, product.key, at, from),
+        ),
+      );
     }
     ctx.waitUntil(Promise.all(jobs));
   },
@@ -56,7 +75,18 @@ export default {
           dates: await runHoursPoll(env, park),
         })),
       );
-      return Response.json({ ok: true, results, hours });
+      // Full repair: rebuild EVERY month file (past + forward) from D1, so a
+      // fresh deploy or a static product immediately gets all its month files.
+      const at = new Date().toISOString();
+      const rebuilt = await Promise.all(
+        allProducts().map(async ({ park, product }) => ({
+          park: park.key,
+          product: product.key,
+          months: (await rebuildMonthsFromD1(env.DB, env.BUCKET, park.key, product.key, at))
+            .length,
+        })),
+      );
+      return Response.json({ ok: true, results, hours, rebuilt });
     }
 
     // Everything else: the static heatmap.

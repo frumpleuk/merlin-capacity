@@ -188,6 +188,46 @@ export async function readMonthSnapshot(
   return snapshot;
 }
 
+/**
+ * Rebuild a product's month files from the D1 log — every month that has any
+ * observation. Self-heals: the per-poll path only (re)writes months whose data
+ * changed that poll, so a month whose data has been static since the code
+ * deployed (e.g. a quiet RAP allocation) can lack a file. This regenerates them
+ * from the source of truth. Idempotent; skips empty months.
+ *
+ * `fromMonth` limits the rebuild to months >= it — the periodic cron passes the
+ * current month so it only churns the forward window, never frozen history; a
+ * full repair (from `/poll`) omits it to rebuild every month.
+ */
+export async function rebuildMonthsFromD1(
+  db: D1Database,
+  bucket: R2Bucket,
+  park: string,
+  product: Product,
+  generatedAt: string,
+  fromMonth?: string,
+): Promise<string[]> {
+  const { results } = await db
+    .prepare(
+      `SELECT DISTINCT substr(event_date, 1, 7) AS m
+         FROM observation
+        WHERE park = ? AND product = ? AND substr(event_date, 1, 7) >= ?
+        ORDER BY m`,
+    )
+    .bind(park, product, fromMonth ?? "0000-00")
+    .all<{ m: string }>();
+
+  const written: string[] = [];
+  for (const { m } of results) {
+    const snapshot = await readMonthSnapshot(db, park, product, m);
+    if (Object.keys(snapshot).length === 0) continue;
+    await putMonthFile(bucket, park, product, m, snapshot, generatedAt);
+    written.push(m);
+  }
+  if (written.length) await updateParkIndex(bucket, park, written, generatedAt);
+  return written;
+}
+
 /** Overwrite one month's product file with a snapshot (from D1). */
 export async function putMonthFile(
   bucket: R2Bucket,

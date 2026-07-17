@@ -32,9 +32,11 @@ export const HORIZON_DAYS = 365;
  *  keeps the 3 MB bootstrap fetch/parse well off the hot path. */
 export const DISCOVERY_TTL_MS = 12 * 60 * 60 * 1000;
 
-/** How often to refresh opening hours. They change rarely (the prototype
- *  scraped every 24h), so 6h keeps the served file fresh without churn. */
-export const HOURS_INTERVAL_MINUTES = 360;
+/** How often to refresh opening hours. They change rarely, but unlike ticket
+ *  data there's no D1 log to rebuild the month files from — they only exist once
+ *  an hours poll has run — so keep the cadence tight (hourly) so a deploy or a
+ *  new month surfaces opening times quickly. Still cheap: 4 small GETs/hour. */
+export const HOURS_INTERVAL_MINUTES = 60;
 
 /** A location within a park's opening-hours calendar. `id` is accesso's
  *  locationId; `kind` drives the icon shown in the UI. */

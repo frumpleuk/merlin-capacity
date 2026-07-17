@@ -53,6 +53,9 @@ export const PARKS: ParkDef[] = [
   },
 ];
 
+// The rich per-park calendar (park home) is the default landing view.
+export const PARK_HOME = `/${PARKS[0].key}`;
+// A specific product's heatmap — the drill-down default.
 export const DEFAULT_PATH = `/${PARKS[0].key}/${PARKS[0].products[0].key}`;
 
 export function findPark(park: string | undefined): ParkDef | undefined {

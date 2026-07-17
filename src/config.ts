@@ -28,6 +28,26 @@ export const HORIZON_DAYS = 150;
  *  keeps the 3 MB bootstrap fetch/parse well off the hot path. */
 export const DISCOVERY_TTL_MS = 12 * 60 * 60 * 1000;
 
+/** How often to refresh opening hours. They change rarely (the prototype
+ *  scraped every 24h), so 6h keeps the served file fresh without churn. */
+export const HOURS_INTERVAL_MINUTES = 360;
+
+/** A location within a park's opening-hours calendar. `id` is accesso's
+ *  locationId; `kind` drives the icon shown in the UI. */
+export interface OpeningHoursLocation {
+  id: string;
+  kind: "themepark" | "waterpark" | "golf";
+}
+
+/** Where and how to read a park's opening hours. The marketing sites expose an
+ *  unauthenticated `getcalendar` endpoint (needs a browser UA — a short UA
+ *  403s). `lastEntryTime` on each day is overloaded: sometimes a genuine
+ *  last-entry note, sometimes a special-event name — classified in hours.ts. */
+export interface OpeningHoursConfig {
+  calendarUrl: string;
+  locations: OpeningHoursLocation[];
+}
+
 /** How to find a product's packages in the bootstrap catalog, in place of a
  *  hardcoded `P`. event_id + customerType are stable per park; only the package
  *  ids rotate, and this rediscovers them. Defaults match a standard day ticket. */
@@ -59,8 +79,15 @@ export interface ParkConfig {
   /** Bootstrap catalog slug (NOT the subdomain — e.g. Chessington is
    *  ME-WACHESSINGTON, not ME-CWOA). From the park's landing-page `bootstrap?m=`. */
   bootstrapSlug: string;
+  /** Opening-hours source (park marketing site). Separate from the accesso
+   *  availability API — a different host, endpoint, and response shape. */
+  openingHours: OpeningHoursConfig;
   products: ProductConfig[];
 }
+
+/** Build a park's opening-hours calendar URL for the given location ids. */
+const hoursUrl = (host: string, locationIds: string) =>
+  `https://www.${host}/api/openinghours/getcalendar?lang=en-GB&locationIds=${locationIds}`;
 
 export const PARKS: ParkConfig[] = [
   {
@@ -68,6 +95,14 @@ export const PARKS: ParkConfig[] = [
     merchantId: "800",
     origin: "https://me-twalton.tickets.altontowers.com",
     bootstrapSlug: "ME-TWALTON",
+    openingHours: {
+      calendarUrl: hoursUrl("altontowers.com", "2047,2609,2613"),
+      locations: [
+        { id: "2047", kind: "themepark" },
+        { id: "2609", kind: "waterpark" },
+        { id: "2613", kind: "golf" },
+      ],
+    },
     products: [
       {
         // Main park tickets — customer_type 14143, event 2502. Package ids are
@@ -95,6 +130,10 @@ export const PARKS: ParkConfig[] = [
     merchantId: "105",
     origin: "https://me-tpr.tickets.thorpepark.com",
     bootstrapSlug: "ME-TPR",
+    openingHours: {
+      calendarUrl: hoursUrl("thorpepark.com", "1716"),
+      locations: [{ id: "1716", kind: "themepark" }],
+    },
     products: [
       {
         key: "rap",
@@ -119,6 +158,13 @@ export const PARKS: ParkConfig[] = [
     merchantId: "700",
     origin: "https://me-llwindsor.tickets.legoland.co.uk",
     bootstrapSlug: "ME-LLWINDSOR",
+    openingHours: {
+      calendarUrl: hoursUrl("legoland.co.uk", "1716,7236"),
+      locations: [
+        { id: "1716", kind: "themepark" },
+        { id: "7236", kind: "golf" },
+      ],
+    },
     products: [
       {
         key: "rap",
@@ -144,6 +190,10 @@ export const PARKS: ParkConfig[] = [
     merchantId: "6400",
     origin: "https://me-cwoa.tickets.chessington.com",
     bootstrapSlug: "ME-WACHESSINGTON",
+    openingHours: {
+      calendarUrl: hoursUrl("chessington.com", "1716"),
+      locations: [{ id: "1716", kind: "themepark" }],
+    },
     products: [
       {
         key: "rap",

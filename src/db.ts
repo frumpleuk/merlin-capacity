@@ -1,3 +1,4 @@
+import type { HoursSnapshot } from "./hours";
 import type { Delta, Product, Snapshot } from "./types";
 
 /** Append changed days to the history log (idempotent per observed_at). */
@@ -85,6 +86,20 @@ export async function writeProductFile(
     days: snapshot,
   });
   await bucket.put(key(park, product), body, {
+    httpMetadata: { contentType: "application/json" },
+  });
+}
+
+/** The precomputed opening-hours file the frontend merges into the calendar.
+ *  One per park (`calendar/<park>/hours.json`); overwritten wholesale each poll. */
+export async function writeHoursFile(
+  bucket: R2Bucket,
+  park: string,
+  hours: HoursSnapshot,
+  generatedAt: string,
+): Promise<void> {
+  const body = JSON.stringify({ park, generated_at: generatedAt, days: hours });
+  await bucket.put(`calendar/${park}/hours.json`, body, {
     httpMetadata: { contentType: "application/json" },
   });
 }

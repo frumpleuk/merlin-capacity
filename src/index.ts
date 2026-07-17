@@ -1,4 +1,5 @@
-import { allProducts, dueProducts } from "./config";
+import { allProducts, dueProducts, HOURS_INTERVAL_MINUTES, PARKS } from "./config";
+import { runHoursPoll } from "./hours";
 import { runPoll } from "./poll";
 import type { Env } from "./types";
 
@@ -8,9 +9,14 @@ export default {
   async scheduled(event: ScheduledEvent, env: Env, ctx: ExecutionContext) {
     const epochMinute = Math.floor(event.scheduledTime / 60_000);
     const due = dueProducts(epochMinute);
-    ctx.waitUntil(
-      Promise.all(due.map(({ park, product }) => runPoll(env, park, product))),
+    const jobs: Promise<unknown>[] = due.map(({ park, product }) =>
+      runPoll(env, park, product),
     );
+    // Opening hours change rarely — refresh every HOURS_INTERVAL_MINUTES.
+    if (epochMinute % HOURS_INTERVAL_MINUTES === 0) {
+      jobs.push(...PARKS.map((park) => runHoursPoll(env, park)));
+    }
+    ctx.waitUntil(Promise.all(jobs));
   },
 
   async fetch(req: Request, env: Env): Promise<Response> {
@@ -43,7 +49,14 @@ export default {
           changed: await runPoll(env, park, product),
         })),
       );
-      return Response.json({ ok: true, results });
+      const hours = await Promise.all(
+        PARKS.map(async (park) => ({
+          park: park.key,
+          product: "hours",
+          dates: await runHoursPoll(env, park),
+        })),
+      );
+      return Response.json({ ok: true, results, hours });
     }
 
     // Everything else: the static heatmap.

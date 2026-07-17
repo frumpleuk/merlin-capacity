@@ -13,7 +13,7 @@ export function Layout() {
           {PARKS.map((p) => (
             <Link
               key={p.key}
-              to={`/${p.key}/${p.products[0].key}`}
+              to={`/${p.key}`}
               className={"park-link" + (p.key === parkDef.key ? " active" : "")}
             >
               {p.label}
@@ -21,6 +21,14 @@ export function Layout() {
           ))}
         </nav>
         <nav className="tabs">
+          {/* Rich calendar (park home), then per-product heatmaps. */}
+          <NavLink
+            end
+            to={`/${parkDef.key}`}
+            className={({ isActive }) => "tab" + (isActive ? " active" : "")}
+          >
+            Calendar
+          </NavLink>
           {parkDef.products.map((pr) => (
             <NavLink
               key={pr.key}

@@ -4,7 +4,7 @@ const DOW = ["M", "T", "W", "T", "F", "S", "S"];
 
 /** Colour by fraction available: 0 → red, high → green. RAP is a hard pool, so
  *  the availability fraction reads as "how gettable is this day". */
-function colour(available: number, capacity: number): string {
+export function colour(available: number, capacity: number): string {
   if (capacity <= 0) return "var(--grid)";
   const f = Math.max(0, Math.min(1, available / capacity));
   const hue = 120 * f; // 0=red .. 120=green
@@ -12,7 +12,7 @@ function colour(available: number, capacity: number): string {
   return `hsl(${hue.toFixed(0)} 65% ${light.toFixed(0)}%)`;
 }
 
-function monthLabel(mk: string): string {
+export function monthLabel(mk: string): string {
   return new Date(`${mk}-01T00:00:00Z`).toLocaleString("en-GB", {
     month: "long",
     year: "numeric",
@@ -20,7 +20,7 @@ function monthLabel(mk: string): string {
   });
 }
 
-function longDate(iso: string): string {
+export function longDate(iso: string): string {
   return new Date(`${iso}T00:00:00Z`).toLocaleDateString("en-GB", {
     weekday: "short",
     day: "numeric",

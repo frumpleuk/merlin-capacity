@@ -49,13 +49,17 @@ export interface OpeningHoursConfig {
 }
 
 /** How to find a product's packages in the bootstrap catalog, in place of a
- *  hardcoded `P`. event_id + customerType are stable per park; only the package
- *  ids rotate, and this rediscovers them. Defaults match a standard day ticket. */
+ *  hardcoded `P`. `event_id` is stable per park; only the package ids rotate,
+ *  and this rediscovers them. Defaults match a standard day ticket. */
 export interface DiscoverSpec {
   event_id: string;
-  customerType: string;
   packageClass?: string; // default "Daily Tickets"
-  name?: string; // exact package `name`, default "1 Day Ticket"
+  /** Case-insensitive SUBSTRING of the package `name`. Matches "1 Day Ticket"
+   *  AND its seasonal/offer variants ("1 Day Ticket - 10% Offer", etc.) — those
+   *  variants are what cover autumn/Halloween operating days (Thorpe Fright
+   *  Nights, Alton Scarefest), so an exact match would miss them.
+   *  Default "1 Day Ticket" (Legoland's dated day ticket is "Online Saver"). */
+  name?: string;
 }
 
 export interface ProductConfig {
@@ -105,14 +109,14 @@ export const PARKS: ParkConfig[] = [
     },
     products: [
       {
-        // Main park tickets — customer_type 14143, event 2502. Package ids are
-        // rediscovered from the catalog; the server merges them into one entry
-        // per date.
+        // Main park tickets — event 2502. Package ids (incl. seasonal/offer
+        // variants that cover the Scarefest dates) are rediscovered from the
+        // catalog; the server merges them into one entry per date.
         key: "main",
         intervalMinutes: 5,
         extra_movie: "",
         include_times: false,
-        discover: { event_id: "2502", customerType: "14143" },
+        discover: { event_id: "2502" },
       },
       {
         // Ride Access Pass — customer_type 14036, event 2531. Hard pool
@@ -143,13 +147,15 @@ export const PARKS: ParkConfig[] = [
         P: [{ CT: [{ id: "14036", qty: 1 }], event_id: "2658", id: "77728" }],
       },
       {
-        // Main tickets — customer_type 13621, event 2507. Package ids
-        // rediscovered from the catalog.
+        // Main tickets — event 2507. Package ids rediscovered from the
+        // catalog; the name-substring match pulls in the offer variants that
+        // cover Thorpe's autumn Fright Nights operating days (the plain
+        // "1 Day Ticket" packages alone stop at ~1 Oct).
         key: "main",
         intervalMinutes: 5,
         extra_movie: "",
         include_times: false,
-        discover: { event_id: "2507", customerType: "13621" },
+        discover: { event_id: "2507" },
       },
     ],
   },
@@ -174,14 +180,14 @@ export const PARKS: ParkConfig[] = [
         P: [{ CT: [{ id: "14036", qty: 1 }], event_id: "2659", id: "90339" }],
       },
       {
-        // Main tickets — customer_type 14209, event 2399. Package ids
-        // rediscovered from the catalog. Legoland's standard dated day ticket is
-        // named "Online Saver", not "1 Day Ticket".
+        // Main tickets — event 2399. Package ids rediscovered from the
+        // catalog. Legoland's standard dated day ticket is named "Online
+        // Saver", not "1 Day Ticket".
         key: "main",
         intervalMinutes: 5,
         extra_movie: "",
         include_times: false,
-        discover: { event_id: "2399", customerType: "14209", name: "Online Saver" },
+        discover: { event_id: "2399", name: "Online Saver" },
       },
     ],
   },
@@ -203,13 +209,13 @@ export const PARKS: ParkConfig[] = [
         P: [{ CT: [{ id: "14036", qty: 1 }], event_id: "2654", id: "90810" }],
       },
       {
-        // Main tickets — customer_type 231, event 2506. Package ids
-        // rediscovered from the catalog. Park closes for winter.
+        // Main tickets — event 2506. Package ids rediscovered from the
+        // catalog. Park closes for winter.
         key: "main",
         intervalMinutes: 5,
         extra_movie: "",
         include_times: false,
-        discover: { event_id: "2506", customerType: "231" },
+        discover: { event_id: "2506" },
       },
     ],
   },

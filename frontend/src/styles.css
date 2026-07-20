@@ -383,11 +383,13 @@ main.with-bar {
     max-height: calc(100dvh - 210px);
     overflow-y: auto;
     overscroll-behavior: contain;
-    padding: 2px;
-    margin: 4px -2px 0;
+    /* Padding ≥ the today ring's reach (outline-offset 1 + width 2) so the
+       scroll container (overflow-y:auto also clips x) doesn't cut it off. */
+    padding: 5px;
+    margin: 4px -5px 0;
   }
   .rc-agenda-day.today {
-    scroll-margin-top: 6px;
+    scroll-margin-top: 8px;
   }
 }
 /* Today's agenda card: ringed like the grid cells. */

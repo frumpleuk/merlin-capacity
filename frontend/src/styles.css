@@ -500,24 +500,25 @@ main.with-bar {
   white-space: nowrap;
 }
 
-/* Mobile: a two-row card so the name gets its own line and isn't truncated.
-   Row 1 = name + current wait; row 2 = full-width sparkline + peak. */
+/* Mobile: the ride name gets its own full-width line (never truncated); the
+   sparkline sits underneath with the current wait + peak at its right end. */
 @media (max-width: 600px) {
   .q-head-row {
     display: none;
   }
   .q-row-head {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr auto auto;
     grid-template-areas:
-      "name now"
-      "spark peak";
+      "name  name name"
+      "spark now  peak";
     column-gap: 12px;
-    row-gap: 2px;
+    row-gap: 6px;
     align-items: center;
     padding: 10px 12px;
   }
   .q-name {
     grid-area: name;
+    white-space: normal; /* wrap rather than truncate */
   }
   .spark {
     grid-area: spark;
@@ -530,14 +531,13 @@ main.with-bar {
     line-height: 1.05;
   }
   .q-now-num {
-    font-size: 20px;
+    font-size: 18px;
   }
   .q-unit {
     margin-left: 0;
   }
   .q-peak {
     grid-area: peak;
-    align-self: start;
   }
   .q-closed {
     text-align: right;

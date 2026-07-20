@@ -61,78 +61,91 @@ const rideComparator = (sort: SortMode) => (a: QueueRide, b: QueueRide) => {
 };
 
 /* ── Line geometry ─────────────────────────────────────────────────────────────
- * Samples are change-points (a value holds until the next one), so the truthful
- * shape is a step line. Closed / not-reporting stretches break the line into
- * separate open runs. A run with a single point is drawn as a dot; a run with
- * two or more points is drawn as a step line between them (no trailing hold —
- * the line ends at the last known reading). */
+ * Samples are change-points (a value holds until the next one) → a step line.
+ * While the ride is running the line is solid in the ride colour and tracks the
+ * posted wait (bridging open-but-unreported blips). While it's closed we don't
+ * know the real queue — it may still be full, or it may have been evacuated — so
+ * we don't invent or hold a number: the closed stretch is a solid line pinned
+ * to the baseline (0) in the closed colour. Running and closed stretches are
+ * drawn DISCONNECTED (no vertical drop/rise between them), so a closure reads as
+ * "closed here" rather than the queue emptying to zero and refilling. */
+
+/** Where the closed/non-operational line sits: the baseline. */
+const CLOSED_WAIT = 0;
+
+type LinePoint = { t: number; w: number; closed: boolean };
 
 /**
- * Split a line's samples into runs of consecutive *running* points. A ride
- * that's open+operational but momentarily not posting a number (w == null)
- * doesn't break the run — it holds the last known wait (bridged), so brief
- * non-reporting blips on busy rides don't fragment the line. The run only
- * breaks when the ride is actually closed or non-operational (a genuine gap).
+ * Drawable points across the day. Running samples map to their wait (bridging
+ * open-but-unreported blips to the last known wait). Closed / non-operational
+ * samples pin to the baseline and carry `closed` so they render in the closed
+ * colour. A ride closed all day is all baseline (so it clearly reads as closed).
  */
-function openRuns(samples: QueueSample[]): [number, number][][] {
-  const runs: [number, number][][] = [];
-  let cur: [number, number][] | null = null;
+function linePoints(samples: QueueSample[]): LinePoint[] {
+  const pts: LinePoint[] = [];
   let lastW: number | null = null;
   for (const s of samples) {
-    const w = s[1];
     if (isRunning(s)) {
-      const v: number | null = w != null ? w : lastW; // bridge open-but-unreported
-      if (v != null) {
-        if (!cur) runs.push((cur = []));
-        cur.push([s[0], v]);
-        lastW = v;
-      }
+      const v: number | null = s[1] != null ? s[1] : lastW; // bridge open-but-unreported
+      if (v == null) continue; // no level yet — nothing to draw
+      pts.push({ t: s[0], w: v, closed: false });
+      lastW = v;
     } else {
-      cur = null;
+      pts.push({ t: s[0], w: CLOSED_WAIT, closed: true }); // closed → baseline
       lastW = null;
     }
   }
-  return runs;
+  return pts;
 }
 
 /**
- * Step-line path 'd' plus the dot centres for lone points. A run of ≥2 points
- * is a step line; a lone point is a dot. Delta-only storage means the last
- * reading stays valid until the next poll, so if the ride is still open its
- * final run is held horizontally out to `asOf` (the last-polled time) — that
- * keeps every live sparkline continuous to "now", and turns a still-current lone
- * reading into a line rather than a dot.
+ * The step geometry split into a solid path (running) and a dashed path
+ * (closed). Step-after: each point's value holds horizontally to the next. A
+ * vertical step is drawn only BETWEEN TWO POINTS OF THE SAME STATE (a real wait
+ * change while running) — the running↔closed transition is left disconnected,
+ * so there's no misleading drop to zero or rise back up. Delta-only storage
+ * means the last reading holds until the next poll, so the final value extends
+ * to `asOf`. A lone point with nothing to extend to is a dot.
  */
 function lineGeometry(
   samples: QueueSample[],
   x: (t: number) => number,
   y: (w: number) => number,
   asOf?: number,
-): { d: string; dots: [number, number][] } {
-  const runs = openRuns(samples);
-  const last = samples[samples.length - 1];
-  const currentlyOpen = !!last && isRunning(last);
+): { d: string; closedD: string; dots: { cx: number; cy: number; closed: boolean }[] } {
+  const pts = linePoints(samples);
+  if (pts.length === 0) return { d: "", closedD: "", dots: [] };
+
+  const lastT = pts[pts.length - 1].t;
+  const endT = asOf != null && asOf > lastT ? asOf : null;
+
+  if (pts.length === 1 && endT == null) {
+    const p = pts[0];
+    return { d: "", closedD: "", dots: [{ cx: x(p.t), cy: y(p.w), closed: p.closed }] };
+  }
 
   let d = "";
-  const dots: [number, number][] = [];
-  runs.forEach((pts, ri) => {
-    const isLast = ri === runs.length - 1;
-    const extend =
-      isLast && currentlyOpen && asOf != null && asOf > pts[pts.length - 1][0];
-    if (pts.length === 1 && !extend) {
-      dots.push([x(pts[0][0]), y(pts[0][1])]);
-      return;
+  let closedD = "";
+  const add = (closed: boolean, seg: string) => {
+    if (closed) closedD += seg;
+    else d += seg;
+  };
+  for (let i = 0; i < pts.length; i++) {
+    const p = pts[i];
+    const xi = x(p.t);
+    const yi = y(p.w);
+    // Vertical step only between two same-state points (a wait change while
+    // running). Skip it across a running↔closed transition — disconnected.
+    if (i > 0 && pts[i - 1].closed === p.closed) {
+      const yPrev = y(pts[i - 1].w);
+      if (yPrev !== yi) add(p.closed, `M${xi.toFixed(1)},${yPrev.toFixed(1)}V${yi.toFixed(1)}`);
     }
-    pts.forEach(([t, w], i) => {
-      // Step-after: hold the previous wait horizontally to t, then step to w.
-      d +=
-        i === 0
-          ? `M${x(t).toFixed(1)},${y(w).toFixed(1)}`
-          : `H${x(t).toFixed(1)}V${y(w).toFixed(1)}`;
-    });
-    if (extend) d += `H${x(asOf).toFixed(1)}`; // hold last value out to now
-  });
-  return { d, dots };
+    // Horizontal hold to the next point (or asOf for the last), in this style.
+    const xNext = i + 1 < pts.length ? x(pts[i + 1].t) : endT != null ? x(endT) : null;
+    if (xNext != null && xNext !== xi)
+      add(p.closed, `M${xi.toFixed(1)},${yi.toFixed(1)}H${xNext.toFixed(1)}`);
+  }
+  return { d, closedD, dots: [] };
 }
 
 /** Render one line's step path + lone-point dots. Dots are zero-length
@@ -143,6 +156,7 @@ function LineMarks({
   x,
   y,
   colour,
+  closedColour,
   width,
   dotWidth,
   asOf,
@@ -151,11 +165,12 @@ function LineMarks({
   x: (t: number) => number;
   y: (w: number) => number;
   colour: string;
+  closedColour: string;
   width: number;
   dotWidth: number;
   asOf?: number;
 }) {
-  const { d, dots } = lineGeometry(samples, x, y, asOf);
+  const { d, closedD, dots } = lineGeometry(samples, x, y, asOf);
   return (
     <>
       {d && (
@@ -168,11 +183,21 @@ function LineMarks({
           strokeLinejoin="round"
         />
       )}
-      {dots.map(([cx, cy], j) => (
+      {closedD && (
+        <path
+          d={closedD}
+          fill="none"
+          stroke={closedColour}
+          strokeWidth={width}
+          vectorEffect="non-scaling-stroke"
+          strokeLinejoin="round"
+        />
+      )}
+      {dots.map(({ cx, cy, closed }, j) => (
         <path
           key={j}
           d={`M${cx.toFixed(1)},${cy.toFixed(1)}l0.01 0`}
-          stroke={colour}
+          stroke={closed ? closedColour : colour}
           strokeWidth={dotWidth}
           strokeLinecap="round"
           vectorEffect="non-scaling-stroke"
@@ -228,6 +253,7 @@ function Sparkline({
           x={x}
           y={y}
           colour={colours[i % colours.length]}
+          closedColour="var(--q-closed)"
           width={2}
           dotWidth={5}
           asOf={asOf}
@@ -273,6 +299,17 @@ function RideChart({
   const svgRef = useRef<SVGSVGElement>(null);
   const [hover, setHover] = useState<Hover | null>(null);
 
+  // The line only spans real data — from the first sample to the last-polled
+  // time (or the last sample). Clamp the hover to that window so the tooltip
+  // never reports a time past the most recent reading (the axis runs to close).
+  const [hoverMin, hoverMax] = useMemo(() => {
+    const ts = ride.lines.flatMap((l) => l.samples.map((s) => s[0]));
+    if (ts.length === 0) return [t0, t1];
+    const lo = Math.min(...ts);
+    const hi = Math.max(...ts);
+    return [lo, asOf != null && asOf > hi ? asOf : hi];
+  }, [ride, asOf, t0, t1]);
+
   // Hourly x-ticks across the open window.
   const hourTicks = useMemo(() => {
     const ticks: number[] = [];
@@ -312,10 +349,11 @@ function RideChart({
     const frac = (clientX - rect.left) / rect.width; // 0..1 across full svg
     const px = frac * CH_W;
     if (px < M.left || px > CH_W - M.right) return setHover(null);
-    const t = t0 + ((px - M.left) / plotW) * span;
+    const raw = t0 + ((px - M.left) / plotW) * span;
+    const t = Math.min(Math.max(raw, hoverMin), hoverMax); // never past the last reading
     setHover({
       t,
-      xFrac: (x(t) / CH_W),
+      xFrac: x(t) / CH_W,
       rows: ride.lines.map((line, i) => ({
         label: line.label,
         colour: colours[i % colours.length],
@@ -370,10 +408,11 @@ function RideChart({
             vectorEffect="non-scaling-stroke"
           />
         )}
-        {/* series (clipped to the plot area) */}
+        {/* series clipped HORIZONTALLY only (to the opening window); full height
+            so lines at the very top (peak) or baseline aren't half-clipped. */}
         <defs>
           <clipPath id={`clip-${ride.id}`}>
-            <rect x={M.left} y={M.top} width={plotW} height={plotH} />
+            <rect x={M.left} y={0} width={plotW} height={CH_H} />
           </clipPath>
         </defs>
         <g clipPath={`url(#clip-${ride.id})`}>
@@ -384,6 +423,7 @@ function RideChart({
               x={x}
               y={y}
               colour={colours[i % colours.length]}
+              closedColour="var(--q-closed)"
               width={2}
               dotWidth={7}
               asOf={asOf}
@@ -392,7 +432,7 @@ function RideChart({
         </g>
       </svg>
 
-      {hover && hover.rows.some((r) => r.wait != null) && (
+      {hover && (
         <div
           className="chart-tip"
           style={{
@@ -403,7 +443,10 @@ function RideChart({
           <div className="chart-tip-time">{londonTime(date, Math.round(hover.t))}</div>
           {hover.rows.map((r) => (
             <div key={r.label} className="chart-tip-row">
-              <span className="chart-tip-swatch" style={{ background: r.colour }} />
+              <span
+                className="chart-tip-swatch"
+                style={{ background: r.wait == null ? "var(--q-closed)" : r.colour }}
+              />
               {multi && <span className="chart-tip-label">{r.label}</span>}
               <strong>{r.wait == null ? "Closed" : `${r.wait} min`}</strong>
             </div>

@@ -8,6 +8,7 @@
   /* Queue-line series (validated for light surface #f4f4f4 via dataviz). */
   --q-main: #2f7fd1;
   --q-alt: #e07b39;
+  --q-closed: #d64541; /* closed / non-operational stretches on the line */
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -19,6 +20,7 @@
     /* Re-stepped for the dark surface #1f1f1f (not an auto-flip). */
     --q-main: #4a90d9;
     --q-alt: #c07b34;
+    --q-closed: #f0685c; /* lifted for the dark surface */
   }
 }
 * {

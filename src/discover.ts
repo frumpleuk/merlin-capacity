@@ -121,20 +121,30 @@ async function fetchCatalogPackages(
 
   const wantClass = spec.packageClass ?? "Daily Tickets";
   const wantName = (spec.name ?? "1 Day Ticket").toLowerCase();
+  const anchorMatch = (spec.anchorClassMatch ?? "prebook").toLowerCase();
   const out: unknown[] = [];
+  const seen = new Set<string>();
   for (const p of packages) {
-    if (p.package_class !== wantClass) continue;
-    // Substring, not exact: seasonal/offer variants ("1 Day Ticket - 10% Offer")
-    // are what cover the autumn Fright Nights / Scarefest dates.
-    if (!(p.name ?? "").toLowerCase().includes(wantName)) continue;
     if (!asArray(p.E).some((e) => e.id === spec.event_id)) continue;
+
+    const cls = p.package_class ?? "";
+    // The public day ticket. Substring, not exact, on the name: seasonal/offer
+    // variants ("1 Day Ticket - 10% Offer") are what cover the on-sale autumn
+    // dates.
+    const isDayTicket =
+      cls === wantClass && (p.name ?? "").toLowerCase().includes(wantName);
+    // The yield anchor — annual-pass prebooks (see DiscoverSpec.anchorClassMatch).
+    const isAnchor = anchorMatch !== "" && cls.toLowerCase().includes(anchorMatch);
+    if (!isDayTicket && !isAnchor) continue;
+
     // Send each package with its OWN customer type. Forcing a single CT narrows
-    // the returned dates (some seasonal variants only sell under other CTs), so
-    // days would go missing — the per-date capacity is the same regardless.
+    // the returned dates (some variants only sell under other CTs), so days would
+    // go missing — the per-date capacity is the same regardless.
     const ct = asArray(p.CT)
       .map((c) => c.id)
       .find((id): id is string => !!id);
-    if (!ct) continue;
+    if (!ct || seen.has(p.id)) continue;
+    seen.add(p.id);
     out.push({ CT: [{ id: ct, qty: 1 }], event_id: spec.event_id, id: p.id });
   }
   return out;

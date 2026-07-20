@@ -90,6 +90,13 @@ export interface DiscoverSpec {
    *  Nights, Alton Scarefest), so an exact match would miss them.
    *  Default "1 Day Ticket" (Legoland's dated day ticket is "Online Saver"). */
   name?: string;
+  /** Also include packages whose class contains this (case-insensitive) as a
+   *  "yield anchor". On dates the public day ticket isn't on sale yet — the whole
+   *  autumn Fright Nights / Scarefest run, months ahead — annual-pass PREBOOK
+   *  packages still are, and report the same event capacity/availability, so the
+   *  date shows a figure instead of a gap. Matches "Prebook" and Alton's "AP
+   *  Prebook"; on normal dates it doesn't change the numbers. "" disables. */
+  anchorClassMatch?: string; // default "prebook"
 }
 
 export interface ProductConfig {

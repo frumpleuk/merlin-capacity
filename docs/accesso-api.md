@@ -202,7 +202,25 @@ These `event_id` + `customer_type` pairs are stable across the year; only the
 `package_class == "Daily Tickets"` and the day-ticket `name` on the main event.
 The name is park-specific — Alton/Thorpe/Chessington call it **`1 Day Ticket`**,
 Legoland calls it **`Online Saver`**. (This is the `name` override in the
-`discover` spec in `src/config.ts`.)
+`discover` spec in `src/config.ts`.) Send each matched package with its **own**
+customer type, not one fixed CT — some seasonal/offer variants only sell under
+other CTs, and forcing a single CT drops those dates. The per-date
+capacity/availability is the same regardless of which package/CT you ask through.
+
+**Capacity/availability are event-level; `used` is per-package.** Every package
+on an event reports the same `capacity` and `available` (the day's shared yield),
+but `used` counts only that package/CT's own bookings. So `capacity - available`
+is the reliable total-sold figure; a single package's `used` is not.
+
+**Yield anchor — prebook packages fill the not-yet-on-sale gap.** The public day
+ticket for an autumn season (Thorpe Fright Nights, Alton Scarefest, Chessington
+Howl'o'ween) goes on general sale only weeks ahead, so months out those dates have
+**no `Daily Tickets` package at all** and would show as gaps — even though the date
+is open. Annual-pass **prebook** packages (`package_class` contains `Prebook`;
+Alton's is `AP Prebook`) *are* on sale far ahead and report the same event yield,
+so including them as an anchor keeps every open date populated. On dates where the
+day ticket exists too, the anchor doesn't change the numbers. This is
+`discover.anchorClassMatch` (default `"prebook"`) in `src/config.ts`.
 
 **RAP** (Ride Access Pass) is **not present in the catalog** for any park — no
 package has `CT 14036` or the RAP event id. RAP is sold through a separate flow, so
@@ -247,5 +265,7 @@ with 96 dates of availability (July → November; the park closes for winter).
 - `FAILED` ≠ "gone forever" — usually just every package out-of-window (§5).
 - Bootstrap slug ≠ subdomain (Chessington: `ME-WACHESSINGTON`).
 - RAP is not discoverable via the catalog; keep its ids by hand.
+- A blank autumn date is usually "public ticket not on sale yet", not a bug — the
+  prebook yield anchor fills it; `capacity - available` is the true total sold.
 - Nothing here is authenticated or contractual; expect drift and log poll status
   (the `poll_log` table) so a park silently going `FAILED` is visible.

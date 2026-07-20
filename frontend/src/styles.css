@@ -210,7 +210,11 @@ main.with-bar {
   margin: 0;
   font-size: 16px;
   font-weight: 600;
-  min-width: 11ch;
+  /* Fixed width big enough for the longest label ("Wed, 20 Sep 2026" and
+     "September 2026") so the ‹ › buttons never shift as the label changes —
+     within a page or across pages. */
+  min-width: 170px;
+  white-space: nowrap;
   text-align: center;
 }
 .rc-nav-btn {

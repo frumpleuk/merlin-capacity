@@ -370,6 +370,31 @@ main.with-bar {
 .rc-agenda-eventtag {
   font-weight: 400;
 }
+.rc-agenda-today {
+  color: var(--q-main);
+  font-weight: 700;
+}
+
+/* Mobile: the agenda is its own scroll area (below the header + month nav), so
+   jumping to today scrolls within it — the month nav stays put and the whole
+   page doesn't move. */
+@media (max-width: 819px) {
+  .rc-agenda {
+    max-height: calc(100dvh - 210px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 2px;
+    margin: 4px -2px 0;
+  }
+  .rc-agenda-day.today {
+    scroll-margin-top: 6px;
+  }
+}
+/* Today's agenda card: ringed like the grid cells. */
+.rc-agenda-day.today {
+  outline: 2px solid var(--q-main);
+  outline-offset: 1px;
+}
 
 /* Tap sheet, pinned to the bottom of the viewport (desktop grid). */
 .day-sheet {

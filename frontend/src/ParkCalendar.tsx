@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { DayObs, HoursDay, HoursFile, LocationHours, ProductFile } from "./api";
 import { colour, longDate, monthLabel } from "./Heatmap";
 import { useMediaQuery } from "./useMediaQuery";
@@ -276,15 +276,31 @@ function MonthNav({
 
 function Agenda({ details }: { details: Map<string, DayDetail> }) {
   const isos = [...details.keys()].sort();
+  const today = new Date().toISOString().slice(0, 10);
+  const todayRef = useRef<HTMLDivElement | null>(null);
+
+  // On first mount, jump to today (if it's in this month) so you land on it.
+  // Deferred a frame so layout is settled before we scroll.
+  useEffect(() => {
+    const el = todayRef.current;
+    if (el) requestAnimationFrame(() => el.scrollIntoView({ block: "start" }));
+  }, []);
+
   return (
     <div className="rc-agenda">
       {isos.map((iso) => {
         const d = details.get(iso)!;
         const event = d.event ? getEventIcon(d.event) : null;
+        const isToday = iso === today;
         return (
-          <div className="rc-agenda-day" key={iso}>
+          <div
+            className={"rc-agenda-day" + (isToday ? " today" : "")}
+            key={iso}
+            ref={isToday ? todayRef : undefined}
+          >
             <div className="rc-agenda-date">
               {longDate(iso)}
+              {isToday && <span className="rc-agenda-today"> · Today</span>}
               {event && <span className="rc-agenda-eventtag"> {event}</span>}
             </div>
             <DayBody d={d} />

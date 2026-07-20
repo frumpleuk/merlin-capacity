@@ -189,7 +189,13 @@ export async function fetchLiveQueues(
   };
 }
 
-/** Lines whose wait/status/open-state changed vs the previous snapshot. */
+/**
+ * Lines whose wait / open / operational state changed vs the previous snapshot.
+ * `QueueStatusMessage` is deliberately NOT compared: it's stored but never
+ * surfaced (not in the day-file samples, not shown), and parks churn it after
+ * close ("BACK SOON" → "CLOSED" → "Closes at 4:30pm" → null), which would add
+ * meaningless deltas and bump "last change" long after everything shut.
+ */
 export function diffQueues(prev: QueueSnapshot, next: QueueSnapshot): QueueObs[] {
   const deltas: QueueObs[] = [];
   for (const [key, n] of Object.entries(next)) {
@@ -197,7 +203,6 @@ export function diffQueues(prev: QueueSnapshot, next: QueueSnapshot): QueueObs[]
     if (
       !p ||
       p.queueTime !== n.queueTime ||
-      p.status !== n.status ||
       p.isOpen !== n.isOpen ||
       p.isOperational !== n.isOperational
     ) {

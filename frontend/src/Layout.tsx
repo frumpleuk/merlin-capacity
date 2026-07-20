@@ -1,9 +1,14 @@
-import { Link, NavLink, Outlet, useParams } from "react-router-dom";
+import { Link, NavLink, Outlet, useLocation, useParams } from "react-router-dom";
 import { findPark, PARKS } from "./catalog";
 
 export function Layout() {
   const { park } = useParams();
   const parkDef = findPark(park) ?? PARKS[0];
+
+  // Everything after the park segment (e.g. "queues", "main", "queues/2026-07-18"),
+  // so switching parks keeps you on the same page.
+  const { pathname } = useLocation();
+  const suffix = pathname.split("/").filter(Boolean).slice(1).join("/");
 
   return (
     <>
@@ -13,7 +18,7 @@ export function Layout() {
           {PARKS.map((p) => (
             <Link
               key={p.key}
-              to={`/${p.key}`}
+              to={suffix ? `/${p.key}/${suffix}` : `/${p.key}`}
               className={"park-link" + (p.key === parkDef.key ? " active" : "")}
             >
               {p.label}

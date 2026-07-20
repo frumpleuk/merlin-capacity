@@ -16,6 +16,11 @@ export interface DayObs {
   available: number;
   used: number;
   packageIds: string;
+  /** Was the public day ticket on general sale for this date? False when the
+   *  date is open only via the prebook yield anchor (autumn dates not yet on
+   *  public sale). Undefined for products with no anchor (RAP) and for history
+   *  written before this existed — both mean "treat as on sale". */
+  onSale?: boolean;
 }
 
 /** A full snapshot for one product, keyed by visit date 'YYYY-MM-DD'. */

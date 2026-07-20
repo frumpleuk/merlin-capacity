@@ -4,6 +4,8 @@ import { colour, longDate, monthLabel } from "./Heatmap";
 import { useMediaQuery } from "./useMediaQuery";
 
 const DOW = ["M", "T", "W", "T", "F", "S", "S"];
+const PREBOOK_NOTE =
+  "Passholder pre-book only — general sale not open yet. Figures are the day's total capacity.";
 const KIND_ICON: Record<string, string> = {
   themepark: "🎢",
   waterpark: "🏊",
@@ -108,11 +110,16 @@ function CellContent({ d }: { d: DayDetail }) {
           {getEventIcon(d.event)} {d.event}
         </div>
       )}
-      {hasAllocation(d.main) && (
-        <div className="rc-line rc-avail">
-          {availStatus(d.main).emoji} 🎟️ {avNums(d.main)}
-        </div>
-      )}
+      {hasAllocation(d.main) &&
+        (d.main.onSale === false ? (
+          <div className="rc-line rc-avail rc-prebook" title={PREBOOK_NOTE}>
+            🔒 🎟️ pre-book
+          </div>
+        ) : (
+          <div className="rc-line rc-avail">
+            {availStatus(d.main).emoji} 🎟️ {avNums(d.main)}
+          </div>
+        ))}
       {hasAllocation(d.rap) && (
         <div className="rc-line rc-avail">
           {availStatus(d.rap).emoji} RAP {avNums(d.rap)}
@@ -155,12 +162,15 @@ function DayBody({ d }: { d: DayDetail }) {
 
 /** One availability line in the detail body — the same shape for main and RAP. */
 function AvailRow({ label, o }: { label: string; o: DayObs }) {
+  const prebook = o.onSale === false;
   const s = availStatus(o);
   const pct = Math.round((o.available / o.capacity) * 100);
   return (
     <div className="rc-body-avail">
-      {s.emoji} {label}: <strong>{o.available.toLocaleString()}</strong> of{" "}
-      {o.capacity.toLocaleString()} ({pct}% · {s.label})
+      {prebook ? "🔒" : s.emoji} {label}:{" "}
+      <strong>{o.available.toLocaleString()}</strong> of {o.capacity.toLocaleString()} (
+      {pct}% · {prebook ? "pre-book only" : s.label})
+      {prebook && <div className="rc-prebook-note">{PREBOOK_NOTE}</div>}
     </div>
   );
 }

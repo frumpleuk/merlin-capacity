@@ -68,6 +68,7 @@ export async function fetchProduct(
   park: ParkConfig,
   product: ProductConfig,
   P: unknown[],
+  anchorIds: Set<string>,
   startDate: string,
   endDate: string,
 ): Promise<FetchResult> {
@@ -109,10 +110,14 @@ export async function fetchProduct(
     (pkgIds[date] ??= new Set()).add(d.package_id ?? "");
   }
   for (const date of Object.keys(snapshot)) {
-    snapshot[date].packageIds = [...pkgIds[date]]
-      .filter(Boolean)
-      .sort()
-      .join(",");
+    const ids = [...pkgIds[date]].filter(Boolean);
+    snapshot[date].packageIds = [...ids].sort().join(",");
+    // On sale to the public if any returned package id isn't a yield anchor.
+    // `package_id` can itself be comma-joined, so split before testing. With no
+    // anchors (RAP) every id qualifies → always true.
+    snapshot[date].onSale =
+      anchorIds.size === 0 ||
+      ids.flatMap((s) => s.split(",")).some((id) => id && !anchorIds.has(id));
   }
 
   return {
@@ -133,7 +138,10 @@ export function diffSnapshots(prev: Snapshot, next: Snapshot) {
       !p ||
       p.capacity !== n.capacity ||
       p.available !== n.available ||
-      p.used !== n.used
+      p.used !== n.used ||
+      // Record a public-sale transition even if the numbers held. `?? true` so
+      // the old history (no flag) doesn't count as a change on first poll.
+      (p.onSale ?? true) !== (n.onSale ?? true)
     ) {
       deltas.push({ date, ...n });
     }

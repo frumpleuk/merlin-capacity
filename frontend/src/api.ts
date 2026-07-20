@@ -3,6 +3,10 @@ export interface DayObs {
   available: number;
   used: number;
   packageIds: string;
+  /** Was the public day ticket on general sale? False = open only via the
+   *  annual-pass prebook anchor (autumn dates not yet on public sale). Undefined
+   *  (RAP, or pre-feature history) means treat as on sale. */
+  onSale?: boolean;
 }
 
 export interface ProductFile {

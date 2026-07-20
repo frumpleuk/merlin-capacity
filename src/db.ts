@@ -13,8 +13,8 @@ export async function appendDeltas(
   if (deltas.length === 0) return;
   const stmt = db.prepare(
     `INSERT OR IGNORE INTO observation
-       (park, product, event_date, capacity, available, used, package_ids, observed_at)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+       (park, product, event_date, capacity, available, used, package_ids, on_sale, observed_at)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
   );
   await db.batch(
     deltas.map((d) =>
@@ -26,6 +26,7 @@ export async function appendDeltas(
         d.available,
         d.used,
         d.packageIds,
+        d.onSale === undefined ? null : d.onSale ? 1 : 0,
         observedAt,
       ),
     ),
@@ -227,7 +228,7 @@ export async function readMonthSnapshot(
   const end = `${month}-31`; // string compare: '-31' >= any real day, < next month
   const { results } = await db
     .prepare(
-      `SELECT o.event_date AS d, o.capacity, o.available, o.used, o.package_ids
+      `SELECT o.event_date AS d, o.capacity, o.available, o.used, o.package_ids, o.on_sale
          FROM observation o
          JOIN (SELECT event_date, MAX(observed_at) AS mx
                  FROM observation
@@ -243,6 +244,7 @@ export async function readMonthSnapshot(
       available: number;
       used: number;
       package_ids: string | null;
+      on_sale: number | null;
     }>();
 
   const snapshot: Snapshot = {};
@@ -252,6 +254,8 @@ export async function readMonthSnapshot(
       available: r.available,
       used: r.used,
       packageIds: r.package_ids ?? "",
+      // NULL (pre-column history) → undefined → the frontend treats as on sale.
+      ...(r.on_sale == null ? {} : { onSale: r.on_sale === 1 }),
     };
   }
   return snapshot;

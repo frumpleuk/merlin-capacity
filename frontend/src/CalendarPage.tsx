@@ -10,14 +10,16 @@ export function CalendarPage() {
   const parkDef = findPark(park);
   const productDef = parkDef?.products.find((pr) => pr.key === product);
 
+  const today = new Date().toISOString().slice(0, 10);
   // undefined = loading, null = no data for this product yet
   const [file, setFile] = useState<ProductFile | null | undefined>(undefined);
   const [status, setStatus] = useState<PollStatus | null>(null);
-  const [selected, setSelected] = useState<string | null>(null);
+  // Default the selection to today, so the detail bar opens on the current day.
+  const [selected, setSelected] = useState<string | null>(today);
 
   useEffect(() => {
     if (!parkDef || !productDef) return;
-    setSelected(null);
+    setSelected(today);
     setFile(undefined);
     let alive = true;
     const tick = async () => {

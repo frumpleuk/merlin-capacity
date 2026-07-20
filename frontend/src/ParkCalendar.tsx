@@ -184,14 +184,16 @@ function MonthGrid({
     Date.UTC(first.getUTCFullYear(), first.getUTCMonth() + 1, 0),
   ).getUTCDate();
 
+  const today = new Date().toISOString().slice(0, 10);
   const cells = [];
   for (let i = 0; i < lead; i++) cells.push(<div key={`pad${i}`} className="rc-cell empty" />);
   for (let day = 1; day <= daysInMonth; day++) {
     const iso = `${mk}-${String(day).padStart(2, "0")}`;
+    const isToday = iso === today;
     const d = details.get(iso);
     if (!d) {
       cells.push(
-        <div key={iso} className="rc-cell empty">
+        <div key={iso} className={"rc-cell empty" + (isToday ? " today" : "")}>
           <div className="rc-daynum">{day}</div>
         </div>,
       );
@@ -201,7 +203,7 @@ function MonthGrid({
     cells.push(
       <div
         key={iso}
-        className={"rc-cell" + (selectedIso === iso ? " sel" : "")}
+        className={"rc-cell" + (selectedIso === iso ? " sel" : "") + (isToday ? " today" : "")}
         style={accent ? { borderLeftColor: accent } : undefined}
         onClick={() => onSelect(iso)}
         role="button"

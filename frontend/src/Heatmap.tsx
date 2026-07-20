@@ -47,19 +47,26 @@ function Month({
     Date.UTC(first.getUTCFullYear(), first.getUTCMonth() + 1, 0),
   ).getUTCDate();
 
+  const today = new Date().toISOString().slice(0, 10);
   const cells = [];
   for (let i = 0; i < lead; i++) {
     cells.push(<div key={`pad${i}`} className="cell empty" />);
   }
   for (let day = 1; day <= daysInMonth; day++) {
     const iso = `${mk}-${String(day).padStart(2, "0")}`;
+    const isToday = iso === today;
     const o = days[iso];
     if (!o) {
-      cells.push(<div key={iso} className="cell empty" />);
+      cells.push(
+        <div key={iso} className={"cell empty" + (isToday ? " today" : "")} />,
+      );
       continue;
     }
     const cls =
-      "cell" + (o.available === 0 ? " sold" : "") + (selectedIso === iso ? " sel" : "");
+      "cell" +
+      (o.available === 0 ? " sold" : "") +
+      (selectedIso === iso ? " sel" : "") +
+      (isToday ? " today" : "");
     cells.push(
       <div
         key={iso}

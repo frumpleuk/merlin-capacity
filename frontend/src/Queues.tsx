@@ -59,6 +59,13 @@ export const defaultDir = (sort: SortMode): SortDir => (sort === "name" ? "asc" 
 
 const rideComparator =
   (sort: SortMode, dir: SortDir) => (a: QueueRide, b: QueueRide) => {
+    // Closed rides sink to the bottom regardless of direction — except when
+    // sorting by Peak, where a since-closed ride's peak is still meaningful.
+    if (sort !== "peak") {
+      const aClosed = rideNow(a) == null;
+      const bClosed = rideNow(b) == null;
+      if (aClosed !== bClosed) return aClosed ? 1 : -1;
+    }
     let asc: number;
     if (sort === "name") asc = a.name.localeCompare(b.name);
     else {
@@ -727,9 +734,10 @@ export function QueueList({
               onClick={() => toggleSection(sec.key)}
               aria-expanded={!isCollapsed}
             >
-              <span className={"q-section-chevron" + (isCollapsed ? " collapsed" : "")}>
-                ▾
-              </span>
+              <span
+                className={"q-section-chevron" + (isCollapsed ? " collapsed" : "")}
+                aria-hidden="true"
+              />
               <span className="q-section-dot" aria-hidden="true" />
               <span className="q-section-title">
                 {sec.title} ({sec.rides.length})

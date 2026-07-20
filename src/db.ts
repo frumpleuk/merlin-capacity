@@ -385,6 +385,7 @@ interface QueueRow {
   line_type: string | null;
   queue_time: number | null;
   is_open: number;
+  is_operational: number;
   observed_at: string;
 }
 
@@ -400,7 +401,7 @@ async function readQueueDay(
     .slice(0, 10);
   const { results } = await db
     .prepare(
-      `SELECT ride_id, queue_line_id, line_type, queue_time, is_open, observed_at
+      `SELECT ride_id, queue_line_id, line_type, queue_time, is_open, is_operational, observed_at
          FROM queue_observation
         WHERE park = ? AND observed_at >= ? AND observed_at < ?
         ORDER BY observed_at ASC`,
@@ -430,7 +431,8 @@ interface QueueLineOut {
   queueLineId: number;
   type: string | null;
   label: string;
-  samples: [number, number | null, 0 | 1][]; // [minsSinceUtcMidnight, wait|null, open]
+  // [minsSinceUtcMidnight, wait|null, open 0/1, operational 0/1]
+  samples: [number, number | null, 0 | 1, 0 | 1][];
 }
 
 /**
@@ -484,7 +486,7 @@ export async function writeQueueDayFile(
       );
     }
     const mins = Math.floor((Date.parse(r.observed_at) - dayStart) / 60_000);
-    line.samples.push([mins, r.queue_time, r.is_open ? 1 : 0]);
+    line.samples.push([mins, r.queue_time, r.is_open ? 1 : 0, r.is_operational ? 1 : 0]);
   }
 
   const ridesOut = [...rides.entries()].map(([rideId, lines]) => {

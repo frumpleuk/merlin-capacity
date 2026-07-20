@@ -13,16 +13,28 @@ const londonTime = (date: string, mins: number): string =>
     { hour: "2-digit", minute: "2-digit", timeZone: "Europe/London" },
   );
 
-/** The last reported wait while open, and the day's peak — the row summary. */
+/** A sample's operational flag, defaulting to operational for older 3-tuple
+ *  files that predate the field. A line is "running" when open AND operational. */
+const isRunning = (s: QueueSample): boolean => s[2] === 1 && (s[3] ?? 1) === 1;
+
+/** The current wait while running, and the day's peak — the row summary. An
+ *  open-but-unreported reading holds the last known wait (bridged), so a running
+ *  ride reads as its last posted time rather than "Closed". */
 function lineStats(line: QueueLineSeries): { current: number | null; peak: number } {
   let current: number | null = null;
   let peak = 0;
-  for (const [, w, open] of line.samples) {
-    if (open === 1 && w != null) {
-      current = w;
-      if (w > peak) peak = w;
+  let lastW: number | null = null;
+  for (const s of line.samples) {
+    const w = s[1];
+    if (isRunning(s)) {
+      if (w != null) {
+        lastW = w;
+        if (w > peak) peak = w;
+      }
+      current = w != null ? w : lastW;
     } else {
-      current = null; // closed now
+      current = null; // closed / not operating now
+      lastW = null;
     }
   }
   return { current, peak };
@@ -55,16 +67,29 @@ const rideComparator = (sort: SortMode) => (a: QueueRide, b: QueueRide) => {
  * two or more points is drawn as a step line between them (no trailing hold —
  * the line ends at the last known reading). */
 
-/** Split a line's samples into runs of consecutive open, reporting points. */
+/**
+ * Split a line's samples into runs of consecutive *running* points. A ride
+ * that's open+operational but momentarily not posting a number (w == null)
+ * doesn't break the run — it holds the last known wait (bridged), so brief
+ * non-reporting blips on busy rides don't fragment the line. The run only
+ * breaks when the ride is actually closed or non-operational (a genuine gap).
+ */
 function openRuns(samples: QueueSample[]): [number, number][][] {
   const runs: [number, number][][] = [];
   let cur: [number, number][] | null = null;
-  for (const [t, w, open] of samples) {
-    if (open === 1 && w != null) {
-      if (!cur) runs.push((cur = []));
-      cur.push([t, w]);
+  let lastW: number | null = null;
+  for (const s of samples) {
+    const w = s[1];
+    if (isRunning(s)) {
+      const v: number | null = w != null ? w : lastW; // bridge open-but-unreported
+      if (v != null) {
+        if (!cur) runs.push((cur = []));
+        cur.push([s[0], v]);
+        lastW = v;
+      }
     } else {
       cur = null;
+      lastW = null;
     }
   }
   return runs;
@@ -86,7 +111,7 @@ function lineGeometry(
 ): { d: string; dots: [number, number][] } {
   const runs = openRuns(samples);
   const last = samples[samples.length - 1];
-  const currentlyOpen = !!last && last[2] === 1 && last[1] != null;
+  const currentlyOpen = !!last && isRunning(last);
 
   let d = "";
   const dots: [number, number][] = [];
@@ -263,12 +288,20 @@ function RideChart({
     return ticks;
   }, [yMax]);
 
-  // Nearest sample per line at time t (value held from the last change-point).
+  // Value at time t: the last posted wait while running, bridged through
+  // open-but-unreported blips, null when closed / not operating.
   const valueAt = (line: QueueLineSeries, t: number): number | null => {
     let val: number | null = null;
-    for (const [st, w, open] of line.samples) {
-      if (st > t) break;
-      val = open === 1 ? w : null;
+    let lastW: number | null = null;
+    for (const s of line.samples) {
+      if (s[0] > t) break;
+      if (isRunning(s)) {
+        if (s[1] != null) lastW = s[1];
+        val = s[1] != null ? s[1] : lastW;
+      } else {
+        val = null;
+        lastW = null;
+      }
     }
     return val;
   };

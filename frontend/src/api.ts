@@ -88,8 +88,9 @@ export async function loadParkIndex(park: string): Promise<ParkIndex | null> {
  * projected from the D1 change log. Each ride's queue lines carry the day's
  * samples as compact tuples: [minsSinceUtcMidnight, wait|null, open]. */
 
-/** [minutes since UTC midnight, posted wait (null when closed), open 0/1]. */
-export type QueueSample = [number, number | null, 0 | 1];
+/** [minutes since UTC midnight, posted wait (null when not reporting), open 0/1,
+ *  operational 0/1]. `operational` may be absent in older files → treat as 1. */
+export type QueueSample = [number, number | null, 0 | 1, (0 | 1)?];
 
 export interface QueueLineSeries {
   queueLineId: number;

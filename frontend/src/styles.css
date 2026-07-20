@@ -477,6 +477,9 @@ main.with-bar {
 .q-closed {
   color: var(--muted);
   font-size: 13px;
+  white-space: normal; /* allow "Closed all day" to wrap in the narrow column */
+  display: inline-block;
+  line-height: 1.15;
 }
 .q-peak {
   text-align: right;
@@ -701,4 +704,9 @@ main.with-bar {
   color: var(--fg);
   font-weight: 600;
   border-color: var(--fg);
+}
+.q-sort-arrow {
+  margin-left: 5px;
+  font-size: 9px;
+  vertical-align: middle;
 }

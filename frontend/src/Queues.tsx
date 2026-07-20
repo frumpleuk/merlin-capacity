@@ -52,13 +52,23 @@ const rideNow = (ride: QueueRide): number | null => {
 };
 
 export type SortMode = "now" | "peak" | "name";
+export type SortDir = "asc" | "desc";
 
-const rideComparator = (sort: SortMode) => (a: QueueRide, b: QueueRide) => {
-  if (sort === "name") return a.name.localeCompare(b.name);
-  const va = sort === "now" ? rideNow(a) ?? -1 : ridePeak(a);
-  const vb = sort === "now" ? rideNow(b) ?? -1 : ridePeak(b);
-  return vb - va || a.name.localeCompare(b.name);
-};
+/** The natural default direction for each mode (busiest first; A→Z). */
+export const defaultDir = (sort: SortMode): SortDir => (sort === "name" ? "asc" : "desc");
+
+const rideComparator =
+  (sort: SortMode, dir: SortDir) => (a: QueueRide, b: QueueRide) => {
+    let asc: number;
+    if (sort === "name") asc = a.name.localeCompare(b.name);
+    else {
+      const va = sort === "now" ? rideNow(a) ?? -1 : ridePeak(a);
+      const vb = sort === "now" ? rideNow(b) ?? -1 : ridePeak(b);
+      asc = va - vb;
+    }
+    const signed = dir === "asc" ? asc : -asc;
+    return signed || a.name.localeCompare(b.name);
+  };
 
 /* ── Line geometry ─────────────────────────────────────────────────────────────
  * Samples are change-points (a value holds until the next one) → a step line.
@@ -493,6 +503,8 @@ function RideRow({
   const main = ride.lines[0];
   const stats = main ? lineStats(main) : { current: null, peak: 0 };
   const peak = ridePeak(ride);
+  // Never ran today (all samples closed / non-operational) → "Closed all day".
+  const ranToday = ride.lines.some((l) => l.samples.some(isRunning));
 
   return (
     <div className={"q-row" + (open ? " open" : "")}>
@@ -505,7 +517,7 @@ function RideRow({
               <strong>{stats.current}</strong> min
             </>
           ) : (
-            <span className="q-closed">Closed</span>
+            <span className="q-closed">{ranToday ? "Closed" : "Closed all day"}</span>
           )}
         </span>
         <span className="q-peak">{peak > 0 ? `peak ${peak}` : "—"}</span>
@@ -581,7 +593,7 @@ interface Section {
   rides: QueueRide[];
 }
 
-function sectionsOf(rides: QueueRide[], sort: SortMode): Section[] {
+function sectionsOf(rides: QueueRide[], sort: SortMode, dir: SortDir): Section[] {
   const map = new Map<string, Section>();
   for (const ride of rides) {
     const unidentified = ride.named === false;
@@ -592,7 +604,7 @@ function sectionsOf(rides: QueueRide[], sort: SortMode): Section[] {
     sec.rides.push(ride);
   }
   const secs = [...map.values()];
-  const cmp = rideComparator(sort);
+  const cmp = rideComparator(sort, dir);
   for (const s of secs) s.rides.sort(cmp);
   return secs.sort((a, b) => a.rank - b.rank || a.title.localeCompare(b.title));
 }
@@ -622,9 +634,19 @@ export function QueueList({
 }) {
   const [openId, setOpenId] = useState<number | null>(null);
   const [sort, setSort] = useState<SortMode>("now");
+  const [dir, setDir] = useState<SortDir>("desc");
   const [collapsed, setCollapsed] = useState<Set<string>>(new Set());
 
-  const sections = useMemo(() => sectionsOf(file?.rides ?? [], sort), [file, sort]);
+  const sections = useMemo(() => sectionsOf(file?.rides ?? [], sort, dir), [file, sort, dir]);
+
+  // Click a sort: switch to it (its natural direction), or flip if already active.
+  const onSort = (key: SortMode) => {
+    if (key === sort) setDir((d) => (d === "asc" ? "desc" : "asc"));
+    else {
+      setSort(key);
+      setDir(defaultDir(key));
+    }
+  };
 
   // Shared x-domain (the park's opening window ± a buffer, so the axis is the
   // day's operating hours rather than just the span of captured data) and a
@@ -675,10 +697,12 @@ export function QueueList({
             <button
               key={s.key}
               className={"q-sort-btn" + (sort === s.key ? " active" : "")}
-              onClick={() => setSort(s.key)}
+              onClick={() => onSort(s.key)}
               aria-pressed={sort === s.key}
+              title={sort === s.key ? "Click to reverse" : undefined}
             >
               {s.label}
+              {sort === s.key && <span className="q-sort-arrow">{dir === "asc" ? "▲" : "▼"}</span>}
             </button>
           ))}
         </div>

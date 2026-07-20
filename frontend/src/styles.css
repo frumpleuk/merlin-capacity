@@ -5,6 +5,9 @@
   --muted: #666;
   --grid: #e6e6e6;
   --card: #f4f4f4;
+  /* Queue-line series (validated for light surface #f4f4f4 via dataviz). */
+  --q-main: #2f7fd1;
+  --q-alt: #e07b39;
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -13,6 +16,9 @@
     --muted: #999;
     --grid: #333;
     --card: #1f1f1f;
+    /* Re-stepped for the dark surface #1f1f1f (not an auto-flip). */
+    --q-main: #4a90d9;
+    --q-alt: #c07b34;
   }
 }
 * {
@@ -375,4 +381,315 @@ main.with-bar {
 }
 .day-sheet-head strong {
   flex: 1 1 auto;
+}
+
+/* ── Ride queue times ──────────────────────────────────────────────────────────
+   A list of rides, each with a compact sparkline of the day's wait; tap a ride
+   to expand its full chart with a hover crosshair + tooltip. */
+.q-list {
+  margin: 8px auto 0;
+  max-width: 920px;
+}
+.q-hint,
+.q-head-row {
+  color: var(--muted);
+  font-size: 12px;
+}
+.q-hint {
+  margin: 8px 0 12px;
+}
+.q-head-row,
+.q-row-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(90px, 1.9fr) 58px 56px;
+  align-items: center;
+  gap: 10px;
+}
+.q-head-row {
+  /* Match the section-card insets (4px accent + 8px row pad left; 1px + 8px
+     right) so the column labels line up with the rows inside the cards. */
+  padding: 0 9px 6px 12px;
+  border-bottom: none;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.q-head-row .q-now,
+.q-head-row .q-peak {
+  text-align: right;
+}
+.q-row {
+  border-bottom: 1px solid var(--grid);
+}
+.q-row-head {
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: var(--fg);
+  text-align: left;
+  padding: 8px;
+  cursor: pointer;
+  font: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+.q-row-head:hover {
+  background: var(--card);
+}
+.q-row.open .q-row-head {
+  background: var(--card);
+}
+.q-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 600;
+}
+.q-head-row .q-name {
+  font-weight: inherit;
+}
+.spark {
+  width: 100%;
+  height: 34px;
+  display: block;
+  overflow: hidden; /* clip marks that fall outside the opening-window domain */
+}
+.spark-base {
+  stroke: var(--grid);
+  stroke-width: 1;
+}
+.q-now {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.q-now strong {
+  font-size: 16px;
+}
+.q-closed {
+  color: var(--muted);
+  font-size: 13px;
+}
+.q-peak {
+  text-align: right;
+  color: var(--muted);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* Expanded per-ride chart. */
+.chart-wrap {
+  position: relative;
+  padding: 4px 8px 10px;
+}
+.chart {
+  width: 100%;
+  height: auto;
+  display: block;
+  touch-action: pan-y;
+}
+.chart-grid {
+  stroke: var(--grid);
+  stroke-width: 1;
+}
+.chart-cross {
+  stroke: var(--muted);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+.chart-ylabel,
+.chart-xlabel {
+  fill: var(--muted);
+  font-size: 11px;
+}
+.chart-ylabel {
+  text-anchor: end;
+}
+.chart-tip {
+  position: absolute;
+  top: 8px;
+  z-index: 5;
+  pointer-events: none;
+  background: var(--bg);
+  border: 1px solid var(--grid);
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  padding: 6px 8px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.chart-tip-time {
+  color: var(--muted);
+  margin-bottom: 2px;
+}
+.chart-tip-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-variant-numeric: tabular-nums;
+}
+.chart-tip-swatch,
+.chart-legend-swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  flex: none;
+}
+.chart-tip-label {
+  color: var(--muted);
+}
+.chart-legend {
+  display: flex;
+  gap: 16px;
+  padding: 2px 8px 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+.chart-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Thrill-group sections within the queues list. Each is a card with a
+   tone-accented, sticky header so the ride types read as distinct bands. */
+.q-section {
+  --accent: #6b7280;
+  margin: 14px 0;
+  border: 1px solid var(--grid);
+  border-left: 4px solid var(--accent);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.q-section[data-tone="thrill"] {
+  --accent: #d3453b;
+}
+.q-section[data-tone="family"] {
+  --accent: #d98a2b;
+}
+.q-section[data-tone="gentle"] {
+  --accent: #2e9e6b;
+}
+.q-section[data-tone="seasonal"] {
+  --accent: #8a5cd0;
+}
+.q-section[data-tone="other"] {
+  --accent: #6b7280;
+}
+.q-section[data-tone="unknown"] {
+  --accent: #9098a0;
+}
+@media (prefers-color-scheme: dark) {
+  .q-section[data-tone="thrill"] {
+    --accent: #e2685f;
+  }
+  .q-section[data-tone="family"] {
+    --accent: #e0a044;
+  }
+  .q-section[data-tone="gentle"] {
+    --accent: #4bbf8a;
+  }
+  .q-section[data-tone="seasonal"] {
+    --accent: #a785e0;
+  }
+  .q-section[data-tone="other"] {
+    --accent: #9aa0a8;
+  }
+  .q-section[data-tone="unknown"] {
+    --accent: #777d84;
+  }
+}
+.q-section-head {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 9px 12px;
+  background: var(--card);
+  border: none;
+  border-bottom: 1px solid var(--grid);
+  color: var(--fg);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.q-section-chevron {
+  flex: none;
+  width: 14px;
+  color: var(--fg);
+  font-size: 14px;
+  line-height: 1;
+  text-align: center;
+  transition: transform 0.12s ease;
+}
+.q-section-chevron.collapsed {
+  transform: rotate(-90deg);
+}
+.q-section-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex: none;
+}
+.q-section-title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--fg);
+}
+.q-section-note {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+}
+/* Rows inside a section: light separators, none on the last row. */
+.q-section-body .q-row {
+  border-bottom: 1px solid var(--grid);
+}
+.q-section-body .q-row:last-child {
+  border-bottom: none;
+}
+
+/* Sort toolbar. */
+.q-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin: 6px 0 20px;
+}
+.q-sort {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.q-sort-label {
+  color: var(--muted);
+  font-size: 12px;
+  margin-right: 4px;
+}
+.q-sort-btn {
+  border: 1px solid var(--grid);
+  background: var(--card);
+  color: var(--muted);
+  font: inherit;
+  font-size: 13px;
+  padding: 4px 10px;
+  border-radius: 7px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.q-sort-btn:hover:not(.active) {
+  border-color: var(--muted);
+}
+.q-sort-btn.active {
+  color: var(--fg);
+  font-weight: 600;
+  border-color: var(--fg);
 }

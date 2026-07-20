@@ -29,6 +29,13 @@ export function Layout() {
           >
             Calendar
           </NavLink>
+          {/* Ride queue times (stays active on the /queues/:date history URLs). */}
+          <NavLink
+            to={`/${parkDef.key}/queues`}
+            className={({ isActive }) => "tab" + (isActive ? " active" : "")}
+          >
+            Queues
+          </NavLink>
           {parkDef.products.map((pr) => (
             <NavLink
               key={pr.key}

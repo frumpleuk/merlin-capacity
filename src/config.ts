@@ -38,6 +38,30 @@ export const DISCOVERY_TTL_MS = 12 * 60 * 60 * 1000;
  *  new month surfaces opening times quickly. Still cheap: 4 small GETs/hour. */
 export const HOURS_INTERVAL_MINUTES = 60;
 
+/** Ride queue times change minute-to-minute while a park is open, so poll every
+ *  minute (delta-only writes keep D1 bounded). Matches the RAP cadence. */
+export const QUEUE_INTERVAL_MINUTES = 1;
+
+/** How long a park's static ride catalog (names, queue lines) is reused before
+ *  re-deriving from the content bundle. Content changes on the order of
+ *  days/weeks, so once a day is ample — and the bundle fetch+unzip stays well
+ *  off the per-minute hot path. */
+export const CATALOG_TTL_MS = 24 * 60 * 60 * 1000;
+
+/** Attractions.io ("Occasio") identity for a park — powers ride names + live
+ *  queue times (see docs/attractions-io-api.md). `apiKey` is the app's public
+ *  per-park UUID (live-feed filename + Authorization); `slug` is the content
+ *  bundle path segment. Both are app-embedded client identifiers, not secrets. */
+export interface AttractionsConfig {
+  apiKey: string;
+  slug: string;
+}
+
+export const liveFeedUrl = (apiKey: string) =>
+  `https://live-data.attractions.io/${apiKey}.json`;
+
+export const ATTRACTIONS_API = "https://api.attractions.io";
+
 /** A location within a park's opening-hours calendar. `id` is accesso's
  *  locationId; `kind` drives the icon shown in the UI. */
 export interface OpeningHoursLocation {
@@ -92,6 +116,9 @@ export interface ParkConfig {
   /** Opening-hours source (park marketing site). Separate from the accesso
    *  availability API — a different host, endpoint, and response shape. */
   openingHours: OpeningHoursConfig;
+  /** Attractions.io identity for ride names + live queue times. Absent = the
+   *  park isn't queue-tracked. Separate backend from accesso availability. */
+  attractions?: AttractionsConfig;
   products: ProductConfig[];
 }
 
@@ -112,6 +139,10 @@ export const PARKS: ParkConfig[] = [
         { id: "2609", kind: "waterpark" },
         { id: "2613", kind: "golf" },
       ],
+    },
+    attractions: {
+      apiKey: "e6c2bbf8-da54-47a2-a5ed-8b7797137113",
+      slug: "alton-towers-resort",
     },
     products: [
       {
@@ -143,6 +174,10 @@ export const PARKS: ParkConfig[] = [
     openingHours: {
       calendarUrl: hoursUrl("thorpepark.com", "1716"),
       locations: [{ id: "1716", kind: "themepark" }],
+    },
+    attractions: {
+      apiKey: "a070eedc-db3a-4c69-b55a-b79336ce723f",
+      slug: "thorpe-park",
     },
     products: [
       {
@@ -177,6 +212,10 @@ export const PARKS: ParkConfig[] = [
         { id: "7236", kind: "golf" },
       ],
     },
+    attractions: {
+      apiKey: "7b56aa91-d4c6-4f8f-bac6-441a141a8e81",
+      slug: "legoland-windsor",
+    },
     products: [
       {
         key: "rap",
@@ -206,6 +245,10 @@ export const PARKS: ParkConfig[] = [
       calendarUrl: hoursUrl("chessington.com", "1716"),
       locations: [{ id: "1716", kind: "themepark" }],
     },
+    attractions: {
+      apiKey: "307f27cd-2be1-4b43-aee8-7832cfadb85f",
+      slug: "chessington",
+    },
     products: [
       {
         key: "rap",
@@ -230,6 +273,14 @@ export const PARKS: ParkConfig[] = [
 /** Every (park, product) pair, flattened — used to force a full manual poll. */
 export function allProducts(): { park: ParkConfig; product: ProductConfig }[] {
   return PARKS.flatMap((park) => park.products.map((product) => ({ park, product })));
+}
+
+/** Parks with an Attractions.io identity (i.e. queue-tracked). Narrowed so
+ *  `park.attractions` is non-optional at the call site. */
+export function queueParks(): (ParkConfig & { attractions: AttractionsConfig })[] {
+  return PARKS.filter(
+    (p): p is ParkConfig & { attractions: AttractionsConfig } => !!p.attractions,
+  );
 }
 
 /** Pairs due to poll at the given epoch-minute (respecting each product's

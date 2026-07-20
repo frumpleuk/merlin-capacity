@@ -81,3 +81,64 @@ export async function loadParkIndex(park: string): Promise<ParkIndex | null> {
   const f = (await r.json()) as ParkIndex;
   return f.minMonth && f.maxMonth ? f : null;
 }
+
+/* ── Ride queue times ──────────────────────────────────────────────────────────
+ *
+ * One precomputed file per park per day, `queues/<park>/<YYYY-MM-DD>.json`,
+ * projected from the D1 change log. Each ride's queue lines carry the day's
+ * samples as compact tuples: [minsSinceUtcMidnight, wait|null, open]. */
+
+/** [minutes since UTC midnight, posted wait (null when closed), open 0/1]. */
+export type QueueSample = [number, number | null, 0 | 1];
+
+export interface QueueLineSeries {
+  queueLineId: number;
+  type: string | null;
+  label: string; // "Main", "Single Rider", …
+  samples: QueueSample[];
+}
+
+export interface QueueRide {
+  id: number;
+  name: string;
+  category?: number;
+  group?: string; // the park's thrill grouping (e.g. "Thrills", "Top Thrills")
+  named?: boolean; // false → parent ride absent from the content bundle
+  lines: QueueLineSeries[];
+}
+
+export interface QueueDayFile {
+  park: string;
+  date: string; // 'YYYY-MM-DD'
+  generated_at: string;
+  /** Park opening window, minutes since UTC midnight (frames the sparkline
+   *  x-axis). Absent when the day's opening times weren't captured. */
+  open?: number;
+  close?: number;
+  rides: QueueRide[];
+}
+
+/** One park's queue history for a single day. Null if the file is missing or
+ *  has no rides (park not queue-tracked, or no data captured that day). */
+export async function loadQueueDay(
+  park: string,
+  date: string,
+): Promise<QueueDayFile | null> {
+  const r = await fetch(`/queues/${park}/${date}.json`, { cache: "no-store" });
+  if (!r.ok) return null;
+  const f = (await r.json()) as QueueDayFile;
+  return f.rides && f.rides.length > 0 ? f : null;
+}
+
+export interface QueueIndex {
+  minDate: string; // 'YYYY-MM-DD'
+  maxDate: string;
+}
+
+/** The range of days for which queue data exists — the date-nav bounds. */
+export async function loadQueueIndex(park: string): Promise<QueueIndex | null> {
+  const r = await fetch(`/queues/${park}/index.json`, { cache: "no-store" });
+  if (!r.ok) return null;
+  const f = (await r.json()) as QueueIndex;
+  return f.minDate && f.maxDate ? f : null;
+}

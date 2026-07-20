@@ -1,7 +1,16 @@
-import { allProducts, dueProducts, HOURS_INTERVAL_MINUTES, PARKS } from "./config";
-import { rebuildMonthsFromD1 } from "./db";
+import {
+  allProducts,
+  dueProducts,
+  HOURS_INTERVAL_MINUTES,
+  PARKS,
+  QUEUE_INTERVAL_MINUTES,
+  queueParks,
+} from "./config";
+import { rebuildMonthsFromD1, updateQueueIndex, writeQueueDayFile } from "./db";
 import { runHoursPoll } from "./hours";
 import { runPoll } from "./poll";
+import { runQueuePoll } from "./queues";
+import { resolveRideCatalog } from "./rides";
 import type { Env } from "./types";
 
 /** How often the cron re-derives the forward month files from D1, so a product
@@ -10,6 +19,7 @@ import type { Env } from "./types";
 const REBUILD_INTERVAL_MINUTES = 30;
 
 const currentMonth = (ms: number) => new Date(ms).toISOString().slice(0, 7);
+const currentDay = (ms: number) => new Date(ms).toISOString().slice(0, 10);
 
 export default {
   // One cron a minute. Each product polls on its own cadence (intervalMinutes),
@@ -20,6 +30,10 @@ export default {
     const jobs: Promise<unknown>[] = due.map(({ park, product }) =>
       runPoll(env, park, product),
     );
+    // Ride queue times — poll the live feed on its own cadence (every minute).
+    if (epochMinute % QUEUE_INTERVAL_MINUTES === 0) {
+      jobs.push(...queueParks().map((park) => runQueuePoll(env, park)));
+    }
     // Opening hours change rarely — refresh every HOURS_INTERVAL_MINUTES.
     if (epochMinute % HOURS_INTERVAL_MINUTES === 0) {
       jobs.push(...PARKS.map((park) => runHoursPoll(env, park)));
@@ -34,6 +48,21 @@ export default {
           rebuildMonthsFromD1(env.DB, env.BUCKET, park.key, product.key, at, from),
         ),
       );
+      // Self-heal today's queue day file from D1 (covers a fresh deploy or a
+      // static-since-open park that got no per-poll rewrite). Today only.
+      const day = currentDay(event.scheduledTime);
+      jobs.push(
+        ...queueParks().map(async (park) => {
+          const catalog = await resolveRideCatalog(
+            env.BUCKET,
+            park.key,
+            park.attractions,
+            event.scheduledTime,
+          );
+          await writeQueueDayFile(env.DB, env.BUCKET, park.key, day, catalog, at);
+          await updateQueueIndex(env.BUCKET, park.key, [day], at);
+        }),
+      );
     }
     ctx.waitUntil(Promise.all(jobs));
   },
@@ -41,8 +70,8 @@ export default {
   async fetch(req: Request, env: Env): Promise<Response> {
     const url = new URL(req.url);
 
-    // Precomputed calendar JSON from R2 (cache at the edge in front of this).
-    if (url.pathname.startsWith("/calendar/")) {
+    // Precomputed calendar / queue JSON from R2 (cache at the edge in front).
+    if (url.pathname.startsWith("/calendar/") || url.pathname.startsWith("/queues/")) {
       const obj = await env.BUCKET.get(url.pathname.slice(1));
       if (!obj) return new Response("not found", { status: 404 });
       return new Response(obj.body, {
@@ -75,6 +104,13 @@ export default {
           dates: await runHoursPoll(env, park),
         })),
       );
+      const queues = await Promise.all(
+        queueParks().map(async (park) => ({
+          park: park.key,
+          product: "queues",
+          changed: await runQueuePoll(env, park),
+        })),
+      );
       // Full repair: rebuild EVERY month file (past + forward) from D1, so a
       // fresh deploy or a static product immediately gets all its month files.
       const at = new Date().toISOString();
@@ -86,7 +122,7 @@ export default {
             .length,
         })),
       );
-      return Response.json({ ok: true, results, hours, rebuilt });
+      return Response.json({ ok: true, results, hours, queues, rebuilt });
     }
 
     // Everything else: the static heatmap.

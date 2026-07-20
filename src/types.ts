@@ -25,3 +25,21 @@ export type Snapshot = Record<string, DayObs>;
 export interface Delta extends DayObs {
   date: string;
 }
+
+/* ── Ride queue times (Attractions.io live feed) ─────────────────────────────── */
+
+/** One queue line's live state, as read from the live feed and joined to the
+ *  static catalog. `queueLineId` is 0 for a synthesised ride-level "main" line
+ *  (used before the catalog resolves, or for rides with no distinct QueueLine). */
+export interface QueueObs {
+  rideId: number;
+  queueLineId: number;
+  lineType: string | null;
+  queueTime: number | null; // minutes; null when closed / not reporting
+  status: string | null; // QueueStatusMessage
+  isOpen: boolean; // ride-level
+  isOperational: boolean; // ride-level
+}
+
+/** A queue snapshot: every tracked line keyed by `${rideId}:${queueLineId}`. */
+export type QueueSnapshot = Record<string, QueueObs>;

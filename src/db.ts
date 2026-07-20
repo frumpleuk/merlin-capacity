@@ -1,5 +1,6 @@
 import type { HoursSnapshot } from "./hours";
-import type { Delta, Product, Snapshot } from "./types";
+import type { RideCatalog } from "./rides";
+import type { Delta, Product, QueueObs, QueueSnapshot, Snapshot } from "./types";
 
 /** Append changed days to the history log (idempotent per observed_at). */
 export async function appendDeltas(
@@ -269,6 +270,243 @@ export async function writeHoursMonths(
       ),
     ),
   );
+}
+
+/* ── Ride queue times ──────────────────────────────────────────────────────────
+ *
+ * Parallel to the availability stream. `queue_observation` is the delta log
+ * (one row per (ride, line) only when its wait/status/open-state moves). The
+ * frontend reads one precomputed file per day, `queues/<park>/<date>.json`,
+ * regenerated from D1 after each changed poll. The per-poll diff baseline is a
+ * small flat snapshot at `queues/<park>/latest.json` (like the availability
+ * forward file). */
+
+const queueLatestKey = (park: string) => `queues/${park}/latest.json`;
+const queueDayKey = (park: string, date: string) => `queues/${park}/${date}.json`;
+
+/** Append changed queue lines to the history log (idempotent per observed_at). */
+export async function appendQueueDeltas(
+  db: D1Database,
+  park: string,
+  deltas: QueueObs[],
+  observedAt: string,
+): Promise<void> {
+  if (deltas.length === 0) return;
+  const stmt = db.prepare(
+    `INSERT OR IGNORE INTO queue_observation
+       (park, ride_id, queue_line_id, line_type, queue_time, status,
+        is_open, is_operational, observed_at)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+  );
+  await db.batch(
+    deltas.map((d) =>
+      stmt.bind(
+        park,
+        d.rideId,
+        d.queueLineId,
+        d.lineType,
+        d.queueTime,
+        d.status,
+        d.isOpen ? 1 : 0,
+        d.isOperational ? 1 : 0,
+        observedAt,
+      ),
+    ),
+  );
+}
+
+/** The last queue snapshot, read back from the flat baseline file — our diff
+ *  baseline (R2 is read-after-write consistent). */
+export async function readQueueLatest(
+  bucket: R2Bucket,
+  park: string,
+): Promise<QueueSnapshot> {
+  const obj = await bucket.get(queueLatestKey(park));
+  if (!obj) return {};
+  try {
+    return ((await obj.json()) as { lines?: QueueSnapshot }).lines ?? {};
+  } catch {
+    return {};
+  }
+}
+
+/** Overwrite the flat diff baseline with the current snapshot. */
+export async function writeQueueLatest(
+  bucket: R2Bucket,
+  park: string,
+  snapshot: QueueSnapshot,
+  generatedAt: string,
+): Promise<void> {
+  const body = JSON.stringify({ park, generated_at: generatedAt, lines: snapshot });
+  await bucket.put(queueLatestKey(park), body, {
+    httpMetadata: { contentType: "application/json" },
+  });
+}
+
+interface QueueRow {
+  ride_id: number;
+  queue_line_id: number;
+  line_type: string | null;
+  queue_time: number | null;
+  is_open: number;
+  observed_at: string;
+}
+
+/** All queue observations for one UTC day, oldest first — the raw intraday
+ *  series from which a day file is projected. */
+async function readQueueDay(
+  db: D1Database,
+  park: string,
+  date: string,
+): Promise<QueueRow[]> {
+  const nextDay = new Date(Date.parse(`${date}T00:00:00Z`) + 86_400_000)
+    .toISOString()
+    .slice(0, 10);
+  const { results } = await db
+    .prepare(
+      `SELECT ride_id, queue_line_id, line_type, queue_time, is_open, observed_at
+         FROM queue_observation
+        WHERE park = ? AND observed_at >= ? AND observed_at < ?
+        ORDER BY observed_at ASC`,
+    )
+    .bind(park, `${date}T00:00:00.000Z`, `${nextDay}T00:00:00.000Z`)
+    .all<QueueRow>();
+  return results;
+}
+
+const LINE_LABELS: Record<string, string> = {
+  physical_main: "Main",
+  single_rider: "Single Rider",
+  virtual: "Virtual Queue",
+  fastrack: "Fastrack",
+};
+
+const labelForType = (type: string | null): string => {
+  if (!type) return "Queue";
+  return (
+    LINE_LABELS[type] ??
+    type.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())
+  );
+};
+
+/** One queue line in a day file: the day's samples as compact tuples. */
+interface QueueLineOut {
+  queueLineId: number;
+  type: string | null;
+  label: string;
+  samples: [number, number | null, 0 | 1][]; // [minsSinceUtcMidnight, wait|null, open]
+}
+
+/**
+ * Project one day's D1 rows into the served day file, joining ride names from
+ * the catalog. Regenerated from the log (the source of truth) after each changed
+ * poll and by the self-heal rebuild — so it's reproducible and never divergent.
+ */
+export async function writeQueueDayFile(
+  db: D1Database,
+  bucket: R2Bucket,
+  park: string,
+  date: string,
+  catalog: RideCatalog | null,
+  generatedAt: string,
+  resort?: { open: number; close: number },
+): Promise<number> {
+  const rows = await readQueueDay(db, park, date);
+  const dayStart = Date.parse(`${date}T00:00:00Z`);
+
+  // The park's opening window (minutes since UTC midnight) frames the sparkline
+  // x-axis. Fresh from this poll's live feed; on the self-heal path (no `resort`
+  // passed) preserve whatever the existing day file already recorded.
+  let window = resort;
+  if (!window) {
+    const existing = await bucket.get(queueDayKey(park, date));
+    if (existing) {
+      try {
+        const e = (await existing.json()) as { open?: number; close?: number };
+        if (e.open != null && e.close != null) window = { open: e.open, close: e.close };
+      } catch {
+        /* ignore */
+      }
+    }
+  }
+
+  // ride_id → queue_line_id → line accumulator
+  const rides = new Map<number, Map<number, QueueLineOut>>();
+  for (const r of rows) {
+    let lines = rides.get(r.ride_id);
+    if (!lines) rides.set(r.ride_id, (lines = new Map()));
+    let line = lines.get(r.queue_line_id);
+    if (!line) {
+      lines.set(
+        r.queue_line_id,
+        (line = {
+          queueLineId: r.queue_line_id,
+          type: r.line_type,
+          label: labelForType(r.line_type),
+          samples: [],
+        }),
+      );
+    }
+    const mins = Math.floor((Date.parse(r.observed_at) - dayStart) / 60_000);
+    line.samples.push([mins, r.queue_time, r.is_open ? 1 : 0]);
+  }
+
+  const ridesOut = [...rides.entries()].map(([rideId, lines]) => {
+    const meta = catalog?.items[String(rideId)];
+    return {
+      id: rideId,
+      name: meta?.name ?? `Ride ${rideId}`,
+      ...(meta?.category != null ? { category: meta.category } : {}),
+      ...(meta?.group ? { group: meta.group } : {}),
+      named: meta?.name != null, // false → the "unidentified" section
+      lines: [...lines.values()].sort((a, b) => a.queueLineId - b.queueLineId),
+    };
+  });
+
+  const body = JSON.stringify({
+    park,
+    date,
+    generated_at: generatedAt,
+    ...(window ? { open: window.open, close: window.close } : {}),
+    rides: ridesOut,
+  });
+  await bucket.put(queueDayKey(park, date), body, {
+    httpMetadata: { contentType: "application/json" },
+  });
+  return ridesOut.length;
+}
+
+interface QueueIndex {
+  minDate: string;
+  maxDate: string;
+  generated_at: string;
+}
+
+/** Maintain `queues/<park>/index.json` = the [minDate, maxDate] range of days
+ *  with queue data, for the frontend's date-nav bounds. Monotonic. */
+export async function updateQueueIndex(
+  bucket: R2Bucket,
+  park: string,
+  dates: string[],
+  generatedAt: string,
+): Promise<void> {
+  if (dates.length === 0) return;
+  const objectKey = `queues/${park}/index.json`;
+  let cur: Partial<QueueIndex> = {};
+  const obj = await bucket.get(objectKey);
+  if (obj) {
+    try {
+      cur = (await obj.json()) as Partial<QueueIndex>;
+    } catch {
+      cur = {};
+    }
+  }
+  const all = [...dates, cur.minDate, cur.maxDate].filter(Boolean) as string[];
+  const minDate = all.reduce((a, b) => (b < a ? b : a));
+  const maxDate = all.reduce((a, b) => (b > a ? b : a));
+  if (minDate === cur.minDate && maxDate === cur.maxDate) return;
+  const body = JSON.stringify({ minDate, maxDate, generated_at: generatedAt });
+  await bucket.put(objectKey, body, { httpMetadata: { contentType: "application/json" } });
 }
 
 interface ParkIndex {

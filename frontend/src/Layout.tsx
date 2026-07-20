@@ -8,7 +8,7 @@ export function Layout() {
   return (
     <>
       <header>
-        <h1>Merlin Capacity</h1>
+        <h1>Theme Parks</h1>
         <nav className="parks">
           {PARKS.map((p) => (
             <Link

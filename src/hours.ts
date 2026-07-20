@@ -1,5 +1,5 @@
 import { USER_AGENT, type OpeningHoursConfig, type ParkConfig } from "./config";
-import { logPoll, writeHoursMonths } from "./db";
+import { logPoll, updatePollStatusHashed, writeHoursMonths } from "./db";
 import type { Env } from "./types";
 
 /** One location's entry for a single day, cleaned and classified. */
@@ -111,6 +111,26 @@ export async function fetchHours(
   return { ok: true, httpStatus: resp.status, snapshot, datesSeen: Object.keys(snapshot).length };
 }
 
+/** A stable content hash of the forward (today onward) hours + events, so the
+ *  status's `last_changed` advances only on a real change (a new event, changed
+ *  times), not when a past day simply drops out of the fetched window. */
+function hashHours(snapshot: HoursSnapshot, fromDate: string): string {
+  const parts: string[] = [];
+  for (const iso of Object.keys(snapshot).sort()) {
+    if (iso < fromDate) continue;
+    const day = snapshot[iso];
+    const locs = day.locations
+      .map((l) => `${l.kind}~${l.hours}~${l.lastEntry ?? ""}~${l.event ?? ""}`)
+      .sort()
+      .join("|");
+    parts.push(`${iso}#${day.event ?? ""}#${locs}`);
+  }
+  const str = parts.join("\n");
+  let h = 5381;
+  for (let i = 0; i < str.length; i++) h = ((h << 5) + h + str.charCodeAt(i)) >>> 0;
+  return h.toString(16);
+}
+
 /**
  * One opening-hours poll for one park: fetch the marketing-site calendar and
  * overwrite the served R2 file. Unlike availability there's no delta log —
@@ -132,5 +152,7 @@ export async function runHoursPoll(env: Env, park: ParkConfig): Promise<number> 
     res.datesSeen,
     observedAt,
   );
+  const hash = res.ok ? hashHours(res.snapshot, observedAt.slice(0, 10)) : null;
+  await updatePollStatusHashed(env.BUCKET, park.key, "hours", observedAt, hash);
   return res.datesSeen;
 }

@@ -51,16 +51,18 @@ export function ParkCalendarPage() {
     };
   }, [park, parkDef]);
 
-  // Availability freshness = the main + RAP poll status, aggregated.
+  // Calendar freshness = everything shown on this page, aggregated: main + RAP
+  // availability plus opening hours / events.
   useEffect(() => {
     if (!parkDef) return;
     let alive = true;
     const tick = async () => {
-      const [m, r] = await Promise.all([
+      const [m, r, h] = await Promise.all([
         loadPollStatus(park!, "main"),
         loadPollStatus(park!, "rap"),
+        loadPollStatus(park!, "hours"),
       ]);
-      if (alive) setStatus(mergeStatus([m, r]));
+      if (alive) setStatus(mergeStatus([m, r, h]));
     };
     tick();
     const id = setInterval(tick, 30_000);

@@ -90,6 +90,38 @@ export async function updatePollStatus(
   await bucket.put(objectKey, body, { httpMetadata: { contentType: "application/json" } });
 }
 
+/**
+ * As `updatePollStatus`, but change is detected by comparing a content `hash`
+ * to the previously stored one — for products (opening hours) that overwrite
+ * wholesale and so have no per-poll delta count. A null hash (failed fetch)
+ * bumps `last_polled` only and preserves the stored hash + last_changed.
+ */
+export async function updatePollStatusHashed(
+  bucket: R2Bucket,
+  park: string,
+  product: Product,
+  observedAt: string,
+  hash: string | null,
+): Promise<void> {
+  const objectKey = `status/${park}/${product}.json`;
+  let prev: { last_changed?: string | null; hash?: string } = {};
+  const obj = await bucket.get(objectKey);
+  if (obj) {
+    try {
+      prev = (await obj.json()) as typeof prev;
+    } catch {
+      prev = {};
+    }
+  }
+  const changed = hash != null && hash !== prev.hash;
+  const body = JSON.stringify({
+    last_polled: observedAt,
+    last_changed: changed ? observedAt : prev.last_changed ?? null,
+    hash: hash ?? prev.hash,
+  });
+  await bucket.put(objectKey, body, { httpMetadata: { contentType: "application/json" } });
+}
+
 /** Previous snapshot, read back from the served file — our diff baseline.
  *  R2 is read-after-write consistent, so this reliably reflects the last poll. */
 export async function readSnapshot(

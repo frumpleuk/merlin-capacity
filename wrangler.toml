@@ -6,7 +6,7 @@ compatibility_date = "2026-07-01"
 #     DNS record and provision the TLS cert in the frumple.co.uk zone (already on
 #     Cloudflare). Independent of the apex Hugo site — separate DNS record. ---
 routes = [
-  { pattern = "merlin.frumple.co.uk", custom_domain = true }
+  { pattern = "themeparks.frumple.co.uk", custom_domain = true }
 ]
 
 # --- Static frontend (Vite build output; run `npm run build` first).

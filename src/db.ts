@@ -54,6 +54,42 @@ export async function logPoll(
 
 const key = (park: string, product: Product) => `calendar/${park}/${product}.json`;
 
+interface PollStatusFile {
+  last_polled: string;
+  last_changed: string | null;
+}
+
+/**
+ * Record a poll's outcome for the frontend's "checked … / last change …" line.
+ * `last_polled` bumps on every attempt (so it reflects when we last checked);
+ * `last_changed` only advances when this poll actually wrote a delta, so it's
+ * preserved read-modify-write across no-change polls. One small file per
+ * (park, product) — each product owns its own, so concurrent polls never race.
+ */
+export async function updatePollStatus(
+  bucket: R2Bucket,
+  park: string,
+  product: Product,
+  observedAt: string,
+  changed: boolean,
+): Promise<void> {
+  const objectKey = `status/${park}/${product}.json`;
+  let prevChanged: string | null = null;
+  const obj = await bucket.get(objectKey);
+  if (obj) {
+    try {
+      prevChanged = ((await obj.json()) as PollStatusFile).last_changed ?? null;
+    } catch {
+      prevChanged = null;
+    }
+  }
+  const body = JSON.stringify({
+    last_polled: observedAt,
+    last_changed: changed ? observedAt : prevChanged,
+  });
+  await bucket.put(objectKey, body, { httpMetadata: { contentType: "application/json" } });
+}
+
 /** Previous snapshot, read back from the served file — our diff baseline.
  *  R2 is read-after-write consistent, so this reliably reflects the last poll. */
 export async function readSnapshot(

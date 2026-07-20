@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
-import { loadProduct, type ProductFile } from "./api";
+import { loadPollStatus, loadProduct, type PollStatus, type ProductFile } from "./api";
 import { DEFAULT_PATH, findPark } from "./catalog";
 import { DetailBar, ProductCalendar } from "./Heatmap";
+import { UpdateMeta } from "./UpdateMeta";
 
 export function CalendarPage() {
   const { park, product } = useParams();
@@ -11,6 +12,7 @@ export function CalendarPage() {
 
   // undefined = loading, null = no data for this product yet
   const [file, setFile] = useState<ProductFile | null | undefined>(undefined);
+  const [status, setStatus] = useState<PollStatus | null>(null);
   const [selected, setSelected] = useState<string | null>(null);
 
   useEffect(() => {
@@ -19,8 +21,14 @@ export function CalendarPage() {
     setFile(undefined);
     let alive = true;
     const tick = async () => {
-      const f = await loadProduct(park!, product!);
-      if (alive) setFile(f);
+      const [f, s] = await Promise.all([
+        loadProduct(park!, product!),
+        loadPollStatus(park!, product!),
+      ]);
+      if (alive) {
+        setFile(f);
+        setStatus(s);
+      }
     };
     tick();
     const id = setInterval(tick, 30_000);
@@ -47,17 +55,12 @@ export function CalendarPage() {
     );
   }
 
-  const dates = Object.keys(file.days);
-  const total = dates.reduce((a, d) => a + (file.days[d].available || 0), 0);
   const selDay = selected ? file.days[selected] ?? null : null;
 
   return (
     <>
       <main className={selDay ? "with-bar" : undefined}>
-        <div className="page-meta">
-          Updated {new Date(file.generated_at).toLocaleString("en-GB")}.{" "}
-          {dates.length} dates, {total.toLocaleString()} tickets available.
-        </div>
+        <UpdateMeta status={status} />
         <ProductCalendar
           file={file}
           selectedIso={selected}

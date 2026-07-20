@@ -4,12 +4,16 @@ import {
   type HoursFile,
   loadHoursMonth,
   loadParkIndex,
+  loadPollStatus,
   loadProductMonth,
+  mergeStatus,
   type ParkIndex,
+  type PollStatus,
   type ProductFile,
 } from "./api";
 import { findPark, PARK_HOME } from "./catalog";
 import { ParkCalendar } from "./ParkCalendar";
+import { UpdateMeta } from "./UpdateMeta";
 
 interface MonthData {
   main: ProductFile | null;
@@ -33,6 +37,7 @@ export function ParkCalendarPage() {
   const [bounds, setBounds] = useState<ParkIndex | null>(null);
   // undefined = loading, else the three per-month files (any may be null)
   const [data, setData] = useState<MonthData | undefined>(undefined);
+  const [status, setStatus] = useState<PollStatus | null>(null);
 
   // Reset to the current month and refetch bounds whenever the park changes.
   useEffect(() => {
@@ -43,6 +48,25 @@ export function ParkCalendarPage() {
     loadParkIndex(park!).then((b) => alive && setBounds(b));
     return () => {
       alive = false;
+    };
+  }, [park, parkDef]);
+
+  // Availability freshness = the main + RAP poll status, aggregated.
+  useEffect(() => {
+    if (!parkDef) return;
+    let alive = true;
+    const tick = async () => {
+      const [m, r] = await Promise.all([
+        loadPollStatus(park!, "main"),
+        loadPollStatus(park!, "rap"),
+      ]);
+      if (alive) setStatus(mergeStatus([m, r]));
+    };
+    tick();
+    const id = setInterval(tick, 30_000);
+    return () => {
+      alive = false;
+      clearInterval(id);
     };
   }, [park, parkDef]);
 
@@ -72,21 +96,9 @@ export function ParkCalendarPage() {
   const canPrev = !bounds || month > bounds.minMonth;
   const canNext = !bounds || month < bounds.maxMonth;
 
-  const stamps = data
-    ? [data.main, data.rap, data.hours]
-        .map((f) => f?.generated_at)
-        .filter(Boolean)
-        .sort()
-    : [];
-  const updated = stamps.at(-1);
-
   return (
     <main className="rc-main">
-      {updated && (
-        <div className="page-meta">
-          Updated {new Date(updated).toLocaleString("en-GB")}.
-        </div>
-      )}
+      <UpdateMeta status={status} />
       <ParkCalendar
         main={data?.main ?? null}
         rap={data?.rap ?? null}

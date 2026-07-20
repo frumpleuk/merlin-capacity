@@ -70,8 +70,12 @@ export default {
   async fetch(req: Request, env: Env): Promise<Response> {
     const url = new URL(req.url);
 
-    // Precomputed calendar / queue JSON from R2 (cache at the edge in front).
-    if (url.pathname.startsWith("/calendar/") || url.pathname.startsWith("/queues/")) {
+    // Precomputed calendar / queue / status JSON from R2 (cached at the edge).
+    if (
+      url.pathname.startsWith("/calendar/") ||
+      url.pathname.startsWith("/queues/") ||
+      url.pathname.startsWith("/status/")
+    ) {
       const obj = await env.BUCKET.get(url.pathname.slice(1));
       if (!obj) return new Response("not found", { status: 404 });
       return new Response(obj.body, {

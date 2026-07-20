@@ -142,3 +142,35 @@ export async function loadQueueIndex(park: string): Promise<QueueIndex | null> {
   const f = (await r.json()) as QueueIndex;
   return f.minDate && f.maxDate ? f : null;
 }
+
+/* ── Poll status ───────────────────────────────────────────────────────────────
+ * When each product was last checked, and when a change was last detected. */
+
+export interface PollStatus {
+  last_polled: string;
+  last_changed: string | null;
+}
+
+/** Last-poll / last-change for one product ('main' | 'rap' | 'queues'). */
+export async function loadPollStatus(
+  park: string,
+  product: string,
+): Promise<PollStatus | null> {
+  const r = await fetch(`/status/${park}/${product}.json`, { cache: "no-store" });
+  if (!r.ok) return null;
+  return (await r.json()) as PollStatus;
+}
+
+/** Aggregate several products' status: latest poll + latest change across them. */
+export function mergeStatus(statuses: (PollStatus | null)[]): PollStatus | null {
+  const present = statuses.filter((s): s is PollStatus => !!s);
+  if (present.length === 0) return null;
+  const max = (vals: (string | null)[]) => {
+    const xs = vals.filter((v): v is string => !!v).sort();
+    return xs.length ? xs[xs.length - 1] : null;
+  };
+  return {
+    last_polled: max(present.map((s) => s.last_polled)) ?? present[0].last_polled,
+    last_changed: max(present.map((s) => s.last_changed)),
+  };
+}

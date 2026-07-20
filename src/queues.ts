@@ -8,6 +8,7 @@ import {
   appendQueueDeltas,
   logPoll,
   readQueueLatest,
+  updatePollStatus,
   updateQueueIndex,
   writeQueueDayFile,
   writeQueueLatest,
@@ -253,5 +254,6 @@ export async function runQueuePoll(
     res.linesSeen,
     observedAt,
   );
+  await updatePollStatus(env.BUCKET, park.key, "queues", observedAt, changed > 0);
   return changed;
 }

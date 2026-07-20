@@ -30,3 +30,19 @@ database_id = "5e01c308-630f-4409-a303-4262e8f503c5"
 [[r2_buckets]]
 binding = "BUCKET"
 bucket_name = "merlin-capacity"       # `wrangler r2 bucket create merlin-capacity`
+
+[observability]
+enabled = false
+head_sampling_rate = 1
+
+[observability.logs]
+enabled = true
+head_sampling_rate = 1
+persist = true
+invocation_logs = true
+
+[observability.traces]
+enabled = false
+persist = true
+head_sampling_rate = 1
+

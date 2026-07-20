@@ -189,23 +189,24 @@ export async function fetchLiveQueues(
   };
 }
 
+/** A line is "running" (producing a real queue) only when open AND operational.
+ *  This is the only open/operational state that matters to us. */
+const running = (o: QueueObs): boolean => o.isOpen && o.isOperational;
+
 /**
- * Lines whose wait / open / operational state changed vs the previous snapshot.
- * `QueueStatusMessage` is deliberately NOT compared: it's stored but never
- * surfaced (not in the day-file samples, not shown), and parks churn it after
- * close ("BACK SOON" → "CLOSED" → "Closes at 4:30pm" → null), which would add
- * meaningless deltas and bump "last change" long after everything shut.
+ * Lines whose posted wait or running-state changed vs the previous snapshot.
+ * We compare `running` (open && operational), NOT the two flags separately, and
+ * we ignore `QueueStatusMessage` entirely. Both are stored but never surfaced,
+ * and parks churn them after close — rides linger `open=0, operational=1` then
+ * flip to `operational=0`, and status cycles "BACK SOON"/"CLOSED"/null. Neither
+ * changes the running state or anything we display, so counting them added
+ * meaningless deltas and kept "last change" ticking long after everything shut.
  */
 export function diffQueues(prev: QueueSnapshot, next: QueueSnapshot): QueueObs[] {
   const deltas: QueueObs[] = [];
   for (const [key, n] of Object.entries(next)) {
     const p = prev[key];
-    if (
-      !p ||
-      p.queueTime !== n.queueTime ||
-      p.isOpen !== n.isOpen ||
-      p.isOperational !== n.isOperational
-    ) {
+    if (!p || p.queueTime !== n.queueTime || running(p) !== running(n)) {
       deltas.push(n);
     }
   }

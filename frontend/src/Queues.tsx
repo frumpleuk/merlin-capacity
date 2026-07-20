@@ -70,19 +70,33 @@ function openRuns(samples: QueueSample[]): [number, number][][] {
   return runs;
 }
 
-/** Step-line path 'd' for runs of ≥2 points, plus the dot centres for lone
- *  points — so a single reading shows as a dot, not a misleading flat line. */
+/**
+ * Step-line path 'd' plus the dot centres for lone points. A run of ≥2 points
+ * is a step line; a lone point is a dot. Delta-only storage means the last
+ * reading stays valid until the next poll, so if the ride is still open its
+ * final run is held horizontally out to `asOf` (the last-polled time) — that
+ * keeps every live sparkline continuous to "now", and turns a still-current lone
+ * reading into a line rather than a dot.
+ */
 function lineGeometry(
   samples: QueueSample[],
   x: (t: number) => number,
   y: (w: number) => number,
+  asOf?: number,
 ): { d: string; dots: [number, number][] } {
+  const runs = openRuns(samples);
+  const last = samples[samples.length - 1];
+  const currentlyOpen = !!last && last[2] === 1 && last[1] != null;
+
   let d = "";
   const dots: [number, number][] = [];
-  for (const pts of openRuns(samples)) {
-    if (pts.length === 1) {
+  runs.forEach((pts, ri) => {
+    const isLast = ri === runs.length - 1;
+    const extend =
+      isLast && currentlyOpen && asOf != null && asOf > pts[pts.length - 1][0];
+    if (pts.length === 1 && !extend) {
       dots.push([x(pts[0][0]), y(pts[0][1])]);
-      continue;
+      return;
     }
     pts.forEach(([t, w], i) => {
       // Step-after: hold the previous wait horizontally to t, then step to w.
@@ -91,7 +105,8 @@ function lineGeometry(
           ? `M${x(t).toFixed(1)},${y(w).toFixed(1)}`
           : `H${x(t).toFixed(1)}V${y(w).toFixed(1)}`;
     });
-  }
+    if (extend) d += `H${x(asOf).toFixed(1)}`; // hold last value out to now
+  });
   return { d, dots };
 }
 
@@ -105,6 +120,7 @@ function LineMarks({
   colour,
   width,
   dotWidth,
+  asOf,
 }: {
   samples: QueueSample[];
   x: (t: number) => number;
@@ -112,8 +128,9 @@ function LineMarks({
   colour: string;
   width: number;
   dotWidth: number;
+  asOf?: number;
 }) {
-  const { d, dots } = lineGeometry(samples, x, y);
+  const { d, dots } = lineGeometry(samples, x, y, asOf);
   return (
     <>
       {d && (
@@ -149,10 +166,12 @@ function Sparkline({
   ride,
   domain,
   yMax,
+  asOf,
 }: {
   ride: QueueRide;
   domain: [number, number];
   yMax: number;
+  asOf?: number;
 }) {
   const [t0, t1] = domain;
   const span = Math.max(1, t1 - t0);
@@ -186,6 +205,7 @@ function Sparkline({
           colour={colours[i % colours.length]}
           width={2}
           dotWidth={5}
+          asOf={asOf}
         />
       ))}
     </svg>
@@ -204,7 +224,17 @@ interface Hover {
   rows: { label: string; colour: string; wait: number | null }[];
 }
 
-function RideChart({ ride, domain, date }: { ride: QueueRide; domain: [number, number]; date: string }) {
+function RideChart({
+  ride,
+  domain,
+  date,
+  asOf,
+}: {
+  ride: QueueRide;
+  domain: [number, number];
+  date: string;
+  asOf?: number;
+}) {
   const [t0, t1] = domain;
   const span = Math.max(1, t1 - t0);
   const yMax = Math.max(10, ridePeak(ride));
@@ -323,6 +353,7 @@ function RideChart({ ride, domain, date }: { ride: QueueRide; domain: [number, n
               colour={colours[i % colours.length]}
               width={2}
               dotWidth={7}
+              asOf={asOf}
             />
           ))}
         </g>
@@ -371,6 +402,7 @@ function RideRow({
   domain,
   yMax,
   date,
+  asOf,
   open,
   onToggle,
 }: {
@@ -378,6 +410,7 @@ function RideRow({
   domain: [number, number];
   yMax: number;
   date: string;
+  asOf?: number;
   open: boolean;
   onToggle: () => void;
 }) {
@@ -389,7 +422,7 @@ function RideRow({
     <div className={"q-row" + (open ? " open" : "")}>
       <button className="q-row-head" onClick={onToggle} aria-expanded={open}>
         <span className="q-name">{ride.name}</span>
-        <Sparkline ride={ride} domain={domain} yMax={yMax} />
+        <Sparkline ride={ride} domain={domain} yMax={yMax} asOf={asOf} />
         <span className="q-now">
           {stats.current != null ? (
             <>
@@ -401,7 +434,7 @@ function RideRow({
         </span>
         <span className="q-peak">{peak > 0 ? `peak ${peak}` : "—"}</span>
       </button>
-      {open && <RideChart ride={ride} domain={domain} date={date} />}
+      {open && <RideChart ride={ride} domain={domain} date={date} asOf={asOf} />}
     </div>
   );
 }
@@ -504,10 +537,12 @@ export function QueueList({
   file,
   date,
   loading,
+  asOf,
 }: {
   file: QueueDayFile | null;
   date: string;
   loading: boolean;
+  asOf?: number;
 }) {
   const [openId, setOpenId] = useState<number | null>(null);
   const [sort, setSort] = useState<SortMode>("now");
@@ -612,6 +647,7 @@ export function QueueList({
                     domain={domain}
                     yMax={yMax}
                     date={date}
+                    asOf={asOf}
                     open={openId === ride.id}
                     onToggle={() => setOpenId((cur) => (cur === ride.id ? null : ride.id))}
                   />

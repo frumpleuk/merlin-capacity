@@ -1,8 +1,16 @@
 import { useEffect, useState } from "react";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
-import { loadQueueDay, loadQueueIndex, type QueueDayFile, type QueueIndex } from "./api";
+import {
+  loadPollStatus,
+  loadQueueDay,
+  loadQueueIndex,
+  type PollStatus,
+  type QueueDayFile,
+  type QueueIndex,
+} from "./api";
 import { findPark, PARK_HOME } from "./catalog";
 import { DateNav, QueueList } from "./Queues";
+import { UpdateMeta } from "./UpdateMeta";
 
 const today = () => new Date().toISOString().slice(0, 10);
 
@@ -21,6 +29,7 @@ export function QueuesPage() {
 
   const [bounds, setBounds] = useState<QueueIndex | null>(null);
   const [file, setFile] = useState<QueueDayFile | null | undefined>(undefined); // undefined = loading
+  const [status, setStatus] = useState<PollStatus | null>(null);
 
   useEffect(() => {
     if (!parkDef) return;
@@ -31,14 +40,20 @@ export function QueuesPage() {
     };
   }, [park, parkDef]);
 
-  // Load the day's file; refresh the live (today) view on a timer.
+  // Load the day's file + poll status; refresh the live (today) view on a timer.
   useEffect(() => {
     if (!parkDef) return;
     setFile(undefined);
     let alive = true;
     const tick = async () => {
-      const f = await loadQueueDay(park!, date);
-      if (alive) setFile(f);
+      const [f, s] = await Promise.all([
+        loadQueueDay(park!, date),
+        loadPollStatus(park!, "queues"),
+      ]);
+      if (alive) {
+        setFile(f);
+        setStatus(s);
+      }
     };
     tick();
     const isToday = date === today();
@@ -57,10 +72,17 @@ export function QueuesPage() {
   const canPrev = !bounds || date > bounds.minDate;
   const canNext = date < today();
 
-  const updated = file?.generated_at;
+  // Time to hold each still-open sparkline out to, on the samples' UTC-minute
+  // axis: the last poll (today) or the day file's final write (a past day).
+  const isToday = date === today();
+  const asOfIso = isToday ? status?.last_polled ?? new Date().toISOString() : file?.generated_at;
+  const asOf = asOfIso
+    ? Math.floor((Date.parse(asOfIso) - Date.parse(`${date}T00:00:00Z`)) / 60_000)
+    : undefined;
 
   return (
     <main className="rc-main">
+      <UpdateMeta status={status} />
       <DateNav
         date={date}
         onPrev={() => go(addDays(date, -1))}
@@ -68,10 +90,7 @@ export function QueuesPage() {
         canPrev={canPrev}
         canNext={canNext}
       />
-      {updated && (
-        <div className="page-meta">Updated {new Date(updated).toLocaleString("en-GB")}.</div>
-      )}
-      <QueueList file={file ?? null} date={date} loading={file === undefined} />
+      <QueueList file={file ?? null} date={date} loading={file === undefined} asOf={asOf} />
     </main>
   );
 }

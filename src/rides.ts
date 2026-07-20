@@ -11,9 +11,10 @@ export interface RideMeta {
   name: string;
   category?: number;
   minHeight?: number | null; // metres
-  /** The park's own thrill grouping for this ride (e.g. "Thrills",
-   *  "Top Thrills", "Family Fun", "Brave Adventurers"), from the classification
-   *  that belongs to the bundle's `WaitTimeClassifications` collection. */
+  /** The park's own grouping for this ride: its thrill class (e.g. "Thrills",
+   *  "Top Thrills", "Brave Adventurers") from the `WaitTimeClassifications`
+   *  collection, or — for a park that leaves that empty (Legoland) — its themed
+   *  land (e.g. "LEGO® City", "Kingdom of the Pharaohs"). See `buildCatalog`. */
   group?: string;
 }
 
@@ -22,6 +23,10 @@ export interface RideMeta {
 export interface RideCatalog {
   version: string; // manifest.json version cursor (ISO8601)
   generated_at: string;
+  /** How this park's `group`s are derived: by thrill class (most parks) or by
+   *  themed land (Legoland — see `buildCatalog`). Drives section tone/order in
+   *  the UI, since land sections aren't a thrill ranking. */
+  groupBy: "thrill" | "land";
   items: Record<string, RideMeta>; // Item._id → meta (rides only)
   queueLines: Record<string, { item: number; type: string }>; // QueueLine._id → {ride, type}
 }
@@ -99,17 +104,28 @@ async function buildCatalog(
     rideIds.add(q.Item);
   }
 
-  // The park's thrill grouping: the classifications that belong to the
-  // `WaitTimeClassifications` collection (e.g. Thrills / Family Fun / Navigate &
-  // Relax). A ride's group is whichever of those classifications it carries.
-  const classNames = new Map(
-    (records.Classification as ApiClassification[] | undefined)?.map((c) => [
-      c._id,
-      c.Name,
-    ]) ?? [],
+  // The park's own grouping for a ride. Most parks group by thrill level — the
+  // classifications in the `WaitTimeClassifications` collection (e.g. Thrills /
+  // Family Fun / Navigate & Relax). Legoland leaves that collection empty and
+  // groups by themed land instead (Kingdom of the Pharaohs, LEGO® City, NINJAGO®
+  // World, …), carried as an `Item.Classifications` tag rather than in a
+  // collection. Those land classifications are exactly the ones whose name
+  // matches an `Area` record (the map's themed lands), which cleanly excludes
+  // the other same-list classifications (dietary tags, hotels). So: prefer the
+  // thrill grouping, and fall back to themed lands when a park has none.
+  const classifications =
+    (records.Classification as ApiClassification[] | undefined) ?? [];
+  const classNames = new Map(classifications.map((c) => [c._id, c.Name]));
+  const wtc = collections.find((c) => c.name === "WaitTimeClassifications")?.members;
+  const norm = (s: string) => s.replace(/[®™’']/g, "").replace(/\s+/g, " ").trim().toLowerCase();
+  const areaNames = new Set(
+    (records.Area as ApiArea[] | undefined)?.map((a) => norm(a.Name)) ?? [],
   );
+  const groupBy: RideCatalog["groupBy"] = wtc?.length ? "thrill" : "land";
   const groupMembers = new Set(
-    collections.find((c) => c.name === "WaitTimeClassifications")?.members ?? [],
+    groupBy === "thrill"
+      ? wtc
+      : classifications.filter((c) => areaNames.has(norm(c.Name))).map((c) => c._id),
   );
   const groupOf = (it: ApiItem): string | undefined => {
     for (const cid of it.Classifications ?? []) {
@@ -138,6 +154,7 @@ async function buildCatalog(
   return {
     version: manifest.version ?? "",
     generated_at: new Date(now).toISOString(),
+    groupBy,
     items: itemsOut,
     queueLines: qlOut,
   };
@@ -156,6 +173,10 @@ interface ApiQueueLine {
   Type?: string;
 }
 interface ApiClassification {
+  _id: number;
+  Name: string;
+}
+interface ApiArea {
   _id: number;
   Name: string;
 }

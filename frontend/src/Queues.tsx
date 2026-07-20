@@ -564,14 +564,19 @@ export function DateNav({
 }
 
 /* ── Grouping ──────────────────────────────────────────────────────────────────
- * Rides carry the park's own thrill group ("Thrills", "Top Thrills", "Brave
- * Adventurers", …). We order the sections thrill-first regardless of the park's
- * own order (Chessington lists kids' rides first; we don't). Unidentified rides
- * (parent absent from the content bundle) get their own section, always last. */
+ * Rides carry the park's own group. For most parks that's a thrill class
+ * ("Thrills", "Top Thrills", "Brave Adventurers", …) and we order the sections
+ * thrill-first regardless of the park's own order (Chessington lists kids' rides
+ * first; we don't). Legoland instead groups by themed land ("LEGO® City",
+ * "Kingdom of the Pharaohs", …) — those aren't a ranking, so `file.groupBy ===
+ * "land"` orders them alphabetically with one calm, uniform tone (the land name
+ * is the identity, not the colour). Unidentified rides (parent absent from the
+ * content bundle) get their own section, always last; rides the bundle names but
+ * doesn't place fall to a trailing "Other". */
 
 function groupRank(group: string | undefined, unidentified: boolean): number {
   if (unidentified) return 1000;
-  if (!group) return 500; // named but ungrouped (e.g. Legoland)
+  if (!group) return 900; // named but ungrouped → trailing "Other", before Unidentified
   const n = group.toLowerCase();
   if (/fright|scare|festival|event|christmas|halloween|mardi|winter|easter/.test(n))
     return 400; // seasonal / event overlays
@@ -598,17 +603,43 @@ interface Section {
   key: string;
   title: string;
   rank: number;
+  tone: string;
   rides: QueueRide[];
 }
 
-function sectionsOf(rides: QueueRide[], sort: SortMode, dir: SortDir): Section[] {
+/** A section's rank (sort order) and tone (accent), given the park's grouping
+ *  kind. Thrill parks rank thrill-first; land parks tie all lands so they sort
+ *  alphabetically under one neutral "land" tone. Both send ungrouped rides to a
+ *  trailing "Other" and unidentified rides last. */
+function sectionMeta(
+  group: string | undefined,
+  unidentified: boolean,
+  byLand: boolean,
+): { rank: number; tone: string } {
+  if (unidentified) return { rank: 1000, tone: "unknown" };
+  if (!group) return { rank: 900, tone: "other" };
+  if (byLand) return { rank: 100, tone: "land" };
+  const rank = groupRank(group, unidentified);
+  return { rank, tone: sectionTone(rank) };
+}
+
+function sectionsOf(
+  rides: QueueRide[],
+  sort: SortMode,
+  dir: SortDir,
+  byLand: boolean,
+): Section[] {
   const map = new Map<string, Section>();
   for (const ride of rides) {
     const unidentified = ride.named === false;
     const key = unidentified ? "__unidentified" : ride.group ?? "__other";
     const title = unidentified ? "Unidentified" : ride.group ?? "Other";
     let sec = map.get(key);
-    if (!sec) map.set(key, (sec = { key, title, rank: groupRank(ride.group, unidentified), rides: [] }));
+    if (!sec)
+      map.set(
+        key,
+        (sec = { key, title, ...sectionMeta(ride.group, unidentified, byLand), rides: [] }),
+      );
     sec.rides.push(ride);
   }
   const secs = [...map.values()];
@@ -645,7 +676,10 @@ export function QueueList({
   const [dir, setDir] = useState<SortDir>("desc");
   const [collapsed, setCollapsed] = useState<Set<string>>(new Set());
 
-  const sections = useMemo(() => sectionsOf(file?.rides ?? [], sort, dir), [file, sort, dir]);
+  const sections = useMemo(
+    () => sectionsOf(file?.rides ?? [], sort, dir, file?.groupBy === "land"),
+    [file, sort, dir],
+  );
 
   // Click a sort: switch to it (its natural direction), or flip if already active.
   const onSort = (key: SortMode) => {
@@ -729,7 +763,7 @@ export function QueueList({
       {sections.map((sec) => {
         const isCollapsed = collapsed.has(sec.key);
         return (
-          <section key={sec.key} className="q-section" data-tone={sectionTone(sec.rank)}>
+          <section key={sec.key} className="q-section" data-tone={sec.tone}>
             <button
               className="q-section-head"
               onClick={() => toggleSection(sec.key)}

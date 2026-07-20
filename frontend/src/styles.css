@@ -683,6 +683,9 @@ main.with-bar {
 .q-section[data-tone="other"] {
   --accent: #6b7280;
 }
+.q-section[data-tone="land"] {
+  --accent: #3f7cba;
+}
 .q-section[data-tone="unknown"] {
   --accent: #9098a0;
 }
@@ -701,6 +704,9 @@ main.with-bar {
   }
   .q-section[data-tone="other"] {
     --accent: #9aa0a8;
+  }
+  .q-section[data-tone="land"] {
+    --accent: #6ba3dd;
   }
   .q-section[data-tone="unknown"] {
     --accent: #777d84;

@@ -107,7 +107,7 @@ export interface QueueRide {
   id: number;
   name: string;
   category?: number;
-  group?: string; // the park's thrill grouping (e.g. "Thrills", "Top Thrills")
+  group?: string; // the park's own grouping: thrill class or themed land (see QueueDayFile.groupBy)
   named?: boolean; // false → parent ride absent from the content bundle
   lines: QueueLineSeries[];
 }
@@ -116,6 +116,10 @@ export interface QueueDayFile {
   park: string;
   date: string; // 'YYYY-MM-DD'
   generated_at: string;
+  /** How `ride.group`s should be read: by thrill class (default, omitted) or by
+   *  themed land ("land" — Legoland). Land sections get a neutral tone and
+   *  alphabetical order rather than the thrill-first ranking. */
+  groupBy?: "land";
   /** Park opening window, minutes since UTC midnight (frames the sparkline
    *  x-axis). Absent when the day's opening times weren't captured. */
   open?: number;

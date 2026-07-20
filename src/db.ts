@@ -541,6 +541,7 @@ export async function writeQueueDayFile(
     park,
     date,
     generated_at: generatedAt,
+    ...(catalog?.groupBy === "land" ? { groupBy: "land" } : {}),
     ...(window ? { open: window.open, close: window.close } : {}),
     rides: ridesOut,
   });

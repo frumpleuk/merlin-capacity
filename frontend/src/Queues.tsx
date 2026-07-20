@@ -521,7 +521,8 @@ function RideRow({
         <span className="q-now">
           {stats.current != null ? (
             <>
-              <strong>{stats.current}</strong> min
+              <strong className="q-now-num">{stats.current}</strong>
+              <span className="q-unit">min</span>
             </>
           ) : (
             <span className="q-closed">{ranToday ? "Closed" : "Closed all day"}</span>

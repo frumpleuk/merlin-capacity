@@ -477,8 +477,13 @@ main.with-bar {
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
-.q-now strong {
+.q-now-num {
   font-size: 16px;
+}
+.q-unit {
+  color: var(--muted);
+  font-size: 11px;
+  margin-left: 3px;
 }
 .q-closed {
   color: var(--muted);
@@ -493,6 +498,50 @@ main.with-bar {
   font-size: 12px;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
+}
+
+/* Mobile: a two-row card so the name gets its own line and isn't truncated.
+   Row 1 = name + current wait; row 2 = full-width sparkline + peak. */
+@media (max-width: 600px) {
+  .q-head-row {
+    display: none;
+  }
+  .q-row-head {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "name now"
+      "spark peak";
+    column-gap: 12px;
+    row-gap: 2px;
+    align-items: center;
+    padding: 10px 12px;
+  }
+  .q-name {
+    grid-area: name;
+  }
+  .spark {
+    grid-area: spark;
+  }
+  .q-now {
+    grid-area: now;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    line-height: 1.05;
+  }
+  .q-now-num {
+    font-size: 20px;
+  }
+  .q-unit {
+    margin-left: 0;
+  }
+  .q-peak {
+    grid-area: peak;
+    align-self: start;
+  }
+  .q-closed {
+    text-align: right;
+  }
 }
 
 /* Expanded per-ride chart. */

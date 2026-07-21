@@ -5,6 +5,7 @@ import {
   type ParkConfig,
 } from "./config";
 import {
+  appendQueueDayFile,
   appendQueueDeltas,
   logPoll,
   readQueueLatest,
@@ -237,15 +238,28 @@ export async function runQueuePoll(
     if (changed > 0) {
       await appendQueueDeltas(env.DB, park.key, deltas, observedAt);
       await writeQueueLatest(env.BUCKET, park.key, res.snapshot, observedAt);
-      await writeQueueDayFile(
-        env.DB,
+      // Fold the deltas straight into the served day file (O(deltas)); only fall
+      // back to the full D1 rebuild when there's no file yet (first poll of the
+      // day). The 30-min self-heal still full-rebuilds from D1 to repair drift.
+      const appended = await appendQueueDayFile(
         env.BUCKET,
         park.key,
         today,
+        deltas,
         catalog,
         observedAt,
-        res.resort,
       );
+      if (!appended) {
+        await writeQueueDayFile(
+          env.DB,
+          env.BUCKET,
+          park.key,
+          today,
+          catalog,
+          observedAt,
+          res.resort,
+        );
+      }
       await updateQueueIndex(env.BUCKET, park.key, [today], observedAt);
     }
   }

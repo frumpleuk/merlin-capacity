@@ -531,16 +531,11 @@ export async function writeQueueDayFile(
   // vanish from the list — even though the park's own app still lists it (closed).
   // The park is shut overnight, so any ride that actually ran today has at least
   // its morning open-transition logged; a line with zero same-day rows is
-  // therefore closed all day. Seed it as a flat closed baseline across the
-  // operating window (two closed samples) so it renders as "Closed", matching the
-  // frontend's closed-all-day handling. No window → empty samples (row only).
+  // therefore closed all day. Seed it with empty samples: it renders as a closed
+  // row (rideNow is null when a ride has no running samples) and, crucially,
+  // appending a real sample later (`appendQueueDayFile`) stays time-ordered — a
+  // synthetic window-edge sample would not.
   if (catalog) {
-    const closedDay: QueueLineOut["samples"] = window
-      ? [
-          [window.open, null, 0, 0],
-          [window.close, null, 0, 0],
-        ]
-      : [];
     for (const [qlIdStr, ql] of Object.entries(catalog.queueLines)) {
       const qlId = Number(qlIdStr);
       // Only seed real, named rides. Lines whose Item isn't in the bundle are
@@ -554,7 +549,7 @@ export async function writeQueueDayFile(
         queueLineId: qlId,
         type: ql.type,
         label: labelForType(ql.type),
-        samples: [...closedDay],
+        samples: [],
       });
     }
   }
@@ -583,6 +578,85 @@ export async function writeQueueDayFile(
     httpMetadata: { contentType: "application/json" },
   });
   return ridesOut.length;
+}
+
+/** One ride as stored in the served day file (mirrors `writeQueueDayFile`'s output). */
+interface QueueDayRide {
+  id: number;
+  name: string;
+  category?: number;
+  group?: string;
+  named: boolean;
+  lines: QueueLineOut[];
+}
+
+/**
+ * Fold one poll's changed lines straight into the served day file, appending a
+ * sample per delta — instead of re-projecting the whole day from D1. O(deltas)
+ * and roughly flat in cost as the day grows, where the full rebuild
+ * (`writeQueueDayFile`) re-read every same-day row and, on the free tier, grew
+ * heavy enough by mid-afternoon to get the whole invocation CPU-culled. D1 still
+ * receives the same deltas (source of truth), and the 30-min self-heal still does
+ * the authoritative full rebuild — correcting any append drift and re-seeding
+ * closed rides. Returns false when there's no existing file to append to (first
+ * poll of the day / fresh deploy) so the caller can fall back to a full build.
+ */
+export async function appendQueueDayFile(
+  bucket: R2Bucket,
+  park: string,
+  date: string,
+  deltas: QueueObs[],
+  catalog: RideCatalog | null,
+  generatedAt: string,
+): Promise<boolean> {
+  const obj = await bucket.get(queueDayKey(park, date));
+  if (!obj) return false;
+  let file: { rides: QueueDayRide[]; generated_at?: string };
+  try {
+    file = (await obj.json()) as typeof file;
+  } catch {
+    return false;
+  }
+  if (!Array.isArray(file.rides)) return false;
+
+  const dayStart = Date.parse(`${date}T00:00:00Z`);
+  const mins = Math.floor((Date.parse(generatedAt) - dayStart) / 60_000);
+  const byId = new Map(file.rides.map((r) => [r.id, r]));
+
+  for (const d of deltas) {
+    let ride = byId.get(d.rideId);
+    if (!ride) {
+      const meta = catalog?.items[String(d.rideId)];
+      ride = {
+        id: d.rideId,
+        name: meta?.name ?? `Ride ${d.rideId}`,
+        ...(meta?.category != null ? { category: meta.category } : {}),
+        ...(meta?.group ? { group: meta.group } : {}),
+        named: meta?.name != null,
+        lines: [],
+      };
+      file.rides.push(ride);
+      byId.set(d.rideId, ride);
+    }
+    let line = ride.lines.find((l) => l.queueLineId === d.queueLineId);
+    if (!line) {
+      line = {
+        queueLineId: d.queueLineId,
+        type: d.lineType,
+        label: labelForType(d.lineType),
+        samples: [],
+      };
+      ride.lines.push(line);
+      ride.lines.sort((a, b) => a.queueLineId - b.queueLineId);
+    }
+    line.samples.push([mins, d.queueTime, d.isOpen ? 1 : 0, d.isOperational ? 1 : 0]);
+  }
+
+  file.generated_at = generatedAt;
+  await bucket.put(queueDayKey(park, date), JSON.stringify(file), {
+    httpMetadata: { contentType: "application/json" },
+  });
+  return true;
 }
 
 interface QueueIndex {

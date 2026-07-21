@@ -38,16 +38,6 @@ export const DISCOVERY_TTL_MS = 12 * 60 * 60 * 1000;
  *  new month surfaces opening times quickly. Still cheap: 4 small GETs/hour. */
 export const HOURS_INTERVAL_MINUTES = 60;
 
-/** Ride queue times change minute-to-minute while a park is open, so poll every
- *  minute (delta-only writes keep D1 bounded). Matches the RAP cadence. */
-export const QUEUE_INTERVAL_MINUTES = 1;
-
-/** How long a park's static ride catalog (names, queue lines) is reused before
- *  re-deriving from the content bundle. Content changes on the order of
- *  days/weeks, so once a day is ample — and the bundle fetch+unzip stays well
- *  off the per-minute hot path. */
-export const CATALOG_TTL_MS = 24 * 60 * 60 * 1000;
-
 /** Attractions.io ("Occasio") identity for a park — powers ride names + live
  *  queue times (see docs/attractions-io-api.md). `apiKey` is the app's public
  *  per-park UUID (live-feed filename + Authorization); `slug` is the content

@@ -47,18 +47,19 @@ A second, independent data stream captures **live ride status and queue times**
 from the Attractions.io ("Occasio") backend that powers the official park apps
 (reverse-engineered in [`docs/attractions-io-api.md`](docs/attractions-io-api.md)).
 
-- **Live feed** — every minute the poller reads each park's unauthenticated live
-  feed (`live-data.attractions.io/<apiKey>.json`) and joins it to a static ride
-  catalog. Per **queue line** (main, single-rider, …) it records the posted wait
-  and status; per ride it records open/operational. Only lines that actually
+- **Live feed** — every 2 minutes the poller reads each park's unauthenticated
+  live feed (`live-data.attractions.io/<apiKey>.json`) and joins it to a static
+  ride catalog. Per **queue line** (main, single-rider, …) it records the posted
+  wait and status; per ride it records open/operational. Only lines that actually
   moved are appended to D1 (`queue_observation`) — delta-only, like tickets — so
   the table doubles as the intraday open/close + wait-change log.
 - **Ride names** come from the park's static content bundle. `src/rides.ts`
   registers an installation once (token cached in R2), resolves the current
   bundle, and **streams the zip** inflating only `records.json` + `manifest.json`
   (never the `media/*` bulk) into an id→name / queue-line→ride catalog, cached in
-  R2 on a 24 h TTL (`CATALOG_TTL_MS`) with last-good fallback — the same
-  resilience pattern as ticket autodiscovery.
+  R2 with last-good fallback. The unzip is the one CPU-heavy step, so it's rebuilt
+  by a **daily pre-open cron** (08:00 BST) rather than inline; the live poll only
+  ever reads the cached catalog.
 - **Serving** — each changed poll regenerates `queues/<park>/<YYYY-MM-DD>.json`
   from D1 (each queue line's day as compact `[minsSinceUtcMidnight, wait, open]`
   tuples). The frontend's **Queues** tab lists rides with a per-line sparkline
@@ -66,11 +67,12 @@ from the Attractions.io ("Occasio") backend that powers the official park apps
   chart with hourly park-local axis and a hover crosshair + tooltip. Date-nav
   steps back through history (`queues/<park>/index.json` = `{minDate,maxDate}`).
 
-> Note: queue polling adds meaningful D1 write volume on busy days. It's
-> delta-only (stable waits cost nothing) and the cadence is one knob
-> (`QUEUE_INTERVAL_MINUTES`) — drop it to 2 if the 100k-writes/day free-tier
-> limit gets close. Planned next: compare a day's queues against similar days
-> with similar park capacity (the D1 log already holds both).
+> Note: the three data streams (tickets, queues, catalog) each run on their own
+> cron so each gets its own free-tier 10 ms CPU budget — sharing one every-minute
+> cron blew that budget and froze the streams. Cadence is set by the `crons` in
+> `wrangler.toml`. Queue polling is delta-only (stable waits cost nothing);
+> planned next: compare a day's queues against similar days with similar park
+> capacity (the D1 log already holds both).
 
 ## Layout
 

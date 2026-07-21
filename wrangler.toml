@@ -13,12 +13,20 @@ routes = [
 #     SPA fallback so client-routed deep links (e.g. /alton_towers/rap) resolve. ---
 assets = { directory = "./dist", binding = "ASSETS", not_found_handling = "single-page-application" }
 
-# --- Poll cadence. One cron a minute polls both products (RAP + main).
-#     Cron granularity bottoms out at 1 minute, which is plenty here.
-#     Stays in the free tier; the only limit to watch is D1's 100k writes/day
-#     (delta-only writes keep us well under except on very churny days). ---
+# --- Poll cadence. THREE crons, one per data stream, because each cron firing is
+#     its own invocation with its own free-tier 10ms CPU budget — running all
+#     streams in a single every-minute cron blew that budget (CPU-killed mid-run,
+#     freezing queues + main tickets). Streams write separate R2 files; the
+#     frontend stitches them. Only one schedule can be every-minute (1-min
+#     granularity; free plan caps a Worker at 3 crons), so:
+#       "* * * * *"   tickets — RAP (1m) + main (5m) + hours (60m) + rebuilds (30m)
+#       "*/2 * * * *" queues  — ride waits every 2m (feed moves in 5-min steps)
+#       "0-3 7 * * *" catalog — daily bundle unzip, 08:00–08:03 BST, ONE park per
+#                     minute so each CPU-heavy unzip gets its own budget, all off
+#                     every hot path. Widen the minute range if parks are added.
+#     Free tier throughout; the limit to watch stays D1's 100k writes/day. ---
 [triggers]
-crons = ["* * * * *"]
+crons = ["* * * * *", "*/2 * * * *", "0-3 7 * * *"]
 
 # --- History / source of truth ---
 [[d1_databases]]
@@ -41,8 +49,8 @@ head_sampling_rate = 1
 persist = true
 invocation_logs = true
 
-[observability.traces]
-enabled = false
-persist = true
-head_sampling_rate = 1
+#[observability.traces]
+#enabled = false
+#persist = true
+#head_sampling_rate = 1
 

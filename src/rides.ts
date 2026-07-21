@@ -1,10 +1,5 @@
 import { Unzip, UnzipInflate } from "fflate";
-import {
-  ATTRACTIONS_API,
-  CATALOG_TTL_MS,
-  USER_AGENT,
-  type AttractionsConfig,
-} from "./config";
+import { ATTRACTIONS_API, USER_AGENT, type AttractionsConfig } from "./config";
 
 /** One ride's static metadata (from the content bundle's `Item` records). */
 export interface RideMeta {
@@ -40,22 +35,35 @@ const catalogKey = (park: string) => `queues/${park}/catalog.json`;
 const tokenKey = (park: string) => `attractions/${park}/token.json`;
 
 /**
- * The static ride catalog for a park: cached in R2 on a TTL and re-derived from
- * the Attractions.io content bundle when stale. Never throws — on any failure
- * (registration, bundle fetch, unzip) it falls back to the last cached catalog,
- * mirroring the resilience of `discoverPackages` in discover.ts.
+ * The cached ride catalog for a park, or null if none has been built yet.
+ * READ-ONLY: this is what the per-poll hot path uses. It never rebuilds, because
+ * `buildCatalog` (streaming unzip + parse of the content bundle) can't fit the
+ * free-tier 10ms CPU budget — a rebuild attempted inline would be CPU-killed
+ * before it could cache, then retry and die every poll. Rebuilds are owned by
+ * the daily pre-open cron and `/poll` (see `rebuildCatalog`).
  */
-export async function resolveRideCatalog(
+export async function readCatalog(
+  bucket: R2Bucket,
+  park: string,
+): Promise<RideCatalog | null> {
+  return readCachedCatalog(bucket, park);
+}
+
+/**
+ * Re-derive a park's catalog from the Attractions.io content bundle and cache it
+ * in R2. CPU-heavy (registration + streaming unzip + parse), so only ever called
+ * OFF the hot path: the daily 08:00 cron (park closed, its own fresh 10ms budget)
+ * and a manual `/poll`. Never throws — on any failure (registration, bundle
+ * fetch, unzip) it keeps the last good cached catalog rather than losing ride
+ * names, mirroring `discoverPackages` in discover.ts. Returns the catalog now in
+ * R2 (freshly built, or the retained cache), or null if there was never one.
+ */
+export async function rebuildCatalog(
   bucket: R2Bucket,
   park: string,
   cfg: AttractionsConfig,
   now: number,
 ): Promise<RideCatalog | null> {
-  const cached = await readCachedCatalog(bucket, park);
-  if (cached && now - Date.parse(cached.generated_at) < CATALOG_TTL_MS) {
-    return cached;
-  }
-
   try {
     const fresh = await buildCatalog(bucket, park, cfg, now);
     await bucket.put(catalogKey(park), JSON.stringify(fresh), {
@@ -63,9 +71,7 @@ export async function resolveRideCatalog(
     });
     return fresh;
   } catch {
-    // Bundle down, token dead, or unzip failed — keep serving the last good
-    // catalog rather than losing ride names entirely.
-    return cached;
+    return readCachedCatalog(bucket, park);
   }
 }
 

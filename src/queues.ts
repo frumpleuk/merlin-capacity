@@ -13,7 +13,7 @@ import {
   writeQueueDayFile,
   writeQueueLatest,
 } from "./db";
-import { resolveRideCatalog, type RideCatalog } from "./rides";
+import { readCatalog, type RideCatalog } from "./rides";
 import type { Env, QueueObs, QueueSnapshot } from "./types";
 
 const ymd = (ms: number) => new Date(ms).toISOString().slice(0, 10);
@@ -226,7 +226,7 @@ export async function runQueuePoll(
   const observedAt = new Date(now).toISOString();
   const today = ymd(now);
 
-  const catalog = await resolveRideCatalog(env.BUCKET, park.key, park.attractions, now);
+  const catalog = await readCatalog(env.BUCKET, park.key);
   const prev = await readQueueLatest(env.BUCKET, park.key);
   const res = await fetchLiveQueues(park.attractions, catalog);
 

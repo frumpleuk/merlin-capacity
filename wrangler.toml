@@ -17,16 +17,18 @@ assets = { directory = "./dist", binding = "ASSETS", not_found_handling = "singl
 #     its own invocation with its own free-tier 10ms CPU budget — running all
 #     streams in a single every-minute cron blew that budget (CPU-killed mid-run,
 #     freezing queues + main tickets). Streams write separate R2 files; the
-#     frontend stitches them. Only one schedule can be every-minute (1-min
-#     granularity; free plan caps a Worker at 3 crons), so:
+#     frontend stitches them. Cloudflare treats each cron STRING as a distinct
+#     trigger, so "* * * * *" and "*/1 * * * *" (both "every minute") fire as two
+#     separate invocations each minute — that's how tickets AND queues each get a
+#     1-min cadence in their own budget. 3 crons = the free-plan per-Worker cap.
 #       "* * * * *"   tickets — RAP (1m) + main (5m) + hours (60m) + rebuilds (30m)
-#       "*/2 * * * *" queues  — ride waits every 2m (feed moves in 5-min steps)
+#       "*/1 * * * *" queues  — ride waits every minute (own budget)
 #       "0-3 7 * * *" catalog — daily bundle unzip, 08:00–08:03 BST, ONE park per
 #                     minute so each CPU-heavy unzip gets its own budget, all off
 #                     every hot path. Widen the minute range if parks are added.
 #     Free tier throughout; the limit to watch stays D1's 100k writes/day. ---
 [triggers]
-crons = ["* * * * *", "*/2 * * * *", "0-3 7 * * *"]
+crons = ["* * * * *", "*/1 * * * *", "0-3 7 * * *"]
 
 # --- History / source of truth ---
 [[d1_databases]]

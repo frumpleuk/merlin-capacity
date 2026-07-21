@@ -21,12 +21,15 @@ const REBUILD_INTERVAL_MINUTES = 30;
  *  top-level invocation with its OWN free-tier 10ms CPU budget, so the three
  *  independent data streams never share (and blow) one budget — the failure that
  *  froze queues + main tickets when they all ran in a single every-minute cron.
- *  Streams write separate R2 files; the frontend stitches them together. Only one
- *  schedule can be truly every-minute (1-min granularity, and the free plan caps
- *  a Worker at 3 crons), so tickets keep the minute (RAP releases vanish fast)
- *  and queues run every 2 min (the live feed only moves in 5-min steps). */
+ *  Streams write separate R2 files; the frontend stitches them together.
+ *  Cloudflare treats each cron STRING as an independent trigger (`event.cron` is
+ *  matched character-for-character), so the two constants below — though both
+ *  mean "every minute" — are distinct triggers that BOTH fire every minute as
+ *  separate invocations. That's how tickets AND queues each get a 1-minute
+ *  cadence in their own budget despite there being only one literal every-minute
+ *  spelling. Three crons total = the free-plan per-Worker cap. */
 const CRON_TICKETS = "* * * * *"; // RAP (1m) + main (5m) + hours (60m) + rebuilds (30m)
-const CRON_QUEUES = "*/2 * * * *"; // ride queue times + queue self-heal (30m)
+const CRON_QUEUES = "*/1 * * * *"; // every minute; ride queue times + self-heal (30m)
 // 08:00–08:03 BST (07:00–07:03 GMT) — before any UK park opens (09:00). One
 // firing per minute, each rebuilding ONE park's catalog, so every CPU-heavy
 // unzip gets its own fresh 10ms budget (4 in one invocation would risk the
@@ -63,8 +66,8 @@ async function pollTickets(env: Env, scheduledTime: number): Promise<void> {
   await Promise.all(jobs);
 }
 
-/** Queue stream (every 2 min). Reads each park's live feed and appends changed
- *  lines. Uses the READ-ONLY cached catalog — never rebuilds it (that's the
+/** Queue stream (every minute, own invocation/budget). Reads each park's live
+ *  feed and appends changed lines. Uses the READ-ONLY cached catalog — never rebuilds it (that's the
  *  daily cron's job); a missing catalog just degrades to unnamed lines until the
  *  next rebuild. Every REBUILD_INTERVAL_MINUTES it self-heals today's day file
  *  from D1 (covers a fresh deploy or a static-since-open park). */

@@ -47,9 +47,9 @@ A second, independent data stream captures **live ride status and queue times**
 from the Attractions.io ("Occasio") backend that powers the official park apps
 (reverse-engineered in [`docs/attractions-io-api.md`](docs/attractions-io-api.md)).
 
-- **Live feed** — every 2 minutes the poller reads each park's unauthenticated
-  live feed (`live-data.attractions.io/<apiKey>.json`) and joins it to a static
-  ride catalog. Per **queue line** (main, single-rider, …) it records the posted
+- **Live feed** — every minute the poller reads each park's unauthenticated live
+  feed (`live-data.attractions.io/<apiKey>.json`) and joins it to a static ride
+  catalog. Per **queue line** (main, single-rider, …) it records the posted
   wait and status; per ride it records open/operational. Only lines that actually
   moved are appended to D1 (`queue_observation`) — delta-only, like tickets — so
   the table doubles as the intraday open/close + wait-change log.

@@ -137,8 +137,11 @@ function hashHours(snapshot: HoursSnapshot, fromDate: string): string {
  * hours change rarely and the file is small, so we just rewrite it wholesale.
  */
 export async function runHoursPoll(env: Env, park: ParkConfig): Promise<number> {
+  // A queue-only park (Paulton's) has no marketing-site calendar to poll.
+  const cfg = park.openingHours;
+  if (!cfg) return 0;
   const observedAt = new Date().toISOString();
-  const res = await fetchHours(park.openingHours);
+  const res = await fetchHours(cfg);
   if (res.ok) {
     await writeHoursMonths(env.BUCKET, park.key, res.snapshot, observedAt);
   }

@@ -1,5 +1,6 @@
 import {
   allProducts,
+  attractionsParks,
   dueProducts,
   HOURS_INTERVAL_MINUTES,
   PARKS,
@@ -33,7 +34,9 @@ const CRON_QUEUES = "*/1 * * * *"; // every minute; ride queue times + self-heal
 // 08:00–08:03 BST (07:00–07:03 GMT) — before any UK park opens (09:00). One
 // firing per minute, each rebuilding ONE park's catalog, so every CPU-heavy
 // unzip gets its own fresh 10ms budget (4 in one invocation would risk the
-// limit). The minute range must cover queueParks() — widen it if parks are added.
+// limit). The minute range must cover attractionsParks() (the bundle-backed
+// parks) — widen it if more are added. First Option parks (Paulton's) aren't
+// here: their catalog is synthesised inline during the queue poll.
 const CRON_CATALOG = "0-3 7 * * *";
 
 const currentMonth = (ms: number) => new Date(ms).toISOString().slice(0, 7);
@@ -97,10 +100,14 @@ async function pollQueues(env: Env, scheduledTime: number): Promise<void> {
  *  failure keeps the park's last good catalog. R2 persists across deploys, so a
  *  normal deploy keeps its catalogs; only a first-ever deploy waits for 08:00. */
 async function rebuildCatalogs(env: Env, scheduledTime: number): Promise<void> {
-  const parks = queueParks();
+  // Only Attractions.io parks have a content bundle to rebuild. First Option
+  // parks (Paulton's) synthesise their catalog inline during the queue poll, so
+  // they're excluded here — which also keeps the catalog cron's window (0-3) as
+  // is, since it's still just the four bundle-backed parks.
+  const parks = attractionsParks();
   const park = parks[new Date(scheduledTime).getUTCMinutes()];
   if (!park) return; // window minute beyond the park list — nothing to build
-  await rebuildCatalog(env.BUCKET, park.key, park.attractions, scheduledTime);
+  await rebuildCatalog(env.BUCKET, park.key, park.queue, scheduledTime);
 }
 
 export default {

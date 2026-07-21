@@ -111,11 +111,12 @@ async function fetchCatalogPackages(
   const empty: ResolvedPackages = { P: [], anchorIds: [] };
   let resp: Response;
   try {
-    resp = await fetch(bootstrapUrl(park.bootstrapSlug), {
+    resp = await fetch(bootstrapUrl(park.bootstrapSlug ?? ""), {
       headers: {
         accept: "application/json, text/plain, */*",
-        origin: park.origin,
-        referer: `${park.origin}/`,
+        // See merlin.ts: `?? ""` is type-only; only reached for ticket parks.
+        origin: park.origin ?? "",
+        referer: `${park.origin ?? ""}/`,
         "user-agent": USER_AGENT,
       },
     });

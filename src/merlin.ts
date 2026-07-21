@@ -45,10 +45,13 @@ function headers(park: ParkConfig) {
     "com-accessopassport-app-id": "1500",
     "com-accessopassport-client": "accesso26",
     "com-accessopassport-language": "en-gb",
-    "com-accessopassport-merchant-id": park.merchantId,
+    // `?? ""` only satisfies the type: these accesso fields are always set for a
+    // park with ticket products, and this path is never reached for a queue-only
+    // park (empty products → never polled).
+    "com-accessopassport-merchant-id": park.merchantId ?? "",
     "content-type": "application/json;charset=UTF-8",
-    origin: park.origin,
-    referer: `${park.origin}/`,
+    origin: park.origin ?? "",
+    referer: `${park.origin ?? ""}/`,
     "user-agent": USER_AGENT,
   };
 }

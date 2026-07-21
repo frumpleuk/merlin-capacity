@@ -11,6 +11,9 @@ export interface ParkDef {
   key: string;
   label: string;
   products: ProductDef[];
+  /** Queue-only park (Paulton's): no accesso tickets/calendar, only the live
+   *  ride-queue times. The nav shows just the Queues tab and lands there. */
+  queueOnly?: boolean;
 }
 
 // Only list products the poller actually captures. Main tickets for the
@@ -50,6 +53,13 @@ export const PARKS: ParkDef[] = [
       { key: "main", label: "Main tickets" },
       { key: "rap", label: "RAP" },
     ],
+  },
+  {
+    // Independent park (Peppa Pig World) — queue times only, no accesso tickets.
+    key: "paultons",
+    label: "Paultons Park",
+    products: [],
+    queueOnly: true,
   },
 ];
 

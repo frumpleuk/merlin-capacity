@@ -3,6 +3,7 @@ import {
   USER_AGENT,
   type AttractionsConfig,
   type ParkConfig,
+  type QueueSource,
 } from "./config";
 import {
   appendQueueDayFile,
@@ -14,7 +15,8 @@ import {
   writeQueueDayFile,
   writeQueueLatest,
 } from "./db";
-import { readCatalog, type RideCatalog } from "./rides";
+import { catalogNamesChanged, fetchFirstOptionQueues } from "./firstoption";
+import { putCatalog, readCatalog, type RideCatalog } from "./rides";
 import type { Env, QueueObs, QueueSnapshot } from "./types";
 
 const ymd = (ms: number) => new Date(ms).toISOString().slice(0, 10);
@@ -221,15 +223,43 @@ export function diffQueues(prev: QueueSnapshot, next: QueueSnapshot): QueueObs[]
  */
 export async function runQueuePoll(
   env: Env,
-  park: ParkConfig & { attractions: AttractionsConfig },
+  park: ParkConfig & { queue: QueueSource },
 ): Promise<number> {
   const now = Date.now();
   const observedAt = new Date(now).toISOString();
   const today = ymd(now);
 
-  const catalog = await readCatalog(env.BUCKET, park.key);
   const prev = await readQueueLatest(env.BUCKET, park.key);
-  const res = await fetchLiveQueues(park.attractions, catalog);
+
+  // Read the live feed for whichever backend this park uses. Both normalise into
+  // the same `QueueObs` snapshot + `RideCatalog`, so everything below is shared.
+  let res: {
+    ok: boolean;
+    httpStatus: number;
+    snapshot: QueueSnapshot;
+    resort?: ResortWindow;
+    linesSeen: number;
+  };
+  let catalog: RideCatalog | null;
+  if (park.queue.kind === "attractions") {
+    // Attractions.io: names come from the bundle-derived catalog (built off the
+    // hot path by the daily cron); a missing one degrades to unnamed lines.
+    catalog = await readCatalog(env.BUCKET, park.key);
+    res = await fetchLiveQueues(park.queue, catalog);
+  } else {
+    // First Option (Paulton's): names are inline, so the fetch also hands back a
+    // synthesised catalog. Persist it to R2 (only when the name set changed) so
+    // the self-heal rebuild and delta-append resolve names the same way.
+    const fos = await fetchFirstOptionQueues(park.queue, now);
+    res = fos;
+    catalog = fos.ok ? fos.catalog : await readCatalog(env.BUCKET, park.key);
+    if (fos.ok) {
+      const cached = await readCatalog(env.BUCKET, park.key);
+      if (catalogNamesChanged(cached, fos.catalog)) {
+        await putCatalog(env.BUCKET, park.key, fos.catalog);
+      }
+    }
+  }
 
   let changed = 0;
   if (res.ok) {

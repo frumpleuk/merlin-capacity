@@ -75,6 +75,19 @@ export async function rebuildCatalog(
   }
 }
 
+/** Persist a park's ride catalog to R2. Used by the Attractions.io rebuild path
+ *  and by the First Option (Paulton's) poll, whose catalog is synthesised from
+ *  the live feed's inline names rather than a content bundle. */
+export async function putCatalog(
+  bucket: R2Bucket,
+  park: string,
+  catalog: RideCatalog,
+): Promise<void> {
+  await bucket.put(catalogKey(park), JSON.stringify(catalog), {
+    httpMetadata: { contentType: "application/json" },
+  });
+}
+
 async function readCachedCatalog(
   bucket: R2Bucket,
   park: string,

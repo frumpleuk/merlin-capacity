@@ -18,7 +18,9 @@ export function Layout() {
           {PARKS.map((p) => (
             <Link
               key={p.key}
-              to={suffix ? `/${p.key}/${suffix}` : `/${p.key}`}
+              // A queue-only park has no calendar/product pages, so always land
+              // it on its Queues tab (and never carry a ticket suffix onto it).
+              to={p.queueOnly ? `/${p.key}/queues` : suffix ? `/${p.key}/${suffix}` : `/${p.key}`}
               className={"park-link" + (p.key === parkDef.key ? " active" : "")}
             >
               {p.label}
@@ -26,14 +28,17 @@ export function Layout() {
           ))}
         </nav>
         <nav className="tabs">
-          {/* Rich calendar (park home), then per-product heatmaps. */}
-          <NavLink
-            end
-            to={`/${parkDef.key}`}
-            className={({ isActive }) => "tab" + (isActive ? " active" : "")}
-          >
-            Calendar
-          </NavLink>
+          {/* Rich calendar (park home), then per-product heatmaps. A queue-only
+              park (Paulton's) has neither — just the Queues tab. */}
+          {!parkDef.queueOnly && (
+            <NavLink
+              end
+              to={`/${parkDef.key}`}
+              className={({ isActive }) => "tab" + (isActive ? " active" : "")}
+            >
+              Calendar
+            </NavLink>
+          )}
           {/* Ride queue times (stays active on the /queues/:date history URLs). */}
           <NavLink
             to={`/${parkDef.key}/queues`}

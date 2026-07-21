@@ -47,6 +47,25 @@ export interface AttractionsConfig {
   slug: string;
 }
 
+/** First Option Software backend — the queue-time source for Paulton's Park.
+ *  Paulton's is independent (no accesso) and, unlike the Merlin parks, its
+ *  guest app is a Capacitor web app whose queue times come from this custom
+ *  vendor API (NOT the Attractions.io live feed — Attractions.io only runs
+ *  Paulton's internal wait-time management/signage). See docs/paultons-api.md.
+ *  `token` is the app-embedded static `x-token` value; `apiUrl` the host. */
+export interface FirstOptionConfig {
+  apiUrl: string;
+  token: string;
+}
+
+/** Where a queue-tracked park's live ride waits come from. A discriminated
+ *  union: most parks are `attractions` (Attractions.io live feed + content
+ *  bundle); Paulton's is `fos` (First Option Software custom backend, names
+ *  inline so no content bundle / catalog cron). */
+export type QueueSource =
+  | ({ kind: "attractions" } & AttractionsConfig)
+  | ({ kind: "fos" } & FirstOptionConfig);
+
 export const liveFeedUrl = (apiKey: string) =>
   `https://live-data.attractions.io/${apiKey}.json`;
 
@@ -105,17 +124,22 @@ export interface ProductConfig {
 
 export interface ParkConfig {
   key: string;
-  merchantId: string;
-  origin: string;
+  /** accesso availability identity. Optional: a queue-only park (Paulton's) has
+   *  no accesso backend at all. Only ever read for parks with ticket `products`,
+   *  so a queue-only park simply omits them. */
+  merchantId?: string;
+  origin?: string;
   /** Bootstrap catalog slug (NOT the subdomain — e.g. Chessington is
    *  ME-WACHESSINGTON, not ME-CWOA). From the park's landing-page `bootstrap?m=`. */
-  bootstrapSlug: string;
+  bootstrapSlug?: string;
   /** Opening-hours source (park marketing site). Separate from the accesso
-   *  availability API — a different host, endpoint, and response shape. */
-  openingHours: OpeningHoursConfig;
-  /** Attractions.io identity for ride names + live queue times. Absent = the
-   *  park isn't queue-tracked. Separate backend from accesso availability. */
-  attractions?: AttractionsConfig;
+   *  availability API — a different host, endpoint, and response shape. Absent
+   *  for a queue-only park (no marketing-site calendar to poll). */
+  openingHours?: OpeningHoursConfig;
+  /** Live queue-time source (Attractions.io or First Option). Absent = the park
+   *  isn't queue-tracked. Separate backend(s) from accesso availability. */
+  queue?: QueueSource;
+  /** accesso ticket products to poll. Empty for a queue-only park. */
   products: ProductConfig[];
 }
 
@@ -137,7 +161,8 @@ export const PARKS: ParkConfig[] = [
         { id: "2613", kind: "golf" },
       ],
     },
-    attractions: {
+    queue: {
+      kind: "attractions",
       apiKey: "e6c2bbf8-da54-47a2-a5ed-8b7797137113",
       slug: "alton-towers-resort",
     },
@@ -172,7 +197,8 @@ export const PARKS: ParkConfig[] = [
       calendarUrl: hoursUrl("thorpepark.com", "1716"),
       locations: [{ id: "1716", kind: "themepark" }],
     },
-    attractions: {
+    queue: {
+      kind: "attractions",
       apiKey: "a070eedc-db3a-4c69-b55a-b79336ce723f",
       slug: "thorpe-park",
     },
@@ -209,7 +235,8 @@ export const PARKS: ParkConfig[] = [
         { id: "7236", kind: "golf" },
       ],
     },
-    attractions: {
+    queue: {
+      kind: "attractions",
       apiKey: "7b56aa91-d4c6-4f8f-bac6-441a141a8e81",
       slug: "legoland-windsor",
     },
@@ -242,7 +269,8 @@ export const PARKS: ParkConfig[] = [
       calendarUrl: hoursUrl("chessington.com", "1716"),
       locations: [{ id: "1716", kind: "themepark" }],
     },
-    attractions: {
+    queue: {
+      kind: "attractions",
       apiKey: "307f27cd-2be1-4b43-aee8-7832cfadb85f",
       slug: "chessington",
     },
@@ -265,6 +293,21 @@ export const PARKS: ParkConfig[] = [
       },
     ],
   },
+  {
+    // Paulton's Park (home of Peppa Pig World) — INDEPENDENT, not Merlin. No
+    // accesso backend, so it's queue-only: no merchantId/origin/bootstrapSlug,
+    // no marketing-site hours, no ticket products. Its guest app pulls live
+    // queue times from First Option Software's custom backend (the `x-token` is
+    // the app-embedded static token). Names come inline with the feed, so unlike
+    // the Attractions.io parks there's no content bundle / catalog cron.
+    key: "paultons",
+    queue: {
+      kind: "fos",
+      apiUrl: "https://paultonsapp.firstoptionsoftware.com",
+      token: "Nn2ibRudVbMVlAsp",
+    },
+    products: [],
+  },
 ];
 
 /** Every (park, product) pair, flattened — used to force a full manual poll. */
@@ -272,11 +315,21 @@ export function allProducts(): { park: ParkConfig; product: ProductConfig }[] {
   return PARKS.flatMap((park) => park.products.map((product) => ({ park, product })));
 }
 
-/** Parks with an Attractions.io identity (i.e. queue-tracked). Narrowed so
- *  `park.attractions` is non-optional at the call site. */
-export function queueParks(): (ParkConfig & { attractions: AttractionsConfig })[] {
+/** Parks with a live queue-time source (any kind). Narrowed so `park.queue` is
+ *  non-optional at the call site. */
+export function queueParks(): (ParkConfig & { queue: QueueSource })[] {
+  return PARKS.filter((p): p is ParkConfig & { queue: QueueSource } => !!p.queue);
+}
+
+/** Queue parks whose ride catalog is built from an Attractions.io content
+ *  bundle (the CPU-heavy daily unzip). Excludes `fos` parks (Paulton's), whose
+ *  ride names arrive inline with the live feed — no bundle, no catalog cron. */
+export function attractionsParks(): (ParkConfig & {
+  queue: { kind: "attractions" } & AttractionsConfig;
+})[] {
   return PARKS.filter(
-    (p): p is ParkConfig & { attractions: AttractionsConfig } => !!p.attractions,
+    (p): p is ParkConfig & { queue: { kind: "attractions" } & AttractionsConfig } =>
+      p.queue?.kind === "attractions",
   );
 }
 

@@ -41,7 +41,7 @@ export function ParkCalendarPage() {
 
   // Reset to the current month and refetch bounds whenever the park changes.
   useEffect(() => {
-    if (!parkDef) return;
+    if (!parkDef || parkDef.queueOnly) return;
     setMonth(currentMonth());
     setBounds(null);
     let alive = true;
@@ -54,7 +54,7 @@ export function ParkCalendarPage() {
   // Calendar freshness = everything shown on this page, aggregated: main + RAP
   // availability plus opening hours / events.
   useEffect(() => {
-    if (!parkDef) return;
+    if (!parkDef || parkDef.queueOnly) return;
     let alive = true;
     const tick = async () => {
       const [m, r, h] = await Promise.all([
@@ -74,7 +74,7 @@ export function ParkCalendarPage() {
 
   // Load the displayed month's files; refresh live months on a timer.
   useEffect(() => {
-    if (!parkDef) return;
+    if (!parkDef || parkDef.queueOnly) return;
     setData(undefined);
     let alive = true;
     const tick = async () => {
@@ -94,6 +94,8 @@ export function ParkCalendarPage() {
   }, [park, parkDef, month]);
 
   if (!parkDef) return <Navigate to={PARK_HOME} replace />;
+  // A queue-only park has no calendar — its home is the Queues tab.
+  if (parkDef.queueOnly) return <Navigate to={`/${park}/queues`} replace />;
 
   const canPrev = !bounds || month > bounds.minMonth;
   const canNext = !bounds || month < bounds.maxMonth;

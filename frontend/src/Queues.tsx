@@ -510,8 +510,15 @@ function RideRow({
   const main = ride.lines[0];
   const stats = main ? lineStats(main) : { current: null, peak: 0 };
   const peak = ridePeak(ride);
-  // Never ran today (all samples closed / non-operational) → "Closed all day".
-  const ranToday = ride.lines.some((l) => l.samples.some(isRunning));
+  // Never ran today → "Closed all day". "Ran today" = any running sample, OR any
+  // sample that carries a posted wait even though currently closed (Paulton's
+  // feed keeps a ride's last-known wait after it shuts — a closed row with a
+  // reading still means it operated today; Attractions.io nulls the wait when
+  // closed, so its closed-all-day rides — seeded with empty samples — are
+  // unaffected).
+  const ranToday = ride.lines.some((l) =>
+    l.samples.some((s) => isRunning(s) || s[1] != null),
+  );
 
   return (
     <div className={"q-row" + (open ? " open" : "")}>

@@ -68,11 +68,19 @@ static/live merge, and the ride **name is inline**:
 | Field | Type | Meaning |
 |---|---|---|
 | `rideId` | int | Ride id (join key; also the primary display id). |
-| `statusOpen` | bool | Open to guests now. The only open/closed signal (no separate "operational"). |
-| `queueTime` | int / null | Posted wait. **Appears to be whole MINUTES** (values seen: 15, 20 — not the seconds the Attractions.io feed used). **Verify on an open day** — the first capture was after hours with everything closed. |
+| `statusOpen` | bool | Open to guests **right now**. No separate "operational" flag. |
+| `queueTime` | int | Posted wait in whole **MINUTES** (values are multiples of 5, e.g. 0/5/10/20). **Always present** — it's the ride's LAST-KNOWN wait and is NOT nulled when the ride closes, so it does *not* signal open/closed. |
 | `seats` | int / null | Ride capacity/seats (unused here). |
-| `updatedAt` | string | ISO-8601 (UTC) of the last status change for this ride. Long-inactive rides keep a stale timestamp (e.g. a 2025 date). |
+| `updatedAt` | string | ISO-8601 (UTC) of the last state change — **the real open/closed & "ran today" signal**. A ride open now updates continuously; a ride closed at 16:50 keeps `updatedAt` at its closing time; a defunct/removed attraction keeps a stale timestamp (2022/2024/2025 dates seen). |
 | `ride.name` | string / null | Display name. |
+
+> **This is a last-known-STATE feed, not a live instantaneous overlay.** Each row
+> is the ride's *latest* state plus *when* it was set — there's no intraday
+> history in a single read; you build the curve by polling. Observed once after
+> close: 54 rows, all `statusOpen:false`, all with a non-null `queueTime`
+> (residual last wait), 45 with a same-day `updatedAt` (ran that day) and 9 stale
+> (defunct). Reading `queueTime` as the open/closed signal is wrong — use
+> `updatedAt`/`statusOpen`.
 
 ---
 
@@ -96,10 +104,24 @@ static/live merge, and the ride **name is inline**:
 ## 5. Integration (this repo)
 
 Modelled as a `QueueSource` of `kind: "fos"` (`src/config.ts`). `src/firstoption.ts`
-fetches `/api/queue-times`, normalises each row into the shared `QueueObs` model
-as a single synthetic queue line keyed by `rideId` (`statusOpen` → is_open &
-is_operational; wait nulled when closed), and synthesises a `RideCatalog` from the
-inline names (persisted to R2 only when the name set changes). Everything
-downstream — D1 `queue_observation`, day-file generation, the Queues tab — is
-reused unchanged. Paulton's rides the existing every-minute queue cron and is
-excluded from the Attractions.io catalog cron.
+fetches `/api/queue-times`, normalises each row into the shared `QueueObs` model as
+a single synthetic queue line keyed by `rideId` (`statusOpen` → is_open &
+is_operational; the residual `queueTime` is **kept**, not nulled), and synthesises
+a `RideCatalog` from the inline names (persisted to R2 only when the name set
+changes). Two rules make the closed/never-ran distinction correct given this is a
+last-known-state feed:
+
+1. **Skip defunct rides** — `updatedAt` older than `STALE_DAYS` (14) is a removed
+   or long-closed attraction (self-correcting: a seasonal ride reappears once it
+   next changes state).
+2. **Only emit a snapshot row for a ride that changed state *today*** (`updatedAt`
+   is today = "ran today"). Current rides that didn't change today get no row and
+   are seeded as closed-all-day from the catalog, like an Attractions.io ride with
+   no observations.
+
+The frontend's "ran today vs closed-all-day" test also counts a closed row that
+carries a posted wait (Paulton's keeps the last wait after close), so a
+ran-today-then-closed ride reads "Closed", not "Closed all day". Everything else —
+D1 `queue_observation`, day-file generation, the Queues tab — is reused unchanged.
+Paulton's rides the existing every-minute queue cron and is excluded from the
+Attractions.io catalog cron.

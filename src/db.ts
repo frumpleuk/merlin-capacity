@@ -525,6 +525,36 @@ export async function writeQueueDayFile(
     line.samples.push([mins, r.queue_time, r.is_open ? 1 : 0, r.is_operational ? 1 : 0]);
   }
 
+  // Include catalog lines that produced no observation today. Delta-only logging
+  // only writes a row when a line's wait/running-state moves, so a ride that has
+  // been closed since before midnight generates nothing today and would silently
+  // vanish from the list — even though the park's own app still lists it (closed).
+  // The park is shut overnight, so any ride that actually ran today has at least
+  // its morning open-transition logged; a line with zero same-day rows is
+  // therefore closed all day. Seed it as a flat closed baseline across the
+  // operating window (two closed samples) so it renders as "Closed", matching the
+  // frontend's closed-all-day handling. No window → empty samples (row only).
+  if (catalog) {
+    const closedDay: QueueLineOut["samples"] = window
+      ? [
+          [window.open, null, 0, 0],
+          [window.close, null, 0, 0],
+        ]
+      : [];
+    for (const [qlIdStr, ql] of Object.entries(catalog.queueLines)) {
+      const qlId = Number(qlIdStr);
+      let lines = rides.get(ql.item);
+      if (lines?.has(qlId)) continue; // already has real samples
+      if (!lines) rides.set(ql.item, (lines = new Map()));
+      lines.set(qlId, {
+        queueLineId: qlId,
+        type: ql.type,
+        label: labelForType(ql.type),
+        samples: [...closedDay],
+      });
+    }
+  }
+
   const ridesOut = [...rides.entries()].map(([rideId, lines]) => {
     const meta = catalog?.items[String(rideId)];
     return {

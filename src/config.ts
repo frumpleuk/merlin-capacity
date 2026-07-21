@@ -58,13 +58,30 @@ export interface FirstOptionConfig {
   token: string;
 }
 
+/** Firebase/Firestore backend — the queue-time source for Flamingo Land. Like
+ *  Paulton's it's an independent (non-accesso) park whose guest app is a
+ *  Capacitor web app, but the waits live in a Cloud Firestore collection
+ *  (`rides_data`) rather than a bespoke REST API. Reads require a Firebase ID
+ *  token; the app enables ANONYMOUS auth, so we mint one anonymous user with the
+ *  app-embedded web `apiKey` and reuse it (cached + refreshed in R2). Ride names
+ *  are inline on each doc, so — like `fos` — there's no content bundle / catalog
+ *  cron. See docs/flamingoland-api.md. */
+export interface FirebaseConfig {
+  projectId: string;
+  apiKey: string;
+  /** Firestore collection holding one doc per ride (with `queue_time`). */
+  collection: string;
+}
+
 /** Where a queue-tracked park's live ride waits come from. A discriminated
  *  union: most parks are `attractions` (Attractions.io live feed + content
- *  bundle); Paulton's is `fos` (First Option Software custom backend, names
- *  inline so no content bundle / catalog cron). */
+ *  bundle); Paulton's is `fos` (First Option Software custom backend); Flamingo
+ *  Land is `firestore` (Firebase Cloud Firestore). Both `fos` and `firestore`
+ *  carry ride names inline, so neither needs a content bundle / catalog cron. */
 export type QueueSource =
   | ({ kind: "attractions" } & AttractionsConfig)
-  | ({ kind: "fos" } & FirstOptionConfig);
+  | ({ kind: "fos" } & FirstOptionConfig)
+  | ({ kind: "firestore" } & FirebaseConfig);
 
 export const liveFeedUrl = (apiKey: string) =>
   `https://live-data.attractions.io/${apiKey}.json`;
@@ -308,6 +325,25 @@ export const PARKS: ParkConfig[] = [
     },
     products: [],
   },
+  {
+    // Flamingo Land (North Yorkshire) — INDEPENDENT, not Merlin. Queue-only,
+    // like Paulton's: no accesso backend, no marketing-site hours, no ticket
+    // products. Its Capacitor guest app reads live waits from a Firebase Cloud
+    // Firestore collection (`rides_data`), one doc per ride with `queue_time`
+    // (whole minutes) + `statusOpen`. Firestore reads need a Firebase ID token;
+    // the app enables anonymous auth, so we mint one anonymous user with the
+    // app-embedded web apiKey and reuse it (cached/refreshed in R2). Ride names
+    // are inline, so — like Paulton's — the catalog is synthesised inline during
+    // the queue poll (no content bundle / catalog cron). See docs/flamingoland-api.md.
+    key: "flamingoland",
+    queue: {
+      kind: "firestore",
+      projectId: "flamingo-land-app",
+      apiKey: "AIzaSyA2yrf4wI5a5oynBWu7ehjFzai-vtFr64Y",
+      collection: "rides_data",
+    },
+    products: [],
+  },
 ];
 
 /** Every (park, product) pair, flattened — used to force a full manual poll. */
@@ -322,8 +358,9 @@ export function queueParks(): (ParkConfig & { queue: QueueSource })[] {
 }
 
 /** Queue parks whose ride catalog is built from an Attractions.io content
- *  bundle (the CPU-heavy daily unzip). Excludes `fos` parks (Paulton's), whose
- *  ride names arrive inline with the live feed — no bundle, no catalog cron. */
+ *  bundle (the CPU-heavy daily unzip). Excludes the inline-name backends (`fos`
+ *  Paulton's, `firestore` Flamingo Land), whose ride names arrive with the live
+ *  feed — no bundle, no catalog cron. */
 export function attractionsParks(): (ParkConfig & {
   queue: { kind: "attractions" } & AttractionsConfig;
 })[] {

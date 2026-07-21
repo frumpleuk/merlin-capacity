@@ -100,10 +100,11 @@ async function pollQueues(env: Env, scheduledTime: number): Promise<void> {
  *  failure keeps the park's last good catalog. R2 persists across deploys, so a
  *  normal deploy keeps its catalogs; only a first-ever deploy waits for 08:00. */
 async function rebuildCatalogs(env: Env, scheduledTime: number): Promise<void> {
-  // Only Attractions.io parks have a content bundle to rebuild. First Option
-  // parks (Paulton's) synthesise their catalog inline during the queue poll, so
-  // they're excluded here — which also keeps the catalog cron's window (0-3) as
-  // is, since it's still just the four bundle-backed parks.
+  // Only Attractions.io parks have a content bundle to rebuild. The inline-name
+  // parks (Paulton's `fos`, Flamingo Land `firestore`) synthesise their catalog
+  // during the queue poll, so they're excluded here — which also keeps the
+  // catalog cron's window (0-3) as is, since it's still just the four
+  // bundle-backed parks.
   const parks = attractionsParks();
   const park = parks[new Date(scheduledTime).getUTCMinutes()];
   if (!park) return; // window minute beyond the park list — nothing to build

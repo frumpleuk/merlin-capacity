@@ -15,6 +15,7 @@ import {
   writeQueueDayFile,
   writeQueueLatest,
 } from "./db";
+import { fetchFirebaseQueues } from "./firebase";
 import { catalogNamesChanged, fetchFirstOptionQueues } from "./firstoption";
 import { putCatalog, readCatalog, type RideCatalog } from "./rides";
 import type { Env, QueueObs, QueueSnapshot } from "./types";
@@ -247,16 +248,20 @@ export async function runQueuePoll(
     catalog = await readCatalog(env.BUCKET, park.key);
     res = await fetchLiveQueues(park.queue, catalog);
   } else {
-    // First Option (Paulton's): names are inline, so the fetch also hands back a
-    // synthesised catalog. Persist it to R2 (only when the name set changed) so
-    // the self-heal rebuild and delta-append resolve names the same way.
-    const fos = await fetchFirstOptionQueues(park.queue, now);
-    res = fos;
-    catalog = fos.ok ? fos.catalog : await readCatalog(env.BUCKET, park.key);
-    if (fos.ok) {
+    // Inline-name backends (First Option / Paulton's, Firestore / Flamingo Land):
+    // the fetch also hands back a catalog synthesised from the feed. Persist it to
+    // R2 (only when the name set changed) so the self-heal rebuild and delta-append
+    // resolve names the same way.
+    const synth =
+      park.queue.kind === "fos"
+        ? await fetchFirstOptionQueues(park.queue, now)
+        : await fetchFirebaseQueues(park.queue, env.BUCKET, park.key, now);
+    res = synth;
+    catalog = synth.ok ? synth.catalog : await readCatalog(env.BUCKET, park.key);
+    if (synth.ok) {
       const cached = await readCatalog(env.BUCKET, park.key);
-      if (catalogNamesChanged(cached, fos.catalog)) {
-        await putCatalog(env.BUCKET, park.key, fos.catalog);
+      if (catalogNamesChanged(cached, synth.catalog)) {
+        await putCatalog(env.BUCKET, park.key, synth.catalog);
       }
     }
   }

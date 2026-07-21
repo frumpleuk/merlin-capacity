@@ -61,6 +61,13 @@ export const PARKS: ParkDef[] = [
     products: [],
     queueOnly: true,
   },
+  {
+    // Independent park (North Yorkshire) — queue times only, no accesso tickets.
+    key: "flamingoland",
+    label: "Flamingo Land",
+    products: [],
+    queueOnly: true,
+  },
 ];
 
 // The rich per-park calendar (park home) is the default landing view.

@@ -26,6 +26,7 @@ The parks don't share a namespace, so pin each down individually:
 | Chessington | `thrillseeker.app.chessington` |
 | LEGOLAND Windsor | `com.merlin.legowi` |
 | Paulton's Park | `thrillseeker.app.paultons` |
+| Flamingo Land | `com.flamingoLandResort.visitorApp` |
 
 Find an unknown one by scraping APKPure/Play search HTML and probing candidate
 ids: a **301** on `https://apkpure.com/-/<pkg>` means it exists, **404** means it
@@ -84,3 +85,13 @@ From there:
   so the exact URL shape isn't guaranteed stable. If `d.apkpure.com` 403s, fall
   back to the `/download` page flow or another mirror (apkcombo, though it gates
   links behind a JS `checkin` token).
+- **From a datacenter IP the file GET is often Cloudflare-challenged** (a
+  `<title>Just a moment…</title>` HTML 403, not the APK). This hit every
+  pureapk-backed mirror when adding Flamingo Land: APKPure, apkcombo, and apkfab
+  all funnel the actual download through `download.pureapk.com`, which serves a
+  Cloudflare JS challenge `curl` can't solve — even after driving apkcombo's full
+  `POST …/dl` (variant list) → `POST /checkin` (`fp` token) → decode the base64
+  `/d?u=` wrapper to the real pureapk URL. apkmirror (a different CDN) doesn't
+  mirror these small indie park apps. The reliable fallback is to have the **user
+  download the XAPK in a normal browser** and drop it in the scratchpad; the rest
+  of the RE (unzip → strings/jadx) is unaffected.

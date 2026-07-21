@@ -1,4 +1,5 @@
 import { USER_AGENT, type FirstOptionConfig } from "./config";
+import { PAULTONS_GROUP_DIMS, paultonsGroups } from "./paultons-groups";
 import type { RideCatalog } from "./rides";
 import type { QueueObs, QueueSnapshot } from "./types";
 
@@ -60,6 +61,7 @@ function emptyCatalog(now: number): RideCatalog {
     version: "",
     generated_at: new Date(now).toISOString(),
     groupBy: "thrill",
+    groupDims: PAULTONS_GROUP_DIMS,
     items: {},
     queueLines: {},
   };
@@ -114,7 +116,10 @@ export async function fetchFirstOptionQueues(
     // id — globally unique, so the catalog's line map doesn't collide). Rides
     // with no row today are seeded closed-all-day from this.
     const name = r.ride?.name?.trim();
-    if (name) catalog.items[String(rideId)] = { name };
+    if (name) {
+      const groups = paultonsGroups(rideId); // thrill + area from the bundled POI map
+      catalog.items[String(rideId)] = { name, ...(groups ? { groups } : {}) };
+    }
     catalog.queueLines[String(rideId)] = { item: rideId, type: "physical_main" };
 
     // Snapshot: only rides that changed state TODAY (= ran today). `queueTime` is
@@ -142,10 +147,11 @@ export async function fetchFirstOptionQueues(
   };
 }
 
-/** Whether two catalogs differ in the ride-name set — the only thing that
- *  changes for a First Option park (rides added/renamed/removed). Cheap gate so
+/** Whether two catalogs differ in the ride name OR group set — the things that
+ *  change for a First Option park (rides added/renamed/re-tagged). Cheap gate so
  *  the synthetic catalog is only re-written to R2 when it actually changed,
- *  rather than every minute. */
+ *  rather than every minute. Comparing groups too means a deploy that adds/edits
+ *  the embedded grouping re-persists the catalog even when names are unchanged. */
 export function catalogNamesChanged(a: RideCatalog | null, b: RideCatalog): boolean {
   if (!a) return true;
   const ak = Object.keys(a.items);
@@ -153,6 +159,7 @@ export function catalogNamesChanged(a: RideCatalog | null, b: RideCatalog): bool
   if (ak.length !== bk.length) return true;
   for (const k of bk) {
     if (a.items[k]?.name !== b.items[k]?.name) return true;
+    if (JSON.stringify(a.items[k]?.groups) !== JSON.stringify(b.items[k]?.groups)) return true;
   }
   return false;
 }

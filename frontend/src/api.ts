@@ -143,11 +143,21 @@ export interface QueueLineSeries {
   samples: QueueSample[];
 }
 
+/** One grouping dimension a park offers (see QueueDayFile.groupDims). */
+export interface GroupDim {
+  key: string;
+  label: string; // shown on the group-by toggle ("Thrill", "Area")
+  by: "thrill" | "land"; // section styling: thrill-ranked+toned, or neutral land
+}
+
 export interface QueueRide {
   id: number;
   name: string;
   category?: number;
   group?: string; // the park's own grouping: thrill class or themed land (see QueueDayFile.groupBy)
+  /** Group per dimension (dim key → group name) when the park offers >1 grouping
+   *  (Paulton's: {thrill, area}). Single-grouping parks use `group` instead. */
+  groups?: Record<string, string>;
   named?: boolean; // false → parent ride absent from the content bundle
   lines: QueueLineSeries[];
 }
@@ -160,6 +170,9 @@ export interface QueueDayFile {
    *  themed land ("land" — Legoland). Land sections get a neutral tone and
    *  alphabetical order rather than the thrill-first ranking. */
   groupBy?: "land";
+  /** Grouping dimensions offered, when the park has more than one (Paulton's:
+   *  Thrill + Area). The UI shows a toggle and reads `ride.groups[dim.key]`. */
+  groupDims?: GroupDim[];
   /** Park opening window, minutes since UTC midnight (frames the sparkline
    *  x-axis). Absent when the day's opening times weren't captured. */
   open?: number;

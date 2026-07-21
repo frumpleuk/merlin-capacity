@@ -561,6 +561,7 @@ export async function writeQueueDayFile(
       name: meta?.name ?? `Ride ${rideId}`,
       ...(meta?.category != null ? { category: meta.category } : {}),
       ...(meta?.group ? { group: meta.group } : {}),
+      ...(meta?.groups ? { groups: meta.groups } : {}),
       named: meta?.name != null, // false → the "unidentified" section
       lines: [...lines.values()].sort((a, b) => a.queueLineId - b.queueLineId),
     };
@@ -571,6 +572,7 @@ export async function writeQueueDayFile(
     date,
     generated_at: generatedAt,
     ...(catalog?.groupBy === "land" ? { groupBy: "land" } : {}),
+    ...(catalog?.groupDims ? { groupDims: catalog.groupDims } : {}),
     ...(window ? { open: window.open, close: window.close } : {}),
     rides: ridesOut,
   });
@@ -586,6 +588,7 @@ interface QueueDayRide {
   name: string;
   category?: number;
   group?: string;
+  groups?: Record<string, string>;
   named: boolean;
   lines: QueueLineOut[];
 }
@@ -632,6 +635,7 @@ export async function appendQueueDayFile(
         name: meta?.name ?? `Ride ${d.rideId}`,
         ...(meta?.category != null ? { category: meta.category } : {}),
         ...(meta?.group ? { group: meta.group } : {}),
+        ...(meta?.groups ? { groups: meta.groups } : {}),
         named: meta?.name != null,
         lines: [],
       };

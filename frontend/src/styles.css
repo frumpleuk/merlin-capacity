@@ -777,6 +777,8 @@ main.with-bar {
 .q-toolbar {
   display: flex;
   justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 8px 20px;
   margin: 6px 0 20px;
 }
 .q-sort {

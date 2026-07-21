@@ -1,6 +1,16 @@
 import { Unzip, UnzipInflate } from "fflate";
 import { ATTRACTIONS_API, USER_AGENT, type AttractionsConfig } from "./config";
 
+/** One grouping dimension a park offers for its rides. `by` picks the section
+ *  styling: "thrill" ranks thrill-first with per-tier tones; "land" ties all
+ *  groups under one neutral tone, alphabetical. A park with >1 dimension (e.g.
+ *  Paulton's: Thrill + Area) lets the UI toggle between them. */
+export interface GroupDim {
+  key: string; // stable id, also the key into RideMeta.groups
+  label: string; // shown on the toggle (e.g. "Thrill", "Area")
+  by: "thrill" | "land";
+}
+
 /** One ride's static metadata (from the content bundle's `Item` records). */
 export interface RideMeta {
   name: string;
@@ -11,6 +21,10 @@ export interface RideMeta {
    *  collection, or — for a park that leaves that empty (Legoland) — its themed
    *  land (e.g. "LEGO® City", "Kingdom of the Pharaohs"). See `buildCatalog`. */
   group?: string;
+  /** Group per grouping dimension (dim key → group name), when the park offers
+   *  more than one grouping (see `RideCatalog.groupDims`). Paulton's carries
+   *  both {thrill, area}; single-grouping parks use `group` instead. */
+  groups?: Record<string, string>;
 }
 
 /** The static join tables we keep from a park's content bundle: ride names and
@@ -22,6 +36,9 @@ export interface RideCatalog {
    *  themed land (Legoland — see `buildCatalog`). Drives section tone/order in
    *  the UI, since land sections aren't a thrill ranking. */
   groupBy: "thrill" | "land";
+  /** Grouping dimensions the park offers, when it has more than one (Paulton's:
+   *  Thrill + Area). Absent = single grouping via `groupBy` + `RideMeta.group`. */
+  groupDims?: GroupDim[];
   items: Record<string, RideMeta>; // Item._id → meta (rides only)
   queueLines: Record<string, { item: number; type: string }>; // QueueLine._id → {ride, type}
 }

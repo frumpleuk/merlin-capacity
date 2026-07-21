@@ -125,3 +125,14 @@ ran-today-then-closed ride reads "Closed", not "Closed all day". Everything else
 D1 `queue_observation`, day-file generation, the Queues tab — is reused unchanged.
 Paulton's rides the existing every-minute queue cron and is excluded from the
 Attractions.io catalog cron.
+
+**Grouping.** The queue API carries only ids + names, so ride grouping is EMBEDDED
+in `src/paultons-groups.ts`, extracted from the app's bundled
+`points_of_interest.json` (joined to the queue `rideId` via the POI `orms_id`).
+Two dimensions: **thrill** (`filter_tags` → Little Ones / Family Rides / Thrill
+Rides, 37/42 rides) and **themed area** (`category_tags` → Peppa Pig World /
+Tornado Springs / Lost Kingdom / Critter Creek, 27/42). Both ride on the generic
+`RideCatalog.groupDims` + `RideMeta.groups` model (backward-compatible — the Merlin
+parks keep their single `group`), and the Queues tab shows a Group toggle when a
+file has >1 dimension. Refresh the mapping by re-reading the POI DB from a newer
+APK; a new/untagged ride simply falls to "Other".

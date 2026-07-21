@@ -1,5 +1,5 @@
 import { useMemo, useRef, useState } from "react";
-import type { QueueDayFile, QueueLineSeries, QueueRide, QueueSample } from "./api";
+import type { GroupDim, QueueDayFile, QueueLineSeries, QueueRide, QueueSample } from "./api";
 import { longDate } from "./Heatmap";
 
 /* ── Time helpers ──────────────────────────────────────────────────────────────
@@ -634,18 +634,20 @@ function sectionsOf(
   rides: QueueRide[],
   sort: SortMode,
   dir: SortDir,
+  groupOf: (ride: QueueRide) => string | undefined,
   byLand: boolean,
 ): Section[] {
   const map = new Map<string, Section>();
   for (const ride of rides) {
     const unidentified = ride.named === false;
-    const key = unidentified ? "__unidentified" : ride.group ?? "__other";
-    const title = unidentified ? "Unidentified" : ride.group ?? "Other";
+    const group = groupOf(ride);
+    const key = unidentified ? "__unidentified" : group ?? "__other";
+    const title = unidentified ? "Unidentified" : group ?? "Other";
     let sec = map.get(key);
     if (!sec)
       map.set(
         key,
-        (sec = { key, title, ...sectionMeta(ride.group, unidentified, byLand), rides: [] }),
+        (sec = { key, title, ...sectionMeta(group, unidentified, byLand), rides: [] }),
       );
     sec.rides.push(ride);
   }
@@ -682,10 +684,26 @@ export function QueueList({
   const [sort, setSort] = useState<SortMode>("now");
   const [dir, setDir] = useState<SortDir>("desc");
   const [collapsed, setCollapsed] = useState<Set<string>>(new Set());
+  // Active grouping dimension key (parks offering >1 — Paulton's). null = the
+  // file's first dimension / its single legacy `group`.
+  const [groupKey, setGroupKey] = useState<string | null>(null);
+
+  // The grouping dimensions this file offers (multi-dim parks), or none.
+  const dims: GroupDim[] | null = file?.groupDims?.length ? file.groupDims : null;
+  const activeDim: GroupDim | null = dims
+    ? dims.find((d) => d.key === groupKey) ?? dims[0]
+    : null;
 
   const sections = useMemo(
-    () => sectionsOf(file?.rides ?? [], sort, dir, file?.groupBy === "land"),
-    [file, sort, dir],
+    () =>
+      sectionsOf(
+        file?.rides ?? [],
+        sort,
+        dir,
+        activeDim ? (r) => r.groups?.[activeDim.key] : (r) => r.group,
+        activeDim ? activeDim.by === "land" : file?.groupBy === "land",
+      ),
+    [file, sort, dir, activeDim],
   );
 
   // Click a sort: switch to it (its natural direction), or flip if already active.
@@ -755,6 +773,21 @@ export function QueueList({
             </button>
           ))}
         </div>
+        {dims && dims.length > 1 && (
+          <div className="q-sort" role="group" aria-label="Group rides">
+            <span className="q-sort-label">Group</span>
+            {dims.map((d) => (
+              <button
+                key={d.key}
+                className={"q-sort-btn" + (activeDim?.key === d.key ? " active" : "")}
+                onClick={() => setGroupKey(d.key)}
+                aria-pressed={activeDim?.key === d.key}
+              >
+                {d.label}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
       {!anyOpen && (
         <p className="q-hint">

@@ -543,6 +543,10 @@ export async function writeQueueDayFile(
       : [];
     for (const [qlIdStr, ql] of Object.entries(catalog.queueLines)) {
       const qlId = Number(qlIdStr);
+      // Only seed real, named rides. Lines whose Item isn't in the bundle are
+      // stale/soft-launch catalog artifacts ("Ride 12345"); don't fabricate
+      // closed entries for them — they still surface if they post live data.
+      if (!catalog.items[String(ql.item)]) continue;
       let lines = rides.get(ql.item);
       if (lines?.has(qlId)) continue; // already has real samples
       if (!lines) rides.set(ql.item, (lines = new Map()));

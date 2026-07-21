@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
-import { loadPollStatus, loadProduct, type PollStatus, type ProductFile } from "./api";
+import {
+  loadParkIndex,
+  loadPollStatus,
+  loadProduct,
+  loadProductRange,
+  type PollStatus,
+  type ProductFile,
+} from "./api";
 import { DEFAULT_PATH, findPark } from "./catalog";
 import { DetailBar, ProductCalendar } from "./Heatmap";
 import { UpdateMeta } from "./UpdateMeta";
@@ -23,8 +30,13 @@ export function CalendarPage() {
     setFile(undefined);
     let alive = true;
     const tick = async () => {
+      // Prefer the merged per-month files (history + forward); fall back to the
+      // forward-only file if the park index isn't available yet.
+      const index = await loadParkIndex(park!);
       const [f, s] = await Promise.all([
-        loadProduct(park!, product!),
+        index
+          ? loadProductRange(park!, product!, index)
+          : loadProduct(park!, product!),
         loadPollStatus(park!, product!),
       ]);
       if (alive) {

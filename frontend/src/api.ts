@@ -62,6 +62,46 @@ export async function loadProductMonth(
   return Object.keys(f.days || {}).length > 0 ? f : null;
 }
 
+/** Inclusive list of 'YYYY-MM' months from `min` to `max`. */
+function monthsBetween(min: string, max: string): string[] {
+  const out: string[] = [];
+  let [y, m] = min.split("-").map(Number);
+  const [maxY, maxM] = max.split("-").map(Number);
+  while (y < maxY || (y === maxY && m <= maxM)) {
+    out.push(`${y}-${String(m).padStart(2, "0")}`);
+    if (++m > 12) {
+      m = 1;
+      y++;
+    }
+  }
+  return out;
+}
+
+/** A product's full history + forward window, merged from its per-month files
+ *  across the index range. The forward file (`loadProduct`) is today→+365 only,
+ *  so the heatmap uses this to also show past dates (frozen at their final
+ *  value). Month files are edge-cached, and past months are frozen, so this is
+ *  cheap to refetch. Returns null if no month in range has data. */
+export async function loadProductRange(
+  park: string,
+  product: string,
+  index: ParkIndex,
+): Promise<ProductFile | null> {
+  const files = await Promise.all(
+    monthsBetween(index.minMonth, index.maxMonth).map((m) =>
+      loadProductMonth(park, product, m),
+    ),
+  );
+  const days: Record<string, DayObs> = {};
+  let generated_at = "";
+  for (const f of files) {
+    if (!f) continue;
+    Object.assign(days, f.days);
+    if (f.generated_at > generated_at) generated_at = f.generated_at;
+  }
+  return Object.keys(days).length ? { park, product, generated_at, days } : null;
+}
+
 /** A park's opening hours for a single month ('YYYY-MM'). */
 export async function loadHoursMonth(
   park: string,

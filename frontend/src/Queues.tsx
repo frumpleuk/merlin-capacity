@@ -519,6 +519,9 @@ function RideRow({
   const ranToday = ride.lines.some((l) =>
     l.samples.some((s) => isRunning(s) || s[1] != null),
   );
+  // A ride that never ran but is still scheduled to open shows the park's own
+  // notice ("Scheduled to open at 11:00") in place of a bald "Closed all day".
+  const notice = ranToday ? null : ride.lines.map((l) => l.scheduledOpen).find(Boolean);
 
   return (
     <div className={"q-row" + (open ? " open" : "")}>
@@ -532,7 +535,9 @@ function RideRow({
               <span className="q-unit">min</span>
             </>
           ) : (
-            <span className="q-closed">{ranToday ? "Closed" : "Closed all day"}</span>
+            <span className="q-closed">
+              {ranToday ? "Closed" : notice ?? "Closed all day"}
+            </span>
           )}
         </span>
         <span className="q-peak">{peak > 0 ? `peak ${peak}` : "—"}</span>

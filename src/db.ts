@@ -420,6 +420,7 @@ interface QueueRow {
   queue_line_id: number;
   line_type: string | null;
   queue_time: number | null;
+  status: string | null;
   is_open: number;
   is_operational: number;
   observed_at: string;
@@ -437,7 +438,7 @@ async function readQueueDay(
     .slice(0, 10);
   const { results } = await db
     .prepare(
-      `SELECT ride_id, queue_line_id, line_type, queue_time, is_open, is_operational, observed_at
+      `SELECT ride_id, queue_line_id, line_type, queue_time, status, is_open, is_operational, observed_at
          FROM queue_observation
         WHERE park = ? AND observed_at >= ? AND observed_at < ?
         ORDER BY observed_at ASC`,
@@ -462,6 +463,22 @@ const labelForType = (type: string | null): string => {
   );
 };
 
+/**
+ * A `QueueStatusMessage` that promises a *future* opening ("Scheduled to open at
+ * 11:00"), as opposed to the post-close churn ("BACK SOON"/"CLOSED"/null) we
+ * otherwise ignore entirely (see `diffQueues`). Returns the park's own notice
+ * (so a closed-but-scheduled ride can show it instead of a bald "Closed all
+ * day"), or null for everything else. Deliberately narrow: only this phrasing
+ * counts, so ordinary status cycling still produces no deltas and "last change"
+ * doesn't tick after close. Shared by `diffQueues` (what to log) and the day-file
+ * projection (what to surface).
+ */
+export function scheduledOpen(status: string | null): string | null {
+  if (!status) return null;
+  const s = status.trim();
+  return /scheduled to open|opens?\s+(at|from)|opening\s+at/i.test(s) ? s : null;
+}
+
 /** One queue line in a day file: the day's samples as compact tuples. */
 interface QueueLineOut {
   queueLineId: number;
@@ -469,6 +486,10 @@ interface QueueLineOut {
   label: string;
   // [minsSinceUtcMidnight, wait|null, open 0/1, operational 0/1]
   samples: [number, number | null, 0 | 1, 0 | 1][];
+  // The park's own "opens at …" notice, as of the latest sample today — set only
+  // while one is in effect, so a never-ran ride reads as "Scheduled to open at
+  // 11:00" rather than "Closed all day". Dropped once the notice is withdrawn.
+  scheduledOpen?: string;
 }
 
 /**
@@ -523,6 +544,10 @@ export async function writeQueueDayFile(
     }
     const mins = Math.floor((Date.parse(r.observed_at) - dayStart) / 60_000);
     line.samples.push([mins, r.queue_time, r.is_open ? 1 : 0, r.is_operational ? 1 : 0]);
+    // Rows arrive oldest-first, so the last one to touch a line sets the notice;
+    // a withdrawal (status back to plain "Closed") clears it. undefined is dropped
+    // by JSON.stringify, so the field only appears while a notice is in effect.
+    line.scheduledOpen = scheduledOpen(r.status) ?? undefined;
   }
 
   // Include catalog lines that produced no observation today. Delta-only logging
@@ -654,6 +679,11 @@ export async function appendQueueDayFile(
       ride.lines.sort((a, b) => a.queueLineId - b.queueLineId);
     }
     line.samples.push([mins, d.queueTime, d.isOpen ? 1 : 0, d.isOperational ? 1 : 0]);
+    // Keep the "opens at …" notice in step with the full rebuild: set it while a
+    // scheduled-open status is posted, drop it once withdrawn.
+    const so = scheduledOpen(d.status);
+    if (so) line.scheduledOpen = so;
+    else delete line.scheduledOpen;
   }
 
   file.generated_at = generatedAt;

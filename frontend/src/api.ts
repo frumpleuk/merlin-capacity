@@ -141,6 +141,9 @@ export interface QueueLineSeries {
   type: string | null;
   label: string; // "Main", "Single Rider", …
   samples: QueueSample[];
+  // The park's own "opens at …" notice, in effect as of the latest sample — set
+  // only on a closed ride still scheduled to open (see the backend projection).
+  scheduledOpen?: string;
 }
 
 /** One grouping dimension a park offers (see QueueDayFile.groupDims). */

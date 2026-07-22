@@ -10,6 +10,7 @@ import {
   appendQueueDeltas,
   logPoll,
   readQueueLatest,
+  scheduledOpen,
   updatePollStatus,
   updateQueueIndex,
   writeQueueDayFile,
@@ -205,12 +206,23 @@ const running = (o: QueueObs): boolean => o.isOpen && o.isOperational;
  * flip to `operational=0`, and status cycles "BACK SOON"/"CLOSED"/null. Neither
  * changes the running state or anything we display, so counting them added
  * meaningless deltas and kept "last change" ticking long after everything shut.
+ *
+ * The one exception is a *scheduled-open* notice ("Scheduled to open at 11:00"):
+ * `scheduledOpen` picks it out of the churn, and we log its appearance/withdrawal
+ * so a closed-but-scheduled ride shows the park's own time instead of reading as
+ * "Closed all day" all morning. It fires a bounded number of times (posted once,
+ * withdrawn once), not the endless cycling above.
  */
 export function diffQueues(prev: QueueSnapshot, next: QueueSnapshot): QueueObs[] {
   const deltas: QueueObs[] = [];
   for (const [key, n] of Object.entries(next)) {
     const p = prev[key];
-    if (!p || p.queueTime !== n.queueTime || running(p) !== running(n)) {
+    if (
+      !p ||
+      p.queueTime !== n.queueTime ||
+      running(p) !== running(n) ||
+      scheduledOpen(p.status) !== scheduledOpen(n.status)
+    ) {
       deltas.push(n);
     }
   }

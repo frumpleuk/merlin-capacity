@@ -1,5 +1,6 @@
 import { useMemo, useRef, useState } from "react";
 import type { GroupDim, QueueDayFile, QueueLineSeries, QueueRide, QueueSample } from "./api";
+import { findPark } from "./catalog";
 import { longDate } from "./Heatmap";
 
 /* ── Time helpers ──────────────────────────────────────────────────────────────
@@ -98,8 +99,16 @@ type LinePoint = { t: number; w: number; closed: boolean };
  * samples pin to the baseline and carry `closed` so they render in the closed
  * colour. A ride closed all day is all baseline (so it clearly reads as closed).
  */
-function linePoints(samples: QueueSample[]): LinePoint[] {
+function linePoints(samples: QueueSample[], domainStart?: number): LinePoint[] {
   const pts: LinePoint[] = [];
+  // Rides start the day closed (park shut overnight), but delta logging records
+  // only the open transition — nothing exists before it. Seed a closed point at
+  // the window start so every line reads as closed from the graph's start until
+  // the ride actually opened, rather than being blank. Skipped when a real sample
+  // already sits at or before the window start (keeps the points time-ordered).
+  if (domainStart != null && (samples.length === 0 || samples[0][0] > domainStart)) {
+    pts.push({ t: domainStart, w: CLOSED_WAIT, closed: true });
+  }
   let lastW: number | null = null;
   for (const s of samples) {
     if (isRunning(s)) {
@@ -129,8 +138,9 @@ function lineGeometry(
   x: (t: number) => number,
   y: (w: number) => number,
   asOf?: number,
+  domainStart?: number,
 ): { d: string; closedD: string; dots: { cx: number; cy: number; closed: boolean }[] } {
-  const pts = linePoints(samples);
+  const pts = linePoints(samples, domainStart);
   if (pts.length === 0) return { d: "", closedD: "", dots: [] };
 
   const lastT = pts[pts.length - 1].t;
@@ -177,6 +187,7 @@ function LineMarks({
   width,
   dotWidth,
   asOf,
+  domainStart,
 }: {
   samples: QueueSample[];
   x: (t: number) => number;
@@ -186,8 +197,9 @@ function LineMarks({
   width: number;
   dotWidth: number;
   asOf?: number;
+  domainStart?: number;
 }) {
-  const { d, closedD, dots } = lineGeometry(samples, x, y, asOf);
+  const { d, closedD, dots } = lineGeometry(samples, x, y, asOf, domainStart);
   return (
     <>
       {d && (
@@ -274,6 +286,7 @@ function Sparkline({
           width={2}
           dotWidth={5}
           asOf={asOf}
+          domainStart={t0}
         />
       ))}
     </svg>
@@ -444,6 +457,7 @@ function RideChart({
               width={2}
               dotWidth={7}
               asOf={asOf}
+              domainStart={t0}
             />
           ))}
         </g>
@@ -496,6 +510,7 @@ function RideRow({
   yMax,
   date,
   asOf,
+  liveClosed,
   open,
   onToggle,
 }: {
@@ -504,24 +519,24 @@ function RideRow({
   yMax: number;
   date: string;
   asOf?: number;
+  liveClosed: boolean;
   open: boolean;
   onToggle: () => void;
 }) {
   const main = ride.lines[0];
   const stats = main ? lineStats(main) : { current: null, peak: 0 };
   const peak = ridePeak(ride);
-  // Never ran today → "Closed all day". "Ran today" = any running sample, OR any
-  // sample that carries a posted wait even though currently closed (Paulton's
-  // feed keeps a ride's last-known wait after it shuts — a closed row with a
-  // reading still means it operated today; Attractions.io nulls the wait when
-  // closed, so its closed-all-day rides — seeded with empty samples — are
-  // unaffected).
+  // "Ran today" = any running sample, OR any sample carrying a posted wait while
+  // closed (Paulton's keeps a ride's last-known wait after it shuts). Drives the
+  // "Closed" vs "Closed all day" fallback for feeds that don't report an
+  // authoritative current state (Attractions.io, Paulton's).
   const ranToday = ride.lines.some((l) =>
     l.samples.some((s) => isRunning(s) || s[1] != null),
   );
-  // A ride that never ran but is still scheduled to open shows the park's own
-  // notice ("Scheduled to open at 11:00") in place of a bald "Closed all day".
-  const notice = ranToday ? null : ride.lines.map((l) => l.scheduledOpen).find(Boolean);
+  // The park's own closed notice, as of the latest sample — a scheduled opening
+  // ("Scheduled to open at 11:00") or a closure reason ("Under maintenance",
+  // "Closed all day"). Shown in place of the derived label whenever in effect.
+  const note = ride.lines.map((l) => l.closedNote).find(Boolean) ?? null;
 
   return (
     <div className={"q-row" + (open ? " open" : "")}>
@@ -536,7 +551,7 @@ function RideRow({
             </>
           ) : (
             <span className="q-closed">
-              {ranToday ? "Closed" : notice ?? "Closed all day"}
+              {note ?? (liveClosed || ranToday ? "Closed" : "Closed all day")}
             </span>
           )}
         </span>
@@ -699,6 +714,10 @@ export function QueueList({
     ? dims.find((d) => d.key === groupKey) ?? dims[0]
     : null;
 
+  // Feed-authoritative parks (Flamingo Land) report current open/closed state, so
+  // a closed ride reads "Closed" rather than a history-derived "Closed all day".
+  const liveClosed = !!(file && findPark(file.park)?.liveClosed);
+
   const sections = useMemo(
     () =>
       sectionsOf(
@@ -743,7 +762,7 @@ export function QueueList({
       file?.open != null && file.close != null
         ? [file.open - OPEN_BUFFER, file.close + OPEN_BUFFER]
         : lo < hi
-          ? [lo, hi]
+          ? [lo - OPEN_BUFFER, hi + OPEN_BUFFER] // no park hours (Flamingo Land) → span ± buffer
           : [9 * 60, 18 * 60];
     return { domain: dom, yMax: Math.max(10, max) };
   }, [file]);
@@ -836,6 +855,7 @@ export function QueueList({
                     yMax={yMax}
                     date={date}
                     asOf={asOf}
+                    liveClosed={liveClosed}
                     open={openId === ride.id}
                     onToggle={() => setOpenId((cur) => (cur === ride.id ? null : ride.id))}
                   />

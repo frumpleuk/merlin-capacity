@@ -290,15 +290,30 @@ export async function fetchFirebaseQueues(
     // otherwise — matching Paulton's and the Attractions.io feed (`queue_time`
     // lingers with a stale value when closed). One synthetic "main" line per
     // ride, keyed by the ride id (globally unique).
+    const maint = asBool(f.underMaintenance);
+    const down = asBool(f.downAllDay);
     const isOpen = asBool(f.statusOpen);
-    const isOperational = !asBool(f.underMaintenance) && !asBool(f.downAllDay);
+    const isOperational = !maint && !down;
     const running = isOpen && isOperational;
+    // The feed reports authoritative current state, so a closed ride carries a
+    // reason: `downAllDay` → "Closed all day" (the park's own all-day-closure
+    // signal), `underMaintenance` → "Under maintenance". Surfaced downstream via
+    // `closedNote` (db.ts) so the row shows the reason instead of a derived
+    // "Closed all day". A merely-closed ride (neither flag) has no note and reads
+    // as "Closed" — see the `liveClosed` park flag in the frontend catalog.
+    const status = isOpen
+      ? null
+      : down
+        ? "Closed all day"
+        : maint
+          ? "Under maintenance"
+          : null;
     const obs: QueueObs = {
       rideId,
       queueLineId: rideId,
       lineType: "physical_main",
       queueTime: running ? asInt(f.queue_time) : null,
-      status: null,
+      status,
       isOpen,
       isOperational,
     };

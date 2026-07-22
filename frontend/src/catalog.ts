@@ -14,6 +14,13 @@ export interface ParkDef {
   /** Queue-only park (Paulton's): no accesso tickets/calendar, only the live
    *  ride-queue times. The nav shows just the Queues tab and lands there. */
   queueOnly?: boolean;
+  /** The park's feed reports authoritative current open/closed state per ride
+   *  (Flamingo Land's Firestore), so a closed ride reads "Closed" now rather than
+   *  the history-derived "Closed all day" — that label is reserved for the feed's
+   *  own `downAllDay` signal, which arrives as a `closedNote`. Parks without this
+   *  (Attractions.io, Paulton's) keep the "never ran today → Closed all day"
+   *  heuristic. */
+  liveClosed?: boolean;
 }
 
 // Only list products the poller actually captures. Main tickets for the
@@ -63,10 +70,13 @@ export const PARKS: ParkDef[] = [
   },
   {
     // Independent park (North Yorkshire) — queue times only, no accesso tickets.
+    // Its Firestore feed reports authoritative per-ride open/closed state, so a
+    // closed ride is "Closed" (not history-derived "Closed all day").
     key: "flamingoland",
     label: "Flamingo Land",
     products: [],
     queueOnly: true,
+    liveClosed: true,
   },
 ];
 

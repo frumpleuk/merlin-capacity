@@ -8,9 +8,9 @@ import {
 import {
   appendQueueDayFile,
   appendQueueDeltas,
+  closedNote,
   logPoll,
   readQueueLatest,
-  scheduledOpen,
   updatePollStatus,
   updateQueueIndex,
   writeQueueDayFile,
@@ -207,11 +207,12 @@ const running = (o: QueueObs): boolean => o.isOpen && o.isOperational;
  * changes the running state or anything we display, so counting them added
  * meaningless deltas and kept "last change" ticking long after everything shut.
  *
- * The one exception is a *scheduled-open* notice ("Scheduled to open at 11:00"):
- * `scheduledOpen` picks it out of the churn, and we log its appearance/withdrawal
- * so a closed-but-scheduled ride shows the park's own time instead of reading as
- * "Closed all day" all morning. It fires a bounded number of times (posted once,
- * withdrawn once), not the endless cycling above.
+ * The one exception is a meaningful closed notice — a *scheduled-open* message
+ * ("Scheduled to open at 11:00") or a closure reason ("Under maintenance",
+ * "Closed all day"): `closedNote` picks it out of the churn, and we log its
+ * appearance/withdrawal so a closed ride shows the park's own reason instead of
+ * reading as "Closed all day" all morning. It fires a bounded number of times
+ * (posted once, withdrawn once), not the endless cycling above.
  */
 export function diffQueues(prev: QueueSnapshot, next: QueueSnapshot): QueueObs[] {
   const deltas: QueueObs[] = [];
@@ -221,7 +222,7 @@ export function diffQueues(prev: QueueSnapshot, next: QueueSnapshot): QueueObs[]
       !p ||
       p.queueTime !== n.queueTime ||
       running(p) !== running(n) ||
-      scheduledOpen(p.status) !== scheduledOpen(n.status)
+      closedNote(p.status) !== closedNote(n.status)
     ) {
       deltas.push(n);
     }

@@ -464,19 +464,25 @@ const labelForType = (type: string | null): string => {
 };
 
 /**
- * A `QueueStatusMessage` that promises a *future* opening ("Scheduled to open at
- * 11:00"), as opposed to the post-close churn ("BACK SOON"/"CLOSED"/null) we
- * otherwise ignore entirely (see `diffQueues`). Returns the park's own notice
- * (so a closed-but-scheduled ride can show it instead of a bald "Closed all
- * day"), or null for everything else. Deliberately narrow: only this phrasing
- * counts, so ordinary status cycling still produces no deltas and "last change"
+ * A *meaningful* closed notice worth surfacing on a shut ride's row, as opposed
+ * to the post-close churn ("BACK SOON"/"CLOSED"/null) we otherwise ignore
+ * entirely (see `diffQueues`). Two sources feed this:
+ *   - Attractions.io `QueueStatusMessage`s that promise a future opening
+ *     ("Scheduled to open at 11:00");
+ *   - the reason strings Flamingo Land's `firestore` fetch synthesises from the
+ *     feed's own flags ("Under maintenance", "Closed all day").
+ * Returns the notice (so the row shows it instead of a bald derived "Closed all
+ * day"), or null for everything else. Deliberately narrow — only these phrasings
+ * count — so ordinary status cycling still produces no deltas and "last change"
  * doesn't tick after close. Shared by `diffQueues` (what to log) and the day-file
  * projection (what to surface).
  */
-export function scheduledOpen(status: string | null): string | null {
+export function closedNote(status: string | null): string | null {
   if (!status) return null;
   const s = status.trim();
-  return /scheduled to open|opens?\s+(at|from)|opening\s+at/i.test(s) ? s : null;
+  return /scheduled to open|opens?\s+(at|from)|opening\s+at|maintenance|closed all day/i.test(s)
+    ? s
+    : null;
 }
 
 /** One queue line in a day file: the day's samples as compact tuples. */
@@ -486,10 +492,11 @@ interface QueueLineOut {
   label: string;
   // [minsSinceUtcMidnight, wait|null, open 0/1, operational 0/1]
   samples: [number, number | null, 0 | 1, 0 | 1][];
-  // The park's own "opens at …" notice, as of the latest sample today — set only
-  // while one is in effect, so a never-ran ride reads as "Scheduled to open at
-  // 11:00" rather than "Closed all day". Dropped once the notice is withdrawn.
-  scheduledOpen?: string;
+  // The park's own closed notice, as of the latest sample today — a scheduled
+  // opening ("Scheduled to open at 11:00") or a closure reason ("Under
+  // maintenance", "Closed all day"). Set only while one is in effect, so the row
+  // shows it instead of a derived "Closed all day". Dropped once withdrawn.
+  closedNote?: string;
 }
 
 /**
@@ -547,7 +554,7 @@ export async function writeQueueDayFile(
     // Rows arrive oldest-first, so the last one to touch a line sets the notice;
     // a withdrawal (status back to plain "Closed") clears it. undefined is dropped
     // by JSON.stringify, so the field only appears while a notice is in effect.
-    line.scheduledOpen = scheduledOpen(r.status) ?? undefined;
+    line.closedNote = closedNote(r.status) ?? undefined;
   }
 
   // Include catalog lines that produced no observation today. Delta-only logging
@@ -679,11 +686,11 @@ export async function appendQueueDayFile(
       ride.lines.sort((a, b) => a.queueLineId - b.queueLineId);
     }
     line.samples.push([mins, d.queueTime, d.isOpen ? 1 : 0, d.isOperational ? 1 : 0]);
-    // Keep the "opens at …" notice in step with the full rebuild: set it while a
-    // scheduled-open status is posted, drop it once withdrawn.
-    const so = scheduledOpen(d.status);
-    if (so) line.scheduledOpen = so;
-    else delete line.scheduledOpen;
+    // Keep the closed notice in step with the full rebuild: set it while one is
+    // posted (scheduled-open, or a closure reason), drop it once withdrawn.
+    const note = closedNote(d.status);
+    if (note) line.closedNote = note;
+    else delete line.closedNote;
   }
 
   file.generated_at = generatedAt;

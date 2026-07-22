@@ -73,13 +73,14 @@ export const PARKS: ParkDef[] = [
     products: [{ key: "main", label: "Tickets" }],
   },
   {
-    // Independent park (North Yorkshire) — queue times only, no accesso tickets.
-    // Its Firestore feed reports authoritative per-ride open/closed state, so a
-    // closed ride is "Closed" (not history-derived "Closed all day").
+    // Independent park (North Yorkshire) — a calendar + queue park like Blackpool,
+    // not queueOnly: no accesso tickets, but a What's-On calendar (special events
+    // from The Events Calendar iCal feed — no opening hours) shows alongside live
+    // queues. Its Firestore feed reports authoritative per-ride open/closed state,
+    // so a closed ride is "Closed" (not history-derived "Closed all day").
     key: "flamingoland",
     label: "Flamingo Land",
     products: [],
-    queueOnly: true,
     liveClosed: true,
   },
   {

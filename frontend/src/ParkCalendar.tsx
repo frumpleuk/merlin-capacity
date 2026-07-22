@@ -110,6 +110,13 @@ function CellContent({ d }: { d: DayDetail }) {
           {getEventIcon(d.event)} {d.event}
         </div>
       )}
+      {/* Events-only park (no opening hours): flag the day's live lineup so the
+          cell reads as "open, with entertainment" even without a headline act. */}
+      {!tp?.hours && (d.hours?.events?.length ?? 0) > 0 && (
+        <div className="rc-line rc-shows">
+          🎭 {d.hours!.events!.length} event{d.hours!.events!.length === 1 ? "" : "s"}
+        </div>
+      )}
       {hasAllocation(d.main) &&
         (d.main.onSale === false ? (
           <div className="rc-line rc-avail rc-prebook" title={PREBOOK_NOTE}>
@@ -133,6 +140,7 @@ function CellContent({ d }: { d: DayDetail }) {
 
 function DayBody({ d }: { d: DayDetail }) {
   const locs = d.hours?.locations ?? [];
+  const events = d.hours?.events ?? [];
   return (
     <div className="rc-body">
       {locs.length > 0 ? (
@@ -146,12 +154,23 @@ function DayBody({ d }: { d: DayDetail }) {
             </span>
           </div>
         ))
-      ) : (
+      ) : events.length === 0 ? (
         <div className="rc-body-loc rc-muted">No opening hours</div>
-      )}
+      ) : null}
       {d.event && (
         <div className="rc-body-event">
           {getEventIcon(d.event)} {d.event}
+        </div>
+      )}
+      {/* Full What's-On lineup for the day (Flamingo Land) — time + name. */}
+      {events.length > 0 && (
+        <div className="rc-body-events">
+          {events.map((e, i) => (
+            <div key={`${e.name}-${i}`} className="rc-body-event-row">
+              <span className="rc-body-event-time">{e.time ?? "All day"}</span>
+              <span className="rc-body-event-name">{e.name}</span>
+            </div>
+          ))}
         </div>
       )}
       {hasAllocation(d.main) && <AvailRow label="🎟️ Main tickets" o={d.main} />}

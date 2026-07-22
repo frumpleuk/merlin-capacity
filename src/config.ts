@@ -122,7 +122,11 @@ export interface OpeningHoursLocation {
  *    `times` array (`{open,closed,dates[]}`, 24h local) and a date-range
  *    `special-events` array (unix-second start/end + name). Unauthenticated
  *    nginx, no header gotchas. Powers both the hours calendar AND the queue
- *    sparkline's opening-window x-axis (fetchPaultonsWindow in queues.ts). */
+ *    sparkline's opening-window x-axis (fetchPaultonsWindow in queues.ts).
+ *  - `flamingoland`: no opening-hours feed exists, so this falls back to special
+ *    events — The Events Calendar (Tribe) plugin's public iCal feed, paged into a
+ *    rolling What's-On calendar (no per-day hours, just a `DayEvent` lineup +
+ *    headline). See docs/flamingoland-calendar.md. */
 export type OpeningHoursConfig =
   | {
       kind: "accesso";
@@ -144,6 +148,18 @@ export type OpeningHoursConfig =
       eventsUrl: string;
       /** Display name for the single themepark location row. */
       locationName: string;
+    }
+  | {
+      kind: "flamingoland";
+      /** The Events Calendar iCal list endpoint (`tribe-bar-date` + `ical=1` are
+       *  appended per page). No opening-hours feed exists, so this drives a
+       *  What's-On calendar instead. See docs/flamingoland-calendar.md. */
+      icalUrl: string;
+      /** How many days ahead to try to cover (rolling window). Default 15. */
+      windowDays?: number;
+      /** Max iCal pages per poll — a subrequest backstop (30 events/page, dense
+       *  daily schedule). Default 14. */
+      maxPages?: number;
     };
 
 /** How to find a product's packages in the bootstrap catalog, in place of a
@@ -398,16 +414,26 @@ export const PARKS: ParkConfig[] = [
     ],
   },
   {
-    // Flamingo Land (North Yorkshire) — INDEPENDENT, not Merlin. Queue-only,
-    // like Paulton's: no accesso backend, no marketing-site hours, no ticket
-    // products. Its Capacitor guest app reads live waits from a Firebase Cloud
-    // Firestore collection (`rides_data`), one doc per ride with `queue_time`
-    // (whole minutes) + `statusOpen`. Firestore reads need a Firebase ID token;
-    // the app enables anonymous auth, so we mint one anonymous user with the
-    // app-embedded web apiKey and reuse it (cached/refreshed in R2). Ride names
-    // are inline, so — like Paulton's — the catalog is synthesised inline during
-    // the queue poll (no content bundle / catalog cron). See docs/flamingoland-api.md.
+    // Flamingo Land (North Yorkshire) — INDEPENDENT, not Merlin. A calendar +
+    // queue park (like Blackpool): no accesso backend and no ticket products, but
+    // it has both a live queue feed AND a What's-On calendar.
+    //  - Queues: its Capacitor guest app reads live waits from a Firebase Cloud
+    //    Firestore collection (`rides_data`), one doc per ride with `queue_time`
+    //    (whole minutes) + `statusOpen`. Firestore reads need a Firebase ID token;
+    //    the app enables anonymous auth, so we mint one anonymous user with the
+    //    app-embedded web apiKey and reuse it (cached/refreshed in R2). Ride names
+    //    are inline, so the catalog is synthesised inline during the queue poll (no
+    //    content bundle / catalog cron). See docs/flamingoland-api.md.
+    //  - Calendar: no opening-hours feed exists (the marketing site shows only a
+    //    manually-edited "today" blurb, and Firestore has no calendar collection).
+    //    Falling back to special events, it runs The Events Calendar (Tribe) plugin,
+    //    whose public iCal feed we page through into a rolling What's-On calendar
+    //    (headline act per day + full lineup). See docs/flamingoland-calendar.md.
     key: "flamingoland",
+    openingHours: {
+      kind: "flamingoland",
+      icalUrl: "https://www.flamingoland.co.uk/holiday-resort/entertainment-guide/list/",
+    },
     queue: {
       kind: "firestore",
       projectId: "flamingo-land-app",

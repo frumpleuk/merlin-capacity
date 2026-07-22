@@ -304,6 +304,11 @@ main.with-bar {
   color: #e67e22;
   font-weight: 600;
 }
+/* Events-only day (Flamingo Land What's-On): the live-lineup count line. */
+.rc-shows {
+  color: var(--muted);
+  font-weight: 500;
+}
 .rc-avail {
   font-weight: 600;
   font-variant-numeric: tabular-nums;
@@ -348,6 +353,28 @@ main.with-bar {
 .rc-body-event {
   color: #e67e22;
   font-weight: 600;
+}
+/* Full What's-On lineup (Flamingo Land): a time-gutter list of the day's events. */
+.rc-body-events {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 2px;
+}
+.rc-body-event-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 12.5px;
+}
+.rc-body-event-time {
+  flex: none;
+  width: 92px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.rc-body-event-name {
+  min-width: 0;
 }
 .rc-body-avail {
   font-variant-numeric: tabular-nums;

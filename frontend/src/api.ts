@@ -38,9 +38,19 @@ export interface LocationHours {
   event?: string;
 }
 
+/** One happening in a What's-On park's day lineup (Flamingo Land). `time` is a
+ *  display range ("4pm - 11pm") or a single time, absent for all-day; `category`
+ *  is the salient Tribe category. */
+export interface DayEvent {
+  name: string;
+  time?: string;
+  category?: string;
+}
+
 export interface HoursDay {
   locations: LocationHours[];
-  event?: string; // the themepark's special event, bubbled up for the whole day
+  event?: string; // the themepark's special event (or headline act), for the whole day
+  events?: DayEvent[]; // full day lineup for an events-only park (no opening hours)
 }
 
 export interface HoursFile {

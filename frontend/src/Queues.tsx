@@ -689,6 +689,9 @@ const SORTS: { key: SortMode; label: string }[] = [
   { key: "name", label: "A–Z" },
 ];
 
+/** The "no grouping" option — one flat list, so a sort spans the whole park. */
+const NO_GROUP = "__none";
+
 export function QueueList({
   file,
   date,
@@ -704,31 +707,67 @@ export function QueueList({
   const [sort, setSort] = useState<SortMode>("now");
   const [dir, setDir] = useState<SortDir>("desc");
   const [collapsed, setCollapsed] = useState<Set<string>>(new Set());
-  // Active grouping dimension key (parks offering >1 — Paulton's). null = the
-  // file's first dimension / its single legacy `group`.
+  // Active grouping key: a dimension key, the single-grouping sentinel, or
+  // NO_GROUP (flat list). null = the park's native default (first option).
   const [groupKey, setGroupKey] = useState<string | null>(null);
 
-  // The grouping dimensions this file offers (multi-dim parks), or none.
+  // The grouping dimensions this file offers (multi-dim parks — Paulton's,
+  // Flamingo Land), or none.
   const dims: GroupDim[] | null = file?.groupDims?.length ? file.groupDims : null;
-  const activeDim: GroupDim | null = dims
-    ? dims.find((d) => d.key === groupKey) ?? dims[0]
-    : null;
+  // Single-grouping parks (the Merlin parks, Legoland) group via each ride's own
+  // `group` rather than an explicit dimension list. Detect it so those parks get
+  // a Group control too — their one dimension plus "None".
+  const singleGroup = !dims && !!file?.rides.some((r) => r.group != null);
+
+  // Every grouping the user can pick: the park's own dimension(s) first, then
+  // "None". A park with no grouping at all offers nothing (already a flat list).
+  const groupOptions: { key: string; label: string }[] = useMemo(() => {
+    const opts: { key: string; label: string }[] = dims
+      ? dims.map((d) => ({ key: d.key, label: d.label }))
+      : singleGroup
+        ? [{ key: "__group", label: file?.groupBy === "land" ? "Land" : "Thrill" }]
+        : [];
+    if (opts.length) opts.push({ key: NO_GROUP, label: "None" });
+    return opts;
+  }, [dims, singleGroup, file]);
+
+  // Resolve the active key (null, or a key from another park, → the native
+  // default), and whether we group. NO_GROUP is universal, so it stays selected
+  // across parks; a park-specific dimension key falls back when it doesn't apply.
+  const activeKey =
+    groupKey && groupOptions.some((o) => o.key === groupKey)
+      ? groupKey
+      : groupOptions[0]?.key ?? NO_GROUP;
+  const grouped = activeKey !== NO_GROUP;
+  const activeDim: GroupDim | null =
+    dims && grouped ? dims.find((d) => d.key === activeKey) ?? dims[0] : null;
 
   // Feed-authoritative parks (Flamingo Land) report current open/closed state, so
   // a closed ride reads "Closed" rather than a history-derived "Closed all day".
   const liveClosed = !!(file && findPark(file.park)?.liveClosed);
 
-  const sections = useMemo(
-    () =>
-      sectionsOf(
-        file?.rides ?? [],
-        sort,
-        dir,
-        activeDim ? (r) => r.groups?.[activeDim.key] : (r) => r.group,
-        activeDim ? activeDim.by === "land" : file?.groupBy === "land",
-      ),
-    [file, sort, dir, activeDim],
-  );
+  const sections = useMemo(() => {
+    const rides = file?.rides ?? [];
+    // Ungrouped: one headerless section holding every ride, so the sort spans the
+    // whole park rather than resetting within each group.
+    if (!grouped)
+      return [
+        {
+          key: "__all",
+          title: "",
+          rank: 0,
+          tone: "",
+          rides: [...rides].sort(rideComparator(sort, dir)),
+        },
+      ];
+    return sectionsOf(
+      rides,
+      sort,
+      dir,
+      activeDim ? (r) => r.groups?.[activeDim.key] : (r) => r.group,
+      activeDim ? activeDim.by === "land" : file?.groupBy === "land",
+    );
+  }, [file, sort, dir, activeDim, grouped]);
 
   // Click a sort: switch to it (its natural direction), or flip if already active.
   const onSort = (key: SortMode) => {
@@ -797,17 +836,17 @@ export function QueueList({
             </button>
           ))}
         </div>
-        {dims && dims.length > 1 && (
+        {groupOptions.length > 1 && (
           <div className="q-sort" role="group" aria-label="Group rides">
             <span className="q-sort-label">Group</span>
-            {dims.map((d) => (
+            {groupOptions.map((o) => (
               <button
-                key={d.key}
-                className={"q-sort-btn" + (activeDim?.key === d.key ? " active" : "")}
-                onClick={() => setGroupKey(d.key)}
-                aria-pressed={activeDim?.key === d.key}
+                key={o.key}
+                className={"q-sort-btn" + (activeKey === o.key ? " active" : "")}
+                onClick={() => setGroupKey(o.key)}
+                aria-pressed={activeKey === o.key}
               >
-                {d.label}
+                {o.label}
               </button>
             ))}
           </div>
@@ -825,26 +864,30 @@ export function QueueList({
         <span className="q-peak">Peak</span>
       </div>
       {sections.map((sec) => {
-        const isCollapsed = collapsed.has(sec.key);
+        // The ungrouped flat list is one headerless, always-open section.
+        const flat = sec.key === "__all";
+        const isCollapsed = !flat && collapsed.has(sec.key);
         return (
           <section key={sec.key} className="q-section" data-tone={sec.tone}>
-            <button
-              className="q-section-head"
-              onClick={() => toggleSection(sec.key)}
-              aria-expanded={!isCollapsed}
-            >
-              <span
-                className={"q-section-chevron" + (isCollapsed ? " collapsed" : "")}
-                aria-hidden="true"
-              />
-              <span className="q-section-dot" aria-hidden="true" />
-              <span className="q-section-title">
-                {sec.title} ({sec.rides.length})
-              </span>
-              {sec.key === "__unidentified" && (
-                <span className="q-section-note">not yet in the park’s ride list</span>
-              )}
-            </button>
+            {!flat && (
+              <button
+                className="q-section-head"
+                onClick={() => toggleSection(sec.key)}
+                aria-expanded={!isCollapsed}
+              >
+                <span
+                  className={"q-section-chevron" + (isCollapsed ? " collapsed" : "")}
+                  aria-hidden="true"
+                />
+                <span className="q-section-dot" aria-hidden="true" />
+                <span className="q-section-title">
+                  {sec.title} ({sec.rides.length})
+                </span>
+                {sec.key === "__unidentified" && (
+                  <span className="q-section-note">not yet in the park’s ride list</span>
+                )}
+              </button>
+            )}
             {!isCollapsed && (
               <div className="q-section-body">
                 {sec.rides.map((ride) => (

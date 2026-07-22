@@ -62,11 +62,15 @@ export const PARKS: ParkDef[] = [
     ],
   },
   {
-    // Independent park (Peppa Pig World) — queue times only, no accesso tickets.
+    // Independent park (Peppa Pig World) — a calendar + queue park (like
+    // Blackpool), not queueOnly. No accesso backend, but it publishes its own
+    // JSON: an opening-hours calendar (times + special events) AND day-ticket
+    // availability (the "main" heatmap). Its fos queue feed is last-known-state,
+    // so a closed ride keeps the "never ran today → Closed all day" heuristic
+    // (no liveClosed) — but the calendar's opening times now frame the sparkline.
     key: "paultons",
     label: "Paultons Park",
-    products: [],
-    queueOnly: true,
+    products: [{ key: "main", label: "Tickets" }],
   },
   {
     // Independent park (North Yorkshire) — queue times only, no accesso tickets.

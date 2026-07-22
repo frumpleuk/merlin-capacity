@@ -643,16 +643,26 @@ export async function appendQueueDayFile(
   deltas: QueueObs[],
   catalog: RideCatalog | null,
   generatedAt: string,
+  window?: { open: number; close: number },
 ): Promise<boolean> {
   const obj = await bucket.get(queueDayKey(park, date));
   if (!obj) return false;
-  let file: { rides: QueueDayRide[]; generated_at?: string };
+  let file: { rides: QueueDayRide[]; generated_at?: string; open?: number; close?: number };
   try {
     file = (await obj.json()) as typeof file;
   } catch {
     return false;
   }
   if (!Array.isArray(file.rides)) return false;
+
+  // Stamp the opening window if the file doesn't already carry one. The 30-min
+  // self-heal can create today's file (seeded closed rides) before any window is
+  // known — for Paulton's the window comes from a separate source, so fill it in
+  // here on the first delta rather than waiting for the next full rebuild.
+  if (window && file.open == null) {
+    file.open = window.open;
+    file.close = window.close;
+  }
 
   const dayStart = Date.parse(`${date}T00:00:00Z`);
   const mins = Math.floor((Date.parse(generatedAt) - dayStart) / 60_000);

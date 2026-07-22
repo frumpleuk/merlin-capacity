@@ -72,10 +72,18 @@ export interface HoursFetch {
 }
 
 /** Fetch and parse one park's opening-hours calendar into a snapshot. Dispatches
- *  by source: the Merlin `getcalendar` JSON API (`accesso`) or Blackpool's
- *  inline-`wn_dates` marketing-site scrape (`bpb`). */
+ *  by source: the Merlin `getcalendar` JSON API (`accesso`), Blackpool's
+ *  inline-`wn_dates` marketing-site scrape (`bpb`), or Paulton's two JSON blobs
+ *  (`paultons`). */
 export async function fetchHours(cfg: OpeningHoursConfig): Promise<HoursFetch> {
-  return cfg.kind === "bpb" ? fetchBpbHours(cfg) : fetchAccessoHours(cfg);
+  switch (cfg.kind) {
+    case "bpb":
+      return fetchBpbHours(cfg);
+    case "paultons":
+      return fetchPaultonsHours(cfg);
+    default:
+      return fetchAccessoHours(cfg);
+  }
 }
 
 /** The Merlin marketing sites' `getcalendar` JSON endpoint. */
@@ -214,6 +222,107 @@ async function fetchBpbHours(
     };
   }
   return { ok: true, httpStatus: resp.status, snapshot, datesSeen: Object.keys(snapshot).length };
+}
+
+/* ── Paulton's Park (two JSON blobs) ──────────────────────────────────────────── */
+
+interface PaultonsTimes {
+  open?: string; // "10:00" (24h local)
+  closed?: string; // "17:30"
+  dates?: string[]; // ["2026-07-22", …]
+}
+interface PaultonsEvent {
+  start?: string; // unix seconds (string)
+  end?: string;
+  name?: string;
+}
+
+/** "10:00" → "10am", "17:30" → "5:30pm", "10:30" → "10:30am" — matching the
+ *  Merlin/BPB hours style (":00" dropped, 12-hour with am/pm). */
+export function fmt24(hhmm: string): string {
+  const m = /^(\d{1,2}):(\d{2})$/.exec(hhmm.trim());
+  if (!m) return hhmm.trim();
+  const h = Number(m[1]);
+  const min = m[2];
+  const ampm = h < 12 ? "am" : "pm";
+  const h12 = h % 12 === 0 ? 12 : h % 12;
+  return min === "00" ? `${h12}${ampm}` : `${h12}:${min}${ampm}`;
+}
+
+const isoDay = (ms: number) => new Date(ms).toISOString().slice(0, 10);
+
+/**
+ * Paulton's opening calendar, assembled from two plain JSON blobs:
+ *   - `times`: `[{open,closed,dates[]}]` — each entry is one set of hours shared
+ *     by a list of dates. We expand it to one themepark location row per date.
+ *   - `special-events`: `[{start,end,name}]` — unix-second date RANGES. We badge
+ *     every open day inside a range with the event name (matching how the Merlin
+ *     `event` bubbles up per day). A range-only day with no `times` entry gets no
+ *     row (nothing to open), so events only ever decorate real operating days.
+ */
+async function fetchPaultonsHours(
+  cfg: Extract<OpeningHoursConfig, { kind: "paultons" }>,
+): Promise<HoursFetch> {
+  let timesResp: Response;
+  let eventsResp: Response;
+  try {
+    [timesResp, eventsResp] = await Promise.all([
+      fetch(cfg.timesUrl, { headers: { accept: "application/json", "user-agent": USER_AGENT } }),
+      fetch(cfg.eventsUrl, { headers: { accept: "application/json", "user-agent": USER_AGENT } }),
+    ]);
+  } catch {
+    return { ok: false, httpStatus: 0, snapshot: {}, datesSeen: 0 };
+  }
+  // Times is the source of truth for which days exist; events are decoration, so
+  // a failed events fetch just means no badges (don't fail the whole poll).
+  if (!timesResp.ok) return { ok: false, httpStatus: timesResp.status, snapshot: {}, datesSeen: 0 };
+
+  let times: PaultonsTimes[];
+  try {
+    times = (await timesResp.json()) as PaultonsTimes[];
+  } catch {
+    return { ok: false, httpStatus: timesResp.status, snapshot: {}, datesSeen: 0 };
+  }
+  if (!Array.isArray(times)) {
+    return { ok: false, httpStatus: timesResp.status, snapshot: {}, datesSeen: 0 };
+  }
+
+  const snapshot: HoursSnapshot = {};
+  for (const t of times) {
+    const open = (t.open ?? "").trim();
+    const closed = (t.closed ?? "").trim();
+    const hours = open && closed ? `${fmt24(open)} - ${fmt24(closed)}` : "";
+    for (const iso of t.dates ?? []) {
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(iso)) continue;
+      snapshot[iso] = {
+        locations: [{ kind: "themepark", name: cfg.locationName, hours }],
+      };
+    }
+  }
+
+  // Badge each open day that falls inside a special-event's date range.
+  let events: PaultonsEvent[] = [];
+  if (eventsResp.ok) {
+    try {
+      const parsed = (await eventsResp.json()) as PaultonsEvent[];
+      if (Array.isArray(parsed)) events = parsed;
+    } catch {
+      /* ignore — events are optional decoration */
+    }
+  }
+  for (const e of events) {
+    const start = Number(e.start);
+    const end = Number(e.end);
+    const name = (e.name ?? "").trim();
+    if (!name || !Number.isFinite(start) || !Number.isFinite(end) || end < start) continue;
+    // Walk day by day across the (inclusive) range; only tag days we actually open.
+    for (let ms = start * 1000; ms <= end * 1000; ms += 86_400_000) {
+      const day = snapshot[isoDay(ms)];
+      if (day) day.event = name;
+    }
+  }
+
+  return { ok: true, httpStatus: timesResp.status, snapshot, datesSeen: Object.keys(snapshot).length };
 }
 
 /** A stable content hash of the forward (today onward) hours + events, so the

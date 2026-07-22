@@ -74,6 +74,59 @@ function parseResortWindow(raw: string | null | undefined): ResortWindow | undef
   return { open, close };
 }
 
+/** One `times.json` entry (see hours.ts). */
+interface PaultonsTimesRow {
+  open?: string; // "10:00" (24h LOCAL)
+  closed?: string; // "17:30"
+  dates?: string[];
+}
+
+/**
+ * Paulton's opening window for a given day, as minutes since UTC midnight — the
+ * same axis the queue samples use, so it frames the sparkline exactly like the
+ * Attractions.io `Resort` window does for the Merlin parks. Unlike them, the fos
+ * queue feed carries no opening times, so we read them from Paulton's own
+ * `times.json` (the calendar's structured source). Returns undefined when the
+ * day isn't in the file (park closed) or the fetch fails — the caller then falls
+ * back to the captured-data span, exactly as before.
+ */
+export async function fetchPaultonsWindow(
+  timesUrl: string,
+  date: string,
+): Promise<ResortWindow | undefined> {
+  let resp: Response;
+  try {
+    resp = await fetch(timesUrl, {
+      headers: { accept: "application/json", "user-agent": USER_AGENT },
+    });
+  } catch {
+    return undefined;
+  }
+  if (!resp.ok) return undefined;
+
+  let rows: PaultonsTimesRow[];
+  try {
+    rows = (await resp.json()) as PaultonsTimesRow[];
+  } catch {
+    return undefined;
+  }
+  if (!Array.isArray(rows)) return undefined;
+
+  const row = rows.find((r) => Array.isArray(r.dates) && r.dates.includes(date));
+  if (!row?.open || !row?.closed) return undefined;
+
+  const offset = londonOffsetMin(date);
+  const toUtcMin = (hhmm: string): number | null => {
+    const m = /^(\d{1,2}):(\d{2})$/.exec(hhmm.trim());
+    if (!m) return null;
+    return Number(m[1]) * 60 + Number(m[2]) - offset;
+  };
+  const open = toUtcMin(row.open);
+  const close = toUtcMin(row.closed);
+  if (open == null || close == null || close <= open) return undefined;
+  return { open, close };
+}
+
 /** Live feed records. `Item` carries ride-level status (+ an overall wait);
  *  `QueueLine` carries the per-line wait. Both patch onto the static catalog. */
 interface LiveItem {
@@ -289,6 +342,17 @@ export async function runQueuePoll(
     if (changed > 0) {
       await appendQueueDeltas(env.DB, park.key, deltas, observedAt);
       await writeQueueLatest(env.BUCKET, park.key, res.snapshot, observedAt);
+      // The day's opening window frames the sparkline x-axis. Attractions.io
+      // parks carry it in the live feed (res.resort); Paulton's `fos` feed does
+      // NOT, so derive it from its own opening-hours times.json (small GET, only
+      // on a changed poll). Passing it to BOTH the append and the full-rebuild
+      // paths means the window lands even when the 30-min self-heal created a
+      // window-less file first (it's stamped only if missing — see db.ts).
+      const window =
+        res.resort ??
+        (park.openingHours?.kind === "paultons"
+          ? await fetchPaultonsWindow(park.openingHours.timesUrl, today)
+          : undefined);
       // Fold the deltas straight into the served day file (O(deltas)); only fall
       // back to the full D1 rebuild when there's no file yet (first poll of the
       // day). The 30-min self-heal still full-rebuilds from D1 to repair drift.
@@ -299,6 +363,7 @@ export async function runQueuePoll(
         deltas,
         catalog,
         observedAt,
+        window,
       );
       if (!appended) {
         await writeQueueDayFile(
@@ -308,7 +373,7 @@ export async function runQueuePoll(
           today,
           catalog,
           observedAt,
-          res.resort,
+          window,
         );
       }
       await updateQueueIndex(env.BUCKET, park.key, [today], observedAt);

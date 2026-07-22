@@ -10,7 +10,8 @@ import {
   writeProductFile,
 } from "./db";
 import { resolvePackages } from "./discover";
-import { diffSnapshots, fetchProduct } from "./merlin";
+import { diffSnapshots, type FetchResult, fetchProduct } from "./merlin";
+import { fetchPaultonsAvailability } from "./paultons";
 import type { Env } from "./types";
 
 const ymd = (ms: number) => new Date(ms).toISOString().slice(0, 10);
@@ -30,18 +31,25 @@ export async function runPoll(
   const start = ymd(now);
   const end = ymd(now + HORIZON_DAYS * 86_400_000);
 
-  // Resolve the packages to query — hardcoded (RAP) or rediscovered from the
-  // catalog (main). No packages means discovery couldn't produce a list and
-  // there's no cached fallback; log it and skip rather than sending an empty query.
-  const { P, anchorIds } = await resolvePackages(env.BUCKET, park, product, now);
-  if (P.length === 0) {
-    await logPoll(env.DB, park.key, product.key, 0, "NO_PACKAGES", 0, 0, observedAt);
-    await updatePollStatus(env.BUCKET, park.key, product.key, observedAt, false);
-    return 0;
-  }
-
   const prev = await readSnapshot(env.BUCKET, park.key, product.key);
-  const res = await fetchProduct(park, product, P, new Set(anchorIds), start, end);
+
+  let res: FetchResult;
+  if (product.availabilityUrl) {
+    // Independent (non-accesso) source: Paulton's static availability blob. Same
+    // FetchResult/Snapshot shape, so the diff/append/month-file path below is shared.
+    res = await fetchPaultonsAvailability(product.availabilityUrl, start, end);
+  } else {
+    // Resolve the packages to query — hardcoded (RAP) or rediscovered from the
+    // catalog (main). No packages means discovery couldn't produce a list and
+    // there's no cached fallback; log it and skip rather than sending an empty query.
+    const { P, anchorIds } = await resolvePackages(env.BUCKET, park, product, now);
+    if (P.length === 0) {
+      await logPoll(env.DB, park.key, product.key, 0, "NO_PACKAGES", 0, 0, observedAt);
+      await updatePollStatus(env.BUCKET, park.key, product.key, observedAt, false);
+      return 0;
+    }
+    res = await fetchProduct(park, product, P, new Set(anchorIds), start, end);
+  }
 
   let changed = 0;
   if (res.ok) {

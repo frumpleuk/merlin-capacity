@@ -117,7 +117,12 @@ export interface OpeningHoursLocation {
  *  - `bpb`: Blackpool's marketing site server-renders its whole forward calendar
  *    inline as a `wn_dates` JS array; we GET the page (behind Cloudflare —
  *    needs a full browser header set, see hours.ts) and parse it. Same shared
- *    `HoursSnapshot` output. See docs/blackpool-api.md §6. */
+ *    `HoursSnapshot` output. See docs/blackpool-api.md §6.
+ *  - `paultons`: Paulton's publishes its calendar as two plain JSON blobs — a
+ *    `times` array (`{open,closed,dates[]}`, 24h local) and a date-range
+ *    `special-events` array (unix-second start/end + name). Unauthenticated
+ *    nginx, no header gotchas. Powers both the hours calendar AND the queue
+ *    sparkline's opening-window x-axis (fetchPaultonsWindow in queues.ts). */
 export type OpeningHoursConfig =
   | {
       kind: "accesso";
@@ -128,6 +133,15 @@ export type OpeningHoursConfig =
       kind: "bpb";
       /** The opening-times page whose inline `wn_dates` array we scrape. */
       pageUrl: string;
+      /** Display name for the single themepark location row. */
+      locationName: string;
+    }
+  | {
+      kind: "paultons";
+      /** Structured opening times: `[{open,closed,dates[]}]` (24h local). */
+      timesUrl: string;
+      /** Date-range special events: `[{start,end,tag,name}]` (unix seconds). */
+      eventsUrl: string;
       /** Display name for the single themepark location row. */
       locationName: string;
     };
@@ -165,6 +179,12 @@ export interface ProductConfig {
   P?: unknown[];
   /** Or: rediscover the selectors from the catalog each TTL (main tickets). */
   discover?: DiscoverSpec;
+  /** Independent (non-accesso) availability source: a static JSON blob of
+   *  per-day capacity/availability (Paulton's `tickets/availability.json`). When
+   *  set, the poll fetches this instead of the accesso API — the accesso payload
+   *  fields (`extra_movie`/`include_times`/`P`/`discover`) are unused. Everything
+   *  downstream (D1 delta log, month files, heatmap) is reused unchanged. */
+  availabilityUrl?: string;
 }
 
 export interface ParkConfig {
@@ -344,18 +364,38 @@ export const PARKS: ParkConfig[] = [
   },
   {
     // Paulton's Park (home of Peppa Pig World) — INDEPENDENT, not Merlin. No
-    // accesso backend, so it's queue-only: no merchantId/origin/bootstrapSlug,
-    // no marketing-site hours, no ticket products. Its guest app pulls live
-    // queue times from First Option Software's custom backend (the `x-token` is
-    // the app-embedded static token). Names come inline with the feed, so unlike
-    // the Attractions.io parks there's no content bundle / catalog cron.
+    // accesso backend, but (like Blackpool) it's a full calendar + queue park:
+    //  - Hours + events: two plain JSON blobs on its own site (`kind:"paultons"`)
+    //    — a structured `times` array and a date-range `special-events` array.
+    //    These also frame the queue sparkline's opening-window x-axis.
+    //  - Availability: a static `tickets/availability.json` (per-day capacity /
+    //    remaining) drives the "main" heatmap via `availabilityUrl` — not accesso.
+    //  - Queues: First Option Software's custom backend (the `x-token` is the
+    //    app-embedded static token). Names come inline with the feed, so unlike
+    //    the Attractions.io parks there's no content bundle / catalog cron.
     key: "paultons",
+    openingHours: {
+      kind: "paultons",
+      timesUrl: "https://paultonspark.co.uk/info/opening-times/times.json",
+      eventsUrl: "https://paultonspark.co.uk/info/opening-times/special-events.json",
+      locationName: "Paultons Park",
+    },
     queue: {
       kind: "fos",
       apiUrl: "https://paultonsapp.firstoptionsoftware.com",
       token: "Nn2ibRudVbMVlAsp",
     },
-    products: [],
+    products: [
+      {
+        // Day-ticket availability from Paulton's own JSON blob (not accesso, so
+        // no P/discover). Same Snapshot model as the Merlin parks → same heatmap.
+        key: "main",
+        intervalMinutes: 5,
+        extra_movie: "",
+        include_times: false,
+        availabilityUrl: "https://paultonspark.co.uk/tickets/availability.json",
+      },
+    ],
   },
   {
     // Flamingo Land (North Yorkshire) — INDEPENDENT, not Merlin. Queue-only,

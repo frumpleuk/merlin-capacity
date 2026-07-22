@@ -1,12 +1,18 @@
-# Paulton's Park Queue-Times API — Reference
+# Paulton's Park API — Reference
 
-How the official **Paulton's Park** app (home of Peppa Pig World) exposes live
-ride queue times. Paulton's is an **independent** park — NOT Merlin — so this is
-a wholly different backend from the accesso ticketing (`docs/accesso-api.md`) and
-the Attractions.io live feed (`docs/attractions-io-api.md`) the Merlin parks use.
+How **Paulton's Park** (home of Peppa Pig World) exposes the three data streams
+this repo tracks: live **ride queue times** (from the official app's backend,
+§1–5) plus the **opening-hours calendar** and **day-ticket availability** (from
+plain JSON on the public website, §6). Paulton's is an **independent** park — NOT
+Merlin — so none of this is the accesso ticketing (`docs/accesso-api.md`),
+Attractions.io live feed (`docs/attractions-io-api.md`), or marketing-site
+`getcalendar` the Merlin parks use. Like Blackpool (`docs/blackpool-api.md`) it's
+a **full calendar + queue park**, but its calendar *and* capacity come from its
+own site rather than accesso.
 
-Facts below were obtained by decompiling the Android app
-(`thrillseeker.app.paultons`) and exercising the live endpoint.
+The queue facts (§1–5) were obtained by decompiling the Android app
+(`thrillseeker.app.paultons`) and exercising the live endpoint; the calendar and
+capacity blobs (§6) are the same JSON the paultonspark.co.uk site fetches itself.
 
 ---
 
@@ -93,8 +99,11 @@ static/live merge, and the ride **name is inline**:
 - **Defunct rides linger.** Rows with a months-old `updatedAt` (e.g. removed
   shows) still appear, `statusOpen:false`. They currently render as closed-all-day;
   a future refinement could filter by `updatedAt` freshness or a POI category.
-- **No park hours** in this feed (the Attractions.io feed carried a `Resort`
-  opening window). The sparkline x-axis falls back to the data span.
+- **No park hours in this feed** (the Attractions.io feed carried a `Resort`
+  opening window). We instead frame the sparkline x-axis with the day's real
+  opening times, read from the public `times.json` calendar (§6) — see
+  `fetchPaultonsWindow` in `src/queues.ts`. Before that was wired the axis fell
+  back to the captured-data span.
 - **Undocumented / private API.** None of this is published; the host, path, and
   token can change without notice. The token is an app-embedded client
   identifier, not an entitlement.
@@ -136,3 +145,113 @@ Tornado Springs / Lost Kingdom / Critter Creek, 27/42). Both ride on the generic
 parks keep their single `group`), and the Queues tab shows a Group toggle when a
 file has >1 dimension. Refresh the mapping by re-reading the POI DB from a newer
 APK; a new/untagged ride simply falls to "Other".
+
+---
+
+## 6. Opening-hours calendar & day-ticket capacity (public site JSON)
+
+Separate from the app's queue backend, the **paultonspark.co.uk** website fetches
+three static JSON files. All are **unauthenticated** and served by plain nginx
+(`server: nginx`) — **any User-Agent works, no Cloudflare / header gotchas** (the
+opposite of Blackpool). These give Paulton's a real opening-hours calendar AND an
+availability heatmap, so it's no longer queue-only.
+
+| File | Powers |
+|---|---|
+| `GET /info/opening-times/times.json` | Opening hours (calendar + queue sparkline window) |
+| `GET /info/opening-times/special-events.json` | Event badges on the calendar |
+| `GET /tickets/availability.json` | Day-ticket capacity heatmap (the "main" product) |
+
+### 6.1 `times.json` — opening hours
+
+A flat array; each entry is one set of hours shared by a list of dates (24-hour,
+**local** time). One entry per distinct open/close pair, not per date:
+
+```json
+[
+  { "open": "10:00", "closed": "17:30",
+    "dates": ["2026-07-15", "2026-07-16", "…"] },
+  { "open": "10:30", "closed": "16:00", "dates": ["2026-11-07", "2026-11-08"] }
+]
+```
+
+- Range observed: ~160 dates, today → ~6 months out (into early January).
+- A date **absent** from every entry = the park is closed that day (no row).
+- These local times drive two things: the calendar's `"10am - 5:30pm"` row, and
+  the queue sparkline's x-axis window (converted to minutes-since-UTC-midnight
+  via the London offset — BST 10:00 → 540, 17:30 → 990).
+
+### 6.2 `special-events.json` — event date ranges
+
+A flat array of **date ranges** (not per-day), timestamps as **unix seconds
+strings**:
+
+```json
+[
+  { "start": "1794052800", "end": "1795996799", "tag": "leaf",
+    "name": "November Reduced Rate Day - Selected Rides Open." }
+]
+```
+
+| Field | Meaning |
+|---|---|
+| `start` / `end` | Inclusive unix-second range the event spans. |
+| `tag` | A UI category/icon key (e.g. `"leaf"`); unused here. |
+| `name` | Human-readable event name → the calendar day-badge. |
+
+We badge every **open** day (i.e. present in `times.json`) that falls inside a
+range; a range-only day with no hours gets no row, so events only ever decorate
+real operating days.
+
+### 6.3 `availability.json` — day-ticket capacity
+
+An object with a `days` array, one entry per on-sale date:
+
+```json
+{ "days": [
+  { "sold_out": false, "suspended": false,
+    "date": "2026-07-22T00:00:00+01:00",
+    "availability": { "total": 3750, "available": 943 },
+    "performances": [
+      { "id": "PPK.EVN2.PRF3253", "sold_out": false, "sellable": true,
+        "availability": { "total": 3750, "available": 943 },
+        "start_date": "2026-07-22T07:00:00+00:00",
+        "end_date":   "2026-07-22T18:59:00+00:00" } ] }
+] }
+```
+
+| Field | Meaning |
+|---|---|
+| `date` | Local-midnight ISO (`…+01:00`); its first 10 chars are the calendar date. |
+| `availability.total` | The day's ticket capacity. |
+| `availability.available` | Tickets remaining. |
+| `sold_out` / `suspended` | Day flags — treat as **0 remaining** whatever the number says. |
+| `performances[]` | Per-slot breakdown (the admission window, wider than opening hours); we use only the day-level `availability`, not these. |
+
+- Range observed: ~122 days, today → early January. No sold-out/suspended days in
+  the sample, but both are handled.
+- **Not accesso.** There's no `capacity/used` split — we derive
+  `used = total − available` to fit the shared `DayObs` model.
+
+### 6.4 Integration (this repo)
+
+- **Hours + events** → `OpeningHoursConfig` of `kind: "paultons"` (`src/config.ts`);
+  `fetchPaultonsHours` (`src/hours.ts`) fetches both blobs (a failed
+  `special-events` fetch just drops the badges, it doesn't fail the poll), formats
+  `"10am - 5:30pm"` rows, and bubbles the event onto each open day in range. Output
+  is the shared `HoursSnapshot`, so month-file writing / the calendar UI are reused.
+- **Capacity** → a `ProductConfig` with `availabilityUrl` set (no accesso
+  `P`/`discover`). `runPoll` (`src/poll.ts`) branches on `availabilityUrl` →
+  `fetchPaultonsAvailability` (`src/paultons.ts`) → the same `Snapshot`/`DayObs`
+  the accesso parks produce, so the whole diff → D1 delta log → month files →
+  heatmap pipeline is reused byte-for-byte. `onSale` is left **undefined**
+  (Paulton's has no prebook "yield anchor" concept, so no lock badge).
+- **Queue window** → `fetchPaultonsWindow` (`src/queues.ts`) reads today's row
+  from `times.json` and stamps `open`/`close` (UTC minutes) onto the queue day
+  file; `appendQueueDayFile` fills it in if the 30-min self-heal created a
+  window-less file first. See §4.
+- Frontend: the Paulton's `ParkDef` (`frontend/src/catalog.ts`) drops `queueOnly`
+  and gains a `main` product → **Calendar + Tickets + Queues** tabs.
+
+**Undocumented / private.** As with the queue API, these paths aren't published
+and can change without notice.

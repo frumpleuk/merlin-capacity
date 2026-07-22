@@ -78,6 +78,18 @@ export const PARKS: ParkDef[] = [
     queueOnly: true,
     liveClosed: true,
   },
+  {
+    // Independent park (Blackpool) — a calendar + queue park, not queueOnly: no
+    // accesso ticket availability, but it DOES have an opening-hours calendar
+    // (scraped from the marketing site) alongside live queues. So `products` is
+    // empty (no availability heatmaps) but the Calendar tab still shows — hours
+    // and events only. Its bespoke API reports authoritative open/closed state
+    // per ride → liveClosed (a shut ride reads "Closed", not "Closed all day").
+    key: "blackpool",
+    label: "Blackpool Pleasure Beach",
+    products: [],
+    liveClosed: true,
+  },
 ];
 
 // The rich per-park calendar (park home) is the default landing view.

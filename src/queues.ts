@@ -16,6 +16,7 @@ import {
   writeQueueDayFile,
   writeQueueLatest,
 } from "./db";
+import { fetchBpbQueues } from "./bpb";
 import { fetchFirebaseQueues } from "./firebase";
 import { catalogNamesChanged, fetchFirstOptionQueues } from "./firstoption";
 import { putCatalog, readCatalog, type RideCatalog } from "./rides";
@@ -268,7 +269,9 @@ export async function runQueuePoll(
     const synth =
       park.queue.kind === "fos"
         ? await fetchFirstOptionQueues(park.queue, now)
-        : await fetchFirebaseQueues(park.queue, env.BUCKET, park.key, now);
+        : park.queue.kind === "firestore"
+          ? await fetchFirebaseQueues(park.queue, env.BUCKET, park.key, now)
+          : await fetchBpbQueues(park.queue, env, park.key, now);
     res = synth;
     catalog = synth.ok ? synth.catalog : await readCatalog(env.BUCKET, park.key);
     if (synth.ok) {

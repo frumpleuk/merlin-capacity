@@ -73,15 +73,28 @@ export interface FirebaseConfig {
   collection: string;
 }
 
+/** Blackpool Pleasure Beach backend — a bespoke Laravel REST API. Like Paulton's
+ *  and Flamingo Land it's an independent park, and ride names arrive inline with
+ *  the feed (no content bundle). Unlike them, reads require a per-USER Sanctum
+ *  bearer token (there's no app-embedded static token or anonymous auth), so we
+ *  log in with a dedicated account whose credentials live in Worker secrets
+ *  (`BPB_EMAIL`/`BPB_PASSWORD`, see Env) — only the host is configured here. The
+ *  token is cached/refreshed in R2. See docs/blackpool-api.md. */
+export interface BpbConfig {
+  apiUrl: string;
+}
+
 /** Where a queue-tracked park's live ride waits come from. A discriminated
  *  union: most parks are `attractions` (Attractions.io live feed + content
  *  bundle); Paulton's is `fos` (First Option Software custom backend); Flamingo
- *  Land is `firestore` (Firebase Cloud Firestore). Both `fos` and `firestore`
- *  carry ride names inline, so neither needs a content bundle / catalog cron. */
+ *  Land is `firestore` (Firebase Cloud Firestore); Blackpool is `bpb` (bespoke
+ *  Laravel API, per-user token). `fos`, `firestore`, and `bpb` all carry ride
+ *  names inline, so none needs a content bundle / catalog cron. */
 export type QueueSource =
   | ({ kind: "attractions" } & AttractionsConfig)
   | ({ kind: "fos" } & FirstOptionConfig)
-  | ({ kind: "firestore" } & FirebaseConfig);
+  | ({ kind: "firestore" } & FirebaseConfig)
+  | ({ kind: "bpb" } & BpbConfig);
 
 export const liveFeedUrl = (apiKey: string) =>
   `https://live-data.attractions.io/${apiKey}.json`;
@@ -95,14 +108,29 @@ export interface OpeningHoursLocation {
   kind: "themepark" | "waterpark" | "golf";
 }
 
-/** Where and how to read a park's opening hours. The marketing sites expose an
- *  unauthenticated `getcalendar` endpoint (needs a browser UA — a short UA
- *  403s). `lastEntryTime` on each day is overloaded: sometimes a genuine
- *  last-entry note, sometimes a special-event name — classified in hours.ts. */
-export interface OpeningHoursConfig {
-  calendarUrl: string;
-  locations: OpeningHoursLocation[];
-}
+/** Where and how to read a park's opening hours. A discriminated union by source:
+ *
+ *  - `accesso`: the Merlin marketing sites' unauthenticated `getcalendar`
+ *    endpoint (needs a browser UA — a short UA 403s). `lastEntryTime` on each day
+ *    is overloaded: sometimes a genuine last-entry note, sometimes a special-event
+ *    name — classified in hours.ts.
+ *  - `bpb`: Blackpool's marketing site server-renders its whole forward calendar
+ *    inline as a `wn_dates` JS array; we GET the page (behind Cloudflare —
+ *    needs a full browser header set, see hours.ts) and parse it. Same shared
+ *    `HoursSnapshot` output. See docs/blackpool-api.md §6. */
+export type OpeningHoursConfig =
+  | {
+      kind: "accesso";
+      calendarUrl: string;
+      locations: OpeningHoursLocation[];
+    }
+  | {
+      kind: "bpb";
+      /** The opening-times page whose inline `wn_dates` array we scrape. */
+      pageUrl: string;
+      /** Display name for the single themepark location row. */
+      locationName: string;
+    };
 
 /** How to find a product's packages in the bootstrap catalog, in place of a
  *  hardcoded `P`. `event_id` is stable per park; only the package ids rotate,
@@ -171,6 +199,7 @@ export const PARKS: ParkConfig[] = [
     origin: "https://me-twalton.tickets.altontowers.com",
     bootstrapSlug: "ME-TWALTON",
     openingHours: {
+      kind: "accesso",
       calendarUrl: hoursUrl("altontowers.com", "2047,2609,2613"),
       locations: [
         { id: "2047", kind: "themepark" },
@@ -211,6 +240,7 @@ export const PARKS: ParkConfig[] = [
     origin: "https://me-tpr.tickets.thorpepark.com",
     bootstrapSlug: "ME-TPR",
     openingHours: {
+      kind: "accesso",
       calendarUrl: hoursUrl("thorpepark.com", "1716"),
       locations: [{ id: "1716", kind: "themepark" }],
     },
@@ -246,6 +276,7 @@ export const PARKS: ParkConfig[] = [
     origin: "https://me-llwindsor.tickets.legoland.co.uk",
     bootstrapSlug: "ME-LLWINDSOR",
     openingHours: {
+      kind: "accesso",
       calendarUrl: hoursUrl("legoland.co.uk", "1716,7236"),
       locations: [
         { id: "1716", kind: "themepark" },
@@ -283,6 +314,7 @@ export const PARKS: ParkConfig[] = [
     origin: "https://me-cwoa.tickets.chessington.com",
     bootstrapSlug: "ME-WACHESSINGTON",
     openingHours: {
+      kind: "accesso",
       calendarUrl: hoursUrl("chessington.com", "1716"),
       locations: [{ id: "1716", kind: "themepark" }],
     },
@@ -341,6 +373,30 @@ export const PARKS: ParkConfig[] = [
       projectId: "flamingo-land-app",
       apiKey: "AIzaSyA2yrf4wI5a5oynBWu7ehjFzai-vtFr64Y",
       collection: "rides_data",
+    },
+    products: [],
+  },
+  {
+    // Blackpool Pleasure Beach — INDEPENDENT, not Merlin. A calendar + queue park
+    // (the only independent one with both): no accesso ticket availability, but it
+    // DOES have a marketing-site opening calendar we scrape, alongside live queues.
+    //  - Queues: a bespoke Laravel API (`today.blackpoolpleasurebeach.com`) whose
+    //    reads sit behind a per-USER Sanctum token — no static/app token, so we log
+    //    in with a dedicated account (BPB_EMAIL/BPB_PASSWORD secrets) and cache the
+    //    token in R2. Ride names + thrill category are inline, so like the other
+    //    independents there's no content bundle / catalog cron.
+    //  - Hours: the site server-renders its whole forward calendar inline as a
+    //    `wn_dates` array; we scrape it (Cloudflare needs a full browser header set).
+    // See docs/blackpool-api.md.
+    key: "blackpool",
+    openingHours: {
+      kind: "bpb",
+      pageUrl: "https://www.blackpoolpleasurebeach.com/opening-times-prices/",
+      locationName: "Pleasure Beach Resort",
+    },
+    queue: {
+      kind: "bpb",
+      apiUrl: "https://today.blackpoolpleasurebeach.com",
     },
     products: [],
   },

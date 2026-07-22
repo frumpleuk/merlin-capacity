@@ -5,6 +5,13 @@ export interface Env {
   /** Secret gating the manual /poll trigger. Set via `wrangler secret put
    *  POLL_KEY` (prod) or .dev.vars (local). If unset, /poll is denied. */
   POLL_KEY?: string;
+  /** Blackpool Pleasure Beach app-account credentials — the queue API is behind
+   *  a per-user Sanctum token (see docs/blackpool-api.md), so we log in with a
+   *  dedicated account and cache its token. Real credentials, NOT app-embedded
+   *  identifiers → Worker secrets (`wrangler secret put BPB_EMAIL` / `BPB_PASSWORD`;
+   *  .dev.vars locally), never in config.ts. Absent → the BPB queue poll no-ops. */
+  BPB_EMAIL?: string;
+  BPB_PASSWORD?: string;
 }
 
 /** A product key: 'main', 'rap', or a special-event key. */

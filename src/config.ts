@@ -114,10 +114,10 @@ export interface OpeningHoursLocation {
  *    endpoint (needs a browser UA — a short UA 403s). `lastEntryTime` on each day
  *    is overloaded: sometimes a genuine last-entry note, sometimes a special-event
  *    name — classified in hours.ts.
- *  - `bpb`: Blackpool's marketing site server-renders its whole forward calendar
- *    inline as a `wn_dates` JS array; we GET the page (behind Cloudflare —
- *    needs a full browser header set, see hours.ts) and parse it. Same shared
- *    `HoursSnapshot` output. See docs/blackpool-api.md §6.
+ *  - `bpb`: Blackpool exposes its whole forward calendar as a JSON API
+ *    (park-dates-times/v2) — one object per open date, carrying the same hours +
+ *    events the marketing site renders inline. No auth or header gotchas. Same
+ *    shared `HoursSnapshot` output. See docs/blackpool-api.md §6.
  *  - `paultons`: Paulton's publishes its calendar as two plain JSON blobs — a
  *    `times` array (`{open,closed,dates[]}`, 24h local) and a date-range
  *    `special-events` array (unix-second start/end + name). Unauthenticated
@@ -131,8 +131,8 @@ export type OpeningHoursConfig =
     }
   | {
       kind: "bpb";
-      /** The opening-times page whose inline `wn_dates` array we scrape. */
-      pageUrl: string;
+      /** The park-dates-times JSON API (one entry per open date). */
+      apiUrl: string;
       /** Display name for the single themepark location row. */
       locationName: string;
     }
@@ -425,13 +425,13 @@ export const PARKS: ParkConfig[] = [
     //    in with a dedicated account (BPB_EMAIL/BPB_PASSWORD secrets) and cache the
     //    token in R2. Ride names + thrill category are inline, so like the other
     //    independents there's no content bundle / catalog cron.
-    //  - Hours: the site server-renders its whole forward calendar inline as a
-    //    `wn_dates` array; we scrape it (Cloudflare needs a full browser header set).
+    //  - Hours: the park exposes its whole forward calendar as a JSON API
+    //    (park-dates-times/v2) — one entry per open date, no auth or header gotchas.
     // See docs/blackpool-api.md.
     key: "blackpool",
     openingHours: {
       kind: "bpb",
-      pageUrl: "https://www.blackpoolpleasurebeach.com/opening-times-prices/",
+      apiUrl: "https://bookings.blackpoolpleasurebeach.com/api/park-dates-times/v2",
       locationName: "Pleasure Beach Resort",
     },
     queue: {

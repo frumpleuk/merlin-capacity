@@ -73,7 +73,7 @@ export interface HoursFetch {
 
 /** Fetch and parse one park's opening-hours calendar into a snapshot. Dispatches
  *  by source: the Merlin `getcalendar` JSON API (`accesso`), Blackpool's
- *  inline-`wn_dates` marketing-site scrape (`bpb`), or Paulton's two JSON blobs
+ *  park-dates-times JSON API (`bpb`), or Paulton's two JSON blobs
  *  (`paultons`). */
 export async function fetchHours(cfg: OpeningHoursConfig): Promise<HoursFetch> {
   switch (cfg.kind) {
@@ -138,10 +138,10 @@ async function fetchAccessoHours(
   return { ok: true, httpStatus: resp.status, snapshot, datesSeen: Object.keys(snapshot).length };
 }
 
-/* ── Blackpool Pleasure Beach (marketing-site scrape) ─────────────────────────── */
+/* ── Blackpool Pleasure Beach (park-dates-times JSON API) ─────────────────────── */
 
-/** One `wn_dates` entry (only the fields we use; see docs/blackpool-api.md §6). */
-interface WnDate {
+/** One park-dates-times entry (only the fields we use; see docs/blackpool-api.md §6). */
+interface BpbDate {
   open_date?: string; // "YYYY-MM-DD"
   time_from?: string; // "10:00am"
   time_to?: string; // "8:00pm"
@@ -149,24 +149,20 @@ interface WnDate {
   event_link?: string;
 }
 
-/** The site is behind Cloudflare bot-fight: a bare UA gets a 403, but a full
- *  modern-browser header set clears it (a Worker `fetch` sending these passes
- *  too — see docs/blackpool-api.md §6). */
-const BROWSER_HEADERS: Record<string, string> = {
-  "user-agent":
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 " +
-    "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-  accept:
-    "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
+/** This host is behind the same Cloudflare bot-fight as the marketing site: a
+ *  thin request (UA + bare accept) 403s from the Worker, but a full modern-browser
+ *  client-hint / fetch-metadata header set clears it — here tuned for a JSON XHR
+ *  (`sec-fetch-dest: empty`, `mode: cors`). See docs/blackpool-api.md §6. */
+const BPB_API_HEADERS: Record<string, string> = {
+  "user-agent": USER_AGENT,
+  accept: "application/json, text/plain, */*",
   "accept-language": "en-GB,en;q=0.9",
   "sec-ch-ua": '"Not_A Brand";v="8", "Chromium";v="120", "Google Chrome";v="120"',
   "sec-ch-ua-mobile": "?0",
   "sec-ch-ua-platform": '"macOS"',
-  "sec-fetch-dest": "document",
-  "sec-fetch-mode": "navigate",
-  "sec-fetch-site": "none",
-  "sec-fetch-user": "?1",
-  "upgrade-insecure-requests": "1",
+  "sec-fetch-dest": "empty",
+  "sec-fetch-mode": "cors",
+  "sec-fetch-site": "same-origin",
 };
 
 /** Drop a redundant ":00" from a clock string so it reads like the Merlin hours
@@ -174,32 +170,31 @@ const BROWSER_HEADERS: Record<string, string> = {
 const tidyTime = (s: string): string => s.trim().replace(/:00(?=\s*[ap]m)/i, "");
 
 /**
- * Blackpool's opening calendar. The page server-renders its whole forward window
- * inline as `var wn_dates = [ … ]` (one object per OPEN date) — no AJAX — so a
- * single GET yields everything. We map each entry to the shared HoursSnapshot as
- * one themepark location per day. A real event (`event_link` under `/events/`) is
- * bubbled up as the day's event; the "10 hours of fun" marketing tag (which links
- * back to the opening-times page) is not.
+ * Blackpool's opening calendar. A single GET on the park-dates-times JSON API
+ * returns its whole forward window as an array — one object per OPEN date (the
+ * same data the marketing site renders inline as `wn_dates`). We map each entry to
+ * the shared HoursSnapshot as one themepark location per day. A real event
+ * (`event_link` under `/events/`) is bubbled up as the day's event; the "10 hours
+ * of fun" marketing tag (which links back to the opening-times page) is not.
  */
 async function fetchBpbHours(
   cfg: Extract<OpeningHoursConfig, { kind: "bpb" }>,
 ): Promise<HoursFetch> {
   let resp: Response;
   try {
-    resp = await fetch(cfg.pageUrl, { headers: BROWSER_HEADERS });
+    resp = await fetch(cfg.apiUrl, { headers: BPB_API_HEADERS });
   } catch {
     return { ok: false, httpStatus: 0, snapshot: {}, datesSeen: 0 };
   }
   if (!resp.ok) return { ok: false, httpStatus: resp.status, snapshot: {}, datesSeen: 0 };
 
-  const html = await resp.text();
-  const m = html.match(/var\s+wn_dates\s*=\s*(\[[\s\S]*?\])\s*;/);
-  if (!m) return { ok: false, httpStatus: resp.status, snapshot: {}, datesSeen: 0 };
-
-  let dates: WnDate[];
+  let dates: BpbDate[];
   try {
-    dates = JSON.parse(m[1]) as WnDate[];
+    dates = (await resp.json()) as BpbDate[];
   } catch {
+    return { ok: false, httpStatus: resp.status, snapshot: {}, datesSeen: 0 };
+  }
+  if (!Array.isArray(dates)) {
     return { ok: false, httpStatus: resp.status, snapshot: {}, datesSeen: 0 };
   }
 

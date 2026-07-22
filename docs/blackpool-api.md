@@ -217,23 +217,15 @@ GET /api/app/v3/opening-times
 
 ---
 
-## 6. Multi-day opening calendar (marketing site scrape)
+## 6. Multi-day opening calendar (park-dates-times JSON API)
 
-The app API only ever gives *today*, but the marketing site publishes the full
-forward calendar — opening hours, prices, and events per date — and we scrape it
-the same way the Merlin parks' opening hours are scraped (`docs/accesso-api.md` +
-`src/hours.ts`), just from a different source shape.
+The app API only ever gives *today*, but the bookings site exposes the full
+forward calendar — opening hours, prices, and events per date — as a plain JSON
+API. This is the source that feeds the marketing site's inline calendar widget
+(see the scrape note below); reading it directly is cleaner than regexing HTML.
 
-**Page:** `https://www.blackpoolpleasurebeach.com/opening-times-prices/`
-
-The calendar widget is a WordPress plugin (`wn-blackpool-time-price`, rendering
-the `TavoCalendar` JS library). Crucially, **it is NOT AJAX** — the plugin
-server-renders the entire dataset inline into the page as a single JS array, so
-one GET of the page yields everything. Look for:
-
-```js
-var wn_dates = [ { …one object per OPEN date… }, … ];
-```
+**Endpoint:** `GET https://bookings.blackpoolpleasurebeach.com/api/park-dates-times/v2`
+→ a flat JSON array, one object per OPEN date. No auth, no query params.
 
 Each entry is exactly the app's `/opening-times` shape (same backend, unsurprisingly):
 
@@ -254,7 +246,7 @@ Each entry is exactly the app's `/opening-times` shape (same backend, unsurprisi
 
 | Field | Meaning |
 |---|---|
-| `open_date` | ISO date. **Only operating days are listed** — a date absent from `wn_dates` is a closed/non-operating day. |
+| `open_date` | ISO date. **Only operating days are listed** — a date absent from the array is a closed/non-operating day. (One date can appear twice — dedupe by ISO, last wins; e.g. 2027-04-01 was duplicated in a 175-entry response → 174 days.) |
 | `time_from` / `time_to` | Park open/close, human strings (`"10:00am"` / `"8:00pm"`). |
 | `date_name` | Pretty label, e.g. `"Wed 22nd July"`. |
 | `is_peak` / `is_ten_day` | Pricing/season flags (unused). |
@@ -262,16 +254,24 @@ Each entry is exactly the app's `/opening-times` shape (same backend, unsurprisi
 | `event_title` + `event_info` + `event_icon` + `event_link` | Present on ~20% of days. **Filter on `event_link`:** a real event links to `…/events/<slug>/`; a marketing tag ("10 hours of fun") links back to `…/opening-times-prices/`. Only the former is surfaced as a calendar event badge. |
 
 - **Range:** ~175–184 forward days (today → ~11 months out), refreshed as the park
-  releases dates. **Forward only** — past dates drop off the page, so the poller
-  freezes each month's file once its dates leave the window (same as the Merlin
-  hours / availability freezing in `db.ts`).
-- **Cloudflare bot-fight — needs real browser headers.** The site is behind
-  Cloudflare and returns **403** to a bare `curl`/UA-only request. Sending a full
-  modern-browser header set (`sec-ch-ua`, `sec-ch-ua-platform`, the four
-  `sec-fetch-*`, a rich `accept`, `accept-language`, `upgrade-insecure-requests`)
-  clears it → **200**. A Cloudflare Worker `fetch()` sending those same headers
-  passes too. Static assets (the plugin JS) are *not* challenged — only the HTML
-  document is. (Contrast the Merlin marketing sites, which only need a browser UA.)
+  releases dates. **Forward only** — past dates drop off, so the poller freezes
+  each month's file once its dates leave the window (same as the Merlin hours /
+  availability freezing in `db.ts`).
+- **Cloudflare bot-fight — needs real browser headers.** The host is behind
+  Cloudflare. A `curl` from a residential IP gets **200** even with a thin
+  request, but the same thin request (bare `accept` + a Chrome UA) from a
+  **Cloudflare Worker** `fetch()` gets **403** — the WAF is stricter on
+  worker-originated traffic. Sending a full modern-browser client-hint /
+  fetch-metadata set (`sec-ch-ua`, `sec-ch-ua-platform`, `sec-fetch-*`, rich
+  `accept`, `accept-language`) clears it → **200** from the Worker too. This is
+  `BPB_API_HEADERS` in `src/hours.ts`, tuned for a JSON XHR (`sec-fetch-dest:
+  empty`, `mode: cors`). Verified end-to-end via `wrangler dev` + `/poll` (174
+  days). (Contrast the Merlin marketing sites, which only need a browser UA.)
+- **Marketing-site alternative (not used).** The same data is also inlined into
+  `https://www.blackpoolpleasurebeach.com/opening-times-prices/` as a
+  `var wn_dates = [ … ]` JS array by a WordPress plugin (`wn-blackpool-time-price`,
+  server-rendered, not AJAX). We formerly scraped that with a regex; the JSON API
+  above supersedes it (no HTML parsing, one fewer failure mode).
 
 ---
 

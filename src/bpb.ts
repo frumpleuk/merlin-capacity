@@ -25,9 +25,10 @@ const APP_UA = "PleasureBeachResort/3.2.3 (Android)";
  * `active`/`closed` give open/operational (open = active && !closed); the wait is
  * nulled unless running. A ride that's closed with no scheduled time today gets a
  * synthesised "Closed all day" note (surfaced via `closedNote`, like Flamingo's
- * `downAllDay`); an otherwise-closed ride reads plain "Closed" (the frontend park
- * def is marked `liveClosed`). The day's park window (sparkline x-axis) is derived
- * from the min/max of the rides' `latest_ride_time` — no extra request.
+ * `downAllDay`); an otherwise-closed ride reads plain "Closed" (the frontend only
+ * shows "Closed all day" from an explicit note, never inferred). The day's park
+ * window (sparkline x-axis) is derived from the min/max of the rides'
+ * `latest_ride_time` — no extra request.
  */
 
 const tokenKey = (park: string) => `bpb/${park}/auth.json`;

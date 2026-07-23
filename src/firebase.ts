@@ -298,9 +298,9 @@ export async function fetchFirebaseQueues(
     // The feed reports authoritative current state, so a closed ride carries a
     // reason: `downAllDay` → "Closed all day" (the park's own all-day-closure
     // signal), `underMaintenance` → "Under maintenance". Surfaced downstream via
-    // `closedNote` (db.ts) so the row shows the reason instead of a derived
-    // "Closed all day". A merely-closed ride (neither flag) has no note and reads
-    // as "Closed" — see the `liveClosed` park flag in the frontend catalog.
+    // `closedNote` (db.ts). A merely-closed ride (neither flag) has no note and
+    // reads as plain "Closed" — the frontend only ever shows "Closed all day"
+    // from an explicit note, never inferred.
     const status = isOpen
       ? null
       : down

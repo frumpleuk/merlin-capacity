@@ -14,13 +14,6 @@ export interface ParkDef {
   /** Queue-only park (Paulton's): no accesso tickets/calendar, only the live
    *  ride-queue times. The nav shows just the Queues tab and lands there. */
   queueOnly?: boolean;
-  /** The park's feed reports authoritative current open/closed state per ride
-   *  (Flamingo Land's Firestore), so a closed ride reads "Closed" now rather than
-   *  the history-derived "Closed all day" — that label is reserved for the feed's
-   *  own `downAllDay` signal, which arrives as a `closedNote`. Parks without this
-   *  (Attractions.io, Paulton's) keep the "never ran today → Closed all day"
-   *  heuristic. */
-  liveClosed?: boolean;
 }
 
 // Only list products the poller actually captures. Main tickets for the
@@ -65,9 +58,8 @@ export const PARKS: ParkDef[] = [
     // Independent park (Peppa Pig World) — a calendar + queue park (like
     // Blackpool), not queueOnly. No accesso backend, but it publishes its own
     // JSON: an opening-hours calendar (times + special events) AND day-ticket
-    // availability (the "main" heatmap). Its fos queue feed is last-known-state,
-    // so a closed ride keeps the "never ran today → Closed all day" heuristic
-    // (no liveClosed) — but the calendar's opening times now frame the sparkline.
+    // availability (the "main" heatmap). The calendar's opening times frame the
+    // queue sparkline's x-axis.
     key: "paultons",
     label: "Paultons Park",
     products: [{ key: "main", label: "Tickets" }],
@@ -76,24 +68,20 @@ export const PARKS: ParkDef[] = [
     // Independent park (North Yorkshire) — a calendar + queue park like Blackpool,
     // not queueOnly: no accesso tickets, but a What's-On calendar (special events
     // from The Events Calendar iCal feed — no opening hours) shows alongside live
-    // queues. Its Firestore feed reports authoritative per-ride open/closed state,
-    // so a closed ride is "Closed" (not history-derived "Closed all day").
+    // queues.
     key: "flamingoland",
     label: "Flamingo Land",
     products: [],
-    liveClosed: true,
   },
   {
     // Independent park (Blackpool) — a calendar + queue park, not queueOnly: no
     // accesso ticket availability, but it DOES have an opening-hours calendar
     // (scraped from the marketing site) alongside live queues. So `products` is
     // empty (no availability heatmaps) but the Calendar tab still shows — hours
-    // and events only. Its bespoke API reports authoritative open/closed state
-    // per ride → liveClosed (a shut ride reads "Closed", not "Closed all day").
+    // and events only.
     key: "blackpool",
     label: "Blackpool Pleasure Beach",
     products: [],
-    liveClosed: true,
   },
 ];
 

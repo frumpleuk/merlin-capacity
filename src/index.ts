@@ -1,6 +1,14 @@
-import { allProducts, attractionsParks, dueProducts, PARKS, queueParks } from "./config";
+import {
+  allProducts,
+  attractionsParks,
+  bootstrapUrl,
+  dueProducts,
+  PARKS,
+  queueParks,
+  USER_AGENT,
+} from "./config";
 import { rebuildMonthsFromD1, updateQueueIndex, writeQueueDayFile } from "./db";
-import { refreshPackages } from "./discover";
+import { extractCatalogPackages, refreshPackages } from "./discover";
 import { runHoursPoll } from "./hours";
 import { runPoll } from "./poll";
 import { runQueuePoll } from "./queues";
@@ -172,6 +180,42 @@ export default {
           "cache-control": "public, max-age=60",
         },
       });
+    }
+
+    // TEMPORARY — on-Worker A/B for the bootstrap parse. Does exactly ONE op so
+    // the invocation's `cpuTime` (read from `wrangler tail`) ≈ that op's cost —
+    // the clock is frozen during sync execution so we can't time it in-Worker.
+    // `?mode=noop` measures the fetch/response floor to subtract. Key-gated.
+    // Remove after measuring.
+    if (url.pathname === "/measure") {
+      const provided = url.searchParams.get("key") ?? req.headers.get("x-poll-key");
+      if (!env.POLL_KEY || provided !== env.POLL_KEY) {
+        return new Response("forbidden", { status: 403 });
+      }
+      const slug = url.searchParams.get("slug") ?? "";
+      const mode = url.searchParams.get("mode") ?? "full";
+      const park = PARKS.find((p) => p.bootstrapSlug === slug);
+      if (!park) return new Response("unknown slug", { status: 404 });
+      const resp = await fetch(bootstrapUrl(slug), {
+        headers: {
+          accept: "application/json, text/plain, */*",
+          origin: park.origin ?? "",
+          referer: `${park.origin ?? ""}/`,
+          "user-agent": USER_AGENT,
+        },
+      });
+      const text = await resp.text();
+      let pkgs = -1;
+      if (mode === "full") {
+        const d = JSON.parse(text) as {
+          GetMerchantPackageList?: { SERVICE?: { PS?: { P?: unknown[] } } };
+        };
+        pkgs = d?.GetMerchantPackageList?.SERVICE?.PS?.P?.length ?? -1;
+      } else if (mode === "stream") {
+        pkgs = extractCatalogPackages(text)?.length ?? -1;
+      }
+      // mode === "noop": fetch + return only (the CPU floor).
+      return Response.json({ slug, mode, bytes: text.length, pkgs });
     }
 
     // Force a poll of every product now — handy right after deploy. This is a

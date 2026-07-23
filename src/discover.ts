@@ -117,6 +117,144 @@ interface CatalogFetch extends ResolvedPackages {
   notModified?: boolean;
 }
 
+/** i points at an opening `"`; returns the index just past the closing `"`,
+ *  honouring backslash escapes. */
+function skipString(s: string, i: number): number {
+  for (i++; i < s.length; i++) {
+    const ch = s[i];
+    if (ch === "\\") i++;
+    else if (ch === '"') return i + 1;
+  }
+  throw new Error("unterminated string");
+}
+
+/** Skip one JSON value whose first char is at `i` (no leading whitespace) and
+ *  return the index just past it. String-aware, so nested `{ } [ ] "` and
+ *  escapes inside strings can't throw the bracket depth off. */
+function skipValue(s: string, i: number): number {
+  const c = s[i];
+  if (c === '"') return skipString(s, i);
+  if (c === "{" || c === "[") {
+    let depth = 0;
+    for (; i < s.length; i++) {
+      const ch = s[i];
+      if (ch === '"') {
+        i = skipString(s, i) - 1; // -1: the loop's i++ re-lands past the string
+        continue;
+      }
+      if (ch === "{" || ch === "[") depth++;
+      else if ((ch === "}" || ch === "]") && --depth === 0) return i + 1;
+    }
+    throw new Error("unterminated container");
+  }
+  // number / true / false / null — run to the next structural delimiter.
+  for (; i < s.length; i++) {
+    const ch = s[i];
+    if (ch === "," || ch === "}" || ch === "]") return i;
+  }
+  throw new Error("unterminated primitive");
+}
+
+const isWs = (ch: string) =>
+  ch === " " || ch === "\t" || ch === "\n" || ch === "\r";
+function skipWs(s: string, i: number): number {
+  while (i < s.length && isWs(s[i])) i++;
+  return i;
+}
+
+/**
+ * Partial extractor for the 2.83MB bootstrap: pull the package list out of the
+ * catalog TEXT, materialising only the five fields the classifier reads per
+ * package (`id`/`name`/`package_class`/`E`/`CT`) and never constructing the
+ * top-level `GetApplicationConsolidated` (1.5MB / 54%, unused) or the ~27 unused
+ * package fields (`desc`, `shop_image_v4`, `CHARACS`, …). A hand-written char
+ * scanner over accesso's fixed structure — measured ~15-20% cheaper than a full
+ * `JSON.parse`, though this runs at most once/day per park (a conditional GET
+ * 304s the unchanged catalog) and off the hot path. Returns the package array,
+ * or `null` on ANY structural surprise so the caller falls back to a full parse.
+ * `E`/`CT` keep accesso's object-or-array shape verbatim (their raw slice is
+ * JSON.parsed as-is).
+ */
+export function extractCatalogPackages(text: string): CatalogPackage[] | null {
+  try {
+    // Anchor on the unique `"PS"` inside GetMerchantPackageList; its `"P":[` is
+    // the package array. GetApplicationConsolidated sits earlier in the bytes and
+    // is never scanned into (indexOf jumps straight past it).
+    const gi = text.indexOf('"GetMerchantPackageList"');
+    if (gi < 0) return null;
+    const psi = text.indexOf('"PS"', gi);
+    if (psi < 0) return null;
+    const pk = text.indexOf('"P"', psi);
+    if (pk < 0) return null;
+    let i = text.indexOf("[", pk);
+    if (i < 0) return null;
+
+    const packages: CatalogPackage[] = [];
+    i = skipWs(text, i + 1); // past '['
+    if (text[i] === "]") return packages; // empty array
+
+    for (;;) {
+      i = skipWs(text, i);
+      if (text[i] !== "{") return null;
+      i++; // past '{'
+      const pkg = {} as CatalogPackage;
+      for (;;) {
+        i = skipWs(text, i);
+        if (text[i] === "}") {
+          i++;
+          break;
+        }
+        if (text[i] !== '"') return null;
+        const keyEnd = skipString(text, i);
+        const key = text.slice(i, keyEnd); // quoted, e.g. `"id"`
+        i = skipWs(text, keyEnd);
+        if (text[i] !== ":") return null;
+        i = skipWs(text, i + 1);
+        const valStart = i;
+        i = skipValue(text, i);
+        // Materialise only the five fields the classifier below reads.
+        switch (key) {
+          case '"id"':
+            pkg.id = JSON.parse(text.slice(valStart, i));
+            break;
+          case '"name"':
+            pkg.name = JSON.parse(text.slice(valStart, i));
+            break;
+          case '"package_class"':
+            pkg.package_class = JSON.parse(text.slice(valStart, i));
+            break;
+          case '"E"':
+            pkg.E = JSON.parse(text.slice(valStart, i));
+            break;
+          case '"CT"':
+            pkg.CT = JSON.parse(text.slice(valStart, i));
+            break;
+        }
+        i = skipWs(text, i);
+        if (text[i] === ",") {
+          i++;
+          continue;
+        }
+        if (text[i] === "}") {
+          i++;
+          break;
+        }
+        return null;
+      }
+      packages.push(pkg);
+      i = skipWs(text, i);
+      if (text[i] === ",") {
+        i++;
+        continue;
+      }
+      if (text[i] === "]") return packages;
+      return null;
+    }
+  } catch {
+    return null;
+  }
+}
+
 /** Fetch the bootstrap catalog and build the P[] for the matching packages, plus
  *  the subset of ids that are yield anchors (prebooks). Conditional on `prevEtag`
  *  — a 304 returns `notModified` and skips the parse. */
@@ -145,14 +283,25 @@ async function fetchCatalogPackages(
   if (!resp.ok) return empty;
   const etag = resp.headers.get("etag");
 
-  let data: Bootstrap;
+  // Read the body as text and pull just the package list out of it (skipping the
+  // 1.5MB unused GetApplicationConsolidated + the unused package fields — a
+  // ~15-20% parse-CPU saving; off the hot path). On ANY extractor surprise, fall
+  // back to a full JSON.parse so behaviour is exactly as before.
+  let text: string;
   try {
-    data = (await resp.json()) as Bootstrap;
+    text = await resp.text();
   } catch {
     return empty;
   }
-
-  const packages = data.GetMerchantPackageList?.SERVICE?.PS?.P;
+  let packages = extractCatalogPackages(text);
+  if (packages === null) {
+    try {
+      const data = JSON.parse(text) as Bootstrap;
+      packages = data.GetMerchantPackageList?.SERVICE?.PS?.P ?? null;
+    } catch {
+      return empty;
+    }
+  }
   if (!Array.isArray(packages)) return empty;
 
   const wantClass = spec.packageClass ?? "Daily Tickets";

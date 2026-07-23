@@ -306,17 +306,25 @@ function MonthNav({
 function Agenda({ details }: { details: Map<string, DayDetail> }) {
   const isos = [...details.keys()].sort();
   const today = new Date().toISOString().slice(0, 10);
+  const agendaRef = useRef<HTMLDivElement | null>(null);
   const todayRef = useRef<HTMLDivElement | null>(null);
 
   // On first mount, jump to today (if it's in this month) so you land on it.
-  // Deferred a frame so layout is settled before we scroll.
+  // Scroll ONLY the agenda's own scroll container — `scrollIntoView` would also
+  // scroll every ancestor (the page), taking the fixed park/tab header off
+  // screen. Deferred a frame so layout is settled before we measure.
   useEffect(() => {
     const el = todayRef.current;
-    if (el) requestAnimationFrame(() => el.scrollIntoView({ block: "start" }));
+    const container = agendaRef.current;
+    if (!el || !container) return;
+    requestAnimationFrame(() => {
+      const delta = el.getBoundingClientRect().top - container.getBoundingClientRect().top;
+      container.scrollTop += delta - 8; // small gap ≈ the today ring's scroll-margin
+    });
   }, []);
 
   return (
-    <div className="rc-agenda">
+    <div className="rc-agenda" ref={agendaRef}>
       {isos.map((iso) => {
         const d = details.get(iso)!;
         const event = d.event ? getEventIcon(d.event) : null;

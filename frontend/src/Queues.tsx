@@ -1,6 +1,5 @@
 import { useMemo, useRef, useState } from "react";
 import type { GroupDim, QueueDayFile, QueueLineSeries, QueueRide, QueueSample } from "./api";
-import { findPark } from "./catalog";
 import { longDate } from "./Heatmap";
 
 /* ── Time helpers ──────────────────────────────────────────────────────────────
@@ -510,7 +509,6 @@ function RideRow({
   yMax,
   date,
   asOf,
-  liveClosed,
   open,
   onToggle,
 }: {
@@ -519,23 +517,19 @@ function RideRow({
   yMax: number;
   date: string;
   asOf?: number;
-  liveClosed: boolean;
   open: boolean;
   onToggle: () => void;
 }) {
   const main = ride.lines[0];
   const stats = main ? lineStats(main) : { current: null, peak: 0 };
   const peak = ridePeak(ride);
-  // "Ran today" = any running sample, OR any sample carrying a posted wait while
-  // closed (Paulton's keeps a ride's last-known wait after it shuts). Drives the
-  // "Closed" vs "Closed all day" fallback for feeds that don't report an
-  // authoritative current state (Attractions.io, Paulton's).
-  const ranToday = ride.lines.some((l) =>
-    l.samples.some((s) => isRunning(s) || s[1] != null),
-  );
   // The park's own closed notice, as of the latest sample — a scheduled opening
   // ("Scheduled to open at 11:00") or a closure reason ("Under maintenance",
-  // "Closed all day"). Shown in place of the derived label whenever in effect.
+  // "Closed all day"). "Closed all day" is meaningful ONLY as an explicit signal
+  // from the feed (the park's own message, or a note synthesised from an
+  // authoritative closed-all-day flag) — never inferred from "no samples yet",
+  // which just means the ride hasn't opened. So a closed ride shows this note
+  // when present, else a plain "Closed".
   const note = ride.lines.map((l) => l.closedNote).find(Boolean) ?? null;
 
   return (
@@ -550,9 +544,7 @@ function RideRow({
               <span className="q-unit">min</span>
             </>
           ) : (
-            <span className="q-closed">
-              {note ?? (liveClosed || ranToday ? "Closed" : "Closed all day")}
-            </span>
+            <span className="q-closed">{note ?? "Closed"}</span>
           )}
         </span>
         <span className="q-peak">{peak > 0 ? `peak ${peak}` : "—"}</span>
@@ -742,10 +734,6 @@ export function QueueList({
   const activeDim: GroupDim | null =
     dims && grouped ? dims.find((d) => d.key === activeKey) ?? dims[0] : null;
 
-  // Feed-authoritative parks (Flamingo Land) report current open/closed state, so
-  // a closed ride reads "Closed" rather than a history-derived "Closed all day".
-  const liveClosed = !!(file && findPark(file.park)?.liveClosed);
-
   const sections = useMemo(() => {
     const rides = file?.rides ?? [];
     // Ungrouped: one headerless section holding every ride, so the sort spans the
@@ -898,7 +886,6 @@ export function QueueList({
                     yMax={yMax}
                     date={date}
                     asOf={asOf}
-                    liveClosed={liveClosed}
                     open={openId === ride.id}
                     onToggle={() => setOpenId((cur) => (cur === ride.id ? null : ride.id))}
                   />

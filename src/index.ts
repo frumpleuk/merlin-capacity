@@ -14,9 +14,13 @@ import type { Env } from "./types";
  *  frequent, so it runs on these long cadences, ONE item per invocation (see
  *  `dueAux`), and never stacks. Hours/events change rarely; the self-heals only
  *  repair drift the per-minute append already keeps current. */
-const HOURS_EVERY_MIN = 240; // each park's opening hours: ~every 4h
+const HOURS_EVERY_MIN = 1440; // each park's opening hours: ONCE/day (~00:0x UTC, parks shut)
 const REBUILD_EVERY_MIN = 120; // each product's forward month files: ~every 2h
-const SELFHEAL_EVERY_MIN = 120; // each park's queue day file: ~every 2h
+// Queue day-file self-heal: a drift-repair safety net, NOT the primary writer —
+// the every-minute append keeps each day file current, and the first changed poll
+// of the day full-rebuilds it (seeding closed rides). So this only reconciles R2
+// with the D1 log after a rare failed append; ~every 6h is ample insurance.
+const SELFHEAL_EVERY_MIN = 360;
 
 /**
  * Round-robin scheduler: pick at most ONE item to run this minute so a batch of
@@ -67,7 +71,8 @@ async function pollTickets(env: Env, scheduledTime: number): Promise<void> {
   const jobs: Promise<unknown>[] = dueProducts(epochMinute).map(({ park, product }) =>
     runPoll(env, park, product),
   );
-  // Opening hours — one park every ~4h.
+  // Opening hours barely change → refresh each park just ONCE/day (overnight, one
+  // park per invocation). Persist across deploys in R2, so nothing is lost between.
   const hoursIdx = dueAux(epochMinute, PARKS.length, HOURS_EVERY_MIN);
   if (hoursIdx >= 0) jobs.push(runHoursPoll(env, PARKS[hoursIdx]));
   // Forward month-file self-heal — one product every ~2h (offset so it doesn't

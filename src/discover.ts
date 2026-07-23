@@ -175,7 +175,7 @@ function skipWs(s: string, i: number): number {
  * `E`/`CT` keep accesso's object-or-array shape verbatim (their raw slice is
  * JSON.parsed as-is).
  */
-export function extractCatalogPackages(text: string): CatalogPackage[] | null {
+function extractCatalogPackages(text: string): CatalogPackage[] | null {
   try {
     // Anchor on the unique `"PS"` inside GetMerchantPackageList; its `"P":[` is
     // the package array. GetApplicationConsolidated sits earlier in the bytes and

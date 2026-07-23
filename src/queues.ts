@@ -12,7 +12,6 @@ import {
   logPoll,
   readQueueLatest,
   updatePollStatus,
-  updateQueueIndex,
   writeQueueDayFile,
   writeQueueLatest,
 } from "./db";
@@ -152,6 +151,11 @@ export interface QueueFetch {
   snapshot: QueueSnapshot;
   resort?: ResortWindow;
   linesSeen: number;
+  /** The feed didn't change since `prevEtag` (HTTP 304) — the caller skips all
+   *  parse/diff/writes and just records that it checked. */
+  notModified?: boolean;
+  /** The feed's current ETag, to persist for next poll's conditional GET. */
+  etag?: string | null;
 }
 
 /**
@@ -164,6 +168,7 @@ export interface QueueFetch {
 export async function fetchLiveQueues(
   cfg: AttractionsConfig,
   catalog: RideCatalog | null,
+  prevEtag?: string | null,
 ): Promise<QueueFetch> {
   let resp: Response;
   try {
@@ -171,12 +176,21 @@ export async function fetchLiveQueues(
       headers: {
         accept: "application/json, text/plain, */*",
         "user-agent": USER_AGENT,
+        // Conditional GET: the live feed is edge-cached with a strong ETag, so an
+        // unchanged feed answers 304 (0 bytes) and we skip parse+diff+writes.
+        ...(prevEtag ? { "if-none-match": prevEtag } : {}),
       },
     });
   } catch {
     return { ok: false, httpStatus: 0, snapshot: {}, linesSeen: 0 };
   }
+  // Unchanged since last poll — the caller keeps the existing baseline/day file
+  // and just records that it checked.
+  if (resp.status === 304) {
+    return { ok: true, notModified: true, httpStatus: 304, snapshot: {}, linesSeen: 0 };
+  }
   if (!resp.ok) return { ok: false, httpStatus: resp.status, snapshot: {}, linesSeen: 0 };
+  const etag = resp.headers.get("etag");
 
   let data: { entities?: Record<string, { records?: unknown[] }> };
   try {
@@ -245,6 +259,7 @@ export async function fetchLiveQueues(
     snapshot,
     resort,
     linesSeen: Object.keys(snapshot).length,
+    etag,
   };
 }
 
@@ -307,13 +322,17 @@ export async function runQueuePoll(
     snapshot: QueueSnapshot;
     resort?: ResortWindow;
     linesSeen: number;
+    notModified?: boolean;
+    etag?: string | null;
   };
   let catalog: RideCatalog | null;
   if (park.queue.kind === "attractions") {
     // Attractions.io: names come from the bundle-derived catalog (built off the
-    // hot path by the daily cron); a missing one degrades to unnamed lines.
+    // hot path by the daily cron); a missing one degrades to unnamed lines. The
+    // feed supports conditional GET, so pass the last ETag: an unchanged feed
+    // 304s and the whole poll below short-circuits to a status bump.
     catalog = await readCatalog(env.BUCKET, park.key);
-    res = await fetchLiveQueues(park.queue, catalog);
+    res = await fetchLiveQueues(park.queue, catalog, prev.etag);
   } else {
     // Inline-name backends (First Option / Paulton's, Firestore / Flamingo Land):
     // the fetch also hands back a catalog synthesised from the feed. Persist it to
@@ -336,12 +355,15 @@ export async function runQueuePoll(
   }
 
   let changed = 0;
-  if (res.ok) {
-    const deltas = diffQueues(prev, res.snapshot);
+  // `notModified` (conditional-GET 304): the feed is unchanged, so there's
+  // nothing to diff or write — fall straight through to the status bump so the
+  // page still shows a fresh "checked …" without any parse/diff/R2 work.
+  if (res.ok && !res.notModified) {
+    const deltas = diffQueues(prev.lines, res.snapshot);
     changed = deltas.length;
     if (changed > 0) {
       await appendQueueDeltas(env.DB, park.key, deltas, observedAt);
-      await writeQueueLatest(env.BUCKET, park.key, res.snapshot, observedAt);
+      await writeQueueLatest(env.BUCKET, park.key, res.snapshot, observedAt, res.etag);
       // The day's opening window frames the sparkline x-axis. Attractions.io
       // parks carry it in the live feed (res.resort); Paulton's `fos` feed does
       // NOT, so derive it from its own opening-hours times.json (small GET, only
@@ -376,7 +398,14 @@ export async function runQueuePoll(
           window,
         );
       }
-      await updateQueueIndex(env.BUCKET, park.key, [today], observedAt);
+      // The date-nav index (min/max day) only moves when a NEW day first gets
+      // data — never within a day — so it's maintained by the 30-min self-heal
+      // (pollQueues), not re-read+compared on every changed poll.
+    } else if (res.etag && res.etag !== prev.etag) {
+      // The feed changed only in ways we ignore (post-close status churn), but
+      // its ETag advanced. Refresh the baseline ETag so the next poll can 304
+      // once the churn settles, instead of re-downloading the feed every minute.
+      await writeQueueLatest(env.BUCKET, park.key, res.snapshot, observedAt, res.etag);
     }
   }
 

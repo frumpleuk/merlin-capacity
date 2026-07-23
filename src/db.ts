@@ -387,29 +387,39 @@ export async function appendQueueDeltas(
   );
 }
 
-/** The last queue snapshot, read back from the flat baseline file — our diff
- *  baseline (R2 is read-after-write consistent). */
+/** The last queue snapshot + the upstream feed's ETag at that time, read back
+ *  from the flat baseline file. The snapshot is our diff baseline; the `etag`
+ *  drives conditional GETs (If-None-Match) so an unchanged feed short-circuits
+ *  the whole poll (R2 is read-after-write consistent). */
 export async function readQueueLatest(
   bucket: R2Bucket,
   park: string,
-): Promise<QueueSnapshot> {
+): Promise<{ lines: QueueSnapshot; etag: string | null }> {
   const obj = await bucket.get(queueLatestKey(park));
-  if (!obj) return {};
+  if (!obj) return { lines: {}, etag: null };
   try {
-    return ((await obj.json()) as { lines?: QueueSnapshot }).lines ?? {};
+    const d = (await obj.json()) as { lines?: QueueSnapshot; etag?: string };
+    return { lines: d.lines ?? {}, etag: d.etag ?? null };
   } catch {
-    return {};
+    return { lines: {}, etag: null };
   }
 }
 
-/** Overwrite the flat diff baseline with the current snapshot. */
+/** Overwrite the flat diff baseline with the current snapshot (+ the feed's
+ *  ETag, when the source exposes one, for next poll's conditional GET). */
 export async function writeQueueLatest(
   bucket: R2Bucket,
   park: string,
   snapshot: QueueSnapshot,
   generatedAt: string,
+  etag?: string | null,
 ): Promise<void> {
-  const body = JSON.stringify({ park, generated_at: generatedAt, lines: snapshot });
+  const body = JSON.stringify({
+    park,
+    generated_at: generatedAt,
+    ...(etag ? { etag } : {}),
+    lines: snapshot,
+  });
   await bucket.put(queueLatestKey(park), body, {
     httpMetadata: { contentType: "application/json" },
   });

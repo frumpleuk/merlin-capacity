@@ -32,11 +32,6 @@ export const HORIZON_DAYS = 365;
  *  keeps the 3 MB bootstrap fetch/parse well off the hot path. */
 export const DISCOVERY_TTL_MS = 12 * 60 * 60 * 1000;
 
-/** How often to refresh opening hours. They change rarely, but unlike ticket
- *  data there's no D1 log to rebuild the month files from — they only exist once
- *  an hours poll has run — so keep the cadence tight (hourly) so a deploy or a
- *  new month surfaces opening times quickly. Still cheap: 4 small GETs/hour. */
-export const HOURS_INTERVAL_MINUTES = 60;
 
 /** Attractions.io ("Occasio") identity for a park — powers ride names + live
  *  queue times (see docs/attractions-io-api.md). `apiKey` is the app's public

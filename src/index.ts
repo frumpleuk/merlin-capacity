@@ -1,11 +1,4 @@
-import {
-  allProducts,
-  attractionsParks,
-  dueProducts,
-  HOURS_INTERVAL_MINUTES,
-  PARKS,
-  queueParks,
-} from "./config";
+import { allProducts, attractionsParks, dueProducts, PARKS, queueParks } from "./config";
 import { rebuildMonthsFromD1, updateQueueIndex, writeQueueDayFile } from "./db";
 import { refreshPackages } from "./discover";
 import { runHoursPoll } from "./hours";
@@ -14,10 +7,28 @@ import { runQueuePoll } from "./queues";
 import { readCatalog, rebuildCatalog } from "./rides";
 import type { Env } from "./types";
 
-/** How often the cron re-derives the forward month files from D1, so a product
- *  that's been static since deploy (no deltas → no per-poll rewrite) still gets
- *  its current/future month files. Cheap: only the forward window, from D1. */
-const REBUILD_INTERVAL_MINUTES = 30;
+/** Auxiliary-job cadences (minutes between runs of the SAME item). The only
+ *  per-minute work is the park polls themselves (queue feeds every minute; RAP
+ *  1m / main 5m availability). Everything else — opening hours, the D1 month-file
+ *  and day-file self-heals — is background maintenance that barely needs to be
+ *  frequent, so it runs on these long cadences, ONE item per invocation (see
+ *  `dueAux`), and never stacks. Hours/events change rarely; the self-heals only
+ *  repair drift the per-minute append already keeps current. */
+const HOURS_EVERY_MIN = 240; // each park's opening hours: ~every 4h
+const REBUILD_EVERY_MIN = 120; // each product's forward month files: ~every 2h
+const SELFHEAL_EVERY_MIN = 120; // each park's queue day file: ~every 2h
+
+/**
+ * Round-robin scheduler: pick at most ONE item to run this minute so a batch of
+ * N background jobs never fires in the same invocation. Item i runs once every
+ * `everyMin` minutes (at `epochMinute ≡ i + offset`), so the batch is smeared one
+ * item per minute across each cycle. `offset` staggers different schedules so
+ * they don't land together. Returns the due index, or -1.
+ */
+function dueAux(epochMinute: number, count: number, everyMin: number, offset = 0): number {
+  const slot = (epochMinute - offset + everyMin) % everyMin;
+  return slot < count ? slot : -1;
+}
 
 /** Cron schedules (wrangler.toml `triggers.crons`). Each firing is its own
  *  top-level invocation with its OWN free-tier 10ms CPU budget, so the three
@@ -30,8 +41,8 @@ const REBUILD_INTERVAL_MINUTES = 30;
  *  separate invocations. That's how tickets AND queues each get a 1-minute
  *  cadence in their own budget despite there being only one literal every-minute
  *  spelling. Three crons total = the free-plan per-Worker cap. */
-const CRON_TICKETS = "* * * * *"; // RAP (1m) + main (5m) + hours (60m) + rebuilds (30m)
-const CRON_QUEUES = "*/1 * * * *"; // every minute; ride queue times + self-heal (30m)
+const CRON_TICKETS = "* * * * *"; // RAP (1m) + main (5m); hours/rebuild as low-cadence aux
+const CRON_QUEUES = "*/1 * * * *"; // every minute; all parks' ride queue times + low-cadence self-heal
 // Pre-open daily maintenance, 08:00–08:07 BST (07:00–07:07 GMT) — before any UK
 // park opens (09:00), one job per minute so each CPU-heavy op gets its own fresh
 // 10ms budget while parks are closed:
@@ -47,49 +58,59 @@ const currentMonth = (ms: number) => new Date(ms).toISOString().slice(0, 7);
 const currentDay = (ms: number) => new Date(ms).toISOString().slice(0, 10);
 
 /** Ticket stream (every minute). Each product polls on its own cadence
- *  (intervalMinutes), derived statelessly from the scheduled time. Every
- *  REBUILD_INTERVAL_MINUTES it also self-heals the forward month files from D1.
- *  This is the pre-queue workload, restored to its own invocation. */
+ *  (RAP 1m / main 5m), derived statelessly from the scheduled time — that's the
+ *  only per-minute work. Opening-hours refresh and the forward month-file
+ *  self-heal are background maintenance, run one item per invocation on long
+ *  cadences (see `dueAux`) so they never stack onto the poll or each other. */
 async function pollTickets(env: Env, scheduledTime: number): Promise<void> {
   const epochMinute = Math.floor(scheduledTime / 60_000);
   const jobs: Promise<unknown>[] = dueProducts(epochMinute).map(({ park, product }) =>
     runPoll(env, park, product),
   );
-  // Opening hours change rarely — refresh every HOURS_INTERVAL_MINUTES.
-  if (epochMinute % HOURS_INTERVAL_MINUTES === 0) {
-    jobs.push(...PARKS.map((park) => runHoursPoll(env, park)));
-  }
-  // Periodically re-derive the forward month files from D1 (self-heal any
-  // product whose data has been static and so got no per-poll rewrite).
-  if (epochMinute % REBUILD_INTERVAL_MINUTES === 0) {
-    const from = currentMonth(scheduledTime);
-    const at = new Date(scheduledTime).toISOString();
+  // Opening hours — one park every ~4h.
+  const hoursIdx = dueAux(epochMinute, PARKS.length, HOURS_EVERY_MIN);
+  if (hoursIdx >= 0) jobs.push(runHoursPoll(env, PARKS[hoursIdx]));
+  // Forward month-file self-heal — one product every ~2h (offset so it doesn't
+  // land with the hours refresh). Repairs a product static since deploy.
+  const products = allProducts();
+  const rebuildIdx = dueAux(epochMinute, products.length, REBUILD_EVERY_MIN, 20);
+  if (rebuildIdx >= 0) {
+    const { park, product } = products[rebuildIdx];
     jobs.push(
-      ...allProducts().map(({ park, product }) =>
-        rebuildMonthsFromD1(env.DB, env.BUCKET, park.key, product.key, at, from),
+      rebuildMonthsFromD1(
+        env.DB,
+        env.BUCKET,
+        park.key,
+        product.key,
+        new Date(scheduledTime).toISOString(),
+        currentMonth(scheduledTime),
       ),
     );
   }
   await Promise.all(jobs);
 }
 
-/** Queue stream (every minute, own invocation/budget). Reads each park's live
- *  feed and appends changed lines. Uses the READ-ONLY cached catalog — never rebuilds it (that's the
- *  daily cron's job); a missing catalog just degrades to unnamed lines until the
- *  next rebuild. Every REBUILD_INTERVAL_MINUTES it self-heals today's day file
- *  from D1 (covers a fresh deploy or a static-since-open park). */
+/** Queue stream (every minute, own invocation/budget). Polls EVERY park's live
+ *  feed every minute (conditional GET → an unchanged feed 304s and skips the
+ *  work) and appends changed lines. Uses the READ-ONLY cached catalog. The D1
+ *  day-file self-heal is background maintenance — one park every ~2h (see
+ *  `dueAux`), never all at once — since the per-minute append already keeps each
+ *  day file current; this only repairs drift / reseeds a fresh-deploy park. */
 async function pollQueues(env: Env, scheduledTime: number): Promise<void> {
   const epochMinute = Math.floor(scheduledTime / 60_000);
-  const jobs: Promise<unknown>[] = queueParks().map((park) => runQueuePoll(env, park));
-  if (epochMinute % REBUILD_INTERVAL_MINUTES === 0) {
+  const parks = queueParks();
+  const jobs: Promise<unknown>[] = parks.map((park) => runQueuePoll(env, park));
+  const healIdx = dueAux(epochMinute, parks.length, SELFHEAL_EVERY_MIN);
+  if (healIdx >= 0) {
+    const healPark = parks[healIdx];
     const at = new Date(scheduledTime).toISOString();
     const day = currentDay(scheduledTime);
     jobs.push(
-      ...queueParks().map(async (park) => {
-        const catalog = await readCatalog(env.BUCKET, park.key);
-        await writeQueueDayFile(env.DB, env.BUCKET, park.key, day, catalog, at);
-        await updateQueueIndex(env.BUCKET, park.key, [day], at);
-      }),
+      (async () => {
+        const catalog = await readCatalog(env.BUCKET, healPark.key);
+        await writeQueueDayFile(env.DB, env.BUCKET, healPark.key, day, catalog, at);
+        await updateQueueIndex(env.BUCKET, healPark.key, [day], at);
+      })(),
     );
   }
   await Promise.all(jobs);

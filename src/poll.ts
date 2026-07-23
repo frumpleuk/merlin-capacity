@@ -42,7 +42,7 @@ export async function runPoll(
     // Resolve the packages to query — hardcoded (RAP) or rediscovered from the
     // catalog (main). No packages means discovery couldn't produce a list and
     // there's no cached fallback; log it and skip rather than sending an empty query.
-    const { P, anchorIds } = await resolvePackages(env.BUCKET, park, product, now);
+    const { P, anchorIds } = await resolvePackages(env.BUCKET, park, product);
     if (P.length === 0) {
       await logPoll(env.DB, park.key, product.key, 0, "NO_PACKAGES", 0, 0, observedAt);
       await updatePollStatus(env.BUCKET, park.key, product.key, observedAt, false);

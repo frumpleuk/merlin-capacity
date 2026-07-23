@@ -23,12 +23,13 @@ assets = { directory = "./dist", binding = "ASSETS", not_found_handling = "singl
 #     1-min cadence in their own budget. 3 crons = the free-plan per-Worker cap.
 #       "* * * * *"   tickets — RAP (1m) + main (5m) + hours (60m) + rebuilds (30m)
 #       "*/1 * * * *" queues  — ride waits every minute (own budget)
-#       "0-3 7 * * *" catalog — daily bundle unzip, 08:00–08:03 BST, ONE park per
-#                     minute so each CPU-heavy unzip gets its own budget, all off
-#                     every hot path. Widen the minute range if parks are added.
+#       "0-7 7 * * *" pre-open — daily maintenance 08:00–08:07 BST, ONE job/minute
+#                     (own budget, parks closed): mins 0-3 bundle unzips, mins 4-7
+#                     accesso package discovery (the 2.83MB bootstrap parse, moved
+#                     OFF the every-minute ticket poll). Widen if parks are added.
 #     Free tier throughout; the limit to watch stays D1's 100k writes/day. ---
 [triggers]
-crons = ["* * * * *", "*/1 * * * *", "0-3 7 * * *"]
+crons = ["* * * * *", "*/1 * * * *", "0-7 7 * * *"]
 
 # --- History / source of truth ---
 [[d1_databases]]

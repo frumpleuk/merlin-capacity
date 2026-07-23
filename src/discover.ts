@@ -1,6 +1,5 @@
 import {
   bootstrapUrl,
-  DISCOVERY_TTL_MS,
   USER_AGENT,
   type DiscoverSpec,
   type ParkConfig,
@@ -32,6 +31,9 @@ interface CachedList {
   /** Package ids in `P` that are yield anchors (prebooks), not the public day
    *  ticket — used to flag prebook-only dates. */
   anchorIds: string[];
+  /** The bootstrap catalog's ETag when this list was derived, for the next
+   *  refresh's conditional GET (skip the 2.83MB re-parse when unchanged). */
+  etag?: string | null;
 }
 
 /** A resolved package list plus which of its ids are yield anchors. */
@@ -44,50 +46,51 @@ const cacheKey = (park: string, product: string) => `catalog/${park}/${product}.
 
 /**
  * The package selectors to send to GetMerchantPackageEventDates for a product:
- * a hardcoded `P` as-is (RAP — not in the catalog), or a list rediscovered from
- * the park's public bootstrap catalog and cached in R2 on a TTL (main tickets).
- * Never throws; on catalog failure it falls back to the last cached list.
+ * a hardcoded `P` (RAP — not in the catalog), or the list rediscovered from the
+ * park's bootstrap catalog. HOT PATH — reads the R2 cache ONLY, never the 2.83MB
+ * bootstrap: that ~18ms JSON.parse would blow the 10ms budget mid-poll. The cache
+ * is kept current by the pre-open daily `refreshPackages`. An empty list (no
+ * cache yet) makes the poll log NO_PACKAGES and skip, same as before.
  */
 export async function resolvePackages(
   bucket: R2Bucket,
   park: ParkConfig,
   product: ProductConfig,
-  now: number,
 ): Promise<ResolvedPackages> {
   if (product.P) return { P: product.P, anchorIds: [] };
   if (!product.discover) return { P: [], anchorIds: [] };
-  return discoverPackages(bucket, park, product, product.discover, now);
+  const cached = await readCache(bucket, cacheKey(park.key, product.key));
+  return cached ? { P: cached.P, anchorIds: cached.anchorIds } : { P: [], anchorIds: [] };
 }
 
-async function discoverPackages(
+/**
+ * Refresh a discover-product's cached package list from the bootstrap catalog.
+ * Runs OFF the hot path — the pre-open daily cron and `/poll` — because it may
+ * parse the 2.83MB catalog. A conditional GET means an unchanged catalog (almost
+ * every day; ids rotate only seasonally) answers 304 and we skip the download +
+ * parse entirely. Never throws; on any failure keeps the last good cached list.
+ */
+export async function refreshPackages(
   bucket: R2Bucket,
   park: ParkConfig,
   product: ProductConfig,
-  spec: DiscoverSpec,
   now: number,
-): Promise<ResolvedPackages> {
+): Promise<void> {
+  if (!product.discover) return; // RAP (static P) has nothing to discover
   const key = cacheKey(park.key, product.key);
   const cached = await readCache(bucket, key);
-  if (cached && now - Date.parse(cached.generated_at) < DISCOVERY_TTL_MS) {
-    return { P: cached.P, anchorIds: cached.anchorIds };
-  }
-
-  const fresh = await fetchCatalogPackages(park, spec);
-  if (fresh.P.length === 0) {
-    // Catalog down, wrong slug, or park mid-rotation — keep serving the last
-    // good list rather than letting the poll fail with no packages.
-    return { P: cached?.P ?? [], anchorIds: cached?.anchorIds ?? [] };
-  }
-
+  const fresh = await fetchCatalogPackages(park, product.discover, cached?.etag);
+  if (fresh.notModified) return; // 304 — cached list still current
+  if (fresh.P.length === 0) return; // catalog down / mid-rotation — keep old list
   const body: CachedList = {
     generated_at: new Date(now).toISOString(),
     P: fresh.P,
     anchorIds: fresh.anchorIds,
+    etag: fresh.etag,
   };
   await bucket.put(key, JSON.stringify(body), {
     httpMetadata: { contentType: "application/json" },
   });
-  return fresh;
 }
 
 async function readCache(bucket: R2Bucket, key: string): Promise<CachedList | null> {
@@ -96,19 +99,33 @@ async function readCache(bucket: R2Bucket, key: string): Promise<CachedList | nu
   try {
     const d = (await obj.json()) as Partial<CachedList>;
     if (!Array.isArray(d.P) || !d.generated_at) return null;
-    return { generated_at: d.generated_at, P: d.P, anchorIds: d.anchorIds ?? [] };
+    return {
+      generated_at: d.generated_at,
+      P: d.P,
+      anchorIds: d.anchorIds ?? [],
+      etag: d.etag ?? null,
+    };
   } catch {
     return null;
   }
 }
 
-/** Fetch the bootstrap catalog and build the P[] for the matching packages,
- *  plus the subset of ids that are yield anchors (prebooks). */
+/** fetchCatalogPackages result: the derived list + the catalog ETag, or a 304
+ *  `notModified` signal telling the caller to keep its cached list. */
+interface CatalogFetch extends ResolvedPackages {
+  etag?: string | null;
+  notModified?: boolean;
+}
+
+/** Fetch the bootstrap catalog and build the P[] for the matching packages, plus
+ *  the subset of ids that are yield anchors (prebooks). Conditional on `prevEtag`
+ *  — a 304 returns `notModified` and skips the parse. */
 async function fetchCatalogPackages(
   park: ParkConfig,
   spec: DiscoverSpec,
-): Promise<ResolvedPackages> {
-  const empty: ResolvedPackages = { P: [], anchorIds: [] };
+  prevEtag?: string | null,
+): Promise<CatalogFetch> {
+  const empty: CatalogFetch = { P: [], anchorIds: [] };
   let resp: Response;
   try {
     resp = await fetch(bootstrapUrl(park.bootstrapSlug ?? ""), {
@@ -118,12 +135,15 @@ async function fetchCatalogPackages(
         origin: park.origin ?? "",
         referer: `${park.origin ?? ""}/`,
         "user-agent": USER_AGENT,
+        ...(prevEtag ? { "if-none-match": prevEtag } : {}),
       },
     });
   } catch {
     return empty;
   }
+  if (resp.status === 304) return { P: [], anchorIds: [], notModified: true };
   if (!resp.ok) return empty;
+  const etag = resp.headers.get("etag");
 
   let data: Bootstrap;
   try {
@@ -166,5 +186,5 @@ async function fetchCatalogPackages(
     P.push({ CT: [{ id: ct, qty: 1 }], event_id: spec.event_id, id: p.id });
     if (isAnchor && !isDayTicket) anchorIds.push(p.id);
   }
-  return { P, anchorIds };
+  return { P, anchorIds, etag };
 }

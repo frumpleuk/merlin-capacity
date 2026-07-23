@@ -7,6 +7,7 @@ import {
   queueParks,
 } from "./config";
 import { rebuildMonthsFromD1, updateQueueIndex, writeQueueDayFile } from "./db";
+import { refreshPackages } from "./discover";
 import { runHoursPoll } from "./hours";
 import { runPoll } from "./poll";
 import { runQueuePoll } from "./queues";
@@ -31,13 +32,16 @@ const REBUILD_INTERVAL_MINUTES = 30;
  *  spelling. Three crons total = the free-plan per-Worker cap. */
 const CRON_TICKETS = "* * * * *"; // RAP (1m) + main (5m) + hours (60m) + rebuilds (30m)
 const CRON_QUEUES = "*/1 * * * *"; // every minute; ride queue times + self-heal (30m)
-// 08:00–08:03 BST (07:00–07:03 GMT) — before any UK park opens (09:00). One
-// firing per minute, each rebuilding ONE park's catalog, so every CPU-heavy
-// unzip gets its own fresh 10ms budget (4 in one invocation would risk the
-// limit). The minute range must cover attractionsParks() (the bundle-backed
-// parks) — widen it if more are added. First Option parks (Paulton's) aren't
-// here: their catalog is synthesised inline during the queue poll.
-const CRON_CATALOG = "0-3 7 * * *";
+// Pre-open daily maintenance, 08:00–08:07 BST (07:00–07:07 GMT) — before any UK
+// park opens (09:00), one job per minute so each CPU-heavy op gets its own fresh
+// 10ms budget while parks are closed:
+//   minutes 0–3 → rebuild one Attractions.io park's ride catalog (streaming unzip)
+//   minutes 4–7 → refresh one accesso ticket park's package discovery (the 2.83MB
+//                 bootstrap parse — kept OFF the every-minute ticket poll so it
+//                 never blows a daytime budget; conditional-GET makes it near-free
+//                 on the common unchanged day).
+// Both windows must cover their 4 parks — widen the range if more are added.
+const CRON_CATALOG = "0-7 7 * * *";
 
 const currentMonth = (ms: number) => new Date(ms).toISOString().slice(0, 7);
 const currentDay = (ms: number) => new Date(ms).toISOString().slice(0, 10);
@@ -91,24 +95,25 @@ async function pollQueues(env: Env, scheduledTime: number): Promise<void> {
   await Promise.all(jobs);
 }
 
-/** Catalog stream (daily, pre-open — fires once per minute across a short window,
- *  one park per firing). Rebuilds a single queue-tracked park's static ride
- *  catalog from the content bundle. This is the one CPU-heavy operation
- *  (streaming unzip + parse), so it's kept off every hot path AND limited to one
- *  park per invocation — each unzip gets its own fresh 10ms budget, while parks
- *  are closed. Park chosen by the firing's minute-of-hour (0→first, 1→second, …);
- *  failure keeps the park's last good catalog. R2 persists across deploys, so a
- *  normal deploy keeps its catalogs; only a first-ever deploy waits for 08:00. */
+/** Pre-open daily maintenance (see CRON_CATALOG), one job per minute so each gets
+ *  its own fresh 10ms budget while parks are closed. Minutes 0–3 rebuild one
+ *  Attractions.io park's ride catalog (the CPU-heavy content-bundle unzip);
+ *  minutes 4–7 refresh one accesso ticket park's package discovery (the 2.83MB
+ *  bootstrap parse). Both are kept off every hot path; a failure keeps the last
+ *  good cached value. Inline-name parks (Paulton's/Flamingo/Blackpool) have no
+ *  bundle and aren't in the 0–3 window; only accesso parks discover packages. */
 async function rebuildCatalogs(env: Env, scheduledTime: number): Promise<void> {
-  // Only Attractions.io parks have a content bundle to rebuild. The inline-name
-  // parks (Paulton's `fos`, Flamingo Land `firestore`) synthesise their catalog
-  // during the queue poll, so they're excluded here — which also keeps the
-  // catalog cron's window (0-3) as is, since it's still just the four
-  // bundle-backed parks.
-  const parks = attractionsParks();
-  const park = parks[new Date(scheduledTime).getUTCMinutes()];
-  if (!park) return; // window minute beyond the park list — nothing to build
-  await rebuildCatalog(env.BUCKET, park.key, park.queue, scheduledTime);
+  const minute = new Date(scheduledTime).getUTCMinutes();
+  if (minute < 4) {
+    const park = attractionsParks()[minute];
+    if (park) await rebuildCatalog(env.BUCKET, park.key, park.queue, scheduledTime);
+    return;
+  }
+  // Discovery refresh, one discover-product per minute (own budget, separate from
+  // the unzips above). Conditional GET → an unchanged catalog 304s (near-free).
+  const discovers = allProducts().filter(({ product }) => product.discover);
+  const pair = discovers[minute - 4];
+  if (pair) await refreshPackages(env.BUCKET, pair.park, pair.product, scheduledTime);
 }
 
 export default {
@@ -151,6 +156,14 @@ export default {
       if (!env.POLL_KEY || provided !== env.POLL_KEY) {
         return new Response("forbidden", { status: 403 });
       }
+      // Refresh discovery caches first (conditional GET) so the runPoll loop —
+      // which now only READS the cache — sees fresh package lists. This is the
+      // manual escape hatch for the pre-open daily refresh.
+      await Promise.all(
+        allProducts()
+          .filter(({ product }) => product.discover)
+          .map(({ park, product }) => refreshPackages(env.BUCKET, park, product, Date.now())),
+      );
       const results = await Promise.all(
         allProducts().map(async ({ park, product }) => ({
           park: park.key,

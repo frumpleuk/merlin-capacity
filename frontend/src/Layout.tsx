@@ -1,14 +1,28 @@
 import { Link, NavLink, Outlet, useLocation, useParams } from "react-router-dom";
-import { findPark, PARKS } from "./catalog";
+import { findPark, PARKS, type ParkDef } from "./catalog";
 
 export function Layout() {
   const { park } = useParams();
   const parkDef = findPark(park) ?? PARKS[0];
 
-  // Everything after the park segment (e.g. "queues", "main", "queues/2026-07-18"),
-  // so switching parks keeps you on the same page.
+  // The path segments after the park (e.g. ["main"], ["queues"], ["queues",
+  // "2026-07-18"]), used to keep you on the same page when you switch parks.
   const { pathname } = useLocation();
-  const suffix = pathname.split("/").filter(Boolean).slice(1).join("/");
+  const rest = pathname.split("/").filter(Boolean).slice(1);
+  const section = rest[0]; // undefined (calendar) | "queues" | a product key
+
+  // Where a given park's nav link should point. Switching parks keeps the same
+  // page WHEN the target park has it — otherwise the product route wouldn't match
+  // and CalendarPage would bounce to the default park. So: a product tab is only
+  // carried over to a park that actually has that product; the Calendar and
+  // Queues tabs exist for every (non-queue-only) park.
+  const targetFor = (p: ParkDef): string => {
+    if (p.queueOnly) return `/${p.key}/queues`; // no calendar/products — always queues
+    if (!section) return `/${p.key}`; // calendar home
+    if (section === "queues") return `/${p.key}/${rest.join("/")}`; // queues (+ date)
+    if (p.products.some((pr) => pr.key === section)) return `/${p.key}/${section}`;
+    return `/${p.key}`; // this park doesn't have that product → its calendar home
+  };
 
   return (
     <>
@@ -18,9 +32,7 @@ export function Layout() {
           {PARKS.map((p) => (
             <Link
               key={p.key}
-              // A queue-only park has no calendar/product pages, so always land
-              // it on its Queues tab (and never carry a ticket suffix onto it).
-              to={p.queueOnly ? `/${p.key}/queues` : suffix ? `/${p.key}/${suffix}` : `/${p.key}`}
+              to={targetFor(p)}
               className={"park-link" + (p.key === parkDef.key ? " active" : "")}
             >
               {p.label}

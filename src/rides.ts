@@ -53,11 +53,10 @@ const tokenKey = (park: string) => `attractions/${park}/token.json`;
 
 /**
  * The cached ride catalog for a park, or null if none has been built yet.
- * READ-ONLY: this is what the per-poll hot path uses. It never rebuilds, because
- * `buildCatalog` (streaming unzip + parse of the content bundle) can't fit the
- * free-tier 10ms CPU budget — a rebuild attempted inline would be CPU-killed
- * before it could cache, then retry and die every poll. Rebuilds are owned by
- * the daily pre-open cron and `/poll` (see `rebuildCatalog`).
+ * READ-ONLY: this is what the per-poll hot path uses. Rebuilding it is CPU-heavy
+ * (streaming unzip + parse of the content bundle) and only needs to happen when
+ * the bundle changes, so it's owned by the daily pre-open cron and `/poll` (see
+ * `rebuildCatalog`), not the hot path.
  */
 export async function readCatalog(
   bucket: R2Bucket,
@@ -69,8 +68,8 @@ export async function readCatalog(
 /**
  * Re-derive a park's catalog from the Attractions.io content bundle and cache it
  * in R2. CPU-heavy (registration + streaming unzip + parse), so only ever called
- * OFF the hot path: the daily 08:00 cron (park closed, its own fresh 10ms budget)
- * and a manual `/poll`. Never throws — on any failure (registration, bundle
+ * OFF the hot path: the daily pre-open cron (parks closed) and a manual `/poll`.
+ * Never throws — on any failure (registration, bundle
  * fetch, unzip) it keeps the last good cached catalog rather than losing ride
  * names, mirroring `discoverPackages` in discover.ts. Returns the catalog now in
  * R2 (freshly built, or the retained cache), or null if there was never one.

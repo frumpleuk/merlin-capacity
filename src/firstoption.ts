@@ -50,8 +50,8 @@ export interface FosFetch {
   httpStatus: number;
   snapshot: QueueSnapshot;
   /** Ride catalog synthesised from the feed's inline names — persisted to R2 so
-   *  the self-heal rebuild and delta-append paths resolve names uniformly, the
-   *  same way the Attractions.io parks read their bundle-derived catalog. */
+   *  the day-file projection resolves names the same way the Attractions.io parks
+   *  read their bundle-derived catalog. */
   catalog: RideCatalog;
   linesSeen: number;
 }

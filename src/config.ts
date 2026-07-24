@@ -27,11 +27,6 @@ export const USER_AGENT =
 // auto-captures next year's dates as each park releases them.
 export const HORIZON_DAYS = 365;
 
-/** How long a discovered package list is reused before re-deriving from the
- *  catalog. Package ids rotate at most seasonally, so twice a day is ample and
- *  keeps the 3 MB bootstrap fetch/parse well off the hot path. */
-export const DISCOVERY_TTL_MS = 12 * 60 * 60 * 1000;
-
 
 /** Attractions.io ("Occasio") identity for a park — powers ride names + live
  *  queue times (see docs/attractions-io-api.md). `apiKey` is the app's public
@@ -180,9 +175,6 @@ export interface DiscoverSpec {
 
 export interface ProductConfig {
   key: string; // matches the R2 file: calendar/<park>/<key>.json
-  /** Poll at most once every N minutes. RAP releases vanish fast → 1; main
-   *  and slow-moving products can be less frequent to save writes/requests. */
-  intervalMinutes: number;
   extra_movie: string;
   include_times: boolean;
   /** Static package/customer-type selectors sent to the API. Used for products
@@ -249,7 +241,6 @@ export const PARKS: ParkConfig[] = [
         // variants that cover the Scarefest dates) are rediscovered from the
         // catalog; the server merges them into one entry per date.
         key: "main",
-        intervalMinutes: 5,
         extra_movie: "",
         include_times: false,
         discover: { event_id: "2502" },
@@ -258,7 +249,6 @@ export const PARKS: ParkConfig[] = [
         // Ride Access Pass — customer_type 14036, event 2531. Hard pool
         // (available + used == capacity); capacity grows as batches release.
         key: "rap",
-        intervalMinutes: 1,
         extra_movie: "date",
         include_times: true,
         P: [{ CT: [{ id: "14036", qty: 1 }], event_id: "2531", id: "25906" }],
@@ -283,7 +273,6 @@ export const PARKS: ParkConfig[] = [
     products: [
       {
         key: "rap",
-        intervalMinutes: 1,
         extra_movie: "date",
         include_times: true,
         P: [{ CT: [{ id: "14036", qty: 1 }], event_id: "2658", id: "77728" }],
@@ -294,7 +283,6 @@ export const PARKS: ParkConfig[] = [
         // cover Thorpe's autumn Fright Nights operating days (the plain
         // "1 Day Ticket" packages alone stop at ~1 Oct).
         key: "main",
-        intervalMinutes: 5,
         extra_movie: "",
         include_times: false,
         discover: { event_id: "2507" },
@@ -322,7 +310,6 @@ export const PARKS: ParkConfig[] = [
     products: [
       {
         key: "rap",
-        intervalMinutes: 1,
         extra_movie: "date",
         include_times: true,
         P: [{ CT: [{ id: "14036", qty: 1 }], event_id: "2659", id: "90339" }],
@@ -332,7 +319,6 @@ export const PARKS: ParkConfig[] = [
         // catalog. Legoland's standard dated day ticket is named "Online
         // Saver", not "1 Day Ticket".
         key: "main",
-        intervalMinutes: 5,
         extra_movie: "",
         include_times: false,
         discover: { event_id: "2399", name: "Online Saver" },
@@ -357,7 +343,6 @@ export const PARKS: ParkConfig[] = [
     products: [
       {
         key: "rap",
-        intervalMinutes: 1,
         extra_movie: "date",
         include_times: true,
         P: [{ CT: [{ id: "14036", qty: 1 }], event_id: "2654", id: "90810" }],
@@ -366,7 +351,6 @@ export const PARKS: ParkConfig[] = [
         // Main tickets — event 2506. Package ids rediscovered from the
         // catalog. Park closes for winter.
         key: "main",
-        intervalMinutes: 5,
         extra_movie: "",
         include_times: false,
         discover: { event_id: "2506" },
@@ -401,7 +385,6 @@ export const PARKS: ParkConfig[] = [
         // Day-ticket availability from Paulton's own JSON blob (not accesso, so
         // no P/discover). Same Snapshot model as the Merlin parks → same heatmap.
         key: "main",
-        intervalMinutes: 5,
         extra_movie: "",
         include_times: false,
         availabilityUrl: "https://paultonspark.co.uk/tickets/availability.json",
@@ -484,15 +467,5 @@ export function attractionsParks(): (ParkConfig & {
   return PARKS.filter(
     (p): p is ParkConfig & { queue: { kind: "attractions" } & AttractionsConfig } =>
       p.queue?.kind === "attractions",
-  );
-}
-
-/** Pairs due to poll at the given epoch-minute (respecting each product's
- *  intervalMinutes). Stateless: derived purely from the cron's scheduled time. */
-export function dueProducts(
-  epochMinute: number,
-): { park: ParkConfig; product: ProductConfig }[] {
-  return allProducts().filter(
-    ({ product }) => epochMinute % product.intervalMinutes === 0,
   );
 }

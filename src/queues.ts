@@ -6,12 +6,12 @@ import {
   type QueueSource,
 } from "./config";
 import {
-  appendQueueDayFile,
   appendQueueDeltas,
   closedNote,
   logPoll,
   readQueueLatest,
   updatePollStatus,
+  updateQueueIndex,
   writeQueueDayFile,
   writeQueueLatest,
 } from "./db";
@@ -334,10 +334,10 @@ export async function runQueuePoll(
     catalog = await readCatalog(env.BUCKET, park.key);
     res = await fetchLiveQueues(park.queue, catalog, prev.etag);
   } else {
-    // Inline-name backends (First Option / Paulton's, Firestore / Flamingo Land):
-    // the fetch also hands back a catalog synthesised from the feed. Persist it to
-    // R2 (only when the name set changed) so the self-heal rebuild and delta-append
-    // resolve names the same way.
+    // Inline-name backends (First Option / Paulton's, Firestore / Flamingo Land,
+    // bespoke / Blackpool): the fetch also hands back a catalog synthesised from
+    // the feed. Persist it to R2 (only when the name set changed) so the day-file
+    // projection resolves names consistently.
     const synth =
       park.queue.kind === "fos"
         ? await fetchFirstOptionQueues(park.queue, now)
@@ -364,43 +364,21 @@ export async function runQueuePoll(
     if (changed > 0) {
       await appendQueueDeltas(env.DB, park.key, deltas, observedAt);
       await writeQueueLatest(env.BUCKET, park.key, res.snapshot, observedAt, res.etag);
-      // The day's opening window frames the sparkline x-axis. Attractions.io
-      // parks carry it in the live feed (res.resort); Paulton's `fos` feed does
-      // NOT, so derive it from its own opening-hours times.json (small GET, only
-      // on a changed poll). Passing it to BOTH the append and the full-rebuild
-      // paths means the window lands even when the 30-min self-heal created a
-      // window-less file first (it's stamped only if missing — see db.ts).
+      // The day's opening window frames the sparkline x-axis. Attractions.io parks
+      // carry it in the live feed (res.resort); Paulton's `fos` feed does NOT, so
+      // derive it from its own opening-hours times.json.
       const window =
         res.resort ??
         (park.openingHours?.kind === "paultons"
           ? await fetchPaultonsWindow(park.openingHours.timesUrl, today)
           : undefined);
-      // Fold the deltas straight into the served day file (O(deltas)); only fall
-      // back to the full D1 rebuild when there's no file yet (first poll of the
-      // day). The 30-min self-heal still full-rebuilds from D1 to repair drift.
-      const appended = await appendQueueDayFile(
-        env.BUCKET,
-        park.key,
-        today,
-        deltas,
-        catalog,
-        observedAt,
-        window,
-      );
-      if (!appended) {
-        await writeQueueDayFile(
-          env.DB,
-          env.BUCKET,
-          park.key,
-          today,
-          catalog,
-          observedAt,
-          window,
-        );
-      }
-      // The date-nav index (min/max day) only moves when a NEW day first gets
-      // data — never within a day — so it's maintained by the 30-min self-heal
-      // (pollQueues), not re-read+compared on every changed poll.
+      // Rebuild the served day file from D1 (the delta log is the source of
+      // truth). Plenty of CPU headroom to re-project the day each changed poll, so
+      // there's no append/drift machinery and no separate self-heal.
+      await writeQueueDayFile(env.DB, env.BUCKET, park.key, today, catalog, observedAt, window);
+      // Date-nav bounds: only move when a NEW day first gets data (a no-op R2
+      // compare within a day), but cheap enough to just keep current here.
+      await updateQueueIndex(env.BUCKET, park.key, [today], observedAt);
     } else if (res.etag && res.etag !== prev.etag) {
       // The feed changed only in ways we ignore (post-close status churn), but
       // its ETag advanced. Refresh the baseline ETag so the next poll can 304

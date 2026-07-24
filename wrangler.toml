@@ -13,23 +13,18 @@ routes = [
 #     SPA fallback so client-routed deep links (e.g. /alton_towers/rap) resolve. ---
 assets = { directory = "./dist", binding = "ASSETS", not_found_handling = "single-page-application" }
 
-# --- Poll cadence. THREE crons, one per data stream, because each cron firing is
-#     its own invocation with its own free-tier 10ms CPU budget — running all
-#     streams in a single every-minute cron blew that budget (CPU-killed mid-run,
-#     freezing queues + main tickets). Streams write separate R2 files; the
-#     frontend stitches them. Cloudflare treats each cron STRING as a distinct
-#     trigger, so "* * * * *" and "*/1 * * * *" (both "every minute") fire as two
-#     separate invocations each minute — that's how tickets AND queues each get a
-#     1-min cadence in their own budget. 3 crons = the free-plan per-Worker cap.
-#       "* * * * *"   tickets — RAP (1m) + main (5m) + hours (60m) + rebuilds (30m)
-#       "*/1 * * * *" queues  — ride waits every minute (own budget)
-#       "0-7 7 * * *" pre-open — daily maintenance 08:00–08:07 BST, ONE job/minute
-#                     (own budget, parks closed): mins 0-3 bundle unzips, mins 4-7
-#                     accesso package discovery (the 2.83MB bootstrap parse, moved
-#                     OFF the every-minute ticket poll). Widen if parks are added.
-#     Free tier throughout; the limit to watch stays D1's 100k writes/day. ---
+# --- Poll cadence. One cron per concern (dispatched by event.cron in index.ts).
+#     Paid plan → 30s CPU per invocation, so each job just processes all its
+#     parks/products in one pass. Cloudflare de-dupes identical cron strings, so
+#     the two every-minute streams are spelled differently to register as two
+#     independent triggers (isolated invocations).
+#       "* * * * *"    queues   — live ride waits, all parks
+#       "*/1 * * * *"  tickets  — accesso availability (RAP + main), all products
+#       "0 * * * *"    hours    — opening-hours calendars, all parks (hourly)
+#       "*/30 * * * *" rebuild  — self-heal ticket month files from D1
+#       "0 7 * * *"    pre-open — 07:00 GMT: catalog rebuilds + package discovery ---
 [triggers]
-crons = ["* * * * *", "*/1 * * * *", "0-7 7 * * *"]
+crons = ["* * * * *", "*/1 * * * *", "0 * * * *", "*/30 * * * *", "0 7 * * *"]
 
 # --- History / source of truth ---
 [[d1_databases]]

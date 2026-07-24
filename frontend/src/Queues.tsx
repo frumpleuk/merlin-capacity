@@ -417,8 +417,11 @@ function RideChart({
   const restrParts: string[] = [];
   if (ride.minHeight != null && ride.minHeight > 0)
     restrParts.push(`Min height ${formatHeight(ride.minHeight)}`);
+  if (ride.minAge != null) restrParts.push(`Min age ${ride.minAge}`);
   if (ride.minHeightUnaccompanied != null)
     restrParts.push(`Ride alone above ${formatHeight(ride.minHeightUnaccompanied)}`);
+  if (ride.minAgeUnaccompanied != null)
+    restrParts.push(`Ride alone from age ${ride.minAgeUnaccompanied}`);
   if (ride.maxHeight != null) restrParts.push(`Max height ${formatHeight(ride.maxHeight)}`);
   if (ride.maxChest != null) restrParts.push(`Max chest ${ride.maxChest}″`);
   const hoursText =

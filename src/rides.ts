@@ -28,6 +28,11 @@ export interface RideMeta {
    *  just this number rather than storing the whole multi-paragraph summary, so
    *  the day files stay tiny. */
   maxChest?: number;
+  /** Minimum rider age, in years — to ride at all (with an adult). Only Paulton's
+   *  publishes ages (scraped from its accessibility pages). */
+  minAge?: number;
+  /** Minimum age to ride alone (unaccompanied); below it, only with an adult. */
+  minAgeUnaccompanied?: number;
   /** The park's own grouping for this ride: its thrill class (e.g. "Thrills",
    *  "Top Thrills", "Brave Adventurers") from the `WaitTimeClassifications`
    *  collection, or — for a park that leaves that empty (Legoland) — its themed

@@ -18,6 +18,7 @@ import {
 import { fetchBpbQueues } from "./bpb";
 import { fetchFirebaseQueues } from "./firebase";
 import { catalogNamesChanged, fetchFirstOptionQueues } from "./firstoption";
+import { applyRestrictions, readPaultonsRestrictions } from "./paultons-restrictions";
 import { putCatalog, readCatalog, type RideCatalog } from "./rides";
 import type { Env, QueueObs, QueueSnapshot } from "./types";
 
@@ -367,6 +368,15 @@ export async function runQueuePoll(
     res = synth;
     catalog = synth.ok ? synth.catalog : await readCatalog(env.BUCKET, park.key);
     if (synth.ok) {
+      // Paulton's restrictions aren't in its feed — fold in the daily-scraped map
+      // (see paultons-restrictions.ts) so they ride along on the catalog like the
+      // other backends' inline restrictions. Reading before the change-compare
+      // means a refreshed map re-persists the catalog (catalogNamesChanged sees
+      // the new heights/ages).
+      if (park.queue.kind === "fos") {
+        const restr = await readPaultonsRestrictions(env.BUCKET, park.key);
+        if (restr) applyRestrictions(synth.catalog.items, restr);
+      }
       const cached = await readCatalog(env.BUCKET, park.key);
       if (catalogNamesChanged(cached, synth.catalog)) {
         await putCatalog(env.BUCKET, park.key, synth.catalog);

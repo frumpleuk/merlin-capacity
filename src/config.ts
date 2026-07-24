@@ -469,3 +469,15 @@ export function attractionsParks(): (ParkConfig & {
       p.queue?.kind === "attractions",
   );
 }
+
+/** Queue parks on the First Option backend (Paulton's). Their rider restrictions
+ *  aren't in the feed — they're scraped daily from the park website off the hot
+ *  path (see paultons-restrictions.ts). */
+export function fosParks(): (ParkConfig & {
+  queue: { kind: "fos" } & FirstOptionConfig;
+})[] {
+  return PARKS.filter(
+    (p): p is ParkConfig & { queue: { kind: "fos" } & FirstOptionConfig } =>
+      p.queue?.kind === "fos",
+  );
+}

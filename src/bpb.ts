@@ -47,6 +47,37 @@ interface RideRow {
     open_time?: string; // "HH:MM:SS" (park-local)
     close_time?: string;
   } | null;
+  /** Rider height restriction, as a JSON STRING (needs a second parse):
+   *  `{"unaccompanied":bool,"height":cm,"aheight":cm}`. `aheight` = minimum to
+   *  ride WITH an adult; `height` = minimum to ride alone (unaccompanied). Equal
+   *  for most rides; Avalanche is 112 with an adult / 132 alone. */
+  restrictions?: string | null;
+}
+
+/** Parse Blackpool's `restrictions` JSON string into our shared metres-based
+ *  fields. `aheight` (accompanied minimum) → `minHeight`; `height` (unaccompanied
+ *  minimum) → `minHeightUnaccompanied`, but only when it's actually higher than
+ *  the accompanied one (else there's no distinction to show). 0/absent = none. */
+function parseBpbRestrictions(raw?: string | null): {
+  minHeight?: number;
+  minHeightUnaccompanied?: number;
+} {
+  if (!raw) return {};
+  let o: { height?: number; aheight?: number };
+  try {
+    o = JSON.parse(raw);
+  } catch {
+    return {};
+  }
+  const acc = typeof o.aheight === "number" && o.aheight > 0 ? o.aheight : undefined;
+  const alone = typeof o.height === "number" && o.height > 0 ? o.height : undefined;
+  const out: { minHeight?: number; minHeightUnaccompanied?: number } = {};
+  // The accompanied minimum is the lowest height that can ride at all. Fall back
+  // to the unaccompanied value when only that is given.
+  const minCm = acc ?? alone;
+  if (minCm != null) out.minHeight = minCm / 100;
+  if (alone != null && acc != null && alone > acc) out.minHeightUnaccompanied = alone / 100;
+  return out;
 }
 
 export interface BpbFetch {
@@ -225,7 +256,15 @@ export async function fetchBpbQueues(
     const name = (r.ride ?? "").trim();
     if (name) {
       const group = (r.category ?? "").trim();
-      catalog.items[String(rideId)] = { name, ...(group ? { group } : {}) };
+      const restr = parseBpbRestrictions(r.restrictions);
+      catalog.items[String(rideId)] = {
+        name,
+        ...(group ? { group } : {}),
+        ...(restr.minHeight != null ? { minHeight: restr.minHeight } : {}),
+        ...(restr.minHeightUnaccompanied != null
+          ? { minHeightUnaccompanied: restr.minHeightUnaccompanied }
+          : {}),
+      };
     }
     catalog.queueLines[String(rideId)] = { item: rideId, type: "physical_main" };
   }

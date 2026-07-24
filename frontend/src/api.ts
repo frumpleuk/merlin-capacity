@@ -182,6 +182,10 @@ export interface QueueRide {
   minHeightUnaccompanied?: number;
   maxHeight?: number;
   maxChest?: number;
+  /** Minimum rider age in years (to ride, and to ride alone). Only Paulton's
+   *  publishes ages. */
+  minAge?: number;
+  minAgeUnaccompanied?: number;
   /** This ride's own scheduled opening window today, minutes since UTC midnight
    *  — often opens late / closes early vs the park (Attractions.io only). */
   open?: number;

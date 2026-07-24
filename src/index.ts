@@ -1,7 +1,8 @@
-import { allProducts, attractionsParks, PARKS, queueParks } from "./config";
+import { allProducts, attractionsParks, fosParks, PARKS, queueParks } from "./config";
 import { rebuildMonthsFromD1 } from "./db";
 import { refreshPackages } from "./discover";
 import { runHoursPoll } from "./hours";
+import { refreshPaultonsRestrictions } from "./paultons-restrictions";
 import { runPoll } from "./poll";
 import { runQueuePoll } from "./queues";
 import { rebuildCatalog } from "./rides";
@@ -69,6 +70,9 @@ async function preOpen(env: Env, scheduledTime: number): Promise<void> {
     ...allProducts()
       .filter(({ product }) => product.discover)
       .map(({ park, product }) => refreshPackages(env.BUCKET, park, product, scheduledTime)),
+    // Paulton's rider restrictions — scraped from the park website (its feed has
+    // none), cached in R2 for the every-minute poll to fold onto the catalog.
+    ...fosParks().map((park) => refreshPaultonsRestrictions(env.BUCKET, park.key, park.queue)),
   ]);
 }
 
@@ -116,14 +120,17 @@ export default {
       if (!env.POLL_KEY || provided !== env.POLL_KEY) {
         return new Response("forbidden", { status: 403 });
       }
-      // Refresh discovery caches first (conditional GET) so the runPoll loop —
-      // which now only READS the cache — sees fresh package lists. This is the
-      // manual escape hatch for the pre-open daily refresh.
-      await Promise.all(
-        allProducts()
+      // Refresh discovery caches AND Paulton's restrictions first, so the poll
+      // loops below (which only READ these caches) see fresh data. This is the
+      // manual escape hatch for the daily pre-open refresh.
+      await Promise.all([
+        ...allProducts()
           .filter(({ product }) => product.discover)
           .map(({ park, product }) => refreshPackages(env.BUCKET, park, product, Date.now())),
-      );
+        ...fosParks().map((park) =>
+          refreshPaultonsRestrictions(env.BUCKET, park.key, park.queue),
+        ),
+      ]);
       const results = await Promise.all(
         allProducts().map(async ({ park, product }) => ({
           park: park.key,

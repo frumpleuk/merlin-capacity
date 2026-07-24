@@ -640,6 +640,10 @@ export async function writeQueueDayFile(
         : {}),
       ...(meta?.maxHeight != null ? { maxHeight: meta.maxHeight } : {}),
       ...(meta?.maxChest != null ? { maxChest: meta.maxChest } : {}),
+      ...(meta?.minAge != null ? { minAge: meta.minAge } : {}),
+      ...(meta?.minAgeUnaccompanied != null
+        ? { minAgeUnaccompanied: meta.minAgeUnaccompanied }
+        : {}),
       // This ride's own scheduled opening window today (minutes since UTC
       // midnight), when the backend publishes it (Attractions.io).
       ...(win ? { open: win.open, close: win.close } : {}),

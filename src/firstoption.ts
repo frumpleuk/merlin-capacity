@@ -147,19 +147,30 @@ export async function fetchFirstOptionQueues(
   };
 }
 
-/** Whether two catalogs differ in the ride name OR group set — the things that
- *  change for a First Option park (rides added/renamed/re-tagged). Cheap gate so
- *  the synthetic catalog is only re-written to R2 when it actually changed,
- *  rather than every minute. Comparing groups too means a deploy that adds/edits
- *  the embedded grouping re-persists the catalog even when names are unchanged. */
+/** Whether two catalogs differ in the ride name, group set, OR rider
+ *  restrictions — the things that change for an inline-name park (rides
+ *  added/renamed/re-tagged, or a restriction edit). Cheap gate so the synthetic
+ *  catalog is only re-written to R2 when it actually changed, rather than every
+ *  minute. Comparing groups/restrictions too means a deploy that adds or edits
+ *  either re-persists the catalog even when names are unchanged (without this, a
+ *  newly-extracted field wouldn't surface until a ride was renamed). */
 export function catalogNamesChanged(a: RideCatalog | null, b: RideCatalog): boolean {
   if (!a) return true;
   const ak = Object.keys(a.items);
   const bk = Object.keys(b.items);
   if (ak.length !== bk.length) return true;
   for (const k of bk) {
-    if (a.items[k]?.name !== b.items[k]?.name) return true;
-    if (JSON.stringify(a.items[k]?.groups) !== JSON.stringify(b.items[k]?.groups)) return true;
+    const ai = a.items[k];
+    const bi = b.items[k];
+    if (ai?.name !== bi?.name) return true;
+    if (JSON.stringify(ai?.groups) !== JSON.stringify(bi?.groups)) return true;
+    if (
+      ai?.minHeight !== bi?.minHeight ||
+      ai?.minHeightUnaccompanied !== bi?.minHeightUnaccompanied ||
+      ai?.minAge !== bi?.minAge ||
+      ai?.minAgeUnaccompanied !== bi?.minAgeUnaccompanied
+    )
+      return true;
   }
   return false;
 }

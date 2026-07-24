@@ -75,13 +75,19 @@ export async function updatePollStatus(
   changed: boolean,
 ): Promise<void> {
   const objectKey = `status/${park}/${product}.json`;
+  // On a CHANGED poll last_changed = now, so the previous value isn't needed —
+  // skip the read entirely. Only an unchanged poll (the cheap path anyway) has to
+  // read back the stored last_changed to preserve it. Saves an R2 GET on every
+  // changed poll, which at peak is most of them.
   let prevChanged: string | null = null;
-  const obj = await bucket.get(objectKey);
-  if (obj) {
-    try {
-      prevChanged = ((await obj.json()) as PollStatusFile).last_changed ?? null;
-    } catch {
-      prevChanged = null;
+  if (!changed) {
+    const obj = await bucket.get(objectKey);
+    if (obj) {
+      try {
+        prevChanged = ((await obj.json()) as PollStatusFile).last_changed ?? null;
+      } catch {
+        prevChanged = null;
+      }
     }
   }
   const body = JSON.stringify({

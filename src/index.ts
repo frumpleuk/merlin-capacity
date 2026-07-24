@@ -61,6 +61,13 @@ const CRON_CATALOG = "0-7 7 * * *";
 const currentMonth = (ms: number) => new Date(ms).toISOString().slice(0, 7);
 const currentDay = (ms: number) => new Date(ms).toISOString().slice(0, 10);
 
+/** The queue feeds are split across the TWO every-minute crons so all 7 parks
+ *  don't blow a single 10ms budget in one invocation (Cloudflare's grace is gone,
+ *  so >10ms is culled hard). Each cron polls the parks whose index has its parity;
+ *  both fire every minute, so every park is still polled every minute — just using
+ *  2×10ms across two invocations instead of 1. */
+const queueHalf = (parity: 0 | 1) => queueParks().filter((_, i) => i % 2 === parity);
+
 /** Ticket stream (every minute). Each product polls on its own cadence
  *  (RAP 1m / main 5m), derived statelessly from the scheduled time — that's the
  *  only per-minute work. Opening-hours refresh and the forward month-file
@@ -92,6 +99,9 @@ async function pollTickets(env: Env, scheduledTime: number): Promise<void> {
       ),
     );
   }
+  // This cron also carries HALF the queue feeds (see queueHalf) so 7 parks don't
+  // all land in the queue cron's single 10ms budget.
+  for (const park of queueHalf(1)) jobs.push(runQueuePoll(env, park));
   await Promise.all(jobs);
 }
 
@@ -103,11 +113,13 @@ async function pollTickets(env: Env, scheduledTime: number): Promise<void> {
  *  day file current; this only repairs drift / reseeds a fresh-deploy park. */
 async function pollQueues(env: Env, scheduledTime: number): Promise<void> {
   const epochMinute = Math.floor(scheduledTime / 60_000);
-  const parks = queueParks();
-  const jobs: Promise<unknown>[] = parks.map((park) => runQueuePoll(env, park));
-  const healIdx = dueAux(epochMinute, parks.length, SELFHEAL_EVERY_MIN);
+  // This cron polls HALF the queue parks every minute; pollTickets polls the other
+  // half (see queueHalf). The self-heal still covers ALL of them (low cadence).
+  const jobs: Promise<unknown>[] = queueHalf(0).map((park) => runQueuePoll(env, park));
+  const allParks = queueParks();
+  const healIdx = dueAux(epochMinute, allParks.length, SELFHEAL_EVERY_MIN);
   if (healIdx >= 0) {
-    const healPark = parks[healIdx];
+    const healPark = allParks[healIdx];
     const at = new Date(scheduledTime).toISOString();
     const day = currentDay(scheduledTime);
     jobs.push(

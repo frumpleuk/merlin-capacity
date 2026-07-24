@@ -134,6 +134,12 @@ interface LiveItem {
   IsOperational?: boolean;
   QueueTime?: number | null;
   QueueStatusMessage?: string | null;
+  /** This ride's SCHEDULED opening window today (a JSON string of local park
+   *  times, same shape as the `Resort` window). Populated per ride — and often
+   *  differs from the park's hours (a ride that opens late / closes early) — so
+   *  it's the "ride opening times" the official app shows on the ride page.
+   *  Present even while the ride is currently closed. */
+  OpeningTimes?: string | null;
 }
 interface LiveQueueLine {
   _id: number;
@@ -150,6 +156,10 @@ export interface QueueFetch {
   httpStatus: number;
   snapshot: QueueSnapshot;
   resort?: ResortWindow;
+  /** Each ride's own scheduled opening window today (rideId → window), from the
+   *  live `Item.OpeningTimes`. Only the Attractions.io backend publishes these;
+   *  attached per ride to the day file for the ride-page "opening times". */
+  rideWindows?: Record<number, ResortWindow>;
   linesSeen: number;
   /** The feed didn't change since `prevEtag` (HTTP 304) — the caller skips all
    *  parse/diff/writes and just records that it checked. */
@@ -203,6 +213,14 @@ export async function fetchLiveQueues(
   const qls = (data.entities?.QueueLine?.records as LiveQueueLine[] | undefined) ?? [];
   const resortRec = (data.entities?.Resort?.records as LiveResort[] | undefined)?.[0];
   const resort = parseResortWindow(resortRec?.OpeningTimes);
+  // Each ride's own scheduled window (may open late / close early vs the park).
+  // Captured for every Item that carries one, open or closed, so a closed-all-day
+  // ride still shows its intended hours.
+  const rideWindows: Record<number, ResortWindow> = {};
+  for (const it of items) {
+    const w = parseResortWindow(it.OpeningTimes);
+    if (w) rideWindows[it._id] = w;
+  }
   const itemById = new Map(items.map((i) => [i._id, i]));
   const qlById = new Map(qls.map((q) => [q._id, q]));
 
@@ -258,6 +276,7 @@ export async function fetchLiveQueues(
     httpStatus: resp.status,
     snapshot,
     resort,
+    rideWindows,
     linesSeen: Object.keys(snapshot).length,
     etag,
   };
@@ -321,6 +340,7 @@ export async function runQueuePoll(
     httpStatus: number;
     snapshot: QueueSnapshot;
     resort?: ResortWindow;
+    rideWindows?: Record<number, ResortWindow>;
     linesSeen: number;
     notModified?: boolean;
     etag?: string | null;
@@ -375,7 +395,16 @@ export async function runQueuePoll(
       // Rebuild the served day file from D1 (the delta log is the source of
       // truth). Plenty of CPU headroom to re-project the day each changed poll, so
       // there's no append/drift machinery and no separate self-heal.
-      await writeQueueDayFile(env.DB, env.BUCKET, park.key, today, catalog, observedAt, window);
+      await writeQueueDayFile(
+        env.DB,
+        env.BUCKET,
+        park.key,
+        today,
+        catalog,
+        observedAt,
+        window,
+        res.rideWindows,
+      );
       // Date-nav bounds: only move when a NEW day first gets data (a no-op R2
       // compare within a day), but cheap enough to just keep current here.
       await updateQueueIndex(env.BUCKET, park.key, [today], observedAt);

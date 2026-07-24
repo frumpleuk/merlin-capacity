@@ -15,7 +15,19 @@ export interface GroupDim {
 export interface RideMeta {
   name: string;
   category?: number;
+  /** Minimum rider height, in metres — the height below which you can't ride
+   *  (even with an adult). The one restriction every backend that has any
+   *  exposes; the fields below are Attractions.io-only extras. */
   minHeight?: number | null; // metres
+  /** Ride alone above this height (metres); below it, only with an adult. */
+  minHeightUnaccompanied?: number | null;
+  /** Maximum rider height, in metres (rare — a handful of kids' rides). */
+  maxHeight?: number | null;
+  /** Maximum chest-size restriction, in inches — parsed out of the park's
+   *  free-text restriction summary (the big coasters' harness limit). We extract
+   *  just this number rather than storing the whole multi-paragraph summary, so
+   *  the day files stay tiny. */
+  maxChest?: number;
   /** The park's own grouping for this ride: its thrill class (e.g. "Thrills",
    *  "Top Thrills", "Brave Adventurers") from the `WaitTimeClassifications`
    *  collection, or — for a park that leaves that empty (Legoland) — its themed
@@ -41,6 +53,15 @@ export interface RideCatalog {
   groupDims?: GroupDim[];
   items: Record<string, RideMeta>; // Item._id → meta (rides only)
   queueLines: Record<string, { item: number; type: string }>; // QueueLine._id → {ride, type}
+}
+
+/** Pull the "maximum chest size restriction is 54 inches" number out of a ride's
+ *  free-text restriction summary (Attractions.io `RestrictionSummary`). Returns
+ *  the inches, or undefined when the ride states no chest limit. */
+function parseMaxChest(summary?: string | null): number | undefined {
+  if (!summary) return undefined;
+  const m = /maximum chest size restriction is\s*(\d+)\s*inch/i.exec(summary);
+  return m ? Number(m[1]) : undefined;
 }
 
 const authHeader = (apiKey: string, token?: string) =>
@@ -176,12 +197,20 @@ async function buildCatalog(
     const it = byId.get(id);
     if (!it?.Name) continue; // a few QueueLine.Item refs point at absent items
     const group = groupOf(it);
+    const maxChest = parseMaxChest(it.RestrictionSummary);
     itemsOut[String(id)] = {
       name: it.Name,
       ...(it.Category != null ? { category: it.Category } : {}),
       ...(it.MinimumHeightRequirement != null
         ? { minHeight: it.MinimumHeightRequirement }
         : {}),
+      ...(it.MinimumUnaccompaniedHeightRequirement != null
+        ? { minHeightUnaccompanied: it.MinimumUnaccompaniedHeightRequirement }
+        : {}),
+      ...(it.MaximumHeightRequirement != null
+        ? { maxHeight: it.MaximumHeightRequirement }
+        : {}),
+      ...(maxChest != null ? { maxChest } : {}),
       ...(group ? { group } : {}),
     };
   }
@@ -201,6 +230,9 @@ interface ApiItem {
   Category?: number;
   Classifications?: number[];
   MinimumHeightRequirement?: number | null;
+  MinimumUnaccompaniedHeightRequirement?: number | null;
+  MaximumHeightRequirement?: number | null;
+  RestrictionSummary?: string | null;
 }
 interface ApiQueueLine {
   _id: number;

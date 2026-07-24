@@ -173,6 +173,19 @@ export interface QueueRide {
   /** Group per dimension (dim key → group name) when the park offers >1 grouping
    *  (Paulton's: {thrill, area}). Single-grouping parks use `group` instead. */
   groups?: Record<string, string>;
+  /** Rider restrictions. `minHeight` (metres) is the height below which you can't
+   *  ride at all — present for Attractions.io + Flamingo rides that have one. The
+   *  rest are Attractions.io-only: ride alone above `minHeightUnaccompanied`,
+   *  a rare `maxHeight` (metres), and `maxChest` (inches, the coasters' harness
+   *  limit). */
+  minHeight?: number;
+  minHeightUnaccompanied?: number;
+  maxHeight?: number;
+  maxChest?: number;
+  /** This ride's own scheduled opening window today, minutes since UTC midnight
+   *  — often opens late / closes early vs the park (Attractions.io only). */
+  open?: number;
+  close?: number;
   named?: boolean; // false → parent ride absent from the content bundle
   lines: QueueLineSeries[];
 }

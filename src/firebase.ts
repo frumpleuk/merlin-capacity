@@ -28,8 +28,11 @@ const FIRESTORE = "https://firestore.googleapis.com/v1";
 const IDENTITY = "https://identitytoolkit.googleapis.com/v1";
 const SECURETOKEN = "https://securetoken.googleapis.com/v1";
 
-/** Doc fields we read — everything else (description HTML, images, restrictions)
- *  is dropped by the Firestore field mask so the per-minute response stays small. */
+/** Doc fields we read — the rest (description HTML, images, ride stats) is
+ *  dropped by the Firestore field mask so the per-minute response stays small.
+ *  `restrictions` is the ride's minimum rider height in CENTIMETRES (0 = none;
+ *  e.g. 91.44 = 3ft, 140 = the big coasters) — NOT `heightCm`/`heightM`, which
+ *  are the structure's physical height and are mostly 0/garbage. */
 const FIELDS = [
   "id",
   "title",
@@ -39,6 +42,7 @@ const FIELDS = [
   "underMaintenance",
   "downAllDay",
   "isRide",
+  "restrictions",
 ] as const;
 
 export interface FirebaseFetch {
@@ -82,6 +86,17 @@ const asInt = (v?: FsValue): number | null => {
     return Number.isFinite(n) ? n : null;
   }
   if (typeof v.doubleValue === "number") return Math.round(v.doubleValue);
+  return null;
+};
+/** A numeric value without asInt's rounding — keeps `restrictions` like 91.44cm
+ *  precise for the cm→metres conversion. */
+const asNum = (v?: FsValue): number | null => {
+  if (!v) return null;
+  if (typeof v.doubleValue === "number") return v.doubleValue;
+  if (v.integerValue != null) {
+    const n = Number(v.integerValue);
+    return Number.isFinite(n) ? n : null;
+  }
   return null;
 };
 const asBool = (v?: FsValue): boolean => v?.booleanValue === true;
@@ -322,7 +337,15 @@ export async function fetchFirebaseQueues(
     const name = decodeEntities(asStr(f.title) ?? "").trim();
     if (name) {
       const group = decodeEntities(asStr(f.category) ?? "").trim();
-      catalog.items[String(rideId)] = { name, ...(group ? { group } : {}) };
+      // `restrictions` is the minimum rider height in cm; store metres to match
+      // the Attractions.io `minHeight` unit. 0 (or absent) = no height limit.
+      const restrCm = asNum(f.restrictions);
+      const minHeight = restrCm != null && restrCm > 0 ? restrCm / 100 : undefined;
+      catalog.items[String(rideId)] = {
+        name,
+        ...(group ? { group } : {}),
+        ...(minHeight != null ? { minHeight } : {}),
+      };
     }
     catalog.queueLines[String(rideId)] = { item: rideId, type: "physical_main" };
   }

@@ -528,20 +528,43 @@ export async function writeQueueDayFile(
   catalog: RideCatalog | null,
   generatedAt: string,
   resort?: { open: number; close: number },
+  rideWindows?: Record<number, { open: number; close: number }>,
 ): Promise<number> {
   const rows = await readQueueDay(db, park, date);
   const dayStart = Date.parse(`${date}T00:00:00Z`);
 
   // The park's opening window (minutes since UTC midnight) frames the sparkline
-  // x-axis. Usually derived by this poll; when it isn't (a backend that doesn't
-  // report one), preserve whatever the existing day file already recorded.
+  // x-axis; each ride's own window (rideWindows) is its scheduled hours. Both can
+  // be missing from a poll, so we preserve what the existing day file holds:
+  //  - park window: preserve when this poll didn't derive one (`!window`).
+  //  - per-ride windows: ONLY Attractions.io passes `rideWindows`. When it passes
+  //    an EMPTY map (a poll where the feed carried no OpeningTimes), preserve the
+  //    ones already on file rather than wiping every ride's hours. A backend that
+  //    never publishes them (rideWindows === undefined) has nothing to preserve,
+  //    so we don't read the file on its behalf.
   let window = resort;
-  if (!window) {
+  let rideWin = rideWindows;
+  const preserveRideWin =
+    rideWindows !== undefined && Object.keys(rideWindows).length === 0;
+  if (!window || preserveRideWin) {
     const existing = await bucket.get(queueDayKey(park, date));
     if (existing) {
       try {
-        const e = (await existing.json()) as { open?: number; close?: number };
-        if (e.open != null && e.close != null) window = { open: e.open, close: e.close };
+        const e = (await existing.json()) as {
+          open?: number;
+          close?: number;
+          rides?: { id: number; open?: number; close?: number }[];
+        };
+        if (!window && e.open != null && e.close != null) {
+          window = { open: e.open, close: e.close };
+        }
+        if (preserveRideWin && Array.isArray(e.rides)) {
+          const m: Record<number, { open: number; close: number }> = {};
+          for (const r of e.rides) {
+            if (r.open != null && r.close != null) m[r.id] = { open: r.open, close: r.close };
+          }
+          rideWin = m;
+        }
       } catch {
         /* ignore */
       }
@@ -602,12 +625,24 @@ export async function writeQueueDayFile(
 
   const ridesOut = [...rides.entries()].map(([rideId, lines]) => {
     const meta = catalog?.items[String(rideId)];
+    const win = rideWin?.[rideId];
     return {
       id: rideId,
       name: meta?.name ?? `Ride ${rideId}`,
       ...(meta?.category != null ? { category: meta.category } : {}),
       ...(meta?.group ? { group: meta.group } : {}),
       ...(meta?.groups ? { groups: meta.groups } : {}),
+      // Rider restrictions (static, from the catalog). minHeight is in metres for
+      // every backend that has any; the rest are Attractions.io-only extras.
+      ...(meta?.minHeight != null ? { minHeight: meta.minHeight } : {}),
+      ...(meta?.minHeightUnaccompanied != null
+        ? { minHeightUnaccompanied: meta.minHeightUnaccompanied }
+        : {}),
+      ...(meta?.maxHeight != null ? { maxHeight: meta.maxHeight } : {}),
+      ...(meta?.maxChest != null ? { maxChest: meta.maxChest } : {}),
+      // This ride's own scheduled opening window today (minutes since UTC
+      // midnight), when the backend publishes it (Attractions.io).
+      ...(win ? { open: win.open, close: win.close } : {}),
       named: meta?.name != null, // false → the "unidentified" section
       lines: [...lines.values()].sort((a, b) => a.queueLineId - b.queueLineId),
     };

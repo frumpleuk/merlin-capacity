@@ -521,10 +521,36 @@ main.with-bar {
 }
 .q-name {
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-weight: 600;
+}
+.q-name-text {
+  min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-weight: 600;
+}
+/* Restriction / opening-times chips under the ride name. */
+.q-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px 5px;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1.4;
+}
+.q-meta-chip {
+  white-space: nowrap;
+  padding: 0 5px;
+  border-radius: 999px;
+  border: 1px solid var(--grid);
+  color: var(--muted);
+}
+.q-meta-height {
+  color: var(--fg);
+  border-color: color-mix(in srgb, var(--q-main) 45%, var(--grid));
 }
 .q-head-row .q-name {
   font-weight: inherit;
@@ -585,7 +611,11 @@ main.with-bar {
   }
   .q-name {
     grid-area: name;
-    white-space: normal; /* wrap rather than truncate */
+  }
+  .q-name-text {
+    /* Full-width line on mobile: wrap rather than truncate with an ellipsis. */
+    overflow: visible;
+    white-space: normal;
   }
   .spark {
     grid-area: spark;
@@ -615,6 +645,21 @@ main.with-bar {
 .chart-wrap {
   position: relative;
   padding: 4px 8px 10px;
+}
+/* Opening times + rider restrictions, above the chart. */
+.chart-caption {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  align-items: baseline;
+  padding: 2px 4px 8px;
+  font-size: 12px;
+}
+.chart-caption-hours {
+  font-weight: 600;
+}
+.chart-caption-restr {
+  color: var(--muted);
 }
 .chart {
   width: 100%;

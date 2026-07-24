@@ -13,6 +13,26 @@ const londonTime = (date: string, mins: number): string =>
     { hour: "2-digit", minute: "2-digit", timeZone: "Europe/London" },
   );
 
+/* ── Rider restrictions & per-ride hours ─────────────────────────────────────── */
+
+/** A rider-height limit in metres, written the way the parks state it: "1.4m",
+ *  "0.9m" — rounded to the nearest cm, trailing zeros trimmed. */
+const formatHeight = (m: number): string =>
+  `${(Math.round(m * 100) / 100).toFixed(2).replace(/\.?0+$/, "")}m`;
+
+/** The ride's own scheduled hours as "11:00–17:00" — but only when they differ
+ *  from the park's window (identical is the norm and just adds noise, so omit).
+ *  This is the "opening times" the official ride page shows. */
+function rideHoursLabel(
+  ride: QueueRide,
+  date: string,
+  park?: [number, number],
+): string | null {
+  if (ride.open == null || ride.close == null) return null;
+  if (park && ride.open === park[0] && ride.close === park[1]) return null;
+  return `${londonTime(date, ride.open)}–${londonTime(date, ride.close)}`;
+}
+
 /** A sample's operational flag, defaulting to operational for older 3-tuple
  *  files that predate the field. A line is "running" when open AND operational. */
 const isRunning = (s: QueueSample): boolean => s[2] === 1 && (s[3] ?? 1) === 1;
@@ -391,8 +411,31 @@ function RideChart({
     });
   };
 
+  // Restriction detail from the structured fields (the park's full free-text
+  // summary is too long to carry per day; we keep only these numbers). Plus this
+  // ride's scheduled hours for the day.
+  const restrParts: string[] = [];
+  if (ride.minHeight != null && ride.minHeight > 0)
+    restrParts.push(`Min height ${formatHeight(ride.minHeight)}`);
+  if (ride.minHeightUnaccompanied != null)
+    restrParts.push(`Ride alone above ${formatHeight(ride.minHeightUnaccompanied)}`);
+  if (ride.maxHeight != null) restrParts.push(`Max height ${formatHeight(ride.maxHeight)}`);
+  if (ride.maxChest != null) restrParts.push(`Max chest ${ride.maxChest}″`);
+  const hoursText =
+    ride.open != null && ride.close != null
+      ? `Open ${londonTime(date, ride.open)}–${londonTime(date, ride.close)}`
+      : null;
+
   return (
     <div className="chart-wrap">
+      {(hoursText || restrParts.length > 0) && (
+        <div className="chart-caption">
+          {hoursText && <span className="chart-caption-hours">{hoursText}</span>}
+          {restrParts.length > 0 && (
+            <span className="chart-caption-restr">{restrParts.join(" · ")}</span>
+          )}
+        </div>
+      )}
       <svg
         ref={svgRef}
         className="chart"
@@ -506,6 +549,7 @@ function RideChart({
 function RideRow({
   ride,
   domain,
+  parkWindow,
   yMax,
   date,
   asOf,
@@ -514,6 +558,7 @@ function RideRow({
 }: {
   ride: QueueRide;
   domain: [number, number];
+  parkWindow?: [number, number];
   yMax: number;
   date: string;
   asOf?: number;
@@ -531,11 +576,30 @@ function RideRow({
   // which just means the ride hasn't opened. So a closed ride shows this note
   // when present, else a plain "Closed".
   const note = ride.lines.map((l) => l.closedNote).find(Boolean) ?? null;
+  const heightLabel =
+    ride.minHeight != null && ride.minHeight > 0 ? `${formatHeight(ride.minHeight)}+` : null;
+  const hoursLabel = rideHoursLabel(ride, date, parkWindow);
 
   return (
     <div className={"q-row" + (open ? " open" : "")}>
       <button className="q-row-head" onClick={onToggle} aria-expanded={open}>
-        <span className="q-name">{ride.name}</span>
+        <span className="q-name">
+          <span className="q-name-text">{ride.name}</span>
+          {(heightLabel || hoursLabel) && (
+            <span className="q-meta">
+              {heightLabel && (
+                <span className="q-meta-chip q-meta-height" title="Minimum height to ride">
+                  {heightLabel}
+                </span>
+              )}
+              {hoursLabel && (
+                <span className="q-meta-chip q-meta-hours" title="Ride opening times today">
+                  {hoursLabel}
+                </span>
+              )}
+            </span>
+          )}
+        </span>
         <Sparkline ride={ride} domain={domain} yMax={yMax} asOf={asOf} />
         <span className="q-now">
           {stats.current != null ? (
@@ -883,6 +947,11 @@ export function QueueList({
                     key={ride.id}
                     ride={ride}
                     domain={domain}
+                    parkWindow={
+                      file.open != null && file.close != null
+                        ? [file.open, file.close]
+                        : undefined
+                    }
                     yMax={yMax}
                     date={date}
                     asOf={asOf}

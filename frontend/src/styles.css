@@ -77,6 +77,18 @@ h1 {
   font-weight: 600;
   border-bottom-color: var(--fg);
 }
+/* A Merlin park now carries five tabs (Calendar · Queues · Tickets · RAP ·
+   Links), which overruns a phone in portrait at the default padding. Tighten
+   the gaps there so the row fits without becoming a scroller. */
+@media (max-width: 430px) {
+  .tabs {
+    gap: 2px;
+  }
+  .tab {
+    padding-left: 9px;
+    padding-right: 9px;
+  }
+}
 main {
   padding: 0 16px 48px;
 }
@@ -886,4 +898,103 @@ main.with-bar {
   margin-left: 5px;
   font-size: 9px;
   vertical-align: middle;
+}
+
+/* ---- Links tab: static per-park directory (booking, access, apps, social) ----
+   Groups flow into as many columns as fit, so the page can be wide enough for a
+   full row of social pills without stretching the link rows themselves. */
+.lk-main {
+  max-width: 900px;
+  padding-top: 16px;
+}
+.lk-groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  align-items: start;
+  gap: 26px 36px;
+}
+.lk-group h3 {
+  margin: 0 0 4px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+/* Social sits on its own full-width row — with seven pills, sharing a column
+   is what made them wrap after two or three. */
+.lk-group-wide {
+  grid-column: 1 / -1;
+}
+.lk-link,
+.lk-app {
+  display: block;
+  padding: 9px 0;
+  border-top: 1px solid var(--grid);
+  color: inherit;
+  text-decoration: none;
+}
+.lk-label {
+  display: block;
+  font-size: 14px;
+}
+.lk-link:hover .lk-label {
+  text-decoration: underline;
+}
+.lk-note {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--muted);
+}
+/* Official store badges. --badge-h is the height of the badge ARTWORK itself,
+   which both badges are normalised to. */
+.lk-badges {
+  --badge-h: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+.lk-badges img {
+  display: block;
+  width: auto;
+}
+.lk-badge-apple {
+  height: var(--badge-h);
+}
+/* Google's badge PNG is 646x250 but the badge inside it is only 564x168 —
+   41px of clear space is baked in on all four sides. Scale so that inner badge
+   matches --badge-h, then negative-margin the baked padding away so it sits
+   level with the Apple badge; the flex gap supplies the clear space instead. */
+.lk-badge-google {
+  height: calc(var(--badge-h) * 250 / 168);
+  margin: calc(var(--badge-h) * -41 / 168);
+}
+.lk-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+.lk-social {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 13px;
+  font-size: 13px;
+  background: var(--card);
+  border-radius: 999px;
+  color: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.lk-social:hover {
+  outline: 1px solid var(--muted);
+}
+.lk-social-icon {
+  width: 14px;
+  height: 14px;
+  flex: none;
 }

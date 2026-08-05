@@ -2,6 +2,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { CalendarPage } from "./CalendarPage";
 import { PARK_HOME } from "./catalog";
 import { Layout } from "./Layout";
+import { LinksPage } from "./LinksPage";
 import { ParkCalendarPage } from "./ParkCalendarPage";
 import { QueuesPage } from "./QueuesPage";
 
@@ -20,6 +21,11 @@ export function App() {
         </Route>
         <Route path="/:park/queues/:date" element={<Layout />}>
           <Route index element={<QueuesPage />} />
+        </Route>
+        {/* Static per-park link directory. Like "queues", the literal segment
+            outranks the :product route below. */}
+        <Route path="/:park/links" element={<Layout />}>
+          <Route index element={<LinksPage />} />
         </Route>
         {/* Drill-down: the per-product availability heatmap. */}
         <Route path="/:park/:product" element={<Layout />}>

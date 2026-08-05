@@ -173,7 +173,7 @@ function DayBody({ d }: { d: DayDetail }) {
           ))}
         </div>
       )}
-      {hasAllocation(d.main) && <AvailRow label="🎟️ Main tickets" o={d.main} />}
+      {hasAllocation(d.main) && <AvailRow label="Tickets" o={d.main} />}
       {hasAllocation(d.rap) && <AvailRow label="RAP" o={d.rap} />}
     </div>
   );

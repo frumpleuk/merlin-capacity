@@ -1,5 +1,6 @@
 import { Link, NavLink, Outlet, useLocation, useParams } from "react-router-dom";
 import { findPark, PARKS, type ParkDef } from "./catalog";
+import { PARK_LINKS } from "./links";
 
 export function Layout() {
   const { park } = useParams();
@@ -17,6 +18,9 @@ export function Layout() {
   // carried over to a park that actually has that product; the Calendar and
   // Queues tabs exist for every (non-queue-only) park.
   const targetFor = (p: ParkDef): string => {
+    // Links come before the queue-only check: every park has a link directory,
+    // whether or not it has a calendar.
+    if (section === "links" && PARK_LINKS[p.key]) return `/${p.key}/links`;
     if (p.queueOnly) return `/${p.key}/queues`; // no calendar/products — always queues
     if (!section) return `/${p.key}`; // calendar home
     if (section === "queues") return `/${p.key}/${rest.join("/")}`; // queues (+ date)
@@ -67,6 +71,16 @@ export function Layout() {
               {pr.label}
             </NavLink>
           ))}
+          {/* Static link directory (booking, accessibility, apps, socials) —
+              last, since it's reference material rather than live data. */}
+          {PARK_LINKS[parkDef.key] && (
+            <NavLink
+              to={`/${parkDef.key}/links`}
+              className={({ isActive }) => "tab" + (isActive ? " active" : "")}
+            >
+              Links
+            </NavLink>
+          )}
         </nav>
       </header>
       <Outlet />

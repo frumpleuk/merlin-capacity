@@ -260,6 +260,22 @@ function LineMarks({
 const SPARK_W = 240;
 const SPARK_H = 34;
 
+/** Shared sparkline ceiling, in minutes. A plain "tallest wait of the day" scale
+ *  is wrecked by a single runaway line — Legoland's Pokémon virtual queue quotes
+ *  hours while nothing else passes 40 min, flattening every other ride to a
+ *  hairline. So the ceiling is the 90th percentile of ride peaks, and it only
+ *  drops below the tallest peak when that peak is a genuine outlier (more than
+ *  1.6x the percentile); otherwise the scale still spans the whole day. Rides
+ *  above the ceiling clip against a dashed rule at the top of their sparkline —
+ *  their real figures are right there in the Now / Peak columns. */
+function sparkCeiling(peaks: number[]): number {
+  const vals = peaks.filter((p) => p > 0).sort((a, b) => a - b);
+  if (vals.length === 0) return 10;
+  const top = vals[vals.length - 1];
+  const p90 = vals[Math.floor((vals.length - 1) * 0.9)];
+  return Math.max(10, top <= p90 * 1.6 ? top : p90);
+}
+
 function Sparkline({
   ride,
   domain,
@@ -275,7 +291,11 @@ function Sparkline({
   const span = Math.max(1, t1 - t0);
   const x = (t: number) => ((t - t0) / span) * SPARK_W;
   const pad = 3;
-  const y = (w: number) => SPARK_H - pad - (w / Math.max(1, yMax)) * (SPARK_H - 2 * pad);
+  // Clamp to the shared ceiling: an over-scale ride runs flat along the top
+  // rather than stretching the scale everyone else is drawn on.
+  const y = (w: number) =>
+    SPARK_H - pad - (Math.min(w, yMax) / Math.max(1, yMax)) * (SPARK_H - 2 * pad);
+  const overScale = ridePeak(ride) > yMax;
 
   const colours = ["var(--q-main)", "var(--q-alt)"];
 
@@ -294,6 +314,16 @@ function Sparkline({
         className="spark-base"
         vectorEffect="non-scaling-stroke"
       />
+      {overScale && (
+        <line
+          x1="0"
+          y1={pad}
+          x2={SPARK_W}
+          y2={pad}
+          className="spark-cap"
+          vectorEffect="non-scaling-stroke"
+        />
+      )}
       {ride.lines.map((line, i) => (
         <LineMarks
           key={line.queueLineId}
@@ -835,19 +865,18 @@ export function QueueList({
 
   // Shared x-domain (the park's opening window ± a buffer, so the axis is the
   // day's operating hours rather than just the span of captured data) and a
-  // shared y-scale across ALL rides, so sparklines are comparable.
+  // shared, outlier-resistant y-scale across ALL rides, so sparklines are
+  // comparable without one silly queue squashing the rest (see sparkCeiling).
   const { domain, yMax } = useMemo(() => {
     const rs = file?.rides ?? [];
     let lo = Infinity;
     let hi = -Infinity;
-    let max = 0;
     for (const r of rs) {
       for (const l of r.lines) {
         for (const [t, w, open] of l.samples) {
           if (open === 1 && w != null) {
             if (t < lo) lo = t;
             if (t > hi) hi = t;
-            if (w > max) max = w;
           }
         }
       }
@@ -858,7 +887,7 @@ export function QueueList({
         : lo < hi
           ? [lo - OPEN_BUFFER, hi + OPEN_BUFFER] // no park hours (Flamingo Land) → span ± buffer
           : [9 * 60, 18 * 60];
-    return { domain: dom, yMax: Math.max(10, max) };
+    return { domain: dom, yMax: sparkCeiling(rs.map(ridePeak)) };
   }, [file]);
 
   if (loading) return <p className="empty">Loading…</p>;
@@ -914,7 +943,9 @@ export function QueueList({
       )}
       <div className="q-head-row">
         <span className="q-name">Ride</span>
-        <span className="q-spark-col">Today</span>
+        <span className="q-spark-col">
+          Today <span className="q-scale">0-{yMax} min</span>
+        </span>
         <span className="q-now">Now</span>
         <span className="q-peak">Peak</span>
       </div>

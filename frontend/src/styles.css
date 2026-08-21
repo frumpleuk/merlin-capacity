@@ -567,6 +567,12 @@ main.with-bar {
 .q-head-row .q-name {
   font-weight: inherit;
 }
+/* The shared sparkline scale, spelled out beside the column label. */
+.q-scale {
+  text-transform: none;
+  letter-spacing: 0;
+  opacity: 0.75;
+}
 .spark {
   width: 100%;
   height: 34px;
@@ -576,6 +582,13 @@ main.with-bar {
 .spark-base {
   stroke: var(--grid);
   stroke-width: 1;
+}
+/* Top-of-scale rule: this ride's wait runs off the shared scale and is clipped. */
+.spark-cap {
+  stroke: var(--muted);
+  stroke-width: 1;
+  stroke-dasharray: 2 3;
+  opacity: 0.7;
 }
 .q-now {
   text-align: right;

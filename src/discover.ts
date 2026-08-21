@@ -25,6 +25,14 @@ interface Bootstrap {
   GetMerchantPackageList?: { SERVICE?: { PS?: { P?: CatalogPackage[] } } };
 }
 
+/** Bumped whenever `fetchCatalogPackages`'s FILTER changes (not the catalog).
+ *  The refresh is a conditional GET on the catalog ETag, so without this a cache
+ *  written by the old filter would survive untouched until accesso next edited
+ *  its catalog. A mismatch forces one unconditional rebuild.
+ *  2: day-ticket `name` matched exactly, dropping the discount variants that
+ *     report their own ring-fenced sub-allocation (see fetchCatalogPackages). */
+const FILTER_VERSION = 2;
+
 interface CachedList {
   generated_at: string;
   P: unknown[];
@@ -34,6 +42,8 @@ interface CachedList {
   /** The bootstrap catalog's ETag when this list was derived, for the next
    *  refresh's conditional GET (skip the 2.83MB re-parse when unchanged). */
   etag?: string | null;
+  /** The FILTER_VERSION that derived this list. Older/absent → refetch. */
+  filter_version?: number;
 }
 
 /** A resolved package list plus which of its ids are yield anchors. */
@@ -79,7 +89,11 @@ export async function refreshPackages(
   if (!product.discover) return; // RAP (static P) has nothing to discover
   const key = cacheKey(park.key, product.key);
   const cached = await readCache(bucket, key);
-  const fresh = await fetchCatalogPackages(park, product.discover, cached?.etag);
+  // Only reuse the ETag if the cached list came from the CURRENT filter —
+  // otherwise a filter change would sit behind 304s forever (see FILTER_VERSION).
+  const etagToSend =
+    cached?.filter_version === FILTER_VERSION ? cached.etag : null;
+  const fresh = await fetchCatalogPackages(park, product.discover, etagToSend);
   if (fresh.notModified) return; // 304 — cached list still current
   if (fresh.P.length === 0) return; // catalog down / mid-rotation — keep old list
   const body: CachedList = {
@@ -87,6 +101,7 @@ export async function refreshPackages(
     P: fresh.P,
     anchorIds: fresh.anchorIds,
     etag: fresh.etag,
+    filter_version: FILTER_VERSION,
   };
   await bucket.put(key, JSON.stringify(body), {
     httpMetadata: { contentType: "application/json" },
@@ -104,6 +119,7 @@ async function readCache(bucket: R2Bucket, key: string): Promise<CachedList | nu
       P: d.P,
       anchorIds: d.anchorIds ?? [],
       etag: d.etag ?? null,
+      filter_version: d.filter_version,
     };
   } catch {
     return null;
@@ -155,7 +171,7 @@ async function fetchCatalogPackages(
   if (!Array.isArray(packages)) return empty;
 
   const wantClass = spec.packageClass ?? "Daily Tickets";
-  const wantName = (spec.name ?? "1 Day Ticket").toLowerCase();
+  const wantName = (spec.name ?? "1 Day Ticket").trim().toLowerCase();
   const anchorMatch = (spec.anchorClassMatch ?? "prebook").toLowerCase();
   const P: unknown[] = [];
   const anchorIds: string[] = [];
@@ -164,18 +180,20 @@ async function fetchCatalogPackages(
     if (!asArray(p.E).some((e) => e.id === spec.event_id)) continue;
 
     const cls = p.package_class ?? "";
-    // The public day ticket. Substring, not exact, on the name: seasonal/offer
-    // variants ("1 Day Ticket - 10% Offer") are what cover the on-sale autumn
-    // dates.
+    // The public day ticket. EXACT name, not a substring: the discount variants
+    // ("1 Day Ticket - 10% Offer", "Student 1 Day Ticket") book against a small
+    // ring-fenced sub-allocation of the same event, and one of those in P[] makes
+    // the API report THAT bucket for the date instead of the park pool — see
+    // docs/accesso-api.md §3.1 "Multiple allocations per date".
     const isDayTicket =
-      cls === wantClass && (p.name ?? "").toLowerCase().includes(wantName);
+      cls === wantClass && (p.name ?? "").trim().toLowerCase() === wantName;
     // The yield anchor — annual-pass prebooks (see DiscoverSpec.anchorClassMatch).
     const isAnchor = anchorMatch !== "" && cls.toLowerCase().includes(anchorMatch);
     // A day ticket takes precedence: if a package is both, it's a public sale.
     if (!isDayTicket && !isAnchor) continue;
 
     // Send each package with its OWN customer type. Forcing a single CT narrows
-    // the returned dates (some variants only sell under other CTs), so days would
+    // the returned dates (some packages only sell under other CTs), so days would
     // go missing — the per-date capacity is the same regardless.
     const ct = asArray(p.CT)
       .map((c) => c.id)

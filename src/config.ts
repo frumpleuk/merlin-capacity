@@ -158,11 +158,14 @@ export type OpeningHoursConfig =
 export interface DiscoverSpec {
   event_id: string;
   packageClass?: string; // default "Daily Tickets"
-  /** Case-insensitive SUBSTRING of the package `name`. Matches "1 Day Ticket"
-   *  AND its seasonal/offer variants ("1 Day Ticket - 10% Offer", etc.) — those
-   *  variants are what cover autumn/Halloween operating days (Thorpe Fright
-   *  Nights, Alton Scarefest), so an exact match would miss them.
-   *  Default "1 Day Ticket" (Legoland's dated day ticket is "Online Saver"). */
+  /** The package `name`, matched EXACTLY (case/whitespace-insensitive). Default
+   *  "1 Day Ticket" (Legoland's dated day ticket is "Online Saver"). Deliberately
+   *  not a substring: the discount variants ("1 Day Ticket - 10% Offer",
+   *  "Student 1 Day Ticket") sell from a ring-fenced sub-allocation of the same
+   *  event — a few thousand seats, not the park's ~15k pool — and including one
+   *  makes the API report that smaller bucket for every date it covers. The
+   *  autumn dates those variants used to reach are covered by the prebook anchor
+   *  below (verified 2026-08-21: dropping them loses only 0-capacity dates). */
   name?: string;
   /** Also include packages whose class contains this (case-insensitive) as a
    *  "yield anchor". On dates the public day ticket isn't on sale yet — the whole
@@ -279,9 +282,9 @@ export const PARKS: ParkConfig[] = [
       },
       {
         // Main tickets — event 2507. Package ids rediscovered from the
-        // catalog; the name-substring match pulls in the offer variants that
-        // cover Thorpe's autumn Fright Nights operating days (the plain
-        // "1 Day Ticket" packages alone stop at ~1 Oct).
+        // catalog. Thorpe is the park where the offer packages' ring-fenced
+        // 3,000-seat sub-allocation bites (see DiscoverSpec.name), so only the
+        // exactly-named "1 Day Ticket" packages + the prebook anchor are sent.
         key: "main",
         extra_movie: "",
         include_times: false,

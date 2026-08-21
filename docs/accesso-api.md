@@ -119,6 +119,39 @@ Notes:
 - `status: FAILED` when **every** package you sent is out of its validity window
   for the requested date range — see [§5 Seasonal rotation](#5-seasonal-rotation--the-failed-trap).
 
+#### Multiple allocations per date — the merge takes the *most constrained* one
+
+One event date is not one pool. The same date carries several ring-fenced
+allocations, and which one you see depends entirely on which packages are in `P[]`.
+Thorpe, event 2507, 2026-08-21, each package queried on its own:
+
+| Package | Class / name | `capacity` | `available` |
+|---|---|---|---|
+| `112641`, `112670`, `112676`, `112680`, `112684` | Daily Tickets / `1 Day Ticket` | 15000 | 4707 |
+| `69200`, `69201`, `69202`, `69615`, `69620`, `69621`, `69622`, `72563` | Prebook (annual pass) | 15000 | 4707 |
+| `112635`, `112660`, `112693`, `112673`, `112647` | Daily Tickets / `1 Day Ticket - 10%/15%/25% Offer` | **3000** | 2977 |
+| `110799`, `112630` | Promotions / Cadbury, Vitality | **141** | 91 |
+| `66772` | Complimentary / Merlin's Magic Wand | 100 | 51 |
+
+Send several and the single merged entry reports the **smallest sellable
+allocation** among them, not the sum and not the park pool:
+
+```
+P = [112641]            -> 15000 / 4707     the park pool (matches the public site)
+P = [112635]            ->  3000 / 2977     the discount sub-allocation
+P = [112641, 112635]    ->  3000 / 2977     <-- one offer package poisons the date
+P = [112641, 112630]    ->   141 /   91
+P = [112641, 66772]     -> 15000 / 4707     Complimentary pools are ignored
+```
+
+So `P[]` must contain **only packages that draw on the pool you want to measure**:
+the exactly-named day ticket plus the prebook anchors. This is why
+[`src/discover.ts`](../src/discover.ts) matches the day-ticket `name` exactly —
+a substring match pulls in `1 Day Ticket - 10% Offer` and silently rebases the
+whole near-term window onto a 3,000-seat promo bucket. Found 2026-08-21, when
+Thorpe's summer offer packages came into window and every date from that day on
+started reporting `capacity 3000`.
+
 ### 3.2 `static-api/bootstrap` — the public catalog (discovery)
 
 `GET /static-api/bootstrap?m=<SLUG>&l=en-gb`
@@ -244,9 +277,9 @@ Two ways to stay covered:
 1. **Superset (what `config.ts` does today):** send current-season + last-season
    package ids together. Robust, but needs a manual refresh each rotation.
 2. **Catalog discovery (preferred):** pull the park's `bootstrap` blob, filter
-   `Daily Tickets` / `1 Day Ticket` on the main event, and collect *all* matching
-   package ids. This is a self-maintaining superset — no manual curl when a season
-   turns over. Only RAP still needs hand-maintained ids.
+   `Daily Tickets` / `1 Day Ticket` (exact name — §3.1) on the main event, and
+   collect *all* matching package ids. This is a self-maintaining superset — no
+   manual curl when a season turns over. Only RAP still needs hand-maintained ids.
 
 Worked example (Chessington, 2026-07-16): the config's main ids had gone stale and
 the product was returning `FAILED`. The bootstrap listed event `2506` / CT `231`
@@ -262,6 +295,8 @@ with 96 dates of availability (July → November; the park closes for winter).
 - `min_capacity: 0` + `display_zero_capacity: "1"` — otherwise sold-out dates
   vanish, and that's exactly where a fresh release first appears.
 - One entry per date already merged server-side; `package_id` may be comma-joined.
+- That merge reports the **most constrained** allocation in `P[]`, so a single
+  discount/promo package rewrites a date's numbers to its own small bucket (§3.1).
 - `FAILED` ≠ "gone forever" — usually just every package out-of-window (§5).
 - Bootstrap slug ≠ subdomain (Chessington: `ME-WACHESSINGTON`).
 - RAP is not discoverable via the catalog; keep its ids by hand.

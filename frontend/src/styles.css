@@ -9,6 +9,7 @@
   --q-main: #2f7fd1;
   --q-alt: #e07b39;
   --q-closed: #d64541; /* closed / non-operational stretches on the line */
+  --link: #1a63b0; /* anchors that leave the site (Links tab) */
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -21,6 +22,7 @@
     --q-main: #4a90d9;
     --q-alt: #c07b34;
     --q-closed: #f0685c; /* lifted for the dark surface */
+    --link: #74b0ec;
   }
 }
 * {
@@ -952,8 +954,33 @@ main.with-bar {
   display: block;
   font-size: 14px;
 }
-.lk-link:hover .lk-label {
+/* Every row here leaves the site, so the links carry the full set of cues:
+   link colour, an underline, and the arrow-out-of-box mark. The underline sits
+   on the text alone, so it stops short of the icon. */
+.lk-link .lk-label {
+  color: var(--link);
+  font-weight: 500;
+}
+.lk-text {
   text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--link) 40%, transparent);
+  text-underline-offset: 2px;
+}
+.lk-link:hover .lk-text,
+.lk-link:focus-visible .lk-text {
+  text-decoration-color: currentColor;
+}
+.lk-link:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+.lk-ext {
+  width: 0.8em;
+  height: 0.8em;
+  margin-left: 4px;
+  vertical-align: -0.02em;
+  opacity: 0.8;
 }
 .lk-note {
   display: block;
@@ -1000,12 +1027,13 @@ main.with-bar {
   font-size: 13px;
   background: var(--card);
   border-radius: 999px;
-  color: inherit;
+  color: var(--link);
   text-decoration: none;
   white-space: nowrap;
 }
-.lk-social:hover {
-  outline: 1px solid var(--muted);
+.lk-social:hover,
+.lk-social:focus-visible {
+  outline: 1px solid var(--link);
 }
 .lk-social-icon {
   width: 14px;

@@ -7,10 +7,34 @@ import { SOCIAL_GLYPHS } from "./socialIcons";
  *  (and drops the opener reference). */
 const ext = { target: "_blank", rel: "noreferrer noopener" } as const;
 
+/** Arrow-out-of-box, the usual "this opens elsewhere" mark. Decorative — the
+ *  anchor's own text is the label. */
+function ExtIcon() {
+  return (
+    <svg
+      className="lk-ext"
+      viewBox="0 0 16 16"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d="M7 3.75H3.75v8.5h8.5V9" />
+      <path d="M9.75 3.75h2.5v2.5M12.25 3.75 7.5 8.5" />
+    </svg>
+  );
+}
+
 function LinkRow({ link }: { link: ParkLink }) {
   return (
     <a className="lk-link" href={link.url} {...ext}>
-      <span className="lk-label">{link.label}</span>
+      <span className="lk-label">
+        <span className="lk-text">{link.label}</span>
+        <ExtIcon />
+      </span>
       {link.note && <span className="lk-note">{link.note}</span>}
     </a>
   );

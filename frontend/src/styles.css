@@ -583,7 +583,8 @@ main.with-bar {
   stroke: var(--grid);
   stroke-width: 1;
 }
-/* Top-of-scale rule: this ride's wait runs off the shared scale and is clipped. */
+/* Where the shared scale stops being linear: above this rule waits are
+   compressed, so one runaway queue can't flatten every other ride. */
 .spark-cap {
   stroke: var(--muted);
   stroke-width: 1;

@@ -259,43 +259,61 @@ function LineMarks({
 
 const SPARK_W = 240;
 const SPARK_H = 34;
+const SPARK_PAD = 3;
 
-/** Shared sparkline ceiling, in minutes. A plain "tallest wait of the day" scale
- *  is wrecked by a single runaway line — Legoland's Pokémon virtual queue quotes
- *  hours while nothing else passes 40 min, flattening every other ride to a
- *  hairline. So the ceiling is the 90th percentile of ride peaks, and it only
- *  drops below the tallest peak when that peak is a genuine outlier (more than
- *  1.6x the percentile); otherwise the scale still spans the whole day. Rides
- *  above the ceiling clip against a dashed rule at the top of their sparkline —
- *  their real figures are right there in the Now / Peak columns. */
-function sparkCeiling(peaks: number[]): number {
+/** The shared sparkline y-scale: linear up to `ceiling`, then compressed up to
+ *  `top` (the day's tallest wait anywhere in the park). A plain "tallest wait"
+ *  scale is wrecked by a single runaway line — Legoland's Pokémon virtual queue
+ *  quotes hours while nothing else passes 40 min, flattening every other ride to
+ *  a hairline. The ceiling is the 90th percentile of ride peaks, and only drops
+ *  below the tallest peak when that peak is a genuine outlier (more than 1.6x
+ *  the percentile); otherwise the scale is plain linear over the whole day. */
+type SparkScale = { ceiling: number; top: number };
+
+function sparkScale(peaks: number[]): SparkScale {
   const vals = peaks.filter((p) => p > 0).sort((a, b) => a - b);
-  if (vals.length === 0) return 10;
+  if (vals.length === 0) return { ceiling: 10, top: 10 };
   const top = vals[vals.length - 1];
   const p90 = vals[Math.floor((vals.length - 1) * 0.9)];
-  return Math.max(10, top <= p90 * 1.6 ? top : p90);
+  const ceiling = Math.max(10, top <= p90 * 1.6 ? top : p90);
+  return { ceiling, top: Math.max(top, ceiling) };
+}
+
+/** Fraction of the sparkline height given to the linear range when the scale is
+ *  compressed; the outlier band gets the rest. */
+const SPARK_LINEAR = 0.78;
+
+/** Height mapping for a wait, in the sparkline's viewBox. Nothing is clipped:
+ *  waits above the ceiling keep rising through the top band, square-rooted so a
+ *  5-hour virtual queue reads as clearly taller without owning the whole scale.
+ *  The band starts at a dashed rule, drawn on the rides that reach it. */
+function sparkY({ ceiling, top }: SparkScale) {
+  const H = SPARK_H - 2 * SPARK_PAD;
+  const linH = top > ceiling ? SPARK_LINEAR * H : H;
+  return (w: number) => {
+    if (w <= ceiling) return SPARK_H - SPARK_PAD - (w / ceiling) * linH;
+    const f = Math.sqrt((w - ceiling) / (top - ceiling));
+    return SPARK_H - SPARK_PAD - linH - f * (H - linH);
+  };
 }
 
 function Sparkline({
   ride,
   domain,
-  yMax,
+  scale,
   asOf,
 }: {
   ride: QueueRide;
   domain: [number, number];
-  yMax: number;
+  scale: SparkScale;
   asOf?: number;
 }) {
   const [t0, t1] = domain;
   const span = Math.max(1, t1 - t0);
   const x = (t: number) => ((t - t0) / span) * SPARK_W;
-  const pad = 3;
-  // Clamp to the shared ceiling: an over-scale ride runs flat along the top
-  // rather than stretching the scale everyone else is drawn on.
-  const y = (w: number) =>
-    SPARK_H - pad - (Math.min(w, yMax) / Math.max(1, yMax)) * (SPARK_H - 2 * pad);
-  const overScale = ridePeak(ride) > yMax;
+  const pad = SPARK_PAD;
+  const y = sparkY(scale);
+  const overScale = ridePeak(ride) > scale.ceiling;
 
   const colours = ["var(--q-main)", "var(--q-alt)"];
 
@@ -317,9 +335,9 @@ function Sparkline({
       {overScale && (
         <line
           x1="0"
-          y1={pad}
+          y1={y(scale.ceiling)}
           x2={SPARK_W}
-          y2={pad}
+          y2={y(scale.ceiling)}
           className="spark-cap"
           vectorEffect="non-scaling-stroke"
         />
@@ -583,7 +601,7 @@ function RideRow({
   ride,
   domain,
   parkWindow,
-  yMax,
+  scale,
   date,
   asOf,
   open,
@@ -592,7 +610,7 @@ function RideRow({
   ride: QueueRide;
   domain: [number, number];
   parkWindow?: [number, number];
-  yMax: number;
+  scale: SparkScale;
   date: string;
   asOf?: number;
   open: boolean;
@@ -633,7 +651,7 @@ function RideRow({
             </span>
           )}
         </span>
-        <Sparkline ride={ride} domain={domain} yMax={yMax} asOf={asOf} />
+        <Sparkline ride={ride} domain={domain} scale={scale} asOf={asOf} />
         <span className="q-now">
           {stats.current != null ? (
             <>
@@ -866,8 +884,8 @@ export function QueueList({
   // Shared x-domain (the park's opening window ± a buffer, so the axis is the
   // day's operating hours rather than just the span of captured data) and a
   // shared, outlier-resistant y-scale across ALL rides, so sparklines are
-  // comparable without one silly queue squashing the rest (see sparkCeiling).
-  const { domain, yMax } = useMemo(() => {
+  // comparable without one silly queue squashing the rest (see sparkScale).
+  const { domain, scale } = useMemo(() => {
     const rs = file?.rides ?? [];
     let lo = Infinity;
     let hi = -Infinity;
@@ -887,7 +905,7 @@ export function QueueList({
         : lo < hi
           ? [lo - OPEN_BUFFER, hi + OPEN_BUFFER] // no park hours (Flamingo Land) → span ± buffer
           : [9 * 60, 18 * 60];
-    return { domain: dom, yMax: sparkCeiling(rs.map(ridePeak)) };
+    return { domain: dom, scale: sparkScale(rs.map(ridePeak)) };
   }, [file]);
 
   if (loading) return <p className="empty">Loading…</p>;
@@ -943,8 +961,18 @@ export function QueueList({
       )}
       <div className="q-head-row">
         <span className="q-name">Ride</span>
-        <span className="q-spark-col">
-          Today <span className="q-scale">0-{yMax} min</span>
+        <span
+          className="q-spark-col"
+          title={
+            scale.top > scale.ceiling
+              ? `Shared scale: linear to ${scale.ceiling} min, compressed above the dashed rule (up to ${scale.top} min)`
+              : "Shared scale across all rides"
+          }
+        >
+          Today{" "}
+          <span className="q-scale">
+            0-{scale.ceiling} min{scale.top > scale.ceiling ? "+" : ""}
+          </span>
         </span>
         <span className="q-now">Now</span>
         <span className="q-peak">Peak</span>
@@ -986,7 +1014,7 @@ export function QueueList({
                         ? [file.open, file.close]
                         : undefined
                     }
-                    yMax={yMax}
+                    scale={scale}
                     date={date}
                     asOf={asOf}
                     open={openId === ride.id}

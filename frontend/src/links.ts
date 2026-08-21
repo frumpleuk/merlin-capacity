@@ -214,13 +214,13 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
   chessington: {
     website: "https://www.chessington.com/",
     booking: [
-      bookTickets("https://me-cwoa.tickets.chessington.com"),
+      bookTickets("https://me-wachessington.tickets.chessington.com"),
       {
         label: "Passholder prebook",
         url: MAP_PREBOOK,
         note: "Book and manage Merlin Annual Pass trips",
       },
-      fastrackPerk("https://me-cwoa.tickets.chessington.com", "mapft10"),
+      fastrackPerk("https://me-wachessington.tickets.chessington.com", "mapft10"),
     ],
     access: [
       rapInfo(

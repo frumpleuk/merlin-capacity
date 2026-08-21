@@ -208,12 +208,15 @@ POST form only if you already know the event/CT and just want names/keywords.
 | Alton Towers | `800` | `me-twalton.tickets.altontowers.com` | `ME-TWALTON` |
 | Thorpe Park | `105` | `me-tpr.tickets.thorpepark.com` | `ME-TPR` |
 | Legoland Windsor | `700` | `me-llwindsor.tickets.legoland.co.uk` | `ME-LLWINDSOR` |
-| Chessington | `6400` | `me-cwoa.tickets.chessington.com` | **`ME-WACHESSINGTON`** |
+| Chessington | `6400` | `me-wachessington.tickets.chessington.com` | `ME-WACHESSINGTON` |
 
-> Chessington gotcha: the `me-cwoa` origin still works for the *availability* call,
-> but its bootstrap slug is **`ME-WACHESSINGTON`** (subdomain `me-wachessington`),
-> **not** `ME-CWOA` — the latter returns HTTP 500 `{"e":"Error: No configuration
-> found"}`. Same `merchant_id` 6400 either way.
+> Chessington gotcha: Chessington answers on two ticketing subdomains. Use
+> **`me-wachessington`**; `me-cwoa` is dead in a browser — its SPA shell derives
+> `m=ME-CWOA`, and that slug 500s (`{"e":"Invalid configuration"}`). The API
+> itself doesn't care: `me-cwoa` as an `Origin`/`Referer` header still returns
+> availability, since the accesso backend keys off `merchant_id` 6400. We send
+> `me-wachessington` everywhere so the one host in the repo is the one that also
+> works when a user clicks it.
 
 ### Products (event / customer-type per park)
 

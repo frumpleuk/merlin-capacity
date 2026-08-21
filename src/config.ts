@@ -331,7 +331,7 @@ export const PARKS: ParkConfig[] = [
   {
     key: "chessington",
     merchantId: "6400",
-    origin: "https://me-cwoa.tickets.chessington.com",
+    origin: "https://me-wachessington.tickets.chessington.com",
     bootstrapSlug: "ME-WACHESSINGTON",
     openingHours: {
       kind: "accesso",

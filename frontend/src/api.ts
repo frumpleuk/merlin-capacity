@@ -10,6 +10,8 @@ export interface DayObs {
 }
 
 export interface ProductFile {
+  /** Display name for a season product (e.g. "Christmas"); absent for main/rap. */
+  label?: string;
   park: string;
   product: string;
   generated_at: string;

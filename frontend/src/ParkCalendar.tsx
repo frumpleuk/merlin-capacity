@@ -36,6 +36,10 @@ export interface DayDetail {
   event?: string;
   main?: DayObs;
   rap?: DayObs;
+  /** A season sold under its own package, with its own pool. Chessington's
+   *  Christmas is the case: it cannot be merged into `main` without the accesso
+   *  merge zeroing the date, so it is polled as its own product. */
+  season?: DayObs;
   /** The theme park runs this day but is closed to the public — a buyout, named
    *  by the only package that sells it. */
   special?: SpecialDay;
@@ -104,6 +108,7 @@ export function mergeDetails(
   rap: ProductFile | null,
   hours: HoursFile | null,
   special: SpecialDaysFile | null,
+  season: ProductFile | null,
 ): Map<string, DayDetail> {
   const map = new Map<string, DayDetail>();
   const get = (iso: string): DayDetail => {
@@ -118,6 +123,7 @@ export function mergeDetails(
   }
   for (const [iso, o] of Object.entries(main?.days ?? {})) get(iso).main = o;
   for (const [iso, o] of Object.entries(rap?.days ?? {})) get(iso).rap = o;
+  for (const [iso, o] of Object.entries(season?.days ?? {})) get(iso).season = o;
   // Buyouts come last and can CREATE a date the other three files never mention:
   // no public theme-park hours and no public availability, so without this the
   // day renders as an empty cell despite the park running all day.
@@ -191,6 +197,11 @@ function CellContent({ d }: { d: DayDetail }) {
             {availStatus(d.main).emoji} 🎟️ {avNums(d.main)}
           </div>
         ))}
+      {hasAllocation(d.season) && !isUnallocated(d.season) && (
+        <div className="rc-line rc-avail">
+          {availStatus(d.season).emoji} 🎄 {avNums(d.season)}
+        </div>
+      )}
       {hasAllocation(d.rap) &&
         (isUnallocated(d.rap) ? (
           <div className="rc-line rc-avail rc-booked" title={BOOKED_NOTE}>
@@ -207,7 +218,7 @@ function CellContent({ d }: { d: DayDetail }) {
 
 /* ── Full detail body (tap sheet + agenda card) ────────────────────────────── */
 
-function DayBody({ d }: { d: DayDetail }) {
+function DayBody({ d, seasonLabel }: { d: DayDetail; seasonLabel: string }) {
   const past = d.iso < new Date().toISOString().slice(0, 10);
   const locs = d.hours?.locations ?? [];
   const events = d.hours?.events ?? [];
@@ -253,6 +264,9 @@ function DayBody({ d }: { d: DayDetail }) {
         </div>
       )}
       {hasAllocation(d.main) && <AvailRow label="Tickets" o={d.main} past={past} />}
+      {hasAllocation(d.season) && (
+        <AvailRow label={seasonLabel} o={d.season} past={past} />
+      )}
       {hasAllocation(d.rap) && <AvailRow label="RAP" o={d.rap} past={past} />}
     </div>
   );
@@ -400,7 +414,13 @@ function MonthNav({
 
 /* ── Mobile: day-by-day agenda list ────────────────────────────────────────── */
 
-function Agenda({ details }: { details: Map<string, DayDetail> }) {
+function Agenda({
+  details,
+  seasonLabel,
+}: {
+  details: Map<string, DayDetail>;
+  seasonLabel: string;
+}) {
   const isos = [...details.keys()].sort();
   const today = new Date().toISOString().slice(0, 10);
   const agendaRef = useRef<HTMLDivElement | null>(null);
@@ -437,7 +457,7 @@ function Agenda({ details }: { details: Map<string, DayDetail> }) {
               {isToday && <span className="rc-agenda-today"> · Today</span>}
               {event && <span className="rc-agenda-eventtag"> {event}</span>}
             </div>
-            <DayBody d={d} />
+            <DayBody d={d} seasonLabel={seasonLabel} />
           </div>
         );
       })}
@@ -447,7 +467,15 @@ function Agenda({ details }: { details: Map<string, DayDetail> }) {
 
 /* ── Tap sheet, pinned to the bottom (desktop grid) ────────────────────────── */
 
-function DaySheet({ d, onClose }: { d: DayDetail; onClose: () => void }) {
+function DaySheet({
+  d,
+  onClose,
+  seasonLabel,
+}: {
+  d: DayDetail;
+  onClose: () => void;
+  seasonLabel: string;
+}) {
   return (
     <div className="day-sheet" role="status" aria-live="polite">
       <div className="day-sheet-inner">
@@ -457,7 +485,7 @@ function DaySheet({ d, onClose }: { d: DayDetail; onClose: () => void }) {
             ×
           </button>
         </div>
-        <DayBody d={d} />
+        <DayBody d={d} seasonLabel={seasonLabel} />
       </div>
     </div>
   );
@@ -470,6 +498,7 @@ export function ParkCalendar({
   rap,
   hours,
   special,
+  season,
   month,
   loading,
   onPrev,
@@ -481,6 +510,7 @@ export function ParkCalendar({
   rap: ProductFile | null;
   hours: HoursFile | null;
   special: SpecialDaysFile | null;
+  season: ProductFile | null;
   month: string;
   loading?: boolean;
   onPrev: () => void;
@@ -493,7 +523,10 @@ export function ParkCalendar({
   // A tapped day belongs to the current month — clear it when navigating away.
   useEffect(() => setSelected(null), [month]);
 
-  const details = mergeDetails(main, rap, hours, special);
+  const details = mergeDetails(main, rap, hours, special, season);
+  // A season product names itself in its own file, so the calendar doesn't need
+  // to know which park has one.
+  const seasonLabel = season?.label ?? "Season";
   const selDay = selected ? details.get(selected) ?? null : null;
 
   return (
@@ -517,9 +550,15 @@ export function ParkCalendar({
           onSelect={(iso) => setSelected((prev) => (prev === iso ? null : iso))}
         />
       ) : (
-        <Agenda details={details} />
+        <Agenda details={details} seasonLabel={seasonLabel} />
       )}
-      {isDesktop && selDay && <DaySheet d={selDay} onClose={() => setSelected(null)} />}
+      {isDesktop && selDay && (
+        <DaySheet
+          d={selDay}
+          onClose={() => setSelected(null)}
+          seasonLabel={seasonLabel}
+        />
+      )}
     </>
   );
 }

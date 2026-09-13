@@ -58,7 +58,14 @@ export async function runPoll(
     if (changed > 0) {
       await appendDeltas(env.DB, park.key, product.key, deltas, observedAt);
       // The big forward file (diff baseline + drill-down heatmap) …
-      await writeProductFile(env.BUCKET, park.key, product.key, res.snapshot, observedAt);
+      await writeProductFile(
+        env.BUCKET,
+        park.key,
+        product.key,
+        res.snapshot,
+        observedAt,
+        product.label,
+      );
       // … and the per-month calendar files, regenerated from D1 (the source of
       // truth). Only the months this poll actually changed are rebuilt — keeps
       // R2 writes low even with a full-year horizon. A month rebuild pulls the
@@ -67,7 +74,15 @@ export async function runPoll(
       const months = [...new Set(deltas.map((d) => d.date.slice(0, 7)))];
       for (const m of months) {
         const monthSnap = await readMonthSnapshot(env.DB, park.key, product.key, m);
-        await putMonthFile(env.BUCKET, park.key, product.key, m, monthSnap, observedAt);
+        await putMonthFile(
+          env.BUCKET,
+          park.key,
+          product.key,
+          m,
+          monthSnap,
+          observedAt,
+          product.label,
+        );
       }
       await updateParkIndex(env.BUCKET, park.key, months, observedAt);
     }

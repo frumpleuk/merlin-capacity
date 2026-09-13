@@ -21,6 +21,9 @@ interface MonthData {
   main: ProductFile | null;
   rap: ProductFile | null;
   hours: HoursFile | null;
+  /** A season sold under its own package (Chessington Christmas). Absent for
+   *  parks without one, which just 404s to null. */
+  season: ProductFile | null;
 }
 
 /** The special-days file covers the whole horizon in one object; the calendar
@@ -99,12 +102,13 @@ export function ParkCalendarPage() {
     setData(undefined);
     let alive = true;
     const tick = async () => {
-      const [main, rap, hours] = await Promise.all([
+      const [main, rap, hours, season] = await Promise.all([
         loadProductMonth(park!, "main", month),
         loadProductMonth(park!, "rap", month),
         loadHoursMonth(park!, month),
+        loadProductMonth(park!, "season", month),
       ]);
-      if (alive) setData({ main, rap, hours });
+      if (alive) setData({ main, rap, hours, season });
     };
     tick();
     const id = setInterval(tick, 30_000);
@@ -128,6 +132,7 @@ export function ParkCalendarPage() {
         main={data?.main ?? null}
         rap={data?.rap ?? null}
         hours={data?.hours ?? null}
+        season={data?.season ?? null}
         special={specialForMonth(special, month)}
         loading={data === undefined}
         month={month}

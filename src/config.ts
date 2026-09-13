@@ -194,6 +194,9 @@ export interface DiscoverSpec {
 
 export interface ProductConfig {
   key: string; // matches the R2 file: calendar/<park>/<key>.json
+  /** Display name, for a product the calendar shows as its own line. Set on a
+   *  SEASON product (below); 'main' and 'rap' are labelled by the frontend. */
+  label?: string;
   extra_movie: string;
   include_times: boolean;
   /** Static package/customer-type selectors sent to the API. Used for products
@@ -464,6 +467,27 @@ export const PARKS: ParkConfig[] = [
         extra_movie: "",
         include_times: false,
         discover: { event_id: "2506" },
+      },
+      {
+        // Christmas sells as "Theme Park Entry Only" on the SAME event as the
+        // day ticket, and cannot be folded into `main` the way Thorpe's Fright
+        // Nights can: Chessington's "1 Day Ticket" returns those dates with
+        // capacity 0, and the accesso merge takes the most constrained
+        // allocation (docs §3.1), so the zero wins and the date reads as 0/0.
+        // Queried alone it reports the full 11,440 pool. Hence its own product.
+        // The daily season-name job detects exactly this case and records it as
+        // rejected rather than adopting it (see special-days.ts).
+        key: "season",
+        label: "Christmas",
+        extra_movie: "",
+        include_times: false,
+        // No anchor: this product measures the season ticket's own pool, and a
+        // prebook in P[] would merge the public day ticket's zero back in.
+        discover: {
+          event_id: "2506",
+          name: "Theme Park Entry Only",
+          anchorClassMatch: "",
+        },
       },
     ],
   },

@@ -154,11 +154,13 @@ export async function writeProductFile(
   product: Product,
   snapshot: Snapshot,
   generatedAt: string,
+  label?: string,
 ): Promise<void> {
   const body = JSON.stringify({
     park,
     product,
     generated_at: generatedAt,
+    ...(label ? { label } : {}),
     days: snapshot,
   });
   await bucket.put(key(park, product), body, {
@@ -315,12 +317,14 @@ export async function putMonthFile(
   month: string,
   snapshot: Snapshot,
   generatedAt: string,
+  label?: string,
 ): Promise<void> {
   const body = JSON.stringify({
     park,
     product,
     month,
     generated_at: generatedAt,
+    ...(label ? { label } : {}),
     days: snapshot,
   });
   await bucket.put(`calendar/${park}/${product}/${month}.json`, body, {

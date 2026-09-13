@@ -263,9 +263,12 @@ interface PartnerPackage extends ExclusivePackage {
  * Add-on classes are excluded because a partner name can land on one, as in
  * Legoland's "Adventure Golf - Blue Light Card".
  */
-async function fetchPartnerPackages(ex: ExchangeConfig): Promise<PartnerPackage[]> {
+async function fetchPartnerPackages(
+  ex: ExchangeConfig,
+  merchantIds: string[],
+): Promise<PartnerPackage[]> {
   const perMerchant = await Promise.all(
-    ex.merchantIds.map(async (merchantId) => {
+    merchantIds.map(async (merchantId) => {
       let resp: Response;
       try {
         resp = await fetch(exchangeBootstrapUrl(ex.bootstrapSlug, merchantId), {
@@ -366,10 +369,27 @@ async function fetchExchangeDates(
   product: ProductConfig,
   start: string,
   end: string,
+  bucket: R2Bucket,
+  parkKey: string,
+  publicMerchantId: string,
+  now: number,
 ): Promise<Record<string, Candidate>[]> {
   if (!ex) return [];
-  const packages = await fetchPartnerPackages(ex);
-  if (packages.length === 0) return [];
+  // Configured ids first, plus anything a previous rescan healed to.
+  const known = [...new Set([...ex.merchantIds, ...(await readExchangeIds(bucket, parkKey))])];
+  let packages = await fetchPartnerPackages(ex, known);
+  if (packages.length === 0) {
+    // Every configured merchant has stopped yielding partner packages. Either
+    // the park retired them or the ids moved; rescan the neighbourhood of the
+    // PUBLIC merchant id, which is where they have always sat (105 -> 107,
+    // 800 -> 805, 700 -> 700/704, 6400 -> 6407). Costs ~20 catalog fetches, so
+    // it only ever runs on failure, never on the normal path.
+    const healed = await rescanExchangeIds(ex, publicMerchantId);
+    if (healed.length === 0) return [];
+    await writeExchangeIds(bucket, parkKey, healed, now);
+    packages = await fetchPartnerPackages(ex, healed);
+    if (packages.length === 0) return [];
+  }
   const out = await Promise.all(
     packages.map((pkg) =>
       fetchPackageDates(
@@ -446,7 +466,16 @@ export async function refreshSpecialDays(
     Promise.all(
       exclusives.map((pkg) => fetchPackageDates(publicCtx, product, pkg, eventId, start, end)),
     ),
-    fetchExchangeDates(park.exchange, product, start, end),
+    fetchExchangeDates(
+      park.exchange,
+      product,
+      start,
+      end,
+      env.BUCKET,
+      park.key,
+      park.merchantId,
+      now,
+    ),
   ]);
   // Every public package failing means the API is down or the cached ids have
   // rotated. Keep the last good file rather than publishing an empty one — but
@@ -712,4 +741,69 @@ async function fetchMergedCapacity(
   } catch {
     return undefined;
   }
+}
+
+
+/* ── Exchange merchant ids ─────────────────────────────────────────────────────
+ *
+ * These are not derivable from the public id. Thorpe's is 105 -> 107, but
+ * Alton's partner packages sit on 805 while 807 is a Fastrack-only catalog, and
+ * Legoland splits across 700 and 704. So they are configured, and a rescan heals
+ * them if they ever move.
+ *
+ * Rescanning eagerly would mean ~20 catalog fetches per park per run, several MB
+ * each, to confirm something that changes maybe never. Instead the normal path
+ * verifies them for free: if the configured ids yield no partner packages at
+ * all, THAT is the signal to go looking. */
+
+const exchangeKey = (park: string) => `catalog/${park}/exchange.json`;
+
+async function readExchangeIds(bucket: R2Bucket, park: string): Promise<string[]> {
+  const obj = await bucket.get(exchangeKey(park));
+  if (!obj) return [];
+  try {
+    const f = (await obj.json()) as { merchantIds?: string[] };
+    return Array.isArray(f.merchantIds) ? f.merchantIds : [];
+  } catch {
+    return [];
+  }
+}
+
+async function writeExchangeIds(
+  bucket: R2Bucket,
+  park: string,
+  merchantIds: string[],
+  now: number,
+): Promise<void> {
+  await bucket.put(
+    exchangeKey(park),
+    JSON.stringify({
+      generated_at: new Date(now).toISOString(),
+      merchantIds,
+      note: "Healed automatically: the configured exchange ids stopped yielding partner packages.",
+    }),
+    { httpMetadata: { contentType: "application/json" } },
+  );
+}
+
+/** Scan ids around the park's public merchant and keep those whose catalog holds
+ *  partner-named packages. Sequential in small batches: this is a recovery path,
+ *  not a hot one, and each catalog is several MB. */
+async function rescanExchangeIds(
+  ex: ExchangeConfig,
+  publicMerchantId: string,
+): Promise<string[]> {
+  const base = Number(publicMerchantId);
+  if (!Number.isFinite(base)) return [];
+  const candidates: string[] = [];
+  for (let d = 0; d <= 10; d++) {
+    if (d === 0) candidates.push(String(base));
+    else candidates.push(String(base + d));
+  }
+  const found: string[] = [];
+  for (const id of candidates) {
+    const packages = await fetchPartnerPackages(ex, [id]);
+    if (packages.length > 0) found.push(id);
+  }
+  return found;
 }

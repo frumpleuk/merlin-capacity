@@ -1,5 +1,5 @@
 import { HORIZON_DAYS, type ParkConfig } from "./config";
-import { readSnapshot } from "./db";
+import { readRangeSnapshot } from "./db";
 import type { DayObs, Env } from "./types";
 
 const ymd = (ms: number) => new Date(ms).toISOString().slice(0, 10);
@@ -176,13 +176,18 @@ export async function refreshAnomalies(
   const today = ymd(now);
   const end = ymd(now + HORIZON_DAYS * 86_400_000);
 
+  // From the change log, NOT the forward product files. Those hold only what the
+  // last poll returned, so a date the API stops returning disappears from them
+  // while its history survives: Chessington 2026-11-20 carries a RAP allocation
+  // of 249 in the log and is absent from the forward file, which is exactly the
+  // kind of date this report exists to surface.
   const [main, rap, season, hours, explained] = await Promise.all([
-    readSnapshot(env.BUCKET, park.key, "main"),
-    readSnapshot(env.BUCKET, park.key, "rap"),
+    readRangeSnapshot(env.DB, park.key, "main", today, end),
+    readRangeSnapshot(env.DB, park.key, "rap", today, end),
     // A season sold under its own package (Chessington Christmas). Its dates
     // report capacity 0 on `main` by design, so without it every one of them
     // reads as an unexplained booking against no allocation.
-    readSnapshot(env.BUCKET, park.key, "season"),
+    readRangeSnapshot(env.DB, park.key, "season", today, end),
     readHours(env.BUCKET, park.key, monthsBetween(today, end)),
     readExplained(env.BUCKET, park.key),
   ]);

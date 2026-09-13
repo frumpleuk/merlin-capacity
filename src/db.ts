@@ -232,8 +232,25 @@ export async function readMonthSnapshot(
   product: Product,
   month: string,
 ): Promise<Snapshot> {
-  const start = `${month}-01`;
-  const end = `${month}-31`; // string compare: '-31' >= any real day, < next month
+  return readRangeSnapshot(db, park, product, `${month}-01`, `${month}-31`);
+}
+
+/**
+ * The latest recorded state of every date in a range, from the change log.
+ *
+ * Not the same as the forward product file, which holds only what the LAST poll
+ * returned. A date the API stops returning simply vanishes from that file while
+ * its history remains here: Chessington 2026-11-20 carries a RAP allocation of
+ * 249 in the log and is absent from `calendar/chessington/rap.json` entirely.
+ * Anything reasoning about what a park has ever done must read this.
+ */
+export async function readRangeSnapshot(
+  db: D1Database,
+  park: string,
+  product: Product,
+  start: string,
+  end: string,
+): Promise<Snapshot> {
   const { results } = await db
     .prepare(
       `SELECT o.event_date AS d, o.capacity, o.available, o.used, o.package_ids, o.on_sale
@@ -755,8 +772,14 @@ export interface SpecialDayRow {
   used: number;
 }
 
-/** Record today's detections. Figures are refreshed while the day is still
- *  ahead; `first_seen` never moves. */
+/**
+ * Append today's readings, skipping any that repeat the last one for that date.
+ *
+ * Diff-on-write like the product log: a buyout is polled daily for months, and
+ * only the readings that moved are worth a row. The curve matters most here
+ * precisely because it cannot be rebuilt — the package stops returning the date
+ * within hours of the event.
+ */
 export async function upsertSpecialDays(
   db: D1Database,
   park: string,
@@ -765,35 +788,63 @@ export async function upsertSpecialDays(
 ): Promise<void> {
   const rows = Object.values(days);
   if (rows.length === 0) return;
+  const latest = new Map<string, SpecialDayRow>(
+    (await readSpecialDays(db, park)).map((r) => [r.event_date, r]),
+  );
+  const changed = rows.filter((r) => {
+    const p = latest.get(r.event_date);
+    return (
+      !p ||
+      p.name !== r.name ||
+      p.capacity !== r.capacity ||
+      p.available !== r.available ||
+      p.used !== r.used
+    );
+  });
+  if (changed.length === 0) return;
   const stmt = db.prepare(
-    `INSERT INTO special_day
-       (park, event_date, name, capacity, available, used, first_seen, last_seen)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-     ON CONFLICT(park, event_date) DO UPDATE SET
-       name = excluded.name,
-       capacity = excluded.capacity,
-       available = excluded.available,
-       used = excluded.used,
-       last_seen = excluded.last_seen`,
+    `INSERT OR IGNORE INTO special_day
+       (park, event_date, name, capacity, available, used, observed_at)
+     VALUES (?, ?, ?, ?, ?, ?, ?)`,
   );
   await db.batch(
-    rows.map((r) =>
-      stmt.bind(park, r.event_date, r.name, r.capacity, r.available, r.used, at, at),
+    changed.map((r) =>
+      stmt.bind(park, r.event_date, r.name, r.capacity, r.available, r.used, at),
     ),
   );
 }
 
-/** Every special day ever recorded for a park, newest first. */
+/** The latest reading of every special day ever recorded for a park. */
 export async function readSpecialDays(
   db: D1Database,
   park: string,
 ): Promise<SpecialDayRow[]> {
   const { results } = await db
     .prepare(
-      `SELECT event_date, name, capacity, available, used
-         FROM special_day WHERE park = ? ORDER BY event_date`,
+      `SELECT s.event_date, s.name, s.capacity, s.available, s.used
+         FROM special_day s
+         JOIN (SELECT event_date, MAX(observed_at) AS mx
+                 FROM special_day WHERE park = ? GROUP BY event_date) L
+           ON s.event_date = L.event_date AND s.observed_at = L.mx
+        WHERE s.park = ? ORDER BY s.event_date`,
     )
-    .bind(park)
+    .bind(park, park)
     .all<SpecialDayRow>();
+  return results ?? [];
+}
+
+/** Every reading of one special day, oldest first: the day's own sales curve. */
+export async function readSpecialDayHistory(
+  db: D1Database,
+  park: string,
+  date: string,
+): Promise<(SpecialDayRow & { observed_at: string })[]> {
+  const { results } = await db
+    .prepare(
+      `SELECT event_date, name, capacity, available, used, observed_at
+         FROM special_day WHERE park = ? AND event_date = ? ORDER BY observed_at`,
+    )
+    .bind(park, date)
+    .all<SpecialDayRow & { observed_at: string }>();
   return results ?? [];
 }

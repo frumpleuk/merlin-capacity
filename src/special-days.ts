@@ -10,7 +10,7 @@ import {
   type ProductConfig,
 } from "./config";
 import { derivePool } from "./anomalies";
-import { readSnapshot } from "./db";
+import { readSnapshot, readSpecialDays, upsertSpecialDays } from "./db";
 import { readExclusives, resolvePackages, type ExclusivePackage } from "./discover";
 import { writeSeasonNames } from "./season-names";
 import type { DayObs, Env } from "./types";
@@ -572,18 +572,53 @@ export async function refreshSpecialDays(
     /* ignore */
   }
 
-  // Published even when empty, so a buyout label doesn't linger once the day
-  // passes out of the forward window.
+  // Record what we can see NOW, then serve that merged with everything ever
+  // recorded. A package is pruned from the catalog once its event passes, so a
+  // day only detectable today would otherwise disappear from the calendar
+  // tomorrow along with the evidence for it.
+  const at = new Date(now).toISOString();
+  try {
+    await upsertSpecialDays(
+      env.DB,
+      park.key,
+      Object.fromEntries(
+        Object.entries(days).map(([date, d]) => [date, { event_date: date, ...d }]),
+      ),
+      at,
+    );
+  } catch {
+    /* a failed write must not cost us the file */
+  }
+  let merged = days;
+  try {
+    const history = await readSpecialDays(env.DB, park.key);
+    merged = { ...Object.fromEntries(history.map((r) => [r.event_date, toDay(r)])), ...days };
+  } catch {
+    /* serve what we detected this run */
+  }
+
   const body: SpecialDaysFile = {
     park: park.key,
-    generated_at: new Date(now).toISOString(),
-    days,
+    generated_at: at,
+    days: merged,
   };
   await env.BUCKET.put(`calendar/${park.key}/special.json`, JSON.stringify(body), {
     httpMetadata: { contentType: "application/json" },
   });
   return Object.keys(days).length;
 }
+
+const toDay = (r: {
+  name: string;
+  capacity: number;
+  available: number;
+  used: number;
+}): SpecialDay => ({
+  name: r.name,
+  capacity: r.capacity,
+  available: r.available,
+  used: r.used,
+});
 
 
 /* ── Season tickets (deriving `alsoNames`) ─────────────────────────────────────

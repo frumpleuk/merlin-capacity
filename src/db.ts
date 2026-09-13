@@ -738,3 +738,62 @@ export async function updateParkIndex(
   const body = JSON.stringify({ minMonth, maxMonth, generated_at: generatedAt });
   await bucket.put(objectKey, body, { httpMetadata: { contentType: "application/json" } });
 }
+
+
+/* ── Special days (permanent history) ──────────────────────────────────────────
+ *
+ * A special day can only be detected while its package is still in the catalog.
+ * accesso prunes those once the event passes — Alton's 2026-09-06 VodafoneThree
+ * package was gone within a week — so a day we identify has to be recorded then
+ * or the fact is lost. See migrations/0004_special_days.sql. */
+
+export interface SpecialDayRow {
+  event_date: string;
+  name: string;
+  capacity: number;
+  available: number;
+  used: number;
+}
+
+/** Record today's detections. Figures are refreshed while the day is still
+ *  ahead; `first_seen` never moves. */
+export async function upsertSpecialDays(
+  db: D1Database,
+  park: string,
+  days: Record<string, SpecialDayRow>,
+  at: string,
+): Promise<void> {
+  const rows = Object.values(days);
+  if (rows.length === 0) return;
+  const stmt = db.prepare(
+    `INSERT INTO special_day
+       (park, event_date, name, capacity, available, used, first_seen, last_seen)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+     ON CONFLICT(park, event_date) DO UPDATE SET
+       name = excluded.name,
+       capacity = excluded.capacity,
+       available = excluded.available,
+       used = excluded.used,
+       last_seen = excluded.last_seen`,
+  );
+  await db.batch(
+    rows.map((r) =>
+      stmt.bind(park, r.event_date, r.name, r.capacity, r.available, r.used, at, at),
+    ),
+  );
+}
+
+/** Every special day ever recorded for a park, newest first. */
+export async function readSpecialDays(
+  db: D1Database,
+  park: string,
+): Promise<SpecialDayRow[]> {
+  const { results } = await db
+    .prepare(
+      `SELECT event_date, name, capacity, available, used
+         FROM special_day WHERE park = ? ORDER BY event_date`,
+    )
+    .bind(park)
+    .all<SpecialDayRow>();
+  return results ?? [];
+}

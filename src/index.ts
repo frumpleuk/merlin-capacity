@@ -1,3 +1,4 @@
+import { refreshAnomalies } from "./anomalies";
 import { allProducts, attractionsParks, fosParks, PARKS, queueParks } from "./config";
 import { rebuildMonthsFromD1 } from "./db";
 import { refreshPackages } from "./discover";
@@ -88,6 +89,8 @@ async function pollSpecialDays(env: Env, scheduledTime: number): Promise<void> {
       .filter(({ product }) => product.discover)
       .map(({ park, product }) => refreshSpecialDays(env, park, product, scheduledTime)),
   );
+  // Strictly after, so the days just explained are excluded from the report.
+  await Promise.all(PARKS.map((park) => refreshAnomalies(env, park, scheduledTime)));
 }
 
 export default {
@@ -179,6 +182,13 @@ export default {
             dates: await refreshSpecialDays(env, park, product, Date.now()),
           })),
       );
+      const anomalies = await Promise.all(
+        PARKS.filter((park) => park.products.length > 0).map(async (park) => ({
+          park: park.key,
+          product: "anomalies",
+          dates: await refreshAnomalies(env, park, Date.now()),
+        })),
+      );
       // Full repair: rebuild EVERY month file (past + forward) from D1, so a
       // fresh deploy or a static product immediately gets all its month files.
       const at = new Date().toISOString();
@@ -190,7 +200,7 @@ export default {
             .length,
         })),
       );
-      return Response.json({ ok: true, results, hours, queues, special, rebuilt });
+      return Response.json({ ok: true, results, hours, queues, special, anomalies, rebuilt });
     }
 
     // Everything else: the static heatmap.

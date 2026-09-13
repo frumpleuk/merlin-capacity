@@ -52,6 +52,17 @@ have the packages but no dated allocation yet). Written to
 `calendar/<park>/special.json` and labelled on both the calendar and the queues
 page. See [`docs/accesso-api.md` §6](docs/accesso-api.md).
 
+### Keeping up with the parks
+
+Special days were found by hand, one season at a time, which does not scale.
+`status/<park>/anomalies.json` reports the dates the model cannot account for
+(open but unsellable, closed but selling, bookings against no allocation,
+reduced allocation, off sale at full pool) so a new season's oddity surfaces
+itself. The park's normal pool is derived rather than hardcoded, season-ticket
+package names are learned and verified against the live merge before being
+adopted, and exchange merchant ids heal themselves if they move. See
+[`docs/accesso-api.md` §7](docs/accesso-api.md).
+
 ## What it captures
 
 For `main` and `rap`, per visit date: `capacity`, `available` (tickets left),

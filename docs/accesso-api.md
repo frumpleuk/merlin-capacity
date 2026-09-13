@@ -460,7 +460,59 @@ ride's, so it takes precedence once present).
 
 ---
 
-## 7. Gotchas checklist
+## 7. Keeping this working as seasons rotate
+
+Every rule in §6 was found by noticing a day that looked wrong and working
+backwards. That does not survive the season it was found in: package ids and
+names rotate, partners come and go, and a rule that quietly stops matching looks
+exactly like a park with nothing unusual on. Four things guard against that.
+
+**Report the contradictions, don't enumerate the causes.**
+`status/<park>/anomalies.json` lists dates the model cannot account for, built
+from data already in R2 with no extra queries, excluding days we do explain:
+
+| Kind | Means |
+|---|---|
+| `open_no_tickets` | theme park open, nothing sells the date |
+| `closed_but_selling` | no public hours, yet an allocation or real bookings |
+| `bookings_no_allocation` | bookings against capacity 0 |
+| `reduced_allocation` | allocation below the park's usual pool |
+| `offsale_at_full_pool` | off sale on a future date carrying the full pool |
+
+It found Alton's Christmas gap (23 dates from 2026-11-27, hours published and
+nothing sellable) that hand-searching had missed.
+
+**Derive the pool, don't hardcode it.** The modal capacity across future on-sale
+dates gives 15,000 Thorpe, 18,000 Alton, 11,440 Chessington, 14,500 Legoland.
+Modal rather than max, so neither a reduced private-event day nor a one-off
+larger event moves it. It makes "reduced allocation" computable.
+
+**Learn season names, and verify before adopting.** A season selling under its
+own package name is detectable: day-ticket class, not the configured day ticket,
+selling at the full pool, on dates the theme park is open, that the product can't
+sell. Adopting one is only safe when the merge doesn't zero the date, so each is
+queried alone and alongside the real `P[]` and adopted only if the numbers match.
+Rejections are recorded with the reason, which is how Chessington's case is now
+written down rather than silently wrong.
+
+**Heal configuration rather than re-deriving it.** Exchange merchant ids are not
+derivable (105 -> 107, but 800 -> 805 while 807 is Fastrack-only, and Legoland
+splits 700/704). Rescanning eagerly would cost ~20 multi-MB catalog fetches per
+park per run to confirm something that may never change, so the normal path
+verifies them for free: no partner packages from any configured id is the signal
+to scan and persist a replacement.
+
+**What is deliberately still name-based.** `PARTNER_DAY_NAME` picks partner
+packages out of the exchange catalogs. Detecting those structurally instead would
+mean querying every non-add-on package on four exchange merchants, roughly 800
+requests a day, to find the handful that matter. The name list is cheap and
+precise; when it misses one, the day shows up as `closed_but_selling` in the
+anomaly report. Detect on structure where it is free, label on names, and let the
+report cover the gap.
+
+---
+
+## 8. Gotchas checklist
 
 - Call the central `ecomm.api.meg-eu` host, never the per-park legacy API (it 503s
   non-UK IPs).

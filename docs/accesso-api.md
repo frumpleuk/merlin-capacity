@@ -380,10 +380,14 @@ rather than a partner. There is also a `keyword` of `BLCEvent` on Thorpe's Blue
 Light package, but the John Lewis one carries the generic
 `Daily Tickets -  TP Trade`, so keywords don't separate them.
 
-Chessington's headline reads "Exclusive member events on 9th, 15th & 16th
-November". Those three dates are absent from both its hours calendar and its
-availability, so they are real member days the API will not hand over as dates.
-Don't try to parse them out of marketing copy.
+**Treat headline text as stale until proven otherwise.** Chessington's reads
+"Exclusive member events on 9th, 15th & 16th November", which looks like a
+schedule but is last season's copy on a dormant package: in 2025 those dates are
+Sun / Sat / Sun, in 2026 Mon / Sun / Mon, and Chessington is not among the parks
+the Blue Light Card app currently lists (Thorpe, Alton Towers, Warwick Castle,
+Legoland, Twycross). The same staleness shows on a LIVE package: Thorpe's 2026
+Blue Light artwork is `TP-BLC-NOV-25.jpg`. Use `headline` to name a partner, and
+take dates only from `GetMerchantPackageEventDates`.
 
 **Match partner days by NAME, not class or event.** Only Thorpe has a dedicated
 partner event (532, "Thorpe Park Capacity"); the other parks put theirs on the

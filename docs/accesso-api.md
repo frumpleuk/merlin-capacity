@@ -325,13 +325,11 @@ ring-fenced bucket isn't the day's identity.
 Applied across all four parks on 2026-09-13 this yields exactly two days and no
 false positives. See [`src/special-days.ts`](../src/special-days.ts).
 
-### The exchange merchant
+### The exchange merchants
 
-A park can have a SECOND accesso merchant: the trade / reseller "exchange"
-storefront partner channels book through. Thorpe's public merchant is 105; its
-exchange is **107**, reached from
-`me-tpchertsey-exchange.secure-cdn.meg-eu.accessoticketing.com` with
-`reseller_id=10203&reseller_location_id=11257`.
+A park has a SECOND set of accesso merchant ids: the trade / reseller "exchange"
+storefront partner channels book through. It carries dates the public merchant
+knows nothing about.
 
 **`merchant_id` must go on the bootstrap query string**, not just the slug:
 
@@ -341,28 +339,52 @@ exchange is **107**, reached from
 ```
 
 That matters because the POST `GetMerchantPackageList` form returns `E` and `CT`
-as null (§3.3), so the bootstrap is the only way to get the binding.
+as null (§3.3), so the bootstrap is the only source of the binding. The reseller
+parameters from a partner link (`reseller_id`, `reseller_location_id`) are NOT
+required for either call; verified against Thorpe, identical results with and
+without.
 
-Merchant 107 is mostly the same main event 2507 through a trade channel, but
-event **532** "Thorpe Park Capacity" holds the partner days, on their own
-allocation rather than the 15,000 park pool:
+| Park | Exchange slug | Merchant ids with partner packages |
+|---|---|---|
+| Alton Towers | `ME-TWALTON-EXCHANGE` | 805 |
+| Thorpe Park | `ME-TPCHERTSEY-EXCHANGE` | 107 |
+| Legoland Windsor | `ME-LLWINDSOR-EXCHANGE` | 700, 704 |
+| Chessington | `ME-WACHESSINGTON-EXCHANGE` | 6407 |
 
-| Date | `Trade` package | capacity | available |
+The slug is the public slug plus `-EXCHANGE` for every park except **Thorpe**,
+whose public slug is `ME-TPR` but whose exchange is `ME-TPCHERTSEY-EXCHANGE`.
+The merchant ids are **not** derivable. Thorpe's is 105 -> 107, but Alton's
+partner packages are on 805 while 807 is a Fastrack-only catalog, and Legoland
+splits across 700 and 704. Find them by scanning ids around the public one and
+keeping whichever catalog holds partner-named packages. An invalid slug answers
+29 bytes of `{"e":"Invalid configuration"}`, a valid one a ~1.5MB shell, which
+makes slug guessing cheap to verify.
+
+**Match partner days by NAME, not class or event.** Only Thorpe has a dedicated
+partner event (532, "Thorpe Park Capacity"); the other parks put theirs on the
+main event among hundreds of ordinary trade and discount packages. The pattern
+`member day|blue light|john lewis|partnership|defence discount` selects 10
+packages across all four parks and nothing else. Exclude add-on classes (Golf,
+Fastrack, Parking, ...) or Legoland's "Adventure Golf - Blue Light Card" names a
+date.
+
+Only Thorpe has live partner days today:
+
+| Date | Package | capacity | available |
 |---|---|---|---|
 | 2026-11-06 | John Lewis Partnership Event | 6000 | 3179 |
 | 2026-11-07 | Member Days - November | 6250 | 30 |
 | 2026-11-08 | Member Days - November | 6300 | 59 |
 
 The 7th and 8th are the Blue Light Card member days, and the app's own listing
-showed both SOLD OUT, matching the 30 and 59 left here.
+showed both SOLD OUT, matching the 30 and 59 left here. Every other park's
+partner packages are defined but dormant: they answer `FAILED` for any date
+range, including 2025 through 2027, meaning no dated allocation at all rather
+than a date we have missed.
 
-Filter to the `Trade` class. The same event also carries add-ons (coach parking,
-digital photos, late check-out) whose allocation runs flat across the entire
-horizon and would otherwise name every date in it.
-
-These dates are invisible to merchant 105 and fall days past the end of the
-opening-hours calendar, so the hours-span test above must NOT be applied to
-them. Their dated allocation on a dedicated partner event is the evidence.
+These dates are invisible to the public merchant and fall days past the end of
+the opening-hours calendar, so the hours-span test above must NOT be applied to
+them. The partner name plus a real dated allocation is the evidence.
 
 **The live feed's resort window can lag.** On 2026-09-13 Thorpe's `Resort` record
 was a bare `{"_id": 43}` — no `OpeningTimes` — until the park actually opened,

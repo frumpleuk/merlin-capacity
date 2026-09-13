@@ -1,7 +1,9 @@
 import {
+  EXCHANGE_ADDON_CLASSES,
   exchangeBootstrapUrl,
   HORIZON_DAYS,
   HOST,
+  PARTNER_DAY_NAME,
   USER_AGENT,
   type ExchangeConfig,
   type ParkConfig,
@@ -85,8 +87,6 @@ interface ApiDay {
 interface QueryContext {
   merchantId: string;
   origin: string;
-  /** Reseller identity, for an exchange merchant only. */
-  reseller?: { id: string; locationId: string };
 }
 
 async function fetchPackageDates(
@@ -116,9 +116,6 @@ async function fetchPackageDates(
     user_id: "5",
     device: "desktop",
     language: "en-gb",
-    ...(ctx.reseller
-      ? { reseller_id: ctx.reseller.id, reseller_location_id: ctx.reseller.locationId }
-      : {}),
   };
   let resp: Response;
   try {
@@ -185,54 +182,70 @@ interface ExchangePackage {
   CT?: OneOrMany<{ id?: string }>;
 }
 
-/**
- * The partner-day packages on a park's trade / reseller merchant. Unlike the
- * public merchant's list (kept warm in R2 by the pre-open cron), this is read
- * fresh here: it is one fetch a day for the single park that has an exchange,
- * and it needs no second cache mechanism.
- *
- * Filtered to `eventId` AND the partner-day class, because the same event also
- * carries add-ons (parking, photos, late check-out) whose allocation runs flat
- * across the entire horizon and would otherwise name every date in it.
- */
-async function fetchExchangePackages(ex: ExchangeConfig): Promise<ExclusivePackage[]> {
-  let resp: Response;
-  try {
-    resp = await fetch(exchangeBootstrapUrl(ex.bootstrapSlug, ex.merchantId), {
-      headers: {
-        accept: "application/json, text/plain, */*",
-        origin: ex.origin,
-        referer: `${ex.origin}/`,
-        "user-agent": USER_AGENT,
-      },
-    });
-  } catch {
-    return [];
-  }
-  if (!resp.ok) return [];
-  let data: {
-    GetMerchantPackageList?: { SERVICE?: { PS?: { P?: ExchangePackage[] } } };
-  };
-  try {
-    data = (await resp.json()) as typeof data;
-  } catch {
-    return [];
-  }
-  const packages = data.GetMerchantPackageList?.SERVICE?.PS?.P;
-  if (!Array.isArray(packages)) return [];
+/** A partner-day package, with the event it books against. Unlike the public
+ *  merchant's packages these don't share one event, so each carries its own. */
+interface PartnerPackage extends ExclusivePackage {
+  event: string;
+  /** Which of the park's exchange merchants this came from. */
+  merchantId: string;
+}
 
-  const wantClass = ex.packageClass ?? "Trade";
-  const out: ExclusivePackage[] = [];
-  for (const p of packages) {
-    if ((p.package_class ?? "") !== wantClass) continue;
-    if (!asArray(p.E).some((e) => e.id === ex.eventId)) continue;
-    const ct = asArray(p.CT)
-      .map((c) => c.id)
-      .find((id): id is string => !!id);
-    const name = (p.name ?? "").trim();
-    if (ct && name) out.push({ id: p.id, ct, name });
-  }
-  return out;
+/**
+ * A park's partner-day packages, across every exchange merchant it lists.
+ * Read fresh each run: it is a handful of fetches a day, and needs no second
+ * cache mechanism.
+ *
+ * Selected by NAME, not by class or event. Only Thorpe has a dedicated partner
+ * event (532); everywhere else these sit on the park's main event among hundreds
+ * of ordinary trade and discount packages, so nothing structural separates them.
+ * Add-on classes are excluded because a partner name can land on one, as in
+ * Legoland's "Adventure Golf - Blue Light Card".
+ */
+async function fetchPartnerPackages(ex: ExchangeConfig): Promise<PartnerPackage[]> {
+  const perMerchant = await Promise.all(
+    ex.merchantIds.map(async (merchantId) => {
+      let resp: Response;
+      try {
+        resp = await fetch(exchangeBootstrapUrl(ex.bootstrapSlug, merchantId), {
+          headers: {
+            accept: "application/json, text/plain, */*",
+            origin: ex.origin,
+            referer: `${ex.origin}/`,
+            "user-agent": USER_AGENT,
+          },
+        });
+      } catch {
+        return [];
+      }
+      if (!resp.ok) return [];
+      let data: {
+        GetMerchantPackageList?: { SERVICE?: { PS?: { P?: ExchangePackage[] } } };
+      };
+      try {
+        data = (await resp.json()) as typeof data;
+      } catch {
+        return [];
+      }
+      const packages = data.GetMerchantPackageList?.SERVICE?.PS?.P;
+      if (!Array.isArray(packages)) return [];
+
+      const out: PartnerPackage[] = [];
+      for (const p of packages) {
+        const name = (p.name ?? "").trim();
+        if (!PARTNER_DAY_NAME.test(name)) continue;
+        if (EXCHANGE_ADDON_CLASSES.has(p.package_class ?? "")) continue;
+        const ct = asArray(p.CT)
+          .map((c) => c.id)
+          .find((id): id is string => !!id);
+        const event = asArray(p.E)
+          .map((e) => e.id)
+          .find((id): id is string => !!id);
+        if (ct && event) out.push({ id: p.id, ct, name, event, merchantId });
+      }
+      return out;
+    }),
+  );
+  return perMerchant.flat();
 }
 
 /** What the opening-hours calendar says about the horizon. */
@@ -280,8 +293,10 @@ async function readHoursCoverage(
   };
 }
 
-/** Partner-day dates from the park's exchange merchant, or [] when it has none
- *  (every park but Thorpe today) or the catalog is unreachable. */
+/** Partner-day dates from the park's exchange merchants, or [] when it has none
+ *  configured or the catalogs are unreachable. A package with no dated
+ *  allocation answers FAILED and simply contributes nothing — every park but
+ *  Thorpe is in that state today, their partner packages defined but dormant. */
 async function fetchExchangeDates(
   ex: ExchangeConfig | undefined,
   product: ProductConfig,
@@ -289,15 +304,19 @@ async function fetchExchangeDates(
   end: string,
 ): Promise<Record<string, Candidate>[]> {
   if (!ex) return [];
-  const packages = await fetchExchangePackages(ex);
+  const packages = await fetchPartnerPackages(ex);
   if (packages.length === 0) return [];
-  const ctx: QueryContext = {
-    merchantId: ex.merchantId,
-    origin: ex.origin,
-    reseller: { id: ex.resellerId, locationId: ex.resellerLocationId },
-  };
   const out = await Promise.all(
-    packages.map((pkg) => fetchPackageDates(ctx, product, pkg, ex.eventId, start, end)),
+    packages.map((pkg) =>
+      fetchPackageDates(
+        { merchantId: pkg.merchantId, origin: ex.origin },
+        product,
+        pkg,
+        pkg.event,
+        start,
+        end,
+      ),
+    ),
   );
   return out.filter((r) => Object.keys(r).length > 0);
 }
@@ -329,13 +348,14 @@ function monthsBetween(start: string, end: string): string[] {
  *   routine midweek closure; without test 3 every far-future schools-group date
  *   qualifies, because "no hours" out there just means "not published yet".
  *
- *   EXCHANGE MERCHANT — the trade/reseller storefront's partner-day packages
- *   (see ExchangeConfig). Tests 1 and 2 still apply, but NOT test 3: these sit
- *   on their own small dated allocation on a dedicated event, which is already
- *   positive evidence of a real operating day, and the partner days routinely
- *   fall past the end of the published calendar. Thorpe's 2026-11-06 John Lewis
- *   day and 2026-11-07/08 Blue Light Card member days are all five or more days
- *   past the last date the hours calendar covers.
+ *   EXCHANGE MERCHANTS — partner-day packages on the park's trade/reseller
+ *   storefront, matched by name (see PARTNER_DAY_NAME). Tests 1 and 2 still
+ *   apply, but NOT test 3: a package literally named for its partner, selling a
+ *   date the public can't buy on a day with no theme-park hours, is a partner
+ *   day wherever it falls, and these routinely fall past the end of the
+ *   published calendar. Thorpe's 2026-11-06 John Lewis day and 2026-11-07/08
+ *   Blue Light Card member days are all five or more days past the last date the
+ *   hours calendar covers, so applying test 3 would discard every one.
  *
  * Off the hot path (its own daily cron): one request per package, and a park has
  * a few dozen. Never throws; on failure the previous file survives.

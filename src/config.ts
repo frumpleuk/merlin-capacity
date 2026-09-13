@@ -210,23 +210,26 @@ export interface ProductConfig {
 }
 
 /**
- * A park's SECOND accesso merchant: the trade / reseller "exchange" storefront
- * that partner channels book through (Blue Light Card, corporate partners). It
- * is a different merchant id on the same API host, reached with reseller ids,
- * and it carries dates the public merchant knows nothing about.
+ * A park's trade / reseller "exchange" storefront: a SECOND set of accesso
+ * merchant ids on the same API host, which partner channels book through. It
+ * carries dates the public merchant knows nothing about.
  *
- * Thorpe, merchant 107, event 532 "Thorpe Park Capacity": 2026-11-06 is the John
- * Lewis Partnership Event and 2026-11-07/08 are the Blue Light Card member days.
- * All three are absent from the public merchant (105) and from the opening-hours
- * calendar, so without this the park reads as closed on days it runs for 6,000+
- * people.
+ * Thorpe: merchant 107, where 2026-11-06 is the John Lewis Partnership Event and
+ * 2026-11-07/08 are the Blue Light Card member days, all three absent from the
+ * public merchant (105) and from the opening-hours calendar. Without this the
+ * park reads as closed on days it runs for 6,000+ people.
  *
- * The `Trade` packages on `eventId` are the partner days themselves; the other
- * classes on the same event are add-ons (parking, photos, late check-out) that
- * carry a flat allocation across the whole horizon and would name every date.
+ * The slug is the public one plus "-EXCHANGE" for every park except Thorpe,
+ * whose public slug is ME-TPR but whose exchange is ME-TPCHERTSEY-EXCHANGE. The
+ * merchant ids are NOT derivable: Thorpe's is 105 -> 107, but Alton's partner
+ * packages sit on 805 (not 807) and Legoland's are split across 700 and 704, so
+ * they are listed explicitly. Discovered by scanning ids around the public one
+ * and keeping those whose catalog holds partner-named packages.
  */
 export interface ExchangeConfig {
-  merchantId: string;
+  /** Merchant ids to read. More than one because a park can split its partner
+   *  packages across several (Legoland: 700 and 704). */
+  merchantIds: string[];
   /** Exchange storefront host, sent as origin/referer. */
   origin: string;
   /** Bootstrap slug. NOTE: the slug alone returns a shell with `merchantId: -1`
@@ -234,13 +237,30 @@ export interface ExchangeConfig {
    *  real catalog with its `E`/`CT` bindings (the POST package-list form returns
    *  both as null, see docs/accesso-api.md §3.3). */
   bootstrapSlug: string;
-  resellerId: string;
-  resellerLocationId: string;
-  /** The event the partner days sit on. NOT the park's public main event. */
-  eventId: string;
-  /** Package class holding the partner days. Default "Trade". */
-  packageClass?: string;
 }
+
+/** Partner-day package names, matched against the exchange catalog. Deliberately
+ *  narrow and intent-revealing: these sit among hundreds of ordinary trade and
+ *  discount packages on the same events, so a class or event filter doesn't
+ *  separate them (only Thorpe has a dedicated partner event). Across all four
+ *  parks this selects 10 packages and nothing else. */
+export const PARTNER_DAY_NAME =
+  /member day|blue light|john lewis|partnership|defence discount/i;
+
+/** Exchange package classes that are add-ons, not park admission. A partner-day
+ *  NAME can appear on one ("Adventure Golf - Blue Light Card"), and those must
+ *  not name a date. */
+export const EXCHANGE_ADDON_CLASSES = new Set([
+  "Golf",
+  "Fastrack",
+  "Parking",
+  "Photography",
+  "Retail",
+  "Sundry",
+  "Aramark",
+  "Accommodation Onsite",
+  "Accommodation Offsite",
+]);
 
 export interface ParkConfig {
   key: string;
@@ -276,6 +296,12 @@ export const PARKS: ParkConfig[] = [
     merchantId: "800",
     origin: "https://me-twalton.tickets.altontowers.com",
     bootstrapSlug: "ME-TWALTON",
+    // 805, not 807: 807 is a Fastrack-only catalog with no partner packages.
+    exchange: {
+      merchantIds: ["805"],
+      origin: "https://me-twalton.tickets.altontowers.com",
+      bootstrapSlug: "ME-TWALTON-EXCHANGE",
+    },
     openingHours: {
       kind: "accesso",
       calendarUrl: hoursUrl("altontowers.com", "2047,2609,2613"),
@@ -316,12 +342,9 @@ export const PARKS: ParkConfig[] = [
     origin: "https://me-tpr.tickets.thorpepark.com",
     bootstrapSlug: "ME-TPR",
     exchange: {
-      merchantId: "107",
+      merchantIds: ["107"],
       origin: "https://me-tpchertsey-exchange.secure-cdn.meg-eu.accessoticketing.com",
       bootstrapSlug: "ME-TPCHERTSEY-EXCHANGE",
-      resellerId: "10203",
-      resellerLocationId: "11257",
-      eventId: "532",
     },
     openingHours: {
       kind: "accesso",
@@ -359,6 +382,12 @@ export const PARKS: ParkConfig[] = [
     merchantId: "700",
     origin: "https://me-llwindsor.tickets.legoland.co.uk",
     bootstrapSlug: "ME-LLWINDSOR",
+    // Split across two ids: the John Lewis days sit on 700, Blue Light on 704.
+    exchange: {
+      merchantIds: ["700", "704"],
+      origin: "https://me-llwindsor.tickets.legoland.co.uk",
+      bootstrapSlug: "ME-LLWINDSOR-EXCHANGE",
+    },
     openingHours: {
       kind: "accesso",
       calendarUrl: hoursUrl("legoland.co.uk", "1716,7236"),
@@ -395,6 +424,11 @@ export const PARKS: ParkConfig[] = [
     merchantId: "6400",
     origin: "https://me-wachessington.tickets.chessington.com",
     bootstrapSlug: "ME-WACHESSINGTON",
+    exchange: {
+      merchantIds: ["6407"],
+      origin: "https://me-wachessington.tickets.chessington.com",
+      bootstrapSlug: "ME-WACHESSINGTON-EXCHANGE",
+    },
     openingHours: {
       kind: "accesso",
       calendarUrl: hoursUrl("chessington.com", "1716"),

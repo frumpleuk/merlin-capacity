@@ -9,9 +9,11 @@ import {
   type ParkConfig,
   type ProductConfig,
 } from "./config";
+import { derivePool } from "./anomalies";
 import { readSnapshot } from "./db";
-import { readExclusives, type ExclusivePackage } from "./discover";
-import type { Env } from "./types";
+import { readExclusives, resolvePackages, type ExclusivePackage } from "./discover";
+import { writeSeasonNames } from "./season-names";
+import type { DayObs, Env } from "./types";
 
 const ymd = (ms: number) => new Date(ms).toISOString().slice(0, 10);
 
@@ -520,6 +522,27 @@ export async function refreshSpecialDays(
     if (best) days[date] = best;
   }
 
+  // Learn this park's season-ticket names for discovery's next run (see the
+  // section at the foot of this file). Never throws; a failure just leaves the
+  // previous list in place.
+  try {
+    await deriveSeasonNames(
+      env,
+      park,
+      product,
+      eventId,
+      publicCtx,
+      exclusives,
+      results,
+      publicSnapshot,
+      hours.themeparkOpen,
+      start,
+      now,
+    );
+  } catch {
+    /* ignore */
+  }
+
   // Published even when empty, so a buyout label doesn't linger once the day
   // passes out of the forward window.
   const body: SpecialDaysFile = {
@@ -531,4 +554,162 @@ export async function refreshSpecialDays(
     httpMetadata: { contentType: "application/json" },
   });
   return Object.keys(days).length;
+}
+
+
+/* ── Season tickets (deriving `alsoNames`) ─────────────────────────────────────
+ *
+ * A park can sell a whole season under its own package name rather than the
+ * usual day ticket: Thorpe's Fright Nights is "Fright Nights Entry", Chessington
+ * Christmas is "Theme Park Entry Only". When that name isn't in the product's
+ * P[], every date in the season reports from the prebook anchors alone and reads
+ * as passholder-only on the calendar, which was wrong on 24 Thorpe dates.
+ *
+ * Hardcoding the names doesn't survive the next season, so derive them. The
+ * signature is precise: a day-ticket-class package, not the configured day
+ * ticket, selling at the FULL park pool, on dates the theme park is open to the
+ * public, that the public product can't currently sell.
+ *
+ * Adding a name to P[] is not automatically safe. The accesso merge reports the
+ * most constrained allocation (docs §3.1), so a package that returns the date
+ * with capacity 0 drags the merged figure to 0 — that is exactly why Chessington
+ * can't be fixed this way. Each candidate is therefore VERIFIED against the live
+ * API before it is adopted: query it alone, query it alongside the product's
+ * real P[], and keep it only if the numbers match. */
+
+/**
+ * Spot season packages among the exclusives already queried, verify each is
+ * merge-safe, and record the result for discovery to pick up on its next run.
+ * Reuses `results` rather than re-querying; only the verification costs extra,
+ * two requests per candidate, and candidates are rare.
+ */
+async function deriveSeasonNames(
+  env: Env,
+  park: ParkConfig,
+  product: ProductConfig,
+  eventId: string,
+  ctx: QueryContext,
+  exclusives: ExclusivePackage[],
+  results: Record<string, Candidate>[],
+  publicSnapshot: Record<string, DayObs>,
+  themeparkOpen: Set<string>,
+  today: string,
+  now: number,
+): Promise<number> {
+  const pool = derivePool(publicSnapshot, today);
+  if (!pool) return 0;
+
+  const names: string[] = [];
+  const rejected: { name: string; reason: string }[] = [];
+
+  for (let i = 0; i < exclusives.length; i++) {
+    const pkg = exclusives[i];
+    const res = results[i];
+    if (!res) continue;
+    // Dates this package sells at the full pool, while the park is open to the
+    // public and the product can't sell them.
+    const season = Object.entries(res)
+      .filter(([date, c]) => {
+        if (date <= today || c.capacity !== pool) return false;
+        if (!themeparkOpen.has(date)) return false;
+        const cur = publicSnapshot[date];
+        return !cur || cur.capacity === 0 || cur.onSale === false;
+      })
+      .map(([date]) => date)
+      .sort();
+    if (season.length === 0) continue;
+    if (names.includes(pkg.name) || rejected.some((r) => r.name === pkg.name)) continue;
+
+    // Verify on the first such date: alone, then alongside the real P[].
+    const probe = season[0];
+    const { P } = await resolvePackages(env.BUCKET, park, product);
+    const [alone, merged] = await Promise.all([
+      fetchPackageDates(ctx, product, pkg, eventId, probe, probe),
+      fetchMergedCapacity(ctx, product, [...P, selector(pkg, eventId)], probe),
+    ]);
+    const want = alone[probe]?.capacity;
+    if (!want) continue;
+    if (merged === want) names.push(pkg.name);
+    else {
+      rejected.push({
+        name: pkg.name,
+        reason: `merge reports ${merged ?? "nothing"} against ${want} alone on ${probe}; needs its own product`,
+      });
+    }
+  }
+
+  if (names.length === 0 && rejected.length === 0) return 0;
+  await writeSeasonNames(env.BUCKET, park.key, product.key, {
+    generated_at: new Date(now).toISOString(),
+    names: names.sort(),
+    rejected,
+  });
+  return names.length;
+}
+
+const selector = (pkg: ExclusivePackage, eventId: string) => ({
+  CT: [{ id: pkg.ct, qty: 1 }],
+  event_id: eventId,
+  id: pkg.id,
+});
+
+/** The merged capacity a whole P[] reports for one date, or undefined. */
+async function fetchMergedCapacity(
+  ctx: QueryContext,
+  product: ProductConfig,
+  P: unknown[],
+  date: string,
+): Promise<number | undefined> {
+  const body = {
+    P,
+    extra_movie: product.extra_movie,
+    identify_customer_types: 1,
+    min_capacity: 0,
+    version: "2",
+    start_date: date,
+    end_date: date,
+    display_zero_capacity: "1",
+    include_times: product.include_times,
+    request_type: "GetMerchantPackageEventDates",
+    _version: "6.31.6",
+    application_id: "1500",
+    merchant_id: ctx.merchantId,
+    machine_id: "500",
+    agent_id: "5",
+    user_id: "5",
+    device: "desktop",
+    language: "en-gb",
+  };
+  let resp: Response;
+  try {
+    resp = await fetch(HOST, {
+      method: "POST",
+      headers: {
+        accept: "application/json, text/plain, */*",
+        "com-accessopassport-app-id": "1500",
+        "com-accessopassport-client": "accesso26",
+        "com-accessopassport-language": "en-gb",
+        "com-accessopassport-merchant-id": ctx.merchantId,
+        "content-type": "application/json;charset=UTF-8",
+        origin: ctx.origin,
+        referer: `${ctx.origin}/`,
+        "user-agent": USER_AGENT,
+      },
+      body: JSON.stringify(body),
+    });
+  } catch {
+    return undefined;
+  }
+  if (!resp.ok) return undefined;
+  try {
+    const data = (await resp.json()) as { SERVICE?: { status?: string; D?: ApiDay | ApiDay[] } };
+    const svc = data.SERVICE ?? {};
+    if (svc.status !== "OK") return undefined;
+    const raw = svc.D;
+    const days = Array.isArray(raw) ? raw : raw ? [raw] : [];
+    const t = days.find((d) => d?.date === date)?.T;
+    return t ? Number(t.capacity ?? 0) : undefined;
+  } catch {
+    return undefined;
+  }
 }

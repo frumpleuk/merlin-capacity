@@ -6,6 +6,7 @@ import {
   type ParkConfig,
   type ProductConfig,
 } from "./config";
+import { readSeasonNames } from "./season-names";
 
 /** One package as it appears in the bootstrap catalog (fields we use). accesso
  *  serves `E`/`CT` as a bare object when there's one, an array when there are
@@ -38,8 +39,10 @@ interface Bootstrap {
  *     Entry") counts as the public day ticket, so its dates stop reading as
  *     prebook-only.
  *  5: also collect EVENT_CLASSES packages (Legoland's "Passholder Day"), which
- *     name a closed-to-the-public day the anchors would otherwise mask. */
-const FILTER_VERSION = 5;
+ *     name a closed-to-the-public day the anchors would otherwise mask.
+ *  6: fold in season names learned and verified by the daily job, so a season
+ *     selling under a new package name no longer needs a code change. */
+const FILTER_VERSION = 6;
 
 /** One day-ticket package on the product's event that ISN'T the public day
  *  ticket — a promo variant, a student ticket, a seasonal-event ticket, or the
@@ -69,6 +72,10 @@ interface CachedList {
   filter_version?: number;
   /** The event's non-public day-ticket packages (see ExclusivePackage). */
   exclusives?: ExclusivePackage[];
+  /** The learned season names this list was built with. A change must force a
+   *  rebuild, or the new name sits behind the catalog ETag until accesso next
+   *  edits it. */
+  season_names?: string[];
 }
 
 /** A resolved package list plus which of its ids are yield anchors. */
@@ -114,11 +121,17 @@ export async function refreshPackages(
   if (!product.discover) return; // RAP (static P) has nothing to discover
   const key = cacheKey(park.key, product.key);
   const cached = await readCache(bucket, key);
+  // Season names the daily job has verified as merge-safe (see special-days.ts).
+  // Folded in alongside the configured `alsoNames`, so a season that starts
+  // selling under a new package name is picked up without a code change.
+  const learned = await readSeasonNames(bucket, park.key, product.key);
   // Only reuse the ETag if the cached list came from the CURRENT filter —
   // otherwise a filter change would sit behind 304s forever (see FILTER_VERSION).
+  const sameNames =
+    JSON.stringify(cached?.season_names ?? []) === JSON.stringify(learned);
   const etagToSend =
-    cached?.filter_version === FILTER_VERSION ? cached.etag : null;
-  const fresh = await fetchCatalogPackages(park, product.discover, etagToSend);
+    cached?.filter_version === FILTER_VERSION && sameNames ? cached.etag : null;
+  const fresh = await fetchCatalogPackages(park, product.discover, etagToSend, learned);
   if (fresh.notModified) return; // 304 — cached list still current
   if (fresh.P.length === 0) return; // catalog down / mid-rotation — keep old list
   const body: CachedList = {
@@ -128,6 +141,7 @@ export async function refreshPackages(
     etag: fresh.etag,
     filter_version: FILTER_VERSION,
     exclusives: fresh.exclusives,
+    season_names: learned,
   };
   await bucket.put(key, JSON.stringify(body), {
     httpMetadata: { contentType: "application/json" },
@@ -147,6 +161,7 @@ async function readCache(bucket: R2Bucket, key: string): Promise<CachedList | nu
       etag: d.etag ?? null,
       filter_version: d.filter_version,
       exclusives: d.exclusives ?? [],
+      season_names: d.season_names ?? [],
     };
   } catch {
     return null;
@@ -168,6 +183,7 @@ async function fetchCatalogPackages(
   park: ParkConfig,
   spec: DiscoverSpec,
   prevEtag?: string | null,
+  learnedNames: string[] = [],
 ): Promise<CatalogFetch> {
   const empty: CatalogFetch = { P: [], anchorIds: [], exclusives: [] };
   let resp: Response;
@@ -202,7 +218,7 @@ async function fetchCatalogPackages(
   // The public day ticket's name(s) — the usual one plus any season that sells
   // under its own name on the same pool (see DiscoverSpec.alsoNames).
   const wantNames = new Set(
-    [spec.name ?? "1 Day Ticket", ...(spec.alsoNames ?? [])].map((n) =>
+    [spec.name ?? "1 Day Ticket", ...(spec.alsoNames ?? []), ...learnedNames].map((n) =>
       n.trim().toLowerCase(),
     ),
   );

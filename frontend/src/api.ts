@@ -217,6 +217,52 @@ export function takenLong(t: Taken, capacity: number): string {
 export const TAKEN_NOTE =
   "Taken is capacity minus availability. RAP is a hard pool, so taken is exactly the number sold; the main pool has slack in its yield, so taken also includes inventory held back.";
 
+/* Dates the backend could not account for (see src/anomalies.ts). Shown on the
+ * calendar as a marker rather than hidden: several of these are the most
+ * informative cells on the month. Alton's Christmas run is only visible at all
+ * because those dates are flagged `open_unsold`. */
+
+export type AnomalyKind =
+  | "open_no_tickets"
+  | "open_unsold"
+  | "closed_but_selling"
+  | "bookings_no_allocation"
+  | "reduced_allocation"
+  | "offsale_at_full_pool";
+
+export interface AnomaliesFile {
+  park: string;
+  generated_at: string;
+  pool?: number;
+  hours_span?: [string, string];
+  total: number;
+  groups: { kind: AnomalyKind; note: string; dates: string[]; sample: string }[];
+}
+
+/** Short form for a calendar cell; the full `note` goes in the tooltip. */
+export const ANOMALY_SHORT: Record<AnomalyKind, string> = {
+  open_no_tickets: "no ticket source",
+  open_unsold: "not yet on sale",
+  closed_but_selling: "no published hours",
+  bookings_no_allocation: "no published allocation",
+  reduced_allocation: "reduced allocation",
+  offsale_at_full_pool: "off general sale",
+};
+
+/** date -> the one finding for it. The backend records at most one per date. */
+export async function loadAnomalies(
+  park: string,
+): Promise<Record<string, { kind: AnomalyKind; note: string }>> {
+  const r = await fetch(`/status/${park}/anomalies.json`, { cache: "no-store" });
+  if (!r.ok) return {};
+  const f = (await r.json()) as AnomaliesFile;
+  const out: Record<string, { kind: AnomalyKind; note: string }> = {};
+  for (const g of f.groups ?? []) {
+    for (const d of g.dates) out[d] = { kind: g.kind, note: g.note };
+  }
+  return out;
+}
+
 export interface ParkIndex {
   minMonth: string; // 'YYYY-MM'
   maxMonth: string;

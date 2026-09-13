@@ -344,6 +344,12 @@ main.with-bar {
   color: var(--muted);
   font-style: italic;
 }
+/* A date the backend could not account for. Muted and italic: it annotates the
+   day rather than competing with the figures above it. */
+.rc-anomaly {
+  color: var(--muted);
+  font-style: italic;
+}
 /* Bookings with no published allocation — see BOOKED_NOTE. */
 .rc-booked {
   color: var(--muted);

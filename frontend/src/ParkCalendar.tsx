@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import {
+  ANOMALY_SHORT,
   specialLabel,
   takenLong,
   takenOf,
@@ -10,6 +11,7 @@ import {
   type HoursFile,
   type LocationHours,
   type ProductFile,
+  type AnomalyKind,
   type SpecialDay,
   type SpecialDaysFile,
 } from "./api";
@@ -40,6 +42,8 @@ export interface DayDetail {
   event?: string;
   main?: DayObs;
   rap?: DayObs;
+  /** What the backend could not account for on this date, if anything. */
+  anomaly?: { kind: AnomalyKind; note: string };
   /** A season sold under its own package, with its own pool. Chessington's
    *  Christmas is the case: it cannot be merged into `main` without the accesso
    *  merge zeroing the date, so it is polled as its own product. */
@@ -125,6 +129,7 @@ export function mergeDetails(
   hours: HoursFile | null,
   special: SpecialDaysFile | null,
   season: ProductFile | null,
+  anomalies: Record<string, { kind: AnomalyKind; note: string }>,
 ): Map<string, DayDetail> {
   const map = new Map<string, DayDetail>();
   const get = (iso: string): DayDetail => {
@@ -144,6 +149,12 @@ export function mergeDetails(
   // no public theme-park hours and no public availability, so without this the
   // day renders as an empty cell despite the park running all day.
   for (const [iso, o] of Object.entries(special?.days ?? {})) get(iso).special = o;
+  // Only on dates the other files already mention: an anomaly annotates a day,
+  // it doesn't create one.
+  for (const [iso, a] of Object.entries(anomalies)) {
+    const d = map.get(iso);
+    if (d) d.anomaly = a;
+  }
   return map;
 }
 
@@ -221,6 +232,11 @@ function CellContent({ d }: { d: DayDetail }) {
           {availStatus(d.season!).emoji} 🎄 {avNums(d.season!)}
         </div>
       )}
+      {d.anomaly && (
+        <div className="rc-line rc-anomaly" title={d.anomaly.note}>
+          ⚠ {ANOMALY_SHORT[d.anomaly.kind]}
+        </div>
+      )}
       {hasAllocation(d.rap) &&
         (isUnallocated(d.rap) ? (
           <div className="rc-line rc-avail rc-booked" title={BOOKED_NOTE}>
@@ -280,6 +296,12 @@ function DayBody({ d, seasonLabel }: { d: DayDetail; seasonLabel: string }) {
               <span className="rc-body-event-name">{e.name}</span>
             </div>
           ))}
+        </div>
+      )}
+      {d.anomaly && (
+        <div className="rc-body-avail rc-anomaly">
+          ⚠ {ANOMALY_SHORT[d.anomaly.kind]}
+          <div className="rc-prebook-note">{d.anomaly.note}</div>
         </div>
       )}
       {hasAllocation(d.main) && <AvailRow label="Tickets" o={d.main} past={past} />}
@@ -525,6 +547,7 @@ export function ParkCalendar({
   hours,
   special,
   season,
+  anomalies,
   month,
   loading,
   onPrev,
@@ -537,6 +560,7 @@ export function ParkCalendar({
   hours: HoursFile | null;
   special: SpecialDaysFile | null;
   season: ProductFile | null;
+  anomalies: Record<string, { kind: AnomalyKind; note: string }>;
   month: string;
   loading?: boolean;
   onPrev: () => void;
@@ -549,7 +573,7 @@ export function ParkCalendar({
   // A tapped day belongs to the current month — clear it when navigating away.
   useEffect(() => setSelected(null), [month]);
 
-  const details = mergeDetails(main, rap, hours, special, season);
+  const details = mergeDetails(main, rap, hours, special, season, anomalies);
   // A season product names itself in its own file, so the calendar doesn't need
   // to know which park has one.
   const seasonLabel = season?.label ?? "Season";

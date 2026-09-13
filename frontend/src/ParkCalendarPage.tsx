@@ -5,9 +5,11 @@ import {
   loadHoursMonth,
   loadParkIndex,
   loadPollStatus,
+  loadAnomalies,
   loadProductMonth,
   loadSpecialDays,
   mergeStatus,
+  type AnomalyKind,
   type ParkIndex,
   type PollStatus,
   type ProductFile,
@@ -57,6 +59,9 @@ export function ParkCalendarPage() {
   // undefined = loading, else the three per-month files (any may be null)
   const [data, setData] = useState<MonthData | undefined>(undefined);
   const [special, setSpecial] = useState<SpecialDaysFile | null>(null);
+  const [anomalies, setAnomalies] = useState<
+    Record<string, { kind: AnomalyKind; note: string }>
+  >({});
   const [status, setStatus] = useState<PollStatus | null>(null);
 
   // Reset to the current month and refetch bounds whenever the park changes.
@@ -65,11 +70,15 @@ export function ParkCalendarPage() {
     setMonth(currentMonth());
     setBounds(null);
     setSpecial(null);
+    setAnomalies({});
     let alive = true;
     loadParkIndex(park!).then((b) => alive && setBounds(b));
     // One file for the whole horizon, refreshed daily — fetched per park, not
     // per month, and sliced to the displayed month at render.
     loadSpecialDays(park!).then((f) => alive && setSpecial(f));
+    // Whole-horizon, like the special days: one fetch per park, filtered at
+    // render. Annotates existing cells, so it needs no month slicing.
+    loadAnomalies(park!).then((a) => alive && setAnomalies(a));
     return () => {
       alive = false;
     };
@@ -134,6 +143,7 @@ export function ParkCalendarPage() {
         hours={data?.hours ?? null}
         season={data?.season ?? null}
         special={specialForMonth(special, month)}
+        anomalies={anomalies}
         loading={data === undefined}
         month={month}
         onPrev={() => setMonth((m) => addMonths(m, -1))}

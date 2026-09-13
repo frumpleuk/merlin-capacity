@@ -24,10 +24,16 @@ export type AnomalyKind =
    *  Christmas dates) or a genuine off-sale run. */
   | "open_no_tickets"
   /** Theme park open, nothing sellable, and nothing booked anywhere either.
-   *  A season announced before it goes on sale, rather than a channel we're
-   *  missing: Alton publishes its Christmas dates from 2026-11-27 with no
-   *  package and no bookings against any product. Split from the above so the
-   *  report separates "look into this" from "wait". */
+   *  Not a channel we're missing: the opening-hours feed runs AHEAD of both the
+   *  ticket catalog and the park's own marketing. Alton carries 23 dates from
+   *  2026-11-27 to 2027-01-02 with real hours and a "Christmas" label, while no
+   *  package sells them and nothing is booked against any product; the season
+   *  is not formally announced at all yet.
+   *
+   *  So this is a leading indicator, not noise: it is how a season first becomes
+   *  visible to us, weeks before tickets exist. Split from open_no_tickets so
+   *  the report separates "people are going and we can't see how" from "this is
+   *  coming". */
   | "open_unsold"
   /** No public theme-park hours, yet an allocation or real bookings. A private
    *  event we haven't identified. */
@@ -64,7 +70,8 @@ export interface AnomaliesFile {
 
 const NOTES: Record<AnomalyKind, string> = {
   open_no_tickets: "Theme park open and bookings exist, but no package we poll sells the date",
-  open_unsold: "Theme park open, nothing sellable and nothing booked: likely not on sale yet",
+  open_unsold:
+    "Theme park open in the hours feed, nothing sellable and nothing booked: a season visible before it goes on sale",
   closed_but_selling: "No public theme-park hours, yet an allocation or real bookings",
   bookings_no_allocation: "Bookings recorded against capacity 0",
   reduced_allocation: "Allocation smaller than the park's usual pool",

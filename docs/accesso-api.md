@@ -479,8 +479,19 @@ from data already in R2 with no extra queries, excluding days we do explain:
 | `reduced_allocation` | allocation below the park's usual pool |
 | `offsale_at_full_pool` | off sale on a future date carrying the full pool |
 
-It found Alton's Christmas gap (23 dates from 2026-11-27, hours published and
-nothing sellable) that hand-searching had missed.
+It found Alton's Christmas gap (23 dates from 2026-11-27 to 2027-01-02, hours
+published and nothing sellable) that hand-searching had missed.
+
+**The opening-hours feed leads everything else.** Those Alton dates carry real
+hours and a "Christmas" label in the feed while no package sells them, nothing
+is booked against any product, and the season is not formally announced. So
+`open_unsold` is a leading indicator rather than noise: it is how a season first
+becomes visible, weeks before tickets exist. `open_no_tickets`, where bookings
+DO exist, is the one that means a channel is missing.
+
+Note the event name arrives in `lastEntryTime`, which the park overloads for it
+("Scarefest", "Fireworks", "Christmas"); `classifyLastEntry` in src/hours.ts
+splits a genuine last-entry note from an event name.
 
 **Derive the pool, don't hardcode it.** The modal capacity across future on-sale
 dates gives 15,000 Thorpe, 18,000 Alton, 11,440 Chessington, 14,500 Legoland.

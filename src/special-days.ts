@@ -73,9 +73,22 @@ export function pickLabel(candidates: Candidate[]): Candidate | undefined {
   })[0];
 }
 
-/** Used when the day is provably closed to the public and selling, but no
- *  package names who it is for. */
-export const GENERIC_PRIVATE_EVENT = "Private event";
+/**
+ * A day the park runs for passholders only.
+ *
+ * Not a guess at an unnamed day: it follows from the conditions the third source
+ * already requires. `onSale === false` means every package that returned the
+ * date was a yield anchor, and the anchors are passholder prebooks by definition
+ * (`DiscoverSpec.anchorClassMatch`, "prebook") — Merlin's annual-pass prebooks,
+ * and at Legoland its CLUB VIP Pass Prebook. So a real allocation with real
+ * sales, on a day the theme park publishes no hours, sellable only through a
+ * passholder prebook, IS a passholder event.
+ *
+ * Corroborated for Legoland 2026-11-08, which the park advertised on Facebook as
+ * a Merlin passholders event. Kept unbranded because the anchors differ by park
+ * (Legoland's CLUB VIP is not a Merlin pass).
+ */
+export const PASSHOLDER_EVENT = "Passholder event";
 
 interface ApiDay {
   date?: string;
@@ -473,10 +486,10 @@ export async function refreshSpecialDays(
   // two sources above both miss it because the prebook anchors put the date in
   // the public snapshot, so test 1 discards it before anything else runs.
   //
-  // Nothing names it: the packages that sell it are a Corporate "One Day Entry",
-  // a CLUB VIP prebook and a voucher redemption, none carrying a partner. So it
-  // is added LAST and only where no named candidate already exists, and it says
-  // only what the data supports.
+  // No package names it, but the conditions do: off public sale means only the
+  // passholder prebook anchors returned the date, so it is a passholder event
+  // (see PASSHOLDER_EVENT). Added LAST and only where no named candidate already
+  // exists, so a real partner name always wins.
   for (const [date, obs] of Object.entries(publicSnapshot)) {
     if (byDate.has(date)) continue; // something named it already
     if (hours.themeparkOpen.has(date)) continue; // open to the public
@@ -484,7 +497,7 @@ export async function refreshSpecialDays(
     if (!(obs.capacity > 0)) continue; // no allocation, so no evidence it ran
     if (obs.onSale !== false) continue; // still on public sale
     add(date, {
-      name: GENERIC_PRIVATE_EVENT,
+      name: PASSHOLDER_EVENT,
       capacity: obs.capacity,
       available: obs.available,
       used: obs.used,

@@ -415,6 +415,24 @@ These dates are invisible to the public merchant and fall days past the end of
 the opening-hours calendar, so the hours-span test above must NOT be applied to
 them. The partner name plus a real dated allocation is the evidence.
 
+### Passholder events
+
+A third shape, neither a buyout nor a partner day. Legoland 2026-11-08 publishes
+golf hours and no theme park, yet carries an 8,000 allocation instead of the
+usual 14,500, with 4,138 sold and its own 599-seat RAP pool, sold out.
+
+The catalog never names it. The packages that sell it are a Corporate "One Day
+Entry", a CLUB VIP prebook and a voucher redemption. But the shape identifies it
+without a name: `onSale` is false, which means only yield anchors returned the
+date, and the anchors are passholder prebooks by definition. A real allocation,
+real sales, no public hours, sellable only through a passholder prebook, is a
+passholder event. Legoland advertised that date on Facebook as exactly that.
+
+Note the anchors differ by park. Legoland's CLUB VIP Pass Prebook is class
+`Prebook`, so it counts as an anchor alongside the Merlin annual-pass prebooks,
+which is also why this date reaches the main product's snapshot at all and why
+the buyout tests discard it.
+
 **The live feed's resort window can lag.** On 2026-09-13 Thorpe's `Resort` record
 was a bare `{"_id": 43}` — no `OpeningTimes` — until the park actually opened,
 while every `Item` already carried its own `10:00-18:00`. The day file therefore

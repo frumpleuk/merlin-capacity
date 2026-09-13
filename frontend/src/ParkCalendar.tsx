@@ -53,8 +53,13 @@ interface AvailStatus {
   emoji: string;
   label: string;
 }
-/** Availability status for either pool (main or RAP), by fraction remaining. */
-function availStatus(o: DayObs): AvailStatus {
+
+/** The numbers every allocation shares — the public pools (main, RAP) and a
+ *  private event's own. Lets one set of helpers render all three. */
+type Allocation = { capacity: number; available: number; used: number };
+
+/** Availability status for any allocation, by fraction remaining. */
+function availStatus(o: Allocation): AvailStatus {
   if (o.available <= 0) return { emoji: "❌", label: "Sold out" };
   const f = o.available / o.capacity;
   if (f < 0.1) return { emoji: "🟡", label: "Very limited" };
@@ -68,7 +73,7 @@ function availStatus(o: DayObs): AvailStatus {
 const hasAllocation = (o?: DayObs): o is DayObs => !!o && o.capacity > 0;
 
 /** Compact "12/1,960" figure for a cell. */
-const avNums = (o: DayObs) =>
+const avNums = (o: Allocation) =>
   `${o.available.toLocaleString()}/${o.capacity.toLocaleString()}`;
 
 const themepark = (h?: HoursDay): LocationHours | undefined =>
@@ -141,6 +146,13 @@ function CellContent({ d }: { d: DayDetail }) {
           🎭 {d.hours!.events!.length} event{d.hours!.events!.length === 1 ? "" : "s"}
         </div>
       )}
+      {/* The private event's own allocation. It isn't the park pool, so it only
+          appears on these days and never alongside the public ticket line. */}
+      {d.special && d.special.capacity > 0 && (
+        <div className="rc-line rc-avail">
+          {availStatus(d.special).emoji} 🎟️ {avNums(d.special)}
+        </div>
+      )}
       {hasAllocation(d.main) &&
         (d.main.onSale === false ? (
           <div className="rc-line rc-avail rc-prebook" title={PREBOOK_NOTE}>
@@ -187,6 +199,9 @@ function DayBody({ d }: { d: DayDetail }) {
           <div className="rc-prebook-note">{BUYOUT_NOTE}</div>
         </div>
       )}
+      {d.special && d.special.capacity > 0 && (
+        <AvailRow label="Event tickets" o={d.special} />
+      )}
       {d.event && (
         <div className="rc-body-event">
           {getEventIcon(d.event)} {d.event}
@@ -210,7 +225,7 @@ function DayBody({ d }: { d: DayDetail }) {
 }
 
 /** One availability line in the detail body — the same shape for main and RAP. */
-function AvailRow({ label, o }: { label: string; o: DayObs }) {
+function AvailRow({ label, o }: { label: string; o: Allocation & { onSale?: boolean } }) {
   const prebook = o.onSale === false;
   const s = availStatus(o);
   const pct = Math.round((o.available / o.capacity) * 100);

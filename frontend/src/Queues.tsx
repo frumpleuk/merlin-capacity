@@ -940,6 +940,8 @@ export function QueueList({
         <p className="q-special">
           🔐 <strong>{specialLabel(special.name)}</strong>. Closed to the public for a
           private event.
+          {special.capacity > 0 &&
+            ` ${special.available.toLocaleString()} of ${special.capacity.toLocaleString()} tickets left.`}
         </p>
       )}
       <div className="q-toolbar">

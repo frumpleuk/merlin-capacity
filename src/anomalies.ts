@@ -153,7 +153,12 @@ export async function refreshAnomalies(
   park: ParkConfig,
   now: number,
 ): Promise<number> {
-  if (park.products.length === 0) return 0; // queue-only park
+  // accesso parks only. Paulton's is an independent source: a static
+  // availability blob with no package/anchor model and a much shorter window
+  // than its hours calendar, so every check here misreads it — it produced 232
+  // findings, 211 of them "open but unsellable" for dates its blob simply
+  // doesn't reach. Nothing to diagnose, so nothing to report.
+  if (!park.merchantId || park.products.length === 0) return 0;
   const today = ymd(now);
   const end = ymd(now + HORIZON_DAYS * 86_400_000);
 

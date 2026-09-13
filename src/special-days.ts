@@ -178,8 +178,45 @@ interface ExchangePackage {
   id: string;
   name?: string;
   package_class?: string;
+  /** Display strapline. Often names the partner where the package name doesn't
+   *  ("Member Days - November" has "Exclusive for Blue Light Card and Defence
+   *  Discount Service"), so it's the better label when it does. See partnerLabel. */
+  headline?: string;
   E?: OneOrMany<{ id?: string }>;
   CT?: OneOrMany<{ id?: string }>;
+}
+
+/** The handful of HTML entities that turn up in a `headline`. */
+function decodeEntities(text: string): string {
+  return text
+    .replace(/&#174;?/g, "\u00ae")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&#39;|&rsquo;/g, "\u2019")
+    .replace(/&ndash;/g, "\u2013");
+}
+
+/**
+ * What to call a partner day.
+ *
+ * The package NAME is often the park's internal scheduling label rather than the
+ * partner: Thorpe's Blue Light Card days are "Member Days - November", which
+ * says nothing about who they're for. The `headline` usually does name them
+ * ("Exclusive for Blue Light Card and Defence Discount Service"), so prefer it
+ * whenever it actually mentions a partner, stripping the "Exclusive for" lead-in
+ * that would otherwise start every label.
+ *
+ * It isn't reliable enough to use unconditionally. Alton's partner packages have
+ * no headline at all, Thorpe's March one has the generic "Member discounts", and
+ * Chessington's lists dates instead of a partner. In each of those the name is
+ * the better label, so fall back to it.
+ */
+export function partnerLabel(pkg: { name?: string; headline?: string }): string {
+  const name = (pkg.name ?? "").trim();
+  const headline = decodeEntities((pkg.headline ?? "").trim());
+  if (!headline || !PARTNER_DAY_NAME.test(headline)) return name;
+  const stripped = headline.replace(/^exclusive(ly)?\s+for\s+/i, "").trim();
+  return stripped || name;
 }
 
 /** A partner-day package, with the event it books against. Unlike the public
@@ -240,7 +277,9 @@ async function fetchPartnerPackages(ex: ExchangeConfig): Promise<PartnerPackage[
         const event = asArray(p.E)
           .map((e) => e.id)
           .find((id): id is string => !!id);
-        if (ct && event) out.push({ id: p.id, ct, name, event, merchantId });
+        if (ct && event) {
+          out.push({ id: p.id, ct, name: partnerLabel(p), event, merchantId });
+        }
       }
       return out;
     }),

@@ -360,6 +360,31 @@ keeping whichever catalog holds partner-named packages. An invalid slug answers
 29 bytes of `{"e":"Invalid configuration"}`, a valid one a ~1.5MB shell, which
 makes slug guessing cheap to verify.
 
+**Name the day from `headline`, not `name`.** The package name is often the
+park's internal scheduling label: Thorpe's Blue Light Card days are called
+"Member Days - November", which says nothing about who they are for. `headline`
+usually does name the partner, so prefer it when it mentions one and strip the
+"Exclusive for" lead-in:
+
+| `name` | `headline` | label used |
+|---|---|---|
+| Member Days - November | Exclusive for Blue Light Card and Defence Discount Service | Blue Light Card and Defence Discount Service |
+| John Lewis Partnership Event | Exclusive for John Lewis Partnership | John Lewis Partnership |
+| One Day Entry - Blue Light Exclusive | Blue Light Card - Buyout Event | Blue Light Card - Buyout Event |
+| Exclusive Member Days - March | Member discounts | *falls back to name* |
+| 1 Day Pass - Blue Light Card Day 2026 | *(none)* | *falls back to name* |
+
+`headline` is not reliable enough to use unconditionally: Alton's partner
+packages have none, Thorpe's March one is generic, and Chessington's lists dates
+rather than a partner. There is also a `keyword` of `BLCEvent` on Thorpe's Blue
+Light package, but the John Lewis one carries the generic
+`Daily Tickets -  TP Trade`, so keywords don't separate them.
+
+Chessington's headline reads "Exclusive member events on 9th, 15th & 16th
+November". Those three dates are absent from both its hours calendar and its
+availability, so they are real member days the API will not hand over as dates.
+Don't try to parse them out of marketing copy.
+
 **Match partner days by NAME, not class or event.** Only Thorpe has a dedicated
 partner event (532, "Thorpe Park Capacity"); the other parks put theirs on the
 main event among hundreds of ordinary trade and discount packages. The pattern

@@ -481,13 +481,15 @@ export const PARKS: ParkConfig[] = [
         label: "Christmas",
         extra_movie: "",
         include_times: false,
-        // No anchor: this product measures the season ticket's own pool, and a
-        // prebook in P[] would merge the public day ticket's zero back in.
-        discover: {
-          event_id: "2506",
-          name: "Theme Park Entry Only",
-          anchorClassMatch: "",
-        },
+        // A STATIC P, like RAP, not discovery. Two packages carry this exact
+        // name on event 2506: 99211 reports the season properly (2026-11-21:
+        // 11,440 / 11,332) and 99241 returns no dates at all, but sending both
+        // re-triggers the very merge this product exists to escape and zeroes
+        // every date. Discovery has no way to tell them apart without probing.
+        // Package ids rotate seasonally, so this needs the same hand-maintenance
+        // RAP does — and when it goes stale the Christmas dates reappear in the
+        // anomaly report as open_no_tickets, which is how it will be noticed.
+        P: [{ CT: [{ id: "249", qty: 1 }], event_id: "2506", id: "99211" }],
       },
     ],
   },

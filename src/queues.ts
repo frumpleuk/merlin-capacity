@@ -127,6 +127,45 @@ export async function fetchPaultonsWindow(
   return { open, close };
 }
 
+/**
+ * The park's operating window inferred from the rides' own scheduled windows —
+ * the MODAL (open, close) pair, not min/max, so a single ride with odd hours
+ * (early-entry, late-opening) doesn't stretch the axis past the park's day.
+ *
+ * Needed because the `Resort` record's own `OpeningTimes` isn't always there:
+ * on Thorpe's 2026-09-13 buyout it was a bare `{"_id": 43}` until the park
+ * actually opened, while every `Item` already carried its scheduled window.
+ * Without this the morning's day file has no window at all and the sparkline
+ * x-axis falls back to a generic 09:00-18:00 UTC guess. Only a fallback — once
+ * the feed publishes the resort window it wins (it's the park's own figure, and
+ * can run later than any individual ride's).
+ */
+export function modalRideWindow(
+  windows: Record<number, ResortWindow> | undefined,
+): ResortWindow | undefined {
+  if (!windows) return undefined;
+  const tally = new Map<string, { win: ResortWindow; n: number }>();
+  for (const w of Object.values(windows)) {
+    const key = `${w.open}:${w.close}`;
+    const cur = tally.get(key);
+    if (cur) cur.n += 1;
+    else tally.set(key, { win: w, n: 1 });
+  }
+  let best: { win: ResortWindow; n: number } | undefined;
+  for (const entry of tally.values()) {
+    // Ties break towards the longer window — with two equally common shapes the
+    // wider one still contains every sample.
+    if (
+      !best ||
+      entry.n > best.n ||
+      (entry.n === best.n && entry.win.close - entry.win.open > best.win.close - best.win.open)
+    ) {
+      best = entry;
+    }
+  }
+  return best?.win;
+}
+
 /** Live feed records. `Item` carries ride-level status (+ an overall wait);
  *  `QueueLine` carries the per-line wait. Both patch onto the static catalog. */
 interface LiveItem {
@@ -395,10 +434,13 @@ export async function runQueuePoll(
       await appendQueueDeltas(env.DB, park.key, deltas, observedAt);
       await writeQueueLatest(env.BUCKET, park.key, res.snapshot, observedAt, res.etag);
       // The day's opening window frames the sparkline x-axis. Attractions.io parks
-      // carry it in the live feed (res.resort); Paulton's `fos` feed does NOT, so
-      // derive it from its own opening-hours times.json.
+      // carry it in the live feed (res.resort), but not always before the park
+      // opens — fall back to the rides' own scheduled windows, which are there
+      // first. Paulton's `fos` feed carries no window at all, so derive it from
+      // its own opening-hours times.json.
       const window =
         res.resort ??
+        modalRideWindow(res.rideWindows) ??
         (park.openingHours?.kind === "paultons"
           ? await fetchPaultonsWindow(park.openingHours.timesUrl, today)
           : undefined);

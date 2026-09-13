@@ -519,6 +519,11 @@ main.with-bar {
   border-left: 3px solid var(--buyout);
   border-radius: 4px;
 }
+/* The ordinary ticket line, in the queue-series blue rather than the buyout
+   purple: it is the normal state, not an exception. */
+.q-special.tickets {
+  border-left-color: var(--q-main);
+}
 .q-head-row,
 .q-row-head {
   display: grid;

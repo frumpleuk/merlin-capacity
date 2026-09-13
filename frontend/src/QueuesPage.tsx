@@ -3,10 +3,12 @@ import { Navigate, useNavigate, useParams } from "react-router-dom";
 import {
   loadPollStatus,
   loadQueueDay,
+  loadProductMonth,
   loadQueueIndex,
   loadSpecialDays,
   type PollStatus,
   type QueueDayFile,
+  type DayObs,
   type QueueIndex,
   type SpecialDaysFile,
 } from "./api";
@@ -33,6 +35,7 @@ export function QueuesPage() {
   const [file, setFile] = useState<QueueDayFile | null | undefined>(undefined); // undefined = loading
   const [status, setStatus] = useState<PollStatus | null>(null);
   const [special, setSpecial] = useState<SpecialDaysFile | null>(null);
+  const [tickets, setTickets] = useState<DayObs | undefined>(undefined);
 
   useEffect(() => {
     if (!parkDef) return;
@@ -51,6 +54,7 @@ export function QueuesPage() {
   useEffect(() => {
     if (!parkDef) return;
     setFile(undefined);
+    setTickets(undefined); // or the previous day's figure shows while loading
     let alive = true;
     const tick = async () => {
       const [f, s] = await Promise.all([
@@ -63,6 +67,11 @@ export function QueuesPage() {
       }
     };
     tick();
+    // Ticket availability for the same day, from the month file the calendar
+    // already serves. Queue-only parks 404 to null and show nothing.
+    loadProductMonth(park!, "main", date.slice(0, 7)).then((f) => {
+      if (alive) setTickets(f?.days[date]);
+    });
     const isToday = date === today();
     const id = isToday ? setInterval(tick, 30_000) : undefined;
     return () => {
@@ -103,6 +112,7 @@ export function QueuesPage() {
         loading={file === undefined}
         asOf={asOf}
         special={special?.days[date]}
+        tickets={tickets}
       />
     </main>
   );

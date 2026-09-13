@@ -1,6 +1,7 @@
 import { useMemo, useRef, useState } from "react";
 import {
   specialLabel,
+  type DayObs,
   type GroupDim,
   type QueueDayFile,
   type QueueLineSeries,
@@ -677,6 +678,35 @@ function RideRow({
   );
 }
 
+/** The day's public ticket availability, alongside the queues. A buyout day
+ *  shows its own event allocation instead (see the banner above), so the two
+ *  never appear together and never contradict each other.
+ *
+ *  Capacity 0 with bookings is the private-event shape and has no total to show
+ *  a fraction against, so it reports the count alone. And "left" is wrong tense
+ *  once a date has passed: what the figure means then is how much went unsold. */
+function TicketLine({ tickets, date }: { tickets?: DayObs; date: string }) {
+  if (!tickets) return null;
+  const past = date < new Date().toISOString().slice(0, 10);
+  if (tickets.capacity === 0) {
+    if (tickets.used <= 0) return null;
+    return (
+      <p className="q-special tickets">
+        📋 <strong>{tickets.used.toLocaleString()}</strong> booked, against no published
+        allocation.
+      </p>
+    );
+  }
+  const pct = Math.round((tickets.available / tickets.capacity) * 100);
+  return (
+    <p className="q-special tickets">
+      🎟️ <strong>{tickets.available.toLocaleString()}</strong> of{" "}
+      {tickets.capacity.toLocaleString()} tickets {past ? "unsold at close" : "left"} ({pct}
+      %).
+    </p>
+  );
+}
+
 /* ── Date navigation ───────────────────────────────────────────────────────────── */
 
 export function DateNav({
@@ -813,6 +843,7 @@ export function QueueList({
   loading,
   asOf,
   special,
+  tickets,
 }: {
   file: QueueDayFile | null;
   date: string;
@@ -820,6 +851,9 @@ export function QueueList({
   asOf?: number;
   /** This date's buyout entry, when the park ran closed to the public. */
   special?: SpecialDay;
+  /** This date's public ticket availability, so every day carries the figure a
+   *  buyout day already showed. Absent for a queue-only park. */
+  tickets?: DayObs;
 }) {
   const [openId, setOpenId] = useState<number | null>(null);
   const [sort, setSort] = useState<SortMode>("now");
@@ -936,13 +970,15 @@ export function QueueList({
       {/* A buyout publishes no theme-park hours, so without this the charts
           arrive with no explanation of why the park is running on a day the
           calendar shows nothing for. */}
-      {special && (
+      {special ? (
         <p className="q-special">
           🔐 <strong>{specialLabel(special.name)}</strong>. Closed to the public for a
           private event.
           {special.capacity > 0 &&
             ` ${special.available.toLocaleString()} of ${special.capacity.toLocaleString()} tickets left.`}
         </p>
+      ) : (
+        <TicketLine tickets={tickets} date={date} />
       )}
       <div className="q-toolbar">
         <div className="q-sort" role="group" aria-label="Sort rides">

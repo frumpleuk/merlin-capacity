@@ -15,8 +15,7 @@ import { useMediaQuery } from "./useMediaQuery";
 const DOW = ["M", "T", "W", "T", "F", "S", "S"];
 const PREBOOK_NOTE =
   "Passholder pre-book only — general sale not open yet. Figures are the day's total capacity.";
-const BUYOUT_NOTE =
-  "Closed to the public — booked out for a private event. The rides still run, so queue times are published all day.";
+const BUYOUT_NOTE = "Closed to the public, booked out for a private event.";
 const KIND_ICON: Record<string, string> = {
   themepark: "🎢",
   waterpark: "🏊",

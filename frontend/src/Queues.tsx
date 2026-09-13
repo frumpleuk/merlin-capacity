@@ -938,8 +938,8 @@ export function QueueList({
           calendar shows nothing for. */}
       {special && (
         <p className="q-special">
-          🔐 <strong>{specialLabel(special.name)}</strong> — closed to the public. The rides
-          run for a private event, so queue times are published as usual.
+          🔐 <strong>{specialLabel(special.name)}</strong>. Closed to the public for a
+          private event.
         </p>
       )}
       <div className="q-toolbar">

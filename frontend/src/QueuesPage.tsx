@@ -4,9 +4,11 @@ import {
   loadPollStatus,
   loadQueueDay,
   loadQueueIndex,
+  loadSpecialDays,
   type PollStatus,
   type QueueDayFile,
   type QueueIndex,
+  type SpecialDaysFile,
 } from "./api";
 import { findPark, PARK_HOME } from "./catalog";
 import { DateNav, QueueList } from "./Queues";
@@ -30,11 +32,16 @@ export function QueuesPage() {
   const [bounds, setBounds] = useState<QueueIndex | null>(null);
   const [file, setFile] = useState<QueueDayFile | null | undefined>(undefined); // undefined = loading
   const [status, setStatus] = useState<PollStatus | null>(null);
+  const [special, setSpecial] = useState<SpecialDaysFile | null>(null);
 
   useEffect(() => {
     if (!parkDef) return;
     let alive = true;
     loadQueueIndex(park!).then((b) => alive && setBounds(b));
+    // Whole-horizon file, refreshed daily — one fetch per park covers every date
+    // the nav can reach, so it doesn't reload as you page between days.
+    setSpecial(null);
+    loadSpecialDays(park!).then((f) => alive && setSpecial(f));
     return () => {
       alive = false;
     };
@@ -90,7 +97,13 @@ export function QueuesPage() {
         canPrev={canPrev}
         canNext={canNext}
       />
-      <QueueList file={file ?? null} date={date} loading={file === undefined} asOf={asOf} />
+      <QueueList
+        file={file ?? null}
+        date={date}
+        loading={file === undefined}
+        asOf={asOf}
+        special={special?.days[date]}
+      />
     </main>
   );
 }

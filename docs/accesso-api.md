@@ -291,7 +291,51 @@ with 96 dates of availability (July → November; the park closes for winter).
 
 ---
 
-## 6. Gotchas checklist
+## 6. Naming a buyout day
+
+Some days the theme park runs while closed to the general public — a corporate or
+brand buyout. The queue feed publishes waits all day, but the opening-hours
+calendar shows nothing and the day ticket sells nothing, so the day arrives with
+no explanation. The catalog names it.
+
+Query each **`Daily Tickets` package on the park's main event individually** (the
+§3.1 merge destroys per-package identity, so batching is useless here) across the
+forward horizon. Thorpe, 2026-09-13 — 47 exclusive packages queried, one hit:
+
+```
+Daily Tickets  1 Day Pass - VodafoneThree Big Day Out  pkg=104075  ev=2507
+               capacity 15000   used 9098   available 5902
+```
+
+That package sells on **that date only** in the whole horizon. Alton, 2026-11-05:
+`1 Day Pass - Cadbury: Who will you take? 2026`, capacity 18000.
+
+Three tests together, and all three are needed:
+
+| Test | Why it can't stand alone |
+|---|---|
+| An exclusive package sells the date, the public product doesn't | Fires across a whole separately-ticketed season (Thorpe's Fright Nights) and on returns/compensation packages ("Return Promise") |
+| The **theme park** publishes no opening hours | Can't tell a buyout from a routine midweek closure. Test the `themepark` location specifically — Alton lists waterpark and golf hours on its buyout days, so the date IS in the calendar |
+| The date is inside the span the hours calendar covers | Beyond it, "no hours" means "not published yet" — otherwise every far-future schools-group date (Chessington sells them ~8 months out) reads as a buyout |
+
+Ranking the label: prefer a name that isn't a discount variant (`offer`, `% off`,
+`student`, `voucher`, `redemption`), then the largest allocation — a 100-seat
+ring-fenced bucket isn't the day's identity.
+
+Applied across all four parks on 2026-09-13 this yields exactly two days and no
+false positives. See [`src/special-days.ts`](../src/special-days.ts).
+
+**The live feed's resort window can lag.** On 2026-09-13 Thorpe's `Resort` record
+was a bare `{"_id": 43}` — no `OpeningTimes` — until the park actually opened,
+while every `Item` already carried its own `10:00-18:00`. The day file therefore
+had no window to frame the sparkline axis with all morning; `modalRideWindow` in
+[`src/queues.ts`](../src/queues.ts) fills the gap from the ride windows until the
+resort window shows up (it arrived reading `10:00-19:00`, later than any single
+ride's, so it takes precedence once present).
+
+---
+
+## 7. Gotchas checklist
 
 - Call the central `ecomm.api.meg-eu` host, never the per-park legacy API (it 503s
   non-UK IPs).
@@ -305,5 +349,7 @@ with 96 dates of availability (July → November; the park closes for winter).
 - RAP is not discoverable via the catalog; keep its ids by hand.
 - A blank autumn date is usually "public ticket not on sale yet", not a bug — the
   prebook yield anchor fills it; `capacity - available` is the true total sold.
+- A date the day ticket can't sell isn't necessarily closed — it may be a buyout
+  (§6) or a separately-ticketed event. The package that CAN sell it names it.
 - Nothing here is authenticated or contractual; expect drift and log poll status
   (the `poll_log` table) so a park silently going `FAILED` is visible.

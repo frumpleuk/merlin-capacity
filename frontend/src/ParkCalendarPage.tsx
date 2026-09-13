@@ -6,10 +6,12 @@ import {
   loadParkIndex,
   loadPollStatus,
   loadProductMonth,
+  loadSpecialDays,
   mergeStatus,
   type ParkIndex,
   type PollStatus,
   type ProductFile,
+  type SpecialDaysFile,
 } from "./api";
 import { findPark, PARK_HOME } from "./catalog";
 import { ParkCalendar } from "./ParkCalendar";
@@ -19,6 +21,20 @@ interface MonthData {
   main: ProductFile | null;
   rap: ProductFile | null;
   hours: HoursFile | null;
+}
+
+/** The special-days file covers the whole horizon in one object; the calendar
+ *  renders one month, and a buyout CREATES a calendar row, so an unfiltered file
+ *  would spill other months' dates into the mobile agenda. */
+function specialForMonth(
+  file: SpecialDaysFile | null,
+  month: string,
+): SpecialDaysFile | null {
+  if (!file) return null;
+  const days = Object.fromEntries(
+    Object.entries(file.days).filter(([iso]) => iso.startsWith(month)),
+  );
+  return Object.keys(days).length ? { ...file, days } : null;
 }
 
 const currentMonth = () => new Date().toISOString().slice(0, 7);
@@ -37,6 +53,7 @@ export function ParkCalendarPage() {
   const [bounds, setBounds] = useState<ParkIndex | null>(null);
   // undefined = loading, else the three per-month files (any may be null)
   const [data, setData] = useState<MonthData | undefined>(undefined);
+  const [special, setSpecial] = useState<SpecialDaysFile | null>(null);
   const [status, setStatus] = useState<PollStatus | null>(null);
 
   // Reset to the current month and refetch bounds whenever the park changes.
@@ -44,8 +61,12 @@ export function ParkCalendarPage() {
     if (!parkDef || parkDef.queueOnly) return;
     setMonth(currentMonth());
     setBounds(null);
+    setSpecial(null);
     let alive = true;
     loadParkIndex(park!).then((b) => alive && setBounds(b));
+    // One file for the whole horizon, refreshed daily — fetched per park, not
+    // per month, and sliced to the displayed month at render.
+    loadSpecialDays(park!).then((f) => alive && setSpecial(f));
     return () => {
       alive = false;
     };
@@ -107,6 +128,7 @@ export function ParkCalendarPage() {
         main={data?.main ?? null}
         rap={data?.rap ?? null}
         hours={data?.hours ?? null}
+        special={specialForMonth(special, month)}
         loading={data === undefined}
         month={month}
         onPrev={() => setMonth((m) => addMonths(m, -1))}

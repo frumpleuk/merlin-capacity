@@ -22,9 +22,10 @@ assets = { directory = "./dist", binding = "ASSETS", not_found_handling = "singl
 #       "*/1 * * * *"  tickets  — accesso availability (RAP + main), all products
 #       "0 * * * *"    hours    — opening-hours calendars, all parks (hourly)
 #       "*/30 * * * *" rebuild  — self-heal ticket month files from D1
-#       "0 7 * * *"    pre-open — 07:00 GMT: catalog rebuilds + package discovery ---
+#       "0 7 * * *"    pre-open — 07:00 GMT: catalog rebuilds + package discovery
+#       "5 7 * * *"    special  — 07:05 GMT: name buyout / ticketed-event days ---
 [triggers]
-crons = ["* * * * *", "*/1 * * * *", "0 * * * *", "*/30 * * * *", "0 7 * * *"]
+crons = ["* * * * *", "*/1 * * * *", "0 * * * *", "*/30 * * * *", "0 7 * * *", "5 7 * * *"]
 
 # --- History / source of truth ---
 [[d1_databases]]

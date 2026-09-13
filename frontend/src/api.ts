@@ -123,6 +123,51 @@ export async function loadHoursMonth(
   return Object.keys(f.days || {}).length > 0 ? f : null;
 }
 
+/* ── Buyout days ───────────────────────────────────────────────────────────────
+ *
+ * Days the theme park runs while closed to the general public — a corporate or
+ * brand buyout — named by the one ticket package that sells them. The opening
+ * hours calendar shows nothing for these dates, so without the label a park full
+ * of queues on a "closed" day reads as a bug. One file per park, refreshed
+ * daily. See src/special-days.ts. */
+
+export interface SpecialDay {
+  /** The package name that identifies the day, e.g. "1 Day Pass - VodafoneThree
+   *  Big Day Out". */
+  name: string;
+  capacity: number;
+  available: number;
+  used: number;
+}
+
+export interface SpecialDaysFile {
+  park: string;
+  generated_at: string;
+  days: Record<string, SpecialDay>;
+}
+
+/** A ticket package name, tidied into a day label: the packaging ("1 Day Pass -",
+ *  a trailing "Entry"/"Ticket") describes what you buy, not what the day is, so
+ *  "1 Day Pass - VodafoneThree Big Day Out" reads as "VodafoneThree Big Day Out"
+ *  and "Fright Nights Entry" as "Fright Nights". Falls back to the raw name if
+ *  stripping would leave nothing. */
+export function specialLabel(name: string): string {
+  const short = name
+    .replace(/^\s*\d+\s*day\s*(pass|ticket|entry)\s*[-–—:]\s*/i, "")
+    .replace(/\s*[-–—:]?\s*(entry|ticket|pass)\s*$/i, "")
+    .trim();
+  return short || name;
+}
+
+/** A park's buyout days across the horizon. Null when the park has none, or has
+ *  no ticket product to derive them from (the queue-only parks). */
+export async function loadSpecialDays(park: string): Promise<SpecialDaysFile | null> {
+  const r = await fetch(`/calendar/${park}/special.json`, { cache: "no-store" });
+  if (!r.ok) return null;
+  const f = (await r.json()) as SpecialDaysFile;
+  return f.days && Object.keys(f.days).length > 0 ? f : null;
+}
+
 export interface ParkIndex {
   minMonth: string; // 'YYYY-MM'
   maxMonth: string;

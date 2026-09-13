@@ -36,6 +36,18 @@ mid-rotation, the last cached list keeps serving; a product with no list and no
 cache logs `NO_PACKAGES` and is skipped. RAP stays hardcoded — it isn't in the
 catalog. See [`docs/accesso-api.md`](docs/accesso-api.md).
 
+### Buyout days
+
+Some days the theme park runs while closed to the public — a corporate or brand
+buyout. Nothing public marks them: the opening-hours calendar skips the date and
+the day ticket sells nothing, so the day would show as blank on the calendar even
+though the queue feed publishes waits all day. A daily cron names them by
+querying each of the event's other day-ticket packages on its own and finding the
+one that sells a date the public product can't, where the theme park also
+publishes no hours (Thorpe, 2026-09-13: "1 Day Pass - VodafoneThree Big Day Out").
+Written to `calendar/<park>/special.json` and labelled on both the calendar and
+the queues page. See [`docs/accesso-api.md` §6](docs/accesso-api.md).
+
 ## What it captures
 
 For `main` and `rap`, per visit date: `capacity`, `available` (tickets left),
@@ -79,6 +91,7 @@ from the Attractions.io ("Occasio") backend that powers the official park apps
 - `src/` — the Worker: cron poller (`poll.ts`), API client (`merlin.ts`),
   D1/R2 helpers (`db.ts`), config/IDs (`config.ts`), entry (`index.ts`).
   Queue times: live poll (`queues.ts`) + static ride catalog (`rides.ts`).
+  Buyout days: `special-days.ts`.
 - `frontend/` — Vite + React heatmap; builds to `dist/`, served as Workers Assets.
 - `migrations/` — D1 schema.
 

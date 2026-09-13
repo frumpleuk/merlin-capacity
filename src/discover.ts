@@ -30,8 +30,22 @@ interface Bootstrap {
  *  written by the old filter would survive untouched until accesso next edited
  *  its catalog. A mismatch forces one unconditional rebuild.
  *  2: day-ticket `name` matched exactly, dropping the discount variants that
- *     report their own ring-fenced sub-allocation (see fetchCatalogPackages). */
-const FILTER_VERSION = 2;
+ *     report their own ring-fenced sub-allocation (see fetchCatalogPackages).
+ *  3: also collect `exclusives` — the event's OTHER day-ticket packages, which
+ *     special-days.ts queries to name a date the public day ticket can't sell. */
+const FILTER_VERSION = 3;
+
+/** One day-ticket package on the product's event that ISN'T the public day
+ *  ticket — a promo variant, a student ticket, a seasonal-event ticket, or the
+ *  private-hire pass that names a buyout day. Cached with just enough to query
+ *  it on its own (batching several poisons the result — see docs/accesso-api.md
+ *  §3.1). */
+export interface ExclusivePackage {
+  id: string;
+  /** Customer type to send; each package sells under its own. */
+  ct: string;
+  name: string;
+}
 
 interface CachedList {
   generated_at: string;
@@ -44,6 +58,8 @@ interface CachedList {
   etag?: string | null;
   /** The FILTER_VERSION that derived this list. Older/absent → refetch. */
   filter_version?: number;
+  /** The event's non-public day-ticket packages (see ExclusivePackage). */
+  exclusives?: ExclusivePackage[];
 }
 
 /** A resolved package list plus which of its ids are yield anchors. */
@@ -102,6 +118,7 @@ export async function refreshPackages(
     anchorIds: fresh.anchorIds,
     etag: fresh.etag,
     filter_version: FILTER_VERSION,
+    exclusives: fresh.exclusives,
   };
   await bucket.put(key, JSON.stringify(body), {
     httpMetadata: { contentType: "application/json" },
@@ -120,6 +137,7 @@ async function readCache(bucket: R2Bucket, key: string): Promise<CachedList | nu
       anchorIds: d.anchorIds ?? [],
       etag: d.etag ?? null,
       filter_version: d.filter_version,
+      exclusives: d.exclusives ?? [],
     };
   } catch {
     return null;
@@ -131,6 +149,7 @@ async function readCache(bucket: R2Bucket, key: string): Promise<CachedList | nu
 interface CatalogFetch extends ResolvedPackages {
   etag?: string | null;
   notModified?: boolean;
+  exclusives: ExclusivePackage[];
 }
 
 /** Fetch the bootstrap catalog and build the P[] for the matching packages, plus
@@ -141,7 +160,7 @@ async function fetchCatalogPackages(
   spec: DiscoverSpec,
   prevEtag?: string | null,
 ): Promise<CatalogFetch> {
-  const empty: CatalogFetch = { P: [], anchorIds: [] };
+  const empty: CatalogFetch = { P: [], anchorIds: [], exclusives: [] };
   let resp: Response;
   try {
     resp = await fetch(bootstrapUrl(park.bootstrapSlug ?? ""), {
@@ -157,7 +176,7 @@ async function fetchCatalogPackages(
   } catch {
     return empty;
   }
-  if (resp.status === 304) return { P: [], anchorIds: [], notModified: true };
+  if (resp.status === 304) return { P: [], anchorIds: [], exclusives: [], notModified: true };
   if (!resp.ok) return empty;
   const etag = resp.headers.get("etag");
 
@@ -175,6 +194,7 @@ async function fetchCatalogPackages(
   const anchorMatch = (spec.anchorClassMatch ?? "prebook").toLowerCase();
   const P: unknown[] = [];
   const anchorIds: string[] = [];
+  const exclusives: ExclusivePackage[] = [];
   const seen = new Set<string>();
   for (const p of packages) {
     if (!asArray(p.E).some((e) => e.id === spec.event_id)) continue;
@@ -189,19 +209,42 @@ async function fetchCatalogPackages(
       cls === wantClass && (p.name ?? "").trim().toLowerCase() === wantName;
     // The yield anchor — annual-pass prebooks (see DiscoverSpec.anchorClassMatch).
     const isAnchor = anchorMatch !== "" && cls.toLowerCase().includes(anchorMatch);
-    // A day ticket takes precedence: if a package is both, it's a public sale.
-    if (!isDayTicket && !isAnchor) continue;
-
-    // Send each package with its OWN customer type. Forcing a single CT narrows
-    // the returned dates (some packages only sell under other CTs), so days would
-    // go missing — the per-date capacity is the same regardless.
+    // Each package is queried with its OWN customer type. Forcing a single CT
+    // narrows the returned dates (some packages only sell under other CTs), so
+    // days would go missing — the per-date capacity is the same regardless.
     const ct = asArray(p.CT)
       .map((c) => c.id)
       .find((id): id is string => !!id);
+
+    // Every OTHER day-ticket package on this event. These are what make a date
+    // sellable when the public day ticket can't sell it — a seasonal-event ticket
+    // (Fright Nights) or a private-hire pass on a park-buyout day. Collected
+    // whole, variants included, so special-days.ts can still spot a buyout whose
+    // package happens to be named like a promo; the label is chosen there.
+    const name = (p.name ?? "").trim();
+    if (cls === wantClass && !isDayTicket && ct && name) {
+      exclusives.push({ id: p.id, ct, name });
+    }
+
+    // A day ticket takes precedence: if a package is both, it's a public sale.
+    if (!isDayTicket && !isAnchor) continue;
+
     if (!ct || seen.has(p.id)) continue;
     seen.add(p.id);
     P.push({ CT: [{ id: ct, qty: 1 }], event_id: spec.event_id, id: p.id });
     if (isAnchor && !isDayTicket) anchorIds.push(p.id);
   }
-  return { P, anchorIds, etag };
+  return { P, anchorIds, exclusives, etag };
+}
+
+/** The cached exclusive day-ticket packages for a product, or [] when discovery
+ *  hasn't run yet. Read-only — the pre-open cron keeps the cache current. */
+export async function readExclusives(
+  bucket: R2Bucket,
+  park: ParkConfig,
+  product: ProductConfig,
+): Promise<ExclusivePackage[]> {
+  if (!product.discover) return [];
+  const cached = await readCache(bucket, cacheKey(park.key, product.key));
+  return cached?.exclusives ?? [];
 }

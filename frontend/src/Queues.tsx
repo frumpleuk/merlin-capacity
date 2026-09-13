@@ -1,5 +1,13 @@
 import { useMemo, useRef, useState } from "react";
-import type { GroupDim, QueueDayFile, QueueLineSeries, QueueRide, QueueSample } from "./api";
+import {
+  specialLabel,
+  type GroupDim,
+  type QueueDayFile,
+  type QueueLineSeries,
+  type QueueRide,
+  type QueueSample,
+  type SpecialDay,
+} from "./api";
 import { longDate } from "./Heatmap";
 
 /* ── Time helpers ──────────────────────────────────────────────────────────────
@@ -804,11 +812,14 @@ export function QueueList({
   date,
   loading,
   asOf,
+  special,
 }: {
   file: QueueDayFile | null;
   date: string;
   loading: boolean;
   asOf?: number;
+  /** This date's buyout entry, when the park ran closed to the public. */
+  special?: SpecialDay;
 }) {
   const [openId, setOpenId] = useState<number | null>(null);
   const [sort, setSort] = useState<SortMode>("now");
@@ -922,6 +933,15 @@ export function QueueList({
 
   return (
     <div className="q-list">
+      {/* A buyout publishes no theme-park hours, so without this the charts
+          arrive with no explanation of why the park is running on a day the
+          calendar shows nothing for. */}
+      {special && (
+        <p className="q-special">
+          🔐 <strong>{specialLabel(special.name)}</strong> — closed to the public. The rides
+          run for a private event, so queue times are published as usual.
+        </p>
+      )}
       <div className="q-toolbar">
         <div className="q-sort" role="group" aria-label="Sort rides">
           <span className="q-sort-label">Sort</span>

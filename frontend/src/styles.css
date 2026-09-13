@@ -10,6 +10,10 @@
   --q-alt: #e07b39;
   --q-closed: #d64541; /* closed / non-operational stretches on the line */
   --link: #1a63b0; /* anchors that leave the site (Links tab) */
+  /* Buyout days — the park runs, but not for the public. Distinct from the
+     seasonal-event orange (.rc-event) so a private hire never reads as a
+     Scarefest / Fireworks day. */
+  --buyout: #7a5bd0;
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -23,6 +27,7 @@
     --q-alt: #c07b34;
     --q-closed: #f0685c; /* lifted for the dark surface */
     --link: #74b0ec;
+    --buyout: #a98fe8;
   }
 }
 * {
@@ -339,6 +344,11 @@ main.with-bar {
   color: var(--muted);
   font-style: italic;
 }
+/* Closed to the public, open for a private event — see BUYOUT_NOTE. */
+.rc-buyout {
+  color: var(--buyout);
+  font-weight: 600;
+}
 
 /* Full-detail body, shared by the tap sheet and the mobile agenda card. */
 .rc-body {
@@ -493,6 +503,17 @@ main.with-bar {
 }
 .q-hint {
   margin: 8px 0 12px;
+}
+/* Why the park is running on a day that isn't on public sale. */
+.q-special {
+  margin: 8px 0 12px;
+  padding: 8px 10px;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--fg);
+  background: var(--card);
+  border-left: 3px solid var(--buyout);
+  border-radius: 4px;
 }
 .q-head-row,
 .q-row-head {

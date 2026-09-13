@@ -6,6 +6,7 @@ import { refreshPaultonsRestrictions } from "./paultons-restrictions";
 import { runPoll } from "./poll";
 import { runQueuePoll } from "./queues";
 import { rebuildCatalog } from "./rides";
+import { refreshSpecialDays } from "./special-days";
 import type { Env } from "./types";
 
 /**
@@ -23,6 +24,7 @@ const CRON_TICKETS = "*/1 * * * *"; // accesso availability (RAP + main) — all
 const CRON_HOURS = "0 * * * *"; // opening-hours calendars — all parks, hourly
 const CRON_REBUILD = "*/30 * * * *"; // self-heal the ticket month files from D1
 const CRON_PREOPEN = "0 7 * * *"; // 07:00 GMT (parks shut): catalog rebuild + discovery
+const CRON_SPECIAL = "5 7 * * *"; // 07:05 GMT: name the buyout / ticketed-event days
 
 const currentMonth = (ms: number) => new Date(ms).toISOString().slice(0, 7);
 
@@ -76,6 +78,18 @@ async function preOpen(env: Env, scheduledTime: number): Promise<void> {
   ]);
 }
 
+/** Name the dates the park operates but doesn't sell to the public — private
+ *  buyouts and separately-ticketed events (see special-days.ts). Runs five
+ *  minutes after the pre-open cron so it reads a freshly refreshed package
+ *  cache, and costs one request per exclusive package (a few dozen per park). */
+async function pollSpecialDays(env: Env, scheduledTime: number): Promise<void> {
+  await Promise.all(
+    allProducts()
+      .filter(({ product }) => product.discover)
+      .map(({ park, product }) => refreshSpecialDays(env, park, product, scheduledTime)),
+  );
+}
+
 export default {
   // Dispatch by which schedule fired — each concern in its own invocation.
   async scheduled(event: ScheduledEvent, env: Env, ctx: ExecutionContext) {
@@ -88,6 +102,8 @@ export default {
         return void ctx.waitUntil(pollRebuild(env, event.scheduledTime));
       case CRON_PREOPEN:
         return void ctx.waitUntil(preOpen(env, event.scheduledTime));
+      case CRON_SPECIAL:
+        return void ctx.waitUntil(pollSpecialDays(env, event.scheduledTime));
       default: // CRON_QUEUES
         return void ctx.waitUntil(pollQueues(env));
     }
@@ -152,6 +168,17 @@ export default {
           changed: await runQueuePoll(env, park),
         })),
       );
+      // Special days last: it reads the package cache refreshed above AND the
+      // main product snapshot the poll above just rewrote.
+      const special = await Promise.all(
+        allProducts()
+          .filter(({ product }) => product.discover)
+          .map(async ({ park, product }) => ({
+            park: park.key,
+            product: "special",
+            dates: await refreshSpecialDays(env, park, product, Date.now()),
+          })),
+      );
       // Full repair: rebuild EVERY month file (past + forward) from D1, so a
       // fresh deploy or a static product immediately gets all its month files.
       const at = new Date().toISOString();
@@ -163,7 +190,7 @@ export default {
             .length,
         })),
       );
-      return Response.json({ ok: true, results, hours, queues, rebuilt });
+      return Response.json({ ok: true, results, hours, queues, special, rebuilt });
     }
 
     // Everything else: the static heatmap.

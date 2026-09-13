@@ -1,11 +1,22 @@
 import { useEffect, useRef, useState } from "react";
-import type { DayObs, HoursDay, HoursFile, LocationHours, ProductFile } from "./api";
+import {
+  specialLabel,
+  type DayObs,
+  type HoursDay,
+  type HoursFile,
+  type LocationHours,
+  type ProductFile,
+  type SpecialDay,
+  type SpecialDaysFile,
+} from "./api";
 import { colour, longDate, monthLabel } from "./Heatmap";
 import { useMediaQuery } from "./useMediaQuery";
 
 const DOW = ["M", "T", "W", "T", "F", "S", "S"];
 const PREBOOK_NOTE =
   "Passholder pre-book only — general sale not open yet. Figures are the day's total capacity.";
+const BUYOUT_NOTE =
+  "Closed to the public — booked out for a private event. The rides still run, so queue times are published all day.";
 const KIND_ICON: Record<string, string> = {
   themepark: "🎢",
   waterpark: "🏊",
@@ -19,6 +30,9 @@ export interface DayDetail {
   event?: string;
   main?: DayObs;
   rap?: DayObs;
+  /** The theme park runs this day but is closed to the public — a buyout, named
+   *  by the only package that sells it. */
+  special?: SpecialDay;
 }
 
 function getEventIcon(name: string): string {
@@ -69,6 +83,7 @@ export function mergeDetails(
   main: ProductFile | null,
   rap: ProductFile | null,
   hours: HoursFile | null,
+  special: SpecialDaysFile | null,
 ): Map<string, DayDetail> {
   const map = new Map<string, DayDetail>();
   const get = (iso: string): DayDetail => {
@@ -83,6 +98,10 @@ export function mergeDetails(
   }
   for (const [iso, o] of Object.entries(main?.days ?? {})) get(iso).main = o;
   for (const [iso, o] of Object.entries(rap?.days ?? {})) get(iso).rap = o;
+  // Buyouts come last and can CREATE a date the other three files never mention:
+  // no public theme-park hours and no public availability, so without this the
+  // day renders as an empty cell despite the park running all day.
+  for (const [iso, o] of Object.entries(special?.days ?? {})) get(iso).special = o;
   return map;
 }
 
@@ -95,7 +114,13 @@ function CellContent({ d }: { d: DayDetail }) {
 
   return (
     <>
-      {closed ? (
+      {/* A buyout publishes no theme-park hours, so it would otherwise read as a
+          blank day. Say what the day actually is instead of "Closed". */}
+      {d.special ? (
+        <div className="rc-line rc-buyout" title={BUYOUT_NOTE}>
+          🔐 {specialLabel(d.special.name)}
+        </div>
+      ) : closed ? (
         <div className="rc-closed">Closed</div>
       ) : tp?.hours ? (
         <div className="rc-line rc-hours">🎢 {tp.hours}</div>
@@ -154,9 +179,15 @@ function DayBody({ d }: { d: DayDetail }) {
             </span>
           </div>
         ))
-      ) : events.length === 0 ? (
+      ) : events.length === 0 && !d.special ? (
         <div className="rc-body-loc rc-muted">No opening hours</div>
       ) : null}
+      {d.special && (
+        <div className="rc-body-event rc-buyout">
+          🔐 {specialLabel(d.special.name)}
+          <div className="rc-prebook-note">{BUYOUT_NOTE}</div>
+        </div>
+      )}
       {d.event && (
         <div className="rc-body-event">
           {getEventIcon(d.event)} {d.event}
@@ -372,6 +403,7 @@ export function ParkCalendar({
   main,
   rap,
   hours,
+  special,
   month,
   loading,
   onPrev,
@@ -382,6 +414,7 @@ export function ParkCalendar({
   main: ProductFile | null;
   rap: ProductFile | null;
   hours: HoursFile | null;
+  special: SpecialDaysFile | null;
   month: string;
   loading?: boolean;
   onPrev: () => void;
@@ -394,7 +427,7 @@ export function ParkCalendar({
   // A tapped day belongs to the current month — clear it when navigating away.
   useEffect(() => setSelected(null), [month]);
 
-  const details = mergeDetails(main, rap, hours);
+  const details = mergeDetails(main, rap, hours, special);
   const selDay = selected ? details.get(selected) ?? null : null;
 
   return (

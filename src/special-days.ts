@@ -54,6 +54,9 @@ interface Candidate {
   capacity: number;
   available: number;
   used: number;
+  /** From a class that IS an event, so it may name a date the prebook anchors
+   *  also report (see EVENT_CLASSES and test 1 below). */
+  eventClass?: boolean;
 }
 
 /**
@@ -65,6 +68,8 @@ interface Candidate {
  */
 export function pickLabel(candidates: Candidate[]): Candidate | undefined {
   return [...candidates].sort((a, b) => {
+    // A class that IS the event names the day better than anything else can.
+    if (!!a.eventClass !== !!b.eventClass) return a.eventClass ? -1 : 1;
     const av = VARIANT.test(a.name) ? 1 : 0;
     const bv = VARIANT.test(b.name) ? 1 : 0;
     if (av !== bv) return av - bv;
@@ -182,6 +187,7 @@ async function fetchPackageDates(
       capacity,
       available: Number(t.available ?? 0),
       used: Number(t.used ?? 0),
+      ...(pkg.eventClass ? { eventClass: true } : {}),
     };
   }
   return out;
@@ -462,7 +468,11 @@ export async function refreshSpecialDays(
   };
   for (const res of results) {
     for (const [date, cand] of Object.entries(res)) {
-      if (publicDates.has(date)) continue; // on public sale
+      // Test 1, skipped for an event-class package. Legoland's "Passholder Day"
+      // sells 2026-11-08 while the passholder prebook anchors report the same
+      // date, which puts it in the public snapshot; a package in a class that
+      // names the day outright should not lose to that.
+      if (!cand.eventClass && publicDates.has(date)) continue;
       if (hours.themeparkOpen.has(date)) continue; // open to the public
       if (!hours.span || date < hours.span[0] || date > hours.span[1]) continue; // unpublished
       add(date, cand);

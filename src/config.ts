@@ -239,6 +239,17 @@ export interface ExchangeConfig {
   bootstrapSlug: string;
 }
 
+/**
+ * Package classes that ARE an event in their own right, on the park's public
+ * merchant. Legoland's "Passholder Day" class holds one package, also named
+ * "Passholder Day", which sells exactly one date in three years: 2026-11-08,
+ * 8,000 capacity against the usual 14,500. A class like this names the day
+ * outright, so it is collected alongside the day-ticket exclusives and allowed
+ * to name a date even when the prebook anchors also report it (see
+ * refreshSpecialDays test 1).
+ */
+export const EVENT_CLASSES = new Set(["Passholder Day"]);
+
 /** Partner-day package names, matched against the exchange catalog. Deliberately
  *  narrow and intent-revealing: these sit among hundreds of ordinary trade and
  *  discount packages on the same events, so a class or event filter doesn't

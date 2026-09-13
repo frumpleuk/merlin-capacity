@@ -421,12 +421,29 @@ A third shape, neither a buyout nor a partner day. Legoland 2026-11-08 publishes
 golf hours and no theme park, yet carries an 8,000 allocation instead of the
 usual 14,500, with 4,138 sold and its own 599-seat RAP pool, sold out.
 
-The catalog never names it. The packages that sell it are a Corporate "One Day
-Entry", a CLUB VIP prebook and a voucher redemption. But the shape identifies it
-without a name: `onSale` is false, which means only yield anchors returned the
-date, and the anchors are passholder prebooks by definition. A real allocation,
-real sales, no public hours, sellable only through a passholder prebook, is a
-passholder event. Legoland advertised that date on Facebook as exactly that.
+The catalog DOES name it, in a package class of its own. Legoland has a class
+`Passholder Day` holding a single package, also called "Passholder Day"
+(`id 3789`, event 2399, CT 14209), which sells exactly one date in three years:
+
+```
+3789 "Passholder Day"   2026-11-08   capacity 8000   available 3862   used 4138
+```
+
+Those are the same figures the main product reports, so the class names the day
+outright. Collect `Passholder Day` alongside the day-ticket exclusives, and let
+it name a date even when the prebook anchors report it too, or test 1 discards
+it: the passholder prebooks sell the same date, which is what puts it in the
+public snapshot in the first place.
+
+Where no such package exists, the shape still identifies the day without a name:
+`onSale` false means only yield anchors returned the date, and the anchors are
+passholder prebooks by definition. A real allocation, real sales, no public
+hours, sellable only through a passholder prebook, is a passholder event.
+Legoland advertised this date on Facebook as exactly that.
+
+**The passholder promo code is not in the catalog.** `MAPDAY26` appears nowhere
+in any of the eight public and exchange bootstraps. It is a checkout code, not a
+keyword, so it cannot drive detection.
 
 Note the anchors differ by park. Legoland's CLUB VIP Pass Prebook is class
 `Prebook`, so it counts as an anchor alongside the Merlin annual-pass prebooks,

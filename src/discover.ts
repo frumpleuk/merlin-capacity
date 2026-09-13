@@ -1,5 +1,6 @@
 import {
   bootstrapUrl,
+  EVENT_CLASSES,
   USER_AGENT,
   type DiscoverSpec,
   type ParkConfig,
@@ -35,8 +36,10 @@ interface Bootstrap {
  *     special-days.ts queries to name a date the public day ticket can't sell.
  *  4: `alsoNames` — a season selling under its own name (Thorpe's "Fright Nights
  *     Entry") counts as the public day ticket, so its dates stop reading as
- *     prebook-only. */
-const FILTER_VERSION = 4;
+ *     prebook-only.
+ *  5: also collect EVENT_CLASSES packages (Legoland's "Passholder Day"), which
+ *     name a closed-to-the-public day the anchors would otherwise mask. */
+const FILTER_VERSION = 5;
 
 /** One day-ticket package on the product's event that ISN'T the public day
  *  ticket — a promo variant, a student ticket, a seasonal-event ticket, or the
@@ -48,6 +51,9 @@ export interface ExclusivePackage {
   /** Customer type to send; each package sells under its own. */
   ct: string;
   name: string;
+  /** Came from a class that IS an event (see EVENT_CLASSES), so it names the day
+   *  outright and may do so even when the prebook anchors report the date too. */
+  eventClass?: boolean;
 }
 
 interface CachedList {
@@ -233,6 +239,8 @@ async function fetchCatalogPackages(
     const name = (p.name ?? "").trim();
     if (cls === wantClass && !isDayTicket && ct && name) {
       exclusives.push({ id: p.id, ct, name });
+    } else if (EVENT_CLASSES.has(cls) && ct && name) {
+      exclusives.push({ id: p.id, ct, name, eventClass: true });
     }
 
     // A day ticket takes precedence: if a package is both, it's a public sale.

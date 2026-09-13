@@ -167,6 +167,16 @@ export interface DiscoverSpec {
    *  autumn dates those variants used to reach are covered by the prebook anchor
    *  below (verified 2026-08-21: dropping them loses only 0-capacity dates). */
   name?: string;
+  /** Further package names to treat as the public day ticket, matched the same
+   *  exact way. For a season sold under its own name rather than the usual day
+   *  ticket: Thorpe's Fright Nights sells as "Fright Nights Entry", a full public
+   *  retail ticket drawing on the same 15k pool, so without it every Fright
+   *  Nights date returns prebook ids only and reads as "pre-book only" on the
+   *  calendar. Safe to add BECAUSE it draws on the park pool: verified against
+   *  2026-09-20 / 10-02 that querying it alongside "1 Day Ticket" returns the
+   *  union of dates with identical numbers, no rebasing (see docs §3.1). Do not
+   *  add a name whose allocation is smaller than the pool. */
+  alsoNames?: string[];
   /** Also include packages whose class contains this (case-insensitive) as a
    *  "yield anchor". On dates the public day ticket isn't on sale yet — the whole
    *  autumn Fright Nights / Scarefest run, months ahead — annual-pass PREBOOK
@@ -284,11 +294,13 @@ export const PARKS: ParkConfig[] = [
         // Main tickets — event 2507. Package ids rediscovered from the
         // catalog. Thorpe is the park where the offer packages' ring-fenced
         // 3,000-seat sub-allocation bites (see DiscoverSpec.name), so only the
-        // exactly-named "1 Day Ticket" packages + the prebook anchor are sent.
+        // exactly-named "1 Day Ticket" packages + the prebook anchor are sent,
+        // plus "Fright Nights Entry" — the season's own public day ticket, on
+        // the same pool (see DiscoverSpec.alsoNames).
         key: "main",
         extra_movie: "",
         include_times: false,
-        discover: { event_id: "2507" },
+        discover: { event_id: "2507", alsoNames: ["Fright Nights Entry"] },
       },
     ],
   },

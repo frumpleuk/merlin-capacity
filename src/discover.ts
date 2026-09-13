@@ -32,8 +32,11 @@ interface Bootstrap {
  *  2: day-ticket `name` matched exactly, dropping the discount variants that
  *     report their own ring-fenced sub-allocation (see fetchCatalogPackages).
  *  3: also collect `exclusives` — the event's OTHER day-ticket packages, which
- *     special-days.ts queries to name a date the public day ticket can't sell. */
-const FILTER_VERSION = 3;
+ *     special-days.ts queries to name a date the public day ticket can't sell.
+ *  4: `alsoNames` — a season selling under its own name (Thorpe's "Fright Nights
+ *     Entry") counts as the public day ticket, so its dates stop reading as
+ *     prebook-only. */
+const FILTER_VERSION = 4;
 
 /** One day-ticket package on the product's event that ISN'T the public day
  *  ticket — a promo variant, a student ticket, a seasonal-event ticket, or the
@@ -190,7 +193,13 @@ async function fetchCatalogPackages(
   if (!Array.isArray(packages)) return empty;
 
   const wantClass = spec.packageClass ?? "Daily Tickets";
-  const wantName = (spec.name ?? "1 Day Ticket").trim().toLowerCase();
+  // The public day ticket's name(s) — the usual one plus any season that sells
+  // under its own name on the same pool (see DiscoverSpec.alsoNames).
+  const wantNames = new Set(
+    [spec.name ?? "1 Day Ticket", ...(spec.alsoNames ?? [])].map((n) =>
+      n.trim().toLowerCase(),
+    ),
+  );
   const anchorMatch = (spec.anchorClassMatch ?? "prebook").toLowerCase();
   const P: unknown[] = [];
   const anchorIds: string[] = [];
@@ -206,7 +215,7 @@ async function fetchCatalogPackages(
     // the API report THAT bucket for the date instead of the park pool — see
     // docs/accesso-api.md §3.1 "Multiple allocations per date".
     const isDayTicket =
-      cls === wantClass && (p.name ?? "").trim().toLowerCase() === wantName;
+      cls === wantClass && wantNames.has((p.name ?? "").trim().toLowerCase());
     // The yield anchor — annual-pass prebooks (see DiscoverSpec.anchorClassMatch).
     const isAnchor = anchorMatch !== "" && cls.toLowerCase().includes(anchorMatch);
     // Each package is queried with its OWN customer type. Forcing a single CT

@@ -92,6 +92,15 @@ const hasAllocation = (o?: DayObs): o is DayObs => !!o && (o.capacity > 0 || o.u
  *  minus used). Report the count alone. */
 const isUnallocated = (o: Allocation): boolean => o.capacity === 0 && o.used > 0;
 
+/** Whether the season ticket is what sells this day. The season package reports
+ *  a figure on ordinary public dates too (Chessington 2026-11-01: 5,720 against
+ *  the 11,440 pool), so showing it whenever present would put a second and
+ *  contradictory ticket line on days the normal day ticket covers. */
+function showSeason(d: DayDetail): boolean {
+  if (!d.season || !(d.season.capacity > 0)) return false;
+  return !d.main || d.main.capacity === 0;
+}
+
 /** Compact "12/1,960" figure for a cell. */
 const avNums = (o: Allocation) =>
   `${o.available.toLocaleString()}/${o.capacity.toLocaleString()}`;
@@ -197,9 +206,12 @@ function CellContent({ d }: { d: DayDetail }) {
             {availStatus(d.main).emoji} 🎟️ {avNums(d.main)}
           </div>
         ))}
-      {hasAllocation(d.season) && !isUnallocated(d.season) && (
+      {/* Only when the season ticket is what actually sells the day. The season
+          package also reports a part-pool figure on ordinary public dates, which
+          would read as a second, contradictory ticket line. */}
+      {showSeason(d) && (
         <div className="rc-line rc-avail">
-          {availStatus(d.season).emoji} 🎄 {avNums(d.season)}
+          {availStatus(d.season!).emoji} 🎄 {avNums(d.season!)}
         </div>
       )}
       {hasAllocation(d.rap) &&
@@ -264,9 +276,7 @@ function DayBody({ d, seasonLabel }: { d: DayDetail; seasonLabel: string }) {
         </div>
       )}
       {hasAllocation(d.main) && <AvailRow label="Tickets" o={d.main} past={past} />}
-      {hasAllocation(d.season) && (
-        <AvailRow label={seasonLabel} o={d.season} past={past} />
-      )}
+      {showSeason(d) && <AvailRow label={seasonLabel} o={d.season!} past={past} />}
       {hasAllocation(d.rap) && <AvailRow label="RAP" o={d.rap} past={past} />}
     </div>
   );

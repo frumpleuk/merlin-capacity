@@ -287,6 +287,7 @@ export async function rebuildMonthsFromD1(
   product: Product,
   generatedAt: string,
   fromMonth?: string,
+  label?: string,
 ): Promise<string[]> {
   const { results } = await db
     .prepare(
@@ -302,7 +303,7 @@ export async function rebuildMonthsFromD1(
   for (const { m } of results) {
     const snapshot = await readMonthSnapshot(db, park, product, m);
     if (Object.keys(snapshot).length === 0) continue;
-    await putMonthFile(bucket, park, product, m, snapshot, generatedAt);
+    await putMonthFile(bucket, park, product, m, snapshot, generatedAt, label);
     written.push(m);
   }
   if (written.length) await updateParkIndex(bucket, park, written, generatedAt);

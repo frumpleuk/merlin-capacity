@@ -56,7 +56,7 @@ async function pollRebuild(env: Env, scheduledTime: number): Promise<void> {
   const from = currentMonth(scheduledTime);
   await Promise.all(
     allProducts().map(({ park, product }) =>
-      rebuildMonthsFromD1(env.DB, env.BUCKET, park.key, product.key, at, from),
+      rebuildMonthsFromD1(env.DB, env.BUCKET, park.key, product.key, at, from, product.label),
     ),
   );
 }
@@ -196,8 +196,17 @@ export default {
         allProducts().map(async ({ park, product }) => ({
           park: park.key,
           product: product.key,
-          months: (await rebuildMonthsFromD1(env.DB, env.BUCKET, park.key, product.key, at))
-            .length,
+          months: (
+            await rebuildMonthsFromD1(
+              env.DB,
+              env.BUCKET,
+              park.key,
+              product.key,
+              at,
+              undefined,
+              product.label,
+            )
+          ).length,
         })),
       );
       return Response.json({ ok: true, results, hours, queues, special, anomalies, rebuilt });

@@ -23,6 +23,12 @@ export type AnomalyKind =
    *  a name we don't know (Chessington's "Theme Park Entry Only" sells its
    *  Christmas dates) or a genuine off-sale run. */
   | "open_no_tickets"
+  /** Theme park open, nothing sellable, and nothing booked anywhere either.
+   *  A season announced before it goes on sale, rather than a channel we're
+   *  missing: Alton publishes its Christmas dates from 2026-11-27 with no
+   *  package and no bookings against any product. Split from the above so the
+   *  report separates "look into this" from "wait". */
+  | "open_unsold"
   /** No public theme-park hours, yet an allocation or real bookings. A private
    *  event we haven't identified. */
   | "closed_but_selling"
@@ -57,7 +63,8 @@ export interface AnomaliesFile {
 }
 
 const NOTES: Record<AnomalyKind, string> = {
-  open_no_tickets: "Theme park open to the public, but no package sells the date",
+  open_no_tickets: "Theme park open and bookings exist, but no package we poll sells the date",
+  open_unsold: "Theme park open, nothing sellable and nothing booked: likely not on sale yet",
   closed_but_selling: "No public theme-park hours, yet an allocation or real bookings",
   bookings_no_allocation: "Bookings recorded against capacity 0",
   reduced_allocation: "Allocation smaller than the park's usual pool",
@@ -162,9 +169,13 @@ export async function refreshAnomalies(
   const today = ymd(now);
   const end = ymd(now + HORIZON_DAYS * 86_400_000);
 
-  const [main, rap, hours, explained] = await Promise.all([
+  const [main, rap, season, hours, explained] = await Promise.all([
     readSnapshot(env.BUCKET, park.key, "main"),
     readSnapshot(env.BUCKET, park.key, "rap"),
+    // A season sold under its own package (Chessington Christmas). Its dates
+    // report capacity 0 on `main` by design, so without it every one of them
+    // reads as an unexplained booking against no allocation.
+    readSnapshot(env.BUCKET, park.key, "season"),
     readHours(env.BUCKET, park.key, monthsBetween(today, end)),
     readExplained(env.BUCKET, park.key),
   ]);
@@ -182,22 +193,36 @@ export async function refreshAnomalies(
     else found.set(kind, { dates: [date], sample: `${date}: ${sample}` });
   };
 
-  const dates = [...new Set([...Object.keys(main), ...Object.keys(rap), ...hours.all])].sort();
+  const dates = [
+    ...new Set([
+      ...Object.keys(main),
+      ...Object.keys(rap),
+      ...Object.keys(season),
+      ...hours.all,
+    ]),
+  ].sort();
   for (const date of dates) {
     if (date <= today) continue; // the past reports differently and is settled
     if (explained.has(date)) continue; // already labelled
     const m = main[date];
     const r = rap[date];
+    const se = season[date];
     const inSpan = !!span && date >= span[0] && date <= span[1];
     const sells = (o?: DayObs) => !!o && (o.capacity > 0 || o.used > 0);
+    // Admission of any kind: a season product covers exactly the dates `main`
+    // reports as capacity 0.
+    const admits = sells(m) || sells(se);
+    // Anyone at all holding a booking, across every product. Absence means the
+    // day isn't on sale rather than sold through a channel we can't see.
+    const booked = (m?.used ?? 0) + (se?.used ?? 0) + (r?.used ?? 0) > 0;
 
     // One finding per date, most specific first: a date that is open with
     // nothing to buy is not ALSO interesting for its allocation size.
-    if (hours.themeparkOpen.has(date) && !sells(m)) {
-      flag("open_no_tickets", date, nums(m));
-    } else if (!hours.themeparkOpen.has(date) && inSpan && (sells(m) || sells(r))) {
+    if (hours.themeparkOpen.has(date) && !admits) {
+      flag(booked ? "open_no_tickets" : "open_unsold", date, `main ${nums(m)}, rap ${nums(r)}`);
+    } else if (!hours.themeparkOpen.has(date) && inSpan && (admits || sells(r))) {
       flag("closed_but_selling", date, `main ${nums(m)}, rap ${nums(r)}`);
-    } else if (m && m.capacity === 0 && m.used > 0) {
+    } else if (m && m.capacity === 0 && m.used > 0 && !sells(se)) {
       flag("bookings_no_allocation", date, nums(m));
     } else if (m && pool && m.capacity > 0 && m.capacity < pool) {
       flag("reduced_allocation", date, `${nums(m)} vs pool ${pool}`);

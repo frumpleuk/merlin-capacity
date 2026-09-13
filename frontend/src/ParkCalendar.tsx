@@ -16,6 +16,8 @@ const DOW = ["M", "T", "W", "T", "F", "S", "S"];
 const PREBOOK_NOTE =
   "Passholder pre-book only — general sale not open yet. Figures are the day's total capacity.";
 const BUYOUT_NOTE = "Closed to the public, booked out for a private event.";
+const BOOKED_NOTE =
+  "Bookings taken against no published allocation, which is how a private event day reports.";
 const KIND_ICON: Record<string, string> = {
   themepark: "🎢",
   waterpark: "🏊",
@@ -67,10 +69,19 @@ function availStatus(o: Allocation): AvailStatus {
   return { emoji: "✅", label: "Available" };
 }
 
-/** Whether a pool has a meaningful allocation to show. Main goes degenerate
- *  (capacity 0) once advance sales close; RAP is capacity 0 when a date has no
- *  allocation — in both cases "0/0" is noise, so we hide the line entirely. */
-const hasAllocation = (o?: DayObs): o is DayObs => !!o && o.capacity > 0;
+/**
+ * Whether a pool has anything worth showing. Capacity 0 alone doesn't mean
+ * "nothing here": on a private event day the public allocation is 0 while real
+ * bookings still land in the same counter, so Thorpe's Blue Light Card days
+ * carry 150 and 131 RAP bookings against capacity 0. Hiding on capacity alone
+ * swallowed 27 such dates. Only a genuine 0/0 is noise.
+ */
+const hasAllocation = (o?: DayObs): o is DayObs => !!o && (o.capacity > 0 || o.used > 0);
+
+/** Bookings exist but no allocation was published, so there is no total to show
+ *  a fraction or a percentage against — `available` is negative here (capacity
+ *  minus used). Report the count alone. */
+const isUnallocated = (o: Allocation): boolean => o.capacity === 0 && o.used > 0;
 
 /** Compact "12/1,960" figure for a cell. */
 const avNums = (o: Allocation) =>
@@ -154,7 +165,11 @@ function CellContent({ d }: { d: DayDetail }) {
         </div>
       )}
       {hasAllocation(d.main) &&
-        (d.main.onSale === false ? (
+        (isUnallocated(d.main) ? (
+          <div className="rc-line rc-avail rc-booked" title={BOOKED_NOTE}>
+            📋 🎟️ {d.main.used.toLocaleString()} booked
+          </div>
+        ) : d.main.onSale === false ? (
           <div className="rc-line rc-avail rc-prebook" title={PREBOOK_NOTE}>
             🔒 🎟️ pre-book
           </div>
@@ -163,11 +178,16 @@ function CellContent({ d }: { d: DayDetail }) {
             {availStatus(d.main).emoji} 🎟️ {avNums(d.main)}
           </div>
         ))}
-      {hasAllocation(d.rap) && (
-        <div className="rc-line rc-avail">
-          {availStatus(d.rap).emoji} RAP {avNums(d.rap)}
-        </div>
-      )}
+      {hasAllocation(d.rap) &&
+        (isUnallocated(d.rap) ? (
+          <div className="rc-line rc-avail rc-booked" title={BOOKED_NOTE}>
+            📋 RAP {d.rap.used.toLocaleString()} booked
+          </div>
+        ) : (
+          <div className="rc-line rc-avail">
+            {availStatus(d.rap).emoji} RAP {avNums(d.rap)}
+          </div>
+        ))}
     </>
   );
 }
@@ -226,6 +246,14 @@ function DayBody({ d }: { d: DayDetail }) {
 
 /** One availability line in the detail body — the same shape for main and RAP. */
 function AvailRow({ label, o }: { label: string; o: Allocation & { onSale?: boolean } }) {
+  if (isUnallocated(o)) {
+    return (
+      <div className="rc-body-avail">
+        📋 {label}: <strong>{o.used.toLocaleString()}</strong> booked
+        <div className="rc-prebook-note">{BOOKED_NOTE}</div>
+      </div>
+    );
+  }
   const prebook = o.onSale === false;
   const s = availStatus(o);
   const pct = Math.round((o.available / o.capacity) * 100);

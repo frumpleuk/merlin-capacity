@@ -344,6 +344,10 @@ main.with-bar {
   color: var(--muted);
   font-style: italic;
 }
+/* Bookings with no published allocation — see BOOKED_NOTE. */
+.rc-booked {
+  color: var(--muted);
+}
 /* Closed to the public, open for a private event — see BUYOUT_NOTE. */
 .rc-buyout {
   color: var(--buyout);

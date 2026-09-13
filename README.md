@@ -45,8 +45,11 @@ though the queue feed publishes waits all day. A daily cron names them by
 querying each of the event's other day-ticket packages on its own and finding the
 one that sells a date the public product can't, where the theme park also
 publishes no hours (Thorpe, 2026-09-13: "1 Day Pass - VodafoneThree Big Day Out").
-Written to `calendar/<park>/special.json` and labelled on both the calendar and
-the queues page. See [`docs/accesso-api.md` §6](docs/accesso-api.md).
+A second source covers partner days sold through the park's trade/reseller
+merchant, which the public one never sees at all (Thorpe, 2026-11-06 John Lewis
+Partnership Event, 2026-11-07/08 Blue Light Card member days). Written to
+`calendar/<park>/special.json` and labelled on both the calendar and the queues
+page. See [`docs/accesso-api.md` §6](docs/accesso-api.md).
 
 ## What it captures
 

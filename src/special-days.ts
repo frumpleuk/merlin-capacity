@@ -1,4 +1,12 @@
-import { HORIZON_DAYS, HOST, USER_AGENT, type ParkConfig, type ProductConfig } from "./config";
+import {
+  exchangeBootstrapUrl,
+  HORIZON_DAYS,
+  HOST,
+  USER_AGENT,
+  type ExchangeConfig,
+  type ParkConfig,
+  type ProductConfig,
+} from "./config";
 import { readSnapshot } from "./db";
 import { readExclusives, type ExclusivePackage } from "./discover";
 import type { Env } from "./types";
@@ -74,8 +82,15 @@ interface ApiDay {
  * per-package identity is lost (docs/accesso-api.md §3.1), which is the whole
  * signal here. Never throws; a failed package just contributes nothing.
  */
+interface QueryContext {
+  merchantId: string;
+  origin: string;
+  /** Reseller identity, for an exchange merchant only. */
+  reseller?: { id: string; locationId: string };
+}
+
 async function fetchPackageDates(
-  park: ParkConfig,
+  ctx: QueryContext,
   product: ProductConfig,
   pkg: ExclusivePackage,
   eventId: string,
@@ -95,12 +110,15 @@ async function fetchPackageDates(
     request_type: "GetMerchantPackageEventDates",
     _version: "6.31.6",
     application_id: "1500",
-    merchant_id: park.merchantId,
+    merchant_id: ctx.merchantId,
     machine_id: "500",
     agent_id: "5",
     user_id: "5",
     device: "desktop",
     language: "en-gb",
+    ...(ctx.reseller
+      ? { reseller_id: ctx.reseller.id, reseller_location_id: ctx.reseller.locationId }
+      : {}),
   };
   let resp: Response;
   try {
@@ -111,10 +129,10 @@ async function fetchPackageDates(
         "com-accessopassport-app-id": "1500",
         "com-accessopassport-client": "accesso26",
         "com-accessopassport-language": "en-gb",
-        "com-accessopassport-merchant-id": park.merchantId ?? "",
+        "com-accessopassport-merchant-id": ctx.merchantId,
         "content-type": "application/json;charset=UTF-8",
-        origin: park.origin ?? "",
-        referer: `${park.origin ?? ""}/`,
+        origin: ctx.origin,
+        referer: `${ctx.origin}/`,
         "user-agent": USER_AGENT,
       },
       body: JSON.stringify(body),
@@ -151,6 +169,68 @@ async function fetchPackageDates(
       available: Number(t.available ?? 0),
       used: Number(t.used ?? 0),
     };
+  }
+  return out;
+}
+
+/** One-or-many, as accesso serves `E` / `CT`. */
+type OneOrMany<T> = T | T[] | undefined;
+const asArray = <T,>(v: OneOrMany<T>): T[] => (Array.isArray(v) ? v : v ? [v] : []);
+
+interface ExchangePackage {
+  id: string;
+  name?: string;
+  package_class?: string;
+  E?: OneOrMany<{ id?: string }>;
+  CT?: OneOrMany<{ id?: string }>;
+}
+
+/**
+ * The partner-day packages on a park's trade / reseller merchant. Unlike the
+ * public merchant's list (kept warm in R2 by the pre-open cron), this is read
+ * fresh here: it is one fetch a day for the single park that has an exchange,
+ * and it needs no second cache mechanism.
+ *
+ * Filtered to `eventId` AND the partner-day class, because the same event also
+ * carries add-ons (parking, photos, late check-out) whose allocation runs flat
+ * across the entire horizon and would otherwise name every date in it.
+ */
+async function fetchExchangePackages(ex: ExchangeConfig): Promise<ExclusivePackage[]> {
+  let resp: Response;
+  try {
+    resp = await fetch(exchangeBootstrapUrl(ex.bootstrapSlug, ex.merchantId), {
+      headers: {
+        accept: "application/json, text/plain, */*",
+        origin: ex.origin,
+        referer: `${ex.origin}/`,
+        "user-agent": USER_AGENT,
+      },
+    });
+  } catch {
+    return [];
+  }
+  if (!resp.ok) return [];
+  let data: {
+    GetMerchantPackageList?: { SERVICE?: { PS?: { P?: ExchangePackage[] } } };
+  };
+  try {
+    data = (await resp.json()) as typeof data;
+  } catch {
+    return [];
+  }
+  const packages = data.GetMerchantPackageList?.SERVICE?.PS?.P;
+  if (!Array.isArray(packages)) return [];
+
+  const wantClass = ex.packageClass ?? "Trade";
+  const out: ExclusivePackage[] = [];
+  for (const p of packages) {
+    if ((p.package_class ?? "") !== wantClass) continue;
+    if (!asArray(p.E).some((e) => e.id === ex.eventId)) continue;
+    const ct = asArray(p.CT)
+      .map((c) => c.id)
+      .find((id): id is string => !!id);
+    const name = (p.name ?? "").trim();
+    if (ct && name) out.push({ id: p.id, ct, name });
   }
   return out;
 }
@@ -200,6 +280,28 @@ async function readHoursCoverage(
   };
 }
 
+/** Partner-day dates from the park's exchange merchant, or [] when it has none
+ *  (every park but Thorpe today) or the catalog is unreachable. */
+async function fetchExchangeDates(
+  ex: ExchangeConfig | undefined,
+  product: ProductConfig,
+  start: string,
+  end: string,
+): Promise<Record<string, Candidate>[]> {
+  if (!ex) return [];
+  const packages = await fetchExchangePackages(ex);
+  if (packages.length === 0) return [];
+  const ctx: QueryContext = {
+    merchantId: ex.merchantId,
+    origin: ex.origin,
+    reseller: { id: ex.resellerId, locationId: ex.resellerLocationId },
+  };
+  const out = await Promise.all(
+    packages.map((pkg) => fetchPackageDates(ctx, product, pkg, ex.eventId, start, end)),
+  );
+  return out.filter((r) => Object.keys(r).length > 0);
+}
+
 /** Every 'YYYY-MM' from `start`'s month through `end`'s, inclusive. */
 function monthsBetween(start: string, end: string): string[] {
   const out: string[] = [];
@@ -215,21 +317,28 @@ function monthsBetween(start: string, end: string): string[] {
 /**
  * Find and name the park's buyout days, and write `calendar/<park>/special.json`.
  *
- * A date qualifies on three tests:
- *   1. some day-ticket package sells it with a real allocation, but the PUBLIC
- *      product doesn't (that comes straight off the main product's existing
- *      snapshot, so it costs no extra query);
- *   2. the theme park publishes no public opening hours for it; and
- *   3. it sits inside the span the hours calendar covers — beyond that, "no
- *      hours" means "not published yet", which would otherwise flag every
- *      far-future schools-group date.
+ * Two sources, both naming a date the public can't buy:
  *
- * All three are needed. Test 1 alone fires across a whole separately-ticketed
- * season (Fright Nights) and on returns/compensation packages; test 2 alone
- * can't tell a buyout from a routine midweek closure.
+ *   PUBLIC MERCHANT — the event's other day-ticket packages. A date qualifies on
+ *   three tests: (1) such a package sells it with a real allocation but the
+ *   public product doesn't, which comes off the main product's existing snapshot
+ *   so it costs no extra query; (2) the theme park publishes no opening hours
+ *   for it; and (3) it sits inside the span the hours calendar covers. All three
+ *   are needed. Test 1 alone fires across a whole separately-ticketed season and
+ *   on returns/compensation packages; test 2 alone can't tell a buyout from a
+ *   routine midweek closure; without test 3 every far-future schools-group date
+ *   qualifies, because "no hours" out there just means "not published yet".
  *
- * Off the hot path (its own daily cron): one request per exclusive package, and
- * a park has a few dozen. Never throws; on failure the previous file survives.
+ *   EXCHANGE MERCHANT — the trade/reseller storefront's partner-day packages
+ *   (see ExchangeConfig). Tests 1 and 2 still apply, but NOT test 3: these sit
+ *   on their own small dated allocation on a dedicated event, which is already
+ *   positive evidence of a real operating day, and the partner days routinely
+ *   fall past the end of the published calendar. Thorpe's 2026-11-06 John Lewis
+ *   day and 2026-11-07/08 Blue Light Card member days are all five or more days
+ *   past the last date the hours calendar covers.
+ *
+ * Off the hot path (its own daily cron): one request per package, and a park has
+ * a few dozen. Never throws; on failure the previous file survives.
  */
 export async function refreshSpecialDays(
   env: Env,
@@ -239,36 +348,58 @@ export async function refreshSpecialDays(
 ): Promise<number> {
   const eventId = product.discover?.event_id;
   if (!eventId) return 0;
+  if (!park.merchantId || !park.origin) return 0;
   const exclusives = await readExclusives(env.BUCKET, park, product);
   if (exclusives.length === 0) return 0; // discovery hasn't run yet
 
   const start = ymd(now);
   const end = ymd(now + HORIZON_DAYS * 86_400_000);
+  const publicCtx: QueryContext = { merchantId: park.merchantId, origin: park.origin };
 
-  const [publicSnapshot, hours, results] = await Promise.all([
+  const [publicSnapshot, hours, results, exchangeResults] = await Promise.all([
     readSnapshot(env.BUCKET, park.key, product.key),
     readHoursCoverage(env.BUCKET, park.key, monthsBetween(start, end)),
     Promise.all(
-      exclusives.map((pkg) => fetchPackageDates(park, product, pkg, eventId, start, end)),
+      exclusives.map((pkg) => fetchPackageDates(publicCtx, product, pkg, eventId, start, end)),
     ),
+    fetchExchangeDates(park.exchange, product, start, end),
   ]);
-  // Every package failing means the API is down or the cached ids have rotated —
-  // keep the last good file rather than publishing an empty one.
-  if (results.every((r) => Object.keys(r).length === 0)) return 0;
+  // Every public package failing means the API is down or the cached ids have
+  // rotated. Keep the last good file rather than publishing an empty one — but
+  // not when the exchange still answered, since that's real data to publish.
+  if (
+    results.every((r) => Object.keys(r).length === 0) &&
+    exchangeResults.length === 0
+  ) {
+    return 0;
+  }
 
   // Dates the public product sells. The main poll records a date only when a
   // package returned it, so presence here IS public availability.
   const publicDates = new Set(Object.keys(publicSnapshot));
 
   const byDate = new Map<string, Candidate[]>();
+  const add = (date: string, cand: Candidate) => {
+    const list = byDate.get(date);
+    if (list) list.push(cand);
+    else byDate.set(date, [cand]);
+  };
   for (const res of results) {
     for (const [date, cand] of Object.entries(res)) {
       if (publicDates.has(date)) continue; // on public sale
       if (hours.themeparkOpen.has(date)) continue; // open to the public
       if (!hours.span || date < hours.span[0] || date > hours.span[1]) continue; // unpublished
-      const list = byDate.get(date);
-      if (list) list.push(cand);
-      else byDate.set(date, [cand]);
+      add(date, cand);
+    }
+  }
+  // Exchange days skip the hours-span test (see the header): a dated allocation
+  // on the partner event IS the evidence, and these days sit past the end of the
+  // published calendar by design.
+  for (const res of exchangeResults) {
+    for (const [date, cand] of Object.entries(res)) {
+      if (publicDates.has(date)) continue;
+      if (hours.themeparkOpen.has(date)) continue;
+      add(date, cand);
     }
   }
 

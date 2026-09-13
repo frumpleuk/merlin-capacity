@@ -325,6 +325,45 @@ ring-fenced bucket isn't the day's identity.
 Applied across all four parks on 2026-09-13 this yields exactly two days and no
 false positives. See [`src/special-days.ts`](../src/special-days.ts).
 
+### The exchange merchant
+
+A park can have a SECOND accesso merchant: the trade / reseller "exchange"
+storefront partner channels book through. Thorpe's public merchant is 105; its
+exchange is **107**, reached from
+`me-tpchertsey-exchange.secure-cdn.meg-eu.accessoticketing.com` with
+`reseller_id=10203&reseller_location_id=11257`.
+
+**`merchant_id` must go on the bootstrap query string**, not just the slug:
+
+```
+.../static-api/bootstrap?m=ME-TPCHERTSEY-EXCHANGE&l=en-gb                 -> shell, merchantId -1, 0 packages
+.../static-api/bootstrap?m=ME-TPCHERTSEY-EXCHANGE&l=en-gb&merchant_id=107 -> 212 packages, E/CT populated
+```
+
+That matters because the POST `GetMerchantPackageList` form returns `E` and `CT`
+as null (§3.3), so the bootstrap is the only way to get the binding.
+
+Merchant 107 is mostly the same main event 2507 through a trade channel, but
+event **532** "Thorpe Park Capacity" holds the partner days, on their own
+allocation rather than the 15,000 park pool:
+
+| Date | `Trade` package | capacity | available |
+|---|---|---|---|
+| 2026-11-06 | John Lewis Partnership Event | 6000 | 3179 |
+| 2026-11-07 | Member Days - November | 6250 | 30 |
+| 2026-11-08 | Member Days - November | 6300 | 59 |
+
+The 7th and 8th are the Blue Light Card member days, and the app's own listing
+showed both SOLD OUT, matching the 30 and 59 left here.
+
+Filter to the `Trade` class. The same event also carries add-ons (coach parking,
+digital photos, late check-out) whose allocation runs flat across the entire
+horizon and would otherwise name every date in it.
+
+These dates are invisible to merchant 105 and fall days past the end of the
+opening-hours calendar, so the hours-span test above must NOT be applied to
+them. Their dated allocation on a dedicated partner event is the evidence.
+
 **The live feed's resort window can lag.** On 2026-09-13 Thorpe's `Resort` record
 was a bare `{"_id": 43}` — no `OpeningTimes` — until the park actually opened,
 while every `Item` already carried its own `10:00-18:00`. The day file therefore
@@ -349,6 +388,8 @@ ride's, so it takes precedence once present).
 - RAP is not discoverable via the catalog; keep its ids by hand.
 - A blank autumn date is usually "public ticket not on sale yet", not a bug — the
   prebook yield anchor fills it; `capacity - available` is the true total sold.
+- A park may have a second, trade merchant whose partner days never appear on the
+  public one; the bootstrap needs `merchant_id` on the query string (§6).
 - A date the day ticket can't sell isn't necessarily closed — it may be a buyout
   (§6) or a separately-ticketed event. The package that CAN sell it names it.
 - Nothing here is authenticated or contractual; expect drift and log poll status

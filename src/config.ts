@@ -17,6 +17,12 @@ export const HOST =
 export const bootstrapUrl = (slug: string) =>
   `https://ecomm.api.meg-eu.accessoticketing.com/static-api/bootstrap?m=${slug}&l=en-gb`;
 
+/** Same endpoint for an exchange merchant. The `merchant_id` parameter is what
+ *  makes it serve the real catalog: with the slug alone it answers a shell whose
+ *  `merchantId` is -1 and whose package list is empty. */
+export const exchangeBootstrapUrl = (slug: string, merchantId: string) =>
+  `${bootstrapUrl(slug)}&merchant_id=${merchantId}`;
+
 export const USER_AGENT =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 " +
   "(KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36";
@@ -203,6 +209,39 @@ export interface ProductConfig {
   availabilityUrl?: string;
 }
 
+/**
+ * A park's SECOND accesso merchant: the trade / reseller "exchange" storefront
+ * that partner channels book through (Blue Light Card, corporate partners). It
+ * is a different merchant id on the same API host, reached with reseller ids,
+ * and it carries dates the public merchant knows nothing about.
+ *
+ * Thorpe, merchant 107, event 532 "Thorpe Park Capacity": 2026-11-06 is the John
+ * Lewis Partnership Event and 2026-11-07/08 are the Blue Light Card member days.
+ * All three are absent from the public merchant (105) and from the opening-hours
+ * calendar, so without this the park reads as closed on days it runs for 6,000+
+ * people.
+ *
+ * The `Trade` packages on `eventId` are the partner days themselves; the other
+ * classes on the same event are add-ons (parking, photos, late check-out) that
+ * carry a flat allocation across the whole horizon and would name every date.
+ */
+export interface ExchangeConfig {
+  merchantId: string;
+  /** Exchange storefront host, sent as origin/referer. */
+  origin: string;
+  /** Bootstrap slug. NOTE: the slug alone returns a shell with `merchantId: -1`
+   *  and no packages; `merchant_id` must ALSO go on the query string to get the
+   *  real catalog with its `E`/`CT` bindings (the POST package-list form returns
+   *  both as null, see docs/accesso-api.md §3.3). */
+  bootstrapSlug: string;
+  resellerId: string;
+  resellerLocationId: string;
+  /** The event the partner days sit on. NOT the park's public main event. */
+  eventId: string;
+  /** Package class holding the partner days. Default "Trade". */
+  packageClass?: string;
+}
+
 export interface ParkConfig {
   key: string;
   /** accesso availability identity. Optional: a queue-only park (Paulton's) has
@@ -220,6 +259,9 @@ export interface ParkConfig {
   /** Live queue-time source (Attractions.io or First Option). Absent = the park
    *  isn't queue-tracked. Separate backend(s) from accesso availability. */
   queue?: QueueSource;
+  /** Trade / reseller merchant, when the park has one (see ExchangeConfig).
+   *  Read only by the daily special-days job. */
+  exchange?: ExchangeConfig;
   /** accesso ticket products to poll. Empty for a queue-only park. */
   products: ProductConfig[];
 }
@@ -273,6 +315,14 @@ export const PARKS: ParkConfig[] = [
     merchantId: "105",
     origin: "https://me-tpr.tickets.thorpepark.com",
     bootstrapSlug: "ME-TPR",
+    exchange: {
+      merchantId: "107",
+      origin: "https://me-tpchertsey-exchange.secure-cdn.meg-eu.accessoticketing.com",
+      bootstrapSlug: "ME-TPCHERTSEY-EXCHANGE",
+      resellerId: "10203",
+      resellerLocationId: "11257",
+      eventId: "532",
+    },
     openingHours: {
       kind: "accesso",
       calendarUrl: hoursUrl("thorpepark.com", "1716"),

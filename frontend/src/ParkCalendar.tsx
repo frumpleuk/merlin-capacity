@@ -14,7 +14,12 @@ import { useMediaQuery } from "./useMediaQuery";
 
 const DOW = ["M", "T", "W", "T", "F", "S", "S"];
 const PREBOOK_NOTE =
-  "Passholder pre-book only — general sale not open yet. Figures are the day's total capacity.";
+  "Passholder pre-book only, general sale not open yet. Figures are the day's total capacity.";
+/** Same underlying state on a date that has passed. "Not open yet" is plainly
+ *  wrong there: the day-ticket packages fell out of their validity window when
+ *  the date went by, leaving only the prebook anchors reporting. */
+const PREBOOK_PAST_NOTE =
+  "General sale has closed for this date; only passholder pre-book figures remain.";
 const BUYOUT_NOTE = "Closed to the public, booked out for a private event.";
 const BOOKED_NOTE =
   "Bookings taken against no published allocation, which is how a private event day reports.";
@@ -123,6 +128,7 @@ export function mergeDetails(
 /* ── Compact cell content (desktop month grid) ─────────────────────────────── */
 
 function CellContent({ d }: { d: DayDetail }) {
+  const past = d.iso < new Date().toISOString().slice(0, 10);
   const tp = themepark(d.hours);
   const closed = tp && /^closed$/i.test(tp.hours);
   const extras = extraLocations(d.hours).filter((l) => l.hours && !/^closed$/i.test(l.hours));
@@ -170,9 +176,16 @@ function CellContent({ d }: { d: DayDetail }) {
             📋 🎟️ {d.main.used.toLocaleString()} booked
           </div>
         ) : d.main.onSale === false ? (
-          <div className="rc-line rc-avail rc-prebook" title={PREBOOK_NOTE}>
-            🔒 🎟️ pre-book
-          </div>
+          past ? (
+            // Sales closed rather than not yet open — show the real figures.
+            <div className="rc-line rc-avail" title={PREBOOK_PAST_NOTE}>
+              {availStatus(d.main).emoji} 🎟️ {avNums(d.main)}
+            </div>
+          ) : (
+            <div className="rc-line rc-avail rc-prebook" title={PREBOOK_NOTE}>
+              🔒 🎟️ pre-book
+            </div>
+          )
         ) : (
           <div className="rc-line rc-avail">
             {availStatus(d.main).emoji} 🎟️ {avNums(d.main)}
@@ -195,6 +208,7 @@ function CellContent({ d }: { d: DayDetail }) {
 /* ── Full detail body (tap sheet + agenda card) ────────────────────────────── */
 
 function DayBody({ d }: { d: DayDetail }) {
+  const past = d.iso < new Date().toISOString().slice(0, 10);
   const locs = d.hours?.locations ?? [];
   const events = d.hours?.events ?? [];
   return (
@@ -238,14 +252,22 @@ function DayBody({ d }: { d: DayDetail }) {
           ))}
         </div>
       )}
-      {hasAllocation(d.main) && <AvailRow label="Tickets" o={d.main} />}
-      {hasAllocation(d.rap) && <AvailRow label="RAP" o={d.rap} />}
+      {hasAllocation(d.main) && <AvailRow label="Tickets" o={d.main} past={past} />}
+      {hasAllocation(d.rap) && <AvailRow label="RAP" o={d.rap} past={past} />}
     </div>
   );
 }
 
 /** One availability line in the detail body — the same shape for main and RAP. */
-function AvailRow({ label, o }: { label: string; o: Allocation & { onSale?: boolean } }) {
+function AvailRow({
+  label,
+  o,
+  past,
+}: {
+  label: string;
+  o: Allocation & { onSale?: boolean };
+  past?: boolean;
+}) {
   if (isUnallocated(o)) {
     return (
       <div className="rc-body-avail">
@@ -259,10 +281,12 @@ function AvailRow({ label, o }: { label: string; o: Allocation & { onSale?: bool
   const pct = Math.round((o.available / o.capacity) * 100);
   return (
     <div className="rc-body-avail">
-      {prebook ? "🔒" : s.emoji} {label}:{" "}
+      {prebook && !past ? "🔒" : s.emoji} {label}:{" "}
       <strong>{o.available.toLocaleString()}</strong> of {o.capacity.toLocaleString()} (
-      {pct}% · {prebook ? "pre-book only" : s.label})
-      {prebook && <div className="rc-prebook-note">{PREBOOK_NOTE}</div>}
+      {pct}% · {prebook ? (past ? "sale closed" : "pre-book only") : s.label})
+      {prebook && (
+        <div className="rc-prebook-note">{past ? PREBOOK_PAST_NOTE : PREBOOK_NOTE}</div>
+      )}
     </div>
   );
 }

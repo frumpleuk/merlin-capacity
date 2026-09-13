@@ -73,6 +73,10 @@ export function pickLabel(candidates: Candidate[]): Candidate | undefined {
   })[0];
 }
 
+/** Used when the day is provably closed to the public and selling, but no
+ *  package names who it is for. */
+export const GENERIC_PRIVATE_EVENT = "Private event";
+
 interface ApiDay {
   date?: string;
   T?: { capacity?: string; available?: string; used?: string };
@@ -460,6 +464,31 @@ export async function refreshSpecialDays(
       if (hours.themeparkOpen.has(date)) continue;
       add(date, cand);
     }
+  }
+
+  // THIRD SOURCE: a date the main product DOES carry, with a real allocation and
+  // real sales, on a day the theme park publishes no hours for. Legoland
+  // 2026-11-08 is the case: 8,000 capacity rather than the usual 14,500, 4,138
+  // sold, its own sold-out 599-seat RAP pool, and only golf hours published. The
+  // two sources above both miss it because the prebook anchors put the date in
+  // the public snapshot, so test 1 discards it before anything else runs.
+  //
+  // Nothing names it: the packages that sell it are a Corporate "One Day Entry",
+  // a CLUB VIP prebook and a voucher redemption, none carrying a partner. So it
+  // is added LAST and only where no named candidate already exists, and it says
+  // only what the data supports.
+  for (const [date, obs] of Object.entries(publicSnapshot)) {
+    if (byDate.has(date)) continue; // something named it already
+    if (hours.themeparkOpen.has(date)) continue; // open to the public
+    if (!hours.span || date < hours.span[0] || date > hours.span[1]) continue;
+    if (!(obs.capacity > 0)) continue; // no allocation, so no evidence it ran
+    if (obs.onSale !== false) continue; // still on public sale
+    add(date, {
+      name: GENERIC_PRIVATE_EVENT,
+      capacity: obs.capacity,
+      available: obs.available,
+      used: obs.used,
+    });
   }
 
   const days: Record<string, SpecialDay> = {};

@@ -1,6 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import {
   specialLabel,
+  takenLong,
+  takenOf,
+  takenShort,
+  TAKEN_NOTE,
   type DayObs,
   type HoursDay,
   type HoursFile,
@@ -101,9 +105,12 @@ function showSeason(d: DayDetail): boolean {
   return !d.main || d.main.capacity === 0;
 }
 
-/** Compact "12/1,960" figure for a cell. */
-const avNums = (o: Allocation) =>
-  `${o.available.toLocaleString()}/${o.capacity.toLocaleString()}`;
+/** Compact cell figure: how full the day is, with what is left in support.
+ *  See takenOf for why this leads on taken rather than on `used`. */
+function avNums(o: Allocation): string {
+  const t = takenOf(o);
+  return t ? takenShort(t) : `${o.available.toLocaleString()}/${o.capacity.toLocaleString()}`;
+}
 
 const themepark = (h?: HoursDay): LocationHours | undefined =>
   h?.locations.find((l) => l.kind === "themepark");
@@ -302,12 +309,21 @@ function AvailRow({
   }
   const prebook = o.onSale === false;
   const s = availStatus(o);
-  const pct = Math.round((o.available / o.capacity) * 100);
+  const t = takenOf(o);
   return (
-    <div className="rc-body-avail">
+    <div className="rc-body-avail" title={TAKEN_NOTE}>
       {prebook && !past ? "🔒" : s.emoji} {label}:{" "}
-      <strong>{o.available.toLocaleString()}</strong> of {o.capacity.toLocaleString()} (
-      {pct}% · {prebook ? (past ? "sale closed" : "pre-book only") : s.label})
+      {t ? (
+        <>
+          <strong>{t.taken.toLocaleString()}</strong> of {o.capacity.toLocaleString()} taken (
+          {t.pct}%), {t.unsold.toLocaleString()} unsold
+          {prebook ? ` · ${past ? "sale closed" : "pre-book only"}` : ` · ${s.label}`}
+        </>
+      ) : (
+        <>
+          <strong>{o.used.toLocaleString()}</strong> booked, against no published allocation
+        </>
+      )}
       {prebook && (
         <div className="rc-prebook-note">{past ? PREBOOK_PAST_NOTE : PREBOOK_NOTE}</div>
       )}

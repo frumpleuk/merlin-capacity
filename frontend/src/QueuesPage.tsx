@@ -36,6 +36,7 @@ export function QueuesPage() {
   const [status, setStatus] = useState<PollStatus | null>(null);
   const [special, setSpecial] = useState<SpecialDaysFile | null>(null);
   const [tickets, setTickets] = useState<DayObs | undefined>(undefined);
+  const [rap, setRap] = useState<DayObs | undefined>(undefined);
 
   useEffect(() => {
     if (!parkDef) return;
@@ -55,6 +56,7 @@ export function QueuesPage() {
     if (!parkDef) return;
     setFile(undefined);
     setTickets(undefined); // or the previous day's figure shows while loading
+    setRap(undefined);
     let alive = true;
     const tick = async () => {
       const [f, s] = await Promise.all([
@@ -71,6 +73,9 @@ export function QueuesPage() {
     // already serves. Queue-only parks 404 to null and show nothing.
     loadProductMonth(park!, "main", date.slice(0, 7)).then((f) => {
       if (alive) setTickets(f?.days[date]);
+    });
+    loadProductMonth(park!, "rap", date.slice(0, 7)).then((f) => {
+      if (alive) setRap(f?.days[date]);
     });
     const isToday = date === today();
     const id = isToday ? setInterval(tick, 30_000) : undefined;
@@ -113,6 +118,7 @@ export function QueuesPage() {
         asOf={asOf}
         special={special?.days[date]}
         tickets={tickets}
+        rap={rap}
       />
     </main>
   );

@@ -170,6 +170,53 @@ export async function loadSpecialDays(park: string): Promise<SpecialDaysFile | n
   return f.days && Object.keys(f.days).length > 0 ? f : null;
 }
 
+/* Reading an allocation.
+ *
+ * Three numbers come back per date: `capacity`, `available` and `used`. Only the
+ * first two are dependable. `used` is a PER-PACKAGE count, not a total for the
+ * date: Thorpe's 2026-10-31 moved from 1,373 to 604 purely because the Fright
+ * Nights package joined the query, so it cannot carry a headline figure.
+ *
+ * So "taken" is capacity minus availability. For RAP the pool is hard
+ * (available + used == capacity) and taken is exactly the number sold. For main
+ * there is slack in the yield, so the gap also holds inventory held back, which
+ * is why this says taken rather than sold. Either way it is the honest measure
+ * of how full a day is. */
+
+export interface Taken {
+  taken: number;
+  /** Percentage of capacity taken, 0-100. */
+  pct: number;
+  unsold: number;
+}
+
+export function takenOf(o: { capacity: number; available: number }): Taken | null {
+  if (!(o.capacity > 0)) return null;
+  const unsold = Math.max(0, o.available);
+  const taken = Math.max(0, o.capacity - unsold);
+  // Clamp the ends so rounding never contradicts the count beside it: 6,220 of
+  // 6,250 is 99.5% and must not read as 100% while 30 are still unsold, and a
+  // day with 108 taken must not read as 0%.
+  let pct = Math.round((taken / o.capacity) * 100);
+  if (pct === 100 && unsold > 0) pct = 99;
+  if (pct === 0 && taken > 0) pct = 1;
+  return { taken, pct, unsold };
+}
+
+/** Compact form for a calendar cell: "69% | 5,622 unsold". */
+export function takenShort(t: Taken): string {
+  return `${t.pct}% \u00b7 ${t.unsold.toLocaleString()} unsold`;
+}
+
+/** Full form: "12,378 of 18,000 taken (69%), 5,622 unsold". */
+export function takenLong(t: Taken, capacity: number): string {
+  return `${t.taken.toLocaleString()} of ${capacity.toLocaleString()} taken (${t.pct}%), ${t.unsold.toLocaleString()} unsold`;
+}
+
+/** What "taken" means, since it is not purely a sales count on the main pool. */
+export const TAKEN_NOTE =
+  "Taken is capacity minus availability. RAP is a hard pool, so taken is exactly the number sold; the main pool has slack in its yield, so taken also includes inventory held back.";
+
 export interface ParkIndex {
   minMonth: string; // 'YYYY-MM'
   maxMonth: string;

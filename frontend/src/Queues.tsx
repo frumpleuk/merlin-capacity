@@ -1,6 +1,9 @@
 import { useMemo, useRef, useState } from "react";
 import {
   specialLabel,
+  takenLong,
+  takenOf,
+  TAKEN_NOTE,
   type DayObs,
   type GroupDim,
   type QueueDayFile,
@@ -678,31 +681,29 @@ function RideRow({
   );
 }
 
-/** The day's public ticket availability, alongside the queues. A buyout day
- *  shows its own event allocation instead (see the banner above), so the two
- *  never appear together and never contradict each other.
+/** One allocation's state alongside the queues: how full the day is, and what
+ *  is left. Leads on taken rather than on `used` (see takenOf), and says
+ *  "unsold" rather than "left" so it reads the same on a past date as a future
+ *  one. A buyout day shows its own event allocation in the banner above and
+ *  suppresses the ticket line, so the two can never contradict each other.
  *
- *  Capacity 0 with bookings is the private-event shape and has no total to show
- *  a fraction against, so it reports the count alone. And "left" is wrong tense
- *  once a date has passed: what the figure means then is how much went unsold. */
-function TicketLine({ tickets, date }: { tickets?: DayObs; date: string }) {
+ *  Capacity 0 with bookings is the private-event shape: no total to show a
+ *  fraction against, so it reports the count alone. */
+function TicketLine({ tickets, label }: { tickets?: DayObs; label: string }) {
   if (!tickets) return null;
-  const past = date < new Date().toISOString().slice(0, 10);
-  if (tickets.capacity === 0) {
+  const t = takenOf(tickets);
+  if (!t) {
     if (tickets.used <= 0) return null;
     return (
       <p className="q-special tickets">
-        📋 <strong>{tickets.used.toLocaleString()}</strong> booked, against no published
-        allocation.
+        📋 {label}: <strong>{tickets.used.toLocaleString()}</strong> booked, against no
+        published allocation.
       </p>
     );
   }
-  const pct = Math.round((tickets.available / tickets.capacity) * 100);
   return (
-    <p className="q-special tickets">
-      🎟️ <strong>{tickets.available.toLocaleString()}</strong> of{" "}
-      {tickets.capacity.toLocaleString()} tickets {past ? "unsold at close" : "left"} ({pct}
-      %).
+    <p className="q-special tickets" title={TAKEN_NOTE}>
+      🎟️ {label}: <strong>{takenLong(t, tickets.capacity)}</strong>.
     </p>
   );
 }
@@ -844,6 +845,7 @@ export function QueueList({
   asOf,
   special,
   tickets,
+  rap,
 }: {
   file: QueueDayFile | null;
   date: string;
@@ -854,6 +856,9 @@ export function QueueList({
   /** This date's public ticket availability, so every day carries the figure a
    *  buyout day already showed. Absent for a queue-only park. */
   tickets?: DayObs;
+  /** Same for the Ride Access Pass pool, which is a hard pool: taken there is
+   *  exactly the number sold, and it fills long before general admission does. */
+  rap?: DayObs;
 }) {
   const [openId, setOpenId] = useState<number | null>(null);
   const [sort, setSort] = useState<SortMode>("now");
@@ -978,8 +983,9 @@ export function QueueList({
             ` ${special.available.toLocaleString()} of ${special.capacity.toLocaleString()} tickets left.`}
         </p>
       ) : (
-        <TicketLine tickets={tickets} date={date} />
+        <TicketLine tickets={tickets} label="Tickets" />
       )}
+      <TicketLine tickets={rap} label="RAP" />
       <div className="q-toolbar">
         <div className="q-sort" role="group" aria-label="Sort rides">
           <span className="q-sort-label">Sort</span>

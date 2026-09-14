@@ -1,4 +1,6 @@
 import { USER_AGENT, type OpeningHoursConfig, type ParkConfig } from "./config";
+import { buildParkIcal, parkIcalKey, writeIcal, type SpecialDaysLike } from "./ical";
+import { readRestrictions } from "./restrictions";
 import {
   logPoll,
   updateParkIndex,
@@ -534,6 +536,49 @@ function hashHours(snapshot: HoursSnapshot, fromDate: string): string {
 }
 
 /**
+ * Regenerate the park's subscribable calendar from the snapshot this poll just
+ * produced. The hours are already in memory, so this costs two small R2 reads
+ * (the buyout days and, for a Merlin park, the pass restrictions) and a write
+ * only when the feed's substance actually changed. Never throws: a feed is a
+ * convenience, and failing one must not fail the hours poll behind it.
+ */
+async function refreshParkIcal(
+  env: Env,
+  park: ParkConfig,
+  snapshot: HoursSnapshot,
+  observedAt: string,
+): Promise<void> {
+  try {
+    const [specialObj, restrictions] = await Promise.all([
+      env.BUCKET.get(`calendar/${park.key}/special.json`),
+      park.merlinPass ? readRestrictions(env.BUCKET) : Promise.resolve(null),
+    ]);
+    let special: SpecialDaysLike | null = null;
+    if (specialObj) {
+      try {
+        special = (await specialObj.json()) as SpecialDaysLike;
+      } catch {
+        /* a malformed file just means no buyout labels */
+      }
+    }
+    const body = buildParkIcal({
+      parkKey: park.key,
+      parkLabel: park.label,
+      snapshot,
+      special,
+      restrictions,
+      // From the start of the current month: settled history belongs in the
+      // site's calendar, not in a subscriber's.
+      from: `${observedAt.slice(0, 7)}-01`,
+      generatedAt: observedAt,
+    });
+    await writeIcal(env.BUCKET, parkIcalKey(park.key), body);
+  } catch {
+    /* keep the last good feed */
+  }
+}
+
+/**
  * One opening-hours poll for one park: fetch the marketing-site calendar and
  * overwrite the served R2 file. Unlike availability there's no delta log —
  * hours change rarely and the file is small, so we just rewrite it wholesale.
@@ -552,6 +597,7 @@ export async function runHoursPoll(env: Env, park: ParkConfig): Promise<number> 
     // where availability already covers a wider range.
     const months = [...new Set(Object.keys(res.snapshot).map((iso) => iso.slice(0, 7)))];
     await updateParkIndex(env.BUCKET, park.key, months, observedAt);
+    await refreshParkIcal(env, park, res.snapshot, observedAt);
   }
   await logPoll(
     env.DB,

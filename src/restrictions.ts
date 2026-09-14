@@ -6,6 +6,7 @@ import {
   USER_AGENT,
 } from "./config";
 import { logPoll, updatePollStatusHashed } from "./db";
+import { buildPassIcals, passIcalKey, writeIcal } from "./ical";
 import type { Env } from "./types";
 
 /**
@@ -221,6 +222,13 @@ export async function refreshRestrictions(env: Env, now: number): Promise<number
     await env.BUCKET.put(RESTRICTIONS_KEY, JSON.stringify(body), {
       httpMetadata: { contentType: "application/json" },
     });
+    // Subscribable form of the same calendar, one feed per level. From the start
+    // of the current month, so a subscriber's calendar doesn't carry last year.
+    await Promise.all(
+      buildPassIcals(body, `${observedAt.slice(0, 7)}-01`, observedAt).map((feed) =>
+        writeIcal(env.BUCKET, passIcalKey(feed.slug), feed.body),
+      ),
+    );
   }
   await logPoll(
     env.DB,

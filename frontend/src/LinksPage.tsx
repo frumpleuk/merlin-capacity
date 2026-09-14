@@ -1,5 +1,7 @@
+import { useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
-import { findPark, PARK_HOME } from "./catalog";
+import { loadRestrictions, tierSlug, type RestrictionsFile } from "./api";
+import { findPark, PARK_HOME, type ParkDef } from "./catalog";
 import { PARK_LINKS, PLATFORMS, type AppLink, type ParkLink } from "./links";
 import { SOCIAL_GLYPHS } from "./socialIcons";
 
@@ -89,8 +91,107 @@ function SocialIcon({ platform }: { platform: string }) {
   );
 }
 
-/** Static per-park link directory (tickets, accessibility, apps, socials). Pure
- *  data from links.ts — no fetch, so there's no loading or update-meta state.
+/* ── Calendar subscriptions ────────────────────────────────────────────────────
+ *
+ * The only links on this page that don't leave the site: our own iCal feeds (see
+ * src/ical.ts). Built from the current host rather than a configured origin, so
+ * they're right in local dev and behind any domain the Worker is served on. */
+
+const feedUrl = (path: string) => `${window.location.origin}${path}`;
+/** Apple Calendar, Outlook and most desktop clients subscribe on this scheme;
+ *  Google Calendar wants the https URL pasted, which is why both are offered. */
+const webcalUrl = (path: string) => `webcal://${window.location.host}${path}`;
+
+/** Copy the https form, for the clients that take a pasted URL. Falls back to
+ *  selecting nothing and saying so if the clipboard isn't available (an
+ *  insecure origin, or a browser that refuses the permission). */
+function CopyUrl({ path }: { path: string }) {
+  const [state, setState] = useState<"idle" | "done" | "failed">("idle");
+  return (
+    <button
+      className="lk-copy"
+      type="button"
+      onClick={async () => {
+        try {
+          await navigator.clipboard.writeText(feedUrl(path));
+          setState("done");
+        } catch {
+          setState("failed");
+        }
+        setTimeout(() => setState("idle"), 2000);
+      }}
+      aria-label={`Copy the calendar URL for ${path}`}
+    >
+      {state === "done" ? "Copied" : state === "failed" ? "Copy failed" : "Copy URL"}
+    </button>
+  );
+}
+
+function FeedRow({ label, note, path }: { label: string; note?: string; path: string }) {
+  return (
+    <div className="lk-feed">
+      <a className="lk-link lk-feed-sub" href={webcalUrl(path)}>
+        <span className="lk-label">
+          <span className="lk-text">{label}</span>
+        </span>
+        {note && <span className="lk-note">{note}</span>}
+      </a>
+      <CopyUrl path={path} />
+    </div>
+  );
+}
+
+/** The park's own calendar feed, plus — on a Merlin park — one feed per pass
+ *  level. The levels come from the served restriction file rather than a list
+ *  here, because they rotate (see src/restrictions.ts). */
+function CalendarGroup({ parkDef }: { parkDef: ParkDef }) {
+  const [restrictions, setRestrictions] = useState<RestrictionsFile | null>(null);
+  useEffect(() => {
+    if (!parkDef.merlinPass) return;
+    let alive = true;
+    loadRestrictions().then((f) => alive && setRestrictions(f));
+    return () => {
+      alive = false;
+    };
+  }, [parkDef]);
+
+  return (
+    <section className="lk-group lk-group-wide">
+      <h3>Calendar subscription</h3>
+      <FeedRow
+        label={`${parkDef.label} calendar`}
+        note="Opening hours, special events and private-event days, kept up to date"
+        path={`/ical/${parkDef.key}.ics`}
+      />
+      {parkDef.merlinPass && (
+        <>
+          <FeedRow
+            label="Pass restrictions — all levels"
+            note="Every Merlin Annual Pass exclusion date, labelled with the levels it applies to"
+            path="/ical/pass/all.ics"
+          />
+          {restrictions && (
+            <div className="lk-feed-tiers">
+              <span className="lk-note">Or just your own level:</span>
+              {restrictions.tiers.map((t) => (
+                <a
+                  key={t.name}
+                  className="lk-social"
+                  href={webcalUrl(`/ical/pass/${tierSlug(t.name)}.ics`)}
+                >
+                  {t.name}
+                </a>
+              ))}
+            </div>
+          )}
+        </>
+      )}
+    </section>
+  );
+}
+
+/** Static per-park link directory (tickets, accessibility, apps, socials), plus
+ *  the park's calendar feeds.
  *  The groups lay out as columns on a wide screen and stack on a narrow one;
  *  Social spans the full width so its pills get a full row before wrapping. */
 export function LinksPage() {
@@ -139,6 +240,8 @@ export function LinksPage() {
             ))}
           </section>
         )}
+
+        <CalendarGroup parkDef={parkDef} />
 
         {socials.length > 0 && (
           <section className="lk-group lk-group-wide">

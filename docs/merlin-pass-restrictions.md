@@ -138,6 +138,9 @@ fresh file.
 - **Anomalies.** `status/<park>/anomalies.json` gains `pass_blackouts`: the
   reported dates the estate is shut on. It qualifies a finding ("this unexplained
   date is a blackout") rather than being a new kind of contradiction.
+- **iCal.** `/ical/pass/<level>.ics` per level, plus `all.ics` — subscribe to
+  your own level and the calendar shows the days you can't go. The park feeds
+  carry the day's restriction in their description. See `src/ical.ts`.
 
 ## 7. Not done
 

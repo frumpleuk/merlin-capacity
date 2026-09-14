@@ -199,6 +199,11 @@ export interface RestrictionsFile {
  *  information in a list of them and costs the cell its width. */
 export const tierShort = (name: string): string => name.replace(/\s*pass\s*$/i, "").trim();
 
+/** "Gold Pass" -> "gold", the last segment of that level's iCal feed URL.
+ *  Mirrors `tierSlug` in src/ical.ts, which names the file. */
+export const tierSlug = (name: string): string =>
+  tierShort(name).toLowerCase().replace(/[^a-z0-9]+/g, "-");
+
 export interface RestrictionSummary {
   /** What to show in a cell: "All passes", "All but Platinum", or the list. */
   label: string;

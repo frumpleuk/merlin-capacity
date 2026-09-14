@@ -33,6 +33,11 @@ export const USER_AGENT =
 // auto-captures next year's dates as each park releases them.
 export const HORIZON_DAYS = 365;
 
+/** Where this deployment is served from (the `routes` entry in wrangler.toml).
+ *  Used to build absolute URLs in things that leave the site — the iCal feeds
+ *  carry it in UIDs, which must not move, and in each event's link back. */
+export const SITE_ORIGIN = "https://themeparks.frumple.co.uk";
+
 /* ── Merlin Annual Pass entry restrictions ─────────────────────────────────────
  *
  * The dates a given pass tier is refused entry. Published by the pass site, not
@@ -313,6 +318,10 @@ export const EXCHANGE_ADDON_CLASSES = new Set([
 
 export interface ParkConfig {
   key: string;
+  /** Display name. Only leaves the Worker through the iCal feeds (calendar name
+   *  and event summaries); the site's own nav labels live in
+   *  frontend/src/catalog.ts. */
+  label: string;
   /** accesso availability identity. Optional: a queue-only park (Paulton's) has
    *  no accesso backend at all. Only ever read for parks with ticket `products`,
    *  so a queue-only park simply omits them. */
@@ -347,6 +356,7 @@ const hoursUrl = (host: string, locationIds: string) =>
 export const PARKS: ParkConfig[] = [
   {
     key: "alton_towers",
+    label: "Alton Towers",
     merchantId: "800",
     origin: "https://me-twalton.tickets.altontowers.com",
     bootstrapSlug: "ME-TWALTON",
@@ -393,6 +403,7 @@ export const PARKS: ParkConfig[] = [
   },
   {
     key: "thorpe_park",
+    label: "Thorpe Park",
     merchantId: "105",
     origin: "https://me-tpr.tickets.thorpepark.com",
     bootstrapSlug: "ME-TPR",
@@ -435,6 +446,7 @@ export const PARKS: ParkConfig[] = [
   },
   {
     key: "legoland",
+    label: "Legoland Windsor",
     merchantId: "700",
     origin: "https://me-llwindsor.tickets.legoland.co.uk",
     bootstrapSlug: "ME-LLWINDSOR",
@@ -478,6 +490,7 @@ export const PARKS: ParkConfig[] = [
   },
   {
     key: "chessington",
+    label: "Chessington",
     merchantId: "6400",
     origin: "https://me-wachessington.tickets.chessington.com",
     bootstrapSlug: "ME-WACHESSINGTON",
@@ -549,6 +562,7 @@ export const PARKS: ParkConfig[] = [
     //    app-embedded static token). Names come inline with the feed, so unlike
     //    the Attractions.io parks there's no content bundle / catalog cron.
     key: "paultons",
+    label: "Paultons Park",
     openingHours: {
       kind: "paultons",
       timesUrl: "https://paultonspark.co.uk/info/opening-times/times.json",
@@ -588,6 +602,7 @@ export const PARKS: ParkConfig[] = [
     //    whose public iCal feed we page through into a rolling What's-On calendar
     //    (headline act per day + full lineup). See docs/flamingoland-calendar.md.
     key: "flamingoland",
+    label: "Flamingo Land",
     openingHours: {
       kind: "flamingoland",
       icalUrl: "https://www.flamingoland.co.uk/holiday-resort/entertainment-guide/list/",
@@ -613,6 +628,7 @@ export const PARKS: ParkConfig[] = [
     //    (park-dates-times/v2) — one entry per open date, no auth or header gotchas.
     // See docs/blackpool-api.md.
     key: "blackpool",
+    label: "Blackpool Pleasure Beach",
     openingHours: {
       kind: "bpb",
       apiUrl: "https://bookings.blackpoolpleasurebeach.com/api/park-dates-times/v2",

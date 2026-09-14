@@ -1088,3 +1088,46 @@ main.with-bar {
   height: 14px;
   flex: none;
 }
+
+/* Calendar feeds. The subscribe link and the copy button share one row: a
+   webcal: link works in Apple Calendar and Outlook, Google wants the https URL
+   pasted, and there's no way to tell which the reader uses. */
+.lk-feed {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  border-top: 1px solid var(--grid);
+}
+.lk-feed .lk-link {
+  flex: 1;
+  min-width: 0;
+  border-top: none;
+}
+.lk-copy {
+  flex: none;
+  align-self: center;
+  padding: 6px 11px;
+  font: inherit;
+  font-size: 12px;
+  color: var(--link);
+  background: var(--card);
+  border: 1px solid transparent;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.lk-copy:hover,
+.lk-copy:focus-visible {
+  border-color: var(--link);
+}
+.lk-feed-tiers {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 0 2px;
+}
+/* The prompt ahead of the level pills sits on the same line as they do. */
+.lk-feed-tiers .lk-note {
+  display: inline;
+  margin: 0;
+}

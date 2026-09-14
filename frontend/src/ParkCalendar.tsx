@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import {
   ANOMALY_SHORT,
+  restrictionSummary,
   specialLabel,
   takenLong,
   takenOf,
@@ -12,6 +13,8 @@ import {
   type LocationHours,
   type ProductFile,
   type AnomalyKind,
+  type RestrictionsFile,
+  type RestrictionSummary,
   type SpecialDay,
   type SpecialDaysFile,
 } from "./api";
@@ -51,6 +54,9 @@ export interface DayDetail {
   /** The theme park runs this day but is closed to the public — a buyout, named
    *  by the only package that sells it. */
   special?: SpecialDay;
+  /** Merlin Annual Pass levels refused entry on this date, already phrased for
+   *  display (see restrictionSummary). Merlin parks only. */
+  restricted?: RestrictionSummary;
 }
 
 function getEventIcon(name: string): string {
@@ -130,6 +136,7 @@ export function mergeDetails(
   special: SpecialDaysFile | null,
   season: ProductFile | null,
   anomalies: Record<string, { kind: AnomalyKind; note: string }>,
+  restrictions: RestrictionsFile | null,
 ): Map<string, DayDetail> {
   const map = new Map<string, DayDetail>();
   const get = (iso: string): DayDetail => {
@@ -154,6 +161,14 @@ export function mergeDetails(
   for (const [iso, a] of Object.entries(anomalies)) {
     const d = map.get(iso);
     if (d) d.anomaly = a;
+  }
+  // Restrictions CAN create a date: the pass calendar runs to the end of next
+  // year, well past the hours feed and the ticket catalog, so on a far-out date
+  // it is often the only thing known — and it is the one thing a passholder
+  // planning that far ahead wants.
+  for (const [iso, blocked] of Object.entries(restrictions?.days ?? {})) {
+    if (blocked.length === 0) continue;
+    get(iso).restricted = restrictionSummary(blocked, restrictions!.tiers);
   }
   return map;
 }
@@ -194,6 +209,16 @@ function CellContent({ d }: { d: DayDetail }) {
       {!tp?.hours && (d.hours?.events?.length ?? 0) > 0 && (
         <div className="rc-line rc-shows">
           🎭 {d.hours!.events!.length} event{d.hours!.events!.length === 1 ? "" : "s"}
+        </div>
+      )}
+      {/* Which pass levels can't get in. A near-total block says what still
+          gets in rather than naming four levels — see restrictionSummary. */}
+      {d.restricted && (
+        <div
+          className={"rc-line rc-restricted" + (d.restricted.blackout ? " rc-blackout" : "")}
+          title={d.restricted.note}
+        >
+          🚫 {d.restricted.label}
         </div>
       )}
       {/* The private event's own allocation. It isn't the park pool, so it only
@@ -296,6 +321,14 @@ function DayBody({ d, seasonLabel }: { d: DayDetail; seasonLabel: string }) {
               <span className="rc-body-event-name">{e.name}</span>
             </div>
           ))}
+        </div>
+      )}
+      {d.restricted && (
+        <div
+          className={"rc-body-avail rc-restricted" + (d.restricted.blackout ? " rc-blackout" : "")}
+        >
+          🚫 Pass restricted: {d.restricted.label}
+          <div className="rc-prebook-note">{d.restricted.note}</div>
         </div>
       )}
       {d.anomaly && (
@@ -548,6 +581,7 @@ export function ParkCalendar({
   special,
   season,
   anomalies,
+  restrictions,
   month,
   loading,
   onPrev,
@@ -561,6 +595,7 @@ export function ParkCalendar({
   special: SpecialDaysFile | null;
   season: ProductFile | null;
   anomalies: Record<string, { kind: AnomalyKind; note: string }>;
+  restrictions: RestrictionsFile | null;
   month: string;
   loading?: boolean;
   onPrev: () => void;
@@ -573,7 +608,7 @@ export function ParkCalendar({
   // A tapped day belongs to the current month — clear it when navigating away.
   useEffect(() => setSelected(null), [month]);
 
-  const details = mergeDetails(main, rap, hours, special, season, anomalies);
+  const details = mergeDetails(main, rap, hours, special, season, anomalies, restrictions);
   // A season product names itself in its own file, so the calendar doesn't need
   // to know which park has one.
   const seasonLabel = season?.label ?? "Season";

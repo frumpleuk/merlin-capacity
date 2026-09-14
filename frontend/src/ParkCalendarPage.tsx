@@ -7,12 +7,14 @@ import {
   loadPollStatus,
   loadAnomalies,
   loadProductMonth,
+  loadRestrictions,
   loadSpecialDays,
   mergeStatus,
   type AnomalyKind,
   type ParkIndex,
   type PollStatus,
   type ProductFile,
+  type RestrictionsFile,
   type SpecialDaysFile,
 } from "./api";
 import { findPark, PARK_HOME } from "./catalog";
@@ -42,6 +44,20 @@ function specialForMonth(
   return Object.keys(days).length ? { ...file, days } : null;
 }
 
+/** Same reasoning as specialForMonth: the restriction calendar covers ~15
+ *  months in one object and a restricted date CREATES a calendar row, so an
+ *  unfiltered file would spill next spring's blackouts into this month's agenda. */
+function restrictionsForMonth(
+  file: RestrictionsFile | null,
+  month: string,
+): RestrictionsFile | null {
+  if (!file) return null;
+  const days = Object.fromEntries(
+    Object.entries(file.days).filter(([iso]) => iso.startsWith(month)),
+  );
+  return Object.keys(days).length ? { ...file, days } : null;
+}
+
 const currentMonth = () => new Date().toISOString().slice(0, 7);
 
 /** Shift a 'YYYY-MM' by whole months (UTC-safe). */
@@ -62,6 +78,7 @@ export function ParkCalendarPage() {
   const [anomalies, setAnomalies] = useState<
     Record<string, { kind: AnomalyKind; note: string }>
   >({});
+  const [restrictions, setRestrictions] = useState<RestrictionsFile | null>(null);
   const [status, setStatus] = useState<PollStatus | null>(null);
 
   // Reset to the current month and refetch bounds whenever the park changes.
@@ -71,6 +88,7 @@ export function ParkCalendarPage() {
     setBounds(null);
     setSpecial(null);
     setAnomalies({});
+    setRestrictions(null);
     let alive = true;
     loadParkIndex(park!).then((b) => alive && setBounds(b));
     // One file for the whole horizon, refreshed daily — fetched per park, not
@@ -79,6 +97,12 @@ export function ParkCalendarPage() {
     // Whole-horizon, like the special days: one fetch per park, filtered at
     // render. Annotates existing cells, so it needs no month slicing.
     loadAnomalies(park!).then((a) => alive && setAnomalies(a));
+    // Estate-wide and identical for all four Merlin parks, so it's one file for
+    // the whole horizon like the special days — sliced to the month at render.
+    // The independents run their own pass schemes; nothing to show for them.
+    if (parkDef.merlinPass) {
+      loadRestrictions().then((f) => alive && setRestrictions(f));
+    }
     return () => {
       alive = false;
     };
@@ -144,6 +168,7 @@ export function ParkCalendarPage() {
         season={data?.season ?? null}
         special={specialForMonth(special, month)}
         anomalies={anomalies}
+        restrictions={restrictionsForMonth(restrictions, month)}
         loading={data === undefined}
         month={month}
         onPrev={() => setMonth((m) => addMonths(m, -1))}

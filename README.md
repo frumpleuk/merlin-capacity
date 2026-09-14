@@ -63,6 +63,21 @@ package names are learned and verified against the live merge before being
 adopted, and exchange merchant ids heal themselves if they move. See
 [`docs/accesso-api.md` §7](docs/accesso-api.md).
 
+### Pass restriction dates
+
+The Merlin Annual Pass publishes the dates each pass level is refused entry, and
+it publishes them for the whole estate at once — currently to 2027-12-27, about
+15 months further ahead than the ticket catalog. The calendar shows them on the
+four Merlin parks ("All but Platinum", "All passes", or the list of levels), and
+they double as evidence about a date: a day where every level but the top one is
+blocked is a day the estate is shut to passholders. That is the buyout shape —
+2026-11-06/07/08 are the same three Thorpe partner days
+[`special-days.ts`](src/special-days.ts) finds from the exchange catalog, reached
+from a source that knows nothing about packages, and 2027's set is already
+published with no package in existence. Those dates surface in
+`status/<park>/anomalies.json` as `pass_blackouts`. See
+[`docs/merlin-pass-restrictions.md`](docs/merlin-pass-restrictions.md).
+
 ## What it captures
 
 For `main` and `rap`, per visit date: `capacity`, `available` (tickets left),
@@ -106,7 +121,7 @@ from the Attractions.io ("Occasio") backend that powers the official park apps
 - `src/` — the Worker: cron poller (`poll.ts`), API client (`merlin.ts`),
   D1/R2 helpers (`db.ts`), config/IDs (`config.ts`), entry (`index.ts`).
   Queue times: live poll (`queues.ts`) + static ride catalog (`rides.ts`).
-  Buyout days: `special-days.ts`.
+  Buyout days: `special-days.ts`. Pass restriction dates: `restrictions.ts`.
 - `frontend/` — Vite + React heatmap; builds to `dist/`, served as Workers Assets.
 - `migrations/` — D1 schema.
 

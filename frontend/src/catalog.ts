@@ -14,6 +14,10 @@ export interface ParkDef {
   /** Queue-only park (Paulton's): no accesso tickets/calendar, only the live
    *  ride-queue times. The nav shows just the Queues tab and lands there. */
   queueOnly?: boolean;
+  /** On the Merlin Annual Pass, so the estate-wide entry restrictions apply and
+   *  the calendar shows which pass levels are refused on a date (see
+   *  loadRestrictions). The independents are on their own pass schemes. */
+  merlinPass?: boolean;
 }
 
 // Only list products the poller actually captures. Main tickets for the
@@ -22,6 +26,7 @@ export interface ParkDef {
 export const PARKS: ParkDef[] = [
   {
     key: "alton_towers",
+    merlinPass: true,
     label: "Alton Towers",
     products: [
       { key: "main", label: "Tickets" },
@@ -32,6 +37,7 @@ export const PARKS: ParkDef[] = [
   },
   {
     key: "thorpe_park",
+    merlinPass: true,
     label: "Thorpe Park",
     products: [
       { key: "main", label: "Tickets" },
@@ -40,6 +46,7 @@ export const PARKS: ParkDef[] = [
   },
   {
     key: "legoland",
+    merlinPass: true,
     label: "Legoland Windsor",
     products: [
       { key: "main", label: "Tickets" },
@@ -48,6 +55,7 @@ export const PARKS: ParkDef[] = [
   },
   {
     key: "chessington",
+    merlinPass: true,
     label: "Chessington",
     products: [
       { key: "main", label: "Tickets" },

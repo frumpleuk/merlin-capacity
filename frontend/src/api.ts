@@ -170,6 +170,86 @@ export async function loadSpecialDays(park: string): Promise<SpecialDaysFile | n
   return f.days && Object.keys(f.days).length > 0 ? f : null;
 }
 
+/* ── Merlin Annual Pass entry restrictions ─────────────────────────────────────
+ *
+ * The dates a pass tier is refused entry. One calendar for the whole Merlin
+ * estate rather than one per park, so it's fetched once and filed under the
+ * pseudo-park key `merlin`. For a passholder this is the first question about a
+ * date, which is why it sits on the day alongside the hours and the ticket
+ * figures. See src/restrictions.ts. */
+
+export interface RestrictionTier {
+  name: string; // "Gold Pass", "Discovery Pass", …
+  color?: string;
+}
+
+export interface RestrictionsFile {
+  generated_at: string;
+  /** Every tier the calendar covers; a date blocked for all of them is an
+   *  estate-wide blackout. */
+  tiers: RestrictionTier[];
+  /** First and last date the published calendar covers. Past its end there is
+   *  no data, which is not the same as no restriction. */
+  span: [string, string];
+  /** date -> the tiers refused entry. Only dates with at least one. */
+  days: Record<string, string[]>;
+}
+
+/** "Gold Pass" -> "Gold". The word "Pass" is on every tier, so it carries no
+ *  information in a list of them and costs the cell its width. */
+export const tierShort = (name: string): string => name.replace(/\s*pass\s*$/i, "").trim();
+
+export interface RestrictionSummary {
+  /** What to show in a cell: "All passes", "All but Platinum", or the list. */
+  label: string;
+  /** The whole sentence, for the tooltip and the detail body. */
+  note: string;
+  /** At most the top level gets in — the estate is shut to passholders. The
+   *  first November weekend reads this way every year (2026-11-06/07/08 are the
+   *  Thorpe partner days), as does Christmas Day. */
+  blackout: boolean;
+}
+
+/**
+ * How a date's blocked levels read. Naming four of five levels fills a calendar
+ * cell and buries the point, so a near-total block is stated as what still gets
+ * in: "All but Platinum".
+ */
+export function restrictionSummary(
+  blocked: string[],
+  tiers: RestrictionTier[],
+): RestrictionSummary {
+  const names = tiers.map((t) => t.name);
+  const left = names.filter((n) => !blocked.includes(n));
+  if (names.length >= 3 && left.length === 0) {
+    return {
+      label: "All passes",
+      note: "No Merlin Annual Pass level is admitted on this date.",
+      blackout: true,
+    };
+  }
+  if (names.length >= 3 && left.length === 1) {
+    return {
+      label: `All but ${tierShort(left[0])}`,
+      note: `Only ${left[0]} is admitted on this date; every other Merlin Annual Pass level is refused entry.`,
+      blackout: true,
+    };
+  }
+  return {
+    label: blocked.map(tierShort).join(", "),
+    note: `Merlin Annual Pass entry restriction: ${blocked.join(", ")} not admitted on this date.`,
+    blackout: false,
+  };
+}
+
+/** The restriction calendar. Null when it hasn't been polled yet. */
+export async function loadRestrictions(): Promise<RestrictionsFile | null> {
+  const r = await fetch("/calendar/merlin/restrictions.json", { cache: "no-store" });
+  if (!r.ok) return null;
+  const f = (await r.json()) as RestrictionsFile;
+  return f.days && Object.keys(f.days).length > 0 ? f : null;
+}
+
 /* Reading an allocation.
  *
  * Three numbers come back per date: `capacity`, `available` and `used`. Only the

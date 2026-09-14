@@ -33,6 +33,41 @@ export const USER_AGENT =
 // auto-captures next year's dates as each park releases them.
 export const HORIZON_DAYS = 365;
 
+/* ── Merlin Annual Pass entry restrictions ─────────────────────────────────────
+ *
+ * The dates a given pass tier is refused entry. Published by the pass site, not
+ * by a park, and it applies across the whole Merlin estate — so it's polled once
+ * and filed under the pseudo-park key `merlin` (NOT a ParkConfig; nothing else
+ * keys off it). See src/restrictions.ts and docs/merlin-pass-restrictions.md.
+ */
+
+/** The pass site's page carrying the restriction calendar. Its
+ *  `<passtype-restrictions-dates passes="…">` attribute is the live list of pass
+ *  ids, which is what we read rather than trusting the seed below. */
+export const RESTRICTIONS_PAGE =
+  "https://www.merlinannualpass.co.uk/important-information/terms-conditions/restriction-dates/";
+
+/** The Umbraco API the page's Vue component calls. Unauthenticated GETs. */
+export const RESTRICTIONS_API =
+  "https://www.merlinannualpass.co.uk/umbraco/api/EntryRestrictionDates";
+
+/**
+ * Seed pass ids, used only when the page scrape fails. Tiers rotate — Merlin
+ * added "Essential" and stopped publishing "Silver" in GetPassTypes while its
+ * id still names dates — so the scrape is the source of truth and this is the
+ * last-resort fallback (a stale id costs one missing tier, not a failed poll).
+ */
+export const RESTRICTION_PASS_IDS = [
+  "497a9da9-9387-431c-a56e-350dee6ef877", // Essential
+  "2b1836f9-741b-48e4-8c85-1cdd0b33faae", // Gold
+  "ab93e3ae-5c8a-4f2c-aed7-b8647dc97ac8", // Platinum
+  "498cd0c1-24dc-4717-a4ef-a2685a70890c", // Silver
+  "2f04d5ac-ac4f-45d3-b599-bc02af7a5614", // Discovery
+];
+
+/** R2 / poll-log key the estate-wide restriction stream is filed under. */
+export const MERLIN_PASS_KEY = "merlin";
+
 
 /** Attractions.io ("Occasio") identity for a park — powers ride names + live
  *  queue times (see docs/attractions-io-api.md). `apiKey` is the app's public
@@ -296,6 +331,11 @@ export interface ParkConfig {
   /** Trade / reseller merchant, when the park has one (see ExchangeConfig).
    *  Read only by the daily special-days job. */
   exchange?: ExchangeConfig;
+  /** On the Merlin Annual Pass. Drives whether the estate-wide entry
+   *  restrictions (src/restrictions.ts) apply to this park — set only on the
+   *  Merlin parks, never inferred from `merchantId`, so a future accesso park
+   *  outside the pass doesn't silently inherit them. */
+  merlinPass?: boolean;
   /** accesso ticket products to poll. Empty for a queue-only park. */
   products: ProductConfig[];
 }
@@ -310,6 +350,7 @@ export const PARKS: ParkConfig[] = [
     merchantId: "800",
     origin: "https://me-twalton.tickets.altontowers.com",
     bootstrapSlug: "ME-TWALTON",
+    merlinPass: true,
     // 805, not 807: 807 is a Fastrack-only catalog with no partner packages.
     exchange: {
       merchantIds: ["805"],
@@ -355,6 +396,7 @@ export const PARKS: ParkConfig[] = [
     merchantId: "105",
     origin: "https://me-tpr.tickets.thorpepark.com",
     bootstrapSlug: "ME-TPR",
+    merlinPass: true,
     exchange: {
       merchantIds: ["107"],
       origin: "https://me-tpchertsey-exchange.secure-cdn.meg-eu.accessoticketing.com",
@@ -396,6 +438,7 @@ export const PARKS: ParkConfig[] = [
     merchantId: "700",
     origin: "https://me-llwindsor.tickets.legoland.co.uk",
     bootstrapSlug: "ME-LLWINDSOR",
+    merlinPass: true,
     // Split across two ids: the John Lewis days sit on 700, Blue Light on 704.
     exchange: {
       merchantIds: ["700", "704"],
@@ -438,6 +481,7 @@ export const PARKS: ParkConfig[] = [
     merchantId: "6400",
     origin: "https://me-wachessington.tickets.chessington.com",
     bootstrapSlug: "ME-WACHESSINGTON",
+    merlinPass: true,
     exchange: {
       merchantIds: ["6407"],
       origin: "https://me-wachessington.tickets.chessington.com",

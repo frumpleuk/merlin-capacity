@@ -1,5 +1,6 @@
 import { HORIZON_DAYS, type ParkConfig } from "./config";
 import { readRangeSnapshot } from "./db";
+import { blackoutDates, readRestrictions } from "./restrictions";
 import type { DayObs, Env } from "./types";
 
 const ymd = (ms: number) => new Date(ms).toISOString().slice(0, 10);
@@ -66,6 +67,12 @@ export interface AnomaliesFile {
   hours_span?: [string, string];
   total: number;
   groups: AnomalyGroup[];
+  /** Of the dates reported above, those the Merlin pass estate is shut on — no
+   *  level admitted, or only the top one (see blackoutDates). That is what a
+   *  buyout or a closure looks like from the pass side: evidence from a source
+   *  that knows nothing about packages or allocations, and published well
+   *  before the ticket catalog names the day. Merlin parks only. */
+  pass_blackouts?: string[];
 }
 
 const NOTES: Record<AnomalyKind, string> = {
@@ -181,7 +188,7 @@ export async function refreshAnomalies(
   // while its history survives: Chessington 2026-11-20 carries a RAP allocation
   // of 249 in the log and is absent from the forward file, which is exactly the
   // kind of date this report exists to surface.
-  const [main, rap, season, hours, explained] = await Promise.all([
+  const [main, rap, season, hours, explained, restrictions] = await Promise.all([
     readRangeSnapshot(env.DB, park.key, "main", today, end),
     readRangeSnapshot(env.DB, park.key, "rap", today, end),
     // A season sold under its own package (Chessington Christmas). Its dates
@@ -190,6 +197,9 @@ export async function refreshAnomalies(
     readRangeSnapshot(env.DB, park.key, "season", today, end),
     readHours(env.BUCKET, park.key, monthsBetween(today, end)),
     readExplained(env.BUCKET, park.key),
+    // Estate-wide, so it's read once for the whole pass rather than per park —
+    // and only where the pass applies.
+    park.merlinPass ? readRestrictions(env.BUCKET) : Promise.resolve(null),
   ]);
 
   const pool = derivePool(main, today);
@@ -251,6 +261,15 @@ export async function refreshAnomalies(
   }));
   const total = groups.reduce((n, g) => n + g.dates.length, 0);
 
+  // Which of the unexplained dates the pass estate already treats as shut. Kept
+  // as its own list rather than folded into a group: it qualifies a finding
+  // (this one is a blackout) instead of being a different contradiction.
+  const blackouts = restrictions ? blackoutDates(restrictions) : new Set<string>();
+  const passBlackouts = groups
+    .flatMap((g) => g.dates)
+    .filter((d) => blackouts.has(d))
+    .sort();
+
   const body: AnomaliesFile = {
     park: park.key,
     generated_at: new Date(now).toISOString(),
@@ -258,6 +277,7 @@ export async function refreshAnomalies(
     ...(span ? { hours_span: span } : {}),
     total,
     groups,
+    ...(passBlackouts.length ? { pass_blackouts: passBlackouts } : {}),
   };
   await env.BUCKET.put(`status/${park.key}/anomalies.json`, JSON.stringify(body), {
     httpMetadata: { contentType: "application/json" },

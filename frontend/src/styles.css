@@ -14,6 +14,8 @@
      seasonal-event orange (.rc-event) so a private hire never reads as a
      Scarefest / Fireworks day. */
   --buyout: #7a5bd0;
+  /* Merlin Annual Pass entry restriction — the day the pass doesn't get in. */
+  --restricted: #b3453c;
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -28,6 +30,7 @@
     --q-closed: #f0685c; /* lifted for the dark surface */
     --link: #74b0ec;
     --buyout: #a98fe8;
+    --restricted: #e8837a;
   }
 }
 * {
@@ -357,6 +360,15 @@ main.with-bar {
 /* Closed to the public, open for a private event — see BUYOUT_NOTE. */
 .rc-buyout {
   color: var(--buyout);
+  font-weight: 600;
+}
+/* Merlin pass levels refused entry. Red is the only "you can't" on the calendar,
+   and it must not be mistaken for the sold-out ❌ beside a ticket figure — hence
+   its own muted weight until every level is blocked. */
+.rc-restricted {
+  color: var(--restricted);
+}
+.rc-restricted.rc-blackout {
   font-weight: 600;
 }
 

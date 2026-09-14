@@ -6,6 +6,7 @@ import { runHoursPoll } from "./hours";
 import { refreshPaultonsRestrictions } from "./paultons-restrictions";
 import { runPoll } from "./poll";
 import { runQueuePoll } from "./queues";
+import { refreshRestrictions } from "./restrictions";
 import { rebuildCatalog } from "./rides";
 import { refreshSpecialDays } from "./special-days";
 import type { Env } from "./types";
@@ -43,9 +44,14 @@ async function pollTickets(env: Env): Promise<void> {
 }
 
 /** Opening-hours calendars — every park, hourly. Cheap GETs; hours change rarely
- *  but hourly surfaces a new month or special event promptly. */
-async function pollHours(env: Env): Promise<void> {
-  await Promise.all(PARKS.map((park) => runHoursPoll(env, park)));
+ *  but hourly surfaces a new month or special event promptly. The Merlin Annual
+ *  Pass restriction calendar rides along: same kind of source (a marketing-site
+ *  JSON calendar), same rate of change, and two more GETs an hour. */
+async function pollHours(env: Env, scheduledTime: number): Promise<void> {
+  await Promise.all([
+    ...PARKS.map((park) => runHoursPoll(env, park)),
+    refreshRestrictions(env, scheduledTime),
+  ]);
 }
 
 /** Self-heal the forward month files from D1 for every ticket product — repairs a
@@ -100,7 +106,7 @@ export default {
       case CRON_TICKETS:
         return void ctx.waitUntil(pollTickets(env));
       case CRON_HOURS:
-        return void ctx.waitUntil(pollHours(env));
+        return void ctx.waitUntil(pollHours(env, event.scheduledTime));
       case CRON_REBUILD:
         return void ctx.waitUntil(pollRebuild(env, event.scheduledTime));
       case CRON_PREOPEN:
@@ -164,6 +170,8 @@ export default {
           dates: await runHoursPoll(env, park),
         })),
       );
+      // Estate-wide, not per park — one fetch for every Merlin park's calendar.
+      const restrictions = await refreshRestrictions(env, Date.now());
       const queues = await Promise.all(
         queueParks().map(async (park) => ({
           park: park.key,
@@ -209,7 +217,16 @@ export default {
           ).length,
         })),
       );
-      return Response.json({ ok: true, results, hours, queues, special, anomalies, rebuilt });
+      return Response.json({
+        ok: true,
+        results,
+        hours,
+        restrictions,
+        queues,
+        special,
+        anomalies,
+        rebuilt,
+      });
     }
 
     // Everything else: the static heatmap.

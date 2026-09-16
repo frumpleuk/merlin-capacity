@@ -507,6 +507,7 @@ export async function rebuildMonthsFromD1(
   const months = await readLatestMonths(db, park, product, fromMonth);
 
   const written: string[] = [];
+  const present: string[] = [];
   for (const m of months) {
     const snapshot =
       source === "log"
@@ -518,10 +519,17 @@ export async function rebuildMonthsFromD1(
     // is right — and only the full repair reaches back that far anyway, since
     // both crons start at the current month.
     if (Object.keys(snapshot).length === 0) continue;
-    await putMonthFile(bucket, park, product, m, snapshot, generatedAt, label);
-    written.push(m);
+    present.push(m);
+    if (await putMonthFileIfChanged(bucket, park, product, m, snapshot, generatedAt, label)) {
+      written.push(m);
+    }
   }
-  if (written.length) await updateParkIndex(bucket, park, written, generatedAt);
+  // `present`, not `written`: the index carries the min/max month the park has
+  // data for, so a month that exists still sets the bounds even when its file
+  // needed no rewrite. Passing `written` would let the bounds drift backwards on
+  // a run where everything was already up to date. updateParkIndex is itself a
+  // no-op put when the bounds haven't moved, so this stays one Class B get.
+  if (present.length) await updateParkIndex(bucket, park, present, generatedAt);
   return written;
 }
 
@@ -546,6 +554,70 @@ export async function putMonthFile(
   await bucket.put(`calendar/${park}/${product}/${month}.json`, body, {
     httpMetadata: { contentType: "application/json" },
   });
+}
+
+/** Field-by-field, rather than comparing serialised JSON: both snapshots are
+ *  built from object literals in the same key order today, but that is a
+ *  coincidence of how `readLatestRange` and `readRangeSnapshot` happen to be
+ *  written, and a reordered literal would silently turn every comparison into a
+ *  mismatch — which fails the safe way (a wasted write) but defeats the point. */
+function sameSnapshot(a: Snapshot, b: Snapshot): boolean {
+  const keys = Object.keys(a);
+  if (keys.length !== Object.keys(b).length) return false;
+  for (const d of keys) {
+    const x = a[d];
+    const y = b[d];
+    if (!y) return false;
+    // `onSale` is absent for products with no anchor and for pre-column history,
+    // and both mean "on sale" — so absent and undefined have to compare equal.
+    if (
+      x.capacity !== y.capacity ||
+      x.available !== y.available ||
+      x.used !== y.used ||
+      x.packageIds !== y.packageIds ||
+      (x.onSale ?? null) !== (y.onSale ?? null)
+    ) {
+      return false;
+    }
+  }
+  return true;
+}
+
+/**
+ * `putMonthFile`, but skip the write when the stored `days` already match.
+ * Trades a Class B get for a Class A put, which are priced 12.5:1.
+ *
+ * Only the rebuild cron uses this. It rewrites every forward month on a fixed
+ * cadence and normally finds all of them identical, since `generated_at` is the
+ * one field that moved — about 1,250 pointless writes a day. The poll path
+ * deliberately does NOT use it: that path only ever writes a month whose data
+ * just changed, so the get would always be spent to discover a difference we
+ * already knew about.
+ *
+ * Returns whether it actually wrote.
+ */
+export async function putMonthFileIfChanged(
+  bucket: R2Bucket,
+  park: string,
+  product: Product,
+  month: string,
+  snapshot: Snapshot,
+  generatedAt: string,
+  label?: string,
+): Promise<boolean> {
+  const obj = await bucket.get(`calendar/${park}/${product}/${month}.json`);
+  if (obj) {
+    try {
+      const cur = (await obj.json()) as { days?: Snapshot; label?: string };
+      // The label rides along in the file, so a renamed season has to force the
+      // write even when every number is unchanged.
+      if (cur.days && cur.label === label && sameSnapshot(cur.days, snapshot)) return false;
+    } catch {
+      // Unparseable or truncated — fall through and overwrite it.
+    }
+  }
+  await putMonthFile(bucket, park, product, month, snapshot, generatedAt, label);
+  return true;
 }
 
 /** Write opening hours into per-month files (merged), same freezing behaviour —

@@ -251,18 +251,27 @@ export async function readRangeSnapshot(
   start: string,
   end: string,
 ): Promise<Snapshot> {
+  // One indexed pass, not two. The self-join this replaced read the range once to
+  // find each date's MAX(observed_at), then read it AGAIN to fetch the matching
+  // rows, building a transient index to join them -- and since `observation` is an
+  // append-only log, "the range" is every reading ever taken of those dates, not
+  // one row per date. Doing that twice, on every changed poll, for every changed
+  // month, is a large share of the D1 read bill for what is one scan of work.
+  //
+  // SQLite resolves bare columns alongside a single MAX() to the row that MAX came
+  // from, per GROUP BY group (sqlite.org/lang_select.html#bareagg -- stable since
+  // 3.7.11, and D1 is SQLite), so this returns exactly what the join did. The
+  // primary key makes (park, product, event_date, observed_at) unique, so there
+  // are no ties for the rule to break arbitrarily.
   const { results } = await db
     .prepare(
-      `SELECT o.event_date AS d, o.capacity, o.available, o.used, o.package_ids, o.on_sale
-         FROM observation o
-         JOIN (SELECT event_date, MAX(observed_at) AS mx
-                 FROM observation
-                WHERE park = ? AND product = ? AND event_date >= ? AND event_date <= ?
-                GROUP BY event_date) L
-           ON o.event_date = L.event_date AND o.observed_at = L.mx
-        WHERE o.park = ? AND o.product = ? AND o.event_date >= ? AND o.event_date <= ?`,
+      `SELECT event_date AS d, capacity, available, used, package_ids, on_sale,
+              MAX(observed_at)
+         FROM observation
+        WHERE park = ? AND product = ? AND event_date >= ? AND event_date <= ?
+        GROUP BY event_date`,
     )
-    .bind(park, product, start, end, park, product, start, end)
+    .bind(park, product, start, end)
     .all<{
       d: string;
       capacity: number;
@@ -306,14 +315,21 @@ export async function rebuildMonthsFromD1(
   fromMonth?: string,
   label?: string,
 ): Promise<string[]> {
+  // The month filter compares the bare `event_date`, not `substr(event_date, 1, 7)`.
+  // Wrapping the indexed column in a function made the term unseekable, so this
+  // walked every observation the product had ever recorded -- all 365 days of
+  // horizon times every reading of each -- to answer "which months exist from here
+  // on", every 30 minutes, for every product. `event_date >= 'YYYY-MM-01'` selects
+  // exactly the same months and seeks straight to the first, skipping the frozen
+  // history entirely.
   const { results } = await db
     .prepare(
       `SELECT DISTINCT substr(event_date, 1, 7) AS m
          FROM observation
-        WHERE park = ? AND product = ? AND substr(event_date, 1, 7) >= ?
+        WHERE park = ? AND product = ? AND event_date >= ?
         ORDER BY m`,
     )
-    .bind(park, product, fromMonth ?? "0000-00")
+    .bind(park, product, fromMonth ? `${fromMonth}-01` : "0000-00-00")
     .all<{ m: string }>();
 
   const written: string[] = [];
@@ -465,7 +481,13 @@ interface QueueRow {
 }
 
 /** All queue observations for one UTC day, oldest first — the raw intraday
- *  series from which a day file is projected. */
+ *  series from which a day file is projected.
+ *
+ *  Depends on idx_q_park_time (park, observed_at) — see migration 0006. This runs
+ *  once per changed poll, per park, every minute, so without an index that seeks
+ *  on BOTH columns it degrades to reading everything the park has ever recorded
+ *  and the cost of a poll becomes the size of the table. An index on `park` alone
+ *  (or one where `observed_at` trails unconstrained columns) does not count. */
 async function readQueueDay(
   db: D1Database,
   park: string,
@@ -821,14 +843,13 @@ export async function readSpecialDays(
 ): Promise<SpecialDayRow[]> {
   const { results } = await db
     .prepare(
-      `SELECT s.event_date, s.name, s.capacity, s.available, s.used
-         FROM special_day s
-         JOIN (SELECT event_date, MAX(observed_at) AS mx
-                 FROM special_day WHERE park = ? GROUP BY event_date) L
-           ON s.event_date = L.event_date AND s.observed_at = L.mx
-        WHERE s.park = ? ORDER BY s.event_date`,
+      `SELECT event_date, name, capacity, available, used, MAX(observed_at)
+         FROM special_day
+        WHERE park = ?
+        GROUP BY event_date
+        ORDER BY event_date`,
     )
-    .bind(park, park)
+    .bind(park)
     .all<SpecialDayRow>();
   return results ?? [];
 }

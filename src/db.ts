@@ -11,26 +11,49 @@ export async function appendDeltas(
   observedAt: string,
 ): Promise<void> {
   if (deltas.length === 0) return;
-  const stmt = db.prepare(
+  const log = db.prepare(
     `INSERT OR IGNORE INTO observation
        (park, product, event_date, capacity, available, used, package_ids, on_sale, observed_at)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
   );
-  await db.batch(
-    deltas.map((d) =>
-      stmt.bind(
-        park,
-        product,
-        d.date,
-        d.capacity,
-        d.available,
-        d.used,
-        d.packageIds,
-        d.onSale === undefined ? null : d.onSale ? 1 : 0,
-        observedAt,
-      ),
-    ),
+  // The served projection (migration 0007), carried forward in the same batch so
+  // it cannot lag the log by a poll. `db.batch` is one transaction, so either both
+  // move or neither does.
+  //
+  // The guard on the update makes the write monotonic: a delayed or replayed poll
+  // whose reading is older than what is already stored is ignored rather than
+  // rolling the date backwards. Nothing today interleaves two polls of the same
+  // product, but the manual /poll endpoint can run alongside the cron, and a
+  // silently reordered write here would serve a stale figure indefinitely.
+  const latest = db.prepare(
+    `INSERT INTO observation_latest
+       (park, product, event_date, capacity, available, used, package_ids, on_sale, observed_at)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+     ON CONFLICT (park, product, event_date) DO UPDATE SET
+       capacity    = excluded.capacity,
+       available   = excluded.available,
+       used        = excluded.used,
+       package_ids = excluded.package_ids,
+       on_sale     = excluded.on_sale,
+       observed_at = excluded.observed_at
+     WHERE excluded.observed_at > observation_latest.observed_at`,
   );
+  const binds = (stmt: D1PreparedStatement, d: Delta) =>
+    stmt.bind(
+      park,
+      product,
+      d.date,
+      d.capacity,
+      d.available,
+      d.used,
+      d.packageIds,
+      d.onSale === undefined ? null : d.onSale ? 1 : 0,
+      observedAt,
+    );
+  await db.batch([
+    ...deltas.map((d) => binds(log, d)),
+    ...deltas.map((d) => binds(latest, d)),
+  ]);
 }
 
 export async function logPoll(
@@ -243,6 +266,12 @@ export async function readMonthSnapshot(
  * its history remains here: Chessington 2026-11-20 carries a RAP allocation of
  * 249 in the log and is absent from `calendar/chessington/rap.json` entirely.
  * Anything reasoning about what a park has ever done must read this.
+ *
+ * This DERIVES the answer by scanning the log, so its cost is every reading ever
+ * taken of the dates in the range, not the dates themselves. That is what makes
+ * it the right thing for `rebuildMonthsFromD1` — re-deriving the truth is the
+ * whole point of a reconciler — and the wrong thing for anything running per
+ * poll, which should read the maintained projection via `readLatestRange`.
  */
 export async function readRangeSnapshot(
   db: D1Database,
@@ -295,6 +324,113 @@ export async function readRangeSnapshot(
   return snapshot;
 }
 
+/* ── The served projection (observation_latest, migration 0007) ────────────────
+ *
+ * `readRangeSnapshot` above derives each date's latest reading by scanning every
+ * reading of every date in the range. That is the right thing for the reconciler,
+ * which exists to re-derive the truth from the log, but it is the wrong thing to
+ * do on every poll: its cost is the readings accumulated so far, so it grows for
+ * as long as the collector runs.
+ *
+ * `observation_latest` holds the same answer as one maintained row per date,
+ * upserted by `appendDeltas`. The serving paths read it instead, which makes them
+ * cost one row per date and stay flat as the log grows.
+ */
+
+/** The latest recorded state of every date in a range, from the projection.
+ *  Same result as `readRangeSnapshot`, without the scan. */
+export async function readLatestRange(
+  db: D1Database,
+  park: string,
+  product: Product,
+  start: string,
+  end: string,
+): Promise<Snapshot> {
+  const { results } = await db
+    .prepare(
+      `SELECT event_date AS d, capacity, available, used, package_ids, on_sale
+         FROM observation_latest
+        WHERE park = ? AND product = ? AND event_date >= ? AND event_date <= ?`,
+    )
+    .bind(park, product, start, end)
+    .all<{
+      d: string;
+      capacity: number;
+      available: number;
+      used: number;
+      package_ids: string | null;
+      on_sale: number | null;
+    }>();
+
+  const snapshot: Snapshot = {};
+  for (const r of results) {
+    snapshot[r.d] = {
+      capacity: r.capacity,
+      available: r.available,
+      used: r.used,
+      packageIds: r.package_ids ?? "",
+      ...(r.on_sale == null ? {} : { onSale: r.on_sale === 1 }),
+    };
+  }
+  return snapshot;
+}
+
+/** One month from the projection — `readMonthSnapshot` without the scan. */
+export async function readLatestMonth(
+  db: D1Database,
+  park: string,
+  product: Product,
+  month: string,
+): Promise<Snapshot> {
+  return readLatestRange(db, park, product, `${month}-01`, `${month}-31`);
+}
+
+/**
+ * Re-derive the projection from the log for everything from `fromMonth` on, and
+ * correct it where the two disagree.
+ *
+ * This is what keeps the log the source of truth rather than a write-only
+ * sidecar. `appendDeltas` maintains `observation_latest` incrementally, and an
+ * incremental projection can drift — a batch that half-applied, a bug in the
+ * delta path, a row written directly. Re-deriving it on the same cadence the
+ * month files are rebuilt means drift is repaired within half an hour instead of
+ * being served indefinitely.
+ *
+ * Deliberately one statement rather than a read-compare-write from JS: the
+ * rebuild is already scanning this exact range of the log for the month files, so
+ * the work is shared, and doing it in SQL keeps it atomic. The same monotonic
+ * guard as `appendDeltas` applies, so a concurrent poll that has already written
+ * something newer wins over this pass.
+ */
+export async function reconcileLatest(
+  db: D1Database,
+  park: string,
+  product: Product,
+  fromMonth?: string,
+): Promise<void> {
+  await db
+    .prepare(
+      `INSERT INTO observation_latest
+         (park, product, event_date, capacity, available, used, package_ids, on_sale, observed_at)
+       SELECT park, product, event_date, capacity, available, used, package_ids, on_sale,
+              MAX(observed_at)
+         FROM observation
+        WHERE park = ? AND product = ? AND event_date >= ?
+        GROUP BY event_date
+       ON CONFLICT (park, product, event_date) DO UPDATE SET
+         capacity    = excluded.capacity,
+         available   = excluded.available,
+         used        = excluded.used,
+         package_ids = excluded.package_ids,
+         on_sale     = excluded.on_sale,
+         observed_at = excluded.observed_at
+       WHERE excluded.observed_at > observation_latest.observed_at`,
+    )
+    .bind(park, product, fromMonth ? `${fromMonth}-01` : "0000-00-00")
+    .run();
+}
+
+
 /**
  * Rebuild a product's month files from the D1 log — every month that has any
  * observation. Self-heals: the per-poll path only (re)writes months whose data
@@ -332,8 +468,15 @@ export async function rebuildMonthsFromD1(
     .bind(park, product, fromMonth ? `${fromMonth}-01` : "0000-00-00")
     .all<{ m: string }>();
 
+  // Same pass, same range: re-derive the served projection from the log and
+  // repair any drift (see reconcileLatest). Runs before the month files so a
+  // repair is in place for the next poll that reads it.
+  await reconcileLatest(db, park, product, fromMonth);
+
   const written: string[] = [];
   for (const { m } of results) {
+    // The LOG, not the projection — this cron is what re-derives the truth, so
+    // reading the projection here would make it check its own homework.
     const snapshot = await readMonthSnapshot(db, park, product, m);
     if (Object.keys(snapshot).length === 0) continue;
     await putMonthFile(bucket, park, product, m, snapshot, generatedAt, label);

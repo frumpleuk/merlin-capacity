@@ -3,7 +3,7 @@ import {
   appendDeltas,
   logPoll,
   putMonthFile,
-  readMonthSnapshot,
+  readLatestMonth,
   readSnapshot,
   updateParkIndex,
   updatePollStatus,
@@ -66,14 +66,19 @@ export async function runPoll(
         observedAt,
         product.label,
       );
-      // … and the per-month calendar files, regenerated from D1 (the source of
-      // truth). Only the months this poll actually changed are rebuilt — keeps
-      // R2 writes low even with a full-year horizon. A month rebuild pulls the
-      // whole month from the log, so the current month keeps its already-past
-      // days and past months freeze once they stop receiving deltas.
+      // … and the per-month calendar files. Only the months this poll actually
+      // changed are rebuilt — keeps R2 writes low even with a full-year horizon.
+      // A month rebuild pulls the whole month, so the current month keeps its
+      // already-past days and past months freeze once they stop receiving deltas.
+      //
+      // From `observation_latest`, not the log: the log holds every reading ever
+      // taken of these dates and this only ever wanted the last one per date, so
+      // scanning it here cost more every day the collector ran. The 30-minute
+      // rebuild cron still projects these same files from the log and reconciles
+      // the two, so the log remains the source of truth (migration 0007).
       const months = [...new Set(deltas.map((d) => d.date.slice(0, 7)))];
       for (const m of months) {
-        const monthSnap = await readMonthSnapshot(env.DB, park.key, product.key, m);
+        const monthSnap = await readLatestMonth(env.DB, park.key, product.key, m);
         await putMonthFile(
           env.BUCKET,
           park.key,

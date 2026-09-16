@@ -1,5 +1,5 @@
 import { HORIZON_DAYS, type ParkConfig } from "./config";
-import { readRangeSnapshot } from "./db";
+import { readLatestRange } from "./db";
 import { blackoutDates, readRestrictions } from "./restrictions";
 import type { DayObs, Env } from "./types";
 
@@ -183,18 +183,20 @@ export async function refreshAnomalies(
   const today = ymd(now);
   const end = ymd(now + HORIZON_DAYS * 86_400_000);
 
-  // From the change log, NOT the forward product files. Those hold only what the
-  // last poll returned, so a date the API stops returning disappears from them
-  // while its history survives: Chessington 2026-11-20 carries a RAP allocation
-  // of 249 in the log and is absent from the forward file, which is exactly the
-  // kind of date this report exists to surface.
+  // From the log's projection, NOT the forward product files. Those hold only
+  // what the last poll returned, so a date the API stops returning disappears
+  // from them while its history survives: Chessington 2026-11-20 carries a RAP
+  // allocation of 249 and is absent from the forward file, which is exactly the
+  // kind of date this report exists to surface. `observation_latest` keeps that
+  // property — a date is upserted, never removed, so its last known reading
+  // stands once the API goes quiet on it.
   const [main, rap, season, hours, explained, restrictions] = await Promise.all([
-    readRangeSnapshot(env.DB, park.key, "main", today, end),
-    readRangeSnapshot(env.DB, park.key, "rap", today, end),
+    readLatestRange(env.DB, park.key, "main", today, end),
+    readLatestRange(env.DB, park.key, "rap", today, end),
     // A season sold under its own package (Chessington Christmas). Its dates
     // report capacity 0 on `main` by design, so without it every one of them
     // reads as an unexplained booking against no allocation.
-    readRangeSnapshot(env.DB, park.key, "season", today, end),
+    readLatestRange(env.DB, park.key, "season", today, end),
     readHours(env.BUCKET, park.key, monthsBetween(today, end)),
     readExplained(env.BUCKET, park.key),
     // Estate-wide, so it's read once for the whole pass rather than per park —

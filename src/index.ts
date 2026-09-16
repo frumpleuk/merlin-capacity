@@ -1,5 +1,5 @@
 import { refreshAnomalies } from "./anomalies";
-import { archiveQueues } from "./archive";
+import { archiveObservations, archiveQueues } from "./archive";
 import { allProducts, attractionsParks, fosParks, PARKS, queueParks } from "./config";
 import { rebuildMonthsFromD1 } from "./db";
 import { refreshPackages } from "./discover";
@@ -29,6 +29,7 @@ const CRON_REBUILD = "*/30 * * * *"; // self-heal the ticket month files from D1
 const CRON_PREOPEN = "0 7 * * *"; // 07:00 GMT (parks shut): catalog rebuild + discovery
 const CRON_SPECIAL = "5 7 * * *"; // 07:05 GMT: name the buyout / ticketed-event days
 const CRON_ARCHIVE = "0 4 * * *"; // 04:00 GMT: cold queue days out of D1, into R2
+const CRON_MONTH = "0 3 2 * *"; // 03:00 on the 2nd: fully elapsed ticket months to R2
 
 const currentMonth = (ms: number) => new Date(ms).toISOString().slice(0, 7);
 
@@ -118,6 +119,22 @@ async function runArchive(env: Env, scheduledTime: number): Promise<void> {
   );
 }
 
+/** Move fully-elapsed ticket months out of D1 and into R2 (archive.ts). Monthly,
+ *  on the 2nd, so the month just ended has been closed out for a full day before
+ *  anything touches it. Partitioned by the date VISITED, not by when the reading
+ *  was taken — see the notes in archive.ts. */
+async function runMonthArchive(env: Env, scheduledTime: number): Promise<void> {
+  await Promise.all(
+    allProducts().map(async ({ park, product }) => {
+      try {
+        await archiveObservations(env.DB, env.BUCKET, park.key, product.key, scheduledTime);
+      } catch (err) {
+        console.error(`month archive failed for ${park.key}/${product.key}:`, err);
+      }
+    }),
+  );
+}
+
 export default {
   // Dispatch by which schedule fired — each concern in its own invocation.
   async scheduled(event: ScheduledEvent, env: Env, ctx: ExecutionContext) {
@@ -134,6 +151,8 @@ export default {
         return void ctx.waitUntil(pollSpecialDays(env, event.scheduledTime));
       case CRON_ARCHIVE:
         return void ctx.waitUntil(runArchive(env, event.scheduledTime));
+      case CRON_MONTH:
+        return void ctx.waitUntil(runMonthArchive(env, event.scheduledTime));
       default: // CRON_QUEUES
         return void ctx.waitUntil(pollQueues(env));
     }
@@ -285,7 +304,20 @@ export default {
           }
         }),
       );
-      return Response.json({ ok: true, queues });
+      const tickets = await Promise.all(
+        allProducts().map(async ({ park, product }) => {
+          try {
+            return {
+              park: park.key,
+              product: product.key,
+              ...(await archiveObservations(env.DB, env.BUCKET, park.key, product.key, now)),
+            };
+          } catch (err) {
+            return { park: park.key, product: product.key, months: [], rows: 0, error: String(err) };
+          }
+        }),
+      );
+      return Response.json({ ok: true, queues, tickets });
     }
 
     // Everything else: the static heatmap.

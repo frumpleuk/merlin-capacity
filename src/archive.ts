@@ -278,3 +278,124 @@ export async function archiveQueues(
 
   return { days, rows };
 }
+
+/* ── Ticket observations: archived monthly, by the date visited ────────────────
+ *
+ * Partitioned on `event_date`, NOT on when the row was written. A reading taken
+ * in March for a date in December is live data the calendar still serves, so
+ * "archive last month's rows" read the natural way would eat the forward window.
+ * A ticket row goes cold when the VISIT DATE has passed, whenever it was recorded.
+ *
+ * Once a month has fully elapsed nothing reads its log rows: the poll path and
+ * the anomaly report read `observation_latest`, and `rebuildMonthsFromD1` starts
+ * at the current month. Its served month file is already frozen in R2.
+ *
+ * Two consequences worth being explicit about, because both are load-bearing:
+ *
+ *   - `observation_latest` is NOT touched here. Its row for an archived date is
+ *     the last reading that date ever got, and it stays — that is what keeps a
+ *     date the API went quiet on (Chessington 2026-11-20) visible to the anomaly
+ *     report and the calendar after the log beneath it has moved to R2.
+ *   - the full repair (`/poll`, which rebuilds every month from the log) can no
+ *     longer re-derive an archived month. It skips months with no rows rather
+ *     than writing an empty file, so the frozen month file survives untouched;
+ *     the archive object is the recovery path if one ever needs rebuilding.
+ */
+
+const MAX_MONTHS_PER_RUN = 3; // bound one invocation; a backlog drains over a few runs
+
+export const observationArchiveKey = (park: string, product: string, month: string) =>
+  `archive/observation/${park}/${product}/${month}.ndjson.gz`;
+
+/** First day of the month after `month` ('2026-07' → '2026-08-01'), as the
+ *  exclusive upper bound of a month's dates. */
+function monthEnd(month: string): string {
+  const [y, m] = month.split("-").map(Number);
+  return `${m === 12 ? y + 1 : y}-${String(m === 12 ? 1 : m + 1).padStart(2, "0")}-01`;
+}
+
+/** Keyset-paged on (event_date, observed_at) — the trailing columns of the
+ *  primary key, so this is a pure index walk with no sort at all. */
+const OBS_PAGE_SQL = `SELECT park, product, event_date, capacity, available, used,
+         package_ids, on_sale, observed_at
+    FROM observation
+   WHERE park = ? AND product = ? AND event_date >= ? AND event_date < ?
+     AND (event_date, observed_at) > (?, ?)
+   ORDER BY event_date, observed_at
+   LIMIT ?`;
+
+const OBS_DELETE_SQL = `DELETE FROM observation
+   WHERE rowid IN (SELECT rowid FROM observation
+                    WHERE park = ? AND product = ? AND event_date >= ? AND event_date < ?
+                    LIMIT ?)`;
+
+/** Archive one elapsed month for one product, then delete it. Throws without
+ *  deleting if the archive cannot be read back. */
+async function archiveObservationMonth(
+  db: D1Database,
+  bucket: R2Bucket,
+  park: string,
+  product: string,
+  month: string,
+): Promise<number> {
+  const from = `${month}-01`;
+  const to = monthEnd(month);
+
+  const rows = await readPaged(
+    db,
+    OBS_PAGE_SQL,
+    [park, product, from, to],
+    ["", ""],
+    (r) => [r.event_date, r.observed_at],
+  );
+  if (rows.length === 0) return 0;
+
+  const key = observationArchiveKey(park, product, month);
+  const total = await putArchive(bucket, key, rows, (r) => `${r.event_date}|${r.observed_at}`);
+  if (!(await verifyArchive(bucket, key, total))) {
+    throw new Error(`observation archive ${key} failed verification; nothing deleted`);
+  }
+
+  await deleteInBatches(db, OBS_DELETE_SQL, [park, product, from, to]);
+  return rows.length;
+}
+
+/**
+ * Archive and drop every fully-elapsed month for one product, oldest first, up to
+ * `MAX_MONTHS_PER_RUN`. The current month is never touched — it still has dates
+ * ahead of it and `rebuildMonthsFromD1` still projects it from the log.
+ *
+ * As with the queue job, the oldest month is found via MIN on an indexed column
+ * rather than a DISTINCT over the table, and re-asked after each delete so gaps
+ * cost nothing.
+ */
+export async function archiveObservations(
+  db: D1Database,
+  bucket: R2Bucket,
+  park: string,
+  product: string,
+  now: number,
+): Promise<{ months: string[]; rows: number }> {
+  const currentMonth = new Date(now).toISOString().slice(0, 7);
+  const months: string[] = [];
+  let rows = 0;
+
+  for (let i = 0; i < MAX_MONTHS_PER_RUN; i++) {
+    const oldest = await db
+      .prepare(`SELECT MIN(event_date) AS m FROM observation WHERE park = ? AND product = ?`)
+      .bind(park, product)
+      .first<{ m: string | null }>();
+    const m = oldest?.m;
+    if (!m) break;
+
+    const month = m.slice(0, 7);
+    if (month >= currentMonth) break; // nothing has fully elapsed
+
+    const moved = await archiveObservationMonth(db, bucket, park, product, month);
+    if (moved === 0) break;
+    months.push(month);
+    rows += moved;
+  }
+
+  return { months, rows };
+}

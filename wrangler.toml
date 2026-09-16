@@ -25,9 +25,13 @@ assets = { directory = "./dist", binding = "ASSETS", not_found_handling = "singl
 #       "0 7 * * *"    pre-open — 07:00 GMT: catalog rebuilds + package discovery
 #       "5 7 * * *"    special  — 07:05 GMT: name buyout / ticketed-event days
 #       "0 4 * * *"    archive  — 04:00 GMT: queue days older than the retention
-#                                 window move to R2 and leave D1 (see archive.ts) ---
+#                                 window move to R2 and leave D1 (see archive.ts)
+#       "0 3 2 * *"    month    — 03:00 on the 2nd: elapsed ticket months to R2 ---
 [triggers]
-crons = ["* * * * *", "*/1 * * * *", "0 * * * *", "*/30 * * * *", "0 7 * * *", "5 7 * * *", "0 4 * * *"]
+crons = [
+  "* * * * *", "*/1 * * * *", "0 * * * *", "*/30 * * * *",
+  "0 7 * * *", "5 7 * * *", "0 4 * * *", "0 3 2 * *",
+]
 
 # --- History / source of truth ---
 [[d1_databases]]

@@ -1,4 +1,5 @@
 import { refreshAnomalies } from "./anomalies";
+import { archiveQueues } from "./archive";
 import { allProducts, attractionsParks, fosParks, PARKS, queueParks } from "./config";
 import { rebuildMonthsFromD1 } from "./db";
 import { refreshPackages } from "./discover";
@@ -27,6 +28,7 @@ const CRON_HOURS = "0 * * * *"; // opening-hours calendars — all parks, hourly
 const CRON_REBUILD = "*/30 * * * *"; // self-heal the ticket month files from D1
 const CRON_PREOPEN = "0 7 * * *"; // 07:00 GMT (parks shut): catalog rebuild + discovery
 const CRON_SPECIAL = "5 7 * * *"; // 07:05 GMT: name the buyout / ticketed-event days
+const CRON_ARCHIVE = "0 4 * * *"; // 04:00 GMT: cold queue days out of D1, into R2
 
 const currentMonth = (ms: number) => new Date(ms).toISOString().slice(0, 7);
 
@@ -99,6 +101,23 @@ async function pollSpecialDays(env: Env, scheduledTime: number): Promise<void> {
   await Promise.all(PARKS.map((park) => refreshAnomalies(env, park, scheduledTime)));
 }
 
+/** Move queue days past the retention window out of D1 and into R2 (archive.ts).
+ *  04:00 GMT: every park is shut, nothing is polling hard, and yesterday has been
+ *  closed out for hours. Each park is independent — one park failing verification
+ *  stops that park for tonight and leaves its rows in D1, which is the safe way
+ *  round, and the others still drain. */
+async function runArchive(env: Env, scheduledTime: number): Promise<void> {
+  await Promise.all(
+    queueParks().map(async (park) => {
+      try {
+        await archiveQueues(env.DB, env.BUCKET, park.key, scheduledTime);
+      } catch (err) {
+        console.error(`archive failed for ${park.key}:`, err);
+      }
+    }),
+  );
+}
+
 export default {
   // Dispatch by which schedule fired — each concern in its own invocation.
   async scheduled(event: ScheduledEvent, env: Env, ctx: ExecutionContext) {
@@ -113,6 +132,8 @@ export default {
         return void ctx.waitUntil(preOpen(env, event.scheduledTime));
       case CRON_SPECIAL:
         return void ctx.waitUntil(pollSpecialDays(env, event.scheduledTime));
+      case CRON_ARCHIVE:
+        return void ctx.waitUntil(runArchive(env, event.scheduledTime));
       default: // CRON_QUEUES
         return void ctx.waitUntil(pollQueues(env));
     }
@@ -243,6 +264,28 @@ export default {
         anomalies,
         rebuilt,
       });
+    }
+
+    // Drain the archive backlog on demand, rather than waiting for the nightly
+    // cron to take MAX_QUEUE_DAYS_PER_RUN days a night. Same gate as /poll: this
+    // deletes from D1 (only ever after the rows are readable back out of R2), so
+    // it fails closed when POLL_KEY isn't configured.
+    if (url.pathname === "/archive") {
+      const provided = url.searchParams.get("key") ?? req.headers.get("x-poll-key");
+      if (!env.POLL_KEY || provided !== env.POLL_KEY) {
+        return new Response("forbidden", { status: 403 });
+      }
+      const now = Date.now();
+      const queues = await Promise.all(
+        queueParks().map(async (park) => {
+          try {
+            return { park: park.key, ...(await archiveQueues(env.DB, env.BUCKET, park.key, now)) };
+          } catch (err) {
+            return { park: park.key, days: [], rows: 0, error: String(err) };
+          }
+        }),
+      );
+      return Response.json({ ok: true, queues });
     }
 
     // Everything else: the static heatmap.

@@ -168,3 +168,113 @@ export async function readPaged<T extends ArchiveRow>(
     cursor = nextCursor(results[results.length - 1]);
   }
 }
+
+/* ── Queue observations: archived daily, kept for two days ─────────────────────
+ *
+ * `queue_observation` is the biggest table by a wide margin — every park, every
+ * line, every minute the feed moves — and the least useful to keep hot. Nothing
+ * reads a past day: `writeQueueDayFile` is the only consumer of these rows and
+ * `runQueuePoll` only ever asks it for `today`.
+ *
+ * Two days are retained rather than one, so a day is archived roughly 28 hours
+ * after it ends. That slack costs nothing and means a failed run has a whole
+ * further night to succeed before the day it wanted is the oldest thing left.
+ */
+
+const QUEUE_RETAIN_DAYS = 2; // today + yesterday stay in D1
+const MAX_QUEUE_DAYS_PER_RUN = 3; // bound one invocation; a backlog drains over several nights
+
+const ymd = (ms: number) => new Date(ms).toISOString().slice(0, 10);
+
+export const queueArchiveKey = (park: string, date: string) =>
+  `archive/queues/${park}/${date}.ndjson.gz`;
+
+/** Every column, so the archive is the row and not a view of it. Keyset-paged on
+ *  (observed_at, ride_id, queue_line_id) — the leading term is the indexed one,
+ *  so the day stays a range seek and only the ties within a single timestamp
+ *  need ordering. */
+const QUEUE_PAGE_SQL = `SELECT park, ride_id, queue_line_id, line_type, queue_time, status,
+         is_open, is_operational, observed_at
+    FROM queue_observation
+   WHERE park = ? AND observed_at >= ? AND observed_at < ?
+     AND (observed_at, ride_id, queue_line_id) > (?, ?, ?)
+   ORDER BY observed_at, ride_id, queue_line_id
+   LIMIT ?`;
+
+const QUEUE_DELETE_SQL = `DELETE FROM queue_observation
+   WHERE rowid IN (SELECT rowid FROM queue_observation
+                    WHERE park = ? AND observed_at >= ? AND observed_at < ?
+                    LIMIT ?)`;
+
+/** Archive one UTC day for one park, then delete it. Returns rows moved, or 0 if
+ *  the day was empty. Throws if the archive could not be verified — the caller
+ *  stops that park for this run and nothing has been deleted. */
+async function archiveQueueDay(
+  db: D1Database,
+  bucket: R2Bucket,
+  park: string,
+  date: string,
+): Promise<number> {
+  const from = `${date}T00:00:00.000Z`;
+  const to = `${ymd(Date.parse(from) + 86_400_000)}T00:00:00.000Z`;
+
+  const rows = await readPaged(
+    db,
+    QUEUE_PAGE_SQL,
+    [park, from, to],
+    ["", -1, -1], // empty string sorts before any timestamp
+    (r) => [r.observed_at, r.ride_id, r.queue_line_id],
+  );
+  if (rows.length === 0) return 0;
+
+  const key = queueArchiveKey(park, date);
+  const total = await putArchive(
+    bucket,
+    key,
+    rows,
+    (r) => `${r.ride_id}|${r.queue_line_id}|${r.observed_at}`,
+  );
+  if (!(await verifyArchive(bucket, key, total))) {
+    throw new Error(`queue archive ${key} failed verification; nothing deleted`);
+  }
+
+  await deleteInBatches(db, QUEUE_DELETE_SQL, [park, from, to]);
+  return rows.length;
+}
+
+/**
+ * Archive and drop every queue day for a park older than the retention window,
+ * oldest first, up to `MAX_QUEUE_DAYS_PER_RUN`.
+ *
+ * Days are found by asking for the oldest `observed_at` still stored, which is a
+ * single index seek on (park, observed_at) rather than a DISTINCT over the whole
+ * backlog — and re-asking after each delete, so gaps (a day the park was shut,
+ * or a day a previous run already took) are skipped for free.
+ */
+export async function archiveQueues(
+  db: D1Database,
+  bucket: R2Bucket,
+  park: string,
+  now: number,
+): Promise<{ days: string[]; rows: number }> {
+  const keepFrom = `${ymd(now - (QUEUE_RETAIN_DAYS - 1) * 86_400_000)}T00:00:00.000Z`;
+  const days: string[] = [];
+  let rows = 0;
+
+  for (let i = 0; i < MAX_QUEUE_DAYS_PER_RUN; i++) {
+    const oldest = await db
+      .prepare(`SELECT MIN(observed_at) AS m FROM queue_observation WHERE park = ?`)
+      .bind(park)
+      .first<{ m: string | null }>();
+    const m = oldest?.m;
+    if (!m || m >= keepFrom) break; // nothing left outside the retention window
+
+    const date = m.slice(0, 10);
+    const moved = await archiveQueueDay(db, bucket, park, date);
+    if (moved === 0) break; // can't happen while MIN reports this day; don't spin
+    days.push(date);
+    rows += moved;
+  }
+
+  return { days, rows };
+}

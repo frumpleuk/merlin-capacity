@@ -25,7 +25,8 @@ import type { Env } from "./types";
 const CRON_QUEUES = "* * * * *"; // live ride queue times — all parks, every minute
 const CRON_TICKETS = "*/1 * * * *"; // accesso availability (RAP + main) — all products, every minute
 const CRON_HOURS = "0 * * * *"; // opening-hours calendars — all parks, hourly
-const CRON_REBUILD = "*/30 * * * *"; // self-heal the ticket month files from D1
+const CRON_REBUILD = "*/30 * * * *"; // self-heal the ticket month files from the projection
+const CRON_RECONCILE = "0 5 * * *"; // 05:00 GMT: re-derive the projection + month files from the log
 const CRON_PREOPEN = "0 7 * * *"; // 07:00 GMT (parks shut): catalog rebuild + discovery
 const CRON_SPECIAL = "5 7 * * *"; // 07:05 GMT: name the buyout / ticketed-event days
 const CRON_ARCHIVE = "0 4 * * *"; // 04:00 GMT: cold queue days out of D1, into R2
@@ -57,15 +58,47 @@ async function pollHours(env: Env, scheduledTime: number): Promise<void> {
   ]);
 }
 
-/** Self-heal the forward month files from D1 for every ticket product — repairs a
- *  product static since deploy (no deltas → no per-poll rewrite). The queue day
- *  files need no equivalent: they're re-projected from D1 on every changed poll. */
+/** Self-heal the forward month files for every ticket product — repairs a product
+ *  static since deploy (no deltas → no per-poll rewrite). The queue day files need
+ *  no equivalent: they're re-projected from D1 on every changed poll.
+ *
+ *  Reads `observation_latest`, not the log: one row per date, so the whole estate
+ *  costs a couple of thousand rows and this can stay on a half-hour cadence. Off
+ *  the log it was three passes over every forward reading per product — ~4.5M rows
+ *  a run, 48 runs a day, which was the entire D1 read bill once the serving paths
+ *  were fixed. Wrong numbers are the daily reconcile's problem (see below); a
+ *  missing file is this job's, and it's the one that needs catching quickly. */
 async function pollRebuild(env: Env, scheduledTime: number): Promise<void> {
   const at = new Date(scheduledTime).toISOString();
   const from = currentMonth(scheduledTime);
   await Promise.all(
     allProducts().map(({ park, product }) =>
-      rebuildMonthsFromD1(env.DB, env.BUCKET, park.key, product.key, at, from, product.label),
+      rebuildMonthsFromD1(env.DB, env.BUCKET, park.key, product.key, at, {
+        source: "projection",
+        fromMonth: from,
+        label: product.label,
+      }),
+    ),
+  );
+}
+
+/** The integrity pass: re-derive `observation_latest` from the append-only log and
+ *  rewrite the forward month files from the log too, so both are checked against
+ *  the source of truth rather than against themselves. One pass over every forward
+ *  reading per product, which is why it's daily and not half-hourly.
+ *
+ *  05:00 GMT: after the queue archive at 04:00 and before pre-open at 07:00, with
+ *  every park shut and nothing polling hard. */
+async function pollReconcile(env: Env, scheduledTime: number): Promise<void> {
+  const at = new Date(scheduledTime).toISOString();
+  const from = currentMonth(scheduledTime);
+  await Promise.all(
+    allProducts().map(({ park, product }) =>
+      rebuildMonthsFromD1(env.DB, env.BUCKET, park.key, product.key, at, {
+        source: "log",
+        fromMonth: from,
+        label: product.label,
+      }),
     ),
   );
 }
@@ -145,6 +178,8 @@ export default {
         return void ctx.waitUntil(pollHours(env, event.scheduledTime));
       case CRON_REBUILD:
         return void ctx.waitUntil(pollRebuild(env, event.scheduledTime));
+      case CRON_RECONCILE:
+        return void ctx.waitUntil(pollReconcile(env, event.scheduledTime));
       case CRON_PREOPEN:
         return void ctx.waitUntil(preOpen(env, event.scheduledTime));
       case CRON_SPECIAL:
@@ -253,23 +288,20 @@ export default {
           dates: await refreshAnomalies(env, park, Date.now()),
         })),
       );
-      // Full repair: rebuild EVERY month file (past + forward) from D1, so a
+      // Full repair: rebuild EVERY month file (past + forward) from the log, so a
       // fresh deploy or a static product immediately gets all its month files.
+      // `source: "log"` and no `fromMonth` — the expensive, exhaustive form, which
+      // is what you want from a manual repair and why it isn't on a cron.
       const at = new Date().toISOString();
       const rebuilt = await Promise.all(
         allProducts().map(async ({ park, product }) => ({
           park: park.key,
           product: product.key,
           months: (
-            await rebuildMonthsFromD1(
-              env.DB,
-              env.BUCKET,
-              park.key,
-              product.key,
-              at,
-              undefined,
-              product.label,
-            )
+            await rebuildMonthsFromD1(env.DB, env.BUCKET, park.key, product.key, at, {
+              source: "log",
+              label: product.label,
+            })
           ).length,
         })),
       );

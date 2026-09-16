@@ -21,7 +21,12 @@ assets = { directory = "./dist", binding = "ASSETS", not_found_handling = "singl
 #       "* * * * *"    queues   — live ride waits, all parks
 #       "*/1 * * * *"  tickets  — accesso availability (RAP + main), all products
 #       "0 * * * *"    hours    — opening-hours calendars, all parks (hourly)
-#       "*/30 * * * *" rebuild  — self-heal ticket month files from D1
+#       "*/30 * * * *" rebuild  — self-heal ticket month files from the projection
+#                                 (observation_latest: one row per date, so it is cheap)
+#       "0 5 * * *"    reconcile— 05:00 GMT: re-derive the projection AND the month
+#                                 files from the append-only log, the integrity pass.
+#                                 Daily because it costs one pass over every forward
+#                                 reading; doing it half-hourly was the D1 read bill.
 #       "0 7 * * *"    pre-open — 07:00 GMT: catalog rebuilds + package discovery
 #       "5 7 * * *"    special  — 07:05 GMT: name buyout / ticketed-event days
 #       "0 4 * * *"    archive  — 04:00 GMT: queue days older than the retention
@@ -30,7 +35,7 @@ assets = { directory = "./dist", binding = "ASSETS", not_found_handling = "singl
 [triggers]
 crons = [
   "* * * * *", "*/1 * * * *", "0 * * * *", "*/30 * * * *",
-  "0 7 * * *", "5 7 * * *", "0 4 * * *", "0 3 2 * *",
+  "0 5 * * *", "0 7 * * *", "5 7 * * *", "0 4 * * *", "0 3 2 * *",
 ]
 
 # --- History / source of truth ---

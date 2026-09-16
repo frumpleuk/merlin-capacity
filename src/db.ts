@@ -385,6 +385,28 @@ export async function readLatestMonth(
   return readLatestRange(db, park, product, `${month}-01`, `${month}-31`);
 }
 
+/** Which months the product has any date for, from `fromMonth` on — one row per
+ *  date instead of per reading, so the month list costs nothing. The projection
+ *  never drops a date, so this covers every month the log covers (and, past the
+ *  archive horizon, months whose log rows have since moved to R2). */
+export async function readLatestMonths(
+  db: D1Database,
+  park: string,
+  product: Product,
+  fromMonth?: string,
+): Promise<string[]> {
+  const { results } = await db
+    .prepare(
+      `SELECT DISTINCT substr(event_date, 1, 7) AS m
+         FROM observation_latest
+        WHERE park = ? AND product = ? AND event_date >= ?
+        ORDER BY m`,
+    )
+    .bind(park, product, fromMonth ? `${fromMonth}-01` : "0000-00-00")
+    .all<{ m: string }>();
+  return (results ?? []).map((r) => r.m);
+}
+
 /**
  * Re-derive the projection from the log for everything from `fromMonth` on, and
  * correct it where the two disagree.
@@ -432,14 +454,30 @@ export async function reconcileLatest(
 
 
 /**
- * Rebuild a product's month files from the D1 log — every month that has any
- * observation. Self-heals: the per-poll path only (re)writes months whose data
- * changed that poll, so a month whose data has been static since the code
- * deployed (e.g. a quiet RAP allocation) can lack a file. This regenerates them
- * from the source of truth. Idempotent; skips empty months.
+ * Where a rebuild pass takes its numbers from, which is the difference between
+ * the two jobs that call it.
  *
- * `fromMonth` limits the rebuild to months >= it — the periodic cron passes the
- * current month so it only churns the forward window, never frozen history; a
+ * `"log"` re-derives everything from `observation`, the source of truth: it
+ * reconciles the projection first, then reads each month back out of the log. It
+ * costs one pass over every forward reading per product (~1.1M rows across the
+ * estate), so it runs once a day.
+ *
+ * `"projection"` reads `observation_latest`, which the poll maintains in the same
+ * batch as the log append. One row per date, so a pass is ~1.6k rows and can run
+ * every half hour. It cannot detect wrong numbers — that is the daily pass's job
+ * — but it does not need to: it exists to put back a month file that was never
+ * written, and the projection is the same thing the serving path already trusts.
+ */
+export type RebuildSource = "log" | "projection";
+
+/**
+ * Rebuild a product's month files — every month that has any observation.
+ * Self-heals: the per-poll path only (re)writes months whose data changed that
+ * poll, so a month whose data has been static since the code deployed (e.g. a
+ * quiet RAP allocation) can lack a file. Idempotent; skips empty months.
+ *
+ * `fromMonth` limits the rebuild to months >= it — the periodic crons pass the
+ * current month so they only churn the forward window, never frozen history; a
  * full repair (from `/poll`) omits it to rebuild every month.
  */
 export async function rebuildMonthsFromD1(
@@ -448,36 +486,37 @@ export async function rebuildMonthsFromD1(
   park: string,
   product: Product,
   generatedAt: string,
-  fromMonth?: string,
-  label?: string,
+  opts: { source: RebuildSource; fromMonth?: string; label?: string },
 ): Promise<string[]> {
-  // The month filter compares the bare `event_date`, not `substr(event_date, 1, 7)`.
-  // Wrapping the indexed column in a function made the term unseekable, so this
-  // walked every observation the product had ever recorded -- all 365 days of
-  // horizon times every reading of each -- to answer "which months exist from here
-  // on", every 30 minutes, for every product. `event_date >= 'YYYY-MM-01'` selects
-  // exactly the same months and seeks straight to the first, skipping the frozen
-  // history entirely.
-  const { results } = await db
-    .prepare(
-      `SELECT DISTINCT substr(event_date, 1, 7) AS m
-         FROM observation
-        WHERE park = ? AND product = ? AND event_date >= ?
-        ORDER BY m`,
-    )
-    .bind(park, product, fromMonth ? `${fromMonth}-01` : "0000-00-00")
-    .all<{ m: string }>();
+  const { source, fromMonth, label } = opts;
 
-  // Same pass, same range: re-derive the served projection from the log and
-  // repair any drift (see reconcileLatest). Runs before the month files so a
-  // repair is in place for the next poll that reads it.
-  await reconcileLatest(db, park, product, fromMonth);
+  // Deep pass only: re-derive the projection from the log and repair any drift
+  // (see reconcileLatest). Strictly first, so the month list below reads an
+  // already-repaired projection. An INSERT for a date the projection is missing
+  // always lands -- the monotonic guard is an ON CONFLICT clause, so it only
+  // arbitrates rows that already exist -- which is what makes it safe to take
+  // the month list from the projection immediately afterwards.
+  if (source === "log") await reconcileLatest(db, park, product, fromMonth);
+
+  // Both passes take the month list from the projection. Asking the log meant a
+  // DISTINCT over every reading of every forward date -- 754k rows for one
+  // product -- and because DISTINCT builds a temp b-tree on top of the index
+  // scan, it read that twice. In the deep pass the reconcile above has just
+  // rebuilt the projection from the log, so the list is still log-derived; it is
+  // only read from the side that costs one row per date.
+  const months = await readLatestMonths(db, park, product, fromMonth);
 
   const written: string[] = [];
-  for (const { m } of results) {
-    // The LOG, not the projection — this cron is what re-derives the truth, so
-    // reading the projection here would make it check its own homework.
-    const snapshot = await readMonthSnapshot(db, park, product, m);
+  for (const m of months) {
+    const snapshot =
+      source === "log"
+        ? await readMonthSnapshot(db, park, product, m)
+        : await readLatestMonth(db, park, product, m);
+    // Empty means the log no longer holds the month: `archiveObservations` has
+    // moved it to R2, while the projection kept its dates (it never drops one).
+    // The month file was frozen before those rows moved, so leaving it untouched
+    // is right — and only the full repair reaches back that far anyway, since
+    // both crons start at the current month.
     if (Object.keys(snapshot).length === 0) continue;
     await putMonthFile(bucket, park, product, m, snapshot, generatedAt, label);
     written.push(m);

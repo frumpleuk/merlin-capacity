@@ -182,7 +182,20 @@ export async function readPaged<T extends ArchiveRow>(
  */
 
 const QUEUE_RETAIN_DAYS = 2; // today + yesterday stay in D1
-const MAX_QUEUE_DAYS_PER_RUN = 3; // bound one invocation; a backlog drains over several nights
+
+/**
+ * Bounds one invocation; a backlog drains over several nights.
+ *
+ * 10, not 3: this landed with 57 days already in D1 against a 2-day target, and
+ * at 3 a night that is nineteen nights of carrying rows nothing reads. Ten clears
+ * it inside a week and still leaves plenty of headroom — a day costs roughly four
+ * subrequests (read the rows, put the object, read it back, delete), so ten days
+ * across seven parks is ~280 against the 1,000 an invocation gets.
+ *
+ * Worth dropping back to 3 once the backlog is gone, since steady state only ever
+ * has one day to move and the smaller bound fails more softly.
+ */
+const MAX_QUEUE_DAYS_PER_RUN = 10;
 
 const ymd = (ms: number) => new Date(ms).toISOString().slice(0, 10);
 

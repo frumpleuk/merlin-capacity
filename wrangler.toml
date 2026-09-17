@@ -36,7 +36,6 @@ assets = { directory = "./dist", binding = "ASSETS", not_found_handling = "singl
 crons = [
   "* * * * *", "*/1 * * * *", "0 * * * *", "*/30 * * * *",
   "0 5 * * *", "0 7 * * *", "5 7 * * *", "0 4 * * *", "0 3 2 * *",
-  "*/10 * * * *",   # TEMPORARY: queue-backlog drain, remove when caught up
 ]
 
 # --- History / source of truth ---

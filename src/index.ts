@@ -31,6 +31,12 @@ const CRON_PREOPEN = "0 7 * * *"; // 07:00 GMT (parks shut): catalog rebuild + d
 const CRON_SPECIAL = "5 7 * * *"; // 07:05 GMT: name the buyout / ticketed-event days
 const CRON_ARCHIVE = "0 4 * * *"; // 04:00 GMT: cold queue days out of D1, into R2
 const CRON_MONTH = "0 3 2 * *"; // 03:00 on the 2nd: fully elapsed ticket months to R2
+// TEMPORARY: drains the 57-day queue backlog that built up before the nightly
+// archive existed. Same bounded job as CRON_ARCHIVE, just fired often enough to
+// clear it in an hour instead of a week. Remove once queue_observation is back to
+// its 2-day retention -- it self-limits (no days past retention = nothing to do),
+// so leaving it only costs a no-op invocation, but it has no reason to stay.
+const CRON_DRAIN = "*/10 * * * *";
 
 const currentMonth = (ms: number) => new Date(ms).toISOString().slice(0, 7);
 
@@ -185,6 +191,7 @@ export default {
       case CRON_SPECIAL:
         return void ctx.waitUntil(pollSpecialDays(env, event.scheduledTime));
       case CRON_ARCHIVE:
+      case CRON_DRAIN:
         return void ctx.waitUntil(runArchive(env, event.scheduledTime));
       case CRON_MONTH:
         return void ctx.waitUntil(runMonthArchive(env, event.scheduledTime));

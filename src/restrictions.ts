@@ -5,7 +5,7 @@ import {
   RESTRICTIONS_PAGE,
   USER_AGENT,
 } from "./config";
-import { logPoll, updatePollStatusHashed } from "./db";
+import { logPoll } from "./db";
 import { buildPassIcals, passIcalKey, writeIcal } from "./ical";
 import type { Env } from "./types";
 
@@ -189,22 +189,6 @@ export async function fetchRestrictions(): Promise<RestrictionsFetch> {
   };
 }
 
-/** A stable hash of the forward restrictions, so `last_changed` advances when
- *  Merlin actually adds or lifts a date rather than when a past day ages out. */
-function hashRestrictions(
-  file: Omit<RestrictionsFile, "generated_at">,
-  fromDate: string,
-): string {
-  const parts = Object.keys(file.days)
-    .sort()
-    .filter((iso) => iso >= fromDate)
-    .map((iso) => `${iso}#${[...file.days[iso]].sort().join(",")}`);
-  parts.push(`tiers#${file.tiers.map((t) => t.name).join(",")}`, `span#${file.span[1]}`);
-  const str = parts.join("\n");
-  let h = 5381;
-  for (let i = 0; i < str.length; i++) h = ((h << 5) + h + str.charCodeAt(i)) >>> 0;
-  return h.toString(16);
-}
 
 /**
  * Poll the restriction calendar and overwrite the served R2 file. Like the hours
@@ -239,13 +223,6 @@ export async function refreshRestrictions(env: Env, now: number): Promise<number
     restricted,
     res.datesSeen,
     observedAt,
-  );
-  await updatePollStatusHashed(
-    env.BUCKET,
-    MERLIN_PASS_KEY,
-    "restrictions",
-    observedAt,
-    res.ok && res.file ? hashRestrictions(res.file, observedAt.slice(0, 10)) : null,
   );
   return restricted;
 }

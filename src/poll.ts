@@ -6,7 +6,6 @@ import {
   readLatestMonth,
   readSnapshot,
   updateParkIndex,
-  updatePollStatus,
   writeProductFile,
 } from "./db";
 import { resolvePackages } from "./discover";
@@ -45,7 +44,6 @@ export async function runPoll(
     const { P, anchorIds } = await resolvePackages(env.BUCKET, park, product);
     if (P.length === 0) {
       await logPoll(env.DB, park.key, product.key, 0, "NO_PACKAGES", 0, 0, observedAt);
-      await updatePollStatus(env.BUCKET, park.key, product.key, observedAt, false);
       return 0;
     }
     res = await fetchProduct(park, product, P, new Set(anchorIds), start, end);
@@ -103,6 +101,5 @@ export async function runPoll(
     res.datesSeen,
     observedAt,
   );
-  await updatePollStatus(env.BUCKET, park.key, product.key, observedAt, changed > 0);
   return changed;
 }

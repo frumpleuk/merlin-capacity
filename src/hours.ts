@@ -4,7 +4,6 @@ import { readRestrictions } from "./restrictions";
 import {
   logPoll,
   updateParkIndex,
-  updatePollStatusHashed,
   writeHoursMonths,
 } from "./db";
 import type { Env } from "./types";
@@ -512,28 +511,6 @@ async function fetchFlamingolandHours(
   };
 }
 
-/** A stable content hash of the forward (today onward) hours + events, so the
- *  status's `last_changed` advances only on a real change (a new event, changed
- *  times), not when a past day simply drops out of the fetched window. */
-function hashHours(snapshot: HoursSnapshot, fromDate: string): string {
-  const parts: string[] = [];
-  for (const iso of Object.keys(snapshot).sort()) {
-    if (iso < fromDate) continue;
-    const day = snapshot[iso];
-    const locs = day.locations
-      .map((l) => `${l.kind}~${l.hours}~${l.lastEntry ?? ""}~${l.event ?? ""}`)
-      .sort()
-      .join("|");
-    const evs = (day.events ?? [])
-      .map((e) => `${e.name}~${e.time ?? ""}~${e.category ?? ""}`)
-      .join("|");
-    parts.push(`${iso}#${day.event ?? ""}#${locs}#${evs}`);
-  }
-  const str = parts.join("\n");
-  let h = 5381;
-  for (let i = 0; i < str.length; i++) h = ((h << 5) + h + str.charCodeAt(i)) >>> 0;
-  return h.toString(16);
-}
 
 /**
  * Regenerate the park's subscribable calendar from the snapshot this poll just
@@ -609,7 +586,5 @@ export async function runHoursPoll(env: Env, park: ParkConfig): Promise<number> 
     res.datesSeen,
     observedAt,
   );
-  const hash = res.ok ? hashHours(res.snapshot, observedAt.slice(0, 10)) : null;
-  await updatePollStatusHashed(env.BUCKET, park.key, "hours", observedAt, hash);
   return res.datesSeen;
 }

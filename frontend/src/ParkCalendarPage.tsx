@@ -4,22 +4,18 @@ import {
   type HoursFile,
   loadHoursMonth,
   loadParkIndex,
-  loadPollStatus,
   loadAnomalies,
   loadProductMonth,
   loadRestrictions,
   loadSpecialDays,
-  mergeStatus,
   type AnomalyKind,
   type ParkIndex,
-  type PollStatus,
   type ProductFile,
   type RestrictionsFile,
   type SpecialDaysFile,
 } from "./api";
 import { findPark, PARK_HOME } from "./catalog";
 import { ParkCalendar } from "./ParkCalendar";
-import { UpdateMeta } from "./UpdateMeta";
 
 interface MonthData {
   main: ProductFile | null;
@@ -79,7 +75,6 @@ export function ParkCalendarPage() {
     Record<string, { kind: AnomalyKind; note: string }>
   >({});
   const [restrictions, setRestrictions] = useState<RestrictionsFile | null>(null);
-  const [status, setStatus] = useState<PollStatus | null>(null);
 
   // Reset to the current month and refetch bounds whenever the park changes.
   useEffect(() => {
@@ -108,26 +103,6 @@ export function ParkCalendarPage() {
     };
   }, [park, parkDef]);
 
-  // Calendar freshness = everything shown on this page, aggregated: main + RAP
-  // availability plus opening hours / events.
-  useEffect(() => {
-    if (!parkDef || parkDef.queueOnly) return;
-    let alive = true;
-    const tick = async () => {
-      const [m, r, h] = await Promise.all([
-        loadPollStatus(park!, "main"),
-        loadPollStatus(park!, "rap"),
-        loadPollStatus(park!, "hours"),
-      ]);
-      if (alive) setStatus(mergeStatus([m, r, h]));
-    };
-    tick();
-    const id = setInterval(tick, 30_000);
-    return () => {
-      alive = false;
-      clearInterval(id);
-    };
-  }, [park, parkDef]);
 
   // Load the displayed month's files; refresh live months on a timer.
   useEffect(() => {
@@ -160,7 +135,6 @@ export function ParkCalendarPage() {
 
   return (
     <main className="rc-main">
-      <UpdateMeta status={status} />
       <ParkCalendar
         main={data?.main ?? null}
         rap={data?.rap ?? null}

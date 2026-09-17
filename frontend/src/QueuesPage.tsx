@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import {
-  loadPollStatus,
   loadQueueDay,
   loadProductMonth,
   loadQueueIndex,
   loadSpecialDays,
-  type PollStatus,
   type QueueDayFile,
   type DayObs,
   type QueueIndex,
@@ -14,7 +12,6 @@ import {
 } from "./api";
 import { findPark, PARK_HOME } from "./catalog";
 import { DateNav, QueueList } from "./Queues";
-import { UpdateMeta } from "./UpdateMeta";
 
 const today = () => new Date().toISOString().slice(0, 10);
 
@@ -33,7 +30,6 @@ export function QueuesPage() {
 
   const [bounds, setBounds] = useState<QueueIndex | null>(null);
   const [file, setFile] = useState<QueueDayFile | null | undefined>(undefined); // undefined = loading
-  const [status, setStatus] = useState<PollStatus | null>(null);
   const [special, setSpecial] = useState<SpecialDaysFile | null>(null);
   const [tickets, setTickets] = useState<DayObs | undefined>(undefined);
   const [rap, setRap] = useState<DayObs | undefined>(undefined);
@@ -51,7 +47,7 @@ export function QueuesPage() {
     };
   }, [park, parkDef]);
 
-  // Load the day's file + poll status; refresh the live (today) view on a timer.
+  // Load the day's file; refresh the live (today) view on a timer.
   useEffect(() => {
     if (!parkDef) return;
     setFile(undefined);
@@ -59,14 +55,8 @@ export function QueuesPage() {
     setRap(undefined);
     let alive = true;
     const tick = async () => {
-      const [f, s] = await Promise.all([
-        loadQueueDay(park!, date),
-        loadPollStatus(park!, "queues"),
-      ]);
-      if (alive) {
-        setFile(f);
-        setStatus(s);
-      }
+      const f = await loadQueueDay(park!, date);
+      if (alive) setFile(f);
     };
     tick();
     // Ticket availability for the same day, from the month file the calendar
@@ -94,16 +84,18 @@ export function QueuesPage() {
   const canNext = date < today();
 
   // Time to hold each still-open sparkline out to, on the samples' UTC-minute
-  // axis: the last poll (today) or the day file's final write (a past day).
+  // axis: now (today) or the day file's final write (a past day). This used to
+  // prefer the last poll time, which stopped the line short when the collector
+  // had stalled; with no liveness signal published any more, today's line runs
+  // to now regardless.
   const isToday = date === today();
-  const asOfIso = isToday ? status?.last_polled ?? new Date().toISOString() : file?.generated_at;
+  const asOfIso = isToday ? new Date().toISOString() : file?.generated_at;
   const asOf = asOfIso
     ? Math.floor((Date.parse(asOfIso) - Date.parse(`${date}T00:00:00Z`)) / 60_000)
     : undefined;
 
   return (
     <main className="rc-main">
-      <UpdateMeta status={status} />
       <DateNav
         date={date}
         onPrev={() => go(addDays(date, -1))}

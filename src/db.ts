@@ -78,79 +78,29 @@ export async function logPoll(
 
 const key = (park: string, product: Product) => `calendar/${park}/${product}.json`;
 
-interface PollStatusFile {
-  last_polled: string;
-  last_changed: string | null;
-}
-
-/**
- * Record a poll's outcome for the frontend's "checked … / last change …" line.
- * `last_polled` bumps on every attempt (so it reflects when we last checked);
- * `last_changed` only advances when this poll actually wrote a delta, so it's
- * preserved read-modify-write across no-change polls. One small file per
- * (park, product) — each product owns its own, so concurrent polls never race.
+/* ── Poll liveness ─────────────────────────────────────────────────────────────
+ *
+ * There used to be a `status/<park>/<product>.json` here, rewritten on EVERY
+ * poll so the site could show "checked 30s ago". Unconditional, 17 products a
+ * minute, it was 24,480 R2 Class A writes a day -- over half of all of them, and
+ * the reason the bucket exceeded its free tier.
+ *
+ * It is gone. `poll_log` already records park, product, changed_count and
+ * observed_at for every single poll (see `logPoll`), so nothing was lost that
+ * isn't still in D1 for an admin page or a debugging session:
+ *
+ *   last_polled   SELECT MAX(observed_at) FROM poll_log WHERE park=? AND product=?
+ *   last_changed  ... AND changed_count > 0
+ *
+ * Bound those by `observed_at >= <recent>` to seek through idx_poll_time; a
+ * product missing from the result is the stale one. Querying them unbounded
+ * walks the index backwards from newest, which is fast only while every product
+ * is still polling -- exactly the case a liveness check cannot assume. A
+ * (park, product, observed_at) index would make either form a true seek.
+ *
+ * The site no longer surfaces this at all: a dead collector now looks like a
+ * quiet park. That was a deliberate trade, not an oversight.
  */
-export async function updatePollStatus(
-  bucket: R2Bucket,
-  park: string,
-  product: Product,
-  observedAt: string,
-  changed: boolean,
-): Promise<void> {
-  const objectKey = `status/${park}/${product}.json`;
-  // On a CHANGED poll last_changed = now, so the previous value isn't needed —
-  // skip the read entirely. Only an unchanged poll (the cheap path anyway) has to
-  // read back the stored last_changed to preserve it. Saves an R2 GET on every
-  // changed poll, which at peak is most of them.
-  let prevChanged: string | null = null;
-  if (!changed) {
-    const obj = await bucket.get(objectKey);
-    if (obj) {
-      try {
-        prevChanged = ((await obj.json()) as PollStatusFile).last_changed ?? null;
-      } catch {
-        prevChanged = null;
-      }
-    }
-  }
-  const body = JSON.stringify({
-    last_polled: observedAt,
-    last_changed: changed ? observedAt : prevChanged,
-  });
-  await bucket.put(objectKey, body, { httpMetadata: { contentType: "application/json" } });
-}
-
-/**
- * As `updatePollStatus`, but change is detected by comparing a content `hash`
- * to the previously stored one — for products (opening hours) that overwrite
- * wholesale and so have no per-poll delta count. A null hash (failed fetch)
- * bumps `last_polled` only and preserves the stored hash + last_changed.
- */
-export async function updatePollStatusHashed(
-  bucket: R2Bucket,
-  park: string,
-  product: Product,
-  observedAt: string,
-  hash: string | null,
-): Promise<void> {
-  const objectKey = `status/${park}/${product}.json`;
-  let prev: { last_changed?: string | null; hash?: string } = {};
-  const obj = await bucket.get(objectKey);
-  if (obj) {
-    try {
-      prev = (await obj.json()) as typeof prev;
-    } catch {
-      prev = {};
-    }
-  }
-  const changed = hash != null && hash !== prev.hash;
-  const body = JSON.stringify({
-    last_polled: observedAt,
-    last_changed: changed ? observedAt : prev.last_changed ?? null,
-    hash: hash ?? prev.hash,
-  });
-  await bucket.put(objectKey, body, { httpMetadata: { contentType: "application/json" } });
-}
 
 /** Previous snapshot, read back from the served file — our diff baseline.
  *  R2 is read-after-write consistent, so this reliably reflects the last poll. */

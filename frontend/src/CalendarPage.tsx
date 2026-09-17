@@ -2,15 +2,12 @@ import { useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import {
   loadParkIndex,
-  loadPollStatus,
   loadProduct,
   loadProductRange,
-  type PollStatus,
   type ProductFile,
 } from "./api";
 import { DEFAULT_PATH, findPark } from "./catalog";
 import { DetailBar, ProductCalendar } from "./Heatmap";
-import { UpdateMeta } from "./UpdateMeta";
 
 export function CalendarPage() {
   const { park, product } = useParams();
@@ -20,7 +17,6 @@ export function CalendarPage() {
   const today = new Date().toISOString().slice(0, 10);
   // undefined = loading, null = no data for this product yet
   const [file, setFile] = useState<ProductFile | null | undefined>(undefined);
-  const [status, setStatus] = useState<PollStatus | null>(null);
   // Default the selection to today, so the detail bar opens on the current day.
   const [selected, setSelected] = useState<string | null>(today);
 
@@ -33,16 +29,10 @@ export function CalendarPage() {
       // Prefer the merged per-month files (history + forward); fall back to the
       // forward-only file if the park index isn't available yet.
       const index = await loadParkIndex(park!);
-      const [f, s] = await Promise.all([
-        index
-          ? loadProductRange(park!, product!, index)
-          : loadProduct(park!, product!),
-        loadPollStatus(park!, product!),
-      ]);
-      if (alive) {
-        setFile(f);
-        setStatus(s);
-      }
+      const f = index
+        ? await loadProductRange(park!, product!, index)
+        : await loadProduct(park!, product!);
+      if (alive) setFile(f);
     };
     tick();
     const id = setInterval(tick, 30_000);
@@ -74,7 +64,6 @@ export function CalendarPage() {
   return (
     <>
       <main className={selDay ? "with-bar" : undefined}>
-        <UpdateMeta status={status} />
         <ProductCalendar
           file={file}
           selectedIso={selected}

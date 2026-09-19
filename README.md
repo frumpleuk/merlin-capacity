@@ -137,6 +137,29 @@ from the Attractions.io ("Occasio") backend that powers the official park apps
 > planned next: compare a day's queues against similar days with similar park
 > capacity (the D1 log already holds both).
 
+## Menu prices
+
+A third stream, and the only one that isn't scraped: photos of the menu boards,
+taken in the park and typed up by hand (with agent help) into JSON.
+
+- **Source** — `contrib/menus/merlin/<park>/<venue>/<YYYY-MM-DD>/`. Each venue
+  folder matches an eatery in that park's official app, so the **Food** tab can
+  also list the places we haven't photographed yet, and the free water refill
+  points. Temporary food villages (Cargo Global Eats on the Front Lawns, and
+  whatever Scarefest brings) live under `_events/<year>-<event>/`.
+- **Dates** — folders are named for the photos' capture date, so prices carry
+  the day they were true and a later visit sits alongside rather than
+  overwriting. The tab shows the newest.
+- **Photos** — camera originals stay out of the repo; small, descriptively
+  named copies (`web/loaded-spuds.jpg`) are committed and uploaded to R2 by
+  `npm run deploy`, served at `/menus/...` with a one-year cache.
+- **Tooling** — `scripts/menus/` refreshes venues from the apps
+  (`sync-venues.mjs`), files new photos by GPS (`ingest.mjs`), makes the web
+  copies (`optimise.mjs`), checks everything (`validate.mjs`) and compiles the
+  site's data (`build.mjs`, run by `npm run build`). Agents use the
+  `/menus-add-photos` and `/menus-transcribe` skills. See
+  [`contrib/menus/README.md`](contrib/menus/README.md).
+
 ## Layout
 
 - `src/` — the Worker: cron poller (`poll.ts`), API client (`merlin.ts`),
@@ -146,6 +169,8 @@ from the Attractions.io ("Occasio") backend that powers the official park apps
   Subscribable calendar feeds: `ical.ts`.
 - `frontend/` — Vite + React heatmap; builds to `dist/`, served as Workers Assets.
 - `migrations/` — D1 schema.
+- `contrib/menus/` — menu photos and their transcriptions; `scripts/menus/` —
+  the tooling that maintains them.
 
 ## Local development
 

@@ -1,0 +1,57 @@
+[
+  {
+    "name": "Big Easy Boulevard",
+    "lat": 51.404125,
+    "lon": -0.515028
+  },
+  {
+    "name": "The Dome",
+    "lat": 51.405127,
+    "lon": -0.512263
+  },
+  {
+    "name": "Thorpe Shark Cabins",
+    "lat": 51.406108,
+    "lon": -0.512689
+  },
+  {
+    "name": "Amity Speedway",
+    "lat": 51.404792,
+    "lon": -0.516027
+  },
+  {
+    "name": "Swarm Island",
+    "lat": 51.405656,
+    "lon": -0.515696
+  },
+  {
+    "name": "Lost City",
+    "lat": 51.403826,
+    "lon": -0.512343
+  },
+  {
+    "name": "SAW - The Ride & Samurai",
+    "lat": 51.402648,
+    "lon": -0.511673
+  },
+  {
+    "name": "Calypso Quay",
+    "lat": 51.403744,
+    "lon": -0.516261
+  },
+  {
+    "name": "Amity Cove",
+    "lat": 51.40464,
+    "lon": -0.513844
+  },
+  {
+    "name": "Fearless Valley",
+    "lat": 51.402338,
+    "lon": -0.513349
+  },
+  {
+    "name": "Dockyard",
+    "lat": 51.403464,
+    "lon": -0.514298
+  }
+]

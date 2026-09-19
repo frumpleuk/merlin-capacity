@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Rainforest",
+    "lat": 51.348235,
+    "lon": -0.319086
+  },
+  {
+    "name": "World of Jumanji",
+    "lat": 51.347247,
+    "lon": -0.318067
+  },
+  {
+    "name": "Penguin Bay ",
+    "lat": 51.349271,
+    "lon": -0.316264
+  },
+  {
+    "name": "Adventure Point",
+    "lat": 51.348609,
+    "lon": -0.316978
+  },
+  {
+    "name": "Shipwreck Coast",
+    "lat": 51.347795,
+    "lon": -0.316919
+  },
+  {
+    "name": "Sea Lion Bay",
+    "lat": 51.348212,
+    "lon": -0.315417
+  },
+  {
+    "name": "Trail of the Kings",
+    "lat": 51.347957,
+    "lon": -0.314998
+  },
+  {
+    "name": "Wild Woods",
+    "lat": 51.347528,
+    "lon": -0.315921
+  },
+  {
+    "name": "Land of the Dragons",
+    "lat": 51.347937,
+    "lon": -0.318249
+  },
+  {
+    "name": "Forbidden Kingdom",
+    "lat": 51.348905,
+    "lon": -0.318346
+  },
+  {
+    "name": "Wanyama Reserve",
+    "lat": 51.350343,
+    "lon": -0.317691
+  },
+  {
+    "name": "The Mini Stage",
+    "lat": 51.349066,
+    "lon": -0.314891
+  },
+  {
+    "name": "The Mane Stage",
+    "lat": 51.348587,
+    "lon": -0.318418
+  },
+  {
+    "name": "Amazu",
+    "lat": 51.349446,
+    "lon": -0.316551
+  },
+  {
+    "name": "SEA LIFE",
+    "lat": 51.349565,
+    "lon": -0.315803
+  },
+  {
+    "name": "World of Paw Patrol",
+    "lat": 51.349378,
+    "lon": -0.317766
+  }
+]

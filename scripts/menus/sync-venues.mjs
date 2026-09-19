@@ -140,6 +140,10 @@ for (const park of attractionsParks()) {
     if (existing && prev.name !== name) console.log(`~ ${path.relative(ROOT, venueDir)}: renamed "${prev.name}" -> "${name}"`);
     writeJson(path.join(venueDir, "poi.json"), { ...prev, ...appFields });
   }
+  // The map on the Food tab draws these as labels, so the venue pins sit in a
+  // recognisable park rather than an unlabelled scatter.
+  writeJson(path.join(parkDir, "areas.json"), lands.map((a) => ({ name: a.name, lat: coord(a.lat), lon: coord(a.lon) })));
+
   // Pop-ups and food-village stalls aren't in the app, but they stand in a land
   // like everything else — place them from their photos' GPS.
   for (const v of venues(parkDir)) {

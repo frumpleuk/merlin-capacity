@@ -120,7 +120,10 @@ for (const parkDir of dirs(ROOT)) {
 
   venues.sort((a, b) => a.name.localeCompare(b.name));
   water.sort((a, b) => a.name.localeCompare(b.name));
-  parks[key] = { venues, water, events, offers };
+  // Area labels for the map (sync-venues writes them from the app's own map).
+  const areasFile = path.join(base, "areas.json");
+  const areas = fs.existsSync(areasFile) ? readJson(areasFile) : [];
+  parks[key] = { venues, water, events, offers, areas };
 }
 
 fs.writeFileSync(OUT, JSON.stringify(parks) + "\n");

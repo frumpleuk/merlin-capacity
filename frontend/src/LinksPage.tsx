@@ -2,7 +2,14 @@ import { useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { loadRestrictions, tierSlug, type RestrictionsFile } from "./api";
 import { findPark, PARK_HOME, type ParkDef } from "./catalog";
-import { PARK_LINKS, PLATFORMS, type AppLink, type ParkLink } from "./links";
+import {
+  mapLinks,
+  PARK_LINKS,
+  PLATFORMS,
+  type AppLink,
+  type ParkLink,
+  type ParkLocation,
+} from "./links";
 import { SOCIAL_GLYPHS } from "./socialIcons";
 
 /** Everything on this page leaves the site, so every anchor opens in a new tab
@@ -85,7 +92,7 @@ function SocialIcon({ platform }: { platform: string }) {
   const glyph = SOCIAL_GLYPHS[platform];
   if (!glyph) return null;
   return (
-    <svg className="lk-social-icon" viewBox={glyph.viewBox} aria-hidden="true" focusable="false">
+    <svg className="lk-chip-icon" viewBox={glyph.viewBox} aria-hidden="true" focusable="false">
       <path d={glyph.path} fill="currentColor" />
     </svg>
   );
@@ -102,10 +109,18 @@ const feedUrl = (path: string) => `${window.location.origin}${path}`;
  *  Google Calendar wants the https URL pasted, which is why both are offered. */
 const webcalUrl = (path: string) => `webcal://${window.location.host}${path}`;
 
-/** Copy the https form, for the clients that take a pasted URL. Falls back to
- *  selecting nothing and saying so if the clipboard isn't available (an
- *  insecure origin, or a browser that refuses the permission). */
-function CopyUrl({ path }: { path: string }) {
+/** Copy a string to the clipboard — the https form of a feed, or a postcode.
+ *  Falls back to saying so if the clipboard isn't available (an insecure
+ *  origin, or a browser that refuses the permission). */
+function CopyButton({
+  value,
+  aria,
+  idle = "Copy",
+}: {
+  value: string;
+  aria: string;
+  idle?: string;
+}) {
   const [state, setState] = useState<"idle" | "done" | "failed">("idle");
   return (
     <button
@@ -113,16 +128,16 @@ function CopyUrl({ path }: { path: string }) {
       type="button"
       onClick={async () => {
         try {
-          await navigator.clipboard.writeText(feedUrl(path));
+          await navigator.clipboard.writeText(value);
           setState("done");
         } catch {
           setState("failed");
         }
         setTimeout(() => setState("idle"), 2000);
       }}
-      aria-label={`Copy the calendar URL for ${path}`}
+      aria-label={aria}
     >
-      {state === "done" ? "Copied" : state === "failed" ? "Copy failed" : "Copy URL"}
+      {state === "done" ? "Copied" : state === "failed" ? "Copy failed" : idle}
     </button>
   );
 }
@@ -136,7 +151,11 @@ function FeedRow({ label, note, path }: { label: string; note?: string; path: st
         </span>
         {note && <span className="lk-note">{note}</span>}
       </a>
-      <CopyUrl path={path} />
+      <CopyButton
+        value={feedUrl(path)}
+        aria={`Copy the calendar URL for ${path}`}
+        idle="Copy URL"
+      />
     </div>
   );
 }
@@ -176,7 +195,7 @@ function CalendarGroup({ parkDef }: { parkDef: ParkDef }) {
               {restrictions.tiers.map((t) => (
                 <a
                   key={t.name}
-                  className="lk-social"
+                  className="lk-chip"
                   href={webcalUrl(`/ical/pass/${tierSlug(t.name)}.ics`)}
                 >
                   {t.name}
@@ -190,8 +209,76 @@ function CalendarGroup({ parkDef }: { parkDef: ParkDef }) {
   );
 }
 
-/** Static per-park link directory (tickets, accessibility, apps, socials), plus
- *  the park's calendar feeds.
+/* ── Getting there ────────────────────────────────────────────────────────────
+ *
+ * Three deep links and a postcode. The links carry the car park's coordinate
+ * where the park publishes one, which routes better than the park's own POI —
+ * see ParkLocation.drive in links.ts. */
+
+/** Map pin, one glyph for all three apps. Their logos are trademarked artwork
+ *  with their own usage rules, and nothing here needs them: the chip says which
+ *  app it opens. */
+function PinIcon() {
+  return (
+    <svg
+      className="lk-chip-icon"
+      viewBox="0 0 16 16"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d="M8 14.5s5-4.35 5-8a5 5 0 0 0-10 0c0 3.65 5 8 5 8Z" />
+      <circle cx="8" cy="6.5" r="1.9" />
+    </svg>
+  );
+}
+
+function GettingThereGroup({ location }: { location: ParkLocation }) {
+  return (
+    <section className="lk-group">
+      <h3>Getting there</h3>
+      <div className="lk-place">
+        <span className="lk-label">{location.address}</span>
+        <span className="lk-postcode">
+          {location.postcode}
+          <CopyButton
+            value={location.postcode}
+            aria={`Copy the postcode ${location.postcode}`}
+          />
+        </span>
+        {location.note && <span className="lk-note">{location.note}</span>}
+        <div className="lk-chips">
+          {mapLinks(location).map((m) => (
+            <a key={m.name} className="lk-chip" href={m.url} {...ext}>
+              <PinIcon />
+              {m.name}
+            </a>
+          ))}
+        </div>
+        {location.drive && (
+          <span className="lk-note">
+            Routes to {location.drive.label} — {location.drive.lat},{" "}
+            {location.drive.lon}
+          </span>
+        )}
+      </div>
+      <LinkRow
+        link={{
+          label: "Directions & parking",
+          url: location.directions,
+          note: "By car, train and bus, from the park itself",
+        }}
+      />
+    </section>
+  );
+}
+
+/** Static per-park link directory (tickets, getting there, accessibility, apps,
+ *  socials), plus the park's calendar feeds.
  *  The groups lay out as columns on a wide screen and stack on a narrow one;
  *  Social spans the full width so its pills get a full row before wrapping. */
 export function LinksPage() {
@@ -223,6 +310,8 @@ export function LinksPage() {
           ))}
         </section>
 
+        <GettingThereGroup location={links.location} />
+
         {links.access.length > 0 && (
           <section className="lk-group">
             <h3>Accessibility</h3>
@@ -246,9 +335,9 @@ export function LinksPage() {
         {socials.length > 0 && (
           <section className="lk-group lk-group-wide">
             <h3>Social</h3>
-            <div className="lk-socials">
+            <div className="lk-chips">
               {socials.map((s) => (
-                <a key={s.key} className="lk-social" href={s.url} {...ext}>
+                <a key={s.key} className="lk-chip" href={s.url} {...ext}>
                   <SocialIcon platform={s.key} />
                   {s.label}
                 </a>

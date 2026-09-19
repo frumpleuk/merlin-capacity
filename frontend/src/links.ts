@@ -40,9 +40,68 @@ export interface SocialLinks {
   linkedin?: string;
 }
 
+/** Where the park is, and what we hand a map app to get there. */
+export interface ParkLocation {
+  /** Postal address, as the park's own directions page gives it (postcode
+   *  excluded — it's shown on its own line so it can be copied). */
+  address: string;
+  postcode: string;
+  /** Where to drive to: the main visitor car park, as a coordinate. Preferred
+   *  over any text search, because a search resolves to the park's POI — which
+   *  is the pedestrian entrance for some apps and the middle of the estate for
+   *  others, and at Alton Towers that means the farm track the park warns
+   *  about. `label` names the pin so the page can say where it's sending you.
+   *  Sources are per-park; see each entry. */
+  drive?: { lat: number; lon: number; label: string };
+  /** Destination for a park with no coordinate: name plus postcode, which each
+   *  app then resolves against its own POI. The postcode separates the park
+   *  from its namesakes (there's another Thorpe Park, in Peterborough). */
+  query: string;
+  /** The park's own directions page — the authority on road signs, parking and
+   *  public transport. */
+  directions: string;
+  /** Shown under the postcode, where the park itself says something about
+   *  driving in that the map apps won't tell you. */
+  note?: string;
+}
+
+/** One map app's deep link. */
+export interface MapLink {
+  name: string;
+  url: string;
+}
+
+/** The three apps people navigate with here. Each takes the destination as a
+ *  `lat,lon` pair where we have one and as text otherwise; all three fall back
+ *  to their web map on a desktop browser and hand off to the installed app on a
+ *  phone. */
+export function mapLinks(loc: ParkLocation): MapLink[] {
+  const ll = loc.drive ? `${loc.drive.lat},${loc.drive.lon}` : null;
+  const dest = encodeURIComponent(ll ?? loc.query);
+  return [
+    // dirflg=d asks for driving; with no saddr, Apple Maps starts from wherever
+    // the device is.
+    { name: "Apple Maps", url: `https://maps.apple.com/?daddr=${dest}&dirflg=d` },
+    // Google's documented cross-platform directions URL.
+    {
+      name: "Google Maps",
+      url: `https://www.google.com/maps/dir/?api=1&destination=${dest}`,
+    },
+    // Waze's universal link: ll for a coordinate, q for a search. navigate=yes
+    // starts the route rather than only dropping a pin on it.
+    {
+      name: "Waze",
+      url: ll
+        ? `https://waze.com/ul?ll=${dest}&navigate=yes`
+        : `https://waze.com/ul?q=${dest}&navigate=yes`,
+    },
+  ];
+}
+
 export interface ParkLinks {
   /** The park's own marketing site. */
   website: string;
+  location: ParkLocation;
   /** Tickets, prebooking and queue-skip products. */
   booking: ParkLink[];
   /** Accessibility: the park's ride-access scheme (RAP and its equivalents). */
@@ -111,6 +170,18 @@ const rapInfo = (url: string): ParkLink => ({
 export const PARK_LINKS: Record<string, ParkLinks> = {
   alton_towers: {
     website: "https://www.altontowers.com/",
+    location: {
+      address: "Alton Towers Resort, Alton, Staffordshire",
+      postcode: "ST10 4DB",
+      query: "Alton Towers Resort, ST10 4DB",
+      // Car park pins come from the park's own app bundle (the same
+      // Attractions.io records the venue sync reads). The lettered car parks
+      // all hang off one approach road, so A stands in for the set.
+      drive: { lat: 52.987439, lon: -1.880787, label: "Car Park A" },
+      directions:
+        "https://www.altontowers.com/plan-your-visit/before-you-visit/directions/",
+      note: "The park warns that some sat navs take you down a local farm track, especially from the B5417 — follow the road signs for the last few miles.",
+    },
     booking: [
       bookTickets("https://me-twalton.tickets.altontowers.com"),
       {
@@ -147,6 +218,16 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
 
   thorpe_park: {
     website: "https://www.thorpepark.com/",
+    location: {
+      address: "Thorpe Park, Staines Road, Chertsey, Surrey",
+      postcode: "KT16 8PN",
+      query: "Thorpe Park, KT16 8PN",
+      // The park's one visitor car park, from its app bundle.
+      drive: { lat: 51.40481, lon: -0.508092, label: "the main car park" },
+      directions:
+        "https://www.thorpepark.com/plan-your-visit/before-you-visit/directions/",
+      note: "The postcode sends some sat navs to Norlands Lane; the entrance is on Staines Road, under the rollercoaster track.",
+    },
     booking: [
       bookTickets("https://me-tpr.tickets.thorpepark.com"),
       {
@@ -180,6 +261,17 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
 
   legoland: {
     website: "https://www.legoland.co.uk/",
+    location: {
+      address: "LEGOLAND Windsor Resort, Winkfield Road, Windsor, Berkshire",
+      postcode: "SL4 4AY",
+      query: "LEGOLAND Windsor Resort, SL4 4AY",
+      // First of the standard car parks off Winkfield Road, from the app
+      // bundle (C, D and E follow it down the same road).
+      drive: { lat: 51.464872, lon: -0.65747, label: "Standard Parking B" },
+      directions:
+        "https://www.legoland.co.uk/plan-your-day/before-you-visit/directions/",
+      note: "Follow the LEGOLAND signs on the local roads once you're close.",
+    },
     booking: [
       bookTickets("https://me-llwindsor.tickets.legoland.co.uk"),
       {
@@ -213,6 +305,17 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
 
   chessington: {
     website: "https://www.chessington.com/",
+    location: {
+      address:
+        "Chessington World of Adventures Resort, Leatherhead Road, Chessington, Surrey",
+      postcode: "KT9 2NE",
+      query: "Chessington World of Adventures, KT9 2NE",
+      // A standard car park from the app bundle — Ostrich is for larger
+      // vehicles and Express is the paid one nearer the gate.
+      drive: { lat: 51.346511, lon: -0.320942, label: "Giraffe Car Park" },
+      directions:
+        "https://www.chessington.com/plan-your-visit/before-you-visit/directions/",
+    },
     booking: [
       bookTickets("https://me-wachessington.tickets.chessington.com"),
       {
@@ -249,6 +352,16 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
   // Companion tickets booked separately.
   paultons: {
     website: "https://paultonspark.co.uk/",
+    location: {
+      address: "Paultons Park, Ower, Romsey, The New Forest, Hampshire",
+      postcode: "SO51 6AL",
+      query: "Paultons Park, SO51 6AL",
+      // The pin Paulton's own directions page navigates to; parking is free
+      // and sits alongside the entrance.
+      drive: { lat: 50.948297, lon: -1.551914, label: "the park entrance" },
+      directions: "https://paultonspark.co.uk/info/directions",
+      note: "Parking is free.",
+    },
     booking: [
       {
         label: "Book tickets",
@@ -296,6 +409,15 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
   // Independent — tickets sit on its own reservations system.
   flamingoland: {
     website: "https://www.flamingoland.co.uk/",
+    location: {
+      address: "Flamingo Land Resort, Kirby Misperton, Malton, North Yorkshire",
+      postcode: "YO17 6UX",
+      query: "Flamingo Land, YO17 6UX",
+      // No `drive`: neither the park nor OpenStreetMap publishes a pin for the
+      // visitor car park, and the postcode centroid is only what the apps would
+      // geocode to anyway.
+      directions: "https://www.flamingoland.co.uk/plan-your-visit/how-to-find-us/",
+    },
     booking: [
       {
         label: "Book tickets",
@@ -336,6 +458,16 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
   // by Access Card rather than the park itself.
   blackpool: {
     website: "https://www.blackpoolpleasurebeach.com/",
+    location: {
+      address: "Pleasure Beach Resort, 525 Ocean Boulevard, Blackpool",
+      postcode: "FY4 1EZ",
+      query: "Blackpool Pleasure Beach, FY4 1EZ",
+      // FY4 1HR, the postcode the resort gives for its main car park (ONS
+      // postcode centroid — the resort publishes no pin of its own).
+      drive: { lat: 53.793848, lon: -3.0544, label: "North Car Park" },
+      directions: "https://www.blackpoolpleasurebeach.com/getting-here-parking/",
+      note: "Paid parking only, and the resort's own car parks are split three ways — the main one is North Car Park, Balmoral Road, FY4 1HR.",
+    },
     booking: [
       {
         label: "Book wristbands",

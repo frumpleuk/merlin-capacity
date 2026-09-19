@@ -991,7 +991,8 @@ main.with-bar {
   grid-column: 1 / -1;
 }
 .lk-link,
-.lk-app {
+.lk-app,
+.lk-place {
   display: block;
   padding: 9px 0;
   border-top: 1px solid var(--grid);
@@ -1061,13 +1062,29 @@ main.with-bar {
   height: calc(var(--badge-h) * 250 / 168);
   margin: calc(var(--badge-h) * -41 / 168);
 }
-.lk-socials {
+/* Address block. The postcode gets its own line at address size: it's the bit
+   that gets typed into a car's sat nav, so it needs to be readable and
+   copyable rather than buried in the address. */
+.lk-place .lk-label {
+  font-weight: 500;
+}
+.lk-postcode {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-top: 2px;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+}
+
+/* Chip row — the map apps and the social profiles both use it. */
+.lk-chips {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   margin-top: 8px;
 }
-.lk-social {
+.lk-chip {
   display: inline-flex;
   align-items: center;
   gap: 7px;
@@ -1079,11 +1096,11 @@ main.with-bar {
   text-decoration: none;
   white-space: nowrap;
 }
-.lk-social:hover,
-.lk-social:focus-visible {
+.lk-chip:hover,
+.lk-chip:focus-visible {
   outline: 1px solid var(--link);
 }
-.lk-social-icon {
+.lk-chip-icon {
   width: 14px;
   height: 14px;
   flex: none;

@@ -87,9 +87,9 @@ h1 {
   font-weight: 600;
   border-bottom-color: var(--fg);
 }
-/* A Merlin park now carries five tabs (Calendar · Queues · Tickets · RAP ·
-   Links), which overruns a phone in portrait at the default padding. Tighten
-   the gaps there so the row fits without becoming a scroller. */
+/* A Merlin park now carries six tabs (Calendar · Queues · Tickets · RAP ·
+   Food · Links), which overruns a phone in portrait at the default padding.
+   Tighten the gaps there so the row scrolls as little as possible. */
 @media (max-width: 430px) {
   .tabs {
     gap: 2px;
@@ -1130,4 +1130,323 @@ main.with-bar {
 .lk-feed-tiers .lk-note {
   display: inline;
   margin: 0;
+}
+
+/* --- Food tab (MenusPage): menu prices typed up from board photos. A park has
+       dozens of places, so the page is a scannable list — venue, pass discount,
+       price range — that opens one card at a time. Search opens what matches. --- */
+.fd-intro {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 12px 0 10px;
+}
+.fd-controls {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.fd-search {
+  flex: 1;
+  min-width: 0;
+  padding: 9px 12px;
+  font: inherit;
+  color: var(--fg);
+  background: var(--bg);
+  border: 1px solid var(--grid);
+  border-radius: 8px;
+}
+.fd-chip {
+  flex: none;
+  padding: 0 14px;
+  font: inherit;
+  font-size: 13px;
+  color: var(--muted);
+  background: var(--bg);
+  border: 1px solid var(--grid);
+  border-radius: 8px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.fd-chip.on {
+  color: var(--bg);
+  background: var(--q-alt);
+  border-color: var(--q-alt);
+  font-weight: 600;
+}
+.fd-count {
+  color: var(--muted);
+  font-size: 12px;
+  margin: 8px 0 0;
+}
+
+/* Area heading: the land the venues stand in. */
+.fd-area-head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 20px 0 6px;
+  padding-bottom: 4px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  border-bottom: 1px solid var(--grid);
+}
+
+/* One venue: a row that opens. Flat until opened, so a long list reads as a
+   list rather than a stack of boxes. */
+.fd-venue {
+  border-bottom: 1px solid var(--grid);
+}
+.fd-venue.open {
+  background: var(--card);
+  border-radius: 8px;
+  border-bottom-color: transparent;
+  margin: 6px 0;
+}
+.fd-venue-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 10px 10px 2px;
+  font: inherit;
+  text-align: left;
+  color: var(--fg);
+  background: none;
+  border: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.fd-venue.open .fd-venue-head {
+  padding-left: 10px;
+}
+.fd-venue-title {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-width: 0;
+}
+.fd-venue-name {
+  font-weight: 600;
+}
+.fd-venue-meta {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 400;
+  white-space: nowrap;
+}
+.fd-venue-head .fd-venue-meta {
+  margin-left: auto;
+  font-variant-numeric: tabular-nums;
+}
+.fd,
+.fd-sections,
+.fd-item-main {
+  min-width: 0;
+}
+.fd-chevron {
+  flex: none;
+  width: 12px;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* Badges: pass discount first, then dining plans. */
+.fd-pass,
+.fd-plan {
+  flex: none;
+  padding: 1px 7px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  border-radius: 10px;
+  cursor: help;
+}
+.fd-pass {
+  color: var(--bg);
+  background: var(--q-alt);
+}
+.fd-pass-no,
+.fd-plan {
+  color: var(--muted);
+  background: none;
+  border: 1px solid var(--grid);
+  font-weight: 400;
+}
+
+/* Opened venue: its sections, then the photos behind them. */
+.fd-sections {
+  padding: 0 12px 12px;
+}
+.fd-section h4 {
+  margin: 12px 0 2px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+.fd-section ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.fd-item {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  padding: 5px 0;
+  border-top: 1px solid var(--grid);
+}
+.fd-item-main {
+  flex: 1;
+  min-width: 0;
+}
+.fd-item-desc {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.35;
+}
+/* A size ladder ("Pint £7.75 · Half £4.50") is the one thing here long enough
+   to push a phone sideways, so it wraps instead of holding the row open. */
+.fd-price {
+  max-width: 55%;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+.fd-kcal {
+  margin-left: 6px;
+  color: var(--muted);
+  font-size: 11px;
+}
+/* The board was unreadable here — the price is a best reading, or missing. */
+.fd-flag {
+  color: var(--q-closed);
+  margin-left: 3px;
+}
+.fd-tag {
+  margin-left: 5px;
+  padding: 0 4px;
+  font-size: 10px;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1px solid var(--grid);
+  border-radius: 3px;
+  text-decoration: none;
+  cursor: help;
+}
+.fd-note {
+  margin: 4px 0 6px;
+  color: var(--muted);
+  font-size: 12px;
+}
+.fd-offer {
+  margin: 8px 0 0;
+  padding: 7px 9px;
+  font-size: 13px;
+  background: var(--bg);
+  border-left: 3px solid var(--q-alt);
+  border-radius: 0 4px 4px 0;
+}
+.fd-park-offers h3,
+.fd-historic h3 {
+  margin: 18px 0 6px;
+  font-size: 15px;
+}
+
+/* Proof: the boards themselves, thumbnails that open full size. */
+.fd-photos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  padding-top: 8px;
+  border-top: 1px solid var(--grid);
+}
+.fd-photos img {
+  height: 56px;
+  width: auto;
+  border-radius: 4px;
+  border: 1px solid var(--grid);
+  display: block;
+}
+.fd-official {
+  font-size: 12px;
+  color: var(--link);
+}
+
+/* History, and the long reference lists, stay folded away. */
+.fd-toggle {
+  margin: 22px 0 0;
+  padding: 8px 0;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+.fd-more {
+  margin: 14px 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+.fd-more summary {
+  cursor: pointer;
+  padding: 6px 0;
+}
+.fd-more ul {
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+  columns: 2;
+  column-gap: 16px;
+}
+.fd-more li {
+  break-inside: avoid;
+  padding: 1px 0;
+}
+.fd-empty {
+  color: var(--muted);
+  padding: 12px 0;
+}
+@media (max-width: 430px) {
+  .fd-more ul {
+    columns: 1;
+  }
+  .fd-venue-head .fd-venue-meta {
+    font-size: 11px;
+  }
+}
+/* Park-wide deals: a fold-away block, so the venues stay the page's subject. */
+.fd-park-offers {
+  font-size: inherit;
+  color: inherit;
+}
+.fd-park-offers summary {
+  color: var(--muted);
+  font-size: 13px;
+}
+/* Sizes under their item: label left, price right, the same alignment as a
+   single-price row so a column of prices still reads down the card. */
+.fd-sizes {
+  display: block;
+  margin-top: 2px;
+}
+.fd-size {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  padding: 1px 0;
+}
+.fd-size-label {
+  flex: 1;
+  min-width: 0;
+  color: var(--muted);
+  font-size: 13px;
 }

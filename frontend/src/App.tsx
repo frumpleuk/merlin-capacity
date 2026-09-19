@@ -3,6 +3,7 @@ import { CalendarPage } from "./CalendarPage";
 import { PARK_HOME } from "./catalog";
 import { Layout } from "./Layout";
 import { LinksPage } from "./LinksPage";
+import { MenusPage } from "./MenusPage";
 import { ParkCalendarPage } from "./ParkCalendarPage";
 import { QueuesPage } from "./QueuesPage";
 
@@ -21,6 +22,11 @@ export function App() {
         </Route>
         <Route path="/:park/queues/:date" element={<Layout />}>
           <Route index element={<QueuesPage />} />
+        </Route>
+        {/* Menus photographed in the park (contrib/menus → menus.generated.json).
+            Another literal segment, so it outranks :product too. */}
+        <Route path="/:park/food" element={<Layout />}>
+          <Route index element={<MenusPage />} />
         </Route>
         {/* Static per-park link directory. Like "queues", the literal segment
             outranks the :product route below. */}

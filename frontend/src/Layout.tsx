@@ -1,6 +1,22 @@
 import { Link, NavLink, Outlet, useLocation, useParams } from "react-router-dom";
 import { findPark, PARKS, type ParkDef } from "./catalog";
 import { PARK_LINKS } from "./links";
+import MENUS from "./menus.generated.json";
+
+type MenuCounts = Record<
+  string,
+  { venues: { menus: unknown[] }[]; events: { vendors: { menus: unknown[] }[] }[] }
+>;
+
+/** A park earns the Food tab once some venue there has a transcribed menu. */
+function hasMenus(park: string): boolean {
+  const d = (MENUS as MenuCounts)[park];
+  return (
+    !!d &&
+    (d.venues.some((v) => v.menus.length > 0) ||
+      d.events.some((e) => e.vendors.some((v) => v.menus.length > 0)))
+  );
+}
 
 export function Layout() {
   const { park } = useParams();
@@ -21,6 +37,8 @@ export function Layout() {
     // Links come before the queue-only check: every park has a link directory,
     // whether or not it has a calendar.
     if (section === "links" && PARK_LINKS[p.key]) return `/${p.key}/links`;
+    // Food only exists for the parks we've photographed menus in.
+    if (section === "food" && hasMenus(p.key)) return `/${p.key}/food`;
     if (p.queueOnly) return `/${p.key}/queues`; // no calendar/products — always queues
     if (!section) return `/${p.key}`; // calendar home
     if (section === "queues") return `/${p.key}/${rest.join("/")}`; // queues (+ date)
@@ -71,6 +89,16 @@ export function Layout() {
               {pr.label}
             </NavLink>
           ))}
+          {/* Menu prices, typed up from photos of the boards. Reference
+              material like Links, but park-specific food rather than URLs. */}
+          {hasMenus(parkDef.key) && (
+            <NavLink
+              to={`/${parkDef.key}/food`}
+              className={({ isActive }) => "tab" + (isActive ? " active" : "")}
+            >
+              Food
+            </NavLink>
+          )}
           {/* Static link directory (booking, accessibility, apps, socials) —
               last, since it's reference material rather than live data. */}
           {PARK_LINKS[parkDef.key] && (

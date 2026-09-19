@@ -16,6 +16,11 @@
   --buyout: #7a5bd0;
   /* Merlin Annual Pass entry restriction — the day the pass doesn't get in. */
   --restricted: #b3453c;
+  /* Food tab's park map (OpenStreetMap shapes under the pins). */
+  --map-wood: #dfe9d8;
+  --map-water: #cfe0ef;
+  --map-building: #e4e4e4;
+  --map-line: #d8d8d8;
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -31,6 +36,11 @@
     --link: #74b0ec;
     --buyout: #a98fe8;
     --restricted: #e8837a;
+    /* Re-stepped for the dark card, not an auto-flip. */
+    --map-wood: #26301f;
+    --map-water: #1d2a38;
+    --map-building: #2b2b2b;
+    --map-line: #343434;
   }
 }
 * {
@@ -1205,13 +1215,50 @@ main.with-bar {
   margin: 4px 0 10px;
 }
 
-/* Park map: pins from the same coordinates the venue folders carry, labelled
-   with the park's own area names. Matches stay lit; the rest fade back. */
+/* Park map: OpenStreetMap paths, water and buildings baked into a small vector
+   file at authoring time (no tiles, no requests per visitor), with pins from
+   the same coordinates the venue folders carry. Matches stay lit. */
+.fd-map-wrap {
+  margin: 0;
+}
+.fd-shape {
+  fill: none;
+  vector-effect: non-scaling-stroke;
+}
+.fd-wood {
+  fill: var(--map-wood);
+  stroke: none;
+}
+.fd-water {
+  fill: var(--map-water);
+  stroke: none;
+}
+.fd-building {
+  fill: var(--map-building);
+  stroke: none;
+}
+.fd-road,
+.fd-path {
+  stroke: var(--map-line);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+}
+.fd-path {
+  stroke-width: 0.9;
+}
+.fd-map-credit {
+  margin: 4px 0 10px;
+  font-size: 10px;
+  color: var(--muted);
+}
+.fd-map-credit a {
+  color: inherit;
+}
 .fd-map {
   display: block;
   width: 100%;
   height: auto;
-  background: var(--card);
+  background: var(--bg);
   border: 1px solid var(--grid);
   border-radius: 8px;
 }
@@ -1304,18 +1351,33 @@ main.with-bar {
   cursor: pointer;
 }
 
-/* Area heading: the land the venues stand in. */
+/* Area heading: the land the venues stand in, and the fold that opens it. */
 .fd-area-head {
   display: flex;
   align-items: baseline;
   gap: 8px;
-  margin: 18px 0 4px;
-  padding-bottom: 4px;
+  width: 100%;
+  margin: 14px 0 4px;
+  padding: 0 0 4px;
+  font: inherit;
   font-size: 13px;
+  text-align: left;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--muted);
+  background: none;
+  border: 0;
   border-bottom: 1px solid var(--grid);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.fd-area-head .fd-venue-meta {
+  margin-left: auto;
+  text-transform: none;
+  letter-spacing: 0;
+}
+h3.fd-area-head {
+  cursor: default;
 }
 
 /* One venue: a row that opens. Flat until opened, so a long list reads as a
@@ -1581,4 +1643,10 @@ main.with-bar {
   font-size: 11px;
   text-decoration: none;
   cursor: help;
+}
+/* Where the search matched. */
+.fd-mark {
+  background: color-mix(in srgb, var(--q-alt) 30%, transparent);
+  color: inherit;
+  border-radius: 2px;
 }

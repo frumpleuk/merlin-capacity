@@ -119,14 +119,28 @@ const perksOf = (v: Venue) => [
   ...(v.menuUrl ? ["Official menu"] : []),
 ];
 
-function ItemRow({ item }: { item: Item }) {
+/** Show where the search matched, so a hit in a long menu is findable. */
+function Mark({ text, query }: { text: string; query: string }) {
+  if (!query) return <>{text}</>;
+  const at = text.toLowerCase().indexOf(query);
+  if (at < 0) return <>{text}</>;
+  return (
+    <>
+      {text.slice(0, at)}
+      <mark className="fd-mark">{text.slice(at, at + query.length)}</mark>
+      {text.slice(at + query.length)}
+    </>
+  );
+}
+
+function ItemRow({ item, query }: { item: Item; query: string }) {
   const unclear = item.unclear ? `Couldn't read this on the photo: ${item.unclear}` : undefined;
   const sizes = item.sizes ?? [];
   return (
     <li className="fd-item">
       <span className="fd-line">
         <span className="fd-item-name">
-          {item.name}
+          <Mark text={item.name} query={query} />
           {item.unclear && item.price != null && (
             <abbr className="fd-unsure" title={unclear}>
               ?
@@ -145,7 +159,11 @@ function ItemRow({ item }: { item: Item }) {
           </span>
         )}
       </span>
-      {item.description && <span className="fd-item-desc">{item.description}</span>}
+      {item.description && (
+        <span className="fd-item-desc">
+          <Mark text={item.description} query={query} />
+        </span>
+      )}
       {/* A size ladder is its own little price list, not one long line. */}
       {sizes.map((s, n) => (
         <span key={s.label + n} className="fd-line fd-size">
@@ -269,7 +287,7 @@ function VenueCard({
                 {s.note && s.note !== shared && <p className="fd-note">{s.note}</p>}
                 <ul>
                   {s.items.map((i, n) => (
-                    <ItemRow key={i.name + n} item={i} />
+                    <ItemRow key={i.name + n} item={i} query={query} />
                   ))}
                 </ul>
               </div>
@@ -305,15 +323,61 @@ function VenueCard({
   );
 }
 
+/** One park area, folded up until you ask for it (or a search opens it). */
+function AreaGroup({
+  area,
+  venues,
+  query,
+  openAll,
+  focus,
+  onOpen,
+}: {
+  area: string;
+  venues: Venue[];
+  query: string;
+  openAll: boolean;
+  focus?: string;
+  onOpen: (slug: string | null) => void;
+}) {
+  const holdsFocus = venues.some((v) => v.slug === focus);
+  const [open, setOpen] = useState(holdsFocus);
+  useEffect(() => {
+    if (holdsFocus) setOpen(true);
+  }, [holdsFocus]);
+  const show = open || openAll;
+  const prices = venues.flatMap((v) => (v.from == null ? [] : [v.from]));
+
+  return (
+    <section className="fd-area">
+      <button className="fd-area-head" onClick={() => setOpen((v) => !v)} aria-expanded={show}>
+        <span className="fd-chevron" aria-hidden="true">
+          {show ? "−" : "+"}
+        </span>
+        {area}
+        <span className="fd-venue-meta">
+          {venues.length} place{venues.length === 1 ? "" : "s"}
+          {prices.length > 0 && ` · from ${money(Math.min(...prices))}`}
+        </span>
+      </button>
+      {show &&
+        venues.map((v) => (
+          <VenueCard key={v.slug} venue={v} query={query} focus={focus} onOpen={onOpen} />
+        ))}
+    </section>
+  );
+}
+
 /** Venues under their park area, areas in alphabetical order. */
 function AreaGroups({
   venues,
   query,
+  openAll,
   focus,
   onOpen,
 }: {
   venues: Venue[];
   query: string;
+  openAll: boolean;
   focus?: string;
   onOpen: (slug: string | null) => void;
 }) {
@@ -326,15 +390,15 @@ function AreaGroups({
   return (
     <>
       {[...byArea].sort(([a], [b]) => a.localeCompare(b)).map(([area, list]) => (
-        <section key={area} className="fd-area">
-          <h3 className="fd-area-head">
-            {area}
-            <span className="fd-venue-meta">{list.length}</span>
-          </h3>
-          {list.map((v) => (
-            <VenueCard key={v.slug} venue={v} query={query} focus={focus} onOpen={onOpen} />
-          ))}
-        </section>
+        <AreaGroup
+          key={area}
+          area={area}
+          venues={list}
+          query={query}
+          openAll={openAll}
+          focus={focus}
+          onOpen={onOpen}
+        />
       ))}
     </>
   );
@@ -379,7 +443,8 @@ export function MenusPage() {
   const { park } = useParams();
   const parkDef = findPark(park);
   const [params, setParams] = useSearchParams();
-  const [q, setQ] = useState("");
+  // The search lives in the URL, so a "where can I get chips" link is sendable.
+  const q = params.get("q") ?? "";
   const [areas, setAreas] = useState<Set<string>>(new Set());
   const [kinds, setKinds] = useState<Set<string>>(new Set());
   const [plans, setPlans] = useState<Set<string>>(new Set());
@@ -388,12 +453,13 @@ export function MenusPage() {
   const data = park ? DATA[park] : undefined;
 
   const focus = params.get("open") ?? undefined;
-  const setFocus = (slug: string | null) => {
+  const setParam = (key: string, value: string | null) => {
     const next = new URLSearchParams(params);
-    if (slug) next.set("open", slug);
-    else next.delete("open");
+    if (value) next.set(key, value);
+    else next.delete(key);
     setParams(next, { replace: true });
   };
+  const setFocus = (slug: string | null) => setParam("open", slug);
 
   if (!parkDef || !data) return <Navigate to={PARK_HOME} replace />;
 
@@ -477,7 +543,7 @@ export function MenusPage() {
           type="search"
           value={q}
           placeholder="Search food, drink or a place"
-          onChange={(e) => setQ(e.target.value)}
+          onChange={(e) => setParam("q", e.target.value)}
         />
         <span className="fd-count">
           {shown.length} place{shown.length === 1 ? "" : "s"}
@@ -488,6 +554,7 @@ export function MenusPage() {
       <div className="fd-layout">
         <aside className="fd-side">
           <ParkMap
+            park={park!}
             venues={all}
             water={data.water}
             areas={data.areas}
@@ -567,7 +634,13 @@ export function MenusPage() {
           ))}
 
           {current.length > 0 ? (
-            <AreaGroups venues={current} query={query} focus={focus} onOpen={setFocus} />
+            <AreaGroups
+              venues={current}
+              query={query}
+              openAll={!!query || filtered}
+              focus={focus}
+              onOpen={setFocus}
+            />
           ) : (
             <p className="fd-empty">
               {query || filtered ? "Nothing open matches that." : "No menus yet for this park."}
@@ -600,7 +673,15 @@ export function MenusPage() {
                       ))}
                     </section>
                   ))}
-                  {gone.length > 0 && <AreaGroups venues={gone} query={query} focus={focus} onOpen={setFocus} />}
+                  {gone.length > 0 && (
+                    <AreaGroups
+                      venues={gone}
+                      query={query}
+                      openAll={!!query || filtered}
+                      focus={focus}
+                      onOpen={setFocus}
+                    />
+                  )}
                 </>
               )}
             </section>

@@ -1,0 +1,171 @@
+{
+  "date": "2026-08-26",
+  "sections": [
+    {
+      "name": "Bao Buns",
+      "note": "Toppings: Freshly chopped coriander, mix of roast sesame seeds, grated cabbage, crispy onion & sriracha sauce (all of them are optional). One price ladder (1x/2x/3x bao) covers all three fillings.",
+      "items": [
+        {
+          "name": "Fried Chicken in Katsu Curry Sauce",
+          "sizes": [
+            {
+              "label": "1x Bao",
+              "price": 650
+            },
+            {
+              "label": "2x Bao",
+              "price": 1200
+            },
+            {
+              "label": "3x Bao",
+              "price": 1700
+            }
+          ],
+          "photo": "IMG_3412.HEIC"
+        },
+        {
+          "name": "Roast Duck with Hoisin Sauce",
+          "sizes": [
+            {
+              "label": "1x Bao",
+              "price": 650
+            },
+            {
+              "label": "2x Bao",
+              "price": 1200
+            },
+            {
+              "label": "3x Bao",
+              "price": 1700
+            }
+          ],
+          "photo": "IMG_3412.HEIC"
+        },
+        {
+          "name": "Vegan Deep Fried Tofu in Katsu Curry Sauce",
+          "sizes": [
+            {
+              "label": "1x Bao",
+              "price": 650
+            },
+            {
+              "label": "2x Bao",
+              "price": 1200
+            },
+            {
+              "label": "3x Bao",
+              "price": 1700
+            }
+          ],
+          "tags": [
+            "vg",
+            "v"
+          ],
+          "photo": "IMG_3412.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Mains",
+      "note": "Choose from skin-on-fries or stir-fry rice",
+      "items": [
+        {
+          "name": "Fried Chicken in Katsu Curry Sauce",
+          "price": 1495,
+          "photo": "IMG_3412.HEIC"
+        },
+        {
+          "name": "Roast Duck with Hoisin Sauce",
+          "price": 1495,
+          "photo": "IMG_3412.HEIC"
+        },
+        {
+          "name": "Vegan Deep Fried Tofu in Katsu Curry Sauce",
+          "price": 1495,
+          "tags": [
+            "vg",
+            "v"
+          ],
+          "photo": "IMG_3412.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Mix & Match",
+      "note": "Toppings: Freshly chopped coriander, roasted sesame seeds, grated cabbage & sriracha sauce (all optional)",
+      "items": [
+        {
+          "name": "Chicken Katsu Curry & Roast Hoisin Duck",
+          "description": "Choose from skin-on-fries or stir-fry rice",
+          "price": 1695,
+          "photo": "IMG_3412.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Meal Deal",
+      "note": "Meal deals cannot be modified",
+      "items": [
+        {
+          "name": "Meat Deal",
+          "description": "Roast hoisin duck bao + chicken in katsu curry sauce. Choose from skin-on-fries or stir-fry rice",
+          "price": 1995,
+          "photo": "IMG_3412.HEIC"
+        },
+        {
+          "name": "Vegan Deal",
+          "description": "Deep fried tofu in katsu curry sauce bao + deep fried tofu in katsu curry sauce. Choose from skin-on-fries or stir-fry rice",
+          "price": 1995,
+          "tags": [
+            "vg",
+            "v"
+          ],
+          "photo": "IMG_3412.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Chicken Tenders",
+      "note": "Choose your sauce: katsu curry or hoison. Toppings: Freshly chopped coriander, mix of roast sesame seeds, grated cabbage, & sriracha sauce (all of them are optional)",
+      "items": [
+        {
+          "name": "Chicken Tenders",
+          "sizes": [
+            {
+              "label": "3 Tenders",
+              "price": 900
+            },
+            {
+              "label": "5 Tenders",
+              "price": 1350
+            }
+          ],
+          "photo": "IMG_3412.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "note": "Unheaded row at the foot of the board",
+      "items": [
+        {
+          "name": "Skin-on-Fries",
+          "price": 550,
+          "photo": "IMG_3412.HEIC"
+        },
+        {
+          "name": "Skin-on Fries + Katsu Curry Sauce",
+          "price": 700,
+          "photo": "IMG_3412.HEIC"
+        }
+      ]
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3412.HEIC",
+      "name": "You-Bao-main-menu",
+      "caption": "main-menu"
+    }
+  ]
+}

@@ -1,0 +1,158 @@
+{
+  "date": "2026-08-26",
+  "sections": [
+    {
+      "name": "Coffee",
+      "note": "Board headed \"Your Favourites\". As we use shared equipment, we cannot guarantee that our unpackaged food items or hand-crafted drinks are suitable for people with severe allergies. Check our Allergen Information or ask a Costa Coffee team member each visit as ingredients may have changed since your last purchase.",
+      "items": [
+        {
+          "name": "Latte",
+          "price": 500,
+          "kcal": 209,
+          "photo": "IMG_3405.HEIC"
+        },
+        {
+          "name": "Cappuccino",
+          "price": 500,
+          "kcal": 169,
+          "photo": "IMG_3405.HEIC"
+        },
+        {
+          "name": "Flat White",
+          "price": 450,
+          "kcal": 189,
+          "photo": "IMG_3405.HEIC"
+        },
+        {
+          "name": "Americano",
+          "price": 500,
+          "kcal": 23,
+          "photo": "IMG_3405.HEIC"
+        },
+        {
+          "name": "Mocha",
+          "price": 500,
+          "kcal": 231,
+          "photo": "IMG_3405.HEIC"
+        },
+        {
+          "name": "Espresso",
+          "price": 325,
+          "kcal": 24,
+          "photo": "IMG_3405.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        {
+          "name": "Hot Chocolate",
+          "price": 500,
+          "kcal": 421,
+          "photo": "IMG_3405.HEIC"
+        },
+        {
+          "name": "Matcha",
+          "price": 500,
+          "kcal": 312,
+          "photo": "IMG_3405.HEIC"
+        },
+        {
+          "name": "Strawberry Matcha",
+          "price": 500,
+          "kcal": 430,
+          "photo": "IMG_3405.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Extras",
+      "items": [
+        {
+          "name": "Shot of Coffee",
+          "price": 100,
+          "photo": "IMG_3405.HEIC"
+        },
+        {
+          "name": "Syrups",
+          "description": "Caramel, Vanilla, or Hazelnut",
+          "price": 75,
+          "photo": "IMG_3405.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Tea",
+      "note": "Second board, also headed \"Your Favourites\".",
+      "items": [
+        {
+          "name": "English Breakfast",
+          "price": 325,
+          "kcal": 5,
+          "photo": "IMG_3404.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Iced Drinks",
+      "items": [
+        {
+          "name": "Iced Americano",
+          "price": 500,
+          "kcal": 42,
+          "photo": "IMG_3404.HEIC"
+        },
+        {
+          "name": "Iced Latte",
+          "price": 500,
+          "kcal": 144,
+          "photo": "IMG_3404.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Fruit Cooler",
+      "items": [
+        {
+          "name": "Red Summer Berries Fruit Cooler",
+          "price": 500,
+          "kcal": 220,
+          "photo": "IMG_3404.HEIC"
+        },
+        {
+          "name": "Mango & Passion Fruit Cooler",
+          "price": 500,
+          "kcal": 165,
+          "photo": "IMG_3404.HEIC"
+        },
+        {
+          "name": "Iced Matcha",
+          "price": 500,
+          "kcal": 250,
+          "photo": "IMG_3404.HEIC"
+        },
+        {
+          "name": "Iced Strawberry Matcha",
+          "price": 500,
+          "kcal": 290,
+          "photo": "IMG_3404.HEIC"
+        }
+      ]
+    }
+  ],
+  "offers": [],
+  "skipped": [],
+  "photos": [
+    {
+      "file": "IMG_3404.HEIC",
+      "name": "Coffee-cart-Fountain-Square-tea",
+      "caption": "tea"
+    },
+    {
+      "file": "IMG_3405.HEIC",
+      "name": "Coffee-cart-Fountain-Square-coffee",
+      "caption": "coffee"
+    }
+  ]
+}

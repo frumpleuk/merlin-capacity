@@ -1,0 +1,51 @@
+{
+  "date": "2026-08-26",
+  "sections": [
+    {
+      "name": "Chocolate & Waffles",
+      "note": "Two screens above the counter; each screen shows part of the menu, so the list may be partial.",
+      "items": [
+        {
+          "name": "Marshmallow Cup",
+          "price": 600,
+          "photo": "IMG_3478.HEIC"
+        },
+        {
+          "name": "Strawberry & Marshmallow Cup",
+          "price": 600,
+          "photo": "IMG_3478.HEIC"
+        },
+        {
+          "name": "Strawberry Cup",
+          "price": 600,
+          "photo": "IMG_3478.HEIC"
+        },
+        {
+          "name": "Chocolate Apple",
+          "price": 400,
+          "photo": "IMG_3478.HEIC"
+        },
+        {
+          "name": "Hot Belgian Waffles with 2 toppings",
+          "description": "Additional Toppings... Flakes, Marshmallows, Sprinkles, Strawberries, Cream, White Chocolate, Milk Chocolate",
+          "price": 700,
+          "photo": "IMG_3479.HEIC"
+        }
+      ]
+    }
+  ],
+  "offers": [],
+  "skipped": [],
+  "photos": [
+    {
+      "file": "IMG_3478.HEIC",
+      "name": "Chocolate-and-Waffles-chocolate-and-waffles",
+      "caption": "chocolate-and-waffles"
+    },
+    {
+      "file": "IMG_3479.HEIC",
+      "name": "Chocolate-and-Waffles-chocolate-and-waffles-2",
+      "caption": "chocolate-and-waffles"
+    }
+  ]
+}

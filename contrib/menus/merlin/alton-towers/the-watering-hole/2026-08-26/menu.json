@@ -1,0 +1,118 @@
+{
+  "date": "2026-08-26",
+  "passDiscount": {
+    "offered": true,
+    "percent": 20,
+    "upTo": true,
+    "applies": "food & drink",
+    "photo": "IMG_3470.HEIC",
+    "source": "board photo"
+  },
+  "sections": [
+    {
+      "name": "Cocktails",
+      "note": "All cocktails £9.95",
+      "items": [
+        {
+          "name": "Margarita 7% ABV",
+          "description": "Classic tequila cocktail with bright lime and a hint of sweetness.",
+          "price": 995,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3470.HEIC"
+        },
+        {
+          "name": "Pina Colada 8% ABV",
+          "description": "Tropical mix of white rum and sweet pineapple.",
+          "price": 995,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3470.HEIC"
+        },
+        {
+          "name": "Mojito 8% ABV",
+          "description": "Crisp white rum cocktail with lime flavouring and a touch of sweetness.",
+          "price": 995,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3470.HEIC"
+        },
+        {
+          "name": "Gin & Tonic 5% ABV",
+          "description": "The classic pairing, with the botanical notes of gin and the lightly bitter, effervescent lift of tonic water.",
+          "price": 995,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3470.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Mocktails",
+      "note": "All mocktails £7.95",
+      "items": [
+        {
+          "name": "Strawberry Daiquiri Mocktail",
+          "description": "A smooth blend of juicy strawberry and zesty lime.",
+          "price": 795,
+          "photo": "IMG_3470.HEIC"
+        },
+        {
+          "name": "Passionfruit Martini Mocktail",
+          "description": "A bright and vibrant cocktail with sweet and tangy passionfruit.",
+          "price": 795,
+          "photo": "IMG_3470.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Draught Beer",
+      "items": [
+        {
+          "name": "Laugh & Scream 4.1% ABV",
+          "tags": [
+            "alcohol"
+          ],
+          "sizes": [
+            {
+              "label": "Half Pint",
+              "price": 450
+            },
+            {
+              "label": "Pint",
+              "price": 850
+            }
+          ],
+          "photo": "IMG_3470.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Soft Drinks",
+      "items": [
+        {
+          "name": "Bottles",
+          "price": 350,
+          "photo": "IMG_3470.HEIC"
+        },
+        {
+          "name": "Water",
+          "price": 325,
+          "photo": "IMG_3470.HEIC"
+        }
+      ]
+    }
+  ],
+  "offers": [],
+  "photos": [
+    {
+      "file": "IMG_3470.HEIC",
+      "name": "The-Watering-Hole-main-menu",
+      "caption": "main-menu"
+    }
+  ]
+}

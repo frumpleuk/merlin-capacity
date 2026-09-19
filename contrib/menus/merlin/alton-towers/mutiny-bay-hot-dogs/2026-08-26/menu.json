@@ -1,0 +1,177 @@
+{
+  "date": "2026-08-26",
+  "passDiscount": {
+    "offered": true,
+    "percent": 20,
+    "upTo": true,
+    "applies": "food & drink",
+    "photo": "IMG_3424.HEIC",
+    "source": "board photo"
+  },
+  "sections": [
+    {
+      "name": "Nachos",
+      "note": "All nachos £8.75",
+      "items": [
+        {
+          "name": "Beef Chilli",
+          "description": "Loaded with Cheese Sauce, Sour Cream, Salsa, Guacamole, Jalapeños and Beef Chilli",
+          "price": 875,
+          "kcal": 904,
+          "photo": "IMG_3424.HEIC"
+        },
+        {
+          "name": "Pulled Pork",
+          "description": "Loaded with Cheese Sauce, Sour Cream, Salsa, Guacamole, Jalapeños and Slow Cooked Pulled Pork",
+          "price": 875,
+          "kcal": 837,
+          "photo": "IMG_3424.HEIC"
+        },
+        {
+          "name": "Loaded",
+          "description": "Loaded with Cheese Sauce, Sour Cream, Salsa, Guacamole and Jalapeños",
+          "price": 875,
+          "kcal": 325,
+          "photo": "IMG_3424.HEIC"
+        },
+        {
+          "name": "Veg Chilli",
+          "description": "Loaded with Cheese Sauce, Sour Cream, Salsa, Guacamole, Jalapenos and Veg Chilli",
+          "price": 875,
+          "kcal": 854,
+          "tags": [
+            "v"
+          ],
+          "photo": "IMG_3424.HEIC"
+        },
+        {
+          "name": "Vegan",
+          "description": "Loaded with Veg Chilli, Jalapeños and Guacamole",
+          "price": 875,
+          "kcal": 252,
+          "tags": [
+            "vg"
+          ],
+          "photo": "IMG_3424.HEIC"
+        },
+        {
+          "name": "Extra Toppings",
+          "description": "Jalapeños, Salsa, Sour Cream, Guacamole",
+          "price": 75,
+          "photo": "IMG_3424.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Hot Dogs",
+      "items": [
+        {
+          "name": "Classic Hot Dog",
+          "price": 975,
+          "kcal": 364,
+          "photo": "IMG_3424.HEIC"
+        },
+        {
+          "name": "Vegan Not Dog",
+          "price": 975,
+          "kcal": 494,
+          "tags": [
+            "vg"
+          ],
+          "photo": "IMG_3424.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Loaded Spuds",
+      "note": "Chef's Favourites. Premium Courtyard Spuds, brushed with garlic butter and finished with crispy onions or chives and signature sauces. All £12.50",
+      "items": [
+        {
+          "name": "Smoky Pulled Pork",
+          "description": "Pulled pork in smoky BBQ sauce, melted cheddar and BBQ beans, topped with crispy onions and chives.",
+          "price": 1250,
+          "photo": "IMG_3425.HEIC"
+        },
+        {
+          "name": "Loaded Tuna Mayo & Slaw",
+          "description": "Tuna crunch mix with melted cheddar, finished with creamy coleslaw and spring onions.",
+          "price": 1250,
+          "photo": "IMG_3425.HEIC"
+        },
+        {
+          "name": "BBQ Bean & Cheese Stack (V)",
+          "description": "Smoky BBQ beans and melted cheddar on a fluffy jacket, topped with crispy onions and jalapeños.",
+          "price": 1250,
+          "tags": [
+            "v"
+          ],
+          "photo": "IMG_3425.HEIC"
+        },
+        {
+          "name": "Coronation Chicken Club",
+          "description": "Coronation chicken piled onto a garlic-buttered jacket, with pickled red onion, crispy onions and a drizzle of mango-style dressing.",
+          "price": 1250,
+          "photo": "IMG_3425.HEIC"
+        },
+        {
+          "name": "Chicken Tikka",
+          "description": "Mild chicken tikka curry on a jacket potato, finished with cooling yoghurt drizzle and coriander.",
+          "price": 1250,
+          "photo": "IMG_3425.HEIC"
+        },
+        {
+          "name": "Smoky Bean Chilli (VE)",
+          "description": "Smoky BBQ bean chilli with vegan cheese, spring onions and chilli flakes.",
+          "price": 1250,
+          "tags": [
+            "vg"
+          ],
+          "photo": "IMG_3425.HEIC"
+        },
+        {
+          "name": "Bolognese Bake",
+          "description": "Rich beef Bolognese, melted cheddar and garlic breadcrumbs, finished with chives.",
+          "price": 1250,
+          "photo": "IMG_3425.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Standard Spuds",
+      "note": "Oven-baked British potatoes with crispy skins, split and fluffed with butter. Choose 1, 2 or 3 toppings. Toppings: Baked Beans | Mature Cheddar Cheese | Beef Chilli Con Carne | Tuna Mayo",
+      "items": [
+        {
+          "name": "Standard Spud",
+          "sizes": [
+            {
+              "label": "1 Topping",
+              "price": 850
+            },
+            {
+              "label": "2 Toppings",
+              "price": 1050
+            },
+            {
+              "label": "3 Toppings",
+              "price": 1150
+            }
+          ],
+          "photo": "IMG_3425.HEIC"
+        }
+      ]
+    }
+  ],
+  "offers": [],
+  "photos": [
+    {
+      "file": "IMG_3424.HEIC",
+      "name": "Mutiny-Bay-Hot-Dogs-nachos",
+      "caption": "nachos"
+    },
+    {
+      "file": "IMG_3425.HEIC",
+      "name": "Mutiny-Bay-Hot-Dogs-loaded-spuds",
+      "caption": "loaded-spuds"
+    }
+  ]
+}

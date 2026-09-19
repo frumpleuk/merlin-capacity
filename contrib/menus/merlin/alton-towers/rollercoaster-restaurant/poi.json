@@ -1,0 +1,15 @@
+{
+  "id": 4270,
+  "name": "Rollercoaster Restaurant",
+  "category": "Food & Drink > Restaurants",
+  "lat": 52.986005,
+  "lon": -1.882589,
+  "source": "attractions.io app bundle",
+  "area": "Forbidden Valley",
+  "menuUrl": null,
+  "appPassholderDiscount": null,
+  "diningPlans": [
+    "Ultimate"
+  ],
+  "appMissingSince": null
+}

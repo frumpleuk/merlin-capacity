@@ -1,0 +1,15 @@
+{
+  "id": 4238,
+  "name": "The Towers Burger Kitchen",
+  "category": "Food & Drink > Fast Food",
+  "lat": 52.984152,
+  "lon": -1.892857,
+  "source": "attractions.io app bundle",
+  "area": "World of David Walliams",
+  "menuUrl": null,
+  "appPassholderDiscount": true,
+  "diningPlans": [
+    "Ultimate"
+  ],
+  "appMissingSince": null
+}

@@ -1,0 +1,261 @@
+{
+  "date": "2026-08-26",
+  "sections": [
+    {
+      "name": "Burgers",
+      "note": "Counter-top poster, not part of the main screen",
+      "items": [
+        {
+          "name": "Chicken Kebab Burger",
+          "description": "A Pakistani spiced chicken patty inside a toasted brioche bun, topped with our special slaw, and a special chutney combo",
+          "price": 850,
+          "photo": "IMG_3390.HEIC"
+        },
+        {
+          "name": "Aloo Tikki Burger (V)",
+          "description": "A crisp golden potato patty are sandwiched between a toasted brioche bun and then topped with our special slaw and slathered with a tangy and sweet chutney",
+          "price": 850,
+          "tags": [
+            "v"
+          ],
+          "photo": "IMG_3390.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Naans",
+      "note": "Counter-top poster; one \"only £5.95 each\" star sits between the two naans",
+      "items": [
+        {
+          "name": "Nutella Naan (N)",
+          "price": 595,
+          "photo": "IMG_3390.HEIC"
+        },
+        {
+          "name": "Biscoff Naan",
+          "price": 595,
+          "photo": "IMG_3390.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Fresh Naan Wraps",
+      "note": "All wraps come with salad, mint chutney and chilli sauce.",
+      "items": [
+        {
+          "name": "Seekh Kebab",
+          "price": 1250,
+          "photo": "IMG_3391.HEIC"
+        },
+        {
+          "name": "Chicken Tikka",
+          "price": 1250,
+          "photo": "IMG_3391.HEIC"
+        },
+        {
+          "name": "Doner",
+          "price": 1250,
+          "photo": "IMG_3391.HEIC"
+        },
+        {
+          "name": "Aloo Chana (VG)",
+          "description": "Potatoes & chickpeas",
+          "price": 1250,
+          "tags": [
+            "vg"
+          ],
+          "photo": "IMG_3391.HEIC"
+        },
+        {
+          "name": "Mixed Wrap",
+          "price": 1400,
+          "photo": "IMG_3391.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Jacket Potatoes",
+      "items": [
+        {
+          "name": "Baked Beans (VG)",
+          "price": 849,
+          "tags": [
+            "vg"
+          ],
+          "photo": "IMG_3391.HEIC"
+        },
+        {
+          "name": "Cheese (V)",
+          "price": 849,
+          "tags": [
+            "v"
+          ],
+          "photo": "IMG_3391.HEIC"
+        },
+        {
+          "name": "Tuna Mayonnaise",
+          "price": 899,
+          "photo": "IMG_3391.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Loaded Chips",
+      "note": "Spiced chips piled high with tandoori toppings, melted cheddar & our signature chutneys",
+      "items": [
+        {
+          "name": "Tikka Masala (V)",
+          "description": "Spiced chips smothered in cheddar & rich tikka masala sauce.",
+          "price": 899,
+          "tags": [
+            "v"
+          ],
+          "photo": "IMG_3392.HEIC"
+        },
+        {
+          "name": "Seekh Kebab",
+          "description": "Loaded with seekh kebab, cheddar cheese, masala sauce & mint chutney.",
+          "price": 950,
+          "photo": "IMG_3392.HEIC"
+        },
+        {
+          "name": "Chicken Tikka",
+          "description": "Loaded with chunks of chicken tikka, cheddar cheese, masala sauce & mint chutney.",
+          "price": 950,
+          "photo": "IMG_3392.HEIC"
+        },
+        {
+          "name": "Eastern Express Special",
+          "description": "The full works — chicken tikka & seekh kebab on spiced chips, loaded with cheddar, masala sauce & mint chutney, topped with coriander.",
+          "price": 1100,
+          "photo": "IMG_3392.HEIC"
+        },
+        {
+          "name": "Spiced Chips (V)",
+          "description": "Spiced chips topped with cheese.",
+          "price": 699,
+          "tags": [
+            "v"
+          ],
+          "photo": "IMG_3391.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Chips",
+      "note": "Extras available",
+      "items": [
+        {
+          "name": "Chips",
+          "price": 450,
+          "photo": "IMG_3391.HEIC"
+        },
+        {
+          "name": "Cheese (V)",
+          "price": 150,
+          "tags": [
+            "v"
+          ],
+          "photo": "IMG_3391.HEIC"
+        },
+        {
+          "name": "Curry Sauce (V)",
+          "price": 100,
+          "tags": [
+            "v"
+          ],
+          "photo": "IMG_3391.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Baguettes",
+      "items": [
+        {
+          "name": "Sausage & Onion",
+          "price": 1000,
+          "photo": "IMG_3391.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Onion Bhaji",
+      "items": [
+        {
+          "name": "Onion Bhaji (VG)",
+          "price": 699,
+          "tags": [
+            "vg"
+          ],
+          "photo": "IMG_3391.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Snack Meal",
+      "items": [
+        {
+          "name": "Snack Meal",
+          "description": "Seekh Kebab, Veg/Meat Samosa, Onion Bhaji",
+          "price": 950,
+          "photo": "IMG_3391.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Kids Meals",
+      "note": "Served with a small drink",
+      "items": [
+        {
+          "name": "Chicken Crunchies & Chips",
+          "price": 850,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3391.HEIC"
+        },
+        {
+          "name": "Sausages & Chips",
+          "price": 850,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3391.HEIC"
+        },
+        {
+          "name": "Half Jacket Potato (V)",
+          "description": "Choose cheese or beans",
+          "price": 599,
+          "tags": [
+            "v",
+            "kids"
+          ],
+          "photo": "IMG_3391.HEIC"
+        }
+      ]
+    }
+  ],
+  "skipped": [
+    {
+      "photo": "IMG_3393.HEIC",
+      "reason": "food allergies and intolerances chart, not a menu"
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3390.HEIC",
+      "name": "Eastern-Express-Dark-Forest-burgers",
+      "caption": "burgers"
+    },
+    {
+      "file": "IMG_3391.HEIC",
+      "name": "Eastern-Express-Dark-Forest-fresh-naan-wraps",
+      "caption": "fresh-naan-wraps"
+    },
+    {
+      "file": "IMG_3392.HEIC",
+      "name": "Eastern-Express-Dark-Forest-loaded-chips",
+      "caption": "loaded-chips"
+    }
+  ]
+}

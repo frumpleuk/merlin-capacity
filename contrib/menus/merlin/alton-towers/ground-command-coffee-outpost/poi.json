@@ -1,0 +1,21 @@
+{
+  "id": 4275,
+  "name": "GROUND COMMAND Coffee Outpost",
+  "category": "Food & Drink > Snacks",
+  "lat": 52.98659,
+  "lon": -1.882965,
+  "source": "attractions.io app bundle",
+  "passDiscount": {
+    "offered": true,
+    "percent": null,
+    "applies": "Costa outlet — pass discount applies; rate not recorded",
+    "source": "user report"
+  },
+  "area": "Forbidden Valley",
+  "menuUrl": null,
+  "appPassholderDiscount": true,
+  "diningPlans": [
+    "Ultimate"
+  ],
+  "appMissingSince": null
+}

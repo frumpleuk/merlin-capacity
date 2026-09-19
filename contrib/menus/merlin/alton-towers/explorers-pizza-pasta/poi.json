@@ -1,0 +1,15 @@
+{
+  "id": 4235,
+  "name": "Explorers Pizza Pasta",
+  "category": "Food & Drink > Restaurants",
+  "lat": 52.98999,
+  "lon": -1.885657,
+  "source": "attractions.io app bundle",
+  "area": "Katanga Canyon",
+  "menuUrl": null,
+  "appPassholderDiscount": true,
+  "diningPlans": [
+    "Ultimate"
+  ],
+  "appMissingSince": null
+}

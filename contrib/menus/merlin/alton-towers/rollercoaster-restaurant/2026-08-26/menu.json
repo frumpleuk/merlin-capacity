@@ -1,0 +1,1057 @@
+{
+  "date": "2026-08-26",
+  "sections": [
+    {
+      "name": "Rollercoaster Burgers",
+      "note": "Foods tab on the in-restaurant \"tabletop\" ordering tablet. The photos capture only part of each scrolling list, so this section may be partial. Card descriptions are truncated by the tablet and are copied as shown.",
+      "items": [
+        {
+          "name": "Rollercoaster Burger",
+          "description": "A full-throttle cheeseburger stacked with a fresh salad stack, crunchy pic...",
+          "kcal": 1120,
+          "price": 1950,
+          "photo": "IMG_3483.HEIC"
+        },
+        {
+          "name": "Ministry Of Joy Burger",
+          "description": "Buttermilk fried chicken with a fresh salad stack, mac & cheese, crunchy ...",
+          "kcal": 1094,
+          "price": 1950,
+          "photo": "IMG_3483.HEIC"
+        },
+        {
+          "name": "Escape The Forest Burger (ve)",
+          "description": "Crispy vegan fillet with a fresh salad",
+          "kcal": 1238,
+          "price": 1950,
+          "tags": [
+            "vg"
+          ],
+          "unclear": "description cut off by the bottom of the screen",
+          "photo": "IMG_3483.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Big Rides & Classics",
+      "note": "Foods tab on the tabletop tablet; the photos capture only part of the scrolling list, so this section may be partial.",
+      "items": [
+        {
+          "name": "Rita's Quarter Chicken Leg",
+          "description": "Quarter chicken leg roasted until juicy and golden, served with Coaster fries...",
+          "price": 1900,
+          "photo": "IMG_3484.HEIC"
+        },
+        {
+          "name": "Rita's Rocket Wings",
+          "description": "Crispy hot chicken wings served on a bed of mixed leaves drizzled with coo...",
+          "kcal": 1737,
+          "price": 1850,
+          "photo": "IMG_3484.HEIC"
+        },
+        {
+          "name": "Peri-peri Pit Stop Tenders",
+          "description": "Crispy chicken tenders drizzled with Peri-Peri BBQ sauce, served on a bed...",
+          "kcal": 1329,
+          "price": 1850,
+          "photo": "IMG_3485.HEIC"
+        },
+        {
+          "name": "Wicker Fire Nachos (ve)",
+          "description": "Crispy golden nachos topped with creamy plant-based cheese, cool ve...",
+          "kcal": 1567,
+          "price": 1550,
+          "tags": [
+            "vg"
+          ],
+          "photo": "IMG_3485.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Spice Track Curries",
+      "note": "Foods tab on the tabletop tablet; the photos capture only part of the scrolling list, so this section may be partial.",
+      "items": [
+        {
+          "name": "Coaster Chicken Tikka",
+          "description": "Marinated chicken tikka in a rich tomato and spice sauce, served with ...",
+          "kcal": 743,
+          "price": 1700,
+          "photo": "IMG_3486.HEIC"
+        },
+        {
+          "name": "Thai Green Chicken Curry",
+          "description": "Fragrant Thai green curry with tender chicken, vegetables and coconut sa...",
+          "kcal": 719,
+          "price": 1700,
+          "photo": "IMG_3486.HEIC"
+        },
+        {
+          "name": "Coaster Chicken Katsu",
+          "description": "Crispy breaded chicken served with Japanese-style katsu curry sauce, s...",
+          "kcal": 579,
+          "price": 1700,
+          "photo": "IMG_3487.HEIC"
+        },
+        {
+          "name": "Vegan Shicken Tikka Skewers (ve)",
+          "description": "Plant-based Shicken tikka skewers grilled and served with fragrant rice, ...",
+          "kcal": 666,
+          "price": 1700,
+          "tags": [
+            "vg"
+          ],
+          "photo": "IMG_3487.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Trackside Pasta & Salad",
+      "note": "Foods tab on the tabletop tablet; the photos capture only part of the scrolling list, so this section may be partial.",
+      "items": [
+        {
+          "name": "Galactica Greens Caesar",
+          "description": "Crisp romaine lettuce, bacon and crunchy croutons tossed in a creamy...",
+          "kcal": 263,
+          "price": 1700,
+          "photo": "IMG_3488.HEIC"
+        },
+        {
+          "name": "Penne Pasta & Tomato Sauce (v) (a)",
+          "description": "Penne pasta tossed in a tomato and basil sauce with parmesan cheese a...",
+          "kcal": 263,
+          "price": 1600,
+          "tags": [
+            "v"
+          ],
+          "unclear": "second dietary mark reads \"(a)\" on screen; meaning unknown",
+          "photo": "IMG_3488.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Coaster Sides",
+      "note": "Foods tab on the tabletop tablet; the photos capture only part of the scrolling list, so this section may be partial.",
+      "items": [
+        {
+          "name": "Loop-the-loop Onion Rings",
+          "description": "Crispy battered onion rings, perfect for sharing. ...",
+          "kcal": 298,
+          "price": 600,
+          "photo": "IMG_3489.HEIC"
+        },
+        {
+          "name": "Crunchy Chilli Sweetcorn Ribs",
+          "description": "Charred sweetcorn ribs with a sweet, smoky crunch and seasoning. A funf...",
+          "kcal": 297,
+          "price": 600,
+          "photo": "IMG_3489.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Little Thrill-Seekers (Kids)",
+      "note": "Foods tab on the tabletop tablet; the photos capture only part of the scrolling list, so this section may be partial.",
+      "items": [
+        {
+          "name": "Penne Pasta & Tomato Sauce (v) (k)",
+          "description": "Penne pasta tossed in a smooth tomato sauce. Simple, comforting an...",
+          "kcal": 93,
+          "price": 831,
+          "tags": [
+            "v",
+            "kids"
+          ],
+          "photo": "IMG_3490.HEIC"
+        },
+        {
+          "name": "Crispy Chicken Nuggets",
+          "description": "Four crispy golden chicken nuggets served with fries.",
+          "kcal": 501,
+          "price": 831,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3490.HEIC"
+        },
+        {
+          "name": "Fish Fingers",
+          "description": "Golden crispy fish fingers served with",
+          "kcal": 501,
+          "price": 831,
+          "tags": [
+            "kids"
+          ],
+          "unclear": "description cut off by the bottom of the screen",
+          "photo": "IMG_3490.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Fries & Rides",
+      "note": "Foods tab on the tabletop tablet; the photos capture only part of the scrolling list, so this section may be partial.",
+      "items": [
+        {
+          "name": "Coaster Fries",
+          "description": "Golden, crispy fries. A classic side with a natural twist",
+          "kcal": 234,
+          "price": 550,
+          "photo": "IMG_3491.HEIC"
+        },
+        {
+          "name": "Coaster Curly Fries",
+          "description": "Crispy curly fries with unique roller seasonings",
+          "kcal": 467,
+          "price": 550,
+          "photo": "IMG_3491.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Sauces",
+      "note": "Foods tab on the tabletop tablet; the photos capture only part of the scrolling list, so this section may be partial.",
+      "items": [
+        {
+          "name": "Roller Ranch Dip (ve)",
+          "description": "Vegan",
+          "kcal": 290,
+          "price": 150,
+          "tags": [
+            "vg"
+          ],
+          "photo": "IMG_3492.HEIC"
+        },
+        {
+          "name": "Mango Sweet Chilli (ve)",
+          "description": "Vegan",
+          "kcal": 117,
+          "price": 150,
+          "tags": [
+            "vg"
+          ],
+          "photo": "IMG_3492.HEIC"
+        },
+        {
+          "name": "Spicy Tangy Sweet Bbq (ve)",
+          "description": "Vegan",
+          "kcal": 58,
+          "price": 150,
+          "tags": [
+            "vg"
+          ],
+          "photo": "IMG_3492.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Sweet Final Drop",
+      "note": "The only category under the Desserts tab on the tabletop tablet; the photos capture only part of the scrolling list, so this section may be partial.",
+      "items": [
+        {
+          "name": "Towers Sticky Toffee Pudding",
+          "description": "Classic sticky toffee sponge served warm with vanilla ice cream. Rich, no...",
+          "kcal": 697,
+          "price": 850,
+          "photo": "IMG_3493.HEIC"
+        },
+        {
+          "name": "Salted Caramel Rocky Road Brownie",
+          "description": "Baked brownie loaded with salted caramel and rocky road pieces, serv...",
+          "kcal": 1027,
+          "price": 850,
+          "photo": "IMG_3493.HEIC"
+        },
+        {
+          "name": "Phalanx Control Salted Vegan Caramel Cake (ve)",
+          "description": "Three layers of rich chocolate sponge filled and iced with salted caramel a...",
+          "kcal": 988,
+          "price": 850,
+          "tags": [
+            "vg"
+          ],
+          "photo": "IMG_3494.HEIC"
+        },
+        {
+          "name": "Birthday Package",
+          "description": "RCR Mini Bear  zooming on the rollercoaster straight to your table! Li...",
+          "price": 2200,
+          "photo": "IMG_3494.HEIC"
+        },
+        {
+          "name": "Ice Cream & Sorbet Selection",
+          "description": "Three scoops of your selected ice cream topped with Meringue",
+          "kcal": 461,
+          "price": 800,
+          "photo": "IMG_3494.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Bottled Beers & Cider",
+      "note": "Drinks tab on the tabletop tablet; the photos capture only part of the scrolling list, so this section may be partial.",
+      "items": [
+        {
+          "name": "Wkd Bucket",
+          "description": "4 ice-cold WKD bottles served in a bucket packed with refreshing ice. P...",
+          "price": 2000,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3495.HEIC"
+        },
+        {
+          "name": "Kopparberg 0%",
+          "description": "*Challenge 25 applies*",
+          "kcal": 205,
+          "price": 900,
+          "photo": "IMG_3495.HEIC"
+        },
+        {
+          "name": "Budweiser Bottle",
+          "price": 675,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3495.HEIC"
+        },
+        {
+          "name": "Corona Cero 0% Alcohol",
+          "description": "*Challenge 25 applies*",
+          "kcal": 174,
+          "price": 675,
+          "photo": "IMG_3495.HEIC"
+        },
+        {
+          "name": "Kopparberg Mixed Fruit Bottle",
+          "price": 900,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3496.HEIC"
+        },
+        {
+          "name": "Kopparberg Pear Bottle",
+          "price": 900,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3496.HEIC"
+        },
+        {
+          "name": "Smirnoff Ice",
+          "price": 675,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3496.HEIC"
+        },
+        {
+          "name": "Wkd",
+          "price": 675,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3496.HEIC"
+        },
+        {
+          "name": "Budweiser Bucket",
+          "description": "4 ice-cold Budweiser bottles served in a bucket packed with refreshing ice. ...",
+          "kcal": 508,
+          "price": 2000,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3497.HEIC"
+        },
+        {
+          "name": "Smirnoff Ice Bucket",
+          "description": "4 ice-cold Smirnoff Ice bottles served in a bucket packed with refreshing ic...",
+          "price": 2000,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3497.HEIC"
+        },
+        {
+          "name": "Peroni Nastro Azzur",
+          "price": 700,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3497.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Slush",
+      "note": "Drinks tab on the tabletop tablet; the photos capture only part of the scrolling list, so this section may be partial.",
+      "items": [
+        {
+          "name": "Lime Slush",
+          "price": 525,
+          "photo": "IMG_3498.HEIC"
+        },
+        {
+          "name": "Blue Raspberry Slush",
+          "price": 525,
+          "photo": "IMG_3498.HEIC"
+        },
+        {
+          "name": "Blue Slush With Smirnoff Vodka",
+          "price": 925,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3498.HEIC"
+        },
+        {
+          "name": "Lime Slush With Smirnoff Vodka",
+          "price": 925,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3498.HEIC"
+        },
+        {
+          "name": "Blue Slush With Malibu",
+          "price": 925,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3498.HEIC"
+        },
+        {
+          "name": "Lime Slush With Malibu",
+          "price": 925,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3499.HEIC"
+        },
+        {
+          "name": "Blue Slush With Captain Morgan's White Rum",
+          "price": 925,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3499.HEIC"
+        },
+        {
+          "name": "Lime Slush With Captain Morgan's White Rum",
+          "price": 925,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3499.HEIC"
+        },
+        {
+          "name": "Blue Slush With Gordon's Gin",
+          "price": 925,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3499.HEIC"
+        },
+        {
+          "name": "Lime Slush With Gordon's Gin",
+          "price": 925,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3499.HEIC"
+        },
+        {
+          "name": "Blue Slush With Smirnoff Vanilla Vodka",
+          "price": 925,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3500.HEIC"
+        },
+        {
+          "name": "Lime Slush With Smirnoff Vanilla Vodka",
+          "price": 925,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3500.HEIC"
+        },
+        {
+          "name": "Blue Slush With Archer's Peach Schnapps",
+          "price": 925,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3500.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Draught Beers & Cider",
+      "note": "Drinks tab on the tabletop tablet; the photos capture only part of the scrolling list, so this section may be partial. Both cards show a \"From\" price, so larger measures are likely priced higher.",
+      "items": [
+        {
+          "name": "Stella Artois",
+          "price": 425,
+          "tags": [
+            "alcohol"
+          ],
+          "unclear": "printed as \"From £4.25\"; the sizes behind that price were not shown",
+          "photo": "IMG_3501.HEIC"
+        },
+        {
+          "name": "Strawberry & Lime Kopparberg",
+          "price": 425,
+          "tags": [
+            "alcohol"
+          ],
+          "unclear": "printed as \"From £4.25\"; the sizes behind that price were not shown",
+          "photo": "IMG_3501.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Cocktails",
+      "note": "Drinks tab on the tabletop tablet; the photos capture only part of the scrolling list, so this section may be partial.",
+      "items": [
+        {
+          "name": "Smiler Cocktail",
+          "description": "The Smiler Cocktail is a fun, tropical mix of Malibu and pineapple juice, lift...",
+          "kcal": 223,
+          "price": 1325,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3502.HEIC"
+        },
+        {
+          "name": "Rita Cocktail",
+          "description": "The Rita Cocktail is a high-speed, refreshing blend inspired by Rita. Wh...",
+          "kcal": 262,
+          "price": 1325,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3502.HEIC"
+        },
+        {
+          "name": "Toxicator Cocktail",
+          "description": "Brace yourself for a flavour overload. This neon-green thrill ride in a glass f...",
+          "price": 1400,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3502.HEIC"
+        },
+        {
+          "name": "Thirteen Cocktail",
+          "description": "A classic medley of mint, lime and rum. Topped with soda",
+          "price": 1325,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3503.HEIC"
+        },
+        {
+          "name": "Oblivion Cocktail",
+          "description": "A classic Aperol spritz with Prosecco and soda",
+          "price": 1325,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3503.HEIC"
+        },
+        {
+          "name": "Galactica Cocktail",
+          "description": "Blue curacao and vodka poured over ice and topped with sprite, with floati...",
+          "price": 1325,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3504.HEIC"
+        },
+        {
+          "name": "Nemesis Cocktail",
+          "description": "A stylish and refreshing blend of vodka, Cointreau, cranberry juice, an...",
+          "price": 1325,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3504.HEIC"
+        },
+        {
+          "name": "Passionfruitini",
+          "description": "Vanilla vodka and passionfruit mix shaken with ice and topped with Spri...",
+          "price": 1275,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3504.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Mocktails",
+      "note": "Drinks tab on the tabletop tablet; the photos capture only part of the scrolling list, so this section may be partial.",
+      "items": [
+        {
+          "name": "Emerald Elixir",
+          "description": "Apple juice with a splash of lime and a dash of Sprite Zero, garnished with m...",
+          "price": 575,
+          "photo": "IMG_3505.HEIC"
+        },
+        {
+          "name": "Wickerbaby Mocktail",
+          "description": "Fresh orange juice and grenadine garnished with a slice of orange",
+          "price": 575,
+          "photo": "IMG_3505.HEIC"
+        },
+        {
+          "name": "Spinball Fizzer Mocktail",
+          "description": "Sprite Zero and bubblegum syrup served over ice. With added sparkle!",
+          "price": 575,
+          "photo": "IMG_3505.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Red wine",
+      "note": "Drinks tab on the tabletop tablet; the photos capture only part of the scrolling list, so this section may be partial. Both cards show a \"From\" price for the smallest measure.",
+      "items": [
+        {
+          "name": "Monte Verde Merlot, Chile",
+          "price": 750,
+          "tags": [
+            "alcohol"
+          ],
+          "unclear": "printed as \"From £7.50\"; the measures behind that price were not shown",
+          "photo": "IMG_3506.HEIC"
+        },
+        {
+          "name": "Portillo Malbec, Argentina",
+          "price": 730,
+          "tags": [
+            "alcohol"
+          ],
+          "unclear": "printed as \"From £7.30\"; the measures behind that price were not shown",
+          "photo": "IMG_3506.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "White wine",
+      "note": "Drinks tab on the tabletop tablet; the photos capture only part of the scrolling list, so this section may be partial. Both cards show a \"From\" price for the smallest measure.",
+      "items": [
+        {
+          "name": "Petal & Stem Sauvignon Blanc",
+          "price": 750,
+          "tags": [
+            "alcohol"
+          ],
+          "unclear": "printed as \"From £7.50\"; the measures behind that price were not shown",
+          "photo": "IMG_3507.HEIC"
+        },
+        {
+          "name": "Short Mile Bay Chardonnay",
+          "price": 725,
+          "tags": [
+            "alcohol"
+          ],
+          "unclear": "printed as \"From £7.25\"; the measures behind that price were not shown",
+          "photo": "IMG_3507.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Rose wine",
+      "note": "Drinks tab on the tabletop tablet; the photos capture only part of the scrolling list, so this section may be partial. All three cards show a \"From\" price for the smallest measure.",
+      "items": [
+        {
+          "name": "Parini Pinot Grigio Blush",
+          "price": 775,
+          "tags": [
+            "alcohol"
+          ],
+          "unclear": "printed as \"From £7.75\"; the measures behind that price were not shown",
+          "photo": "IMG_3508.HEIC"
+        },
+        {
+          "name": "Bulletin Zinfandel",
+          "price": 775,
+          "tags": [
+            "alcohol"
+          ],
+          "unclear": "printed as \"From £7.75\"; the measures behind that price were not shown",
+          "photo": "IMG_3508.HEIC"
+        },
+        {
+          "name": "Cotes De Provence Rose Mirabeau",
+          "price": 775,
+          "tags": [
+            "alcohol"
+          ],
+          "unclear": "printed as \"From £7.75\"; the measures behind that price were not shown",
+          "photo": "IMG_3508.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Spirits",
+      "note": "Drinks tab on the tabletop tablet; the photos capture only part of the scrolling list, so this section may be partial. Every card shows a \"From\" price for the single measure.",
+      "items": [
+        {
+          "name": "Archers Peach Schnapps",
+          "price": 525,
+          "tags": [
+            "alcohol"
+          ],
+          "unclear": "printed as \"From £5.25\"; the measures behind that price were not shown",
+          "photo": "IMG_3509.HEIC"
+        },
+        {
+          "name": "Captain Morgan's",
+          "price": 525,
+          "tags": [
+            "alcohol"
+          ],
+          "unclear": "printed as \"From £5.25\"; the measures behind that price were not shown",
+          "photo": "IMG_3509.HEIC"
+        },
+        {
+          "name": "Disaronno",
+          "price": 525,
+          "tags": [
+            "alcohol"
+          ],
+          "unclear": "printed as \"From £5.25\"; the measures behind that price were not shown",
+          "photo": "IMG_3509.HEIC"
+        },
+        {
+          "name": "Gordon's Gin",
+          "price": 525,
+          "tags": [
+            "alcohol"
+          ],
+          "unclear": "printed as \"From £5.25\"; the measures behind that price were not shown",
+          "photo": "IMG_3509.HEIC"
+        },
+        {
+          "name": "Gordon's Pink Gin",
+          "price": 525,
+          "tags": [
+            "alcohol"
+          ],
+          "unclear": "printed as \"From £5.25\"; the measures behind that price were not shown",
+          "photo": "IMG_3509.HEIC"
+        },
+        {
+          "name": "Jack Daniels",
+          "kcal": 1,
+          "price": 525,
+          "tags": [
+            "alcohol"
+          ],
+          "unclear": "printed as \"1 kcal | From £5.25\"; the measures behind that price were not shown",
+          "photo": "IMG_3509.HEIC"
+        },
+        {
+          "name": "Malibu",
+          "price": 525,
+          "tags": [
+            "alcohol"
+          ],
+          "unclear": "printed as \"From £5.25\"; the measures behind that price were not shown",
+          "photo": "IMG_3510.HEIC"
+        },
+        {
+          "name": "Smirnoff Vodka",
+          "description": "Vegetarian",
+          "price": 525,
+          "tags": [
+            "alcohol",
+            "v"
+          ],
+          "unclear": "printed as \"From £5.25\"; the measures behind that price were not shown",
+          "photo": "IMG_3510.HEIC"
+        },
+        {
+          "name": "Smirnoff Vanilla Vodka",
+          "price": 525,
+          "tags": [
+            "alcohol"
+          ],
+          "unclear": "printed as \"From £5.25\"; the measures behind that price were not shown",
+          "photo": "IMG_3510.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Soft drink bottles",
+      "note": "Drinks tab on the tabletop tablet; the photos capture only part of the scrolling list, so this section may be partial.",
+      "items": [
+        {
+          "name": "J2o Apple & Mango",
+          "price": 500,
+          "photo": "IMG_3511.HEIC"
+        },
+        {
+          "name": "J2o Orange & Passionfruit",
+          "price": 500,
+          "photo": "IMG_3511.HEIC"
+        },
+        {
+          "name": "J2o Apple & Raspberry",
+          "price": 500,
+          "photo": "IMG_3511.HEIC"
+        },
+        {
+          "name": "Appletiser",
+          "price": 500,
+          "photo": "IMG_3511.HEIC"
+        },
+        {
+          "name": "Schweppes Tonic",
+          "price": 350,
+          "photo": "IMG_3511.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Soft drinks",
+      "note": "Drinks tab on the tabletop tablet; the photos capture only part of the scrolling list, so this section may be partial.",
+      "items": [
+        {
+          "name": "Coke Zero",
+          "price": 525,
+          "photo": "IMG_3512.HEIC"
+        },
+        {
+          "name": "Sprite Zero",
+          "price": 525,
+          "photo": "IMG_3512.HEIC"
+        },
+        {
+          "name": "Apple Juice",
+          "price": 400,
+          "photo": "IMG_3512.HEIC"
+        },
+        {
+          "name": "Coca-cola",
+          "price": 525,
+          "photo": "IMG_3512.HEIC"
+        },
+        {
+          "name": "Cranberry Juice",
+          "price": 400,
+          "photo": "IMG_3512.HEIC"
+        },
+        {
+          "name": "Diet Coke",
+          "price": 525,
+          "photo": "IMG_3512.HEIC"
+        },
+        {
+          "name": "Fanta Zero",
+          "price": 525,
+          "photo": "IMG_3513.HEIC"
+        },
+        {
+          "name": "Orange Juice",
+          "price": 400,
+          "photo": "IMG_3513.HEIC"
+        },
+        {
+          "name": "Pineapple Juice",
+          "price": 400,
+          "photo": "IMG_3513.HEIC"
+        },
+        {
+          "name": "Strathmore Sparkling Water",
+          "description": "750ml...perfect for sharing",
+          "price": 550,
+          "photo": "IMG_3514.HEIC"
+        },
+        {
+          "name": "Strathmore Still Water",
+          "description": "750ml...perfect for sharing",
+          "price": 550,
+          "photo": "IMG_3514.HEIC"
+        },
+        {
+          "name": "Glass Of Milk",
+          "price": 225,
+          "photo": "IMG_3514.HEIC"
+        }
+      ]
+    }
+  ],
+  "offers": [
+    {
+      "text": "Choose 2 Cocktails For Only 20 - £20.00. \"Why settle for one when you can double the flavour?\"",
+      "photo": "IMG_3502.HEIC"
+    }
+  ],
+  "skipped": [],
+  "photos": [
+    {
+      "file": "IMG_3483.HEIC",
+      "name": "Rollercoaster-Restaurant-rollercoaster-burgers",
+      "caption": "rollercoaster-burgers"
+    },
+    {
+      "file": "IMG_3484.HEIC",
+      "name": "Rollercoaster-Restaurant-big-rides-and",
+      "caption": "big-rides-and"
+    },
+    {
+      "file": "IMG_3485.HEIC",
+      "name": "Rollercoaster-Restaurant-big-rides-and-2",
+      "caption": "big-rides-and"
+    },
+    {
+      "file": "IMG_3486.HEIC",
+      "name": "Rollercoaster-Restaurant-spice-track-curries",
+      "caption": "spice-track-curries"
+    },
+    {
+      "file": "IMG_3487.HEIC",
+      "name": "Rollercoaster-Restaurant-spice-track-curries-2",
+      "caption": "spice-track-curries"
+    },
+    {
+      "file": "IMG_3488.HEIC",
+      "name": "Rollercoaster-Restaurant-trackside-pasta-and",
+      "caption": "trackside-pasta-and"
+    },
+    {
+      "file": "IMG_3489.HEIC",
+      "name": "Rollercoaster-Restaurant-coaster-sides",
+      "caption": "coaster-sides"
+    },
+    {
+      "file": "IMG_3490.HEIC",
+      "name": "Rollercoaster-Restaurant-little-thrill-seekers",
+      "caption": "little-thrill-seekers"
+    },
+    {
+      "file": "IMG_3491.HEIC",
+      "name": "Rollercoaster-Restaurant-fries-and-rides",
+      "caption": "fries-and-rides"
+    },
+    {
+      "file": "IMG_3492.HEIC",
+      "name": "Rollercoaster-Restaurant-sauces",
+      "caption": "sauces"
+    },
+    {
+      "file": "IMG_3493.HEIC",
+      "name": "Rollercoaster-Restaurant-sweet-final-drop",
+      "caption": "sweet-final-drop"
+    },
+    {
+      "file": "IMG_3494.HEIC",
+      "name": "Rollercoaster-Restaurant-sweet-final-drop-2",
+      "caption": "sweet-final-drop"
+    },
+    {
+      "file": "IMG_3495.HEIC",
+      "name": "Rollercoaster-Restaurant-bottled-beers-and",
+      "caption": "bottled-beers-and"
+    },
+    {
+      "file": "IMG_3496.HEIC",
+      "name": "Rollercoaster-Restaurant-bottled-beers-and-2",
+      "caption": "bottled-beers-and"
+    },
+    {
+      "file": "IMG_3497.HEIC",
+      "name": "Rollercoaster-Restaurant-bottled-beers-and-3",
+      "caption": "bottled-beers-and"
+    },
+    {
+      "file": "IMG_3498.HEIC",
+      "name": "Rollercoaster-Restaurant-slush",
+      "caption": "slush"
+    },
+    {
+      "file": "IMG_3499.HEIC",
+      "name": "Rollercoaster-Restaurant-slush-2",
+      "caption": "slush"
+    },
+    {
+      "file": "IMG_3500.HEIC",
+      "name": "Rollercoaster-Restaurant-slush-3",
+      "caption": "slush"
+    },
+    {
+      "file": "IMG_3501.HEIC",
+      "name": "Rollercoaster-Restaurant-draught-beers-and",
+      "caption": "draught-beers-and"
+    },
+    {
+      "file": "IMG_3502.HEIC",
+      "name": "Rollercoaster-Restaurant-cocktails",
+      "caption": "cocktails"
+    },
+    {
+      "file": "IMG_3503.HEIC",
+      "name": "Rollercoaster-Restaurant-cocktails-2",
+      "caption": "cocktails"
+    },
+    {
+      "file": "IMG_3504.HEIC",
+      "name": "Rollercoaster-Restaurant-cocktails-3",
+      "caption": "cocktails"
+    },
+    {
+      "file": "IMG_3505.HEIC",
+      "name": "Rollercoaster-Restaurant-mocktails",
+      "caption": "mocktails"
+    },
+    {
+      "file": "IMG_3506.HEIC",
+      "name": "Rollercoaster-Restaurant-red-wine",
+      "caption": "red-wine"
+    },
+    {
+      "file": "IMG_3507.HEIC",
+      "name": "Rollercoaster-Restaurant-white-wine",
+      "caption": "white-wine"
+    },
+    {
+      "file": "IMG_3508.HEIC",
+      "name": "Rollercoaster-Restaurant-rose-wine",
+      "caption": "rose-wine"
+    },
+    {
+      "file": "IMG_3509.HEIC",
+      "name": "Rollercoaster-Restaurant-spirits",
+      "caption": "spirits"
+    },
+    {
+      "file": "IMG_3510.HEIC",
+      "name": "Rollercoaster-Restaurant-spirits-2",
+      "caption": "spirits"
+    },
+    {
+      "file": "IMG_3511.HEIC",
+      "name": "Rollercoaster-Restaurant-soft-drink-bottles",
+      "caption": "soft-drink-bottles"
+    },
+    {
+      "file": "IMG_3512.HEIC",
+      "name": "Rollercoaster-Restaurant-soft-drinks",
+      "caption": "soft-drinks"
+    },
+    {
+      "file": "IMG_3513.HEIC",
+      "name": "Rollercoaster-Restaurant-soft-drinks-2",
+      "caption": "soft-drinks"
+    },
+    {
+      "file": "IMG_3514.HEIC",
+      "name": "Rollercoaster-Restaurant-soft-drinks-3",
+      "caption": "soft-drinks"
+    }
+  ]
+}

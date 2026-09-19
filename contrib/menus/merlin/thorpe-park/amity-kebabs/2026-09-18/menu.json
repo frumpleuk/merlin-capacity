@@ -1,0 +1,127 @@
+{
+  "date": "2026-09-18",
+  "sections": [
+    {
+      "name": "Greek Style Flatbread Wrapped Kebab",
+      "note": "One price for every wrap: £12.25",
+      "items": [
+        {
+          "name": "Chicken Tikka",
+          "description": "Bread loaded with crispy fries topped with fresh salad and marinated chicken, choice of sauces",
+          "price": 1225,
+          "kcal": 956,
+          "photo": "IMG_3758.HEIC"
+        },
+        {
+          "name": "Doner",
+          "description": "Bread loaded with crispy fries topped with fresh salad and doner, choice of sauces",
+          "price": 1225,
+          "kcal": 1125,
+          "photo": "IMG_3758.HEIC"
+        },
+        {
+          "name": "Mediterranean Chicken",
+          "description": "Bread loaded with crispy fries topped with fresh salad and marinated chicken, choice of sauces",
+          "price": 1225,
+          "kcal": 941,
+          "photo": "IMG_3758.HEIC"
+        },
+        {
+          "name": "Falafel",
+          "description": "Bread loaded with crispy fries topped with fresh salad and Mediterranean falafel, choice of sauces",
+          "price": 1225,
+          "kcal": 1020,
+          "tags": [
+            "v"
+          ],
+          "photo": "IMG_3758.HEIC"
+        },
+        {
+          "name": "Add Regular Soft Drink",
+          "price": 400,
+          "photo": "IMG_3758.HEIC"
+        },
+        {
+          "name": "Chips",
+          "price": 525,
+          "kcal": 365,
+          "tags": [
+            "v"
+          ],
+          "photo": "IMG_3758.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Soft Drinks",
+      "items": [
+        {
+          "name": "Soft Drink",
+          "description": "Coca-Cola Zero Sugar, Diet Coke, Fanta Zero Orange or Sprite Zero Sugar",
+          "sizes": [
+            {
+              "label": "Regular 16oz",
+              "price": 295
+            },
+            {
+              "label": "Large 22oz",
+              "price": 345
+            }
+          ],
+          "kcal": 0,
+          "photo": "IMG_3758.HEIC"
+        },
+        {
+          "name": "Smartwater 600ml",
+          "price": 325,
+          "photo": "IMG_3758.HEIC"
+        },
+        {
+          "name": "Strawberry Slushy",
+          "price": 550,
+          "kcal": 91,
+          "photo": "IMG_3758.HEIC"
+        },
+        {
+          "name": "Raspberry Slushy",
+          "price": 550,
+          "kcal": 91,
+          "photo": "IMG_3758.HEIC"
+        },
+        {
+          "name": "Mixed Slushy",
+          "price": 550,
+          "kcal": 91,
+          "photo": "IMG_3758.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Ice Cream",
+      "items": [
+        {
+          "name": "Calippo or Twister",
+          "price": 275,
+          "photo": "IMG_3758.HEIC"
+        },
+        {
+          "name": "Cornetto or Solero",
+          "price": 300,
+          "photo": "IMG_3758.HEIC"
+        },
+        {
+          "name": "Magnum White or Classic",
+          "price": 400,
+          "photo": "IMG_3758.HEIC"
+        }
+      ]
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3758.HEIC",
+      "name": "Amity-Kebabs-main-menu",
+      "caption": "main-menu"
+    }
+  ]
+}

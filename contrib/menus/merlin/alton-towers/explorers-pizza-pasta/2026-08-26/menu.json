@@ -1,0 +1,50 @@
+{
+  "date": "2026-08-26",
+  "passDiscount": {
+    "offered": true,
+    "percent": 20,
+    "upTo": true,
+    "applies": "food & drink",
+    "photo": "IMG_3469.HEIC",
+    "source": "board photo"
+  },
+  "sections": [
+    {
+      "name": "Pizza and Pasta",
+      "note": "All you can eat and drink",
+      "items": [
+        {
+          "name": "All you can eat and drink",
+          "sizes": [
+            {
+              "label": "Adult 18+",
+              "price": 2325
+            },
+            {
+              "label": "Teen 13+",
+              "price": 1650
+            },
+            {
+              "label": "Children 12 and under",
+              "price": 1325
+            }
+          ],
+          "photo": "IMG_3469.HEIC"
+        }
+      ]
+    }
+  ],
+  "offers": [
+    {
+      "text": "Adult £16.75, Teen £10.00 after 2pm with Merlin Pass",
+      "photo": "IMG_3469.HEIC"
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3469.HEIC",
+      "name": "Explorers-Pizza-Pasta-main-menu",
+      "caption": "main-menu"
+    }
+  ]
+}

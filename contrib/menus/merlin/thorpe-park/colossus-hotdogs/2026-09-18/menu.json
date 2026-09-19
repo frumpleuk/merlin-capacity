@@ -1,0 +1,149 @@
+{
+  "date": "2026-09-18",
+  "sections": [
+    {
+      "name": "Hotdogs & Fries",
+      "note": "Whole board is motion-blurred; prices read at full resolution but the per-item kcal figures could not be made out and are omitted",
+      "items": [
+        {
+          "name": "Regular Hotdog",
+          "price": 925,
+          "photo": "IMG_3797.HEIC"
+        },
+        {
+          "name": "Vegan Hotdog",
+          "price": 925,
+          "tags": [
+            "vg"
+          ],
+          "photo": "IMG_3797.HEIC"
+        },
+        {
+          "name": "Regular Fries",
+          "price": 525,
+          "photo": "IMG_3797.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Meal Deals",
+      "note": "Includes fries and a regular soft drink or Smartwater",
+      "items": [
+        {
+          "name": "Regular Hotdog Meal",
+          "price": 1575,
+          "photo": "IMG_3797.HEIC"
+        },
+        {
+          "name": "Vegan Hotdog Meal",
+          "price": 1575,
+          "tags": [
+            "vg"
+          ],
+          "photo": "IMG_3797.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Soft Drinks",
+      "items": [
+        {
+          "name": "Soft Drink",
+          "description": "Coca-Cola Zero Sugar, Diet Coke, Fanta Zero Orange or Sprite Zero Sugar",
+          "sizes": [
+            {
+              "label": "Regular",
+              "price": 500
+            },
+            {
+              "label": "Large",
+              "price": 525
+            }
+          ],
+          "unclear": "board is blurred; read as £5.00/£5.25 but the leading digit could be a 3, and Amity Kebabs prices the same cups at £2.95/£3.45",
+          "photo": "IMG_3797.HEIC"
+        },
+        {
+          "name": "Smartwater 600ml",
+          "price": 325,
+          "photo": "IMG_3797.HEIC"
+        },
+        {
+          "name": "Strawberry Slushy",
+          "price": 550,
+          "photo": "IMG_3797.HEIC"
+        },
+        {
+          "name": "Raspberry Slushy",
+          "price": 550,
+          "photo": "IMG_3797.HEIC"
+        },
+        {
+          "name": "Mixed Slushy",
+          "price": 550,
+          "photo": "IMG_3797.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Ice Cream",
+      "items": [
+        {
+          "name": "Calippo or Twister",
+          "price": 275,
+          "photo": "IMG_3797.HEIC"
+        },
+        {
+          "name": "Cornetto or Solero",
+          "price": 300,
+          "photo": "IMG_3797.HEIC"
+        },
+        {
+          "name": "Magnum White or Classic",
+          "price": 400,
+          "photo": "IMG_3797.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Jacket Potatoes",
+      "items": [
+        {
+          "name": "The Classic",
+          "description": "Baked beans and cheese",
+          "price": 1100,
+          "photo": "IMG_3797.HEIC"
+        },
+        {
+          "name": "The Tikka",
+          "description": "Chicken tikka curry and mint yoghurt dressing",
+          "price": 1250,
+          "photo": "IMG_3797.HEIC"
+        },
+        {
+          "name": "The Italian",
+          "description": "Garlic butter, meatballs, marinara sauce and cheese",
+          "price": 1250,
+          "photo": "IMG_3797.HEIC"
+        },
+        {
+          "name": "Add Garlic Butter",
+          "price": 75,
+          "photo": "IMG_3797.HEIC"
+        },
+        {
+          "name": "Add Crispy Onions",
+          "price": 75,
+          "photo": "IMG_3797.HEIC"
+        }
+      ]
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3797.HEIC",
+      "name": "Colossus-Hotdogs-main-menu",
+      "caption": "main-menu"
+    }
+  ]
+}

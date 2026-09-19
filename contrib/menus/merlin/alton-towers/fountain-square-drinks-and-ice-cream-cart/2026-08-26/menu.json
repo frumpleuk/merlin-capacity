@@ -1,0 +1,101 @@
+{
+  "date": "2026-08-26",
+  "sections": [
+    {
+      "name": "Alton Towers Resort Drinks",
+      "note": "Adults need around 2000 Kcal a day. All brands are registered trademarks of their respective brand owners.",
+      "items": [
+        {
+          "name": "Coca-Cola",
+          "description": "500ml",
+          "price": 360,
+          "kcal": 210,
+          "photo": "IMG_3406.HEIC"
+        },
+        {
+          "name": "Diet Coke",
+          "description": "500ml",
+          "price": 350,
+          "kcal": 2,
+          "photo": "IMG_3406.HEIC"
+        },
+        {
+          "name": "Glaceau Smartwater",
+          "description": "600ml",
+          "price": 350,
+          "kcal": 0,
+          "photo": "IMG_3406.HEIC"
+        },
+        {
+          "name": "Fanta Orange Zero Sugar",
+          "description": "500ml",
+          "price": 350,
+          "kcal": 95,
+          "photo": "IMG_3406.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Alton Towers Resort Ice Cream",
+      "note": "Adults need around 2000 Kcal a day. All brands are registered trademarks of their respective brand owners. The small flavour/kcal lines on this board are sun-faded white-on-blue and mostly illegible in the photo.",
+      "items": [
+        {
+          "name": "Ice Cream Cone",
+          "price": 375,
+          "kcal": 220,
+          "photo": "IMG_3407.HEIC"
+        },
+        {
+          "name": "Ice Cream Cone With Flake",
+          "price": 425,
+          "kcal": 265,
+          "photo": "IMG_3407.HEIC"
+        },
+        {
+          "name": "Twister",
+          "price": 275,
+          "unclear": "kcal line under the logo too faded to read",
+          "photo": "IMG_3407.HEIC"
+        },
+        {
+          "name": "Feast",
+          "price": 275,
+          "unclear": "flavour and kcal line (\"Original ... Kcal\") too faded to read",
+          "photo": "IMG_3407.HEIC"
+        },
+        {
+          "name": "Calippo",
+          "price": 275,
+          "unclear": "flavour lines read \"Calippo Orange ... Kcal\" and \"Calippo Strawberry ... Kcal\"; the kcal figures are too faded to read",
+          "photo": "IMG_3407.HEIC"
+        },
+        {
+          "name": "Magnum",
+          "price": 360,
+          "unclear": "flavour lines (\"White ... Kcal\", \"Classic ... Kcal\") too faded to read the kcal figures",
+          "photo": "IMG_3407.HEIC"
+        },
+        {
+          "name": "Haribo Push",
+          "price": 300,
+          "unclear": "kcal line too faded to read",
+          "photo": "IMG_3407.HEIC"
+        }
+      ]
+    }
+  ],
+  "offers": [],
+  "skipped": [],
+  "photos": [
+    {
+      "file": "IMG_3406.HEIC",
+      "name": "Drinks-and-ice-cream-cart-Fountain-Square-alton-towers-resort",
+      "caption": "alton-towers-resort"
+    },
+    {
+      "file": "IMG_3407.HEIC",
+      "name": "Drinks-and-ice-cream-cart-Fountain-Square-alton-towers-resort-2",
+      "caption": "alton-towers-resort"
+    }
+  ]
+}

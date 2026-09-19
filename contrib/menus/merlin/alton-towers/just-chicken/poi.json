@@ -1,0 +1,15 @@
+{
+  "id": 4241,
+  "name": "Just Chicken",
+  "category": "Food & Drink > Fast Food",
+  "lat": 52.986851,
+  "lon": -1.895238,
+  "source": "attractions.io app bundle",
+  "area": "X-Sector",
+  "menuUrl": null,
+  "appPassholderDiscount": true,
+  "diningPlans": [
+    "Ultimate"
+  ],
+  "appMissingSince": null
+}

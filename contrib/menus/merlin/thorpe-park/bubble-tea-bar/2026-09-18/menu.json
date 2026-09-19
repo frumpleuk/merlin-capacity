@@ -1,0 +1,154 @@
+{
+  "date": "2026-09-18",
+  "sections": [
+    {
+      "name": "1. Choose Your Size",
+      "note": "Build-your-own board: the size is the only priced step",
+      "items": [
+        {
+          "name": "12oz",
+          "price": 650,
+          "photo": "IMG_3765.HEIC"
+        },
+        {
+          "name": "16oz",
+          "price": 850,
+          "photo": "IMG_3765.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "2. Choose Your Tea",
+      "note": "Choice step, no separate price",
+      "items": [
+        {
+          "name": "Green Tea",
+          "price": null,
+          "unclear": "board step is unpriced; the price comes from the size chosen in step 1",
+          "photo": "IMG_3765.HEIC"
+        },
+        {
+          "name": "Fruit Tea",
+          "price": null,
+          "unclear": "board step is unpriced; the price comes from the size chosen in step 1",
+          "photo": "IMG_3765.HEIC"
+        },
+        {
+          "name": "Milk Tea",
+          "price": null,
+          "unclear": "board step is unpriced; the price comes from the size chosen in step 1",
+          "photo": "IMG_3765.HEIC"
+        },
+        {
+          "name": "Taro",
+          "price": null,
+          "unclear": "board step is unpriced; the price comes from the size chosen in step 1",
+          "photo": "IMG_3765.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "3. Choose a Flavour",
+      "note": "Choice step, no separate price",
+      "items": [
+        {
+          "name": "Passion Fruit",
+          "price": null,
+          "unclear": "board step is unpriced; the price comes from the size chosen in step 1",
+          "photo": "IMG_3765.HEIC"
+        },
+        {
+          "name": "Mango",
+          "price": null,
+          "unclear": "board step is unpriced; the price comes from the size chosen in step 1",
+          "photo": "IMG_3765.HEIC"
+        },
+        {
+          "name": "Strawberry",
+          "price": null,
+          "unclear": "board step is unpriced; the price comes from the size chosen in step 1",
+          "photo": "IMG_3765.HEIC"
+        },
+        {
+          "name": "Apple",
+          "price": null,
+          "unclear": "board step is unpriced; the price comes from the size chosen in step 1",
+          "photo": "IMG_3765.HEIC"
+        },
+        {
+          "name": "Lychee",
+          "price": null,
+          "unclear": "board step is unpriced; the price comes from the size chosen in step 1",
+          "photo": "IMG_3765.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "4. Choose a Popping Boba",
+      "note": "Choice step, no separate price",
+      "items": [
+        {
+          "name": "Strawberry",
+          "price": null,
+          "unclear": "board step is unpriced; the price comes from the size chosen in step 1",
+          "photo": "IMG_3765.HEIC"
+        },
+        {
+          "name": "Mango",
+          "price": null,
+          "unclear": "board step is unpriced; the price comes from the size chosen in step 1",
+          "photo": "IMG_3765.HEIC"
+        },
+        {
+          "name": "Apple",
+          "price": null,
+          "unclear": "board step is unpriced; the price comes from the size chosen in step 1",
+          "photo": "IMG_3765.HEIC"
+        },
+        {
+          "name": "Blueberry",
+          "price": null,
+          "unclear": "board step is unpriced; the price comes from the size chosen in step 1",
+          "photo": "IMG_3765.HEIC"
+        },
+        {
+          "name": "Passion Fruit",
+          "price": null,
+          "unclear": "board step is unpriced; the price comes from the size chosen in step 1",
+          "photo": "IMG_3765.HEIC"
+        },
+        {
+          "name": "Lychee",
+          "price": null,
+          "unclear": "board step is unpriced; the price comes from the size chosen in step 1",
+          "photo": "IMG_3765.HEIC"
+        },
+        {
+          "name": "Tapioca",
+          "price": null,
+          "unclear": "board step is unpriced; the price comes from the size chosen in step 1",
+          "photo": "IMG_3765.HEIC"
+        },
+        {
+          "name": "Strawberry Jelly",
+          "price": null,
+          "unclear": "board step is unpriced; the price comes from the size chosen in step 1",
+          "photo": "IMG_3765.HEIC"
+        },
+        {
+          "name": "Mango Jelly",
+          "price": null,
+          "unclear": "board step is unpriced; the price comes from the size chosen in step 1",
+          "photo": "IMG_3765.HEIC"
+        }
+      ]
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3765.HEIC",
+      "name": "Bubble-Tea-Bar-main-menu",
+      "caption": "main-menu"
+    }
+  ]
+}

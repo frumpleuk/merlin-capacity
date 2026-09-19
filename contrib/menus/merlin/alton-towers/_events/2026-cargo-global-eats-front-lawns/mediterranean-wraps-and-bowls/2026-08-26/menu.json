@@ -1,0 +1,98 @@
+{
+  "date": "2026-08-26",
+  "sections": [
+    {
+      "name": "Wraps",
+      "note": "Add chips or halloumi to wrap for £2",
+      "items": [
+        {
+          "name": "Grilled Chicken Thigh Wrap",
+          "description": "Wrapped in a flatbread with lettuce, red cabbage, sumac and parsley onion, chilli sauce and garlic yogurt",
+          "price": 1395,
+          "photo": "IMG_3420.HEIC"
+        },
+        {
+          "name": "Lamb Wrap",
+          "description": "Wrapped in a flatbread with lettuce, red cabbage, sumac and parsley onion, chilli sauce and garlic yogurt",
+          "price": 1595,
+          "photo": "IMG_3420.HEIC"
+        },
+        {
+          "name": "Halloumi Wrap",
+          "description": "Wrapped in a flatbread with lettuce, red cabbage, sumac and parsley onion, chilli sauce and garlic yogurt",
+          "price": 1195,
+          "photo": "IMG_3420.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Bowls",
+      "items": [
+        {
+          "name": "Grilled Chicken Thigh",
+          "description": "Served on a bed of chips with garlic yogurt and a homemade tomato sauce OR Salad",
+          "price": 1395,
+          "tags": [
+            "gf"
+          ],
+          "photo": "IMG_3420.HEIC"
+        },
+        {
+          "name": "Lamb",
+          "description": "Served on a bed of chips with garlic yogurt and a homemade tomato sauce OR Salad",
+          "price": 1595,
+          "tags": [
+            "gf"
+          ],
+          "photo": "IMG_3420.HEIC"
+        },
+        {
+          "name": "Halloumi",
+          "description": "Served on a bed of chips with garlic yogurt and a homemade tomato sauce OR Salad",
+          "price": 1195,
+          "tags": [
+            "gf"
+          ],
+          "photo": "IMG_3420.HEIC"
+        },
+        {
+          "name": "Children's Meal Bowl",
+          "description": "Grilled chicken, lamb or Halloumi served with chips, homemade tomato sauce OR salad. Served with a soft drink.",
+          "price": 1000,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3420.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Sides and Drinks",
+      "note": "Unheaded row at the foot of the board",
+      "items": [
+        {
+          "name": "Plain Fries",
+          "price": 550,
+          "photo": "IMG_3420.HEIC"
+        },
+        {
+          "name": "Halloumi Fries",
+          "price": 800,
+          "photo": "IMG_3420.HEIC"
+        },
+        {
+          "name": "Drinks",
+          "price": 350,
+          "photo": "IMG_3420.HEIC"
+        }
+      ]
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3420.HEIC",
+      "name": "Mediterranean-Wraps-and-Bowls-main-menu",
+      "caption": "main-menu"
+    }
+  ]
+}

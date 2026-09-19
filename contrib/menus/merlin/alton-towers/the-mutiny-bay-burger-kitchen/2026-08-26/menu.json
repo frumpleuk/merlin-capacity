@@ -1,0 +1,220 @@
+{
+  "date": "2026-08-26",
+  "passDiscount": {
+    "offered": true,
+    "percent": 20,
+    "upTo": true,
+    "applies": "food & drink",
+    "photo": "IMG_3465.HEIC",
+    "source": "board photo"
+  },
+  "sections": [
+    {
+      "name": "Adult Burgers",
+      "note": "With fries",
+      "items": [
+        {
+          "name": "Classic Burger",
+          "price": 1250,
+          "photo": "IMG_3465.HEIC"
+        },
+        {
+          "name": "Double Classic Burger",
+          "price": 1450,
+          "photo": "IMG_3465.HEIC"
+        },
+        {
+          "name": "Cheese Burger",
+          "price": 1300,
+          "photo": "IMG_3465.HEIC"
+        },
+        {
+          "name": "Double Cheese Burger",
+          "price": 1500,
+          "photo": "IMG_3465.HEIC"
+        },
+        {
+          "name": "Cheese & Bacon Burger",
+          "price": 1600,
+          "photo": "IMG_3465.HEIC"
+        },
+        {
+          "name": "Double Cheese & Bacon Burger",
+          "price": 1725,
+          "photo": "IMG_3465.HEIC"
+        },
+        {
+          "name": "Vegan Fillet Burger (VE)",
+          "price": 1400,
+          "tags": [
+            "vg"
+          ],
+          "photo": "IMG_3465.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Crunch Meals",
+      "note": "With fries",
+      "items": [
+        {
+          "name": "Adult Chicken Nuggets (10)",
+          "description": "Korean BBQ / Sweet Chilli / Hot Sauce / BBQ",
+          "price": 1400,
+          "photo": "IMG_3465.HEIC"
+        },
+        {
+          "name": "Crispy Cauli Wings (VE)",
+          "description": "Korean BBQ / Sweet Chilli / Hot Sauce / BBQ",
+          "price": 1350,
+          "tags": [
+            "vg"
+          ],
+          "photo": "IMG_3465.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Kids Meals",
+      "note": "With fruit or fries & a drink - water or fruit juice. All £8.75",
+      "items": [
+        {
+          "name": "Kids Classic Burger",
+          "price": 875,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3465.HEIC"
+        },
+        {
+          "name": "Kids Cheese Burger",
+          "price": 875,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3465.HEIC"
+        },
+        {
+          "name": "Kids Chicken Nuggets (5)",
+          "price": 875,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3465.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        {
+          "name": "Fries",
+          "price": 425,
+          "photo": "IMG_3465.HEIC"
+        },
+        {
+          "name": "Salt N Chilli Corn Ribs",
+          "price": 525,
+          "photo": "IMG_3465.HEIC"
+        },
+        {
+          "name": "Chilli Cheese Bites",
+          "price": 525,
+          "photo": "IMG_3465.HEIC"
+        },
+        {
+          "name": "Chicken Wings x3",
+          "price": 475,
+          "photo": "IMG_3465.HEIC"
+        },
+        {
+          "name": "Mozzarella Sticks",
+          "price": 425,
+          "photo": "IMG_3465.HEIC"
+        },
+        {
+          "name": "Onion Rings",
+          "price": 425,
+          "photo": "IMG_3465.HEIC"
+        },
+        {
+          "name": "Dip Pot",
+          "description": "Heinz BBQ Sauce / Heinz Sweet Chilli Sauce / Garlic Mayo / Heinz Ketchup",
+          "price": 50,
+          "photo": "IMG_3465.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Soft Serve Ice Cream",
+      "items": [
+        {
+          "name": "Ice Cream",
+          "price": 350,
+          "photo": "IMG_3465.HEIC"
+        },
+        {
+          "name": "Topped Ice Creams",
+          "description": "Marshmallows / Rainbow / Oreo / Biscoff / Sprinkles",
+          "price": 425,
+          "photo": "IMG_3465.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Drinks - Kids Drink Choices",
+      "items": [
+        {
+          "name": "Water",
+          "price": 325,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3465.HEIC"
+        },
+        {
+          "name": "Radnor Fruits (200ml)",
+          "description": "Forest Fruits / Orange",
+          "price": 250,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3465.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Drinks - Adult Drink Choices",
+      "items": [
+        {
+          "name": "Water",
+          "price": 325,
+          "photo": "IMG_3465.HEIC"
+        },
+        {
+          "name": "Soft Drinks",
+          "description": "Coke / Coke Zero / Diet Coke / Fanta Zero / Sprite Zero",
+          "sizes": [
+            {
+              "label": "Regular",
+              "price": 295
+            },
+            {
+              "label": "Large",
+              "price": 345
+            }
+          ],
+          "photo": "IMG_3465.HEIC"
+        }
+      ]
+    }
+  ],
+  "offers": [],
+  "photos": [
+    {
+      "file": "IMG_3465.HEIC",
+      "name": "The-Mutiny-Bay-Burger-Kitchen-main-menu",
+      "caption": "main-menu"
+    }
+  ]
+}

@@ -1,0 +1,261 @@
+{
+  "date": "2026-08-26",
+  "passDiscount": {
+    "offered": true,
+    "percent": 20,
+    "upTo": true,
+    "applies": "food & drink",
+    "photo": "IMG_3426.HEIC",
+    "source": "board photo"
+  },
+  "sections": [
+    {
+      "name": "Hot Dogs",
+      "items": [
+        {
+          "name": "The Wicker Man",
+          "description": "Bratwurst, Brioche Roll, Beef Chilli, Nacho Cheese, Corn Chips and Hot Honey",
+          "price": 1400,
+          "kcal": 699,
+          "photo": "IMG_3426.HEIC"
+        },
+        {
+          "name": "The XXL Meister",
+          "description": "Footlong German Bockwurst Sausage, Crispy Onions, Brioche Roll. Choice of Sliced Gherkins or Jalapeños",
+          "price": 1400,
+          "kcal": 641,
+          "photo": "IMG_3426.HEIC"
+        },
+        {
+          "name": "The Chilli Cheese Dog",
+          "description": "Melted Gouda Cheese and Chilli Flakes Sausage, Crispy Onions, Brioche Roll. Choice of Sliced Gherkins or Jalapeños",
+          "price": 1200,
+          "kcal": 525,
+          "photo": "IMG_3426.HEIC"
+        },
+        {
+          "name": "Vegan Hotdog",
+          "description": "Soy-Protein Hotdog served in a Soft Vegan Bun",
+          "price": 975,
+          "kcal": 474,
+          "tags": [
+            "vg"
+          ],
+          "photo": "IMG_3426.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Ice Cream",
+      "items": [
+        {
+          "name": "Wicker Man Whip",
+          "description": "Pineapple soft-serve - a smooth, refreshing, and tropical dairy-free treat",
+          "tags": [
+            "df"
+          ],
+          "sizes": [
+            {
+              "label": "Plain",
+              "price": 425,
+              "kcal": 165
+            },
+            {
+              "label": "With Strawberry Sauce",
+              "price": 450,
+              "kcal": 198
+            }
+          ],
+          "photo": "IMG_3426.HEIC"
+        },
+        {
+          "name": "Pineapple and Vanilla Whipped Ice Cream",
+          "price": 525,
+          "photo": "IMG_3426.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Americano",
+          "sizes": [
+            {
+              "label": "Small",
+              "price": 425,
+              "kcal": 12
+            },
+            {
+              "label": "Medium",
+              "price": 475,
+              "kcal": 18
+            }
+          ],
+          "photo": "IMG_3426.HEIC"
+        },
+        {
+          "name": "Cappuccino",
+          "sizes": [
+            {
+              "label": "Small",
+              "price": 500,
+              "kcal": 123
+            },
+            {
+              "label": "Medium",
+              "price": 450,
+              "kcal": 154
+            }
+          ],
+          "photo": "IMG_3426.HEIC"
+        },
+        {
+          "name": "Latte",
+          "sizes": [
+            {
+              "label": "Small",
+              "price": 500,
+              "kcal": 111
+            },
+            {
+              "label": "Medium",
+              "price": 450,
+              "kcal": 151
+            }
+          ],
+          "photo": "IMG_3426.HEIC"
+        },
+        {
+          "name": "Flat White",
+          "sizes": [
+            {
+              "label": "Small",
+              "price": 450,
+              "kcal": 174
+            }
+          ],
+          "photo": "IMG_3426.HEIC"
+        },
+        {
+          "name": "Mocha",
+          "sizes": [
+            {
+              "label": "Small",
+              "price": 450,
+              "kcal": 174
+            },
+            {
+              "label": "Medium",
+              "price": 500,
+              "kcal": 222
+            }
+          ],
+          "photo": "IMG_3426.HEIC"
+        },
+        {
+          "name": "Tea",
+          "sizes": [
+            {
+              "label": "Medium",
+              "price": 325,
+              "kcal": 1
+            }
+          ],
+          "photo": "IMG_3426.HEIC"
+        },
+        {
+          "name": "Hot Chocolate",
+          "sizes": [
+            {
+              "label": "Small",
+              "price": 450,
+              "kcal": 220
+            },
+            {
+              "label": "Medium",
+              "price": 500,
+              "kcal": 310
+            }
+          ],
+          "photo": "IMG_3426.HEIC"
+        },
+        {
+          "name": "Coca-Cola Zero, Diet Coke, Fanta Orange, Sprite",
+          "price": 350,
+          "photo": "IMG_3426.HEIC"
+        },
+        {
+          "name": "Water (600ml)",
+          "price": 325,
+          "photo": "IMG_3426.HEIC"
+        },
+        {
+          "name": "Radnor Fruits",
+          "price": 250,
+          "photo": "IMG_3426.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Popcorn",
+      "note": "Sweet toppings (Biscoff Crumbs, Crushed Oreos, Rainbow Sprinkles, Chocolate Flakes, Mini Marshmallows, Fudge Caramel) and sweet sauces (Chocolate, Strawberry, Caramel) are listed without prices; the left-hand column of that panel is hidden behind sauce dispensers",
+      "items": [
+        {
+          "name": "Sweet and Salty Popcorn",
+          "description": "Freshly served warm for you",
+          "sizes": [
+            {
+              "label": "Small",
+              "price": 625,
+              "kcal": 163
+            },
+            {
+              "label": "Medium",
+              "price": 725,
+              "kcal": 266
+            },
+            {
+              "label": "Large",
+              "price": 925,
+              "kcal": 391
+            }
+          ],
+          "photo": "IMG_3427.HEIC"
+        },
+        {
+          "name": "Wicker Man Blend Popcorn",
+          "description": "Multicoloured caramel flavour gourmet popcorn. Signature classic caramel popcorn in a bespoke Wicker Man box",
+          "sizes": [
+            {
+              "label": "Small",
+              "price": 625
+            },
+            {
+              "label": "Medium",
+              "price": 725
+            },
+            {
+              "label": "Large",
+              "price": 925
+            }
+          ],
+          "photo": "IMG_3427.HEIC"
+        }
+      ]
+    }
+  ],
+  "offers": [],
+  "photos": [
+    {
+      "file": "IMG_3426.HEIC",
+      "name": "Coffee-Shack-hot-dogs",
+      "caption": "hot-dogs"
+    },
+    {
+      "file": "IMG_3427.HEIC",
+      "name": "Coffee-Shack-popcorn",
+      "caption": "popcorn"
+    }
+  ]
+}

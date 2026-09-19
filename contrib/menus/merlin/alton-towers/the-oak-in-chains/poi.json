@@ -1,0 +1,15 @@
+{
+  "id": 4236,
+  "name": "The Oak in Chains",
+  "category": "Food & Drink > Restaurants",
+  "lat": 52.985211,
+  "lon": -1.892079,
+  "source": "attractions.io app bundle",
+  "area": "World of David Walliams",
+  "menuUrl": null,
+  "appPassholderDiscount": true,
+  "diningPlans": [
+    "Ultimate"
+  ],
+  "appMissingSince": null
+}

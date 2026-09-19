@@ -1,0 +1,98 @@
+{
+  "date": "2026-09-18",
+  "sections": [
+    {
+      "name": "Meal Deal",
+      "items": [
+        {
+          "name": "Meal Deal",
+          "description": "A choice of fish, sausage, scampi or pie, with curry sauce, mushy peas or gravy and a soft drink",
+          "price": 1650,
+          "photo": "IMG_3760.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Mains",
+      "items": [
+        {
+          "name": "Fish & Chips",
+          "price": 1350,
+          "photo": "IMG_3759.HEIC"
+        },
+        {
+          "name": "Sausage & Chips",
+          "price": 1250,
+          "photo": "IMG_3759.HEIC"
+        },
+        {
+          "name": "Scampi & Chips",
+          "price": 1350,
+          "photo": "IMG_3759.HEIC"
+        },
+        {
+          "name": "Fishcake & Chips",
+          "price": 1200,
+          "photo": "IMG_3759.HEIC"
+        },
+        {
+          "name": "Pie & Chips",
+          "price": 1300,
+          "photo": "IMG_3759.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Sides & Drinks",
+      "items": [
+        {
+          "name": "Chips",
+          "price": 500,
+          "photo": "IMG_3759.HEIC"
+        },
+        {
+          "name": "Cheesy Chips",
+          "price": 700,
+          "photo": "IMG_3759.HEIC"
+        },
+        {
+          "name": "Curry Sauce",
+          "price": 250,
+          "photo": "IMG_3759.HEIC"
+        },
+        {
+          "name": "Gravy",
+          "price": 250,
+          "photo": "IMG_3759.HEIC"
+        },
+        {
+          "name": "Mushy Peas",
+          "price": 250,
+          "photo": "IMG_3759.HEIC"
+        },
+        {
+          "name": "Soft Drinks",
+          "price": 350,
+          "photo": "IMG_3759.HEIC"
+        },
+        {
+          "name": "Water",
+          "price": 300,
+          "photo": "IMG_3759.HEIC"
+        }
+      ]
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3759.HEIC",
+      "name": "Cape-Cod-Fish-and-Chips-mains",
+      "caption": "mains"
+    },
+    {
+      "file": "IMG_3760.HEIC",
+      "name": "Cape-Cod-Fish-and-Chips-meal-deal",
+      "caption": "meal-deal"
+    }
+  ]
+}

@@ -1,0 +1,426 @@
+{
+  "date": "2026-08-26",
+  "passDiscount": {
+    "offered": true,
+    "percent": 20,
+    "upTo": true,
+    "applies": "food & drink, exclusions apply",
+    "photo": "IMG_3480.HEIC",
+    "source": "board photo"
+  },
+  "sections": [
+    {
+      "name": "Food",
+      "note": "The Street's Stacked Sensation.",
+      "items": [
+        {
+          "name": "Classic Stack",
+          "description": "Sausages: Pork Frankfurter, Pork Dog & Oak Smoked Beef. Served with Fries, American Mustard, Ketchup, Crispy Onions, Chives",
+          "price": 1125,
+          "kcal": 649,
+          "photo": "IMG_3480.HEIC"
+        },
+        {
+          "name": "BBQ Stack",
+          "description": "Sausages: Gourmet Pork, Pork Frankfurter & Oak Smoked Beef. Served with Fries, BBQ Sauce, Gherkin, Crispy Onions, Chives",
+          "price": 1125,
+          "kcal": 643,
+          "photo": "IMG_3480.HEIC"
+        },
+        {
+          "name": "Spice Stack",
+          "description": "Sausages: Chilli Beef Frankfurter, Smoked Pork, Gourmet Pork. Served with Fries, Buffalo Hot Sauce, Mayo, Fresh Chillies, Jalapenos",
+          "price": 1125,
+          "kcal": 674,
+          "photo": "IMG_3480.HEIC"
+        },
+        {
+          "name": "Big Mack Stack",
+          "description": "Sausages: Pork Frankfurter, Pork Dog & Oak Smoked Beef. Served with Fries, Burger Sauce, Gherkin, Crispy Onions, Chives",
+          "price": 1125,
+          "kcal": 680,
+          "photo": "IMG_3480.HEIC"
+        },
+        {
+          "name": "Vegan Stack",
+          "description": "Big Apple Vegan Hot Dog. Served with Fries and your choice of Classic, BBQ, Spice or Pickle Sauce & Toppings",
+          "price": 1125,
+          "kcal": 665,
+          "tags": [
+            "vg"
+          ],
+          "photo": "IMG_3480.HEIC"
+        },
+        {
+          "name": "Dirty Loaded Fries",
+          "description": "Choose from Classic (American Mustard, Ketchup, Crispy Onions, Chives) 395 kcal, BBQ (BBQ Sauce, Gherkin, Crispy Onions, Chives) 403 kcal, Spice (Buffalo Hot Sauce, Mayo, Fresh Chillies, Jalapenos) 375 kcal, Big Mack (Burger Sauce, Gherkin, Crispy Onions, Chives) 479 kcal",
+          "price": 825,
+          "tags": [
+            "vg"
+          ],
+          "photo": "IMG_3480.HEIC"
+        },
+        {
+          "name": "Classic Hot Dog",
+          "price": 975,
+          "kcal": 364,
+          "photo": "IMG_3480.HEIC"
+        },
+        {
+          "name": "Vegan Hot Dog",
+          "price": 975,
+          "kcal": 494,
+          "tags": [
+            "vg"
+          ],
+          "photo": "IMG_3480.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        {
+          "name": "Americano",
+          "description": "1 kcal regular, 1 kcal large",
+          "sizes": [
+            {
+              "label": "Regular",
+              "price": 400
+            },
+            {
+              "label": "Large",
+              "price": 425
+            }
+          ],
+          "photo": "IMG_3480.HEIC"
+        },
+        {
+          "name": "Latte",
+          "description": "53 kcal regular, 72 kcal large",
+          "sizes": [
+            {
+              "label": "Regular",
+              "price": 400
+            },
+            {
+              "label": "Large",
+              "price": 425
+            }
+          ],
+          "photo": "IMG_3480.HEIC"
+        },
+        {
+          "name": "Flat White",
+          "description": "Regular only",
+          "price": 450,
+          "kcal": 64,
+          "photo": "IMG_3480.HEIC"
+        },
+        {
+          "name": "Cappuccino",
+          "description": "51 kcal regular, 79 kcal large",
+          "sizes": [
+            {
+              "label": "Regular",
+              "price": 425
+            },
+            {
+              "label": "Large",
+              "price": 450
+            }
+          ],
+          "photo": "IMG_3480.HEIC"
+        },
+        {
+          "name": "Mocha",
+          "description": "105 kcal regular, 197 kcal large",
+          "sizes": [
+            {
+              "label": "Regular",
+              "price": 425
+            },
+            {
+              "label": "Large",
+              "price": 525
+            }
+          ],
+          "photo": "IMG_3480.HEIC"
+        },
+        {
+          "name": "Hot Chocolate",
+          "description": "196 kcal regular, 256 kcal large",
+          "sizes": [
+            {
+              "label": "Regular",
+              "price": 400
+            },
+            {
+              "label": "Large",
+              "price": 450
+            }
+          ],
+          "photo": "IMG_3480.HEIC"
+        },
+        {
+          "name": "Tea",
+          "description": "Regular only",
+          "price": 325,
+          "kcal": 6,
+          "photo": "IMG_3480.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        {
+          "name": "Coca-Cola",
+          "description": "31 kcal regular, 43 kcal large",
+          "sizes": [
+            {
+              "label": "Regular",
+              "price": 500
+            },
+            {
+              "label": "Large",
+              "price": 525
+            }
+          ],
+          "photo": "IMG_3480.HEIC"
+        },
+        {
+          "name": "Diet Coke",
+          "description": "0 kcal regular, 0 kcal large",
+          "sizes": [
+            {
+              "label": "Regular",
+              "price": 500
+            },
+            {
+              "label": "Large",
+              "price": 525
+            }
+          ],
+          "photo": "IMG_3480.HEIC"
+        },
+        {
+          "name": "Fanta",
+          "description": "13 kcal regular, 18 kcal large",
+          "sizes": [
+            {
+              "label": "Regular",
+              "price": 500
+            },
+            {
+              "label": "Large",
+              "price": 525
+            }
+          ],
+          "photo": "IMG_3480.HEIC"
+        },
+        {
+          "name": "Sprite Zero",
+          "description": "2 kcal regular, 2 kcal large",
+          "sizes": [
+            {
+              "label": "Regular",
+              "price": 500
+            },
+            {
+              "label": "Large",
+              "price": 525
+            }
+          ],
+          "photo": "IMG_3480.HEIC"
+        },
+        {
+          "name": "Water",
+          "description": "600ml",
+          "price": 325,
+          "kcal": 0,
+          "photo": "IMG_3480.HEIC"
+        },
+        {
+          "name": "Radnor Fruits",
+          "description": "200ml",
+          "price": 250,
+          "photo": "IMG_3480.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Donuts",
+      "items": [
+        {
+          "name": "15 Donuts with 2 dips",
+          "price": 1350,
+          "kcal": 1406,
+          "photo": "IMG_3481.HEIC"
+        },
+        {
+          "name": "10 Donuts",
+          "price": 1100,
+          "kcal": 1406,
+          "photo": "IMG_3481.HEIC"
+        },
+        {
+          "name": "5 Donuts",
+          "price": 875,
+          "kcal": 713,
+          "photo": "IMG_3481.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Topped Donuts",
+      "note": "4 donuts with your choice of topping",
+      "items": [
+        {
+          "name": "Lotus Biscoff",
+          "price": 1000,
+          "kcal": 656,
+          "photo": "IMG_3481.HEIC"
+        },
+        {
+          "name": "Oreo",
+          "price": 1000,
+          "kcal": 804,
+          "photo": "IMG_3481.HEIC"
+        },
+        {
+          "name": "Strawberry",
+          "price": 1000,
+          "kcal": 825,
+          "photo": "IMG_3481.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Sauces",
+      "items": [
+        {
+          "name": "Chocolate",
+          "price": 100,
+          "kcal": 142,
+          "photo": "IMG_3481.HEIC"
+        },
+        {
+          "name": "Strawberry",
+          "price": 100,
+          "kcal": 119,
+          "photo": "IMG_3481.HEIC"
+        },
+        {
+          "name": "Butterscotch",
+          "price": 100,
+          "kcal": 145,
+          "photo": "IMG_3481.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Popcorn",
+      "items": [
+        {
+          "name": "Sweet or Salted",
+          "description": "163 kcal small, 266 kcal regular, 391 kcal large",
+          "sizes": [
+            {
+              "label": "Small",
+              "price": 625
+            },
+            {
+              "label": "Regular",
+              "price": 725
+            },
+            {
+              "label": "Large",
+              "price": 925
+            }
+          ],
+          "photo": "IMG_3481.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Coke Zero",
+          "description": "500 ml",
+          "price": 350,
+          "photo": "IMG_3481.HEIC"
+        },
+        {
+          "name": "Dr Pepper",
+          "description": "500 ml",
+          "price": 350,
+          "photo": "IMG_3481.HEIC"
+        },
+        {
+          "name": "Fanta",
+          "description": "500 ml",
+          "price": 350,
+          "photo": "IMG_3481.HEIC"
+        },
+        {
+          "name": "Sprite",
+          "description": "500 ml",
+          "price": 350,
+          "photo": "IMG_3481.HEIC"
+        },
+        {
+          "name": "Water",
+          "description": "500 ml",
+          "price": 325,
+          "photo": "IMG_3481.HEIC"
+        },
+        {
+          "name": "Radnor Fruits",
+          "description": "200 ml",
+          "price": 250,
+          "photo": "IMG_3481.HEIC"
+        },
+        {
+          "name": "Slush",
+          "price": 550,
+          "kcal": 100,
+          "photo": "IMG_3481.HEIC"
+        }
+      ]
+    }
+  ],
+  "offers": [
+    {
+      "text": "Add a Drink to your Stack £2.50",
+      "photo": "IMG_3480.HEIC"
+    },
+    {
+      "text": "Make it a Meal (Fries & Drink) £3.50",
+      "photo": "IMG_3480.HEIC"
+    },
+    {
+      "text": "Hot Drink Refill Here",
+      "photo": "IMG_3480.HEIC"
+    }
+  ],
+  "skipped": [
+    {
+      "photo": "IMG_3482.HEIC",
+      "reason": "shopfront sign (Tasty Treats of Towers Street), no readable menu"
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3480.HEIC",
+      "name": "Towers-Hot-Dogs-and-Donuts-food",
+      "caption": "food"
+    },
+    {
+      "file": "IMG_3481.HEIC",
+      "name": "Towers-Hot-Dogs-and-Donuts-donuts",
+      "caption": "donuts"
+    }
+  ]
+}

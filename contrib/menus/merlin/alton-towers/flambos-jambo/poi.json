@@ -1,0 +1,15 @@
+{
+  "id": 6575,
+  "name": "Flambo's Jambo",
+  "category": "Food & Drink > Hotels",
+  "lat": 52.985295,
+  "lon": -1.875669,
+  "source": "attractions.io app bundle",
+  "area": "Splash Landings Hotel",
+  "menuUrl": "https://www.altontowers.com/short-breaks/accommodation/splash-landings-hotel/restaurants-shops/flambo-s-jambo/",
+  "appPassholderDiscount": null,
+  "diningPlans": [
+    "Ultimate"
+  ],
+  "appMissingSince": null
+}

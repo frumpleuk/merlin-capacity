@@ -1,0 +1,311 @@
+{
+  "date": "2026-09-18",
+  "sections": [
+    {
+      "name": "Draught Beer & Cider",
+      "items": [
+        {
+          "name": "Budweiser",
+          "description": "4.5%",
+          "tags": [
+            "alcohol"
+          ],
+          "sizes": [
+            {
+              "label": "Pint",
+              "price": 775
+            },
+            {
+              "label": "Half Pint",
+              "price": 425
+            }
+          ],
+          "photo": "IMG_3766.HEIC"
+        },
+        {
+          "name": "Stella Artois",
+          "description": "4.6%",
+          "tags": [
+            "alcohol"
+          ],
+          "sizes": [
+            {
+              "label": "Pint",
+              "price": 825
+            },
+            {
+              "label": "Half Pint",
+              "price": 425
+            }
+          ],
+          "photo": "IMG_3766.HEIC"
+        },
+        {
+          "name": "Kopparberg Apple",
+          "description": "4%",
+          "tags": [
+            "alcohol"
+          ],
+          "sizes": [
+            {
+              "label": "Pint",
+              "price": 825
+            },
+            {
+              "label": "Half Pint",
+              "price": 425
+            }
+          ],
+          "photo": "IMG_3766.HEIC"
+        },
+        {
+          "name": "Kopparberg Strawberry & Lime",
+          "description": "4%",
+          "tags": [
+            "alcohol"
+          ],
+          "sizes": [
+            {
+              "label": "Pint",
+              "price": 825
+            },
+            {
+              "label": "Half Pint",
+              "price": 425
+            }
+          ],
+          "photo": "IMG_3766.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Spirits",
+      "note": "Prices are for a single 25ml",
+      "items": [
+        {
+          "name": "Absolut Vodka",
+          "description": "40%",
+          "price": 525,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3766.HEIC"
+        },
+        {
+          "name": "Archers",
+          "description": "18%",
+          "price": 525,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3766.HEIC"
+        },
+        {
+          "name": "Captain Morgan White",
+          "description": "37.5%",
+          "price": 525,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3766.HEIC"
+        },
+        {
+          "name": "Beefeater Gin",
+          "description": "40%",
+          "price": 525,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3766.HEIC"
+        },
+        {
+          "name": "Beefeater Gin Strawberry",
+          "description": "37.5%",
+          "price": 525,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3766.HEIC"
+        },
+        {
+          "name": "Captain Morgan Rum",
+          "description": "35%",
+          "price": 525,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3766.HEIC"
+        },
+        {
+          "name": "Disaronno",
+          "description": "28%",
+          "price": 525,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3766.HEIC"
+        },
+        {
+          "name": "Jack Daniels",
+          "description": "40%",
+          "price": 525,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3766.HEIC"
+        },
+        {
+          "name": "Malibu",
+          "description": "18%",
+          "price": 525,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3766.HEIC"
+        },
+        {
+          "name": "Olmeca Tequila",
+          "description": "35%",
+          "price": 525,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3766.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Mixers",
+      "items": [
+        {
+          "name": "Slimline Tonic, Indian Tonic, Ginger Beer",
+          "price": 400,
+          "photo": "IMG_3766.HEIC"
+        },
+        {
+          "name": "Dash",
+          "description": "Coca-Cola Zero Sugar, Diet Coke, Fanta Zero Sugar Orange, Sprite Zero Sugar",
+          "price": 125,
+          "photo": "IMG_3766.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Wine",
+      "items": [
+        {
+          "name": "Red Alterita Merlot",
+          "description": "11% ABV",
+          "tags": [
+            "alcohol"
+          ],
+          "sizes": [
+            {
+              "label": "125ml",
+              "price": 600
+            },
+            {
+              "label": "175ml",
+              "price": 800
+            },
+            {
+              "label": "250ml",
+              "price": 1125
+            }
+          ],
+          "photo": "IMG_3766.HEIC"
+        },
+        {
+          "name": "White Pontebello Pinot Grigio",
+          "description": "11% ABV",
+          "tags": [
+            "alcohol"
+          ],
+          "sizes": [
+            {
+              "label": "125ml",
+              "price": 600
+            },
+            {
+              "label": "175ml",
+              "price": 800
+            },
+            {
+              "label": "250ml",
+              "price": 1125
+            }
+          ],
+          "photo": "IMG_3766.HEIC"
+        },
+        {
+          "name": "Rosé Wandering Bear",
+          "description": "11% ABV",
+          "tags": [
+            "alcohol"
+          ],
+          "sizes": [
+            {
+              "label": "125ml",
+              "price": 650
+            },
+            {
+              "label": "175ml",
+              "price": 875
+            },
+            {
+              "label": "250ml",
+              "price": 1225
+            }
+          ],
+          "photo": "IMG_3766.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Soft Drinks & Snacks",
+      "items": [
+        {
+          "name": "Soft Drinks",
+          "description": "Coca-Cola Zero Sugar, Diet Coke, Fanta Zero Sugar Orange, Sprite Zero Sugar",
+          "sizes": [
+            {
+              "label": "Reg 16oz",
+              "price": 500
+            },
+            {
+              "label": "Large 22oz",
+              "price": 525
+            }
+          ],
+          "photo": "IMG_3766.HEIC"
+        },
+        {
+          "name": "Fruit Juice",
+          "description": "Apple, Orange, Cranberry, Pineapple",
+          "price": 300,
+          "photo": "IMG_3766.HEIC"
+        },
+        {
+          "name": "Cordials",
+          "description": "Orange, Blackcurrant, Lime",
+          "price": 150,
+          "photo": "IMG_3766.HEIC"
+        },
+        {
+          "name": "Tyrrells Crisps",
+          "price": 175,
+          "photo": "IMG_3766.HEIC"
+        }
+      ]
+    }
+  ],
+  "offers": [],
+  "skipped": [],
+  "photos": [
+    {
+      "file": "IMG_3766.HEIC",
+      "name": "The-Calypso-Bar-main-menu",
+      "caption": "main-menu"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": 4233,
+  "name": "Corner Coffee",
+  "category": "Food & Drink > Snacks",
+  "lat": 52.99008,
+  "lon": -1.893028,
+  "source": "attractions.io app bundle",
+  "passDiscount": {
+    "offered": true,
+    "percent": null,
+    "applies": "Costa outlet — pass discount applies; rate not recorded",
+    "source": "user report"
+  },
+  "area": "Towers Street",
+  "menuUrl": null,
+  "appPassholderDiscount": true,
+  "diningPlans": [
+    "Ultimate"
+  ],
+  "appMissingSince": null
+}

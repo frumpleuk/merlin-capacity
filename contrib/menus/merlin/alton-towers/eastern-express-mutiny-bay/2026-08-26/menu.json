@@ -1,0 +1,181 @@
+{
+  "date": "2026-08-26",
+  "sections": [
+    {
+      "name": "Fresh Naan Wraps",
+      "note": "All wraps come with salad, mint chutney and chilli sauce.",
+      "items": [
+        {
+          "name": "Seekh Kebab",
+          "price": 1250,
+          "photo": "IMG_3468.HEIC"
+        },
+        {
+          "name": "Chicken Tikka",
+          "price": 1250,
+          "photo": "IMG_3468.HEIC"
+        },
+        {
+          "name": "Doner",
+          "price": 1250,
+          "photo": "IMG_3468.HEIC"
+        },
+        {
+          "name": "Aloo Chana (VG)",
+          "description": "Potatoes & chickpeas",
+          "price": 1250,
+          "tags": [
+            "vg"
+          ],
+          "photo": "IMG_3468.HEIC"
+        },
+        {
+          "name": "Mixed Wrap",
+          "price": 1400,
+          "photo": "IMG_3468.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Jacket Potatoes",
+      "note": "Two further lines under Baked Beans are washed out by reflections on the screen and could not be read",
+      "items": [
+        {
+          "name": "Baked Beans (VG)",
+          "price": 849,
+          "tags": [
+            "vg"
+          ],
+          "photo": "IMG_3468.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Loaded Chips",
+      "note": "Prices on this panel are hidden by reflections on the screen",
+      "items": [
+        {
+          "name": "Tikka Masala (V)",
+          "description": "Chips, cheese & rich tikka masala sauce.",
+          "price": null,
+          "tags": [
+            "v"
+          ],
+          "unclear": "price washed out by reflection on the screen",
+          "photo": "IMG_3468.HEIC"
+        },
+        {
+          "name": "Seekh Kebab",
+          "description": "Seekh kebab, cheese, masala & mint sauce.",
+          "price": null,
+          "unclear": "price washed out by reflection on the screen",
+          "photo": "IMG_3468.HEIC"
+        },
+        {
+          "name": "Chicken Tikka",
+          "price": null,
+          "unclear": "price and description washed out by reflection on the screen",
+          "photo": "IMG_3468.HEIC"
+        },
+        {
+          "name": "Eastern Express Special",
+          "price": null,
+          "unclear": "price and description washed out by reflection on the screen",
+          "photo": "IMG_3468.HEIC"
+        },
+        {
+          "name": "Spiced Chips (V)",
+          "price": null,
+          "tags": [
+            "v"
+          ],
+          "unclear": "price and description washed out by reflection on the screen",
+          "photo": "IMG_3468.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Chips",
+      "note": "Extras available",
+      "items": [
+        {
+          "name": "Chips",
+          "price": 450,
+          "photo": "IMG_3468.HEIC"
+        },
+        {
+          "name": "Cheese (V)",
+          "price": 150,
+          "tags": [
+            "v"
+          ],
+          "photo": "IMG_3468.HEIC"
+        },
+        {
+          "name": "Curry Sauce (V)",
+          "price": 100,
+          "tags": [
+            "v"
+          ],
+          "photo": "IMG_3468.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Baguettes",
+      "items": [
+        {
+          "name": "Sausage & Onion",
+          "price": 1000,
+          "photo": "IMG_3468.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Onion Bhaji",
+      "items": [
+        {
+          "name": "Onion Bhaji (VG)",
+          "price": 699,
+          "tags": [
+            "vg"
+          ],
+          "photo": "IMG_3468.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Snack Meal",
+      "items": [
+        {
+          "name": "Snack Meal",
+          "description": "Seekh Kebab, Veg/Meat Samosa, Onion Bhaji",
+          "price": 950,
+          "photo": "IMG_3468.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Kids Meals",
+      "note": "Served with a small drink; the lines below Chicken Crunchies & Chips are washed out by reflections and could not be read",
+      "items": [
+        {
+          "name": "Chicken Crunchies & Chips",
+          "price": 850,
+          "tags": [
+            "kids"
+          ],
+          "unclear": "price faint behind a reflection; best reading £8.50",
+          "photo": "IMG_3468.HEIC"
+        }
+      ]
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3468.HEIC",
+      "name": "Eastern-Express-Mutiny-Bay-main-menu",
+      "caption": "main-menu"
+    }
+  ]
+}

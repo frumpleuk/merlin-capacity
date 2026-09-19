@@ -1,0 +1,164 @@
+{
+  "date": "2026-08-26",
+  "sections": [
+    {
+      "name": "Fresh Donuts",
+      "items": [
+        {
+          "name": "15 Donuts plus 2 dips",
+          "price": 1350,
+          "photo": "IMG_3466.HEIC"
+        },
+        {
+          "name": "10 Donuts",
+          "price": 1100,
+          "kcal": 1422,
+          "photo": "IMG_3466.HEIC"
+        },
+        {
+          "name": "5 Donuts",
+          "price": 875,
+          "kcal": 721,
+          "photo": "IMG_3466.HEIC"
+        },
+        {
+          "name": "Topped Donuts x 4",
+          "description": "Lotus Biscoff, Oreo, Strawberry",
+          "price": 1000,
+          "photo": "IMG_3466.HEIC"
+        },
+        {
+          "name": "Sauces",
+          "description": "Choc, Strawberry, Butterscotch",
+          "price": 100,
+          "photo": "IMG_3466.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        {
+          "name": "Americano",
+          "sizes": [
+            {
+              "label": "Small",
+              "price": 400,
+              "kcal": 1
+            },
+            {
+              "label": "Medium",
+              "price": 425,
+              "kcal": 1
+            }
+          ],
+          "photo": "IMG_3466.HEIC"
+        },
+        {
+          "name": "Latte",
+          "sizes": [
+            {
+              "label": "Small",
+              "price": 400,
+              "kcal": 53
+            },
+            {
+              "label": "Medium",
+              "price": 425,
+              "kcal": 72
+            }
+          ],
+          "photo": "IMG_3466.HEIC"
+        },
+        {
+          "name": "Flat White",
+          "sizes": [
+            {
+              "label": "Small",
+              "price": 450,
+              "kcal": 64
+            }
+          ],
+          "photo": "IMG_3466.HEIC"
+        },
+        {
+          "name": "Cappuccino",
+          "sizes": [
+            {
+              "label": "Small",
+              "price": 425,
+              "kcal": 51
+            },
+            {
+              "label": "Medium",
+              "price": 450,
+              "kcal": 79
+            }
+          ],
+          "photo": "IMG_3466.HEIC"
+        },
+        {
+          "name": "Mocha",
+          "sizes": [
+            {
+              "label": "Small",
+              "price": 425,
+              "kcal": 105
+            },
+            {
+              "label": "Medium",
+              "price": 525,
+              "kcal": 197
+            }
+          ],
+          "photo": "IMG_3466.HEIC"
+        },
+        {
+          "name": "Hot Chocolate",
+          "sizes": [
+            {
+              "label": "Small",
+              "price": 400,
+              "kcal": 196
+            },
+            {
+              "label": "Medium",
+              "price": 450,
+              "kcal": 256
+            }
+          ],
+          "photo": "IMG_3466.HEIC"
+        },
+        {
+          "name": "Tea",
+          "sizes": [
+            {
+              "label": "Small",
+              "price": 325,
+              "kcal": 6
+            }
+          ],
+          "photo": "IMG_3466.HEIC"
+        }
+      ]
+    }
+  ],
+  "offers": [
+    {
+      "text": "Summer Spectacular: Get refreshed for less! Regular now £2.95 (save £2.05), Large now £3.45 (save £1.80). Limited-time offer on Coca-Cola soft drinks, selected outlets only",
+      "photo": "IMG_3467.HEIC"
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3466.HEIC",
+      "name": "Mutiny-Bay-Donuts-main-menu",
+      "caption": "main-menu"
+    },
+    {
+      "file": "IMG_3467.HEIC",
+      "name": "Mutiny-Bay-Donuts-offer",
+      "caption": "offer"
+    }
+  ]
+}

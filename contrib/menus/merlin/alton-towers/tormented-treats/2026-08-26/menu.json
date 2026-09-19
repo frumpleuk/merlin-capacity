@@ -1,0 +1,352 @@
+{
+  "date": "2026-08-26",
+  "passDiscount": {
+    "offered": true,
+    "percent": 20,
+    "upTo": true,
+    "applies": "food & drink",
+    "photo": "IMG_3398.HEIC",
+    "source": "board photo"
+  },
+  "sections": [
+    {
+      "name": "Wall's",
+      "note": "Wall's board beside the kiosk. Prices are clear; the small flavour/kcal lines are blurred in this photo. The Haribo and Mini Milk panels at the foot of the board are out of frame.",
+      "items": [
+        {
+          "name": "Magnum",
+          "description": "Pistachio or Peach",
+          "price": 375,
+          "unclear": "kcal figures under the flavour names are too blurred to read",
+          "photo": "IMG_3395.HEIC"
+        },
+        {
+          "name": "Magnum",
+          "description": "Classic, White, Billionaire or Almond Vegan",
+          "price": 360,
+          "unclear": "kcal figures under the flavour names are too blurred to read",
+          "photo": "IMG_3395.HEIC"
+        },
+        {
+          "name": "Cornetto MAX",
+          "price": 375,
+          "unclear": "kcal figure too blurred to read",
+          "photo": "IMG_3395.HEIC"
+        },
+        {
+          "name": "Cornetto Strawberry",
+          "price": 300,
+          "unclear": "kcal figure too blurred to read",
+          "photo": "IMG_3395.HEIC"
+        },
+        {
+          "name": "Calippo",
+          "description": "Calippo Orange, Calippo Cola or Calippo Strawberry",
+          "price": 275,
+          "unclear": "kcal figures too blurred to read",
+          "photo": "IMG_3395.HEIC"
+        },
+        {
+          "name": "Twister",
+          "price": 275,
+          "unclear": "kcal figure too blurred to read",
+          "photo": "IMG_3395.HEIC"
+        },
+        {
+          "name": "Solero",
+          "description": "Exotic or Berry",
+          "price": 300,
+          "unclear": "kcal figures too blurred to read",
+          "photo": "IMG_3395.HEIC"
+        },
+        {
+          "name": "Feast Original",
+          "price": 275,
+          "unclear": "kcal figure too blurred to read",
+          "photo": "IMG_3395.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Fountain Square Burgers",
+      "note": "Card payments only.",
+      "items": [
+        {
+          "name": "Cheeseburger",
+          "description": "Juicy beef patty topped with melted cheese, sliced gherkins, red onion, and crisp lettuce, served in a soft toasted bun with fries.",
+          "price": 1400,
+          "kcal": 759,
+          "photo": "IMG_3398.HEIC"
+        },
+        {
+          "name": "Double Cheeseburger",
+          "description": "Two juicy beef patties stacked with melted cheese, sliced gherkins, red onion, and crisp lettuce, served in a soft toasted bun with fries.",
+          "price": 1600,
+          "kcal": 911,
+          "photo": "IMG_3398.HEIC"
+        },
+        {
+          "name": "Vegan Fillet Burger",
+          "description": "Crispy vegan fillet topped with fresh lettuce, sliced gherkins, red onion, and creamy vegan sauce, served in a soft toasted bun with fries.",
+          "price": 1500,
+          "kcal": 998,
+          "photo": "IMG_3398.HEIC"
+        },
+        {
+          "name": "Add Bacon",
+          "price": 150,
+          "photo": "IMG_3398.HEIC"
+        },
+        {
+          "name": "Dips",
+          "description": "Heinz Sweet Chilli, Heinz Ketchup, Heinz Garlic Mayo, Heinz BBQ",
+          "price": 50,
+          "photo": "IMG_3398.HEIC"
+        },
+        {
+          "name": "Soft Drink Bottles",
+          "description": "Coca-Cola, Coke Zero, Fanta, Sprite",
+          "price": 350,
+          "photo": "IMG_3398.HEIC"
+        },
+        {
+          "name": "Water",
+          "price": 300,
+          "photo": "IMG_3398.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Fountain Square Pizza",
+      "items": [
+        {
+          "name": "Margherita Pizza",
+          "description": "Stone baked classic Italian pizza with rich tomato base, fresh mozzarella, and fragrant basil.",
+          "price": 1300,
+          "kcal": 886,
+          "photo": "IMG_3400.HEIC"
+        },
+        {
+          "name": "Veggie Pizza",
+          "description": "Stone baked Italian pizza with sweetcorn, fresh peppers, and red onion on a rich tomato base with melted mozzarella.",
+          "price": 1400,
+          "kcal": 929,
+          "photo": "IMG_3400.HEIC"
+        },
+        {
+          "name": "Pepperoni",
+          "description": "Stone baked Italian pizza with rich tomato base, pepperoni and fresh mozzarella.",
+          "price": 1400,
+          "kcal": 939,
+          "photo": "IMG_3400.HEIC"
+        },
+        {
+          "name": "Add Hot Honey",
+          "price": 150,
+          "photo": "IMG_3400.HEIC"
+        },
+        {
+          "name": "Ham & Pineapple",
+          "description": "Stone baked Italian pizza with rich tomato base, fresh mozzarella topped with ham and sweet pineapple.",
+          "price": 1400,
+          "kcal": 945,
+          "photo": "IMG_3400.HEIC"
+        },
+        {
+          "name": "Dips",
+          "description": "Heinz Sweet Chilli, Heinz Ketchup, Heinz Garlic Mayo, Heinz BBQ",
+          "price": 50,
+          "photo": "IMG_3400.HEIC"
+        },
+        {
+          "name": "Soft Drink Bottles",
+          "description": "Coca-Cola, Coke Zero, Fanta, Sprite",
+          "price": 350,
+          "photo": "IMG_3400.HEIC"
+        },
+        {
+          "name": "Water",
+          "price": 300,
+          "photo": "IMG_3400.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Fountain Square Loaded Fries",
+      "items": [
+        {
+          "name": "Mexican Loaded Fries",
+          "description": "Crispy fries topped with pulled beef chilli, spicy jalapeños, and a drizzle of smoky chipotle mayo.",
+          "price": 975,
+          "kcal": 1129,
+          "photo": "IMG_3401.HEIC"
+        },
+        {
+          "name": "Tandoori Loaded Fries",
+          "description": "Crispy fries topped with tandoori-spiced chicken, sweetcorn, and a drizzle of tangy mango chutney mayo.",
+          "price": 975,
+          "kcal": 1150,
+          "photo": "IMG_3401.HEIC"
+        },
+        {
+          "name": "Vexico Loaded Fries",
+          "description": "Crispy fries topped with chilli non carne, spicy jalapeños, and vegan chipotle mayo.",
+          "price": 975,
+          "kcal": 1030,
+          "tags": [
+            "v"
+          ],
+          "photo": "IMG_3401.HEIC"
+        },
+        {
+          "name": "Cheese Loaded Fries",
+          "description": "Crispy fries smothered in warm nacho cheese sauce and finished with a sprinkle of fresh chives.",
+          "price": 800,
+          "kcal": 633,
+          "tags": [
+            "v"
+          ],
+          "photo": "IMG_3401.HEIC"
+        },
+        {
+          "name": "Dips",
+          "description": "Heinz Sweet Chilli, Heinz Ketchup, Heinz Garlic Mayo, Heinz BBQ",
+          "price": 50,
+          "photo": "IMG_3401.HEIC"
+        },
+        {
+          "name": "Soft Drink Bottles",
+          "description": "Coca-Cola, Coke Zero, Fanta, Sprite",
+          "price": 350,
+          "photo": "IMG_3401.HEIC"
+        },
+        {
+          "name": "Water",
+          "price": 300,
+          "photo": "IMG_3401.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Fountain Square Nachos & Treats",
+      "items": [
+        {
+          "name": "Loaded Nachos",
+          "description": "Loaded with cheese sauce, sour cream, salsa, guacamole and jalepenos.",
+          "price": 875,
+          "kcal": 837,
+          "photo": "IMG_3402.HEIC"
+        },
+        {
+          "name": "Pulled Pork Nachos",
+          "description": "Loaded with cheese sauce, sour cream, salsa, guacamole, jalepenos and slow cooked bbq pulled pork.",
+          "price": 875,
+          "kcal": 837,
+          "photo": "IMG_3402.HEIC"
+        },
+        {
+          "name": "Classic Ultimate Hot Chocolate",
+          "description": "Rich hot chocolate topped with whipped cream, fluffy marshmallows, and a light chocolate dusting.",
+          "price": 650,
+          "kcal": 402,
+          "photo": "IMG_3402.HEIC"
+        },
+        {
+          "name": "Biscoff Ultimate Hot Chocolate",
+          "description": "Hot chocolate topped with whipped cream, sweet toffee sauce, a crunchy Biscoff biscuit and a dusting of Biscoff crumb.",
+          "price": 650,
+          "kcal": 580,
+          "photo": "IMG_3402.HEIC"
+        },
+        {
+          "name": "Oreo Hot Chocolate",
+          "description": "Rich hot chocolate topped with whipped cream, crunchy Oreo crumb, and a classic Oreo biscuit.",
+          "price": 650,
+          "kcal": 605,
+          "photo": "IMG_3402.HEIC"
+        },
+        {
+          "name": "Donut",
+          "description": "\"Donut Worry, Be Happy\" choose your favourite donut",
+          "price": 325,
+          "photo": "IMG_3402.HEIC"
+        },
+        {
+          "name": "Soft Drink Bottles",
+          "description": "Coca-Cola, Coke Zero, Fanta, Sprite",
+          "price": 350,
+          "photo": "IMG_3402.HEIC"
+        },
+        {
+          "name": "Water",
+          "price": 300,
+          "photo": "IMG_3402.HEIC"
+        },
+        {
+          "name": "Strawberry Slush",
+          "price": 525,
+          "photo": "IMG_3402.HEIC"
+        },
+        {
+          "name": "Raspberry Slush",
+          "price": 525,
+          "photo": "IMG_3402.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Fountain Square Slush Cart",
+      "items": [
+        {
+          "name": "Souvenir Half Yard Cup",
+          "price": 800,
+          "photo": "IMG_3399.HEIC"
+        },
+        {
+          "name": "Slush Refill",
+          "price": 350,
+          "photo": "IMG_3399.HEIC"
+        }
+      ]
+    }
+  ],
+  "offers": [],
+  "skipped": [
+    {
+      "photo": "IMG_3396.HEIC",
+      "reason": "venue sign, no menu"
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3395.HEIC",
+      "name": "Tormented-Treats-walls",
+      "caption": "walls"
+    },
+    {
+      "file": "IMG_3398.HEIC",
+      "name": "Tormented-Treats-fountain-square-burgers",
+      "caption": "fountain-square-burgers"
+    },
+    {
+      "file": "IMG_3399.HEIC",
+      "name": "Tormented-Treats-fountain-square-slush",
+      "caption": "fountain-square-slush"
+    },
+    {
+      "file": "IMG_3400.HEIC",
+      "name": "Tormented-Treats-fountain-square-pizza",
+      "caption": "fountain-square-pizza"
+    },
+    {
+      "file": "IMG_3401.HEIC",
+      "name": "Tormented-Treats-fountain-square-loaded",
+      "caption": "fountain-square-loaded"
+    },
+    {
+      "file": "IMG_3402.HEIC",
+      "name": "Tormented-Treats-fountain-square-nachos",
+      "caption": "fountain-square-nachos"
+    }
+  ]
+}

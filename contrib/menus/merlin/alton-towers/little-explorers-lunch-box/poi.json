@@ -1,0 +1,15 @@
+{
+  "id": 4234,
+  "name": "Little Explorers Lunch Box",
+  "category": "Food & Drink > Snacks",
+  "lat": 52.990791,
+  "lon": -1.893438,
+  "source": "attractions.io app bundle",
+  "area": "Towers Street",
+  "menuUrl": null,
+  "appPassholderDiscount": true,
+  "diningPlans": [
+    "Ultimate"
+  ],
+  "appMissingSince": null
+}

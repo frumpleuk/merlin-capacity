@@ -1,0 +1,19 @@
+{
+  "id": 4279,
+  "name": "Eastern Express - Dark Forest",
+  "category": "Food & Drink > Fast Food",
+  "lat": 52.985188,
+  "lon": -1.890872,
+  "source": "attractions.io app bundle",
+  "passDiscount": {
+    "offered": false,
+    "percent": null,
+    "applies": "no Merlin Annual Pass discount",
+    "source": "user report"
+  },
+  "area": "Dark Forest",
+  "menuUrl": null,
+  "appPassholderDiscount": null,
+  "diningPlans": null,
+  "appMissingSince": null
+}

@@ -1,0 +1,15 @@
+{
+  "id": 6572,
+  "name": "Secret Garden Restaurant",
+  "category": "Food & Drink > Restaurants",
+  "lat": 52.984639,
+  "lon": -1.87458,
+  "source": "attractions.io app bundle",
+  "area": "Alton Towers Hotel",
+  "menuUrl": "https://www.altontowers.com/short-breaks/accommodation/alton-towers-hotel/restaurants-shops/secret-garden-restaurant/",
+  "appPassholderDiscount": null,
+  "diningPlans": [
+    "Ultimate"
+  ],
+  "appMissingSince": null
+}

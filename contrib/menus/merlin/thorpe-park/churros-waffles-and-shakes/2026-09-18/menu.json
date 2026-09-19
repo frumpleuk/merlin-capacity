@@ -1,0 +1,120 @@
+{
+  "date": "2026-09-18",
+  "passDiscount": {
+    "offered": true,
+    "percent": 10,
+    "photo": "IMG_3779.HEIC",
+    "source": "board photo"
+  },
+  "sections": [
+    {
+      "name": "Hot & Delicious Churros",
+      "items": [
+        {
+          "name": "Churros",
+          "description": "With sugar, cinnamon & choice of dip: caramel, milk chocolate or white chocolate dip",
+          "price": 800,
+          "photo": "IMG_3777.HEIC"
+        },
+        {
+          "name": "Fully Loaded Churros",
+          "description": "With all the below: Oreo, Biscoff, caramel sauce, milk chocolate sauce, white chocolate sauce, strawberries, cream",
+          "price": 1000,
+          "photo": "IMG_3777.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Cool & Fresh Shakes",
+      "items": [
+        {
+          "name": "Oreo",
+          "price": 700,
+          "photo": "IMG_3777.HEIC"
+        },
+        {
+          "name": "Biscoff",
+          "price": 700,
+          "photo": "IMG_3777.HEIC"
+        },
+        {
+          "name": "Vanilla",
+          "price": 700,
+          "photo": "IMG_3777.HEIC"
+        },
+        {
+          "name": "Chocolate",
+          "price": 700,
+          "photo": "IMG_3777.HEIC"
+        },
+        {
+          "name": "Strawberry",
+          "price": 700,
+          "photo": "IMG_3777.HEIC"
+        },
+        {
+          "name": "Caramel",
+          "price": 700,
+          "photo": "IMG_3777.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Hot & Delicious Belgian Waffles",
+      "items": [
+        {
+          "name": "Belgian Waffle",
+          "description": "With 2 toppings",
+          "price": 800,
+          "photo": "IMG_3779.HEIC"
+        },
+        {
+          "name": "Fully Loaded Waffle",
+          "description": "With all the below: Oreo, Biscoff, caramel sauce, milk chocolate sauce, white chocolate sauce, strawberries, cream",
+          "price": 1000,
+          "photo": "IMG_3779.HEIC"
+        },
+        {
+          "name": "Pistachio Cream Topping",
+          "description": "Additional charge",
+          "price": 200,
+          "photo": "IMG_3779.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Soft Drinks",
+          "price": 350,
+          "photo": "IMG_3779.HEIC"
+        },
+        {
+          "name": "Water",
+          "price": 300,
+          "photo": "IMG_3779.HEIC"
+        }
+      ]
+    }
+  ],
+  "offers": [],
+  "skipped": [
+    {
+      "photo": "IMG_3780.HEIC",
+      "reason": "venue sign (Churros, Waffles & Shakes), no menu"
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3777.HEIC",
+      "name": "Churros-Waffles-and-Shakes-hot-and-delicious",
+      "caption": "hot-and-delicious"
+    },
+    {
+      "file": "IMG_3779.HEIC",
+      "name": "Churros-Waffles-and-Shakes-hot-and-delicious-2",
+      "caption": "Venue sign with the info icon panel (10% annual pass discount)"
+    }
+  ]
+}

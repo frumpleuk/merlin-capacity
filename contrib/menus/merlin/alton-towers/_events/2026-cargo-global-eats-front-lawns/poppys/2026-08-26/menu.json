@@ -1,0 +1,233 @@
+{
+  "date": "2026-08-26",
+  "passDiscount": {
+    "offered": true,
+    "percent": 20,
+    "applies": "Merlin Annual Pass holder discount, from 5pm - 7pm",
+    "photo": "IMG_3417.HEIC",
+    "source": "board photo"
+  },
+  "sections": [
+    {
+      "name": "Cocktails",
+      "note": "Poppys Pineapples main board; one handwritten price (£12.00) covers the whole list",
+      "items": [
+        {
+          "name": "Pina Colada",
+          "price": 1200,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3414.HEIC"
+        },
+        {
+          "name": "Sex on the Beach",
+          "price": 1200,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3414.HEIC"
+        },
+        {
+          "name": "Frozen Pineapple Daquiri",
+          "price": 1200,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3414.HEIC"
+        },
+        {
+          "name": "Pineapple Cosmo",
+          "price": 1200,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3414.HEIC"
+        },
+        {
+          "name": "Caribbean Crush",
+          "price": 1200,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3414.HEIC"
+        },
+        {
+          "name": "Woowoo",
+          "price": 1200,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3414.HEIC"
+        },
+        {
+          "name": "Frozen Pineapple Marg",
+          "price": 1200,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3414.HEIC"
+        },
+        {
+          "name": "Dark & Stormy",
+          "price": 1200,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3414.HEIC"
+        },
+        {
+          "name": "Spicy Pineapple Marg",
+          "price": 1200,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3414.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Virgin/Smoothies",
+      "note": "One handwritten price (£8.50) covers the whole list",
+      "items": [
+        {
+          "name": "Tropicana",
+          "description": "Pineaples, raspberry, blueberry, coconut milk, tropical juice",
+          "price": 850,
+          "photo": "IMG_3414.HEIC"
+        },
+        {
+          "name": "Very Berry",
+          "description": "Raspberries, strawberries, red currents, blue berries",
+          "price": 850,
+          "photo": "IMG_3414.HEIC"
+        },
+        {
+          "name": "Strawberry and Banana",
+          "description": "Strawberry, banana, coconut milk",
+          "price": 850,
+          "unclear": "name struck through with a blue marker line on the board, so it may have been off sale",
+          "photo": "IMG_3414.HEIC"
+        },
+        {
+          "name": "Virgin Pina Colada",
+          "price": 850,
+          "photo": "IMG_3414.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Watermelon Fishbowl Sharer",
+      "items": [
+        {
+          "name": "Watermelon Fishbowl Sharer",
+          "description": "Rum/tequila/vodka with lime, watermelon pulp and peach shnapps",
+          "price": 3500,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3414.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Extras",
+      "items": [
+        {
+          "name": "Pineapple Chunks",
+          "price": 400,
+          "photo": "IMG_3414.HEIC"
+        },
+        {
+          "name": "Rum Soaked Chunks",
+          "price": 800,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3414.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Smoothies",
+      "note": "Separate A-frame board beside the unit; carries no printed prices",
+      "items": [
+        {
+          "name": "Tropicana",
+          "description": "Raspberry, blueberries, pineapple, coconut milk, tropical juice",
+          "price": null,
+          "unclear": "no printed price on this board; the only figure is a rubbed-out chalk mark above the heading that could be 8.50 or 9.50",
+          "photo": "IMG_3415.HEIC"
+        },
+        {
+          "name": "Bananarama",
+          "description": "Strawberry, banana, coconut",
+          "price": null,
+          "unclear": "no printed price on this board (see Tropicana); chalked \"untill tomorrow\" written underneath, so it appears to have been off sale",
+          "photo": "IMG_3415.HEIC"
+        },
+        {
+          "name": "Very Berry",
+          "description": "Strawberry, raspberry, blueberries, cranberries, cherries",
+          "price": null,
+          "unclear": "no printed price on this board; the only figure is a rubbed-out chalk mark above the heading that could be 8.50 or 9.50",
+          "photo": "IMG_3415.HEIC"
+        },
+        {
+          "name": "Pinacolada",
+          "description": "Pineapple, coconut milk",
+          "price": null,
+          "unclear": "no printed price on this board; the only figure is a rubbed-out chalk mark above the heading that could be 8.50 or 9.50",
+          "photo": "IMG_3415.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Fruit Bowl Menu",
+      "note": "Poster pinned beside the unit. Fresh. Delicious. Natural. Made with real fruit, made with love",
+      "items": [
+        {
+          "name": "Fruit Pot",
+          "description": "2 slices of water melon, 4 slices of orange, handful of sliced pineapple, 3/4 strawberries",
+          "price": 700,
+          "photo": "IMG_3417.HEIC"
+        },
+        {
+          "name": "Granola Pot",
+          "description": "Base of Greek yogurt, full cup of granola, drizzle with honey and Greek yogurt, add blueberries and raspberries",
+          "price": 700,
+          "photo": "IMG_3417.HEIC"
+        }
+      ]
+    }
+  ],
+  "offers": [
+    {
+      "text": "Bring back your pineapple for money off refills",
+      "photo": "IMG_3414.HEIC"
+    }
+  ],
+  "skipped": [
+    {
+      "photo": "IMG_3416.HEIC",
+      "reason": "wider frame of the same fruit bowl poster and passholder discount sign already read from IMG_3417"
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3414.HEIC",
+      "name": "Poppy-s-cocktails",
+      "caption": "cocktails"
+    },
+    {
+      "file": "IMG_3415.HEIC",
+      "name": "Poppy-s-smoothies",
+      "caption": "smoothies"
+    },
+    {
+      "file": "IMG_3417.HEIC",
+      "name": "Poppy-s-fruit-bowl-menu",
+      "caption": "fruit-bowl-menu"
+    }
+  ]
+}

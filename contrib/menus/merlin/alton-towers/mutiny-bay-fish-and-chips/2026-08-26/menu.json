@@ -1,0 +1,88 @@
+{
+  "date": "2026-08-26",
+  "passDiscount": {
+    "offered": true,
+    "percent": 20,
+    "upTo": true,
+    "applies": "food & drink",
+    "photo": "IMG_3423.HEIC",
+    "source": "board photo"
+  },
+  "sections": [
+    {
+      "name": "Menu",
+      "items": [
+        {
+          "name": "Fish & Chips",
+          "price": 1575,
+          "kcal": 1413,
+          "photo": "IMG_3423.HEIC"
+        },
+        {
+          "name": "Fishcake & Chips",
+          "price": 875,
+          "kcal": 966,
+          "photo": "IMG_3423.HEIC"
+        },
+        {
+          "name": "Sausage & Chips",
+          "price": 925,
+          "kcal": 953,
+          "photo": "IMG_3423.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        {
+          "name": "Chips",
+          "price": 500,
+          "kcal": 960,
+          "photo": "IMG_3423.HEIC"
+        },
+        {
+          "name": "Gravy",
+          "price": 225,
+          "kcal": 53,
+          "photo": "IMG_3423.HEIC"
+        },
+        {
+          "name": "Curry Sauce",
+          "price": 225,
+          "kcal": 66,
+          "photo": "IMG_3423.HEIC"
+        },
+        {
+          "name": "Mushy Peas",
+          "price": 225,
+          "kcal": 115,
+          "photo": "IMG_3423.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Coke / Diet Coke / Fanta / Sprite (500ml)",
+          "price": 350,
+          "photo": "IMG_3423.HEIC"
+        },
+        {
+          "name": "Water",
+          "price": 325,
+          "photo": "IMG_3423.HEIC"
+        }
+      ]
+    }
+  ],
+  "offers": [],
+  "photos": [
+    {
+      "file": "IMG_3423.HEIC",
+      "name": "Mutiny-Bay-Fish-and-Chips-main-menu",
+      "caption": "main-menu"
+    }
+  ]
+}

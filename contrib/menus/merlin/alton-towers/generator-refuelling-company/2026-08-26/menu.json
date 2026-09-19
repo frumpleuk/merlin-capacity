@@ -1,0 +1,210 @@
+{
+  "date": "2026-08-26",
+  "passDiscount": {
+    "offered": true,
+    "percent": 20,
+    "upTo": true,
+    "applies": "dining & shopping",
+    "photo": "IMG_3376.HEIC",
+    "source": "board photo"
+  },
+  "sections": [
+    {
+      "name": "Heat Generator Box Meal",
+      "note": "Served with standard fries, a regular soft drink and any 2 Nemesis dips. Board also says \"Upgrade to large for larger fries and a large post mix drink\" with no price printed. Branded Phalanx Food Lab.",
+      "items": [
+        {
+          "name": "3 & 3 Heat Box",
+          "description": "3 Nemesis wings & 3 Nemesis strips, tossed in your choice of sauce or served plain.",
+          "price": 1900,
+          "photo": "IMG_3376.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Nemesis Wing & Strip Meals",
+      "note": "Choose your wing/strip flavour. Served with fries & soft drink. Wing/strip flavours: Plain, BBQ, Korean BBQ, Hot Buffalo, Sweet Chilli, Hot Honey, Garlic Parmesan. Dips: BBQ, Korean BBQ, Hot Buffalo, Sweet Chilli, Hot Honey, Garlic Parmesan, Ranch Dressing.",
+      "items": [
+        {
+          "name": "Chicken Wings",
+          "sizes": [
+            {
+              "label": "3 Piece Meal, Regular",
+              "price": 1050
+            },
+            {
+              "label": "3 Piece Meal, Large",
+              "price": 1150
+            },
+            {
+              "label": "5 Piece Meal, Regular",
+              "price": 1275
+            },
+            {
+              "label": "5 Piece Meal, Large",
+              "price": 1375
+            }
+          ],
+          "photo": "IMG_3376.HEIC"
+        },
+        {
+          "name": "Chicken Strips",
+          "sizes": [
+            {
+              "label": "3 Piece Meal, Regular",
+              "price": 1275
+            },
+            {
+              "label": "3 Piece Meal, Large",
+              "price": 1375
+            },
+            {
+              "label": "5 Piece Meal, Regular",
+              "price": 1500
+            },
+            {
+              "label": "5 Piece Meal, Large",
+              "price": 1600
+            }
+          ],
+          "photo": "IMG_3376.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        {
+          "name": "Fries",
+          "price": 425,
+          "photo": "IMG_3376.HEIC"
+        },
+        {
+          "name": "Cheese Loaded Fries",
+          "price": 625,
+          "photo": "IMG_3376.HEIC"
+        },
+        {
+          "name": "Buffalo Ranch Fries",
+          "price": 650,
+          "photo": "IMG_3376.HEIC"
+        },
+        {
+          "name": "Cheese & Bacon Fries",
+          "price": 750,
+          "photo": "IMG_3376.HEIC"
+        },
+        {
+          "name": "Extra Sauces",
+          "price": 150,
+          "photo": "IMG_3376.HEIC"
+        },
+        {
+          "name": "Upgrade Combo Cup",
+          "price": 575,
+          "photo": "IMG_3376.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        {
+          "name": "Coke Zero",
+          "sizes": [
+            {
+              "label": "Regular",
+              "price": 500
+            },
+            {
+              "label": "Large",
+              "price": 525
+            }
+          ],
+          "photo": "IMG_3376.HEIC"
+        },
+        {
+          "name": "Diet Coke",
+          "sizes": [
+            {
+              "label": "Regular",
+              "price": 500
+            },
+            {
+              "label": "Large",
+              "price": 525
+            }
+          ],
+          "photo": "IMG_3376.HEIC"
+        },
+        {
+          "name": "Fanta",
+          "sizes": [
+            {
+              "label": "Regular",
+              "price": 500
+            },
+            {
+              "label": "Large",
+              "price": 525
+            }
+          ],
+          "photo": "IMG_3376.HEIC"
+        },
+        {
+          "name": "Sprite Zero",
+          "sizes": [
+            {
+              "label": "Regular",
+              "price": 500
+            },
+            {
+              "label": "Large",
+              "price": 525
+            }
+          ],
+          "photo": "IMG_3376.HEIC"
+        },
+        {
+          "name": "Water",
+          "description": "600ml",
+          "price": 325,
+          "photo": "IMG_3376.HEIC"
+        },
+        {
+          "name": "Radnor",
+          "price": 250,
+          "photo": "IMG_3376.HEIC"
+        },
+        {
+          "name": "Slush",
+          "price": 550,
+          "photo": "IMG_3376.HEIC"
+        }
+      ]
+    }
+  ],
+  "offers": [
+    {
+      "text": "Upgrade to large for larger fries and a large post mix drink (no price printed on the board)",
+      "photo": "IMG_3376.HEIC"
+    }
+  ],
+  "skipped": [
+    {
+      "photo": "IMG_3374.HEIC",
+      "reason": "venue sign and shopfront, menu not readable at this distance"
+    },
+    {
+      "photo": "IMG_3375.HEIC",
+      "reason": "same board as IMG_3376, photographed through glass with heavy reflections; IMG_3376 is legible and was used instead"
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3376.HEIC",
+      "name": "GENERATOR-Refuelling-Company-main-menu",
+      "caption": "main-menu"
+    }
+  ]
+}

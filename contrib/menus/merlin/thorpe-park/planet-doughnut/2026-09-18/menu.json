@@ -1,0 +1,43 @@
+{
+  "date": "2026-09-18",
+  "sections": [
+    {
+      "name": "Treat Dough Self!",
+      "items": [
+        {
+          "name": "Doughnuts",
+          "sizes": [
+            {
+              "label": "1 Doughnut",
+              "price": 650
+            },
+            {
+              "label": "3 Doughnuts",
+              "price": 1800
+            }
+          ],
+          "photo": "IMG_3778.HEIC"
+        },
+        {
+          "name": "Smartwater",
+          "price": 325,
+          "photo": "IMG_3778.HEIC"
+        },
+        {
+          "name": "Soft Drinks",
+          "price": 350,
+          "photo": "IMG_3778.HEIC"
+        }
+      ]
+    }
+  ],
+  "offers": [],
+  "skipped": [],
+  "photos": [
+    {
+      "file": "IMG_3778.HEIC",
+      "name": "Planet-Doughnut-main-menu",
+      "caption": "main-menu"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": 6024,
+  "name": "Mutiny Bay Hot Dogs",
+  "category": "Food & Drink > Snacks",
+  "lat": 52.989118,
+  "lon": -1.88981,
+  "source": "attractions.io app bundle",
+  "note": "Loaded Spuds is signed separately next door but shares the same ordering; both menus belong here.",
+  "area": "Mutiny Bay",
+  "menuUrl": null,
+  "appPassholderDiscount": true,
+  "diningPlans": [
+    "Ultimate"
+  ],
+  "appMissingSince": null
+}

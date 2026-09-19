@@ -1,0 +1,109 @@
+{
+  "date": "2026-08-26",
+  "sections": [
+    {
+      "name": "Cursed Baskets",
+      "items": [
+        {
+          "name": "Green Spirit",
+          "description": "Green mint ice cream, edible waffle basket, chocolate sauce, mint chocolate wafers, jelly doll",
+          "price": 675,
+          "kcal": 510,
+          "photo": "IMG_3471.HEIC"
+        },
+        {
+          "name": "Grim Reaper",
+          "description": "Black vanilla ice cream, edible waffle basket, candy skulls & strawberry sauce",
+          "price": 675,
+          "kcal": 404,
+          "photo": "IMG_3471.HEIC"
+        },
+        {
+          "name": "Harlequin Spectres Hat",
+          "description": "Upside down strawberry ice cream, harlequin waffle cone, cotton candy clouds, strawberry sauce, fangs, skulls & bones",
+          "price": 675,
+          "kcal": 654,
+          "photo": "IMG_3471.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Soft Serve Ice Cream",
+      "note": "Soft serve ice cream cones or tubs; all flavours £4.50",
+      "items": [
+        {
+          "name": "Mint Green",
+          "sizes": [
+            {
+              "label": "Cone",
+              "price": 450,
+              "kcal": 334
+            },
+            {
+              "label": "Tub",
+              "price": 450,
+              "kcal": 330
+            }
+          ],
+          "photo": "IMG_3471.HEIC"
+        },
+        {
+          "name": "Black Vanilla",
+          "sizes": [
+            {
+              "label": "Cone",
+              "price": 450,
+              "kcal": 258
+            },
+            {
+              "label": "Tub",
+              "price": 450,
+              "kcal": 253
+            }
+          ],
+          "photo": "IMG_3471.HEIC"
+        },
+        {
+          "name": "Red Strawberry",
+          "sizes": [
+            {
+              "label": "Cone",
+              "price": 450,
+              "kcal": 266
+            },
+            {
+              "label": "Tub",
+              "price": 450,
+              "kcal": 189
+            }
+          ],
+          "photo": "IMG_3471.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Cookies & Scream",
+      "items": [
+        {
+          "name": "Cookies & Scream",
+          "description": "Vanilla & chocolate cookie shake, triple chocolate cookie, cotton candy clouds, milk bones & caramel sauce",
+          "price": 850,
+          "kcal": 402,
+          "photo": "IMG_3472.HEIC"
+        }
+      ]
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3471.HEIC",
+      "name": "Coach-House-Confectionary-cursed-baskets",
+      "caption": "cursed-baskets"
+    },
+    {
+      "file": "IMG_3472.HEIC",
+      "name": "Coach-House-Confectionary-cookies-and-scream",
+      "caption": "cookies-and-scream"
+    }
+  ]
+}

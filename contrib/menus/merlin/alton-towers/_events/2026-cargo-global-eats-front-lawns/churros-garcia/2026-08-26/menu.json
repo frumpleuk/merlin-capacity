@@ -1,0 +1,179 @@
+{
+  "date": "2026-08-26",
+  "sections": [
+    {
+      "name": "Fresh Churros",
+      "items": [
+        {
+          "name": "Churros",
+          "price": 795,
+          "photo": "IMG_3418.HEIC"
+        },
+        {
+          "name": "Churros with Dipping Sauce",
+          "price": 995,
+          "photo": "IMG_3418.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        {
+          "name": "Espresso",
+          "price": 325,
+          "photo": "IMG_3418.HEIC"
+        },
+        {
+          "name": "Americano",
+          "price": 435,
+          "photo": "IMG_3418.HEIC"
+        },
+        {
+          "name": "Cappuccino",
+          "price": 490,
+          "unclear": "last digit written over itself; reads 4.90 but could be 4.98",
+          "photo": "IMG_3418.HEIC"
+        },
+        {
+          "name": "Latte",
+          "price": 475,
+          "photo": "IMG_3418.HEIC"
+        },
+        {
+          "name": "Cortado",
+          "price": 460,
+          "photo": "IMG_3418.HEIC"
+        },
+        {
+          "name": "Flat White",
+          "price": 475,
+          "photo": "IMG_3418.HEIC"
+        },
+        {
+          "name": "Mocha",
+          "price": 475,
+          "photo": "IMG_3418.HEIC"
+        },
+        {
+          "name": "Chai",
+          "price": 475,
+          "photo": "IMG_3418.HEIC"
+        },
+        {
+          "name": "Hot Chocolate",
+          "price": 475,
+          "photo": "IMG_3418.HEIC"
+        },
+        {
+          "name": "Breakfast & Herbal Tea",
+          "price": 350,
+          "photo": "IMG_3418.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Cans & Bottles",
+      "items": [
+        {
+          "name": "Smart Water",
+          "price": 300,
+          "photo": "IMG_3418.HEIC"
+        },
+        {
+          "name": "Fanta Orange",
+          "price": 350,
+          "photo": "IMG_3418.HEIC"
+        },
+        {
+          "name": "Coca Cola",
+          "price": 350,
+          "photo": "IMG_3418.HEIC"
+        },
+        {
+          "name": "Coke-Diet",
+          "price": 350,
+          "photo": "IMG_3418.HEIC"
+        },
+        {
+          "name": "Coke - Zero",
+          "price": 350,
+          "photo": "IMG_3418.HEIC"
+        },
+        {
+          "name": "Cawston Juice",
+          "price": 240,
+          "photo": "IMG_3418.HEIC"
+        },
+        {
+          "name": "Apple & Orange",
+          "price": null,
+          "unclear": "price box left blank; sits directly under Cawston Juice so may be a flavour of it",
+          "photo": "IMG_3418.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        {
+          "name": "Iced Latte",
+          "price": 520,
+          "photo": "IMG_3418.HEIC"
+        },
+        {
+          "name": "Iced Chai",
+          "price": 520,
+          "photo": "IMG_3418.HEIC"
+        },
+        {
+          "name": "Iced Mocha",
+          "price": null,
+          "unclear": "no price box printed against this line",
+          "photo": "IMG_3418.HEIC"
+        },
+        {
+          "name": "Iced Americano",
+          "price": null,
+          "unclear": "no price box printed against this line",
+          "photo": "IMG_3418.HEIC"
+        },
+        {
+          "name": "Iced Chocolate",
+          "price": null,
+          "unclear": "no price box printed against this line",
+          "photo": "IMG_3418.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Cold Drinks (extras)",
+      "note": "The board repeats the \"Cold Drinks\" heading over this add-on block",
+      "items": [
+        {
+          "name": "Syrup",
+          "price": 100,
+          "photo": "IMG_3418.HEIC"
+        },
+        {
+          "name": "Oat Milk",
+          "price": 100,
+          "photo": "IMG_3418.HEIC"
+        }
+      ]
+    }
+  ],
+  "skipped": [
+    {
+      "photo": "IMG_3419.HEIC",
+      "reason": "Churros Garcia family history board (timeline, awards, food hygiene rating, vegan friendly); no menu items"
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3418.HEIC",
+      "name": "Churros-Garcia-main-menu",
+      "caption": "main-menu"
+    }
+  ]
+}

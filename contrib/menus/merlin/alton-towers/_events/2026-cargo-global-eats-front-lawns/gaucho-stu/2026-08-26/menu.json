@@ -1,0 +1,138 @@
+{
+  "date": "2026-08-26",
+  "sections": [
+    {
+      "name": "Gaucho Stu",
+      "note": "Pretty Much Argentinian. All our beef is grass fed farm shop beef, The proper stuff!",
+      "items": [
+        {
+          "name": "Steak Sandwhich",
+          "description": "24 hour marinated steak served in a baguette with lettuce, sundried tomato, garlic mayo and fresh homemade chimichurri",
+          "price": 1745,
+          "photo": "IMG_3411.HEIC"
+        },
+        {
+          "name": "Steak Loaded Fries",
+          "description": "24 hour marinated steak served on crispy fries with garlic mayo and fresh homemade chimichurri",
+          "price": 1745,
+          "photo": "IMG_3411.HEIC"
+        },
+        {
+          "name": "Firecracker Steak Loaded Fries",
+          "description": "24 hour marinated steak coated in firecracker sauce, served on crispy fries with melted cheese, garlic mayo and fresh homemade chimichurri",
+          "price": 1745,
+          "photo": "IMG_3411.HEIC"
+        },
+        {
+          "name": "Pork Belly Loaded Fries",
+          "description": "Salt & chilli pork belly served on crispy fries with garlic mayo and fresh homemade chimichurri",
+          "price": 1745,
+          "tags": [
+            "gf",
+            "df"
+          ],
+          "photo": "IMG_3411.HEIC"
+        },
+        {
+          "name": "Steak & Pork Belly Loaded Fries",
+          "description": "24 hour marinated steak and salt & chilli pork belly, served on crispy fries with garlic mayo and fresh homemade chimichurri",
+          "price": 1800,
+          "tags": [
+            "gf",
+            "df"
+          ],
+          "photo": "IMG_3411.HEIC"
+        },
+        {
+          "name": "Ragu Loaded Fries",
+          "description": "Homemade bolognese served on crispy fries and garnished with fresh chopped parsley",
+          "price": 1645,
+          "tags": [
+            "gf"
+          ],
+          "photo": "IMG_3411.HEIC"
+        },
+        {
+          "name": "Mami's Smokey Bean Chilli Loaded Fries",
+          "description": "Homemade smoky chilli, packed with protein and fibre, served on crispy fries and finished with fresh homemade chimichurri",
+          "price": 1645,
+          "tags": [
+            "vg",
+            "v",
+            "gf"
+          ],
+          "photo": "IMG_3411.HEIC"
+        },
+        {
+          "name": "Huge Family Platter",
+          "description": "24 hour marinated steak, salt & chilli pork belly, firecracker steak and homemade ragu served over crispy fries with garlic mayo and fresh homemade chimichurri",
+          "price": null,
+          "unclear": "price box written in faded yellow marker and unreadable; \"Ask on request\" handwritten underneath",
+          "tags": [
+            "gf",
+            "df"
+          ],
+          "photo": "IMG_3411.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Sides and Extras",
+      "note": "Unheaded block at the foot of the board; prices handwritten in the boxes",
+      "items": [
+        {
+          "name": "Kids Bolognese",
+          "description": "On fries (handwritten addition)",
+          "price": 1000,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3411.HEIC"
+        },
+        {
+          "name": "Cheesy Chips",
+          "price": 700,
+          "photo": "IMG_3411.HEIC"
+        },
+        {
+          "name": "Fries",
+          "price": 550,
+          "photo": "IMG_3411.HEIC"
+        },
+        {
+          "name": "Extra Chimmichurri",
+          "price": 200,
+          "photo": "IMG_3411.HEIC"
+        },
+        {
+          "name": "Add Cheese",
+          "price": 150,
+          "photo": "IMG_3411.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Water",
+          "price": 350,
+          "photo": "IMG_3411.HEIC"
+        },
+        {
+          "name": "Soft Drinks",
+          "price": null,
+          "unclear": "price written in faded yellow marker, unreadable even at full resolution",
+          "photo": "IMG_3411.HEIC"
+        }
+      ]
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3411.HEIC",
+      "name": "Gaucho-Stu-main-menu",
+      "caption": "main-menu"
+    }
+  ]
+}

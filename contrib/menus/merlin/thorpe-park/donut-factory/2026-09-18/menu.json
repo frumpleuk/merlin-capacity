@@ -1,0 +1,150 @@
+{
+  "date": "2026-09-18",
+  "passDiscount": {
+    "offered": true,
+    "percent": 20,
+    "photo": "IMG_3756.HEIC",
+    "source": "board photo"
+  },
+  "sections": [
+    {
+      "name": "Hot Chocolate",
+      "note": "Cadbury branded",
+      "items": [
+        {
+          "name": "Classic",
+          "price": 550,
+          "kcal": 210,
+          "photo": "IMG_3757.HEIC"
+        },
+        {
+          "name": "Deluxe",
+          "description": "with Cream & Flake",
+          "price": 600,
+          "kcal": 253,
+          "photo": "IMG_3757.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Soft Drinks",
+      "note": "Coca-Cola Zero Sugar, Diet Coke, Fanta Zero Sugar Orange, Sprite Zero Sugar",
+      "items": [
+        {
+          "name": "Soft Drink",
+          "kcal": 0,
+          "sizes": [
+            {
+              "label": "Regular 16oz",
+              "price": 500
+            },
+            {
+              "label": "Large 22oz",
+              "price": 525
+            }
+          ],
+          "photo": "IMG_3757.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Slushy",
+      "items": [
+        {
+          "name": "Strawberry",
+          "price": 550,
+          "kcal": 91,
+          "photo": "IMG_3757.HEIC"
+        },
+        {
+          "name": "Raspberry",
+          "price": 550,
+          "kcal": 91,
+          "photo": "IMG_3757.HEIC"
+        },
+        {
+          "name": "Mixed",
+          "price": 550,
+          "kcal": 91,
+          "photo": "IMG_3757.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Sugar Donuts",
+      "note": "Kcal as printed: 1 Donut 151, 5 Donuts 765, 10 Donuts 1510. Dips: Milk Chocolate 60 kcal, White Chocolate 63 kcal, Biscoffee Sauce 134 kcal",
+      "items": [
+        {
+          "name": "Sugar Donuts",
+          "sizes": [
+            {
+              "label": "1 Donut",
+              "price": 275
+            },
+            {
+              "label": "5 Dounuts",
+              "price": 875
+            },
+            {
+              "label": "10 Donuts",
+              "price": 1100
+            }
+          ],
+          "photo": "IMG_3757.HEIC"
+        },
+        {
+          "name": "+ 1 Dip",
+          "price": 150,
+          "photo": "IMG_3757.HEIC"
+        },
+        {
+          "name": "+ 2 Dips",
+          "price": 250,
+          "photo": "IMG_3757.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "4 Topped Donuts",
+      "note": "Choose 1 Sauce: Milk Chocolate 60 kcal, White Chocolate 63 kcal, Biscoffee Sauce 60 kcal. Choose 1 Topping: Oreo Crumb 48 kcal, Biscoffee Crumb 49 kcal, Chocolate Sprinkles 53 kcal",
+      "items": [
+        {
+          "name": "4 Topped Donuts",
+          "price": 800,
+          "photo": "IMG_3757.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Ice Cream",
+      "items": [
+        {
+          "name": "Donut & Ice Cream",
+          "price": 500,
+          "kcal": 293,
+          "photo": "IMG_3757.HEIC"
+        },
+        {
+          "name": "Ice Cream Pot",
+          "price": 400,
+          "kcal": 142,
+          "photo": "IMG_3757.HEIC"
+        }
+      ]
+    }
+  ],
+  "offers": [],
+  "skipped": [
+    {
+      "photo": "IMG_3756.HEIC",
+      "reason": "venue sign and kiosk frontage; the board it shows at a distance is transcribed from IMG_3757.HEIC"
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3757.HEIC",
+      "name": "Donut-Factory-main-menu",
+      "caption": "main-menu"
+    }
+  ]
+}

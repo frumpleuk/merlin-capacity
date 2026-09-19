@@ -1,0 +1,134 @@
+{
+  "date": "2026-08-26",
+  "sections": [
+    {
+      "name": "Choose a Topping",
+      "note": "Choose a base: Rice with daal (GF) / Fries / Naan / Salad (GF). All dishes served with our blend of sauces",
+      "items": [
+        {
+          "name": "Halloumi or Paneer Tikka",
+          "price": 1495,
+          "tags": [
+            "v"
+          ],
+          "photo": "IMG_3422.HEIC"
+        },
+        {
+          "name": "Chicken Tikka",
+          "price": 1495,
+          "tags": [
+            "gf"
+          ],
+          "photo": "IMG_3422.HEIC"
+        },
+        {
+          "name": "Kebab",
+          "description": "Lamb (handwritten on the board)",
+          "price": 1595,
+          "photo": "IMG_3422.HEIC"
+        },
+        {
+          "name": "Mixed | 2 Fillings",
+          "price": 1695,
+          "photo": "IMG_3422.HEIC"
+        },
+        {
+          "name": "Combo | 3 Fillings",
+          "price": 1795,
+          "photo": "IMG_3422.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Other Dishes",
+      "note": "Unheaded block below the toppings",
+      "items": [
+        {
+          "name": "Halloumi Burger",
+          "price": 1495,
+          "tags": [
+            "v"
+          ],
+          "photo": "IMG_3422.HEIC"
+        },
+        {
+          "name": "Vegetable Samosa",
+          "description": "Served with Masala Fries",
+          "price": 1295,
+          "tags": [
+            "vg"
+          ],
+          "photo": "IMG_3422.HEIC"
+        },
+        {
+          "name": "Mango Lassi / Smoothie",
+          "description": "Handwritten addition to the board",
+          "price": 700,
+          "photo": "IMG_3422.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Kids Meals",
+      "items": [
+        {
+          "name": "Chicken Nuggets & Chips + Drink",
+          "price": 1000,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3422.HEIC"
+        },
+        {
+          "name": "Halloumi & Chips + Drink",
+          "price": 1000,
+          "tags": [
+            "kids",
+            "v"
+          ],
+          "photo": "IMG_3422.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Family Bundle",
+      "items": [
+        {
+          "name": "Family Bundle",
+          "description": "Fries with your choice of topping + naan with your choice of topping + 2x kids' meal",
+          "price": 4500,
+          "photo": "IMG_3422.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "note": "Unheaded row at the foot of the board",
+      "items": [
+        {
+          "name": "Vegetable Samosa x2",
+          "price": 1295,
+          "tags": [
+            "vg"
+          ],
+          "photo": "IMG_3422.HEIC"
+        },
+        {
+          "name": "Masala Fries",
+          "price": 600,
+          "tags": [
+            "v"
+          ],
+          "photo": "IMG_3422.HEIC"
+        }
+      ]
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3422.HEIC",
+      "name": "Bombay-ish-main-menu",
+      "caption": "main-menu"
+    }
+  ]
+}

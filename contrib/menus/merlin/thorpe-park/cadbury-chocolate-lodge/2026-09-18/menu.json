@@ -1,0 +1,150 @@
+{
+  "date": "2026-09-18",
+  "sections": [
+    {
+      "name": "Carte D'Or Lodge",
+      "note": "Board is signed \"Carte D'Or Lodge\", not Cadbury Chocolate Lodge",
+      "items": [
+        {
+          "name": "Ice Cream",
+          "description": "Tub or cone",
+          "sizes": [
+            {
+              "label": "1 Scoop",
+              "price": 550
+            },
+            {
+              "label": "2 Scoops",
+              "price": 650
+            }
+          ],
+          "photo": "IMG_3772.HEIC"
+        },
+        {
+          "name": "Additional Toppings",
+          "description": "Oreo 68kcal, Biscoff 106kcal, Sprinkles 30kcal, Marshmallow 48kcal",
+          "price": 75,
+          "photo": "IMG_3772.HEIC"
+        },
+        {
+          "name": "Additional Sauces",
+          "description": "Bubblegum 92kcal, Salted Caramel 102kcal, Mint 90kcal, Milk Choc 174kcal, White Choc 181kcal, Strawberry 91kcal",
+          "price": 75,
+          "photo": "IMG_3772.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Flavours",
+      "note": "Flavour tiles across the top of the board; kcal shown is per 1 scoop, no separate price",
+      "items": [
+        {
+          "name": "Vanilla",
+          "description": "Made with Madagascan vanilla",
+          "price": null,
+          "kcal": 96,
+          "unclear": "flavour tile is unpriced; price comes from the scoop count",
+          "photo": "IMG_3772.HEIC"
+        },
+        {
+          "name": "Triple Chocolate",
+          "price": null,
+          "kcal": 125,
+          "unclear": "flavour tile is unpriced; price comes from the scoop count",
+          "photo": "IMG_3772.HEIC"
+        },
+        {
+          "name": "Strawberry",
+          "description": "39% strawberries",
+          "price": null,
+          "kcal": 90,
+          "unclear": "flavour tile is unpriced; price comes from the scoop count",
+          "photo": "IMG_3772.HEIC"
+        },
+        {
+          "name": "Mint Chocolate",
+          "price": null,
+          "kcal": 126,
+          "unclear": "flavour tile is unpriced; price comes from the scoop count",
+          "photo": "IMG_3772.HEIC"
+        },
+        {
+          "name": "Caramel",
+          "price": null,
+          "kcal": 107,
+          "unclear": "flavour tile is unpriced; price comes from the scoop count",
+          "photo": "IMG_3772.HEIC"
+        },
+        {
+          "name": "Blue Candyfloss",
+          "price": null,
+          "kcal": 95,
+          "unclear": "flavour tile is unpriced; price comes from the scoop count",
+          "photo": "IMG_3772.HEIC"
+        },
+        {
+          "name": "Marshmallow",
+          "price": null,
+          "kcal": 93,
+          "unclear": "flavour tile is unpriced; price comes from the scoop count",
+          "photo": "IMG_3772.HEIC"
+        },
+        {
+          "name": "Banana Split",
+          "price": null,
+          "kcal": 132,
+          "unclear": "flavour tile is unpriced; price comes from the scoop count",
+          "photo": "IMG_3772.HEIC"
+        },
+        {
+          "name": "Solero",
+          "price": null,
+          "kcal": 99,
+          "unclear": "flavour tile is unpriced; price comes from the scoop count",
+          "photo": "IMG_3772.HEIC"
+        },
+        {
+          "name": "Twister",
+          "description": "New",
+          "price": null,
+          "kcal": 71,
+          "unclear": "flavour tile is unpriced; price comes from the scoop count",
+          "photo": "IMG_3772.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Drinks & Shakes",
+      "items": [
+        {
+          "name": "Cadbury Hot Chocolate",
+          "description": "Oreo 202kcal, Biscoff 240kcal, Flake 210kcal",
+          "price": 525,
+          "kcal": 134,
+          "photo": "IMG_3772.HEIC"
+        },
+        {
+          "name": "Cadbury Chocogato",
+          "description": "A hot shot of rich Cadbury's hot chocolate poured over your choice of one scoop of ice cream flavour, finished with a topping of your choice. 59kcal + displayed kcal for chosen scoop",
+          "price": 650,
+          "kcal": 59,
+          "photo": "IMG_3772.HEIC"
+        },
+        {
+          "name": "Milkshake",
+          "description": "Pick 2 flavours, 1 sauce & 1 topping. 447kcal + displayed kcal for chosen scoops",
+          "price": 750,
+          "kcal": 447,
+          "photo": "IMG_3772.HEIC"
+        }
+      ]
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3772.HEIC",
+      "name": "Cadbury-Chocolate-Lodge-main-menu",
+      "caption": "main-menu"
+    }
+  ]
+}

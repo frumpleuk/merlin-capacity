@@ -1,0 +1,249 @@
+{
+  "date": "2026-08-26",
+  "sections": [
+    {
+      "name": "Wall's",
+      "note": "Adults need around 2000 Kcal a day. All brands are registered trademarks of their respective brand owners.",
+      "items": [
+        {
+          "name": "Magnum Pistachio",
+          "price": 375,
+          "kcal": 257,
+          "photo": "IMG_3372.HEIC"
+        },
+        {
+          "name": "Magnum Peach",
+          "price": 375,
+          "kcal": 232,
+          "photo": "IMG_3372.HEIC"
+        },
+        {
+          "name": "Magnum Classic",
+          "price": 360,
+          "kcal": 226,
+          "photo": "IMG_3372.HEIC"
+        },
+        {
+          "name": "Magnum White",
+          "price": 360,
+          "kcal": 304,
+          "photo": "IMG_3372.HEIC"
+        },
+        {
+          "name": "Magnum Billionaire",
+          "price": 360,
+          "kcal": 236,
+          "photo": "IMG_3372.HEIC"
+        },
+        {
+          "name": "Magnum Almond Vegan",
+          "price": 360,
+          "kcal": 250,
+          "photo": "IMG_3372.HEIC"
+        },
+        {
+          "name": "Cornetto MAX",
+          "price": 375,
+          "kcal": 242,
+          "photo": "IMG_3372.HEIC"
+        },
+        {
+          "name": "Cornetto Strawberry",
+          "price": 300,
+          "kcal": 205,
+          "photo": "IMG_3372.HEIC"
+        },
+        {
+          "name": "Calippo Orange",
+          "price": 275,
+          "kcal": 104,
+          "photo": "IMG_3372.HEIC"
+        },
+        {
+          "name": "Calippo Cola",
+          "price": 275,
+          "kcal": 104,
+          "photo": "IMG_3372.HEIC"
+        },
+        {
+          "name": "Calippo Strawberry",
+          "price": 275,
+          "kcal": 96,
+          "photo": "IMG_3372.HEIC"
+        },
+        {
+          "name": "Twister",
+          "price": 275,
+          "kcal": 85,
+          "photo": "IMG_3372.HEIC"
+        },
+        {
+          "name": "Solero Exotic",
+          "price": 300,
+          "kcal": 108,
+          "photo": "IMG_3372.HEIC"
+        },
+        {
+          "name": "Solero Berry",
+          "price": 300,
+          "kcal": 107,
+          "photo": "IMG_3372.HEIC"
+        },
+        {
+          "name": "Feast Original",
+          "price": 275,
+          "kcal": 237,
+          "photo": "IMG_3372.HEIC"
+        },
+        {
+          "name": "Haribo Push",
+          "price": 300,
+          "kcal": 78,
+          "photo": "IMG_3372.HEIC"
+        },
+        {
+          "name": "Mini Milk Original",
+          "price": 150,
+          "kcal": 29,
+          "photo": "IMG_3372.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Coca-Cola",
+      "note": "Adults need around 2000 Kcal a day. All brands are registered trademarks of their respective brand owners.",
+      "items": [
+        {
+          "name": "Monster Green",
+          "description": "500ml",
+          "price": 400,
+          "kcal": 235,
+          "photo": "IMG_3373.HEIC"
+        },
+        {
+          "name": "Monster Ultra",
+          "description": "500ml",
+          "price": 400,
+          "kcal": 11,
+          "photo": "IMG_3373.HEIC"
+        },
+        {
+          "name": "Monster Mango Loco",
+          "description": "500ml",
+          "price": 400,
+          "kcal": 235,
+          "photo": "IMG_3373.HEIC"
+        },
+        {
+          "name": "Powerade Berry & Tropical Fruits",
+          "description": "500ml",
+          "price": 350,
+          "kcal": 90,
+          "photo": "IMG_3373.HEIC"
+        },
+        {
+          "name": "Fanta Fruit Twist",
+          "description": "500ml",
+          "price": 350,
+          "kcal": 95,
+          "photo": "IMG_3373.HEIC"
+        },
+        {
+          "name": "Fanta Orange Zero",
+          "description": "500ml",
+          "price": 350,
+          "kcal": 95,
+          "photo": "IMG_3373.HEIC"
+        },
+        {
+          "name": "Dr Pepper",
+          "description": "500ml",
+          "price": 350,
+          "kcal": 100,
+          "photo": "IMG_3373.HEIC"
+        },
+        {
+          "name": "Innocent Apple & Strawberry",
+          "description": "200ml",
+          "price": null,
+          "kcal": 64,
+          "tags": [
+            "kids"
+          ],
+          "unclear": "panel says COMING SOON instead of a price",
+          "photo": "IMG_3373.HEIC"
+        },
+        {
+          "name": "Oasis Summer Fruit Zero",
+          "description": "500ml",
+          "price": 350,
+          "kcal": 15,
+          "photo": "IMG_3373.HEIC"
+        },
+        {
+          "name": "Glaceau Smartwater",
+          "description": "600ml",
+          "price": 350,
+          "kcal": 0,
+          "photo": "IMG_3373.HEIC"
+        },
+        {
+          "name": "Coca-Cola",
+          "description": "22 oz fountain",
+          "price": 470,
+          "kcal": 274,
+          "photo": "IMG_3373.HEIC"
+        },
+        {
+          "name": "Coca-Cola Zero Sugar",
+          "description": "22 oz fountain; 3.25 kcal as printed",
+          "price": 450,
+          "photo": "IMG_3373.HEIC"
+        },
+        {
+          "name": "Diet Coke",
+          "description": "22 oz fountain; 1.95 kcal as printed",
+          "price": 450,
+          "photo": "IMG_3373.HEIC"
+        },
+        {
+          "name": "Sprite",
+          "description": "22 oz fountain; 6.51 kcal as printed",
+          "price": 450,
+          "photo": "IMG_3373.HEIC"
+        },
+        {
+          "name": "Fanta",
+          "description": "22 oz fountain",
+          "price": 450,
+          "kcal": 124,
+          "photo": "IMG_3373.HEIC"
+        }
+      ]
+    }
+  ],
+  "offers": [
+    {
+      "text": "2 for £5 on all 500ml bottles",
+      "photo": "IMG_3371.HEIC"
+    }
+  ],
+  "skipped": [],
+  "photos": [
+    {
+      "file": "IMG_3371.HEIC",
+      "name": "Energy-Station-offer",
+      "caption": "offer"
+    },
+    {
+      "file": "IMG_3372.HEIC",
+      "name": "Energy-Station-walls",
+      "caption": "walls"
+    },
+    {
+      "file": "IMG_3373.HEIC",
+      "name": "Energy-Station-coca-cola",
+      "caption": "coca-cola"
+    }
+  ]
+}

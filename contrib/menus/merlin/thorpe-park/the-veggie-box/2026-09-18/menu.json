@@ -1,0 +1,127 @@
+{
+  "date": "2026-09-18",
+  "sections": [
+    {
+      "name": "Open Wraps",
+      "items": [
+        {
+          "name": "Halloumi",
+          "price": 1100,
+          "photo": "IMG_3763.HEIC"
+        },
+        {
+          "name": "Falafel",
+          "price": 1100,
+          "photo": "IMG_3763.HEIC"
+        },
+        {
+          "name": "Mixed",
+          "price": 1200,
+          "photo": "IMG_3763.HEIC"
+        },
+        {
+          "name": "Onion Bhaji",
+          "price": 1100,
+          "photo": "IMG_3763.HEIC"
+        },
+        {
+          "name": "Add Cheese",
+          "price": 200,
+          "photo": "IMG_3763.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Curly Fries",
+      "note": "Additional Toppings: £2.00 each - 3 Bean Chilli, Curry or Cheese",
+      "items": [
+        {
+          "name": "Curly Fries",
+          "price": 600,
+          "photo": "IMG_3763.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Burgers",
+      "note": "Additional Toppings: £2.00 each - Halloumi or Falafel; £2.00 - Cheese",
+      "items": [
+        {
+          "name": "Spicy Bean Burger",
+          "price": 950,
+          "photo": "IMG_3763.HEIC"
+        },
+        {
+          "name": "Smashed Bhaji Burger",
+          "price": 950,
+          "photo": "IMG_3763.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Salad Rice Bowls",
+      "items": [
+        {
+          "name": "Salad Rice Bowl",
+          "price": 1000,
+          "photo": "IMG_3763.HEIC"
+        },
+        {
+          "name": "With Halloumi",
+          "price": 1200,
+          "photo": "IMG_3763.HEIC"
+        },
+        {
+          "name": "With Falafel",
+          "price": 1200,
+          "photo": "IMG_3763.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Samosa or Bhaji",
+      "items": [
+        {
+          "name": "Two Pieces",
+          "price": 600,
+          "photo": "IMG_3763.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Juices",
+          "description": "Cranberry, Orange or Apple",
+          "price": 350,
+          "photo": "IMG_3763.HEIC"
+        },
+        {
+          "name": "Soft Drinks",
+          "price": 350,
+          "photo": "IMG_3763.HEIC"
+        },
+        {
+          "name": "Smart Water",
+          "price": 300,
+          "photo": "IMG_3763.HEIC"
+        }
+      ]
+    }
+  ],
+  "offers": [
+    {
+      "text": "Meal Deal £14.50 - Any Burger, Curly Fries & Soft Drink",
+      "photo": "IMG_3763.HEIC"
+    }
+  ],
+  "skipped": [],
+  "photos": [
+    {
+      "file": "IMG_3763.HEIC",
+      "name": "The-Veggie-Box-main-menu",
+      "caption": "main-menu"
+    }
+  ]
+}

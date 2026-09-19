@@ -1,0 +1,88 @@
+{
+  "date": "2026-08-26",
+  "sections": [
+    {
+      "name": "Crêpes",
+      "note": "Allergen Information - Our Crêpes contain gluten, nuts & dairy, please speak to a member of staff for full allergen guide",
+      "items": [
+        {
+          "name": "Ham & Cheese",
+          "price": 1050,
+          "photo": "IMG_3413.HEIC"
+        },
+        {
+          "name": "Cheese & Pesto",
+          "price": 1050,
+          "photo": "IMG_3413.HEIC"
+        },
+        {
+          "name": "Biscoff",
+          "price": 850,
+          "photo": "IMG_3413.HEIC"
+        },
+        {
+          "name": "Nutella",
+          "price": 850,
+          "photo": "IMG_3413.HEIC"
+        },
+        {
+          "name": "Nutella & Oreo",
+          "price": 1050,
+          "photo": "IMG_3413.HEIC"
+        },
+        {
+          "name": "Nutella & Banana",
+          "price": 1050,
+          "photo": "IMG_3413.HEIC"
+        },
+        {
+          "name": "Nutella & Strawberries",
+          "price": 1050,
+          "photo": "IMG_3413.HEIC"
+        },
+        {
+          "name": "Lemon & Sugar",
+          "price": 850,
+          "photo": "IMG_3413.HEIC"
+        },
+        {
+          "name": "Jam & Strawberries",
+          "price": 1050,
+          "photo": "IMG_3413.HEIC"
+        },
+        {
+          "name": "Peanut Butter & Banana",
+          "price": 1050,
+          "photo": "IMG_3413.HEIC"
+        },
+        {
+          "name": "Peanut Butter & Nutella",
+          "price": 1050,
+          "photo": "IMG_3413.HEIC"
+        },
+        {
+          "name": "Maple Syrup & Banana",
+          "price": 1050,
+          "photo": "IMG_3413.HEIC"
+        },
+        {
+          "name": "Golden Syrup",
+          "price": 850,
+          "photo": "IMG_3413.HEIC"
+        },
+        {
+          "name": "S'mores: Crushed Biscuits, Mini Marshmellows & Nutella",
+          "price": 1050,
+          "photo": "IMG_3413.HEIC"
+        }
+      ]
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3413.HEIC",
+      "name": "Cr-pes-main-menu",
+      "caption": "main-menu"
+    }
+  ]
+}

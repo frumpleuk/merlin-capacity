@@ -1,0 +1,15 @@
+{
+  "id": 4239,
+  "name": "The Mutiny Bay Burger Kitchen",
+  "category": "Food & Drink > Fast Food",
+  "lat": 52.989644,
+  "lon": -1.889091,
+  "source": "attractions.io app bundle",
+  "area": "Mutiny Bay",
+  "menuUrl": null,
+  "appPassholderDiscount": true,
+  "diningPlans": [
+    "Ultimate"
+  ],
+  "appMissingSince": null
+}

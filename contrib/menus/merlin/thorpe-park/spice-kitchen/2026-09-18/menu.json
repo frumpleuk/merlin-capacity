@@ -1,0 +1,92 @@
+{
+  "date": "2026-09-18",
+  "sections": [
+    {
+      "name": "Spice Kitchen Street Food",
+      "items": [
+        {
+          "name": "Aromatic spiced chicken mezze bowl",
+          "price": 1200,
+          "photo": "IMG_3764.HEIC"
+        },
+        {
+          "name": "Indian spiced chicken wrap (in naan bread)",
+          "price": 1200,
+          "photo": "IMG_3764.HEIC"
+        },
+        {
+          "name": "Chicken Madras with rice",
+          "price": 1200,
+          "photo": "IMG_3764.HEIC"
+        },
+        {
+          "name": "Chicken Tikka Masala with rice",
+          "price": 1200,
+          "photo": "IMG_3764.HEIC"
+        },
+        {
+          "name": "Chicken Korma with rice",
+          "price": 1200,
+          "photo": "IMG_3764.HEIC"
+        },
+        {
+          "name": "Spicy or plain fried noodles",
+          "sizes": [
+            {
+              "label": "With chicken",
+              "price": 1200
+            },
+            {
+              "label": "With vegetables",
+              "price": 1200
+            }
+          ],
+          "photo": "IMG_3764.HEIC"
+        },
+        {
+          "name": "Meat or veg samosas (2)",
+          "price": 600,
+          "photo": "IMG_3764.HEIC"
+        },
+        {
+          "name": "Onion bhaji",
+          "price": 600,
+          "photo": "IMG_3764.HEIC"
+        },
+        {
+          "name": "Masala chips",
+          "price": 600,
+          "photo": "IMG_3764.HEIC"
+        },
+        {
+          "name": "Soft drinks",
+          "price": 300,
+          "photo": "IMG_3764.HEIC"
+        },
+        {
+          "name": "Bottled beer (330ml)",
+          "description": "4.5% ABV",
+          "price": 650,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3764.HEIC"
+        }
+      ]
+    }
+  ],
+  "offers": [],
+  "skipped": [
+    {
+      "photo": "IMG_3771.HEIC",
+      "reason": "neighbouring Bubble Tea Bar board, transcribed under bubble-tea-bar; its Spice Kitchen half repeats the same prices read from IMG_3764.HEIC"
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3764.HEIC",
+      "name": "Spice-Kitchen-main-menu",
+      "caption": "main-menu"
+    }
+  ]
+}

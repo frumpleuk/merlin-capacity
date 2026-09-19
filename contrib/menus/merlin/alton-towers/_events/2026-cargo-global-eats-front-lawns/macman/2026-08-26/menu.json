@@ -1,0 +1,115 @@
+{
+  "date": "2026-08-26",
+  "sections": [
+    {
+      "name": "Breakfast",
+      "note": "Handwritten bracket beside both lines: \"Until 11am\"",
+      "items": [
+        {
+          "name": "Breakfast Pot",
+          "description": "Natural yogurt, Granola topped with either honey or Jam",
+          "price": 650,
+          "tags": [
+            "v"
+          ],
+          "photo": "IMG_3421.HEIC"
+        },
+        {
+          "name": "Bacon Bap",
+          "price": 750,
+          "photo": "IMG_3421.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Mains - Lunch/Dinner",
+      "items": [
+        {
+          "name": "Classic Pot (MF)",
+          "description": "Classic mac topped with garlic and parmesan crumb, Chives",
+          "price": 1050,
+          "photo": "IMG_3421.HEIC"
+        },
+        {
+          "name": "Pesto Pot (MF)",
+          "description": "Mac with mozzarella pearls, chopped Sun-dried tomatoes and pesto, Chives (VE Pesto)",
+          "price": 1250,
+          "photo": "IMG_3421.HEIC"
+        },
+        {
+          "name": "Pepperoni Pot",
+          "description": "Mac with homemade marinara sauce, chopped pepperoni, garlic and parmesan crumb, chives",
+          "price": 1250,
+          "photo": "IMG_3421.HEIC"
+        },
+        {
+          "name": "Special (MF)",
+          "description": "Mac with truffle oil & crispy onions (handwritten on the board)",
+          "price": 1300,
+          "photo": "IMG_3421.HEIC"
+        },
+        {
+          "name": "Mac Loaded Fries",
+          "description": "Any pot mentioned above loaded on fries",
+          "price": null,
+          "unclear": "price box reads \"Add +£4\" rather than a standalone price",
+          "photo": "IMG_3421.HEIC"
+        },
+        {
+          "name": "BBQ-Seasoned Fries (MF)",
+          "price": 550,
+          "photo": "IMG_3421.HEIC"
+        },
+        {
+          "name": "Marinara Pasta Salad (MF) (NGCI)",
+          "price": 1050,
+          "photo": "IMG_3421.HEIC"
+        },
+        {
+          "name": "Mac Bites",
+          "description": "Panko rolled mac and cheese fried and served with a homemade sauce and gherkins",
+          "price": 750,
+          "tags": [
+            "v"
+          ],
+          "photo": "IMG_3421.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Children's and Family Meal Deals",
+      "items": [
+        {
+          "name": "Children's Pot",
+          "price": 700,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3421.HEIC"
+        },
+        {
+          "name": "Children's Meal Deal",
+          "description": "Small pot, fries and a small carton of juice",
+          "price": 1000,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3421.HEIC"
+        },
+        {
+          "name": "Family Meal Deal",
+          "description": "2 Adults pot with any topping and 2 Childrens pots, 2 portions of fries, 2 carton of juice and 2 soft drinks",
+          "price": 4500,
+          "photo": "IMG_3421.HEIC"
+        }
+      ]
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3421.HEIC",
+      "name": "MacMan-main-menu",
+      "caption": "main-menu"
+    }
+  ]
+}

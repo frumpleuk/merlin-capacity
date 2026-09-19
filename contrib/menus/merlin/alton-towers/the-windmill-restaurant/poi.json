@@ -1,0 +1,15 @@
+{
+  "id": 6576,
+  "name": "The Windmill Restaurant",
+  "category": "Food & Drink > Restaurants",
+  "lat": 52.9841,
+  "lon": -1.874307,
+  "source": "attractions.io app bundle",
+  "area": "CBeebies Land Hotel",
+  "menuUrl": null,
+  "appPassholderDiscount": null,
+  "diningPlans": [
+    "Ultimate"
+  ],
+  "appMissingSince": null
+}

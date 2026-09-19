@@ -1,0 +1,15 @@
+{
+  "id": 18577,
+  "name": "GENERATOR Refuelling Company",
+  "category": "Food & Drink > Snacks",
+  "lat": 52.986829,
+  "lon": -1.884459,
+  "source": "attractions.io app bundle",
+  "area": "Forbidden Valley",
+  "menuUrl": null,
+  "appPassholderDiscount": true,
+  "diningPlans": [
+    "Ultimate"
+  ],
+  "appMissingSince": null
+}

@@ -4,11 +4,13 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "prebuild": "node scripts/menus/build.mjs",
     "build": "vite build",
     "dev:api": "wrangler dev",
     "dev:web": "vite",
     "preview": "npm run build && wrangler dev",
     "deploy": "npm run build && wrangler deploy",
+    "postdeploy": "node scripts/menus/publish.mjs",
     "typecheck": "tsc --noEmit && tsc -p frontend/tsconfig.json --noEmit",
     "db:migrate": "wrangler d1 migrations apply merlin-capacity --remote",
     "db:migrate:local": "wrangler d1 migrations apply merlin-capacity --local"

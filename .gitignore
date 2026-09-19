@@ -6,3 +6,14 @@ dist/
 .DS_Store
 .bpb
 .poll
+contrib/menus/.ingest-plan.json
+
+# Menu photos. The camera originals are evidence only and stay out of the repo;
+# the small, descriptively named web/*.jpg copies (scripts/menus/optimise.mjs)
+# ARE committed and get uploaded to R2, as do the *.json files.
+contrib/menus/**/*.[Hh][Ee][Ii][Cc]
+contrib/menus/**/*.[Jj][Pp][Gg]
+contrib/menus/**/*.[Jj][Pp][Ee][Gg]
+contrib/menus/**/*.[Pp][Nn][Gg]
+contrib/menus/**/*.[Mm][PpOo][4Vv]
+!contrib/menus/**/web/*.jpg

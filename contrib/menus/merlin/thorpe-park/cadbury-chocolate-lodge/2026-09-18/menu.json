@@ -2,24 +2,167 @@
   "date": "2026-09-18",
   "sections": [
     {
-      "name": "Carte D'Or Lodge",
-      "note": "Board is signed \"Carte D'Or Lodge\", not Cadbury Chocolate Lodge",
+      "name": "Ice cream",
+      "note": "Tub or cone. Priced by the scoop, any flavour; kcal is per scoop.",
       "items": [
         {
-          "name": "Ice Cream",
-          "description": "Tub or cone",
+          "name": "Vanilla",
+          "description": "Made with Madagascan vanilla",
           "sizes": [
             {
-              "label": "1 Scoop",
+              "label": "1 scoop",
               "price": 550
             },
             {
-              "label": "2 Scoops",
+              "label": "2 scoops",
               "price": 650
             }
           ],
+          "kcal": 96,
           "photo": "IMG_3772.HEIC"
         },
+        {
+          "name": "Triple Chocolate",
+          "sizes": [
+            {
+              "label": "1 scoop",
+              "price": 550
+            },
+            {
+              "label": "2 scoops",
+              "price": 650
+            }
+          ],
+          "kcal": 125,
+          "photo": "IMG_3772.HEIC"
+        },
+        {
+          "name": "Strawberry",
+          "description": "39% strawberries",
+          "sizes": [
+            {
+              "label": "1 scoop",
+              "price": 550
+            },
+            {
+              "label": "2 scoops",
+              "price": 650
+            }
+          ],
+          "kcal": 90,
+          "photo": "IMG_3772.HEIC"
+        },
+        {
+          "name": "Mint Chocolate",
+          "sizes": [
+            {
+              "label": "1 scoop",
+              "price": 550
+            },
+            {
+              "label": "2 scoops",
+              "price": 650
+            }
+          ],
+          "kcal": 126,
+          "photo": "IMG_3772.HEIC"
+        },
+        {
+          "name": "Caramel",
+          "sizes": [
+            {
+              "label": "1 scoop",
+              "price": 550
+            },
+            {
+              "label": "2 scoops",
+              "price": 650
+            }
+          ],
+          "kcal": 107,
+          "photo": "IMG_3772.HEIC"
+        },
+        {
+          "name": "Blue Candyfloss",
+          "sizes": [
+            {
+              "label": "1 scoop",
+              "price": 550
+            },
+            {
+              "label": "2 scoops",
+              "price": 650
+            }
+          ],
+          "kcal": 95,
+          "photo": "IMG_3772.HEIC"
+        },
+        {
+          "name": "Marshmallow",
+          "sizes": [
+            {
+              "label": "1 scoop",
+              "price": 550
+            },
+            {
+              "label": "2 scoops",
+              "price": 650
+            }
+          ],
+          "kcal": 93,
+          "photo": "IMG_3772.HEIC"
+        },
+        {
+          "name": "Banana Split",
+          "sizes": [
+            {
+              "label": "1 scoop",
+              "price": 550
+            },
+            {
+              "label": "2 scoops",
+              "price": 650
+            }
+          ],
+          "kcal": 132,
+          "photo": "IMG_3772.HEIC"
+        },
+        {
+          "name": "Solero",
+          "sizes": [
+            {
+              "label": "1 scoop",
+              "price": 550
+            },
+            {
+              "label": "2 scoops",
+              "price": 650
+            }
+          ],
+          "kcal": 99,
+          "photo": "IMG_3772.HEIC"
+        },
+        {
+          "name": "Twister",
+          "description": "New",
+          "sizes": [
+            {
+              "label": "1 scoop",
+              "price": 550
+            },
+            {
+              "label": "2 scoops",
+              "price": 650
+            }
+          ],
+          "kcal": 71,
+          "photo": "IMG_3772.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Toppings and sauces",
+      "items": [
         {
           "name": "Additional Toppings",
           "description": "Oreo 68kcal, Biscoff 106kcal, Sprinkles 30kcal, Marshmallow 48kcal",
@@ -30,85 +173,6 @@
           "name": "Additional Sauces",
           "description": "Bubblegum 92kcal, Salted Caramel 102kcal, Mint 90kcal, Milk Choc 174kcal, White Choc 181kcal, Strawberry 91kcal",
           "price": 75,
-          "photo": "IMG_3772.HEIC"
-        }
-      ]
-    },
-    {
-      "name": "Flavours",
-      "note": "Flavour tiles across the top of the board; kcal shown is per 1 scoop, no separate price",
-      "items": [
-        {
-          "name": "Vanilla",
-          "description": "Made with Madagascan vanilla",
-          "price": null,
-          "kcal": 96,
-          "unclear": "flavour tile is unpriced; price comes from the scoop count",
-          "photo": "IMG_3772.HEIC"
-        },
-        {
-          "name": "Triple Chocolate",
-          "price": null,
-          "kcal": 125,
-          "unclear": "flavour tile is unpriced; price comes from the scoop count",
-          "photo": "IMG_3772.HEIC"
-        },
-        {
-          "name": "Strawberry",
-          "description": "39% strawberries",
-          "price": null,
-          "kcal": 90,
-          "unclear": "flavour tile is unpriced; price comes from the scoop count",
-          "photo": "IMG_3772.HEIC"
-        },
-        {
-          "name": "Mint Chocolate",
-          "price": null,
-          "kcal": 126,
-          "unclear": "flavour tile is unpriced; price comes from the scoop count",
-          "photo": "IMG_3772.HEIC"
-        },
-        {
-          "name": "Caramel",
-          "price": null,
-          "kcal": 107,
-          "unclear": "flavour tile is unpriced; price comes from the scoop count",
-          "photo": "IMG_3772.HEIC"
-        },
-        {
-          "name": "Blue Candyfloss",
-          "price": null,
-          "kcal": 95,
-          "unclear": "flavour tile is unpriced; price comes from the scoop count",
-          "photo": "IMG_3772.HEIC"
-        },
-        {
-          "name": "Marshmallow",
-          "price": null,
-          "kcal": 93,
-          "unclear": "flavour tile is unpriced; price comes from the scoop count",
-          "photo": "IMG_3772.HEIC"
-        },
-        {
-          "name": "Banana Split",
-          "price": null,
-          "kcal": 132,
-          "unclear": "flavour tile is unpriced; price comes from the scoop count",
-          "photo": "IMG_3772.HEIC"
-        },
-        {
-          "name": "Solero",
-          "price": null,
-          "kcal": 99,
-          "unclear": "flavour tile is unpriced; price comes from the scoop count",
-          "photo": "IMG_3772.HEIC"
-        },
-        {
-          "name": "Twister",
-          "description": "New",
-          "price": null,
-          "kcal": 71,
-          "unclear": "flavour tile is unpriced; price comes from the scoop count",
           "photo": "IMG_3772.HEIC"
         }
       ]

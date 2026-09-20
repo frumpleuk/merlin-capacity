@@ -1,27 +1,27 @@
 {
   "alton_towers": {
     "venues": 33,
-    "priced": 24,
+    "priced": 19,
     "water": 6
   },
   "thorpe_park": {
-    "venues": 36,
-    "priced": 14,
+    "venues": 35,
+    "priced": 11,
     "water": 5
   },
   "legoland": {
-    "venues": 35,
-    "priced": 23,
+    "venues": 20,
+    "priced": 0,
     "water": 5
   },
   "chessington": {
-    "venues": 23,
-    "priced": 20,
+    "venues": 20,
+    "priced": 16,
     "water": 5
   },
   "paultons": {
-    "venues": 20,
-    "priced": 18,
+    "venues": 19,
+    "priced": 15,
     "water": 0
   },
   "blackpool": {
@@ -31,7 +31,7 @@
   },
   "flamingoland": {
     "venues": 25,
-    "priced": 3,
+    "priced": 1,
     "water": 0
   }
 }

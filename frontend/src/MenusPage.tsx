@@ -780,7 +780,7 @@ export function MenusPage() {
   const withPrices = shown.filter((v) => v.from != null).length;
   // Where this park's menus came from decides what this page may claim: not
   // every park has photos of ours, a menu the park publishes, or anything from
-  // Theme Park James.
+  // a credited third party.
   const sources = { ours: false, official: false, unpriced: false, credited: [] as string[] };
   for (const v of [...current, ...gone, ...events.flatMap((e) => e.vendors)]) {
     for (const m of v.menus) {
@@ -984,16 +984,6 @@ export function MenusPage() {
             </section>
           )}
 
-          {sources.credited.includes("Theme Park James") && (
-            <p className="fd-thanks">
-              The older menus here were collected by{" "}
-              <a href="https://www.themeparkjames.co.uk/" target="_blank" rel="noreferrer noopener">
-                Theme Park James
-              </a>
-              , who photographs and writes up park food across the UK, going back years. His pages carry
-              the write-up, the photos and the detail this page doesn't, so go and read them.
-            </p>
-          )}
         </div>
       </div>
     </main>

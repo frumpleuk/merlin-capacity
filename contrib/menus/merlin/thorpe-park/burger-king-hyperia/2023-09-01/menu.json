@@ -1,0 +1,211 @@
+{
+  "date": "2023-09-01",
+  "approxDate": true,
+  "source": {
+    "name": "Theme Park James",
+    "url": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/thorpe-park/food-and-drink/burger-king-1/menu/",
+    "venueUrl": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/thorpe-park/food-and-drink/burger-king-1/",
+    "stated": "September 2023",
+    "menu": "2023 Menu"
+  },
+  "sections": [
+    {
+      "name": "Flame-Grilled Burgers",
+      "items": [
+        {
+          "name": "Whopper",
+          "price": 699
+        },
+        {
+          "name": "Double Whopper",
+          "price": 849
+        },
+        {
+          "name": "Bacon Double Cheese XL",
+          "price": 849
+        },
+        {
+          "name": "Bacon Double Cheeseburger",
+          "price": 599
+        }
+      ]
+    },
+    {
+      "name": "Chicken",
+      "items": [
+        {
+          "name": "Chicken Royale",
+          "price": 699
+        },
+        {
+          "name": "Bacon & Cheese Chicken Royale",
+          "price": 849
+        }
+      ]
+    },
+    {
+      "name": "Plant-Based",
+      "items": [
+        {
+          "name": "Plant-based Whopper",
+          "price": 699
+        },
+        {
+          "name": "Vegan Royale",
+          "price": 699,
+          "tags": [
+            "vg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Beverages",
+      "items": [
+        {
+          "name": "Soft Drinks",
+          "price": 289
+        },
+        {
+          "name": "Strawberry Fanta Frozen",
+          "price": 379
+        },
+        {
+          "name": "Electric Lemon Fanta Frozen",
+          "price": 379
+        },
+        {
+          "name": "Capri-Sun Orange",
+          "price": 249,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "Capri-Sun Blackcurrant and Apple",
+          "price": 229,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "Bottled Water",
+          "price": 249,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "Latte",
+          "price": 299
+        },
+        {
+          "name": "Flat White",
+          "price": 299
+        },
+        {
+          "name": "Cappuccino",
+          "price": 299
+        },
+        {
+          "name": "Mocha",
+          "price": 289
+        },
+        {
+          "name": "Espresso",
+          "price": 199
+        },
+        {
+          "name": "Americano",
+          "price": 249
+        },
+        {
+          "name": "Hot Chocolate",
+          "price": 299
+        },
+        {
+          "name": "Tea",
+          "price": 249
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        {
+          "name": "Chicken Nuggets",
+          "price": 520
+        },
+        {
+          "name": "Vegan Nuggets",
+          "price": 600,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "Fries",
+          "price": 269,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "Chilli Heatwave Chicken Fries",
+          "price": 520
+        },
+        {
+          "name": "Chilli Cheese Bites",
+          "price": 330
+        },
+        {
+          "name": "Onion Rings",
+          "price": 220
+        }
+      ]
+    },
+    {
+      "name": "King Jr Meal",
+      "items": [
+        {
+          "name": "King Jr Meal",
+          "description": "Includes Main (chicken nuggets, vegan nuggets, hamburger, cheeseburger), Side (apple slices, small fries), Drink (Capri-Sun Orange, Capri-Sun Blackcurrant and Apple, Bottled Water) and Activity",
+          "price": 449
+        }
+      ]
+    },
+    {
+      "name": "Have It Your Way",
+      "items": [
+        {
+          "name": "Add an extra Whopper Patty",
+          "price": 150
+        },
+        {
+          "name": "Add an extra Hamburger Patty",
+          "price": 100
+        },
+        {
+          "name": "Add an extra Chicken Royale Patty",
+          "price": 200
+        },
+        {
+          "name": "Add an extra Crispy Chicken Patty",
+          "price": 150
+        },
+        {
+          "name": "Add Bacon",
+          "price": 100
+        },
+        {
+          "name": "Add Cheese",
+          "price": 50
+        },
+        {
+          "name": "Add a Dip",
+          "price": 30
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "date": "2022-06-01",
+  "approxDate": true,
+  "source": {
+    "name": "Theme Park James",
+    "url": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/legoland-windsor/food-and-drink/marina-hot-dogs/past-menus/",
+    "venueUrl": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/legoland-windsor/food-and-drink/marina-hot-dogs/",
+    "stated": "June 2022",
+    "menu": "2022 Menu"
+  },
+  "sections": [
+    {
+      "name": "Hot Dogs",
+      "items": [
+        {
+          "name": "Hot Dog + Drink",
+          "price": 750
+        },
+        {
+          "name": "Vegan Hot Dog + Drink",
+          "price": 750,
+          "tags": [
+            "vg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Snacks",
+      "items": [
+        {
+          "name": "Sweet Popcorn",
+          "price": 400
+        },
+        {
+          "name": "Candy Floss",
+          "price": 400
+        },
+        {
+          "name": "Pringles",
+          "price": 200
+        }
+      ]
+    },
+    {
+      "name": "Ice Cream",
+      "items": [
+        {
+          "name": "Magnum",
+          "description": "Classic, White or Vegan Classic",
+          "price": 300
+        },
+        {
+          "name": "Twister",
+          "price": 225
+        },
+        {
+          "name": "Calippo",
+          "description": "Cola or Orange",
+          "price": 225
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Coke Zero",
+          "price": 275
+        },
+        {
+          "name": "Diet Coke",
+          "price": 275
+        },
+        {
+          "name": "Fanta",
+          "price": 275
+        },
+        {
+          "name": "Sprite Zero",
+          "price": 275
+        },
+        {
+          "name": "Coke Original",
+          "price": 265
+        },
+        {
+          "name": "SmartWater",
+          "price": 200
+        },
+        {
+          "name": "Slush Vessel",
+          "price": 450
+        },
+        {
+          "name": "Slush Vessel Refill",
+          "price": 175
+        },
+        {
+          "name": "Slush 16oz Cup",
+          "price": 375
+        },
+        {
+          "name": "Hot Chocolate",
+          "price": 330
+        },
+        {
+          "name": "Cappuccino",
+          "price": 310
+        },
+        {
+          "name": "Latte",
+          "price": 310
+        },
+        {
+          "name": "Americano",
+          "price": 280
+        },
+        {
+          "name": "Tea",
+          "price": 220
+        },
+        {
+          "name": "Espresso",
+          "price": 220
+        }
+      ]
+    }
+  ]
+}

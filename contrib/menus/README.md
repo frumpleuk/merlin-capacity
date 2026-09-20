@@ -124,6 +124,32 @@ on disk as evidence. `photos` is written by `optimise.mjs`, not by hand: one
 - Copy text as printed, fixing only capitalisation. Don't invent descriptions
   or fill in prices from elsewhere.
 
+### Menus from someone else
+
+Not every menu is ours. `scripts/menus/import-tpj.mjs` reads the menus Theme
+Park James publishes, including past ones going back years, and writes them as
+ordinary dated menus with a `source` block:
+
+```json
+"source": {
+  "name": "Theme Park James",
+  "url": "https://www.themeparkjames.co.uk/.../menu/",
+  "stated": "November 2023",
+  "menu": "Lunch Menu 2023"
+}
+```
+
+A sourced menu has no photos, so its items cite none, and `approxDate: true`
+says the day is a stand-in for a month or a year he gave.
+
+Prices are facts, but collecting them is his work, and his pages carry the
+write-up, the photos and the context that this site doesn't. So the credit is
+not decoration: every sourced menu names him above its prices and links to his
+write-up (`source.venueUrl`, the page his menu tab hangs off), the Food tab
+carries a standing credit to his site, and the aim is that anyone who finds a
+price here goes and reads him. Don't remove either link, and don't copy his
+prose.
+
 ### Merlin Annual Pass discount
 
 Whether a pass gets money off is one of the most useful things on the page, so

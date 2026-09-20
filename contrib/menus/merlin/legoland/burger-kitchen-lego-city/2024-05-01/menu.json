@@ -1,0 +1,60 @@
+{
+  "date": "2024-05-01",
+  "approxDate": true,
+  "source": {
+    "name": "Theme Park James",
+    "url": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/legoland-windsor/food-and-drink/burger-kitchen-lego-city/menu/",
+    "venueUrl": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/legoland-windsor/food-and-drink/burger-kitchen-lego-city/",
+    "stated": "May 2024",
+    "menu": "2024 Menu"
+  },
+  "sections": [
+    {
+      "name": "Burger Kitchen Menu",
+      "items": [
+        {
+          "name": "Tortilla Burger",
+          "description": "Gluten free wrap, 100% beef burger, ketchup, mustard, gherkins",
+          "price": 1375
+        },
+        {
+          "name": "add Cheese",
+          "price": 75
+        },
+        {
+          "name": "Lego Fries",
+          "price": 475
+        }
+      ]
+    },
+    {
+      "name": "Soft Drinks",
+      "items": [
+        {
+          "name": "Sprite Zero",
+          "price": 325
+        },
+        {
+          "name": "Fanta Orange Zero",
+          "price": 325
+        },
+        {
+          "name": "Coke Zero",
+          "price": 325
+        },
+        {
+          "name": "Diet Coke",
+          "price": 325
+        },
+        {
+          "name": "Coca Cola",
+          "price": 325
+        },
+        {
+          "name": "Smartwater",
+          "price": 275
+        }
+      ]
+    }
+  ]
+}

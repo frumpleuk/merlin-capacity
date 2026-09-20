@@ -1,0 +1,152 @@
+{
+  "date": "2024-04-01",
+  "approxDate": true,
+  "source": {
+    "name": "Theme Park James",
+    "url": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/chessington-world-of-adventures/food-and-drink/tiger-treats/menu/",
+    "venueUrl": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/chessington-world-of-adventures/food-and-drink/tiger-treats/",
+    "stated": "April 2024",
+    "menu": "2024 Menu"
+  },
+  "sections": [
+    {
+      "name": "Churros",
+      "items": [
+        {
+          "name": "5 Churros",
+          "price": 540
+        },
+        {
+          "name": "Ultimate Churros",
+          "description": "with a choice of ice cream & sauce",
+          "price": 655
+        },
+        {
+          "name": "Sauce Pot",
+          "description": "Chocolate or strawberry",
+          "price": 60
+        }
+      ]
+    },
+    {
+      "name": "served in a tub",
+      "items": [
+        {
+          "name": "Carte Dor 1 scoop",
+          "description": "Chocolate, strawberry or vanilla",
+          "price": 340
+        },
+        {
+          "name": "Carte Dor 2 scoop",
+          "description": "Chocolate, strawberry or vanilla",
+          "price": 420
+        }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        {
+          "name": "Diet Coke",
+          "price": 385
+        },
+        {
+          "name": "Coke Zero",
+          "price": 385
+        },
+        {
+          "name": "Fanta",
+          "price": 385
+        },
+        {
+          "name": "Sprite Zero",
+          "price": 385
+        },
+        {
+          "name": "Capri-Sun 330ml",
+          "description": "Orange",
+          "price": 200
+        },
+        {
+          "name": "Oasis 500ml",
+          "description": "Citrus Fruit/Summer Fruit",
+          "price": 295
+        },
+        {
+          "name": "SmartWater 600ml",
+          "price": 250
+        },
+        {
+          "name": "Slush 16oz",
+          "price": 450
+        },
+        {
+          "name": "Slush Half Yard",
+          "price": 650
+        },
+        {
+          "name": "Slush Refill",
+          "price": 300
+        }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        {
+          "name": "Flat White",
+          "price": 395
+        },
+        {
+          "name": "Americano",
+          "price": 380
+        },
+        {
+          "name": "Latte",
+          "price": 395
+        },
+        {
+          "name": "Cappuccino",
+          "price": 395
+        },
+        {
+          "name": "Mocha",
+          "price": 400
+        },
+        {
+          "name": "Hot Chocolate",
+          "price": 395
+        },
+        {
+          "name": "Tea",
+          "description": "Green /Speciality/Earl Grey",
+          "price": 290
+        },
+        {
+          "name": "Espresso",
+          "price": 310
+        },
+        {
+          "name": "Espresso shot",
+          "price": 60
+        },
+        {
+          "name": "Syrup shot",
+          "price": 60
+        },
+        {
+          "name": "Whipped cream",
+          "price": 60
+        },
+        {
+          "name": "Marshmallows",
+          "price": 70
+        },
+        {
+          "name": "Whipped cream & marshmallows",
+          "price": 70
+        }
+      ]
+    }
+  ]
+}

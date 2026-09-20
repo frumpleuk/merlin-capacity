@@ -1,0 +1,42 @@
+{
+  "date": "2024-05-01",
+  "approxDate": true,
+  "source": {
+    "name": "Theme Park James",
+    "url": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/legoland-windsor/food-and-drink/heartlake-city-doughnuts/menu/",
+    "venueUrl": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/legoland-windsor/food-and-drink/heartlake-city-doughnuts/",
+    "stated": "May 2024",
+    "menu": "2024 Menu"
+  },
+  "sections": [
+    {
+      "name": "Heartlake City Doughnuts",
+      "items": [
+        {
+          "name": "1 x Doughnut",
+          "price": 250
+        },
+        {
+          "name": "5 x Doughnuts",
+          "price": 800
+        },
+        {
+          "name": "10 x Doughnuts",
+          "price": 1000
+        },
+        {
+          "name": "Butterscotch Sauce Pot",
+          "price": 75
+        },
+        {
+          "name": "Chocolate Sauce Pot",
+          "price": 75
+        },
+        {
+          "name": "Strawberry Sauce Pot",
+          "price": 75
+        }
+      ]
+    }
+  ]
+}

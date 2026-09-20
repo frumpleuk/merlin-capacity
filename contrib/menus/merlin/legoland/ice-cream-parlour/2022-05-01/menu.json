@@ -1,0 +1,103 @@
+{
+  "date": "2022-05-01",
+  "approxDate": true,
+  "source": {
+    "name": "Theme Park James",
+    "url": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/legoland-windsor/food-and-drink/ice-cream-parlour/past-menus/",
+    "venueUrl": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/legoland-windsor/food-and-drink/ice-cream-parlour/",
+    "stated": "May 2022",
+    "menu": "2022 Menu"
+  },
+  "sections": [
+    {
+      "name": "Ice Creams",
+      "items": [
+        {
+          "name": "Ice Cream",
+          "price": 385
+        },
+        {
+          "name": "Ice Cream plus 1 topping",
+          "description": "Choose from: blue raspberry, bubblegum, butterscotch, strawberry, caramel or chocolate",
+          "price": 395
+        },
+        {
+          "name": "Ice Cream plus 2 toppings",
+          "description": "Choose from: blue raspberry, bubblegum, butterscotch, strawberry, caramel or chocolate",
+          "price": 405
+        },
+        {
+          "name": "Flake",
+          "price": 50
+        }
+      ]
+    },
+    {
+      "name": "Snacks",
+      "items": [
+        {
+          "name": "Candy Floss",
+          "price": 400
+        },
+        {
+          "name": "Popcorn Tub",
+          "price": 400
+        }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        {
+          "name": "Coke Zero",
+          "price": 275
+        },
+        {
+          "name": "Diet Coke",
+          "price": 275
+        },
+        {
+          "name": "Sprite",
+          "price": 275
+        },
+        {
+          "name": "Fanta",
+          "price": 275
+        }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        {
+          "name": "Mocha",
+          "price": 330
+        },
+        {
+          "name": "Hot Chocolate",
+          "price": 330
+        },
+        {
+          "name": "Cappuccino",
+          "price": 310
+        },
+        {
+          "name": "Latte",
+          "price": 310
+        },
+        {
+          "name": "Americano",
+          "price": 280
+        },
+        {
+          "name": "Tea",
+          "price": 220
+        },
+        {
+          "name": "Espresso",
+          "price": 220
+        }
+      ]
+    }
+  ]
+}

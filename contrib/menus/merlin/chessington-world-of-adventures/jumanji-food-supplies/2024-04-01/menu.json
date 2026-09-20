@@ -1,0 +1,100 @@
+{
+  "date": "2024-04-01",
+  "approxDate": true,
+  "source": {
+    "name": "Theme Park James",
+    "url": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/chessington-world-of-adventures/food-and-drink/jumanji-food-supplies-co/menu/",
+    "venueUrl": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/chessington-world-of-adventures/food-and-drink/jumanji-food-supplies-co/",
+    "stated": "April 2024",
+    "menu": "2024 Menu"
+  },
+  "sections": [
+    {
+      "name": "The Jumanji Food Supplies Co.",
+      "items": [
+        {
+          "name": "Jungle Stampede Cupcakes",
+          "price": 450
+        }
+      ]
+    },
+    {
+      "name": "Soft Drinks",
+      "items": [
+        {
+          "name": "Coca-Cola",
+          "price": 315
+        },
+        {
+          "name": "Coke Zero",
+          "price": 300
+        },
+        {
+          "name": "Sprite Zero",
+          "price": 300
+        },
+        {
+          "name": "Fanta Zero",
+          "price": 300
+        },
+        {
+          "name": "Capri Sun Orange (330ml)",
+          "price": 225
+        },
+        {
+          "name": "Smart Water (600ml)",
+          "price": 325
+        }
+      ]
+    },
+    {
+      "name": "Costa Coffee",
+      "items": [
+        {
+          "name": "Cappuccino",
+          "price": 425
+        },
+        {
+          "name": "Espresso",
+          "price": 350
+        },
+        {
+          "name": "Flat White",
+          "price": 425
+        },
+        {
+          "name": "Hot Chocolate",
+          "price": 425
+        },
+        {
+          "name": "Latte",
+          "price": 450
+        },
+        {
+          "name": "Mocha",
+          "price": 450
+        },
+        {
+          "name": "Everyday Tea",
+          "price": 325
+        },
+        {
+          "name": "Extra Espresso Shot",
+          "price": 50
+        },
+        {
+          "name": "Caramel Syrup",
+          "price": 75
+        },
+        {
+          "name": "Hazelnut Syrup",
+          "price": 75
+        },
+        {
+          "name": "Vanilla Syrup",
+          "price": 75
+        }
+      ]
+    }
+  ]
+}

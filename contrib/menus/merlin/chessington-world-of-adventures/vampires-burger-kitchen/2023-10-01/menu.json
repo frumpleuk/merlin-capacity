@@ -1,0 +1,76 @@
+{
+  "date": "2023-10-01",
+  "approxDate": true,
+  "source": {
+    "name": "Theme Park James",
+    "url": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/chessington-world-of-adventures/food-and-drink/vampires-burger-kitchen/menu/",
+    "venueUrl": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/chessington-world-of-adventures/food-and-drink/vampires-burger-kitchen/",
+    "stated": "October 2023",
+    "menu": "Main 2023 Season Menu"
+  },
+  "sections": [
+    {
+      "name": "Vampire's Burger Kitchen Menu",
+      "items": [
+        {
+          "name": "Double Cheeseburger",
+          "description": "with fries and a drink",
+          "price": 1300
+        },
+        {
+          "name": "Bacon Cheeseburger",
+          "description": "with fries and a drink",
+          "price": 1225
+        },
+        {
+          "name": "Premium Chicken Tenders",
+          "description": "with fries and a drink",
+          "price": 1250
+        },
+        {
+          "name": "BBQ Chicken Sandwich",
+          "description": "with fries and a drink",
+          "price": 1275
+        },
+        {
+          "name": "Cheeseburger",
+          "description": "with fries and a drink",
+          "price": 1100
+        },
+        {
+          "name": "Plant Burger",
+          "description": "with fries and a drink",
+          "price": 1250,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "Garden Salad",
+          "description": "served with a drink",
+          "price": 700
+        },
+        {
+          "name": "Garden Salad with Chicken",
+          "description": "served with a drink",
+          "price": 1000
+        }
+      ]
+    },
+    {
+      "name": "Kids Meals",
+      "items": [
+        {
+          "name": "Cheeseburger",
+          "description": "Served with fries & Capri-Sun or water",
+          "price": 690
+        },
+        {
+          "name": "Chicken Tenders",
+          "description": "Served with fries & Capri-Sun or water",
+          "price": 690
+        }
+      ]
+    }
+  ]
+}

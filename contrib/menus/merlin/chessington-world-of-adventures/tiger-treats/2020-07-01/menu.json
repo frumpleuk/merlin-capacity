@@ -1,0 +1,115 @@
+{
+  "date": "2020-07-01",
+  "approxDate": true,
+  "source": {
+    "name": "Theme Park James",
+    "url": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/chessington-world-of-adventures/food-and-drink/tiger-treats/past-menus/",
+    "venueUrl": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/chessington-world-of-adventures/food-and-drink/tiger-treats/",
+    "stated": "July 2020",
+    "menu": "2020 Menu"
+  },
+  "sections": [
+    {
+      "name": "Donuts",
+      "items": [
+        {
+          "name": "1 Donut",
+          "price": 195
+        },
+        {
+          "name": "5 Donuts",
+          "price": 675
+        },
+        {
+          "name": "10 Donuts",
+          "price": 775
+        }
+      ]
+    },
+    {
+      "name": "Churros",
+      "items": [
+        {
+          "name": "5 Churros",
+          "price": 450
+        },
+        {
+          "name": "5 Churros with Soft Serve Ice Cream",
+          "price": 495
+        },
+        {
+          "name": "The Ultimate Churros",
+          "description": "Ice cream, topping and sauce",
+          "price": 550
+        }
+      ]
+    },
+    {
+      "name": "served in a tub",
+      "items": [
+        {
+          "name": "Cornetto Soft with a Flake",
+          "price": 280
+        }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        {
+          "name": "Coke Zero",
+          "price": 300
+        },
+        {
+          "name": "Diet Coke",
+          "price": 300
+        },
+        {
+          "name": "Sprite Zero",
+          "price": 300
+        },
+        {
+          "name": "Fanta",
+          "price": 300
+        },
+        {
+          "name": "Water",
+          "price": 265
+        },
+        {
+          "name": "StarSlush",
+          "price": 375
+        }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        {
+          "name": "Coffee",
+          "price": 275
+        },
+        {
+          "name": "Cappuccino",
+          "price": 300
+        },
+        {
+          "name": "Latte",
+          "price": 300
+        },
+        {
+          "name": "Mocha",
+          "price": 320
+        },
+        {
+          "name": "Hot Chocolate",
+          "price": 300
+        },
+        {
+          "name": "Tea",
+          "price": 225
+        }
+      ]
+    }
+  ]
+}

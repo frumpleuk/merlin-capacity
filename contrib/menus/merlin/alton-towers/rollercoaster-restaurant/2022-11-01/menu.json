@@ -1,0 +1,537 @@
+{
+  "date": "2022-11-01",
+  "approxDate": true,
+  "source": {
+    "name": "Theme Park James",
+    "url": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/alton-towers/food-and-drink/rollercoaster-restaurant/past-menus/",
+    "venueUrl": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/alton-towers/food-and-drink/rollercoaster-restaurant/",
+    "stated": "November 2022",
+    "menu": "Lunch Menu 2022"
+  },
+  "sections": [
+    {
+      "name": "RCR Favourites",
+      "items": [
+        {
+          "name": "Loaded Goujons",
+          "description": "Crispy coated chicken strips tossed in BBQ and honey glaze or coconut masala curry sauce. Topped with corriander and red chillies, served with rustic cut chips.",
+          "price": 1595
+        },
+        {
+          "name": "Buffalo Wings",
+          "description": "Hot Buffalo wings topped with red chillies and corriander. Served with Nacho chips topped with cheese sauce, salsa, jalapenos and red chillies.",
+          "price": 1595
+        },
+        {
+          "name": "Scampi",
+          "description": "8 pieces of scampi served with rustic cut chips, a slice of lemon and tartar sauce.",
+          "price": 1395
+        },
+        {
+          "name": "Vegan Donner Wrap",
+          "description": "Vegan Donner served with shredded lettuce, cucumber, vegan garlic mayonnaise, naan bread and rustic cut chips.",
+          "price": 1395,
+          "tags": [
+            "vg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Burgers",
+      "items": [
+        {
+          "name": "Breaded Chicken Burger",
+          "description": "Panko coated chicken burger served with baconnaise and mixed leaf lettuce in a glazed flourcake bun and rustic cut chips.",
+          "price": 1395
+        },
+        {
+          "name": "Chicken and Beef Stack",
+          "description": "6oz beef burger stacked with crispy coated chicken strips, topped with cheese sauce and red chillies served in a seeded pretzel bun with rustic cut chips.",
+          "price": 1695
+        },
+        {
+          "name": "Wickerman Wrap",
+          "description": "Crispy chicken with mixed leaves and buffalo sauce. Served with cajun nandos topped with cheese sauce and salsa.",
+          "price": 1395
+        },
+        {
+          "name": "Cheese Burger",
+          "description": "6oz beef burger topped with mild cheddar cheese, salsa and jalapenos, served in a flour cake bun. Served with rustic cut chips.",
+          "price": 1395
+        }
+      ]
+    },
+    {
+      "name": "Vegetarian and Vegan",
+      "items": [
+        {
+          "name": "Tomato Pasta",
+          "description": "Penne pasta in tomato sauce, topped with cherry tomatoes and rocket. Served with garlic ciabatta.",
+          "price": 1395,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Onion Bhaji Naan",
+          "description": "Onion bhaji with a halloumi disk served in a naan, with mixed leaves, roasted mediterranean vegetables served with a mint yoghurt dressing and house salad.",
+          "price": 1395,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "No-Meatball Sub Roll",
+          "description": "Vegan meatballs topped with a cheese and Italian tomato and herb sauce, served with roquette in a toasted ciabatta with a side of rustic cut chips. Please specify if you want to make this meal vegan.",
+          "price": 1395,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Jackfruit Burger",
+          "description": "Jackfruit burger served on roquette and red onion, topped with vegan garlic mayonnaise in a seeded pretzel bun. Served with rustic cut chips.",
+          "price": 1550,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "Vegan Donner Wrap",
+          "description": "Vegan Donner served with shredded lettuce, cucumber, vegan garlic mayonnaise, naan bread and rustic cut chips.",
+          "price": 1495,
+          "tags": [
+            "vg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        {
+          "name": "Rustic skin on chips",
+          "price": 375,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Onion rings",
+          "price": 375,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Mac and Cheese Bites",
+          "price": 375
+        },
+        {
+          "name": "Garlic ciabatta",
+          "price": 375,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Jalapeno bites",
+          "price": 375
+        },
+        {
+          "name": "Cheese-O's",
+          "price": 375
+        }
+      ]
+    },
+    {
+      "name": "Kids",
+      "items": [
+        {
+          "name": "Tomato Pasta",
+          "price": 850,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Popcorn Chicken",
+          "price": 850
+        },
+        {
+          "name": "Cheeseburger",
+          "price": 850
+        },
+        {
+          "name": "Chicken Breast Salad",
+          "price": 850
+        }
+      ]
+    },
+    {
+      "name": "Wine",
+      "items": [
+        {
+          "name": "Pannello Sauvignon Blanc",
+          "description": "13% ABV",
+          "price": 1895
+        },
+        {
+          "name": "Between Thorns Chardonnay",
+          "description": "13% ABV",
+          "price": 1995
+        },
+        {
+          "name": "Bonavita Pinot Grigio",
+          "description": "11.5% ABV",
+          "price": 2195
+        },
+        {
+          "name": "Panuelo Tempranillo Cabernet Sauvignon",
+          "description": "13% ABV",
+          "price": 1795
+        },
+        {
+          "name": "Between Thorns Shiraz",
+          "description": "13% ABV",
+          "price": 1995
+        },
+        {
+          "name": "Tekena Merlot",
+          "price": 2195
+        },
+        {
+          "name": "Whispering Hills White Zinfandel",
+          "description": "13% ABV",
+          "price": 1995
+        },
+        {
+          "name": "Parini Pinot Grigio Rose",
+          "description": "11.5% ABV",
+          "price": 2495
+        },
+        {
+          "name": "Da Luca Prosecco",
+          "description": "10.5% ABV",
+          "price": 2995
+        }
+      ]
+    },
+    {
+      "name": "Beer & Cider",
+      "items": [
+        {
+          "name": "Stella Pint",
+          "price": 550
+        },
+        {
+          "name": "Gluten Free Stella",
+          "price": 465,
+          "tags": [
+            "gf"
+          ]
+        },
+        {
+          "name": "Corona",
+          "price": 470
+        },
+        {
+          "name": "Goose Island IPA",
+          "price": 465
+        },
+        {
+          "name": "Camden Hells",
+          "price": 465
+        },
+        {
+          "name": "Budweiser",
+          "price": 470
+        },
+        {
+          "name": "Becks Blue",
+          "description": "Alcohol Free",
+          "price": 365
+        },
+        {
+          "name": "Peakstones",
+          "price": 495
+        },
+        {
+          "name": "Magners Dark",
+          "price": 530
+        },
+        {
+          "name": "Stella Cidre",
+          "price": 590
+        },
+        {
+          "name": "Stella Raspberry Cidre",
+          "price": 590
+        }
+      ]
+    },
+    {
+      "name": "Cocktails",
+      "items": [
+        {
+          "name": "Pina Colada",
+          "price": 900
+        },
+        {
+          "name": "Passionfruit Martini",
+          "price": 900
+        },
+        {
+          "name": "Strawberry Woo Woo",
+          "price": 900
+        },
+        {
+          "name": "Mojito",
+          "description": "Selection of flavours",
+          "price": 900
+        },
+        {
+          "name": "Aperol Spritz",
+          "price": 900
+        },
+        {
+          "name": "Strawberry Daiquiri",
+          "price": 900
+        },
+        {
+          "name": "Zombie",
+          "price": 900
+        },
+        {
+          "name": "Wickerman",
+          "price": 900
+        },
+        {
+          "name": "The Phalanx",
+          "price": 900
+        },
+        {
+          "name": "Nemesis",
+          "price": 900
+        },
+        {
+          "name": "The Smiler",
+          "price": 900
+        },
+        {
+          "name": "Rita",
+          "price": 900
+        },
+        {
+          "name": "Demise of Duel",
+          "price": 900
+        }
+      ]
+    },
+    {
+      "name": "Gins, Spirits & Mixers",
+      "items": [
+        {
+          "name": "Absolut Vodka",
+          "price": 575
+        },
+        {
+          "name": "Havana Rum",
+          "price": 575
+        },
+        {
+          "name": "Malibu",
+          "price": 575
+        },
+        {
+          "name": "Whisky",
+          "price": 575
+        },
+        {
+          "name": "Disaronno",
+          "price": 575
+        },
+        {
+          "name": "Archers",
+          "price": 550
+        },
+        {
+          "name": "Baileys",
+          "price": 365
+        },
+        {
+          "name": "Sambuca",
+          "price": 365
+        }
+      ]
+    },
+    {
+      "name": "Soft Drinks",
+      "items": [
+        {
+          "name": "Coke 330ml Glass",
+          "price": 335
+        },
+        {
+          "name": "Diet Coke 330ml Glass",
+          "price": 315
+        },
+        {
+          "name": "Coke Zero 330ml Glass",
+          "price": 270
+        },
+        {
+          "name": "Fanta 300ml Glass",
+          "price": 315
+        },
+        {
+          "name": "Sprite Zero 330ml Glass",
+          "price": 315
+        },
+        {
+          "name": "J2O",
+          "price": 330
+        },
+        {
+          "name": "Appletiser 275ml Glass",
+          "price": 315
+        },
+        {
+          "name": "Still Water",
+          "price": 275
+        },
+        {
+          "name": "Sparkling Water",
+          "price": 275
+        }
+      ]
+    },
+    {
+      "name": "Costa Hot Drinks",
+      "items": [
+        {
+          "name": "Cappucino",
+          "price": 345
+        },
+        {
+          "name": "Latte",
+          "price": 345
+        },
+        {
+          "name": "Hot Chocolate",
+          "price": 365
+        },
+        {
+          "name": "Americano with milk",
+          "price": 330
+        },
+        {
+          "name": "Mocha",
+          "price": 370
+        },
+        {
+          "name": "Espresso",
+          "price": 230
+        },
+        {
+          "name": "Tea",
+          "price": 260
+        },
+        {
+          "name": "Americano",
+          "price": 320
+        }
+      ]
+    },
+    {
+      "name": "Non-alcoholic Cocktails",
+      "items": [
+        {
+          "name": "Passionfruitini",
+          "price": 495
+        },
+        {
+          "name": "Bubblegum Daiquiri",
+          "price": 495
+        },
+        {
+          "name": "Strawberry No-jito",
+          "price": 495
+        },
+        {
+          "name": "Rhubarb Lemonade",
+          "price": 495
+        }
+      ]
+    },
+    {
+      "name": "Kids Drinks",
+      "items": [
+        {
+          "name": "J2O Selection",
+          "price": 330
+        },
+        {
+          "name": "Juice Selection",
+          "price": 275
+        },
+        {
+          "name": "Speyside Still Water",
+          "price": 275
+        },
+        {
+          "name": "Speyside Sparkling Water",
+          "price": 275
+        },
+        {
+          "name": "Glass of Milk",
+          "price": 195
+        },
+        {
+          "name": "Baby Wickerman",
+          "price": 300
+        },
+        {
+          "name": "Th13teen",
+          "price": 300
+        },
+        {
+          "name": "Bubblegum LemonBlade",
+          "price": 300
+        },
+        {
+          "name": "Runaway Lime Train",
+          "price": 300
+        }
+      ]
+    },
+    {
+      "name": "Birthday Packages & Gifts",
+      "items": [
+        {
+          "name": "Children's Birthday Package",
+          "price": 1250
+        },
+        {
+          "name": "Adult Birthday Package",
+          "price": 1000
+        },
+        {
+          "name": "Premium Adult Birthday Package",
+          "price": 2500
+        },
+        {
+          "name": "Teddy Bears",
+          "description": "(full set £22.00)",
+          "price": 900
+        },
+        {
+          "name": "Birthday Cake",
+          "price": 2200
+        }
+      ]
+    }
+  ]
+}

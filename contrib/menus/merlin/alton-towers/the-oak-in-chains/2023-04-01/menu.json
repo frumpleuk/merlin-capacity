@@ -1,0 +1,555 @@
+{
+  "date": "2023-04-01",
+  "approxDate": true,
+  "source": {
+    "name": "Theme Park James",
+    "url": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/alton-towers/food-and-drink/woodcutters-bar-and-grill/menu/",
+    "venueUrl": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/alton-towers/food-and-drink/woodcutters-bar-and-grill/",
+    "stated": "April 2023",
+    "menu": "2023 Menu"
+  },
+  "sections": [
+    {
+      "name": "served with either chunky chips, jacket potato or side salad",
+      "items": [
+        {
+          "name": "Scampi",
+          "description": "Breaded scampi, peas and tartare sauce",
+          "price": 1210
+        },
+        {
+          "name": "Quorn Sweet Chilli Wrap",
+          "description": "Quorn vegan nuggets, cheese, lettuce & sweet chilli wrapped in a soft tortilla",
+          "price": 1130,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Sweet Chilli Chicken Wrap",
+          "description": "Breaded chicken goujons, grated cheese, lettuce, mayo & sweet chilli wrapped in a soft tortilla",
+          "price": 1130
+        },
+        {
+          "name": "Club Sandwich",
+          "description": "Chicken breast with bacon, lettuce, tomato and mayonnaise sandwiched in wholemeal bloomer bread",
+          "price": 1210
+        }
+      ]
+    },
+    {
+      "name": "served with a choice of chunky chips, jacket potato or side salad",
+      "items": [
+        {
+          "name": "10oz Rump Steak",
+          "description": "Served with onion rings, grilled tomato, mushroom and peas",
+          "price": 1705
+        },
+        {
+          "name": "Surf and Turf",
+          "description": "5oz rump steak with scampi, peas, onion rings and tartar sauce",
+          "price": 1650
+        },
+        {
+          "name": "Steak Sandwich",
+          "description": "5oz rump steak served on a brioche roll with cos lettuce , tomato, BBQ mustard and Monterey Jack cheese",
+          "price": 1320
+        },
+        {
+          "name": "Full Rack Of BBQ Sauce [sic]",
+          "description": "A full rack of pork ribs marinated in BBQ sauce served with onion rings, coleslaw and corn on the cob",
+          "price": 1925
+        },
+        {
+          "name": "Chicken & Rib Combo",
+          "description": "Half rack of pork ribs marinated in BBQ sauce and a chicken breast, served with onion rings, corn on the cob and coleslaw",
+          "price": 1815
+        },
+        {
+          "name": "8oz Gammon Steak",
+          "description": "8oz Gammon steak, peas and pineapple",
+          "price": 1430
+        },
+        {
+          "name": "Cajun Chicken Flatbread",
+          "description": "Cajun chicken breast skewer served on a flatbread with cos lettuce, tomato, cucumber and mint yoghurt",
+          "price": 1320
+        },
+        {
+          "name": "BBQ Chicken Stack",
+          "description": "BBQ flavoured Chicken breast, topped with chicken goujons, Monterey Jack cheese and BBQ sauce",
+          "price": 1430
+        }
+      ]
+    },
+    {
+      "name": "Burgers",
+      "items": [
+        {
+          "name": "BBQ Cheese and Bacon Burger",
+          "description": "Chargrilled beef burger topped with cheese, bacon and onion rings in a brioche bun with BBQ sauce, tomato and lettuce, served with a choice of chunky chips, jacket potato or side salad",
+          "price": 1240
+        },
+        {
+          "name": "Truffle Chicken Burger",
+          "description": "Chicken fillet burger topped with cheese and truffle mayo in a brioche bun with tomato and lettuce, served with a choice of chunky chips, jacket potato or side salad",
+          "price": 1240
+        },
+        {
+          "name": "Stack Up Burger",
+          "description": "Chargrilled beefburger, cheese, bacon, chicken burger and pulled pork on a brioche bun with lettuce and tomato, served with chunky chips topped with cheese, bacon and sweet chilli sauce",
+          "price": 1650
+        },
+        {
+          "name": "The Loaded Chicken Burger",
+          "description": "Chicken fillet burger topped with crispy chicken fillets, cheese and peri peri mayonnaise, served with chunky chips topped with halloumi and chilli jam",
+          "price": 1650
+        }
+      ]
+    },
+    {
+      "name": "Under 600 Calories",
+      "items": [
+        {
+          "name": "8oz Gammon Steak",
+          "description": "8oz Gammon steak, a slice of pineapple, peas and a side salad",
+          "price": 1430
+        },
+        {
+          "name": "Cajun Chicken Flatbread",
+          "description": "Cajun chicken breast skewer on a flatbread with cos lettuce, tomato, cucumber and mint yoghurt, served with a side salad",
+          "price": 1320
+        },
+        {
+          "name": "Sweet Potato & Chick Pea Curry and Rice",
+          "description": "Sweet potato, chickpea and spinach curry served with boiled rice",
+          "price": 1100,
+          "tags": [
+            "gf"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Meals made using Non Gluten Containing Ingredients",
+      "items": [
+        {
+          "name": "8oz Gammon and Pineapple",
+          "description": "8oz gammon with a pineapple and peas, served with a choice of chunky chips, jacket potato or side salad",
+          "price": 1430,
+          "tags": [
+            "gf"
+          ]
+        },
+        {
+          "name": "BBQ Chicken Breast",
+          "description": "BBQ chicken breast served with corn on the cob, coleslaw and a choice of chunky chips, jacket potato or side salad",
+          "price": 1295,
+          "tags": [
+            "gf"
+          ]
+        },
+        {
+          "name": "Sweet Potato & Chick Pea Curry and Rice",
+          "description": "Sweet potato, chickpea and spinach curry served with boiled rice",
+          "price": 1100,
+          "tags": [
+            "gf"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Vegan",
+      "items": [
+        {
+          "name": "Jackfruit Burger",
+          "description": "Jackfruit burger, roquette, red onion, vegan cheese and garlic mayonnaise in a brioche bun, served with choice of chunky chips, jacket potato or side salad",
+          "price": 1125,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "Vegan Curry and Rice",
+          "description": "Chickpea, sweet potato and spinach curry served with rice",
+          "price": 1100,
+          "tags": [
+            "vg",
+            "gf"
+          ]
+        },
+        {
+          "name": "Vegan BBQ Wrap",
+          "price": 1130,
+          "tags": [
+            "vg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "served with a choice of chunky chips or jacket potato and either beans, peas or salad",
+      "items": [
+        {
+          "name": "Vegan BBQ Wrap",
+          "description": "Tortilla wrap with vegan Quorn pieces, , lettuce and BBQ sauce",
+          "price": 825,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "Kids Fish Fingers",
+          "description": "Three MSC certified Wild Alaskan Pollock",
+          "price": 825
+        },
+        {
+          "name": "Kids Cheese Burger",
+          "description": "Chargrilled beef burger topped with cheese in a brioche bun",
+          "price": 825
+        },
+        {
+          "name": "Kids 4oz Gammon",
+          "description": "4oz gammon steak",
+          "price": 825
+        },
+        {
+          "name": "Kids Chicken Goujons",
+          "description": "2 crispy chicken mini fillets",
+          "price": 825
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        {
+          "name": "Mozzarella Sticks and Sweet Chilli Dip",
+          "price": 330,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Cheesy Garlic Bread",
+          "price": 360,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Garlic Bread",
+          "price": 305,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Onion Rings",
+          "price": 330,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Chunky Chips",
+          "price": 305,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Corn on the Cob",
+          "price": 305,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Coleslaw",
+          "price": 165,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Draught Beer & Cider",
+      "items": [
+        {
+          "name": "Stella Artois",
+          "description": "4.6%",
+          "price": 605
+        },
+        {
+          "name": "Corona",
+          "description": "4.5%",
+          "price": 650
+        },
+        {
+          "name": "Bud Light",
+          "description": "3.5%",
+          "price": 585
+        },
+        {
+          "name": "Magners",
+          "description": "4.0%",
+          "price": 575
+        },
+        {
+          "name": "Magners Dark Fruits",
+          "description": "4.5%",
+          "price": 585
+        }
+      ]
+    },
+    {
+      "name": "Cocktails",
+      "items": [
+        {
+          "name": "Mojito",
+          "description": "Havana Rum & Funkin Mojito with fresh mint leaves",
+          "price": 990
+        },
+        {
+          "name": "Wicker Man",
+          "description": "Absolute Vodka & Malibu with Grenadine and Fresh Orange Juice",
+          "price": 990
+        },
+        {
+          "name": "Rhubarb Mojito",
+          "description": "Havana Rum, Funkin Mojito, rhubarb syrup with fresh mint leaves",
+          "price": 990
+        }
+      ]
+    },
+    {
+      "name": "Gins",
+      "items": [
+        {
+          "name": "Beefeater Gin",
+          "price": 425
+        },
+        {
+          "name": "Beefeater Blood Orange Gin",
+          "price": 420
+        },
+        {
+          "name": "Hendricks Gin",
+          "price": 435
+        },
+        {
+          "name": "Pink Gin Strawberry",
+          "price": 420
+        }
+      ]
+    },
+    {
+      "name": "Spirits",
+      "items": [
+        {
+          "name": "Grey Goose",
+          "price": 505
+        },
+        {
+          "name": "Vodka Absolut",
+          "price": 420
+        },
+        {
+          "name": "Jack Daniels",
+          "price": 440
+        },
+        {
+          "name": "Southern Comfort",
+          "price": 415
+        },
+        {
+          "name": "Havana 3YO",
+          "price": 415
+        },
+        {
+          "name": "Lambs Navy",
+          "price": 405
+        },
+        {
+          "name": "Archers Peach Schnapps",
+          "price": 405
+        },
+        {
+          "name": "Disaronno",
+          "price": 405
+        },
+        {
+          "name": "Jagermeister",
+          "price": 405
+        },
+        {
+          "name": "Sambuca White",
+          "price": 405
+        },
+        {
+          "name": "Sourz Apple",
+          "price": 405
+        },
+        {
+          "name": "Malibu",
+          "price": 435
+        }
+      ]
+    },
+    {
+      "name": "Soft Drinks",
+      "items": [
+        {
+          "name": "Coke",
+          "price": 350
+        },
+        {
+          "name": "Sprite",
+          "price": 330
+        },
+        {
+          "name": "Fanta",
+          "price": 330
+        },
+        {
+          "name": "Strathmore Sparkling Water",
+          "price": 385
+        },
+        {
+          "name": "J2O Orange & Passionfruit",
+          "price": 375
+        },
+        {
+          "name": "Orange Juice half pint",
+          "price": 275
+        },
+        {
+          "name": "Apple Juice half pint",
+          "price": 275
+        },
+        {
+          "name": "Pineapple Juice half pint",
+          "price": 275
+        },
+        {
+          "name": "Cranberry Juice half pint",
+          "price": 310
+        },
+        {
+          "name": "Capri-Sun Orange",
+          "price": 180
+        },
+        {
+          "name": "J2O Apple & Mango",
+          "price": 375
+        },
+        {
+          "name": "J2O Apple & Raspberry",
+          "price": 375
+        }
+      ]
+    },
+    {
+      "name": "Bar Snacks",
+      "items": [
+        {
+          "name": "Original Pringles",
+          "price": 165
+        },
+        {
+          "name": "Salt and Vinegar Pringles",
+          "price": 165
+        },
+        {
+          "name": "Sour Cream and Onion Pringles",
+          "price": 165
+        },
+        {
+          "name": "Tyrrells Lightly Sea Salted Crisps",
+          "price": 155
+        },
+        {
+          "name": "Tyrrells Mature Cheddar and Chive Crisps",
+          "price": 155
+        },
+        {
+          "name": "Tyrrells Sea Salt and Cider Vinegar Crisps",
+          "price": 155
+        }
+      ]
+    },
+    {
+      "name": "Wine and Prosecco",
+      "items": [
+        {
+          "name": "Between Thorns Chardonnay",
+          "description": "South Eastern Australia, White",
+          "price": 520
+        },
+        {
+          "name": "Bonavita Pinot Grigio",
+          "description": "South Africa, White",
+          "price": 520
+        },
+        {
+          "name": "Dashwood Sauvignon Blanc",
+          "description": "Marlborough, White",
+          "price": 750
+        },
+        {
+          "name": "Panuelo Blanco",
+          "description": "Spain, White",
+          "price": 480
+        },
+        {
+          "name": "Whispering Hills White Zinfandel",
+          "description": "California, Rose",
+          "price": 440
+        },
+        {
+          "name": "Tekena Merlot",
+          "description": "Chile, Red",
+          "price": 575
+        },
+        {
+          "name": "Between Thorns Shiraz",
+          "description": "South Eastern Australia, Red",
+          "price": 440
+        },
+        {
+          "name": "Rare Vineyard Pinot Noir",
+          "description": "France, Red",
+          "price": 2750
+        }
+      ]
+    },
+    {
+      "name": "Bottles & Cans",
+      "items": [
+        {
+          "name": "Budweiser Bottle (330ml)",
+          "price": 540
+        },
+        {
+          "name": "Guinness (520ml)",
+          "price": 565
+        },
+        {
+          "name": "WKD Blue",
+          "price": 510
+        },
+        {
+          "name": "Smirnoff Ice",
+          "price": 510
+        },
+        {
+          "name": "Goose IPA 335ml",
+          "price": 565
+        }
+      ]
+    }
+  ]
+}

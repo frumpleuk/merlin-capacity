@@ -26,6 +26,15 @@ function checkMenu(dir, photos) {
   }
   if (m.date !== path.basename(dir)) err(file, `date "${m.date}" != folder name`);
   if (!Array.isArray(m.sections)) return err(file, "sections must be an array");
+  // A menu is either ours (photos of the boards) or someone else's (a source
+  // we credit). Sourced menus have no photos, so items cite none.
+  const sourced = !!m.source;
+  if (sourced) {
+    if (!m.source.name || !m.source.url) err(file, "source needs a name and a url");
+    if (photos.length) err(file, "a sourced menu should not also hold photos");
+  } else if (!photos.length) {
+    err(file, "no photos and no source: where did this menu come from?");
+  }
 
   const used = new Set();
   const usePhoto = (where, p) => {
@@ -39,8 +48,8 @@ function checkMenu(dir, photos) {
     (s.items ?? []).forEach((it, ii) => {
       const where = `${at} items[${ii}] ${it.name ?? "?"}`;
       if (!it.name) err(file, `${where}: missing name`);
-      if (!it.photo) err(file, `${where}: missing photo`);
-      else usePhoto(where, it.photo);
+      if (it.photo) usePhoto(where, it.photo);
+      else if (!sourced) err(file, `${where}: missing photo`);
       const hasPrice = it.price !== undefined;
       const hasSizes = Array.isArray(it.sizes);
       if (hasPrice === hasSizes) err(file, `${where}: needs exactly one of price or sizes`);
@@ -68,6 +77,7 @@ function checkMenu(dir, photos) {
     if (!o.text) err(file, `offers[${i}]: missing text`);
     if (o.photo) usePhoto(`offers[${i}]`, o.photo);
   }
+  if (sourced) return; // nothing below applies: no photos to index
   for (const [i, s] of (m.skipped ?? []).entries()) {
     if (!s.reason) err(file, `skipped[${i}]: missing reason`);
     usePhoto(`skipped[${i}]`, s.photo);

@@ -1,0 +1,165 @@
+{
+  "date": "2023-04-01",
+  "approxDate": true,
+  "source": {
+    "name": "Theme Park James",
+    "url": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/chessington-world-of-adventures/food-and-drink/drop-n-chicken/past-menus/",
+    "venueUrl": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/chessington-world-of-adventures/food-and-drink/drop-n-chicken/",
+    "stated": "April 2023",
+    "menu": "Early 2023 Season Menu"
+  },
+  "sections": [
+    {
+      "name": "Tenders, Wings & More",
+      "items": [
+        {
+          "name": "Chicken Tenders x3",
+          "price": 575
+        },
+        {
+          "name": "Chicken Tenders x5",
+          "price": 800
+        },
+        {
+          "name": "Buttermilk Jumbo Wings x3",
+          "price": 900
+        },
+        {
+          "name": "Buttermilk Jumbo Wings x5",
+          "price": 1350
+        },
+        {
+          "name": "Chicken & Waffles",
+          "price": 950
+        },
+        {
+          "name": "10 Crispy Chicken Chunks",
+          "price": 1300
+        },
+        {
+          "name": "Salad Bowl",
+          "price": 480
+        },
+        {
+          "name": "Chicken Bird Bowl",
+          "price": 900
+        },
+        {
+          "name": "Vegan Nugget Bird Bowl",
+          "price": 900,
+          "tags": [
+            "vg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Burgers",
+      "items": [
+        {
+          "name": "Classic Chicken Ranch Burger",
+          "price": 675
+        },
+        {
+          "name": "The Buffalo Chicken Burger",
+          "price": 725
+        },
+        {
+          "name": "Plant Based Chicken Fillet Burger",
+          "price": 750,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "The BBQ Texas Tower Burger",
+          "price": 950
+        },
+        {
+          "name": "Add",
+          "description": "Smoked streaky baconBurger cheese slicePlant based baconVegan cheese slice",
+          "price": 65
+        },
+        {
+          "name": "Make it a meal with fries and a soft drink",
+          "price": 450
+        },
+        {
+          "name": "'N Large It",
+          "description": "Go large on fries and a drink",
+          "price": 100
+        }
+      ]
+    },
+    {
+      "name": "Kids meals come with either fries or a piece of fruit, and a soft drink",
+      "items": [
+        {
+          "name": "Kids Mini Chicken Wrap",
+          "price": 690
+        },
+        {
+          "name": "Kids Chicken Nuggets",
+          "price": 690
+        },
+        {
+          "name": "Kids Vegan Nuggets",
+          "price": 690,
+          "tags": [
+            "vg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Drop'N Chicken Sides",
+      "items": [
+        {
+          "name": "Small Fries",
+          "price": 270,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Regular Fries",
+          "price": 310,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Large Fries",
+          "price": 340,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Popcorn Chicken",
+          "price": 470
+        },
+        {
+          "name": "Baked Beans",
+          "price": 125
+        },
+        {
+          "name": "5 Onion Rings",
+          "price": 380
+        },
+        {
+          "name": "Mozzarella Sticks",
+          "price": 220
+        },
+        {
+          "name": "Coleslaw Pot",
+          "price": 125
+        },
+        {
+          "name": "Southern Fried Chicken Gravy",
+          "price": 125
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "date": "2024-05-01",
+  "approxDate": true,
+  "source": {
+    "name": "Theme Park James",
+    "url": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/legoland-windsor/food-and-drink/marina-hot-dogs/menu/",
+    "venueUrl": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/legoland-windsor/food-and-drink/marina-hot-dogs/",
+    "stated": "May 2024",
+    "menu": "2024 Menu"
+  },
+  "sections": [
+    {
+      "name": "Hot Dogs",
+      "items": [
+        {
+          "name": "Hot Dog",
+          "price": 875
+        },
+        {
+          "name": "Vegan Hot Dog",
+          "price": 875,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "add crispy onions",
+          "price": 75
+        }
+      ]
+    },
+    {
+      "name": "Snacks & Hot Drinks",
+      "items": [
+        {
+          "name": "Sweet Popcorn",
+          "price": 475
+        },
+        {
+          "name": "Candy Floss",
+          "price": 475
+        },
+        {
+          "name": "Grab Bags",
+          "price": 375
+        },
+        {
+          "name": "Pringles",
+          "price": 275
+        },
+        {
+          "name": "Walkers Crisps",
+          "price": 200
+        },
+        {
+          "name": "Hot Chocolate",
+          "price": 425
+        },
+        {
+          "name": "Tea",
+          "price": 275
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Coca Cola",
+          "price": 325
+        },
+        {
+          "name": "Coke Zero",
+          "price": 325
+        },
+        {
+          "name": "Sprite Zero",
+          "price": 325
+        },
+        {
+          "name": "Fanta Zero",
+          "price": 325
+        },
+        {
+          "name": "Oasis Zero",
+          "description": "Summer Fruits / Citrus",
+          "price": 325
+        },
+        {
+          "name": "SmartWater",
+          "price": 275
+        },
+        {
+          "name": "Frozen Fanta Cup",
+          "price": 500
+        },
+        {
+          "name": "Frozen Fanta Half Yard",
+          "price": 825
+        },
+        {
+          "name": "Frozen Fanta Refill",
+          "price": 325
+        }
+      ]
+    }
+  ]
+}

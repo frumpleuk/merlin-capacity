@@ -1,0 +1,26 @@
+{
+  "date": "2023-11-01",
+  "approxDate": true,
+  "source": {
+    "name": "Theme Park James",
+    "url": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/alton-towers/food-and-drink/explorers-pizza-and-pasta/menu/",
+    "venueUrl": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/alton-towers/food-and-drink/explorers-pizza-and-pasta/",
+    "stated": "November 2023",
+    "menu": "2023 End of Season Menu"
+  },
+  "sections": [
+    {
+      "name": "All you can eat and drink",
+      "items": [
+        {
+          "name": "Adults",
+          "price": 1700
+        },
+        {
+          "name": "Children",
+          "price": 895
+        }
+      ]
+    }
+  ]
+}

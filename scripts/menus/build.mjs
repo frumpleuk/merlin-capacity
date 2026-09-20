@@ -10,7 +10,10 @@ import fs from "node:fs";
 import path from "node:path";
 import { DATE_DIR, PARK_DIRS, REPO, ROOT, readJson } from "./lib.mjs";
 
-const OUT = path.join(REPO, "frontend/src/menus.generated.json");
+// One file per park, fetched by the Food tab, plus a tiny index that ships in
+// the bundle so the nav knows which parks have anything without a round trip.
+const OUT_DIR = path.join(REPO, "frontend/public/menu-data");
+const INDEX = path.join(REPO, "frontend/src/menus.index.json");
 const dirs = (d) => fs.readdirSync(d, { withFileTypes: true }).filter((e) => e.isDirectory()).map((e) => e.name);
 const parkKey = Object.fromEntries(Object.entries(PARK_DIRS).map(([k, v]) => [v, k]));
 
@@ -35,6 +38,8 @@ function venue(dir, slug, extra = {}) {
       }));
       return {
         date: m.date,
+        approxDate: m.approxDate ?? false,
+        source: m.source ?? null,
         passDiscount: m.passDiscount ?? null,
         base: `/menus/${path.relative(ROOT, path.join(dir, d))}/`,
         photos: (m.photos ?? []).map(({ name, caption }) => ({ name, caption })),
@@ -49,8 +54,8 @@ function venue(dir, slug, extra = {}) {
     poi.passDiscount ??
     (poi.appPassholderDiscount ? { offered: true, percent: null, source: "park app" } : null);
 
-  // Cheapest and dearest on the newest menu — enough to place a venue without
-  // opening it.
+  // Cheapest and dearest on the newest menu (ours or a sourced one) — enough to
+  // place a venue without opening it.
   const prices = (menus[0]?.sections ?? []).flatMap((s) =>
     s.items.flatMap((i) => (i.sizes ? i.sizes.map((z) => z.price) : [i.price])).filter((p) => p != null),
   );
@@ -126,11 +131,23 @@ for (const parkDir of dirs(ROOT)) {
   parks[key] = { venues, water, events, offers, areas };
 }
 
-fs.writeFileSync(OUT, JSON.stringify(parks) + "\n");
-const n = (f) => Object.values(parks).reduce((s, p) => s + f(p), 0);
-console.log(
-  `${path.relative(REPO, OUT)}: ${n((p) => p.venues.length)} venues, ` +
-    `${n((p) => p.venues.filter((v) => v.menus.length).length)} with menus, ` +
-    `${n((p) => p.events.length)} events, ${n((p) => p.water.length)} water points, ` +
-    `${(fs.statSync(OUT).size / 1024).toFixed(0)}KB`,
-);
+fs.mkdirSync(OUT_DIR, { recursive: true });
+const index = {};
+let total = 0;
+for (const [key, park] of Object.entries(parks)) {
+  const file = path.join(OUT_DIR, `${key}.json`);
+  fs.writeFileSync(file, JSON.stringify(park) + "\n");
+  const size = fs.statSync(file).size;
+  total += size;
+  index[key] = {
+    venues: park.venues.length,
+    priced: park.venues.filter((v) => v.menus.length).length,
+    water: park.water.length,
+  };
+  console.log(
+    `${key}: ${park.venues.length} venues, ${index[key].priced} with menus, ` +
+      `${park.venues.reduce((n, v) => n + v.menus.length, 0)} menus, ${(size / 1024).toFixed(0)}KB`,
+  );
+}
+fs.writeFileSync(INDEX, JSON.stringify(index, null, 2) + "\n");
+console.log(`${(total / 1024).toFixed(0)}KB total, fetched per park; index ${path.relative(REPO, INDEX)}`);

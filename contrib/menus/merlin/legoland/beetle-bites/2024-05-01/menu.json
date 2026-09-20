@@ -1,0 +1,95 @@
+{
+  "date": "2024-05-01",
+  "approxDate": true,
+  "source": {
+    "name": "Theme Park James",
+    "url": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/legoland-windsor/food-and-drink/beetle-bites/menu/",
+    "venueUrl": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/legoland-windsor/food-and-drink/beetle-bites/",
+    "stated": "May 2024",
+    "menu": "2024 Menu"
+  },
+  "sections": [
+    {
+      "name": "Beetle Bites",
+      "items": [
+        {
+          "name": "Classic Burger",
+          "price": 925
+        },
+        {
+          "name": "Classic Cheeseburger",
+          "price": 1000
+        },
+        {
+          "name": "Meat Free Burger",
+          "price": 850,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "make it a double option for an extra",
+          "price": 375
+        },
+        {
+          "name": "Hot Dog",
+          "price": 875
+        },
+        {
+          "name": "add crispy onions",
+          "price": 75
+        }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        {
+          "name": "Coca Cola",
+          "price": 325
+        },
+        {
+          "name": "Coke Zero",
+          "price": 325
+        },
+        {
+          "name": "Diet Coke",
+          "price": 325
+        },
+        {
+          "name": "Fanta Zero",
+          "price": 325
+        },
+        {
+          "name": "Sprite Zero",
+          "price": 325
+        },
+        {
+          "name": "SmartWater",
+          "price": 275
+        }
+      ]
+    },
+    {
+      "name": "Snacks",
+      "items": [
+        {
+          "name": "Popcorn",
+          "price": 475
+        },
+        {
+          "name": "Candy Floss",
+          "price": 475
+        },
+        {
+          "name": "Pringles",
+          "price": 275
+        },
+        {
+          "name": "Grab Bags",
+          "price": 375
+        }
+      ]
+    }
+  ]
+}

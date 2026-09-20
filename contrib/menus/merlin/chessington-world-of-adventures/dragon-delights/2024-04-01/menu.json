@@ -1,0 +1,133 @@
+{
+  "date": "2024-04-01",
+  "approxDate": true,
+  "source": {
+    "name": "Theme Park James",
+    "url": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/chessington-world-of-adventures/food-and-drink/dragon-delights/menu/",
+    "venueUrl": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/chessington-world-of-adventures/food-and-drink/dragon-delights/",
+    "stated": "April 2024",
+    "menu": "2024 Menu"
+  },
+  "sections": [
+    {
+      "name": "Costa Coffee",
+      "items": [
+        {
+          "name": "Cappuccino",
+          "price": 425
+        },
+        {
+          "name": "Flat White",
+          "price": 425
+        },
+        {
+          "name": "Hot Chocolate",
+          "price": 425
+        },
+        {
+          "name": "Latte",
+          "price": 450
+        },
+        {
+          "name": "Americano",
+          "price": 400
+        },
+        {
+          "name": "Mocha",
+          "price": 450
+        },
+        {
+          "name": "Everyday Tea",
+          "price": 325
+        },
+        {
+          "name": "Espresso Double",
+          "price": 375
+        },
+        {
+          "name": "Espresso Single",
+          "price": 350
+        },
+        {
+          "name": "Extra Espresso Shot",
+          "price": 50
+        },
+        {
+          "name": "Syrups",
+          "description": "Caramel, Hazelnut, Vanilla",
+          "price": 75
+        }
+      ]
+    },
+    {
+      "name": "Slush",
+      "items": [
+        {
+          "name": "Slush Refill",
+          "price": 325
+        },
+        {
+          "name": "Raspberry Slush",
+          "description": "454ml",
+          "price": 500
+        },
+        {
+          "name": "Strawberry Slush",
+          "description": "454ml",
+          "price": 500
+        },
+        {
+          "name": "Raspberry Slush Souvenir Cup",
+          "description": "500ml",
+          "price": 725
+        },
+        {
+          "name": "Strawberry Slush Souvenir Cup",
+          "price": 725
+        }
+      ]
+    },
+    {
+      "name": "Ice Cream",
+      "items": [
+        {
+          "name": "Simple Soft Serve Ice Cream - Cone",
+          "description": "Plant based cone, vanilla ice cream",
+          "price": 375,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "Simple Soft Serve Ice Cream - Tub",
+          "description": "Vanilla ice cream",
+          "price": 375,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "add a chocolate flake",
+          "price": 75
+        }
+      ]
+    },
+    {
+      "name": "Sundae Shakes",
+      "items": [
+        {
+          "name": "Lotus Biscoff Shake",
+          "price": 975
+        },
+        {
+          "name": "Oreo Shake",
+          "price": 975
+        },
+        {
+          "name": "Giant Snake's Bumblegum & Marshmallow Shake",
+          "price": 975
+        }
+      ]
+    }
+  ]
+}

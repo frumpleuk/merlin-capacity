@@ -1,0 +1,67 @@
+{
+  "date": "2021-10-01",
+  "approxDate": true,
+  "source": {
+    "name": "Theme Park James",
+    "url": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/chessington-world-of-adventures/food-and-drink/dragon-delights/past-menus/",
+    "venueUrl": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/chessington-world-of-adventures/food-and-drink/dragon-delights/",
+    "stated": "October 2021",
+    "menu": "2021 Menu"
+  },
+  "sections": [
+    {
+      "name": "Ice Cream Sundaes",
+      "items": [
+        {
+          "name": "Warm Apple Pie",
+          "price": 495
+        },
+        {
+          "name": "Strawberry Donut",
+          "price": 495
+        },
+        {
+          "name": "Cookie Crunch",
+          "price": 495
+        },
+        {
+          "name": "Chocolate Brownie",
+          "price": 495
+        }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        {
+          "name": "Latte",
+          "price": 300
+        },
+        {
+          "name": "Cappuccino",
+          "price": 300
+        },
+        {
+          "name": "Americano",
+          "price": 275
+        },
+        {
+          "name": "Flat White",
+          "price": 300
+        },
+        {
+          "name": "Mocha",
+          "price": 320
+        },
+        {
+          "name": "Hot Chocolate",
+          "price": 300
+        },
+        {
+          "name": "Tea",
+          "price": 225
+        }
+      ]
+    }
+  ]
+}

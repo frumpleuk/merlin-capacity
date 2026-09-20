@@ -1,0 +1,102 @@
+{
+  "date": "2023-03-01",
+  "approxDate": true,
+  "source": {
+    "name": "Theme Park James",
+    "url": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/alton-towers/food-and-drink/pirate-treats/menu/",
+    "venueUrl": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/alton-towers/food-and-drink/pirate-treats/",
+    "stated": "March 2023",
+    "menu": "2023 Menu"
+  },
+  "sections": [
+    {
+      "name": "Wall's Ice Creams",
+      "items": [
+        {
+          "name": "Magnum",
+          "price": 300
+        },
+        {
+          "name": "Twister",
+          "price": 240
+        },
+        {
+          "name": "Cornetto",
+          "price": 280
+        },
+        {
+          "name": "Calippo",
+          "price": 230
+        },
+        {
+          "name": "Feast",
+          "price": 250
+        },
+        {
+          "name": "Solero",
+          "price": 250
+        }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        {
+          "name": "Coca-Cola",
+          "price": 350
+        },
+        {
+          "name": "Coke Zero",
+          "price": 330
+        },
+        {
+          "name": "Diet Coke",
+          "price": 330
+        },
+        {
+          "name": "Sprite",
+          "price": 330
+        },
+        {
+          "name": "Fanta",
+          "price": 330
+        }
+      ]
+    },
+    {
+      "name": "Bottled Drinks",
+      "items": [
+        {
+          "name": "Fanta",
+          "description": "500ml",
+          "price": 300
+        },
+        {
+          "name": "Dr Pepper",
+          "description": "500ml",
+          "price": 300
+        },
+        {
+          "name": "Capri-Sun",
+          "description": "330ml",
+          "price": 220
+        },
+        {
+          "name": "Monster Energy",
+          "description": "500ml",
+          "price": 350
+        },
+        {
+          "name": "Glaceau Smartwater",
+          "description": "500ml",
+          "price": 270
+        },
+        {
+          "name": "Oasis",
+          "description": "500ml",
+          "price": 300
+        }
+      ]
+    }
+  ]
+}

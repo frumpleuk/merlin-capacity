@@ -1,0 +1,133 @@
+{
+  "date": "2022-05-01",
+  "approxDate": true,
+  "source": {
+    "name": "Theme Park James",
+    "url": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/legoland-windsor/food-and-drink/knights-kingdom-hot-dog-stand/past-menus/",
+    "venueUrl": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/legoland-windsor/food-and-drink/knights-kingdom-hot-dog-stand/",
+    "stated": "May 2022",
+    "menu": "2022 Menu"
+  },
+  "sections": [
+    {
+      "name": "Top Dog Deals",
+      "items": [
+        {
+          "name": "Top Dog Nacho Combo",
+          "description": "+ Nachos + 2 Toppings + Drink",
+          "price": 850
+        },
+        {
+          "name": "Not Dog Nacho Combo",
+          "description": "+ Nachos + 2 Toppings + Drink",
+          "price": 850,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "Top Dog + Drink",
+          "price": 750
+        },
+        {
+          "name": "Not Dog + Drink",
+          "price": 750,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "Nachos + 2 Toppings",
+          "price": 595
+        },
+        {
+          "name": "Toppings",
+          "description": "Salsa - Rollover Cheese Sauce - Sour Cream - Jalapenos",
+          "price": 50
+        },
+        {
+          "name": "Smartwater",
+          "price": 200
+        },
+        {
+          "name": "Capri-Sun",
+          "price": 225
+        },
+        {
+          "name": "Coke Zero",
+          "price": 275
+        },
+        {
+          "name": "Diet Coke",
+          "price": 275
+        },
+        {
+          "name": "Sprite Zero",
+          "price": 275
+        },
+        {
+          "name": "Fanta",
+          "price": 275
+        }
+      ]
+    },
+    {
+      "name": "Snacks & Slush",
+      "items": [
+        {
+          "name": "Sweet Popcorn",
+          "price": 400
+        },
+        {
+          "name": "Candy Floss",
+          "price": 400
+        },
+        {
+          "name": "Pringles",
+          "price": 200
+        },
+        {
+          "name": "Slush Cup 16oz",
+          "price": 375
+        },
+        {
+          "name": "Slush Vessel",
+          "price": 450
+        },
+        {
+          "name": "Slush Vessel Refill",
+          "price": 175
+        }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        {
+          "name": "Hot Chocolate",
+          "price": 330
+        },
+        {
+          "name": "Latte",
+          "price": 310
+        },
+        {
+          "name": "Cappuccino",
+          "price": 310
+        },
+        {
+          "name": "Americano",
+          "price": 280
+        },
+        {
+          "name": "Tea",
+          "price": 220
+        },
+        {
+          "name": "Espresso",
+          "price": 220
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "date": "2022-06-01",
+  "approxDate": true,
+  "source": {
+    "name": "Theme Park James",
+    "url": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/legoland-windsor/food-and-drink/burger-kitchen-lego-city/past-menus/",
+    "venueUrl": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/legoland-windsor/food-and-drink/burger-kitchen-lego-city/",
+    "stated": "June 2022",
+    "menu": "2022 Menu"
+  },
+  "sections": [
+    {
+      "name": "Burger Kitchen Menu",
+      "items": [
+        {
+          "name": "Quarter Pounder",
+          "price": 630
+        },
+        {
+          "name": "add Cheese",
+          "price": 60
+        },
+        {
+          "name": "Lego Fries",
+          "price": 400
+        }
+      ]
+    },
+    {
+      "name": "Soft Drinks",
+      "items": [
+        {
+          "name": "Sprite Zero",
+          "price": 250
+        },
+        {
+          "name": "Fanta Orange Zero",
+          "price": 250
+        },
+        {
+          "name": "Coke Zero",
+          "price": 250
+        },
+        {
+          "name": "Diet Coke",
+          "price": 250
+        },
+        {
+          "name": "Coca Cola",
+          "price": 285
+        },
+        {
+          "name": "Capri Sun Orange",
+          "price": 225
+        },
+        {
+          "name": "Smartwater",
+          "price": 200
+        }
+      ]
+    }
+  ]
+}

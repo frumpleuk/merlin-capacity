@@ -1,0 +1,70 @@
+{
+  "date": "2024-05-01",
+  "approxDate": true,
+  "source": {
+    "name": "Theme Park James",
+    "url": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/legoland-windsor/food-and-drink/farmer-joes-chicken-company/menu/",
+    "venueUrl": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/legoland-windsor/food-and-drink/farmer-joes-chicken-company/",
+    "stated": "May 2024",
+    "menu": "2024 Menu"
+  },
+  "sections": [
+    {
+      "name": "Main Menu",
+      "items": [
+        {
+          "name": "Premium Chicken Tenders",
+          "description": "with fries & a drink",
+          "price": 1375
+        },
+        {
+          "name": "Family Tenders Meal (serves 4)",
+          "description": "with fries & a drink",
+          "price": 3950
+        },
+        {
+          "name": "Classic Ranch Chicken Sandwich",
+          "description": "with fries & a drink",
+          "price": 1250
+        },
+        {
+          "name": "Buffalo Chicken Sandwich",
+          "description": "with fries & a drink",
+          "price": 1300
+        },
+        {
+          "name": "Plant Burger",
+          "description": "with fries & a drink",
+          "price": 1325,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "Garden Salad",
+          "description": "served with a drink",
+          "price": 775
+        },
+        {
+          "name": "Chicken Garden Salad",
+          "price": 1100
+        }
+      ]
+    },
+    {
+      "name": "Kids Meals",
+      "items": [
+        {
+          "name": "Chicken Wrap",
+          "description": "served with fries & Capri-Sun or Water",
+          "price": 750
+        },
+        {
+          "name": "Chicken Tenders",
+          "description": "served with fries & Capri-Sun or Water",
+          "price": 750
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,266 @@
+{
+  "date": "2023-04-01",
+  "approxDate": true,
+  "source": {
+    "name": "Theme Park James",
+    "url": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/legoland-windsor/food-and-drink/pirates-burger-kitchen/past-menus/",
+    "venueUrl": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/legoland-windsor/food-and-drink/pirates-burger-kitchen/",
+    "stated": "April 2023",
+    "menu": "2023 Menu"
+  },
+  "sections": [
+    {
+      "name": "All burger meals come with fries and a soft drink",
+      "items": [
+        {
+          "name": "Maple Bacon & Cheese Cronut Burger",
+          "price": 925
+        },
+        {
+          "name": "BBQ Chicken Burger",
+          "price": 825
+        },
+        {
+          "name": "BK Vegan Classic burger",
+          "price": 800,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "BK Classic Burger with Cheese",
+          "price": 695
+        },
+        {
+          "name": "BK Classic Burger",
+          "price": 630
+        }
+      ]
+    },
+    {
+      "name": "All burger meals come with fries and a soft drink",
+      "items": [
+        {
+          "name": "Hamburger",
+          "price": 350
+        },
+        {
+          "name": "Double Hamburger",
+          "price": 450
+        },
+        {
+          "name": "Cheeseburger",
+          "price": 400
+        },
+        {
+          "name": "Double Cheeseburger",
+          "price": 500
+        },
+        {
+          "name": "Additions",
+          "description": "Smoked streaky baconPlant based baconBurger cheese sliceVegan cheese slice",
+          "price": 65
+        }
+      ]
+    },
+    {
+      "name": "Served with fries, a soft drink and a piece of fruit",
+      "items": [
+        {
+          "name": "Hamburger meal",
+          "price": 690
+        },
+        {
+          "name": "Cheeseburger meal",
+          "price": 690
+        },
+        {
+          "name": "Chicken Tenders meal",
+          "price": 690
+        },
+        {
+          "name": "Cod Goujon meal",
+          "price": 690
+        },
+        {
+          "name": "Vegan Nugget meal",
+          "price": 690,
+          "tags": [
+            "vg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        {
+          "name": "5x Chicken Tenders",
+          "price": 755
+        },
+        {
+          "name": "5x Vegan Nuggets",
+          "price": 405,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "5x Onion Rings",
+          "price": 380
+        },
+        {
+          "name": "3x Chicken Tenders",
+          "price": 450
+        },
+        {
+          "name": "3x Mozzarella Sticks",
+          "price": 360
+        },
+        {
+          "name": "3x Vegan Nuggets",
+          "price": 245,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "3x Onion Rings",
+          "price": 165
+        },
+        {
+          "name": "Large Fries",
+          "price": 340
+        },
+        {
+          "name": "Regular Fries",
+          "price": 310
+        },
+        {
+          "name": "Dip Pot",
+          "description": "Smokey BBQSweet ChilliMayonnaise",
+          "price": 75
+        }
+      ]
+    },
+    {
+      "name": "Served with a soft drink",
+      "items": [
+        {
+          "name": "Chicken Tenders Meze Bowl",
+          "price": 900
+        },
+        {
+          "name": "Vegan Nugget Meze Bowl",
+          "price": 900,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "Salad Bowl",
+          "price": 480
+        }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        {
+          "name": "Ben & Jerry's Strawberry Cheesecake",
+          "price": 425
+        },
+        {
+          "name": "Ben & Jerry's Chocolate Chip Cookie Dough",
+          "price": 425
+        },
+        {
+          "name": "Ben & Jerry's Chocolate Fudge Brownie",
+          "price": 425
+        },
+        {
+          "name": "Walls Calippo Orange",
+          "price": 260
+        },
+        {
+          "name": "Walls Magnum Classic",
+          "price": 330
+        },
+        {
+          "name": "Walls Magnum White",
+          "price": 330
+        },
+        {
+          "name": "Walls Twister",
+          "price": 260
+        }
+      ]
+    },
+    {
+      "name": "Soft Drinks",
+      "items": [
+        {
+          "name": "Coke Zero",
+          "price": 330
+        },
+        {
+          "name": "Diet Coke",
+          "price": 330
+        },
+        {
+          "name": "Sprite",
+          "price": 330
+        },
+        {
+          "name": "Fanta",
+          "price": 330
+        },
+        {
+          "name": "Coke PET Bottle",
+          "price": 305
+        },
+        {
+          "name": "Capri-Sun",
+          "price": 250
+        },
+        {
+          "name": "Water 850ml",
+          "price": 330
+        },
+        {
+          "name": "Water 600ml",
+          "price": 310
+        },
+        {
+          "name": "Water 330ml",
+          "price": 250
+        }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        {
+          "name": "Hot Chocolate",
+          "price": 430
+        },
+        {
+          "name": "Cappuccino",
+          "price": 430
+        },
+        {
+          "name": "Latte",
+          "price": 430
+        },
+        {
+          "name": "Americano",
+          "price": 375
+        },
+        {
+          "name": "Tea",
+          "price": 275
+        }
+      ]
+    }
+  ]
+}

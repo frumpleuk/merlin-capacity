@@ -1,0 +1,26 @@
+{
+  "date": "2023-04-01",
+  "approxDate": true,
+  "source": {
+    "name": "Theme Park James",
+    "url": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/chessington-world-of-adventures/food-and-drink/pizza-and-pasta-buffet/menu/",
+    "venueUrl": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/chessington-world-of-adventures/food-and-drink/pizza-and-pasta-buffet/",
+    "stated": "April 2023",
+    "menu": "Menu 2023"
+  },
+  "sections": [
+    {
+      "name": "All you can eat and drink",
+      "items": [
+        {
+          "name": "Children",
+          "price": 995
+        },
+        {
+          "name": "Adults",
+          "price": 1750
+        }
+      ]
+    }
+  ]
+}

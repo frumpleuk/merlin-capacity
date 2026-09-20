@@ -1,0 +1,51 @@
+{
+  "date": "2022-08-01",
+  "approxDate": true,
+  "source": {
+    "name": "Theme Park James",
+    "url": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/chessington-world-of-adventures/food-and-drink/pizza-and-pasta-buffet/past-menus/",
+    "venueUrl": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/chessington-world-of-adventures/food-and-drink/pizza-and-pasta-buffet/",
+    "stated": "August 2022",
+    "menu": "2022 Menu"
+  },
+  "sections": [
+    {
+      "name": "All you can eat and drink",
+      "items": [
+        {
+          "name": "Children",
+          "price": 860
+        },
+        {
+          "name": "Adults",
+          "price": 1675
+        }
+      ]
+    },
+    {
+      "name": "Beer and Cider",
+      "items": [
+        {
+          "name": "Budweiser",
+          "description": "330ml (4.5%)",
+          "price": 465
+        },
+        {
+          "name": "Corona",
+          "description": "330ml (4.5%)",
+          "price": 490
+        },
+        {
+          "name": "Stella Cidre Apple",
+          "description": "500ml (4.5%)",
+          "price": 490
+        },
+        {
+          "name": "Stella Cidre Raspberry",
+          "description": "500ml (4%)",
+          "price": 490
+        }
+      ]
+    }
+  ]
+}

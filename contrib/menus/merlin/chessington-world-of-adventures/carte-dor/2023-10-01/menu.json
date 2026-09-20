@@ -1,0 +1,138 @@
+{
+  "date": "2023-10-01",
+  "approxDate": true,
+  "source": {
+    "name": "Theme Park James",
+    "url": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/chessington-world-of-adventures/food-and-drink/carte-dor/past-menus/",
+    "venueUrl": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/chessington-world-of-adventures/food-and-drink/carte-dor/",
+    "stated": "October 2023",
+    "menu": "2023 Menu"
+  },
+  "sections": [
+    {
+      "name": "Carte D'Or Ice Creams",
+      "items": [
+        {
+          "name": "1 Scoop Cone",
+          "description": "Vanilla, Triple Chocolate, Strawberry, Mint Chocolate, Marshmallow, Banana Split, Caramel, Brownie or Blue Candyfloss",
+          "price": 340
+        },
+        {
+          "name": "2 Scoop Cone",
+          "description": "Vanilla, Triple Chocolate, Strawberry, Mint Chocolate, Marshmallow, Banana Split, Caramel, Brownie or Blue Candyfloss",
+          "price": 420
+        },
+        {
+          "name": "1 Scoop Tub",
+          "description": "Vanilla, Triple Chocolate, Strawberry, Mint Chocolate, Marshmallow, Banana Split, Caramel, Brownie or Blue Candyfloss",
+          "price": 340
+        },
+        {
+          "name": "2 Scoop Tub",
+          "description": "Vanilla, Triple Chocolate, Strawberry, Mint Chocolate, Marshmallow, Banana Split, Caramel, Brownie or Blue Candyfloss",
+          "price": 420
+        },
+        {
+          "name": "3 Scoop Tub",
+          "description": "Vanilla, Triple Chocolate, Strawberry, Mint Chocolate, Marshmallow, Banana Split, Caramel, Brownie or Blue Candyfloss",
+          "price": 455
+        },
+        {
+          "name": "Extras",
+          "description": "Cadbury Flake, Chocolate Sauce, Marshmallow Topper, Oreo Topper or Sprinkles",
+          "price": 60
+        }
+      ]
+    },
+    {
+      "name": "Carte D'Or Milkshakes",
+      "items": [
+        {
+          "name": "Strawberry Milkshake",
+          "price": 650
+        },
+        {
+          "name": "Chocolate Milkshake",
+          "price": 650
+        },
+        {
+          "name": "Banana & Chocolate Milkshake",
+          "price": 650
+        }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        {
+          "name": "Capri-Sun Orange",
+          "description": "330ml",
+          "price": 220
+        },
+        {
+          "name": "Glaceau Smartwater",
+          "description": "850ml",
+          "price": 285
+        },
+        {
+          "name": "Slush Cup",
+          "description": "16oz",
+          "price": 450
+        },
+        {
+          "name": "Slush Refill",
+          "price": 300
+        },
+        {
+          "name": "Slush Half Yard",
+          "price": 650
+        }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        {
+          "name": "Flat White",
+          "price": 395
+        },
+        {
+          "name": "Cortado",
+          "price": 315
+        },
+        {
+          "name": "Americano",
+          "price": 380
+        },
+        {
+          "name": "Latte",
+          "price": 395
+        },
+        {
+          "name": "Mocha",
+          "price": 400
+        },
+        {
+          "name": "Hot Chocolate",
+          "price": 395
+        },
+        {
+          "name": "Espresso",
+          "price": 310
+        },
+        {
+          "name": "Tea",
+          "price": 290
+        },
+        {
+          "name": "Hot Milk",
+          "price": 175
+        },
+        {
+          "name": "Add a shot of flavoured syrup or espresso",
+          "price": 60
+        }
+      ]
+    }
+  ]
+}

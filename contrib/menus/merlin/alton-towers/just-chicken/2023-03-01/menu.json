@@ -1,0 +1,75 @@
+{
+  "date": "2023-03-01",
+  "approxDate": true,
+  "source": {
+    "name": "Theme Park James",
+    "url": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/alton-towers/food-and-drink/just-chicken/menu/",
+    "venueUrl": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/alton-towers/food-and-drink/just-chicken/",
+    "stated": "March 2023",
+    "menu": "2023 Menu"
+  },
+  "sections": [
+    {
+      "name": "Meals",
+      "items": [
+        {
+          "name": "Chicken Stack Sandwich Meal",
+          "description": "with Cheese, Bacon and Hash Brown",
+          "price": 1095
+        },
+        {
+          "name": "Chicken Sandwich Meal",
+          "price": 1020
+        },
+        {
+          "name": "Vegan Sandwich Meal",
+          "price": 1100,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "The Boneless Meal",
+          "price": 1045
+        },
+        {
+          "name": "BBQ Chicken and Bacon Wrap Meal",
+          "price": 1020
+        },
+        {
+          "name": "Crispy Chicken Salad",
+          "price": 875
+        },
+        {
+          "name": "Grilled Chicken Salad",
+          "price": 875
+        },
+        {
+          "name": "The Just Chicken Boneless Sharer Meal",
+          "description": "20 crispy chicken fillets, 4 regular fries and 2 sides (gravy, beans, corn or coleslaw)",
+          "price": 2855
+        }
+      ]
+    },
+    {
+      "name": "Kids Meals",
+      "items": [
+        {
+          "name": "Kids Chicken Strips Meal",
+          "price": 655
+        },
+        {
+          "name": "Kids Chicken Wrap Meal",
+          "price": 655
+        },
+        {
+          "name": "Kids Mozzarella Sticks Meal",
+          "price": 655,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    }
+  ]
+}

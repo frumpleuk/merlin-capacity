@@ -1,0 +1,185 @@
+{
+  "date": "2022-08-01",
+  "approxDate": true,
+  "source": {
+    "name": "Theme Park James",
+    "url": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/chessington-world-of-adventures/food-and-drink/captains-fish-and-chips/menu/",
+    "venueUrl": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/chessington-world-of-adventures/food-and-drink/captains-fish-and-chips/",
+    "stated": "August 2022",
+    "menu": "2022 Menu"
+  },
+  "sections": [
+    {
+      "name": "Served with chips and any regular soft drink",
+      "items": [
+        {
+          "name": "Fish & Chips Meal",
+          "price": 1135
+        },
+        {
+          "name": "Non-Gluten Fish & Chips Meal",
+          "price": 1135,
+          "tags": [
+            "gf"
+          ]
+        },
+        {
+          "name": "Fish Finger Meal",
+          "price": 1025
+        },
+        {
+          "name": "Battered Sausage Meal",
+          "price": 1025
+        },
+        {
+          "name": "Plain Sausage Meal",
+          "price": 1025
+        },
+        {
+          "name": "Quinoa Protein Bake Meal",
+          "price": 1025,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "Chicken Goujon Meal",
+          "price": 1025
+        }
+      ]
+    },
+    {
+      "name": "Served with chips and any regular soft drink",
+      "items": [
+        {
+          "name": "Kids Fish & Chips Meal",
+          "price": 695
+        },
+        {
+          "name": "Kids Non-Gluten Fish & Chips Meal",
+          "price": 695,
+          "tags": [
+            "gf"
+          ]
+        },
+        {
+          "name": "Kids Fish Finger Meal",
+          "price": 695
+        },
+        {
+          "name": "Kids Battered Sausage Meal",
+          "price": 695
+        },
+        {
+          "name": "Kids Plain Sausage Meal",
+          "price": 695
+        },
+        {
+          "name": "Kids Chicken Tender Meal",
+          "price": 695
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        {
+          "name": "Mushy Peas",
+          "price": 175
+        },
+        {
+          "name": "Chips",
+          "price": 405
+        },
+        {
+          "name": "Baked Beans",
+          "price": 175
+        },
+        {
+          "name": "Curry Sauce",
+          "price": 175
+        },
+        {
+          "name": "Bread Roll",
+          "price": 110
+        },
+        {
+          "name": "Captain's Gravy",
+          "price": 120
+        }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        {
+          "name": "Americano",
+          "price": 305
+        },
+        {
+          "name": "Cappuccino",
+          "price": 335
+        },
+        {
+          "name": "Latte",
+          "price": 335
+        },
+        {
+          "name": "Mocha",
+          "price": 355
+        },
+        {
+          "name": "Hot Chocolate",
+          "price": 335
+        },
+        {
+          "name": "Tea",
+          "price": 250
+        }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        {
+          "name": "Diet Coke",
+          "price": 365
+        },
+        {
+          "name": "Coke Zero",
+          "price": 365
+        },
+        {
+          "name": "Fanta",
+          "price": 365
+        },
+        {
+          "name": "Sprite Zero",
+          "price": 365
+        },
+        {
+          "name": "Capri-Sun",
+          "description": "330ml",
+          "price": 235
+        },
+        {
+          "name": "SmartWater",
+          "description": "850ml",
+          "price": 310
+        },
+        {
+          "name": "Quencher",
+          "price": 900
+        },
+        {
+          "name": "Annual Pass Holder",
+          "price": 220
+        },
+        {
+          "name": "Annual Pass Holder Refill",
+          "price": 95
+        }
+      ]
+    }
+  ]
+}

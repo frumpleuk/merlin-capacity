@@ -1,0 +1,109 @@
+{
+  "date": "2022-06-01",
+  "approxDate": true,
+  "source": {
+    "name": "Theme Park James",
+    "url": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/legoland-windsor/food-and-drink/frozen-treats/menu/",
+    "venueUrl": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/legoland-windsor/food-and-drink/frozen-treats/",
+    "stated": "June 2022",
+    "menu": "2022 Menu"
+  },
+  "sections": [
+    {
+      "name": "Cold Drinks",
+      "items": [
+        {
+          "name": "Coca Cola Zero",
+          "price": 250
+        },
+        {
+          "name": "Diet Coke",
+          "price": 250
+        },
+        {
+          "name": "Sprite",
+          "price": 250
+        },
+        {
+          "name": "Fanta",
+          "price": 250
+        },
+        {
+          "name": "Coke Original",
+          "price": 265
+        },
+        {
+          "name": "SmartWater",
+          "price": 200
+        }
+      ]
+    },
+    {
+      "name": "Ice Drinks",
+      "items": [
+        {
+          "name": "Slush Vessel",
+          "price": 450
+        },
+        {
+          "name": "Slush Vessel Refill",
+          "price": 175
+        },
+        {
+          "name": "Slush 16oz Cup",
+          "price": 375
+        },
+        {
+          "name": "Chocolate Slurp 16oz",
+          "price": 400
+        },
+        {
+          "name": "Strawberry Slurp 16oz",
+          "price": 400
+        }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        {
+          "name": "Hot Chocolate",
+          "price": 330
+        },
+        {
+          "name": "Cappuccino",
+          "price": 310
+        },
+        {
+          "name": "Latte",
+          "price": 310
+        },
+        {
+          "name": "Americano",
+          "price": 280
+        },
+        {
+          "name": "Tea",
+          "price": 220
+        },
+        {
+          "name": "Espresso",
+          "price": 220
+        }
+      ]
+    },
+    {
+      "name": "Snacks",
+      "items": [
+        {
+          "name": "Sweet Popcorn",
+          "price": 400
+        },
+        {
+          "name": "Candyfloss",
+          "price": 400
+        }
+      ]
+    }
+  ]
+}

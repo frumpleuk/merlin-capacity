@@ -1,0 +1,562 @@
+{
+  "date": "2023-11-01",
+  "approxDate": true,
+  "source": {
+    "name": "Theme Park James",
+    "url": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/alton-towers/food-and-drink/rollercoaster-restaurant/menu/",
+    "venueUrl": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/alton-towers/food-and-drink/rollercoaster-restaurant/",
+    "stated": "November 2023",
+    "menu": "Lunch Menu 2023"
+  },
+  "sections": [
+    {
+      "name": "Celebrations",
+      "items": [
+        {
+          "name": "Pink Bear",
+          "price": 900
+        },
+        {
+          "name": "Blue Bear",
+          "price": 900
+        },
+        {
+          "name": "Chocolate Slice & RCR Bear",
+          "description": "Slice of chocolate fudge cake and a scoop of vanilla ice cream",
+          "price": 1200
+        },
+        {
+          "name": "RCR Birthday Cake",
+          "description": "Serves up to 6 people",
+          "price": 2300
+        },
+        {
+          "name": "RCR Birthday Cake & Bear",
+          "price": 3000
+        }
+      ]
+    },
+    {
+      "name": "Mains",
+      "items": [
+        {
+          "name": "Smile.ALWAYS Burger",
+          "price": 1795
+        },
+        {
+          "name": "Nemesis Burger",
+          "price": 1595
+        },
+        {
+          "name": "NoChicken Louisiana Veggie Burger",
+          "price": 1395,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "BBQ Cheese Burger",
+          "price": 1395
+        },
+        {
+          "name": "Wickerman Chicken Waffle",
+          "price": 1595
+        },
+        {
+          "name": "BBQ & Honey Chicken Tenders",
+          "price": 1595
+        },
+        {
+          "name": "The Cursed Curry",
+          "price": 1695,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "Falafel & Houmous Wrap",
+          "price": 1395,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "Smoked Ceasar Salad",
+          "price": 1495
+        }
+      ]
+    },
+    {
+      "name": "Kids Mains",
+      "items": [
+        {
+          "name": "Chicken Bites",
+          "price": 850
+        },
+        {
+          "name": "Macaroni Bites",
+          "price": 850
+        },
+        {
+          "name": "Falafel",
+          "price": 850,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Quorn Sausage",
+          "price": 850,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "Cheeseburger",
+          "price": 850
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        {
+          "name": "Chips",
+          "price": 400,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "Beer Battered Onion",
+          "price": 400,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Mac & Cheese Bites",
+          "description": "served with piri ketchup",
+          "price": 450,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "House Salad",
+          "description": "Mixed leaf, cucumber, cherry tomatoes & sliced red onion",
+          "price": 400,
+          "tags": [
+            "vg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Kids Sides",
+      "items": [
+        {
+          "name": "Kids Mac & Cheese Bites",
+          "description": "served with BBQ sauce",
+          "price": 350,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Draught and Bottled Beers/Ciders",
+      "items": [
+        {
+          "name": "Corona Bottle",
+          "description": "4.5% ABV",
+          "price": 660
+        },
+        {
+          "name": "Gluten Free Stella Bottle",
+          "price": 660,
+          "tags": [
+            "gf"
+          ]
+        },
+        {
+          "name": "Camden Hells Bottle",
+          "price": 660
+        },
+        {
+          "name": "Peakstones Black Hole Bottle",
+          "price": 580
+        },
+        {
+          "name": "Magners Apple Bottle",
+          "price": 755
+        },
+        {
+          "name": "Magners Dark Fruit Draft Pint",
+          "price": 530
+        },
+        {
+          "name": "Stella Draft Pint",
+          "price": 620
+        },
+        {
+          "name": "Magners Orchid Berries Bottle",
+          "price": 755
+        }
+      ]
+    },
+    {
+      "name": "Cocktails",
+      "items": [
+        {
+          "name": "Nemesis",
+          "description": "Havana Rum, shaken with grenadine and pineapple juice served in a martini glass",
+          "price": 990
+        },
+        {
+          "name": "Smiler",
+          "description": "Vanilla vodka, beefeater gin and funkin passionfruit, topped with sprite",
+          "price": 990
+        },
+        {
+          "name": "Wickerman",
+          "description": "Absolut Vodka, malibu, orange juice with grenadine",
+          "price": 990
+        },
+        {
+          "name": "Strawberry Daquiri",
+          "price": 990
+        },
+        {
+          "name": "Passionfruit Martini",
+          "price": 990
+        },
+        {
+          "name": "Aperol Spritz",
+          "price": 990
+        },
+        {
+          "name": "Mojito",
+          "price": 990
+        },
+        {
+          "name": "Pina Colada",
+          "price": 990
+        },
+        {
+          "name": "Strawberry Mojito",
+          "price": 990
+        },
+        {
+          "name": "Passionfruit Mojito",
+          "price": 990
+        },
+        {
+          "name": "Candy Apple Cocktail",
+          "price": 990
+        }
+      ]
+    },
+    {
+      "name": "Gins",
+      "items": [
+        {
+          "name": "Beefeater 50ml",
+          "price": 950
+        },
+        {
+          "name": "Beefeater Pink Strawberry 25ml",
+          "price": 530
+        },
+        {
+          "name": "Beefeater Pink Strawberry 50ml",
+          "price": 950
+        }
+      ]
+    },
+    {
+      "name": "Whiskey/Bourbon",
+      "items": [
+        {
+          "name": "Jack Daniels 25ml",
+          "price": 550
+        },
+        {
+          "name": "Jack Daniels 50ml",
+          "price": 990
+        }
+      ]
+    },
+    {
+      "name": "Spirits",
+      "items": [
+        {
+          "name": "Absolut 25ml",
+          "price": 525
+        },
+        {
+          "name": "Absolut 50ml",
+          "price": 940
+        },
+        {
+          "name": "Absolut Vanilla 25ml",
+          "price": 515
+        },
+        {
+          "name": "Absolut Vanilla 50ml",
+          "price": 920
+        },
+        {
+          "name": "Grey Goose 25ml",
+          "price": 615
+        },
+        {
+          "name": "Grey Goose 50ml",
+          "price": 1120
+        },
+        {
+          "name": "Havanna 3 25ml",
+          "price": 530
+        },
+        {
+          "name": "Havanna 3 50ml",
+          "price": 950
+        },
+        {
+          "name": "Archers 25ml",
+          "price": 525
+        },
+        {
+          "name": "Archers 50ml",
+          "price": 940
+        },
+        {
+          "name": "Malibu 25ml",
+          "price": 515
+        },
+        {
+          "name": "Malibu 50ml",
+          "price": 920
+        }
+      ]
+    },
+    {
+      "name": "Red Wines",
+      "items": [
+        {
+          "name": "Between Thorns Shiraz",
+          "price": 650
+        },
+        {
+          "name": "Tekena Merlot",
+          "price": 785
+        }
+      ]
+    },
+    {
+      "name": "White Wines",
+      "items": [
+        {
+          "name": "Panuelo Blanco",
+          "price": 585
+        },
+        {
+          "name": "Parini Pinot Grigio",
+          "price": 695
+        },
+        {
+          "name": "Bonavita Pinot Grigio Bottle",
+          "price": 2860
+        }
+      ]
+    },
+    {
+      "name": "Rose",
+      "items": [
+        {
+          "name": "Parini Pinot Rose",
+          "price": 760
+        },
+        {
+          "name": "Whispering Hills Zinfandel",
+          "price": 640
+        }
+      ]
+    },
+    {
+      "name": "Prosecco & Sparkling",
+      "items": [
+        {
+          "name": "Da Luca Prosecco",
+          "price": 985
+        },
+        {
+          "name": "Moet Bottle",
+          "price": 8250
+        }
+      ]
+    },
+    {
+      "name": "Non Alcoholic Cocktails",
+      "items": [
+        {
+          "name": "Strawberry Nojito",
+          "price": 545
+        },
+        {
+          "name": "Bubblegum Daquiri",
+          "price": 545
+        },
+        {
+          "name": "Passionfruitini",
+          "price": 545
+        }
+      ]
+    },
+    {
+      "name": "Soft Drinks",
+      "items": [
+        {
+          "name": "Coke",
+          "description": "330ml glass bottle",
+          "price": 335
+        },
+        {
+          "name": "Diet Coke",
+          "description": "330ml glass bottle",
+          "price": 315
+        },
+        {
+          "name": "Sprite",
+          "description": "330ml glass bottle",
+          "price": 315
+        },
+        {
+          "name": "Coke Zero",
+          "description": "330ml glass bottle",
+          "price": 315
+        },
+        {
+          "name": "Fanta",
+          "description": "330ml glass bottle",
+          "price": 315
+        },
+        {
+          "name": "Appletiser",
+          "description": "330ml glass bottle",
+          "price": 355
+        },
+        {
+          "name": "J2O",
+          "description": "330ml glass bottle - choose from orange & passionfruit, apple & raspberry or apple & mango",
+          "price": 330
+        },
+        {
+          "name": "Cranberry Juice",
+          "price": 310
+        },
+        {
+          "name": "Pineapple Juice",
+          "price": 310
+        },
+        {
+          "name": "Orange Juice",
+          "price": 310
+        },
+        {
+          "name": "Apple Juice",
+          "price": 310
+        }
+      ]
+    },
+    {
+      "name": "Kids Mocktails",
+      "items": [
+        {
+          "name": "Baby Wickerman",
+          "price": 350
+        },
+        {
+          "name": "Thirteen",
+          "price": 350
+        },
+        {
+          "name": "Bubblegum Lemonade",
+          "price": 350
+        },
+        {
+          "name": "Runaway Lime Train",
+          "price": 350
+        }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        {
+          "name": "Cappucino",
+          "price": 345
+        },
+        {
+          "name": "Latte",
+          "price": 345
+        },
+        {
+          "name": "Americano",
+          "price": 330
+        },
+        {
+          "name": "Espresso",
+          "price": 230
+        },
+        {
+          "name": "Tea",
+          "price": 260
+        },
+        {
+          "name": "Glass of Milk",
+          "price": 215
+        }
+      ]
+    },
+    {
+      "name": "Allergy Dishes",
+      "items": [
+        {
+          "name": "NGCI Allergy Chicken Burger",
+          "price": 1395,
+          "tags": [
+            "gf"
+          ]
+        },
+        {
+          "name": "EGG/DAIRY Allergy Chicken Burger",
+          "price": 1395
+        },
+        {
+          "name": "Kids EGG & DAIRY/NGCI Chicken Strips",
+          "price": 850,
+          "tags": [
+            "gf"
+          ]
+        },
+        {
+          "name": "Kids EGG & DAIRY/NGCI Chicken Salad",
+          "price": 850,
+          "tags": [
+            "gf"
+          ]
+        },
+        {
+          "name": "Kids EGG & DAIRY/NGCI Falafel",
+          "price": 850,
+          "tags": [
+            "vg",
+            "gf"
+          ]
+        }
+      ]
+    }
+  ]
+}

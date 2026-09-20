@@ -1,0 +1,96 @@
+{
+  "date": "2023-03-01",
+  "approxDate": true,
+  "source": {
+    "name": "Theme Park James",
+    "url": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/alton-towers/food-and-drink/hot-dogs-and-loaded-fries/menu/",
+    "venueUrl": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/alton-towers/food-and-drink/hot-dogs-and-loaded-fries/",
+    "stated": "March 2023",
+    "menu": "2023 Menu"
+  },
+  "sections": [
+    {
+      "name": "Hot Dogs",
+      "items": [
+        {
+          "name": "Hot Dog Meal",
+          "description": "with fries and a soft drink",
+          "price": 1045
+        },
+        {
+          "name": "Vegan Hot Dog Meal",
+          "description": "with fries and a drink",
+          "price": 1045,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "Jumbo Hot Dog",
+          "price": 715
+        },
+        {
+          "name": "Vegan Hot Dog",
+          "price": 715,
+          "tags": [
+            "vg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Loaded Fries",
+      "items": [
+        {
+          "name": "Loaded Fries",
+          "description": "Choose one of the toppings below:Bacon & CheesePepperoni PizzaPulled Pork FriesVegetable Chilli FriesGyros Fries",
+          "price": 715
+        },
+        {
+          "name": "Loaded Fries Meals",
+          "description": "Choice of fries and regular soft drink or water",
+          "price": 935
+        },
+        {
+          "name": "Fries",
+          "price": 290
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Coke",
+          "price": 350
+        },
+        {
+          "name": "Coke Zero",
+          "price": 330
+        },
+        {
+          "name": "Diet Coke",
+          "price": 330
+        },
+        {
+          "name": "Fanta",
+          "price": 330
+        },
+        {
+          "name": "Sprite Zero",
+          "price": 330
+        },
+        {
+          "name": "Water",
+          "description": "600ml",
+          "price": 300
+        },
+        {
+          "name": "Capri-Sun",
+          "description": "200ml",
+          "price": 200
+        }
+      ]
+    }
+  ]
+}

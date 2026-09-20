@@ -1,0 +1,46 @@
+{
+  "date": "2024-03-01",
+  "approxDate": true,
+  "source": {
+    "name": "Theme Park James",
+    "url": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/chessington-world-of-adventures/food-and-drink/dirty-fries-2024/menu/",
+    "venueUrl": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/chessington-world-of-adventures/food-and-drink/dirty-fries-2024/",
+    "stated": "March 2024",
+    "menu": "2024 Menu"
+  },
+  "sections": [
+    {
+      "name": "Dirty Fries Menu",
+      "items": [
+        {
+          "name": "Dirty Fries",
+          "price": 1050
+        },
+        {
+          "name": "Skin on Fries",
+          "price": 400
+        },
+        {
+          "name": "Coca Cola can",
+          "price": 250
+        },
+        {
+          "name": "Coke Zero can",
+          "price": 225
+        },
+        {
+          "name": "Diet Coke can",
+          "price": 225
+        },
+        {
+          "name": "Fanta Zero can",
+          "price": 225
+        },
+        {
+          "name": "Sprite Zero can",
+          "price": 225
+        }
+      ]
+    }
+  ]
+}

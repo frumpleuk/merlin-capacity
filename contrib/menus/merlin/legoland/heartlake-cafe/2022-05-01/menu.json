@@ -1,0 +1,50 @@
+{
+  "date": "2022-05-01",
+  "approxDate": true,
+  "source": {
+    "name": "Theme Park James",
+    "url": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/legoland-windsor/food-and-drink/heartlake-park-cafe/past-menus/",
+    "venueUrl": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/legoland-windsor/food-and-drink/heartlake-park-cafe/",
+    "stated": "May 2022",
+    "menu": "2022 Menu"
+  },
+  "sections": [
+    {
+      "name": "Hot Drinks",
+      "items": [
+        {
+          "name": "Espresso",
+          "price": 220
+        },
+        {
+          "name": "Americano",
+          "price": 310
+        },
+        {
+          "name": "Flat White",
+          "price": 360
+        },
+        {
+          "name": "Cappuccino",
+          "price": 360
+        },
+        {
+          "name": "Latte",
+          "price": 360
+        },
+        {
+          "name": "Mocha",
+          "price": 380
+        },
+        {
+          "name": "Hot Chocolate",
+          "price": 360
+        },
+        {
+          "name": "Tea",
+          "price": 220
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "date": "2024-05-01",
+  "approxDate": true,
+  "source": {
+    "name": "Theme Park James",
+    "url": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/legoland-windsor/food-and-drink/ben-and-jerrys-scoop-shop/menu/",
+    "venueUrl": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/legoland-windsor/food-and-drink/ben-and-jerrys-scoop-shop/",
+    "stated": "May 2024",
+    "menu": "2024 Menu"
+  },
+  "sections": [
+    {
+      "name": "Ice Cream",
+      "items": [
+        {
+          "name": "1 scoop",
+          "price": 479
+        },
+        {
+          "name": "2 scoops",
+          "price": 575
+        },
+        {
+          "name": "3 scoops",
+          "price": 675
+        }
+      ]
+    },
+    {
+      "name": "Sundaes",
+      "items": [
+        {
+          "name": "Regular Sundae",
+          "price": 705
+        },
+        {
+          "name": "Large Sundae",
+          "price": 845
+        }
+      ]
+    },
+    {
+      "name": "Shakes",
+      "items": [
+        {
+          "name": "Regular Shake",
+          "price": 700
+        },
+        {
+          "name": "Large Shake",
+          "price": 775
+        }
+      ]
+    },
+    {
+      "name": "Toppings",
+      "items": [
+        {
+          "name": "Rainbow Sprinkles",
+          "price": 70
+        },
+        {
+          "name": "Whipped Cream",
+          "price": 70
+        },
+        {
+          "name": "Chocolate Peace Signs",
+          "price": 70
+        },
+        {
+          "name": "Chocolate Sauce",
+          "price": 70
+        }
+      ]
+    },
+    {
+      "name": "Walls Twister",
+      "items": [
+        {
+          "name": "Twister",
+          "description": "Strawberry, pineapple, lemon & lime or fruit zinger",
+          "price": 245
+        }
+      ]
+    }
+  ]
+}

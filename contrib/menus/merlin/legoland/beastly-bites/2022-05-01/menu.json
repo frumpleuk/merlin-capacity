@@ -1,0 +1,147 @@
+{
+  "date": "2022-05-01",
+  "approxDate": true,
+  "source": {
+    "name": "Theme Park James",
+    "url": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/legoland-windsor/food-and-drink/beastly-bites/past-menus/",
+    "venueUrl": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/legoland-windsor/food-and-drink/beastly-bites/",
+    "stated": "May 2022",
+    "menu": "2022 Menu"
+  },
+  "sections": [
+    {
+      "name": "Marshmallow, Strawberry Sprinkle, Cookie Crush, Triple Choc, Caramel Lace or Plain Ring",
+      "items": [
+        {
+          "name": "Single Doughnut",
+          "price": 350
+        },
+        {
+          "name": "Box of 3 Doughnuts",
+          "price": 750
+        },
+        {
+          "name": "Box of 6 Doughnuts",
+          "price": 1200
+        }
+      ]
+    },
+    {
+      "name": "Mini Doughnuts",
+      "items": [
+        {
+          "name": "10 Mini Doughnuts",
+          "price": 395
+        },
+        {
+          "name": "15 Mini Doughnuts",
+          "price": 450
+        },
+        {
+          "name": "20 Mini Doughnuts",
+          "price": 495
+        }
+      ]
+    },
+    {
+      "name": "Ice Cream",
+      "items": [
+        {
+          "name": "Magnum",
+          "price": 300
+        },
+        {
+          "name": "Cornetto",
+          "price": 300
+        },
+        {
+          "name": "Solero",
+          "price": 250
+        },
+        {
+          "name": "Calippo",
+          "price": 225
+        },
+        {
+          "name": "Twister",
+          "price": 225
+        },
+        {
+          "name": "Swedish Glace",
+          "price": 250
+        }
+      ]
+    },
+    {
+      "name": "Snacks",
+      "items": [
+        {
+          "name": "Popcorn",
+          "price": 400
+        },
+        {
+          "name": "Candy Floss",
+          "price": 400
+        }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        {
+          "name": "Mocha",
+          "price": 330
+        },
+        {
+          "name": "Hot Chocolate",
+          "price": 330
+        },
+        {
+          "name": "Latte",
+          "price": 310
+        },
+        {
+          "name": "Cappuccino",
+          "price": 310
+        },
+        {
+          "name": "Americano",
+          "price": 280
+        },
+        {
+          "name": "Espresso",
+          "price": 220
+        },
+        {
+          "name": "Tea",
+          "price": 220
+        }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        {
+          "name": "Diet Coke",
+          "price": 250
+        },
+        {
+          "name": "Coke Zero",
+          "price": 250
+        },
+        {
+          "name": "Fanta",
+          "price": 250
+        },
+        {
+          "name": "Sprite Zero",
+          "price": 250
+        },
+        {
+          "name": "SmartWater",
+          "price": 300
+        }
+      ]
+    }
+  ]
+}

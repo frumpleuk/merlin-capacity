@@ -1,0 +1,98 @@
+{
+  "date": "2022-05-01",
+  "approxDate": true,
+  "source": {
+    "name": "Theme Park James",
+    "url": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/legoland-windsor/food-and-drink/the-hungry-troll/past-menus/",
+    "venueUrl": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/legoland-windsor/food-and-drink/the-hungry-troll/",
+    "stated": "May 2022",
+    "menu": "2022 Menu"
+  },
+  "sections": [
+    {
+      "name": "Meal Deals",
+      "items": [
+        {
+          "name": "Battered Jumbo Sausage Meal Deal",
+          "description": "Battered jumbo sausage served with chips and a drink",
+          "price": 925
+        },
+        {
+          "name": "Fish & Chips Meal Deal",
+          "description": "Fresh haddock served with chips, lemon and a drink",
+          "price": 1050
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        {
+          "name": "Mushy Peas",
+          "price": 150
+        },
+        {
+          "name": "Curry Sauce",
+          "price": 150
+        },
+        {
+          "name": "Gravy",
+          "price": 150
+        },
+        {
+          "name": "Pickled Onions",
+          "price": 50
+        }
+      ]
+    },
+    {
+      "name": "all kids meals come with chips and a drink",
+      "items": [
+        {
+          "name": "Fish Fingers",
+          "price": 695
+        },
+        {
+          "name": "Fresh Haddock",
+          "price": 695
+        },
+        {
+          "name": "Sausage",
+          "price": 695
+        },
+        {
+          "name": "Quorn Sausage",
+          "price": 695,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Battered Sausage",
+          "price": 695
+        }
+      ]
+    },
+    {
+      "name": "Alcoholic Drinks",
+      "items": [
+        {
+          "name": "Magners Original",
+          "price": 475
+        },
+        {
+          "name": "Magners Dark Fruits",
+          "price": 475
+        },
+        {
+          "name": "Budweiser",
+          "price": 475
+        },
+        {
+          "name": "Corona",
+          "price": 475
+        }
+      ]
+    }
+  ]
+}

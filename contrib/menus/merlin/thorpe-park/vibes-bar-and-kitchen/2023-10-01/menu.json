@@ -1,0 +1,144 @@
+{
+  "date": "2023-10-01",
+  "approxDate": true,
+  "source": {
+    "name": "Theme Park James",
+    "url": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/thorpe-park/food-and-drink/vibes-bar-and-kitchen/menu/",
+    "venueUrl": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/thorpe-park/food-and-drink/vibes-bar-and-kitchen/",
+    "stated": "October 2023",
+    "menu": "Fright Nights 2023 Menu"
+  },
+  "sections": [
+    {
+      "name": "Fright Nights Specials",
+      "items": [
+        {
+          "name": "Devil's Delight Burger",
+          "description": "Beef burger, BBQ pulled pork, nacho cheese sauce, bacon bits, onion rings, hot sauce, black linseed bun with chunky chips",
+          "price": 1495
+        },
+        {
+          "name": "Lucifer's Chicken Burger",
+          "description": "Crispy chicken fillet, chorizo, salsa, cheese, olives, gherkins, brioche bun with chunky chips",
+          "price": 1495
+        }
+      ]
+    },
+    {
+      "name": "Lunch Mains",
+      "items": [
+        {
+          "name": "Sloppy Joes Pulled BBQ Chicken",
+          "description": "Pulled chicken, BBQ sauce, house slaw, cheese slice, iceberg lettuce all stacked in a brioche bun with chunky chips",
+          "price": 1295
+        },
+        {
+          "name": "Roasted Gammon Bloomer",
+          "description": "Grilled with honey roasted gammon, rocket salad and chunky chips",
+          "price": 1295
+        },
+        {
+          "name": "Grilled Halloumi Salad",
+          "description": "With baby gem lettuce, onion, cherry tomatoes, grated carrot, cucumber and balsamic glaze",
+          "price": 1195
+        },
+        {
+          "name": "Tomato and Mozzarella Salad",
+          "description": "Plum tomatoes, mozzarella, balsamic glaze and rocket",
+          "price": 995
+        },
+        {
+          "name": "Classic Caesar Salad",
+          "description": "Baby gem lettuce, croutons, Caesar dressing and parmesan shavings",
+          "price": 995
+        },
+        {
+          "name": "Chicken Caesar Salad",
+          "description": "Grilled chicken with baby gem lettuce, croutons, Caesar dressing and parmesan shavings",
+          "price": 1350
+        }
+      ]
+    },
+    {
+      "name": "Small Plates",
+      "items": [
+        {
+          "name": "Peri Peri Wings",
+          "description": "Marinated in a peri peri sauce",
+          "price": 795
+        },
+        {
+          "name": "BBQ Pork Ribs",
+          "description": "Ina sweet honey BBQ sauce",
+          "price": 795
+        },
+        {
+          "name": "Marinated Olives",
+          "description": "Marinated in garlic, lemon juice and zest",
+          "price": 445
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        {
+          "name": "Classic Chunky Chips",
+          "price": 395
+        },
+        {
+          "name": "Chunky Chips with Cajun seasoning",
+          "price": 495
+        },
+        {
+          "name": "Chunky Chips with Cheddar cheese",
+          "price": 595
+        },
+        {
+          "name": "Onion Rings",
+          "price": 395
+        },
+        {
+          "name": "Mozzarella Sticks",
+          "description": "Served with a sweet chilli dip",
+          "price": 595
+        }
+      ]
+    },
+    {
+      "name": "Kids Meals",
+      "items": [
+        {
+          "name": "Chicken Goujons",
+          "description": "Served with beans and chunky chips",
+          "price": 695
+        },
+        {
+          "name": "Vegan Nuggets",
+          "description": "Served with beans and chunky chips",
+          "price": 595
+        },
+        {
+          "name": "Pork Sausages",
+          "description": "Served with beans and chunky chips",
+          "price": 495
+        }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        {
+          "name": "Vegan Chocolate Torte",
+          "description": "Served with vanilla ice cream",
+          "price": 695
+        },
+        {
+          "name": "Chocolate Fudge Cake",
+          "description": "Served with vanilla ice cream",
+          "price": 695
+        }
+      ]
+    }
+  ]
+}

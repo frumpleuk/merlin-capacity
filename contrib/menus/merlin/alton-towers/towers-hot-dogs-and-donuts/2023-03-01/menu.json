@@ -1,0 +1,104 @@
+{
+  "date": "2023-03-01",
+  "approxDate": true,
+  "source": {
+    "name": "Theme Park James",
+    "url": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/alton-towers/food-and-drink/towers-street-hot-dogs/menu/",
+    "venueUrl": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/alton-towers/food-and-drink/towers-street-hot-dogs/",
+    "stated": "March 2023",
+    "menu": "2023 Menu"
+  },
+  "sections": [
+    {
+      "name": "Hot Dogs",
+      "items": [
+        {
+          "name": "Jumbo Hot Dog",
+          "price": 715
+        },
+        {
+          "name": "Vegan Hot Dog",
+          "price": 715,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "Hot Dog Meal",
+          "description": "with fries and a soft drink",
+          "price": 1045
+        },
+        {
+          "name": "Vegan Hot Dog Meal",
+          "description": "with fries and a soft drink",
+          "price": 1045,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "Fries",
+          "price": 325
+        }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        {
+          "name": "Americano",
+          "price": 310
+        },
+        {
+          "name": "Latte",
+          "price": 330
+        },
+        {
+          "name": "Flat White",
+          "price": 385
+        },
+        {
+          "name": "Cappuccino",
+          "price": 330
+        },
+        {
+          "name": "Mocha",
+          "price": 365
+        },
+        {
+          "name": "Hot Choc",
+          "price": 355
+        },
+        {
+          "name": "Tea",
+          "price": 265
+        }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        {
+          "name": "Coca-Cola",
+          "price": 350
+        },
+        {
+          "name": "Diet Coke",
+          "price": 330
+        },
+        {
+          "name": "Fanta",
+          "price": 330
+        },
+        {
+          "name": "Sprite Zero",
+          "price": 330
+        },
+        {
+          "name": "Water",
+          "price": 300
+        }
+      ]
+    }
+  ]
+}

@@ -4,6 +4,9 @@ export interface MapPoint {
   slug: string;
   name: string;
   area?: string | null;
+  /** We have a menu with prices for this one; hollow pins are places we know
+   *  about from the park's app but haven't photographed. */
+  priced?: boolean;
   lat: number | null;
   lon: number | null;
 }
@@ -61,14 +64,19 @@ export function ParkMap({
       p.lat != null && p.lon != null ? [{ lat: p.lat, lon: p.lon }] : [],
     );
     if (!pts.length) return null;
-    // Bounds come from the pins alone: a label or a path off at a hotel would
-    // otherwise squash the park into a corner.
-    const lats = pts.map((p) => p.lat);
-    const lons = pts.map((p) => p.lon);
-    const minLat = Math.min(...lats);
-    const maxLat = Math.max(...lats);
-    const minLon = Math.min(...lons);
-    const maxLon = Math.max(...lons);
+    // Bounds come from the pins, trimmed: the resort's hotel restaurants sit a
+    // long way outside the park and would squash it into a corner. They fall
+    // off the edge of the map, and stay in the list.
+    const span = (values: number[]) => {
+      const sorted = [...values].sort((a, b) => a - b);
+      const at = (f: number) => sorted[Math.min(sorted.length - 1, Math.max(0, Math.round(f * (sorted.length - 1))))];
+      const lo = at(0.05);
+      const hi = at(0.95);
+      const room = (hi - lo) * 0.08;
+      return [lo - room, hi + room] as const;
+    };
+    const [minLat, maxLat] = span(pts.map((p) => p.lat));
+    const [minLon, maxLon] = span(pts.map((p) => p.lon));
     const midLat = (minLat + maxLat) / 2;
     const k = Math.cos((midLat * Math.PI) / 180);
     const w = (maxLon - minLon) * k || 1e-6;
@@ -133,8 +141,8 @@ export function ParkMap({
           {water
             .filter((p) => p.lat != null)
             .map((p) => (
-              <circle key={p.slug} className="fd-map-water" cx={place.x(p.lon!)} cy={place.y(p.lat!)} r={2.5}>
-                <title>{p.name} (water refill)</title>
+              <circle key={p.slug} className="fd-map-water" cx={place.x(p.lon!)} cy={place.y(p.lat!)} r={3}>
+                <title>{p.name} — free water refill</title>
               </circle>
             ))}
           {venues
@@ -143,11 +151,14 @@ export function ParkMap({
               <circle
                 key={p.slug}
                 className={
-                  "fd-map-pin" + (matched.has(p.slug) ? " on" : "") + (focus === p.slug ? " focus" : "")
+                  "fd-map-pin" +
+                  (p.priced === false ? " unseen" : "") +
+                  (matched.has(p.slug) ? " on" : "") +
+                  (focus === p.slug ? " focus" : "")
                 }
                 cx={place.x(p.lon!)}
                 cy={place.y(p.lat!)}
-                r={focus === p.slug ? 7 : 4.5}
+                r={focus === p.slug ? 7 : p.priced === false ? 3.5 : 4.5}
                 onClick={() => onPick(p.slug)}
               >
                 <title>{p.name}</title>
@@ -155,6 +166,11 @@ export function ParkMap({
             ))}
         </g>
       </svg>
+      <figcaption className="fd-legend">
+        <span className="fd-key fd-key-priced" /> prices
+        <span className="fd-key fd-key-unseen" /> no menu yet
+        <span className="fd-key fd-key-water" /> water refill
+      </figcaption>
       {base && (
         <figcaption className="fd-map-credit">
           Map data{" "}

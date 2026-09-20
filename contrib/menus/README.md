@@ -164,7 +164,8 @@ ImageMagick.
 | `node scripts/menus/optimise.mjs [--force]` | Writes the committed `web/*.jpg` copies (1600px, EXIF stripped) and records their names in `menu.json`. Run after transcribing. |
 | `node scripts/menus/validate.mjs` | Checks layout and every `menu.json`. |
 | `node scripts/menus/build.mjs` | Compiles everything into `frontend/src/menus.generated.json`. Runs from `npm run build`. |
-| `node scripts/menus/publish.mjs [--dry-run]` | Uploads web copies R2 doesn't have yet. Runs from `npm run deploy`. |
+| `node scripts/menus/publish.mjs [--dry-run]` | Uploads web copies R2 doesn't have yet. Runs from `npm run deploy`, and from CI as the last step of the Cloudflare deploy command. |
+| `node scripts/menus/basemap.mjs [park_key...]` | Rebuilds a park's OpenStreetMap basemap (`frontend/public/basemaps/<park>.json`). Only needed when the park changes on the map. |
 
 ## Photos
 

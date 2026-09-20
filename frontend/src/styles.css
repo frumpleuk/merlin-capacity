@@ -1275,9 +1275,9 @@ main.with-bar {
   pointer-events: none;
 }
 .fd-map-water {
-  fill: none;
+  fill: var(--map-water);
   stroke: var(--q-main);
-  stroke-width: 1;
+  stroke-width: 1.2;
 }
 .fd-map-pin {
   fill: var(--grid);
@@ -1290,6 +1290,44 @@ main.with-bar {
 }
 .fd-map-pin.focus {
   fill: var(--fg);
+}
+/* Known from the park's app, not yet photographed. */
+.fd-map-pin.unseen {
+  fill: var(--bg);
+  stroke: var(--grid);
+  stroke-width: 1.4;
+}
+.fd-map-pin.unseen.on {
+  stroke: var(--q-alt);
+}
+.fd-legend {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 6px;
+  font-size: 10px;
+  color: var(--muted);
+}
+.fd-key {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.fd-key-priced {
+  background: var(--q-alt);
+}
+.fd-key-unseen {
+  background: var(--bg);
+  box-shadow: inset 0 0 0 1.4px var(--grid);
+}
+.fd-key-water {
+  background: var(--map-water);
+  box-shadow: inset 0 0 0 1.2px var(--q-main);
+}
+.fd-legend .fd-key + span,
+.fd-legend span + .fd-key {
+  margin-left: 6px;
 }
 .fd-map-note {
   margin: 6px 0 12px;

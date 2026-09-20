@@ -215,7 +215,7 @@ function VenueCard({
   focus?: string;
   onOpen: (slug: string | null) => void;
 }) {
-  const menu = venue.menus[0]; // newest visit
+  const menu = venue.menus[0] as Menu | undefined; // newest visit, if we have one
   const [open, setOpen] = useState(focus === venue.slug);
   const ref = useRef<HTMLElement>(null);
 
@@ -228,13 +228,15 @@ function VenueCard({
 
   // A search hides the sections that don't match, and opens what's left.
   const sections = useMemo(() => {
+    if (!menu) return [];
     if (!query) return menu.sections;
     return menu.sections
       .map((s) => ({ ...s, items: s.items.filter((i) => hay(i).includes(query)) }))
       .filter((s) => s.items.length);
-  }, [menu.sections, query]);
+  }, [menu, query]);
   const hits = sections.reduce((n, s) => n + s.items.length, 0);
-  const show = open || !!query;
+  const priced = venue.items > 0 && !!menu;
+  const show = priced && (open || !!query);
   // One note repeated on every section (a tablet's "this list may be partial")
   // is really the venue's note — say it once.
   const shared =
@@ -243,9 +245,14 @@ function VenueCard({
       : null;
 
   return (
-    <section ref={ref} id={venue.slug} className={"fd-venue" + (show ? " open" : "")}>
+    <section
+      ref={ref}
+      id={venue.slug}
+      className={"fd-venue" + (show ? " open" : "") + (priced ? "" : " fd-unseen")}
+    >
       <button
         className="fd-venue-head"
+        disabled={!priced}
         onClick={() => {
           setOpen(!show);
           onOpen(show ? null : venue.slug);
@@ -262,10 +269,12 @@ function VenueCard({
           ))}
         </span>
         <span className="fd-venue-meta">
-          {query
-            ? `${hits} match${hits === 1 ? "" : "es"}`
-            : `${venue.items} item${venue.items === 1 ? "" : "s"}`}
-          {venue.from != null && (
+          {!priced
+            ? "no menu yet"
+            : query
+              ? `${hits} match${hits === 1 ? "" : "es"}`
+              : `${venue.items} item${venue.items === 1 ? "" : "s"}`}
+          {priced && venue.from != null && (
             <>
               {" · "}
               {venue.from === venue.to ? money(venue.from) : `${money(venue.from)}–${money(venue.to!)}`}
@@ -273,10 +282,10 @@ function VenueCard({
           )}
         </span>
         <span className="fd-chevron" aria-hidden="true">
-          {show ? "−" : "+"}
+          {priced ? (show ? "−" : "+") : ""}
         </span>
       </button>
-      {show && (
+      {show && menu && (
         <div className="fd-sections">
           {venue.note && <p className="fd-note">{venue.note}</p>}
           {shared && <p className="fd-note">{shared}</p>}
@@ -486,9 +495,11 @@ export function MenusPage() {
     );
   };
 
-  const transcribed = data.venues.filter((v) => v.menus.length && v.items > 0);
+  const transcribed = data.venues;
   const eventVendors = data.events.flatMap((e) => e.vendors.filter((v) => v.menus.length && v.items > 0));
   const all = [...transcribed, ...eventVendors];
+  // The map shows every food place the park's app lists, photographed or not.
+  const pins = all.map((v) => ({ ...v, priced: v.items > 0 }));
 
   // A chip's count ignores its own facet, so it says what picking it would
   // leave rather than what is already selected.
@@ -523,17 +534,19 @@ export function MenusPage() {
     setPerks(new Set());
   };
 
-  const current = transcribed.filter((v) => !v.goneSince).filter(passes);
+  const byPrices = (a: Venue, b: Venue) =>
+    Number(b.items > 0) - Number(a.items > 0) || a.name.localeCompare(b.name);
+  const current = transcribed.filter((v) => !v.goneSince).filter(passes).sort(byPrices);
   const gone = transcribed.filter((v) => v.goneSince).filter(passes);
   const events = data.events
     .map((e) => ({ ...e, vendors: e.vendors.filter((v) => v.menus.length && v.items > 0).filter(passes) }))
     .filter((e) => e.vendors.length);
   const running = events.filter((e) => !e.end || e.end >= TODAY);
   const past = events.filter((e) => e.end && e.end < TODAY);
-  const without = data.venues.filter((v) => (!v.menus.length || v.items === 0) && !v.goneSince);
   const historic = gone.length + past.reduce((n, e) => n + e.vendors.length, 0);
   const shown = [...current, ...running.flatMap((e) => e.vendors)];
   const matched = new Set(shown.map((v) => v.slug));
+  const withMenus = shown.filter((v) => v.items > 0).length;
 
   return (
     <main className="fd">
@@ -546,7 +559,7 @@ export function MenusPage() {
           onChange={(e) => setParam("q", e.target.value)}
         />
         <span className="fd-count">
-          {shown.length} place{shown.length === 1 ? "" : "s"}
+          {shown.length} place{shown.length === 1 ? "" : "s"} · {withMenus} with prices
           {historic > 0 && ` · ${historic} gone`}
         </span>
       </div>
@@ -555,16 +568,14 @@ export function MenusPage() {
         <aside className="fd-side">
           <ParkMap
             park={park!}
-            venues={all}
+            venues={pins}
             water={data.water}
             areas={data.areas}
             matched={matched}
             focus={focus}
             onPick={setFocus}
           />
-          <p className="fd-map-note">
-            Tap a dot to open that menu; faded dots are filtered out, rings are free water refills.
-          </p>
+          <p className="fd-map-note">Tap a dot to open that menu; faded dots are filtered out.</p>
           <Facet
             label="Area"
             values={valuesOf((v) => (v.area ? [v.area] : []))}
@@ -687,20 +698,6 @@ export function MenusPage() {
             </section>
           )}
 
-          {!query && !filtered && without.length > 0 && (
-            <details className="fd-more">
-              <summary>Not photographed yet ({without.length})</summary>
-              <ul>
-                {without.map((v) => (
-                  <li key={v.slug}>
-                    {v.name}
-                    {v.area && <span className="fd-venue-meta"> {v.area}</span>}
-                    <PassBadge pass={v.passDiscount} />
-                  </li>
-                ))}
-              </ul>
-            </details>
-          )}
 
           {!query && !filtered && data.water.length > 0 && (
             <details className="fd-more">

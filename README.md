@@ -240,11 +240,17 @@ dashboard: **Workers & Pages → merlin-capacity → Settings → Build → Conn
 pick the repo, and set:
 
 - **Build command:** `npm ci && npm run build`
-- **Deploy command:** `npx wrangler d1 migrations apply merlin-capacity --remote && npx wrangler deploy`
+- **Deploy command:** `npx wrangler d1 migrations apply merlin-capacity --remote && npx wrangler deploy && npm run publish:menus`
 
 Every push to the production branch then builds and deploys automatically, and
 applies any new D1 migrations first (the deploy command handles that — Workers
 Builds won't run migrations on its own). No API-token secret to manage.
+
+`npm run publish:menus` is on the end because the menu photos live in R2, not
+in the bundle: it uploads any `contrib/menus/**/web/*.jpg` the bucket doesn't
+already have (it asks the live site for each one first, so a build with no new
+photos uploads nothing). It runs last because it checks against the deployment
+it just made. Locally, `npm run deploy` runs it for you via `postdeploy`.
 
 > The one-time resource creation below still has to be done by hand once, before
 > the first auto-deploy — CI deploys *to* the D1 database and R2 bucket, it

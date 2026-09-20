@@ -1,0 +1,229 @@
+{
+  "date": "2022-09-01",
+  "approxDate": true,
+  "source": {
+    "name": "Theme Park James",
+    "url": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/paultons-park/food-and-drink/beastie-bites/menu/",
+    "venueUrl": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/paultons-park/food-and-drink/beastie-bites/",
+    "stated": "September 2022",
+    "menu": "2022 Menu"
+  },
+  "sections": [
+    {
+      "name": "Hot Food",
+      "items": [
+        {
+          "name": "Crispers",
+          "price": 300
+        },
+        {
+          "name": "Hot Dog",
+          "price": 475
+        },
+        {
+          "name": "Hot Dog, Crispers and a choice of Soft Drink",
+          "price": 850
+        }
+      ]
+    },
+    {
+      "name": "Load Your Crispers",
+      "items": [
+        {
+          "name": "Pulled Pork",
+          "price": 895
+        },
+        {
+          "name": "Crispy Shredded Chicken",
+          "price": 895
+        },
+        {
+          "name": "Cheese Sauce",
+          "price": 395
+        },
+        {
+          "name": "Halloumi",
+          "price": 950
+        },
+        {
+          "name": "Beef Chilli",
+          "price": 895
+        }
+      ],
+      "note": "served with a selection of sauces, chopped spring onion, pickled red onion or jalapenos"
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Tea",
+          "price": 225
+        },
+        {
+          "name": "Americano",
+          "price": 290
+        },
+        {
+          "name": "White Coffee",
+          "price": 325
+        },
+        {
+          "name": "Cappuccino",
+          "price": 325
+        },
+        {
+          "name": "Hot Chocolate",
+          "price": 325
+        },
+        {
+          "name": "Latte",
+          "price": 325
+        },
+        {
+          "name": "Mocha",
+          "price": 350
+        },
+        {
+          "name": "Espresso",
+          "price": 275
+        },
+        {
+          "name": "Soft Drink Bottle",
+          "price": 260
+        },
+        {
+          "name": "Regular Pepsi Bottle",
+          "price": 285
+        },
+        {
+          "name": "Standard Soft Drink",
+          "price": 260
+        },
+        {
+          "name": "Fruit Shoot",
+          "price": 190
+        },
+        {
+          "name": "12oz Slushy Jack's",
+          "price": 275
+        },
+        {
+          "name": "Large Twister Cup",
+          "price": 625
+        },
+        {
+          "name": "Twister Cup Refill",
+          "price": 275
+        },
+        {
+          "name": "Bottled Water",
+          "price": 160
+        }
+      ]
+    },
+    {
+      "name": "Soft Ice Cream with Syrup",
+      "items": [
+        {
+          "name": "Small Soft Ice Cream",
+          "price": 300
+        },
+        {
+          "name": "Large Soft Ice Cream",
+          "price": 340
+        },
+        {
+          "name": "Soft Serve Ice Cream Tub",
+          "price": 365
+        },
+        {
+          "name": "Extra Sauce",
+          "description": "Chocolate, Fruits of the Forest, Strawberry, Mango",
+          "price": 45
+        }
+      ]
+    },
+    {
+      "name": "New Forest Ice Cream",
+      "items": [
+        {
+          "name": "Supreme Salted Caramel",
+          "price": 285
+        },
+        {
+          "name": "Supreme White",
+          "price": 285
+        },
+        {
+          "name": "Supreme Mint Crunch",
+          "price": 285
+        },
+        {
+          "name": "Supreme Milk",
+          "price": 285
+        },
+        {
+          "name": "Supreme Almond",
+          "price": 285
+        },
+        {
+          "name": "Supreme Cone Vanilla & Choc",
+          "price": 250
+        },
+        {
+          "name": "Supreme Cone Mint",
+          "price": 250
+        },
+        {
+          "name": "Supreme Cone Strawberry",
+          "price": 250
+        },
+        {
+          "name": "Twisted Trio",
+          "description": "Lemon Sorbet, Strawberry Sorbet & Vanilla Ice Cream",
+          "price": 210
+        },
+        {
+          "name": "Mister Bobble",
+          "price": 220
+        },
+        {
+          "name": "Super 5 Fruit Ice",
+          "description": "Blackcurrant, Lemon, Orange, Raspberry & Pineapple",
+          "price": 220
+        },
+        {
+          "name": "Smoothie Tropical",
+          "price": 220
+        },
+        {
+          "name": "Party Push Up",
+          "description": "with candy covered choc chips",
+          "price": 270
+        },
+        {
+          "name": "Double Bubble",
+          "description": "Bubblegum flavour",
+          "price": 210
+        },
+        {
+          "name": "Vanilla Frost",
+          "description": "Vanilla flavour milk ice lolly",
+          "price": 170
+        },
+        {
+          "name": "Squeeze Up Blackcurrant",
+          "price": 220
+        },
+        {
+          "name": "Squeeze Up Lemon Lime",
+          "price": 220
+        },
+        {
+          "name": "Squeeze Up Orange",
+          "price": 220
+        }
+      ]
+    }
+  ]
+}

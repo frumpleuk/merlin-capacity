@@ -55,7 +55,7 @@
       ]
     },
     {
-      "name": "Soft serve ice cream cones or tubs",
+      "name": "Soft Serve Ice Cream",
       "items": [
         {
           "name": "Mint Green",
@@ -69,7 +69,8 @@
           "name": "Red Strawberry",
           "price": 350
         }
-      ]
+      ],
+      "note": "Soft serve ice cream cones or tubs"
     },
     {
       "name": "Snacks",

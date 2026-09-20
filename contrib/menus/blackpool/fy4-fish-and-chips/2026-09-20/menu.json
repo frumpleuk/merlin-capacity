@@ -1,0 +1,42 @@
+{
+  "date": "2026-09-20",
+  "unpriced": true,
+  "source": {
+    "name": "Pleasure Beach Resort",
+    "official": true,
+    "url": "https://www.blackpoolpleasurebeach.com/fy4-fish-chips-menu/"
+  },
+  "sections": [
+    {
+      "name": "Food",
+      "items": [
+        {
+          "name": "Fish & Chips",
+          "price": null
+        },
+        {
+          "name": "Pies",
+          "price": null
+        },
+        {
+          "name": "Kids Fish Bites Meal",
+          "price": null
+        },
+        {
+          "name": "Chips",
+          "price": null,
+          "description": "A meal includes a portion of fries & medium soft drink"
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Cold Drinks",
+          "price": null
+        }
+      ]
+    }
+  ]
+}

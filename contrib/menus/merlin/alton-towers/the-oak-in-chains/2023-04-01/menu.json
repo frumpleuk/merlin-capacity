@@ -10,7 +10,7 @@
   },
   "sections": [
     {
-      "name": "served with either chunky chips, jacket potato or side salad",
+      "name": "Classics",
       "items": [
         {
           "name": "Scampi",
@@ -35,10 +35,11 @@
           "description": "Chicken breast with bacon, lettuce, tomato and mayonnaise sandwiched in wholemeal bloomer bread",
           "price": 1210
         }
-      ]
+      ],
+      "note": "served with either chunky chips, jacket potato or side salad"
     },
     {
-      "name": "served with a choice of chunky chips, jacket potato or side salad",
+      "name": "From The Grill",
       "items": [
         {
           "name": "10oz Rump Steak",
@@ -80,7 +81,8 @@
           "description": "BBQ flavoured Chicken breast, topped with chicken goujons, Monterey Jack cheese and BBQ sauce",
           "price": 1430
         }
-      ]
+      ],
+      "note": "served with a choice of chunky chips, jacket potato or side salad"
     },
     {
       "name": "Burgers",
@@ -131,7 +133,7 @@
       ]
     },
     {
-      "name": "Meals made using Non Gluten Containing Ingredients",
+      "name": "NGCI Meals",
       "items": [
         {
           "name": "8oz Gammon and Pineapple",
@@ -157,7 +159,8 @@
             "gf"
           ]
         }
-      ]
+      ],
+      "note": "Meals made using Non Gluten Containing Ingredients"
     },
     {
       "name": "Vegan",
@@ -189,7 +192,7 @@
       ]
     },
     {
-      "name": "served with a choice of chunky chips or jacket potato and either beans, peas or salad",
+      "name": "Kids",
       "items": [
         {
           "name": "Vegan BBQ Wrap",
@@ -219,7 +222,8 @@
           "description": "2 crispy chicken mini fillets",
           "price": 825
         }
-      ]
+      ],
+      "note": "served with a choice of chunky chips or jacket potato and either beans, peas or salad"
     },
     {
       "name": "Sides",

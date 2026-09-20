@@ -1,0 +1,77 @@
+{
+  "date": "2021-07-01",
+  "approxDate": true,
+  "source": {
+    "name": "Theme Park James",
+    "url": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/paultons-park/food-and-drink/cascades/past-menus/",
+    "venueUrl": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/paultons-park/food-and-drink/cascades/",
+    "stated": "July 2021",
+    "menu": "2021 Menu"
+  },
+  "sections": [
+    {
+      "name": "Pasties",
+      "items": [
+        {
+          "name": "Traditional Cornish Pasty",
+          "price": 450
+        },
+        {
+          "name": "Seriously Cheesy Pasty",
+          "price": 450,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Lamb & Mint Pasty",
+          "price": 450
+        },
+        {
+          "name": "Keralan, Cauliflower, Chickpea & Onion Bhaji Pasty",
+          "price": 450,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "Jumbo Sausage Roll",
+          "price": 325
+        },
+        {
+          "name": "Spicy Mexican Bean Roll",
+          "price": 300,
+          "tags": [
+            "vg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Snacks",
+      "items": [
+        {
+          "name": "Candyfloss Tub",
+          "price": 325
+        },
+        {
+          "name": "Popcorn",
+          "price": 325
+        },
+        {
+          "name": "Crisps",
+          "price": 125
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Slushy Jack's 12oz",
+          "price": 250
+        }
+      ]
+    }
+  ]
+}

@@ -10,7 +10,7 @@
   },
   "sections": [
     {
-      "name": "Served with fries and a soft drinkGo Large: 90p - Add Bacon: 65p - Add Cheese: 65p",
+      "name": "Main Meals",
       "items": [
         {
           "name": "Christmas Chicken Burger",
@@ -32,10 +32,11 @@
           "name": "BBQ Chicken Wrap",
           "price": 1025
         }
-      ]
+      ],
+      "note": "Served with fries and a soft drink Go Large: 90p - Add Bacon: 65p - Add Cheese: 65p"
     },
     {
-      "name": "Served with fries, piece of fruit and a soft drink",
+      "name": "Kids Menu",
       "items": [
         {
           "name": "Grilled Chicken Wrap Meal",
@@ -52,7 +53,8 @@
             "v"
           ]
         }
-      ]
+      ],
+      "note": "Served with fries, piece of fruit and a soft drink"
     },
     {
       "name": "Sides",

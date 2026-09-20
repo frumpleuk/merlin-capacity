@@ -121,7 +121,7 @@
       ]
     },
     {
-      "name": "Chocolate, Vanilla, Strawberry, Caramel, Banana Choc, Chocolate Brownie, Vanilla Choc Cookie, Raspberry Sorbet, Candy Floss, Mint Chocolate, White Chocolate",
+      "name": "Ice Creams",
       "items": [
         {
           "name": "One Scoop",
@@ -139,7 +139,8 @@
           "name": "Sprinkles",
           "price": 65
         }
-      ]
+      ],
+      "note": "Chocolate, Vanilla, Strawberry, Caramel, Banana Choc, Chocolate Brownie, Vanilla Choc Cookie, Raspberry Sorbet, Candy Floss, Mint Chocolate, White Chocolate"
     }
   ]
 }

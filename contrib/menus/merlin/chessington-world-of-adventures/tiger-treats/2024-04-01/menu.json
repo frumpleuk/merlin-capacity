@@ -29,7 +29,7 @@
       ]
     },
     {
-      "name": "served in a tub",
+      "name": "Ice Cream",
       "items": [
         {
           "name": "Carte Dor 1 scoop",
@@ -41,7 +41,8 @@
           "description": "Chocolate, strawberry or vanilla",
           "price": 420
         }
-      ]
+      ],
+      "note": "served in a tub"
     },
     {
       "name": "Cold Drinks",

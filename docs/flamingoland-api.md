@@ -141,3 +141,69 @@ unchanged. Flamingo Land rides the existing every-minute queue cron and is
 excluded from the Attractions.io catalog cron.
 
 See `docs/apk-download.md` for how the APK was obtained.
+
+---
+
+## 6. Eateries & menus
+
+### 6.1 The venues — `food_drink_data` + `markers_data`
+
+Firestore's rules allow a read of any collection once you hold an anonymous
+token (§2), but **`documents:listCollectionIds` is refused** (403), so the
+collection names come from the app rather than from the database. Two more
+matter for food:
+
+```
+GET …/documents/food_drink_data?pageSize=300     25 docs, one per venue
+GET …/documents/markers_data?pageSize=300        1094 docs, the whole park map
+```
+
+`markers_data` pages (the default `pageSize` is 20), so drain `nextPageToken`.
+
+A `food_drink_data` doc, with the fields we use in bold:
+
+| Field | Meaning |
+|---|---|
+| **`id`** | Our `poi.json` id. |
+| **`title`** | Venue name, HTML-entity encoded (`Fuel Stop Cafe &#038; Wafflemeister`). |
+| **`foodType`** | What it serves ("Jacket Potatoes and Soft Drinks"), used as the category. |
+| **`parkLocation`** | Park zone as a slug (`muddy_duck_farm`, `the_hub`), mapped to the park's own names for the area. |
+| **`parkMapMarkerId`** | Joins to `markers_data.id` for the coordinates. **Empty on 5 of the 25.** |
+| `description`, `imageUrl`, `thumbnailUrl` | The park's own copy and photos. |
+| `openingTime` / `closingTime` | "11:00 am" / "4:00 pm", plus `openingTimesInfo`. |
+| `foodHygieneRating`, `hasVegetarianOptions`, `hasChildrenMenu`, `hasBreakfastMenu`, `hasCostaCoffee` | Per-venue flags. Not used yet. |
+
+A `markers_data` doc carries `id`, `lat`, `lng` (both **strings**),
+`display_name`, `markerType` (mostly `accommodation`: the holiday park's
+caravans) and `markerArea`. The join gives **20 of 25 venues a position**; the
+five without a `parkMapMarkerId` (Spud Stop, Cadbury Scooping, Dewars
+Restaurant, Jolly Sailor 2 Go at the Muddy Duck, Riverside One) get a folder and
+a name but no pin.
+
+### 6.2 The menus — `food-and-drink-menu` posts on the website
+
+The app has no dish lists. The website does, as a WordPress post type with its
+own sitemap:
+
+```
+https://www.flamingoland.co.uk/food-and-drink-menu-sitemap.xml
+```
+
+Today that is two pages, both for The Coach House (a food menu and a drinks
+menu), and they are **the only Flamingo Land menus anywhere with current
+prices** — Theme Park James's three are from 2023. They carry calories and
+allergen marks too.
+
+Two page shapes, both read by `scripts/menus/import-flamingoland-menus.mjs`:
+
+- **Food**: `h2.section_title` over `.item` blocks with `.item_title`,
+  `.item_description`, `.item_additions` ("Add bacon £1.50"), `.kcal`
+  ("1209kcal") and one `.item_price`.
+- **Drinks**: a table. The section heading names the columns ("kcals per 100ml",
+  "ABV", "25ml", "Double") and each row holds `span.column1…4`. A column of
+  prices is a serving size, so a gin is one item with a 25ml price and a double
+  price; ABV and the per-100ml calories become part of the description, because
+  neither is the drink's own calorie count.
+
+Dietary marks are `a.allergen.Ve` / `.V` / `.GF` (the title attribute spells
+them out).

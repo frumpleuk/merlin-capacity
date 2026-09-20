@@ -1,0 +1,11 @@
+{
+  "id": 61,
+  "name": "Coffee Station",
+  "category": "Food & Drink",
+  "area": "Tornado Springs",
+  "lat": 50.949383,
+  "lon": -1.550216,
+  "menuUrl": "https://menus.tenkites.com/paultonspark/coffeestation",
+  "appMissingSince": "2024-03-19",
+  "source": "paultons app bundle"
+}

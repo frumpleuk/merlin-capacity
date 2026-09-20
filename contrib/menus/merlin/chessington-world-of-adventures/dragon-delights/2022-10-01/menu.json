@@ -10,7 +10,7 @@
   },
   "sections": [
     {
-      "name": "(in a waffle cone or as a sundae)",
+      "name": "Ice Cream Sundaes",
       "items": [
         {
           "name": "Warm Apple Pie",
@@ -32,7 +32,8 @@
           "name": "Plain Ice Cream",
           "price": 315
         }
-      ]
+      ],
+      "note": "(in a waffle cone or as a sundae)"
     },
     {
       "name": "Cold Drinks",

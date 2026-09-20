@@ -1,0 +1,170 @@
+{
+  "date": "2026-09-20",
+  "unpriced": true,
+  "source": {
+    "name": "Pleasure Beach Resort",
+    "official": true,
+    "url": "https://www.blackpoolpleasurebeach.com/coasters-menu/"
+  },
+  "sections": [
+    {
+      "name": "Food",
+      "items": [
+        {
+          "name": "Gyros, Mediterranean Chicken or Halloumi",
+          "price": null,
+          "description": "Served in a Greek pita with tzatziki sauce, fries, lettuce, tomato and red onion"
+        },
+        {
+          "name": "Chicken & Cheese Quesadilla",
+          "price": null,
+          "description": "Tortilla wrap filled with melted cheese and chicken & a side of salsa, guacamole and sour creamVegetarian option available"
+        },
+        {
+          "name": "Chicken Burrito",
+          "price": null,
+          "description": "Tortilla wrap with rice, chicken, lettuce, salsa & side salad"
+        },
+        {
+          "name": "Chicken Fajita",
+          "price": null,
+          "description": "Chicken and pepper mix served with four mini tortilla wraps"
+        },
+        {
+          "name": "BBQ Ribs",
+          "price": null,
+          "description": "Half or full rack of ribs served on a bed of fries & a side of coleslaw"
+        },
+        {
+          "name": "Jacket Potato",
+          "price": null,
+          "description": "Served with Lurpack butter, side salad & a choice of one topping:"
+        },
+        {
+          "name": "Grated Cheese",
+          "price": null
+        },
+        {
+          "name": "Coleslaw",
+          "price": null
+        },
+        {
+          "name": "Baked Beans",
+          "price": null
+        },
+        {
+          "name": "Vegan Cheese",
+          "price": null
+        },
+        {
+          "name": "Beef Chilli/Vegetarian Chilli",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Extras",
+      "items": [
+        {
+          "name": "Nachos & Dips",
+          "price": null,
+          "description": "Tortilla chips topped with cheese sauce & a side of salsa, guacamole, sour cream and jalapenos"
+        },
+        {
+          "name": "Beef Chilli/Vegetarian Chilli",
+          "price": null
+        },
+        {
+          "name": "Mozzarella Sticks",
+          "price": null,
+          "description": "6 mozzarella sticks served with side salad & ketchup or mayonnaise pot"
+        },
+        {
+          "name": "Chicken Bites",
+          "price": null,
+          "description": "6 chicken bites served with side salad & ketchup or mayonnaise pot"
+        },
+        {
+          "name": "Salad Bowl",
+          "price": null,
+          "description": "Mix of lettuce, tomato, cucumber, onion & peppers with croutons"
+        },
+        {
+          "name": "Basket of Fries",
+          "price": null,
+          "description": "Served with a sauce pot"
+        }
+      ],
+      "note": "add: Add Mediterranean chicken"
+    },
+    {
+      "name": "Kids Menu",
+      "items": [
+        {
+          "name": "Chicken Bites Meal",
+          "price": null,
+          "description": "6 chicken bites & fries"
+        },
+        {
+          "name": "Kids Jacket Potato Meal",
+          "price": null,
+          "description": "Half Jacket potato served with Lurpack butter, side salad & a choice of one topping:"
+        },
+        {
+          "name": "Grated Cheese",
+          "price": null
+        },
+        {
+          "name": "Coleslaw",
+          "price": null
+        },
+        {
+          "name": "Baked Beans",
+          "price": null
+        },
+        {
+          "name": "Vegan Cheese",
+          "price": null
+        },
+        {
+          "name": "Beef Chilli/Vegetarian Chilli",
+          "price": null
+        }
+      ],
+      "note": "Kids meal includes a small soft drink or juice"
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Starbucks Hot Coffee",
+          "price": null
+        },
+        {
+          "name": "Cold Drinks",
+          "price": null
+        },
+        {
+          "name": "Draught/Bottled Beer, Cider",
+          "price": null
+        },
+        {
+          "name": "Prosecco, Champagne, & Wine",
+          "price": null
+        },
+        {
+          "name": "Spirits",
+          "price": null
+        },
+        {
+          "name": "Cocktails & Mocktails",
+          "price": null
+        },
+        {
+          "name": "Alcohol Free Available",
+          "price": null
+        }
+      ]
+    }
+  ]
+}

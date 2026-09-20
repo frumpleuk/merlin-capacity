@@ -1,0 +1,65 @@
+{
+  "date": "2026-09-20",
+  "unpriced": true,
+  "source": {
+    "name": "Pleasure Beach Resort",
+    "official": true,
+    "url": "https://www.blackpoolpleasurebeach.com/lokis-menu/"
+  },
+  "sections": [
+    {
+      "name": "Food",
+      "items": [
+        {
+          "name": "Rotisserie Chicken",
+          "price": null
+        },
+        {
+          "name": "Baked Camembert Loaf",
+          "price": null
+        },
+        {
+          "name": "Chicken & Stuffing Baguette",
+          "price": null
+        },
+        {
+          "name": "Chicken & Stuffing Brioche Bun",
+          "price": null
+        },
+        {
+          "name": "Mediterranean Vegetables",
+          "price": null
+        },
+        {
+          "name": "Roast Potatoes",
+          "price": null
+        },
+        {
+          "name": "Chicken Salad",
+          "price": null
+        },
+        {
+          "name": "Kids Chicken Bites",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Hot Drinks",
+          "price": null
+        },
+        {
+          "name": "Cold Drinks",
+          "price": null
+        },
+        {
+          "name": "Upstairs Bar",
+          "price": null
+        }
+      ]
+    }
+  ]
+}

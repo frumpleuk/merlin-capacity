@@ -10,7 +10,7 @@
   },
   "sections": [
     {
-      "name": "Adult meals come with fries and a soft drink",
+      "name": "Adult Meals",
       "items": [
         {
           "name": "Classic Cheese Burger Meal",
@@ -28,7 +28,8 @@
           "name": "Maple Bacon and Cheese Cronut Burger Meal",
           "price": 1375
         }
-      ]
+      ],
+      "note": "Adult meals come with fries and a soft drink"
     },
     {
       "name": "Salads",
@@ -51,7 +52,7 @@
       ]
     },
     {
-      "name": "Kids meals come with fries or fruit, and a soft drink",
+      "name": "Kids Meals",
       "items": [
         {
           "name": "Kids Cheeseburger Meal",
@@ -72,7 +73,8 @@
             "vg"
           ]
         }
-      ]
+      ],
+      "note": "Kids meals come with fries or fruit, and a soft drink"
     }
   ]
 }

@@ -1,0 +1,394 @@
+{
+  "date": "2026-09-20",
+  "unpriced": true,
+  "source": {
+    "name": "Paultons Park",
+    "official": true,
+    "url": "https://menus.tenkites.com/paultonspark/basecamp"
+  },
+  "sections": [
+    {
+      "name": "Adult Meals",
+      "items": [
+        {
+          "name": "The Bad Boy Dog with Waffle Fries",
+          "description": "Meaty and Smokey pork hot dog. Served with waffle fries and a choice of soft drink.",
+          "price": null,
+          "kcal": 941
+        },
+        {
+          "name": "'Not' Dog with Waffle Fries",
+          "price": null,
+          "kcal": 829,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Classic Hot Dog with Waffle Fries",
+          "price": null,
+          "kcal": 833
+        },
+        {
+          "name": "Corn Dog with Waffle Fries",
+          "price": null,
+          "kcal": 728
+        }
+      ]
+    },
+    {
+      "name": "Children's Meals",
+      "items": [
+        {
+          "name": "Mac & Cheese Bites with Waffle Fries",
+          "price": null,
+          "kcal": 561,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Mini Dog with Waffle Fries",
+          "price": null,
+          "kcal": 572
+        }
+      ]
+    },
+    {
+      "name": "Sides-Toppings-Extras",
+      "items": [
+        {
+          "name": "Corn Dog.",
+          "price": null,
+          "kcal": 173
+        },
+        {
+          "name": "The Bad Boy Dog.",
+          "price": null,
+          "kcal": 941
+        },
+        {
+          "name": "Classic Hot Dog",
+          "price": null,
+          "kcal": 451
+        },
+        {
+          "name": "'Not' Dog.",
+          "price": null,
+          "kcal": 447,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Waffle Fries",
+          "price": null,
+          "kcal": 465
+        },
+        {
+          "name": "Homemade Beef Chilli",
+          "price": null,
+          "kcal": 245
+        },
+        {
+          "name": "Add Secret Sauce",
+          "price": null,
+          "kcal": 157,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add Crispy Onions",
+          "price": null,
+          "kcal": 145,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Add Cheese Sauce",
+          "price": null,
+          "kcal": 40,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add Jalapeno's",
+          "price": null,
+          "kcal": 4,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Hellmann's Mayonnaise.",
+          "price": null,
+          "kcal": 108
+        },
+        {
+          "name": "Hellmann's Tomato Ketchup.",
+          "price": null,
+          "kcal": 16,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "French's Mustard",
+          "price": null,
+          "kcal": 7,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ice Cream",
+      "items": [
+        {
+          "name": "Standard Whippy Tub",
+          "description": "Soft vanilla ice cream.",
+          "price": null,
+          "kcal": 114,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Standard Whippy Tub with Flake",
+          "description": "Soft vanilla ice cream served with a chocolate flake.",
+          "price": null,
+          "kcal": 155,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Small Whippy Cone",
+          "description": "Soft vanilla ice cream served on a wafer cone.",
+          "price": null,
+          "kcal": 99,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Small Whippy Cone with Flake",
+          "description": "Soft vanilla ice cream served with a chocolate flake on a wafer cone.",
+          "price": null,
+          "kcal": 140,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Standard Whippy Cone",
+          "description": "Soft vanilla ice cream served on a wafer cone.",
+          "price": null,
+          "kcal": 133,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Standard Whippy Cone with Flake",
+          "description": "Soft vanilla ice cream served with a chocolate flake on a wafer cone.",
+          "price": null,
+          "kcal": 175,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add Strawberry syrup to your ice cream",
+          "price": null,
+          "kcal": 8,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add Mango syrup to your ice cream",
+          "price": null,
+          "kcal": 8,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add Forest Berries syrup to your ice cream",
+          "price": null,
+          "kcal": 8,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add Chocolate Sauce to your ice cream",
+          "price": null,
+          "kcal": 29,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Extra Flake",
+          "price": null,
+          "kcal": 42,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Americano",
+          "price": null,
+          "kcal": 42,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Americano with Milk",
+          "price": null,
+          "kcal": 106,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Flat White.",
+          "price": null,
+          "kcal": 122,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Latte",
+          "price": null,
+          "kcal": 106,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Cappuccino",
+          "price": null,
+          "kcal": 184,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Clipper Everyday Tea - Black",
+          "price": null,
+          "kcal": 0,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Mocha",
+          "price": null,
+          "kcal": 226,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Hot Chocolate",
+          "price": null,
+          "kcal": 122,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Espresso",
+          "price": null,
+          "kcal": 28,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Double Espresso",
+          "price": null,
+          "kcal": 41,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "12oz Slushy Jacks Raspberry",
+          "price": null,
+          "kcal": 108,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "12oz Slushy Jacks Strawberry",
+          "price": null,
+          "kcal": 108,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Slushy Jacks Twister Cup - Raspberry",
+          "price": null,
+          "kcal": 158,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Slushy Jacks Twister Cup - Strawberry",
+          "price": null,
+          "kcal": 158,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Milk Portion",
+          "price": null,
+          "kcal": 6,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Soya Milk Portion",
+          "price": null,
+          "kcal": 5,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        }
+      ]
+    }
+  ]
+}

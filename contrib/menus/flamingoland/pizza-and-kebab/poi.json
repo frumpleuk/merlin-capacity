@@ -1,0 +1,12 @@
+{
+  "id": 81300,
+  "name": "Pizza & Kebab",
+  "category": "Food & Drink",
+  "area": "Riverside One",
+  "lat": 54.211784,
+  "lon": -0.809371,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "flamingo land app (firestore)",
+  "serves": "Pizzas, Doner and Chicken Kebabs, Fries, Cheesy Fries and Drinks"
+}

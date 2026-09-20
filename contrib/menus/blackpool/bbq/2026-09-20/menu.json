@@ -1,0 +1,62 @@
+{
+  "date": "2026-09-20",
+  "unpriced": true,
+  "source": {
+    "name": "Pleasure Beach Resort",
+    "official": true,
+    "url": "https://www.blackpoolpleasurebeach.com/bbq-menu/"
+  },
+  "sections": [
+    {
+      "name": "Food",
+      "items": [
+        {
+          "name": "4oz Burger",
+          "price": null
+        },
+        {
+          "name": "4oz Cheese Burger",
+          "price": null
+        },
+        {
+          "name": "4oz Bacon Cheese Burger",
+          "price": null
+        },
+        {
+          "name": "Vegetarian Burger",
+          "price": null
+        },
+        {
+          "name": "Cumberland Sausage",
+          "price": null,
+          "description": "A meal includes a portion of fries & medium soft drink"
+        },
+        {
+          "name": "Bucket of Fries",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Hot Drinks",
+          "price": null
+        },
+        {
+          "name": "Cold Drinks",
+          "price": null
+        },
+        {
+          "name": "Draught Beer",
+          "price": null
+        },
+        {
+          "name": "Draught Prosecco",
+          "price": null
+        }
+      ]
+    }
+  ]
+}

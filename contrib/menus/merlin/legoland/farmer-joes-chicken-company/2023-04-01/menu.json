@@ -118,7 +118,7 @@
         },
         {
           "name": "Dip Pot",
-          "description": "Smokey BBQSweet ChilliMayonnaise",
+          "description": "Smokey BBQ Sweet Chilli Mayonnaise",
           "price": 75
         },
         {
@@ -217,7 +217,7 @@
         },
         {
           "name": "Water",
-          "price": 166
+          "price": 165
         }
       ]
     },

@@ -1,0 +1,50 @@
+{
+  "date": "2026-09-20",
+  "unpriced": true,
+  "source": {
+    "name": "Pleasure Beach Resort",
+    "official": true,
+    "url": "https://www.blackpoolpleasurebeach.com/big-pizza-kitchen-menu/"
+  },
+  "sections": [
+    {
+      "name": "Food",
+      "items": [
+        {
+          "name": "All You Can Eat Buffet",
+          "price": null
+        },
+        {
+          "name": "Thin-crust & Deep Pan Pizza",
+          "price": null
+        },
+        {
+          "name": "Pasta",
+          "price": null
+        },
+        {
+          "name": "Salad Bar",
+          "price": null,
+          "description": "& draught soft drink included"
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Hot Drinks",
+          "price": null
+        },
+        {
+          "name": "Cold Drinks",
+          "price": null
+        },
+        {
+          "name": "Licensed Bar",
+          "price": null
+        }
+      ]
+    }
+  ]
+}

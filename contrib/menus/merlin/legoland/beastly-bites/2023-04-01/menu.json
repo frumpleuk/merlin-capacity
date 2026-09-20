@@ -81,7 +81,7 @@
       ]
     },
     {
-      "name": "Vanilla, banana, strawberry, mint chocolate, chocolate brownie, white chocolate, cream caramel, bubblegum marshmallow",
+      "name": "Ice Cream",
       "items": [
         {
           "name": "One Scoop",
@@ -95,7 +95,8 @@
           "name": "Flake",
           "price": 55
         }
-      ]
+      ],
+      "note": "Vanilla, banana, strawberry, mint chocolate, chocolate brownie, white chocolate, cream caramel, bubblegum marshmallow"
     },
     {
       "name": "Doughnut Sundaes",

@@ -134,11 +134,11 @@
       "items": [
         {
           "name": "Chicken Nuggets",
-          "price": 520
+          "price": 519
         },
         {
           "name": "Vegan Nuggets",
-          "price": 600,
+          "price": 599,
           "tags": [
             "vg"
           ]
@@ -152,15 +152,15 @@
         },
         {
           "name": "Chilli Heatwave Chicken Fries",
-          "price": 520
+          "price": 519
         },
         {
           "name": "Chilli Cheese Bites",
-          "price": 330
+          "price": 329
         },
         {
           "name": "Onion Rings",
-          "price": 220
+          "price": 219
         }
       ]
     },

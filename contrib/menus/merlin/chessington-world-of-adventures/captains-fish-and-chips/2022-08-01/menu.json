@@ -10,7 +10,7 @@
   },
   "sections": [
     {
-      "name": "Served with chips and any regular soft drink",
+      "name": "Meal Deals",
       "items": [
         {
           "name": "Fish & Chips Meal",
@@ -46,10 +46,11 @@
           "name": "Chicken Goujon Meal",
           "price": 1025
         }
-      ]
+      ],
+      "note": "Served with chips and any regular soft drink"
     },
     {
-      "name": "Served with chips and any regular soft drink",
+      "name": "Kids Deals",
       "items": [
         {
           "name": "Kids Fish & Chips Meal",
@@ -78,7 +79,8 @@
           "name": "Kids Chicken Tender Meal",
           "price": 695
         }
-      ]
+      ],
+      "note": "Served with chips and any regular soft drink"
     },
     {
       "name": "Sides",

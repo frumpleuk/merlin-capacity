@@ -1,0 +1,57 @@
+[
+  {
+    "name": "Zoo",
+    "lat": 54.207125,
+    "lon": -0.80533
+  },
+  {
+    "name": "Metropolis",
+    "lat": 54.209108,
+    "lon": -0.808659
+  },
+  {
+    "name": "The Hub",
+    "lat": 54.210397,
+    "lon": -0.808416
+  },
+  {
+    "name": "Splosh!",
+    "lat": 54.210575,
+    "lon": -0.80749
+  },
+  {
+    "name": "Seaside Adventure",
+    "lat": 54.211306,
+    "lon": -0.809325
+  },
+  {
+    "name": "Flamingo 1",
+    "lat": 54.208713,
+    "lon": -0.808326
+  },
+  {
+    "name": "Muddy Duck Farm",
+    "lat": 54.20669,
+    "lon": -0.807421
+  },
+  {
+    "name": "Riverside One",
+    "lat": 54.211828,
+    "lon": -0.809009
+  },
+  {
+    "name": "Holiday Resort",
+    "lat": 54.211868,
+    "lon": -0.809222
+  },
+  {
+    "name": "Mansion House",
+    "lat": 54.206543,
+    "lon": -0.805943
+  },
+  {
+    "name": "Children's Planet",
+    "lat": 54.206311,
+    "lon": -0.808261
+  }
+]

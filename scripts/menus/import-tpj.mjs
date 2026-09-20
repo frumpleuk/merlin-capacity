@@ -18,20 +18,23 @@
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import { PARK_DIRS, ROOT, readJson, slug, venues, writeJson } from "./lib.mjs";
+import { ALL_PARK_DIRS, MENUS, parkDir, readJson, slug, venues, writeJson } from "./lib.mjs";
 
 const SITE = "https://www.themeparkjames.co.uk";
 const UA = "merlin-capacity/0.1 (+https://themeparks.frumple.co.uk; park menu archive, contact via site)";
 const CACHE = path.join(os.tmpdir(), "tpj-cache");
-const PLAN = path.join(ROOT, "..", ".tpj-plan.json");
+const PLAN = path.join(MENUS, ".tpj-plan.json");
 const CREDIT = "Theme Park James";
 
-/** His park path segment for each of our park keys. */
+/** His park path segment for each of our park keys. He has no food-and-drink
+ *  pages for Blackpool, so that park isn't here. */
 const TPJ_PARKS = {
   alton_towers: "alton-towers",
   thorpe_park: "thorpe-park",
   chessington: "chessington-world-of-adventures",
   legoland: "legoland-windsor",
+  paultons: "paultons-park",
+  flamingoland: "flamingo-land",
 };
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -50,6 +53,9 @@ async function page(url) {
 
 const strip = (html) =>
   html
+    // A line break is a break in the text, not a join: "…and fries<br>Add
+    // onions…" is two sentences, and stripping the tag alone would weld them.
+    .replace(/<br\s*\/?>/gi, " ")
     .replace(/<[^>]+>/g, "")
     .replace(/&amp;/g, "&")
     .replace(/&#(\d+);/g, (_, n) => String.fromCharCode(+n))
@@ -61,7 +67,8 @@ const TAGS = { vegetarian: "v", vegan: "vg", "gluten free": "gf", "dairy free": 
 
 /** His menus are tables: th.price-list starts a section, tr.price-list is an
  *  item, td.price-list-price holds the price, a <p> inside the name cell is the
- *  description, and dietary marks are icons with alt text. */
+ *  description, and dietary marks are icons with alt text. A section's name
+ *  and the italic note under it are two header rows, not two sections. */
 function parseMenu(html) {
   const sections = [];
   let current = null;
@@ -69,7 +76,15 @@ function parseMenu(html) {
   for (const row of rows) {
     const head = row.match(/<th[^>]*class="[^"]*price-list[^"]*"[^>]*>([\s\S]*?)<\/th>/);
     if (head) {
-      current = { name: strip(head[1]), items: [] };
+      const text = strip(head[1]);
+      if (!text) continue;
+      // The note row ("Served in a toasted bun…") is italic and follows the
+      // name row, so it belongs to the section already open.
+      if (current && /<(em|i)[\s>]/i.test(head[1])) {
+        current.note = current.note ? `${current.note} ${text}` : text;
+        continue;
+      }
+      current = { name: text, items: [] };
       sections.push(current);
       continue;
     }
@@ -135,10 +150,10 @@ function guessVenue(parkDir, name) {
 async function plan(wanted) {
   const locs = [...(await page(`${SITE}/sitemap.xml`)).matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
   const out = [];
-  for (const [key, dir] of Object.entries(PARK_DIRS)) {
+  for (const key of Object.keys(ALL_PARK_DIRS)) {
     const theirPark = TPJ_PARKS[key];
     if (!theirPark || (wanted.length && !wanted.includes(key))) continue;
-    const parkDir = path.join(ROOT, dir);
+    const dir = parkDir(key);
     const urls = locs.filter((u) =>
       new RegExp(`/${theirPark}/food-and-drink/[a-z0-9-]+/(menu|past-menus)/?$`).test(u),
     );
@@ -158,7 +173,7 @@ async function plan(wanted) {
           console.warn(`! ${url}: "${label}" has no date, skipped`);
           continue;
         }
-        const guess = guessVenue(parkDir, venueName);
+        const guess = guessVenue(dir, venueName);
         out.push({
           park: key,
           theirName: venueName,
@@ -198,7 +213,7 @@ function apply() {
     let slugPath = e.venue;
     if (e.venue.startsWith("new:")) {
       slugPath = e.venue.slice(4);
-      const venueDir = path.join(ROOT, PARK_DIRS[e.park], slugPath);
+      const venueDir = path.join(parkDir(e.park), slugPath);
       const poiFile = path.join(venueDir, "poi.json");
       if (!fs.existsSync(poiFile)) {
         fs.mkdirSync(venueDir, { recursive: true });
@@ -213,13 +228,13 @@ function apply() {
           appMissingSince: new Date().toISOString().slice(0, 10),
           source: CREDIT,
         });
-        console.log(`+ ${path.relative(ROOT, venueDir)}/poi.json  (gone; known from ${CREDIT})`);
+        console.log(`+ ${path.relative(MENUS, venueDir)}/poi.json  (gone; known from ${CREDIT})`);
       }
     }
-    const dir = path.join(ROOT, PARK_DIRS[e.park], slugPath, e.date);
+    const dir = path.join(parkDir(e.park), slugPath, e.date);
     const file = path.join(dir, "menu.json");
     if (fs.existsSync(file) && !readJson(file).source) {
-      console.warn(`! ${path.relative(ROOT, file)} is ours (from photos), left alone`);
+      console.warn(`! ${path.relative(MENUS, file)} is ours (from photos), left alone`);
       continue;
     }
     fs.mkdirSync(dir, { recursive: true });
@@ -236,7 +251,7 @@ function apply() {
       sections: e.sections,
     });
     written++;
-    console.log(`+ ${path.relative(ROOT, file)}  (${e.items} items, ${e.label})`);
+    console.log(`+ ${path.relative(MENUS, file)}  (${e.items} items, ${e.label})`);
   }
   console.log(`${written} menus written`);
 }

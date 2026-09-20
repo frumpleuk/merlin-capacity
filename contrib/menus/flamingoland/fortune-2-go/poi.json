@@ -1,0 +1,12 @@
+{
+  "id": 9689,
+  "name": "Fortune 2 Go",
+  "category": "Food & Drink",
+  "area": "The Hub",
+  "lat": 54.210585,
+  "lon": -0.808514,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "flamingo land app (firestore)",
+  "serves": "Chinese Takeaway"
+}

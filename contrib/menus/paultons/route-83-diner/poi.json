@@ -1,0 +1,11 @@
+{
+  "id": 59,
+  "name": "Route 83 Diner",
+  "category": "Food & Drink",
+  "area": "Tornado Springs",
+  "lat": 50.948939,
+  "lon": -1.551429,
+  "menuUrl": "https://menus.tenkites.com/paultonspark/route83diner",
+  "appMissingSince": null,
+  "source": "paultons app bundle"
+}

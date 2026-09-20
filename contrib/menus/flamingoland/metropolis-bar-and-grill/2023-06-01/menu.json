@@ -1,0 +1,606 @@
+{
+  "date": "2023-06-01",
+  "approxDate": true,
+  "source": {
+    "name": "Theme Park James",
+    "url": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/flamingo-land/food-and-drink/metropolis-bar-and-grill/menu/",
+    "venueUrl": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/flamingo-land/food-and-drink/metropolis-bar-and-grill/",
+    "stated": "June 2023",
+    "menu": "2023 Menu"
+  },
+  "sections": [
+    {
+      "name": "Tapas and Sharers",
+      "items": [
+        {
+          "name": "Hot Chicken Wings",
+          "description": "with garlic mayo",
+          "price": 545
+        },
+        {
+          "name": "Mozzarella Sticks",
+          "description": "with sweet chilli sauce",
+          "price": 545,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "BBQ Chicken Wings",
+          "description": "with BBQ sauce",
+          "price": 545,
+          "tags": [
+            "gf"
+          ]
+        },
+        {
+          "name": "Salt & Pepper Chicken Strips",
+          "description": "with sweet chilli sauce",
+          "price": 545
+        },
+        {
+          "name": "Salt & Chilli Chicken Strips",
+          "description": "with garlic mayo",
+          "price": 545
+        }
+      ],
+      "note": "£5.45 each or buy any 5 for £22.95"
+    },
+    {
+      "name": "Nachos",
+      "items": [
+        {
+          "name": "The Classic Nachos",
+          "description": "Corn tortilla chips topped with nacho cheese sauce, salsa, guacamole, sour cream, spring onions and jalapeños",
+          "price": 795,
+          "tags": [
+            "v",
+            "gf"
+          ]
+        },
+        {
+          "name": "add Chilli Con Carne",
+          "price": 275,
+          "tags": [
+            "gf"
+          ]
+        },
+        {
+          "name": "add BBQ Pulled Pork",
+          "price": 275,
+          "tags": [
+            "gf"
+          ]
+        },
+        {
+          "name": "add Red Pepper, Bean & Aubergine Chilli",
+          "price": 275,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MBG Dirty Fries",
+      "items": [
+        {
+          "name": "Cheese Fries",
+          "description": "Skinny fries & nacho cheese sauce",
+          "price": 495,
+          "tags": [
+            "v",
+            "gf"
+          ]
+        },
+        {
+          "name": "Cheese & Bacon Bits",
+          "description": "Cheesy fries & bacon bits",
+          "price": 550,
+          "tags": [
+            "gf"
+          ]
+        },
+        {
+          "name": "Mexi Fries",
+          "description": "Skinny fries, nacho cheese sauce, chilli con carne, salsa, spring onions and jalapeños",
+          "price": 625,
+          "tags": [
+            "gf"
+          ]
+        },
+        {
+          "name": "Pizza Fries",
+          "description": "Skinny fries, mozzarella & cheddar cheese, pizza sauce, pepperoni & Italian herbs",
+          "price": 700,
+          "tags": [
+            "gf"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tacos",
+      "items": [
+        {
+          "name": "The MBG Crunchy Taco",
+          "description": "Three crunchy corn tortilla shells filled with chilli con carne or pulled pork or red pepper, bean and aubergine chilli with lettuce, sour cream, tomatoes, cheese sauce plus fries or salad",
+          "price": 1095
+        },
+        {
+          "name": "Baja Fish Taco",
+          "description": "Three crunchy corn tortilla shells filled with battered fish, shredded lettuce, sour cream, salsa, spring onions served with skinny fries or salad & house dressing",
+          "price": 1095
+        }
+      ]
+    },
+    {
+      "name": "Salads",
+      "items": [
+        {
+          "name": "Chicken Caesar Salad",
+          "description": "Grilled chicken fillet, served on a bed of little gem lettuce, parmesan shavings, croutons, Caesar dressing & bacon bits",
+          "price": 995
+        },
+        {
+          "name": "Tuna Salad",
+          "description": "Tuna & mayo served on a bed of salad leaves, sweet corn, tomatoes, peppers, red onion & boiled egg",
+          "price": 895,
+          "tags": [
+            "gf"
+          ]
+        },
+        {
+          "name": "Southern Fried Chicken Salad",
+          "description": "Southern fried chicken strips, served on a bed of little gem lettuce, garlic mayo & bacon bits",
+          "price": 995
+        }
+      ]
+    },
+    {
+      "name": "Go Green",
+      "items": [
+        {
+          "name": "Red Pepper, Bean & Aubergine Chilli",
+          "description": "Served with wild rice & tortilla chips",
+          "price": 1095,
+          "tags": [
+            "v",
+            "vg",
+            "gf"
+          ]
+        },
+        {
+          "name": "Vegan Penang Curry",
+          "description": "Served with wild rice",
+          "price": 1095,
+          "tags": [
+            "v",
+            "vg",
+            "gf"
+          ]
+        },
+        {
+          "name": "Moving Mountain Plant Based Burger",
+          "description": "Bun, skinny fries, side salad & house dressing",
+          "price": 1195,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "add vegan cheese",
+          "price": 150
+        },
+        {
+          "name": "make it a sloppy 10",
+          "description": "with red pepper, bean & aubergine chilli",
+          "price": 250
+        },
+        {
+          "name": "Mushroom Pasta",
+          "description": "Mushrooms, mushroom sauce, parmesan & penne pasta",
+          "price": 1095,
+          "tags": [
+            "v"
+          ]
+        }
+      ],
+      "note": "Vegetarian and Vegan"
+    },
+    {
+      "name": "Burgers",
+      "items": [
+        {
+          "name": "The Classic Burger",
+          "description": "60oz British beef burger made by our local butcher, served with a seeded bun, lettuce, red onion, tomatoes, skinny fries & coleslaw",
+          "price": 1095
+        },
+        {
+          "name": "BBQ Bonanza",
+          "description": "6oz British beef burger topped with pulled pork, grilled bacon, cheese & BBQ sauce, served with a seeded bun, lettuce, red onion, tomatoes, skinny fries & coleslaw",
+          "price": 1350
+        },
+        {
+          "name": "The Classic Chicken",
+          "description": "Grilled chicken fillet & BBQ sauce, served with a seeded bun, lettuce, red onion, tomatoes, skinny fries & coleslaw",
+          "price": 1095
+        },
+        {
+          "name": "Southern Fried Chicken Burger",
+          "description": "A crispy coated chicken fillet & a garlic mayo, served with a seeded bun, lettuce, red onion, tomatoes, skinny fries & coleslaw",
+          "price": 1195
+        },
+        {
+          "name": "add extra cheese",
+          "price": 100
+        },
+        {
+          "name": "add extra bacon",
+          "price": 100
+        }
+      ]
+    },
+    {
+      "name": "Sandwiches",
+      "items": [
+        {
+          "name": "Philly Cheese Steak",
+          "description": "Thinly sliced beef, nacho cheese sauce, onions & chives served in a sub roll with skinny fries",
+          "price": 1195
+        },
+        {
+          "name": "Spicy Honey Chicken",
+          "description": "Chicken fillet, honey, Sriracha, garlic mayo, lettuce, tomato & jalapeños served in a sub roll with skinny fries",
+          "price": 1095
+        }
+      ],
+      "note": "Served 12pm - 3:30pm only"
+    },
+    {
+      "name": "Sides",
+      "items": [
+        {
+          "name": "Skinny Fries",
+          "price": 350,
+          "tags": [
+            "v",
+            "gf"
+          ]
+        },
+        {
+          "name": "Onion Rings",
+          "price": 350,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Side Salad & Balsamic House Dressing",
+          "price": 350,
+          "tags": [
+            "vg",
+            "gf"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Evening Menu",
+      "items": [
+        {
+          "name": "BBQ Rack of Ribs",
+          "description": "Full rack of Tennessee ribs, served with skinny fries, side salad & house dressing",
+          "price": 1195,
+          "tags": [
+            "gf"
+          ]
+        },
+        {
+          "name": "Sizzling Chicken Fajitas",
+          "description": "Chicken pan-fried with peppers and onions, seasoned with Fajita spices and served on a hot cast iron skillet with tortilla chips, salsa, guacamole, soured cream and mixed cheeses",
+          "price": 1395
+        },
+        {
+          "name": "Sizzling Vegetarian Fajitas",
+          "description": "Pan-fried with peppers and onions, seasoned with Fajita spices and served on a hot cast iron skillet with tortilla chips, salsa, guacamole, soured cream and mixed cheeses",
+          "price": 1250,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Maxican Parmo",
+          "description": "Breaded chicken breast, 3 cheese mix & Bechamel sauce, hot sauce, fresh chillies, salad, garlic mayo & skinny fries",
+          "price": 1395
+        },
+        {
+          "name": "Classic Chicken Parmo",
+          "description": "Breaded chicken breast, 3 cheese mix & Bechamel sauce, salad & skinny fries",
+          "price": 1295
+        },
+        {
+          "name": "Chicken New Yorker",
+          "description": "Chicken fillet topped with bacon, Tennessee BBQ sauce and mixed cheeses, served with skinny fries, side salad and balsamic house dressing",
+          "price": 1195,
+          "tags": [
+            "gf"
+          ]
+        },
+        {
+          "name": "Sirloin Steak",
+          "description": "Served with Chimichurri & Cafe de Paris sauces & skinny fries",
+          "price": 1895
+        }
+      ],
+      "note": "Served 4:30pm - 9pm only"
+    },
+    {
+      "name": "Kids Menu",
+      "items": [
+        {
+          "name": "Beef Burger",
+          "description": "4oz British beef burger in a toasted bun with lettuce and tomato & skinny fries",
+          "price": 650
+        },
+        {
+          "name": "Chicken Burger",
+          "description": "Grilled chicken fillet in a toasted bun with lettuce and tomato & skinny fries",
+          "price": 650
+        },
+        {
+          "name": "Macaroni Cheese",
+          "description": "Pasta in a creamy white sauce, topped with cheddar cheese & garlic bread slice",
+          "price": 650,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Chicken Nuggets",
+          "description": "Battered chicken chunks served with skinny fries & baked beans",
+          "price": 650
+        },
+        {
+          "name": "Quorn Nuggets",
+          "description": "with skinny fries & baked beans",
+          "price": 650,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Kids Margherita Pizza",
+          "description": "7\" tomato and cheese pizza & skinny fries",
+          "price": 650,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Spaghetti Bolognese",
+          "description": "with a garlic bread slice",
+          "price": 650
+        }
+      ]
+    },
+    {
+      "name": "Freak Shakes",
+      "items": [
+        {
+          "name": "Chocolate Oreo Cookie",
+          "description": "Chocolate ice cream, chocolate sauce, whipped cream, Oreos, brownies & marshmallows",
+          "price": 650
+        },
+        {
+          "name": "The Flamingo",
+          "description": "Strawberry ice cream, strawberry sauce, donut, whipped cream, sprinkles & candy floss",
+          "price": 650
+        },
+        {
+          "name": "Banoffee Waffle",
+          "description": "Banana ice cream, waffle, toffee sauce & whipped cream",
+          "price": 650
+        }
+      ]
+    },
+    {
+      "name": "Classic Cocktails",
+      "items": [
+        {
+          "name": "Mojito",
+          "description": "Run, lime, mint",
+          "price": 800
+        },
+        {
+          "name": "Long Island Iced Tea",
+          "description": "Vodka, rum, gin, tequila, orange liqueur",
+          "price": 800
+        },
+        {
+          "name": "Sex on the Beach",
+          "description": "Vodka, peach schnapps, fresh pressed orange, cranberry",
+          "price": 800
+        },
+        {
+          "name": "Gin Spritz",
+          "description": "Bloom gin, prosecco & lemonade",
+          "price": 800
+        },
+        {
+          "name": "Aperol Spritz",
+          "description": "Aperol & prosecco",
+          "price": 800
+        },
+        {
+          "name": "Tequila Sunrise",
+          "description": "Tequila, Triple Sec, Grenadine, orange & lemon juice",
+          "price": 800
+        }
+      ]
+    },
+    {
+      "name": "Draught",
+      "items": [
+        {
+          "name": "Madri",
+          "description": "4.6%",
+          "price": 270
+        },
+        {
+          "name": "Coors",
+          "description": "4%",
+          "price": 240
+        },
+        {
+          "name": "Carling Black Fruit",
+          "description": "4%",
+          "price": 260
+        },
+        {
+          "name": "Aspall",
+          "description": "4.5%",
+          "price": 220
+        },
+        {
+          "name": "Worthingtons",
+          "description": "3.6%",
+          "price": 220
+        },
+        {
+          "name": "Straropramen",
+          "description": "5%",
+          "price": 275
+        }
+      ]
+    },
+    {
+      "name": "Bottles & Cans",
+      "items": [
+        {
+          "name": "Budweiser",
+          "description": "4.5%, 330ml",
+          "price": 425
+        },
+        {
+          "name": "Newcastle Brown Ale",
+          "description": "4.7%, 550ml",
+          "price": 495
+        },
+        {
+          "name": "Desperados",
+          "description": "5.9%, 330ml",
+          "price": 450
+        },
+        {
+          "name": "Corona",
+          "description": "4.5%, 330ml",
+          "price": 425
+        },
+        {
+          "name": "Smirnoff Ice",
+          "description": "4%, 275ml",
+          "price": 425
+        },
+        {
+          "name": "WKD (various)",
+          "description": "4%, 275ml",
+          "price": 425
+        }
+      ]
+    },
+    {
+      "name": "Wine & Fizz",
+      "items": [
+        {
+          "name": "House White",
+          "price": 1595
+        },
+        {
+          "name": "House Rosé",
+          "price": 1595
+        },
+        {
+          "name": "House Red",
+          "price": 1595
+        },
+        {
+          "name": "House Prosecco",
+          "price": 2195
+        },
+        {
+          "name": "House Champagne",
+          "price": 3995
+        }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        {
+          "name": "Americano",
+          "price": 300
+        },
+        {
+          "name": "Latte",
+          "price": 350
+        },
+        {
+          "name": "Cappuccino",
+          "price": 350
+        },
+        {
+          "name": "Mocha",
+          "price": 370
+        },
+        {
+          "name": "Hot Chocolate",
+          "price": 360
+        },
+        {
+          "name": "Tea",
+          "price": 285
+        },
+        {
+          "name": "Decaf Tea",
+          "price": 285
+        }
+      ]
+    },
+    {
+      "name": "Soft Drinks",
+      "items": [
+        {
+          "name": "Coke",
+          "price": 70
+        },
+        {
+          "name": "Coke Zero",
+          "price": 65
+        },
+        {
+          "name": "Diet Coke",
+          "price": 65
+        },
+        {
+          "name": "Fanta",
+          "price": 65
+        },
+        {
+          "name": "Sprite",
+          "price": 65
+        },
+        {
+          "name": "J2O (various)",
+          "description": "275ml",
+          "price": 295
+        },
+        {
+          "name": "Bottled Water",
+          "description": "still or sparkling, 330ml",
+          "price": 260
+        }
+      ]
+    }
+  ]
+}

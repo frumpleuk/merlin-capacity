@@ -31,6 +31,8 @@ interface Offer {
 interface Source {
   name: string;
   url: string;
+  /** The park's own published menu rather than someone else's work. */
+  official?: boolean;
   /** His write-up of the place: the page worth reading. */
   venueUrl?: string;
   stated?: string;
@@ -42,6 +44,9 @@ interface Menu {
   approxDate?: boolean;
   /** Set when the menu came from someone else's work rather than our photos. */
   source?: Source | null;
+  /** The source lists what's served but prints no prices (Paulton's boards and
+   *  Blackpool's venue pages are both like this), so items have none to show. */
+  unpriced?: boolean;
   /** R2 path the web photos hang off, e.g. /menus/alton-towers/donut-division/2026-08-26/ */
   base: string;
   photos: { name: string; caption: string }[];
@@ -63,6 +68,8 @@ interface Venue {
   area: string | null;
   category: string | null;
   note: string | null;
+  /** The park's own line about what this place sells (Flamingo Land). */
+  serves?: string | null;
   menuUrl: string | null;
   diningPlans: string[] | null;
   goneSince: string | null;
@@ -70,6 +77,8 @@ interface Venue {
   lat: number | null;
   lon: number | null;
   items: number;
+  /** Set when `from`/`to` come from an older menu than the newest one. */
+  priceDate?: string | null;
   from: number | null;
   to: number | null;
   event?: string;
@@ -269,7 +278,7 @@ function Mark({ text, query }: { text: string; query: string }) {
   );
 }
 
-function ItemRow({ item, query }: { item: Item; query: string }) {
+function ItemRow({ item, query, unpriced }: { item: Item; query: string; unpriced?: boolean }) {
   const unclear = item.unclear ? `Couldn't read this on the photo: ${item.unclear}` : undefined;
   const sizes = item.sizes ?? [];
   return (
@@ -289,7 +298,7 @@ function ItemRow({ item, query }: { item: Item; query: string }) {
           ))}
           {item.kcal != null && <span className="fd-kcal">{item.kcal} kcal</span>}
         </span>
-        {sizes.length === 0 && (
+        {sizes.length === 0 && !(unpriced && item.price == null) && (
           <span className="fd-price" title={unclear}>
             {item.price == null ? <span className="fd-flag">?</span> : money(item.price)}
           </span>
@@ -418,6 +427,7 @@ function VenueCard({
             <>
               {" · "}
               {venue.from === venue.to ? money(venue.from) : `${money(venue.from)} to ${money(venue.to!)}`}
+              {venue.priceDate && ` (${venue.priceDate.slice(0, 4)})`}
             </>
           )}
         </span>
@@ -427,6 +437,7 @@ function VenueCard({
       </button>
       {show && menu && (
         <div className="fd-sections">
+          {venue.serves && <p className="fd-note">{venue.serves}</p>}
           {venue.note && <p className="fd-note">{venue.note}</p>}
           {shared && <p className="fd-note">{shared}</p>}
           <div className="fd-menu">
@@ -436,7 +447,7 @@ function VenueCard({
                 {s.note && s.note !== shared && <p className="fd-note">{s.note}</p>}
                 <ul>
                   {s.items.map((i, n) => (
-                    <ItemRow key={i.name + n} item={i} query={query} />
+                    <ItemRow key={i.name + n} item={i} query={query} unpriced={menu.unpriced} />
                   ))}
                 </ul>
               </div>
@@ -462,7 +473,19 @@ function VenueCard({
               ))}
             </div>
           )}
-          {menu.source && (
+          {menu.source && menu.source.official && (
+            <p className="fd-credit">
+              <strong>
+                From{" "}
+                <a href={menu.source.url} target="_blank" rel="noreferrer noopener">
+                  the park's own menu
+                </a>
+              </strong>
+              , as {menu.source.name} published it
+              {menu.unpriced ? ". It lists what's served, but no prices." : "."}
+            </p>
+          )}
+          {menu.source && !menu.source.official && (
             <p className="fd-credit">
               <strong>
                 Collected by{" "}
@@ -506,7 +529,7 @@ function VenueCard({
                 Official menu
               </a>
             )}
-            {menu.source?.venueUrl && (
+            {menu.source?.venueUrl && !menu.source.official && (
               <a className="fd-official" href={menu.source.venueUrl} target="_blank" rel="noreferrer noopener">
                 {menu.source.name}'s write-up
               </a>
@@ -754,6 +777,19 @@ export function MenusPage() {
   const shown = [...current, ...running.flatMap((e) => e.vendors)];
   const matched = new Set(shown.map((v) => v.slug));
   const withMenus = shown.filter((v) => v.items > 0).length;
+  const withPrices = shown.filter((v) => v.from != null).length;
+  // Where this park's menus came from decides what this page may claim: not
+  // every park has photos of ours, a menu the park publishes, or anything from
+  // Theme Park James.
+  const sources = { ours: false, official: false, unpriced: false, credited: [] as string[] };
+  for (const v of [...current, ...gone, ...events.flatMap((e) => e.vendors)]) {
+    for (const m of v.menus) {
+      if (m.unpriced) sources.unpriced = true;
+      if (!m.source) sources.ours = true;
+      else if (m.source.official) sources.official = true;
+      else if (!sources.credited.includes(m.source.name)) sources.credited.push(m.source.name);
+    }
+  }
 
   return (
     <main className="fd">
@@ -767,7 +803,8 @@ export function MenusPage() {
           onChange={(e) => setParam("q", e.target.value)}
         />
         <span className="fd-count">
-          {shown.length} place{shown.length === 1 ? "" : "s"} · {withMenus} with prices
+          {shown.length} place{shown.length === 1 ? "" : "s"} · {withMenus} with menus
+          {withPrices > 0 && ` · ${withPrices} with prices`}
           {historic > 0 && ` · ${historic} gone`}
         </span>
       </div>
@@ -840,8 +877,13 @@ export function MenusPage() {
 
         <div className="fd-list">
           <p className="fd-intro">
-            What each place charges, and when the menu was seen. Ours are read off photos of the boards;
-            older ones were collected by Theme Park James.
+            What each place serves and what it charges, and when the menu was seen.
+            {sources.ours && " Ours are read off photos of the boards."}
+            {sources.official &&
+              (sources.unpriced
+                ? " Some are the park's own published menus, which list the dishes but no prices."
+                : " Some are the park's own published menus.")}
+            {sources.credited.length > 0 && ` Older ones were collected by ${sources.credited.join(" and ")}.`}
           </p>
 
           {data.offers.length > 0 && !query && !filtered && (
@@ -942,14 +984,16 @@ export function MenusPage() {
             </section>
           )}
 
-          <p className="fd-thanks">
-            The older menus here were collected by{" "}
-            <a href="https://www.themeparkjames.co.uk/" target="_blank" rel="noreferrer noopener">
-              Theme Park James
-            </a>
-            , who photographs and writes up park food across the UK, going back years. His pages carry the
-            write-up, the photos and the detail this page doesn't, so go and read them.
-          </p>
+          {sources.credited.includes("Theme Park James") && (
+            <p className="fd-thanks">
+              The older menus here were collected by{" "}
+              <a href="https://www.themeparkjames.co.uk/" target="_blank" rel="noreferrer noopener">
+                Theme Park James
+              </a>
+              , who photographs and writes up park food across the UK, going back years. His pages carry
+              the write-up, the photos and the detail this page doesn't, so go and read them.
+            </p>
+          )}
         </div>
       </div>
     </main>

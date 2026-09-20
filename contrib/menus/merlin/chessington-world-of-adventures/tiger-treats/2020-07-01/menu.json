@@ -45,13 +45,14 @@
       ]
     },
     {
-      "name": "served in a tub",
+      "name": "Ice Cream",
       "items": [
         {
           "name": "Cornetto Soft with a Flake",
           "price": 280
         }
-      ]
+      ],
+      "note": "served in a tub"
     },
     {
       "name": "Cold Drinks",

@@ -1,0 +1,12 @@
+{
+  "id": 16176,
+  "name": "Splash Battle Kiosk",
+  "category": "Food & Drink",
+  "area": "Splosh!",
+  "lat": 54.210575,
+  "lon": -0.80749,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "flamingo land app (firestore)",
+  "serves": "Hot Dogs, Wrapped Ice Creams, Slush and Fanta Frozen, Sodas, Refill & Refresh Souvenir Cups, Doritos Nachos"
+}

@@ -1,0 +1,11 @@
+{
+  "id": 58,
+  "name": "Pavilion Kiosk",
+  "category": "Food & Drink",
+  "area": "Lost Kingdom",
+  "lat": 50.948068,
+  "lon": -1.554449,
+  "menuUrl": "https://menus.tenkites.com/paultonspark/pavilionkiosk",
+  "appMissingSince": null,
+  "source": "paultons app bundle"
+}

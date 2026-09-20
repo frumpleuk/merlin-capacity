@@ -10,7 +10,7 @@
   },
   "sections": [
     {
-      "name": "Choose from Strawberry, Vanilla, Banana Choc, Triple Chocolate, Caramel, Candy Floss, Chocolate Brownie, Vanilla Choc Cookie, Mint Chocolate, White Chocolate or Pistachio",
+      "name": "Carte D'or Ice Creams",
       "items": [
         {
           "name": "1 Scoop Ice Cream",
@@ -24,7 +24,8 @@
           "name": "3 Scoop Ice Cream",
           "price": 415
         }
-      ]
+      ],
+      "note": "Choose from Strawberry, Vanilla, Banana Choc, Triple Chocolate, Caramel, Candy Floss, Chocolate Brownie, Vanilla Choc Cookie, Mint Chocolate, White Chocolate or Pistachio"
     },
     {
       "name": "Milkshakes",

@@ -10,7 +10,7 @@
   },
   "sections": [
     {
-      "name": "All meals come with Tortilla Chips or Side Salad and a Drink",
+      "name": "Hot Dogs and Potatoes",
       "items": [
         {
           "name": "Smoked Dog",
@@ -27,7 +27,8 @@
             "vg"
           ]
         }
-      ]
+      ],
+      "note": "All meals come with Tortilla Chips or Side Salad and a Drink"
     },
     {
       "name": "Nachos",

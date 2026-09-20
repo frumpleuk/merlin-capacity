@@ -10,7 +10,7 @@
   },
   "sections": [
     {
-      "name": "Combo includes fries and a drink",
+      "name": "Hot Dogs",
       "items": [
         {
           "name": "Beef Hot Dog",
@@ -39,7 +39,8 @@
           "name": "Kids Hot Dog",
           "price": 750
         }
-      ]
+      ],
+      "note": "Combo includes fries and a drink"
     },
     {
       "name": "Fries",

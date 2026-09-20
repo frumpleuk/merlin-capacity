@@ -10,7 +10,7 @@
   },
   "sections": [
     {
-      "name": "All meals come with tortilla chips or side salad and a drink",
+      "name": "Hot Dogs and Potatoes",
       "items": [
         {
           "name": "Smoked Dog",
@@ -27,14 +27,15 @@
             "vg"
           ]
         }
-      ]
+      ],
+      "note": "All meals come with tortilla chips or side salad and a drink"
     },
     {
       "name": "Nachos",
       "items": [
         {
           "name": "Loaded Nachos",
-          "description": "with a choice of two toppings:Grated cheese, salsa, guacamole, sour cream, bacon bits, crispy onions, pulled pork, chilli con carne, jalapenos, cheese sauce",
+          "description": "with a choice of two toppings: Grated cheese, salsa, guacamole, sour cream, bacon bits, crispy onions, pulled pork, chilli con carne, jalapenos, cheese sauce",
           "price": 720
         }
       ]

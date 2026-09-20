@@ -28,7 +28,7 @@
       ]
     },
     {
-      "name": "Meal made using Non Gluten Containing Ingredients",
+      "name": "NGCI Meals",
       "items": [
         {
           "name": "Gammon",
@@ -62,7 +62,8 @@
             "gf"
           ]
         }
-      ]
+      ],
+      "note": "Meal made using Non Gluten Containing Ingredients"
     },
     {
       "name": "Classics",
@@ -137,7 +138,7 @@
       ]
     },
     {
-      "name": "All kids meals come with a choice of chunky chips or jacket potato and either beans, peas or salad",
+      "name": "Kids",
       "items": [
         {
           "name": "Kids Fish Fingers",
@@ -155,7 +156,8 @@
           "name": "Kids Chicken Goujons",
           "price": 750
         }
-      ]
+      ],
+      "note": "All kids meals come with a choice of chunky chips or jacket potato and either beans, peas or salad"
     },
     {
       "name": "Burgers",

@@ -1,0 +1,32 @@
+{
+  "date": "2026-09-20",
+  "unpriced": true,
+  "source": {
+    "name": "Paultons Park",
+    "official": true,
+    "url": "https://menus.tenkites.com/paultonspark/coffeestop"
+  },
+  "sections": [
+    {
+      "name": "Breakfast",
+      "items": [
+        {
+          "name": "Butter Croissant",
+          "price": null,
+          "kcal": 197,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Chocolate Croissant",
+          "price": null,
+          "kcal": 353,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    }
+  ]
+}

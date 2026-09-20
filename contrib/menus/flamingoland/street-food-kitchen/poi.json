@@ -1,0 +1,12 @@
+{
+  "id": 83845,
+  "name": "Street Food Kitchen",
+  "category": "Food & Drink",
+  "area": "Riverside One",
+  "lat": 54.211853,
+  "lon": -0.80898,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "flamingo land app (firestore)",
+  "serves": "Gourmet Beef & Chicken Burgers, Fried Chicken & Fries, Costa Coffee, Fanta Frozen & Soft drinks"
+}

@@ -1,0 +1,17 @@
+{
+  "id": 190,
+  "name": "Coasters Bar & Restaurant",
+  "category": "Food & Drink > Sit Down Dining > Licensed Bar",
+  "area": null,
+  "lat": 53.790446,
+  "lon": -3.056468,
+  "menuUrl": "https://www.blackpoolpleasurebeach.com/coasters-menu/",
+  "appMissingSince": null,
+  "source": "blackpool app map markers",
+  "passDiscount": {
+    "offered": true,
+    "percent": null,
+    "applies": "Season Pass",
+    "source": "park website"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": 130,
+  "name": "Coffee Stop",
+  "category": "Food & Drink",
+  "area": null,
+  "lat": 50.947878,
+  "lon": -1.552584,
+  "menuUrl": "https://menus.tenkites.com/paultonspark/coffeestop",
+  "appMissingSince": null,
+  "source": "paultons app bundle"
+}

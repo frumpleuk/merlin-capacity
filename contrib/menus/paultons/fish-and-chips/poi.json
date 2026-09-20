@@ -1,0 +1,11 @@
+{
+  "id": 65,
+  "name": "Fish & Chips",
+  "category": "Food & Drink",
+  "area": "Peppa Pig World",
+  "lat": 50.949496,
+  "lon": -1.549898,
+  "menuUrl": "https://menus.tenkites.com/paultonspark/therailroaddiner",
+  "appMissingSince": null,
+  "source": "paultons app bundle"
+}

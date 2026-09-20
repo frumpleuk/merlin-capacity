@@ -1,0 +1,12 @@
+{
+  "id": 718,
+  "name": "Muddy Duck Café",
+  "category": "Food & Drink",
+  "area": "Muddy Duck Farm",
+  "lat": 54.206757,
+  "lon": -0.807007,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "flamingo land app (firestore)",
+  "serves": "Costa Coffee, Hot & Cold Beverages, Toasties, Sandwiches, Savouries, Cakes & Traybakes. Kids Lunch Box available."
+}

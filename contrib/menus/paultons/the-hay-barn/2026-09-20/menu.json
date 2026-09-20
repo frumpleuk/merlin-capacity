@@ -1,0 +1,471 @@
+{
+  "date": "2026-09-20",
+  "unpriced": true,
+  "source": {
+    "name": "Paultons Park",
+    "official": true,
+    "url": "https://menus.tenkites.com/paultonspark/thehaybarn"
+  },
+  "sections": [
+    {
+      "name": "Main Menu",
+      "items": [
+        {
+          "name": "Chicken Fajita Burrito",
+          "description": "Flour tortilla filled with chicken fajita, crunchy slaw, saffron rice and secret sauce. Served with skin on fries and a soft drink.",
+          "price": null,
+          "kcal": 1142
+        },
+        {
+          "name": "Beef Chilli Burrito.",
+          "description": "Flour tortilla filled with Beef Chilli, crunchy slaw, saffron rice and secret sauce. Served with skin on fries and a soft drink.",
+          "price": null,
+          "kcal": 1237
+        },
+        {
+          "name": "Veg Chilli Burrito.",
+          "description": "Flour tortilla filled with Veg Chilli, crunchy slaw, saffron rice and secret sauce. Served with skin on fries and a soft drink.",
+          "price": null,
+          "kcal": 1108,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Naked Burrito - Chicken Fajita",
+          "description": "Chicken Fajita served with skin on fries, crunchy slaw, saffron rice, baby gem lettuce, cherry tomatoes, cucumber and secret sauce.",
+          "price": null,
+          "kcal": 945
+        },
+        {
+          "name": "Naked Burrito - Beef Chilli",
+          "description": "Beef Chilli served with skin on fries, crunchy slaw, saffron rice, baby gem lettuce, cherry tomatoes, cucumber and secret sauce.",
+          "price": null,
+          "kcal": 977,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Naked Burrito - Veg Chilli.",
+          "description": "Veg Chilli served with skin on fries, crunchy slaw, saffron rice, baby gem lettuce, cherry tomatoes, cucumber and secret sauce.",
+          "price": null,
+          "kcal": 847,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Children's Menu",
+      "items": [
+        {
+          "name": "Chicken Fajita Burrito with Skin on Fries",
+          "description": "Flour tortilla stuffed with chicken fajita and baby gem lettuce. Served with skin on fries and a soft drink.",
+          "price": null,
+          "kcal": 352
+        },
+        {
+          "name": "Chicken Fajita Burrito with Corn Ribs",
+          "description": "Flour tortilla stuffed with chicken fajita and baby gem lettuce. Served with corn ribs and a soft drink.",
+          "price": null,
+          "kcal": 248
+        },
+        {
+          "name": "Beef Chilli Burrito with Skin on Fries",
+          "description": "Flour tortilla stuffed with Beef Chilli and baby gem lettuce. Served with skin on fries and a soft drink.",
+          "price": null,
+          "kcal": 414
+        },
+        {
+          "name": "Beef Chilli Burrito with Corn Ribs",
+          "description": "Flour tortilla stuffed with Beef Chilli and baby gem lettuce. Served with corn ribs and a soft drink.",
+          "price": null,
+          "kcal": 321
+        },
+        {
+          "name": "Veg Chilli Burrito with Skin on Fries",
+          "description": "Flour tortilla stuffed with Veg Chilli and baby gem lettuce. Served with skin on fries and a soft drink.",
+          "price": null,
+          "kcal": 349
+        },
+        {
+          "name": "Veg Chilli Burrito with Corn Ribs",
+          "description": "Flour tortilla stuffed with Veg Chilli and baby gem lettuce. Served with corn ribs and a soft drink.",
+          "price": null,
+          "kcal": 256,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sides-Extras",
+      "items": [
+        {
+          "name": "Skin on Fries",
+          "description": "Load your Fries with the following: cheese, chilli, jalapenos, secret sauce or crispy onions. Calories may vary depending on selection.. Please see individual items below.",
+          "price": null,
+          "kcal": 338,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Nachos",
+          "description": "Load your nachos with the following: cheese, chilli, jalapenos, secret sauce or crispy onions. Calories may vary depending on selection please see individual add on items below.",
+          "price": null,
+          "kcal": 470,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Charred Corn Ribs.",
+          "description": "Smoky sweetcorn ribs",
+          "price": null,
+          "kcal": 174,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add Saffron Rice",
+          "price": null,
+          "kcal": 141,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Add Chicken Fajita",
+          "price": null,
+          "kcal": 96
+        },
+        {
+          "name": "Add Veg Chilli.",
+          "price": null,
+          "kcal": 116,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Add Beef Chilli",
+          "price": null,
+          "kcal": 66
+        },
+        {
+          "name": "Add Guacamole",
+          "price": null,
+          "kcal": 159,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Add Salsa",
+          "price": null,
+          "kcal": 47,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Add Sour Cream",
+          "price": null,
+          "kcal": 57,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add Crunchy Coleslaw",
+          "price": null,
+          "kcal": 48,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Add Cheese Sauce",
+          "price": null,
+          "kcal": 40,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add Crispy Onions",
+          "price": null,
+          "kcal": 145,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Add Secret Sauce",
+          "price": null,
+          "kcal": 157,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add Jalapeno's",
+          "price": null,
+          "kcal": 4,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "French's Mustard",
+          "price": null,
+          "kcal": 7,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Hellmann's Tomato Ketchup Bottle.",
+          "price": null,
+          "kcal": 13,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Hellmann's Mayonnaise Bottle.",
+          "price": null,
+          "kcal": 108
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Black Tea",
+          "price": null,
+          "kcal": 0,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Clipper Everyday Tea - Black",
+          "price": null,
+          "kcal": 0,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Clipper Decaf Tea",
+          "price": null,
+          "kcal": 7,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Espresso",
+          "price": null,
+          "kcal": 28,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Double Espresso",
+          "price": null,
+          "kcal": 41,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Americano",
+          "price": null,
+          "kcal": 42,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Americano with Milk",
+          "price": null,
+          "kcal": 106,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Latte",
+          "price": null,
+          "kcal": 106,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Flat White.",
+          "price": null,
+          "kcal": 122,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Cappuccino",
+          "price": null,
+          "kcal": 184,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Mocha",
+          "price": null,
+          "kcal": 226,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Hot Chocolate",
+          "price": null,
+          "kcal": 122,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Slushy Jack Reduced Sugar - Strawberry.",
+          "price": null,
+          "kcal": 86
+        },
+        {
+          "name": "Slushy Jacks Reduced Sugar - White Peach.",
+          "price": null,
+          "kcal": 86
+        },
+        {
+          "name": "Slushy Jacks Reduced Sugar - Bubble Gum",
+          "price": null,
+          "kcal": 86
+        },
+        {
+          "name": "Milk Portion",
+          "price": null,
+          "kcal": 6,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Soya Milk Portion",
+          "price": null,
+          "kcal": 5,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ice Cream",
+      "items": [
+        {
+          "name": "Small Whippy Cone",
+          "description": "Soft vanilla ice cream served on a wafer cone.",
+          "price": null,
+          "kcal": 99,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Small Whippy Cone with Flake",
+          "description": "Soft vanilla ice cream served with a chocolate flake on a wafer cone.",
+          "price": null,
+          "kcal": 140,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Standard Whippy Cone",
+          "description": "Soft vanilla ice cream served on a wafer cone.",
+          "price": null,
+          "kcal": 133,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Standard Whippy Cone with Flake",
+          "description": "Soft vanilla ice cream served with a chocolate flake on a wafer cone.",
+          "price": null,
+          "kcal": 175,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Standard Whippy Tub",
+          "description": "Soft vanilla ice cream.",
+          "price": null,
+          "kcal": 114,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Standard Whippy Tub with Flake",
+          "description": "Soft vanilla ice cream served with a chocolate flake.",
+          "price": null,
+          "kcal": 155,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Extra Flake",
+          "price": null,
+          "kcal": 42,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add Chocolate Sauce to your ice cream",
+          "price": null,
+          "kcal": 29,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    }
+  ]
+}

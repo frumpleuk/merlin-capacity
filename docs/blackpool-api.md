@@ -328,3 +328,68 @@ tab (hours only, no availability) and a Queues tab.
 
 See `docs/apk-download.md` for how the APK was obtained (browser download +
 `strings` over the Flutter `libapp.so`).
+
+---
+
+## 9. Eateries & menus
+
+### 9.1 Where they are — `GET /map/get-markers`
+
+The same call §4 mentions for ride taxonomy is also the park's food directory,
+and the only place its coordinates exist (the queue feed has none):
+
+```
+GET /api/app/v3/map/get-markers
+    Authorization: Bearer <token>        (the §2 Sanctum token, same app UA)
+
+→ 129 markers; 39 of them type "food_drink"
+```
+
+| Field | Meaning |
+|---|---|
+| `id` | Our `poi.json` id. |
+| `title` | Venue name. |
+| `type` | `food_drink` for eateries (also `ride`, `attraction`, `shopping`, `facilities`, `shows_events`, `hotel`). |
+| `lat` / `lon` | **Strings**; every food marker has them. |
+| `filters` | The park's own taxonomy: `Grab 'n' Go`, `Sit Down Dining`, `Licensed Bar`, `Sweet Treats and Desserts`, `More to Experience`. Becomes the category path. |
+| `info_url` | 19 markers have one. 16 are on the park's own site (`<venue>-menu` pages, plus Chocolate by %); the other three are the venue's own site (White Tower, the two hotels). |
+| `description`, `image_url`, `display` | Blurb, photo, and whether the app draws it. |
+
+The markers carry no land or area, and the park doesn't label its zones in the
+app, so venue `area` is null for Blackpool.
+
+### 9.2 What they sell — the park's `<venue>-menu` pages
+
+Each menu page is Elementor: an `h2.elementor-heading-title` in capitals opens a
+section (FOOD, DRINKS, EXTRAS, KIDS MENU) and the text widget below it holds one
+`<p>` per line (sometimes several lines in one `<p>`, split by `<br>`).
+
+Reading it takes three rules, each of which the pages break somewhere:
+
+- **A dish is a line in capitals or a short capitalised phrase.** Capitals carry
+  lowercase in "4oz BURGER" and "THE REVOLOUTIONARY (vegan)", so the test is how
+  much of the line is lower case, not whether any of it is; and the drinks
+  sections list "Hot Drinks" and "Cold Drinks" in title case.
+- **A sentence is a description or a note.** `NAME - description` on one line,
+  or a NAME line followed by its description; a sentence-case line after a dish
+  that already has its description is a note on the section ("A meal includes a
+  portion of fries").
+- **The menu ends at `<footer`.** The footer is headings and paragraphs like
+  everything else, so "Get in touch", the phone number and the address otherwise
+  read as dishes.
+
+Some boards print calories after the dish ("Tuna & Coleslaw, 1031 Kcal"), which
+is read off the name.
+
+**No page prints a price**: not one `£` across the 16 venue pages, so these are
+stored with `unpriced: true`. Theme Park James has no Blackpool food pages
+either, so for now the park's dish lists are all there is.
+
+The intro's feature list is worth reading for one fact: `<li>Season Pass
+discount</li>` (also "discounts", and "Season pass" on one page, so match it
+case-insensitively). It appears on 12 of the 16 and is recorded as the venue's
+`passDiscount`. Its absence isn't a "no", so nothing is
+recorded for the others.
+
+See `scripts/menus/import-bpb-menus.mjs` and
+`scripts/menus/sync-venues-indie.mjs`.

@@ -1,0 +1,45 @@
+{
+  "date": "2026-09-20",
+  "unpriced": true,
+  "source": {
+    "name": "Pleasure Beach Resort",
+    "official": true,
+    "url": "https://www.blackpoolpleasurebeach.com/donut-cafe-menu/"
+  },
+  "sections": [
+    {
+      "name": "Food",
+      "items": [
+        {
+          "name": "Freshly Made Sugar Donuts",
+          "price": null
+        },
+        {
+          "name": "Topped Donuts",
+          "price": null
+        },
+        {
+          "name": "Biscuits",
+          "price": null
+        },
+        {
+          "name": "Walls Ice Cream",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Cold Drinks",
+          "price": null
+        },
+        {
+          "name": "Hot Drinks",
+          "price": null
+        }
+      ]
+    }
+  ]
+}

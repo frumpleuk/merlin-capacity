@@ -1,0 +1,192 @@
+{
+  "date": "2026-09-20",
+  "unpriced": true,
+  "source": {
+    "name": "Paultons Park",
+    "official": true,
+    "url": "https://menus.tenkites.com/paultonspark/therailroaddiner"
+  },
+  "sections": [
+    {
+      "name": "Adult Meals",
+      "items": [
+        {
+          "name": "Battered Jumbo Sausage",
+          "description": "Hand battered jumbo sausage served with chunky chips and a soft drink.",
+          "price": null,
+          "kcal": 1156
+        },
+        {
+          "name": "Hot Dog & Chips",
+          "description": "Pork hotdog sausage served in a sub roll with chunky chips and a soft drink.",
+          "price": null,
+          "kcal": 1160
+        },
+        {
+          "name": "Hot Dog with Crispy Onions & Chips",
+          "description": "Pork hotdog sausage & crispy onions in a sub roll served with chunky chips and a soft drink.",
+          "price": null,
+          "kcal": 1244
+        },
+        {
+          "name": "Battered Fish",
+          "description": "Hand Battered Fish served with chunky chips and a soft drink.",
+          "price": null,
+          "kcal": 1009
+        }
+      ]
+    },
+    {
+      "name": "Children's Meals",
+      "items": [
+        {
+          "name": "Sausage Meal",
+          "description": "Pork sausages served with chunky chips and a soft drink.",
+          "price": null,
+          "kcal": 548
+        },
+        {
+          "name": "Fish Bites & Chips",
+          "description": "Battered fish bites served with chunky chips and a soft drink.",
+          "price": null,
+          "kcal": 471
+        }
+      ]
+    },
+    {
+      "name": "Burgers",
+      "items": [
+        {
+          "name": "Double Beef Burger & Chips",
+          "price": null,
+          "kcal": 1345
+        },
+        {
+          "name": "Double Cheeseburger & Chips",
+          "price": null,
+          "kcal": 1429
+        },
+        {
+          "name": "Spicy Bean Burger & Chips",
+          "description": "Seasoned vegetables and mixed beans in a breadcrumb coating served in a brioche bun with taco mayo and chips",
+          "price": null,
+          "kcal": 1082,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Spicy Bean Burger with Cheese & Chips",
+          "description": "Seasoned vegetables and mixed beans in a breadcrumb coating topped with cheese and served in a brioche bun with taco mayo and chips.",
+          "price": null,
+          "kcal": 1155,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sides-Extras",
+      "items": [
+        {
+          "name": "Chips",
+          "price": null,
+          "kcal": 532,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Curry Sauce",
+          "price": null,
+          "kcal": 45,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Mushy Peas",
+          "price": null,
+          "kcal": 72,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Gravy",
+          "price": null,
+          "kcal": 59,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Hellmann's Tomato Ketchup.",
+          "price": null,
+          "kcal": 16,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Hellmann's Mayonnaise.",
+          "price": null,
+          "kcal": 108
+        },
+        {
+          "name": "French's Mustard",
+          "price": null,
+          "kcal": 7,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Pepsi Max",
+          "price": null,
+          "kcal": 0,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Diet Pepsi",
+          "price": null,
+          "kcal": 0,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "7UP Free",
+          "price": null,
+          "kcal": 0,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Orange Tango Sugar Free",
+          "price": null,
+          "kcal": 0,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        }
+      ]
+    }
+  ]
+}

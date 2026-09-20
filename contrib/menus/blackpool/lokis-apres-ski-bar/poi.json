@@ -1,0 +1,17 @@
+{
+  "id": 128,
+  "name": "Loki's Apres Ski Bar",
+  "category": "Food & Drink > Sit Down Dining > Licensed Bar",
+  "area": null,
+  "lat": 53.79266,
+  "lon": -3.05473,
+  "menuUrl": "https://www.blackpoolpleasurebeach.com/lokis-menu/",
+  "appMissingSince": null,
+  "source": "blackpool app map markers",
+  "passDiscount": {
+    "offered": true,
+    "percent": null,
+    "applies": "Season Pass",
+    "source": "park website"
+  }
+}

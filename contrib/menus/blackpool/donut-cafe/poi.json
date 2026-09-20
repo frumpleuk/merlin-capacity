@@ -1,0 +1,17 @@
+{
+  "id": 205,
+  "name": "Donut-Café",
+  "category": "Food & Drink > Grab 'n' Go > Sweet Treats and Desserts",
+  "area": null,
+  "lat": 53.789096,
+  "lon": -3.055873,
+  "menuUrl": "https://www.blackpoolpleasurebeach.com/donut-cafe-menu/",
+  "appMissingSince": null,
+  "source": "blackpool app map markers",
+  "passDiscount": {
+    "offered": true,
+    "percent": null,
+    "applies": "Season Pass",
+    "source": "park website"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": 60,
+  "name": "Station Restaurant",
+  "category": "Food & Drink",
+  "area": "Tornado Springs",
+  "lat": 50.949463,
+  "lon": -1.550584,
+  "menuUrl": "https://menus.tenkites.com/paultonspark/stationrestaurant",
+  "appMissingSince": "2024-03-19",
+  "source": "paultons app bundle"
+}

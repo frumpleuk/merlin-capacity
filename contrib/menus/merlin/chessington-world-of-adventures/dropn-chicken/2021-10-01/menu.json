@@ -10,7 +10,7 @@
   },
   "sections": [
     {
-      "name": "All meals come with fries and a soft drink",
+      "name": "Burgers + Wraps",
       "items": [
         {
           "name": "Chicken Bacon Double",
@@ -56,7 +56,8 @@
           "description": "Go large on Fries and a Drink",
           "price": 80
         }
-      ]
+      ],
+      "note": "All meals come with fries and a soft drink"
     },
     {
       "name": "Chicken + Sharers",
@@ -141,7 +142,7 @@
       ]
     },
     {
-      "name": "Kids meals come with a choice of fries or fruit bag & a soft drink",
+      "name": "Kids Meals",
       "items": [
         {
           "name": "Crispy Bites",
@@ -170,7 +171,8 @@
           "name": "Add a fruit bag to your meal",
           "price": 49
         }
-      ]
+      ],
+      "note": "Kids meals come with a choice of fries or fruit bag & a soft drink"
     },
     {
       "name": "Cold Drinks",

@@ -1,0 +1,12 @@
+{
+  "id": 81252,
+  "name": "R1 Bar",
+  "category": "Food & Drink",
+  "area": "Riverside One",
+  "lat": 54.211848,
+  "lon": -0.808676,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "flamingo land app (firestore)",
+  "serves": "Premium Draft, Spirits & Cocktails"
+}

@@ -5,9 +5,15 @@ into `menu.json` files for the site's Food tab.
 
 ## Layout
 
+Seven parks, grouped by operator: the Merlin four under `merlin/`, and the three
+independents each under their own folder, because each is its own operator.
+
 ```
-merlin/<park>/
-  <venue>/                  one per eatery the official app lists (sync-venues.mjs)
+merlin/<park>/              alton-towers, thorpe-park, legoland, chessington-world-of-adventures
+paultons/ blackpool/ flamingoland/      the independents, each its own operator
+
+<park>/                     either of the above; the shape below is the same
+  <venue>/                  one per eatery the official app lists (the venue syncs)
     poi.json                where it is and what the app calls it
     <YYYY-MM-DD>/           one per visit, named for the photos' capture date
       IMG_1234.HEIC         camera originals + Live Photo sidecars (git-ignored)
@@ -19,11 +25,12 @@ merlin/<park>/
     <YYYY-MM-DD>/           photos of the event as a whole (signage, maps)
     <vendor>/               same shape as a venue
   _<name>/                  not a venue (e.g. _park-wide-offers); no poi.json needed
+  areas.json                the app's own map labels, for the Food tab's map
 ```
 
-Park folders: `alton-towers`, `thorpe-park`, `legoland`,
-`chessington-world-of-adventures`. New photos go loose in the park folder;
-`scripts/menus/ingest.mjs` files them.
+New photos go loose in the park folder; `scripts/menus/ingest.mjs` files them.
+The independents have no photos of ours yet: their venues and menus come from
+the parks' own apps and websites (see "Menus from someone else" below).
 
 Venue folder names are the slug of the app's name and never change once
 created, even if the app renames the venue (the new name goes in `poi.json`).
@@ -44,14 +51,23 @@ for what it is, with a `poi.json` located from the photos' GPS.
 }
 ```
 
-`id`, `name`, `category`, `area`, `lat`, `lon`, `menuUrl`, `diningPlans`,
-`appPassholderDiscount`, `appMissingSince` and `source` are owned by
+`id`, `name`, `category`, `area`, `lat`, `lon`, `menuUrl`, `serves`,
+`diningPlans`, `appPassholderDiscount`, `appMissingSince` and `source` are owned by
 `sync-venues.mjs` when `id` is an app id, and are overwritten on each sync. Any
 other key (`note`, `display`) is yours and survives. For venues outside the app,
-`id` and `category` are `null` and `source` is `"photo GPS (mean)"`.
+`id` and `category` are `null` and `source` is `"photo GPS (mean)"`. The independents' sources are
+`"paultons app bundle"`, `"blackpool app map markers"` and
+`"flamingo land app (firestore)"`.
+
+`serves` is the park's own line about what a place sells, which only Flamingo
+Land publishes. It reads well but groups badly (some are a paragraph), so it is
+shown on the venue and never used as a category.
 
 `area` is the nearest land label on the app's map (within 400m), so it groups
-venues but isn't authoritative. `appMissingSince` is stamped when a venue
+venues but isn't authoritative. Paulton's tags only two of its outlets with an
+area, so the rest take the area of the nearest POI that has one (within 150m);
+Flamingo Land's venues name their own zone; Blackpool's app has no areas at all,
+so its venues have none. `appMissingSince` is stamped when a venue
 disappears from the app — the site then files it under what used to be there.
 
 **Copyright:** the app's `Summary` text is the park's own marketing copy. Read
@@ -108,7 +124,12 @@ pence** (`£8.75` is `875`).
 - `date` must equal the folder name.
 - Each item has exactly one of `price` (pence) or `sizes` (each with a
   `label` and a price in pence). A price is `null` only when an `unclear`
-  reason explains why.
+  reason explains why, or when the whole menu is `unpriced` (below).
+- `unpriced: true` says the source published the dishes but no prices, so every
+  item's price is null and the site shows the dishes without a price column. It
+  needs a `source` (a menu of ours comes from photographed boards, which have
+  prices on them). Paulton's Tenkites boards and Blackpool's venue pages are
+  both like this.
 - Optional per item: `description`, `kcal` (integer, as printed), `tags` from
   `v`, `vg`, `gf`, `df`, `alcohol`, `kids`, and `unclear` for anything
   uncertain.
@@ -124,11 +145,37 @@ on disk as evidence. `photos` is written by `optimise.mjs`, not by hand: one
 - Copy text as printed, fixing only capitalisation. Don't invent descriptions
   or fill in prices from elsewhere.
 
+### Menus from the park itself
+
+A park that publishes its own menus gets them imported with an `official`
+source, and no photos:
+
+```json
+"source": {
+  "name": "Paultons Park",
+  "official": true,
+  "url": "https://menus.tenkites.com/paultonspark/route83diner"
+}
+```
+
+Three importers, one per park, each cached and fetching one page a second:
+
+| Script | Park | Gets |
+|---|---|---|
+| `import-tenkites.mjs` | Paulton's | Every dish, its description, its calories and the park's v/vg marks, from the Tenkites boards. No prices: the park leaves every price field empty. |
+| `import-bpb-menus.mjs` | Blackpool | The dish lists on each `<venue>-menu` page, and whether a Season Pass gets a discount there. No prices either. |
+| `import-flamingoland-menus.mjs` | Flamingo Land | The Coach House food and drinks menus, **with prices**, calories and allergen marks. Drinks are sized items (25ml / Double). |
+
+A re-run writes nothing when the menu hasn't changed; when it has, the new one
+lands under today's date beside the old one, which is the history.
+
 ### Menus from someone else
 
 Not every menu is ours. `scripts/menus/import-tpj.mjs` reads the menus Theme
 Park James publishes, including past ones going back years, and writes them as
-ordinary dated menus with a `source` block:
+ordinary dated menus with a `source` block. He covers six of the seven parks
+(all but Blackpool), and for Paulton's and Flamingo Land his are the **only**
+prices anywhere, back to 2019:
 
 ```json
 "source": {
@@ -183,7 +230,11 @@ ImageMagick.
 
 | Command | Does |
 |---|---|
-| `node scripts/menus/sync-venues.mjs [park_key...]` | Creates or refreshes venue and water folders from the official apps. Reports renames and venues gone from the app; never deletes. |
+| `node scripts/menus/sync-venues.mjs [park_key...]` | Creates or refreshes the Merlin parks' venue and water folders from the official apps. Reports renames and venues gone from the app; never deletes. |
+| `node scripts/menus/sync-venues-indie.mjs [park_key...] [--poi <file>]` | The same for Paulton's, Blackpool and Flamingo Land, each from its own backend. Paulton's POIs ship inside the APK rather than being served, so pass an unpacked `points_of_interest.json` with `--poi`; without it that park is skipped. Blackpool needs `BPB_EMAIL`/`BPB_PASSWORD` (`.dev.vars`). |
+| `node scripts/menus/import-tenkites.mjs` | Paulton's own menus (dishes, calories, no prices). |
+| `node scripts/menus/import-bpb-menus.mjs` | Blackpool's own menus and its Season Pass discounts. |
+| `node scripts/menus/import-flamingoland-menus.mjs` | Flamingo Land's own menus, with prices. |
 | `node scripts/menus/ingest.mjs plan` | Suggests a venue for each loose photo by GPS; writes `contrib/menus/.ingest-plan.json`. |
 | `node scripts/menus/ingest.mjs sheets` | Makes labelled contact sheets of the planned photos. |
 | `node scripts/menus/ingest.mjs apply` | Moves photos (with sidecars) into `<venue>/<date>/` as planned. |

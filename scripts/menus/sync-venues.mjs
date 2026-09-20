@@ -9,7 +9,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { unzipSync } from "fflate";
 import { ATTRACTIONS_API, attractionsParks } from "../../src/config.ts";
-import { PARK_DIRS, ROOT, coord, metres, readJson, slug, venues, writeJson } from "./lib.mjs";
+import { PARK_DIRS, ROOT, coord, metres, parkDir, readJson, syncVenues, venues, writeJson } from "./lib.mjs";
 
 const auth = (key, token) =>
   `Attractions-Io api-key="${key}"` + (token ? `, installation-token="${token}"` : "");
@@ -90,10 +90,7 @@ for (const park of attractionsParks()) {
     r.Classification.filter((c) => /Passholder Discount/i.test(text(c.Name))).map((c) => c._id),
   );
 
-  const parkDir = path.join(ROOT, dir);
-  const byId = new Map(venues(parkDir).filter((v) => v.poi.id != null).map((v) => [v.poi.id, v]));
-  const seen = new Set();
-  let added = 0;
+  const pois = [];
   for (const item of r.Item) {
     const name = text(item.Name).trim();
     const category = catPath(item.Category);
@@ -101,12 +98,12 @@ for (const park of attractionsParks()) {
       /^(Food & Drink|Dining)/.test(category) && !/Freestyle/.test(category) && !INFO_ONLY.test(name);
     const water = /^Water\b/.test(name) && /^Facilities/.test(category);
     if (!food && !water) continue;
-    seen.add(item._id);
 
     const [lat, lon] = (item.Location ?? ",").split(",").map(Number);
     const summary = text(item.Summary);
     const plans = diningPlans(summary);
-    const appFields = {
+    pois.push({
+      water,
       id: item._id,
       name,
       category,
@@ -124,29 +121,17 @@ for (const park of attractionsParks()) {
       diningPlans: plans.length ? plans : null,
       appMissingSince: null,
       source: "attractions.io app bundle",
-    };
-    const existing = byId.get(item._id);
-    const venueDir = existing?.dir ?? path.join(parkDir, water ? "water" : "", slug(name));
-    if (!existing) {
-      if (fs.existsSync(path.join(venueDir, "poi.json"))) {
-        console.warn(`! ${dir}: ${path.relative(ROOT, venueDir)} already has a poi.json for another id; skipped ${name}`);
-        continue;
-      }
-      fs.mkdirSync(venueDir, { recursive: true });
-      added++;
-      console.log(`+ ${path.relative(ROOT, venueDir)}`);
-    }
-    const prev = existing ? readJson(path.join(venueDir, "poi.json")) : {};
-    if (existing && prev.name !== name) console.log(`~ ${path.relative(ROOT, venueDir)}: renamed "${prev.name}" -> "${name}"`);
-    writeJson(path.join(venueDir, "poi.json"), { ...prev, ...appFields });
+    });
   }
+  const { seen, added } = syncVenues(park.key, pois);
+
   // The map on the Food tab draws these as labels, so the venue pins sit in a
   // recognisable park rather than an unlabelled scatter.
-  writeJson(path.join(parkDir, "areas.json"), lands.map((a) => ({ name: a.name, lat: coord(a.lat), lon: coord(a.lon) })));
+  writeJson(path.join(parkDir(park.key), "areas.json"), lands.map((a) => ({ name: a.name, lat: coord(a.lat), lon: coord(a.lon) })));
 
   // Pop-ups and food-village stalls aren't in the app, but they stand in a land
   // like everything else — place them from their photos' GPS.
-  for (const v of venues(parkDir)) {
+  for (const v of venues(parkDir(park.key))) {
     // Event stalls take their event's area (event.json), not the nearest label:
     // a food village pitched on a lawn is not part of the land next door.
     if (v.dir.includes(`${path.sep}_events${path.sep}`)) continue;
@@ -155,18 +140,6 @@ for (const park of attractionsParks()) {
     if (area) {
       writeJson(path.join(v.dir, "poi.json"), { ...v.poi, area });
       console.log(`= ${path.relative(ROOT, v.dir)}: ${area}`);
-    }
-  }
-  // Gone from the app: kept on disk, but stamped so the site can file it under
-  // what used to be here rather than what's open today.
-  const today = new Date().toISOString().slice(0, 10);
-  for (const [id, v] of byId) {
-    if (seen.has(id)) continue;
-    const f = path.join(v.dir, "poi.json");
-    const poi = readJson(f);
-    if (!poi.appMissingSince) {
-      writeJson(f, { ...poi, appMissingSince: today });
-      console.log(`? ${path.relative(ROOT, v.dir)}: id ${id} no longer in the app (marked ${today})`);
     }
   }
   console.log(`${dir}: ${seen.size} in app, ${added} new folders`);

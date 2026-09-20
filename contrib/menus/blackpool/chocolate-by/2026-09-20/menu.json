@@ -1,0 +1,132 @@
+{
+  "date": "2026-09-20",
+  "unpriced": true,
+  "source": {
+    "name": "Pleasure Beach Resort",
+    "official": true,
+    "url": "https://www.blackpoolpleasurebeach.com/chocolate-by-percent/"
+  },
+  "sections": [
+    {
+      "name": "The Parisian Style Collection",
+      "items": [
+        {
+          "name": "Choose Your Chocolate",
+          "price": null
+        },
+        {
+          "name": "Milk",
+          "price": null
+        },
+        {
+          "name": "Dark",
+          "price": null
+        },
+        {
+          "name": "White",
+          "price": null
+        },
+        {
+          "name": "Dark Orange",
+          "price": null
+        },
+        {
+          "name": "Darker",
+          "price": null
+        },
+        {
+          "name": "Salted Caramel",
+          "price": null
+        },
+        {
+          "name": "Dark Raspberry",
+          "price": null
+        },
+        {
+          "name": "Marshmallow",
+          "price": null
+        },
+        {
+          "name": "Dark Spice",
+          "price": null
+        },
+        {
+          "name": "Irish Cream",
+          "price": null
+        },
+        {
+          "name": "Rum & Caramel",
+          "price": null
+        },
+        {
+          "name": "Black Forest",
+          "price": null
+        },
+        {
+          "name": "Peppermint",
+          "price": null
+        },
+        {
+          "name": "Chilli",
+          "price": null
+        },
+        {
+          "name": "Cookies & Cream",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "The Belgian Collection",
+      "items": [
+        {
+          "name": "Choose Your Chocolate",
+          "price": null
+        },
+        {
+          "name": "Zero Sugar Dark",
+          "price": null
+        },
+        {
+          "name": "Reduced Sugar Milk",
+          "price": null
+        },
+        {
+          "name": "Ruby Hot Chocolate Flakes",
+          "price": null
+        },
+        {
+          "name": "White, 30%",
+          "price": null
+        },
+        {
+          "name": "Milk Chocolate, 34%, 44%, or 48%",
+          "price": null,
+          "description": "Dark Chocolate, 53%, 65%, 75%, 85%, or 100%"
+        }
+      ]
+    },
+    {
+      "name": "Make Your Dream",
+      "items": [
+        {
+          "name": "Whipped Cream",
+          "price": null
+        },
+        {
+          "name": "Marshmallow",
+          "price": null
+        },
+        {
+          "name": "Oat/Almond Milk",
+          "price": null
+        },
+        {
+          "name": "Marshmallow Fluff",
+          "price": null
+        }
+      ],
+      "note": "Total Dream Marshmallow or Fluff, Cream & Flake"
+    }
+  ]
+}

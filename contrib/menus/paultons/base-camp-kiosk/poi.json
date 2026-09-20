@@ -1,0 +1,11 @@
+{
+  "id": 53,
+  "name": "Base Camp Kiosk",
+  "category": "Food & Drink",
+  "area": "Lost Kingdom",
+  "lat": 50.948457,
+  "lon": -1.554915,
+  "menuUrl": "https://menus.tenkites.com/paultonspark/basecamp",
+  "appMissingSince": null,
+  "source": "paultons app bundle"
+}

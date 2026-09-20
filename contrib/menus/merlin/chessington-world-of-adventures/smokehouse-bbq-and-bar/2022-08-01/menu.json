@@ -40,7 +40,7 @@
       ]
     },
     {
-      "name": "4 bottles for £14",
+      "name": "Bottles/Cans",
       "items": [
         {
           "name": "Corona",
@@ -67,7 +67,8 @@
           "description": "Can - 4%",
           "price": 520
         }
-      ]
+      ],
+      "note": "4 bottles for £14"
     },
     {
       "name": "Wines",

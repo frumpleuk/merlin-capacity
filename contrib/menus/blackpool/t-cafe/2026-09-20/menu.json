@@ -1,0 +1,57 @@
+{
+  "date": "2026-09-20",
+  "unpriced": true,
+  "source": {
+    "name": "Pleasure Beach Resort",
+    "official": true,
+    "url": "https://www.blackpoolpleasurebeach.com/t-cafe-menu/"
+  },
+  "sections": [
+    {
+      "name": "Food",
+      "items": [
+        {
+          "name": "Freshly Made Donuts",
+          "price": null
+        },
+        {
+          "name": "Topped Donuts",
+          "price": null
+        },
+        {
+          "name": "Whippy Ice Cream",
+          "price": null
+        },
+        {
+          "name": "Ice Blast Slush",
+          "price": null
+        },
+        {
+          "name": "Overloaded Hot Dog with Signature Sausages",
+          "price": null
+        },
+        {
+          "name": "Classic Hot Dog",
+          "price": null
+        },
+        {
+          "name": "Overloaded Jacket Potatoes",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Hot Drinks",
+          "price": null
+        },
+        {
+          "name": "Cold Drinks",
+          "price": null
+        }
+      ]
+    }
+  ]
+}

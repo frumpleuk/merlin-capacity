@@ -1,0 +1,17 @@
+{
+  "id": 136,
+  "name": "Ice Lounge",
+  "category": "Food & Drink",
+  "area": null,
+  "lat": 53.792018,
+  "lon": -3.055248,
+  "menuUrl": "https://www.blackpoolpleasurebeach.com/ice-lounge-menu/",
+  "appMissingSince": null,
+  "source": "blackpool app map markers",
+  "passDiscount": {
+    "offered": true,
+    "percent": null,
+    "applies": "Season Pass",
+    "source": "park website"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "id": 88587,
+  "name": "Spud Stop",
+  "category": "Food & Drink",
+  "area": "Flamingo 1",
+  "lat": null,
+  "lon": null,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "flamingo land app (firestore)",
+  "serves": "Jacket Potatoes and Soft Drinks"
+}

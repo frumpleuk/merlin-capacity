@@ -10,7 +10,7 @@
   },
   "sections": [
     {
-      "name": "Cod, Haddock or Pollock depending on market availability",
+      "name": "Catch of the Day",
       "items": [
         {
           "name": "Medium Catch of the Day",
@@ -28,7 +28,8 @@
           "name": "Large Catch of the Day and Chips",
           "price": 1240
         }
-      ]
+      ],
+      "note": "Cod, Haddock or Pollock depending on market availability"
     },
     {
       "name": "Menu",
@@ -171,7 +172,7 @@
       "items": [
         {
           "name": "Capri-Sun",
-          "description": "OrangeApple & Blackcurrant",
+          "description": "Orange Apple & Blackcurrant",
           "price": 245
         },
         {
@@ -184,7 +185,7 @@
         },
         {
           "name": "Oasis Zero 500ml",
-          "description": "Citrus Punch StillSummer Fruit",
+          "description": "Citrus Punch Still Summer Fruit",
           "price": 285
         }
       ]

@@ -1,0 +1,61 @@
+{
+  "date": "2026-09-20",
+  "unpriced": true,
+  "source": {
+    "name": "Pleasure Beach Resort",
+    "official": true,
+    "url": "https://www.blackpoolpleasurebeach.com/beach-burger-menu/"
+  },
+  "sections": [
+    {
+      "name": "Food",
+      "items": [
+        {
+          "name": "The Iconic",
+          "description": "A 4oz beef burger topped with cheese, lettuce, tomato",
+          "price": null
+        },
+        {
+          "name": "The Dipper",
+          "description": "A breaded chicken burger topped with lettuce & mayo",
+          "price": null
+        },
+        {
+          "name": "The Revoloutionary",
+          "description": "A plant based burger topped with lettuce & tomato",
+          "price": null,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "Classic Hotdog",
+          "description": "Served with a choice of sauce and onions",
+          "price": null
+        },
+        {
+          "name": "Bucket of Fries",
+          "price": null
+        },
+        {
+          "name": "Halloumi Fries",
+          "price": null
+        }
+      ],
+      "note": "A meal includes a portion of fries & a medium soft drink"
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Hot Drinks",
+          "price": null
+        },
+        {
+          "name": "Cold Drinks",
+          "price": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,16 +1,16 @@
-// Check contrib/menus/merlin against the layout and menu.json schema in
+// Check contrib/menus against the layout and menu.json schema in
 // contrib/menus/README.md. Exits 1 on errors; warnings (e.g. photos not yet
 // transcribed) don't fail.
 //
 //   node scripts/menus/validate.mjs
 import fs from "node:fs";
 import path from "node:path";
-import { DATE_DIR, PHOTO_EXT, ROOT, readJson } from "./lib.mjs";
+import { ALL_PARK_DIRS, DATE_DIR, MENUS, PHOTO_EXT, parkDir, readJson } from "./lib.mjs";
 
 const TAGS = new Set(["v", "vg", "gf", "df", "alcohol", "kids"]);
 const errors = [];
 const warnings = [];
-const rel = (p) => path.relative(ROOT, p);
+const rel = (p) => path.relative(MENUS, p);
 const err = (p, m) => errors.push(`${rel(p)}: ${m}`);
 const warn = (p, m) => warnings.push(`${rel(p)}: ${m}`);
 
@@ -29,6 +29,11 @@ function checkMenu(dir, photos) {
   // A menu is either ours (photos of the boards) or someone else's (a source
   // we credit). Sourced menus have no photos, so items cite none.
   const sourced = !!m.source;
+  // Some official menus publish the dishes but no prices (Paulton's Tenkites
+  // boards, Blackpool's venue pages). That's a fact about the menu, not an
+  // unreadable photo, so it's said once here rather than per item.
+  const unpriced = m.unpriced === true;
+  if (unpriced && !sourced) err(file, "unpriced menus must say where they came from");
   if (sourced) {
     if (!m.source.name || !m.source.url) err(file, "source needs a name and a url");
     if (photos.length) err(file, "a sourced menu should not also hold photos");
@@ -54,11 +59,11 @@ function checkMenu(dir, photos) {
       const hasSizes = Array.isArray(it.sizes);
       if (hasPrice === hasSizes) err(file, `${where}: needs exactly one of price or sizes`);
       if (hasPrice && it.price !== null && !isPence(it.price)) err(file, `${where}: price must be integer pence`);
-      if (it.price === null && !it.unclear) err(file, `${where}: price null without "unclear" reason`);
+      if (it.price === null && !it.unclear && !unpriced) err(file, `${where}: price null without "unclear" reason`);
       for (const sz of it.sizes ?? []) {
         if (!sz.label) err(file, `${where}: size missing label`);
         if (sz.price !== null && !isPence(sz.price)) err(file, `${where}: size "${sz.label}" price must be integer pence`);
-        if (sz.price === null && !it.unclear) err(file, `${where}: size price null without "unclear" reason`);
+        if (sz.price === null && !it.unclear && !unpriced) err(file, `${where}: size price null without "unclear" reason`);
       }
       if (it.kcal !== undefined && !(Number.isInteger(it.kcal) && it.kcal >= 0)) err(file, `${where}: kcal must be an integer`);
       for (const t of it.tags ?? []) if (!TAGS.has(t)) err(file, `${where}: unknown tag "${t}"`);
@@ -127,11 +132,11 @@ function walkVenue(dir, { needPoi }) {
   }
 }
 
-for (const park of fs.readdirSync(ROOT, { withFileTypes: true })) {
-  if (!park.isDirectory()) continue;
-  const parkDir = path.join(ROOT, park.name);
-  for (const e of fs.readdirSync(parkDir, { withFileTypes: true })) {
-    const p = path.join(parkDir, e.name);
+for (const key of Object.keys(ALL_PARK_DIRS)) {
+  const parkPath = parkDir(key);
+  if (!fs.existsSync(parkPath)) continue;
+  for (const e of fs.readdirSync(parkPath, { withFileTypes: true })) {
+    const p = path.join(parkPath, e.name);
     if (e.isFile() && PHOTO_EXT.test(e.name)) warn(p, "loose photo; run ingest.mjs plan");
     if (!e.isDirectory()) continue;
     if (e.name === "water") {

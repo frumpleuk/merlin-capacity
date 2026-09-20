@@ -1,0 +1,64 @@
+{
+  "date": "2022-09-01",
+  "approxDate": true,
+  "source": {
+    "name": "Theme Park James",
+    "url": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/paultons-park/food-and-drink/cascades/menu/",
+    "venueUrl": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/paultons-park/food-and-drink/cascades/",
+    "stated": "September 2022",
+    "menu": "2022 Menu"
+  },
+  "sections": [
+    {
+      "name": "Pasties",
+      "items": [
+        {
+          "name": "Traditional Cornish Pasty",
+          "price": 485
+        },
+        {
+          "name": "Seriously Cheesy Pasty",
+          "price": 485,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Lamb & Mint Pasty",
+          "price": 485
+        },
+        {
+          "name": "Keralan, Cauliflower, Chickpea & Onion Bhaji Pasty",
+          "price": 485,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "Jumbo Sausage Roll",
+          "price": 360
+        },
+        {
+          "name": "Spicy Mexican Bean Roll",
+          "price": 335,
+          "tags": [
+            "vg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Snacks",
+      "items": [
+        {
+          "name": "Candyfloss Tub",
+          "price": 330
+        },
+        {
+          "name": "Crisps",
+          "price": 145
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "id": 879,
+  "name": "Zoo Bar",
+  "category": "Food & Drink",
+  "area": "Holiday Resort",
+  "lat": 54.211868,
+  "lon": -0.809222,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "flamingo land app (firestore)",
+  "serves": "Bar snacks"
+}

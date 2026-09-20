@@ -77,7 +77,7 @@
         },
         {
           "name": "Add",
-          "description": "Smoked streaky baconBurger cheese slicePlant based baconVegan cheese slice",
+          "description": "Smoked streaky bacon Burger cheese slice Plant based bacon Vegan cheese slice",
           "price": 65
         },
         {
@@ -92,7 +92,7 @@
       ]
     },
     {
-      "name": "Kids meals come with either fries or a piece of fruit, and a soft drink",
+      "name": "Drop'N Chicken Kids Meals",
       "items": [
         {
           "name": "Kids Mini Chicken Wrap",
@@ -109,7 +109,8 @@
             "vg"
           ]
         }
-      ]
+      ],
+      "note": "Kids meals come with either fries or a piece of fruit, and a soft drink"
     },
     {
       "name": "Drop'N Chicken Sides",

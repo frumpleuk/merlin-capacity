@@ -10,7 +10,7 @@
   },
   "sections": [
     {
-      "name": "Served with a side salad and a choice of fries or jacket potato",
+      "name": "Burgers",
       "items": [
         {
           "name": "Onion B-Arggh-J Burger",
@@ -48,10 +48,11 @@
           "description": "Spicy coated chicken breast topped with cheese and salsa",
           "price": 995
         }
-      ]
+      ],
+      "note": "Served with a side salad and a choice of fries or jacket potato"
     },
     {
-      "name": "Served with a side salad and a choice of fries or jacket potato and coleslaw",
+      "name": "Mains & Chargrills",
       "items": [
         {
           "name": "Creepy Combo",
@@ -78,7 +79,8 @@
           "description": "Tikka marinated chicken breasts served with naan bread and mint yoghurt",
           "price": 1195
         }
-      ]
+      ],
+      "note": "Served with a side salad and a choice of fries or jacket potato and coleslaw"
     },
     {
       "name": "Wraps, Nachos & Salads",

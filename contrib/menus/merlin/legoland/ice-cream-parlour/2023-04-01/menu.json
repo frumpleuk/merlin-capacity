@@ -10,7 +10,7 @@
   },
   "sections": [
     {
-      "name": "Available in a cup or a cone",
+      "name": "Ice Creams",
       "items": [
         {
           "name": "Ice Cream",
@@ -34,7 +34,8 @@
           "name": "Sprinkles",
           "price": 60
         }
-      ]
+      ],
+      "note": "Available in a cup or a cone"
     },
     {
       "name": "Snacks",

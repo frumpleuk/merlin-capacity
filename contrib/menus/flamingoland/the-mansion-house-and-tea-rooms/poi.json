@@ -1,0 +1,12 @@
+{
+  "id": 1002,
+  "name": "The Mansion House & Tea Rooms",
+  "category": "Food & Drink",
+  "area": "Mansion House",
+  "lat": 54.206543,
+  "lon": -0.805943,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "flamingo land app (firestore)",
+  "serves": "Cakes & Traybakes. Ambient snacks. Draft Moretti Lager & Strongbow Cider, House Wines & Fizz. Hot and Cold Beverages."
+}

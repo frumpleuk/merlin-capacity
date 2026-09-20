@@ -1,0 +1,45 @@
+{
+  "date": "2026-09-20",
+  "unpriced": true,
+  "source": {
+    "name": "Pleasure Beach Resort",
+    "official": true,
+    "url": "https://www.blackpoolpleasurebeach.com/donut-dream-menu/"
+  },
+  "sections": [
+    {
+      "name": "Food",
+      "items": [
+        {
+          "name": "Freshly Made Sugar Donuts",
+          "price": null
+        },
+        {
+          "name": "Topped Donuts",
+          "price": null
+        },
+        {
+          "name": "Popcorn",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Cold Drinks",
+          "price": null
+        },
+        {
+          "name": "Hot Drinks",
+          "price": null
+        },
+        {
+          "name": "Ice Blast Slush",
+          "price": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "id": 80396,
+  "name": "Dewars Restaurant",
+  "category": "Food & Drink",
+  "area": "Holiday Resort",
+  "lat": null,
+  "lon": null,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "flamingo land app (firestore)",
+  "serves": "Bar Meals, Fine Dining & Afternoon Teas"
+}

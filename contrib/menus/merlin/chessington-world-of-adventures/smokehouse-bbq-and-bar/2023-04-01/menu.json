@@ -10,7 +10,7 @@
   },
   "sections": [
     {
-      "name": "includes a choice of 2 sides and 2 refillable soft drinks",
+      "name": "Signature Smoked Sharing Platters",
       "items": [
         {
           "name": "The Smokehouse",
@@ -22,10 +22,11 @@
           "description": "Brisket, Pulled Pork and Jalapeno Sausage",
           "price": 3135
         }
-      ]
+      ],
+      "note": "includes a choice of 2 sides and 2 refillable soft drinks"
     },
     {
-      "name": "includes a choice of 1 side and a refillable soft drink",
+      "name": "Smoked Meats",
       "items": [
         {
           "name": "Pulled Pork Brioche",
@@ -53,10 +54,11 @@
           "name": "Jalapeno Hot Dog",
           "price": 1225
         }
-      ]
+      ],
+      "note": "includes a choice of 1 side and a refillable soft drink"
     },
     {
-      "name": "includes a choice of 1 side and a refillable soft drink",
+      "name": "Chicken and Ribs",
       "items": [
         {
           "name": "½ BBQ Chicken",
@@ -70,10 +72,11 @@
           "name": "Full Rack of Ribs",
           "price": 1825
         }
-      ]
+      ],
+      "note": "includes a choice of 1 side and a refillable soft drink"
     },
     {
-      "name": "includes a choice of 1 side and a refillable soft drink",
+      "name": "Mac n' Cheese",
       "items": [
         {
           "name": "Plain Mac n' Cheese",
@@ -87,10 +90,11 @@
           "name": "Pulled Pork",
           "price": 1460
         }
-      ]
+      ],
+      "note": "includes a choice of 1 side and a refillable soft drink"
     },
     {
-      "name": "includes a choice of 1 side and a refillable soft drink",
+      "name": "Meat Free",
       "items": [
         {
           "name": "Vegan Hot Dog",
@@ -106,7 +110,8 @@
             "v"
           ]
         }
-      ]
+      ],
+      "note": "includes a choice of 1 side and a refillable soft drink"
     },
     {
       "name": "Salads",
@@ -122,7 +127,7 @@
       ]
     },
     {
-      "name": "2 for £5.55",
+      "name": "Sides",
       "items": [
         {
           "name": "Seasoned Chips",
@@ -156,10 +161,11 @@
           "name": "Potato Salad",
           "price": 375
         }
-      ]
+      ],
+      "note": "2 for £5.55"
     },
     {
-      "name": "includes a refillable soft drink and a choice of plain chips, baked potato or carrot and cucumber sticks",
+      "name": "Kids Meals",
       "items": [
         {
           "name": "Kids Hot Dog",
@@ -184,7 +190,8 @@
             "vg"
           ]
         }
-      ]
+      ],
+      "note": "includes a refillable soft drink and a choice of plain chips, baked potato or carrot and cucumber sticks"
     },
     {
       "name": "Sweet Treats",

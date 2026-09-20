@@ -1,0 +1,17 @@
+{
+  "id": 196,
+  "name": "BBQ",
+  "category": "Food & Drink > Grab 'n' Go > Licensed Bar",
+  "area": null,
+  "lat": 53.790177,
+  "lon": -3.055188,
+  "menuUrl": "https://www.blackpoolpleasurebeach.com/bbq-menu/",
+  "appMissingSince": null,
+  "source": "blackpool app map markers",
+  "passDiscount": {
+    "offered": true,
+    "percent": null,
+    "applies": "Season Pass",
+    "source": "park website"
+  }
+}

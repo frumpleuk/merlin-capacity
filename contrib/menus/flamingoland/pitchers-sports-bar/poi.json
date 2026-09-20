@@ -1,0 +1,12 @@
+{
+  "id": 878,
+  "name": "Pitcher’s Sports Bar",
+  "category": "Food & Drink",
+  "area": "Metropolis",
+  "lat": 54.209199,
+  "lon": -0.808302,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "flamingo land app (firestore)",
+  "serves": "Bar Snacks"
+}

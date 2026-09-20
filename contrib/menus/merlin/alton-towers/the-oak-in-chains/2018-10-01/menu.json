@@ -10,7 +10,7 @@
   },
   "sections": [
     {
-      "name": "Served with peas, onion rings and your choice of chunky chips or jacket potato",
+      "name": "From the Grill",
       "items": [
         {
           "name": "10oz Ghostly Gammon",
@@ -22,10 +22,11 @@
           "description": "BBQ chicken breast topped with 2 breaded chicken goujons, Monterey Jack cheese and Louisiana BBQ sauce",
           "price": 1200
         }
-      ]
+      ],
+      "note": "Served with peas, onion rings and your choice of chunky chips or jacket potato"
     },
     {
-      "name": "Served in a bun with lettuce, tomato, a side of cuban slaw and choice of chunky chips or jacket potatoAdd a Topping: Salsa, Smoky Baconnaise, JalapeÃ±os, Cheese, Bacon, 3 Onion Rings, Guacamole (50p each)Add a Burger: Beef Burger, Chicken Burger, Pulled Chicken, Quorn Burger (£1.50 each)",
+      "name": "Woodcutter's Burgers",
       "items": [
         {
           "name": "The Demon Burger - Are You Feeling Brave?",
@@ -50,7 +51,8 @@
             "v"
           ]
         }
-      ]
+      ],
+      "note": "Served in a bun with lettuce, tomato, a side of cuban slaw and choice of chunky chips or jacket potato Add a Topping: Salsa, Smoky Baconnaise, JalapeÃ±os, Cheese, Bacon, 3 Onion Rings, Guacamole (50p each) Add a Burger: Beef Burger, Chicken Burger, Pulled Chicken, Quorn Burger (£1.50 each)"
     },
     {
       "name": "Tex Mex",
@@ -106,12 +108,12 @@
         },
         {
           "name": "Monster Meatballs with Penne Pasta",
-          "description": "Chicken mealballs in tomato sauce served with penne pasta and garlic breadAdd grated cheese for an extra 50p",
+          "description": "Chicken mealballs in tomato sauce served with penne pasta and garlic bread Add grated cheese for an extra 50p",
           "price": 925
         },
         {
           "name": "Monstrous Mac n Cheese",
-          "description": "Penne pasta served in a creamy white sauce topped with cheddar cheese and served with garlic breadAdd bacon for an extra 50pAdd chicken for an extra £1.50",
+          "description": "Penne pasta served in a creamy white sauce topped with cheddar cheese and served with garlic bread Add bacon for an extra 50p Add chicken for an extra £1.50",
           "price": 800
         },
         {

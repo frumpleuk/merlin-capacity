@@ -1,0 +1,12 @@
+{
+  "id": 80977,
+  "name": "Fuel Stop Cafe & Wafflemeister",
+  "category": "Food & Drink",
+  "area": "The Hub",
+  "lat": 54.210209,
+  "lon": -0.808319,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "flamingo land app (firestore)",
+  "serves": "Waffles, Ice Cream, Costa Coffee, Refill & Refresh Souvenir Cups  and Hot Savouries."
+}

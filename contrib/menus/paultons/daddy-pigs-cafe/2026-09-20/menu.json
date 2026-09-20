@@ -1,0 +1,70 @@
+{
+  "date": "2026-09-20",
+  "unpriced": true,
+  "source": {
+    "name": "Paultons Park",
+    "official": true,
+    "url": "https://menus.tenkites.com/paultonspark/daddypigsbigtummycafe"
+  },
+  "sections": [
+    {
+      "name": "Hot Food",
+      "items": [
+        {
+          "name": "Cornish Pasty",
+          "price": null,
+          "kcal": 652
+        },
+        {
+          "name": "Sausage Roll",
+          "price": null,
+          "kcal": 598,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Vegan Kerelan, Cauliflower, Chickpea & Onion Bhaji Pasty",
+          "price": null,
+          "kcal": 823,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Margherita Handheld Pizza",
+          "price": null,
+          "kcal": 478,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Ham & Cheese Handheld Pizza",
+          "price": null,
+          "kcal": 422,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Hellmann's Tomato Ketchup Bottle.",
+          "price": null,
+          "kcal": 13,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Hellmann's Mayonnaise Bottle.",
+          "price": null,
+          "kcal": 108
+        }
+      ]
+    }
+  ]
+}

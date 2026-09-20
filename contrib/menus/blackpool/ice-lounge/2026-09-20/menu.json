@@ -1,0 +1,65 @@
+{
+  "date": "2026-09-20",
+  "unpriced": true,
+  "source": {
+    "name": "Pleasure Beach Resort",
+    "official": true,
+    "url": "https://www.blackpoolpleasurebeach.com/ice-lounge-menu/"
+  },
+  "sections": [
+    {
+      "name": "Food",
+      "items": [
+        {
+          "name": "Choose Your Bread, Filling, and Make It a Meal",
+          "price": null
+        },
+        {
+          "name": "Kids Meal",
+          "price": null
+        },
+        {
+          "name": "Panini",
+          "price": null
+        },
+        {
+          "name": "Krispy Creme & Dessert Options",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Starbucks Hot Coffee",
+          "price": null
+        },
+        {
+          "name": "Cold Drinks",
+          "price": null
+        },
+        {
+          "name": "Draught/Bottled Beer & Cider",
+          "price": null
+        },
+        {
+          "name": "Spirits",
+          "price": null
+        },
+        {
+          "name": "Cocktails & Mocktails",
+          "price": null
+        },
+        {
+          "name": "Wine",
+          "price": null
+        },
+        {
+          "name": "Alcohol Free Option",
+          "price": null
+        }
+      ]
+    }
+  ]
+}

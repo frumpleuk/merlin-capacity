@@ -1,0 +1,17 @@
+{
+  "id": 223,
+  "name": "Snack Shack",
+  "category": "Food & Drink",
+  "area": null,
+  "lat": 53.79046,
+  "lon": -3.054227,
+  "menuUrl": "https://www.blackpoolpleasurebeach.com/snack-shack-menu/",
+  "appMissingSince": null,
+  "source": "blackpool app map markers",
+  "passDiscount": {
+    "offered": true,
+    "percent": null,
+    "applies": "Season Pass",
+    "source": "park website"
+  }
+}

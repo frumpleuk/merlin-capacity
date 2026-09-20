@@ -1,0 +1,11 @@
+{
+  "id": 63,
+  "name": "The Nest Kiosk",
+  "category": "Food & Drink",
+  "area": "Lost Kingdom",
+  "lat": 50.9479,
+  "lon": -1.555877,
+  "menuUrl": "https://menus.tenkites.com/paultonspark/thenestkiosk",
+  "appMissingSince": null,
+  "source": "paultons app bundle"
+}

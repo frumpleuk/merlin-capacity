@@ -10,7 +10,7 @@
   },
   "sections": [
     {
-      "name": "Choose from:Hawaiian (pineapple, nacho cheese, baconnaise and bacon bits)Chilli (beef or 3 bean chilli with nacho cheese)Rodeo (onion rings & BBQ mayonnaise)Tex Mex (nacho cheese, salsa, nachos and jalapeños)",
+      "name": "Loaded",
       "items": [
         {
           "name": "Waffle Fries",
@@ -35,10 +35,11 @@
           "name": "Veggie Burger",
           "price": 790
         }
-      ]
+      ],
+      "note": "Choose from: Hawaiian (pineapple, nacho cheese, baconnaise and bacon bits) Chilli (beef or 3 bean chilli with nacho cheese) Rodeo (onion rings & BBQ mayonnaise) Tex Mex (nacho cheese, salsa, nachos and jalapeños)"
     },
     {
-      "name": "Choose 3 toppings:Hot sauce, pineapple, nachos, salsa, beef chilli, 3 bean chilli, onion rings, coleslaw, jalapeños, bacon bits, baconnaise, nacho cheese, BBQ mayonnaise",
+      "name": "Build Your Own",
       "items": [
         {
           "name": "Build Your Own Hot Dog",
@@ -48,7 +49,8 @@
           "name": "Build Your Own Burger",
           "price": 790
         }
-      ]
+      ],
+      "note": "Choose 3 toppings: Hot sauce, pineapple, nachos, salsa, beef chilli, 3 bean chilli, onion rings, coleslaw, jalapeños, bacon bits, baconnaise, nacho cheese, BBQ mayonnaise"
     },
     {
       "name": "Plain",
@@ -93,7 +95,7 @@
       ]
     },
     {
-      "name": "Served with a regular soft drink or Starslush and plain waffle fries",
+      "name": "Meals",
       "items": [
         {
           "name": "Hot Dog meal",
@@ -115,7 +117,8 @@
           "description": "Swap your soft drink for a bottled beer or cider",
           "price": 115
         }
-      ]
+      ],
+      "note": "Served with a regular soft drink or Starslush and plain waffle fries"
     },
     {
       "name": "Soft Drinks",

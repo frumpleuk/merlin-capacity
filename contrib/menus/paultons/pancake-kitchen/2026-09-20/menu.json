@@ -1,0 +1,43 @@
+{
+  "date": "2026-09-20",
+  "unpriced": true,
+  "source": {
+    "name": "Paultons Park",
+    "official": true,
+    "url": "https://menus.tenkites.com/paultonspark/thequeenskitchen"
+  },
+  "sections": [
+    {
+      "name": "Sundaes",
+      "items": [
+        {
+          "name": "Mud Slide Sundae",
+          "description": "Soft vanilla ice cream topped with Oreo crumb and a chocolate flake.",
+          "price": null,
+          "kcal": 464,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Cheeky Monkey Sundae",
+          "description": "Soft vanilla ice cream topped with toffee sauce and sliced banana",
+          "price": null,
+          "kcal": 398,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Go Nuts Sundae",
+          "description": "Soft vanilla ice cream topped with chocolate sauce, M&M pieces and a wafer twirl.",
+          "price": null,
+          "kcal": 475,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    }
+  ]
+}

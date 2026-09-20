@@ -10,7 +10,7 @@
   },
   "sections": [
     {
-      "name": "wrapped with lettuce, mint chutney and hot chilli sauce",
+      "name": "Fresh Naan Wraps",
       "items": [
         {
           "name": "Seekh Kebab Wrap",
@@ -35,7 +35,8 @@
           "name": "Mixed Wrap",
           "price": 1050
         }
-      ]
+      ],
+      "note": "wrapped with lettuce, mint chutney and hot chilli sauce"
     },
     {
       "name": "Baguettes",
@@ -98,7 +99,7 @@
       ]
     },
     {
-      "name": "served with a small drink",
+      "name": "Kids Meals",
       "items": [
         {
           "name": "Chicken Crunchies & Chips",
@@ -115,7 +116,8 @@
             "v"
           ]
         }
-      ]
+      ],
+      "note": "served with a small drink"
     },
     {
       "name": "Drinks",

@@ -1,0 +1,118 @@
+{
+  "date": "2026-09-20",
+  "unpriced": true,
+  "source": {
+    "name": "Pleasure Beach Resort",
+    "official": true,
+    "url": "https://www.blackpoolpleasurebeach.com/bubble-waffle-menu/"
+  },
+  "sections": [
+    {
+      "name": "Food",
+      "items": [
+        {
+          "name": "Kinder Bueno",
+          "price": null,
+          "description": "Triple chocolate ice cream, Kinder Bueno pieces, chocolate hazelnut sauce & cream"
+        },
+        {
+          "name": "Pistachio",
+          "price": null,
+          "description": "Pistachio ice cream, pistachio sauce, cream & chopped nuts"
+        },
+        {
+          "name": "The M&m",
+          "price": null,
+          "description": "Vanilla ice Cream, M&M’S, chocolate sticks, cream & Nutella"
+        },
+        {
+          "name": "Berry Burst",
+          "price": null,
+          "description": "Vanilla ice cream, blueberries, strawberries, cream & Nutella"
+        },
+        {
+          "name": "Cookie Monster",
+          "price": null,
+          "description": "Chocolate ice Cream, choc chip cookie, Oreo, Lotus biscuits, cream & Nutella"
+        },
+        {
+          "name": "Bubblegum",
+          "price": null,
+          "description": "Bubblegum marshmallow ice cream, mini marshmallows, bubblegum Millions, bubblegum sauce & cream"
+        },
+        {
+          "name": "Classic Bubble Waffle",
+          "price": null,
+          "description": "Bubble waffle with 2 scoops of ice cream"
+        },
+        {
+          "name": "Create Your Own",
+          "price": null,
+          "description": "Bubble waffle with your choice of ice cream, cream & 3 toppings"
+        },
+        {
+          "name": "The Big Bubble",
+          "price": null,
+          "description": "Bubble waffle with your choice of ice cream (3 scoops) 4 toppings, cream and sauce"
+        },
+        {
+          "name": "Carte D’or Scoop Ice Cream",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Oreo Cookie Milkshake",
+          "price": null,
+          "description": "Oreo Cookies blended with vanilla ice cream & chocolate sauce topped with cream & Oreo crumble"
+        },
+        {
+          "name": "Kinder Bueno Milkshake",
+          "price": null,
+          "description": "Bueno pieces blended with vanilla ice cream & chocolate hazelnut sauce topped with cream & Bueno pieces"
+        },
+        {
+          "name": "Aero Mint Milkshake",
+          "price": null,
+          "description": "Aero pieces blended with vanilla ice cream & mint sauce topped with cream and chocolate sauce"
+        },
+        {
+          "name": "Salted Carmel Fudge Milkshake",
+          "price": null,
+          "description": "Salted caramel fudge pieces blended with vanilla ice cream & salted caramel sauce topped with cream"
+        },
+        {
+          "name": "Strawberry Milkshake",
+          "price": null,
+          "description": "Fresh strawberries blended with strawberry ice cream & sauce topped with cream & strawberries"
+        },
+        {
+          "name": "Banana Milkshake",
+          "price": null,
+          "description": "Banana blended with vanilla ice cream & banana syrup topped with cream"
+        },
+        {
+          "name": "Chocolate Milkshake",
+          "price": null,
+          "description": "A twirl blended with vanilla ice cream & chocolate sauce topped with cream"
+        },
+        {
+          "name": "Vanilla Milkshake",
+          "price": null,
+          "description": "A classic vanilla shake, vanilla ice cream blended with vanilla syrup, topped with cream"
+        },
+        {
+          "name": "Hot Drinks",
+          "price": null
+        },
+        {
+          "name": "Cold Drinks",
+          "price": null
+        }
+      ]
+    }
+  ]
+}

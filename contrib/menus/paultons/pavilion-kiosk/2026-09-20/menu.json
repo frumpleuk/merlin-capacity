@@ -1,0 +1,171 @@
+{
+  "date": "2026-09-20",
+  "unpriced": true,
+  "source": {
+    "name": "Paultons Park",
+    "official": true,
+    "url": "https://menus.tenkites.com/paultonspark/pavilionkiosk"
+  },
+  "sections": [
+    {
+      "name": "Hot Food",
+      "items": [
+        {
+          "name": "Classic Hot Dog",
+          "price": null,
+          "kcal": 451
+        },
+        {
+          "name": "Classic Hot Dog with Crispy Onions",
+          "description": "Pork hotdog sausage loaded with crispy onions served in a sub roll.",
+          "price": null,
+          "kcal": 577
+        },
+        {
+          "name": "Classic Hot Dog & Skin on Fries",
+          "description": "Pork hotdog sausage served in a sub roll with skin on fries and a soft drink.",
+          "price": null,
+          "kcal": 780
+        },
+        {
+          "name": "Classic Hot Dog with Crispy Onions & Chips",
+          "description": "Pork hotdog sausage loaded with crispy onions served in a sub roll, skin on fries and a soft drink",
+          "price": null,
+          "kcal": 925
+        },
+        {
+          "name": "Beef Burger.",
+          "description": "4oz patty with secret sauce served in a brioche bun",
+          "price": null,
+          "kcal": 496
+        },
+        {
+          "name": "Cheeseburger.",
+          "description": "4oz patty topped with cheese and secret sauce served in a brioche bun",
+          "price": null,
+          "kcal": 555
+        },
+        {
+          "name": "Cheeseburger & Skin on Fries",
+          "description": "4oz patty topped with cheese and secret sauce in a brioche bun. Served with skin on fries and a soft drink.",
+          "price": null,
+          "kcal": 856
+        },
+        {
+          "name": "Beef Burger & Skin on Fries",
+          "description": "4oz patty with secret sauce in a brioche bun served with skin on fries and a soft drink.",
+          "price": null,
+          "kcal": 807
+        },
+        {
+          "name": "Double Beef Burger & Skin on Fries",
+          "price": null,
+          "kcal": 1044
+        },
+        {
+          "name": "Double Cheeseburger & Skin on Fries",
+          "price": null,
+          "kcal": 1125,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Spicy Bean Burger with Cheese.",
+          "description": "Seasoned vegetables and mixed beans in a breadcrumb coating topped with cheese and served in a brioche bun with taco mayo.",
+          "price": null,
+          "kcal": 632,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Spicy Bean Burger.",
+          "description": "Seasoned vegetables and mixed beans in a breadcrumb coating served in a brioche bun with taco mayo.",
+          "price": null,
+          "kcal": 582,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Spicy Bean Burger with Cheese & Skin on Fries.",
+          "description": "Seasoned vegetables and mixed beans in a breadcrumb coating, topped with cheese in a brioche bun with taco mayo .Served with skin on fries and a soft drink.",
+          "price": null,
+          "kcal": 942,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Spicy Bean Burger & Skin on Fries.",
+          "description": "Seasoned vegetables and mixed beans in a breadcrumb coating in a brioche bun with taco mayo. Served with skin on fries and a soft drink.",
+          "price": null,
+          "kcal": 891,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Extra Bacon",
+          "price": null,
+          "kcal": 46
+        },
+        {
+          "name": "Extra Beef Burger Patty",
+          "price": null,
+          "kcal": 241,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Add Crispy Onions",
+          "price": null,
+          "kcal": 145,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Skin on Fries",
+          "price": null,
+          "kcal": 319,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Hellmann's Mayonnaise Bottle.",
+          "price": null,
+          "kcal": 108,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Hellmann's Tomato Ketchup Bottle.",
+          "price": null,
+          "kcal": 13,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "French's Mustard",
+          "price": null,
+          "kcal": 7,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        }
+      ]
+    }
+  ]
+}

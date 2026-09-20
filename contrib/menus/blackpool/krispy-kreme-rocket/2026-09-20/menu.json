@@ -1,0 +1,20 @@
+{
+  "date": "2026-09-20",
+  "unpriced": true,
+  "source": {
+    "name": "Pleasure Beach Resort",
+    "official": true,
+    "url": "https://www.blackpoolpleasurebeach.com/krispy-kreme-rocket-menu/"
+  },
+  "sections": [
+    {
+      "name": "Food",
+      "items": [
+        {
+          "name": "Krispy Creme & Dessert Options",
+          "price": null
+        }
+      ]
+    }
+  ]
+}

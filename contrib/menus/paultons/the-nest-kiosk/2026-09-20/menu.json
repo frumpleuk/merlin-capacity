@@ -1,0 +1,450 @@
+{
+  "date": "2026-09-20",
+  "unpriced": true,
+  "source": {
+    "name": "Paultons Park",
+    "official": true,
+    "url": "https://menus.tenkites.com/paultonspark/thenestkiosk"
+  },
+  "sections": [
+    {
+      "name": "Dole Soft Serve",
+      "items": [
+        {
+          "name": "Dole soft serve",
+          "price": null,
+          "kcal": 93,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Donuts",
+      "items": [
+        {
+          "name": "Berry White Donut",
+          "price": null,
+          "kcal": 288,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Caramazing Donut",
+          "price": null,
+          "kcal": 310,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Spectaculous Donut",
+          "price": null,
+          "kcal": 253,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Nutty Zafari Donut",
+          "price": null,
+          "kcal": 265,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Strawjelly Jam Donut",
+          "price": null,
+          "kcal": 288,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Queen V Donut",
+          "price": null,
+          "kcal": 291,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Sugar Ring Donut.",
+          "price": null,
+          "kcal": 213,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Scoop Ice Cream",
+      "items": [
+        {
+          "name": "Dairy Vanilla Ice Cream Scoop",
+          "price": null,
+          "kcal": 163,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Strawberry Scoop Ice Cream",
+          "price": null,
+          "kcal": 155,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Chocolate Scoop Ice Cream",
+          "price": null,
+          "kcal": 183,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Mint Choc Chip Ripple Ice Cream Scoop",
+          "price": null,
+          "kcal": 180,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Salted Caramel Scoop Ice Cream",
+          "price": null,
+          "kcal": 169,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Bubblegum Ice Cream Scoop",
+          "price": null,
+          "kcal": 153,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Cookies & Cream Ice Cream Scoop",
+          "price": null,
+          "kcal": 187
+        },
+        {
+          "name": "Vegan Vanilla Scoop Ice Cream",
+          "price": null,
+          "kcal": 126,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Em & Em Chocolate Dipped Waffle Cone",
+          "price": null,
+          "kcal": 125,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Sprinkle Chocolate Dipped Waffle Cone",
+          "price": null,
+          "kcal": 121,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Salted Caramel Waffle Cone",
+          "price": null,
+          "kcal": 175
+        },
+        {
+          "name": "Medium Chocolate Dipped Waffle Cone",
+          "price": null,
+          "kcal": 133,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Individual Wafer Ice Cream Cone",
+          "price": null,
+          "kcal": 16,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Waffle Cone",
+          "price": null,
+          "kcal": 80,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Extra Flake",
+          "price": null,
+          "kcal": 42,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add Chocolate Sauce to your ice cream",
+          "price": null,
+          "kcal": 29,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add Strawberry Sauce to your ice cream",
+          "price": null,
+          "kcal": 18,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add Bubblegum Sauce",
+          "price": null,
+          "kcal": 31,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Add Vegan Chocolate Sauce",
+          "price": null,
+          "kcal": 27,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Add Toffee Sauce to your ice cream",
+          "price": null,
+          "kcal": 16,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Slushy Jacks",
+      "items": [
+        {
+          "name": "12oz Slushy Jacks Strawberry",
+          "price": null,
+          "kcal": 108,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "12oz Slushy Jacks Raspberry",
+          "price": null,
+          "kcal": 108,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "12oz Slushy Jacks Cola",
+          "price": null,
+          "kcal": 108
+        },
+        {
+          "name": "12oz Slushy Jacks Cherry",
+          "price": null,
+          "kcal": 108,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "12oz Slushy Jacks Orange",
+          "price": null,
+          "kcal": 61
+        },
+        {
+          "name": "Slushy Jacks Twister Cup - Cola",
+          "price": null,
+          "kcal": 158
+        },
+        {
+          "name": "Slushy Jacks Twister Cup - Cherry",
+          "price": null,
+          "kcal": 158,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Slushy Jacks Twister Cup - Raspberry",
+          "price": null,
+          "kcal": 158,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Slushy Jacks Twister Cup - Strawberry",
+          "price": null,
+          "kcal": 158,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Slushy Jacks Twister Cup - Orange",
+          "price": null,
+          "kcal": 127
+        }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        {
+          "name": "Hot Chocolate",
+          "price": null,
+          "kcal": 122,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "The Works Hot Chocolate",
+          "description": "Hot chocolate topped with squirty cream, marshmallows and a flake.",
+          "price": null,
+          "kcal": 319
+        },
+        {
+          "name": "Clipper Everyday Tea - Black",
+          "price": null,
+          "kcal": 0,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Clipper Decaf Tea",
+          "price": null,
+          "kcal": 7,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Americano",
+          "price": null,
+          "kcal": 42,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Americano with Milk",
+          "price": null,
+          "kcal": 106,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Latte",
+          "price": null,
+          "kcal": 106,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Flat White.",
+          "price": null,
+          "kcal": 122,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Cappuccino",
+          "price": null,
+          "kcal": 184,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Mocha",
+          "price": null,
+          "kcal": 226,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Espresso",
+          "price": null,
+          "kcal": 28,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Double Espresso",
+          "price": null,
+          "kcal": 41,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Milk Portion",
+          "price": null,
+          "kcal": 6,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Soya Milk Portion",
+          "price": null,
+          "kcal": 5,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        }
+      ]
+    }
+  ]
+}

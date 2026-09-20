@@ -9,7 +9,7 @@
 // them; keep that credit if you change the drawing.
 import fs from "node:fs";
 import path from "node:path";
-import { PARK_DIRS, REPO, ROOT, venues } from "./lib.mjs";
+import { ALL_PARK_DIRS, REPO, parkDir, venues } from "./lib.mjs";
 
 const OUT_DIR = path.join(REPO, "frontend/public/basemaps");
 const OVERPASS = "https://overpass-api.de/api/interpreter";
@@ -90,11 +90,11 @@ async function overpass(bbox) {
 const wanted = process.argv.slice(2);
 fs.mkdirSync(OUT_DIR, { recursive: true });
 
-for (const [key, dir] of Object.entries(PARK_DIRS)) {
+for (const key of Object.keys(ALL_PARK_DIRS)) {
   if (wanted.length && !wanted.includes(key)) continue;
-  const parkDir = path.join(ROOT, dir);
-  if (!fs.existsSync(parkDir)) continue;
-  const pts = venues(parkDir)
+  const dir = parkDir(key);
+  if (!fs.existsSync(dir)) continue;
+  const pts = venues(dir)
     .map((v) => v.poi)
     .filter((p) => p.lat != null && p.lon != null);
   // Hotel restaurants sit well outside the park; the map is the park, so the

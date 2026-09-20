@@ -46,7 +46,7 @@
       ]
     },
     {
-      "name": "all kids meals come with chips and a drink",
+      "name": "Kids Meals",
       "items": [
         {
           "name": "Fish Fingers",
@@ -71,7 +71,8 @@
           "name": "Battered Sausage",
           "price": 695
         }
-      ]
+      ],
+      "note": "all kids meals come with chips and a drink"
     },
     {
       "name": "Alcoholic Drinks",

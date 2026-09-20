@@ -10,7 +10,7 @@
   },
   "sections": [
     {
-      "name": "All meals come with fries or fruit and a soft drinkGo large for 90p",
+      "name": "Menu",
       "items": [
         {
           "name": "Classic Burger",
@@ -43,7 +43,8 @@
             "v"
           ]
         }
-      ]
+      ],
+      "note": "All meals come with fries or fruit and a soft drink Go large for 90p"
     },
     {
       "name": "Kids Meals",

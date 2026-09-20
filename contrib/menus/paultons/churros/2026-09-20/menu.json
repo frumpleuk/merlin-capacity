@@ -1,0 +1,92 @@
+{
+  "date": "2026-09-20",
+  "unpriced": true,
+  "source": {
+    "name": "Paultons Park",
+    "official": true,
+    "url": "https://menus.tenkites.com/paultonspark/beastiebites"
+  },
+  "sections": [
+    {
+      "name": "Churros",
+      "items": [
+        {
+          "name": "Plain Churros Cone Medium",
+          "price": null,
+          "kcal": 566,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Plain Churros Cone Large",
+          "price": null,
+          "kcal": 798,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Cinnamon Sugar",
+          "price": null,
+          "kcal": 37,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Add Milk Chocolate Dipping Sauce",
+          "price": null,
+          "kcal": 198,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add White Chocolate Dipping Sauce",
+          "price": null,
+          "kcal": 193,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add Toffee Dipping Sauce",
+          "price": null,
+          "kcal": 115,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Lotus Biscoff Crumb",
+          "price": null,
+          "kcal": 19,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Oreo Crumb",
+          "price": null,
+          "kcal": 32,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Extra M&M's",
+          "price": null,
+          "kcal": 71,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    }
+  ]
+}

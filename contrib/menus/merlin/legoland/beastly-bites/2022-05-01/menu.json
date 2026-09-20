@@ -10,7 +10,7 @@
   },
   "sections": [
     {
-      "name": "Marshmallow, Strawberry Sprinkle, Cookie Crush, Triple Choc, Caramel Lace or Plain Ring",
+      "name": "Beastly Doughnuts",
       "items": [
         {
           "name": "Single Doughnut",
@@ -24,7 +24,8 @@
           "name": "Box of 6 Doughnuts",
           "price": 1200
         }
-      ]
+      ],
+      "note": "Marshmallow, Strawberry Sprinkle, Cookie Crush, Triple Choc, Caramel Lace or Plain Ring"
     },
     {
       "name": "Mini Doughnuts",

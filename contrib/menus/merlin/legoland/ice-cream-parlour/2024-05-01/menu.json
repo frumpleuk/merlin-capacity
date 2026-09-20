@@ -10,7 +10,7 @@
   },
   "sections": [
     {
-      "name": "in a cup or cone",
+      "name": "Ice Creams",
       "items": [
         {
           "name": "Ice Cream",
@@ -24,7 +24,8 @@
           "name": "Ice Cream + 2 toppings",
           "price": 525
         }
-      ]
+      ],
+      "note": "in a cup or cone"
     },
     {
       "name": "Sauces & Toppings",

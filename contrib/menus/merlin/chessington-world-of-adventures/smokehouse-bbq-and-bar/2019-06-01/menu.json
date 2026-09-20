@@ -10,7 +10,7 @@
   },
   "sections": [
     {
-      "name": "all meals come with a choice of side and refillable soft drink",
+      "name": "Smokehouse Meal Deals",
       "items": [
         {
           "name": "The Smokehouse",
@@ -43,7 +43,8 @@
           "name": "Jalapeno Hot Dog",
           "price": 1000
         }
-      ]
+      ],
+      "note": "all meals come with a choice of side and refillable soft drink"
     },
     {
       "name": "Smoked Meats",
@@ -118,7 +119,7 @@
       ]
     },
     {
-      "name": "all kids meals come with a choice of chips or baked potato, piece of fruit and refillable soft drink",
+      "name": "Kids Meal Deals",
       "items": [
         {
           "name": "Hot Dog",
@@ -136,7 +137,8 @@
           "name": "Mac & Cheese",
           "price": 675
         }
-      ]
+      ],
+      "note": "all kids meals come with a choice of chips or baked potato, piece of fruit and refillable soft drink"
     }
   ]
 }

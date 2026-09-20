@@ -10,7 +10,7 @@
   },
   "sections": [
     {
-      "name": "Unlimited pizza, pasta, salad and soft drinks",
+      "name": "All You Can Eat Buffet",
       "items": [
         {
           "name": "Adults",
@@ -20,7 +20,8 @@
           "name": "Kids",
           "price": 1200
         }
-      ]
+      ],
+      "note": "Unlimited pizza, pasta, salad and soft drinks"
     }
   ]
 }

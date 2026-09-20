@@ -1,0 +1,170 @@
+{
+  "date": "2021-04-01",
+  "approxDate": true,
+  "source": {
+    "name": "Theme Park James",
+    "url": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/paultons-park/food-and-drink/route-83-diner/past-menus/",
+    "venueUrl": "https://www.themeparkjames.co.uk/theme-parks/europe/uk/paultons-park/food-and-drink/route-83-diner/",
+    "stated": "April 2021",
+    "menu": "2021 Menu"
+  },
+  "sections": [
+    {
+      "name": "Breakfast",
+      "items": [
+        {
+          "name": "Pancake Stack",
+          "price": 350
+        },
+        {
+          "name": "What a Load of Waffles",
+          "price": 350
+        },
+        {
+          "name": "Porridge Oats",
+          "price": 295
+        },
+        {
+          "name": "Greek Yoghurt with Chopped Fruit",
+          "description": "Fruit salad made with fresh fruit and a creamy Greek yoghurt",
+          "price": 295
+        }
+      ],
+      "note": "Available until 11:30am Create your own by adding: strawberries, blueberries, banana, whipped cream, chocolate chips, maple syrup, bacon or southern fried chicken strips"
+    },
+    {
+      "name": "Burgers",
+      "items": [
+        {
+          "name": "83 Burger",
+          "description": "6oz Patty with lettuce, tomato, onion and gherkin. Served with tornado fries and a choice of soft drink.",
+          "price": 895
+        },
+        {
+          "name": "Classic Cheese",
+          "description": "6oz Patty with American style burger cheese, lettuce, tomato, onion, gherkin and secret sauce. Served with tornado fries and a choice of soft drink.",
+          "price": 995
+        },
+        {
+          "name": "Bacon Cheese",
+          "description": "6oz Patty with bacon, American style burger cheese, lettuce, tomato, onion, gherkin and BBQ sauce. Served with tornado fries and a choice of soft drink.",
+          "price": 1050
+        },
+        {
+          "name": "Buttermilk Chicken",
+          "description": "Crispy buttermilk-fried chicken breast with lettuce and garlic mayo. Served with tornado fries and a choice of soft drink.",
+          "price": 950
+        },
+        {
+          "name": "Moving Mountains",
+          "description": "Plant based burger with lettuce, tomato, onion, gherkin and mayo. Served with tornado fries and a choice of soft drink.",
+          "price": 995,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        }
+      ],
+      "note": "Available from 11:30am"
+    },
+    {
+      "name": "Chicken",
+      "items": [
+        {
+          "name": "Chicken Tenders",
+          "description": "Strips of hand breaded southern fried chicken tenders with a blue cheese sauce. Served with tornado fries and a choice of soft drink.",
+          "price": 950
+        }
+      ]
+    },
+    {
+      "name": "Salads",
+      "items": [
+        {
+          "name": "Chicken Caesar Salad",
+          "description": "Chargrilled chicken, lettuce, ceasar dressing, croutons & parmesan shavings.",
+          "price": 695
+        },
+        {
+          "name": "Chef's Special Salad",
+          "description": "Served with seasonal ingredients.",
+          "price": 595,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Hot Dogs & Sandwiches",
+      "items": [
+        {
+          "name": "The Bad Boy Dog",
+          "description": "Meaty and smokey pork hot dog with crispy onions. Served with tornado fries and a choice of soft drink.",
+          "price": 895
+        },
+        {
+          "name": "The Chilli Dog",
+          "description": "Meaty and smokey pork hot dog loaded with chilli and crispy onions. Served with tornado fries and a choice of soft drink.",
+          "price": 1050
+        },
+        {
+          "name": "\"Not\" Dog",
+          "description": "Plant based sausage with crispy onions. Served with tornado fries and a choice of soft drink.",
+          "price": 950,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "Sourdough Smoked Ham & Cheese Toastie",
+          "description": "Authentic sourdough toastie hand filled with smoked ham, Edam cheese and a balanced spread of dijonnaise. Served with tornado fries and a choice of soft drink.",
+          "price": 825
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        {
+          "name": "Tornado Fries",
+          "price": 250
+        }
+      ]
+    },
+    {
+      "name": "Mini Basket Meals",
+      "items": [
+        {
+          "name": "Star 83 Burger",
+          "description": "Hamburger, served with tornado fries and a choice of soft drink.",
+          "price": 675
+        },
+        {
+          "name": "Star Classic Cheese",
+          "description": "Hamburger with cheese, served with tornado fries and a choice of soft drink.",
+          "price": 695
+        },
+        {
+          "name": "Mini Dog",
+          "description": "Pork hot dog, server with tornado fries and a choice of soft drink.",
+          "price": 675
+        },
+        {
+          "name": "Chicken Tenders",
+          "description": "Southern fried chicken tenders, served with tornado fries and a choice of soft drink.",
+          "price": 695
+        },
+        {
+          "name": "Mac & Cheese Bites",
+          "description": "Macaroni pasta and cheese in a crispy breadcrumb coating, served with tornado fries and a choice of soft drink.",
+          "price": 675,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    }
+  ]
+}

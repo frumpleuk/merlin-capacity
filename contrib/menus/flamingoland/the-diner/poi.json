@@ -1,0 +1,12 @@
+{
+  "id": 876,
+  "name": "The Diner",
+  "category": "Food & Drink",
+  "area": "Seaside Adventure",
+  "lat": 54.211463,
+  "lon": -0.809225,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "flamingo land app (firestore)",
+  "serves": "Breakfast, Burgers, Hotdogs, Sodas, Shakes, Pancakes"
+}

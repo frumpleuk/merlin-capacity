@@ -1,0 +1,12 @@
+{
+  "id": 80963,
+  "name": "Metropolis Kiosk",
+  "category": "Food & Drink",
+  "area": "Metropolis",
+  "lat": 54.209305,
+  "lon": -0.808729,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "flamingo land app (firestore)",
+  "serves": "Hotdogs, Ice Cream, Refill & Refresh Souvenir Cups and Cold Drinks"
+}

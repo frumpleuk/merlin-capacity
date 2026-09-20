@@ -1,0 +1,12 @@
+{
+  "id": 80970,
+  "name": "Doritos Nachos",
+  "category": "Food & Drink",
+  "area": "Flamingo 1",
+  "lat": 54.210291,
+  "lon": -0.809365,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "flamingo land app (firestore)",
+  "serves": null
+}

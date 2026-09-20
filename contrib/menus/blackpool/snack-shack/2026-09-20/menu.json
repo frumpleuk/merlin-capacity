@@ -1,0 +1,57 @@
+{
+  "date": "2026-09-20",
+  "unpriced": true,
+  "source": {
+    "name": "Pleasure Beach Resort",
+    "official": true,
+    "url": "https://www.blackpoolpleasurebeach.com/snack-shack-menu/"
+  },
+  "sections": [
+    {
+      "name": "Food",
+      "items": [
+        {
+          "name": "Fish Burger",
+          "price": null
+        },
+        {
+          "name": "Classic Hot Dog",
+          "price": null
+        },
+        {
+          "name": "Kids Chicken Bites Meal",
+          "price": null
+        },
+        {
+          "name": "Bucket of Fries",
+          "price": null
+        },
+        {
+          "name": "Fresh Candyfloss",
+          "price": null
+        },
+        {
+          "name": "Walls Ice Cream",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Slushy Jacks Slush",
+          "price": null
+        },
+        {
+          "name": "Hot Drinks",
+          "price": null
+        },
+        {
+          "name": "Cold Drinks",
+          "price": null
+        }
+      ]
+    }
+  ]
+}

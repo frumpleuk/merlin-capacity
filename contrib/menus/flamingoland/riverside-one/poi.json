@@ -1,0 +1,12 @@
+{
+  "id": 997,
+  "name": "Riverside One",
+  "category": "Food & Drink",
+  "area": "Riverside One",
+  "lat": null,
+  "lon": null,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "flamingo land app (firestore)",
+  "serves": null
+}

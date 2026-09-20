@@ -10,7 +10,7 @@
   },
   "sections": [
     {
-      "name": "All burger meals come with fries and a soft drink",
+      "name": "Adult Menus",
       "items": [
         {
           "name": "Maple Bacon & Cheese Cronut Burger",
@@ -35,10 +35,11 @@
           "name": "BK Classic Burger",
           "price": 630
         }
-      ]
+      ],
+      "note": "All burger meals come with fries and a soft drink"
     },
     {
-      "name": "All burger meals come with fries and a soft drink",
+      "name": "Saver Menu",
       "items": [
         {
           "name": "Hamburger",
@@ -58,13 +59,14 @@
         },
         {
           "name": "Additions",
-          "description": "Smoked streaky baconPlant based baconBurger cheese sliceVegan cheese slice",
+          "description": "Smoked streaky bacon Plant based bacon Burger cheese slice Vegan cheese slice",
           "price": 65
         }
-      ]
+      ],
+      "note": "All burger meals come with fries and a soft drink"
     },
     {
-      "name": "Served with fries, a soft drink and a piece of fruit",
+      "name": "Kids Meals",
       "items": [
         {
           "name": "Hamburger meal",
@@ -89,7 +91,8 @@
             "vg"
           ]
         }
-      ]
+      ],
+      "note": "Served with fries, a soft drink and a piece of fruit"
     },
     {
       "name": "Sides",
@@ -138,13 +141,13 @@
         },
         {
           "name": "Dip Pot",
-          "description": "Smokey BBQSweet ChilliMayonnaise",
+          "description": "Smokey BBQ Sweet Chilli Mayonnaise",
           "price": 75
         }
       ]
     },
     {
-      "name": "Served with a soft drink",
+      "name": "Salad Meze Bowls",
       "items": [
         {
           "name": "Chicken Tenders Meze Bowl",
@@ -161,7 +164,8 @@
           "name": "Salad Bowl",
           "price": 480
         }
-      ]
+      ],
+      "note": "Served with a soft drink"
     },
     {
       "name": "Desserts",

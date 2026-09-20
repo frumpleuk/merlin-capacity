@@ -1,0 +1,81 @@
+{
+  "date": "2026-09-20",
+  "unpriced": true,
+  "source": {
+    "name": "Pleasure Beach Resort",
+    "official": true,
+    "url": "https://www.blackpoolpleasurebeach.com/spudz-2-go-menu/"
+  },
+  "sections": [
+    {
+      "name": "Food",
+      "items": [
+        {
+          "name": "Loaded Jacket Potato",
+          "price": null
+        },
+        {
+          "name": "Cheese & Baked Beans",
+          "price": null,
+          "kcal": 1075
+        },
+        {
+          "name": "Coleslaw & Cheese",
+          "price": null,
+          "kcal": 1185
+        },
+        {
+          "name": "Tuna & Coleslaw",
+          "price": null,
+          "kcal": 1031
+        },
+        {
+          "name": "Chicken & Coleslaw",
+          "price": null,
+          "kcal": 1028
+        },
+        {
+          "name": "Vegan Tuna & Cheese",
+          "price": null,
+          "kcal": 847
+        },
+        {
+          "name": "Fully Loaded Jacket Potato",
+          "price": null,
+          "description": "Baked Beans, Cheese & Tuna Mayo, 1275 Kcal"
+        },
+        {
+          "name": "Tuna, Coleslaw & Cheese",
+          "price": null,
+          "kcal": 1385,
+          "description": "Meatballs with Napolitana Sauce & Cheese, 1224 Kcal"
+        },
+        {
+          "name": "Chicken, Bacon & Beans",
+          "price": null,
+          "kcal": 1229,
+          "description": "Sunday Works: chicken, pigs in blankets, stuffing balls & gravy, 1117 Kcal"
+        },
+        {
+          "name": "Overloaded Jacket Potato",
+          "price": null,
+          "description": "Includes an extra topping, an extra sauce & a bottled soft drink"
+        }
+      ],
+      "note": "Beef Chilli, Cheese & The Works Special Sauce, 1450 Kcal Vegetarian Chilli, Cheese & The Works Special Sauce, 1400 Kcal"
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Hot Drinks",
+          "price": null
+        },
+        {
+          "name": "Cold Drinks",
+          "price": null
+        }
+      ]
+    }
+  ]
+}

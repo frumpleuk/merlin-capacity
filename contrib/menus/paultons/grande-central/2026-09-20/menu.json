@@ -1,0 +1,627 @@
+{
+  "date": "2026-09-20",
+  "unpriced": true,
+  "source": {
+    "name": "Paultons Park",
+    "official": true,
+    "url": "https://menus.tenkites.com/paultonspark/grandecentral"
+  },
+  "sections": [
+    {
+      "name": "Hot Food",
+      "items": [
+        {
+          "name": "Pork Meatball Flat Bread",
+          "description": "Meatballs in a traditional tomato & basil sauce, fresh rocket, parmesan cheese on a toasted flat bread served with seasonal salad.",
+          "price": null,
+          "kcal": 439
+        },
+        {
+          "name": "Loaded Potato Skins",
+          "description": "Baked potato filled with spring onion & chives, topped with mozzarella served with seasonal salad and a chive & sour cream dip.",
+          "price": null,
+          "kcal": 656,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "French's Mustard",
+          "price": null,
+          "kcal": 7,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Hellmann's Mayonnaise.",
+          "price": null,
+          "kcal": 108
+        },
+        {
+          "name": "Hellmann's Tomato Ketchup.",
+          "price": null,
+          "kcal": 16,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Kids",
+      "items": [
+        {
+          "name": "Mac & Cheese.",
+          "price": null,
+          "kcal": 602,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Mac & Cheese with Bacon.",
+          "price": null,
+          "kcal": 642
+        },
+        {
+          "name": "Kids Loaded Potato Skins",
+          "description": "Baked potato filled with spring onion & chives, topped with mozzarella served with seasonal salad and baked beans.",
+          "price": null,
+          "kcal": 335,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Kids Picnic Plate - Cheese",
+          "description": "toasted cheese sandwich served with carrot & cucumber sticks and a pot of hummus.",
+          "price": null,
+          "kcal": 713,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Kids Picnic Plate - Ham",
+          "description": "toasted ham sandwich served with carrot & cucumber sticks and a pot of hummus.",
+          "price": null,
+          "kcal": 569
+        }
+      ]
+    },
+    {
+      "name": "Pastries & Pies",
+      "items": [
+        {
+          "name": "Chunky Hog Roast Sausage Roll",
+          "price": null,
+          "kcal": 463
+        },
+        {
+          "name": "Cornish Pasty",
+          "price": null,
+          "kcal": 652
+        },
+        {
+          "name": "Vegan Kerelan & Cauliflower Pasty",
+          "description": "Vegan Pasty",
+          "price": null,
+          "kcal": 823,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Butter Croissant",
+          "price": null,
+          "kcal": 197,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Chocolate Croissant",
+          "price": null,
+          "kcal": 353,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Pistachio Chocolate Croissant",
+          "price": null,
+          "kcal": 374,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Apple Turnover",
+          "price": null,
+          "kcal": 310
+        },
+        {
+          "name": "Chocolate Croissant Cup",
+          "price": null,
+          "kcal": 340,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Speculoos Croissant Cup",
+          "price": null,
+          "kcal": 328
+        },
+        {
+          "name": "Chocolate Pretzel",
+          "price": null,
+          "kcal": 362
+        },
+        {
+          "name": "Cinnamon Bun",
+          "price": null,
+          "kcal": 330,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Hazelnut Bun",
+          "price": null,
+          "kcal": 612,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Traybakes - Cakes - Snacks",
+      "items": [
+        {
+          "name": "Sticky Toffee Biscoff Traybake",
+          "price": null,
+          "kcal": 532,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Queen Vic Tray Cake",
+          "price": null,
+          "kcal": 583,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Ultimate Carrot Tray Cake",
+          "price": null,
+          "kcal": 369,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Lemon Drizzle Tray Cake",
+          "price": null,
+          "kcal": 356,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Super Dark Brownie Tray Bake",
+          "price": null,
+          "kcal": 362,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Oreo Muffin",
+          "price": null,
+          "kcal": 490,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Lotus Biscoff Muffin",
+          "price": null,
+          "kcal": 506,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Salted Pretzel Bites",
+          "price": null,
+          "kcal": 203,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Cinnamon Sugar Pretzel Bites",
+          "price": null,
+          "kcal": 239,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Banana & Chocolate Chip Loaf",
+          "price": null,
+          "kcal": 331
+        },
+        {
+          "name": "Homemade Chocolate Brownie",
+          "price": null,
+          "kcal": 636,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Homemade Cookie Dough Tray Bake",
+          "price": null,
+          "kcal": 594,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Sweet Popcorn",
+          "price": null,
+          "kcal": 333,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Salted Popcorn",
+          "price": null,
+          "kcal": 259,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Molten Chocolate Cookie",
+          "price": null,
+          "kcal": 477,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Caramel Queen Cookie",
+          "price": null,
+          "kcal": 497,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Iced Latte.",
+          "price": null,
+          "kcal": 125,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Iced Latte with Oat Milk.",
+          "price": null,
+          "kcal": 150,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Iced Latte with Soya Milk.",
+          "price": null,
+          "kcal": 112,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Latte 12oz.",
+          "price": null,
+          "kcal": 133,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Cappuccino 12oz.",
+          "price": null,
+          "kcal": 155,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Flat White 12oz.",
+          "price": null,
+          "kcal": 133,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "White Coffee 12oz.",
+          "price": null,
+          "kcal": 63,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Americano 12oz.",
+          "price": null,
+          "kcal": 41,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Mocha 12oz",
+          "price": null,
+          "kcal": 270,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Hot Chocolate",
+          "price": null,
+          "kcal": 122,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Babyccino",
+          "price": null,
+          "kcal": 12,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Espresso",
+          "price": null,
+          "kcal": 28,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Double Espresso.",
+          "price": null,
+          "kcal": 48,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "The Works Hot Chocolate",
+          "description": "Hot chocolate topped with squirty cream, marshmallows and a flake.",
+          "price": null,
+          "kcal": 319
+        },
+        {
+          "name": "Mint Hot Chocolate",
+          "price": null,
+          "kcal": 404
+        },
+        {
+          "name": "Orange Hot Chocolate",
+          "price": null,
+          "kcal": 414
+        },
+        {
+          "name": "Caramel Syrup Shot",
+          "price": null,
+          "kcal": 47,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Vanilla Syrup Shot",
+          "price": null,
+          "kcal": 47,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Irish Cream Syrup Shot",
+          "price": null,
+          "kcal": 47,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Hazelnut Syrup Shot",
+          "price": null,
+          "kcal": 47
+        },
+        {
+          "name": "Pumpkin Spice Syrup Shot",
+          "price": null,
+          "kcal": 47,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "Clipper English Breakfast Black Tea",
+          "price": null,
+          "kcal": 7,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Clipper Green Tea",
+          "price": null,
+          "kcal": 0,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Clipper Peppermint Tea",
+          "price": null,
+          "kcal": 0,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Clipper Decaf Tea",
+          "price": null,
+          "kcal": 7,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Clipper Earl Grey Tea",
+          "price": null,
+          "kcal": 0
+        },
+        {
+          "name": "Clipper Lemon & Ginger Tea",
+          "price": null,
+          "kcal": 7,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Clipper Everyday Tea - Black",
+          "price": null,
+          "kcal": 0,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Clipper Berry Burst Tea",
+          "price": null,
+          "kcal": 0,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Soya Milk",
+          "price": null,
+          "kcal": 150,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Oat Milk",
+          "price": null,
+          "kcal": 217,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Milk",
+          "price": null,
+          "kcal": 176,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Smoothies",
+      "items": [
+        {
+          "name": "Wild Wild Zest Smoothie",
+          "price": null,
+          "kcal": 76,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Berry Go Round Smoothie",
+          "price": null,
+          "kcal": 145
+        },
+        {
+          "name": "Pash 'n' Shoot Smoothie",
+          "price": null,
+          "kcal": 168,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Acai High Smoothie",
+          "price": null,
+          "kcal": 187,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Matcha Made In Heaven Smoothie",
+          "price": null,
+          "kcal": 166,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        }
+      ]
+    }
+  ]
+}

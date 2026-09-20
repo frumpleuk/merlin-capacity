@@ -4,9 +4,9 @@
     "priced": 24,
     "water": 6
   },
-  "chessington": {
-    "venues": 20,
-    "priced": 11,
+  "thorpe_park": {
+    "venues": 36,
+    "priced": 14,
     "water": 5
   },
   "legoland": {
@@ -14,9 +14,24 @@
     "priced": 23,
     "water": 5
   },
-  "thorpe_park": {
-    "venues": 36,
-    "priced": 14,
+  "chessington": {
+    "venues": 20,
+    "priced": 11,
     "water": 5
+  },
+  "paultons": {
+    "venues": 20,
+    "priced": 18,
+    "water": 0
+  },
+  "blackpool": {
+    "venues": 39,
+    "priced": 16,
+    "water": 0
+  },
+  "flamingoland": {
+    "venues": 25,
+    "priced": 3,
+    "water": 0
   }
 }

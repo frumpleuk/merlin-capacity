@@ -129,7 +129,7 @@
       ]
     },
     {
-      "name": "All kids meals are served with a choice of chunky chips or jacket potato and either beans, peas or salad",
+      "name": "Kids",
       "items": [
         {
           "name": "Kids Fish Fingers",
@@ -154,7 +154,8 @@
             "v"
           ]
         }
-      ]
+      ],
+      "note": "All kids meals are served with a choice of chunky chips or jacket potato and either beans, peas or salad"
     },
     {
       "name": "Vegan",
@@ -178,7 +179,7 @@
       ]
     },
     {
-      "name": "Meals made using Not Gluten Containing Ingredients",
+      "name": "NGCI",
       "items": [
         {
           "name": "Ham and Chips",
@@ -213,7 +214,8 @@
             "gf"
           ]
         }
-      ]
+      ],
+      "note": "Meals made using Not Gluten Containing Ingredients"
     },
     {
       "name": "Under 600 Calories",

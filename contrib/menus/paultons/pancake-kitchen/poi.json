@@ -1,0 +1,11 @@
+{
+  "id": 64,
+  "name": "Pancake Kitchen",
+  "category": "Food & Drink",
+  "area": "Peppa Pig World",
+  "lat": 50.949034,
+  "lon": -1.548321,
+  "menuUrl": "https://menus.tenkites.com/paultonspark/thequeenskitchen",
+  "appMissingSince": null,
+  "source": "paultons app bundle"
+}

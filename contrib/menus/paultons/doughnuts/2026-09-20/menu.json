@@ -1,0 +1,286 @@
+{
+  "date": "2026-09-20",
+  "unpriced": true,
+  "source": {
+    "name": "Paultons Park",
+    "official": true,
+    "url": "https://menus.tenkites.com/paultonspark/cascades"
+  },
+  "sections": [
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Black Tea",
+          "price": null,
+          "kcal": 0,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Clipper Everyday Tea - Black",
+          "price": null,
+          "kcal": 0,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Clipper Decaf Tea",
+          "price": null,
+          "kcal": 7,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Americano",
+          "price": null,
+          "kcal": 42,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Americano with Milk",
+          "price": null,
+          "kcal": 106,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Latte",
+          "price": null,
+          "kcal": 106,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Flat White.",
+          "price": null,
+          "kcal": 122,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Cappuccino",
+          "price": null,
+          "kcal": 184,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Hot Chocolate",
+          "price": null,
+          "kcal": 122,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Mocha",
+          "price": null,
+          "kcal": 226,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Espresso",
+          "price": null,
+          "kcal": 28,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Double Espresso",
+          "price": null,
+          "kcal": 41,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "12oz Slushy Jacks Raspberry",
+          "price": null,
+          "kcal": 108,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "12oz Slushy Jacks Strawberry",
+          "price": null,
+          "kcal": 108,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Slushy Jacks Twister Cup - Raspberry",
+          "price": null,
+          "kcal": 158,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Slushy Jacks Twister Cup - Strawberry",
+          "price": null,
+          "kcal": 158,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Milk Portion",
+          "price": null,
+          "kcal": 6,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Soya Milk Portion",
+          "price": null,
+          "kcal": 5,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mini Melts",
+      "items": [
+        {
+          "name": "Mini Melts - Banana Split",
+          "price": null,
+          "kcal": 171,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Mini Melts - Bubble Gum",
+          "price": null,
+          "kcal": 170,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Mini Melts - Chocolate",
+          "price": null,
+          "kcal": 172,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Mini Melts - Cotton Candy",
+          "price": null,
+          "kcal": 177,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Mini Melts - Vanilla Cookie",
+          "price": null,
+          "kcal": 198,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Mini Melts - Lemon & Lime",
+          "price": null,
+          "kcal": 51,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Mini Melts - Mango",
+          "price": null,
+          "kcal": 61,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Mini Melts - Strawberry",
+          "price": null,
+          "kcal": 165,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fresh Doughnuts",
+      "items": [
+        {
+          "name": "Fresh Doughnuts",
+          "price": null,
+          "kcal": 659,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add Milk Chocolate Dipping Sauce",
+          "price": null,
+          "kcal": 198,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add White Chocolate Dipping Sauce",
+          "price": null,
+          "kcal": 193,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add Toffee Dipping Sauce",
+          "price": null,
+          "kcal": 115,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Cinnamon Sugar",
+          "price": null,
+          "kcal": 37,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        }
+      ]
+    }
+  ]
+}

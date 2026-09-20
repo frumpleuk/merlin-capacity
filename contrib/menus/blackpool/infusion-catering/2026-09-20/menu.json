@@ -1,0 +1,77 @@
+{
+  "date": "2026-09-20",
+  "unpriced": true,
+  "source": {
+    "name": "Pleasure Beach Resort",
+    "official": true,
+    "url": "https://www.blackpoolpleasurebeach.com/infusion-menu/"
+  },
+  "sections": [
+    {
+      "name": "Food",
+      "items": [
+        {
+          "name": "Burgers",
+          "price": null
+        },
+        {
+          "name": "Hot Dogs",
+          "price": null
+        },
+        {
+          "name": "Fries/Curly Fries",
+          "price": null
+        },
+        {
+          "name": "Xxl Cone of Fries",
+          "price": null
+        },
+        {
+          "name": "Freshly Made Sugar Donuts",
+          "price": null
+        },
+        {
+          "name": "Topped Donuts",
+          "price": null
+        },
+        {
+          "name": "Freshly Made Crepes",
+          "price": null
+        },
+        {
+          "name": "Freshly Made Waffles",
+          "price": null
+        },
+        {
+          "name": "Sundaes",
+          "price": null
+        },
+        {
+          "name": "Whippy Ice Cream",
+          "price": null
+        },
+        {
+          "name": "Chinese Wok",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Smoothies",
+          "price": null
+        },
+        {
+          "name": "Hot Drinks",
+          "price": null
+        },
+        {
+          "name": "Cold Drinks",
+          "price": null
+        }
+      ]
+    }
+  ]
+}

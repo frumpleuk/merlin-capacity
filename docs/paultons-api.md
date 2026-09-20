@@ -255,3 +255,68 @@ An object with a `days` array, one entry per on-sale date:
 
 **Undocumented / private.** As with the queue API, these paths aren't published
 and can change without notice.
+
+---
+
+## 7. Eateries & menus (app bundle + Tenkites)
+
+The Food tab needs two things the queue API doesn't carry: where each outlet is,
+and what it sells. Both exist, in two different places.
+
+### 7.1 Where the outlets are — `points_of_interest.json`
+
+The app's POI database (the same bundled file the ride grouping comes from,
+§5) is the park's whole map, food included. It is **not served over the API**:
+`/api/*` has only the routes in §3 and `/assets/*` answers `FORBIDDEN` to the
+app token, so a refresh means unpacking a newer APK (`docs/apk-download.md`).
+
+```
+assets/public/assets/databases/points_of_interest.json   (145 POIs, app v10.3.3)
+```
+
+Food outlets are `type: "restaurant"` — **19 of them, every one with
+coordinates**:
+
+| Field | Meaning |
+|---|---|
+| `id` | POI id. Our `poi.json` id; unrelated to the queue feed's `rideId` (food POIs have `orms_id: null`). |
+| `title` | The outlet's name. |
+| `type` | `"restaurant"` for food and drink. |
+| `status` | `published`, or **`archived`** for an outlet that has closed (`date_updated` is when). |
+| `location` | GeoJSON `Point`, `coordinates: [lon, lat]`. `entrance_location` too on some. |
+| `category_tags` | `Food and Drink`, plus the themed area for a couple of them. |
+| `menu` | The outlet's **Tenkites menu URL** (18 of 19 have one). |
+| `short_description` / `full_description` | The park's own copy, including what's served. Facts only; we don't store the prose. |
+| `search_tags`, `images` | Search keywords and the app's photos. |
+
+Two of the 19 are `archived` (Station Restaurant, Coffee Station), which is
+better history than waiting for an outlet to vanish from a later bundle: the
+sync records them with `appMissingSince` set to the day the park archived them.
+
+Only 2 outlets carry a themed-area tag, so the rest take the area of the nearest
+POI that has one (within 150m). A land's average position is a poor test in a
+park this compact, where the areas interlock.
+
+### 7.2 What they sell — `menus.tenkites.com/paultonspark/<slug>`
+
+Each `menu` URL is a Tenkites digital menu board: course headings, dishes,
+descriptions, calories and the park's vegetarian/vegan marks.
+
+**There are no prices.** Tenkites renders a `k10-recipe__price` element for
+every dish and Paulton's leaves every one of them empty, on all 18 boards. So
+these menus are stored with `unpriced: true` and the prices come from elsewhere
+(Theme Park James, who photographed the boards in the park — see
+`contrib/menus/README.md`).
+
+The slug is a fossil of an older name on four outlets: `beastiebites` is now
+Churros, `cascades` is now Doughnuts, `therailroaddiner` is Fish & Chips and
+`thequeenskitchen` is the Pancake Kitchen. That is how those venues' older menus
+were matched to today's folders. Three boards (`coffeestation`, `thesnakepit` and the archived
+`stationrestaurant`) are live pages with no dishes on them.
+
+Markup notes for the parser (`scripts/menus/import-tenkites.mjs`): class
+attributes wrap across lines, so selectors match a class inside the list rather
+than the whole attribute; `k10-course__name-text` opens a section,
+`k10-recipe__name` is a dish (not `k10-recipe__name-wrapper`), the description
+is `k10-recipe__desc`, calories are `k10-primary-nutrient__item` ("941 cal") and
+the dietary mark is `k10-recipe__label` ("V").

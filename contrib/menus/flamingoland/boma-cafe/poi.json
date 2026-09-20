@@ -1,0 +1,12 @@
+{
+  "id": 719,
+  "name": "Boma Café",
+  "category": "Food & Drink",
+  "area": "Zoo",
+  "lat": 54.207125,
+  "lon": -0.80533,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "flamingo land app (firestore)",
+  "serves": "Doritos, Hot & Cold Drinks, Slushes."
+}

@@ -149,13 +149,25 @@ for (const [key, park] of Object.entries(parks)) {
   fs.writeFileSync(file, JSON.stringify(park) + "\n");
   const size = fs.statSync(file).size;
   total += size;
+  // "priced" means a price you can actually read off the page. A venue whose
+  // only menu is a dish list (the allergen boards Paulton's and Blackpool
+  // publish) has a menu but no prices, and counting those as priced flattered
+  // the coverage badly.
+  const hasPrice = (v) =>
+    v.menus.some((m) =>
+      (m.sections ?? []).some((s) =>
+        s.items.some((i) => i.price != null || (i.sizes ?? []).some((z) => z.price != null)),
+      ),
+    );
   index[key] = {
     venues: park.venues.length,
-    priced: park.venues.filter((v) => v.menus.length).length,
+    withMenus: park.venues.filter((v) => v.menus.length).length,
+    priced: park.venues.filter(hasPrice).length,
     water: park.water.length,
   };
   console.log(
-    `${key}: ${park.venues.length} venues, ${index[key].priced} with menus, ` +
+    `${key}: ${park.venues.length} venues, ${index[key].priced} priced, ` +
+      `${index[key].withMenus - index[key].priced} dish-list only, ` +
       `${park.venues.reduce((n, v) => n + v.menus.length, 0)} menus, ${(size / 1024).toFixed(0)}KB`,
   );
 }

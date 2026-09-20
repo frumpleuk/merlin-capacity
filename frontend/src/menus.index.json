@@ -1,0 +1,22 @@
+{
+  "alton_towers": {
+    "venues": 33,
+    "priced": 24,
+    "water": 6
+  },
+  "chessington": {
+    "venues": 20,
+    "priced": 11,
+    "water": 5
+  },
+  "legoland": {
+    "venues": 35,
+    "priced": 23,
+    "water": 5
+  },
+  "thorpe_park": {
+    "venues": 36,
+    "priced": 14,
+    "water": 5
+  }
+}

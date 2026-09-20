@@ -1,16 +1,16 @@
 import { Link, NavLink, Outlet, useLocation, useParams } from "react-router-dom";
 import { findPark, PARKS, type ParkDef } from "./catalog";
 import { PARK_LINKS } from "./links";
-import MENUS from "./menus.generated.json";
+import MENUS from "./menus.index.json";
 
-type MenuCounts = Record<string, { venues: unknown[]; water: unknown[] }>;
+type MenuCounts = Record<string, { venues: number; water: number }>;
 
 /** A park earns the Food tab once we know anything about eating there — the
  *  places from its app count, with or without a photographed menu, and so do
  *  the free water refills. */
 function hasFood(park: string): boolean {
   const d = (MENUS as MenuCounts)[park];
-  return !!d && (d.venues.length > 0 || d.water.length > 0);
+  return !!d && (d.venues > 0 || d.water > 0);
 }
 
 export function Layout() {

@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
 import { Navigate, useParams, useSearchParams } from "react-router-dom";
 import { findPark, PARK_HOME } from "./catalog";
-import MENUS from "./menus.generated.json";
+import INDEX from "./menus.index.json";
 import { ParkMap, type MapArea } from "./ParkMap";
 
 // Shape of menus.generated.json (built from contrib/menus by scripts/menus/build.mjs).
@@ -28,8 +28,20 @@ interface Offer {
   text: string;
   date?: string;
 }
+interface Source {
+  name: string;
+  url: string;
+  /** His write-up of the place: the page worth reading. */
+  venueUrl?: string;
+  stated?: string;
+  menu?: string;
+}
 interface Menu {
   date: string;
+  /** The day stands in for a month or year the source gave. */
+  approxDate?: boolean;
+  /** Set when the menu came from someone else's work rather than our photos. */
+  source?: Source | null;
   /** R2 path the web photos hang off, e.g. /menus/alton-towers/donut-division/2026-08-26/ */
   base: string;
   photos: { name: string; caption: string }[];
@@ -81,8 +93,9 @@ interface ParkMenus {
   areas: MapArea[];
 }
 
-const DATA = MENUS as Record<string, ParkMenus>;
 const TODAY = new Date().toISOString().slice(0, 10);
+/** Counts only: enough to know a park has food before its data arrives. */
+const COUNTS = INDEX as Record<string, { venues: number; priced: number; water: number }>;
 
 /** Prices are stored as integer pence — "875" reads as £8.75, "500" as £5. */
 const money = (p: number) => "£" + (p / 100).toFixed(2).replace(/\.00$/, "");
@@ -340,7 +353,8 @@ function VenueCard({
   onOpen: (slug: string | null) => void;
   onShot: (shot: Shot) => void;
 }) {
-  const menu = venue.menus[0] as Menu | undefined; // newest visit, if we have one
+  const [at, setAt] = useState(0); // 0 is the newest menu we hold
+  const menu = venue.menus[at] as Menu | undefined;
   const [open, setOpen] = useState(focus === venue.slug);
   const ref = useRef<HTMLElement>(null);
 
@@ -360,7 +374,8 @@ function VenueCard({
       .filter((s) => s.items.length);
   }, [menu, query]);
   const hits = sections.reduce((n, s) => n + s.items.length, 0);
-  const priced = venue.items > 0 && !!menu;
+  const priced = venue.menus.length > 0 && !!menu;
+  const shown = (menu?.sections ?? []).reduce((n, s) => n + s.items.length, 0);
   const show = priced && (open || !!query);
   // One note repeated on every section (a tablet's "this list may be partial")
   // is really the venue's note — say it once.
@@ -398,7 +413,7 @@ function VenueCard({
             ? "no menu yet"
             : query
               ? `${hits} match${hits === 1 ? "" : "es"}`
-              : `${venue.items} item${venue.items === 1 ? "" : "s"}`}
+              : `${shown} item${shown === 1 ? "" : "s"}`}
           {priced && venue.from != null && (
             <>
               {" · "}
@@ -432,8 +447,41 @@ function VenueCard({
               {o.text}
             </p>
           ))}
+          {venue.menus.length > 1 && (
+            <div className="fd-versions">
+              <span className="fd-venue-meta">Menus:</span>
+              {venue.menus.map((m, n) => (
+                <button
+                  key={m.date}
+                  className={"fd-chip" + (n === at ? " on" : "")}
+                  onClick={() => setAt(n)}
+                  title={m.source ? `From ${m.source.name}` : "From our photos"}
+                >
+                  {m.approxDate ? m.date.slice(0, 4) : longDate(m.date)}
+                </button>
+              ))}
+            </div>
+          )}
+          {menu.source && (
+            <p className="fd-credit">
+              <strong>
+                Collected by{" "}
+                <a href={menu.source.venueUrl ?? menu.source.url} target="_blank" rel="noreferrer noopener">
+                  {menu.source.name}
+                </a>
+              </strong>
+              {menu.source.stated ? `, ${menu.source.stated}` : ""}
+              {menu.source.menu ? ` (${menu.source.menu})` : ""}. He photographed and wrote this one up:{" "}
+              <a href={menu.source.venueUrl ?? menu.source.url} target="_blank" rel="noreferrer noopener">
+                read it on his site
+              </a>
+              .
+            </p>
+          )}
           <div className="fd-photos">
-            <span className="fd-venue-meta">Seen {longDate(menu.date)}</span>
+            <span className="fd-venue-meta">
+              {menu.source ? "Published" : "Seen"} {menu.approxDate ? menu.date.slice(0, 4) : longDate(menu.date)}
+            </span>
             {menu.photos.map((p, n) => (
               <button
                 key={p.name}
@@ -456,6 +504,11 @@ function VenueCard({
             {venue.menuUrl && (
               <a className="fd-official" href={venue.menuUrl} target="_blank" rel="noreferrer noopener">
                 Official menu
+              </a>
+            )}
+            {menu.source?.venueUrl && (
+              <a className="fd-official" href={menu.source.venueUrl} target="_blank" rel="noreferrer noopener">
+                {menu.source.name}'s write-up
               </a>
             )}
           </div>
@@ -598,7 +651,21 @@ export function MenusPage() {
   const [perks, setPerks] = useState<Set<string>>(new Set());
   const [showGone, setShowGone] = useState(false);
   const [shot, setShot] = useState<Shot | null>(null);
-  const data = park ? DATA[park] : undefined;
+  // A park's menus are a few hundred KB, so they're fetched rather than
+  // bundled: you only ever load the park you're looking at.
+  const [data, setData] = useState<ParkMenus | null>(null);
+  useEffect(() => {
+    if (!park || !COUNTS[park]) return;
+    let live = true;
+    setData(null);
+    fetch(`/menu-data/${park}.json`)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => live && setData(d))
+      .catch(() => live && setData(null));
+    return () => {
+      live = false;
+    };
+  }, [park]);
 
   const focus = params.get("open") ?? undefined;
   const setParam = (key: string, value: string | null) => {
@@ -609,7 +676,8 @@ export function MenusPage() {
   };
   const setFocus = (slug: string | null) => setParam("open", slug);
 
-  if (!parkDef || !data) return <Navigate to={PARK_HOME} replace />;
+  if (!parkDef || !park || !COUNTS[park]) return <Navigate to={PARK_HOME} replace />;
+  if (!data) return <main className="fd"><p className="fd-empty">Loading menus…</p></main>;
 
   const query = q.trim().toLowerCase();
   const facetsOf = (v: Venue) => ({
@@ -772,8 +840,8 @@ export function MenusPage() {
 
         <div className="fd-list">
           <p className="fd-intro">
-            Prices read off photos of the boards, with the date each was taken. Includes pop-ups and event
-            stalls the park's app misses.
+            What each place charges, and when the menu was seen. Ours are read off photos of the boards;
+            older ones were collected by Theme Park James.
           </p>
 
           {data.offers.length > 0 && !query && !filtered && (
@@ -874,7 +942,14 @@ export function MenusPage() {
             </section>
           )}
 
-
+          <p className="fd-thanks">
+            The older menus here were collected by{" "}
+            <a href="https://www.themeparkjames.co.uk/" target="_blank" rel="noreferrer noopener">
+              Theme Park James
+            </a>
+            , who photographs and writes up park food across the UK, going back years. His pages carry the
+            write-up, the photos and the detail this page doesn't, so go and read them.
+          </p>
         </div>
       </div>
     </main>

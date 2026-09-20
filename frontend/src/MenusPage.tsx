@@ -632,8 +632,8 @@ export function MenusPage() {
 
         <div className="fd-list">
           <p className="fd-intro">
-            Every place to eat and drink the park's own app lists. Where we've photographed the boards, the
-            menu opens with its prices and the date they were seen — prices move.
+            Every place to eat and drink in the park, including pop-ups and event stalls its app leaves out.
+            Photographed menus open with their prices and the day we saw them.
           </p>
 
           {data.offers.length > 0 && !query && !filtered && (

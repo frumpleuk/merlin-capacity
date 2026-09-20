@@ -72,7 +72,9 @@ for (const { file, key } of todo) {
   }
   execFileSync(
     "npx",
-    ["wrangler", "r2", "object", "put", `${BUCKET}/${key}`, "--file", file, "--content-type", "image/jpeg", "--remote"],
+    // No --remote: `r2 object put` writes to the real bucket by default, and
+    // the flag it does take is --local. Passing an unknown flag fails the CLI.
+    ["wrangler", "r2", "object", "put", `${BUCKET}/${key}`, "--file", file, "--content-type", "image/jpeg"],
     { cwd: REPO, stdio: ["ignore", "ignore", "inherit"] },
   );
   console.log(`uploaded ${key}`);

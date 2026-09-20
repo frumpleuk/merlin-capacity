@@ -149,7 +149,7 @@ export function ParkMap({
                 r={focus === p.slug ? 6 : 3}
                 onClick={() => onPick(p.slug)}
               >
-                <title>{p.name} — free water refill</title>
+                <title>{p.name}: free water refill</title>
               </circle>
             ))}
           {venues

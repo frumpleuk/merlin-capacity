@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
 import { Navigate, useParams, useSearchParams } from "react-router-dom";
 import { findPark, PARK_HOME } from "./catalog";
 import MENUS from "./menus.generated.json";
@@ -119,6 +119,129 @@ const perksOf = (v: Venue) => [
   ...(v.menuUrl ? ["Official menu"] : []),
 ];
 
+/** A photo opened from a menu, with where and when it was taken. */
+interface Shot {
+  venue: string;
+  area: string | null;
+  date: string;
+  base: string;
+  photos: { name: string; caption: string }[];
+  at: number;
+}
+
+function Lightbox({ shot, onClose }: { shot: Shot; onClose: () => void }) {
+  const [at, setAt] = useState(shot.at);
+  const [zoom, setZoom] = useState(1);
+  const stage = useRef<HTMLDivElement>(null);
+  const photo = shot.photos[at];
+  const many = shot.photos.length > 1;
+
+  const step = (by: number) => {
+    setAt((n) => (n + by + shot.photos.length) % shot.photos.length);
+    setZoom(1); // a new board starts fitted
+  };
+  // Zoom about the middle of what you are looking at, so the detail you were
+  // reading doesn't shoot off the edge.
+  const setZoomAt = (next: number) => {
+    const el = stage.current;
+    const from = zoom;
+    setZoom(next);
+    if (!el) return;
+    requestAnimationFrame(() => {
+      const k = next / from;
+      el.scrollLeft = (el.scrollLeft + el.clientWidth / 2) * k - el.clientWidth / 2;
+      el.scrollTop = (el.scrollTop + el.clientHeight / 2) * k - el.clientHeight / 2;
+    });
+  };
+
+  useEffect(() => {
+    const key = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowRight" && many) step(1);
+      if (e.key === "ArrowLeft" && many) step(-1);
+      if (e.key === "+" || e.key === "=") setZoomAt(Math.min(4, zoom * 1.5));
+      if (e.key === "-") setZoomAt(Math.max(1, zoom / 1.5));
+    };
+    document.addEventListener("keydown", key);
+    return () => document.removeEventListener("keydown", key);
+  });
+
+  // Drag to pan once zoomed in.
+  const drag = useRef<{ x: number; y: number; left: number; top: number } | null>(null);
+  const onDown = (e: ReactPointerEvent) => {
+    if (zoom === 1 || !stage.current) return;
+    drag.current = { x: e.clientX, y: e.clientY, left: stage.current.scrollLeft, top: stage.current.scrollTop };
+    (e.target as Element).setPointerCapture(e.pointerId);
+  };
+  const onMove = (e: ReactPointerEvent) => {
+    const d = drag.current;
+    if (!d || !stage.current) return;
+    stage.current.scrollLeft = d.left - (e.clientX - d.x);
+    stage.current.scrollTop = d.top - (e.clientY - d.y);
+  };
+
+  return (
+    <div className="fd-lb" role="dialog" aria-modal="true" aria-label={photo.caption} onClick={onClose}>
+      <div className="fd-lb-inner" onClick={(e) => e.stopPropagation()}>
+        {/* Arrows flank the photo and the close sits top right, where a photo
+            viewer puts them. */}
+        <button className="fd-lb-close" onClick={onClose} aria-label="Close">
+          ×
+        </button>
+        {many && (
+          <>
+            <button className="fd-lb-arrow prev" onClick={() => step(-1)} aria-label="Previous photo">
+              ‹
+            </button>
+            <button className="fd-lb-arrow next" onClick={() => step(1)} aria-label="Next photo">
+              ›
+            </button>
+          </>
+        )}
+        <div
+          className={"fd-lb-stage" + (zoom > 1 ? " zoomed" : "")}
+          ref={stage}
+          onPointerDown={onDown}
+          onPointerMove={onMove}
+          onPointerUp={() => (drag.current = null)}
+          onDoubleClick={() => setZoomAt(zoom > 1 ? 1 : 2.5)}
+        >
+          <img
+            src={shot.base + photo.name + ".jpg"}
+            alt={photo.caption}
+            style={zoom > 1 ? { width: `${zoom * 100}%`, maxHeight: "none" } : undefined}
+            draggable={false}
+          />
+        </div>
+        <div className="fd-lb-meta">
+          <strong>{shot.venue}</strong>
+          <span className="fd-venue-meta">
+            {shot.area ? `${shot.area}, ` : ""}
+            photographed {longDate(shot.date)}
+          </span>
+          <span className="fd-lb-caption">{photo.caption}</span>
+          <span className="fd-lb-actions">
+            {many && (
+              <span className="fd-venue-meta">
+                {at + 1} of {shot.photos.length}
+              </span>
+            )}
+            <button onClick={() => setZoomAt(Math.max(1, zoom / 1.5))} disabled={zoom === 1} aria-label="Zoom out">
+              −
+            </button>
+            <button onClick={() => setZoomAt(Math.min(4, zoom * 1.5))} disabled={zoom >= 4} aria-label="Zoom in">
+              +
+            </button>
+            <a href={shot.base + photo.name + ".jpg"} target="_blank" rel="noreferrer noopener">
+              Full size
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /** Show where the search matched, so a hit in a long menu is findable. */
 function Mark({ text, query }: { text: string; query: string }) {
   if (!query) return <>{text}</>;
@@ -189,7 +312,7 @@ function PassBadge({ pass }: { pass: PassDiscount | null }) {
       : pass.source === "park app"
         ? "from the park's app, no rate given"
         : null;
-  const detail = [pass.applies, why].filter(Boolean).join(" — ");
+  const detail = [pass.applies, why].filter(Boolean).join(", ");
   if (!pass.offered) {
     return (
       <span className="fd-pass fd-pass-no" title={detail || undefined}>
@@ -209,11 +332,13 @@ function VenueCard({
   query,
   focus,
   onOpen,
+  onShot,
 }: {
   venue: Venue;
   query: string;
   focus?: string;
   onOpen: (slug: string | null) => void;
+  onShot: (shot: Shot) => void;
 }) {
   const menu = venue.menus[0] as Menu | undefined; // newest visit, if we have one
   const [open, setOpen] = useState(focus === venue.slug);
@@ -263,7 +388,7 @@ function VenueCard({
           <span className="fd-venue-name">{venue.name}</span>
           <PassBadge pass={venue.passDiscount} />
           {venue.diningPlans?.map((p) => (
-            <span key={p} className="fd-plan" title={`Merlin Dining Plan — ${p}`}>
+            <span key={p} className="fd-plan" title={`Merlin Dining Plan: ${p}`}>
               {p} plan
             </span>
           ))}
@@ -277,7 +402,7 @@ function VenueCard({
           {priced && venue.from != null && (
             <>
               {" · "}
-              {venue.from === venue.to ? money(venue.from) : `${money(venue.from)}–${money(venue.to!)}`}
+              {venue.from === venue.to ? money(venue.from) : `${money(venue.from)} to ${money(venue.to!)}`}
             </>
           )}
         </span>
@@ -309,16 +434,24 @@ function VenueCard({
           ))}
           <div className="fd-photos">
             <span className="fd-venue-meta">Seen {longDate(menu.date)}</span>
-            {menu.photos.map((p) => (
-              <a
+            {menu.photos.map((p, n) => (
+              <button
                 key={p.name}
-                href={menu.base + p.name + ".jpg"}
+                className="fd-thumb"
                 title={p.caption}
-                target="_blank"
-                rel="noreferrer noopener"
+                onClick={() =>
+                  onShot({
+                    venue: venue.name,
+                    area: venue.area,
+                    date: menu.date,
+                    base: menu.base,
+                    photos: menu.photos,
+                    at: n,
+                  })
+                }
               >
                 <img src={menu.base + p.name + ".jpg"} alt={p.caption} loading="lazy" />
-              </a>
+              </button>
             ))}
             {venue.menuUrl && (
               <a className="fd-official" href={venue.menuUrl} target="_blank" rel="noreferrer noopener">
@@ -340,6 +473,7 @@ function AreaGroup({
   openAll,
   focus,
   onOpen,
+  onShot,
 }: {
   area: string;
   venues: Venue[];
@@ -347,6 +481,7 @@ function AreaGroup({
   openAll: boolean;
   focus?: string;
   onOpen: (slug: string | null) => void;
+  onShot: (shot: Shot) => void;
 }) {
   const holdsFocus = venues.some((v) => v.slug === focus);
   const [open, setOpen] = useState(holdsFocus);
@@ -370,7 +505,7 @@ function AreaGroup({
       </button>
       {show &&
         venues.map((v) => (
-          <VenueCard key={v.slug} venue={v} query={query} focus={focus} onOpen={onOpen} />
+          <VenueCard key={v.slug} venue={v} query={query} focus={focus} onOpen={onOpen} onShot={onShot} />
         ))}
     </section>
   );
@@ -383,12 +518,14 @@ function AreaGroups({
   openAll,
   focus,
   onOpen,
+  onShot,
 }: {
   venues: Venue[];
   query: string;
   openAll: boolean;
   focus?: string;
   onOpen: (slug: string | null) => void;
+  onShot: (shot: Shot) => void;
 }) {
   const byArea = new Map<string, Venue[]>();
   for (const v of venues) {
@@ -407,6 +544,7 @@ function AreaGroups({
           openAll={openAll}
           focus={focus}
           onOpen={onOpen}
+          onShot={onShot}
         />
       ))}
     </>
@@ -459,6 +597,7 @@ export function MenusPage() {
   const [plans, setPlans] = useState<Set<string>>(new Set());
   const [perks, setPerks] = useState<Set<string>>(new Set());
   const [showGone, setShowGone] = useState(false);
+  const [shot, setShot] = useState<Shot | null>(null);
   const data = park ? DATA[park] : undefined;
 
   const focus = params.get("open") ?? undefined;
@@ -550,6 +689,7 @@ export function MenusPage() {
 
   return (
     <main className="fd">
+      {shot && <Lightbox shot={shot} onClose={() => setShot(null)} />}
       <div className="fd-controls">
         <input
           className="fd-search"
@@ -632,8 +772,8 @@ export function MenusPage() {
 
         <div className="fd-list">
           <p className="fd-intro">
-            Every place to eat and drink in the park, including pop-ups and event stalls its app leaves out.
-            Photographed menus open with their prices and the day we saw them.
+            Prices read off photos of the boards, with the date each was taken. Includes pop-ups and event
+            stalls the park's app misses.
           </p>
 
           {data.offers.length > 0 && !query && !filtered && (
@@ -659,7 +799,14 @@ export function MenusPage() {
               </h3>
               {e.discount && <p className="fd-offer">{e.discount}</p>}
               {e.vendors.map((v) => (
-                <VenueCard key={v.slug} venue={v} query={query} focus={focus} onOpen={setFocus} />
+                <VenueCard
+                  key={v.slug}
+                  venue={v}
+                  query={query}
+                  focus={focus}
+                  onOpen={setFocus}
+                  onShot={setShot}
+                />
               ))}
             </section>
           ))}
@@ -671,6 +818,7 @@ export function MenusPage() {
               openAll={!!query || filtered}
               focus={focus}
               onOpen={setFocus}
+              onShot={setShot}
             />
           ) : (
             <p className="fd-empty">
@@ -681,12 +829,12 @@ export function MenusPage() {
           {historic > 0 && (
             <section className="fd-historic">
               <button className="fd-toggle" onClick={() => setShowGone((v) => !v)} aria-expanded={showGone}>
-                {showGone ? "−" : "+"} Food that has gone ({historic})
+                {showGone ? "−" : "+"} No longer there ({historic})
               </button>
               {showGone && (
                 <>
                   <p className="fd-note">
-                    Events that have ended and places the park's app no longer lists. Kept for the prices.
+                    Events that have ended, and places the park's app no longer lists, kept for their prices.
                   </p>
                   {past.map((e) => (
                     <section key={e.slug} className="fd-event">
@@ -700,7 +848,14 @@ export function MenusPage() {
                       {e.note && <p className="fd-note">{e.note}</p>}
                       {e.discount && <p className="fd-offer">{e.discount}</p>}
                       {e.vendors.map((v) => (
-                        <VenueCard key={v.slug} venue={v} query={query} focus={focus} onOpen={setFocus} />
+                        <VenueCard
+                          key={v.slug}
+                          venue={v}
+                          query={query}
+                          focus={focus}
+                          onOpen={setFocus}
+                          onShot={setShot}
+                        />
                       ))}
                     </section>
                   ))}
@@ -711,6 +866,7 @@ export function MenusPage() {
                       openAll={!!query || filtered}
                       focus={focus}
                       onOpen={setFocus}
+                      onShot={setShot}
                     />
                   )}
                 </>

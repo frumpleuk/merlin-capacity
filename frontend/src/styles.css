@@ -1701,3 +1701,142 @@ h3.fd-area-head {
   color: inherit;
   border-radius: 2px;
 }
+/* Photo popup: the board a price came from, with where and when it was taken.
+   Opening a new tab lost the page you were reading. */
+.fd-lb {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.72);
+}
+.fd-lb-inner {
+  display: flex;
+  flex-direction: column;
+  max-width: min(1000px, 100%);
+  max-height: 100%;
+  background: var(--bg);
+  border-radius: 10px;
+  overflow: hidden;
+}
+/* The board fits the screen until you zoom; then the stage scrolls and you can
+   drag it about. Pinch works too, on a phone. */
+.fd-lb-stage {
+  min-height: 0;
+  overflow: auto;
+  background: #000;
+  touch-action: pinch-zoom;
+  cursor: zoom-in;
+  overscroll-behavior: contain;
+}
+.fd-lb-stage.zoomed {
+  cursor: grab;
+  touch-action: none;
+}
+.fd-lb-stage img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  max-height: calc(100vh - 150px);
+  object-fit: contain;
+  user-select: none;
+}
+.fd-lb-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+  padding: 10px 12px;
+}
+.fd-lb-caption {
+  flex-basis: 100%;
+  color: var(--muted);
+  font-size: 12px;
+}
+.fd-lb-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+.fd-lb-actions button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.fd-lb-actions button {
+  padding: 4px 10px;
+  font: inherit;
+  font-size: 13px;
+  color: var(--fg);
+  background: var(--card);
+  border: 1px solid var(--grid);
+  border-radius: 6px;
+  cursor: pointer;
+}
+.fd-lb-actions a {
+  font-size: 13px;
+  color: var(--link);
+}
+.fd-thumb {
+  padding: 0;
+  background: none;
+  border: 0;
+  cursor: zoom-in;
+  line-height: 0;
+}
+/* Controls over the photo: arrows either side, close in the corner. */
+.fd-lb-inner {
+  position: relative;
+}
+.fd-lb-arrow,
+.fd-lb-close {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font: inherit;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.45);
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  backdrop-filter: blur(2px);
+}
+.fd-lb-arrow {
+  top: 50%;
+  width: 44px;
+  height: 44px;
+  margin-top: -52px; /* centre on the photo, not the photo plus its caption */
+  font-size: 30px;
+  line-height: 1;
+}
+.fd-lb-arrow.prev {
+  left: 8px;
+}
+.fd-lb-arrow.next {
+  right: 8px;
+}
+.fd-lb-close {
+  top: 8px;
+  right: 8px;
+  width: 40px;
+  height: 40px;
+  font-size: 26px;
+  line-height: 1;
+}
+.fd-lb-arrow:hover,
+.fd-lb-close:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+@media (max-width: 430px) {
+  .fd-lb-arrow {
+    width: 38px;
+    height: 38px;
+    font-size: 26px;
+  }
+}

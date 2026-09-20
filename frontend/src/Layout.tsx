@@ -3,19 +3,14 @@ import { findPark, PARKS, type ParkDef } from "./catalog";
 import { PARK_LINKS } from "./links";
 import MENUS from "./menus.generated.json";
 
-type MenuCounts = Record<
-  string,
-  { venues: { menus: unknown[] }[]; events: { vendors: { menus: unknown[] }[] }[] }
->;
+type MenuCounts = Record<string, { venues: unknown[]; water: unknown[] }>;
 
-/** A park earns the Food tab once some venue there has a transcribed menu. */
-function hasMenus(park: string): boolean {
+/** A park earns the Food tab once we know anything about eating there — the
+ *  places from its app count, with or without a photographed menu, and so do
+ *  the free water refills. */
+function hasFood(park: string): boolean {
   const d = (MENUS as MenuCounts)[park];
-  return (
-    !!d &&
-    (d.venues.some((v) => v.menus.length > 0) ||
-      d.events.some((e) => e.vendors.some((v) => v.menus.length > 0)))
-  );
+  return !!d && (d.venues.length > 0 || d.water.length > 0);
 }
 
 export function Layout() {
@@ -37,8 +32,8 @@ export function Layout() {
     // Links come before the queue-only check: every park has a link directory,
     // whether or not it has a calendar.
     if (section === "links" && PARK_LINKS[p.key]) return `/${p.key}/links`;
-    // Food only exists for the parks we've photographed menus in.
-    if (section === "food" && hasMenus(p.key)) return `/${p.key}/food`;
+    // Food & Drink exists wherever we have the park's outlets or its water.
+    if (section === "food" && hasFood(p.key)) return `/${p.key}/food`;
     if (p.queueOnly) return `/${p.key}/queues`; // no calendar/products — always queues
     if (!section) return `/${p.key}`; // calendar home
     if (section === "queues") return `/${p.key}/${rest.join("/")}`; // queues (+ date)
@@ -89,14 +84,14 @@ export function Layout() {
               {pr.label}
             </NavLink>
           ))}
-          {/* Menu prices, typed up from photos of the boards. Reference
-              material like Links, but park-specific food rather than URLs. */}
-          {hasMenus(parkDef.key) && (
+          {/* Where to eat and drink: menu prices typed up from photos of the
+              boards, every outlet the park's app lists, and the free water. */}
+          {hasFood(parkDef.key) && (
             <NavLink
               to={`/${parkDef.key}/food`}
               className={({ isActive }) => "tab" + (isActive ? " active" : "")}
             >
-              Food
+              Food &amp; Drink
             </NavLink>
           )}
           {/* Static link directory (booking, accessibility, apps, socials) —

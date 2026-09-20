@@ -576,6 +576,25 @@ export function MenusPage() {
             onPick={setFocus}
           />
           <p className="fd-map-note">Tap a dot to open that menu; faded dots are filtered out.</p>
+          {data.water.length > 0 && (
+            <div className="fd-facet fd-water">
+              <h4>Free water refills ({data.water.length})</h4>
+              <div className="fd-chips">
+                {data.water.map((w) => (
+                  <button
+                    key={w.slug}
+                    className={"fd-chip fd-water-chip" + (focus === w.slug ? " on" : "")}
+                    onClick={() => setFocus(focus === w.slug ? null : w.slug)}
+                    title="Show on the map"
+                  >
+                    {/* The park names these "Water Refill (Dark Forest)" — the
+                        useful half is where it is. */}
+                    {w.name.replace(/^water\s*(refills?|fountain|refill station)?\s*/i, "").replace(/^[-–(]\s*/, "").replace(/\)$/, "") || w.name}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
           <Facet
             label="Area"
             values={valuesOf((v) => (v.area ? [v.area] : []))}
@@ -613,7 +632,8 @@ export function MenusPage() {
 
         <div className="fd-list">
           <p className="fd-intro">
-            Menu boards photographed in the park and typed up. Each menu says when it was seen — prices move.
+            Every place to eat and drink the park's own app lists. Where we've photographed the boards, the
+            menu opens with its prices and the date they were seen — prices move.
           </p>
 
           {data.offers.length > 0 && !query && !filtered && (
@@ -699,16 +719,6 @@ export function MenusPage() {
           )}
 
 
-          {!query && !filtered && data.water.length > 0 && (
-            <details className="fd-more">
-              <summary>Free water refills ({data.water.length})</summary>
-              <ul>
-                {data.water.map((w) => (
-                  <li key={w.slug}>{w.name}</li>
-                ))}
-              </ul>
-            </details>
-          )}
         </div>
       </div>
     </main>

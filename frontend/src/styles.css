@@ -98,8 +98,8 @@ h1 {
   border-bottom-color: var(--fg);
 }
 /* A Merlin park now carries six tabs (Calendar · Queues · Tickets · RAP ·
-   Food · Links), which overruns a phone in portrait at the default padding.
-   Tighten the gaps there so the row scrolls as little as possible. */
+   Food & Drink · Links), which overruns a phone in portrait at the default
+   padding. Tighten the gaps there so the row scrolls as little as possible. */
 @media (max-width: 430px) {
   .tabs {
     gap: 2px;
@@ -1278,6 +1278,10 @@ main.with-bar {
   fill: var(--map-water);
   stroke: var(--q-main);
   stroke-width: 1.2;
+  cursor: pointer;
+}
+.fd-map-water.focus {
+  fill: var(--q-main);
 }
 .fd-map-pin {
   fill: var(--grid);
@@ -1378,6 +1382,15 @@ main.with-bar {
 .fd-chip.on .fd-chip-n {
   color: var(--bg);
   opacity: 0.8;
+}
+/* Water is worth finding on a hot day: its own panel, not a footnote. */
+.fd-water-chip {
+  border-color: color-mix(in srgb, var(--q-main) 45%, var(--grid));
+}
+.fd-water-chip.on {
+  color: var(--bg);
+  background: var(--q-main);
+  border-color: var(--q-main);
 }
 .fd-clear {
   padding: 4px 0;

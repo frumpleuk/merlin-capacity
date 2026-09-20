@@ -141,7 +141,14 @@ export function ParkMap({
           {water
             .filter((p) => p.lat != null)
             .map((p) => (
-              <circle key={p.slug} className="fd-map-water" cx={place.x(p.lon!)} cy={place.y(p.lat!)} r={3}>
+              <circle
+                key={p.slug}
+                className={"fd-map-water" + (focus === p.slug ? " focus" : "")}
+                cx={place.x(p.lon!)}
+                cy={place.y(p.lat!)}
+                r={focus === p.slug ? 6 : 3}
+                onClick={() => onPick(p.slug)}
+              >
                 <title>{p.name} — free water refill</title>
               </circle>
             ))}

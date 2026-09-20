@@ -7,8 +7,15 @@
 import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
-import { SITE_ORIGIN } from "../../src/config.ts";
 import { PARK_DIRS, REPO, ROOT } from "./lib.mjs";
+
+// This one runs in CI (the Cloudflare deploy command), where the Node version
+// isn't ours to pick — so read the origin out of src/config.ts rather than
+// importing it, which would need Node's TypeScript stripping.
+const SITE_ORIGIN =
+  process.env.SITE_ORIGIN ??
+  fs.readFileSync(path.join(REPO, "src/config.ts"), "utf8").match(/SITE_ORIGIN\s*=\s*"([^"]+)"/)?.[1];
+if (!SITE_ORIGIN) throw new Error("no SITE_ORIGIN in src/config.ts and none in the environment");
 
 const BUCKET = "merlin-capacity"; // matches wrangler.toml's r2_buckets entry
 const force = process.argv.includes("--force");

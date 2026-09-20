@@ -1,0 +1,100 @@
+{
+  "date": "2026-09-20",
+  "sections": [
+    {
+      "name": "Chunks, Swirls and More",
+      "note": "Euphoric Flavours screen, kcal per 85g scoop: Chocolate Fudge Brownie 210, Phish Food 230, Double Caramel Brownie 218, Vanilla 197, Cookie Dough 230, Caramel Chew Chew 238, Strawberry Cheesecake 213. Nutrient values may vary.",
+      "items": [
+        {
+          "name": "Ice Cream",
+          "description": "From 197-281 kcal for 1 scoop, 394-562 kcal for 2, 591-843 kcal for 3",
+          "sizes": [
+            {
+              "label": "1 scoop",
+              "price": 350
+            },
+            {
+              "label": "2 scoops",
+              "price": 475
+            },
+            {
+              "label": "3 scoops",
+              "price": 600
+            }
+          ],
+          "photo": "IMG_3847.HEIC"
+        },
+        {
+          "name": "Sugar Cone",
+          "kcal": 49,
+          "price": 50,
+          "photo": "IMG_3847.HEIC"
+        },
+        {
+          "name": "Sundae",
+          "description": "Regular, from 619-921 kcal",
+          "price": 650,
+          "photo": "IMG_3847.HEIC"
+        },
+        {
+          "name": "Shakes",
+          "description": "Large from 940-1235 kcal",
+          "sizes": [
+            {
+              "label": "Regular",
+              "price": 650
+            },
+            {
+              "label": "Large",
+              "price": 800
+            }
+          ],
+          "unclear": "regular shake's kcal range printed as \"from 808-774 kcal\"; the first figure is not legible",
+          "photo": "IMG_3847.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Toppings",
+      "items": [
+        {
+          "name": "Whipped cream",
+          "kcal": 95,
+          "price": 85,
+          "photo": "IMG_3847.HEIC"
+        },
+        {
+          "name": "Rainbow sprinkles",
+          "kcal": 60,
+          "price": 85,
+          "photo": "IMG_3847.HEIC"
+        },
+        {
+          "name": "Chocolate sauce",
+          "kcal": 55,
+          "price": 85,
+          "photo": "IMG_3847.HEIC"
+        },
+        {
+          "name": "Salted caramel sauce",
+          "kcal": 54,
+          "price": 85,
+          "photo": "IMG_3847.HEIC"
+        }
+      ]
+    }
+  ],
+  "skipped": [
+    {
+      "photo": "IMG_3846.HEIC",
+      "reason": "second shot of the same two screens; IMG_3847 is the clearer one and the toppings list is obscured here"
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3847.HEIC",
+      "name": "Ben-and-Jerry-s-Scoop-Shop-main-menu",
+      "caption": "Chunks, Swirls and More, Toppings"
+    }
+  ]
+}

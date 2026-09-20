@@ -1,0 +1,96 @@
+{
+  "date": "2026-09-20",
+  "sections": [
+    {
+      "name": "Churros",
+      "note": "Served with a choice of sauce: milk chocolate | white chocolate | salted caramel",
+      "items": [
+        {
+          "name": "Churros",
+          "sizes": [
+            {
+              "label": "Regular",
+              "price": 825
+            },
+            {
+              "label": "Large",
+              "price": 975
+            }
+          ],
+          "photo": "IMG_3859.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Brownies",
+      "items": [
+        {
+          "name": "Mixed Brownies",
+          "sizes": [
+            {
+              "label": "Regular",
+              "price": 825
+            },
+            {
+              "label": "Large",
+              "price": 975
+            }
+          ],
+          "photo": "IMG_3859.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Loaded Brownies",
+      "items": [
+        {
+          "name": "Cream & Marshmallows",
+          "price": 1025,
+          "photo": "IMG_3859.HEIC"
+        },
+        {
+          "name": "Fruit & Chocolate",
+          "price": 1125,
+          "photo": "IMG_3859.HEIC"
+        },
+        {
+          "name": "Biscoff",
+          "price": 1025,
+          "photo": "IMG_3859.HEIC"
+        },
+        {
+          "name": "Oreos & Cream",
+          "price": 1075,
+          "photo": "IMG_3859.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Chocolate Cups",
+      "note": "Milk chocolate | white chocolate | mixed. Strawberries & chocolate, large marshmallows & chocolate, strawberries & marshmallows.",
+      "items": [
+        {
+          "name": "Chocolate Cup",
+          "sizes": [
+            {
+              "label": "Regular",
+              "price": 725
+            },
+            {
+              "label": "Large",
+              "price": 975
+            }
+          ],
+          "photo": "IMG_3859.HEIC"
+        }
+      ]
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3859.HEIC",
+      "name": "Jungle-Churros-main-menu",
+      "caption": "Churros, Brownies, Loaded Brownies, Chocolate Cups"
+    }
+  ]
+}

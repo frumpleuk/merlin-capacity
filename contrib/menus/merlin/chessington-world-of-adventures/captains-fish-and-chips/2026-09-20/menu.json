@@ -1,0 +1,220 @@
+{
+  "date": "2026-09-20",
+  "sections": [
+    {
+      "name": "Fish",
+      "items": [
+        {
+          "name": "Catch of the Day Fish & Chips",
+          "description": "Served with mushy peas & tartare sauce",
+          "price": 1895,
+          "kcal": 1038,
+          "photo": "IMG_3830.HEIC"
+        }
+      ],
+      "note": "All fish is fresh and MCS certified"
+    },
+    {
+      "name": "Absolute Bangers!",
+      "items": [
+        {
+          "name": "Jumbo Sausage & Chips",
+          "price": 1275,
+          "kcal": 920,
+          "photo": "IMG_3830.HEIC"
+        },
+        {
+          "name": "Jumbo Battered Sausage & Chips",
+          "price": 1325,
+          "kcal": 1239,
+          "photo": "IMG_3830.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Oi Oi Saveloy!",
+      "items": [
+        {
+          "name": "Saveloy & Chips",
+          "price": 1350,
+          "kcal": 586,
+          "photo": "IMG_3831.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Kids",
+      "items": [
+        {
+          "name": "Chicken Tender & Chips",
+          "price": 825,
+          "kcal": 566,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3829.HEIC"
+        },
+        {
+          "name": "Fish Bites & Chips",
+          "price": 1095,
+          "kcal": 371,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3829.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        {
+          "name": "Chunky Chips",
+          "price": 450,
+          "kcal": 446,
+          "photo": "IMG_3831.HEIC"
+        },
+        {
+          "name": "Curry Sauce",
+          "price": 225,
+          "kcal": 66,
+          "photo": "IMG_3831.HEIC"
+        },
+        {
+          "name": "Gravy",
+          "price": 225,
+          "kcal": 26,
+          "photo": "IMG_3831.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Soft Drinks",
+      "items": [
+        {
+          "name": "Coca-Cola, Diet Coke, Coca-Cola Zero, Fanta, Sprite Zero",
+          "description": "Board shows the five brand logos with one Regular and one Large price",
+          "sizes": [
+            {
+              "label": "Regular",
+              "price": 295
+            },
+            {
+              "label": "Large",
+              "price": 345
+            }
+          ],
+          "photo": "IMG_3831.HEIC"
+        },
+        {
+          "name": "Radnor Fruits Still",
+          "price": 250,
+          "photo": "IMG_3831.HEIC"
+        },
+        {
+          "name": "Radnor Still Water",
+          "price": 250,
+          "photo": "IMG_3831.HEIC"
+        },
+        {
+          "name": "Glaceau Smartwater Still/Sparkling",
+          "price": 325,
+          "photo": "IMG_3831.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Alcohol",
+      "items": [
+        {
+          "name": "Budweiser",
+          "description": "4.5%",
+          "price": 625,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3831.HEIC"
+        },
+        {
+          "name": "Corona",
+          "description": "4.5%",
+          "price": 700,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3831.HEIC"
+        },
+        {
+          "name": "Corona Cero",
+          "description": "0%",
+          "price": 650,
+          "photo": "IMG_3831.HEIC"
+        },
+        {
+          "name": "Kopparberg Strawberry & Lime",
+          "description": "4%",
+          "price": 900,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3831.HEIC"
+        },
+        {
+          "name": "Peroni Nastro Azzurro",
+          "description": "5%",
+          "price": 650,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3831.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Cocktails",
+      "items": [
+        {
+          "name": "Espresso Martini",
+          "price": 975,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3831.HEIC"
+        },
+        {
+          "name": "Passion Fruit Martini",
+          "price": 975,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3831.HEIC"
+        },
+        {
+          "name": "Strawberry Daiquiri",
+          "price": 975,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3831.HEIC"
+        }
+      ]
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3829.HEIC",
+      "name": "Captain-s-Fish-and-Chips-kids",
+      "caption": "Kids"
+    },
+    {
+      "file": "IMG_3830.HEIC",
+      "name": "Captain-s-Fish-and-Chips-fish",
+      "caption": "Fish, Absolute Bangers!"
+    },
+    {
+      "file": "IMG_3831.HEIC",
+      "name": "Captain-s-Fish-and-Chips-oi-oi-saveloy",
+      "caption": "Oi Oi Saveloy!, Sides, Soft Drinks, Alcohol, Cocktails"
+    }
+  ]
+}

@@ -1,0 +1,189 @@
+{
+  "date": "2026-09-20",
+  "passDiscount": {
+    "offered": true,
+    "percent": 20,
+    "upTo": true,
+    "applies": "Merlin Annual Passholders, up to 20% off dining & shopping",
+    "photo": "IMG_3864.HEIC",
+    "source": "board photo"
+  },
+  "sections": [
+    {
+      "name": "Kids Meals",
+      "note": "3 tenders or chicken wrap (chicken, cheese, ketchup), with fries & radnor fruits or water.",
+      "items": [
+        {
+          "name": "Chicken Tenders",
+          "price": 825,
+          "kcal": 478,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3864.HEIC"
+        },
+        {
+          "name": "Plant Based Tenders",
+          "price": 825,
+          "kcal": 397,
+          "tags": [
+            "kids",
+            "vg"
+          ],
+          "photo": "IMG_3864.HEIC"
+        },
+        {
+          "name": "Chicken Wrap",
+          "description": "Chicken, cheese, ketchup",
+          "price": 825,
+          "kcal": 551,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3864.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Adult Tenders",
+      "note": "5 tenders with fries.",
+      "items": [
+        {
+          "name": "Chicken Tenders",
+          "price": 1395,
+          "kcal": 822,
+          "photo": "IMG_3864.HEIC"
+        },
+        {
+          "name": "Plant Based Tenders",
+          "price": 1395,
+          "kcal": 760,
+          "tags": [
+            "vg"
+          ],
+          "photo": "IMG_3864.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Drop'n Chicken Box",
+      "note": "Gluten free options available.",
+      "items": [
+        {
+          "name": "Drop'n Chicken Box",
+          "description": "Tenders served with chips, peppers & onions tossed in your choice of seasoning. Choose from: Texas Smokehouse / BBQ sauce, Salt 'n' Chilli / sweet chilli sauce, Argentinian / garlic mayonnaise. Up to 1532 kcals.",
+          "price": 1575,
+          "photo": "IMG_3864.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Family Tenders",
+      "note": "Serves 4, works out ONLY £9 per person.",
+      "items": [
+        {
+          "name": "Family Tenders",
+          "description": "16 tenders with fries",
+          "price": null,
+          "kcal": 2652,
+          "unclear": "no total price printed on the board; it only says \"serves 4, works out ONLY £9 per person\"",
+          "photo": "IMG_3864.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        {
+          "name": "Mozzarella Sticks",
+          "price": 425,
+          "kcal": 361,
+          "photo": "IMG_3864.HEIC"
+        },
+        {
+          "name": "Onion Rings",
+          "price": 300,
+          "kcal": 270,
+          "photo": "IMG_3864.HEIC"
+        },
+        {
+          "name": "Fries",
+          "price": 400,
+          "kcal": 357,
+          "photo": "IMG_3864.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "note": "The board lists the drinks but prints no prices for them.",
+      "items": [
+        {
+          "name": "Coca-Cola",
+          "price": null,
+          "unclear": "shown as a logo, no price printed",
+          "photo": "IMG_3864.HEIC"
+        },
+        {
+          "name": "Coca-Cola Zero Sugar",
+          "price": null,
+          "unclear": "shown as a logo, no price printed",
+          "photo": "IMG_3864.HEIC"
+        },
+        {
+          "name": "Diet Coke",
+          "price": null,
+          "unclear": "shown as a logo, no price printed",
+          "photo": "IMG_3864.HEIC"
+        },
+        {
+          "name": "Sprite",
+          "price": null,
+          "unclear": "shown as a logo, no price printed",
+          "photo": "IMG_3864.HEIC"
+        },
+        {
+          "name": "Fanta",
+          "price": null,
+          "unclear": "shown as a logo, no price printed",
+          "photo": "IMG_3864.HEIC"
+        },
+        {
+          "name": "Radnor Fruits",
+          "price": null,
+          "unclear": "no price printed",
+          "photo": "IMG_3864.HEIC"
+        },
+        {
+          "name": "Water",
+          "price": null,
+          "unclear": "no price printed",
+          "photo": "IMG_3864.HEIC"
+        }
+      ]
+    }
+  ],
+  "offers": [
+    {
+      "text": "Go Large! Upgrade to large fries for 75p",
+      "photo": "IMG_3864.HEIC"
+    }
+  ],
+  "skipped": [
+    {
+      "photo": "IMG_3862.HEIC",
+      "reason": "duplicate: Drop'n Chicken Box poster, same dish and seasonings as the main board, no prices"
+    },
+    {
+      "photo": "IMG_3863.HEIC",
+      "reason": "duplicate: Kids Meals poster, same meal as the main board, no prices"
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3864.HEIC",
+      "name": "Drop-n-Chicken-main-menu",
+      "caption": "Kids Meals, Adult Tenders, Drop'n Chicken Box, Family Tenders, Sides, Drinks"
+    }
+  ]
+}

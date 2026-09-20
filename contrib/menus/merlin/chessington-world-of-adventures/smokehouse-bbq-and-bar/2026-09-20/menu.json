@@ -1,0 +1,205 @@
+{
+  "date": "2026-09-20",
+  "sections": [
+    {
+      "name": "Kids Meals",
+      "items": [
+        {
+          "name": "3 Chicken Tenders",
+          "description": "With cucumber and carrot sticks 6 kcal, plus choice of curly fries 460 kcal or baked potato 338 kcal",
+          "kcal": 275,
+          "price": 825,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3849.HEIC"
+        },
+        {
+          "name": "5 Quorn Nuggets",
+          "description": "With cucumber and carrot sticks 6 kcal, plus choice of curly fries 460 kcal or baked potato 338 kcal",
+          "kcal": 183,
+          "price": 825,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3849.HEIC"
+        },
+        {
+          "name": "Mac 'n' Cheese",
+          "description": "With cucumber, carrot sticks & corn on the cob",
+          "kcal": 300,
+          "price": 825,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3849.HEIC"
+        },
+        {
+          "name": "Kids Beef Burger",
+          "description": "With BBQ sauce, served with curly fries & sweetcorn cobette",
+          "kcal": 543,
+          "price": 925,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3849.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "The Smokehouse Family Feast",
+      "items": [
+        {
+          "name": "Family Feast",
+          "description": "Feeds a family of 4 for 12.00 each. Adult main choices, choose 2 from: Brisket Burger / Pulled Pork Burger / Chicken Burger / Vegetarian Burger / Chicken Salad / Pulled Pork Salad. Kids' meal choices, choose 2 from: 3 Chicken Tenders / 5 Quorn Nuggets / Kids Mac 'n' Cheese / Kids Beef Burger",
+          "price": 1200,
+          "photo": "IMG_3849.HEIC"
+        }
+      ],
+      "note": "Board prices the feast per person: 12.00 each for a family of four"
+    },
+    {
+      "name": "Classic Mains",
+      "note": "All classic mains served with curly fries. Calories do not include sides or drinks. The board says gluten free options are available and that the restaurant is cashless, card only.",
+      "items": [
+        {
+          "name": "Brisket Burger",
+          "kcal": 1043,
+          "price": 1975,
+          "photo": "IMG_3849.HEIC"
+        },
+        {
+          "name": "Pulled Pork Burger",
+          "kcal": 1167,
+          "price": 1975,
+          "photo": "IMG_3849.HEIC"
+        },
+        {
+          "name": "Chicken Burger",
+          "kcal": 1040,
+          "price": 1975,
+          "photo": "IMG_3849.HEIC"
+        },
+        {
+          "name": "Vegetarian Burger",
+          "kcal": 776,
+          "price": 1975,
+          "tags": [
+            "v"
+          ],
+          "photo": "IMG_3849.HEIC"
+        },
+        {
+          "name": "Half Rack of Ribs",
+          "kcal": 1614,
+          "price": 2500,
+          "photo": "IMG_3849.HEIC"
+        },
+        {
+          "name": "Full Rack of Ribs",
+          "kcal": 2404,
+          "price": 3150,
+          "photo": "IMG_3849.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        {
+          "name": "Coleslaw",
+          "kcal": 360,
+          "price": 300,
+          "photo": "IMG_3849.HEIC"
+        },
+        {
+          "name": "BBQ Beans",
+          "kcal": 125,
+          "price": 300,
+          "photo": "IMG_3849.HEIC"
+        },
+        {
+          "name": "Corn on the Cob",
+          "kcal": 224,
+          "price": 395,
+          "photo": "IMG_3849.HEIC"
+        },
+        {
+          "name": "Mac 'n' Cheese",
+          "kcal": 219,
+          "price": 525,
+          "photo": "IMG_3849.HEIC"
+        },
+        {
+          "name": "Curly Fries",
+          "kcal": 460,
+          "price": 525,
+          "photo": "IMG_3849.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Salads",
+      "items": [
+        {
+          "name": "Harvest Salad",
+          "description": "A bed of mixed leaf salad, topped with cherry tomatoes, sliced cucumber, sweetcorn and grated carrot, served with Caesar dressing.",
+          "kcal": 190,
+          "price": 850,
+          "photo": "IMG_3849.HEIC"
+        },
+        {
+          "name": "Add: Chicken",
+          "kcal": 206,
+          "price": 425,
+          "photo": "IMG_3849.HEIC"
+        },
+        {
+          "name": "Add: Pulled Pork",
+          "kcal": 267,
+          "price": 425,
+          "photo": "IMG_3849.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        {
+          "name": "Chocolate Fudge Cake",
+          "description": "with Whipped Cream",
+          "kcal": 492,
+          "price": 775,
+          "photo": "IMG_3849.HEIC"
+        },
+        {
+          "name": "Honeycomb Cheesecake",
+          "description": "with Whipped Cream",
+          "kcal": 712,
+          "price": 875,
+          "photo": "IMG_3849.HEIC"
+        },
+        {
+          "name": "Ben & Jerry's Ice-Cream Tubs",
+          "description": "Vanilla / Strawberry Cheesecake / Cookie Dough / Chocolate Fudge Brownie",
+          "price": 400,
+          "photo": "IMG_3849.HEIC"
+        }
+      ]
+    }
+  ],
+  "passDiscount": {
+    "offered": true,
+    "percent": 20,
+    "upTo": true,
+    "applies": "dining & shopping",
+    "photo": "IMG_3849.HEIC"
+  },
+  "photos": [
+    {
+      "file": "IMG_3849.HEIC",
+      "name": "Smokehouse-BBQ-and-Bar-main-menu",
+      "caption": "Kids Meals, The Smokehouse Family Feast, Classic Mains, Sides, Salads, Desserts"
+    }
+  ]
+}

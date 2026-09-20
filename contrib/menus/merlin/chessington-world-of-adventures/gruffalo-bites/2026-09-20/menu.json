@@ -1,0 +1,271 @@
+{
+  "date": "2026-09-20",
+  "sections": [
+    {
+      "name": "Menu",
+      "items": [
+        {
+          "name": "Smartwater",
+          "description": "600ml",
+          "price": 325,
+          "photo": "IMG_3833.HEIC"
+        },
+        {
+          "name": "Radnor Water",
+          "description": "330ml",
+          "price": 250,
+          "photo": "IMG_3833.HEIC"
+        },
+        {
+          "name": "Radnor Fruits",
+          "description": "Apple, forest fruit, orange",
+          "price": 250,
+          "photo": "IMG_3833.HEIC"
+        },
+        {
+          "name": "Coke, Coke Zero, Fanta, Sprite",
+          "description": "500ml",
+          "price": 350,
+          "photo": "IMG_3833.HEIC"
+        },
+        {
+          "name": "Donut Worry Be Happy Donuts",
+          "price": 325,
+          "photo": "IMG_3833.HEIC"
+        },
+        {
+          "name": "Donut Worry Be Happy Donut Bites",
+          "price": 175,
+          "photo": "IMG_3833.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Costa Coffee",
+      "note": "Add an extra shot of coffee or flavoured syrup for £1.00. Alternative milks (oat, soya and coconut) 50p. Add whipped cream or marshmallows for £1, or both for £1.75.",
+      "items": [
+        {
+          "name": "Espresso",
+          "sizes": [
+            {
+              "label": "Primo",
+              "price": 300,
+              "kcal": 6
+            },
+            {
+              "label": "Medio",
+              "price": 325,
+              "kcal": 12
+            }
+          ],
+          "photo": "IMG_3833.HEIC"
+        },
+        {
+          "name": "Flat White",
+          "sizes": [
+            {
+              "label": "Primo",
+              "price": 450,
+              "kcal": 189
+            }
+          ],
+          "photo": "IMG_3833.HEIC"
+        },
+        {
+          "name": "Cappuccino",
+          "sizes": [
+            {
+              "label": "Primo",
+              "price": 475,
+              "kcal": 123
+            },
+            {
+              "label": "Medio",
+              "price": 500,
+              "kcal": 154
+            },
+            {
+              "label": "Grande",
+              "price": 525,
+              "kcal": 169
+            }
+          ],
+          "photo": "IMG_3833.HEIC"
+        },
+        {
+          "name": "Latte",
+          "sizes": [
+            {
+              "label": "Primo",
+              "price": 475,
+              "kcal": 111
+            },
+            {
+              "label": "Medio",
+              "price": 500,
+              "kcal": 151
+            },
+            {
+              "label": "Grande",
+              "price": 525,
+              "kcal": 169
+            }
+          ],
+          "photo": "IMG_3833.HEIC"
+        },
+        {
+          "name": "Americano",
+          "sizes": [
+            {
+              "label": "Primo",
+              "price": 425,
+              "kcal": 12
+            },
+            {
+              "label": "Medio",
+              "price": 475,
+              "kcal": 18
+            },
+            {
+              "label": "Grande",
+              "price": 500,
+              "kcal": 25
+            }
+          ],
+          "photo": "IMG_3833.HEIC"
+        },
+        {
+          "name": "Mocha",
+          "sizes": [
+            {
+              "label": "Primo",
+              "price": 475,
+              "kcal": 174
+            },
+            {
+              "label": "Medio",
+              "price": 500,
+              "kcal": 222
+            },
+            {
+              "label": "Grande",
+              "price": 525,
+              "kcal": 278
+            }
+          ],
+          "photo": "IMG_3833.HEIC"
+        },
+        {
+          "name": "Hot Chocolate",
+          "sizes": [
+            {
+              "label": "Primo",
+              "price": 475,
+              "kcal": 220
+            },
+            {
+              "label": "Medio",
+              "price": 500,
+              "kcal": 310
+            },
+            {
+              "label": "Grande",
+              "price": 525,
+              "kcal": 438
+            }
+          ],
+          "photo": "IMG_3833.HEIC"
+        },
+        {
+          "name": "Tea",
+          "description": "English breakfast tea",
+          "sizes": [
+            {
+              "label": "Primo",
+              "price": 300,
+              "kcal": 1
+            },
+            {
+              "label": "Medio",
+              "price": 325,
+              "kcal": 1
+            }
+          ],
+          "photo": "IMG_3833.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Iced Coffees",
+      "note": "With our signature Mocha Italia blend. The poster advertises the drinks but prints no prices.",
+      "items": [
+        {
+          "name": "Iced Americano",
+          "price": null,
+          "kcal": 12,
+          "unclear": "poster prints no price for iced coffees",
+          "photo": "IMG_3833.HEIC"
+        },
+        {
+          "name": "Iced Latte",
+          "price": null,
+          "kcal": 87,
+          "unclear": "poster prints no price for iced coffees",
+          "photo": "IMG_3833.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "The Pop Stop",
+      "items": [
+        {
+          "name": "Rainbow Popcorn",
+          "description": "Each",
+          "price": 495,
+          "photo": "IMG_3835.HEIC"
+        }
+      ]
+    }
+  ],
+  "offers": [
+    {
+      "text": "Merlin Annual Pass foodie perks: 15 donuts for the price of 5 for £9, at all units selling donuts",
+      "photo": "IMG_3836.HEIC"
+    },
+    {
+      "text": "Merlin Annual Pass foodie perks: regular hot drink & Donut Worry Be Happy donut for £5, at Costa Proud to Serve units",
+      "photo": "IMG_3836.HEIC"
+    },
+    {
+      "text": "Merlin Annual Pass foodie perks: The Rollover hot dog £6.75, at all participating units",
+      "photo": "IMG_3836.HEIC"
+    },
+    {
+      "text": "Merlin Annual Pass foodie perks: adult buffet £16.75, kids buffet £10.00, at all Pizza Pasta restaurants after 2pm",
+      "photo": "IMG_3836.HEIC"
+    }
+  ],
+  "skipped": [
+    {
+      "photo": "IMG_3834.HEIC",
+      "reason": "venue sign, no menu"
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3833.HEIC",
+      "name": "Gruffalo-Bites-menu",
+      "caption": "Menu, Costa Coffee, Iced Coffees"
+    },
+    {
+      "file": "IMG_3835.HEIC",
+      "name": "Gruffalo-Bites-the-pop-stop",
+      "caption": "The Pop Stop"
+    },
+    {
+      "file": "IMG_3836.HEIC",
+      "name": "Gruffalo-Bites-offer",
+      "caption": "Offer"
+    }
+  ]
+}

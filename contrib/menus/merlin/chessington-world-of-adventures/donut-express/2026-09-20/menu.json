@@ -1,0 +1,184 @@
+{
+  "date": "2026-09-20",
+  "sections": [
+    {
+      "name": "Donuts",
+      "items": [
+        {
+          "name": "10 Donuts",
+          "kcal": 1510,
+          "price": 1100,
+          "photo": "IMG_3848.HEIC"
+        },
+        {
+          "name": "5 Donuts",
+          "kcal": 765,
+          "price": 875,
+          "photo": "IMG_3848.HEIC"
+        },
+        {
+          "name": "1 Donut",
+          "kcal": 151,
+          "price": 275,
+          "photo": "IMG_3848.HEIC"
+        },
+        {
+          "name": "Luxury Sauce Pot",
+          "description": "Milk Choc, White Choc, Bubblegum, Strawberry & Salted Caramel, up to 300 kcal",
+          "price": 150,
+          "photo": "IMG_3848.HEIC"
+        },
+        {
+          "name": "Soft Serve Ice Cream & Donut",
+          "kcal": 293,
+          "price": 500,
+          "photo": "IMG_3848.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Build Your Own Ice Cream",
+      "items": [
+        {
+          "name": "Build Your Own Ice Cream",
+          "kcal": 196,
+          "price": 425,
+          "photo": "IMG_3848.HEIC"
+        },
+        {
+          "name": "Add a Sauce",
+          "description": "Milk Choc, White Choc, Bubblegum, Strawberry & Salted Caramel, up to 60 kcal",
+          "price": 100,
+          "photo": "IMG_3848.HEIC"
+        },
+        {
+          "name": "Flake",
+          "description": "Up to 60 kcal",
+          "price": 75,
+          "photo": "IMG_3848.HEIC"
+        },
+        {
+          "name": "Oreo Crumb",
+          "description": "Up to 60 kcal",
+          "price": 75,
+          "photo": "IMG_3848.HEIC"
+        },
+        {
+          "name": "Sprinkles",
+          "description": "Up to 60 kcal",
+          "price": 50,
+          "photo": "IMG_3848.HEIC"
+        },
+        {
+          "name": "Bubblegum",
+          "description": "Up to 60 kcal",
+          "price": 50,
+          "photo": "IMG_3848.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "note": "Serving Costa Coffee. All prices are for the Medio size.",
+      "items": [
+        {
+          "name": "Americano",
+          "kcal": 18,
+          "price": 475,
+          "photo": "IMG_3848.HEIC"
+        },
+        {
+          "name": "Latte",
+          "kcal": 151,
+          "price": 500,
+          "photo": "IMG_3848.HEIC"
+        },
+        {
+          "name": "Cappuccino",
+          "kcal": 154,
+          "price": 500,
+          "photo": "IMG_3848.HEIC"
+        },
+        {
+          "name": "Mocha",
+          "kcal": 222,
+          "price": 500,
+          "photo": "IMG_3848.HEIC"
+        },
+        {
+          "name": "Hot Chocolate",
+          "kcal": 310,
+          "price": 500,
+          "photo": "IMG_3848.HEIC"
+        },
+        {
+          "name": "Espresso",
+          "kcal": 12,
+          "price": 325,
+          "photo": "IMG_3848.HEIC"
+        },
+        {
+          "name": "Flat White",
+          "kcal": 60,
+          "price": 450,
+          "photo": "IMG_3848.HEIC"
+        },
+        {
+          "name": "Tea",
+          "kcal": 1,
+          "price": 325,
+          "photo": "IMG_3848.HEIC"
+        },
+        {
+          "name": "Flavoured Syrup",
+          "kcal": 30,
+          "price": 100,
+          "photo": "IMG_3848.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        {
+          "name": "Radnor Fruits Still 200ml",
+          "kcal": 26,
+          "price": 250,
+          "photo": "IMG_3848.HEIC"
+        },
+        {
+          "name": "Smartwater 600ml",
+          "kcal": 0,
+          "price": 325,
+          "photo": "IMG_3848.HEIC"
+        },
+        {
+          "name": "Frozen Fanta / Frozen Coca-Cola",
+          "description": "14 kcal",
+          "sizes": [
+            {
+              "label": "Cup",
+              "price": 675
+            },
+            {
+              "label": "Half-yard",
+              "price": 900
+            },
+            {
+              "label": "Half-yard refill",
+              "price": 500
+            }
+          ],
+          "photo": "IMG_3848.HEIC"
+        }
+      ]
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3848.HEIC",
+      "name": "Donut-Express-main-menu",
+      "caption": "Donuts, Build Your Own Ice Cream, Hot Drinks, Cold Drinks"
+    }
+  ]
+}

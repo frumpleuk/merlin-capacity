@@ -1,0 +1,224 @@
+{
+  "date": "2026-09-20",
+  "sections": [
+    {
+      "name": "Savoury Crepes",
+      "items": [
+        {
+          "name": "Ham & Cheese",
+          "price": 700,
+          "photo": "IMG_3851.HEIC"
+        },
+        {
+          "name": "Cheese & Tomato",
+          "price": 700,
+          "photo": "IMG_3851.HEIC"
+        },
+        {
+          "name": "Garlic Mushroom & Spinach",
+          "price": 800,
+          "photo": "IMG_3851.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Sweet Crepes",
+      "items": [
+        {
+          "name": "Lemon & Sugar",
+          "price": 600,
+          "photo": "IMG_3851.HEIC"
+        },
+        {
+          "name": "Chocolate Spread",
+          "price": 700,
+          "photo": "IMG_3851.HEIC"
+        },
+        {
+          "name": "Chocolate Spread & Strawberries",
+          "price": 800,
+          "photo": "IMG_3851.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Kids Sandwiches",
+      "items": [
+        {
+          "name": "The Cheese Stack",
+          "description": "Soft bread with cheddar cheese - simple yummy and always on the case!",
+          "price": 500,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3851.HEIC"
+        },
+        {
+          "name": "The Ham Hero",
+          "description": "Ham slices tucked in soft fluffy bread - a classic treat for hungry pups on the go.",
+          "price": 500,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3851.HEIC"
+        },
+        {
+          "name": "The Berry Blast",
+          "description": "Soft white bread filled with sweet, fruity strawberry jam. A favourite treat for a burst of berry goodness on the go!",
+          "price": 500,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3851.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Paw Patrol Pup Packs",
+      "items": [
+        {
+          "name": "Paw Patrol Pup Pack",
+          "description": "Souvenir branded meal box. Let the little adventurers choose! 1 Sandwich: The Cheese Stack, The Ham Hero or The Berry Blast. 2 Pom Bear: bear shaped snacks - Original or Cheese. 3 Radnor Juice: Apple, Orange, Forest Fruits, Raspberry & Cherry",
+          "price": 900,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3851.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Kids Snacks",
+      "items": [
+        {
+          "name": "Power Sticks",
+          "description": "Carrots, peppers, cucumber with dip",
+          "price": 250,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3851.HEIC"
+        },
+        {
+          "name": "Apple & Kiwi Cups",
+          "description": "Apple, kiwi, natural fruit sauce dip",
+          "price": 250,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3851.HEIC"
+        },
+        {
+          "name": "Pom Bear",
+          "description": "Bear shaped snacks - Original or Cheese",
+          "price": 200,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3851.HEIC"
+        },
+        {
+          "name": "Bear Fruit",
+          "description": "Strawberry or Pineapple",
+          "price": 450,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3851.HEIC"
+        },
+        {
+          "name": "Bear Yoyo",
+          "description": "Mango or Blackcurrant",
+          "price": 300,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3851.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        {
+          "name": "Smartwater",
+          "price": 325,
+          "photo": "IMG_3851.HEIC"
+        },
+        {
+          "name": "Radnor Juice",
+          "price": 250,
+          "photo": "IMG_3851.HEIC"
+        },
+        {
+          "name": "Coca-Cola",
+          "price": 300,
+          "photo": "IMG_3851.HEIC"
+        },
+        {
+          "name": "Diet Coke",
+          "price": 250,
+          "photo": "IMG_3851.HEIC"
+        },
+        {
+          "name": "Coke Zero",
+          "price": 250,
+          "photo": "IMG_3851.HEIC"
+        },
+        {
+          "name": "Sprite Zero",
+          "price": 250,
+          "photo": "IMG_3851.HEIC"
+        },
+        {
+          "name": "Fanta Zero",
+          "price": 250,
+          "photo": "IMG_3851.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "note": "Proudly serving Costa Coffee",
+      "items": [
+        {
+          "name": "Tea",
+          "price": 325,
+          "photo": "IMG_3851.HEIC"
+        },
+        {
+          "name": "Flat White",
+          "price": 450,
+          "photo": "IMG_3851.HEIC"
+        },
+        {
+          "name": "Latte",
+          "price": 500,
+          "photo": "IMG_3851.HEIC"
+        },
+        {
+          "name": "Cappuccino",
+          "price": 500,
+          "photo": "IMG_3851.HEIC"
+        },
+        {
+          "name": "Hot Chocolate",
+          "price": 500,
+          "photo": "IMG_3851.HEIC"
+        },
+        {
+          "name": "Mocha",
+          "price": 500,
+          "photo": "IMG_3851.HEIC"
+        }
+      ]
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3851.HEIC",
+      "name": "Rescue-Refreshments-main-menu",
+      "caption": "Savoury Crepes, Sweet Crepes, Kids Sandwiches, Paw Patrol Pup Packs, Kids Snacks, Cold Drinks, Hot Drinks"
+    }
+  ]
+}

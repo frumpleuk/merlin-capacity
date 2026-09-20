@@ -1,0 +1,267 @@
+{
+  "date": "2026-09-20",
+  "sections": [
+    {
+      "name": "Classics",
+      "note": "Read from the self-order kiosk and the printed board; prices include fries. The kiosk shows one screen at a time, so the list may be partial.",
+      "items": [
+        {
+          "name": "Cheeseburger",
+          "price": 1225,
+          "kcal": 819,
+          "photo": "IMG_3838.HEIC"
+        },
+        {
+          "name": "Double Cheeseburger",
+          "price": 1475,
+          "kcal": 1038,
+          "photo": "IMG_3838.HEIC"
+        },
+        {
+          "name": "Bacon Cheeseburger",
+          "price": 1395,
+          "kcal": 922,
+          "photo": "IMG_3838.HEIC"
+        },
+        {
+          "name": "Classic Chicken Burger",
+          "price": 1275,
+          "kcal": 929,
+          "photo": "IMG_3838.HEIC"
+        },
+        {
+          "name": "Vegan Fillet Burger",
+          "price": 1425,
+          "kcal": 978,
+          "tags": [
+            "vg"
+          ],
+          "photo": "IMG_3838.HEIC"
+        },
+        {
+          "name": "Family Bundles",
+          "price": 3600,
+          "kcal": 3209,
+          "photo": "IMG_3838.HEIC"
+        },
+        {
+          "name": "Hotdog",
+          "description": "With fries",
+          "price": 850,
+          "kcal": 1209,
+          "photo": "IMG_3832.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Kids Meals",
+      "note": "Served with fries & Radnor Fruits or water. The board lets you choose from Cheeseburger (501 kcal), Chicken Nuggets (429 kcal) or Quorn Nuggets (481 kcal); the kiosk lists only the two below.",
+      "items": [
+        {
+          "name": "Kids Cheeseburger Meal",
+          "description": "Kids beef burger with cheese and ketchup in a soft bun. Served with fries and a kids drink.",
+          "price": 825,
+          "kcal": 575,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3837.HEIC"
+        },
+        {
+          "name": "Kids Nuggets Meal",
+          "price": 825,
+          "kcal": 481,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3837.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Chicken Tenders",
+      "items": [
+        {
+          "name": "Chicken Tenders",
+          "description": "5 crispy chicken tenders, served with large fries (Large); Regular served with fries",
+          "sizes": [
+            {
+              "label": "Regular",
+              "price": 1395,
+              "kcal": 522
+            },
+            {
+              "label": "Large",
+              "price": 1470,
+              "kcal": 893
+            }
+          ],
+          "photo": "IMG_3840.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "note": "The kiosk Sides screen scrolls, so this list may be partial.",
+      "items": [
+        {
+          "name": "Fries",
+          "sizes": [
+            {
+              "label": "Regular Fries",
+              "price": 400,
+              "kcal": 357
+            },
+            {
+              "label": "Large Fries",
+              "price": 425,
+              "kcal": 428
+            }
+          ],
+          "photo": "IMG_3841.HEIC"
+        },
+        {
+          "name": "3 Chicken Wings",
+          "description": "Printed on the board as Hot Wings x 3",
+          "price": 500,
+          "kcal": 408,
+          "photo": "IMG_3841.HEIC"
+        },
+        {
+          "name": "Onion Rings",
+          "price": 300,
+          "kcal": 298,
+          "photo": "IMG_3832.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Heinz Sauces",
+      "items": [
+        {
+          "name": "Heinz Garlic Sauce",
+          "description": "25g 24ml",
+          "price": 50,
+          "kcal": 93,
+          "photo": "IMG_3839.HEIC"
+        },
+        {
+          "name": "Heinz BBQ Sauce",
+          "description": "25g 21ml",
+          "price": 50,
+          "kcal": 35,
+          "photo": "IMG_3839.HEIC"
+        },
+        {
+          "name": "Heinz Sweet Chili",
+          "description": "25g 20ml",
+          "price": 50,
+          "kcal": 46,
+          "photo": "IMG_3839.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "note": "The board says drinks are available in regular or large; the kiosk shows a single price per drink.",
+      "items": [
+        {
+          "name": "Coca Cola",
+          "price": 350,
+          "photo": "IMG_3842.HEIC"
+        },
+        {
+          "name": "Coke Zero",
+          "price": 350,
+          "photo": "IMG_3842.HEIC"
+        },
+        {
+          "name": "Diet Coke",
+          "price": 350,
+          "photo": "IMG_3842.HEIC"
+        },
+        {
+          "name": "Fanta Zero",
+          "price": 350,
+          "photo": "IMG_3842.HEIC"
+        },
+        {
+          "name": "Sprite Zero",
+          "price": 350,
+          "photo": "IMG_3842.HEIC"
+        },
+        {
+          "name": "Radnor Fruits",
+          "price": 250,
+          "photo": "IMG_3842.HEIC"
+        },
+        {
+          "name": "Water",
+          "price": 325,
+          "photo": "IMG_3842.HEIC"
+        }
+      ]
+    }
+  ],
+  "passDiscount": {
+    "offered": true,
+    "percent": 20,
+    "upTo": true,
+    "applies": "food & drink",
+    "photo": "IMG_3832.HEIC",
+    "source": "board photo"
+  },
+  "offers": [
+    {
+      "text": "Go Large! Upgrade to large fries for 75p",
+      "photo": "IMG_3832.HEIC"
+    }
+  ],
+  "skipped": [
+    {
+      "photo": "IMG_3843.HEIC",
+      "reason": "served food, not a menu"
+    },
+    {
+      "photo": "IMG_3844.HEIC",
+      "reason": "served food, not a menu"
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3832.HEIC",
+      "name": "Vampire-s-Burger-Kitchen-classics",
+      "caption": "Classics, Sides"
+    },
+    {
+      "file": "IMG_3837.HEIC",
+      "name": "Vampire-s-Burger-Kitchen-kids-meals",
+      "caption": "Kids Meals"
+    },
+    {
+      "file": "IMG_3838.HEIC",
+      "name": "Vampire-s-Burger-Kitchen-classics-2",
+      "caption": "Classics"
+    },
+    {
+      "file": "IMG_3839.HEIC",
+      "name": "Vampire-s-Burger-Kitchen-heinz-sauces",
+      "caption": "Heinz Sauces"
+    },
+    {
+      "file": "IMG_3840.HEIC",
+      "name": "Vampire-s-Burger-Kitchen-chicken-tenders",
+      "caption": "Chicken Tenders"
+    },
+    {
+      "file": "IMG_3841.HEIC",
+      "name": "Vampire-s-Burger-Kitchen-sides",
+      "caption": "Sides"
+    },
+    {
+      "file": "IMG_3842.HEIC",
+      "name": "Vampire-s-Burger-Kitchen-drinks",
+      "caption": "Drinks"
+    }
+  ]
+}

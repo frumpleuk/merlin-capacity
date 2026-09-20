@@ -1,0 +1,121 @@
+{
+  "date": "2026-09-20",
+  "passDiscount": {
+    "offered": true,
+    "percent": 20,
+    "upTo": true,
+    "applies": "Merlin Annual Passholders, up to 20% off dining & shopping",
+    "photo": "IMG_3856.HEIC",
+    "source": "board photo"
+  },
+  "sections": [
+    {
+      "name": "Little Explorers Spuds",
+      "note": "A fluffy half jacket potato, served with butter perfectly portioned for little explorers. Choose 1 or 2 toppings. Toppings: Baked Beans | Mature Cheddar Cheese | Beef Chilli Con Carne | Tuna Mayo",
+      "items": [
+        {
+          "name": "Little Explorers Spud",
+          "sizes": [
+            {
+              "label": "1 Topping",
+              "price": 550
+            },
+            {
+              "label": "2 Toppings",
+              "price": 650
+            }
+          ],
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3856.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Loaded Spuds",
+      "note": "Safari Favourites. Premium spuds, brushed with garlic butter and finished with crispy onions or chives and signature sauces.",
+      "items": [
+        {
+          "name": "Tuna Mayo & Slaw",
+          "description": "Tuna crunch mix with melted cheddar, onions and sweetcorn finished with creamy coleslaw and spring onions.",
+          "price": 1250,
+          "photo": "IMG_3856.HEIC"
+        },
+        {
+          "name": "Chicken Tikka",
+          "description": "Mild chicken tikka curry finished with cooling yoghurt drizzle and coriander.",
+          "price": 1250,
+          "photo": "IMG_3856.HEIC"
+        },
+        {
+          "name": "Smoky Bean Chilli",
+          "description": "Smoky BBQ bean chilli with vegan cheese, spring onions and chilli flakes.",
+          "price": 1250,
+          "tags": [
+            "vg"
+          ],
+          "photo": "IMG_3856.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Basecamp Spuds",
+      "note": "Oven-baked British potatoes with crispy skins, split and fluffed with butter. Choose 1, 2 or 3 toppings. Toppings: Baked Beans | Mature Cheddar Cheese | Beef Chilli Con Carne | Tuna Mayo. Gluten free options available.",
+      "items": [
+        {
+          "name": "Basecamp Spud",
+          "sizes": [
+            {
+              "label": "1 Topping",
+              "price": 850
+            },
+            {
+              "label": "2 Toppings",
+              "price": 1050
+            },
+            {
+              "label": "3 Toppings",
+              "price": 1150
+            }
+          ],
+          "photo": "IMG_3856.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Bottles 500ml",
+          "description": "Coke, Coke Zero, Diet Coke, Sprite Zero, Fanta Zero, Dr Pepper Zero Cherry Crush",
+          "price": 350,
+          "photo": "IMG_3856.HEIC"
+        },
+        {
+          "name": "Smartwater",
+          "price": 325,
+          "photo": "IMG_3856.HEIC"
+        },
+        {
+          "name": "Radnor Still Fruits",
+          "price": 250,
+          "photo": "IMG_3856.HEIC"
+        }
+      ]
+    }
+  ],
+  "skipped": [
+    {
+      "photo": "IMG_3855.HEIC",
+      "reason": "duplicate of the same board, shot at an angle"
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3856.HEIC",
+      "name": "Jungle-Spuds-main-menu",
+      "caption": "Little Explorers Spuds, Loaded Spuds, Basecamp Spuds, Drinks"
+    }
+  ]
+}

@@ -1,0 +1,321 @@
+{
+  "date": "2026-09-20",
+  "sections": [
+    {
+      "name": "Costa Coffee",
+      "note": "Alternative milks - oat, soya and coconut 50p. Dairy alternative available.",
+      "items": [
+        {
+          "name": "Espresso",
+          "sizes": [
+            {
+              "label": "Primo",
+              "price": 300,
+              "kcal": 6
+            },
+            {
+              "label": "Medio",
+              "price": 325,
+              "kcal": 12
+            }
+          ],
+          "photo": "IMG_3860.HEIC"
+        },
+        {
+          "name": "Flat White",
+          "sizes": [
+            {
+              "label": "Primo",
+              "price": 450,
+              "kcal": 189
+            }
+          ],
+          "photo": "IMG_3860.HEIC"
+        },
+        {
+          "name": "Cappuccino",
+          "sizes": [
+            {
+              "label": "Primo",
+              "price": 475,
+              "kcal": 123
+            },
+            {
+              "label": "Medio",
+              "price": 500,
+              "kcal": 154
+            },
+            {
+              "label": "Grande",
+              "price": 525,
+              "kcal": 169
+            }
+          ],
+          "photo": "IMG_3860.HEIC"
+        },
+        {
+          "name": "Latte",
+          "sizes": [
+            {
+              "label": "Primo",
+              "price": 475,
+              "kcal": 111
+            },
+            {
+              "label": "Medio",
+              "price": 500,
+              "kcal": 151
+            },
+            {
+              "label": "Grande",
+              "price": 525,
+              "kcal": 169
+            }
+          ],
+          "photo": "IMG_3860.HEIC"
+        },
+        {
+          "name": "Americano",
+          "sizes": [
+            {
+              "label": "Primo",
+              "price": 425,
+              "kcal": 12
+            },
+            {
+              "label": "Medio",
+              "price": 475,
+              "kcal": 18
+            },
+            {
+              "label": "Grande",
+              "price": 500,
+              "kcal": 25
+            }
+          ],
+          "photo": "IMG_3860.HEIC"
+        },
+        {
+          "name": "Mocha",
+          "sizes": [
+            {
+              "label": "Primo",
+              "price": 475,
+              "kcal": 174
+            },
+            {
+              "label": "Medio",
+              "price": 500,
+              "kcal": 222
+            },
+            {
+              "label": "Grande",
+              "price": 525,
+              "kcal": 278
+            }
+          ],
+          "photo": "IMG_3860.HEIC"
+        },
+        {
+          "name": "Hot Chocolate",
+          "sizes": [
+            {
+              "label": "Primo",
+              "price": 475,
+              "kcal": 220
+            },
+            {
+              "label": "Medio",
+              "price": 500,
+              "kcal": 310
+            },
+            {
+              "label": "Grande",
+              "price": 525,
+              "kcal": 438
+            }
+          ],
+          "photo": "IMG_3860.HEIC"
+        },
+        {
+          "name": "Tea",
+          "description": "English Breakfast Tea",
+          "sizes": [
+            {
+              "label": "Primo",
+              "price": 300,
+              "kcal": 1
+            },
+            {
+              "label": "Medio",
+              "price": 325,
+              "kcal": 1
+            }
+          ],
+          "photo": "IMG_3860.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Frappes",
+      "items": [
+        {
+          "name": "Coffee Frappe & Cream",
+          "sizes": [
+            {
+              "label": "Primo",
+              "price": 575,
+              "kcal": 222
+            },
+            {
+              "label": "Medio",
+              "price": 625,
+              "kcal": 350
+            }
+          ],
+          "photo": "IMG_3860.HEIC"
+        },
+        {
+          "name": "Chocolate Fudge Brownie Frappe & Light Dairy Swirl",
+          "sizes": [
+            {
+              "label": "Primo",
+              "price": 575,
+              "kcal": 273
+            },
+            {
+              "label": "Medio",
+              "price": 625,
+              "kcal": 429
+            }
+          ],
+          "photo": "IMG_3860.HEIC"
+        },
+        {
+          "name": "Strawberry & Cream Frappe",
+          "sizes": [
+            {
+              "label": "Primo",
+              "price": 575,
+              "kcal": 276
+            },
+            {
+              "label": "Medio",
+              "price": 625,
+              "kcal": 304
+            }
+          ],
+          "photo": "IMG_3860.HEIC"
+        },
+        {
+          "name": "Salted Caramel Frappe & Light Dairy Swirl",
+          "sizes": [
+            {
+              "label": "Primo",
+              "price": 575,
+              "kcal": 269
+            },
+            {
+              "label": "Medio",
+              "price": 625,
+              "kcal": 338
+            }
+          ],
+          "photo": "IMG_3860.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Iced Coffees",
+      "items": [
+        {
+          "name": "Iced Cappuccino",
+          "sizes": [
+            {
+              "label": "Primo",
+              "price": 475,
+              "kcal": 57
+            },
+            {
+              "label": "Medio",
+              "price": 500,
+              "kcal": 88
+            }
+          ],
+          "photo": "IMG_3860.HEIC"
+        },
+        {
+          "name": "Iced Latte",
+          "sizes": [
+            {
+              "label": "Primo",
+              "price": 475,
+              "kcal": 90
+            },
+            {
+              "label": "Medio",
+              "price": 500,
+              "kcal": 144
+            }
+          ],
+          "photo": "IMG_3860.HEIC"
+        },
+        {
+          "name": "Iced Americano",
+          "sizes": [
+            {
+              "label": "Primo",
+              "price": 450,
+              "kcal": 20
+            },
+            {
+              "label": "Medio",
+              "price": 500,
+              "kcal": 42
+            }
+          ],
+          "photo": "IMG_3860.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Fruit Coolers",
+      "note": "One price printed, under no size column. Alternative milks - oat, soya and coconut 50p.",
+      "items": [
+        {
+          "name": "Mango & Passion Fruit Cooler",
+          "price": 600,
+          "kcal": 165,
+          "photo": "IMG_3860.HEIC"
+        },
+        {
+          "name": "Red Summer Berries Fruit Cooler",
+          "price": 600,
+          "kcal": 220,
+          "photo": "IMG_3860.HEIC"
+        }
+      ]
+    }
+  ],
+  "offers": [
+    {
+      "text": "Add an extra shot of coffee or flavoured syrup for £1.00",
+      "photo": "IMG_3860.HEIC"
+    },
+    {
+      "text": "Add whipped cream or marshmallows for £1 or both for £1.75",
+      "photo": "IMG_3860.HEIC"
+    },
+    {
+      "text": "Alternative milks - oat, soya and coconut 50p",
+      "photo": "IMG_3860.HEIC"
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3860.HEIC",
+      "name": "The-Coffee-Hut-main-menu",
+      "caption": "Costa Coffee, Frappes, Iced Coffees, Fruit Coolers"
+    }
+  ]
+}

@@ -277,8 +277,9 @@ function GettingThereGroup({ location }: { location: ParkLocation }) {
   );
 }
 
-/** Static per-park link directory (tickets, getting there, accessibility, apps,
- *  socials), plus the park's calendar feeds.
+/** Static per-park link directory (tickets, finding an order you've already
+ *  placed, getting there, accessibility, apps, socials), plus the park's
+ *  calendar feeds.
  *  The groups lay out as columns on a wide screen and stack on a narrow one;
  *  Social spans the full width so its pills get a full row before wrapping. */
 export function LinksPage() {
@@ -309,6 +310,15 @@ export function LinksPage() {
             <LinkRow key={l.url + l.label} link={l} />
           ))}
         </section>
+
+        {links.orders.length > 0 && (
+          <section className="lk-group">
+            <h3>Already booked?</h3>
+            {links.orders.map((l) => (
+              <LinkRow key={l.url + l.label} link={l} />
+            ))}
+          </section>
+        )}
 
         <GettingThereGroup location={links.location} />
 

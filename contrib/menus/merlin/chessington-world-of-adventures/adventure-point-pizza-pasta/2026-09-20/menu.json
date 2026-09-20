@@ -1,0 +1,38 @@
+{
+  "date": "2026-09-20",
+  "sections": [
+    {
+      "name": "All You Can Eat & Drink",
+      "note": "Unlimited pizza, pasta, salad and drinks",
+      "items": [
+        {
+          "name": "Children",
+          "price": 1325,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3850.HEIC"
+        },
+        {
+          "name": "Adults",
+          "price": 2325,
+          "photo": "IMG_3850.HEIC"
+        }
+      ]
+    }
+  ],
+  "passDiscount": {
+    "offered": true,
+    "percent": 20,
+    "upTo": true,
+    "applies": "Merlin Annual Passholders",
+    "photo": "IMG_3850.HEIC"
+  },
+  "photos": [
+    {
+      "file": "IMG_3850.HEIC",
+      "name": "Adventure-Point-Pizza-Pasta-main-menu",
+      "caption": "All You Can Eat & Drink"
+    }
+  ]
+}

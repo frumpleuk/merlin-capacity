@@ -3,9 +3,9 @@
 // — there's no poller, no R2 file and no backend involvement: adding a park's
 // links is a data-only edit here.
 //
-// The Merlin parks share three booking URL shapes off their accesso ticketing
-// origin (the same `origin` as src/config.ts), so they're built by helper rather
-// than repeated seven times. The independents (Paulton's, Flamingo Land,
+// The Merlin parks share four URL shapes off their accesso ticketing origin
+// (the same `origin` as src/config.ts), so they're built by helper rather than
+// repeated seven times. The independents (Paulton's, Flamingo Land,
 // Blackpool) each run their own store and their own accessibility scheme, so
 // their entries are spelled out.
 
@@ -104,6 +104,9 @@ export interface ParkLinks {
   location: ParkLocation;
   /** Tickets, prebooking and queue-skip products. */
   booking: ParkLink[];
+  /** Getting an order back after you've bought it — the lookup or account page
+   *  that resends tickets and passes. Empty where the park runs neither. */
+  orders: ParkLink[];
   /** Accessibility: the park's ride-access scheme (RAP and its equivalents). */
   access: ParkLink[];
   apps: AppLink[];
@@ -151,6 +154,30 @@ const fastrackPerk = (origin: string, promocode: string): ParkLink => ({
   note: "Merlin Annual Pass perk - discount applied via promocode",
 });
 
+/** accesso's order lookup: the one route on a ticketing store that finds an
+ *  order without an account. You give the email address and the phone number
+ *  used at purchase, it emails a verification code, and the order comes back
+ *  with its tickets — which is also where the wallet buttons live, so it's how
+ *  you get a booking onto a phone after the confirmation email has gone
+ *  missing. `wallet` differs by merchant: every Merlin store generates Apple
+ *  Wallet passes (SETTINGS.passbook_path), but "Save to Google Wallet"
+ *  (SETTINGS.enable_google_wallet) is off at Chessington. Neither the parks nor
+ *  the pass site links this page from anywhere obvious. */
+const findOrder = (origin: string, wallet: string): ParkLink => ({
+  label: "Find my tickets",
+  url: `${origin}/orderLookup`,
+  note: `Look up an order with the email address and phone number you booked with - no account needed, and adds to ${wallet}`,
+});
+
+/** The same lookup on the Merlin Annual Pass store, which is a separate accesso
+ *  merchant (ME-ANNUALPASS) from the four park stores — so a pass bought there
+ *  will not show up in a park's own lookup, and vice versa. */
+const MAP_FIND_PASS: ParkLink = {
+  label: "Find my annual pass",
+  url: "https://me-annualpass.tickets.merlinannualpass.co.uk/orderLookup",
+  note: "Passes are a separate order from park tickets - same email and phone lookup, adds to Apple or Google Wallet",
+};
+
 /** The Merlin Ride Access Pass app — one app covering all four Merlin parks
  *  (RAP applications and ride bookings moved into it), so it's listed alongside
  *  each park's own app. */
@@ -194,6 +221,13 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
         "MAP10Fastrack",
       ),
     ],
+    orders: [
+      findOrder(
+        "https://me-twalton.tickets.altontowers.com",
+        "Apple or Google Wallet",
+      ),
+      MAP_FIND_PASS,
+    ],
     access: [
       rapInfo(
         "https://www.altontowers.com/plan-your-visit/before-you-visit/accessibility/accessibility-theme-park/ride-access-pass/",
@@ -236,6 +270,13 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
         note: "Book and manage Merlin Annual Pass trips",
       },
       fastrackPerk("https://me-tpr.tickets.thorpepark.com", "1shot10p"),
+    ],
+    orders: [
+      findOrder(
+        "https://me-tpr.tickets.thorpepark.com",
+        "Apple or Google Wallet",
+      ),
+      MAP_FIND_PASS,
     ],
     access: [
       rapInfo(
@@ -281,6 +322,13 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
       },
       fastrackPerk("https://me-llwindsor.tickets.legoland.co.uk", "MAPFT10"),
     ],
+    orders: [
+      findOrder(
+        "https://me-llwindsor.tickets.legoland.co.uk",
+        "Apple or Google Wallet",
+      ),
+      MAP_FIND_PASS,
+    ],
     access: [
       rapInfo(
         "https://www.legoland.co.uk/plan-your-day/before-you-visit/accessibility/theme-park-accessibility/ride-access-pass/",
@@ -325,6 +373,13 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
       },
       fastrackPerk("https://me-wachessington.tickets.chessington.com", "mapft10"),
     ],
+    orders: [
+      findOrder(
+        "https://me-wachessington.tickets.chessington.com",
+        "Apple Wallet",
+      ),
+      MAP_FIND_PASS,
+    ],
     access: [
       rapInfo(
         "https://www.chessington.com/plan-your-visit/before-you-visit/accessibility-guide/theme-park-accessibility/ride-access-pass/",
@@ -367,6 +422,16 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
         label: "Book tickets",
         url: "https://paultonspark.co.uk/tickets/",
         note: "Day tickets, annual passes and add-ons",
+      },
+    ],
+    // No email-and-phone lookup here: Paulton's store keeps orders behind a
+    // password-protected account, which is also where a confirmation is
+    // resent from.
+    orders: [
+      {
+        label: "Your Paultons account",
+        url: "https://paultonspark.co.uk/account/",
+        note: "Sign in for order history, ticket downloads and confirmation resends",
       },
     ],
     access: [
@@ -429,6 +494,10 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
         url: "https://www.flamingoland.co.uk/plan-your-visit/ticket-prices/",
       },
     ],
+    // Flamingo Land's webshop runs neither an order lookup nor a customer
+    // account, so there's nothing to link — a missing confirmation goes
+    // through the contact page.
+    orders: [],
     access: [
       {
         label: "Accessibility guide",
@@ -482,6 +551,15 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
         label: "Speedy Pass",
         url: "https://www.blackpoolpleasurebeach.com/speedy-pass-virtual-queuing/",
         note: "Virtual queuing - bought in park or in the resort app",
+      },
+    ],
+    // Account-only, like Paulton's: /my-account bounces to the sign-in form
+    // when you're signed out.
+    orders: [
+      {
+        label: "Your bookings account",
+        url: "https://bookings.blackpoolpleasurebeach.com/my-account",
+        note: "Sign in to see wristbands and season passes you've bought",
       },
     ],
     access: [

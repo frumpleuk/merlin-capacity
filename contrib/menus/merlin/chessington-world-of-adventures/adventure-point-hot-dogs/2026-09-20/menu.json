@@ -1,0 +1,184 @@
+{
+  "date": "2026-09-20",
+  "sections": [
+    {
+      "name": "Hot Dogs",
+      "note": "The stall trades as The Sausage Man. Combo includes fries and a drink (soft drink or water). Toppings offered: German ketchup, curry ketchup and mustard. Vegan and halal options available.",
+      "items": [
+        {
+          "name": "Large Beef Hot Dog",
+          "kcal": 551,
+          "sizes": [
+            {
+              "label": "Hot dog",
+              "price": 1325
+            },
+            {
+              "label": "Combo",
+              "price": 1850
+            }
+          ],
+          "photo": "IMG_3853.HEIC"
+        },
+        {
+          "name": "Spicy Beef Giant Frankfurter",
+          "kcal": 721,
+          "sizes": [
+            {
+              "label": "Hot dog",
+              "price": 1450
+            },
+            {
+              "label": "Combo",
+              "price": 1950
+            }
+          ],
+          "photo": "IMG_3853.HEIC"
+        },
+        {
+          "name": "XXL Käsekrainer Cheese & Pork Frankfurter",
+          "kcal": 770,
+          "sizes": [
+            {
+              "label": "Hot dog",
+              "price": 1550
+            },
+            {
+              "label": "Combo",
+              "price": 2050
+            }
+          ],
+          "photo": "IMG_3853.HEIC"
+        },
+        {
+          "name": "Halal Turkey Hot Dog",
+          "kcal": 530,
+          "sizes": [
+            {
+              "label": "Hot dog",
+              "price": 1325
+            },
+            {
+              "label": "Combo",
+              "price": 1850
+            }
+          ],
+          "photo": "IMG_3853.HEIC"
+        },
+        {
+          "name": "Vegan Hot Dog",
+          "tags": [
+            "vg"
+          ],
+          "sizes": [
+            {
+              "label": "Hot dog",
+              "price": 1325
+            },
+            {
+              "label": "Combo",
+              "price": 1850
+            }
+          ],
+          "photo": "IMG_3853.HEIC"
+        },
+        {
+          "name": "Pork Hot Dog",
+          "kcal": 426,
+          "sizes": [
+            {
+              "label": "Hot dog",
+              "price": 1050
+            },
+            {
+              "label": "Combo",
+              "price": 1550
+            }
+          ],
+          "photo": "IMG_3853.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Fries",
+      "items": [
+        {
+          "name": "Fries",
+          "sizes": [
+            {
+              "label": "Regular",
+              "price": 375,
+              "kcal": 255
+            },
+            {
+              "label": "Large",
+              "price": 400,
+              "kcal": 437
+            }
+          ],
+          "photo": "IMG_3854.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "note": "Fountain drinks are Regular size only",
+      "items": [
+        {
+          "name": "Diet Coke",
+          "price": 295,
+          "kcal": 0,
+          "photo": "IMG_3854.HEIC"
+        },
+        {
+          "name": "Coke Zero",
+          "price": 295,
+          "kcal": 0,
+          "photo": "IMG_3854.HEIC"
+        },
+        {
+          "name": "Fanta Zero",
+          "price": 295,
+          "kcal": 13,
+          "photo": "IMG_3854.HEIC"
+        },
+        {
+          "name": "Sprite Zero",
+          "price": 295,
+          "kcal": 0,
+          "photo": "IMG_3854.HEIC"
+        },
+        {
+          "name": "Smartwater 600ml",
+          "price": 350,
+          "kcal": 0,
+          "photo": "IMG_3854.HEIC"
+        },
+        {
+          "name": "Radnor Fruits Still 200ml",
+          "price": 325,
+          "kcal": 26,
+          "photo": "IMG_3854.HEIC"
+        }
+      ]
+    }
+  ],
+  "skipped": [
+    {
+      "photo": "IMG_3852.HEIC",
+      "reason": "stall branding sign (Sausage Adventurers, vegan and halal options available), no prices"
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3853.HEIC",
+      "name": "Adventure-Point-Hot-Dogs-hot-dogs",
+      "caption": "Hot Dogs"
+    },
+    {
+      "file": "IMG_3854.HEIC",
+      "name": "Adventure-Point-Hot-Dogs-fries",
+      "caption": "Fries, Cold Drinks"
+    }
+  ]
+}

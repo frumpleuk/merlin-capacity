@@ -1,0 +1,152 @@
+{
+  "date": "2026-09-20",
+  "passDiscount": {
+    "offered": true,
+    "percent": 20,
+    "upTo": true,
+    "applies": "Merlin Annual Passholders, up to 20% off dining & shopping",
+    "photo": "IMG_3858.HEIC",
+    "source": "board photo"
+  },
+  "sections": [
+    {
+      "name": "Little Explorers Meals",
+      "note": "Includes: Radnor juice or water",
+      "items": [
+        {
+          "name": "Kebab",
+          "description": "Choice of chicken or donor meat with crispy fries, fresh salad, cheese, and tomato sauce in soft flatbread. Chicken 658 kcals, doner 742 kcals.",
+          "price": 825,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3858.HEIC"
+        },
+        {
+          "name": "Loaded Fries",
+          "description": "Crispy fries topped with cheese sauce, fresh cucumber and your choice of chicken or doner meat. Chicken 469 kcals, doner 718 kcals.",
+          "price": 825,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3858.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Jungle Wraps",
+      "note": "Gluten free options available.",
+      "items": [
+        {
+          "name": "Safari Doner Kebab",
+          "description": "Seasoned doner meat with crispy fries, fresh salad and tzatziki in soft flatbread.",
+          "price": 1225,
+          "kcal": 949,
+          "photo": "IMG_3858.HEIC"
+        },
+        {
+          "name": "Jungle Chicken Kebab",
+          "description": "Grilled chicken with crispy fries, fresh salad and tzatziki in soft flatbread.",
+          "price": 1225,
+          "kcal": 702,
+          "photo": "IMG_3858.HEIC"
+        },
+        {
+          "name": "Adventure Mixed Kebab",
+          "description": "A combination of grilled chicken and doner meat with crispy fries, fresh salad and tzatziki in soft flatbread.",
+          "price": 1325,
+          "kcal": 826,
+          "photo": "IMG_3858.HEIC"
+        },
+        {
+          "name": "Greek Salad",
+          "description": "Crisp lettuce, tomatoes, onions, cucumber, olives, Greek feta, oil & vinegar.",
+          "price": 900,
+          "kcal": 165,
+          "photo": "IMG_3858.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Loaded Fries",
+      "note": "Crispy fries topped with fresh salad and tzatziki.",
+      "items": [
+        {
+          "name": "Doner Meat",
+          "price": 1125,
+          "kcal": 901,
+          "photo": "IMG_3858.HEIC"
+        },
+        {
+          "name": "Grilled Chicken",
+          "price": 1175,
+          "kcal": 654,
+          "photo": "IMG_3858.HEIC"
+        },
+        {
+          "name": "Mixed Grilled Chicken & Doner Meat",
+          "price": 1275,
+          "kcal": 778,
+          "photo": "IMG_3858.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Sauce Pots",
+      "items": [
+        {
+          "name": "Houmous",
+          "price": 250,
+          "kcal": 46,
+          "photo": "IMG_3858.HEIC"
+        },
+        {
+          "name": "Hot Sauce",
+          "price": 250,
+          "kcal": 17,
+          "photo": "IMG_3858.HEIC"
+        },
+        {
+          "name": "Tzatziki",
+          "price": 250,
+          "kcal": 78,
+          "photo": "IMG_3858.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Bottles 500ml",
+          "description": "Coke, Coke Zero, Diet Coke, Sprite Zero, Fanta Zero, Dr Pepper Zero Cherry Crush",
+          "price": 350,
+          "photo": "IMG_3858.HEIC"
+        },
+        {
+          "name": "Smartwater",
+          "price": 325,
+          "photo": "IMG_3858.HEIC"
+        },
+        {
+          "name": "Radnor Still Fruits",
+          "price": 250,
+          "photo": "IMG_3858.HEIC"
+        }
+      ]
+    }
+  ],
+  "skipped": [
+    {
+      "photo": "IMG_3857.HEIC",
+      "reason": "duplicate of the same board, shot at an angle"
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3858.HEIC",
+      "name": "Jungle-Wraps-main-menu",
+      "caption": "Little Explorers Meals, Jungle Wraps, Loaded Fries, Sauce Pots, Drinks"
+    }
+  ]
+}

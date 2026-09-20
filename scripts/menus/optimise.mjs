@@ -32,7 +32,15 @@ function venueName(dir, fallback) {
   );
 }
 
-/** What a photo shows, from the sections/offers/skipped that cite it. */
+/** What the popup says a photo shows: the boards it holds, as printed. */
+function caption(menu, file) {
+  const sections = (menu.sections ?? []).filter((s) => s.items.some((i) => i.photo === file));
+  if (sections.length) return sections.map((s) => s.name).join(", ");
+  if ((menu.offers ?? []).some((o) => o.photo === file)) return "Offer";
+  return (menu.skipped ?? []).find((s) => s.photo === file)?.reason ?? "Photo";
+}
+
+/** The file's name: the venue plus what the board is, short enough for a URL. */
 function describe(menu, file) {
   const sections = (menu.sections ?? []).filter((s) => s.items.some((i) => i.photo === file));
   if (sections.length) {
@@ -102,7 +110,7 @@ const walk = (dir) => {
     for (const file of photos) {
       const name = nameFor(menu, file, taken, venue);
       taken.add(name);
-      photoIndex.push({ file, name, caption: (menu.photos ?? []).find((x) => x.file === file)?.caption ?? describe(menu, file) });
+      photoIndex.push({ file, name, caption: caption(menu, file) });
       const out = path.join(webDir, `${name}.jpg`);
       if (fs.existsSync(out) && !force) {
         skippedCount++;

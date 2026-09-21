@@ -1,0 +1,319 @@
+{
+  "date": "2026-09-21",
+  "sections": [
+    {
+      "name": "Bar Snack",
+      "items": [
+        {
+          "name": "Classic Houmous and Pitta",
+          "description": "Classic houmous, served with warm pitta triangles.",
+          "kcal": 294,
+          "price": 350,
+          "photo": "IMG_3883.HEIC"
+        },
+        {
+          "name": "Harrisa Houmous and pitta",
+          "description": "Harrisa spiced Houmous, served with warm pitta triangles.",
+          "kcal": 293,
+          "price": 350,
+          "photo": "IMG_3883.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Sourdough Pizza's Dine In or Takeaway",
+      "items": [
+        {
+          "name": "Margherita Pizza",
+          "description": "Tomato and Mixed cheese blend finished with hot honey garlic and herb dip, leaf garnish",
+          "kcal": 1597,
+          "price": 1400,
+          "photo": "IMG_3883.HEIC"
+        },
+        {
+          "name": "Pepperoni Pizza",
+          "description": "Tomato and Mixed cheese blend Pepperoni finished with hot honey garlic and herb dip, leaf garnish",
+          "kcal": 1783,
+          "price": 1500,
+          "photo": "IMG_3883.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Mains",
+      "items": [
+        {
+          "name": "Pork 'Yorkshire Burrito'",
+          "description": "Yorkshire pudding wrap, stuffed with roast pork, sage and onion stuffing, raosted potato, and apple sauce, served with skin-on fires, side dipping pot of herb gravy",
+          "kcal": 1250,
+          "price": 1200,
+          "photo": "IMG_3883.HEIC"
+        },
+        {
+          "name": "Veggie 'Yorkshire Burrito'",
+          "description": "Yorkshire pudding wrap, filled with roasted falafel, sage and onion stuffing, raosted potato, and apple sauce, served with skin-on fires, side dipping pot of herb gravy",
+          "kcal": 1280,
+          "price": 1200,
+          "photo": "IMG_3883.HEIC"
+        },
+        {
+          "name": "Pork Sausage and Mash",
+          "description": "Cumberland pork sausages, buttery mash potato, green beans, herb gravy, crispy beer-battered onion rings, individual yorkshie pudding and pea shot garnish",
+          "kcal": 1088,
+          "price": 1250,
+          "photo": "IMG_3883.HEIC"
+        },
+        {
+          "name": "Chef Kamal's Malawian Beef Curry",
+          "description": "Marinaded Beef, slow cooked with classic indian spices, a soft and rich taste, served with yellow sultana rice, mint yoghurt drizzle, fresh lemon wedge, accompanied wth a basket of nann bread and mini poppadums",
+          "kcal": 1168,
+          "price": 1500,
+          "photo": "IMG_3883.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Burgers",
+      "items": [
+        {
+          "name": "Golden Goddess Burger Meal",
+          "description": "6oz smashed beef burger, cheese topped with lettuce, sliced beef tomato, shredded red onion, beer battered onion rings, crispy has brown and streaky bacon, stacked in a sourdough bun pickled gherkin topper and served with cripsy skin-on fries, fresh coleslaw and a small salad garnish",
+          "kcal": 1494,
+          "price": 1950,
+          "photo": "IMG_3883.HEIC"
+        },
+        {
+          "name": "Slammers Smashed Cheese Burger",
+          "description": "6oz smashed beef burger, cheese topped with lettuce, sliced beef tomato, shredded red onion, stacked in a sourdough bun with a pickled gherkin topper, skin-on fries, fresh coleslaw and a small salad garnish",
+          "kcal": 987,
+          "price": 1600,
+          "photo": "IMG_3883.HEIC"
+        },
+        {
+          "name": "Colossal Chicken Burger",
+          "description": "Cripsy panko crumb chicken fillet, in a sourdough bun, with crisp lettuce and tomato, served with crispy skin-on fries, fresh coleslaw, buttery sweet corn cobette, small salad garnish",
+          "kcal": 1019,
+          "price": 1400,
+          "photo": "IMG_3883.HEIC"
+        },
+        {
+          "name": "The 'Big Easy' Veggie Burger",
+          "description": "Plant based burger with crisp lettuce, tomato and red onion, sandwiched between a sourdough bun, pickled gherkin topper, served with fresh coleslaw crispy skin-on fries and a small salad garnish",
+          "kcal": 954,
+          "price": 1500,
+          "photo": "IMG_3883.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Cold Salads",
+      "items": [
+        {
+          "name": "Nicoise Salad",
+          "description": "Green beans, crisp lettuce, cherry tomatoes, sliced black olives, steamed baby potato quarters, cucumber, red onion, gently mixed with a light french dressing, olive oil drizzle and topped with egg quarters and a touch of black pepper.",
+          "kcal": 491,
+          "price": 1000,
+          "photo": "IMG_3883.HEIC"
+        },
+        {
+          "name": "Tuna Nicoise Salad",
+          "description": "As above with flaked tuna.",
+          "price": 1400,
+          "photo": "IMG_3883.HEIC"
+        },
+        {
+          "name": "Caesar Salad With Garlic Bread",
+          "description": "Classically made Cos and Iceberg lettuce make the base for a dressed salad with caesar dressing, cracked pepper, lightly salted croutons, Granarolo Parmigiano shavings, and 2 shards of our classic bar marked ciabbata garlic breads",
+          "kcal": 507,
+          "price": 1000,
+          "photo": "IMG_3883.HEIC"
+        },
+        {
+          "name": "Chicken Caesar Salad, Garlic Bread",
+          "description": "As above with grilled chicken thighs",
+          "price": 1500,
+          "photo": "IMG_3883.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Sides and Snacks",
+      "items": [
+        {
+          "name": "Skin-On Fries",
+          "description": "Crispy and fresh skin-on fries",
+          "kcal": 428,
+          "price": 550,
+          "photo": "IMG_3883.HEIC"
+        },
+        {
+          "name": "Vegan Coleslaw",
+          "description": "Freshly prepaired classic coleslaw, cabbage, red onion, carrot, vegan mayonnaise, lightly seasoned",
+          "kcal": 140,
+          "price": 500,
+          "photo": "IMG_3883.HEIC"
+        },
+        {
+          "name": "Hot Honey Halloumi Fries",
+          "description": "Coated Halloumi fries, with a Chilli Honey Dip leaf garnish",
+          "kcal": 618,
+          "price": 750,
+          "photo": "IMG_3883.HEIC"
+        },
+        {
+          "name": "Beer Battered Onion Rings",
+          "description": "crispy beer battered onion rings, leaf garnish",
+          "kcal": 755,
+          "price": 700,
+          "photo": "IMG_3883.HEIC"
+        },
+        {
+          "name": "House Salad",
+          "description": "Prepared inhouse mixed lettuce, carrot, cucumber and peppers",
+          "kcal": 22,
+          "price": 550,
+          "photo": "IMG_3883.HEIC"
+        },
+        {
+          "name": "Sweet Corn Cobettes",
+          "description": "Rolled in butter and lightly seasoned",
+          "kcal": 296,
+          "price": 650,
+          "photo": "IMG_3883.HEIC"
+        },
+        {
+          "name": "Hot Greens",
+          "description": "Steamed green beans, peas tenderstem broccoli with olive oil and lightly seasoned",
+          "kcal": 137,
+          "price": 650,
+          "photo": "IMG_3883.HEIC"
+        },
+        {
+          "name": "Charred Garlic Bread",
+          "description": "Bar marked ciabatta bread with a garlic butter then baked.",
+          "kcal": 479,
+          "price": 550,
+          "photo": "IMG_3883.HEIC"
+        },
+        {
+          "name": "Garlic Bread With Cheese",
+          "description": "Bar marked ciabatta bread with a garlic butter topped with cheese then baked",
+          "kcal": 610,
+          "price": 650,
+          "photo": "IMG_3883.HEIC"
+        },
+        {
+          "name": "Cauliflour Bites",
+          "description": "Coated cauliflour bites, fried with a choice of sauce and leaf garnish",
+          "kcal": 109,
+          "price": 700,
+          "photo": "IMG_3883.HEIC"
+        },
+        {
+          "name": "BBQ Cauliflour Bites",
+          "description": "Coated cauliflour bites, fried, and rolled in bbq sauce, ranch dip, leaf garnish",
+          "kcal": 233,
+          "price": 700,
+          "photo": "IMG_3883.HEIC"
+        },
+        {
+          "name": "Fiery Cauliflower Bites",
+          "description": "Coated cauliflour bites, fried, and rolled in franks hot sauce, ranch dip, leaf garnish",
+          "kcal": 277,
+          "price": 800,
+          "photo": "IMG_3883.HEIC"
+        },
+        {
+          "name": "Chicken Goujons",
+          "description": "Classic crispy fried chicken goujons, choice of sauce and leaf garnish",
+          "kcal": 368,
+          "price": 850,
+          "photo": "IMG_3883.HEIC"
+        },
+        {
+          "name": "Fiery Chicken Goujons",
+          "description": "Crispy fried chicken goujons, rolled in franks hot sauce, ranch dip, leaf garnish",
+          "kcal": 492,
+          "price": 900,
+          "photo": "IMG_3883.HEIC"
+        },
+        {
+          "name": "BBQ Chicken Goujons",
+          "description": "Crispy fried chicken goujons, rolled in bbq sauce, ranch dip, leaf garnish",
+          "kcal": 536,
+          "price": 900,
+          "photo": "IMG_3883.HEIC"
+        },
+        {
+          "name": "Loaded HOT Hashbrowns",
+          "description": "Hashbrowns, topped with, nacho cheese, tomato salsa, sriracha, grated cheddar, crispys onions and chives",
+          "kcal": 749,
+          "price": 950,
+          "photo": "IMG_3883.HEIC"
+        },
+        {
+          "name": "Nacho And Dips",
+          "description": "Basket of tortilla chips served with guacamole, salsa, sour cream dipping pots",
+          "kcal": 355,
+          "price": 550,
+          "photo": "IMG_3883.HEIC"
+        },
+        {
+          "name": "Cheese Nachos and Dips",
+          "kcal": 402,
+          "price": 700,
+          "photo": "IMG_3883.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Meal Deals",
+      "note": "Poster beside the venue; no heading beyond the Vibes logo",
+      "items": [
+        {
+          "name": "Pizza & Drink",
+          "description": "Pizza (Margherita or Pepperoni) and a drink, with the choice of a pint, a soft drink or small wine.",
+          "price": 1800,
+          "photo": "IMG_3884.HEIC"
+        },
+        {
+          "name": "Smashed Burger & Drink",
+          "description": "This is limited to our standard slammers smashed burger a drink, with the choice of a pint, a soft drink or small wine.",
+          "price": 2000,
+          "photo": "IMG_3884.HEIC"
+        }
+      ]
+    }
+  ],
+  "offers": [
+    {
+      "text": "LIMITED TIME OFFERS... HAPPY HOUR 5-6PM, 20% OFF. Get 20% of your entire bill when you spend £20 or more between 5pm and 6pm. *Cannot be used with Merlin Annual pass discount",
+      "photo": "IMG_3882.HEIC"
+    },
+    {
+      "text": "PLUS! SNACK MORE, SPEND LESS! Buy 3 sides, get a 4th side FREE! Available all day!",
+      "photo": "IMG_3882.HEIC"
+    },
+    {
+      "text": "Board small print: Not to be used in conjunction with any other offer.",
+      "photo": "IMG_3882.HEIC"
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3882.HEIC",
+      "name": "Vibes-Bar-and-Kitchen-offer",
+      "caption": "Offer"
+    },
+    {
+      "file": "IMG_3883.HEIC",
+      "name": "Vibes-Bar-and-Kitchen-bar-snack",
+      "caption": "Bar Snack, Sourdough Pizza's Dine In or Takeaway, Mains, Burgers, Cold Salads, Sides and Snacks"
+    },
+    {
+      "file": "IMG_3884.HEIC",
+      "name": "Vibes-Bar-and-Kitchen-meal-deals",
+      "caption": "Meal Deals"
+    }
+  ]
+}

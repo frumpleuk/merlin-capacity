@@ -253,7 +253,8 @@
           "kcal": 198,
           "tags": [
             "v"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "Add White Chocolate Dipping Sauce",
@@ -261,7 +262,8 @@
           "kcal": 193,
           "tags": [
             "v"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "Add Toffee Dipping Sauce",
@@ -269,7 +271,8 @@
           "kcal": 115,
           "tags": [
             "v"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "Cinnamon Sugar",

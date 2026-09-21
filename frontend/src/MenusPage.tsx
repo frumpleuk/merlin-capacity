@@ -12,6 +12,8 @@ interface Size {
 }
 interface Item {
   name: string;
+  /** A price you pay on top of something else, not a thing you buy alone. */
+  addOn?: boolean;
   description?: string;
   price?: number | null;
   sizes?: Size[];
@@ -299,8 +301,14 @@ function ItemRow({ item, query, unpriced }: { item: Item; query: string; unprice
           {item.kcal != null && <span className="fd-kcal">{item.kcal} kcal</span>}
         </span>
         {sizes.length === 0 && !(unpriced && item.price == null) && (
-          <span className="fd-price" title={unclear}>
-            {item.price == null ? <span className="fd-flag">?</span> : money(item.price)}
+          <span className={"fd-price" + (item.addOn ? " fd-add" : "")} title={unclear}>
+            {item.price == null ? (
+              <span className="fd-flag">?</span>
+            ) : item.addOn ? (
+              `+${money(item.price)}`
+            ) : (
+              money(item.price)
+            )}
           </span>
         )}
       </span>
@@ -316,8 +324,14 @@ function ItemRow({ item, query, unpriced }: { item: Item; query: string; unprice
             {s.label}
             {s.kcal != null && <span className="fd-kcal">{s.kcal} kcal</span>}
           </span>
-          <span className="fd-price" title={unclear}>
-            {s.price == null ? <span className="fd-flag">?</span> : money(s.price)}
+          <span className={"fd-price" + (item.addOn ? " fd-add" : "")} title={unclear}>
+            {s.price == null ? (
+              <span className="fd-flag">?</span>
+            ) : item.addOn ? (
+              `+${money(s.price)}`
+            ) : (
+              money(s.price)
+            )}
           </span>
         </span>
       ))}

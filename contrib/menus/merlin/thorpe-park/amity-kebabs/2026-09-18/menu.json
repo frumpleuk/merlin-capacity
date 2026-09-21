@@ -39,7 +39,8 @@
         {
           "name": "Add Regular Soft Drink",
           "price": 400,
-          "photo": "IMG_3758.HEIC"
+          "photo": "IMG_3758.HEIC",
+          "addOn": true
         },
         {
           "name": "Chips",

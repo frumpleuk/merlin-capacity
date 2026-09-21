@@ -95,12 +95,14 @@
         {
           "name": "+ 1 Dip",
           "price": 150,
-          "photo": "IMG_3757.HEIC"
+          "photo": "IMG_3757.HEIC",
+          "addOn": true
         },
         {
           "name": "+ 2 Dips",
           "price": 250,
-          "photo": "IMG_3757.HEIC"
+          "photo": "IMG_3757.HEIC",
+          "addOn": true
         }
       ]
     },

@@ -152,13 +152,15 @@
           "name": "Add: Chicken",
           "kcal": 206,
           "price": 425,
-          "photo": "IMG_3849.HEIC"
+          "photo": "IMG_3849.HEIC",
+          "addOn": true
         },
         {
           "name": "Add: Pulled Pork",
           "kcal": 267,
           "price": 425,
-          "photo": "IMG_3849.HEIC"
+          "photo": "IMG_3849.HEIC",
+          "addOn": true
         }
       ]
     },

@@ -58,7 +58,8 @@
           "name": "Extra Toppings",
           "description": "Jalapeños, Salsa, Sour Cream, Guacamole",
           "price": 75,
-          "photo": "IMG_3424.HEIC"
+          "photo": "IMG_3424.HEIC",
+          "addOn": true
         }
       ]
     },

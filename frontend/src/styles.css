@@ -1576,6 +1576,12 @@ h3.fd-area-head {
   color: var(--muted);
   font-size: 11px;
 }
+/* An add-on: a price on top of something else, so it reads "+£4.00" and sits
+   quieter than a price you can walk up and pay. */
+.fd-add {
+  color: var(--muted);
+}
+
 /* The board was unreadable here — the price is a best reading, or missing. */
 .fd-flag {
   color: var(--q-closed);

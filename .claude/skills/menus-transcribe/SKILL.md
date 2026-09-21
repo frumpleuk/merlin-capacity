@@ -32,6 +32,10 @@ still to do. If the user named venues or a date, do only those.
      printed.
    - Size ladders (Regular/Large, 1 scoop/2 scoops, 3 piece/5 piece) are
      `sizes`, not separate items. Meal vs item-only prices are sizes too.
+   - A price that only makes sense on top of something else is an add-on:
+     set `addOn: true` ("Add Regular Soft Drink", "Extra Bacon", "Upgrade to
+     large fries", "+ 2 Dips"). A side you can buy on its own is an ordinary
+     item, even at 50p.
    - The Merlin Annual Pass discount is its own `passDiscount` field, not an
      offer: look on every photo for the blue "20% off Food & Drink" roundel,
      a passholder sign, or wording that rules the pass out, and record

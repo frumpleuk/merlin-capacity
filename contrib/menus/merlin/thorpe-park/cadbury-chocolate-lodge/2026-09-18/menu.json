@@ -167,13 +167,15 @@
           "name": "Additional Toppings",
           "description": "Oreo 68kcal, Biscoff 106kcal, Sprinkles 30kcal, Marshmallow 48kcal",
           "price": 75,
-          "photo": "IMG_3772.HEIC"
+          "photo": "IMG_3772.HEIC",
+          "addOn": true
         },
         {
           "name": "Additional Sauces",
           "description": "Bubblegum 92kcal, Salted Caramel 102kcal, Mint 90kcal, Milk Choc 174kcal, White Choc 181kcal, Strawberry 91kcal",
           "price": 75,
-          "photo": "IMG_3772.HEIC"
+          "photo": "IMG_3772.HEIC",
+          "addOn": true
         }
       ]
     },

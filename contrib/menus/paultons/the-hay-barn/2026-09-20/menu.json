@@ -140,12 +140,14 @@
           "tags": [
             "v",
             "vg"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "Add Chicken Fajita",
           "price": null,
-          "kcal": 96
+          "kcal": 96,
+          "addOn": true
         },
         {
           "name": "Add Veg Chilli.",
@@ -154,12 +156,14 @@
           "tags": [
             "v",
             "vg"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "Add Beef Chilli",
           "price": null,
-          "kcal": 66
+          "kcal": 66,
+          "addOn": true
         },
         {
           "name": "Add Guacamole",
@@ -168,7 +172,8 @@
           "tags": [
             "v",
             "vg"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "Add Salsa",
@@ -177,7 +182,8 @@
           "tags": [
             "v",
             "vg"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "Add Sour Cream",
@@ -185,7 +191,8 @@
           "kcal": 57,
           "tags": [
             "v"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "Add Crunchy Coleslaw",
@@ -194,7 +201,8 @@
           "tags": [
             "v",
             "vg"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "Add Cheese Sauce",
@@ -202,7 +210,8 @@
           "kcal": 40,
           "tags": [
             "v"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "Add Crispy Onions",
@@ -211,7 +220,8 @@
           "tags": [
             "v",
             "vg"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "Add Secret Sauce",
@@ -219,7 +229,8 @@
           "kcal": 157,
           "tags": [
             "v"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "Add Jalapeno's",
@@ -228,7 +239,8 @@
           "tags": [
             "v",
             "vg"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "French's Mustard",
@@ -455,7 +467,8 @@
           "kcal": 42,
           "tags": [
             "v"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "Add Chocolate Sauce to your ice cream",
@@ -463,7 +476,8 @@
           "kcal": 29,
           "tags": [
             "v"
-          ]
+          ],
+          "addOn": true
         }
       ]
     }

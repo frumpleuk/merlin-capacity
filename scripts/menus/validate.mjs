@@ -66,6 +66,7 @@ function checkMenu(dir, photos) {
         if (sz.price === null && !it.unclear && !unpriced) err(file, `${where}: size price null without "unclear" reason`);
       }
       if (it.kcal !== undefined && !(Number.isInteger(it.kcal) && it.kcal >= 0)) err(file, `${where}: kcal must be an integer`);
+      if (it.addOn !== undefined && typeof it.addOn !== "boolean") err(file, `${where}: addOn must be true/false`);
       for (const t of it.tags ?? []) if (!TAGS.has(t)) err(file, `${where}: unknown tag "${t}"`);
     });
   });

@@ -97,12 +97,14 @@
         {
           "name": "Extra Sauces",
           "price": 150,
-          "photo": "IMG_3376.HEIC"
+          "photo": "IMG_3376.HEIC",
+          "addOn": true
         },
         {
           "name": "Upgrade Combo Cup",
           "price": 575,
-          "photo": "IMG_3376.HEIC"
+          "photo": "IMG_3376.HEIC",
+          "addOn": true
         }
       ]
     },

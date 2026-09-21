@@ -119,7 +119,8 @@
         {
           "name": "Add Soy, Ginger & Lime Crispy Chicken",
           "price": null,
-          "kcal": 222
+          "kcal": 222,
+          "addOn": true
         }
       ]
     },
@@ -173,7 +174,8 @@
         {
           "name": "Add Beef Chilli",
           "price": null,
-          "kcal": 165
+          "kcal": 165,
+          "addOn": true
         },
         {
           "name": "Onion Rings",

@@ -49,7 +49,8 @@
           "name": "Add a Sauce",
           "description": "Milk Choc, White Choc, Bubblegum, Strawberry & Salted Caramel, up to 60 kcal",
           "price": 100,
-          "photo": "IMG_3848.HEIC"
+          "photo": "IMG_3848.HEIC",
+          "addOn": true
         },
         {
           "name": "Flake",

@@ -98,7 +98,8 @@
           "kcal": 157,
           "tags": [
             "v"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "Add Crispy Onions",
@@ -107,7 +108,8 @@
           "tags": [
             "v",
             "vg"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "Add Cheese Sauce",
@@ -115,7 +117,8 @@
           "kcal": 40,
           "tags": [
             "v"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "Add Jalapeno's",
@@ -124,7 +127,8 @@
           "tags": [
             "v",
             "vg"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "Hellmann's Mayonnaise.",
@@ -214,7 +218,8 @@
           "kcal": 8,
           "tags": [
             "v"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "Add Mango syrup to your ice cream",
@@ -222,7 +227,8 @@
           "kcal": 8,
           "tags": [
             "v"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "Add Forest Berries syrup to your ice cream",
@@ -230,7 +236,8 @@
           "kcal": 8,
           "tags": [
             "v"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "Add Chocolate Sauce to your ice cream",
@@ -238,7 +245,8 @@
           "kcal": 29,
           "tags": [
             "v"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "Extra Flake",
@@ -246,7 +254,8 @@
           "kcal": 42,
           "tags": [
             "v"
-          ]
+          ],
+          "addOn": true
         }
       ]
     },

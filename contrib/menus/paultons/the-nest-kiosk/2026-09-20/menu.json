@@ -202,7 +202,8 @@
           "kcal": 42,
           "tags": [
             "v"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "Add Chocolate Sauce to your ice cream",
@@ -210,7 +211,8 @@
           "kcal": 29,
           "tags": [
             "v"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "Add Strawberry Sauce to your ice cream",
@@ -218,7 +220,8 @@
           "kcal": 18,
           "tags": [
             "v"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "Add Bubblegum Sauce",
@@ -227,7 +230,8 @@
           "tags": [
             "v",
             "vg"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "Add Vegan Chocolate Sauce",
@@ -236,7 +240,8 @@
           "tags": [
             "v",
             "vg"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "Add Toffee Sauce to your ice cream",
@@ -244,7 +249,8 @@
           "kcal": 16,
           "tags": [
             "v"
-          ]
+          ],
+          "addOn": true
         }
       ]
     },

@@ -111,7 +111,8 @@
           "tags": [
             "v",
             "vg"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "Skin on Fries",
@@ -129,7 +130,8 @@
           "tags": [
             "v",
             "vg"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "Crunchy Boneless Chicken Wings with Hot Sauce",
@@ -159,17 +161,20 @@
         {
           "name": "Extra Beef Burger Patty.",
           "price": null,
-          "kcal": 348
+          "kcal": 348,
+          "addOn": true
         },
         {
           "name": "Extra Buttermilk Chicken Fillet.",
           "price": null,
-          "kcal": 430
+          "kcal": 430,
+          "addOn": true
         },
         {
           "name": "Extra Fish Fillet.",
           "price": null,
-          "kcal": 228
+          "kcal": 228,
+          "addOn": true
         },
         {
           "name": "Classic Slaw",
@@ -535,7 +540,8 @@
           "tags": [
             "v",
             "vg"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "Add Speculoos Sauce",
@@ -543,7 +549,8 @@
           "kcal": 30,
           "tags": [
             "v"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "Add White Chocolate Hazelnut Sauce",
@@ -551,7 +558,8 @@
           "kcal": 60,
           "tags": [
             "v"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "Add Chocolate Hazelnut Sauce",
@@ -559,7 +567,8 @@
           "kcal": 58,
           "tags": [
             "v"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "Add Strawberry Sauce",
@@ -567,7 +576,8 @@
           "kcal": 30,
           "tags": [
             "v"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "Add Toffee Sauce",
@@ -575,7 +585,8 @@
           "kcal": 29,
           "tags": [
             "v"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "Add Chocolate Sauce",
@@ -583,7 +594,8 @@
           "kcal": 58,
           "tags": [
             "v"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "Add Vegan Chocolate Sauce",
@@ -592,7 +604,8 @@
           "tags": [
             "v",
             "vg"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "Waffle Cone",
@@ -637,7 +650,8 @@
           "kcal": 42,
           "tags": [
             "v"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "Berry White Donut",

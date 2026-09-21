@@ -95,7 +95,8 @@
         {
           "name": "Add Bacon",
           "price": 150,
-          "photo": "IMG_3398.HEIC"
+          "photo": "IMG_3398.HEIC",
+          "addOn": true
         },
         {
           "name": "Dips",
@@ -143,7 +144,8 @@
         {
           "name": "Add Hot Honey",
           "price": 150,
-          "photo": "IMG_3400.HEIC"
+          "photo": "IMG_3400.HEIC",
+          "addOn": true
         },
         {
           "name": "Ham & Pineapple",

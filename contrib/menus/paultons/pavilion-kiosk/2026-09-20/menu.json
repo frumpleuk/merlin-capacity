@@ -109,7 +109,8 @@
         {
           "name": "Extra Bacon",
           "price": null,
-          "kcal": 46
+          "kcal": 46,
+          "addOn": true
         },
         {
           "name": "Extra Beef Burger Patty",
@@ -118,7 +119,8 @@
           "tags": [
             "v",
             "vg"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "Add Crispy Onions",
@@ -127,7 +129,8 @@
           "tags": [
             "v",
             "vg"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "Skin on Fries",

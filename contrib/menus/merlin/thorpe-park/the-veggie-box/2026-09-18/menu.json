@@ -27,7 +27,8 @@
         {
           "name": "Add Cheese",
           "price": 200,
-          "photo": "IMG_3763.HEIC"
+          "photo": "IMG_3763.HEIC",
+          "addOn": true
         }
       ]
     },

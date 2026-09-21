@@ -42,7 +42,8 @@
           "kcal": 198,
           "tags": [
             "v"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "Add White Chocolate Dipping Sauce",
@@ -50,7 +51,8 @@
           "kcal": 193,
           "tags": [
             "v"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "Add Toffee Dipping Sauce",
@@ -59,7 +61,8 @@
           "tags": [
             "v",
             "vg"
-          ]
+          ],
+          "addOn": true
         },
         {
           "name": "Lotus Biscoff Crumb",
@@ -84,7 +87,8 @@
           "kcal": 71,
           "tags": [
             "v"
-          ]
+          ],
+          "addOn": true
         }
       ]
     }

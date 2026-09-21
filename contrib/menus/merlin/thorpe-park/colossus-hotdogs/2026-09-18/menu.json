@@ -129,12 +129,14 @@
         {
           "name": "Add Garlic Butter",
           "price": 75,
-          "photo": "IMG_3797.HEIC"
+          "photo": "IMG_3797.HEIC",
+          "addOn": true
         },
         {
           "name": "Add Crispy Onions",
           "price": 75,
-          "photo": "IMG_3797.HEIC"
+          "photo": "IMG_3797.HEIC",
+          "addOn": true
         }
       ]
     }

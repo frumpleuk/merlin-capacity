@@ -140,7 +140,6 @@ const kindOf = (v: Venue) => {
 const perksOf = (v: Venue) => [
   ...(v.passDiscount?.offered ? ["Pass discount"] : []),
   ...(v.passDiscount?.offered === false ? ["No pass discount"] : []),
-  ...(v.menuUrl ? ["Official menu"] : []),
 ];
 
 /** A photo opened from a menu, with where and when it was taken. */
@@ -449,6 +448,16 @@ function VenueCard({
           {priced ? (show ? "−" : "+") : ""}
         </span>
       </button>
+      {!priced && venue.menuUrl && (
+        <p className="fd-note fd-elsewhere">
+          The park publishes one:{" "}
+          <a href={venue.menuUrl} target="_blank" rel="noreferrer noopener">
+            {/^https?:\/\/menus\.tenkites\.com/.test(venue.menuUrl)
+              ? "allergen menu (dishes, no prices)"
+              : "its page for this place"}
+          </a>
+        </p>
+      )}
       {show && menu && (
         <div className="fd-sections">
           {venue.serves && <p className="fd-note">{venue.serves}</p>}

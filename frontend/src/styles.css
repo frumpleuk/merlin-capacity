@@ -1576,6 +1576,15 @@ h3.fd-area-head {
   color: var(--muted);
   font-size: 11px;
 }
+/* Nothing of ours for this venue, but the park publishes something. */
+.fd-elsewhere {
+  margin: 0 0 8px 2px;
+  font-size: 12px;
+}
+.fd-elsewhere a {
+  color: var(--link);
+}
+
 /* An add-on: a price on top of something else, so it reads "+£4.00" and sits
    quieter than a price you can walk up and pay. */
 .fd-add {

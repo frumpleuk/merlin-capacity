@@ -1,0 +1,314 @@
+{
+  "date": "2026-09-21",
+  "unpriced": true,
+  "source": {
+    "name": "Alton Towers Resort",
+    "official": true,
+    "url": "https://menus.tenkites.com/aramarkuk/athotel02"
+  },
+  "sections": [
+    {
+      "name": "Nibbles",
+      "items": [
+        {
+          "name": "Just Breads",
+          "description": "Mixtures of Baked Artisan Sourdoughs | Whipped Smoked Salted Butter",
+          "price": null
+        },
+        {
+          "name": "Cypressa Olives",
+          "description": "Cypressa olives season with smoked sea salt",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Starters",
+      "items": [
+        {
+          "name": "Smoked Salmon Tartare",
+          "description": "Avocado | Yuzu Cucumber | Dill Crème Fraiche",
+          "price": null
+        },
+        {
+          "name": "Burrata & Heirloom Tomatoes Salad",
+          "description": "Wild Rocket Salad | Balsamic | Basil Pesto Dressing",
+          "price": null
+        },
+        {
+          "name": "Chicken Wings",
+          "description": "Marinated on Sriracha | Sweet Chili Jam Mayonnaise",
+          "price": null
+        },
+        {
+          "name": "Harissa Hummus",
+          "description": "Rosemary Focaccia | Crispy Chickpea | Sweet Pepper Drops",
+          "price": null
+        },
+        {
+          "name": "Sweet Chipolatas",
+          "description": "Glazed in honey grain mustard, maple ketchup",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Mains",
+      "items": [
+        {
+          "name": "Barbery Duck Breast",
+          "description": "Barbery duck breast cooked medium served with smooth carrot puree and cinnamon heritage carrots, and a rich red wine jus",
+          "price": null
+        },
+        {
+          "name": "Fish and Chips",
+          "description": "Beer battered haddock, served with fries, mushy peas and tartare sauce, garnished with a lemon.",
+          "price": null
+        },
+        {
+          "name": "Rigatoni Burrata [v]",
+          "description": "Cream Tomato Sauce | Sweet Basil |Black Olive Crumb |Parmigiano Shavings",
+          "price": null
+        },
+        {
+          "name": "Burrata & Heirloom Tomatoes",
+          "description": "Burrata Balls |Avocado | Wild Rocket Salad | Balsamic | Basil Pesto",
+          "price": null
+        },
+        {
+          "name": "Burrata & Heirloom Tomatoes with Chicken",
+          "description": "Chicken with burrata balls, avocado, wild rocket salad and nut free basil pesto",
+          "price": null
+        },
+        {
+          "name": "Rigatoni Burrata with Chicken",
+          "description": "Cream Tomato Sauce | Sweet Basil |Black Olive Crumb |Parmigiano Shavings",
+          "price": null
+        },
+        {
+          "name": "Bang Bang Cauliflower Steak",
+          "description": "Cauliflower marinated and roasted with bang bang spices, served over kimchi fried rice noodles, pak choi and coriander spicy, bold, and unforgettable.",
+          "price": null
+        },
+        {
+          "name": "Bang Bang Chicken",
+          "description": "Chicken breast, Kimchi Fried Rice noodles, Sweet Chilli Sauce, Pak Choi",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Chargrilled",
+      "items": [
+        {
+          "name": "8oz Rib Eye Steak",
+          "description": "8oz rib eye steak Served with Roasted Plum Tomatoes | Field Mushroom | Skinny Fries | Shallot & Cress Salad",
+          "price": null
+        },
+        {
+          "name": "Pork Cutlet",
+          "description": "Pork cutlet served with roasted plum tomatoes, flat mushroom, skinny fries and a shallot & cress salad",
+          "price": null
+        },
+        {
+          "name": "Lemon Herb Chicken Skewers",
+          "description": "Lemon and Herb Chicken Skewers, Skin on Fries, Plum Tomato, Field mushroom, Watercres and shallot Salad",
+          "price": null
+        },
+        {
+          "name": "The Garden Burger",
+          "description": "Two beef patties, smoked cheddar, burger sauce, red cabbage slaw & fries.",
+          "price": null
+        },
+        {
+          "name": "Cafe de Paris Butter",
+          "description": "Fresh herbs and citrus butter",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        {
+          "name": "Truffle Fries",
+          "description": "Fries topped with Truffle oil & Parmesan Cheese",
+          "price": null
+        },
+        {
+          "name": "Seasoned Fries",
+          "description": "Crispy fries",
+          "price": null
+        },
+        {
+          "name": "Beer Battered Onion Rings",
+          "price": null
+        },
+        {
+          "name": "Tender Stem Broccoli",
+          "description": "Sauteed tender stem broccoli",
+          "price": null
+        },
+        {
+          "name": "Red wine Sauce",
+          "description": "A rich red wine jus made with a demi-glace base, reduced with aromatics and thyme for depth and flavour.",
+          "price": null
+        },
+        {
+          "name": "Peppercorn Sauce",
+          "description": "Peppercorn Sauce",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Homemade Pies",
+      "items": [
+        {
+          "name": "Homemade Steak, Ale and Blue Cheese Pie",
+          "description": "Steak, Ale and Blue Cheese pie, served with Buttered Mash, Minted Peas, Red Wine and Crispy Onions",
+          "price": null
+        },
+        {
+          "name": "Chicken, Pancetta, Leek and Creme Fraiche Pie",
+          "description": "Chicken, Pancetta, Leek and Creme Fraiche Pie served with Buttered Mash, Minted Peas, Red Wine and Crispy Onions",
+          "price": null
+        },
+        {
+          "name": "Homemade Triple Cheese and Red Onion Pie",
+          "description": "Homemade Triple Cheese and Red Onion Pie served with Buttered Mash, Minted Peas, Red Wine and Crispy Onions",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        {
+          "name": "Baked Caramel Brownie Cheesecake",
+          "description": "Baked brownie topped with a dark chocolate cheesecake & salted caramel sauce served with Vanilla ice cream",
+          "price": null
+        },
+        {
+          "name": "Lemon Meringue Pie",
+          "description": "Lemon meringue pie with raspberry sorbet, lemon curd and candied lemon",
+          "price": null
+        },
+        {
+          "name": "Chocolate Orange Tart",
+          "description": "Chocolate orange tart with blood orange sorbet and caramelized mandarin segment",
+          "price": null
+        },
+        {
+          "name": "Banana Sharing Sundae",
+          "description": "Crushed banana with vanilla ice cream, caramel sauce, fudge, malted chocolate and whipped cream",
+          "price": null
+        },
+        {
+          "name": "3 Scoop Sorbet",
+          "description": "3 scoops of sorbet served with strawberry half and wafer",
+          "price": null
+        },
+        {
+          "name": "3 Scoop Ice Cream",
+          "description": "Selection of 3 ice cream scoops served with strawberry and wafer",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Kids Starters",
+      "items": [
+        {
+          "name": "8 Hidden vegetable served with breadsticks",
+          "description": "8 Hidden vegetable served with breadsticks",
+          "price": null
+        },
+        {
+          "name": "Mini Doughballs",
+          "description": "Baked Mini Doughballs",
+          "price": null
+        },
+        {
+          "name": "Mini Doughballs with Cheese",
+          "description": "Baked Mini Doughballs with Cheese",
+          "price": null
+        },
+        {
+          "name": "Mini Nachos with Cheese Sauce",
+          "description": "Mini Crispy Nachos topped with Cheese Sauce",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Kids Mains",
+      "items": [
+        {
+          "name": "Kids Cheeseburger",
+          "description": "Beef burger topped with cheese, served with seasoned fries and baked beans.",
+          "price": null
+        },
+        {
+          "name": "Fish Fingers",
+          "description": "Golden fish fingers served with garden peas and seasoned fries.",
+          "price": null
+        },
+        {
+          "name": "Rigatoni Pasta",
+          "description": "Rigatoni Pasta with Rustic Tomato Sauce",
+          "price": null
+        },
+        {
+          "name": "Crispy Chicken Tenders",
+          "description": "Served with ketchup dip and fries",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Kids Desserts",
+      "items": [
+        {
+          "name": "Fruit Bowl",
+          "description": "Fruit Bowl with fruit compote and fresh strawberries",
+          "price": null
+        },
+        {
+          "name": "Chocolate Brownie",
+          "description": "Served with vanilla ice cream and chocolate sauce ,wafers",
+          "price": null
+        },
+        {
+          "name": "Kids Ice Cream",
+          "price": null
+        },
+        {
+          "name": "3 Scoop Sorbet Selection",
+          "description": "All Served With Wafers",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Ice Creams",
+      "items": [
+        {
+          "name": "Carte D'Or - Vanilla Cone 1 Scoop",
+          "description": "Carte D'Or - Vanilla Cone 1 Scoop",
+          "price": null
+        },
+        {
+          "name": "Carte D'Or - Triple Choc Cone 1 scoop",
+          "description": "Carte D'Or - Triple Choc Cone 1 scoop",
+          "price": null
+        },
+        {
+          "name": "Strawberry ice cream",
+          "description": "Strawberry ice cream",
+          "price": null
+        }
+      ]
+    }
+  ]
+}

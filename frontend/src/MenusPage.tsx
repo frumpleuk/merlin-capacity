@@ -432,10 +432,13 @@ function VenueCard({
         </span>
         <span className="fd-venue-meta">
           {!priced
-            ? "no menu yet"
+            ? "nothing yet"
             : query
               ? `${hits} match${hits === 1 ? "" : "es"}`
-              : `${shown} item${shown === 1 ? "" : "s"}`}
+              : menu?.unpriced
+                ? `${shown} dish${shown === 1 ? "" : "es"}`
+                : `${shown} item${shown === 1 ? "" : "s"}`}
+          {priced && menu?.unpriced && " · no prices"}
           {priced && venue.from != null && (
             <>
               {" · "}

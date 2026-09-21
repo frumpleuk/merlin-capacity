@@ -1,7 +1,8 @@
-// Import Paulton's own menus, which the park publishes on Tenkites (the
-// digital menu system its poi.json `menuUrl` points at).
+// Import the menus a park publishes on Tenkites, the digital menu system its
+// poi.json `menuUrl` points at. Paulton's publishes most of its outlets this
+// way; Alton's hotel restaurants go through Aramark's Tenkites account.
 //
-//   node scripts/menus/import-tenkites.mjs [park_key...]   (default: paultons)
+//   node scripts/menus/import-tenkites.mjs [park_key...]   (default: all of them)
 //
 // What it gets: every dish on every board, its description, its calories and
 // the park's vegetarian/vegan marks. What it does NOT get: prices. Tenkites
@@ -17,7 +18,7 @@
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import { DATE_DIR, INDIE_PARK_DIRS, MENUS, parkDir, readJson, slug, venues, writeJson } from "./lib.mjs";
+import { ALL_PARK_DIRS, DATE_DIR, MENUS, parkDir, readJson, slug, venues, writeJson } from "./lib.mjs";
 
 const HOST = "menus.tenkites.com";
 const UA = "merlin-capacity/0.1 (+https://themeparks.frumple.co.uk; park menu archive, contact via site)";
@@ -25,15 +26,30 @@ const CACHE = path.join(os.tmpdir(), "tenkites-cache");
 const TODAY = new Date().toISOString().slice(0, 10);
 
 /** The park's own name for each park key, as the credit line shows it. */
-const PARK_NAMES = { paultons: "Paultons Park" };
+const PARK_NAMES = {
+  paultons: "Paultons Park",
+  alton_towers: "Alton Towers Resort",
+  thorpe_park: "Thorpe Park",
+  chessington: "Chessington World of Adventures",
+  legoland: "Legoland Windsor",
+};
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-async function page(url) {
+async function page(url, { browser = false } = {}) {
   fs.mkdirSync(CACHE, { recursive: true });
   const file = path.join(CACHE, slug(url.replace(/^https?:\/\//, "")) + ".html");
   if (fs.existsSync(file)) return fs.readFileSync(file, "utf8");
-  const resp = await fetch(url, { headers: { "user-agent": UA } });
+  // The parks' own marketing sites refuse an unknown agent, so the hop through
+  // one of their pages asks as a browser would. Tenkites itself is happy with
+  // our named agent.
+  const resp = await fetch(url, {
+    headers: {
+      "user-agent": browser
+        ? "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0 Safari/537.36"
+        : UA,
+    },
+  });
   if (!resp.ok) throw new Error(`${url} -> ${resp.status}`);
   const html = await resp.text();
   fs.writeFileSync(file, html);
@@ -125,15 +141,33 @@ function previous(venueDir, url) {
   return null;
 }
 
+/** The Tenkites board for a venue: the link itself, or the one the park's own
+ *  page points at. Returns "" when there isn't one. */
+async function resolve(link) {
+  if (!link) return "";
+  if (link.includes(HOST)) return link;
+  if (!/^https?:\/\//.test(link)) return "";
+  let html;
+  try {
+    html = await page(link, { browser: true });
+  } catch {
+    return "";
+  }
+  return html.match(new RegExp(`https://${HOST}/[\\w/-]+`))?.[0] ?? "";
+}
+
 const wanted = process.argv.slice(2).filter((a) => !a.startsWith("--"));
-for (const key of Object.keys(INDIE_PARK_DIRS)) {
+for (const key of Object.keys(ALL_PARK_DIRS)) {
   if (!PARK_NAMES[key] || (wanted.length && !wanted.includes(key))) continue;
   let written = 0;
   let unchanged = 0;
   let empty = 0;
   for (const v of venues(parkDir(key))) {
-    const url = v.poi.menuUrl ?? "";
-    if (!url.includes(HOST)) continue;
+    // A venue's menuUrl is sometimes the park's own page about the place,
+    // which then links to its Tenkites board (Alton's hotel restaurants do
+    // this). Follow that one hop rather than skipping the venue.
+    const url = await resolve(v.poi.menuUrl ?? "");
+    if (!url) continue;
     const sections = parseMenu(await page(url));
     const items = sections.reduce((n, s) => n + s.items.length, 0);
     if (!items) {

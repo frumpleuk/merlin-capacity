@@ -1,0 +1,169 @@
+{
+  "date": "2026-09-21",
+  "unpriced": true,
+  "source": {
+    "name": "Alton Towers Resort",
+    "official": true,
+    "url": "https://menus.tenkites.com/aramarkuk/enchantedvillage02"
+  },
+  "sections": [
+    {
+      "name": "Smokey Jumbo Wings",
+      "items": [
+        {
+          "name": "BBQ Smokey Jumbo Wings Small",
+          "price": null
+        },
+        {
+          "name": "BBQ Smokey Jumbo Wings Large",
+          "price": null
+        },
+        {
+          "name": "Hot Smokey Jumbo Wings Small",
+          "price": null
+        },
+        {
+          "name": "Hot Smokey Jumbo Wings Large",
+          "price": null
+        },
+        {
+          "name": "Sweet Chili Jam Smokey Jumbo Wings Small",
+          "price": null
+        },
+        {
+          "name": "Sweet Chili Jam Smokey Jumbo Wings Large",
+          "price": null
+        },
+        {
+          "name": "Black & Blue Smokey Jumbo Wings Small",
+          "price": null
+        },
+        {
+          "name": "Black & Blue Smokey Jumbo Wings Large",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Crispy Chicken Strips",
+      "items": [
+        {
+          "name": "BBQ Crispy Chicken Strips Small",
+          "price": null
+        },
+        {
+          "name": "BBQ Crispy Chicken Strips Large",
+          "price": null
+        },
+        {
+          "name": "Hot Crispy Chicken Strips Small",
+          "price": null
+        },
+        {
+          "name": "Hot Crispy Chicken Strips Large",
+          "price": null
+        },
+        {
+          "name": "Sweet Chili Jam Chicken Strips Small",
+          "price": null
+        },
+        {
+          "name": "Sweet Chili Jam Crispy Chicken Strips Large",
+          "price": null
+        },
+        {
+          "name": "Black & Blue Crispy Chicken Strips Small",
+          "price": null
+        },
+        {
+          "name": "Black & Blue Crispy Chicken Strips Large",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Cauliflower Wings",
+      "items": [
+        {
+          "name": "BBQ Cauliflower Wings Small",
+          "price": null
+        },
+        {
+          "name": "BBQ Cauliflower Wings Large",
+          "price": null
+        },
+        {
+          "name": "Hot Cauliflower Wings Small",
+          "price": null
+        },
+        {
+          "name": "Hot Cauliflower Wings Large",
+          "price": null
+        },
+        {
+          "name": "Sweet Chili Jam Cauliflower Wings Small",
+          "price": null
+        },
+        {
+          "name": "Sweet Chili Jam Cauliflower Wings Large",
+          "price": null
+        },
+        {
+          "name": "Black & Blue Cauliflower Wings Small",
+          "price": null
+        },
+        {
+          "name": "Black & Blue Cauliflower Wings Large",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Woodland Nachos",
+      "items": [
+        {
+          "name": "Woodland Nachos",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Pizza",
+      "items": [
+        {
+          "name": "Margherita Pizza",
+          "price": null
+        },
+        {
+          "name": "Pepperoni Pizza",
+          "price": null
+        },
+        {
+          "name": "Vegetarian Pizza",
+          "price": null
+        },
+        {
+          "name": "BBQ Chicken Pizza",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        {
+          "name": "Dusted Cajun Onion Rings",
+          "price": null
+        },
+        {
+          "name": "Village Slaw",
+          "price": null
+        },
+        {
+          "name": "Village Fries",
+          "price": null
+        }
+      ]
+    }
+  ]
+}

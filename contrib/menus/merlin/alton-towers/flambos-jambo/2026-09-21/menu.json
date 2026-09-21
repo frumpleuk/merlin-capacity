@@ -1,0 +1,492 @@
+{
+  "date": "2026-09-21",
+  "unpriced": true,
+  "source": {
+    "name": "Alton Towers Resort",
+    "official": true,
+    "url": "https://menus.tenkites.com/aramarkuk/splashlandingshotel02"
+  },
+  "sections": [
+    {
+      "name": "Nacho Corner",
+      "items": [
+        {
+          "name": "Corn Tortilla Chips",
+          "description": "Corn Tortilla Chips",
+          "price": null
+        },
+        {
+          "name": "Nacho Cheese Sauce",
+          "description": "A mildly spiced cheese sauce made with cheddar cheeses",
+          "price": null
+        },
+        {
+          "name": "Sour Cream and Chive Dip",
+          "description": "Plant based sour cream and chive dip.",
+          "price": null
+        },
+        {
+          "name": "Tomato Salsa",
+          "description": "Tomato Salsa",
+          "price": null
+        },
+        {
+          "name": "Iceberg Lettuce",
+          "description": "Iceberg Lettuce",
+          "price": null
+        },
+        {
+          "name": "Black Bean",
+          "description": "Black Bean flavoured with fresh herbs",
+          "price": null
+        },
+        {
+          "name": "Jalapeño",
+          "description": "Jalapeño",
+          "price": null
+        },
+        {
+          "name": "Guacamole",
+          "description": "Creamy Smooth Guacamole",
+          "price": null
+        },
+        {
+          "name": "Lime Wedges",
+          "description": "Lime Wedges",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Kids Corner",
+      "items": [
+        {
+          "name": "Chicken Goujons",
+          "price": null
+        },
+        {
+          "name": "Baked Penne Pasta",
+          "description": "Oven baked penne pasta, with a rich of tomato sauce, and plenty of melted cheese.",
+          "price": null
+        },
+        {
+          "name": "Fish Fingers",
+          "price": null
+        },
+        {
+          "name": "Pork Sausage",
+          "price": null
+        },
+        {
+          "name": "Meatless Sausage",
+          "price": null
+        },
+        {
+          "name": "Baked Beans",
+          "price": null
+        },
+        {
+          "name": "Peas & Sweetcorn",
+          "price": null
+        },
+        {
+          "name": "Fries",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "MEXICO Kitchen",
+      "items": [
+        {
+          "name": "Chilli Non-Carne",
+          "price": null
+        },
+        {
+          "name": "Pulled Pork",
+          "description": "Slowcook pulled pork with herbs",
+          "price": null
+        },
+        {
+          "name": "Taco Shells",
+          "description": "Crunchy Taco Shells",
+          "price": null
+        },
+        {
+          "name": "Spiced Potato Wedges",
+          "description": "Spiced Potato Wedges",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Pranzo Italiano",
+      "items": [
+        {
+          "name": "Creamy Potato Gnocchi",
+          "price": null
+        },
+        {
+          "name": "Baked Ricotta & Spinach Cannelloni",
+          "description": "Delicate egg pasta filled with a rich and creamy ricotta cheese and spinach filling.",
+          "price": null
+        },
+        {
+          "name": "Garlic Bread",
+          "description": "A warm, Savory side dish made from bread topped with a mixture of butter, garlic, and herbs, then baked until crisp on the outside and soft inside.",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Pan Asia",
+      "items": [
+        {
+          "name": "Pork Asian Adobo",
+          "description": "A traditional Filipino dish made with tender pork belly braised in a rich blend of vinegar, soy sauce, garlic, and onion. This savoury and flavourful dish is both comforting and delicious, offering a taste of authentic Filipino cuisine.",
+          "price": null
+        },
+        {
+          "name": "Egg Fried Rice",
+          "description": "Fluffy steamed rice combined with sautéed egg whites, garlic puree, chopped spring onions, and diced carrots. Enhanced with soy sauce and seasoned to perfection, this dish offers a delightful mix of textures and flavours.",
+          "price": null
+        },
+        {
+          "name": "Stir Fry Vegetable Noodles in Soy Sauce & Sesame",
+          "price": null
+        },
+        {
+          "name": "Steamed Vegetable Gyoza",
+          "description": "Half-moon shaped Japanese-style dumplings with a vegetable and soy sauce filling and spinach coloured dumpling pastry.",
+          "price": null
+        },
+        {
+          "name": "Korean BBQ Chicken Bites",
+          "description": "Chicken bites that are marinated and cooked in a sweet, savoury, and slightly smoky Korean-style barbecue sauce.",
+          "price": null
+        },
+        {
+          "name": "Salt & Pepper Chips",
+          "description": "Crispy chunky chips tossed with sautéed bell peppers and onions, seasoned with garlic powder, smoked paprika, Chinese five spices, salt, and pepper. Garnished with crushed chillies for a perfect blend of savoury and spicy flavours.",
+          "price": null
+        },
+        {
+          "name": "Sweet Chilli",
+          "description": "Sweet Chilli Dipping Sauce",
+          "price": null
+        },
+        {
+          "name": "Garlic Chilli Oil",
+          "description": "Garlic Chilli Oil",
+          "price": null
+        },
+        {
+          "name": "Prawn Crackers",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Home Comforts",
+      "items": [
+        {
+          "name": "Roasted Glazed Gammon",
+          "price": null
+        },
+        {
+          "name": "Cauliflower Cheese",
+          "description": "Cauliflower Cheese",
+          "price": null
+        },
+        {
+          "name": "Roasted Root Vegs",
+          "description": "A hearty side dish of carrots and potatoes, roasted with rapeseed oil and mixed herbs for a tender and flavorful medley.",
+          "price": null
+        },
+        {
+          "name": "Yorkshire Puddings",
+          "price": null
+        },
+        {
+          "name": "Creamy Mash Potatoes",
+          "description": "Creamy Mash Potatoes",
+          "price": null
+        },
+        {
+          "name": "Gravy",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Mumbai Kitchen",
+      "items": [
+        {
+          "name": "Chicken Makhani Curry",
+          "description": "Chicken Makhani Curry",
+          "price": null
+        },
+        {
+          "name": "Chickpea & Sweet Potato Tikka Masala Curry",
+          "price": null
+        },
+        {
+          "name": "Naan Bread",
+          "description": "Naan Bread",
+          "price": null
+        },
+        {
+          "name": "Pilau Rice",
+          "description": "Pilau Rice",
+          "price": null
+        },
+        {
+          "name": "Delhi Ketchup",
+          "description": "Sweet and Sour tomato with warming curry spices",
+          "price": null
+        },
+        {
+          "name": "Spinach Lentil Dahl",
+          "description": "Tender lentils simmered with ginger, onion, tomatoes, and vegetable stock, enriched with coconut milk and fresh spinach",
+          "price": null
+        },
+        {
+          "name": "Onion Salad",
+          "description": "Onion Salad",
+          "price": null
+        },
+        {
+          "name": "Mango Chutney",
+          "description": "Mango Chutney",
+          "price": null
+        },
+        {
+          "name": "Selection of Mumbai Street Food Snacks",
+          "description": "Vegetable Pakora, Onion Bhaji, Vegetable Samosa & Aloo Tikki, Savoury snacks",
+          "price": null
+        },
+        {
+          "name": "Poppadums",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Joe De Frango",
+      "items": [
+        {
+          "name": "Chargrilled Peri Peri Chicken Quarters",
+          "price": null
+        },
+        {
+          "name": "Steamed Corn Cobettes",
+          "description": "Steamed Corn Cobettes",
+          "price": null
+        },
+        {
+          "name": "Cilantro Slaw",
+          "description": "Cilantro Slaw",
+          "price": null
+        },
+        {
+          "name": "Marinated Harissa Honey Olives",
+          "description": "A mix of pitted Kalamata and Halkidiki olives and herbs, with honey and harissa spice.",
+          "price": null
+        },
+        {
+          "name": "Seasoned Fries",
+          "description": "Seasoned Fries",
+          "price": null
+        },
+        {
+          "name": "Piri Piri Sauce",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Soup Station",
+      "items": [
+        {
+          "name": "Tomato and Basil Soup",
+          "description": "A smooth, hearty soup with sautéed onions, carrots, and rich tomatoes, seasoned to perfection.",
+          "price": null
+        },
+        {
+          "name": "Artisan Bread Rolls",
+          "description": "Stone baked French finedors, pain au seigle, pain aux olives, pain au cereales",
+          "price": null
+        },
+        {
+          "name": "Butter Portion",
+          "description": "Butter Portion",
+          "price": null
+        },
+        {
+          "name": "Sunflower Spread",
+          "description": "Sunflower Spread",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Salad Bar",
+      "items": [
+        {
+          "name": "Potato and Bacon Salad",
+          "description": "A hearty, savoury dish made with tender cooked potatoes and crispy bacon, combined in a rich, flavourful dressing",
+          "price": null
+        },
+        {
+          "name": "Garlic & herb croutons",
+          "description": "Garlic & herb croutons",
+          "price": null
+        },
+        {
+          "name": "Caesar Dressing",
+          "price": null
+        },
+        {
+          "name": "Cherry Tomatoes",
+          "price": null
+        },
+        {
+          "name": "Crunchy Salad",
+          "description": "A refreshing mix of diced apples, chopped celery, and halved seedless grapes, tossed in a creamy vegan mayonnaise and lemon juice dressing.",
+          "price": null
+        },
+        {
+          "name": "Sweetcorn",
+          "price": null
+        },
+        {
+          "name": "Caesar Salad",
+          "description": "Crisp romaine lettuce, crunchy croutons, and a creamy dressing",
+          "price": null
+        },
+        {
+          "name": "Mixed Leaf Salad",
+          "price": null
+        },
+        {
+          "name": "Cucumber",
+          "price": null
+        },
+        {
+          "name": "Pickle Vegetables",
+          "description": "Gherkins, grated carrot, pickled onions & parsley",
+          "price": null
+        },
+        {
+          "name": "Honey & Mustard Dressing",
+          "price": null
+        },
+        {
+          "name": "Classic Greek Salad",
+          "description": "A refreshing mix of cherry tomatoes, cucumber, red onion, and pitted olives, topped with fresh marinated feta cheese. Drizzled with olive oil and sprinkled with mixed herbs for a delightful finish.",
+          "price": null
+        },
+        {
+          "name": "Mango Salad",
+          "description": "Tangy and slightly sweet dish, light meal and refreshing taste ,combined with other crisp vegetables and herb.",
+          "price": null
+        },
+        {
+          "name": "Crispy Onions",
+          "price": null
+        },
+        {
+          "name": "Moroccan Couscous",
+          "description": "Slightly spiced with a mix of soft vegetables .",
+          "price": null
+        },
+        {
+          "name": "Thousand Island Dressing",
+          "price": null
+        },
+        {
+          "name": "Bacon Bits",
+          "description": "Flavoured Bacon bits",
+          "price": null
+        },
+        {
+          "name": "Diced Beetroot",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        {
+          "name": "Strawberry Sauce",
+          "price": null
+        },
+        {
+          "name": "Billionaires Chocolate Brownies",
+          "description": "Indulge in these rich and decadent Chocolate Brownies. Each square is garnished with luxurious billionaire chocolate chips and finished with a light dusting of cocoa powder.",
+          "price": null
+        },
+        {
+          "name": "Cinnamon Sugar Churros",
+          "description": "Golden brown and crispy churros, deep-fried to perfection, and coated in a sweet cinnamon sugar mix.",
+          "price": null
+        },
+        {
+          "name": "Soft Serve Ice cream",
+          "description": "A non dairy ice cream and traditional cone",
+          "price": null
+        },
+        {
+          "name": "Cone for Soft Serve",
+          "price": null
+        },
+        {
+          "name": "Chocolate Sauce",
+          "price": null
+        },
+        {
+          "name": "Tangy Lemon Cake",
+          "description": "A lemon flavoured sponge soaked with lemon juice & finished with a sprinkling of crystallised sugar pieces & feathered with white icing",
+          "price": null
+        },
+        {
+          "name": "Toffee Cheesecake",
+          "price": null
+        },
+        {
+          "name": "Mini Marshmallows",
+          "description": "Light & fluffy mini white marshmallows with a vanilla flavour.",
+          "price": null
+        },
+        {
+          "name": "Peach Fruit Jelly",
+          "price": null
+        },
+        {
+          "name": "Choc-O-Lot Bites",
+          "description": "Cocoa decoration and cocoa dough wrapped around intense chocolate filling",
+          "price": null
+        },
+        {
+          "name": "Toffee Sauce",
+          "price": null
+        },
+        {
+          "name": "Wibble Whip Raspberry",
+          "price": null
+        },
+        {
+          "name": "Fresh Fruit Salads",
+          "description": "A vibrant mix of kiwi, honeydew melon, watermelon, cantaloupe melon, and orange segments. This fresh fruit salad is a colorful and refreshing dish, perfect for any occasion.",
+          "price": null
+        },
+        {
+          "name": "Warm Belgian Waffle",
+          "description": "Warm Belgian Waffle",
+          "price": null
+        }
+      ]
+    }
+  ]
+}

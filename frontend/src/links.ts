@@ -109,6 +109,9 @@ export interface ParkLinks {
   orders: ParkLink[];
   /** Accessibility: the park's ride-access scheme (RAP and its equivalents). */
   access: ParkLink[];
+  /** On-ride photos: the park's own page for the product, and wherever the
+   *  photos are then viewed and downloaded. Empty where the park sells none. */
+  photos: ParkLink[];
   apps: AppLink[];
   social: SocialLinks;
 }
@@ -194,6 +197,34 @@ const rapInfo = (url: string): ParkLink => ({
   note: "Eligibility, evidence required and how to apply",
 });
 
+/** Merlin ride photos, mid-migration between two photo systems, so both are
+ *  linked. The older is Pomvom's imagic (formerly Picsolve), one web app for
+ *  every park keyed by a site code: `at`, `tp`, `ch` and `ll`, from the
+ *  attraction enum in its bundle. alton.photos and thorpe.photos 301 to the
+ *  first two. The newer is Venu+ (NXT Capture), whose park picker routes to a
+ *  `page_route` per park, again from its bundle. Chessington's is `cwoa`. It
+ *  lives on the Amplify app's default `main` branch URL, which looks
+ *  temporary but is the address printed, as text and as a QR code, on the
+ *  in-park photo receipts. `info` is the park's own product page (prices and
+ *  the rides covered). */
+const merlinPhotos = (info: string, pomvom: string, venu: string): ParkLink[] => [
+  {
+    label: "Unlimited Digital Photos",
+    url: info,
+    note: "Price and which rides have photos, from the park itself",
+  },
+  {
+    label: "Venu+ photos",
+    url: `https://main.d27xeg78h8take.amplifyapp.com/${venu}`,
+    note: "Newer photo system - gallery tied to your phone number or email",
+  },
+  {
+    label: "imagic photos",
+    url: `https://photos-uk.pomvom.com/${pomvom}`,
+    note: "Older Pomvom photo system",
+  },
+];
+
 export const PARK_LINKS: Record<string, ParkLinks> = {
   alton_towers: {
     website: "https://www.altontowers.com/",
@@ -233,6 +264,11 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
         "https://www.altontowers.com/plan-your-visit/before-you-visit/accessibility/accessibility-theme-park/ride-access-pass/",
       ),
     ],
+    photos: merlinPhotos(
+      "https://www.altontowers.com/tickets-passes/extras/ride-photos/",
+      "at",
+      "alton-towers",
+    ),
     apps: [
       {
         name: "Alton Towers Resort",
@@ -283,6 +319,11 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
         "https://www.thorpepark.com/plan-your-visit/before-you-visit/accessibility-information/theme-park-accessibility/ride-access-pass/",
       ),
     ],
+    photos: merlinPhotos(
+      "https://www.thorpepark.com/tickets-passes/extras/photos/",
+      "tp",
+      "thorpe-park",
+    ),
     apps: [
       {
         name: "THORPE PARK",
@@ -334,6 +375,11 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
         "https://www.legoland.co.uk/plan-your-day/before-you-visit/accessibility/theme-park-accessibility/ride-access-pass/",
       ),
     ],
+    photos: merlinPhotos(
+      "https://www.legoland.co.uk/tickets-passes/extras/unlimited-digital-photos/",
+      "ll",
+      "legoland-windsor",
+    ),
     apps: [
       {
         name: "LEGOLAND Windsor Resort",
@@ -385,6 +431,11 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
         "https://www.chessington.com/plan-your-visit/before-you-visit/accessibility-guide/theme-park-accessibility/ride-access-pass/",
       ),
     ],
+    photos: merlinPhotos(
+      "https://www.chessington.com/tickets-passes/extras/photography/",
+      "ch",
+      "cwoa",
+    ),
     apps: [
       {
         name: "Chessington Resort",
@@ -451,6 +502,13 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
         note: "Free carer entry - eligibility and how to book",
       },
     ],
+    photos: [
+      {
+        label: "Photo Pass",
+        url: "https://paultonspark.co.uk/tickets/photo-passes/",
+        note: "5 printed items from the photo kiosks, plus 3 days of unlimited digital downloads",
+      },
+    ],
     apps: [
       {
         name: "Paultons Park",
@@ -505,6 +563,8 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
         note: "Access provision and ride restrictions",
       },
     ],
+    // No ride photography advertised anywhere on the park's site.
+    photos: [],
     apps: [
       {
         name: "Flamingo Land Resort",
@@ -572,6 +632,13 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
         label: "Apply via Access Card",
         url: "https://app.accesscard.online/apply/bpb/",
         note: "Easy Pass applications are handled by Access Card",
+      },
+    ],
+    photos: [
+      {
+        label: "Ride & character photography",
+        url: "https://www.blackpoolpleasurebeach.com/photography/",
+        note: "Added as a supplement when booking - ride photos are then collected in the resort app",
       },
     ],
     apps: [

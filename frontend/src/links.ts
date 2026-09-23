@@ -640,6 +640,12 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
         url: "https://www.blackpoolpleasurebeach.com/photography/",
         note: "Added as a supplement when booking - ride photos are then collected in the resort app",
       },
+      // Same Pomvom web app as the Merlin parks, site code `bp`.
+      {
+        label: "imagic photos",
+        url: "https://photos-uk.pomvom.com/bp",
+        note: "Pomvom's photo gallery on the web",
+      },
     ],
     apps: [
       {

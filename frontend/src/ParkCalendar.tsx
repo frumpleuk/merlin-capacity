@@ -109,10 +109,13 @@ const isUnallocated = (o: Allocation): boolean => o.capacity === 0 && o.used > 0
 /** Whether the season ticket is what sells this day. The season package reports
  *  a figure on ordinary public dates too (Chessington 2026-11-01: 5,720 against
  *  the 11,440 pool), so showing it whenever present would put a second and
- *  contradictory ticket line on days the normal day ticket covers. */
+ *  contradictory ticket line on days the normal day ticket covers. On a season
+ *  date `main` is either 0/0 or, when a passholder prebook covers the day,
+ *  the full pool off public sale (Chessington Christmas: 11,440, pre-book only);
+ *  the season line replaces it, since both report the same pool. */
 function showSeason(d: DayDetail): boolean {
   if (!d.season || !(d.season.capacity > 0)) return false;
-  return !d.main || d.main.capacity === 0;
+  return !d.main || d.main.capacity === 0 || d.main.onSale === false;
 }
 
 /** Compact cell figure: how full the day is, with what is left in support.
@@ -228,7 +231,7 @@ function CellContent({ d }: { d: DayDetail }) {
           {availStatus(d.special).emoji} 🎟️ {avNums(d.special)}
         </div>
       )}
-      {hasAllocation(d.main) &&
+      {hasAllocation(d.main) && !showSeason(d) &&
         (isUnallocated(d.main) ? (
           <div className="rc-line rc-avail rc-booked" title={BOOKED_NOTE}>
             📋 🎟️ {d.main.used.toLocaleString()} booked
@@ -337,7 +340,9 @@ function DayBody({ d, seasonLabel }: { d: DayDetail; seasonLabel: string }) {
           <div className="rc-prebook-note">{d.anomaly.note}</div>
         </div>
       )}
-      {hasAllocation(d.main) && <AvailRow label="Tickets" o={d.main} past={past} />}
+      {hasAllocation(d.main) && !showSeason(d) && (
+        <AvailRow label="Tickets" o={d.main} past={past} />
+      )}
       {showSeason(d) && <AvailRow label={seasonLabel} o={d.season!} past={past} />}
       {hasAllocation(d.rap) && <AvailRow label="RAP" o={d.rap} past={past} />}
     </div>

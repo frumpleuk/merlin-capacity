@@ -250,7 +250,8 @@ export async function refreshAnomalies(
       flag("bookings_no_allocation", date, nums(m));
     } else if (m && pool && m.capacity > 0 && m.capacity < pool) {
       flag("reduced_allocation", date, `${nums(m)} vs pool ${pool}`);
-    } else if (m && m.onSale === false && pool && m.capacity === pool) {
+    } else if (m && m.onSale === false && pool && m.capacity === pool && !sells(se)) {
+      // A season product selling the date is why the day ticket is off sale.
       flag("offsale_at_full_pool", date, nums(m));
     }
   }

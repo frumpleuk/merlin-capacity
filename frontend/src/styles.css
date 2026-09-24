@@ -536,6 +536,22 @@ main.with-bar {
 .q-hint {
   margin: 8px 0 12px;
 }
+/* The park's own closure list, under the ride list it explains gaps in. Held to
+   the same max-width as .q-list so it lines up with the rows above it. */
+.q-avail {
+  max-width: 920px;
+  margin: 14px auto 0;
+  font-size: 12px;
+  text-align: center;
+}
+.q-avail a {
+  color: var(--muted);
+}
+.q-avail a:hover,
+.q-avail a:focus-visible {
+  color: var(--fg);
+}
+
 /* Why the park is running on a day that isn't on public sale. */
 .q-special {
   margin: 8px 0 12px;

@@ -107,6 +107,15 @@ export interface ParkLinks {
   /** Getting an order back after you've bought it — the lookup or account page
    *  that resends tickets and passes. Empty where the park runs neither. */
   orders: ParkLink[];
+  /** The park's own closure list: which rides are out for maintenance. These
+   *  pages carry PLANNED and long-term closures, not live status (the park apps
+   *  do that) — Flamingo Land is the exception, its page is today's list.
+   *  A named field rather than a row in a list because the Queues tab links it
+   *  directly, under the ride it explains the absence of. */
+  rideAvailability: ParkLink;
+  /** The park's own opening-times calendar — the source our hours poller reads,
+   *  and the authority when the two disagree. */
+  openingTimes: ParkLink;
   /** Accessibility: the park's ride-access scheme (RAP and its equivalents). */
   access: ParkLink[];
   /** On-ride photos: the park's own page for the product, and wherever the
@@ -180,6 +189,22 @@ const MAP_FIND_PASS: ParkLink = {
   url: "https://me-annualpass.tickets.merlinannualpass.co.uk/orderLookup",
   note: "Passes are a separate order from park tickets - same email and phone lookup, adds to Apple or Google Wallet",
 };
+
+/** A park's closure list. The default note fits the six parks whose page is a
+ *  schedule of planned maintenance; Flamingo Land overrides it. */
+const rideAvailability = (url: string, note?: string): ParkLink => ({
+  label: "Ride availability",
+  url,
+  note: note ?? "Planned and long-term ride closures, from the park itself",
+});
+
+/** The park's own opening-times page. Worth linking next to our calendar feed:
+ *  it's what the hours poller reads, so it's the authority when they differ. */
+const openingTimes = (url: string): ParkLink => ({
+  label: "Opening times",
+  url,
+  note: "The park's own calendar - what our hours are read from",
+});
 
 /** The Merlin Ride Access Pass app — one app covering all four Merlin parks
  *  (RAP applications and ride bookings moved into it), so it's listed alongside
@@ -259,6 +284,8 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
       ),
       MAP_FIND_PASS,
     ],
+    rideAvailability: rideAvailability("https://www.altontowers.com/plan-your-visit/resort-information/ride-attraction-availability/"),
+    openingTimes: openingTimes("https://www.altontowers.com/plan-your-visit/before-you-visit/opening-times/"),
     access: [
       rapInfo(
         "https://www.altontowers.com/plan-your-visit/before-you-visit/accessibility/accessibility-theme-park/ride-access-pass/",
@@ -314,6 +341,8 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
       ),
       MAP_FIND_PASS,
     ],
+    rideAvailability: rideAvailability("https://www.thorpepark.com/plan-your-visit/resort-information/ride-availability/"),
+    openingTimes: openingTimes("https://www.thorpepark.com/plan-your-visit/before-you-visit/opening-times/"),
     access: [
       rapInfo(
         "https://www.thorpepark.com/plan-your-visit/before-you-visit/accessibility-information/theme-park-accessibility/ride-access-pass/",
@@ -370,6 +399,8 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
       ),
       MAP_FIND_PASS,
     ],
+    rideAvailability: rideAvailability("https://www.legoland.co.uk/plan-your-day/useful-guides/ride-availability/"),
+    openingTimes: openingTimes("https://www.legoland.co.uk/plan-your-day/before-you-visit/opening-hours/"),
     access: [
       rapInfo(
         "https://www.legoland.co.uk/plan-your-day/before-you-visit/accessibility/theme-park-accessibility/ride-access-pass/",
@@ -426,6 +457,8 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
       ),
       MAP_FIND_PASS,
     ],
+    rideAvailability: rideAvailability("https://www.chessington.com/plan-your-visit/resort-information/ride-availability/"),
+    openingTimes: openingTimes("https://www.chessington.com/plan-your-visit/before-you-visit/opening-hours/"),
     access: [
       rapInfo(
         "https://www.chessington.com/plan-your-visit/before-you-visit/accessibility-guide/theme-park-accessibility/ride-access-pass/",
@@ -485,6 +518,8 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
         note: "Sign in for order history, ticket downloads and confirmation resends",
       },
     ],
+    rideAvailability: rideAvailability("https://paultonspark.co.uk/info/ride-availability"),
+    openingTimes: openingTimes("https://paultonspark.co.uk/info/opening-times"),
     access: [
       {
         label: "Guests with access requirements",
@@ -556,6 +591,8 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
     // account, so there's nothing to link — a missing confirmation goes
     // through the contact page.
     orders: [],
+    rideAvailability: rideAvailability("https://www.flamingoland.co.uk/today/", "Today's maintenance closures and show times"),
+    openingTimes: openingTimes("https://www.flamingoland.co.uk/plan-your-visit/whats-on-and-opening-times/"),
     access: [
       {
         label: "Accessibility guide",
@@ -622,6 +659,8 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
         note: "Sign in to see wristbands and season passes you've bought",
       },
     ],
+    rideAvailability: rideAvailability("https://www.blackpoolpleasurebeach.com/ride-availability/"),
+    openingTimes: openingTimes("https://www.blackpoolpleasurebeach.com/opening-times-prices/"),
     access: [
       {
         label: "Easy Pass",

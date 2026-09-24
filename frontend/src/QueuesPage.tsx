@@ -11,6 +11,7 @@ import {
   type SpecialDaysFile,
 } from "./api";
 import { findPark, PARK_HOME } from "./catalog";
+import { PARK_LINKS } from "./links";
 import { DateNav, QueueList } from "./Queues";
 
 const today = () => new Date().toISOString().slice(0, 10);
@@ -77,6 +78,8 @@ export function QueuesPage() {
 
   if (!parkDef) return <Navigate to={PARK_HOME} replace />;
 
+  const availability = PARK_LINKS[parkDef.key]?.rideAvailability;
+
   // Nav base: date param drops off for "today" so the URL stays clean.
   const go = (d: string) =>
     navigate(d === today() ? `/${park}/queues` : `/${park}/queues/${d}`);
@@ -112,6 +115,16 @@ export function QueuesPage() {
         tickets={tickets}
         rap={rap}
       />
+      {/* A ride absent from this list, or closed all day, is usually out for
+          maintenance rather than broken — and only the park says which. Sits
+          below the list because that's where the question gets asked. */}
+      {availability && (
+        <p className="q-avail">
+          <a href={availability.url} target="_blank" rel="noreferrer noopener">
+            Which rides are closed — {parkDef.label} ride availability
+          </a>
+        </p>
+      )}
     </main>
   );
 }

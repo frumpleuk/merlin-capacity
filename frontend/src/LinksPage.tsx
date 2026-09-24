@@ -320,6 +320,12 @@ export function LinksPage() {
           </section>
         )}
 
+        <section className="lk-group">
+          <h3>What&apos;s open</h3>
+          <LinkRow link={links.rideAvailability} />
+          <LinkRow link={links.openingTimes} />
+        </section>
+
         <GettingThereGroup location={links.location} />
 
         {links.access.length > 0 && (

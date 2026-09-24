@@ -116,6 +116,9 @@ export interface ParkLinks {
   /** The park's own opening-times calendar — the source our hours poller reads,
    *  and the authority when the two disagree. */
   openingTimes: ParkLink;
+  /** Which lifts are out, for the four Merlin parks. Unset elsewhere: no
+   *  independent publishes a lift closure list. */
+  liftAvailability?: ParkLink;
   /** Accessibility: the park's ride-access scheme (RAP and its equivalents). */
   access: ParkLink[];
   /** On-ride photos: the park's own page for the product, and wherever the
@@ -188,6 +191,18 @@ const MAP_FIND_PASS: ParkLink = {
   label: "Find my annual pass",
   url: "https://me-annualpass.tickets.merlinannualpass.co.uk/orderLookup",
   note: "Passes are a separate order from park tickets - same email and phone lookup, adds to Apple or Google Wallet",
+};
+
+/** Lift closures across all four Merlin resort theme parks — one shared page on
+ *  Merlin's accessibility site, not a per-park one, so the same URL appears on
+ *  each. It lists the lift by ride (currently Alton's Smiler and Get Set Go
+ *  Octonauts, Chessington's Blue Barnacle, Legoland's Deep Sea Adventure), and
+ *  only Alton's own site links it — from the foot of its ride availability page.
+ *  No independent publishes an equivalent. */
+const MERLIN_LIFTS: ParkLink = {
+  label: "Lift availability",
+  url: "https://www.accessibility.merlinentertainments.biz/ride-access-pass/uk-resort-theme-park-lift-availability/",
+  note: "Lifts out for maintenance across all four Merlin parks, and the step-free alternatives",
 };
 
 /** A park's closure list. The default note fits the six parks whose page is a
@@ -286,6 +301,7 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
     ],
     rideAvailability: rideAvailability("https://www.altontowers.com/plan-your-visit/resort-information/ride-attraction-availability/"),
     openingTimes: openingTimes("https://www.altontowers.com/plan-your-visit/before-you-visit/opening-times/"),
+    liftAvailability: MERLIN_LIFTS,
     access: [
       rapInfo(
         "https://www.altontowers.com/plan-your-visit/before-you-visit/accessibility/accessibility-theme-park/ride-access-pass/",
@@ -343,6 +359,7 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
     ],
     rideAvailability: rideAvailability("https://www.thorpepark.com/plan-your-visit/resort-information/ride-availability/"),
     openingTimes: openingTimes("https://www.thorpepark.com/plan-your-visit/before-you-visit/opening-times/"),
+    liftAvailability: MERLIN_LIFTS,
     access: [
       rapInfo(
         "https://www.thorpepark.com/plan-your-visit/before-you-visit/accessibility-information/theme-park-accessibility/ride-access-pass/",
@@ -401,6 +418,7 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
     ],
     rideAvailability: rideAvailability("https://www.legoland.co.uk/plan-your-day/useful-guides/ride-availability/"),
     openingTimes: openingTimes("https://www.legoland.co.uk/plan-your-day/before-you-visit/opening-hours/"),
+    liftAvailability: MERLIN_LIFTS,
     access: [
       rapInfo(
         "https://www.legoland.co.uk/plan-your-day/before-you-visit/accessibility/theme-park-accessibility/ride-access-pass/",
@@ -459,6 +477,7 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
     ],
     rideAvailability: rideAvailability("https://www.chessington.com/plan-your-visit/resort-information/ride-availability/"),
     openingTimes: openingTimes("https://www.chessington.com/plan-your-visit/before-you-visit/opening-hours/"),
+    liftAvailability: MERLIN_LIFTS,
     access: [
       rapInfo(
         "https://www.chessington.com/plan-your-visit/before-you-visit/accessibility-guide/theme-park-accessibility/ride-access-pass/",

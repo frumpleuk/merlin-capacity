@@ -56,11 +56,27 @@ function headers(park: ParkConfig) {
   };
 }
 
+interface ApiTime {
+  available?: string;
+  capacity?: string;
+  used?: string;
+}
+
 interface ApiDay {
   date: string;
   package_id?: string;
-  T?: { available?: string; capacity?: string; used?: string };
+  T?: OneOrMany<ApiTime>;
 }
+
+/** accesso serves a repeated element as a bare object when there is exactly one
+ *  of it and an array when there are several — the same quirk `discover.ts`
+ *  normalises on the catalog's `E`/`CT`. It bites here too: `D` is an array for
+ *  every product that sells on more than one date, and a lone object for a
+ *  one-night event, which made `for…of` throw. That rejection propagated out of
+ *  the `Promise.all` in pollTickets and killed the whole invocation, so ONE
+ *  single-date product stopped every other product polling. */
+type OneOrMany<T> = T | T[] | undefined;
+const asArray = <T>(v: OneOrMany<T>): T[] => (Array.isArray(v) ? v : v ? [v] : []);
 
 /**
  * One stateless read of a product's availability across the whole date window.
@@ -96,19 +112,23 @@ export async function fetchProduct(
   const apiStatus = String(svc.status ?? "UNKNOWN");
   if (apiStatus !== "OK") return empty(apiStatus);
 
-  const days = (svc.D as ApiDay[] | undefined) ?? [];
+  const days = asArray(svc.D as OneOrMany<ApiDay>);
   const snapshot: Snapshot = {};
   const pkgIds: Record<string, Set<string>> = {};
 
   for (const d of days) {
-    const t = d.T ?? {};
     const date = d.date;
     if (!date) continue;
     const cur: DayObs =
       snapshot[date] ?? { capacity: 0, available: 0, used: 0, packageIds: "" };
-    cur.capacity += Number(t.capacity ?? 0);
-    cur.available += Number(t.available ?? 0);
-    cur.used += Number(t.used ?? 0);
+    // `T` is one-or-many for the same reason `D` is: one entry for an all-day
+    // product, one per slot for a timed one. Summing covers both — a single
+    // object normalises to a one-element list and lands on the old behaviour.
+    for (const t of asArray(d.T)) {
+      cur.capacity += Number(t.capacity ?? 0);
+      cur.available += Number(t.available ?? 0);
+      cur.used += Number(t.used ?? 0);
+    }
     snapshot[date] = cur;
     (pkgIds[date] ??= new Set()).add(d.package_id ?? "");
   }

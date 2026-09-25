@@ -244,6 +244,11 @@ export interface ProductConfig {
   P?: unknown[];
   /** Or: rediscover the selectors from the catalog each TTL (main tickets). */
   discover?: DiscoverSpec;
+  /** Last date this product can sell, for a product with a fixed end — a
+   *  one-off special event. Past it the poll stops calling the API rather than
+   *  asking, every minute, about a night that has been and gone. Omit for an
+   *  open-ended product (main, RAP), which always has future dates. */
+  until?: string;
   /** Independent (non-accesso) availability source: a static JSON blob of
    *  per-day capacity/availability (Paulton's `tickets/availability.json`). When
    *  set, the poll fetches this instead of the accesso API — the accesso payload
@@ -429,6 +434,27 @@ export const PARKS: ParkConfig[] = [
         extra_movie: "date",
         include_times: true,
         P: [{ CT: [{ id: "14036", qty: 1 }], event_id: "2658", id: "77728" }],
+      },
+      {
+        // STEALTH: 20 YEARS OF SPEED — a one-night event on 2026-09-28, 6-8pm
+        // ride time on Stealth plus the sale of 205 numbered pieces of its
+        // retired launch cable. £10pp, entry from 5pm.
+        //
+        // PROMO-GATED, so it is NOT in the bootstrap catalog and discovery
+        // cannot find it: the package only surfaces via GetMerchantPackageList
+        // with `promo_codes: "Stealth20"` (see docs/accesso-api.md). Worse, the
+        // code was never published on thorpepark.com at all — it arrived in a
+        // Facebook ad — so even crawling the park's own pages wouldn't turn it
+        // up. Hence a hardcoded P, like RAP.
+        //
+        // Availability itself needs no promo code: event 2064 + package 56991 +
+        // CT 231 answers GetMerchantPackageEventDates directly.
+        key: "stealth20",
+        label: "Stealth 20",
+        extra_movie: "",
+        include_times: false,
+        P: [{ CT: [{ id: "231", qty: 1 }], event_id: "2064", id: "56991" }],
+        until: "2026-09-28",
       },
       {
         // Main tickets — event 2507. Package ids rediscovered from the

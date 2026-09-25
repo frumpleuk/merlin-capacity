@@ -24,6 +24,9 @@ interface MonthData {
   /** A season sold under its own package (Chessington Christmas). Absent for
    *  parks without one, which just 404s to null. */
   season: ProductFile | null;
+  /** One-off ticketed events (ParkDef.events), in catalog order. A month the
+   *  event doesn't fall in 404s to null and contributes nothing. */
+  events: { label: string; file: ProductFile | null }[];
 }
 
 /** The special-days file covers the whole horizon in one object; the calendar
@@ -110,13 +113,22 @@ export function ParkCalendarPage() {
     setData(undefined);
     let alive = true;
     const tick = async () => {
-      const [main, rap, hours, season] = await Promise.all([
+      const defs = parkDef.events ?? [];
+      const [main, rap, hours, season, ...events] = await Promise.all([
         loadProductMonth(park!, "main", month),
         loadProductMonth(park!, "rap", month),
         loadHoursMonth(park!, month),
         loadProductMonth(park!, "season", month),
+        ...defs.map((e) => loadProductMonth(park!, e.key, month)),
       ]);
-      if (alive) setData({ main, rap, hours, season });
+      if (alive)
+        setData({
+          main,
+          rap,
+          hours,
+          season,
+          events: defs.map((e, i) => ({ label: e.label, file: events[i] })),
+        });
     };
     tick();
     const id = setInterval(tick, 30_000);
@@ -140,6 +152,7 @@ export function ParkCalendarPage() {
         rap={data?.rap ?? null}
         hours={data?.hours ?? null}
         season={data?.season ?? null}
+        events={data?.events ?? []}
         special={specialForMonth(special, month)}
         anomalies={anomalies}
         restrictions={restrictionsForMonth(restrictions, month)}

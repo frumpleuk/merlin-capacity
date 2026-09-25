@@ -51,6 +51,10 @@ export interface DayDetail {
    *  Christmas is the case: it cannot be merged into `main` without the accesso
    *  merge zeroing the date, so it is polled as its own product. */
   season?: DayObs;
+  /** One-off ticketed events selling on this date, each with its own pool —
+   *  Thorpe's Stealth 20 night. A list, not a named slot: a date can carry
+   *  several, and which ones exist changes season to season. */
+  events?: { label: string; obs: DayObs }[];
   /** The theme park runs this day but is closed to the public — a buyout, named
    *  by the only package that sells it. */
   special?: SpecialDay;
@@ -138,6 +142,7 @@ export function mergeDetails(
   hours: HoursFile | null,
   special: SpecialDaysFile | null,
   season: ProductFile | null,
+  events: { label: string; file: ProductFile | null }[],
   anomalies: Record<string, { kind: AnomalyKind; note: string }>,
   restrictions: RestrictionsFile | null,
 ): Map<string, DayDetail> {
@@ -155,6 +160,13 @@ export function mergeDetails(
   for (const [iso, o] of Object.entries(main?.days ?? {})) get(iso).main = o;
   for (const [iso, o] of Object.entries(rap?.days ?? {})) get(iso).rap = o;
   for (const [iso, o] of Object.entries(season?.days ?? {})) get(iso).season = o;
+  // An event can CREATE a date: Thorpe's Stealth 20 sells on a night the park
+  // publishes no separate hours for, and it must still get a calendar row.
+  for (const e of events)
+    for (const [iso, o] of Object.entries(e.file?.days ?? {})) {
+      const d = get(iso);
+      (d.events ??= []).push({ label: e.file?.label ?? e.label, obs: o });
+    }
   // Buyouts come last and can CREATE a date the other three files never mention:
   // no public theme-park hours and no public availability, so without this the
   // day renders as an empty cell despite the park running all day.
@@ -231,6 +243,13 @@ function CellContent({ d }: { d: DayDetail }) {
           {availStatus(d.special).emoji} 🎟️ {avNums(d.special)}
         </div>
       )}
+      {/* ⭐, not the 🎟️ of the day ticket: an event night sells both, and two
+          identical rows in one cell say nothing about which is which. */}
+      {d.events?.map((e) => (
+        <div key={e.label} className="rc-line rc-avail" title={`${e.label}: ${avNums(e.obs)}`}>
+          {availStatus(e.obs).emoji} ⭐ {avNums(e.obs)}
+        </div>
+      ))}
       {hasAllocation(d.main) && !showSeason(d) &&
         (isUnallocated(d.main) ? (
           <div className="rc-line rc-avail rc-booked" title={BOOKED_NOTE}>
@@ -344,6 +363,9 @@ function DayBody({ d, seasonLabel }: { d: DayDetail; seasonLabel: string }) {
         <AvailRow label="Tickets" o={d.main} past={past} />
       )}
       {showSeason(d) && <AvailRow label={seasonLabel} o={d.season!} past={past} />}
+      {d.events?.map((e) => (
+        <AvailRow key={e.label} label={e.label} o={e.obs} past={past} />
+      ))}
       {hasAllocation(d.rap) && <AvailRow label="RAP" o={d.rap} past={past} />}
     </div>
   );
@@ -585,6 +607,7 @@ export function ParkCalendar({
   hours,
   special,
   season,
+  events,
   anomalies,
   restrictions,
   month,
@@ -599,6 +622,7 @@ export function ParkCalendar({
   hours: HoursFile | null;
   special: SpecialDaysFile | null;
   season: ProductFile | null;
+  events: { label: string; file: ProductFile | null }[];
   anomalies: Record<string, { kind: AnomalyKind; note: string }>;
   restrictions: RestrictionsFile | null;
   month: string;
@@ -613,7 +637,16 @@ export function ParkCalendar({
   // A tapped day belongs to the current month — clear it when navigating away.
   useEffect(() => setSelected(null), [month]);
 
-  const details = mergeDetails(main, rap, hours, special, season, anomalies, restrictions);
+  const details = mergeDetails(
+    main,
+    rap,
+    hours,
+    special,
+    season,
+    events,
+    anomalies,
+    restrictions,
+  );
   // A season product names itself in its own file, so the calendar doesn't need
   // to know which park has one.
   const seasonLabel = season?.label ?? "Season";

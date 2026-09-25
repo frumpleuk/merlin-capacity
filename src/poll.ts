@@ -30,6 +30,15 @@ export async function runPoll(
   const start = ymd(now);
   const end = ymd(now + HORIZON_DAYS * 86_400_000);
 
+  // A product with a fixed end stops being polled once it's over. Nothing about
+  // a finished night can change, and the API would be asked about it every
+  // minute forever otherwise. The served files stay put, so the calendar keeps
+  // showing what it sold.
+  if (product.until && start > product.until) {
+    await logPoll(env.DB, park.key, product.key, 0, "ENDED", 0, 0, observedAt);
+    return 0;
+  }
+
   const prev = await readSnapshot(env.BUCKET, park.key, product.key);
 
   let res: FetchResult;

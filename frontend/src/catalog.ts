@@ -14,6 +14,10 @@ export interface ParkDef {
   /** Queue-only park (Paulton's): no accesso tickets/calendar, only the live
    *  ride-queue times. The nav shows just the Queues tab and lands there. */
   queueOnly?: boolean;
+  /** One-off ticketed events with their own allocation, shown as extra lines on
+   *  the Calendar tab. Deliberately NOT in `products`: those drive the nav, and
+   *  a single night doesn't deserve a tab that goes dead the morning after. */
+  events?: ProductDef[];
   /** On the Merlin Annual Pass, so the estate-wide entry restrictions apply and
    *  the calendar shows which pass levels are refused on a date (see
    *  loadRestrictions). The independents are on their own pass schemes. */
@@ -43,6 +47,8 @@ export const PARKS: ParkDef[] = [
       { key: "main", label: "Tickets" },
       { key: "rap", label: "RAP" },
     ],
+    // 28 Sep 2026 only — see the stealth20 product in src/config.ts.
+    events: [{ key: "stealth20", label: "Stealth 20" }],
   },
   {
     key: "legoland",

@@ -167,6 +167,48 @@ main {
   cursor: pointer;
   padding: 0 4px;
 }
+/* The day's recent activity (RAP), inside the detail bar. */
+.recent-summary {
+  margin-top: 4px;
+  color: var(--muted);
+}
+.recent-toggle {
+  border: none;
+  background: none;
+  padding: 4px 0;
+  font: inherit;
+  color: var(--fg);
+  text-decoration: underline;
+  cursor: pointer;
+}
+.recent-list {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 0;
+  max-height: 40vh;
+  overflow-y: auto;
+  border-top: 1px solid var(--grid);
+}
+.recent-list li {
+  display: grid;
+  grid-template-columns: 3.2em 1fr auto;
+  gap: 10px;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--grid);
+  font-variant-numeric: tabular-nums;
+}
+.recent-list time,
+.recent-left {
+  color: var(--muted);
+}
+.recent-list li.back .recent-what {
+  font-weight: 600;
+}
+.recent-note {
+  margin: 6px 0 0;
+  font-size: 11.5px;
+  color: var(--muted);
+}
 /* Keep the last row of days clear of the fixed bar. */
 main.with-bar {
   padding-bottom: 96px;

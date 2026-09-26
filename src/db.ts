@@ -506,6 +506,88 @@ export async function putMonthFile(
   });
 }
 
+/* ── Recent movement (the RAP page's per-day activity) ─────────────────────────
+ *
+ * The month files hold one reading per date, which hides everything that
+ * happens on a sold-out day: places come back and are re-bought within a minute
+ * or two, and the date reads 0 left throughout. This file keeps every reading of
+ * every date that moved in the last few hours, projected from the log, so the
+ * page can show the sales, returns and releases between them.
+ *
+ * Each date also carries its last reading from BEFORE the window, so the first
+ * change inside it has something to be measured against. The page takes the
+ * differences itself and drops any that have since aged out of the window, so a
+ * file that goes unrewritten for a quiet hour still reads correctly. */
+
+/** One reading: [observed_at, capacity, available]. */
+export type RecentReading = [string, number, number];
+
+export const recentKey = (park: string, product: Product) =>
+  `calendar/${park}/${product}/recent.json`;
+
+export async function writeRecentFile(
+  db: D1Database,
+  bucket: R2Bucket,
+  park: string,
+  product: Product,
+  now: number,
+  windowHours: number,
+): Promise<void> {
+  const since = new Date(now - windowHours * 3_600_000).toISOString();
+  const today = new Date(now).toISOString().slice(0, 10);
+  // Which dates moved in the window, from the projection (one row per date), and
+  // each one's last reading before it as a correlated seek on the log's
+  // (park, product, event_date, observed_at) key. A time-range scan of the log
+  // would read every park's and product's rows instead: 9,042 against 64 for
+  // Alton RAP on 2026-09-26. Dates already past can't be bought and aren't shown.
+  const moved = `SELECT event_date FROM observation_latest
+     WHERE park = ?1 AND product = ?2 AND event_date >= ?3 AND observed_at >= ?4`;
+  const [heads, window] = await db.batch([
+    db
+      .prepare(
+        `SELECT l.event_date,
+           (SELECT json_array(o.observed_at, o.capacity, o.available) FROM observation o
+             WHERE o.park = l.park AND o.product = l.product AND o.event_date = l.event_date
+               AND o.observed_at < ?4
+             ORDER BY o.observed_at DESC LIMIT 1) AS before
+         FROM observation_latest l
+         WHERE l.park = ?1 AND l.product = ?2 AND l.event_date >= ?3 AND l.observed_at >= ?4`,
+      )
+      .bind(park, product, today, since),
+    db
+      .prepare(
+        `SELECT event_date, observed_at, capacity, available FROM observation
+          WHERE park = ?1 AND product = ?2 AND event_date IN (${moved}) AND observed_at >= ?4
+          ORDER BY event_date, observed_at`,
+      )
+      .bind(park, product, today, since),
+  ]);
+  const days: Record<string, RecentReading[]> = {};
+  for (const r of heads.results as { event_date: string; before: string | null }[]) {
+    days[r.event_date] = r.before ? [JSON.parse(r.before) as RecentReading] : [];
+  }
+  for (const r of window.results as {
+    event_date: string;
+    observed_at: string;
+    capacity: number;
+    available: number;
+  }[]) {
+    (days[r.event_date] ??= []).push([r.observed_at, r.capacity, r.available]);
+  }
+  if (Object.keys(days).length === 0) return; // nothing new; the page ages out what's there
+
+  const body = JSON.stringify({
+    park,
+    product,
+    generated_at: new Date(now).toISOString(),
+    since,
+    days,
+  });
+  await bucket.put(recentKey(park, product), body, {
+    httpMetadata: { contentType: "application/json" },
+  });
+}
+
 /** Field-by-field, rather than comparing serialised JSON: both snapshots are
  *  built from object literals in the same key order today, but that is a
  *  coincidence of how `readLatestRange` and `readRangeSnapshot` happen to be

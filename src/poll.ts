@@ -7,6 +7,7 @@ import {
   readSnapshot,
   updateParkIndex,
   writeProductFile,
+  writeRecentFile,
 } from "./db";
 import { resolvePackages } from "./discover";
 import { diffSnapshots, type FetchResult, fetchProduct } from "./merlin";
@@ -14,6 +15,9 @@ import { fetchPaultonsAvailability } from "./paultons";
 import type { Env } from "./types";
 
 const ymd = (ms: number) => new Date(ms).toISOString().slice(0, 10);
+
+/** How far back the RAP page's per-day activity reaches. */
+const RECENT_WINDOW_HOURS = 6;
 
 /**
  * One poll of one product: read the last snapshot (from its R2 file), fetch
@@ -97,6 +101,23 @@ export async function runPoll(
         );
       }
       await updateParkIndex(env.BUCKET, park.key, months, observedAt);
+      // RAP only: a hard pool, so every movement is a place sold or returned.
+      // The main pool's yield slack makes the same readings unreadable that way.
+      if (product.key === "rap") {
+        try {
+          await writeRecentFile(
+            env.DB,
+            env.BUCKET,
+            park.key,
+            product.key,
+            now,
+            RECENT_WINDOW_HOURS,
+          );
+        } catch (e) {
+          // A view of the log, rebuilt next poll. Never worth failing the poll over.
+          console.error(`recent ${park.key}/${product.key}:`, e);
+        }
+      }
     }
   }
 

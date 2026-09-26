@@ -4,7 +4,9 @@ import {
   loadParkIndex,
   loadProduct,
   loadProductRange,
+  loadRecent,
   type ProductFile,
+  type RecentFile,
 } from "./api";
 import { DEFAULT_PATH, findPark } from "./catalog";
 import { DetailBar, ProductCalendar } from "./Heatmap";
@@ -19,11 +21,15 @@ export function CalendarPage() {
   const [file, setFile] = useState<ProductFile | null | undefined>(undefined);
   // Default the selection to today, so the detail bar opens on the current day.
   const [selected, setSelected] = useState<string | null>(today);
+  // RAP keeps every reading of the last few hours, for the day's activity list.
+  const hasRecent = product === "rap";
+  const [recent, setRecent] = useState<RecentFile | null>(null);
 
   useEffect(() => {
     if (!parkDef || !productDef) return;
     setSelected(today);
     setFile(undefined);
+    setRecent(null);
     let alive = true;
     const tick = async () => {
       // Prefer the merged per-month files (history + forward); fall back to the
@@ -33,6 +39,10 @@ export function CalendarPage() {
         ? await loadProductRange(park!, product!, index)
         : await loadProduct(park!, product!);
       if (alive) setFile(f);
+      if (hasRecent) {
+        const r = await loadRecent(park!, product!);
+        if (alive) setRecent(r);
+      }
     };
     tick();
     const id = setInterval(tick, 30_000);
@@ -75,6 +85,7 @@ export function CalendarPage() {
           label={productDef.label}
           iso={selected}
           o={selDay}
+          recent={recent ? recent.days[selected] ?? [] : undefined}
           onClose={() => setSelected(null)}
         />
       )}

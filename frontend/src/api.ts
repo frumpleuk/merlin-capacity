@@ -30,6 +30,22 @@ export async function loadProduct(
   return Object.keys(f.days || {}).length > 0 ? f : null;
 }
 
+/** Every reading of each date that moved in the last few hours, with the one
+ *  before the window as a baseline: [observed_at, capacity, available]. RAP only
+ *  (see writeRecentFile). */
+export type RecentReading = [string, number, number];
+
+export interface RecentFile {
+  generated_at: string;
+  since: string;
+  days: Record<string, RecentReading[]>;
+}
+
+export async function loadRecent(park: string, product: string): Promise<RecentFile | null> {
+  const r = await fetch(`/calendar/${park}/${product}/recent.json`, { cache: "no-store" });
+  return r.ok ? ((await r.json()) as RecentFile) : null;
+}
+
 /** One location's opening hours for a day, classified by the backend: `event`
  *  is set when the API's lastEntryTime field was actually a special-event name. */
 export interface LocationHours {

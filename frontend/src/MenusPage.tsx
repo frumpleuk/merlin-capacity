@@ -577,6 +577,7 @@ function VenueCard({
 function AreaGroup({
   area,
   venues,
+  events = [],
   query,
   openAll,
   focus,
@@ -585,6 +586,8 @@ function AreaGroup({
 }: {
   area: string;
   venues: Venue[];
+  /** Events pitched in this area right now; their stalls are listed above. */
+  events?: ParkEvent[];
   query: string;
   openAll: boolean;
   focus?: string;
@@ -607,10 +610,19 @@ function AreaGroup({
         </span>
         {area}
         <span className="fd-venue-meta">
-          {venues.length} place{venues.length === 1 ? "" : "s"}
+          {venues.length > 0 && `${venues.length} place${venues.length === 1 ? "" : "s"}`}
+          {venues.length > 0 && events.length > 0 && " · "}
+          {events.length > 0 && `${events.length} event${events.length === 1 ? "" : "s"}`}
           {prices.length > 0 && ` · from ${money(Math.min(...prices))}`}
         </span>
       </button>
+      {show &&
+        events.map((e) => (
+          <a key={e.slug} className="fd-event-link" href={`#event-${e.slug}`}>
+            {e.name}: {e.vendors.length} stall{e.vendors.length === 1 ? "" : "s"}
+            {e.end ? `, until ${longDate(e.end)}` : ""}, listed at the top
+          </a>
+        ))}
       {show &&
         venues.map((v) => (
           <VenueCard key={v.slug} venue={v} query={query} focus={focus} onOpen={onOpen} onShot={onShot} />
@@ -622,6 +634,7 @@ function AreaGroup({
 /** Venues under their park area, areas in alphabetical order. */
 function AreaGroups({
   venues,
+  events = [],
   query,
   openAll,
   focus,
@@ -629,6 +642,7 @@ function AreaGroups({
   onShot,
 }: {
   venues: Venue[];
+  events?: ParkEvent[];
   query: string;
   openAll: boolean;
   focus?: string;
@@ -641,6 +655,14 @@ function AreaGroups({
     if (!byArea.has(key)) byArea.set(key, []);
     byArea.get(key)!.push(v);
   }
+  // A running event is shown whole at the top, but someone reading down the
+  // areas should still learn it's there, so its area gets a line pointing up.
+  const eventsIn = new Map<string, ParkEvent[]>();
+  for (const e of events) {
+    if (!e.area) continue;
+    if (!byArea.has(e.area)) byArea.set(e.area, []);
+    eventsIn.set(e.area, [...(eventsIn.get(e.area) ?? []), e]);
+  }
   return (
     <>
       {[...byArea].sort(([a], [b]) => a.localeCompare(b)).map(([area, list]) => (
@@ -648,6 +670,7 @@ function AreaGroups({
           key={area}
           area={area}
           venues={list}
+          events={eventsIn.get(area)}
           query={query}
           openAll={openAll}
           focus={focus}
@@ -931,7 +954,7 @@ export function MenusPage() {
           )}
 
           {running.map((e) => (
-            <section key={e.slug} className="fd-event">
+            <section key={e.slug} id={`event-${e.slug}`} className="fd-event">
               <h3 className="fd-area-head">
                 {e.name}
                 <span className="fd-venue-meta">
@@ -956,6 +979,7 @@ export function MenusPage() {
           {current.length > 0 ? (
             <AreaGroups
               venues={current}
+              events={running}
               query={query}
               openAll={!!query || filtered}
               focus={focus}

@@ -1488,6 +1488,15 @@ main.with-bar {
 h3.fd-area-head {
   cursor: default;
 }
+/* A running event's line in its area: the stalls themselves are up top. */
+.fd-event-link {
+  display: block;
+  padding: 10px 0;
+  font-size: 14px;
+  color: var(--link);
+  text-decoration: none;
+  border-bottom: 1px solid var(--grid);
+}
 
 /* One venue: a row that opens. Flat until opened, so a long list reads as a
    list rather than a stack of boxes. */

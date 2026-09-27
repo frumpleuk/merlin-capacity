@@ -1,0 +1,116 @@
+{
+  "date": "2026-09-27",
+  "sections": [
+    {
+      "name": "Crêpes",
+      "note": "Board hangs on the Bam Bam unit. Our Crêpes contain gluten, nuts & dairy, please speak to a member of staff for full allergen guide",
+      "items": [
+        {
+          "name": "Graveyard Crunch",
+          "description": "Nutella & Oreo",
+          "price": 1000,
+          "photo": "IMG_3980.HEIC"
+        },
+        {
+          "name": "Vampire Kiss",
+          "description": "Nutella & Strawberries",
+          "price": 1000,
+          "photo": "IMG_3980.HEIC"
+        },
+        {
+          "name": "The Frankenstein",
+          "description": "Pistachio & Nutella",
+          "price": 900,
+          "photo": "IMG_3980.HEIC"
+        },
+        {
+          "name": "Poison Apple",
+          "description": "Apple & Cinnamon",
+          "price": 900,
+          "photo": "IMG_3980.HEIC"
+        },
+        {
+          "name": "Classic Death",
+          "description": "Lemon & Sugar",
+          "price": 900,
+          "photo": "IMG_3980.HEIC"
+        },
+        {
+          "name": "The Haunted Biscoff",
+          "description": "Biscoff",
+          "price": 900,
+          "photo": "IMG_3980.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Coffee",
+      "items": [
+        {
+          "name": "Double Espresso",
+          "price": 350,
+          "photo": "IMG_3980.HEIC"
+        },
+        {
+          "name": "Cappuccino",
+          "price": 450,
+          "photo": "IMG_3980.HEIC"
+        },
+        {
+          "name": "Flat White",
+          "price": 450,
+          "photo": "IMG_3980.HEIC"
+        },
+        {
+          "name": "Hot Chocolate",
+          "price": 450,
+          "photo": "IMG_3980.HEIC"
+        },
+        {
+          "name": "Latte",
+          "price": 450,
+          "photo": "IMG_3980.HEIC"
+        },
+        {
+          "name": "Mocha",
+          "price": 450,
+          "photo": "IMG_3980.HEIC"
+        },
+        {
+          "name": "Americano",
+          "price": 400,
+          "photo": "IMG_3980.HEIC"
+        },
+        {
+          "name": "Tea",
+          "price": 300,
+          "photo": "IMG_3980.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        {
+          "name": "Soft Drinks",
+          "description": "From",
+          "price": 350,
+          "photo": "IMG_3980.HEIC"
+        },
+        {
+          "name": "Water",
+          "price": 300,
+          "unclear": "price partly behind cobweb decoration; reads 3.00",
+          "photo": "IMG_3980.HEIC"
+        }
+      ]
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3980.HEIC",
+      "name": "Cr-pes-main-menu",
+      "caption": "Crêpes, Coffee, Cold Drinks"
+    }
+  ]
+}

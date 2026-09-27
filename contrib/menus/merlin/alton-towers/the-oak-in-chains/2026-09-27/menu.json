@@ -1,0 +1,1034 @@
+{
+  "date": "2026-09-27",
+  "sections": [
+    {
+      "name": "Hexed Fajita Sizzlers",
+      "note": "On the \"tabletop\" ordering tablet; the tablet list scrolls, so this section may be partial if the screen was scrolled. Descriptions are truncated by the tablet and copied only as far as shown.",
+      "items": [
+        {
+          "name": "Halloumi & Sweet Potato Fajita Sizzler (v)",
+          "description": "Griddled halloumi and roasted sweet potato served sizzling with mixed pe",
+          "kcal": 888,
+          "price": 2000,
+          "tags": [
+            "v"
+          ],
+          "photo": "IMG_3941.HEIC"
+        },
+        {
+          "name": "Chicken Thigh Fajita Skewer",
+          "description": "Marinated chicken thigh skewers served sizzling with mixed peppers &",
+          "kcal": 773,
+          "price": 2200,
+          "photo": "IMG_3941.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Vault Stacks - Nachos and Skewered Chips",
+      "note": "On the \"tabletop\" ordering tablet; the tablet list scrolls, so this section may be partial if the screen was scrolled. Descriptions are truncated by the tablet and copied only as far as shown.",
+      "items": [
+        {
+          "name": "Chained Oak Chilli Cheese Chips",
+          "description": "Skewered chunky chips loaded with chilli con carne, nacho cheese sauce,",
+          "kcal": 988,
+          "price": 1000,
+          "photo": "IMG_3942.HEIC"
+        },
+        {
+          "name": "Octagon Fajita Veggie Chips (v)",
+          "description": "Skewered chunky chips topped with mixed peppers & onions, salsa, guac",
+          "kcal": 850,
+          "price": 1000,
+          "tags": [
+            "v"
+          ],
+          "photo": "IMG_3942.HEIC"
+        },
+        {
+          "name": "Chained Oak Nachos",
+          "description": "Tortilla chips topped with nacho cheese sauce, sour cream, guacamo",
+          "kcal": 1082,
+          "price": 950,
+          "photo": "IMG_3944.HEIC"
+        },
+        {
+          "name": "Hexed Pepperoni Pizza Fries",
+          "description": "Skewered chunky chips topped with mozzarella cheese, pepperoni, rocke",
+          "kcal": 624,
+          "price": 1000,
+          "photo": "IMG_3945.HEIC"
+        },
+        {
+          "name": "Italian Garden Pizza Chips (v)",
+          "description": "Skewered chunky chips topped with mozzarella cheese, red onion, sweet",
+          "kcal": 761,
+          "price": 1000,
+          "tags": [
+            "v"
+          ],
+          "photo": "IMG_3945.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Sauce Cauldron",
+      "note": "On the \"tabletop\" ordering tablet; the tablet list scrolls, so this section may be partial if the screen was scrolled. Descriptions are truncated by the tablet and copied only as far as shown.",
+      "items": [
+        {
+          "name": "Hex Fire Sauce",
+          "description": "Franks RedHot, vegan mayonnaise, paprika and garlic powder.",
+          "kcal": 148,
+          "price": 200,
+          "tags": [
+            "v"
+          ],
+          "unclear": "kcal blurred; reads 148",
+          "photo": "IMG_3946.HEIC"
+        },
+        {
+          "name": "Oak Dipping Sauce",
+          "description": "Vegan mayonnaise, chives and seasoning.",
+          "kcal": 153,
+          "price": 200,
+          "tags": [
+            "v"
+          ],
+          "photo": "IMG_3946.HEIC"
+        },
+        {
+          "name": "Hexed Honey Mustard",
+          "description": "Honey mustard and cayenne pepper.",
+          "kcal": 429,
+          "price": 200,
+          "tags": [
+            "v"
+          ],
+          "photo": "IMG_3947.HEIC"
+        },
+        {
+          "name": "Mystic Maple Bbq",
+          "description": "Maple and Bourbon flavoured barbeque sauce.",
+          "kcal": 175,
+          "price": 200,
+          "tags": [
+            "v"
+          ],
+          "photo": "IMG_3948.HEIC"
+        },
+        {
+          "name": "Phantom Herb Aioli",
+          "description": "Garlic aioli, vegan pesto and mixed herbs.",
+          "kcal": 323,
+          "price": 200,
+          "tags": [
+            "v"
+          ],
+          "photo": "IMG_3948.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Hexed Legend Hanging Skewers",
+      "note": "On the \"tabletop\" ordering tablet; the tablet list scrolls, so this section may be partial if the screen was scrolled. Descriptions are truncated by the tablet and copied only as far as shown.",
+      "items": [
+        {
+          "name": "Vault Breaded Mozzarella Skewer (v)",
+          "description": "Fried giant mozzarella coated in golden breadcrumbs, served with kh",
+          "kcal": 1929,
+          "price": 2300,
+          "tags": [
+            "v"
+          ],
+          "unclear": "price blurred; reads £23.00 (could be £20.00)",
+          "photo": "IMG_3949.HEIC"
+        },
+        {
+          "name": "Tandoori Hanging Chicken Kebab",
+          "description": "Tandoori chicken skewered with pepper, red onion, courgette and cor",
+          "kcal": 1508,
+          "price": 1850,
+          "photo": "IMG_3950.HEIC"
+        },
+        {
+          "name": "Beggars' Lamb Kofta",
+          "description": "Lamb skewer served with khobez flatbread, lettuce, tomato, red onion,",
+          "kcal": 1028,
+          "price": 1850,
+          "photo": "IMG_3950.HEIC"
+        },
+        {
+          "name": "Plant Based \"lamb\" Kebab (v)",
+          "description": "Plant-based lamb flavoured skewer served with khobez flatbread, lettuc",
+          "kcal": 831,
+          "price": 2000,
+          "tags": [
+            "vg"
+          ],
+          "photo": "IMG_3950.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Fountain Square Burgers",
+      "note": "On the \"tabletop\" ordering tablet; the tablet list scrolls, so this section may be partial if the screen was scrolled. Descriptions are truncated by the tablet and copied only as far as shown.",
+      "items": [
+        {
+          "name": "Inferno Dog",
+          "description": "XL meister sausage in a brioche roll topped with nacho cheese sauce, spi",
+          "kcal": 1259,
+          "price": 1795,
+          "unclear": "price and kcal blurred; reads 1259 kcal | £17.95",
+          "photo": "IMG_3951.HEIC"
+        },
+        {
+          "name": "The Earl's Cuban Sandwich",
+          "description": "Gammon ham slice topped with pulled pork and melted Emmental cheese w",
+          "kcal": 1591,
+          "price": 1975,
+          "unclear": "kcal blurred; reads 1591",
+          "photo": "IMG_3951.HEIC"
+        },
+        {
+          "name": "Gatekeeper's Bacon Bliss",
+          "description": "Beef burger with chipotle mayo, Monterey Jack cheese, bacon and le",
+          "kcal": 1157,
+          "price": 1975,
+          "photo": "IMG_3952.HEIC"
+        },
+        {
+          "name": "Quixhill Drive Mac & Cheese",
+          "description": "Beef burger with creamy macaroni cheese, Franks hot sauce, crispy bac",
+          "kcal": 978,
+          "price": 1975,
+          "photo": "IMG_3952.HEIC"
+        },
+        {
+          "name": "Garden Follies Vegan Fillet Burger (ve)",
+          "description": "Crispy vegan fillet burger with vegan cheese, Korean BBQ sauce, rocket an",
+          "kcal": 1017,
+          "price": 1975,
+          "tags": [
+            "vg"
+          ],
+          "photo": "IMG_3954.HEIC"
+        },
+        {
+          "name": "The Chained Oak Burger",
+          "description": "Double beef burger with nacho cheese sauce, pepperoni, tortilla chips, crisp",
+          "kcal": 1231,
+          "price": 2075,
+          "photo": "IMG_3954.HEIC"
+        },
+        {
+          "name": "Hexed Delight Chicken Burger",
+          "description": "Crispy breaded chicken burger with Korean BBQ sauce, grilled halloumi c",
+          "kcal": 1148,
+          "price": 1975,
+          "photo": "IMG_3954.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Kids",
+      "note": "On the \"tabletop\" ordering tablet; the tablet list scrolls, so this section may be partial if the screen was scrolled. Descriptions are truncated by the tablet and copied only as far as shown.",
+      "items": [
+        {
+          "name": "Hex Kids Mozzarella (v)",
+          "description": "Cheesy mozzarella sticks served with ketchup dip and a side of seasoned",
+          "kcal": 565,
+          "price": 975,
+          "tags": [
+            "v",
+            "kids"
+          ],
+          "unclear": "kcal blurred; reads 565",
+          "photo": "IMG_3955.HEIC"
+        },
+        {
+          "name": "Hex Kids Burger",
+          "description": "4oz cheese burger served in a brioche bun served with baked beans and se",
+          "kcal": 611,
+          "price": 975,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3956.HEIC"
+        },
+        {
+          "name": "Hex Kids Chicken Nuggets",
+          "description": "Served with ketchup dip and seasoned fries.",
+          "kcal": 471,
+          "price": 975,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3956.HEIC"
+        },
+        {
+          "name": "Hex Kids Fish Fingers",
+          "description": "Served with garden peas and seasoned fries.",
+          "kcal": 510,
+          "price": 975,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3956.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "note": "On the \"tabletop\" ordering tablet; the tablet list scrolls, so this section may be partial if the screen was scrolled. Descriptions are truncated by the tablet and copied only as far as shown.",
+      "items": [
+        {
+          "name": "Extra Tortilla",
+          "description": "2 extra flour tortillas",
+          "kcal": 100,
+          "price": 200,
+          "addOn": true,
+          "photo": "IMG_3957.HEIC"
+        },
+        {
+          "name": "Alverton Lodge Fries (ve)",
+          "description": "Crispy coat fries seasoned with a blend of spices.",
+          "kcal": 449,
+          "price": 575,
+          "tags": [
+            "vg"
+          ],
+          "photo": "IMG_3957.HEIC"
+        },
+        {
+          "name": "Towers Grand Conservatory Salad (ve)",
+          "description": "Mixed greens, cucumber, mint, and a zesty lemon dressing.",
+          "kcal": 52,
+          "price": 500,
+          "tags": [
+            "vg"
+          ],
+          "photo": "IMG_3958.HEIC"
+        },
+        {
+          "name": "Gothic Revival Historic Hummus (ve)",
+          "description": "Served with carrot and cucumber sticks.",
+          "kcal": 385,
+          "price": 500,
+          "tags": [
+            "vg"
+          ],
+          "photo": "IMG_3958.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Bottled Beers & Cider",
+      "note": "On the \"tabletop\" ordering tablet; the tablet list scrolls, so this section may be partial if the screen was scrolled. Descriptions are truncated by the tablet and copied only as far as shown.",
+      "items": [
+        {
+          "name": "Budweiser Bottle",
+          "price": 675,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3959.HEIC"
+        },
+        {
+          "name": "Corona Bottle",
+          "price": 675,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3959.HEIC"
+        },
+        {
+          "name": "Corona Cero 0% Alcohol",
+          "description": "*Challenge 25 applies*",
+          "kcal": 174,
+          "price": 675,
+          "photo": "IMG_3959.HEIC"
+        },
+        {
+          "name": "Smirnoff Ice",
+          "price": 675,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3960.HEIC"
+        },
+        {
+          "name": "Corona Bucket",
+          "description": "4 ice-cold Corona bottles served with lime slices in a silver bucket packed",
+          "kcal": 525,
+          "price": 2000,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3960.HEIC"
+        },
+        {
+          "name": "Budweiser Bucket",
+          "description": "4 ice-cold Budweiser bottles served in a bucket packed with refreshing ice.",
+          "kcal": 508,
+          "price": 2000,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3960.HEIC"
+        },
+        {
+          "name": "Smirnoff Ice Bucket",
+          "description": "4 ice-cold Smirnoff Ice bottles served in a bucket packed with refreshing ic",
+          "price": 2000,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3960.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Draught Beers & Cider",
+      "note": "On the \"tabletop\" ordering tablet; the tablet list scrolls, so this section may be partial if the screen was scrolled. Descriptions are truncated by the tablet and copied only as far as shown.",
+      "items": [
+        {
+          "name": "Kopparberg Crisp Apple",
+          "price": 425,
+          "tags": [
+            "alcohol"
+          ],
+          "unclear": "tablet shows 'From £4.25'; larger sizes not visible",
+          "photo": "IMG_3961.HEIC"
+        },
+        {
+          "name": "Stella Artois",
+          "price": 425,
+          "tags": [
+            "alcohol"
+          ],
+          "unclear": "tablet shows 'From £4.25'; larger sizes not visible",
+          "photo": "IMG_3961.HEIC"
+        },
+        {
+          "name": "Laugh & Scream Lager",
+          "description": "Brewed right here in Alton...exclusively for Alton Towers",
+          "kcal": 225,
+          "price": 450,
+          "tags": [
+            "alcohol"
+          ],
+          "unclear": "tablet shows 'From £4.50'; larger sizes not visible",
+          "photo": "IMG_3961.HEIC"
+        },
+        {
+          "name": "Camden Pale",
+          "price": 425,
+          "tags": [
+            "alcohol"
+          ],
+          "unclear": "tablet shows 'From £4.25'; larger sizes not visible",
+          "photo": "IMG_3961.HEIC"
+        },
+        {
+          "name": "Strawberry & Lime Kopparberg",
+          "price": 425,
+          "tags": [
+            "alcohol"
+          ],
+          "unclear": "tablet shows 'From £4.25'; larger sizes not visible",
+          "photo": "IMG_3961.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Cocktails",
+      "note": "On the \"tabletop\" ordering tablet; the tablet list scrolls, so this section may be partial if the screen was scrolled. Descriptions are truncated by the tablet and copied only as far as shown.",
+      "items": [
+        {
+          "name": "Blood Bag Cocktail",
+          "description": "Cranberry juice, Sprite Zero and grenadine served in a blood bag with",
+          "kcal": 9,
+          "price": 900,
+          "unclear": "listed twice under Cocktails at different prices (£9.00 and £10.95); this card's description names no alcohol",
+          "photo": "IMG_3962.HEIC"
+        },
+        {
+          "name": "Hexed Cherry Sourz Cocktail",
+          "description": "Cherry Sourz, Blue Curacao and Sprite Zero served over ice.",
+          "price": 1325,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3962.HEIC"
+        },
+        {
+          "name": "Hexed Apple Sourz Cocktail",
+          "description": "Apple Sourz, Smirnoff Vodka, lime juice and Sprite Zero served over ice.",
+          "price": 1325,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3962.HEIC"
+        },
+        {
+          "name": "Rum Beneath The Roots",
+          "description": "classic rum-based cocktail combining rum, mint and lime.",
+          "price": 1325,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3963.HEIC"
+        },
+        {
+          "name": "Wickerman Cocktail",
+          "description": "Malibu, Smirnoff vodka, fresh orange juice and grenadine.",
+          "price": 1325,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3963.HEIC"
+        },
+        {
+          "name": "Blood Bag Cocktail",
+          "description": "Smirnoff Vodka, Cranberry Juice, Grenadine and Sprite served in a Blo",
+          "price": 1095,
+          "tags": [
+            "alcohol"
+          ],
+          "unclear": "second Blood Bag Cocktail card on the tablet, priced differently from the £9.00 one",
+          "photo": "IMG_3963.HEIC"
+        },
+        {
+          "name": "Chained Spirit",
+          "description": "Malibu layered with passion fruit purée, sweet pineapple, and crisp or",
+          "price": 1325,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3964.HEIC"
+        },
+        {
+          "name": "Earls Redemption",
+          "description": "Smirnoff Vodka, cranberry and pineapple",
+          "price": 1325,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3964.HEIC"
+        },
+        {
+          "name": "Cherry Amaretto Sour",
+          "description": "Disaronno, Cherry Sours, Diet coke and cranberry juice",
+          "price": 1325,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3964.HEIC"
+        },
+        {
+          "name": "Oak In Chains Cocktail",
+          "description": "Smirnoff Vodka, blue curacao, lime",
+          "price": 1225,
+          "tags": [
+            "alcohol"
+          ],
+          "unclear": "rest of the description cut off by the bottom of the screen",
+          "photo": "IMG_3964.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Mocktails",
+      "note": "On the \"tabletop\" ordering tablet; the tablet list scrolls, so this section may be partial if the screen was scrolled. Descriptions are truncated by the tablet and copied only as far as shown.",
+      "items": [
+        {
+          "name": "Blood Bag Mocktail",
+          "description": "Cranberry juice, Sprite Zero and grenadine served in a blood bag.",
+          "kcal": 9,
+          "price": 600,
+          "photo": "IMG_3965.HEIC"
+        },
+        {
+          "name": "Witches' Spell Mocktail",
+          "description": "Pineapple juice, blue syrup and lemonade served over ice.",
+          "price": 575,
+          "photo": "IMG_3965.HEIC"
+        },
+        {
+          "name": "Blood Bag Mocktail",
+          "description": "Cranberry, grenadine and sprite served in a Blood bag",
+          "price": 695,
+          "unclear": "second Blood Bag Mocktail card on the tablet, priced differently from the £6.00 one",
+          "photo": "IMG_3965.HEIC"
+        },
+        {
+          "name": "Wickerbaby Mocktail",
+          "description": "Fresh orange juice and grenadine garnished with a slice of orange",
+          "price": 575,
+          "photo": "IMG_3966.HEIC"
+        },
+        {
+          "name": "Spinball Fizzer Mocktail",
+          "description": "Sprite Zero and bubblegum syrup served over ice. With added sparkle!",
+          "price": 575,
+          "photo": "IMG_3966.HEIC"
+        },
+        {
+          "name": "Runaway Lime Train",
+          "description": "Zesty Sprite and lime flavours with a splash of Grenadine sweetness. Cho",
+          "price": 575,
+          "photo": "IMG_3966.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Sparkling wine",
+      "note": "On the \"tabletop\" ordering tablet; the tablet list scrolls, so this section may be partial if the screen was scrolled. Descriptions are truncated by the tablet and copied only as far as shown.",
+      "items": [
+        {
+          "name": "Da Luca Prosecco",
+          "description": "200ml",
+          "kcal": 132,
+          "price": 1025,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3967.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Red wine",
+      "note": "On the \"tabletop\" ordering tablet; the tablet list scrolls, so this section may be partial if the screen was scrolled. Descriptions are truncated by the tablet and copied only as far as shown.",
+      "items": [
+        {
+          "name": "Monte Verde Merlot, Chile",
+          "price": 750,
+          "tags": [
+            "alcohol"
+          ],
+          "unclear": "tablet shows 'From £7.50'; larger sizes not visible",
+          "photo": "IMG_3968.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "White wine",
+      "note": "On the \"tabletop\" ordering tablet; the tablet list scrolls, so this section may be partial if the screen was scrolled. Descriptions are truncated by the tablet and copied only as far as shown.",
+      "items": [
+        {
+          "name": "Parini Pinot Grigio",
+          "price": 800,
+          "tags": [
+            "alcohol"
+          ],
+          "unclear": "tablet shows 'From £8.00'; larger sizes not visible",
+          "photo": "IMG_3969.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Rose wine",
+      "note": "On the \"tabletop\" ordering tablet; the tablet list scrolls, so this section may be partial if the screen was scrolled. Descriptions are truncated by the tablet and copied only as far as shown.",
+      "items": [
+        {
+          "name": "Parini Pinot Grigio Blush",
+          "price": 775,
+          "tags": [
+            "alcohol"
+          ],
+          "unclear": "tablet shows 'From £7.75'; larger sizes not visible",
+          "photo": "IMG_3970.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Spirits",
+      "note": "On the \"tabletop\" ordering tablet; the tablet list scrolls, so this section may be partial if the screen was scrolled. Descriptions are truncated by the tablet and copied only as far as shown.",
+      "items": [
+        {
+          "name": "Baileys",
+          "price": 950,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3971.HEIC"
+        },
+        {
+          "name": "Disaronno",
+          "price": 525,
+          "tags": [
+            "alcohol"
+          ],
+          "unclear": "tablet shows 'From £5.25'; larger sizes not visible",
+          "photo": "IMG_3971.HEIC"
+        },
+        {
+          "name": "Gordon Gin Original",
+          "price": 525,
+          "tags": [
+            "alcohol"
+          ],
+          "unclear": "tablet shows 'From £5.25'; larger sizes not visible",
+          "photo": "IMG_3971.HEIC"
+        },
+        {
+          "name": "Jack Daniels",
+          "kcal": 1,
+          "price": 525,
+          "tags": [
+            "alcohol"
+          ],
+          "unclear": "tablet shows 'From £5.25'; larger sizes not visible",
+          "photo": "IMG_3971.HEIC"
+        },
+        {
+          "name": "Jameson Whisky",
+          "price": 550,
+          "tags": [
+            "alcohol"
+          ],
+          "unclear": "tablet shows 'From £5.50'; larger sizes not visible",
+          "photo": "IMG_3971.HEIC"
+        },
+        {
+          "name": "Malibu",
+          "price": 525,
+          "tags": [
+            "alcohol"
+          ],
+          "unclear": "tablet shows 'From £5.25'; larger sizes not visible",
+          "photo": "IMG_3972.HEIC"
+        },
+        {
+          "name": "Smirnoff Vodka",
+          "price": 525,
+          "tags": [
+            "alcohol"
+          ],
+          "unclear": "tablet shows 'From £5.25'; larger sizes not visible",
+          "photo": "IMG_3972.HEIC"
+        },
+        {
+          "name": "Beefeater Pink Strawberry",
+          "price": 525,
+          "tags": [
+            "alcohol"
+          ],
+          "unclear": "tablet shows 'From £5.25'; larger sizes not visible",
+          "photo": "IMG_3972.HEIC"
+        },
+        {
+          "name": "Sourz Apple",
+          "price": 525,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3972.HEIC"
+        },
+        {
+          "name": "Sourz Cherry",
+          "price": 525,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3972.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Soft drinks",
+      "note": "On the \"tabletop\" ordering tablet; the tablet list scrolls, so this section may be partial if the screen was scrolled. Descriptions are truncated by the tablet and copied only as far as shown.",
+      "items": [
+        {
+          "name": "Appletiser",
+          "price": 500,
+          "photo": "IMG_3973.HEIC"
+        },
+        {
+          "name": "Apple Juice",
+          "price": 400,
+          "photo": "IMG_3973.HEIC"
+        },
+        {
+          "name": "Coca-cola",
+          "price": 525,
+          "photo": "IMG_3973.HEIC"
+        },
+        {
+          "name": "Cranberry Juice",
+          "price": 400,
+          "photo": "IMG_3973.HEIC"
+        },
+        {
+          "name": "Diet Coke",
+          "price": 525,
+          "photo": "IMG_3973.HEIC"
+        },
+        {
+          "name": "Fanta Zero",
+          "price": 525,
+          "photo": "IMG_3974.HEIC"
+        },
+        {
+          "name": "Orange Juice",
+          "price": 400,
+          "photo": "IMG_3974.HEIC"
+        },
+        {
+          "name": "Pineapple Juice",
+          "price": 400,
+          "photo": "IMG_3975.HEIC"
+        },
+        {
+          "name": "Sprite Zero",
+          "price": 525,
+          "photo": "IMG_3975.HEIC"
+        },
+        {
+          "name": "Strathmore Sparkling Water",
+          "description": "750ml...perfect for sharing",
+          "price": 550,
+          "photo": "IMG_3975.HEIC"
+        },
+        {
+          "name": "Strathmore Still Water",
+          "description": "750ml...perfect for sharing",
+          "price": 550,
+          "photo": "IMG_3975.HEIC"
+        },
+        {
+          "name": "J20",
+          "price": 500,
+          "photo": "IMG_3975.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Hot drinks",
+      "note": "On the \"tabletop\" ordering tablet; the tablet list scrolls, so this section may be partial if the screen was scrolled. Descriptions are truncated by the tablet and copied only as far as shown.",
+      "items": [
+        {
+          "name": "Latte",
+          "kcal": 151,
+          "price": 400,
+          "photo": "IMG_3977.HEIC"
+        },
+        {
+          "name": "Black Americano",
+          "kcal": 18,
+          "price": 400,
+          "photo": "IMG_3977.HEIC"
+        },
+        {
+          "name": "Mocha",
+          "kcal": 222,
+          "price": 475,
+          "photo": "IMG_3977.HEIC"
+        },
+        {
+          "name": "Hot Chocolate",
+          "kcal": 310,
+          "price": 475,
+          "photo": "IMG_3977.HEIC"
+        },
+        {
+          "name": "White Americano",
+          "price": 400,
+          "photo": "IMG_3977.HEIC"
+        },
+        {
+          "name": "Tetley Tea",
+          "price": 325,
+          "photo": "IMG_3977.HEIC"
+        }
+      ]
+    }
+  ],
+  "skipped": [
+    {
+      "photo": "IMG_3943.HEIC",
+      "reason": "duplicate screen of IMG_3942"
+    },
+    {
+      "photo": "IMG_3953.HEIC",
+      "reason": "duplicate screen of IMG_3954"
+    },
+    {
+      "photo": "IMG_3976.HEIC",
+      "reason": "duplicate screen of IMG_3977"
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3941.HEIC",
+      "name": "The-Oak-in-Chains-hexed-fajita-sizzlers",
+      "caption": "Hexed Fajita Sizzlers"
+    },
+    {
+      "file": "IMG_3942.HEIC",
+      "name": "The-Oak-in-Chains-vault-stacks-nachos",
+      "caption": "Vault Stacks - Nachos and Skewered Chips"
+    },
+    {
+      "file": "IMG_3944.HEIC",
+      "name": "The-Oak-in-Chains-vault-stacks-nachos-2",
+      "caption": "Vault Stacks - Nachos and Skewered Chips"
+    },
+    {
+      "file": "IMG_3945.HEIC",
+      "name": "The-Oak-in-Chains-vault-stacks-nachos-3",
+      "caption": "Vault Stacks - Nachos and Skewered Chips"
+    },
+    {
+      "file": "IMG_3946.HEIC",
+      "name": "The-Oak-in-Chains-sauce-cauldron",
+      "caption": "Sauce Cauldron"
+    },
+    {
+      "file": "IMG_3947.HEIC",
+      "name": "The-Oak-in-Chains-sauce-cauldron-2",
+      "caption": "Sauce Cauldron"
+    },
+    {
+      "file": "IMG_3948.HEIC",
+      "name": "The-Oak-in-Chains-sauce-cauldron-3",
+      "caption": "Sauce Cauldron"
+    },
+    {
+      "file": "IMG_3949.HEIC",
+      "name": "The-Oak-in-Chains-hexed-legend-hanging",
+      "caption": "Hexed Legend Hanging Skewers"
+    },
+    {
+      "file": "IMG_3950.HEIC",
+      "name": "The-Oak-in-Chains-hexed-legend-hanging-2",
+      "caption": "Hexed Legend Hanging Skewers"
+    },
+    {
+      "file": "IMG_3951.HEIC",
+      "name": "The-Oak-in-Chains-fountain-square-burgers",
+      "caption": "Fountain Square Burgers"
+    },
+    {
+      "file": "IMG_3952.HEIC",
+      "name": "The-Oak-in-Chains-fountain-square-burgers-2",
+      "caption": "Fountain Square Burgers"
+    },
+    {
+      "file": "IMG_3954.HEIC",
+      "name": "The-Oak-in-Chains-fountain-square-burgers-3",
+      "caption": "Fountain Square Burgers"
+    },
+    {
+      "file": "IMG_3955.HEIC",
+      "name": "The-Oak-in-Chains-kids",
+      "caption": "Kids"
+    },
+    {
+      "file": "IMG_3956.HEIC",
+      "name": "The-Oak-in-Chains-kids-2",
+      "caption": "Kids"
+    },
+    {
+      "file": "IMG_3957.HEIC",
+      "name": "The-Oak-in-Chains-sides",
+      "caption": "Sides"
+    },
+    {
+      "file": "IMG_3958.HEIC",
+      "name": "The-Oak-in-Chains-sides-2",
+      "caption": "Sides"
+    },
+    {
+      "file": "IMG_3959.HEIC",
+      "name": "The-Oak-in-Chains-bottled-beers-and",
+      "caption": "Bottled Beers & Cider"
+    },
+    {
+      "file": "IMG_3960.HEIC",
+      "name": "The-Oak-in-Chains-bottled-beers-and-2",
+      "caption": "Bottled Beers & Cider"
+    },
+    {
+      "file": "IMG_3961.HEIC",
+      "name": "The-Oak-in-Chains-draught-beers-and",
+      "caption": "Draught Beers & Cider"
+    },
+    {
+      "file": "IMG_3962.HEIC",
+      "name": "The-Oak-in-Chains-cocktails",
+      "caption": "Cocktails"
+    },
+    {
+      "file": "IMG_3963.HEIC",
+      "name": "The-Oak-in-Chains-cocktails-2",
+      "caption": "Cocktails"
+    },
+    {
+      "file": "IMG_3964.HEIC",
+      "name": "The-Oak-in-Chains-cocktails-3",
+      "caption": "Cocktails"
+    },
+    {
+      "file": "IMG_3965.HEIC",
+      "name": "The-Oak-in-Chains-mocktails",
+      "caption": "Mocktails"
+    },
+    {
+      "file": "IMG_3966.HEIC",
+      "name": "The-Oak-in-Chains-mocktails-2",
+      "caption": "Mocktails"
+    },
+    {
+      "file": "IMG_3967.HEIC",
+      "name": "The-Oak-in-Chains-sparkling-wine",
+      "caption": "Sparkling wine"
+    },
+    {
+      "file": "IMG_3968.HEIC",
+      "name": "The-Oak-in-Chains-red-wine",
+      "caption": "Red wine"
+    },
+    {
+      "file": "IMG_3969.HEIC",
+      "name": "The-Oak-in-Chains-white-wine",
+      "caption": "White wine"
+    },
+    {
+      "file": "IMG_3970.HEIC",
+      "name": "The-Oak-in-Chains-rose-wine",
+      "caption": "Rose wine"
+    },
+    {
+      "file": "IMG_3971.HEIC",
+      "name": "The-Oak-in-Chains-spirits",
+      "caption": "Spirits"
+    },
+    {
+      "file": "IMG_3972.HEIC",
+      "name": "The-Oak-in-Chains-spirits-2",
+      "caption": "Spirits"
+    },
+    {
+      "file": "IMG_3973.HEIC",
+      "name": "The-Oak-in-Chains-soft-drinks",
+      "caption": "Soft drinks"
+    },
+    {
+      "file": "IMG_3974.HEIC",
+      "name": "The-Oak-in-Chains-soft-drinks-2",
+      "caption": "Soft drinks"
+    },
+    {
+      "file": "IMG_3975.HEIC",
+      "name": "The-Oak-in-Chains-soft-drinks-3",
+      "caption": "Soft drinks"
+    },
+    {
+      "file": "IMG_3977.HEIC",
+      "name": "The-Oak-in-Chains-hot-drinks",
+      "caption": "Hot drinks"
+    }
+  ]
+}

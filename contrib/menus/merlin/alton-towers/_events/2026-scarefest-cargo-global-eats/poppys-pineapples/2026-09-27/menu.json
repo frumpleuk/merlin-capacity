@@ -1,0 +1,173 @@
+{
+  "date": "2026-09-27",
+  "sections": [
+    {
+      "name": "Spooky Smoothies",
+      "note": "Priced by the board's \"All Smoothies £12\"",
+      "items": [
+        {
+          "name": "Bananarama",
+          "description": "Banana, Strawberry & Coconut Milk",
+          "price": 1200,
+          "photo": "IMG_3989.HEIC"
+        },
+        {
+          "name": "Tropicana",
+          "description": "Raspberry, blueberry, pineapple, coconut milk & tropical juice",
+          "price": 1200,
+          "photo": "IMG_3989.HEIC"
+        },
+        {
+          "name": "Very Berry",
+          "description": "Strawberry, cranberry, blueberry & raspberry",
+          "price": 1200,
+          "photo": "IMG_3989.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Midnight Mocktails",
+      "items": [
+        {
+          "name": "Piña Colada Mocktail",
+          "description": "Fresh pineapple, coconut milk & tropical juice",
+          "price": null,
+          "unclear": "no price printed for mocktails; the board prices only \"All Cocktails\" and \"All Smoothies\"",
+          "photo": "IMG_3989.HEIC"
+        },
+        {
+          "name": "Strawberry Daiquiri Mocktail",
+          "description": "Strawberry, lime & cranberry juice",
+          "price": null,
+          "unclear": "no price printed for mocktails; the board prices only \"All Cocktails\" and \"All Smoothies\"",
+          "photo": "IMG_3989.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Cursed Cocktails",
+      "note": "Priced by the board's \"All Cocktails £15\"",
+      "items": [
+        {
+          "name": "Piña Colada",
+          "description": "Pineapple & white rum",
+          "price": 1500,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3989.HEIC"
+        },
+        {
+          "name": "Woo Woo",
+          "description": "Vodka, peach schnapps, cranberry & lime",
+          "price": 1500,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3989.HEIC"
+        },
+        {
+          "name": "Sex on the Beach",
+          "description": "Vodka, peach schnapps, cranberry, tropical juice & lime",
+          "price": 1500,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3989.HEIC"
+        },
+        {
+          "name": "Mojito",
+          "description": "White rum, mint, lime & lemonade or soda",
+          "price": 1500,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3989.HEIC"
+        },
+        {
+          "name": "Margarita",
+          "description": "Tequila, triple sec, lime & pineapple juice",
+          "price": 1500,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3989.HEIC"
+        },
+        {
+          "name": "Blue Hawaii",
+          "description": "White rum, vodka, blue curaçao, pineapple juice & lime",
+          "price": 1500,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3989.HEIC"
+        },
+        {
+          "name": "Dark & Stormy",
+          "description": "Spiced rum, ginger beer & lime",
+          "price": 1500,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3989.HEIC"
+        },
+        {
+          "name": "Malibu & Pineapple",
+          "description": "Malibu coconut rum & pineapple juice",
+          "price": 1500,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3989.HEIC"
+        },
+        {
+          "name": "Strawberry Daiquiri",
+          "description": "White rum, strawberry & lime",
+          "price": 1500,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3989.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Rum Soaked Pineapple Chunks",
+      "items": [
+        {
+          "name": "Spiced Rum Chunks",
+          "price": 800,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3989.HEIC"
+        },
+        {
+          "name": "Pineapple Chunks",
+          "price": 400,
+          "photo": "IMG_3989.HEIC"
+        },
+        {
+          "name": "Cocktail Refills",
+          "price": 1200,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3989.HEIC"
+        },
+        {
+          "name": "Smoothie Refills",
+          "price": 1000,
+          "photo": "IMG_3989.HEIC"
+        }
+      ]
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3989.HEIC",
+      "name": "Poppy-s-Pineapples-main-menu",
+      "caption": "Spooky Smoothies, Midnight Mocktails, Cursed Cocktails, Rum Soaked Pineapple Chunks"
+    }
+  ]
+}

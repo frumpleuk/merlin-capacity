@@ -1,0 +1,367 @@
+{
+  "date": "2026-09-27",
+  "passDiscount": {
+    "offered": true,
+    "percent": 20,
+    "upTo": true,
+    "applies": "dining & shopping",
+    "photo": "IMG_3992.HEIC",
+    "source": "board photo"
+  },
+  "sections": [
+    {
+      "name": "Peckish Pots",
+      "note": "Choice of house seasoning: Original, Chinese Salt & Chilli, Argentinian, Texas Smokehouse. Calories from the kiosk (IMG_3995), which calls these Chicken Fries Regular Meal.",
+      "items": [
+        {
+          "name": "Peckish Pots",
+          "description": "Crispy chicken strips served on fries, finished with your choice of house seasoning and crispy shallots.",
+          "sizes": [
+            {
+              "label": "Original",
+              "price": 1400,
+              "kcal": 820
+            },
+            {
+              "label": "Chinese Salt & Chilli",
+              "price": 1400,
+              "kcal": 851
+            },
+            {
+              "label": "Argentinian",
+              "price": 1400,
+              "kcal": 851
+            },
+            {
+              "label": "Texas Smokehouse",
+              "price": 1400,
+              "kcal": 851
+            }
+          ],
+          "photo": "IMG_3995.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Rice Pots",
+      "note": "Choice of house seasoning: Original, Chinese Salt & Chilli, Argentinian, Texas Smokehouse. The kiosk (IMG_3997) lists the four at £14.00 each.",
+      "items": [
+        {
+          "name": "Rice Pots",
+          "description": "Hot seasoned rice topped with fresh salad and crispy chicken strips, finished with your choice of house seasoning and crispy shallots.",
+          "price": 1400,
+          "photo": "IMG_3997.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "'Flapbreads'",
+      "note": "Choice of house seasoning: Original, Chinese Salt & Chilli, Argentinian, Texas Smokehouse. The kiosk (IMG_3996) calls these Chicken Salad Flatbread, £14.00 each.",
+      "items": [
+        {
+          "name": "Flapbreads",
+          "description": "Soft khobez flatbread layered with seasoned rice, fresh salad and crispy chicken strips finished with your choice of house seasoning and crispy shallots.",
+          "price": 1400,
+          "photo": "IMG_3996.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Crispy Cauliwings",
+      "note": "Choice of house seasoning: Original, Chinese Salt & Chilli, Argentinian, Texas Smokehouse.",
+      "items": [
+        {
+          "name": "Crispy Cauliwings",
+          "description": "Crispy CauliWings served on fries, finished with your chosen house seasoning and crispy shallots.",
+          "price": 1400,
+          "photo": "IMG_3992.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Burgers",
+      "note": "With fries. Fang-Tastic Chicken Burger is on the kiosk only (IMG_3998).",
+      "items": [
+        {
+          "name": "Cluck Fillet Burger",
+          "description": "Crispy chicken fillet in a toasted maple seeded bun with shredded lettuce and house sauce. Served with fries.",
+          "price": 1400,
+          "photo": "IMG_3992.HEIC"
+        },
+        {
+          "name": "Bacon Boost Cluck Burger",
+          "description": "Crispy chicken fillet in a toasted maple seeded bun with shredded lettuce and house sauce, topped with bacon. Served with fries.",
+          "price": 1500,
+          "photo": "IMG_3993.HEIC"
+        },
+        {
+          "name": "No-Cluck Fillet Burger (VE)",
+          "description": "Crispy vegan fillet in a toasted maple seeded bun with shredded lettuce and vegan house sauce. Served with fries.",
+          "price": 1400,
+          "tags": [
+            "vg"
+          ],
+          "photo": "IMG_3992.HEIC"
+        },
+        {
+          "name": "Fang-Tastic Chicken Burger",
+          "description": "A limited Scarefest offering! A red seeded bun, chicken fillet, lettuce, cheese, crispy onions and chili bite ketchup! Served with fries.",
+          "price": 1595,
+          "photo": "IMG_3998.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Fang-Tastic Strips",
+      "note": "Kiosk only (IMG_3999).",
+      "items": [
+        {
+          "name": "Fang-Tastic Strips",
+          "description": "5 Chicken Tenders, Chili Bite Ketchup, Spring Onions and a pot of Buttermilk Ranch Dressing.",
+          "price": 1095,
+          "photo": "IMG_3999.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "note": "The kiosk (IMG_4002) lists sides as one item, 298 kcal, £4.25.",
+      "items": [
+        {
+          "name": "Fries",
+          "price": 425,
+          "photo": "IMG_4002.HEIC"
+        },
+        {
+          "name": "Onion Rings",
+          "price": 425,
+          "photo": "IMG_3992.HEIC"
+        },
+        {
+          "name": "Mozzarella Sticks",
+          "price": 425,
+          "photo": "IMG_3992.HEIC"
+        },
+        {
+          "name": "Salt N Chilli Corn Cobs",
+          "price": 575,
+          "photo": "IMG_3992.HEIC"
+        },
+        {
+          "name": "Chilli Cheese Bites",
+          "price": 575,
+          "photo": "IMG_3992.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Add Dipping Sauce",
+      "items": [
+        {
+          "name": "Add Dipping Sauce",
+          "description": "Creamy Garlic, Salt & Chilli, Argentinian, Smokehouse BBQ, Hot Honey Ranch, BBQ Sauce, Sweet Chilli Sauce",
+          "price": 150,
+          "addOn": true,
+          "unclear": "board IMG_3992 says 1.50; kiosk IMG_4002 shows Sauces £0.50",
+          "photo": "IMG_3992.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Kids Meals",
+      "note": "With fruit or fries & a drink. Choice of water or fruit juice.",
+      "items": [
+        {
+          "name": "Nuggets & Fries (x4)",
+          "price": 875,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3992.HEIC"
+        },
+        {
+          "name": "Nuggets Rice Pot",
+          "price": 875,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3992.HEIC"
+        },
+        {
+          "name": "Nuggets Salad Flapbread",
+          "price": 875,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_4001.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "note": "Donut flavours and the soft serves are from the kiosk (IMG_4003, IMG_4004); the board prints only Donuts £3.25.",
+      "items": [
+        {
+          "name": "Fruit",
+          "description": "Orange Easy Peeler, Seasonal Apple",
+          "price": 125,
+          "photo": "IMG_3992.HEIC"
+        },
+        {
+          "name": "Chocolate Chip Cookie",
+          "description": "Double Chocolate Chip Cookie on the kiosk",
+          "price": 300,
+          "photo": "IMG_3992.HEIC"
+        },
+        {
+          "name": "Berry White Donut",
+          "price": 325,
+          "photo": "IMG_4003.HEIC"
+        },
+        {
+          "name": "Belgiyummy Donut",
+          "price": 325,
+          "photo": "IMG_4003.HEIC"
+        },
+        {
+          "name": "Plain Soft Serve Ice Cream",
+          "price": 350,
+          "photo": "IMG_4004.HEIC"
+        },
+        {
+          "name": "Oreo Soft Serve Ice Cream",
+          "price": 425,
+          "photo": "IMG_4004.HEIC"
+        },
+        {
+          "name": "Biscoff Soft Serve Ice Cream",
+          "price": 425,
+          "photo": "IMG_4004.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "note": "Slush is on the kiosk only (IMG_4005).",
+      "items": [
+        {
+          "name": "Water",
+          "price": 325,
+          "photo": "IMG_3992.HEIC"
+        },
+        {
+          "name": "Soft Drinks",
+          "description": "Coke Zero, Diet Coke, Fanta Zero, Sprite Zero",
+          "sizes": [
+            {
+              "label": "Regular",
+              "price": 295
+            },
+            {
+              "label": "Large",
+              "price": 345
+            }
+          ],
+          "unclear": "kiosk IMG_4005 lists each soft drink at £3.45 with no size shown; may be a from-price or the Large",
+          "photo": "IMG_3992.HEIC"
+        },
+        {
+          "name": "Slush",
+          "price": 550,
+          "photo": "IMG_4005.HEIC"
+        },
+        {
+          "name": "Kids Water",
+          "price": 200,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3992.HEIC"
+        },
+        {
+          "name": "Radnor Fruits (200ml)",
+          "description": "Forest Fruits, Orange",
+          "price": 250,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3992.HEIC"
+        }
+      ]
+    }
+  ],
+  "offers": [
+    {
+      "text": "Summer Spectacular: Get refreshed for less! Regular soft drink now £2.95 (save £2.05), Large now £3.45 (save £1.80). Limited-time offer at selected outlets.",
+      "photo": "IMG_3994.HEIC"
+    }
+  ],
+  "skipped": [],
+  "photos": [
+    {
+      "file": "IMG_3992.HEIC",
+      "name": "Just-Chicken-crispy-cauliwings",
+      "caption": "Crispy Cauliwings, Burgers, Sides, Add Dipping Sauce, Kids Meals, Desserts, Drinks"
+    },
+    {
+      "file": "IMG_3993.HEIC",
+      "name": "Just-Chicken-burgers",
+      "caption": "Burgers"
+    },
+    {
+      "file": "IMG_3994.HEIC",
+      "name": "Just-Chicken-offer",
+      "caption": "Offer"
+    },
+    {
+      "file": "IMG_3995.HEIC",
+      "name": "Just-Chicken-peckish-pots",
+      "caption": "Peckish Pots"
+    },
+    {
+      "file": "IMG_3996.HEIC",
+      "name": "Just-Chicken-flapbreads",
+      "caption": "'Flapbreads'"
+    },
+    {
+      "file": "IMG_3997.HEIC",
+      "name": "Just-Chicken-rice-pots",
+      "caption": "Rice Pots"
+    },
+    {
+      "file": "IMG_3998.HEIC",
+      "name": "Just-Chicken-burgers-2",
+      "caption": "Burgers"
+    },
+    {
+      "file": "IMG_3999.HEIC",
+      "name": "Just-Chicken-fang-tastic-strips",
+      "caption": "Fang-Tastic Strips"
+    },
+    {
+      "file": "IMG_4001.HEIC",
+      "name": "Just-Chicken-kids-meals",
+      "caption": "Kids Meals"
+    },
+    {
+      "file": "IMG_4002.HEIC",
+      "name": "Just-Chicken-sides",
+      "caption": "Sides"
+    },
+    {
+      "file": "IMG_4003.HEIC",
+      "name": "Just-Chicken-desserts",
+      "caption": "Desserts"
+    },
+    {
+      "file": "IMG_4004.HEIC",
+      "name": "Just-Chicken-desserts-2",
+      "caption": "Desserts"
+    },
+    {
+      "file": "IMG_4005.HEIC",
+      "name": "Just-Chicken-drinks",
+      "caption": "Drinks"
+    }
+  ]
+}

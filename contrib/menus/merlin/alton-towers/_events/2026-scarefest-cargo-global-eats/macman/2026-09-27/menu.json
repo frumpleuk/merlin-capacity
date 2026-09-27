@@ -1,0 +1,139 @@
+{
+  "date": "2026-09-27",
+  "sections": [
+    {
+      "name": "MacMan",
+      "note": "Next Level Mac'n'Cheese",
+      "items": [
+        {
+          "name": "The Original Sin",
+          "description": "The original creamy Mac'N'Cheese, topped with garlic & parmesan crumb",
+          "price": 1050,
+          "photo": "IMG_3983.HEIC"
+        },
+        {
+          "name": "Pepperghouli Mac",
+          "description": "Mac'N'Cheese with pepperoni & marinara sauce, topped with garlic & parmesan crumb",
+          "price": 1250,
+          "photo": "IMG_3983.HEIC"
+        },
+        {
+          "name": "Witches Pesto",
+          "description": "Mac'N'Cheese with sun-dried tomatoes, mozzarella & pesto, topped with garlic & parmesan crumb",
+          "price": 1250,
+          "photo": "IMG_3983.HEIC"
+        },
+        {
+          "name": "Truffle Terror",
+          "description": "Mac'N'Cheese with truffle oil, topped with garlic & parmesan crumble",
+          "price": 1300,
+          "photo": "IMG_3983.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Extras",
+      "items": [
+        {
+          "name": "Plain Fries",
+          "price": 500,
+          "photo": "IMG_3983.HEIC"
+        },
+        {
+          "name": "Mac-Loaded Fries",
+          "description": "Your choice of Mac'N'Cheese served on BBQ seasoned fries",
+          "price": 400,
+          "addOn": true,
+          "photo": "IMG_3983.HEIC"
+        },
+        {
+          "name": "Mac Bites",
+          "description": "Crispy Mac'N'Cheese bites",
+          "price": 750,
+          "photo": "IMG_3983.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        {
+          "name": "BBQ Seasoned Fries",
+          "description": "MacMan's signature BBQ spiced blend",
+          "price": 550,
+          "photo": "IMG_3983.HEIC"
+        },
+        {
+          "name": "Truffle & Parmesan",
+          "description": "Fries with truffle oil, parmesan & chives",
+          "price": 750,
+          "photo": "IMG_3983.HEIC"
+        },
+        {
+          "name": "Cheesy Fries",
+          "description": "MacMan's signature BBQ spiced blend",
+          "price": 750,
+          "photo": "IMG_3983.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Family Meal Deals",
+      "items": [
+        {
+          "name": "Children's Pot",
+          "description": "Smallest portion of Mac & Cheese",
+          "price": 700,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3983.HEIC"
+        },
+        {
+          "name": "Children's Meal Deal",
+          "description": "Children's pot, fries and a small carton of juice",
+          "price": 1000,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3983.HEIC"
+        },
+        {
+          "name": "Family Meal Deal",
+          "description": "2 adult pots with any topping and 2 children's pots, 2 portions of fries, 2 cartons of juice & 2 soft drinks",
+          "price": 4500,
+          "photo": "IMG_3983.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Soft Drinks",
+          "description": "From",
+          "price": 350,
+          "photo": "IMG_3983.HEIC"
+        },
+        {
+          "name": "Water",
+          "price": 300,
+          "photo": "IMG_3983.HEIC"
+        }
+      ]
+    }
+  ],
+  "skipped": [
+    {
+      "photo": "IMG_3982.HEIC",
+      "reason": "Wide shot of the MacMan unit; the board is too small to read and is transcribed from IMG_3983."
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3983.HEIC",
+      "name": "MacMan-main-menu",
+      "caption": "MacMan, Extras, Sides, Family Meal Deals, Drinks"
+    }
+  ]
+}

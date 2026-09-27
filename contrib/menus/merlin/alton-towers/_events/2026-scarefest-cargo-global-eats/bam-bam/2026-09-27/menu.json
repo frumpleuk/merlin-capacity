@@ -1,0 +1,110 @@
+{
+  "date": "2026-09-27",
+  "sections": [
+    {
+      "name": "Beignets",
+      "items": [
+        {
+          "name": "Hazelnut Chocolate",
+          "price": 800,
+          "photo": "IMG_3981.HEIC"
+        },
+        {
+          "name": "Hazelnut Chocolate & Strawberries",
+          "price": 900,
+          "photo": "IMG_3981.HEIC"
+        },
+        {
+          "name": "Maple Syrup & Praline Pecans",
+          "price": 900,
+          "photo": "IMG_3981.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Coffee",
+      "items": [
+        {
+          "name": "Ice Coffee",
+          "price": null,
+          "unclear": "price box left blank on the board",
+          "photo": "IMG_3981.HEIC"
+        },
+        {
+          "name": "Double Espresso",
+          "price": 350,
+          "photo": "IMG_3981.HEIC"
+        },
+        {
+          "name": "Capuccino",
+          "price": 450,
+          "photo": "IMG_3981.HEIC"
+        },
+        {
+          "name": "Latte",
+          "price": 450,
+          "photo": "IMG_3981.HEIC"
+        },
+        {
+          "name": "Americano",
+          "price": 400,
+          "photo": "IMG_3981.HEIC"
+        },
+        {
+          "name": "Mocha",
+          "price": 450,
+          "photo": "IMG_3981.HEIC"
+        },
+        {
+          "name": "Flat White",
+          "price": 450,
+          "photo": "IMG_3981.HEIC"
+        },
+        {
+          "name": "Hot Chocolate",
+          "price": 450,
+          "photo": "IMG_3981.HEIC"
+        },
+        {
+          "name": "Tea",
+          "price": 300,
+          "photo": "IMG_3981.HEIC"
+        },
+        {
+          "name": "Syrup",
+          "price": 100,
+          "addOn": true,
+          "photo": "IMG_3981.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Soft Drinks",
+      "items": [
+        {
+          "name": "Cans",
+          "price": 350,
+          "photo": "IMG_3981.HEIC"
+        },
+        {
+          "name": "Water",
+          "price": 300,
+          "photo": "IMG_3981.HEIC"
+        }
+      ]
+    }
+  ],
+  "skipped": [
+    {
+      "photo": "IMG_3979.HEIC",
+      "reason": "Stall front (\"Beignets, Crepes & Hot Chocolate\"); the board on it is the Crêpes board, transcribed from IMG_3980 in the crepes folder."
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3981.HEIC",
+      "name": "Bam-Bam-main-menu",
+      "caption": "Beignets, Coffee, Soft Drinks"
+    }
+  ]
+}

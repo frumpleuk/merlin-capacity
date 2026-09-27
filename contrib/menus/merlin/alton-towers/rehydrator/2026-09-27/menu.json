@@ -1,0 +1,306 @@
+{
+  "date": "2026-09-27",
+  "sections": [
+    {
+      "name": "Wall's",
+      "items": [
+        {
+          "name": "Magnum Pistachio",
+          "price": 375,
+          "kcal": 257,
+          "photo": "IMG_4007.HEIC"
+        },
+        {
+          "name": "Magnum Peach",
+          "price": 375,
+          "kcal": 232,
+          "photo": "IMG_4007.HEIC"
+        },
+        {
+          "name": "Magnum Classic",
+          "price": 360,
+          "kcal": 226,
+          "photo": "IMG_4007.HEIC"
+        },
+        {
+          "name": "Magnum White",
+          "price": 360,
+          "kcal": 304,
+          "photo": "IMG_4007.HEIC"
+        },
+        {
+          "name": "Magnum Billionaire",
+          "price": 360,
+          "kcal": 236,
+          "photo": "IMG_4007.HEIC"
+        },
+        {
+          "name": "Twister",
+          "price": 275,
+          "kcal": 85,
+          "photo": "IMG_4007.HEIC"
+        },
+        {
+          "name": "Cornetto MAX",
+          "price": 375,
+          "kcal": 242,
+          "photo": "IMG_4007.HEIC"
+        },
+        {
+          "name": "Calippo Orange",
+          "price": 275,
+          "kcal": 104,
+          "photo": "IMG_4007.HEIC"
+        },
+        {
+          "name": "Calippo Strawberry",
+          "price": 275,
+          "kcal": 96,
+          "photo": "IMG_4007.HEIC"
+        },
+        {
+          "name": "Feast Original",
+          "price": 275,
+          "kcal": 237,
+          "photo": "IMG_4007.HEIC"
+        },
+        {
+          "name": "Solero Exotic",
+          "price": 300,
+          "kcal": 108,
+          "photo": "IMG_4007.HEIC"
+        },
+        {
+          "name": "Solero Berry",
+          "price": 300,
+          "kcal": 107,
+          "photo": "IMG_4007.HEIC"
+        },
+        {
+          "name": "Haribo Push",
+          "price": 300,
+          "kcal": 78,
+          "photo": "IMG_4007.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Coca-Cola",
+      "items": [
+        {
+          "name": "Coca-Cola 500ml",
+          "price": 360,
+          "kcal": 210,
+          "photo": "IMG_4008.HEIC"
+        },
+        {
+          "name": "Diet Coke 500ml",
+          "price": 350,
+          "kcal": 2,
+          "photo": "IMG_4008.HEIC"
+        },
+        {
+          "name": "Fanta Orange Zero 500ml",
+          "price": 350,
+          "kcal": 95,
+          "photo": "IMG_4008.HEIC"
+        },
+        {
+          "name": "Monster Green 500ml",
+          "price": 400,
+          "kcal": 235,
+          "photo": "IMG_4008.HEIC"
+        },
+        {
+          "name": "Monster Ultra 500ml",
+          "price": 400,
+          "kcal": 11,
+          "photo": "IMG_4008.HEIC"
+        },
+        {
+          "name": "Dr Pepper 500ml",
+          "price": 350,
+          "kcal": 100,
+          "photo": "IMG_4008.HEIC"
+        },
+        {
+          "name": "Oasis Summer Fruit Zero 500ml",
+          "price": 350,
+          "kcal": 15,
+          "photo": "IMG_4008.HEIC"
+        },
+        {
+          "name": "Smartwater 600ml",
+          "price": 350,
+          "kcal": 0,
+          "photo": "IMG_4008.HEIC"
+        },
+        {
+          "name": "Innocent Apple & Strawberry 200ml",
+          "price": null,
+          "kcal": 64,
+          "unclear": "board says Coming Soon, no price",
+          "photo": "IMG_4008.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Refillable Slush Vessels",
+      "items": [
+        {
+          "name": "Refillable Slush Vessel",
+          "price": 670,
+          "kcal": 107,
+          "description": "107kcal per average 17oz serving",
+          "photo": "IMG_4009.HEIC"
+        },
+        {
+          "name": "Refill",
+          "price": 310,
+          "addOn": true,
+          "photo": "IMG_4009.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        {
+          "name": "Black Americano",
+          "sizes": [
+            {
+              "label": "Regular Cup 12oz",
+              "price": 325,
+              "kcal": 0
+            },
+            {
+              "label": "Large Cup 16oz",
+              "price": 360,
+              "kcal": 0
+            }
+          ],
+          "photo": "IMG_4010.HEIC"
+        },
+        {
+          "name": "White Americano",
+          "sizes": [
+            {
+              "label": "Regular Cup 12oz",
+              "price": 325,
+              "kcal": 0
+            },
+            {
+              "label": "Large Cup 16oz",
+              "price": 360,
+              "kcal": 0
+            }
+          ],
+          "photo": "IMG_4010.HEIC"
+        },
+        {
+          "name": "Cappuccino",
+          "sizes": [
+            {
+              "label": "Regular Cup 12oz",
+              "price": 350,
+              "kcal": 57
+            },
+            {
+              "label": "Large Cup 16oz",
+              "price": 380,
+              "kcal": 71
+            }
+          ],
+          "photo": "IMG_4010.HEIC"
+        },
+        {
+          "name": "Latte",
+          "sizes": [
+            {
+              "label": "Regular Cup 12oz",
+              "price": 350,
+              "kcal": 74
+            },
+            {
+              "label": "Large Cup 16oz",
+              "price": 380,
+              "kcal": 106
+            }
+          ],
+          "photo": "IMG_4010.HEIC"
+        },
+        {
+          "name": "Mocha",
+          "sizes": [
+            {
+              "label": "Regular Cup 12oz",
+              "price": 380,
+              "kcal": 113
+            },
+            {
+              "label": "Large Cup 16oz",
+              "price": 400,
+              "kcal": 161
+            }
+          ],
+          "photo": "IMG_4010.HEIC"
+        },
+        {
+          "name": "Hot Chocolate",
+          "sizes": [
+            {
+              "label": "Regular Cup 12oz",
+              "price": 375,
+              "kcal": 175
+            },
+            {
+              "label": "Large Cup 16oz",
+              "price": 400,
+              "kcal": 199
+            }
+          ],
+          "photo": "IMG_4010.HEIC"
+        },
+        {
+          "name": "Tea",
+          "sizes": [
+            {
+              "label": "Regular Cup 12oz",
+              "price": 280,
+              "kcal": 0
+            },
+            {
+              "label": "Large Cup 16oz",
+              "price": 310,
+              "kcal": 0
+            }
+          ],
+          "photo": "IMG_4010.HEIC"
+        }
+      ]
+    }
+  ],
+  "skipped": [],
+  "photos": [
+    {
+      "file": "IMG_4007.HEIC",
+      "name": "Rehydrator-walls",
+      "caption": "Wall's"
+    },
+    {
+      "file": "IMG_4008.HEIC",
+      "name": "Rehydrator-coca-cola",
+      "caption": "Coca-Cola"
+    },
+    {
+      "file": "IMG_4009.HEIC",
+      "name": "Rehydrator-refillable-slush-vessels",
+      "caption": "Refillable Slush Vessels"
+    },
+    {
+      "file": "IMG_4010.HEIC",
+      "name": "Rehydrator-hot-drinks",
+      "caption": "Hot Drinks"
+    }
+  ]
+}

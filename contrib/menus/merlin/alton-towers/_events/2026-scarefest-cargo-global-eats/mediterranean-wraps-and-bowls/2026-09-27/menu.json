@@ -1,0 +1,96 @@
+{
+  "date": "2026-09-27",
+  "sections": [
+    {
+      "name": "Mummy Wraps",
+      "items": [
+        {
+          "name": "The Devil's Chicken Thigh Wrap",
+          "description": "Wrapped in a flatbread with lettuce, red cabbage, sumac and parsley onion, chilli sauce and garlic yogurt",
+          "price": 1395,
+          "unclear": "handwritten price's last digit looks like a 6; read as .95 like the other prices",
+          "photo": "IMG_3984.HEIC"
+        },
+        {
+          "name": "Lurking Lamb Wrap",
+          "description": "Wrapped in a flatbread with lettuce, red cabbage, sumac and parsley onion, chilli sauce and garlic yogurt",
+          "price": 1595,
+          "photo": "IMG_3984.HEIC"
+        },
+        {
+          "name": "Haunted Halloumi Wrap",
+          "description": "Wrapped in a flatbread with lettuce, red cabbage, sumac and parsley onion, chilli sauce and garlic yogurt",
+          "price": 1195,
+          "unclear": "handwritten price's last digit looks like a 6; read as .95 like the other prices",
+          "photo": "IMG_3984.HEIC"
+        },
+        {
+          "name": "Add chips or halloumi to wrap",
+          "price": 200,
+          "addOn": true,
+          "photo": "IMG_3984.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Witch's Cauldrons",
+      "items": [
+        {
+          "name": "The Devil's Chicken Thigh Cauldron",
+          "description": "Served on a bed of chips with garlic yogurt and a homemade tomato sauce OR Salad",
+          "price": 1395,
+          "unclear": "handwritten price's last digit looks like a 6; read as .95 like the other prices",
+          "photo": "IMG_3984.HEIC"
+        },
+        {
+          "name": "Lurking Lamb Cauldron",
+          "description": "Served on a bed of chips with garlic yogurt and a homemade tomato sauce OR Salad",
+          "price": 1595,
+          "photo": "IMG_3984.HEIC"
+        },
+        {
+          "name": "Haunted Halloumi Cauldron",
+          "description": "Served on a bed of chips with garlic yogurt and a homemade tomato sauce OR Salad",
+          "price": 1195,
+          "photo": "IMG_3984.HEIC"
+        },
+        {
+          "name": "Little Monsters Meal",
+          "description": "Grilled chicken, lamb or Halloumi served with chips, homemade tomato sauce OR salad. Served with a soft drink.",
+          "price": 1000,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3984.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Sides and Drinks",
+      "items": [
+        {
+          "name": "Freaky Fries",
+          "price": 550,
+          "photo": "IMG_3984.HEIC"
+        },
+        {
+          "name": "Haunted Halloumi Fries",
+          "price": 800,
+          "photo": "IMG_3984.HEIC"
+        },
+        {
+          "name": "Drinks",
+          "price": 350,
+          "photo": "IMG_3984.HEIC"
+        }
+      ]
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3984.HEIC",
+      "name": "Mediterranean-Wraps-and-Bowls-main-menu",
+      "caption": "Mummy Wraps, Witch's Cauldrons, Sides and Drinks"
+    }
+  ]
+}

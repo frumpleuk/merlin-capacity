@@ -1,0 +1,198 @@
+{
+  "date": "2026-09-27",
+  "sections": [
+    {
+      "name": "Fresh Naan Wraps",
+      "note": "All wraps come with salad, mint chutney and chilli sauce. The screen also has a Kids Meals panel (bottom right), too washed out by reflection to read any item or price. The Burgers and Naans counter posters of 2026-08-26 were not photographed.",
+      "items": [
+        {
+          "name": "Seekh Kebab",
+          "price": 1250,
+          "photo": "IMG_3936.HEIC"
+        },
+        {
+          "name": "Chicken Tikka",
+          "price": 1250,
+          "photo": "IMG_3936.HEIC"
+        },
+        {
+          "name": "Doner",
+          "price": 1250,
+          "photo": "IMG_3936.HEIC"
+        },
+        {
+          "name": "Aloo Chana (VG)",
+          "description": "Potatoes & chickpeas",
+          "price": 1250,
+          "tags": [
+            "vg"
+          ],
+          "photo": "IMG_3936.HEIC"
+        },
+        {
+          "name": "Wrap",
+          "price": 1400,
+          "unclear": "glare covers the first word of the name; only \"...Wrap\" is legible",
+          "photo": "IMG_3936.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Jacket Potatoes",
+      "note": "Bottom-left panel of the screen is washed out by reflection.",
+      "items": [
+        {
+          "name": "Baked Beans (VG)",
+          "price": 849,
+          "tags": [
+            "vg"
+          ],
+          "unclear": "price blurred by reflection; best reading £8.49",
+          "photo": "IMG_3936.HEIC"
+        },
+        {
+          "name": "Cheese (V)",
+          "price": 849,
+          "tags": [
+            "v"
+          ],
+          "unclear": "name and price blurred by reflection; best reading £8.49",
+          "photo": "IMG_3936.HEIC"
+        },
+        {
+          "name": "Jacket Potato",
+          "price": null,
+          "unclear": "third filling: name illegible, price blurred (looks like £8.9x)",
+          "photo": "IMG_3936.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Loaded Chips",
+      "note": "Spiced chips piled high with tandoori toppings, melted cheddar & our signature chutneys. Counter board marked \"All new\".",
+      "items": [
+        {
+          "name": "Tikka Masala (V)",
+          "description": "Spiced chips smothered in cheddar & rich tikka masala sauce.",
+          "price": 899,
+          "tags": [
+            "v"
+          ],
+          "photo": "IMG_3937.HEIC"
+        },
+        {
+          "name": "Seekh Kebab",
+          "description": "Loaded with seekh kebab, cheddar cheese, masala sauce & mint chutney.",
+          "price": 950,
+          "photo": "IMG_3937.HEIC"
+        },
+        {
+          "name": "Chicken Tikka",
+          "description": "Loaded with chunks of chicken tikka, cheddar cheese, masala sauce & mint chutney.",
+          "price": 950,
+          "photo": "IMG_3937.HEIC"
+        },
+        {
+          "name": "Eastern Express Special",
+          "description": "The full works, chicken tikka & seekh kebab on spiced chips, loaded with cheddar, masala sauce & mint chutney, topped with coriander.",
+          "price": 1100,
+          "photo": "IMG_3937.HEIC"
+        },
+        {
+          "name": "Spiced Chips (V)",
+          "description": "Spiced chips topped with cheese.",
+          "price": 699,
+          "tags": [
+            "v"
+          ],
+          "photo": "IMG_3936.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Chips",
+      "note": "Extras available",
+      "items": [
+        {
+          "name": "Chips",
+          "price": 450,
+          "photo": "IMG_3936.HEIC"
+        },
+        {
+          "name": "Cheese (V)",
+          "price": 150,
+          "tags": [
+            "v"
+          ],
+          "addOn": true,
+          "unclear": "price blurred by reflection; best reading £1.50",
+          "photo": "IMG_3936.HEIC"
+        },
+        {
+          "name": "Curry Sauce (V)",
+          "price": 100,
+          "tags": [
+            "v"
+          ],
+          "addOn": true,
+          "unclear": "price blurred by reflection; best reading £1.00",
+          "photo": "IMG_3936.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Baguettes",
+      "items": [
+        {
+          "name": "Sausage & Onion",
+          "price": 1000,
+          "unclear": "name and price blurred by reflection; best reading £10.00",
+          "photo": "IMG_3936.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Onion Bhaji",
+      "items": [
+        {
+          "name": "Onion Bhaji (VG)",
+          "price": 699,
+          "tags": [
+            "vg"
+          ],
+          "photo": "IMG_3936.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Snack Meal",
+      "items": [
+        {
+          "name": "Snack Meal",
+          "description": "Seekh Kebab, Veg/Meat Samosa, Onion Bhaji",
+          "price": 950,
+          "photo": "IMG_3936.HEIC"
+        }
+      ]
+    }
+  ],
+  "offers": [],
+  "skipped": [
+    {
+      "photo": "IMG_3938.HEIC",
+      "reason": "food allergies and intolerances chart, not a menu"
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3936.HEIC",
+      "name": "Eastern-Express-Dark-Forest-fresh-naan-wraps",
+      "caption": "Fresh Naan Wraps, Jacket Potatoes, Loaded Chips, Chips, Baguettes, Onion Bhaji, Snack Meal"
+    },
+    {
+      "file": "IMG_3937.HEIC",
+      "name": "Eastern-Express-Dark-Forest-loaded-chips",
+      "caption": "Loaded Chips"
+    }
+  ]
+}

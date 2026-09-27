@@ -1,0 +1,268 @@
+{
+  "date": "2026-09-27",
+  "sections": [
+    {
+      "name": "From the Tap",
+      "items": [
+        {
+          "name": "Budweiser",
+          "description": "4.5% ABV",
+          "sizes": [
+            {
+              "label": "Half",
+              "price": 425
+            },
+            {
+              "label": "Pint",
+              "price": 850
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3990.HEIC"
+        },
+        {
+          "name": "Camden Hells",
+          "description": "4.8% ABV",
+          "sizes": [
+            {
+              "label": "Half",
+              "price": 425
+            },
+            {
+              "label": "Pint",
+              "price": 850
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3990.HEIC"
+        },
+        {
+          "name": "Stowford Press",
+          "description": "4.6% ABV",
+          "sizes": [
+            {
+              "label": "Half",
+              "price": 425
+            },
+            {
+              "label": "Pint",
+              "price": 850
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3990.HEIC"
+        },
+        {
+          "name": "Stowford Press Dark Berry",
+          "description": "4.0% ABV",
+          "sizes": [
+            {
+              "label": "Half",
+              "price": 425
+            },
+            {
+              "label": "Pint",
+              "price": 850
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3990.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Ready to Drink Spirits",
+      "items": [
+        {
+          "name": "Bombay Sapphire Gin & Tonic",
+          "description": "250ml, 5.4% ABV",
+          "price": 775,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3990.HEIC"
+        },
+        {
+          "name": "Jack Daniel's & Coca-Cola",
+          "description": "330ml, 5% ABV",
+          "price": 775,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3990.HEIC"
+        },
+        {
+          "name": "Smirnoff Raspberry Crush & Lemonade",
+          "description": "250ml, 5% ABV",
+          "price": 775,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3990.HEIC"
+        },
+        {
+          "name": "Au Vodka Black Grape",
+          "description": "330ml, 5% ABV",
+          "price": 775,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3990.HEIC"
+        },
+        {
+          "name": "Passoã Passion Fruit Martini",
+          "description": "250ml, 5% ABV",
+          "price": 775,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3990.HEIC"
+        },
+        {
+          "name": "Gordons Pink Gin & Tonic",
+          "description": "250ml, 5% ABV",
+          "price": 775,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3990.HEIC"
+        },
+        {
+          "name": "Smirnoff Vodka & Coke",
+          "description": "250ml, 5% ABV",
+          "price": 775,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3990.HEIC"
+        },
+        {
+          "name": "Pimms",
+          "description": "250ml, 5.4% ABV",
+          "price": 775,
+          "tags": [
+            "alcohol"
+          ],
+          "unclear": "screen is shot at an angle and each price sits slightly above its line; 8 prices of 7.75 for 8 drinks, so read as 7.75",
+          "photo": "IMG_3990.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Wines",
+      "items": [
+        {
+          "name": "La Vieille Ferme Red",
+          "description": "200ml, 12.5% ABV",
+          "price": 1000,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3990.HEIC"
+        },
+        {
+          "name": "La Vieille Ferme Rose",
+          "description": "200ml, 12.5% ABV",
+          "price": 1000,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3990.HEIC"
+        },
+        {
+          "name": "La Vieille Ferme White",
+          "description": "200ml, 12.5% ABV",
+          "price": 1000,
+          "tags": [
+            "alcohol"
+          ],
+          "photo": "IMG_3990.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Soft Drinks",
+      "items": [
+        {
+          "name": "Coca-Cola",
+          "description": "500ml",
+          "price": 350,
+          "photo": "IMG_3990.HEIC"
+        },
+        {
+          "name": "Diet Coke",
+          "description": "500ml",
+          "price": 350,
+          "photo": "IMG_3990.HEIC"
+        },
+        {
+          "name": "Fanta",
+          "description": "500ml",
+          "price": 350,
+          "photo": "IMG_3990.HEIC"
+        },
+        {
+          "name": "Sprite",
+          "description": "500ml",
+          "price": 350,
+          "photo": "IMG_3990.HEIC"
+        },
+        {
+          "name": "Cawston Press Apple & Pear",
+          "description": "200ml",
+          "price": 300,
+          "photo": "IMG_3990.HEIC"
+        },
+        {
+          "name": "Smart Water",
+          "description": "500ml",
+          "price": 300,
+          "photo": "IMG_3990.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Snacks",
+      "items": [
+        {
+          "name": "Crisps",
+          "price": 200,
+          "photo": "IMG_3990.HEIC"
+        },
+        {
+          "name": "Confectionery",
+          "description": "From",
+          "price": 200,
+          "photo": "IMG_3990.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Cup",
+      "items": [
+        {
+          "name": "Cargo Cup",
+          "description": "£1 Cargo cup with every drinks purchase. NON REFUNDABLE",
+          "price": 100,
+          "addOn": true,
+          "photo": "IMG_3990.HEIC"
+        }
+      ]
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3990.HEIC",
+      "name": "The-Bar-main-menu",
+      "caption": "From the Tap, Ready to Drink Spirits, Wines, Soft Drinks, Snacks, Cup"
+    }
+  ]
+}

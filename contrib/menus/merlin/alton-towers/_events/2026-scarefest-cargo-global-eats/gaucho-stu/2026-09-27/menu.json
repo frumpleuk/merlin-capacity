@@ -1,0 +1,135 @@
+{
+  "date": "2026-09-27",
+  "sections": [
+    {
+      "name": "Gaucho Stu",
+      "note": "Pretty Much Argentinian. All our beef is grass fed farm shop beef, The proper stuff!",
+      "items": [
+        {
+          "name": "Devil's Broth Beef Stew",
+          "description": "8 hour cooked chunks of the best cut steak with potato in a rich gravy, served with crispy bread. *Add Chilli on request",
+          "price": 1750,
+          "photo": "IMG_3985.HEIC"
+        },
+        {
+          "name": "The Ogre's Steak Sandwich",
+          "description": "24 hour marinated steak served in a baguette with lettuce, sundried tomato, garlic mayo and fresh homemade chimichurri",
+          "price": 1750,
+          "photo": "IMG_3985.HEIC"
+        },
+        {
+          "name": "Steak Loaded Fries",
+          "description": "24 hour marinated steak served on crispy fries with garlic mayo and fresh homemade chimichurri",
+          "price": 1750,
+          "photo": "IMG_3985.HEIC"
+        },
+        {
+          "name": "Dragon Firecracker Steak Loaded Fries",
+          "description": "24 hour marinated steak coated in firecracker sauce, served on crispy fries with melted cheese, garlic mayo and fresh homemade chimichurri",
+          "price": 1750,
+          "photo": "IMG_3985.HEIC"
+        },
+        {
+          "name": "Steak & Pork Belly Loaded Fries",
+          "description": "24 hour marinated steak and salt & chilli pork belly, served on crispy fries with garlic mayo and fresh homemade chimichurri",
+          "price": 1750,
+          "tags": [
+            "gf",
+            "df"
+          ],
+          "photo": "IMG_3985.HEIC"
+        },
+        {
+          "name": "The Wolves Ragu Loaded Fries",
+          "description": "Homemade bolognese served on crispy fries and garnished with fresh chopped parsley",
+          "price": 1650,
+          "tags": [
+            "gf"
+          ],
+          "photo": "IMG_3985.HEIC"
+        },
+        {
+          "name": "Mami's Smoky Bean Chilli Loaded Fries",
+          "description": "Homemade smoky chilli, packed with protein and fibre, served on crispy fries and finished with fresh homemade chimichurri",
+          "price": 1650,
+          "tags": [
+            "vg",
+            "v",
+            "gf"
+          ],
+          "photo": "IMG_3985.HEIC"
+        },
+        {
+          "name": "Huge Family Platter",
+          "description": "24 hour marinated steak, salt & chilli pork belly, firecracker steak and homemade ragu served over crispy fries with garlic mayo and fresh homemade chimichurri",
+          "price": null,
+          "tags": [
+            "gf",
+            "df"
+          ],
+          "unclear": "no price; handwritten \"on request\"",
+          "photo": "IMG_3985.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Sides and Extras",
+      "note": "A third line (item and price) is scribbled out in marker.",
+      "items": [
+        {
+          "name": "Kids' Bolognese",
+          "price": 1100,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3985.HEIC"
+        },
+        {
+          "name": "Cheesy Chips",
+          "price": 700,
+          "photo": "IMG_3985.HEIC"
+        },
+        {
+          "name": "Extra Chimmichurri",
+          "price": 250,
+          "addOn": true,
+          "photo": "IMG_3985.HEIC"
+        },
+        {
+          "name": "Add Cheese",
+          "price": 150,
+          "addOn": true,
+          "photo": "IMG_3985.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Water",
+          "price": 300,
+          "photo": "IMG_3985.HEIC"
+        },
+        {
+          "name": "Soft Drinks",
+          "price": 350,
+          "photo": "IMG_3985.HEIC"
+        }
+      ]
+    }
+  ],
+  "skipped": [
+    {
+      "photo": "IMG_3986.HEIC",
+      "reason": "Same Gaucho Stu board as IMG_3985, shot at an angle with the stall sign; IMG_3985 is clearer."
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3985.HEIC",
+      "name": "Gaucho-Stu-main-menu",
+      "caption": "Gaucho Stu, Sides and Extras, Drinks"
+    }
+  ]
+}

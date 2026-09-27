@@ -1,0 +1,41 @@
+{
+  "date": "2026-09-27",
+  "sections": [
+    {
+      "name": "Hot Chocolate made with Cadbury",
+      "note": "Scarefest board; the venue was serving only hot chocolate. Prices are handwritten.",
+      "items": [
+        {
+          "name": "The Classic",
+          "description": "Made with Cadbury hot chocolate, topped with whipped cream and a Cadbury Flake",
+          "price": 650,
+          "photo": "IMG_3991.HEIC"
+        },
+        {
+          "name": "The Messy Monster",
+          "description": "Made with Cadbury hot chocolate, topped with whipped cream, a Cadbury Flake, Cadbury Dairy Milk Buttons, mini marshmallows & gold glitter",
+          "price": 650,
+          "photo": "IMG_3991.HEIC"
+        },
+        {
+          "name": "Daring Dairy Free",
+          "description": "Made with Cadbury hot chocolate and soya milk, topped with soya whipped cream, vegan chocolate sauce & vegan marshmallows",
+          "price": null,
+          "tags": [
+            "df"
+          ],
+          "unclear": "price box handwritten \"N/A\": not available on 2026-09-27",
+          "photo": "IMG_3991.HEIC"
+        }
+      ]
+    }
+  ],
+  "offers": [],
+  "photos": [
+    {
+      "file": "IMG_3991.HEIC",
+      "name": "The-Towers-Burger-Kitchen-main-menu",
+      "caption": "Hot Chocolate made with Cadbury"
+    }
+  ]
+}

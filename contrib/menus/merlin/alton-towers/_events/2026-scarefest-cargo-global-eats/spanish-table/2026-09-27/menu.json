@@ -1,0 +1,115 @@
+{
+  "date": "2026-09-27",
+  "sections": [
+    {
+      "name": "Paellaaaah!",
+      "items": [
+        {
+          "name": "Seafood Paella",
+          "price": 1300,
+          "photo": "IMG_3988.HEIC"
+        },
+        {
+          "name": "Chicken Paella",
+          "price": 1200,
+          "photo": "IMG_3988.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Churros",
+      "items": [
+        {
+          "name": "Churros",
+          "price": 795,
+          "photo": "IMG_3988.HEIC"
+        },
+        {
+          "name": "Churros con Chocolate",
+          "price": 995,
+          "photo": "IMG_3988.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Paella & Churros Deals",
+      "note": "Boxed deals with no printed heading",
+      "items": [
+        {
+          "name": "1 Paella & 1 Portion of Churros",
+          "price": 1600,
+          "photo": "IMG_3988.HEIC"
+        },
+        {
+          "name": "2 Paellas & 2 Portions of Churros",
+          "price": 2900,
+          "photo": "IMG_3988.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Family Meal Deal",
+      "items": [
+        {
+          "name": "Family Meal Deal",
+          "description": "2x Paellas, 2x Kids' portions & 2x portions of churros",
+          "price": 4800,
+          "photo": "IMG_3988.HEIC"
+        }
+      ]
+    },
+    {
+      "name": "Cans & Bottles",
+      "items": [
+        {
+          "name": "Smart Water",
+          "price": 300,
+          "photo": "IMG_3988.HEIC"
+        },
+        {
+          "name": "Fanta Orange",
+          "price": 350,
+          "photo": "IMG_3988.HEIC"
+        },
+        {
+          "name": "Coca-Cola",
+          "price": 350,
+          "photo": "IMG_3988.HEIC"
+        },
+        {
+          "name": "Diet Coke",
+          "price": 350,
+          "photo": "IMG_3988.HEIC"
+        },
+        {
+          "name": "Coke Zero",
+          "price": 350,
+          "photo": "IMG_3988.HEIC"
+        },
+        {
+          "name": "Cawston Juice",
+          "price": 260,
+          "photo": "IMG_3988.HEIC"
+        },
+        {
+          "name": "Apple & Orange",
+          "price": 260,
+          "photo": "IMG_3988.HEIC"
+        }
+      ]
+    }
+  ],
+  "skipped": [
+    {
+      "photo": "IMG_3987.HEIC",
+      "reason": "Stall fascia sign \"Spanish Table Paella & Churros\", no prices."
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3988.HEIC",
+      "name": "Spanish-Table-main-menu",
+      "caption": "Paellaaaah!, Churros, Paella & Churros Deals, Family Meal Deal, Cans & Bottles"
+    }
+  ]
+}

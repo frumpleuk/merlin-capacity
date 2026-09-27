@@ -92,6 +92,13 @@ the prose. Names, locations, areas and categories are facts and fine to keep.
 
 `start`/`end` are ISO dates or `null` when unknown. Cite where dates came from.
 
+When the park's app lists the event as a venue of its own (Scarefest's Cargo
+village is "CARGO GLOBAL EATS Street food"), name that venue's folder in
+`appVenues`: `"appVenues": ["cargo-global-eats-street-food"]`. The site then
+shows the event in its place, and the app's entry is not listed as a separate
+venue, during the event or after it. If the app brings the venue back for a
+later event, the new event's `event.json` names it too.
+
 ## menu.json
 
 One per dated folder: what the boards said on that day. Prices are **integer

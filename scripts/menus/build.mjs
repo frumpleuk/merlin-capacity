@@ -135,6 +135,11 @@ for (const key of Object.keys(ALL_PARK_DIRS)) {
         .flatMap((d) => (readJson(path.join(offersDir, d, "menu.json")).offers ?? []).map((o) => ({ ...o, date: d })))
     : [];
 
+  // The app sometimes lists an event as one venue of its own ("CARGO GLOBAL
+  // EATS Street food"). The event already shows it, stall by stall, so the
+  // app's entry isn't listed again, now or after the event has gone.
+  const linked = new Set(events.flatMap((e) => e.appVenues ?? []));
+  for (let i = venues.length - 1; i >= 0; i--) if (linked.has(venues[i].slug)) venues.splice(i, 1);
   venues.sort((a, b) => a.name.localeCompare(b.name));
   water.sort((a, b) => a.name.localeCompare(b.name));
   // Area labels for the map (the syncs write them from the app's own map).

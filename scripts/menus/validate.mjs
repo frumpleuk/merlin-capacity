@@ -150,7 +150,12 @@ for (const key of Object.keys(ALL_PARK_DIRS)) {
         const evDir = path.join(p, ev.name);
         if (!/^\d{4}-[a-z0-9-]+$/.test(ev.name)) err(evDir, "event folder must be <year>-<slug>");
         if (!fs.existsSync(path.join(evDir, "event.json"))) err(evDir, "missing event.json");
-        else if (!readJson(path.join(evDir, "event.json")).name) err(evDir, "event.json has no name");
+        else {
+          const ev = readJson(path.join(evDir, "event.json"));
+          if (!ev.name) err(evDir, "event.json has no name");
+          for (const v of ev.appVenues ?? [])
+            if (!fs.existsSync(path.join(parkPath, v, "poi.json"))) err(evDir, `appVenues: no venue folder "${v}"`);
+        }
         walkVenue(evDir, { needPoi: false });
       }
     } else walkVenue(p, { needPoi: !e.name.startsWith("_") });

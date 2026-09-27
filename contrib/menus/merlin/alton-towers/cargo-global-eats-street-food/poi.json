@@ -10,5 +10,5 @@
   "diningPlans": null,
   "appMissingSince": null,
   "source": "attractions.io app bundle",
-  "note": "The Scarefest food village; its stalls and menus are under _events/2026-scarefest-cargo-global-eats"
+  "note": "The app's entry for a Cargo Global Eats event; shown through the event whose event.json names it in appVenues"
 }

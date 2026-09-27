@@ -2,9 +2,12 @@
   "name": "Cargo Global Eats (Scarefest)",
   "operator": "Cargo Global Eats",
   "area": "World of David Walliams",
+  "appVenues": [
+    "cargo-global-eats-street-food"
+  ],
   "start": "2026-09-26",
   "end": "2026-11-01",
-  "note": "Cargo's Scarefest village outside the World of David Walliams, listed in the park app as \"CARGO GLOBAL EATS Street food\" (cargo-global-eats-street-food). Dates are Scarefest's own (open on selected days: 26-27 Sep, 2-4, 9-11 Oct, 16 Oct to 1 Nov); no source gives separate dates for the food village. Seen on 27 Sep 2026.",
+  "note": "Cargo's Scarefest village outside the World of David Walliams. Dates are Scarefest's own (open on selected days: 26-27 Sep, 2-4, 9-11 Oct, 16 Oct to 1 Nov); no source gives separate dates for the food village. Seen on 27 Sep 2026.",
   "sources": [
     "https://parkworld-online.com/alton-towers-scarefest/"
   ]

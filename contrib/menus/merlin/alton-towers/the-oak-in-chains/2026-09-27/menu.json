@@ -393,50 +393,70 @@
       "items": [
         {
           "name": "Kopparberg Crisp Apple",
-          "price": 425,
           "tags": [
             "alcohol"
           ],
-          "unclear": "tablet shows 'From £4.25'; larger sizes not visible",
-          "photo": "IMG_3961.HEIC"
+          "photo": "IMG_3961.HEIC",
+          "sizes": [
+            {
+              "label": "From",
+              "price": 425
+            }
+          ]
         },
         {
           "name": "Stella Artois",
-          "price": 425,
           "tags": [
             "alcohol"
           ],
-          "unclear": "tablet shows 'From £4.25'; larger sizes not visible",
-          "photo": "IMG_3961.HEIC"
+          "photo": "IMG_3961.HEIC",
+          "sizes": [
+            {
+              "label": "From",
+              "price": 425
+            }
+          ]
         },
         {
           "name": "Laugh & Scream Lager",
           "description": "Brewed right here in Alton...exclusively for Alton Towers",
-          "kcal": 225,
-          "price": 450,
           "tags": [
             "alcohol"
           ],
-          "unclear": "tablet shows 'From £4.50'; larger sizes not visible",
-          "photo": "IMG_3961.HEIC"
+          "photo": "IMG_3961.HEIC",
+          "sizes": [
+            {
+              "label": "From",
+              "price": 450,
+              "kcal": 225
+            }
+          ]
         },
         {
           "name": "Camden Pale",
-          "price": 425,
           "tags": [
             "alcohol"
           ],
-          "unclear": "tablet shows 'From £4.25'; larger sizes not visible",
-          "photo": "IMG_3961.HEIC"
+          "photo": "IMG_3961.HEIC",
+          "sizes": [
+            {
+              "label": "From",
+              "price": 425
+            }
+          ]
         },
         {
           "name": "Strawberry & Lime Kopparberg",
-          "price": 425,
           "tags": [
             "alcohol"
           ],
-          "unclear": "tablet shows 'From £4.25'; larger sizes not visible",
-          "photo": "IMG_3961.HEIC"
+          "photo": "IMG_3961.HEIC",
+          "sizes": [
+            {
+              "label": "From",
+              "price": 425
+            }
+          ]
         }
       ]
     },
@@ -449,7 +469,6 @@
           "description": "Cranberry juice, Sprite Zero and grenadine served in a blood bag with",
           "kcal": 9,
           "price": 900,
-          "unclear": "listed twice under Cocktails at different prices (£9.00 and £10.95); this card's description names no alcohol",
           "photo": "IMG_3962.HEIC"
         },
         {
@@ -495,7 +514,6 @@
           "tags": [
             "alcohol"
           ],
-          "unclear": "second Blood Bag Cocktail card on the tablet, priced differently from the £9.00 one",
           "photo": "IMG_3963.HEIC"
         },
         {
@@ -532,7 +550,6 @@
           "tags": [
             "alcohol"
           ],
-          "unclear": "rest of the description cut off by the bottom of the screen",
           "photo": "IMG_3964.HEIC"
         }
       ]
@@ -558,7 +575,6 @@
           "name": "Blood Bag Mocktail",
           "description": "Cranberry, grenadine and sprite served in a Blood bag",
           "price": 695,
-          "unclear": "second Blood Bag Mocktail card on the tablet, priced differently from the £6.00 one",
           "photo": "IMG_3965.HEIC"
         },
         {
@@ -603,12 +619,16 @@
       "items": [
         {
           "name": "Monte Verde Merlot, Chile",
-          "price": 750,
           "tags": [
             "alcohol"
           ],
-          "unclear": "tablet shows 'From £7.50'; larger sizes not visible",
-          "photo": "IMG_3968.HEIC"
+          "photo": "IMG_3968.HEIC",
+          "sizes": [
+            {
+              "label": "From",
+              "price": 750
+            }
+          ]
         }
       ]
     },
@@ -618,12 +638,16 @@
       "items": [
         {
           "name": "Parini Pinot Grigio",
-          "price": 800,
           "tags": [
             "alcohol"
           ],
-          "unclear": "tablet shows 'From £8.00'; larger sizes not visible",
-          "photo": "IMG_3969.HEIC"
+          "photo": "IMG_3969.HEIC",
+          "sizes": [
+            {
+              "label": "From",
+              "price": 800
+            }
+          ]
         }
       ]
     },
@@ -633,12 +657,16 @@
       "items": [
         {
           "name": "Parini Pinot Grigio Blush",
-          "price": 775,
           "tags": [
             "alcohol"
           ],
-          "unclear": "tablet shows 'From £7.75'; larger sizes not visible",
-          "photo": "IMG_3970.HEIC"
+          "photo": "IMG_3970.HEIC",
+          "sizes": [
+            {
+              "label": "From",
+              "price": 775
+            }
+          ]
         }
       ]
     },
@@ -656,67 +684,95 @@
         },
         {
           "name": "Disaronno",
-          "price": 525,
           "tags": [
             "alcohol"
           ],
-          "unclear": "tablet shows 'From £5.25'; larger sizes not visible",
-          "photo": "IMG_3971.HEIC"
+          "photo": "IMG_3971.HEIC",
+          "sizes": [
+            {
+              "label": "From",
+              "price": 525
+            }
+          ]
         },
         {
           "name": "Gordon Gin Original",
-          "price": 525,
           "tags": [
             "alcohol"
           ],
-          "unclear": "tablet shows 'From £5.25'; larger sizes not visible",
-          "photo": "IMG_3971.HEIC"
+          "photo": "IMG_3971.HEIC",
+          "sizes": [
+            {
+              "label": "From",
+              "price": 525
+            }
+          ]
         },
         {
           "name": "Jack Daniels",
-          "kcal": 1,
-          "price": 525,
           "tags": [
             "alcohol"
           ],
-          "unclear": "tablet shows 'From £5.25'; larger sizes not visible",
-          "photo": "IMG_3971.HEIC"
+          "photo": "IMG_3971.HEIC",
+          "sizes": [
+            {
+              "label": "From",
+              "price": 525,
+              "kcal": 1
+            }
+          ]
         },
         {
           "name": "Jameson Whisky",
-          "price": 550,
           "tags": [
             "alcohol"
           ],
-          "unclear": "tablet shows 'From £5.50'; larger sizes not visible",
-          "photo": "IMG_3971.HEIC"
+          "photo": "IMG_3971.HEIC",
+          "sizes": [
+            {
+              "label": "From",
+              "price": 550
+            }
+          ]
         },
         {
           "name": "Malibu",
-          "price": 525,
           "tags": [
             "alcohol"
           ],
-          "unclear": "tablet shows 'From £5.25'; larger sizes not visible",
-          "photo": "IMG_3972.HEIC"
+          "photo": "IMG_3972.HEIC",
+          "sizes": [
+            {
+              "label": "From",
+              "price": 525
+            }
+          ]
         },
         {
           "name": "Smirnoff Vodka",
-          "price": 525,
           "tags": [
             "alcohol"
           ],
-          "unclear": "tablet shows 'From £5.25'; larger sizes not visible",
-          "photo": "IMG_3972.HEIC"
+          "photo": "IMG_3972.HEIC",
+          "sizes": [
+            {
+              "label": "From",
+              "price": 525
+            }
+          ]
         },
         {
           "name": "Beefeater Pink Strawberry",
-          "price": 525,
           "tags": [
             "alcohol"
           ],
-          "unclear": "tablet shows 'From £5.25'; larger sizes not visible",
-          "photo": "IMG_3972.HEIC"
+          "photo": "IMG_3972.HEIC",
+          "sizes": [
+            {
+              "label": "From",
+              "price": 525
+            }
+          ]
         },
         {
           "name": "Sourz Apple",

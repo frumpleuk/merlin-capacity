@@ -68,7 +68,9 @@ function venue(root, dir, slug, extra = {}) {
   return {
     slug,
     name: poi.display ?? poi.name ?? slug,
-    area: poi.area ?? extra.eventArea ?? null,
+    // displayArea is set by hand where the nearest map label is the wrong
+    // answer (Fountain Square has no label, so it came out as Walliams).
+    area: poi.displayArea ?? poi.area ?? extra.eventArea ?? null,
     category: poi.category ?? null,
     // What the park says this place sells, in its own words (Flamingo Land).
     serves: poi.serves ?? null,

@@ -54,7 +54,7 @@ for what it is, with a `poi.json` located from the photos' GPS.
 `id`, `name`, `category`, `area`, `lat`, `lon`, `menuUrl`, `serves`,
 `diningPlans`, `appPassholderDiscount`, `appMissingSince` and `source` are owned by
 `sync-venues.mjs` when `id` is an app id, and are overwritten on each sync. Any
-other key (`note`, `display`) is yours and survives. For venues outside the app,
+other key (`note`, `display`, `displayArea`) is yours and survives. For venues outside the app,
 `id` and `category` are `null` and `source` is `"photo GPS (mean)"`. The independents' sources are
 `"paultons app bundle"`, `"blackpool app map markers"` and
 `"flamingo land app (firestore)"`.
@@ -69,6 +69,9 @@ area, so the rest take the area of the nearest POI that has one (within 150m);
 Flamingo Land's venues name their own zone; Blackpool's app has no areas at all,
 so its venues have none. `appMissingSince` is stamped when a venue
 disappears from the app — the site then files it under what used to be there.
+Where the nearest label is wrong (Fountain Square has none, so its venues
+came out as World of David Walliams), set `displayArea` by hand; the site uses
+it in place of `area`.
 
 **Copyright:** the app's `Summary` text is the park's own marketing copy. Read
 facts out of it (dining plan, passholder discount) but never store or publish

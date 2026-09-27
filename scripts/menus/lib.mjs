@@ -83,7 +83,8 @@ export function venues(parkDir) {
 
 /** Create or refresh one venue folder per record, which is what every park's
  *  sync does once its backend has been read: fields the app owns are
- *  overwritten, anything recorded by hand (note, display, passDiscount)
+ *  overwritten, anything recorded by hand (note, display, displayArea,
+ *  passDiscount)
  *  survives, and a venue that has left the app is stamped, never deleted.
  *
  *  A record is { id, name, water?, ...fields }: the id is the app's own and is

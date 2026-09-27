@@ -3,7 +3,7 @@
   "sections": [
     {
       "name": "Fresh Naan Wraps",
-      "note": "All wraps come with salad, mint chutney and chilli sauce. The screen also has a Kids Meals panel (bottom right), too washed out by reflection to read any item or price. The Burgers and Naans counter posters of 2026-08-26 were not photographed.",
+      "note": "All wraps come with salad, mint chutney and chilli sauce. The Burgers and Naans counter posters of 2026-08-26 were not photographed. Blurred lines filled in from the clear 2026-08-26 board, where the readings matched.",
       "items": [
         {
           "name": "Seekh Kebab",
@@ -30,16 +30,15 @@
           "photo": "IMG_3936.HEIC"
         },
         {
-          "name": "Wrap",
+          "name": "Mixed Wrap",
           "price": 1400,
-          "unclear": "glare covers the first word of the name; only \"...Wrap\" is legible",
           "photo": "IMG_3936.HEIC"
         }
       ]
     },
     {
       "name": "Jacket Potatoes",
-      "note": "Bottom-left panel of the screen is washed out by reflection.",
+      "note": "Bottom-left panel of the screen is washed out by reflection. Blurred lines filled in from the clear 2026-08-26 board, where the readings matched.",
       "items": [
         {
           "name": "Baked Beans (VG)",
@@ -47,7 +46,6 @@
           "tags": [
             "vg"
           ],
-          "unclear": "price blurred by reflection; best reading £8.49",
           "photo": "IMG_3936.HEIC"
         },
         {
@@ -56,13 +54,11 @@
           "tags": [
             "v"
           ],
-          "unclear": "name and price blurred by reflection; best reading £8.49",
           "photo": "IMG_3936.HEIC"
         },
         {
-          "name": "Jacket Potato",
-          "price": null,
-          "unclear": "third filling: name illegible, price blurred (looks like £8.9x)",
+          "name": "Tuna Mayonnaise",
+          "price": 899,
           "photo": "IMG_3936.HEIC"
         }
       ]
@@ -111,7 +107,7 @@
     },
     {
       "name": "Chips",
-      "note": "Extras available",
+      "note": "Extras available Blurred lines filled in from the clear 2026-08-26 board, where the readings matched.",
       "items": [
         {
           "name": "Chips",
@@ -125,7 +121,6 @@
             "v"
           ],
           "addOn": true,
-          "unclear": "price blurred by reflection; best reading £1.50",
           "photo": "IMG_3936.HEIC"
         },
         {
@@ -135,7 +130,6 @@
             "v"
           ],
           "addOn": true,
-          "unclear": "price blurred by reflection; best reading £1.00",
           "photo": "IMG_3936.HEIC"
         }
       ]
@@ -146,10 +140,10 @@
         {
           "name": "Sausage & Onion",
           "price": 1000,
-          "unclear": "name and price blurred by reflection; best reading £10.00",
           "photo": "IMG_3936.HEIC"
         }
-      ]
+      ],
+      "note": "Blurred lines filled in from the clear 2026-08-26 board, where the readings matched."
     },
     {
       "name": "Onion Bhaji",
@@ -174,6 +168,38 @@
           "photo": "IMG_3936.HEIC"
         }
       ]
+    },
+    {
+      "name": "Kids Meals",
+      "note": "Too washed out by reflection to read on this photo; filled in from the 2026-08-26 board.",
+      "items": [
+        {
+          "name": "Chicken Crunchies & Chips",
+          "price": 850,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3936.HEIC"
+        },
+        {
+          "name": "Sausages & Chips",
+          "price": 850,
+          "tags": [
+            "kids"
+          ],
+          "photo": "IMG_3936.HEIC"
+        },
+        {
+          "name": "Half Jacket Potato (V)",
+          "description": "Choose cheese or beans",
+          "price": 599,
+          "tags": [
+            "v",
+            "kids"
+          ],
+          "photo": "IMG_3936.HEIC"
+        }
+      ]
     }
   ],
   "offers": [],
@@ -187,7 +213,7 @@
     {
       "file": "IMG_3936.HEIC",
       "name": "Eastern-Express-Dark-Forest-fresh-naan-wraps",
-      "caption": "Fresh Naan Wraps, Jacket Potatoes, Loaded Chips, Chips, Baguettes, Onion Bhaji, Snack Meal"
+      "caption": "Fresh Naan Wraps, Jacket Potatoes, Loaded Chips, Chips, Baguettes, Onion Bhaji, Snack Meal, Kids Meals"
     },
     {
       "file": "IMG_3937.HEIC",

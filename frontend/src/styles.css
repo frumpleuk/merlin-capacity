@@ -1649,6 +1649,12 @@ h3.fd-area-head {
   color: var(--muted);
 }
 
+/* On the board but not on sale that day ("Coming soon", "Unavailable"). */
+.fd-status {
+  color: var(--muted);
+  font-size: 12px;
+}
+
 /* The board was unreadable here — the price is a best reading, or missing. */
 .fd-flag {
   color: var(--q-closed);

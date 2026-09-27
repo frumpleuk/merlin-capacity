@@ -162,8 +162,13 @@
           "description": "Creamy Garlic, Salt & Chilli, Argentinian, Smokehouse BBQ, Hot Honey Ranch, BBQ Sauce, Sweet Chilli Sauce",
           "price": 150,
           "addOn": true,
-          "unclear": "board IMG_3992 says 1.50; kiosk IMG_4002 shows Sauces £0.50",
           "photo": "IMG_3992.HEIC"
+        },
+        {
+          "name": "Sauces",
+          "description": "Small pots, such as ketchup",
+          "price": 50,
+          "photo": "IMG_4002.HEIC"
         }
       ]
     },
@@ -346,7 +351,7 @@
     {
       "file": "IMG_4002.HEIC",
       "name": "Just-Chicken-sides",
-      "caption": "Sides"
+      "caption": "Sides, Add Dipping Sauce"
     },
     {
       "file": "IMG_4003.HEIC",

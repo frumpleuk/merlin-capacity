@@ -7,6 +7,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { ALL_PARK_DIRS, DATE_DIR, MENUS, PHOTO_EXT, parkDir, readJson } from "./lib.mjs";
 
+const STATUS = new Set(["coming-soon", "unavailable"]);
 const TAGS = new Set(["v", "vg", "gf", "df", "alcohol", "kids"]);
 const errors = [];
 const warnings = [];
@@ -59,7 +60,8 @@ function checkMenu(dir, photos) {
       const hasSizes = Array.isArray(it.sizes);
       if (hasPrice === hasSizes) err(file, `${where}: needs exactly one of price or sizes`);
       if (hasPrice && it.price !== null && !isPence(it.price)) err(file, `${where}: price must be integer pence`);
-      if (it.price === null && !it.unclear && !unpriced) err(file, `${where}: price null without "unclear" reason`);
+      if (it.status !== undefined && !STATUS.has(it.status)) err(file, `${where}: unknown status "${it.status}"`);
+      if (it.price === null && !it.unclear && !it.status && !unpriced) err(file, `${where}: price null without "unclear" reason`);
       for (const sz of it.sizes ?? []) {
         if (!sz.label) err(file, `${where}: size missing label`);
         if (sz.price !== null && !isPence(sz.price)) err(file, `${where}: size "${sz.label}" price must be integer pence`);

@@ -139,8 +139,8 @@
           "name": "Innocent Apple & Strawberry 200ml",
           "price": null,
           "kcal": 64,
-          "unclear": "board says Coming Soon, no price",
-          "photo": "IMG_4008.HEIC"
+          "photo": "IMG_4008.HEIC",
+          "status": "coming-soon"
         }
       ]
     },

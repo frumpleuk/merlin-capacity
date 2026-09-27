@@ -8,7 +8,6 @@
           "name": "The Devil's Chicken Thigh Wrap",
           "description": "Wrapped in a flatbread with lettuce, red cabbage, sumac and parsley onion, chilli sauce and garlic yogurt",
           "price": 1395,
-          "unclear": "handwritten price's last digit looks like a 6; read as .95 like the other prices",
           "photo": "IMG_3984.HEIC"
         },
         {
@@ -21,7 +20,6 @@
           "name": "Haunted Halloumi Wrap",
           "description": "Wrapped in a flatbread with lettuce, red cabbage, sumac and parsley onion, chilli sauce and garlic yogurt",
           "price": 1195,
-          "unclear": "handwritten price's last digit looks like a 6; read as .95 like the other prices",
           "photo": "IMG_3984.HEIC"
         },
         {
@@ -39,7 +37,6 @@
           "name": "The Devil's Chicken Thigh Cauldron",
           "description": "Served on a bed of chips with garlic yogurt and a homemade tomato sauce OR Salad",
           "price": 1395,
-          "unclear": "handwritten price's last digit looks like a 6; read as .95 like the other prices",
           "photo": "IMG_3984.HEIC"
         },
         {

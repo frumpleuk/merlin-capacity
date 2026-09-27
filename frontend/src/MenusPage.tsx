@@ -20,6 +20,8 @@ interface Item {
   kcal?: number;
   tags?: string[];
   unclear?: string;
+  /** On the board but not on sale that day, so there's no price to show. */
+  status?: "coming-soon" | "unavailable";
 }
 interface Section {
   name: string;
@@ -279,6 +281,8 @@ function Mark({ text, query }: { text: string; query: string }) {
   );
 }
 
+const STATUS_LABEL = { "coming-soon": "Coming soon", unavailable: "Unavailable" };
+
 function ItemRow({ item, query, unpriced }: { item: Item; query: string; unpriced?: boolean }) {
   const unclear = item.unclear ? `Couldn't read this on the photo: ${item.unclear}` : undefined;
   const sizes = item.sizes ?? [];
@@ -301,7 +305,9 @@ function ItemRow({ item, query, unpriced }: { item: Item; query: string; unprice
         </span>
         {sizes.length === 0 && !(unpriced && item.price == null) && (
           <span className={"fd-price" + (item.addOn ? " fd-add" : "")} title={unclear}>
-            {item.price == null ? (
+            {item.price == null && item.status ? (
+              <span className="fd-status">{STATUS_LABEL[item.status]}</span>
+            ) : item.price == null ? (
               <span className="fd-flag">?</span>
             ) : item.addOn ? (
               `+${money(item.price)}`

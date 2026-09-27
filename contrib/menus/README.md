@@ -138,6 +138,9 @@ pence** (`£8.75` is `875`).
   Bacon", "Upgrade to large fries", "+ 2 Dips". A side you can buy by itself
   (mushy peas, a dip pot, a sauce pot) is an ordinary item. Add-ons are shown
   as "+£4.00" and are left out of a venue's price range.
+- `status` is for an item on the board that isn't on sale that day:
+  `"coming-soon"` or `"unavailable"` (an "N/A" written in the price box).
+  Its price is `null` and the site shows the status instead.
 - Optional per item: `description`, `kcal` (integer, as printed), `tags` from
   `v`, `vg`, `gf`, `df`, `alcohol`, `kids`, and `unclear` for anything
   uncertain.

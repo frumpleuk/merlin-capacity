@@ -51,8 +51,13 @@ still to do. If the user named venues or a date, do only those.
      reading) plus `unclear` saying why. Never fill a gap from another
      venue, another date, or general knowledge.
    - A photo of an ordering tablet or app shows only some items per screen;
-     transcribe what is visible and note in the section `note` that the
-     list may be partial.
+     transcribe what is visible. A description the screen cuts off ends at
+     its last whole phrase, with no ellipsis.
+   - Section `note`s are shown on the site, so they carry only what the
+     board prints ("With fries", "Choice of seasoning..."). No transcription
+     working: not which photo or kiosk an item came from, not "may be
+     partial", not glare. Present what was read as fact; the photos are
+     the evidence. Genuine doubt about one item goes in its `unclear`.
 4. `node scripts/menus/validate.mjs` and fix every ERROR for that folder.
 5. `node scripts/menus/optimise.mjs` once the folders are transcribed. It
    writes the committed `web/*.jpg` copies and records their names and

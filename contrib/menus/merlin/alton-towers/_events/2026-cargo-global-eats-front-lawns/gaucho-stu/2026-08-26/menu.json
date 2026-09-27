@@ -78,11 +78,10 @@
     },
     {
       "name": "Sides and Extras",
-      "note": "Unheaded block at the foot of the board; prices handwritten in the boxes",
       "items": [
         {
           "name": "Kids Bolognese",
-          "description": "On fries (handwritten addition)",
+          "description": "On fries",
           "price": 1000,
           "tags": [
             "kids"

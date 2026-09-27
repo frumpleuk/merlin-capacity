@@ -3,7 +3,6 @@
   "sections": [
     {
       "name": "Rollercoaster Burgers",
-      "note": "Foods tab on the in-restaurant \"tabletop\" ordering tablet. The photos capture only part of each scrolling list, so this section may be partial. Card descriptions are truncated by the tablet and are copied as shown.",
       "items": [
         {
           "name": "Rollercoaster Burger",
@@ -34,7 +33,6 @@
     },
     {
       "name": "Big Rides & Classics",
-      "note": "Foods tab on the tabletop tablet; the photos capture only part of the scrolling list, so this section may be partial.",
       "items": [
         {
           "name": "Rita's Quarter Chicken Leg",
@@ -70,7 +68,6 @@
     },
     {
       "name": "Spice Track Curries",
-      "note": "Foods tab on the tabletop tablet; the photos capture only part of the scrolling list, so this section may be partial.",
       "items": [
         {
           "name": "Coaster Chicken Tikka",
@@ -107,7 +104,6 @@
     },
     {
       "name": "Trackside Pasta & Salad",
-      "note": "Foods tab on the tabletop tablet; the photos capture only part of the scrolling list, so this section may be partial.",
       "items": [
         {
           "name": "Galactica Greens Caesar",
@@ -131,7 +127,6 @@
     },
     {
       "name": "Coaster Sides",
-      "note": "Foods tab on the tabletop tablet; the photos capture only part of the scrolling list, so this section may be partial.",
       "items": [
         {
           "name": "Loop-the-loop Onion Rings",
@@ -151,7 +146,6 @@
     },
     {
       "name": "Little Thrill-Seekers (Kids)",
-      "note": "Foods tab on the tabletop tablet; the photos capture only part of the scrolling list, so this section may be partial.",
       "items": [
         {
           "name": "Penne Pasta & Tomato Sauce (v) (k)",
@@ -189,7 +183,6 @@
     },
     {
       "name": "Fries & Rides",
-      "note": "Foods tab on the tabletop tablet; the photos capture only part of the scrolling list, so this section may be partial.",
       "items": [
         {
           "name": "Coaster Fries",
@@ -209,7 +202,6 @@
     },
     {
       "name": "Sauces",
-      "note": "Foods tab on the tabletop tablet; the photos capture only part of the scrolling list, so this section may be partial.",
       "items": [
         {
           "name": "Roller Ranch Dip (ve)",
@@ -245,7 +237,6 @@
     },
     {
       "name": "Sweet Final Drop",
-      "note": "The only category under the Desserts tab on the tabletop tablet; the photos capture only part of the scrolling list, so this section may be partial.",
       "items": [
         {
           "name": "Towers Sticky Toffee Pudding",
@@ -288,7 +279,6 @@
     },
     {
       "name": "Bottled Beers & Cider",
-      "note": "Drinks tab on the tabletop tablet; the photos capture only part of the scrolling list, so this section may be partial.",
       "items": [
         {
           "name": "Wkd Bucket",
@@ -384,7 +374,6 @@
     },
     {
       "name": "Slush",
-      "note": "Drinks tab on the tabletop tablet; the photos capture only part of the scrolling list, so this section may be partial.",
       "items": [
         {
           "name": "Lime Slush",
@@ -488,31 +477,37 @@
     },
     {
       "name": "Draught Beers & Cider",
-      "note": "Drinks tab on the tabletop tablet; the photos capture only part of the scrolling list, so this section may be partial. Both cards show a \"From\" price, so larger measures are likely priced higher.",
       "items": [
         {
           "name": "Stella Artois",
-          "price": 425,
           "tags": [
             "alcohol"
           ],
-          "unclear": "printed as \"From £4.25\"; the sizes behind that price were not shown",
-          "photo": "IMG_3501.HEIC"
+          "photo": "IMG_3501.HEIC",
+          "sizes": [
+            {
+              "label": "From",
+              "price": 425
+            }
+          ]
         },
         {
           "name": "Strawberry & Lime Kopparberg",
-          "price": 425,
           "tags": [
             "alcohol"
           ],
-          "unclear": "printed as \"From £4.25\"; the sizes behind that price were not shown",
-          "photo": "IMG_3501.HEIC"
+          "photo": "IMG_3501.HEIC",
+          "sizes": [
+            {
+              "label": "From",
+              "price": 425
+            }
+          ]
         }
       ]
     },
     {
       "name": "Cocktails",
-      "note": "Drinks tab on the tabletop tablet; the photos capture only part of the scrolling list, so this section may be partial.",
       "items": [
         {
           "name": "Smiler Cocktail",
@@ -592,7 +587,6 @@
     },
     {
       "name": "Mocktails",
-      "note": "Drinks tab on the tabletop tablet; the photos capture only part of the scrolling list, so this section may be partial.",
       "items": [
         {
           "name": "Emerald Elixir",
@@ -616,178 +610,237 @@
     },
     {
       "name": "Red wine",
-      "note": "Drinks tab on the tabletop tablet; the photos capture only part of the scrolling list, so this section may be partial. Both cards show a \"From\" price for the smallest measure.",
       "items": [
         {
           "name": "Monte Verde Merlot, Chile",
-          "price": 750,
           "tags": [
             "alcohol"
           ],
-          "unclear": "printed as \"From £7.50\"; the measures behind that price were not shown",
-          "photo": "IMG_3506.HEIC"
+          "photo": "IMG_3506.HEIC",
+          "sizes": [
+            {
+              "label": "From",
+              "price": 750
+            }
+          ]
         },
         {
           "name": "Portillo Malbec, Argentina",
-          "price": 730,
           "tags": [
             "alcohol"
           ],
-          "unclear": "printed as \"From £7.30\"; the measures behind that price were not shown",
-          "photo": "IMG_3506.HEIC"
+          "photo": "IMG_3506.HEIC",
+          "sizes": [
+            {
+              "label": "From",
+              "price": 730
+            }
+          ]
         }
       ]
     },
     {
       "name": "White wine",
-      "note": "Drinks tab on the tabletop tablet; the photos capture only part of the scrolling list, so this section may be partial. Both cards show a \"From\" price for the smallest measure.",
       "items": [
         {
           "name": "Petal & Stem Sauvignon Blanc",
-          "price": 750,
           "tags": [
             "alcohol"
           ],
-          "unclear": "printed as \"From £7.50\"; the measures behind that price were not shown",
-          "photo": "IMG_3507.HEIC"
+          "photo": "IMG_3507.HEIC",
+          "sizes": [
+            {
+              "label": "From",
+              "price": 750
+            }
+          ]
         },
         {
           "name": "Short Mile Bay Chardonnay",
-          "price": 725,
           "tags": [
             "alcohol"
           ],
-          "unclear": "printed as \"From £7.25\"; the measures behind that price were not shown",
-          "photo": "IMG_3507.HEIC"
+          "photo": "IMG_3507.HEIC",
+          "sizes": [
+            {
+              "label": "From",
+              "price": 725
+            }
+          ]
         }
       ]
     },
     {
       "name": "Rose wine",
-      "note": "Drinks tab on the tabletop tablet; the photos capture only part of the scrolling list, so this section may be partial. All three cards show a \"From\" price for the smallest measure.",
       "items": [
         {
           "name": "Parini Pinot Grigio Blush",
-          "price": 775,
           "tags": [
             "alcohol"
           ],
-          "unclear": "printed as \"From £7.75\"; the measures behind that price were not shown",
-          "photo": "IMG_3508.HEIC"
+          "photo": "IMG_3508.HEIC",
+          "sizes": [
+            {
+              "label": "From",
+              "price": 775
+            }
+          ]
         },
         {
           "name": "Bulletin Zinfandel",
-          "price": 775,
           "tags": [
             "alcohol"
           ],
-          "unclear": "printed as \"From £7.75\"; the measures behind that price were not shown",
-          "photo": "IMG_3508.HEIC"
+          "photo": "IMG_3508.HEIC",
+          "sizes": [
+            {
+              "label": "From",
+              "price": 775
+            }
+          ]
         },
         {
           "name": "Cotes De Provence Rose Mirabeau",
-          "price": 775,
           "tags": [
             "alcohol"
           ],
-          "unclear": "printed as \"From £7.75\"; the measures behind that price were not shown",
-          "photo": "IMG_3508.HEIC"
+          "photo": "IMG_3508.HEIC",
+          "sizes": [
+            {
+              "label": "From",
+              "price": 775
+            }
+          ]
         }
       ]
     },
     {
       "name": "Spirits",
-      "note": "Drinks tab on the tabletop tablet; the photos capture only part of the scrolling list, so this section may be partial. Every card shows a \"From\" price for the single measure.",
       "items": [
         {
           "name": "Archers Peach Schnapps",
-          "price": 525,
           "tags": [
             "alcohol"
           ],
-          "unclear": "printed as \"From £5.25\"; the measures behind that price were not shown",
-          "photo": "IMG_3509.HEIC"
+          "photo": "IMG_3509.HEIC",
+          "sizes": [
+            {
+              "label": "From",
+              "price": 525
+            }
+          ]
         },
         {
           "name": "Captain Morgan's",
-          "price": 525,
           "tags": [
             "alcohol"
           ],
-          "unclear": "printed as \"From £5.25\"; the measures behind that price were not shown",
-          "photo": "IMG_3509.HEIC"
+          "photo": "IMG_3509.HEIC",
+          "sizes": [
+            {
+              "label": "From",
+              "price": 525
+            }
+          ]
         },
         {
           "name": "Disaronno",
-          "price": 525,
           "tags": [
             "alcohol"
           ],
-          "unclear": "printed as \"From £5.25\"; the measures behind that price were not shown",
-          "photo": "IMG_3509.HEIC"
+          "photo": "IMG_3509.HEIC",
+          "sizes": [
+            {
+              "label": "From",
+              "price": 525
+            }
+          ]
         },
         {
           "name": "Gordon's Gin",
-          "price": 525,
           "tags": [
             "alcohol"
           ],
-          "unclear": "printed as \"From £5.25\"; the measures behind that price were not shown",
-          "photo": "IMG_3509.HEIC"
+          "photo": "IMG_3509.HEIC",
+          "sizes": [
+            {
+              "label": "From",
+              "price": 525
+            }
+          ]
         },
         {
           "name": "Gordon's Pink Gin",
-          "price": 525,
           "tags": [
             "alcohol"
           ],
-          "unclear": "printed as \"From £5.25\"; the measures behind that price were not shown",
-          "photo": "IMG_3509.HEIC"
+          "photo": "IMG_3509.HEIC",
+          "sizes": [
+            {
+              "label": "From",
+              "price": 525
+            }
+          ]
         },
         {
           "name": "Jack Daniels",
-          "kcal": 1,
-          "price": 525,
           "tags": [
             "alcohol"
           ],
-          "unclear": "printed as \"1 kcal | From £5.25\"; the measures behind that price were not shown",
-          "photo": "IMG_3509.HEIC"
+          "photo": "IMG_3509.HEIC",
+          "sizes": [
+            {
+              "label": "From",
+              "price": 525,
+              "kcal": 1
+            }
+          ]
         },
         {
           "name": "Malibu",
-          "price": 525,
           "tags": [
             "alcohol"
           ],
-          "unclear": "printed as \"From £5.25\"; the measures behind that price were not shown",
-          "photo": "IMG_3510.HEIC"
+          "photo": "IMG_3510.HEIC",
+          "sizes": [
+            {
+              "label": "From",
+              "price": 525
+            }
+          ]
         },
         {
           "name": "Smirnoff Vodka",
           "description": "Vegetarian",
-          "price": 525,
           "tags": [
             "alcohol",
             "v"
           ],
-          "unclear": "printed as \"From £5.25\"; the measures behind that price were not shown",
-          "photo": "IMG_3510.HEIC"
+          "photo": "IMG_3510.HEIC",
+          "sizes": [
+            {
+              "label": "From",
+              "price": 525
+            }
+          ]
         },
         {
           "name": "Smirnoff Vanilla Vodka",
-          "price": 525,
           "tags": [
             "alcohol"
           ],
-          "unclear": "printed as \"From £5.25\"; the measures behind that price were not shown",
-          "photo": "IMG_3510.HEIC"
+          "photo": "IMG_3510.HEIC",
+          "sizes": [
+            {
+              "label": "From",
+              "price": 525
+            }
+          ]
         }
       ]
     },
     {
       "name": "Soft drink bottles",
-      "note": "Drinks tab on the tabletop tablet; the photos capture only part of the scrolling list, so this section may be partial.",
       "items": [
         {
           "name": "J2o Apple & Mango",
@@ -818,7 +871,6 @@
     },
     {
       "name": "Soft drinks",
-      "note": "Drinks tab on the tabletop tablet; the photos capture only part of the scrolling list, so this section may be partial.",
       "items": [
         {
           "name": "Coke Zero",

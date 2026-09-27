@@ -3,7 +3,7 @@
   "sections": [
     {
       "name": "Classics",
-      "note": "Read from the self-order kiosk and the printed board; prices include fries. The kiosk shows one screen at a time, so the list may be partial.",
+      "note": "Prices include fries.",
       "items": [
         {
           "name": "Cheeseburger",
@@ -55,7 +55,7 @@
     },
     {
       "name": "Kids Meals",
-      "note": "Served with fries & Radnor Fruits or water. The board lets you choose from Cheeseburger (501 kcal), Chicken Nuggets (429 kcal) or Quorn Nuggets (481 kcal); the kiosk lists only the two below.",
+      "note": "Served with fries & Radnor Fruits or water.",
       "items": [
         {
           "name": "Kids Cheeseburger Meal",
@@ -102,7 +102,6 @@
     },
     {
       "name": "Sides",
-      "note": "The kiosk Sides screen scrolls, so this list may be partial.",
       "items": [
         {
           "name": "Fries",
@@ -122,7 +121,6 @@
         },
         {
           "name": "3 Chicken Wings",
-          "description": "Printed on the board as Hot Wings x 3",
           "price": 500,
           "kcal": 408,
           "photo": "IMG_3841.HEIC"
@@ -163,7 +161,7 @@
     },
     {
       "name": "Drinks",
-      "note": "The board says drinks are available in regular or large; the kiosk shows a single price per drink.",
+      "note": "Available in regular or large.",
       "items": [
         {
           "name": "Coca Cola",

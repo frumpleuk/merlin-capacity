@@ -10,7 +10,6 @@
   "sections": [
     {
       "name": "Cocktails",
-      "note": "Poppys Pineapples main board; one handwritten price (£12.00) covers the whole list",
       "items": [
         {
           "name": "Pina Colada",
@@ -88,7 +87,6 @@
     },
     {
       "name": "Virgin/Smoothies",
-      "note": "One handwritten price (£8.50) covers the whole list",
       "items": [
         {
           "name": "Tropicana",
@@ -150,7 +148,6 @@
     },
     {
       "name": "Smoothies",
-      "note": "Separate A-frame board beside the unit; carries no printed prices",
       "items": [
         {
           "name": "Tropicana",
@@ -184,7 +181,7 @@
     },
     {
       "name": "Fruit Bowl Menu",
-      "note": "Poster pinned beside the unit. Fresh. Delicious. Natural. Made with real fruit, made with love",
+      "note": "Fresh. Delicious. Natural. Made with real fruit, made with love",
       "items": [
         {
           "name": "Fruit Pot",

@@ -268,7 +268,6 @@
     },
     {
       "name": "Meal Deals",
-      "note": "Poster beside the venue; no heading beyond the Vibes logo",
       "items": [
         {
           "name": "Pizza & Drink",
@@ -295,7 +294,7 @@
       "photo": "IMG_3882.HEIC"
     },
     {
-      "text": "Board small print: Not to be used in conjunction with any other offer.",
+      "text": "Not to be used in conjunction with any other offer.",
       "photo": "IMG_3882.HEIC"
     }
   ],

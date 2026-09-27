@@ -3,7 +3,7 @@
   "sections": [
     {
       "name": "Breakfast",
-      "note": "Handwritten bracket beside both lines: \"Until 11am\"",
+      "note": "Until 11am",
       "items": [
         {
           "name": "Breakfast Pot",
@@ -44,7 +44,7 @@
         },
         {
           "name": "Special (MF)",
-          "description": "Mac with truffle oil & crispy onions (handwritten on the board)",
+          "description": "Mac with truffle oil & crispy onions",
           "price": 1300,
           "photo": "IMG_3421.HEIC"
         },

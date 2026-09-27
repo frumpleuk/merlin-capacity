@@ -3,7 +3,6 @@
   "sections": [
     {
       "name": "Burgers",
-      "note": "Counter-top poster, not part of the main screen",
       "items": [
         {
           "name": "Chicken Kebab Burger",
@@ -24,7 +23,7 @@
     },
     {
       "name": "Naans",
-      "note": "Counter-top poster; one \"only £5.95 each\" star sits between the two naans",
+      "note": "Only £5.95 each",
       "items": [
         {
           "name": "Nutella Naan (N)",

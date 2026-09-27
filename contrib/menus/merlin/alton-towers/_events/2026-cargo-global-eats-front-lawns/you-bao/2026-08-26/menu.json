@@ -3,7 +3,7 @@
   "sections": [
     {
       "name": "Bao Buns",
-      "note": "Toppings: Freshly chopped coriander, mix of roast sesame seeds, grated cabbage, crispy onion & sriracha sauce (all of them are optional). One price ladder (1x/2x/3x bao) covers all three fillings.",
+      "note": "Toppings: Freshly chopped coriander, mix of roast sesame seeds, grated cabbage, crispy onion & sriracha sauce (all of them are optional).",
       "items": [
         {
           "name": "Fried Chicken in Katsu Curry Sauce",
@@ -146,7 +146,6 @@
     },
     {
       "name": "Sides",
-      "note": "Unheaded row at the foot of the board",
       "items": [
         {
           "name": "Skin-on-Fries",

@@ -23,7 +23,7 @@
         },
         {
           "name": "Kebab",
-          "description": "Lamb (handwritten on the board)",
+          "description": "Lamb",
           "price": 1595,
           "photo": "IMG_3422.HEIC"
         },
@@ -41,7 +41,6 @@
     },
     {
       "name": "Other Dishes",
-      "note": "Unheaded block below the toppings",
       "items": [
         {
           "name": "Halloumi Burger",
@@ -62,7 +61,6 @@
         },
         {
           "name": "Mango Lassi / Smoothie",
-          "description": "Handwritten addition to the board",
           "price": 700,
           "photo": "IMG_3422.HEIC"
         }
@@ -103,7 +101,6 @@
     },
     {
       "name": "Sides",
-      "note": "Unheaded row at the foot of the board",
       "items": [
         {
           "name": "Vegetable Samosa x2",

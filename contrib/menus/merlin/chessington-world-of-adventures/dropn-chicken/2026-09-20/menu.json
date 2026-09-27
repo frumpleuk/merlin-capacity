@@ -116,7 +116,6 @@
     },
     {
       "name": "Drinks",
-      "note": "The board lists the drinks but prints no prices for them.",
       "items": [
         {
           "name": "Coca-Cola",

@@ -38,7 +38,6 @@
     },
     {
       "name": "Jacket Potatoes",
-      "note": "Two further lines under Baked Beans are washed out by reflections on the screen and could not be read",
       "items": [
         {
           "name": "Baked Beans (VG)",
@@ -52,7 +51,6 @@
     },
     {
       "name": "Loaded Chips",
-      "note": "Prices on this panel are hidden by reflections on the screen",
       "items": [
         {
           "name": "Tikka Masala (V)",
@@ -157,7 +155,7 @@
     },
     {
       "name": "Kids Meals",
-      "note": "Served with a small drink; the lines below Chicken Crunchies & Chips are washed out by reflections and could not be read",
+      "note": "Served with a small drink",
       "items": [
         {
           "name": "Chicken Crunchies & Chips",

@@ -3,7 +3,6 @@
   "sections": [
     {
       "name": "Spooky Smoothies",
-      "note": "Priced by the board's \"All Smoothies £12\"",
       "items": [
         {
           "name": "Bananarama",
@@ -46,7 +45,6 @@
     },
     {
       "name": "Cursed Cocktails",
-      "note": "Priced by the board's \"All Cocktails £15\"",
       "items": [
         {
           "name": "Piña Colada",

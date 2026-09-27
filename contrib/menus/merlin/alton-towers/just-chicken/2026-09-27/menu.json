@@ -11,7 +11,7 @@
   "sections": [
     {
       "name": "Peckish Pots",
-      "note": "Choice of house seasoning: Original, Chinese Salt & Chilli, Argentinian, Texas Smokehouse. Calories from the kiosk (IMG_3995), which calls these Chicken Fries Regular Meal.",
+      "note": "Choice of house seasoning: Original, Chinese Salt & Chilli, Argentinian, Texas Smokehouse.",
       "items": [
         {
           "name": "Peckish Pots",
@@ -44,7 +44,7 @@
     },
     {
       "name": "Rice Pots",
-      "note": "Choice of house seasoning: Original, Chinese Salt & Chilli, Argentinian, Texas Smokehouse. The kiosk (IMG_3997) lists the four at £14.00 each.",
+      "note": "Choice of house seasoning: Original, Chinese Salt & Chilli, Argentinian, Texas Smokehouse.",
       "items": [
         {
           "name": "Rice Pots",
@@ -56,7 +56,7 @@
     },
     {
       "name": "'Flapbreads'",
-      "note": "Choice of house seasoning: Original, Chinese Salt & Chilli, Argentinian, Texas Smokehouse. The kiosk (IMG_3996) calls these Chicken Salad Flatbread, £14.00 each.",
+      "note": "Choice of house seasoning: Original, Chinese Salt & Chilli, Argentinian, Texas Smokehouse.",
       "items": [
         {
           "name": "Flapbreads",
@@ -80,7 +80,7 @@
     },
     {
       "name": "Burgers",
-      "note": "With fries. Fang-Tastic Chicken Burger is on the kiosk only (IMG_3998).",
+      "note": "With fries.",
       "items": [
         {
           "name": "Cluck Fillet Burger",
@@ -113,7 +113,6 @@
     },
     {
       "name": "Fang-Tastic Strips",
-      "note": "Kiosk only (IMG_3999).",
       "items": [
         {
           "name": "Fang-Tastic Strips",
@@ -125,7 +124,6 @@
     },
     {
       "name": "Sides",
-      "note": "The kiosk (IMG_4002) lists sides as one item, 298 kcal, £4.25.",
       "items": [
         {
           "name": "Fries",
@@ -204,7 +202,6 @@
     },
     {
       "name": "Desserts",
-      "note": "Donut flavours and the soft serves are from the kiosk (IMG_4003, IMG_4004); the board prints only Donuts £3.25.",
       "items": [
         {
           "name": "Fruit",
@@ -247,7 +244,6 @@
     },
     {
       "name": "Drinks",
-      "note": "Slush is on the kiosk only (IMG_4005).",
       "items": [
         {
           "name": "Water",

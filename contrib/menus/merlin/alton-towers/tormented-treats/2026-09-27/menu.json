@@ -136,8 +136,7 @@
           "price": 300,
           "photo": "IMG_3931.HEIC"
         }
-      ],
-      "note": "Fang-Tastic Loaded Fries is from a separate Scarefest poster in the serving hatch, not the main board."
+      ]
     },
     {
       "name": "Fountain Square Pizza",
@@ -197,7 +196,7 @@
     },
     {
       "name": "Coca-Cola",
-      "note": "Coca-Cola drinks board. Bottles and cans are 500ml unless stated; fountain drinks are 22oz.",
+      "note": "Bottles and cans are 500ml unless stated; fountain drinks are 22oz.",
       "items": [
         {
           "name": "Monster Energy",

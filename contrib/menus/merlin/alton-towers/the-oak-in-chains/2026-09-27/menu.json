@@ -3,11 +3,10 @@
   "sections": [
     {
       "name": "Hexed Fajita Sizzlers",
-      "note": "On the \"tabletop\" ordering tablet; the tablet list scrolls, so this section may be partial if the screen was scrolled. Descriptions are truncated by the tablet and copied only as far as shown.",
       "items": [
         {
           "name": "Halloumi & Sweet Potato Fajita Sizzler (v)",
-          "description": "Griddled halloumi and roasted sweet potato served sizzling with mixed pe",
+          "description": "Griddled halloumi and roasted sweet potato served sizzling",
           "kcal": 888,
           "price": 2000,
           "tags": [
@@ -17,7 +16,7 @@
         },
         {
           "name": "Chicken Thigh Fajita Skewer",
-          "description": "Marinated chicken thigh skewers served sizzling with mixed peppers &",
+          "description": "Marinated chicken thigh skewers served sizzling with mixed peppers",
           "kcal": 773,
           "price": 2200,
           "photo": "IMG_3941.HEIC"
@@ -26,18 +25,17 @@
     },
     {
       "name": "Vault Stacks - Nachos and Skewered Chips",
-      "note": "On the \"tabletop\" ordering tablet; the tablet list scrolls, so this section may be partial if the screen was scrolled. Descriptions are truncated by the tablet and copied only as far as shown.",
       "items": [
         {
           "name": "Chained Oak Chilli Cheese Chips",
-          "description": "Skewered chunky chips loaded with chilli con carne, nacho cheese sauce,",
+          "description": "Skewered chunky chips loaded with chilli con carne, nacho cheese sauce",
           "kcal": 988,
           "price": 1000,
           "photo": "IMG_3942.HEIC"
         },
         {
           "name": "Octagon Fajita Veggie Chips (v)",
-          "description": "Skewered chunky chips topped with mixed peppers & onions, salsa, guac",
+          "description": "Skewered chunky chips topped with mixed peppers & onions, salsa",
           "kcal": 850,
           "price": 1000,
           "tags": [
@@ -47,21 +45,21 @@
         },
         {
           "name": "Chained Oak Nachos",
-          "description": "Tortilla chips topped with nacho cheese sauce, sour cream, guacamo",
+          "description": "Tortilla chips topped with nacho cheese sauce, sour cream",
           "kcal": 1082,
           "price": 950,
           "photo": "IMG_3944.HEIC"
         },
         {
           "name": "Hexed Pepperoni Pizza Fries",
-          "description": "Skewered chunky chips topped with mozzarella cheese, pepperoni, rocke",
+          "description": "Skewered chunky chips topped with mozzarella cheese, pepperoni",
           "kcal": 624,
           "price": 1000,
           "photo": "IMG_3945.HEIC"
         },
         {
           "name": "Italian Garden Pizza Chips (v)",
-          "description": "Skewered chunky chips topped with mozzarella cheese, red onion, sweet",
+          "description": "Skewered chunky chips topped with mozzarella cheese, red onion",
           "kcal": 761,
           "price": 1000,
           "tags": [
@@ -73,7 +71,6 @@
     },
     {
       "name": "Sauce Cauldron",
-      "note": "On the \"tabletop\" ordering tablet; the tablet list scrolls, so this section may be partial if the screen was scrolled. Descriptions are truncated by the tablet and copied only as far as shown.",
       "items": [
         {
           "name": "Hex Fire Sauce",
@@ -129,11 +126,10 @@
     },
     {
       "name": "Hexed Legend Hanging Skewers",
-      "note": "On the \"tabletop\" ordering tablet; the tablet list scrolls, so this section may be partial if the screen was scrolled. Descriptions are truncated by the tablet and copied only as far as shown.",
       "items": [
         {
           "name": "Vault Breaded Mozzarella Skewer (v)",
-          "description": "Fried giant mozzarella coated in golden breadcrumbs, served with kh",
+          "description": "Fried giant mozzarella coated in golden breadcrumbs",
           "kcal": 1929,
           "price": 2300,
           "tags": [
@@ -143,21 +139,21 @@
         },
         {
           "name": "Tandoori Hanging Chicken Kebab",
-          "description": "Tandoori chicken skewered with pepper, red onion, courgette and cor",
+          "description": "Tandoori chicken skewered with pepper, red onion, courgette",
           "kcal": 1508,
           "price": 1850,
           "photo": "IMG_3950.HEIC"
         },
         {
           "name": "Beggars' Lamb Kofta",
-          "description": "Lamb skewer served with khobez flatbread, lettuce, tomato, red onion,",
+          "description": "Lamb skewer served with khobez flatbread, lettuce, tomato, red onion",
           "kcal": 1028,
           "price": 1850,
           "photo": "IMG_3950.HEIC"
         },
         {
           "name": "Plant Based \"lamb\" Kebab (v)",
-          "description": "Plant-based lamb flavoured skewer served with khobez flatbread, lettuc",
+          "description": "Plant-based lamb flavoured skewer served with khobez flatbread",
           "kcal": 831,
           "price": 2000,
           "tags": [
@@ -169,39 +165,38 @@
     },
     {
       "name": "Fountain Square Burgers",
-      "note": "On the \"tabletop\" ordering tablet; the tablet list scrolls, so this section may be partial if the screen was scrolled. Descriptions are truncated by the tablet and copied only as far as shown.",
       "items": [
         {
           "name": "Inferno Dog",
-          "description": "XL meister sausage in a brioche roll topped with nacho cheese sauce, spi",
+          "description": "XL meister sausage in a brioche roll topped with nacho cheese sauce",
           "kcal": 1259,
           "price": 1795,
           "photo": "IMG_3951.HEIC"
         },
         {
           "name": "The Earl's Cuban Sandwich",
-          "description": "Gammon ham slice topped with pulled pork and melted Emmental cheese w",
+          "description": "Gammon ham slice topped with pulled pork and melted Emmental cheese",
           "kcal": 1591,
           "price": 1975,
           "photo": "IMG_3951.HEIC"
         },
         {
           "name": "Gatekeeper's Bacon Bliss",
-          "description": "Beef burger with chipotle mayo, Monterey Jack cheese, bacon and le",
+          "description": "Beef burger with chipotle mayo, Monterey Jack cheese, bacon",
           "kcal": 1157,
           "price": 1975,
           "photo": "IMG_3952.HEIC"
         },
         {
           "name": "Quixhill Drive Mac & Cheese",
-          "description": "Beef burger with creamy macaroni cheese, Franks hot sauce, crispy bac",
+          "description": "Beef burger with creamy macaroni cheese, Franks hot sauce",
           "kcal": 978,
           "price": 1975,
           "photo": "IMG_3952.HEIC"
         },
         {
           "name": "Garden Follies Vegan Fillet Burger (ve)",
-          "description": "Crispy vegan fillet burger with vegan cheese, Korean BBQ sauce, rocket an",
+          "description": "Crispy vegan fillet burger with vegan cheese, Korean BBQ sauce, rocket",
           "kcal": 1017,
           "price": 1975,
           "tags": [
@@ -211,14 +206,14 @@
         },
         {
           "name": "The Chained Oak Burger",
-          "description": "Double beef burger with nacho cheese sauce, pepperoni, tortilla chips, crisp",
+          "description": "Double beef burger with nacho cheese sauce, pepperoni, tortilla chips",
           "kcal": 1231,
           "price": 2075,
           "photo": "IMG_3954.HEIC"
         },
         {
           "name": "Hexed Delight Chicken Burger",
-          "description": "Crispy breaded chicken burger with Korean BBQ sauce, grilled halloumi c",
+          "description": "Crispy breaded chicken burger with Korean BBQ sauce, grilled halloumi",
           "kcal": 1148,
           "price": 1975,
           "photo": "IMG_3954.HEIC"
@@ -227,11 +222,10 @@
     },
     {
       "name": "Kids",
-      "note": "On the \"tabletop\" ordering tablet; the tablet list scrolls, so this section may be partial if the screen was scrolled. Descriptions are truncated by the tablet and copied only as far as shown.",
       "items": [
         {
           "name": "Hex Kids Mozzarella (v)",
-          "description": "Cheesy mozzarella sticks served with ketchup dip and a side of seasoned",
+          "description": "Cheesy mozzarella sticks served with ketchup dip",
           "kcal": 565,
           "price": 975,
           "tags": [
@@ -242,7 +236,7 @@
         },
         {
           "name": "Hex Kids Burger",
-          "description": "4oz cheese burger served in a brioche bun served with baked beans and se",
+          "description": "4oz cheese burger served in a brioche bun served with baked beans",
           "kcal": 611,
           "price": 975,
           "tags": [
@@ -274,7 +268,6 @@
     },
     {
       "name": "Sides",
-      "note": "On the \"tabletop\" ordering tablet; the tablet list scrolls, so this section may be partial if the screen was scrolled. Descriptions are truncated by the tablet and copied only as far as shown.",
       "items": [
         {
           "name": "Extra Tortilla",
@@ -318,7 +311,6 @@
     },
     {
       "name": "Bottled Beers & Cider",
-      "note": "On the \"tabletop\" ordering tablet; the tablet list scrolls, so this section may be partial if the screen was scrolled. Descriptions are truncated by the tablet and copied only as far as shown.",
       "items": [
         {
           "name": "Budweiser Bottle",
@@ -353,7 +345,7 @@
         },
         {
           "name": "Corona Bucket",
-          "description": "4 ice-cold Corona bottles served with lime slices in a silver bucket packed",
+          "description": "4 ice-cold Corona bottles served with lime slices in a silver bucket",
           "kcal": 525,
           "price": 2000,
           "tags": [
@@ -373,7 +365,7 @@
         },
         {
           "name": "Smirnoff Ice Bucket",
-          "description": "4 ice-cold Smirnoff Ice bottles served in a bucket packed with refreshing ic",
+          "description": "4 ice-cold Smirnoff Ice bottles served in a bucket",
           "price": 2000,
           "tags": [
             "alcohol"
@@ -384,7 +376,6 @@
     },
     {
       "name": "Draught Beers & Cider",
-      "note": "On the \"tabletop\" ordering tablet; the tablet list scrolls, so this section may be partial if the screen was scrolled. Descriptions are truncated by the tablet and copied only as far as shown.",
       "items": [
         {
           "name": "Kopparberg Crisp Apple",
@@ -457,11 +448,10 @@
     },
     {
       "name": "Cocktails",
-      "note": "On the \"tabletop\" ordering tablet; the tablet list scrolls, so this section may be partial if the screen was scrolled. Descriptions are truncated by the tablet and copied only as far as shown.",
       "items": [
         {
           "name": "Blood Bag Cocktail",
-          "description": "Cranberry juice, Sprite Zero and grenadine served in a blood bag with",
+          "description": "Cranberry juice, Sprite Zero and grenadine served in a blood bag",
           "kcal": 9,
           "price": 900,
           "photo": "IMG_3962.HEIC"
@@ -504,7 +494,7 @@
         },
         {
           "name": "Blood Bag Cocktail",
-          "description": "Smirnoff Vodka, Cranberry Juice, Grenadine and Sprite served in a Blo",
+          "description": "Smirnoff Vodka, Cranberry Juice, Grenadine and Sprite",
           "price": 1095,
           "tags": [
             "alcohol"
@@ -513,7 +503,7 @@
         },
         {
           "name": "Chained Spirit",
-          "description": "Malibu layered with passion fruit purée, sweet pineapple, and crisp or",
+          "description": "Malibu layered with passion fruit purée, sweet pineapple",
           "price": 1325,
           "tags": [
             "alcohol"
@@ -551,7 +541,6 @@
     },
     {
       "name": "Mocktails",
-      "note": "On the \"tabletop\" ordering tablet; the tablet list scrolls, so this section may be partial if the screen was scrolled. Descriptions are truncated by the tablet and copied only as far as shown.",
       "items": [
         {
           "name": "Blood Bag Mocktail",
@@ -586,7 +575,7 @@
         },
         {
           "name": "Runaway Lime Train",
-          "description": "Zesty Sprite and lime flavours with a splash of Grenadine sweetness. Cho",
+          "description": "Zesty Sprite and lime flavours with a splash of Grenadine sweetness.",
           "price": 575,
           "photo": "IMG_3966.HEIC"
         }
@@ -594,7 +583,6 @@
     },
     {
       "name": "Sparkling wine",
-      "note": "On the \"tabletop\" ordering tablet; the tablet list scrolls, so this section may be partial if the screen was scrolled. Descriptions are truncated by the tablet and copied only as far as shown.",
       "items": [
         {
           "name": "Da Luca Prosecco",
@@ -610,7 +598,6 @@
     },
     {
       "name": "Red wine",
-      "note": "On the \"tabletop\" ordering tablet; the tablet list scrolls, so this section may be partial if the screen was scrolled. Descriptions are truncated by the tablet and copied only as far as shown.",
       "items": [
         {
           "name": "Monte Verde Merlot, Chile",
@@ -629,7 +616,6 @@
     },
     {
       "name": "White wine",
-      "note": "On the \"tabletop\" ordering tablet; the tablet list scrolls, so this section may be partial if the screen was scrolled. Descriptions are truncated by the tablet and copied only as far as shown.",
       "items": [
         {
           "name": "Parini Pinot Grigio",
@@ -648,7 +634,6 @@
     },
     {
       "name": "Rose wine",
-      "note": "On the \"tabletop\" ordering tablet; the tablet list scrolls, so this section may be partial if the screen was scrolled. Descriptions are truncated by the tablet and copied only as far as shown.",
       "items": [
         {
           "name": "Parini Pinot Grigio Blush",
@@ -667,7 +652,6 @@
     },
     {
       "name": "Spirits",
-      "note": "On the \"tabletop\" ordering tablet; the tablet list scrolls, so this section may be partial if the screen was scrolled. Descriptions are truncated by the tablet and copied only as far as shown.",
       "items": [
         {
           "name": "Baileys",
@@ -789,7 +773,6 @@
     },
     {
       "name": "Soft drinks",
-      "note": "On the \"tabletop\" ordering tablet; the tablet list scrolls, so this section may be partial if the screen was scrolled. Descriptions are truncated by the tablet and copied only as far as shown.",
       "items": [
         {
           "name": "Appletiser",
@@ -857,7 +840,6 @@
     },
     {
       "name": "Hot drinks",
-      "note": "On the \"tabletop\" ordering tablet; the tablet list scrolls, so this section may be partial if the screen was scrolled. Descriptions are truncated by the tablet and copied only as far as shown.",
       "items": [
         {
           "name": "Latte",

@@ -3,7 +3,7 @@
   "sections": [
     {
       "name": "Fresh Naan Wraps",
-      "note": "All wraps come with salad, mint chutney and chilli sauce. The Burgers and Naans counter posters of 2026-08-26 were not photographed. Blurred lines filled in from the clear 2026-08-26 board, where the readings matched.",
+      "note": "All wraps come with salad, mint chutney and chilli sauce.",
       "items": [
         {
           "name": "Seekh Kebab",
@@ -38,7 +38,6 @@
     },
     {
       "name": "Jacket Potatoes",
-      "note": "Bottom-left panel of the screen is washed out by reflection. Blurred lines filled in from the clear 2026-08-26 board, where the readings matched.",
       "items": [
         {
           "name": "Baked Beans (VG)",
@@ -65,7 +64,7 @@
     },
     {
       "name": "Loaded Chips",
-      "note": "Spiced chips piled high with tandoori toppings, melted cheddar & our signature chutneys. Counter board marked \"All new\".",
+      "note": "Spiced chips piled high with tandoori toppings, melted cheddar & our signature chutneys.",
       "items": [
         {
           "name": "Tikka Masala (V)",
@@ -107,7 +106,7 @@
     },
     {
       "name": "Chips",
-      "note": "Extras available Blurred lines filled in from the clear 2026-08-26 board, where the readings matched.",
+      "note": "Extras available",
       "items": [
         {
           "name": "Chips",
@@ -142,8 +141,7 @@
           "price": 1000,
           "photo": "IMG_3936.HEIC"
         }
-      ],
-      "note": "Blurred lines filled in from the clear 2026-08-26 board, where the readings matched."
+      ]
     },
     {
       "name": "Onion Bhaji",
@@ -171,7 +169,6 @@
     },
     {
       "name": "Kids Meals",
-      "note": "Too washed out by reflection to read on this photo; filled in from the 2026-08-26 board.",
       "items": [
         {
           "name": "Chicken Crunchies & Chips",

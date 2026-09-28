@@ -1391,11 +1391,6 @@ main.with-bar {
 .fd-legend span + .fd-key {
   margin-left: 6px;
 }
-.fd-map-note {
-  margin: 6px 0 12px;
-  color: var(--muted);
-  font-size: 11px;
-}
 
 /* Filters: one row of chips per flag the data carries. */
 .fd-facet {

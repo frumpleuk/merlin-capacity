@@ -56,9 +56,11 @@ thin. Do not transcribe here; that is `/menus-transcribe`.
 
 6. **Apply**: `node scripts/menus/ingest.mjs apply`. It moves each photo and
    its sidecars into `<venue>/<capture date>/` and creates `poi.json` for new
-   venues from photo GPS. Fill in `name` (as signed) and a `note` (e.g.
-   "Pop-up trailer near the Sky Ride; not in the official app") in each new
-   `poi.json`.
+   venues from photo GPS. Fill in `name` (as signed) in each new
+   `poi.json`. A `note` is shown to guests on the site, so add one only when
+   it helps them find or recognise the place ("Pop-up trailer near the Sky
+   Ride", "Signed as Tasty Treats of Towers Street"); never how it was filed,
+   whether the app lists it, or when it was seen.
 
 7. **Validate**: `node scripts/menus/validate.mjs`. Fix every ERROR. Warnings
    about missing `menu.json` are expected until transcription.

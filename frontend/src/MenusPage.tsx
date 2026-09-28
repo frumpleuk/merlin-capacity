@@ -620,7 +620,7 @@ function AreaGroup({
         events.map((e) => (
           <a key={e.slug} className="fd-event-link" href={`#event-${e.slug}`}>
             {e.name}: {e.vendors.length} stall{e.vendors.length === 1 ? "" : "s"}
-            {e.end ? `, until ${longDate(e.end)}` : ""}, listed at the top
+            {e.end ? `, until ${longDate(e.end)}` : ""}
           </a>
         ))}
       {show &&
@@ -875,7 +875,6 @@ export function MenusPage() {
             focus={focus}
             onPick={setFocus}
           />
-          <p className="fd-map-note">Tap a dot to open that menu; faded dots are filtered out.</p>
           {data.water.length > 0 && (
             <div className="fd-facet fd-water">
               <h4>Free water refills ({data.water.length})</h4>
@@ -931,15 +930,15 @@ export function MenusPage() {
         </aside>
 
         <div className="fd-list">
-          <p className="fd-intro">
-            What each place serves and what it charges, and when the menu was seen.
-            {sources.ours && " Ours are read off photos of the boards."}
-            {sources.official &&
-              (sources.unpriced
-                ? " Some are the park's own published menus, which list the dishes but no prices."
-                : " Some are the park's own published menus.")}
-            {sources.credited.length > 0 && ` Older ones were collected by ${sources.credited.join(" and ")}.`}
-          </p>
+          {(sources.official || sources.credited.length > 0) && (
+            <p className="fd-intro">
+              {sources.official &&
+                (sources.unpriced
+                  ? "Some menus are the park's own, which list the dishes but no prices. "
+                  : "Some menus are the park's own. ")}
+              {sources.credited.length > 0 && `Older menus were collected by ${sources.credited.join(" and ")}.`}
+            </p>
+          )}
 
           {data.offers.length > 0 && !query && !filtered && (
             <details className="fd-more fd-park-offers">
@@ -999,9 +998,6 @@ export function MenusPage() {
               </button>
               {showGone && (
                 <>
-                  <p className="fd-note">
-                    Events that have ended, and places the park's app no longer lists, kept for their prices.
-                  </p>
                   {past.map((e) => (
                     <section key={e.slug} className="fd-event">
                       <h3 className="fd-area-head">

@@ -9,6 +9,5 @@
   "appPassholderDiscount": null,
   "diningPlans": null,
   "appMissingSince": null,
-  "source": "attractions.io app bundle",
-  "note": "The app's entry for a Cargo Global Eats event; shown through the event whose event.json names it in appVenues"
+  "source": "attractions.io app bundle"
 }

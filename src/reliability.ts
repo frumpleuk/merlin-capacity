@@ -56,6 +56,16 @@ const DOWN = 2;
 const MAINT = 3;
 const OUTAGE_MINS = 4;
 
+/** A day's rollup plus the ride names that day carried. Names are harvested per
+ *  day rather than from the newest file alone: a ride retired mid-window is in
+ *  the store's history but absent from the latest catalog, and reading names
+ *  only from the newest day leaves it in the table as "Ride 52460". */
+export interface BuiltDay {
+  day: DailyRollup;
+  names: Record<string, string>;
+  groups: Record<string, string>;
+}
+
 export interface DailyRollup {
   /** Park opening window that day, minutes since UTC midnight. */
   open: number;
@@ -297,7 +307,7 @@ export async function buildDay(
   env: Env,
   park: ParkConfig,
   date: string,
-): Promise<DailyRollup | null> {
+): Promise<BuiltDay | null> {
   const obj = await env.BUCKET.get(`queues/${park.key}/${date}.json`);
   if (!obj) return null;
   let f: QueueDayFile;
@@ -321,6 +331,8 @@ export async function buildDay(
   if (close <= open) return null;
 
   const rides: Record<string, RideDay> = {};
+  const names: Record<string, string> = {};
+  const groups: Record<string, string> = {};
   // Whether the day CAN tell us why a ride was shut, which is a property of how
   // the file was projected — not of whether anything happened to be shut. A day
   // with no notices in it looks identical to a day that couldn't record any,
@@ -340,6 +352,8 @@ export async function buildDay(
     const to = Math.min(close, r.close ?? close);
     const scheduled = Math.max(0, to - from);
     if (scheduled === 0) continue;
+    names[String(r.id)] = r.name;
+    if (r.group) groups[String(r.id)] = r.group;
     const w = walkLine(line, from, to);
     // An unobserved day is recorded as scheduled-but-nothing-known: up + down is
     // 0, so it drops out of every ratio on its own, and the count of such days
@@ -351,7 +365,7 @@ export async function buildDay(
   if (Object.keys(rides).length === 0) return null;
 
   const attendance = await readAttendance(env.BUCKET, park, date);
-  return {
+  const day: DailyRollup = {
     open,
     close,
     coverage: Math.min(
@@ -362,6 +376,7 @@ export async function buildDay(
     ...(attendance != null ? { attendance } : {}),
     rides,
   };
+  return { day, names, groups };
 }
 
 /* ── Windowed statistics ──────────────────────────────────────────────────── */
@@ -416,6 +431,24 @@ export interface OutageSurvival {
 /** Below this the survival curve is noise dressed as advice. */
 const MIN_OUTAGES_FOR_SURVIVAL = 12;
 
+/** Upper bound of each stoppage-length bin, in minutes; the last bin is open.
+ *  Fixed rather than derived, so every ride and every park share an axis and the
+ *  shapes can be compared by eye. Finer where the mass is: across 1,524 Thorpe
+ *  stoppages the distribution is unimodal and peaks at 10-15 minutes, with a
+ *  long thin tail out past four hours. */
+export const OUTAGE_BINS = [5, 10, 15, 20, 30, 45, 60, 90, 120] as const;
+
+/** Counts per bin, length OUTAGE_BINS.length + 1 (the last is "longer"). */
+function histogram(durations: number[]): number[] {
+  const out = new Array<number>(OUTAGE_BINS.length + 1).fill(0);
+  for (const d of durations) {
+    let i = OUTAGE_BINS.findIndex((edge) => d < edge);
+    if (i === -1) i = OUTAGE_BINS.length;
+    out[i]++;
+  }
+  return out;
+}
+
 function survival(durations: number[]): OutageSurvival | null {
   const n = durations.length;
   if (n < MIN_OUTAGES_FOR_SURVIVAL) return null;
@@ -465,6 +498,9 @@ export interface RideStats {
    *  stoppages on this ride. Null until there are enough of them to mean
    *  anything (see MIN_OUTAGES_FOR_SURVIVAL). */
   outage_survival: OutageSurvival | null;
+  /** The same stoppages as a histogram over OUTAGE_BINS — the shape behind the
+   *  median and p90, which two rides can share while looking nothing alike. */
+  outage_bins: number[] | null;
   /** Days with no outage at all, as a fraction of the days it ran — the figure
    *  that reads without explanation. */
   clean_days: number | null;
@@ -481,6 +517,18 @@ export interface RideStats {
   guest_minutes_lost: number | null;
 }
 
+/** One day's park-level figure, so a particular visit can be put against the
+ *  window it sits in — "was today bad, or is it always like this". */
+export interface DailyPoint {
+  date: string;
+  /** Pooled across every ride that ran: the park's availability that day. */
+  availability: number | null;
+  /** Stoppages across the whole park, and rides that never ran at all. */
+  outages: number;
+  closed_rides: number;
+  coverage: number;
+}
+
 export interface WindowStats {
   days: number;
   /** Pooled across every ride: the park's own availability. */
@@ -490,7 +538,14 @@ export interface WindowStats {
   gm_floor: number;
   /** Mean of the parks' daily coverage; low means WE were out, not the park. */
   coverage: number;
+  /** Mean park opening minutes per day in the window. Lets a figure like
+   *  "minutes between stoppages" be read in operating DAYS — 24h between stops
+   *  is three eight-hour days, and reading it as one is the obvious trap. */
+  open_minutes_mean: number;
   notices_known_days: number;
+  /** Oldest first. Only on the widest window, since the shorter ones are its
+   *  tail and repeating them would trivially double the file. */
+  daily?: DailyPoint[];
   rides: RideStats[];
 }
 
@@ -505,14 +560,44 @@ export interface SummaryFile {
 
 const WINDOWS = [7, 28, 90] as const;
 
+/** The park's own figure for each day in the window. */
+function dailySeries(store: DailyStore, dates: string[]): DailyPoint[] {
+  return dates.map((d) => {
+    const day = store.days[d];
+    let up = 0;
+    let known = 0;
+    let outages = 0;
+    let closed = 0;
+    for (const r of Object.values(day.rides)) {
+      const k = r[UP] + r[DOWN];
+      if (k === 0) {
+        closed++;
+        continue;
+      }
+      up += r[UP];
+      known += k;
+      outages += r[OUTAGE_MINS].length;
+    }
+    return {
+      date: d,
+      availability: known > 0 ? up / known : null,
+      outages,
+      closed_rides: closed,
+      coverage: day.coverage,
+    };
+  });
+}
+
 function statsFor(store: DailyStore, dates: string[]): WindowStats {
   const ids = new Set<string>();
   for (const d of dates) for (const id of Object.keys(store.days[d].rides)) ids.add(id);
 
   let coverage = 0;
   let noticeDays = 0;
+  let openMinutes = 0;
   for (const d of dates) {
     coverage += store.days[d].coverage;
+    openMinutes += store.days[d].close - store.days[d].open;
     if (store.days[d].notices_known) noticeDays++;
   }
 
@@ -574,6 +659,7 @@ function statsFor(store: DailyStore, dates: string[]): WindowStats {
       outages,
       outages_per_day: days - closedDays > 0 ? outages / (days - closedDays) : null,
       outage_survival: survival(outageMins),
+      outage_bins: outages > 0 ? histogram(outageMins) : null,
       clean_days: days - closedDays > 0 ? cleanDays / (days - closedDays) : null,
       days,
       closed_days: closedDays,
@@ -597,6 +683,7 @@ function statsFor(store: DailyStore, dates: string[]): WindowStats {
     ),
     gm_floor: GM_FLOOR,
     coverage: dates.length ? coverage / dates.length : 0,
+    open_minutes_mean: dates.length ? openMinutes / dates.length : 0,
     notices_known_days: noticeDays,
     rides,
   };
@@ -656,32 +743,18 @@ export async function rollUpPark(
   }
 
   let added = 0;
-  for (const date of wanted) {
-    const day = await buildDay(env, park, date);
+  // Oldest first, so a ride that was renamed ends up under its CURRENT name:
+  // later days overwrite earlier ones, and a ride missing from the newest file
+  // still keeps whatever it was last called.
+  for (const date of [...wanted].sort()) {
+    const built = await buildDay(env, park, date);
     // A park that was shut has no day file; record nothing and don't retry it
     // forever — the loop above only looks back RETAIN_DAYS, so it ages out.
-    if (!day) continue;
-    store.days[date] = day;
+    if (!built) continue;
+    store.days[date] = built.day;
+    Object.assign(store.names, built.names);
+    Object.assign(store.groups, built.groups);
     added++;
-  }
-
-  // Ride names/groups from the most recent day file we have, so a renamed ride
-  // reads by its current name everywhere.
-  const latest = Object.keys(store.days).sort().pop();
-  if (latest) {
-    const obj = await env.BUCKET.get(`queues/${park.key}/${latest}.json`);
-    if (obj) {
-      try {
-        const f = (await obj.json()) as QueueDayFile;
-        for (const r of f.rides ?? []) {
-          if (r.named === false) continue;
-          store.names[String(r.id)] = r.name;
-          if (r.group) store.groups[String(r.id)] = r.group;
-        }
-      } catch {
-        /* keep the names we have */
-      }
-    }
   }
 
   // Trim to the retention window so the store can't grow without bound.
@@ -696,10 +769,23 @@ export async function rollUpPark(
   const all = Object.keys(store.days).sort();
   if (all.length > 0) {
     const windows: Record<string, WindowStats> = {};
+    let widest = "";
     for (const w of WINDOWS) {
       const from = ymd(now - w * 86_400_000);
       const dates = all.filter((d) => d >= from);
-      if (dates.length) windows[`d${w}`] = statsFor(store, dates);
+      if (!dates.length) continue;
+      windows[`d${w}`] = statsFor(store, dates);
+      widest = `d${w}`;
+    }
+    // The day-by-day series rides on the widest window only: the shorter ones
+    // are its tail, and repeating it three times would treble the file for
+    // nothing the reader can't slice themselves.
+    if (widest) {
+      const from = ymd(now - Number(widest.slice(1)) * 86_400_000);
+      windows[widest].daily = dailySeries(
+        store,
+        all.filter((d) => d >= from),
+      );
     }
     const summary: SummaryFile = {
       park: park.key,

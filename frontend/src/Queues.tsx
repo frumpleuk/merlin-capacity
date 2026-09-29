@@ -684,6 +684,9 @@ function RideRow({
   // which just means the ride hasn't opened. So a closed ride shows this note
   // when present, else a plain "Closed".
   const note = ride.lines.map((l) => l.closedNote).find(Boolean) ?? null;
+  // Reliability chip: shown on every row, whatever the hour, because "how often
+  // does this one run" is worth knowing before you walk across the park. The
+  // stay-or-go line below is the live counterpart, and only appears mid-outage.
   const heightLabel =
     ride.minHeight != null && ride.minHeight > 0 ? `${formatHeight(ride.minHeight)}+` : null;
   const hoursLabel = rideHoursLabel(ride, date, parkWindow);
@@ -703,6 +706,21 @@ function RideRow({
               {hoursLabel && (
                 <span className="q-meta-chip q-meta-hours" title="Ride opening times today">
                   {hoursLabel}
+                </span>
+              )}
+              {rel?.availability != null && (
+                <span
+                  className="q-meta-chip q-meta-rel"
+                  title={
+                    `Running ${(rel.availability * 100).toFixed(1)}% of its scheduled hours ` +
+                    `over the last ${rel.days} days` +
+                    (rel.outages_per_day != null
+                      ? `, stopping ${rel.outages_per_day.toFixed(1)}x a day ` +
+                        `for ${rel.outage_median ?? "?"} min at a time`
+                      : "")
+                  }
+                >
+                  {Math.round(rel.availability * 100)}% up
                 </span>
               )}
             </span>

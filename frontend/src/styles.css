@@ -1037,6 +1037,7 @@ main.with-bar {
    full row of social pills without stretching the link rows themselves. */
 .lk-main {
   max-width: 900px;
+  margin: 0 auto;
   padding-top: 16px;
 }
 .lk-groups {
@@ -1975,6 +1976,7 @@ h3.fd-area-head {
 
 .rl-main {
   max-width: 68rem;
+  margin: 0 auto;
 }
 
 /* Hero + tiles. Exactly one hero figure on the view. */
@@ -2256,6 +2258,11 @@ h3.fd-area-head {
 
 /* The stay-or-go hint, shown beside a shut ride's closed notice. Muted and
  * small: it is context for a decision, not a headline. */
+/* Reliability chip beside the height/hours chips: recessive, same shape. */
+.q-meta-rel {
+  font-variant-numeric: tabular-nums;
+}
+
 .q-restart {
   display: block;
   font-size: 0.7rem;
@@ -2263,4 +2270,144 @@ h3.fd-area-head {
   font-variant-numeric: tabular-nums;
   margin-top: 0.1rem;
   white-space: nowrap;
+}
+
+/* Sortable headers, filter box, and the two small charts. */
+.rl-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+}
+
+.rl-toolbar-group {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.rl-search {
+  border: 1px solid var(--grid);
+  background: var(--bg);
+  color: var(--fg);
+  border-radius: 999px;
+  padding: 0.25rem 0.8rem;
+  font: inherit;
+  font-size: 0.85rem;
+  min-width: 12rem;
+}
+
+.rl-sort {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.2rem;
+  text-transform: inherit;
+  letter-spacing: inherit;
+}
+
+.rl-num .rl-sort {
+  /* Right-aligned columns: keep the header hard against the numbers. */
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.rl-table th.sorted {
+  color: var(--fg);
+}
+
+.rl-sort-arrow {
+  font-size: 0.6rem;
+}
+
+/* Day strip: one column per day, oldest left. */
+.rl-strip-wrap {
+  margin: 0 0 1rem;
+}
+
+.rl-strip {
+  display: flex;
+  align-items: flex-end;
+  gap: 1px;
+  height: 46px;
+  border-bottom: 1px solid var(--grid);
+}
+
+.rl-strip-col {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  min-width: 2px;
+}
+
+.rl-strip-bar {
+  width: 100%;
+  background: var(--rl-fill);
+  border-radius: 2px 2px 0 0;
+  min-height: 1px;
+}
+
+.rl-strip-axis {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.7rem;
+  color: var(--muted);
+  padding-top: 0.25rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Stoppage-length histogram, inside an expanded row. */
+.rl-hist {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 72px;
+}
+
+.rl-hist-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+.rl-hist-bar-wrap {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+}
+
+.rl-hist-bar {
+  width: 100%;
+  background: var(--rl-fill);
+  border-radius: 2px 2px 0 0;
+  min-height: 1px;
+}
+
+.rl-hist-tick {
+  font-size: 0.6rem;
+  color: var(--muted);
+  text-align: center;
+  padding-top: 2px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* A ride with only a few days behind it — the number is real but thin. */
+.rl-thin {
+  font-size: 0.65rem;
+  color: var(--muted);
+  border: 1px solid var(--grid);
+  border-radius: 999px;
+  padding: 0 4px;
+  font-variant-numeric: tabular-nums;
 }

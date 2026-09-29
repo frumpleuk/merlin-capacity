@@ -521,12 +521,28 @@ export interface RideStats {
   outages: number;
   outages_per_day: number | null;
   outage_survival: OutageSurvival | null;
+  /** Stoppage lengths as counts per bin (see RELIABILITY_BINS) — the shape
+   *  behind the median, which two rides can share while looking nothing alike. */
+  outage_bins: number[] | null;
   clean_days: number | null;
   days: number;
   /** Days it was listed but never ran, with no stated reason: out of service. */
   closed_days: number;
   maintenance_share: number | null;
   guest_minutes_lost: number | null;
+}
+
+/** Upper bound of each stoppage-length bin in minutes; the last bin is open.
+ *  Must match OUTAGE_BINS in src/reliability.ts. */
+export const RELIABILITY_BINS = [5, 10, 15, 20, 30, 45, 60, 90, 120];
+
+/** One day's park-level figure, for putting a particular visit in context. */
+export interface DailyPoint {
+  date: string;
+  availability: number | null;
+  outages: number;
+  closed_rides: number;
+  coverage: number;
 }
 
 export interface WindowStats {
@@ -536,9 +552,15 @@ export interface WindowStats {
   gm_floor: number;
   /** Near 1 in normal operation; a dip means OUR poller was out. */
   coverage: number;
+  /** Mean park opening minutes per day, so "between stops" can be read in
+   *  operating days rather than mistaken for wall-clock hours. Absent on a
+   *  summary written before this shipped, which falls back to hours. */
+  open_minutes_mean?: number;
   /** Days whose file can say WHY a ride was shut. Below `days`, the
    *  maintenance/seasonal split is unknown for the rest, not zero. */
   notices_known_days: number;
+  /** Oldest first. Present on the widest window only. */
+  daily?: DailyPoint[];
   rides: RideStats[];
 }
 

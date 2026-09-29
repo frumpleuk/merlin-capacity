@@ -825,8 +825,8 @@ function sectionsOf(
 
 /* ── The list ──────────────────────────────────────────────────────────────────── */
 
-/** Buffer (minutes) added either side of the park's opening window, since rides
- *  can open early or the park can run over. */
+/** Closed time (minutes) shown either side of the day: before the park opens or
+ *  the first ride opens, and after it closes or the last ride closes. */
 const OPEN_BUFFER = 30;
 
 const SORTS: { key: SortMode; label: string }[] = [
@@ -931,32 +931,49 @@ export function QueueList({
     }
   };
 
-  // Shared x-domain (the park's opening window ± a buffer, so the axis is the
-  // day's operating hours rather than just the span of captured data) and a
-  // shared, outlier-resistant y-scale across ALL rides, so sparklines are
-  // comparable without one silly queue squashing the rest (see sparkScale).
+  // Shared x-domain and a shared, outlier-resistant y-scale across ALL rides,
+  // so sparklines are comparable without one silly queue squashing the rest
+  // (see sparkScale). The domain spans the park's opening window widened to
+  // take in the rides' own running time (the first ride opening, the last one
+  // closing, or now while one still runs), ± a buffer, so a ride that opens
+  // early or runs past close (an evening event) stays on the axis with the
+  // same margin of closed time either side.
   const { domain, scale } = useMemo(() => {
     const rs = file?.rides ?? [];
+    const live = file?.date === new Date().toISOString().slice(0, 10);
     let lo = Infinity;
     let hi = -Infinity;
     for (const r of rs) {
       for (const l of r.lines) {
-        for (const [t, w, open] of l.samples) {
-          if (open === 1 && w != null) {
-            if (t < lo) lo = t;
-            if (t > hi) hi = t;
+        let running = false;
+        for (const s of l.samples) {
+          if (isRunning(s)) {
+            if (s[0] < lo) lo = s[0];
+            running = true;
+          } else if (running) {
+            if (s[0] > hi) hi = s[0]; // the ride closed here
+            running = false;
           }
+        }
+        // Still running at the end: out to now on today's page. A past day's
+        // asOf is the end of the day, so there it stops at the last reading.
+        const last = l.samples[l.samples.length - 1];
+        if (running && last) {
+          const end = live && asOf != null && asOf > last[0] ? asOf : last[0];
+          if (end > hi) hi = end;
         }
       }
     }
+    const hasHours = file?.open != null && file.close != null;
     const dom: [number, number] =
-      file?.open != null && file.close != null
-        ? [file.open - OPEN_BUFFER, file.close + OPEN_BUFFER]
-        : lo < hi
-          ? [lo - OPEN_BUFFER, hi + OPEN_BUFFER] // no park hours (Flamingo Land) → span ± buffer
-          : [9 * 60, 18 * 60];
+      hasHours || lo < hi
+        ? [
+            Math.min(file?.open ?? Infinity, lo) - OPEN_BUFFER,
+            Math.max(file?.close ?? -Infinity, hi) + OPEN_BUFFER,
+          ] // no park hours (Flamingo Land) → the rides' span ± buffer
+        : [9 * 60, 18 * 60];
     return { domain: dom, scale: sparkScale(rs.map(ridePeak)) };
-  }, [file]);
+  }, [file, asOf]);
 
   if (loading) return <p className="empty">Loading…</p>;
   if (!file || sections.length === 0)

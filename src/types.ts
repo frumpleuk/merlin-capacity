@@ -51,6 +51,11 @@ export interface QueueObs {
   status: string | null; // QueueStatusMessage
   isOpen: boolean; // ride-level
   isOperational: boolean; // ride-level
+  /** Did the feed list this line at all? False is written when a line the park
+   *  was listing disappears — several parks only list an attraction while it is
+   *  operating, and "absent" is not "shut". Absent on older rows, which were
+   *  all written from a feed that did list the line, so treat it as true. */
+  present?: boolean;
 }
 
 /** A queue snapshot: every tracked line keyed by `${rideId}:${queueLineId}`. */

@@ -697,8 +697,8 @@ export async function appendQueueDeltas(
   const stmt = db.prepare(
     `INSERT OR IGNORE INTO queue_observation
        (park, ride_id, queue_line_id, line_type, queue_time, status,
-        is_open, is_operational, observed_at)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        is_open, is_operational, present, observed_at)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
   );
   await db.batch(
     deltas.map((d) =>
@@ -711,6 +711,7 @@ export async function appendQueueDeltas(
         d.status,
         d.isOpen ? 1 : 0,
         d.isOperational ? 1 : 0,
+        d.present === false ? 0 : 1,
         observedAt,
       ),
     ),
@@ -763,6 +764,8 @@ export interface QueueRow {
   status: string | null;
   is_open: number;
   is_operational: number;
+  /** 0 when the feed wasn't listing this line. Absent on pre-0008 rows. */
+  present?: number | null;
   observed_at: string;
 }
 
@@ -784,7 +787,7 @@ export async function readQueueDay(
     .slice(0, 10);
   const { results } = await db
     .prepare(
-      `SELECT ride_id, queue_line_id, line_type, queue_time, status, is_open, is_operational, observed_at
+      `SELECT ride_id, queue_line_id, line_type, queue_time, status, is_open, is_operational, present, observed_at
          FROM queue_observation
         WHERE park = ? AND observed_at >= ? AND observed_at < ?
         ORDER BY observed_at ASC`,
@@ -876,6 +879,10 @@ export interface RideDaySummary {
   /** Minutes open and running, and minutes it should have been but wasn't. */
   up: number;
   down: number;
+  /** Minutes the feed wasn't listing it — neither up nor down, because nothing
+   *  was observed. Availability is up / (up + down), so this leaves the
+   *  denominator rather than counting against the ride. */
+  unseen: number;
   /** Highest posted wait. */
   peak: number;
   /** Median posted wait, weighted PER MINUTE rather than per sample: a wait
@@ -895,6 +902,7 @@ function summariseLine(
   samples: [number, number | null, 0 | 1, 0 | 1][],
   from: number,
   to: number,
+  unseen: [number, number][] = [],
 ): RideDaySummary | null {
   const inWindow = samples.filter((s) => s[0] < to);
   if (inWindow.length === 0 || to <= from) return null;
@@ -912,7 +920,10 @@ function summariseLine(
     if (t > at) (running ? (up += t - at) : (down += t - at));
     at = t;
     const nowRunning = s[2] === 1 && s[3] === 1;
-    if (running && !nowRunning && everRan) stoppages++;
+    // A line vanishing from the feed reads as running → not-running, but it is
+    // the end of observation rather than a stoppage anyone saw.
+    const intoUnseen = unseen.some(([u0, u1]) => t >= u0 && t < u1);
+    if (running && !nowRunning && everRan && !intoUnseen) stoppages++;
     if (nowRunning) {
       everRan = true;
       if (s[1] != null) {
@@ -924,6 +935,15 @@ function summariseLine(
     running = nowRunning;
   }
   if (to > at) (running ? (up += to - at) : (down += to - at));
+
+  // Take out the stretches nobody was looking at. They were walked as "down"
+  // above (no samples, so the state carried forward), and they are not.
+  let unseenMins = 0;
+  for (const [s0, e0] of unseen) {
+    const overlap = Math.max(0, Math.min(e0, to) - Math.max(s0, from));
+    unseenMins += overlap;
+  }
+  down = Math.max(0, down - unseenMins);
 
   let median: number | null = null;
   if (held.length) {
@@ -938,7 +958,7 @@ function summariseLine(
       }
     }
   }
-  return { up, down, peak, median, stoppages };
+  return { up, down, unseen: unseenMins, peak, median, stoppages };
 }
 
 /** One queue line in a day file: the day's samples as compact tuples. */
@@ -963,6 +983,10 @@ interface QueueLineOut {
   /** The day's figures for this line (see RideDaySummary). Main lines only —
    *  a single-rider queue's uptime is the ride's, not its own. */
   summary?: RideDaySummary;
+  /** Stretches the park's feed wasn't listing this line at all, as
+   *  [start, end) in minutes since UTC midnight. Not closures: nobody observed
+   *  anything. Excluded from the day's up/down, and from availability. */
+  unseen?: [number, number][];
 }
 
 /**
@@ -1024,10 +1048,22 @@ export async function writeQueueDayFile(
     }
   }
 
+  // Where a ride's last known state stops holding: this poll. On a live day
+  // that is now, so an afternoon that hasn't happened cannot count as running
+  // (or as down); on a finished day it is at or past the close and clamps to it.
+  // Taking the newest SAMPLE instead would be wrong in the same way — a park
+  // whose waits haven't moved since lunch has no sample to mark the present.
+  const observedTo = Math.min(
+    window?.close ?? 24 * 60,
+    Math.floor((Date.parse(generatedAt) - dayStart) / 60_000),
+  );
+
   // ride_id → queue_line_id → line accumulator
   const rides = new Map<number, Map<number, QueueLineOut>>();
   // The notice currently in effect per line, while we walk the rows in order.
   const openNotice = new Map<string, { start: number; note: string }>();
+  // An open "the feed isn't listing this" stretch, same idea.
+  const openUnseen = new Map<string, number>();
   for (const r of rows) {
     let lines = rides.get(r.ride_id);
     if (!lines) rides.set(r.ride_id, (lines = new Map()));
@@ -1048,6 +1084,17 @@ export async function writeQueueDayFile(
     // Rows arrive oldest-first, so the last one to touch a line sets the notice;
     // a withdrawal (status back to plain "Closed") clears it. undefined is dropped
     // by JSON.stringify, so the field only appears while a notice is in effect.
+    // A row with present=0 opens an unseen stretch; the next row closes it.
+    // Pre-0008 rows have no flag and were all written from a listing feed.
+    const key0 = `${r.ride_id}:${r.queue_line_id}`;
+    const absent = r.present === 0;
+    const openedAt = openUnseen.get(key0);
+    if (absent && openedAt == null) openUnseen.set(key0, mins);
+    if (!absent && openedAt != null) {
+      (line.unseen ??= []).push([openedAt, mins]);
+      openUnseen.delete(key0);
+    }
+
     const note = closedNote(r.status);
     line.closedNote = note ?? undefined;
     // …and close off the run it ends, so the day keeps every notice rather than
@@ -1060,6 +1107,16 @@ export async function writeQueueDayFile(
       openNotice.delete(key);
     }
     if (note && !openNotice.has(key)) openNotice.set(key, { start: mins, note });
+  }
+
+  // Still unseen at the last row: the stretch runs to this poll, not to the row
+  // that opened it — a line that vanished at 13:00 and never came back was
+  // unobserved for the rest of the day, not for zero minutes.
+  for (const [key, start] of openUnseen) {
+    const [rideId, qlId] = key.split(":").map(Number);
+    const line = rides.get(rideId)?.get(qlId);
+    if (!line) continue;
+    (line.unseen ??= []).push([start, Math.max(observedTo, start)]);
   }
 
   // Notices still in effect at the last row they touched: end them at that
@@ -1099,16 +1156,6 @@ export async function writeQueueDayFile(
     }
   }
 
-  // Where a ride's last known state stops holding: this poll. On a live day
-  // that is now, so an afternoon that hasn't happened cannot count as running
-  // (or as down); on a finished day it is at or past the close and clamps to it.
-  // Taking the newest SAMPLE instead would be wrong in the same way — a park
-  // whose waits haven't moved since lunch has no sample to mark the present.
-  const observedTo = Math.min(
-    window?.close ?? 24 * 60,
-    Math.floor((Date.parse(generatedAt) - dayStart) / 60_000),
-  );
-
   const ridesOut = [...rides.entries()].map(([rideId, lines]) => {
     const meta = catalog?.items[String(rideId)];
     const win = rideWin?.[rideId];
@@ -1144,7 +1191,7 @@ export async function writeQueueDayFile(
           if (!isMain) return line;
           const from = Math.max(win?.open ?? window?.open ?? 0, window?.open ?? 0);
           const to = Math.min(win?.close ?? window?.close ?? 0, observedTo);
-          const summary = summariseLine(line.samples, from, to);
+          const summary = summariseLine(line.samples, from, to, line.unseen ?? []);
           return summary ? { ...line, summary } : line;
         }),
     };

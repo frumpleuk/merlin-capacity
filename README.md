@@ -137,6 +137,14 @@ from the Attractions.io ("Occasio") backend that powers the official park apps
 > planned next: compare a day's queues against similar days with similar park
 > capacity (the D1 log already holds both).
 
+> Several parks list an attraction only while it is operating — Paulton's shows
+> and character greetings appear when they start. A line disappearing from the
+> feed is logged as `present = 0` (migration 0008) and projected as an `unseen`
+> stretch: neither up nor down, because nothing was observed. Without it, 70% of
+> Paulton's recorded downtime was time before a ride first appeared rather than
+> time anyone saw it shut. Shows and greetings are then excluded from the uptime
+> stats outright — a show performing four times a day is not 30% reliable.
+>
 > Each ride's main queue line in a day file carries a `summary` — the day's up
 > and down minutes, peak, per-minute median wait and stoppage count — computed
 > by the projection rather than re-derived by every reader. `up + down` runs over

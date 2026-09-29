@@ -1,0 +1,12 @@
+-- Whether the park's feed actually listed this line at the poll, or we inferred
+-- nothing about it because it wasn't there.
+--
+-- Without this, "the feed said the ride is shut" and "the ride was absent from
+-- the feed" are the same row — or rather, the same ABSENCE of a row — and the
+-- day projection resolves both as downtime. That is wrong wherever a park only
+-- lists an attraction while it is operating: 70% of Paulton's recorded downtime
+-- was time before a ride first appeared, not time anyone observed it shut.
+--
+-- Defaults to 1 so every existing row keeps its meaning: those were all written
+-- from a feed that did list the line.
+ALTER TABLE queue_observation ADD COLUMN present INTEGER NOT NULL DEFAULT 1;

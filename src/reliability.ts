@@ -167,6 +167,9 @@ interface DayLine {
   samples: [number, number | null, 0 | 1, (0 | 1)?][];
   closedNote?: string;
   notices?: [number, number, string][];
+  /** Stretches the park's feed wasn't listing this line (see db.ts). Nothing
+   *  was observed, so they are neither up nor down. */
+  unseen?: [number, number][];
 }
 
 interface DayRide {
@@ -199,6 +202,21 @@ interface QueueDayFile {
   close?: number;
   rides: DayRide[];
 }
+
+/**
+ * A show, a character greeting, a walkthrough encounter: things with a queue but
+ * no uptime in any useful sense. A show that performs four times a day is not
+ * 30% reliable, and scoring it says nothing about the park.
+ *
+ * Matched on the name because no backend marks them: Paulton's groups them with
+ * `thrill: null` alongside ordinary dark rides, and Attractions.io files them as
+ * Items like anything else. Deliberately narrow — it must not catch a ride whose
+ * theme happens to mention a character.
+ */
+const SHOW_LIKE =
+  /\b(show|meet\s*(&|and)\s*greet|greeting|character|encounter|stage|theatre|theater|cinema|4d experience|arena)\b/i;
+
+const isShowLike = (name: string): boolean => SHOW_LIKE.test(name);
 
 /** The line a ride's availability is judged on: its main physical queue. Single
  *  Rider and virtual lines come and go independently of whether the ride is
@@ -315,6 +333,18 @@ function walkLine(
     outages++;
     outageMins.push(to - outageStart);
   }
+
+  // Time nobody was looking at. Several parks list an attraction only while it
+  // is operating, and the walk above carried the last state forward across
+  // those stretches — as downtime. Take them out of the denominator: not
+  // observed is not the same as not running, and conflating them charged
+  // Paulton's shows and character greetings for the hours before they began.
+  const unseenMins = overlap(
+    (line.unseen ?? []).map(([a, b]) => [a, b] as [number, number]),
+    from,
+    to,
+  );
+  down = Math.max(0, down - unseenMins);
 
   // How much of that downtime the park had published a reason for.
   const maintRuns = (line.notices ?? [])
@@ -449,6 +479,8 @@ export async function buildDay(
     // Unidentified catalog artifacts ("Ride 12345") aren't rides anyone queues
     // for, and they appear and vanish; they'd churn the series for no gain.
     if (r.named === false) continue;
+    // Shows and greetings run to a timetable, not continuously.
+    if (isShowLike(r.name)) continue;
     const line = mainLine(r);
     for (const s of line?.samples ?? []) sampledBuckets.add(Math.floor(s[0] / ACTIVITY_BUCKET));
     // The ride's own hours when the backend publishes them, else the park's.

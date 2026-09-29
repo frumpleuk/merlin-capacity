@@ -351,8 +351,26 @@ export function diffQueues(prev: QueueSnapshot, next: QueueSnapshot): QueueObs[]
       running(p) !== running(n) ||
       closedNote(p.status) !== closedNote(n.status)
     ) {
-      deltas.push(n);
+      deltas.push({ ...n, present: true });
     }
+  }
+  // A line the park WAS listing and now isn't. Several parks only list an
+  // attraction while it is operating — Paulton's shows and character greetings
+  // appear when they start — so its disappearance is not a closure we observed,
+  // it is the end of observation. Logged once, on the transition, so it costs a
+  // row rather than a row a minute.
+  // The baseline written back is the feed's own snapshot, so an absent line
+  // leaves `prev` entirely — this fires once on the transition, and its return
+  // comes back through the `!p` branch above.
+  for (const [key, p] of Object.entries(prev)) {
+    if (next[key]) continue;
+    deltas.push({
+      ...p,
+      queueTime: null,
+      isOpen: false,
+      isOperational: false,
+      present: false,
+    });
   }
   return deltas;
 }

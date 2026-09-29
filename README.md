@@ -137,6 +137,33 @@ from the Attractions.io ("Occasio") backend that powers the official park apps
 > planned next: compare a day's queues against similar days with similar park
 > capacity (the D1 log already holds both).
 
+## Ride reliability
+
+A daily rollup of how often each ride is actually available, derived at 04:30
+GMT from the served queue day files (`src/reliability.ts`). No new upstream
+requests and no D1 reads, so it is independent of the two-day queue retention
+and covers all seven parks through one code path.
+
+- **Uptime and downtime are not complements.** Every scheduled minute is `up`,
+  `down`, `unscheduled` (outside the ride's *own* window — Ghost Train is a
+  12:00 ride) or unobserved. Availability is `up / (up + down)`; a day where a
+  ride produced nothing at all and the park gave no reason is counted as out of
+  service, not as a breakdown, so Blackpool's winter doesn't read as an outage.
+  `unscheduled` needs per-ride hours, which only the Attractions.io parks
+  publish — the other three fall back to the park window.
+- **`coverage`** is the share of the day's 10-minute buckets in which the park
+  posted anything. It sits near 1; a dip means *our* poller was out, which would
+  otherwise look like every ride breaking at once.
+- **Statistics** — pooled availability (weighted by day length, not a mean of
+  daily rates), median and p10 of the daily rates, MTBF, MTTR as a **median**
+  plus p90 (fault length is heavily right-skewed), fault count, clean-day rate,
+  and a floored geometric mean across rides for the park composite.
+- **Guest impact** — downtime weighted by `capacity - available` that day, for
+  the five parks with a ticket product. Not comparable across parks, so the
+  unweighted figures stay the cross-park ones.
+- **Files** — `stats/<park>/daily.json` (the 400-day store) and
+  `stats/<park>/summary.json` (7/28/90-day windows), served under `/stats/`.
+
 ## Menu prices
 
 A third stream, and the only one that isn't scraped: photos of the menu boards,
@@ -166,6 +193,7 @@ taken in the park and typed up by hand (with agent help) into JSON.
   D1/R2 helpers (`db.ts`), config/IDs (`config.ts`), entry (`index.ts`).
   Queue times: live poll (`queues.ts`) + static ride catalog (`rides.ts`).
   Buyout days: `special-days.ts`. Pass restriction dates: `restrictions.ts`.
+  Ride reliability rollup: `reliability.ts`.
   Subscribable calendar feeds: `ical.ts`.
 - `frontend/` — Vite + React heatmap; builds to `dist/`, served as Workers Assets.
 - `migrations/` — D1 schema.

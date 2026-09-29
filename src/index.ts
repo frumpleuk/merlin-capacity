@@ -7,6 +7,7 @@ import { runHoursPoll } from "./hours";
 import { refreshPaultonsRestrictions } from "./paultons-restrictions";
 import { runPoll } from "./poll";
 import { runQueuePoll } from "./queues";
+import { runReliability } from "./reliability";
 import { refreshRestrictions } from "./restrictions";
 import { rebuildCatalog } from "./rides";
 import { refreshSpecialDays } from "./special-days";
@@ -31,6 +32,7 @@ const CRON_PREOPEN = "0 7 * * *"; // 07:00 GMT (parks shut): catalog rebuild + d
 const CRON_SPECIAL = "5 7 * * *"; // 07:05 GMT: name the buyout / ticketed-event days
 const CRON_ARCHIVE = "0 4 * * *"; // 04:00 GMT: cold queue days out of D1, into R2
 const CRON_MONTH = "0 3 2 * *"; // 03:00 on the 2nd: fully elapsed ticket months to R2
+const CRON_RELIABILITY = "30 4 * * *"; // 04:30 GMT: roll yesterday into the ride-reliability stats
 
 const currentMonth = (ms: number) => new Date(ms).toISOString().slice(0, 7);
 
@@ -188,6 +190,8 @@ export default {
         return void ctx.waitUntil(runArchive(env, event.scheduledTime));
       case CRON_MONTH:
         return void ctx.waitUntil(runMonthArchive(env, event.scheduledTime));
+      case CRON_RELIABILITY:
+        return void ctx.waitUntil(runReliability(env, event.scheduledTime));
       default: // CRON_QUEUES
         return void ctx.waitUntil(pollQueues(env));
     }
@@ -200,7 +204,8 @@ export default {
     if (
       url.pathname.startsWith("/calendar/") ||
       url.pathname.startsWith("/queues/") ||
-      url.pathname.startsWith("/status/")
+      url.pathname.startsWith("/status/") ||
+      url.pathname.startsWith("/stats/")
     ) {
       const obj = await env.BUCKET.get(url.pathname.slice(1));
       if (!obj) return new Response("not found", { status: 404 });

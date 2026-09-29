@@ -24,6 +24,8 @@ function menuPhotos(): Plugin {
   };
 }
 
+const API_ORIGIN = process.env.API_ORIGIN ?? "http://localhost:8787";
+
 // Frontend lives in ./frontend and builds to ./dist, which wrangler serves as
 // Workers Assets. During `npm run dev:web`, proxy the data/API routes to a
 // locally-running `npm run dev:api` (wrangler dev on :8787) so the UI gets real
@@ -36,9 +38,14 @@ export default defineConfig({
     emptyOutDir: true,
   },
   server: {
-    proxy: {
-      "/calendar": "http://localhost:8787",
-      "/poll": "http://localhost:8787",
-    },
+    // Every data route the app fetches, so `npm run dev:web` alone shows a real
+    // UI. Default target is a local `npm run dev:api`; point API_ORIGIN at the
+    // deployed worker to iterate on the UI without running the backend at all.
+    proxy: Object.fromEntries(
+      ["/calendar", "/queues", "/stats", "/status", "/ical", "/poll"].map((route) => [
+        route,
+        { target: API_ORIGIN, changeOrigin: true },
+      ]),
+    ),
   },
 });

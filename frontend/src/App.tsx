@@ -6,6 +6,7 @@ import { LinksPage } from "./LinksPage";
 import { MenusPage } from "./MenusPage";
 import { ParkCalendarPage } from "./ParkCalendarPage";
 import { QueuesPage } from "./QueuesPage";
+import { ReliabilityPage } from "./ReliabilityPage";
 
 export function App() {
   return (
@@ -22,6 +23,11 @@ export function App() {
         </Route>
         <Route path="/:park/queues/:date" element={<Layout />}>
           <Route index element={<QueuesPage />} />
+        </Route>
+        {/* How often each ride is actually running (stats/<park>/summary.json).
+            Literal segment, so it outranks :product like the others. */}
+        <Route path="/:park/reliability" element={<Layout />}>
+          <Route index element={<ReliabilityPage />} />
         </Route>
         {/* Menus photographed in the park (contrib/menus → menus.generated.json).
             Another literal segment, so it outranks :product too. */}

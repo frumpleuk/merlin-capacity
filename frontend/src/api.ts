@@ -482,3 +482,77 @@ export async function loadQueueIndex(park: string): Promise<QueueIndex | null> {
   return f.minDate && f.maxDate ? f : null;
 }
 
+
+/* ── Ride reliability ──────────────────────────────────────────────────────────
+ *
+ * `stats/<park>/summary.json`, rebuilt daily from the queue day files (see
+ * src/reliability.ts). Availability is `up / (up + down)` over the ride's OWN
+ * scheduled hours, so time outside its window — and a season the park has said
+ * it is closed for — is not held against it.
+ *
+ * "Outage", never "fault": the feed reports that a ride stopped, not why. A
+ * station closed to be cleaned reads exactly like a mechanical failure. */
+
+/** Whether to hold your place in the queue, from this ride's past stoppages. */
+export interface OutageSurvival {
+  resume_within_15: number;
+  resume_within_30: number;
+  resume_within_60: number;
+  /** Median FURTHER wait, given it has already been down this long. Null when
+   *  too few stoppages ran that long to say anything. */
+  median_remaining_at_15: number | null;
+  median_remaining_at_30: number | null;
+  n: number;
+}
+
+export interface RideStats {
+  id: string;
+  name: string;
+  group?: string;
+  /** Pooled up / (up + down), weighted by day length rather than a mean of
+   *  daily rates. Null when the ride was never observed running in the window. */
+  availability: number | null;
+  median_day: number | null;
+  p10_day: number | null;
+  minutes_between_outages: number | null;
+  /** MEDIAN outage length — the distribution is heavily right-skewed. */
+  outage_median: number | null;
+  outage_p90: number | null;
+  outages: number;
+  outages_per_day: number | null;
+  outage_survival: OutageSurvival | null;
+  clean_days: number | null;
+  days: number;
+  /** Days it was listed but never ran, with no stated reason: out of service. */
+  closed_days: number;
+  maintenance_share: number | null;
+  guest_minutes_lost: number | null;
+}
+
+export interface WindowStats {
+  days: number;
+  availability: number | null;
+  geometric_mean: number | null;
+  gm_floor: number;
+  /** Near 1 in normal operation; a dip means OUR poller was out. */
+  coverage: number;
+  /** Days whose file can say WHY a ride was shut. Below `days`, the
+   *  maintenance/seasonal split is unknown for the rest, not zero. */
+  notices_known_days: number;
+  rides: RideStats[];
+}
+
+export interface ReliabilityFile {
+  park: string;
+  generated_at: string;
+  from: string;
+  to: string;
+  windows: Record<string, WindowStats>;
+}
+
+export async function loadReliability(park: string): Promise<ReliabilityFile | null> {
+  const r = await fetch(`/stats/${park}/summary.json`, { cache: "no-store" });
+  if (!r.ok) return null;
+  const f = (await r.json()) as ReliabilityFile;
+  return f.windows && Object.keys(f.windows).length > 0 ? f : null;
+}

@@ -10,6 +10,7 @@ import {
   type QueueLineSeries,
   type QueueRide,
   type QueueSample,
+  type RideStats,
   type SpecialDay,
 } from "./api";
 import { longDate } from "./Heatmap";
@@ -609,10 +610,51 @@ function RideChart({
 
 /* ── Ride row (summary + expand) ───────────────────────────────────────────────── */
 
+/**
+ * What this ride's history says about the stoppage you are standing in front of.
+ *
+ * Only rendered on a ride that is shut WHILE THE PARK IS OPEN, because that is
+ * the only moment the number changes a decision — stay in the queue or walk to
+ * something else. After close every ride is shut and none of them has stopped;
+ * on a past day the whole list would carry a hint nobody can act on.
+ *
+ * The conditional figure is deliberately absent: it needs to know how long THIS
+ * stoppage has run, which the feed doesn't tell us (a delta log records the
+ * transition, not a running clock the page can trust across a reload).
+ */
+function RestartHint({
+  rel,
+  asOf,
+  parkWindow,
+}: {
+  rel?: RideStats;
+  asOf?: number;
+  parkWindow?: [number, number];
+}) {
+  const s = rel?.outage_survival;
+  if (!s) return null;
+  // `asOf` is minutes-since-UTC-midnight today, and 1440 on a past day — so the
+  // same test rules out both "after close" and "not today".
+  if (asOf == null || !parkWindow) return null;
+  if (asOf < parkWindow[0] || asOf >= parkWindow[1]) return null;
+  const share = Math.round(s.resume_within_30 * 100);
+  return (
+    <span
+      className="q-restart"
+      title={`Over the last ${s.n} stoppages: ${Math.round(
+        s.resume_within_15 * 100,
+      )}% were running again within 15 minutes, ${share}% within 30.`}
+    >
+      {share}% back in 30m
+    </span>
+  );
+}
+
 function RideRow({
   ride,
   domain,
   parkWindow,
+  rel,
   scale,
   date,
   asOf,
@@ -622,6 +664,9 @@ function RideRow({
   ride: QueueRide;
   domain: [number, number];
   parkWindow?: [number, number];
+  /** This ride's reliability row, when the daily stats have one. Only surfaced
+   *  while the ride is shut — that is the moment the question gets asked. */
+  rel?: RideStats;
   scale: SparkScale;
   date: string;
   asOf?: number;
@@ -671,7 +716,10 @@ function RideRow({
               <span className="q-unit">min</span>
             </>
           ) : (
-            <span className="q-closed">{note ?? "Closed"}</span>
+            <span className="q-closed">
+              {note ?? "Closed"}
+              <RestartHint rel={rel} asOf={asOf} parkWindow={parkWindow} />
+            </span>
           )}
         </span>
         <span className="q-peak">{peak > 0 ? `peak ${peak}` : "—"}</span>
@@ -846,6 +894,7 @@ export function QueueList({
   special,
   tickets,
   rap,
+  rel,
 }: {
   file: QueueDayFile | null;
   date: string;
@@ -859,6 +908,8 @@ export function QueueList({
   /** Same for the Ride Access Pass pool, which is a hard pool: taken there is
    *  exactly the number sold, and it fills long before general admission does. */
   rap?: DayObs;
+  /** Ride id → its reliability row, from the daily stats. */
+  rel?: Map<string, RideStats>;
 }) {
   const [openId, setOpenId] = useState<number | null>(null);
   const [sort, setSort] = useState<SortMode>("now");
@@ -1096,6 +1147,7 @@ export function QueueList({
                         : undefined
                     }
                     scale={scale}
+                    rel={rel?.get(String(ride.id))}
                     date={date}
                     asOf={asOf}
                     open={openId === ride.id}

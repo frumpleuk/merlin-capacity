@@ -37,6 +37,8 @@ export function Layout() {
     if (p.queueOnly) return `/${p.key}/queues`; // no calendar/products — always queues
     if (!section) return `/${p.key}`; // calendar home
     if (section === "queues") return `/${p.key}/${rest.join("/")}`; // queues (+ date)
+    // Reliability exists wherever queues do — it's derived from the same files.
+    if (section === "reliability") return `/${p.key}/reliability`;
     if (p.products.some((pr) => pr.key === section)) return `/${p.key}/${section}`;
     return `/${p.key}`; // this park doesn't have that product → its calendar home
   };
@@ -74,6 +76,14 @@ export function Layout() {
             className={({ isActive }) => "tab" + (isActive ? " active" : "")}
           >
             Queues
+          </NavLink>
+          {/* How often the rides actually run — same source as Queues, so every
+              park that has one has the other. */}
+          <NavLink
+            to={`/${parkDef.key}/reliability`}
+            className={({ isActive }) => "tab" + (isActive ? " active" : "")}
+          >
+            Reliability
           </NavLink>
           {parkDef.products.map((pr) => (
             <NavLink

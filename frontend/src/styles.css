@@ -1954,3 +1954,313 @@ h3.fd-area-head {
     font-size: 26px;
   }
 }
+
+/* ── Ride reliability ─────────────────────────────────────────────────────────
+ *
+ * Magnitude, not identity: one hue, more filled is more available. Twenty-odd
+ * rides is well past where colour can carry identity, so the ranking is a table
+ * with a meter per row and the number always beside the bar. */
+
+:root {
+  --rl-fill: #2f7fd1; /* same hue as --q-main; validated against the light surface */
+  --rl-track: #dbe8f6; /* the unfilled remainder: a lighter step of that ramp */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --rl-fill: #4a90d9;
+    --rl-track: #24354a;
+  }
+}
+
+.rl-main {
+  max-width: 68rem;
+}
+
+/* Hero + tiles. Exactly one hero figure on the view. */
+.rl-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 1.5rem 2.5rem;
+  margin: 0.5rem 0 1.25rem;
+}
+
+.rl-hero-label,
+.rl-tile-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.rl-hero-num {
+  font-size: 3.25rem;
+  line-height: 1.05;
+  font-weight: 600;
+  /* Proportional figures: tabular-nums makes a big number look loose. */
+  font-variant-numeric: proportional-nums;
+}
+
+.rl-hero-note,
+.rl-tile-note {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.rl-tiles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.75rem;
+}
+
+.rl-tile-value {
+  font-size: 1.4rem;
+  font-weight: 600;
+  font-variant-numeric: proportional-nums;
+}
+
+/* Filters in one row above the table. */
+.rl-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.rl-toolbar-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  margin-right: 0.25rem;
+}
+
+.rl-win {
+  border: 1px solid var(--grid);
+  background: var(--bg);
+  color: var(--fg);
+  border-radius: 999px;
+  padding: 0.25rem 0.7rem;
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.rl-win.active {
+  background: var(--card);
+  border-color: var(--muted);
+  font-weight: 600;
+}
+
+/* The table. */
+.rl-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.rl-table th {
+  text-align: left;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  font-weight: 600;
+  padding: 0 0.5rem 0.4rem;
+  /* Hairline, solid, one shade off the surface — never dashed. */
+  border-bottom: 1px solid var(--grid);
+}
+
+.rl-table td {
+  padding: 0.3rem 0.5rem;
+  border-bottom: 1px solid var(--grid);
+  vertical-align: middle;
+}
+
+.rl-num {
+  text-align: right;
+  /* Columns of numbers align; only here, never on the hero. */
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.rl-c-meter {
+  width: 34%;
+}
+
+.rl-name-btn {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  background: none;
+  border: 0;
+  padding: 0.15rem 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+}
+
+.rl-caret {
+  color: var(--muted);
+  font-size: 0.7rem;
+}
+
+.rl-group {
+  font-size: 0.7rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.rl-row.open {
+  background: var(--card);
+}
+
+/* Meter: thin mark, rounded data end, no border between fill and track. */
+.rl-meter {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rl-meter-track {
+  flex: 1;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--rl-track);
+  overflow: hidden;
+  min-width: 3rem;
+}
+
+.rl-meter-fill {
+  display: block;
+  height: 100%;
+  border-radius: 4px;
+  background: var(--rl-fill);
+}
+
+.rl-meter-num {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.8rem;
+  min-width: 3.2rem;
+  text-align: right;
+  color: var(--fg);
+}
+
+/* Expanded detail. */
+.rl-detail-row > td {
+  background: var(--card);
+  padding: 0.75rem 1rem 1rem;
+}
+
+.rl-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1.25rem 2rem;
+}
+
+.rl-detail-h {
+  margin: 0 0 0.5rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+/* A second heading in the same column needs air, or it reads as part of the
+ * note above it. */
+.rl-detail-h:not(:first-child) {
+  margin-top: 1.25rem;
+}
+
+.rl-detail-note {
+  margin: 0.5rem 0 0;
+  font-size: 0.78rem;
+  color: var(--muted);
+  max-width: 34rem;
+}
+
+.rl-survival {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.rl-survival th {
+  text-align: left;
+  font-weight: 400;
+  color: var(--muted);
+  font-size: 0.8rem;
+  padding: 0.2rem 0.75rem 0.2rem 0;
+  white-space: nowrap;
+}
+
+.rl-survival td {
+  padding: 0.2rem 0;
+  width: 100%;
+}
+
+.rl-dl {
+  margin: 0;
+  display: grid;
+  gap: 0.15rem;
+}
+
+.rl-dl > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.85rem;
+}
+
+.rl-dl dt {
+  color: var(--muted);
+}
+
+.rl-dl dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.rl-foot {
+  margin-top: 1.25rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+  max-width: 48rem;
+}
+
+.rl-foot p {
+  margin: 0.4rem 0;
+}
+
+.rl-empty {
+  color: var(--muted);
+  margin: 2rem 0;
+}
+
+@media (max-width: 640px) {
+  .rl-hide-sm {
+    display: none;
+  }
+  .rl-hero-num {
+    font-size: 2.5rem;
+  }
+  .rl-c-meter {
+    width: 40%;
+  }
+  .rl-meter-num {
+    min-width: 2.8rem;
+  }
+}
+
+/* The stay-or-go hint, shown beside a shut ride's closed notice. Muted and
+ * small: it is context for a decision, not a headline. */
+.q-restart {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  margin-top: 0.1rem;
+  white-space: nowrap;
+}

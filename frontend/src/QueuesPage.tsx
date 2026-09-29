@@ -4,10 +4,12 @@ import {
   loadQueueDay,
   loadProductMonth,
   loadQueueIndex,
+  loadReliability,
   loadSpecialDays,
   type QueueDayFile,
   type DayObs,
   type QueueIndex,
+  type RideStats,
   type SpecialDaysFile,
 } from "./api";
 import { findPark, PARK_HOME } from "./catalog";
@@ -34,11 +36,21 @@ export function QueuesPage() {
   const [special, setSpecial] = useState<SpecialDaysFile | null>(null);
   const [tickets, setTickets] = useState<DayObs | undefined>(undefined);
   const [rap, setRap] = useState<DayObs | undefined>(undefined);
+  // Ride id → reliability row, for the "back within 30m" hint on a shut ride.
+  // Rebuilt once a day, so it is loaded per park rather than per date.
+  const [rel, setRel] = useState<Map<string, RideStats> | undefined>(undefined);
 
   useEffect(() => {
     if (!parkDef) return;
     let alive = true;
     loadQueueIndex(park!).then((b) => alive && setBounds(b));
+    loadReliability(park!).then((f) => {
+      if (!alive || !f) return;
+      // Widest window available: the hint wants as many past stoppages as it
+      // can get, and this ride's behaviour doesn't change week to week.
+      const w = f.windows.d90 ?? f.windows.d28 ?? f.windows.d7;
+      if (w) setRel(new Map(w.rides.map((r) => [r.id, r])));
+    });
     // Whole-horizon file, refreshed daily — one fetch per park covers every date
     // the nav can reach, so it doesn't reload as you page between days.
     setSpecial(null);
@@ -115,6 +127,7 @@ export function QueuesPage() {
         special={special?.days[date]}
         tickets={tickets}
         rap={rap}
+        rel={rel}
       />
       {/* A ride absent from this list, or closed all day, is usually out for
           maintenance rather than broken — and only the park says which. Sits

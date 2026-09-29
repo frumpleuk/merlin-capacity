@@ -116,6 +116,9 @@ interface DayRide {
 interface QueueDayFile {
   park: string;
   date: string;
+  /** Projection version. Absent (or 1) means the file predates per-line notices,
+   *  so its maintenance and seasonal splits are unknown rather than zero. */
+  v?: number;
   open?: number;
   close?: number;
   rides: DayRide[];
@@ -318,7 +321,11 @@ export async function buildDay(
   if (close <= open) return null;
 
   const rides: Record<string, RideDay> = {};
-  let noticesKnown = false;
+  // Whether the day CAN tell us why a ride was shut, which is a property of how
+  // the file was projected — not of whether anything happened to be shut. A day
+  // with no notices in it looks identical to a day that couldn't record any,
+  // and only the version separates them.
+  const noticesKnown = (f.v ?? 1) >= 2;
   const COVERAGE_BUCKET = 10; // minutes
   const sampledBuckets = new Set<number>();
 
@@ -327,7 +334,6 @@ export async function buildDay(
     // for, and they appear and vanish; they'd churn the series for no gain.
     if (r.named === false) continue;
     const line = mainLine(r);
-    if (line?.notices) noticesKnown = true;
     for (const s of line?.samples ?? []) sampledBuckets.add(Math.floor(s[0] / COVERAGE_BUCKET));
     // The ride's own hours when the backend publishes them, else the park's.
     const from = Math.max(open, r.open ?? open);

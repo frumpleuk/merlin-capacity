@@ -3,10 +3,8 @@ import {
   ANOMALY_SHORT,
   restrictionSummary,
   specialLabel,
-  takenLong,
   takenOf,
   takenShort,
-  TAKEN_NOTE,
   type DayObs,
   type HoursDay,
   type HoursFile,
@@ -18,6 +16,7 @@ import {
   type SpecialDay,
   type SpecialDaysFile,
 } from "./api";
+import { AllocList, AllocMeter } from "./AllocMeter";
 import { colour, longDate, monthLabel } from "./Heatmap";
 import { useMediaQuery } from "./useMediaQuery";
 
@@ -327,7 +326,9 @@ function DayBody({ d, seasonLabel }: { d: DayDetail; seasonLabel: string }) {
         </div>
       )}
       {d.special && d.special.capacity > 0 && (
-        <AvailRow label="Event tickets" o={d.special} />
+        <AllocList>
+          <AvailRow label="Event tickets" o={d.special} />
+        </AllocList>
       )}
       {d.event && (
         <div className="rc-body-event">
@@ -359,19 +360,22 @@ function DayBody({ d, seasonLabel }: { d: DayDetail; seasonLabel: string }) {
           <div className="rc-prebook-note">{d.anomaly.note}</div>
         </div>
       )}
-      {hasAllocation(d.main) && !showSeason(d) && (
-        <AvailRow label="Tickets" o={d.main} past={past} />
-      )}
-      {showSeason(d) && <AvailRow label={seasonLabel} o={d.season!} past={past} />}
-      {d.events?.map((e) => (
-        <AvailRow key={e.label} label={e.label} o={e.obs} past={past} />
-      ))}
-      {hasAllocation(d.rap) && <AvailRow label="RAP" o={d.rap} past={past} />}
+      <AllocList>
+        {hasAllocation(d.main) && !showSeason(d) && (
+          <AvailRow label="Tickets" o={d.main} past={past} />
+        )}
+        {showSeason(d) && <AvailRow label={seasonLabel} o={d.season!} past={past} />}
+        {d.events?.map((e) => (
+          <AvailRow key={e.label} label={e.label} o={e.obs} past={past} />
+        ))}
+        {hasAllocation(d.rap) && <AvailRow label="RAP" o={d.rap} past={past} />}
+      </AllocList>
     </div>
   );
 }
 
-/** One availability line in the detail body — the same shape for main and RAP. */
+/** One availability row in the detail body, the same meter the queue page
+ *  uses, for main, RAP and event pools. */
 function AvailRow({
   label,
   o,
@@ -381,35 +385,15 @@ function AvailRow({
   o: Allocation & { onSale?: boolean };
   past?: boolean;
 }) {
-  if (isUnallocated(o)) {
-    return (
-      <div className="rc-body-avail">
-        📋 {label}: <strong>{o.used.toLocaleString()}</strong> booked
-        <div className="rc-prebook-note">{BOOKED_NOTE}</div>
-      </div>
-    );
-  }
+  if (isUnallocated(o)) return <AllocMeter label={label} o={o} icon="📋" note={BOOKED_NOTE} />;
   const prebook = o.onSale === false;
-  const s = availStatus(o);
-  const t = takenOf(o);
   return (
-    <div className="rc-body-avail" title={TAKEN_NOTE}>
-      {prebook && !past ? "🔒" : s.emoji} {label}:{" "}
-      {t ? (
-        <>
-          <strong>{t.taken.toLocaleString()}</strong> of {o.capacity.toLocaleString()} taken (
-          {t.pct}%), {t.unsold.toLocaleString()} unsold
-          {prebook ? ` · ${past ? "sale closed" : "pre-book only"}` : ` · ${s.label}`}
-        </>
-      ) : (
-        <>
-          <strong>{o.used.toLocaleString()}</strong> booked, against no published allocation
-        </>
-      )}
-      {prebook && (
-        <div className="rc-prebook-note">{past ? PREBOOK_PAST_NOTE : PREBOOK_NOTE}</div>
-      )}
-    </div>
+    <AllocMeter
+      label={label}
+      o={o}
+      icon={prebook && !past ? "🔒" : availStatus(o).emoji}
+      note={prebook ? (past ? PREBOOK_PAST_NOTE : PREBOOK_NOTE) : undefined}
+    />
   );
 }
 

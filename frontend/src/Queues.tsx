@@ -1,9 +1,6 @@
 import { useMemo, useRef, useState } from "react";
 import {
   specialLabel,
-  takenLong,
-  takenOf,
-  TAKEN_NOTE,
   type DayObs,
   type GroupDim,
   type QueueDayFile,
@@ -13,6 +10,7 @@ import {
   type RideStats,
   type SpecialDay,
 } from "./api";
+import { AllocList, AllocMeter } from "./AllocMeter";
 import { longDate } from "./Heatmap";
 
 /* ── Time helpers ──────────────────────────────────────────────────────────────
@@ -746,40 +744,6 @@ function RideRow({
   );
 }
 
-/** One allocation's state alongside the queues, as a short inline item: a
- *  fill bar and percentage for how busy the day is, then the taken count.
- *  Leads on taken rather than on `used` (see takenOf). A buyout day shows its
- *  own event allocation in the banner above and suppresses the ticket item,
- *  so the two can never contradict each other.
- *
- *  Capacity 0 with bookings is the private-event shape: no total to show a
- *  fraction against, so it reports the count alone. */
-function allocItem(tickets: DayObs | undefined, label: string) {
-  if (!tickets) return null;
-  const t = takenOf(tickets);
-  if (!t) {
-    if (tickets.used <= 0) return null;
-    return (
-      <span className="q-alloc-item" key={label} title="Booked against no published allocation.">
-        {label} <strong>{tickets.used.toLocaleString()}</strong> booked
-      </span>
-    );
-  }
-  return (
-    <span
-      className="q-alloc-item"
-      key={label}
-      title={`${takenLong(t, tickets.capacity)}.\n\n${TAKEN_NOTE}`}
-    >
-      {label}{" "}
-      <span className="q-alloc-bar" aria-hidden="true">
-        <span style={{ width: `${t.pct}%` }} />
-      </span>{" "}
-      <strong>{t.pct}%</strong> ({t.taken.toLocaleString()} of {tickets.capacity.toLocaleString()})
-    </span>
-  );
-}
-
 /* ── Date navigation ───────────────────────────────────────────────────────────── */
 
 export function DateNav({
@@ -1054,9 +1018,6 @@ export function QueueList({
   if (!file || sections.length === 0)
     return <p className="empty">No queue data for {longDate(date)} yet.</p>;
 
-  const allocs = [special ? null : allocItem(tickets, "Tickets"), allocItem(rap, "RAP")].filter(
-    (a) => a != null,
-  );
   const anyOpen = sections.some((s) => s.rides.some((r) => rideNow(r) != null));
   const toggleSection = (key: string) =>
     setCollapsed((cur) => {
@@ -1078,7 +1039,14 @@ export function QueueList({
             ` ${special.available.toLocaleString()} of ${special.capacity.toLocaleString()} tickets left.`}
         </p>
       ) : null}
-      {allocs.length > 0 && <p className="q-alloc">🎟️ {allocs}</p>}
+      {((!special && tickets) || rap) && (
+        <div className="q-alloc">
+          <AllocList>
+            {!special && tickets && <AllocMeter label="Tickets" o={tickets} />}
+            {rap && <AllocMeter label="RAP" o={rap} />}
+          </AllocList>
+        </div>
+      )}
       <div className="q-toolbar">
         <div className="q-sort" role="group" aria-label="Sort rides">
           <span className="q-sort-label">Sort</span>

@@ -605,33 +605,10 @@ main.with-bar {
   border-left: 3px solid var(--buyout);
   border-radius: 4px;
 }
-/* Ticket and RAP allocation for the day: one muted line, not a callout, since
-   it is the normal state rather than an exception. */
+/* Ticket and RAP allocation for the day, above the toolbar. */
 .q-alloc {
-  margin: 4px 0 8px;
+  margin: 4px 0 10px;
   font-size: 12.5px;
-  line-height: 1.45;
-  color: var(--muted);
-}
-.q-alloc strong {
-  color: var(--fg);
-}
-.q-alloc-bar {
-  display: inline-block;
-  width: 48px;
-  height: 6px;
-  vertical-align: middle;
-  background: var(--grid);
-  border-radius: 3px;
-  overflow: hidden;
-}
-.q-alloc-bar > span {
-  display: block;
-  height: 100%;
-  background: var(--q-main);
-}
-.q-alloc-item + .q-alloc-item::before {
-  content: "\00a0\00a0|\00a0\00a0";
 }
 .q-head-row,
 .q-row-head {
@@ -2630,4 +2607,60 @@ h3.fd-area-head {
   .rl-detail-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* How full an allocation is: label, fill bar, percentage, taken / capacity.
+   Rows share one grid so the bars line up; shared by the queue page and the
+   calendar's day detail. */
+.alloc-list {
+  display: grid;
+  grid-template-columns: auto 48px auto minmax(0, 1fr);
+  column-gap: 8px;
+  row-gap: 2px;
+  align-items: center;
+  font-variant-numeric: tabular-nums;
+}
+.alloc-list:empty {
+  display: none;
+}
+.alloc-row {
+  display: contents;
+}
+.alloc-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.alloc-bar {
+  height: 6px;
+  background: var(--grid);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.alloc-bar > span {
+  display: block;
+  height: 100%;
+  background: var(--q-main);
+}
+.alloc-pct {
+  text-align: right;
+}
+.alloc-count {
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.alloc-booked {
+  grid-column: 2 / -1;
+}
+.alloc-booked strong {
+  color: var(--fg);
+}
+.alloc-note {
+  grid-column: 1 / -1;
+  color: var(--muted);
+  font-size: 11.5px;
+  font-style: italic;
+  margin-bottom: 2px;
 }

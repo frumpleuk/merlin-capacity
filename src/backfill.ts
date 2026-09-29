@@ -41,7 +41,7 @@ const MAX_DAYS_PER_RUN = 60;
  *  call spends one, so a scan that walks a year of history for seven parks is
  *  2800 gets and an uncaught 1101, whether or not it rebuilds anything. Checking
  *  a day costs one get; rebuilding it costs three more. 400 + 60x3 leaves room. */
-const MAX_SCAN_PER_RUN = 400;
+const MAX_SCAN_PER_RUN = 250;
 
 /** Always re-check the newest few days, however far back the cursor has got.
  *  Yesterday is the day most likely to need a rebuild and the one a cursor

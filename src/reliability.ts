@@ -91,6 +91,12 @@ export interface DailyRollup {
 
 export interface DailyStore {
   park: string;
+  /** Rollup schema this store's days were built at (see STORE_VERSION). */
+  v?: number;
+  /** While catching up to a new STORE_VERSION: the oldest day already rebuilt.
+   *  Days older than this still hold what the previous version captured, and a
+   *  later run works backwards from here. */
+  v_from?: string;
   generated_at: string;
   /** Ride id → display name, so the summary needn't re-read a day file. */
   names: Record<string, string>;
@@ -107,6 +113,14 @@ export interface DailyStore {
 /** Keep a bit over a year, so a 365-day window is always whole and the store
  *  stays one modest object rather than a growing pile of per-day keys. */
 const RETAIN_DAYS = 400;
+
+/** Bump when a day's rollup gains something buildDay has to re-derive from the
+ *  day file — grouping, say. The summary is recomputed from the store on every
+ *  run, so anything `statsFor` derives needs no rebuild; this is only for what
+ *  is captured while a day is BUILT and then stored.
+ *
+ *  2 = per-ride grouping axes (`dimGroups`, `dims`). */
+const STORE_VERSION = 2;
 
 export const dailyKey = (park: string) => `stats/${park}/daily.json`;
 export const summaryKey = (park: string) => `stats/${park}/summary.json`;
@@ -300,24 +314,37 @@ function walkLine(
 /** Attendance for a date: tickets taken against the day's yield. `capacity -
  *  available` is the event-level figure; `used` counts only the packages that
  *  product happens to send, so it reads about 2.5x low. */
+type MonthDays = Record<string, { capacity?: number; available?: number }>;
+
+/** Month file cache for one rollup run. A cold store rebuilds ~70 days per park
+ *  and each of them wants the same two or three month files; without this the
+ *  run spends most of its subrequest budget re-reading them. */
+export type AttendanceCache = Map<string, MonthDays | null>;
+
 async function readAttendance(
   bucket: R2Bucket,
   park: ParkConfig,
   date: string,
+  cache: AttendanceCache,
 ): Promise<number | undefined> {
   if (!park.products.some((p) => p.key === "main")) return undefined;
-  const obj = await bucket.get(`calendar/${park.key}/main/${date.slice(0, 7)}.json`);
-  if (!obj) return undefined;
-  try {
-    const f = (await obj.json()) as {
-      days?: Record<string, { capacity?: number; available?: number }>;
-    };
-    const d = f.days?.[date];
-    if (!d || d.capacity == null || d.available == null || d.capacity <= 0) return undefined;
-    return Math.max(0, d.capacity - d.available);
-  } catch {
-    return undefined;
+  const month = date.slice(0, 7);
+  let days = cache.get(month);
+  if (days === undefined) {
+    days = null;
+    const obj = await bucket.get(`calendar/${park.key}/main/${month}.json`);
+    if (obj) {
+      try {
+        days = ((await obj.json()) as { days?: MonthDays }).days ?? null;
+      } catch {
+        days = null;
+      }
+    }
+    cache.set(month, days);
   }
+  const d = days?.[date];
+  if (!d || d.capacity == null || d.available == null || d.capacity <= 0) return undefined;
+  return Math.max(0, d.capacity - d.available);
 }
 
 /** Project one park-day into a rollup, or null when there's no day file (the
@@ -326,6 +353,7 @@ export async function buildDay(
   env: Env,
   park: ParkConfig,
   date: string,
+  cache: AttendanceCache = new Map(),
 ): Promise<BuiltDay | null> {
   const obj = await env.BUCKET.get(`queues/${park.key}/${date}.json`);
   if (!obj) return null;
@@ -385,7 +413,7 @@ export async function buildDay(
   }
   if (Object.keys(rides).length === 0) return null;
 
-  const attendance = await readAttendance(env.BUCKET, park, date);
+  const attendance = await readAttendance(env.BUCKET, park, date, cache);
   const day: DailyRollup = {
     open,
     close,
@@ -732,6 +760,8 @@ async function readStore(bucket: R2Bucket, park: string): Promise<DailyStore | n
     if (!s.days) return null;
     return {
       park,
+      v: s.v ?? 1,
+      ...(s.v_from ? { v_from: s.v_from } : {}),
       generated_at: s.generated_at ?? "",
       names: s.names ?? {},
       groups: s.groups ?? {},
@@ -759,10 +789,11 @@ export async function rollUpPark(
   // Enough to fill the whole retained history in one run on a cold start; in
   // steady state there is exactly one new day to add, so this bound only ever
   // bites on the first fill or after an outage.
-  maxNew = 90,
+  maxNew = 60,
 ): Promise<number> {
   const store = (await readStore(env.BUCKET, park.key)) ?? {
     park: park.key,
+    v: STORE_VERSION,
     generated_at: "",
     names: {},
     groups: {},
@@ -772,18 +803,26 @@ export async function rollUpPark(
 
   // Yesterday backwards: today is still running, so it would be rewritten every
   // day and would drag every window's average down until the park closed.
+  //
+  // A store behind STORE_VERSION also re-derives days it already has, newest
+  // first and bounded per run, because what changed is captured while a day is
+  // built rather than computed from it. `v_from` is how far back that has got,
+  // so a run resumes instead of redoing the recent end every night.
+  const stale = (store.v ?? 1) < STORE_VERSION;
+  const staleFrom = store.v_from ?? ymd(now);
   const wanted: string[] = [];
   for (let i = 1; i <= RETAIN_DAYS && wanted.length < maxNew; i++) {
     const d = ymd(now - i * 86_400_000);
-    if (!store.days[d]) wanted.push(d);
+    if (!store.days[d] || (stale && d < staleFrom)) wanted.push(d);
   }
 
+  const attendanceCache: AttendanceCache = new Map();
   let added = 0;
   // Oldest first, so a ride that was renamed ends up under its CURRENT name:
   // later days overwrite earlier ones, and a ride missing from the newest file
   // still keeps whatever it was last called.
   for (const date of [...wanted].sort()) {
-    const built = await buildDay(env, park, date);
+    const built = await buildDay(env, park, date, attendanceCache);
     // A park that was shut has no day file; record nothing and don't retry it
     // forever — the loop above only looks back RETAIN_DAYS, so it ages out.
     if (!built) continue;
@@ -798,6 +837,19 @@ export async function rollUpPark(
   // Trim to the retention window so the store can't grow without bound.
   const cutoff = ymd(now - RETAIN_DAYS * 86_400_000);
   for (const d of Object.keys(store.days)) if (d < cutoff) delete store.days[d];
+
+  // How far the version catch-up has got. Once it passes the oldest day we
+  // hold, the whole store is current and the marker goes away.
+  if (stale) {
+    const oldestWanted = wanted.length ? wanted[wanted.length - 1] : staleFrom;
+    const oldestHeld = Object.keys(store.days).sort()[0] ?? oldestWanted;
+    if (oldestWanted <= oldestHeld) {
+      store.v = STORE_VERSION;
+      delete store.v_from;
+    } else {
+      store.v_from = oldestWanted;
+    }
+  }
 
   store.generated_at = new Date(now).toISOString();
   await env.BUCKET.put(dailyKey(park.key), JSON.stringify(store), {

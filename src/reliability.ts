@@ -1,4 +1,5 @@
 import { queueParks, type ParkConfig } from "./config";
+import { noticeKind } from "./db";
 import type { Env } from "./types";
 
 /* ── Ride reliability ─────────────────────────────────────────────────────────
@@ -28,7 +29,7 @@ import type { Env } from "./types";
  * and over time; they just aren't comparable with a Merlin park's.
  *
  * `down` is split again, using the notices the day file now carries: a published
- * maintenance window is not a breakdown, and folding the two together makes a
+ * maintenance window is not a stoppage, and folding the two together makes a
  * ride that was taken out of service deliberately look catastrophically
  * unreliable. Notices only exist from 2026-09-29 onward (the projection kept just
  * the last one before that), so `noticed` is 0 for older days rather than wrong —
@@ -37,21 +38,23 @@ import type { Env } from "./types";
 
 /** Minutes, per ride, for one day. Compact tuple — this store holds every ride
  *  for every day for over a year, and the field names would dwarf the numbers.
- *  [scheduled, up, down, maintenance-of-that-down, each fault's duration]
+ *  [scheduled, up, down, maintenance-of-that-down, each outage's duration]
  *
- *  The durations are kept rather than a count and a total, because MTTR is only
- *  honest as a median: fault length is heavily right-skewed and one six-hour
- *  outage drags a mean somewhere no actual failure ever was. The count is
- *  `durations.length`, and their sum is the repair time proper — which is NOT
- *  the same as `down`, since down also holds the stretch before a ride first
- *  opens, and waiting for opening is not repairing. */
+ *  The durations are kept rather than a count and a total, because outage length
+ *  is only honest as a median — it is heavily right-skewed, and one six-hour
+ *  stoppage drags a mean somewhere no actual stoppage ever was — and because the
+ *  whole set is what answers the rider's question of whether to hold their place
+ *  in the queue (see `outage_survival`). The count is `durations.length`, and
+ *  their sum is time lost mid-session, which is NOT the same as `down`: down
+ *  also holds the stretch before a ride first opens, and a ride that hasn't
+ *  opened yet has not stopped. */
 export type RideDay = [number, number, number, number, number[]];
 
 const SCHEDULED = 0;
 const UP = 1;
 const DOWN = 2;
 const MAINT = 3;
-const FAULT_MINS = 4;
+const OUTAGE_MINS = 4;
 
 export interface DailyRollup {
   /** Park opening window that day, minutes since UTC midnight. */
@@ -125,10 +128,16 @@ function mainLine(r: DayRide): DayLine | undefined {
   return r.lines.find((l) => (l.type ?? "").includes("main")) ?? r.lines[0];
 }
 
-/** A notice that means the ride was taken out of service on purpose, as opposed
- *  to one promising it back ("Scheduled to open at 11:00" is a ride that is
- *  currently broken and being optimistic). */
-const isMaintenance = (note: string) => /maintenance/i.test(note);
+/** The ride was taken out of service on purpose, as opposed to a notice
+ *  promising it back ("Scheduled to open at 11:00" is a ride that is down and
+ *  being optimistic). Downtime, but downtime the park accounted for. */
+const isMaintenance = (note: string) => noticeKind(note) === "maintenance";
+
+/** The ride isn't running this part of the year and the park has said so —
+ *  Alton's "Only Available on Scarefest Dates", "Seasonal Attraction Reopens
+ *  2027", "Closed Today, Opens 02.10.2026". Not downtime at all: counting a
+ *  winter against a ride is how Blackpool came out at 72.6% available. */
+const isSeasonal = (note: string) => noticeKind(note) === "seasonal";
 
 /** Total minutes of `[start, end)` runs overlapping `[from, to)`. */
 function overlap(runs: [number, number][], from: number, to: number): number {
@@ -158,24 +167,27 @@ function walkLine(
   up: number;
   down: number;
   maint: number;
-  faultMins: number[];
+  outageMins: number[];
   /** Did the day produce any observation at all for this line? */
   observed: boolean;
 } {
-  const none = { up: 0, down: 0, maint: 0, faultMins: [] as number[], observed: false };
+  const none = { up: 0, down: 0, maint: 0, outageMins: [] as number[], observed: false };
   if (to <= from) return none;
   if (!line || line.samples.length === 0) {
     // Nothing at all today. With delta logging that is indistinguishable from a
     // ride that is simply not in service this part of the season — half of
     // Blackpool in late September — so it is NOT counted as downtime unless the
-    // park said why. A stated closure is a real closure and counts in full.
+    // park said why. A stated closure is a real closure and counts in full…
     const stated = line?.closedNote != null;
     if (!stated) return none;
+    // …unless what the park said is that it's out for the season, which is the
+    // opposite: an explicit "not running today", and nothing to hold against it.
+    if (isSeasonal(line!.closedNote!)) return none;
     return {
       up: 0,
       down: to - from,
       maint: isMaintenance(line.closedNote!) ? to - from : 0,
-      faultMins: [],
+      outageMins: [],
       observed: true,
     };
   }
@@ -183,14 +195,14 @@ function walkLine(
   const inWindow = line.samples.filter((s) => s[0] < to);
   let up = 0;
   let down = 0;
-  let faults = 0;
-  const faultMins: number[] = [];
+  let outages = 0;
+  const outageMins: number[] = [];
   // State before the first sample: not running (see above).
   let at = from;
   let running = false;
-  let faultStart = from;
-  // A fault is a ride that WAS running and stopped. The stretch before it first
-  // opens is downtime, but calling it a fault would score every ride one failure
+  let outageStart = from;
+  // An outage is a ride that WAS running and stopped. The stretch before it first
+  // opens is downtime, but calling it an outage would score every ride one failure
   // a day just for opening a minute after its scheduled time.
   let everRan = false;
 
@@ -204,12 +216,12 @@ function walkLine(
     // `operational` is absent in older files; treat it as 1 there (the field was
     // added later and its absence never meant "broken").
     const nowRunning = s[2] === 1 && (s[3] ?? 1) === 1;
-    if (running && !nowRunning) faultStart = t;
-    if (!running && nowRunning && everRan && t > faultStart) {
-      // A fault counts once it ends — an outage still open at close is counted
+    if (running && !nowRunning) outageStart = t;
+    if (!running && nowRunning && everRan && t > outageStart) {
+      // An outage counts once it ends — an outage still open at close is counted
       // below, so nothing is double-counted or dropped.
-      faults++;
-      faultMins.push(t - faultStart);
+      outages++;
+      outageMins.push(t - outageStart);
     }
     if (nowRunning) everRan = true;
     running = nowRunning;
@@ -218,11 +230,11 @@ function walkLine(
     if (running) up += to - at;
     else down += to - at;
   }
-  // Broke and never came back before close. Only a fault if it ran at all —
+  // Broke and never came back before close. Only an outage if it ran at all —
   // otherwise this is the closed-all-day case, already all downtime.
-  if (!running && everRan && to > faultStart) {
-    faults++;
-    faultMins.push(to - faultStart);
+  if (!running && everRan && to > outageStart) {
+    outages++;
+    outageMins.push(to - outageStart);
   }
 
   // How much of that downtime the park had published a reason for.
@@ -236,7 +248,19 @@ function walkLine(
   }
   const maint = Math.min(down, overlap(maintRuns, from, to));
 
-  return { up, down, maint, faultMins, observed: true };
+  // Seasonal stretches leave the denominator entirely — taking them out of
+  // `down` does that, since availability is up / (up + down). A ride the park
+  // has said is out for the season is not being measured while it is.
+  const seasonalRuns = (line.notices ?? [])
+    .filter(([, , note]) => isSeasonal(note))
+    .map(([s, e]) => [s, e] as [number, number]);
+  if (line.closedNote && isSeasonal(line.closedNote) && seasonalRuns.length) {
+    seasonalRuns[seasonalRuns.length - 1][1] = to;
+  }
+  const seasonal = Math.min(down - maint, overlap(seasonalRuns, from, to));
+  down -= Math.max(0, seasonal);
+
+  return { up, down, maint, outageMins, observed: true };
 }
 
 /* ── Building one day ─────────────────────────────────────────────────────── */
@@ -315,7 +339,7 @@ export async function buildDay(
     // 0, so it drops out of every ratio on its own, and the count of such days
     // surfaces as `closed_days` rather than quietly vanishing.
     rides[String(r.id)] = w.observed
-      ? [scheduled, w.up, w.down, w.maint, w.faultMins]
+      ? [scheduled, w.up, w.down, w.maint, w.outageMins]
       : [scheduled, 0, 0, 0, []];
   }
   if (Object.keys(rides).length === 0) return null;
@@ -362,6 +386,49 @@ function geometricMean(xs: number[]): number | null {
   return Math.exp(sum / xs.length);
 }
 
+/**
+ * The queue question: it has stopped, do you stay?
+ *
+ * `resume_within` is the unconditional answer — of all this ride's past
+ * stoppages, the share over within 15, 30 and 60 minutes. The conditional pair
+ * is the one that's actually useful once you're standing there, because waiting
+ * changes the odds: a stoppage that has already run 30 minutes is drawn from the
+ * long tail, so its REMAINING time is typically worse than the 30 you've done,
+ * not better. `median_remaining_at_15` and `_at_30` are the median further wait
+ * given it has already lasted that long.
+ */
+export interface OutageSurvival {
+  resume_within_15: number;
+  resume_within_30: number;
+  resume_within_60: number;
+  median_remaining_at_15: number | null;
+  median_remaining_at_30: number | null;
+  /** How many past stoppages this is drawn from. */
+  n: number;
+}
+
+/** Below this the survival curve is noise dressed as advice. */
+const MIN_OUTAGES_FOR_SURVIVAL = 12;
+
+function survival(durations: number[]): OutageSurvival | null {
+  const n = durations.length;
+  if (n < MIN_OUTAGES_FOR_SURVIVAL) return null;
+  const share = (t: number) => durations.filter((d) => d <= t).length / n;
+  // Of the stoppages that were still going at `t`, how much longer did they run?
+  const remainingAfter = (t: number): number | null => {
+    const still = durations.filter((d) => d > t).map((d) => d - t);
+    return still.length >= MIN_OUTAGES_FOR_SURVIVAL / 2 ? median(still) : null;
+  };
+  return {
+    resume_within_15: share(15),
+    resume_within_30: share(30),
+    resume_within_60: share(60),
+    median_remaining_at_15: remainingAfter(15),
+    median_remaining_at_30: remainingAfter(30),
+    n,
+  };
+}
+
 export interface RideStats {
   id: string;
   name: string;
@@ -374,18 +441,25 @@ export interface RideStats {
   median_day: number | null;
   /** The bad-day figure — one day in ten is this or worse. */
   p10_day: number | null;
-  /** Scheduled minutes per fault. Higher is better. */
-  mtbf: number | null;
-  /** MEDIAN minutes to recover, not the mean: the distribution is heavily right-
-   *  skewed and a single long outage drags a mean somewhere unrepresentative.
-   *  This is the number that separates rides breaking equally often — Samurai and
-   *  Rush both broke 1.9x/day over 61 days, and the gap between 83% and 92%
-   *  availability was entirely how long each stayed broken. */
-  mttr: number | null;
-  /** The long tail of the same: one recovery in ten takes at least this. */
-  mttr_p90: number | null;
-  faults: number;
-  /** Days with no fault at all, as a fraction of the days it ran — the figure
+  /** Scheduled minutes per outage — how long it typically runs between
+   *  stoppages. Higher is better. */
+  minutes_between_outages: number | null;
+  /** MEDIAN outage length, not the mean: the distribution is heavily right-
+   *  skewed and a single long stoppage drags a mean somewhere unrepresentative.
+   *  This is the number that separates rides stopping equally often — Samurai and
+   *  Rush both stopped 1.9x/day over 61 days, and the gap between 83% and 92%
+   *  availability was entirely how long each stayed down. */
+  outage_median: number | null;
+  /** The long tail of the same: one stoppage in ten lasts at least this. */
+  outage_p90: number | null;
+  outages: number;
+  /** Stoppages per day it ran — the rate a rider actually meets. */
+  outages_per_day: number | null;
+  /** Whether to hold your place or walk away, from the distribution of past
+   *  stoppages on this ride. Null until there are enough of them to mean
+   *  anything (see MIN_OUTAGES_FOR_SURVIVAL). */
+  outage_survival: OutageSurvival | null;
+  /** Days with no outage at all, as a fraction of the days it ran — the figure
    *  that reads without explanation. */
   clean_days: number | null;
   /** Days the ride was listed on. */
@@ -444,7 +518,7 @@ function statsFor(store: DailyStore, dates: string[]): WindowStats {
     let down = 0;
     let maint = 0;
     let sched = 0;
-    const faultMins: number[] = [];
+    const outageMins: number[] = [];
     let guest = 0;
     let guestKnown = false;
     let maintKnown = false;
@@ -460,16 +534,16 @@ function statsFor(store: DailyStore, dates: string[]): WindowStats {
       up += r[UP];
       down += r[DOWN];
       maint += r[MAINT];
-      faultMins.push(...r[FAULT_MINS]);
+      outageMins.push(...r[OUTAGE_MINS]);
       if (store.days[d].notices_known) maintKnown = true;
       const known = r[UP] + r[DOWN];
-      // A day with nothing observed is neither clean nor faulty — the ride was
-      // not in service, and calling that a fault-free day would flatter it.
+      // A day with nothing observed is neither clean nor interrupted — the ride was
+      // not in service, and calling that an outage-free day would flatter it.
       if (known === 0) {
         closedDays++;
         continue;
       }
-      if (r[FAULT_MINS].length === 0) cleanDays++;
+      if (r[OUTAGE_MINS].length === 0) cleanDays++;
       dayRates.push(r[UP] / known);
       const att = store.days[d].attendance;
       if (att != null) {
@@ -480,7 +554,7 @@ function statsFor(store: DailyStore, dates: string[]): WindowStats {
     const known = up + down;
     parkUp += up;
     parkKnown += known;
-    const faults = faultMins.length;
+    const outages = outageMins.length;
     rides.push({
       id,
       name: store.names[id] ?? `Ride ${id}`,
@@ -488,10 +562,12 @@ function statsFor(store: DailyStore, dates: string[]): WindowStats {
       availability: known > 0 ? up / known : null,
       median_day: median(dayRates),
       p10_day: percentile(dayRates, 10),
-      mtbf: faults > 0 ? sched / faults : null,
-      mttr: median(faultMins),
-      mttr_p90: percentile(faultMins, 90),
-      faults,
+      minutes_between_outages: outages > 0 ? sched / outages : null,
+      outage_median: median(outageMins),
+      outage_p90: percentile(outageMins, 90),
+      outages,
+      outages_per_day: days - closedDays > 0 ? outages / (days - closedDays) : null,
+      outage_survival: survival(outageMins),
       clean_days: days - closedDays > 0 ? cleanDays / (days - closedDays) : null,
       days,
       closed_days: closedDays,

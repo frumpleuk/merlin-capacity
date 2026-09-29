@@ -755,7 +755,7 @@ export async function writeQueueLatest(
   });
 }
 
-interface QueueRow {
+export interface QueueRow {
   ride_id: number;
   queue_line_id: number;
   line_type: string | null;
@@ -822,13 +822,45 @@ const labelForType = (type: string | null): string => {
  * count — so ordinary status cycling still produces no deltas and "last change"
  * doesn't tick after close. Shared by `diffQueues` (what to log) and the day-file
  * projection (what to surface).
+ *
+ * Seasonal wording is in scope too. Alton says "Only Available on Scarefest
+ * Dates", "Seasonal Attraction Reopens 2027" and "Closed Today, Opens
+ * 02.10.2026"; a ride out for the winter is not an unreliable ride, and without
+ * the park's own words the only way to tell is that it stopped appearing, which
+ * looks identical to a ride nobody has fixed. What NOT to match is an ordinary
+ * early close ("Closed at 5pm", "Closes at 4:30pm") — that's a scheduled hour,
+ * not a closure, and matching it would flag every ride that shuts before the
+ * park does.
  */
+/** A calendar date or a bare year — "02.10.2026", "2/10/26", "Reopens 2027". */
+const NAMES_A_DATE = /\d{1,2}[./-]\d{1,2}[./-]\d{2,4}|\b20\d\d\b/;
+
 export function closedNote(status: string | null): string | null {
   if (!status) return null;
   const s = status.trim();
-  return /scheduled to open|opens?\s+(at|from)|opening\s+at|maintenance|closed all day/i.test(s)
+  return /scheduled to open|opens?\s+(at|from|\d)|opening\s+at|maintenance|refurbish|closed all day|seasonal|only available (on|during)|reopens/i.test(
+    s,
+  ) || NAMES_A_DATE.test(s)
     ? s
     : null;
+}
+
+/** Why a ride is shut, as far as the park's own words go.
+ *
+ *  `seasonal` is the one that must not count against reliability: the ride isn't
+ *  broken, it isn't running today and the park has said so. A notice naming a
+ *  DATE rather than a time belongs there too — "Closed Today, Opens 02.10.2026"
+ *  is a ride out for days, not one opening late this morning, and the difference
+ *  decides whether the day counts against it at all. */
+export type NoticeKind = "maintenance" | "seasonal" | "opening" | "other";
+
+export function noticeKind(note: string): NoticeKind {
+  if (NAMES_A_DATE.test(note) || /seasonal|only available (on|during)/i.test(note)) {
+    return "seasonal";
+  }
+  if (/maintenance|refurbish/i.test(note)) return "maintenance";
+  if (/scheduled to open|opens?\s+(at|from|\d)|opening\s+at|reopens/i.test(note)) return "opening";
+  return "other";
 }
 
 /** One queue line in a day file: the day's samples as compact tuples. */
@@ -866,8 +898,11 @@ export async function writeQueueDayFile(
   generatedAt: string,
   resort?: { open: number; close: number },
   rideWindows?: Record<number, { open: number; close: number }>,
+  // Rows to project instead of reading D1 — the backfill supplies a day it has
+  // decoded from the R2 archive, which is the only place a past day still lives.
+  preRead?: QueueRow[],
 ): Promise<number> {
-  const rows = await readQueueDay(db, park, date);
+  const rows = preRead ?? (await readQueueDay(db, park, date));
   const dayStart = Date.parse(`${date}T00:00:00Z`);
 
   // The park's opening window (minutes since UTC midnight) frames the sparkline
@@ -1015,6 +1050,10 @@ export async function writeQueueDayFile(
   const body = JSON.stringify({
     park,
     date,
+    // Projection version. 2 = carries per-line `notices` (every closure notice
+    // the day held, not just the surviving one). The backfill uses this to tell
+    // a day that genuinely had no notices from one projected before they existed.
+    v: 2,
     generated_at: generatedAt,
     ...(catalog?.groupBy === "land" ? { groupBy: "land" } : {}),
     ...(catalog?.groupDims ? { groupDims: catalog.groupDims } : {}),

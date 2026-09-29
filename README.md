@@ -144,25 +144,63 @@ GMT from the served queue day files (`src/reliability.ts`). No new upstream
 requests and no D1 reads, so it is independent of the two-day queue retention
 and covers all seven parks through one code path.
 
+Everything here says **outage** or **stoppage**, never "fault" or "breakdown".
+The feed reports that a ride stopped, not why: a station closed to be cleaned up
+after someone is sick looks identical to a mechanical failure, and no park
+publishes a status that distinguishes them.
+
 - **Uptime and downtime are not complements.** Every scheduled minute is `up`,
   `down`, `unscheduled` (outside the ride's *own* window — Ghost Train is a
-  12:00 ride) or unobserved. Availability is `up / (up + down)`; a day where a
-  ride produced nothing at all and the park gave no reason is counted as out of
-  service, not as a breakdown, so Blackpool's winter doesn't read as an outage.
-  `unscheduled` needs per-ride hours, which only the Attractions.io parks
-  publish — the other three fall back to the park window.
+  12:00 ride) or unobserved. Availability is `up / (up + down)`.
+- **Seasonal closures don't count.** Alton publishes `Only Available on
+  Scarefest Dates`, `Seasonal Attraction Reopens 2027` and `Closed Today, Opens
+  02.10.2026`; a notice naming a date is a ride out for days, not one opening
+  late, and it leaves the denominator entirely. Where a park says nothing, a day
+  with no observation at all is still treated as out of service rather than as
+  an outage — otherwise Blackpool's winter reads as a park-wide failure.
+- **An outage is a ride that was running and stopped.** Opening late is downtime
+  but not an outage, or every ride would score one a day just for opening a
+  minute after its scheduled time. Late starts are about 30% of Thorpe's
+  downtime, so the two are worth keeping apart.
 - **`coverage`** is the share of the day's 10-minute buckets in which the park
   posted anything. It sits near 1; a dip means *our* poller was out, which would
-  otherwise look like every ride breaking at once.
+  otherwise look like every ride stopping at once.
 - **Statistics** — pooled availability (weighted by day length, not a mean of
-  daily rates), median and p10 of the daily rates, MTBF, MTTR as a **median**
-  plus p90 (fault length is heavily right-skewed), fault count, clean-day rate,
-  and a floored geometric mean across rides for the park composite.
+  daily rates), median and p10 of the daily rates, minutes between outages,
+  outage length as a **median** plus p90 (heavily right-skewed), outages per
+  day, clean-day rate, and a floored geometric mean across rides for the park
+  composite.
+- **`outage_survival`** answers the queue question: of this ride's past
+  stoppages, the share that cleared within 15, 30 and 60 minutes, plus the
+  median *remaining* wait given one has already run 15 or 30. Hyperia clears 65%
+  within a quarter of an hour; Samurai manages 19%.
 - **Guest impact** — downtime weighted by `capacity - available` that day, for
   the five parks with a ticket product. Not comparable across parks, so the
   unweighted figures stay the cross-park ones.
 - **Files** — `stats/<park>/daily.json` (the 400-day store) and
   `stats/<park>/summary.json` (7/28/90-day windows), served under `/stats/`.
+
+### Backfilling past days
+
+`writeQueueDayFile` only ever runs for today, so a change to what the projection
+keeps applies from the day it ships and no further back. `src/backfill.ts`
+rebuilds older day files from `archive/queues/<park>/<date>.ndjson.gz`, which
+holds every D1 column including the park's own `status` text — the archive is
+the row, not a view of it, precisely so this is possible.
+
+Day files carry `v` (projection version); anything below the current one is
+rebuilt, newest first, bounded per run so the backlog drains over a few nights
+the way the archive's own does. It runs before the stats on the 04:30 cron, and
+on demand:
+
+```sh
+curl "https://themeparks.frumple.co.uk/backfill?key=<POLL_KEY>&days=50"
+```
+
+Repeat until `rebuilt` comes back empty. A rebuild preserves the park window and
+per-ride hours from the existing file (they come from the live feed, not D1) and
+refuses to run at all without a ride catalog, so it can never replace good names
+with `Ride 3840`.
 
 ## Menu prices
 
@@ -193,7 +231,7 @@ taken in the park and typed up by hand (with agent help) into JSON.
   D1/R2 helpers (`db.ts`), config/IDs (`config.ts`), entry (`index.ts`).
   Queue times: live poll (`queues.ts`) + static ride catalog (`rides.ts`).
   Buyout days: `special-days.ts`. Pass restriction dates: `restrictions.ts`.
-  Ride reliability rollup: `reliability.ts`.
+  Ride reliability rollup: `reliability.ts`; day-file backfill: `backfill.ts`.
   Subscribable calendar feeds: `ical.ts`.
 - `frontend/` — Vite + React heatmap; builds to `dist/`, served as Workers Assets.
 - `migrations/` — D1 schema.

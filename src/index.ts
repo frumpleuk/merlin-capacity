@@ -1,5 +1,6 @@
 import { refreshAnomalies } from "./anomalies";
 import { archiveObservations, archiveQueues } from "./archive";
+import { backfillQueueDays } from "./backfill";
 import { allProducts, attractionsParks, fosParks, PARKS, queueParks } from "./config";
 import { rebuildMonthsFromD1 } from "./db";
 import { refreshPackages } from "./discover";
@@ -170,6 +171,22 @@ async function runMonthArchive(env: Env, scheduledTime: number): Promise<void> {
   );
 }
 
+/** Rebuild any day files that predate the current projection, then roll the
+ *  stats. Backfill first: a rebuilt day carries its closure notices, and the
+ *  rollup reads those to tell a seasonal closure from a stoppage. */
+async function runStats(env: Env, scheduledTime: number): Promise<void> {
+  try {
+    const res = await backfillQueueDays(env, scheduledTime);
+    const rebuilt = Object.entries(res)
+      .filter(([, r]) => r.rebuilt.length > 0)
+      .map(([park, r]) => `${park}:${r.rebuilt.length}`);
+    if (rebuilt.length) console.log(`backfilled day files — ${rebuilt.join(" ")}`);
+  } catch (err) {
+    console.error("queue day backfill failed:", err);
+  }
+  await runReliability(env, scheduledTime);
+}
+
 export default {
   // Dispatch by which schedule fired — each concern in its own invocation.
   async scheduled(event: ScheduledEvent, env: Env, ctx: ExecutionContext) {
@@ -191,7 +208,7 @@ export default {
       case CRON_MONTH:
         return void ctx.waitUntil(runMonthArchive(env, event.scheduledTime));
       case CRON_RELIABILITY:
-        return void ctx.waitUntil(runReliability(env, event.scheduledTime));
+        return void ctx.waitUntil(runStats(env, event.scheduledTime));
       default: // CRON_QUEUES
         return void ctx.waitUntil(pollQueues(env));
     }
@@ -247,6 +264,21 @@ export default {
           "cache-control": "public, max-age=900",
         },
       });
+    }
+
+    // Drain the day-file backfill on demand rather than waiting for 04:30, and
+    // roll the stats over what it rebuilt. Same POLL_KEY gate as /poll — it
+    // rewrites served files. `?days=` bounds one call (default 30); run it
+    // repeatedly until `rebuilt` comes back empty.
+    if (url.pathname === "/backfill") {
+      const provided = url.searchParams.get("key") ?? req.headers.get("x-poll-key");
+      if (!env.POLL_KEY || provided !== env.POLL_KEY) {
+        return new Response("forbidden", { status: 403 });
+      }
+      const budget = Math.min(200, Math.max(1, Number(url.searchParams.get("days") ?? 30)));
+      const res = await backfillQueueDays(env, Date.now(), 400, budget);
+      await runReliability(env, Date.now());
+      return Response.json(res);
     }
 
     // Force a poll of every product now — handy right after deploy. This is a

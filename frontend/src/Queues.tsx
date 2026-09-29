@@ -746,30 +746,34 @@ function RideRow({
   );
 }
 
-/** One allocation's state alongside the queues: how full the day is, and what
- *  is left. Leads on taken rather than on `used` (see takenOf), and says
- *  "unsold" rather than "left" so it reads the same on a past date as a future
- *  one. A buyout day shows its own event allocation in the banner above and
- *  suppresses the ticket line, so the two can never contradict each other.
+/** One allocation's state alongside the queues, as a short inline item: the
+ *  percentage taken and what is unsold, with the full counts in the tooltip.
+ *  Leads on taken rather than on `used` (see takenOf), and says "unsold"
+ *  rather than "left" so it reads the same on a past date as a future one. A
+ *  buyout day shows its own event allocation in the banner above and
+ *  suppresses the ticket item, so the two can never contradict each other.
  *
  *  Capacity 0 with bookings is the private-event shape: no total to show a
  *  fraction against, so it reports the count alone. */
-function TicketLine({ tickets, label }: { tickets?: DayObs; label: string }) {
+function allocItem(tickets: DayObs | undefined, label: string) {
   if (!tickets) return null;
   const t = takenOf(tickets);
   if (!t) {
     if (tickets.used <= 0) return null;
     return (
-      <p className="q-special tickets">
-        📋 {label}: <strong>{tickets.used.toLocaleString()}</strong> booked, against no
-        published allocation.
-      </p>
+      <span className="q-alloc-item" key={label} title="Booked against no published allocation.">
+        {label} <strong>{tickets.used.toLocaleString()}</strong> booked
+      </span>
     );
   }
   return (
-    <p className="q-special tickets" title={TAKEN_NOTE}>
-      🎟️ {label}: <strong>{takenLong(t, tickets.capacity)}</strong>.
-    </p>
+    <span
+      className="q-alloc-item"
+      key={label}
+      title={`${takenLong(t, tickets.capacity)}.\n\n${TAKEN_NOTE}`}
+    >
+      {label} <strong>{t.pct}%</strong> taken · {t.unsold.toLocaleString()} unsold
+    </span>
   );
 }
 
@@ -1047,6 +1051,9 @@ export function QueueList({
   if (!file || sections.length === 0)
     return <p className="empty">No queue data for {longDate(date)} yet.</p>;
 
+  const allocs = [special ? null : allocItem(tickets, "Tickets"), allocItem(rap, "RAP")].filter(
+    (a) => a != null,
+  );
   const anyOpen = sections.some((s) => s.rides.some((r) => rideNow(r) != null));
   const toggleSection = (key: string) =>
     setCollapsed((cur) => {
@@ -1067,10 +1074,8 @@ export function QueueList({
           {special.capacity > 0 &&
             ` ${special.available.toLocaleString()} of ${special.capacity.toLocaleString()} tickets left.`}
         </p>
-      ) : (
-        <TicketLine tickets={tickets} label="Tickets" />
-      )}
-      <TicketLine tickets={rap} label="RAP" />
+      ) : null}
+      {allocs.length > 0 && <p className="q-alloc">🎟️ {allocs}</p>}
       <div className="q-toolbar">
         <div className="q-sort" role="group" aria-label="Sort rides">
           <span className="q-sort-label">Sort</span>

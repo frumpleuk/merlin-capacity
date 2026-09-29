@@ -605,10 +605,19 @@ main.with-bar {
   border-left: 3px solid var(--buyout);
   border-radius: 4px;
 }
-/* The ordinary ticket line, in the queue-series blue rather than the buyout
-   purple: it is the normal state, not an exception. */
-.q-special.tickets {
-  border-left-color: var(--q-main);
+/* Ticket and RAP allocation for the day: one muted line, not a callout, since
+   it is the normal state rather than an exception. */
+.q-alloc {
+  margin: 4px 0 8px;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--muted);
+}
+.q-alloc strong {
+  color: var(--fg);
+}
+.q-alloc-item + .q-alloc-item::before {
+  content: "\00a0\00a0|\00a0\00a0";
 }
 .q-head-row,
 .q-row-head {

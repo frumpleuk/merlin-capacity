@@ -798,7 +798,10 @@ function RideRow({
     <div className={"q-row" + (open ? " open" : "")}>
       <button className="q-row-head" onClick={onToggle} aria-expanded={open}>
         <span className="q-name">
-          <span className="q-name-text">{ride.name}</span>
+          {/* Truncates on a narrow name column, so the full name stays reachable. */}
+          <span className="q-name-text" title={ride.name}>
+            {ride.name}
+          </span>
           {(heightLabel || hoursLabel) && (
             <span className="q-meta">
               {heightLabel && (

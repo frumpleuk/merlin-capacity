@@ -606,7 +606,9 @@ main.with-bar {
 .q-head-row,
 .q-row-head {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(80px, 1.5fr) 58px 58px 56px 62px;
+  /* The chart is the point of the row, so it gets the largest share. The name
+     column was 246px against its 369px at 1240 wide; it needs far less. */
+  grid-template-columns: minmax(0, 0.95fr) minmax(120px, 2fr) 54px 54px 52px 58px;
   align-items: center;
   gap: 10px;
 }
@@ -741,10 +743,13 @@ main.with-bar {
     display: none;
   }
   .q-row-head {
-    grid-template-columns: 1fr auto auto auto;
+    /* Three rows, not two. Sharing a row with the values left the chart 162px
+       of a 353px row — under half a pixel per minute of a full operating day. */
+    grid-template-columns: 1fr auto auto;
     grid-template-areas:
-      "name  name name name"
-      "spark now  med  peak";
+      "name  name  name"
+      "spark spark spark"
+      "now   med   peak";
     column-gap: 12px;
     row-gap: 6px;
     align-items: center;
@@ -764,10 +769,13 @@ main.with-bar {
   .q-median {
     grid-area: med;
   }
-  /* The name line's chip shows this on a phone; a fifth value column would
-     leave the sparkline nothing. */
+  /* The name line's chip shows this on a phone; a fourth value column would
+     crowd the row the chart no longer shares. */
   .q-uptime {
     display: none;
+  }
+  .spark {
+    width: 100%;
   }
   .q-now {
     grid-area: now;

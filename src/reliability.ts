@@ -540,7 +540,9 @@ export interface RideStats {
   availability: number | null;
   /** Median of the per-day rates: the typical day, unmoved by one 0% disaster. */
   median_day: number | null;
-  /** The bad-day figure — one day in ten is this or worse. */
+  /** The bad-day figure — one day in ten is this or worse. Nearest-rank, so on
+   *  a window of fewer than ten days it degenerates to the worst day; the page
+   *  hides it there rather than calling one bad day a tenth percentile. */
   p10_day: number | null;
   /** Scheduled minutes per outage — how long it typically runs between
    *  stoppages. Higher is better. */

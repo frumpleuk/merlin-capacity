@@ -173,6 +173,12 @@ publishes a status that distinguishes them.
   nothing. It is kept as a caveat on the data and is **not** shown as a figure:
   it says something about our plumbing, not about the park. The page surfaces it
   only below 0.6, as a line saying the times are rounded more coarsely.
+- **Precision** — availability is a ratio of MINUTES, so 0.1% is 2.6 minutes
+  over a 7-day window and 34 over a 90-day one, against a source resolved to the
+  minute: one decimal place is earned. The daily percentiles are not on the same
+  footing — nearest-rank p10 over six days is just the worst day, so the page
+  hides it below ten — and clean days shows a count ("7 of 26") rather than a
+  percentage of a number that small.
 - **Statistics** — pooled availability (weighted by day length, not a mean of
   daily rates), median and p10 of the daily rates, minutes between outages,
   outage length as a **median** plus p90 (heavily right-skewed), outages per

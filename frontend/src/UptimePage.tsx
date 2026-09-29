@@ -91,6 +91,13 @@ const COLUMNS: {
 const wellMeasured = (r: RideStats, windowDays: number): boolean =>
   r.days - r.closed_days >= Math.max(3, windowDays / 4);
 
+/** Fewest days before a 10th-percentile day means anything. Nearest-rank over
+ *  six values picks the first one, so on a 7-day window "worst day in ten" is
+ *  just the worst day — Rush reads 0.0% off a single closure. Availability
+ *  itself is fine at any window: it is a ratio of MINUTES, and 0.1% is 2.6
+ *  minutes over a 7-day window against a measurement resolved to the minute. */
+const MIN_DAYS_FOR_P10 = 10;
+
 /** Fewest stoppages that make a histogram worth drawing. Below this the shape
  *  is three bars of one, which looks like a distribution and is a coincidence.
  *  The survival curve needs more still (the backend's own floor), so a window
@@ -319,13 +326,19 @@ function Detail({ r }: { r: RideStats }) {
             <dt>Median day</dt>
             <dd>{pct(r.median_day, 1)}</dd>
           </div>
-          <div>
-            <dt>Worst day in ten</dt>
-            <dd>{pct(r.p10_day, 1)}</dd>
-          </div>
+          {r.days >= MIN_DAYS_FOR_P10 && (
+            <div>
+              <dt>Worst day in ten</dt>
+              <dd>{pct(r.p10_day, 1)}</dd>
+            </div>
+          )}
           <div>
             <dt>Days with no stoppage</dt>
-            <dd>{pct(r.clean_days)}</dd>
+            <dd>
+              {r.clean_days == null
+                ? "—"
+                : `${Math.round(r.clean_days * (r.days - r.closed_days))} of ${r.days - r.closed_days}`}
+            </dd>
           </div>
           {r.closed_days > 0 && (
             <div>

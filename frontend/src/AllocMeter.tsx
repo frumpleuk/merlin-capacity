@@ -53,3 +53,42 @@ export function AllocMeter({
     </div>
   );
 }
+
+/** The month-grid cell form: icon, a short fill bar and the percentage taken,
+ *  with taken / capacity under the bar and unsold in the tooltip. Falls back to available/capacity text
+ *  when there is no capacity to measure against. */
+export function CellMeter({
+  icon,
+  o,
+  title,
+}: {
+  icon: string;
+  o: Allocation;
+  title?: string;
+}) {
+  const t = takenOf(o);
+  const full = t ? `${takenLong(t, o.capacity)}.` : undefined;
+  return (
+    <div
+      className="rc-line rc-avail rc-meter"
+      title={[title, full].filter(Boolean).join("\n\n") || undefined}
+    >
+      <span className="rc-meter-icon">{icon}</span>
+      {t ? (
+        <>
+          <span className="alloc-bar" aria-hidden="true">
+            <span style={{ width: `${t.pct}%` }} />
+          </span>
+          <span className="rc-meter-pct">{t.pct}%</span>
+          <span className="rc-meter-count">
+            {t.taken.toLocaleString()} / {o.capacity.toLocaleString()}
+          </span>
+        </>
+      ) : (
+        <span>
+          {o.available.toLocaleString()}/{o.capacity.toLocaleString()}
+        </span>
+      )}
+    </div>
+  );
+}

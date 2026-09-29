@@ -4,7 +4,6 @@ import {
   restrictionSummary,
   specialLabel,
   takenOf,
-  takenShort,
   type DayObs,
   type HoursDay,
   type HoursFile,
@@ -16,7 +15,7 @@ import {
   type SpecialDay,
   type SpecialDaysFile,
 } from "./api";
-import { AllocList, AllocMeter } from "./AllocMeter";
+import { AllocList, AllocMeter, CellMeter } from "./AllocMeter";
 import { colour, longDate, monthLabel } from "./Heatmap";
 import { useMediaQuery } from "./useMediaQuery";
 
@@ -119,13 +118,6 @@ const isUnallocated = (o: Allocation): boolean => o.capacity === 0 && o.used > 0
 function showSeason(d: DayDetail): boolean {
   if (!d.season || !(d.season.capacity > 0)) return false;
   return !d.main || d.main.capacity === 0 || d.main.onSale === false;
-}
-
-/** Compact cell figure: how full the day is, with what is left in support.
- *  See takenOf for why this leads on taken rather than on `used`. */
-function avNums(o: Allocation): string {
-  const t = takenOf(o);
-  return t ? takenShort(t) : `${o.available.toLocaleString()}/${o.capacity.toLocaleString()}`;
 }
 
 const themepark = (h?: HoursDay): LocationHours | undefined =>
@@ -238,16 +230,17 @@ function CellContent({ d }: { d: DayDetail }) {
       {/* The private event's own allocation. It isn't the park pool, so it only
           appears on these days and never alongside the public ticket line. */}
       {d.special && d.special.capacity > 0 && (
-        <div className="rc-line rc-avail">
-          {availStatus(d.special).emoji} 🎟️ {avNums(d.special)}
-        </div>
+        <CellMeter icon={`${availStatus(d.special).emoji} 🎟️`} o={d.special} />
       )}
       {/* ⭐, not the 🎟️ of the day ticket: an event night sells both, and two
           identical rows in one cell say nothing about which is which. */}
       {d.events?.map((e) => (
-        <div key={e.label} className="rc-line rc-avail" title={`${e.label}: ${avNums(e.obs)}`}>
-          {availStatus(e.obs).emoji} ⭐ {avNums(e.obs)}
-        </div>
+        <CellMeter
+          key={e.label}
+          icon={`${availStatus(e.obs).emoji} ⭐`}
+          o={e.obs}
+          title={e.label}
+        />
       ))}
       {hasAllocation(d.main) && !showSeason(d) &&
         (isUnallocated(d.main) ? (
@@ -257,26 +250,24 @@ function CellContent({ d }: { d: DayDetail }) {
         ) : d.main.onSale === false ? (
           past ? (
             // Sales closed rather than not yet open — show the real figures.
-            <div className="rc-line rc-avail" title={PREBOOK_PAST_NOTE}>
-              {availStatus(d.main).emoji} 🎟️ {avNums(d.main)}
-            </div>
+            <CellMeter
+              icon={`${availStatus(d.main).emoji} 🎟️`}
+              o={d.main}
+              title={PREBOOK_PAST_NOTE}
+            />
           ) : (
             <div className="rc-line rc-avail rc-prebook" title={PREBOOK_NOTE}>
               🔒 🎟️ pre-book
             </div>
           )
         ) : (
-          <div className="rc-line rc-avail">
-            {availStatus(d.main).emoji} 🎟️ {avNums(d.main)}
-          </div>
+          <CellMeter icon={`${availStatus(d.main).emoji} 🎟️`} o={d.main} />
         ))}
       {/* Only when the season ticket is what actually sells the day. The season
           package also reports a part-pool figure on ordinary public dates, which
           would read as a second, contradictory ticket line. */}
       {showSeason(d) && (
-        <div className="rc-line rc-avail">
-          {availStatus(d.season!).emoji} 🎄 {avNums(d.season!)}
-        </div>
+        <CellMeter icon={`${availStatus(d.season!).emoji} 🎄`} o={d.season!} />
       )}
       {d.anomaly && (
         <div className="rc-line rc-anomaly" title={d.anomaly.note}>
@@ -289,9 +280,7 @@ function CellContent({ d }: { d: DayDetail }) {
             📋 RAP {d.rap.used.toLocaleString()} booked
           </div>
         ) : (
-          <div className="rc-line rc-avail">
-            {availStatus(d.rap).emoji} RAP {avNums(d.rap)}
-          </div>
+          <CellMeter icon={`${availStatus(d.rap).emoji} RAP`} o={d.rap} />
         ))}
     </>
   );

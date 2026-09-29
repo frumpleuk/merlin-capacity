@@ -304,11 +304,6 @@ export function takenOf(o: { capacity: number; available: number }): Taken | nul
   return { taken, pct, unsold };
 }
 
-/** Compact form for a calendar cell: "69% | 5,622 unsold". */
-export function takenShort(t: Taken): string {
-  return `${t.pct}% \u00b7 ${t.unsold.toLocaleString()} unsold`;
-}
-
 /** Full form: "12,378 of 18,000 taken (69%), 5,622 unsold". */
 export function takenLong(t: Taken, capacity: number): string {
   return `${t.taken.toLocaleString()} of ${capacity.toLocaleString()} taken (${t.pct}%), ${t.unsold.toLocaleString()} unsold`;

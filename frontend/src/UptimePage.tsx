@@ -214,41 +214,81 @@ function Histogram({ bins, label }: { bins: number[]; label: string }) {
 }
 
 /**
- * Day by day, so a particular visit can be put against the window it sits in —
- * was that day bad, or is it always like this. One column per day, oldest left.
+ * How each day compared with a typical one.
+ *
+ * Plotting availability itself needs an axis, and there is no honest one: every
+ * value sits between about 85% and 100%, so a zero baseline flattens the lot
+ * and a truncated baseline turns a 1.15x difference into a tenfold-looking bar.
+ * A line dodged that and said nothing — 26 points inside 15 percentage points
+ * is a flat squiggle.
+ *
+ * So plot the DEVIATION from the window's median instead. Zero is then a real
+ * zero — the typical day — bar length is honestly proportional to how far from
+ * typical a day was, and the question the strip exists to answer ("was that day
+ * bad, or is it always like this?") is the one it now reads out directly.
  */
-function DayStrip({ daily }: { daily: DailyPoint[] }) {
+function DayStrip({ daily, from }: { daily: DailyPoint[]; from: string }) {
   const vals = daily.map((d) => d.availability).filter((x): x is number => x != null);
   if (vals.length < 3) return null;
+  // Only days the park opened have a rollup, so the series skips the rest. Left
+  // as-is the axis silently compresses — Paulton's seven-day window drew five
+  // columns between two dates a week apart, with nothing to say two days were
+  // missing. Pad the calendar span so a closed day is a visible gap.
+  const slots: (DailyPoint | null)[] = [];
+  const byDate = new Map(daily.map((d) => [d.date, d]));
+  // From the window's start, not the first day with data: a park shut at the
+  // beginning of the window would otherwise have those days trimmed away
+  // rather than shown as closed.
+  for (
+    let t = Date.parse(`${from}T00:00:00Z`);
+    t <= Date.parse(`${daily[daily.length - 1].date}T00:00:00Z`);
+    t += 86_400_000
+  ) {
+    slots.push(byDate.get(new Date(t).toISOString().slice(0, 10)) ?? null);
+  }
   const mid = median(vals) ?? 0;
-  // The axis floors just below the worst day rather than at zero. Every value
-  // sits in the top fifth of the range, so a zero baseline flattens them all to
-  // the same bar; the floor is printed under the strip so it can't mislead.
-  const lo = Math.max(0, Math.min(...vals) - 0.02);
-  const scale = (v: number) => ((v - lo) / (1 - lo)) * 100;
+  // Symmetric, so a point above and a point below the median are the same
+  // length for the same size of difference.
+  const span = Math.max(...vals.map((v) => Math.abs(v - mid)), 0.005);
+  const pts = (v: number) => (v - mid) * 100;
   return (
     <div className="rl-strip-wrap">
-      <div className="rl-strip">
-        {daily.map((d) => (
-          <div
-            className="rl-strip-col"
-            key={d.date}
-            title={`${d.date}: ${pct(d.availability, 1)} available, ${d.outages} stoppages${
-              d.closed_rides ? `, ${d.closed_rides} rides not running` : ""
-            }`}
-          >
+      <div className="rl-strip-head">
+        <span className="rl-strip-title">How each day compared</span>
+        <span className="rl-strip-scale">
+          vs the median day ({pct(mid, 1)}) · {daily.length} open
+          {slots.length > daily.length ? ` of ${slots.length}` : ""}
+        </span>
+      </div>
+      <div className="rl-strip" role="img" aria-label={`Each day's availability against the median of ${pct(mid, 1)}`}>
+        {slots.map((d, i) => {
+          if (!d) {
+            return (
+              <div className="rl-strip-col rl-strip-shut" key={`shut-${i}`} title="Park closed" />
+            );
+          }
+          const dev = d.availability == null ? 0 : pts(d.availability);
+          const h = Math.min(50, (Math.abs(dev) / (span * 100)) * 50);
+          return (
             <div
-              className="rl-strip-bar"
-              style={{ height: `${d.availability == null ? 0 : scale(d.availability)}%` }}
-            />
-          </div>
-        ))}
+              className="rl-strip-col"
+              key={d.date}
+              title={`${d.date} — ${pct(d.availability, 1)} available (${
+                dev >= 0 ? "+" : ""
+              }${dev.toFixed(1)} vs median), ${d.outages} stoppages${
+                d.closed_rides ? `, ${d.closed_rides} not running` : ""
+              }`}
+            >
+              <span
+                className={"rl-strip-bar" + (dev < 0 ? " below" : "")}
+                style={{ height: `${h}%`, [dev < 0 ? "top" : "bottom"]: "50%" }}
+              />
+            </div>
+          );
+        })}
       </div>
       <div className="rl-strip-axis">
-        <span>{daily[0].date}</span>
-        <span>
-          {pct(lo, 0)}–100% · median {pct(mid, 1)}
-        </span>
+        <span>{from}</span>
         <span>{daily[daily.length - 1].date}</span>
       </div>
     </div>
@@ -509,11 +549,23 @@ export function UptimePage() {
 
   // The day-by-day series rides on the widest window only (it is the superset),
   // so slice its tail to whichever window is on screen.
+  // The window's CALENDAR length, which is not `stats.days` — that counts the
+  // days the park opened. Paulton's shuts midweek, so its "7 days" holds five.
+  const winDays = useMemo(() => {
+    const key = Object.keys(data?.windows ?? {}).find((k) => data?.windows[k] === stats);
+    return key ? Number(key.slice(1)) : (stats?.days ?? 0);
+  }, [data, stats]);
+
   const daily = useMemo(() => {
     const series = Object.values(data?.windows ?? {}).find((w) => w.daily)?.daily;
-    if (!series || !stats) return undefined;
-    return series.slice(-stats.days);
-  }, [data, stats]);
+    if (!series?.length || !winDays) return undefined;
+    // Slice by calendar days, not by however many points happen to be there:
+    // taking the last N entries of a park that shuts midweek pulls in days from
+    // before the window and hides the closures inside it.
+    const last = Date.parse(`${series[series.length - 1].date}T00:00:00Z`);
+    const from = new Date(last - (winDays - 1) * 86_400_000).toISOString().slice(0, 10);
+    return { from, points: series.filter((d) => d.date >= from) };
+  }, [data, winDays]);
 
   const col = COLUMNS.find((c) => c.key === sort) ?? COLUMNS[1];
   const thinCount = useMemo(
@@ -602,8 +654,6 @@ export function UptimePage() {
         </div>
       </div>
 
-      {daily && daily.length >= 3 && <DayStrip daily={daily} />}
-
       <div className="rl-toolbar">
         <div className="rl-toolbar-group" role="group" aria-label="Window">
           <span className="rl-toolbar-label">Window</span>
@@ -657,6 +707,10 @@ export function UptimePage() {
           />
         </div>
       </div>
+
+      {daily && daily.points.length >= 3 && (
+        <DayStrip daily={daily.points} from={daily.from} />
+      )}
 
       {narrow ? (
         <div className="rl-cards">

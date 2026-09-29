@@ -397,6 +397,10 @@ export interface QueueLineSeries {
   // maintenance", "Closed all day"). Set only on a closed line (see the backend
   // projection); the row shows it instead of a derived "Closed all day".
   closedNote?: string;
+  // Every notice the day carried, [start, end, note] in the same minute axis as
+  // `samples`. `closedNote` is only the surviving one, so a notice withdrawn
+  // before close appears here and nowhere else. Absent in older files.
+  notices?: [number, number, string][];
 }
 
 /** One grouping dimension a park offers (see QueueDayFile.groupDims). */

@@ -843,6 +843,13 @@ interface QueueLineOut {
   // maintenance", "Closed all day"). Set only while one is in effect, so the row
   // shows it instead of a derived "Closed all day". Dropped once withdrawn.
   closedNote?: string;
+  // Every notice the day carried, as [start, end, note] in minutes since UTC
+  // midnight — `closedNote` is only the last one, so a notice withdrawn before
+  // close used to vanish entirely and a maintenance window read as an ordinary
+  // breakdown. `end` is the minute the notice was last observed; when one is
+  // still in effect at the final sample it ends there and `closedNote` repeats
+  // it, which is how a consumer tells "ran to close" from "withdrawn at end".
+  notices?: [number, number, string][];
 }
 
 /**
@@ -903,6 +910,8 @@ export async function writeQueueDayFile(
 
   // ride_id → queue_line_id → line accumulator
   const rides = new Map<number, Map<number, QueueLineOut>>();
+  // The notice currently in effect per line, while we walk the rows in order.
+  const openNotice = new Map<string, { start: number; note: string }>();
   for (const r of rows) {
     let lines = rides.get(r.ride_id);
     if (!lines) rides.set(r.ride_id, (lines = new Map()));
@@ -923,7 +932,28 @@ export async function writeQueueDayFile(
     // Rows arrive oldest-first, so the last one to touch a line sets the notice;
     // a withdrawal (status back to plain "Closed") clears it. undefined is dropped
     // by JSON.stringify, so the field only appears while a notice is in effect.
-    line.closedNote = closedNote(r.status) ?? undefined;
+    const note = closedNote(r.status);
+    line.closedNote = note ?? undefined;
+    // …and close off the run it ends, so the day keeps every notice rather than
+    // only the surviving one. A changed wording ("open at 11:00" → "at 11:30")
+    // is a new run, which is what you want: each is a distinct promise.
+    const key = `${r.ride_id}:${r.queue_line_id}`;
+    const open = openNotice.get(key);
+    if (open && open.note !== note) {
+      (line.notices ??= []).push([open.start, mins, open.note]);
+      openNotice.delete(key);
+    }
+    if (note && !openNotice.has(key)) openNotice.set(key, { start: mins, note });
+  }
+
+  // Notices still in effect at the last row they touched: end them at that
+  // sample. `closedNote` carries the same text, so the pair reads as open-ended.
+  for (const [key, open] of openNotice) {
+    const [rideId, qlId] = key.split(":").map(Number);
+    const line = rides.get(rideId)?.get(qlId);
+    if (!line) continue;
+    const last = line.samples[line.samples.length - 1]?.[0] ?? open.start;
+    (line.notices ??= []).push([open.start, last, open.note]);
   }
 
   // Include catalog lines that produced no observation today. Delta-only logging

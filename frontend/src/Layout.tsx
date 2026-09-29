@@ -37,8 +37,8 @@ export function Layout() {
     if (p.queueOnly) return `/${p.key}/queues`; // no calendar/products — always queues
     if (!section) return `/${p.key}`; // calendar home
     if (section === "queues") return `/${p.key}/${rest.join("/")}`; // queues (+ date)
-    // Reliability exists wherever queues do — it's derived from the same files.
-    if (section === "reliability") return `/${p.key}/reliability`;
+    // Uptime exists wherever queues do — it's derived from the same files.
+    if (section === "uptime") return `/${p.key}/uptime`;
     if (p.products.some((pr) => pr.key === section)) return `/${p.key}/${section}`;
     return `/${p.key}`; // this park doesn't have that product → its calendar home
   };
@@ -78,12 +78,14 @@ export function Layout() {
             Queues
           </NavLink>
           {/* How often the rides actually run — same source as Queues, so every
-              park that has one has the other. */}
+              park that has one has the other. "Uptime" rather than
+              "Availability": this app already spends that word on TICKET
+              availability, and the two sit one tab apart. */}
           <NavLink
-            to={`/${parkDef.key}/reliability`}
+            to={`/${parkDef.key}/uptime`}
             className={({ isActive }) => "tab" + (isActive ? " active" : "")}
           >
-            Reliability
+            Uptime
           </NavLink>
           {parkDef.products.map((pr) => (
             <NavLink

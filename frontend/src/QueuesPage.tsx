@@ -4,7 +4,7 @@ import {
   loadQueueDay,
   loadProductMonth,
   loadQueueIndex,
-  loadReliability,
+  loadUptime,
   loadSpecialDays,
   type QueueDayFile,
   type DayObs,
@@ -36,7 +36,7 @@ export function QueuesPage() {
   const [special, setSpecial] = useState<SpecialDaysFile | null>(null);
   const [tickets, setTickets] = useState<DayObs | undefined>(undefined);
   const [rap, setRap] = useState<DayObs | undefined>(undefined);
-  // Ride id → reliability row, for the "back within 30m" hint on a shut ride.
+  // Ride id → uptime row, for the "back within 30m" hint on a shut ride.
   // Rebuilt once a day, so it is loaded per park rather than per date.
   const [rel, setRel] = useState<Map<string, RideStats> | undefined>(undefined);
 
@@ -44,7 +44,7 @@ export function QueuesPage() {
     if (!parkDef) return;
     let alive = true;
     loadQueueIndex(park!).then((b) => alive && setBounds(b));
-    loadReliability(park!).then((f) => {
+    loadUptime(park!).then((f) => {
       if (!alive || !f) return;
       // Widest window available: the hint wants as many past stoppages as it
       // can get, and this ride's behaviour doesn't change week to week.

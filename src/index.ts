@@ -8,7 +8,7 @@ import { runHoursPoll } from "./hours";
 import { refreshPaultonsRestrictions } from "./paultons-restrictions";
 import { runPoll } from "./poll";
 import { runQueuePoll } from "./queues";
-import { runReliability } from "./reliability";
+import { runUptime } from "./reliability";
 import { refreshRestrictions } from "./restrictions";
 import { rebuildCatalog } from "./rides";
 import { refreshSpecialDays } from "./special-days";
@@ -33,7 +33,7 @@ const CRON_PREOPEN = "0 7 * * *"; // 07:00 GMT (parks shut): catalog rebuild + d
 const CRON_SPECIAL = "5 7 * * *"; // 07:05 GMT: name the buyout / ticketed-event days
 const CRON_ARCHIVE = "0 4 * * *"; // 04:00 GMT: cold queue days out of D1, into R2
 const CRON_MONTH = "0 3 2 * *"; // 03:00 on the 2nd: fully elapsed ticket months to R2
-const CRON_RELIABILITY = "30 4 * * *"; // 04:30 GMT: roll yesterday into the ride-reliability stats
+const CRON_UPTIME = "30 4 * * *"; // 04:30 GMT: roll yesterday into the ride-uptime stats
 
 const currentMonth = (ms: number) => new Date(ms).toISOString().slice(0, 7);
 
@@ -172,8 +172,8 @@ async function runMonthArchive(env: Env, scheduledTime: number): Promise<void> {
 }
 
 /** Rebuild any day files that predate the current projection, then roll the
- *  stats. Backfill first: a rebuilt day carries its closure notices, and the
- *  rollup reads those to tell a seasonal closure from a stoppage. */
+ *  uptime stats. Backfill first: a rebuilt day carries its closure notices, and
+ *  the rollup reads those to tell a seasonal closure from a stoppage. */
 async function runStats(env: Env, scheduledTime: number): Promise<void> {
   try {
     const res = await backfillQueueDays(env, scheduledTime);
@@ -184,7 +184,7 @@ async function runStats(env: Env, scheduledTime: number): Promise<void> {
   } catch (err) {
     console.error("queue day backfill failed:", err);
   }
-  await runReliability(env, scheduledTime);
+  await runUptime(env, scheduledTime);
 }
 
 export default {
@@ -207,7 +207,7 @@ export default {
         return void ctx.waitUntil(runArchive(env, event.scheduledTime));
       case CRON_MONTH:
         return void ctx.waitUntil(runMonthArchive(env, event.scheduledTime));
-      case CRON_RELIABILITY:
+      case CRON_UPTIME:
         return void ctx.waitUntil(runStats(env, event.scheduledTime));
       default: // CRON_QUEUES
         return void ctx.waitUntil(pollQueues(env));
@@ -277,7 +277,7 @@ export default {
       }
       const budget = Math.min(400, Math.max(1, Number(url.searchParams.get("days") ?? 60)));
       const res = await backfillQueueDays(env, Date.now(), 400, budget);
-      await runReliability(env, Date.now());
+      await runUptime(env, Date.now());
       return Response.json(res);
     }
 

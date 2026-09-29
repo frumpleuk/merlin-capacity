@@ -137,9 +137,9 @@ from the Attractions.io ("Occasio") backend that powers the official park apps
 > planned next: compare a day's queues against similar days with similar park
 > capacity (the D1 log already holds both).
 
-## Ride reliability
+## Ride uptime
 
-A daily rollup of how often each ride is actually available, derived at 04:30
+A daily rollup of how often each ride is actually running, derived at 04:30
 GMT from the served queue day files (`src/reliability.ts`). No new upstream
 requests and no D1 reads, so it is independent of the two-day queue retention
 and covers all seven parks through one code path.
@@ -179,6 +179,8 @@ publishes a status that distinguishes them.
   unweighted figures stay the cross-park ones.
 - **Files** — `stats/<park>/daily.json` (the 400-day store) and
   `stats/<park>/summary.json` (7/28/90-day windows), served under `/stats/`.
+  The tab is **Uptime**, not "Availability": this app already spends that word
+  on ticket availability, and the two would sit one tab apart.
 
 ### Backfilling past days
 
@@ -245,7 +247,7 @@ taken in the park and typed up by hand (with agent help) into JSON.
   D1/R2 helpers (`db.ts`), config/IDs (`config.ts`), entry (`index.ts`).
   Queue times: live poll (`queues.ts`) + static ride catalog (`rides.ts`).
   Buyout days: `special-days.ts`. Pass restriction dates: `restrictions.ts`.
-  Ride reliability rollup: `reliability.ts`; day-file backfill: `backfill.ts`.
+  Ride uptime rollup: `reliability.ts`; day-file backfill: `backfill.ts`.
   Subscribable calendar feeds: `ical.ts`.
 - `frontend/` — Vite + React heatmap; builds to `dist/`, served as Workers Assets.
 - `migrations/` — D1 schema.

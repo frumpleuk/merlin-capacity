@@ -1,18 +1,18 @@
 import { Fragment, useEffect, useMemo, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import {
-  loadReliability,
-  RELIABILITY_BINS,
+  loadUptime,
+  OUTAGE_BINS,
   type DailyPoint,
   type GroupDim,
-  type ReliabilityFile,
+  type UptimeFile,
   type RideStats,
   type WindowStats,
 } from "./api";
 import { findPark, PARK_HOME } from "./catalog";
 import { useMediaQuery } from "./useMediaQuery";
 
-/* ── Ride reliability ──────────────────────────────────────────────────────────
+/* ── Ride uptime ──────────────────────────────────────────────────────────
  *
  * Twenty-odd rides is past the point where colour can carry identity, so the
  * ranking is a TABLE with one meter per row rather than a chart with a legend.
@@ -105,7 +105,7 @@ const NO_GROUP = "__none__";
 /** Which axes this park can be grouped on. A park with a single `group` per
  *  ride (most of them) gets one unnamed axis; Paulton's declares thrill and
  *  area. Either way the last option is always "None". */
-function groupOptions(data: ReliabilityFile, rides: RideStats[]): GroupDim[] {
+function groupOptions(data: UptimeFile, rides: RideStats[]): GroupDim[] {
   if (data.groupDims?.length) return data.groupDims;
   return rides.some((r) => r.group) ? [{ key: "group", label: "Group", by: "thrill" }] : [];
 }
@@ -181,7 +181,7 @@ function Histogram({ bins, label }: { bins: number[]; label: string }) {
   const total = bins.reduce((a, b) => a + b, 0);
   if (total === 0) return null;
   const max = Math.max(...bins);
-  const e = RELIABILITY_BINS;
+  const e = OUTAGE_BINS;
   const name = (i: number) =>
     i === 0
       ? `under ${e[0]}m`
@@ -461,10 +461,10 @@ function RideRow({
   );
 }
 
-export function ReliabilityPage() {
+export function UptimePage() {
   const { park } = useParams();
   const parkDef = findPark(park);
-  const [data, setData] = useState<ReliabilityFile | null | undefined>(undefined);
+  const [data, setData] = useState<UptimeFile | null | undefined>(undefined);
   const [win, setWin] = useState<string>("d28");
   const [openId, setOpenId] = useState<string | null>(null);
   const [sort, setSort] = useState<string>("availability");
@@ -488,7 +488,7 @@ export function ReliabilityPage() {
     if (!parkDef) return;
     let alive = true;
     setData(undefined);
-    loadReliability(parkDef.key).then((f) => alive && setData(f));
+    loadUptime(parkDef.key).then((f) => alive && setData(f));
     return () => {
       alive = false;
     };

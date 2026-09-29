@@ -664,7 +664,7 @@ function RideRow({
   ride: QueueRide;
   domain: [number, number];
   parkWindow?: [number, number];
-  /** This ride's reliability row, when the daily stats have one. Only surfaced
+  /** This ride's uptime row, when the daily stats have one. Only surfaced
    *  while the ride is shut — that is the moment the question gets asked. */
   rel?: RideStats;
   scale: SparkScale;
@@ -684,7 +684,7 @@ function RideRow({
   // which just means the ride hasn't opened. So a closed ride shows this note
   // when present, else a plain "Closed".
   const note = ride.lines.map((l) => l.closedNote).find(Boolean) ?? null;
-  // Reliability chip: shown on every row, whatever the hour, because "how often
+  // Uptime chip: shown on every row, whatever the hour, because "how often
   // does this one run" is worth knowing before you walk across the park. The
   // stay-or-go line below is the live counterpart, and only appears mid-outage.
   const heightLabel =
@@ -926,7 +926,7 @@ export function QueueList({
   /** Same for the Ride Access Pass pool, which is a hard pool: taken there is
    *  exactly the number sold, and it fills long before general admission does. */
   rap?: DayObs;
-  /** Ride id → its reliability row, from the daily stats. */
+  /** Ride id → its uptime row, from the daily stats. */
   rel?: Map<string, RideStats>;
 }) {
   const [openId, setOpenId] = useState<number | null>(null);

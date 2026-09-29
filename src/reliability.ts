@@ -2,7 +2,7 @@ import { queueParks, type ParkConfig } from "./config";
 import { noticeKind } from "./db";
 import type { Env } from "./types";
 
-/* ── Ride reliability ─────────────────────────────────────────────────────────
+/* ── Ride uptime ─────────────────────────────────────────────────────────
  *
  * How often a ride is actually available, derived once a day from the served
  * queue day files. No new upstream requests and no D1 reads: the day file is
@@ -893,7 +893,7 @@ export async function rollUpPark(
 }
 
 /** Every queue park, once a day. */
-export async function runReliability(env: Env, now: number): Promise<void> {
+export async function runUptime(env: Env, now: number): Promise<void> {
   await Promise.all(
     queueParks().map(async (park) => {
       try {

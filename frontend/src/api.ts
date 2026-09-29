@@ -483,7 +483,7 @@ export async function loadQueueIndex(park: string): Promise<QueueIndex | null> {
 }
 
 
-/* ── Ride reliability ──────────────────────────────────────────────────────────
+/* ── Ride uptime ──────────────────────────────────────────────────────────
  *
  * `stats/<park>/summary.json`, rebuilt daily from the queue day files (see
  * src/reliability.ts). Availability is `up / (up + down)` over the ride's OWN
@@ -513,7 +513,7 @@ export interface RideStats {
   id: string;
   name: string;
   group?: string;
-  /** Multi-dimension grouping keyed by dim (see ReliabilityFile.groupDims). */
+  /** Multi-dimension grouping keyed by dim (see UptimeFile.groupDims). */
   groups?: Record<string, string>;
   /** Pooled up / (up + down), weighted by day length rather than a mean of
    *  daily rates. Null when the ride was never observed running in the window. */
@@ -527,7 +527,7 @@ export interface RideStats {
   outages: number;
   outages_per_day: number | null;
   outage_survival: OutageSurvival | null;
-  /** Stoppage lengths as counts per bin (see RELIABILITY_BINS) — the shape
+  /** Stoppage lengths as counts per bin (see OUTAGE_BINS) — the shape
    *  behind the median, which two rides can share while looking nothing alike. */
   outage_bins: number[] | null;
   clean_days: number | null;
@@ -540,7 +540,7 @@ export interface RideStats {
 
 /** Upper bound of each stoppage-length bin in minutes; the last bin is open.
  *  Must match OUTAGE_BINS in src/reliability.ts. */
-export const RELIABILITY_BINS = [5, 10, 15, 20, 30, 45, 60, 90, 120];
+export const OUTAGE_BINS = [5, 10, 15, 20, 30, 45, 60, 90, 120];
 
 /** One day's park-level figure, for putting a particular visit in context. */
 export interface DailyPoint {
@@ -570,7 +570,7 @@ export interface WindowStats {
   rides: RideStats[];
 }
 
-export interface ReliabilityFile {
+export interface UptimeFile {
   park: string;
   generated_at: string;
   /** Grouping axes this park offers — Paulton's has thrill and area. Absent
@@ -581,9 +581,9 @@ export interface ReliabilityFile {
   windows: Record<string, WindowStats>;
 }
 
-export async function loadReliability(park: string): Promise<ReliabilityFile | null> {
+export async function loadUptime(park: string): Promise<UptimeFile | null> {
   const r = await fetch(`/stats/${park}/summary.json`, { cache: "no-store" });
   if (!r.ok) return null;
-  const f = (await r.json()) as ReliabilityFile;
+  const f = (await r.json()) as UptimeFile;
   return f.windows && Object.keys(f.windows).length > 0 ? f : null;
 }

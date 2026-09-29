@@ -32,7 +32,7 @@ assets = { directory = "./dist", binding = "ASSETS", not_found_handling = "singl
 #       "0 4 * * *"    archive  — 04:00 GMT: queue days older than the retention
 #                                 window move to R2 and leave D1 (see archive.ts)
 #       "0 3 2 * *"    month    — 03:00 on the 2nd: elapsed ticket months to R2
-#       "30 4 * * *"   stats    — 04:30 GMT: roll yesterday into ride-reliability
+#       "30 4 * * *"   uptime   — 04:30 GMT: roll yesterday into the ride-uptime
 #                                 stats (reads the served day files, not D1, so it
 #                                 is independent of the 2-day queue retention) ---
 [triggers]

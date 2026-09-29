@@ -248,18 +248,16 @@ function CellContent({ d }: { d: DayDetail }) {
             📋 🎟️ {d.main.used.toLocaleString()} booked
           </div>
         ) : d.main.onSale === false ? (
-          past ? (
-            // Sales closed rather than not yet open — show the real figures.
-            <CellMeter
-              icon={`${availStatus(d.main).emoji} 🎟️`}
-              o={d.main}
-              title={PREBOOK_PAST_NOTE}
-            />
-          ) : (
-            <div className="rc-line rc-avail rc-prebook" title={PREBOOK_NOTE}>
-              🔒 🎟️ pre-book
-            </div>
-          )
+          // Pre-book only. The figures are real either way — what changes is
+          // why general sale isn't contributing: not open yet, or closed
+          // because the date has passed. Hiding them before the date left the
+          // cell saying "pre-book" while the detail panel for the same day
+          // showed 20%, 3,605 / 18,000.
+          <CellMeter
+            icon={past ? `${availStatus(d.main).emoji} 🎟️` : "🔒 🎟️"}
+            o={d.main}
+            title={past ? PREBOOK_PAST_NOTE : PREBOOK_NOTE}
+          />
         ) : (
           <CellMeter icon={`${availStatus(d.main).emoji} 🎟️`} o={d.main} />
         ))}

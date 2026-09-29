@@ -606,7 +606,7 @@ main.with-bar {
 .q-head-row,
 .q-row-head {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(90px, 1.75fr) 58px 58px 56px;
+  grid-template-columns: minmax(0, 1fr) minmax(80px, 1.5fr) 58px 58px 56px 62px;
   align-items: center;
   gap: 10px;
 }
@@ -620,7 +620,8 @@ main.with-bar {
 }
 .q-head-row .q-now,
 .q-head-row .q-peak,
-.q-head-row .q-median {
+.q-head-row .q-median,
+.q-head-row .q-uptime {
   text-align: right;
 }
 .q-row {
@@ -724,7 +725,8 @@ main.with-bar {
   line-height: 1.15;
 }
 .q-peak,
-.q-median {
+.q-median,
+.q-uptime {
   text-align: right;
   color: var(--muted);
   font-size: 12px;
@@ -761,6 +763,11 @@ main.with-bar {
   }
   .q-median {
     grid-area: med;
+  }
+  /* The name line's chip shows this on a phone; a fifth value column would
+     leave the sparkline nothing. */
+  .q-uptime {
+    display: none;
   }
   .q-now {
     grid-area: now;
@@ -2271,6 +2278,12 @@ h3.fd-area-head {
 .q-meta-rel {
   font-variant-numeric: tabular-nums;
 }
+@media (min-width: 601px) {
+  /* Wider than a phone, the Uptime column carries this. */
+  .q-meta-rel {
+    display: none;
+  }
+}
 
 .q-restart {
   display: block;
@@ -2751,6 +2764,7 @@ h3.fd-area-head {
 }
 .q-head-row .q-now .q-head-sort,
 .q-head-row .q-median .q-head-sort,
+.q-head-row .q-uptime .q-head-sort,
 .q-head-row .q-peak .q-head-sort {
   /* Right-aligned columns: keep the label against the numbers below it. */
   justify-content: flex-end;

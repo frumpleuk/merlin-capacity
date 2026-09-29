@@ -382,6 +382,18 @@ export async function loadParkIndex(park: string): Promise<ParkIndex | null> {
  *  operational 0/1]. `operational` may be absent in older files → treat as 1. */
 export type QueueSample = [number, number | null, 0 | 1, (0 | 1)?];
 
+/** The day's figures for a ride, precomputed by the projection (src/db.ts) so
+ *  the page doesn't re-derive them per render and both sides agree by
+ *  construction. Absent on files written before it shipped. */
+export interface RideDaySummary {
+  up: number;
+  down: number;
+  peak: number;
+  /** Median posted wait, weighted per minute rather than per sample. */
+  median: number | null;
+  stoppages: number;
+}
+
 export interface QueueLineSeries {
   queueLineId: number;
   type: string | null;
@@ -396,6 +408,8 @@ export interface QueueLineSeries {
   // `samples`. `closedNote` is only the surviving one, so a notice withdrawn
   // before close appears here and nowhere else. Absent in older files.
   notices?: [number, number, string][];
+  /** On the ride's main line only. */
+  summary?: RideDaySummary;
 }
 
 /** One grouping dimension a park offers (see QueueDayFile.groupDims). */

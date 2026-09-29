@@ -863,6 +863,84 @@ export function noticeKind(note: string): NoticeKind {
   return "other";
 }
 
+/**
+ * The day's figures for one ride, computed here so the page doesn't re-derive
+ * them from the samples on every render and, more to the point, so there is one
+ * definition of each rather than one per consumer.
+ *
+ * All over the ride's OWN scheduled window, clipped to `end` — the last poll on
+ * a live day — so a morning closure isn't diluted by an afternoon that hasn't
+ * happened yet.
+ */
+export interface RideDaySummary {
+  /** Minutes open and running, and minutes it should have been but wasn't. */
+  up: number;
+  down: number;
+  /** Highest posted wait. */
+  peak: number;
+  /** Median posted wait, weighted PER MINUTE rather than per sample: a wait
+   *  sitting at 5 for three hours writes one sample while a busy hour writes
+   *  twenty, so counting samples would describe the busy hour and call it the
+   *  day. Null when it never posted one. */
+  median: number | null;
+  /** Times it was running and stopped. Opening late is not one of them. */
+  stoppages: number;
+}
+
+/** Walk one line's samples into the day's figures. Mirrors the uptime rollup's
+ *  own walk (src/reliability.ts), which stays separate because it layers
+ *  seasonal notices and late-start trimming on top and answers a different
+ *  question — this one is strictly "what happened on the day on screen". */
+function summariseLine(
+  samples: [number, number | null, 0 | 1, 0 | 1][],
+  from: number,
+  to: number,
+): RideDaySummary | null {
+  const inWindow = samples.filter((s) => s[0] < to);
+  if (inWindow.length === 0 || to <= from) return null;
+  let up = 0;
+  let down = 0;
+  let peak = 0;
+  let stoppages = 0;
+  let everRan = false;
+  let at = from;
+  let running = false;
+  const held: [wait: number, minutes: number][] = [];
+  for (let i = 0; i < inWindow.length; i++) {
+    const s = inWindow[i];
+    const t = Math.max(from, Math.min(s[0], to));
+    if (t > at) (running ? (up += t - at) : (down += t - at));
+    at = t;
+    const nowRunning = s[2] === 1 && s[3] === 1;
+    if (running && !nowRunning && everRan) stoppages++;
+    if (nowRunning) {
+      everRan = true;
+      if (s[1] != null) {
+        if (s[1] > peak) peak = s[1];
+        const until = Math.min(inWindow[i + 1]?.[0] ?? to, to);
+        if (until > t) held.push([s[1], until - t]);
+      }
+    }
+    running = nowRunning;
+  }
+  if (to > at) (running ? (up += to - at) : (down += to - at));
+
+  let median: number | null = null;
+  if (held.length) {
+    held.sort((a, b) => a[0] - b[0]);
+    const total = held.reduce((n, [, m]) => n + m, 0);
+    let seen = 0;
+    for (const [wait, mins] of held) {
+      seen += mins;
+      if (seen >= total / 2) {
+        median = wait;
+        break;
+      }
+    }
+  }
+  return { up, down, peak, median, stoppages };
+}
+
 /** One queue line in a day file: the day's samples as compact tuples. */
 interface QueueLineOut {
   queueLineId: number;
@@ -882,6 +960,9 @@ interface QueueLineOut {
   // still in effect at the final sample it ends there and `closedNote` repeats
   // it, which is how a consumer tells "ran to close" from "withdrawn at end".
   notices?: [number, number, string][];
+  /** The day's figures for this line (see RideDaySummary). Main lines only —
+   *  a single-rider queue's uptime is the ride's, not its own. */
+  summary?: RideDaySummary;
 }
 
 /**
@@ -1018,6 +1099,16 @@ export async function writeQueueDayFile(
     }
   }
 
+  // Where a ride's last known state stops holding: this poll. On a live day
+  // that is now, so an afternoon that hasn't happened cannot count as running
+  // (or as down); on a finished day it is at or past the close and clamps to it.
+  // Taking the newest SAMPLE instead would be wrong in the same way — a park
+  // whose waits haven't moved since lunch has no sample to mark the present.
+  const observedTo = Math.min(
+    window?.close ?? 24 * 60,
+    Math.floor((Date.parse(generatedAt) - dayStart) / 60_000),
+  );
+
   const ridesOut = [...rides.entries()].map(([rideId, lines]) => {
     const meta = catalog?.items[String(rideId)];
     const win = rideWin?.[rideId];
@@ -1043,7 +1134,19 @@ export async function writeQueueDayFile(
       // midnight), when the backend publishes it (Attractions.io).
       ...(win ? { open: win.open, close: win.close } : {}),
       named: meta?.name != null, // false → the "unidentified" section
-      lines: [...lines.values()].sort((a, b) => a.queueLineId - b.queueLineId),
+      lines: [...lines.values()]
+        .sort((a, b) => a.queueLineId - b.queueLineId)
+        .map((line, i, all) => {
+          // The ride's day figures hang off its main queue. `end` is the last
+          // moment we know about: the newest sample anywhere in the park, which
+          // on a live day is this poll and on a finished one is the close.
+          const isMain = (line.type ?? "").includes("main") || all.length === 1;
+          if (!isMain) return line;
+          const from = Math.max(win?.open ?? window?.open ?? 0, window?.open ?? 0);
+          const to = Math.min(win?.close ?? window?.close ?? 0, observedTo);
+          const summary = summariseLine(line.samples, from, to);
+          return summary ? { ...line, summary } : line;
+        }),
     };
   });
 

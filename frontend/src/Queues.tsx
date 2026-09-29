@@ -71,8 +71,12 @@ function lineStats(line: QueueLineSeries): { current: number | null; peak: numbe
   return { current, peak };
 }
 
+/** The projection's figures for this ride's day, when the file carries them. */
+const daySummary = (ride: QueueRide) =>
+  ride.lines.find((l) => l.summary)?.summary;
+
 const ridePeak = (ride: QueueRide): number =>
-  Math.max(0, ...ride.lines.map((l) => lineStats(l).peak));
+  daySummary(ride)?.peak ?? Math.max(0, ...ride.lines.map((l) => lineStats(l).peak));
 
 /**
  * The ride's typical posted wait, weighted by how long each value stood.
@@ -88,6 +92,8 @@ const ridePeak = (ride: QueueRide): number =>
  * a finished one. Without it the final stretch, often the longest, weighs zero.
  */
 function rideMedian(ride: QueueRide, end?: number): number | null {
+  const pre = daySummary(ride);
+  if (pre) return pre.median;
   const weighted: [wait: number, minutes: number][] = [];
   for (const line of ride.lines) {
     const ss = line.samples;
@@ -118,17 +124,20 @@ const rideNow = (ride: QueueRide): number | null => {
   return vals.length ? Math.max(...vals) : null;
 };
 
-export type SortMode = "now" | "median" | "peak" | "name";
+export type SortMode = "now" | "median" | "peak" | "uptime" | "name";
 export type SortDir = "asc" | "desc";
 
 /** The natural default direction for each mode (busiest first; A→Z). */
 export const defaultDir = (sort: SortMode): SortDir => (sort === "name" ? "asc" : "desc");
 
 const rideComparator =
-  (sort: SortMode, dir: SortDir, end?: number) => (a: QueueRide, b: QueueRide) => {
+  (sort: SortMode, dir: SortDir, end?: number, parkWindow?: [number, number]) =>
+  (a: QueueRide, b: QueueRide) => {
     // Closed rides sink to the bottom regardless of direction — except when
     // sorting by Peak, where a since-closed ride's peak is still meaningful.
-    if (sort !== "peak" && sort !== "median") {
+    // Closed rides sink, except on the columns whose figure survives a closure:
+    // peak and median describe the day just had, uptime the weeks before it.
+    if (sort !== "peak" && sort !== "median" && sort !== "uptime") {
       const aClosed = rideNow(a) == null;
       const bClosed = rideNow(b) == null;
       if (aClosed !== bClosed) return aClosed ? 1 : -1;
@@ -141,7 +150,9 @@ const rideComparator =
           ? rideNow(r) ?? -1
           : sort === "median"
             ? rideMedian(r, end) ?? -1
-            : ridePeak(r);
+            : sort === "uptime"
+              ? rideUptime(r, parkWindow, end) ?? -1
+              : ridePeak(r);
       asc = of(a) - of(b);
     }
     const signed = dir === "asc" ? asc : -asc;
@@ -649,6 +660,53 @@ function RideChart({
 /* ── Ride row (summary + expand) ───────────────────────────────────────────────── */
 
 /**
+ * How much of THIS DAY the ride spent running, over its own scheduled hours.
+ *
+ * Deliberately the day on screen and not the long-run figure from the uptime
+ * stats. Galactica on 2026-09-29 ran 117 of 360 minutes — 32.5% — while its
+ * 90-day average was 88%, and showing the 88 beside that day's sparkline
+ * invited exactly the question it got. The long run has its own tab.
+ *
+ * `end` is where the last sample stops holding: now on a live day, so a morning
+ * closure isn't diluted by an afternoon that hasn't happened. Both are only
+ * used for a file written before the projection carried its own summary.
+ */
+function rideUptime(
+  ride: QueueRide,
+  parkWindow?: [number, number],
+  end?: number,
+): number | null {
+  const pre = daySummary(ride);
+  if (pre) return pre.up + pre.down > 0 ? pre.up / (pre.up + pre.down) : null;
+  const line = ride.lines.find((l) => (l.type ?? "").includes("main")) ?? ride.lines[0];
+  if (!line) return null;
+  const from = Math.max(ride.open ?? parkWindow?.[0] ?? 0, parkWindow?.[0] ?? 0);
+  const to = Math.min(ride.close ?? parkWindow?.[1] ?? 0, end ?? parkWindow?.[1] ?? 0);
+  if (!(to > from)) return null;
+  const inWindow = line.samples.filter((x) => x[0] < to);
+  if (inWindow.length === 0) return null;
+  let up = 0;
+  let at = from;
+  let running = false;
+  for (const x of inWindow) {
+    const t = Math.max(from, Math.min(x[0], to));
+    if (t > at && running) up += t - at;
+    at = t;
+    running = isRunning(x);
+  }
+  if (to > at && running) up += to - at;
+  return up / (to - from);
+}
+
+/** The long-run figure from the uptime stats, for the tooltip only. */
+const uptimeTitle = (rel: RideStats): string =>
+  `Running ${((rel.availability ?? 0) * 100).toFixed(1)}% of scheduled hours over the last ` +
+  `${rel.days} days` +
+  (rel.outages_per_day != null
+    ? `; stops ${rel.outages_per_day.toFixed(1)}x a day for ${rel.outage_median ?? "?"} min`
+    : "");
+
+/**
  * What this ride's history says about the stoppage you are standing in front of.
  *
  * Only rendered on a ride that is shut WHILE THE PARK IS OPEN, because that is
@@ -720,6 +778,7 @@ function RideRow({
   const stats = main ? lineStats(main) : { current: null, peak: 0 };
   const peak = ridePeak(ride);
   const med = rideMedian(ride, seriesEnd);
+  const up = rideUptime(ride, parkWindow, seriesEnd);
   // The park's own closed notice, as of the latest sample — a scheduled opening
   // ("Scheduled to open at 11:00") or a closure reason ("Under maintenance",
   // "Closed all day"). "Closed all day" is meaningful ONLY as an explicit signal
@@ -752,18 +811,14 @@ function RideRow({
                   {hoursLabel}
                 </span>
               )}
-              {rel?.availability != null && (
+              {/* Phone only: the name line has room, the value row does not. On
+                  a wider screen this is the Uptime column instead. */}
+              {up != null && (
                 <span
                   className="q-meta-chip q-meta-rel"
-                  title={
-                    `Running ${(rel.availability * 100).toFixed(1)}% of scheduled hours over ` +
-                    `${rel.days} days` +
-                    (rel.outages_per_day != null
-                      ? `; stops ${rel.outages_per_day.toFixed(1)}x a day for ${rel.outage_median ?? "?"} min`
-                      : "")
-                  }
+                  title={rel ? uptimeTitle(rel) : "Share of its hours running today"}
                 >
-                  {Math.round(rel.availability * 100)}% up
+                  {Math.round(up * 100)}% up
                 </span>
               )}
             </span>
@@ -782,6 +837,15 @@ function RideRow({
               <RestartHint rel={rel} asOf={asOf} parkWindow={parkWindow} />
             </span>
           )}
+        </span>
+        <span
+          className="q-uptime"
+          title={
+            `Running ${up == null ? "—" : Math.round(up * 100) + "%"} of its hours today` +
+            (rel ? `. ${uptimeTitle(rel)}` : "")
+          }
+        >
+          {up == null ? "—" : `${Math.round(up * 100)}% up`}
         </span>
         <span className="q-median" title="Median posted wait, per minute of running time">
           {med != null ? `med ${med}` : "—"}
@@ -888,6 +952,7 @@ function sectionsOf(
   groupOf: (ride: QueueRide) => string | undefined,
   byLand: boolean,
   end?: number,
+  parkWindow?: [number, number],
 ): Section[] {
   const map = new Map<string, Section>();
   for (const ride of rides) {
@@ -904,7 +969,7 @@ function sectionsOf(
     sec.rides.push(ride);
   }
   const secs = [...map.values()];
-  const cmp = rideComparator(sort, dir, end);
+  const cmp = rideComparator(sort, dir, end, parkWindow);
   for (const s of secs) s.rides.sort(cmp);
   return secs.sort((a, b) => a.rank - b.rank || a.title.localeCompare(b.title));
 }
@@ -954,6 +1019,7 @@ const SORTS: { key: SortMode; label: string }[] = [
   { key: "now", label: "Now" },
   { key: "median", label: "Median" },
   { key: "peak", label: "Peak" },
+  { key: "uptime", label: "Uptime" },
   { key: "name", label: "A–Z" },
 ];
 
@@ -999,6 +1065,8 @@ export function QueueList({
   // close on a finished one. The per-minute median needs it or the final
   // stretch — frequently the longest — counts for nothing.
   const seriesEnd = asOf ?? file?.close;
+  const parkWin: [number, number] | undefined =
+    file?.open != null && file?.close != null ? [file.open, file.close] : undefined;
   const [sortTouched, setSortTouched] = useState(false);
   const [sort, setSort] = useState<SortMode>("now");
   const [dir, setDir] = useState<SortDir>("desc");
@@ -1051,7 +1119,9 @@ export function QueueList({
           title: "",
           rank: 0,
           tone: "",
-          rides: [...rides].sort(rideComparator(effectiveSort, effectiveDir, seriesEnd)),
+          rides: [...rides].sort(
+            rideComparator(effectiveSort, effectiveDir, seriesEnd, parkWin),
+          ),
         },
       ];
     return sectionsOf(
@@ -1061,8 +1131,9 @@ export function QueueList({
       activeDim ? (r) => r.groups?.[activeDim.key] : (r) => r.group,
       activeDim ? activeDim.by === "land" : file?.groupBy === "land",
       seriesEnd,
+      parkWin,
     );
-  }, [file, effectiveSort, effectiveDir, activeDim, grouped, seriesEnd]);
+  }, [file, effectiveSort, effectiveDir, activeDim, grouped, seriesEnd, parkWin]);
 
   // Click a sort: switch to it (its natural direction), or flip if already
   // active. Either way the choice is now the reader's, not the day's.
@@ -1213,6 +1284,15 @@ export function QueueList({
           </span>
         </span>
         <HeadSort className="q-now" mode="now" label="Now" sort={effectiveSort} dir={effectiveDir} onSort={onSort} />
+        <HeadSort
+          className="q-uptime"
+          mode="uptime"
+          label="Uptime"
+          title="Share of its scheduled hours this ride spent running today"
+          sort={effectiveSort}
+          dir={effectiveDir}
+          onSort={onSort}
+        />
         <HeadSort
           className="q-median"
           mode="median"

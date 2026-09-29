@@ -137,6 +137,12 @@ from the Attractions.io ("Occasio") backend that powers the official park apps
 > planned next: compare a day's queues against similar days with similar park
 > capacity (the D1 log already holds both).
 
+> Each ride's main queue line in a day file carries a `summary` — the day's up
+> and down minutes, peak, per-minute median wait and stoppage count — computed
+> by the projection rather than re-derived by every reader. `up + down` runs over
+> the ride's own hours, clipped to the poll that wrote the file, so a live day is
+> measured against the part of it that has happened.
+
 ## Ride uptime
 
 A daily rollup of how often each ride is actually running, derived at 04:30

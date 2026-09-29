@@ -677,12 +677,12 @@ export function UptimePage() {
       </div>
 
       <div className="rl-toolbar">
-        <div className="rl-toolbar-group" role="group" aria-label="Window">
-          <span className="rl-toolbar-label">Window</span>
+        <div className="pill-row" role="group" aria-label="Window">
+          <span className="pill-label">Window</span>
           {available.map((w) => (
             <button
               key={w.key}
-              className={"rl-win" + (w.key === winKey ? " active" : "")}
+              className={"pill" + (w.key === winKey ? " active" : "")}
               onClick={() => setWin(w.key)}
               title={
                 w.short == null
@@ -691,24 +691,24 @@ export function UptimePage() {
               }
             >
               {w.label}
-              {w.short != null && <span className="rl-win-short">{w.short}</span>}
+              {w.short != null && <span className="pill-count">{w.short}</span>}
             </button>
           ))}
         </div>
         {dims.length > 0 && (
-          <div className="rl-toolbar-group" role="group" aria-label="Group rides">
-            <span className="rl-toolbar-label">Group</span>
+          <div className="pill-row" role="group" aria-label="Group rides">
+            <span className="pill-label">Group</span>
             {dims.map((d) => (
               <button
                 key={d.key}
-                className={"rl-win" + (dim === d.key ? " active" : "")}
+                className={"pill" + (dim === d.key ? " active" : "")}
                 onClick={() => setGroupKey(d.key)}
               >
                 {d.label}
               </button>
             ))}
             <button
-              className={"rl-win" + (dim === NO_GROUP ? " active" : "")}
+              className={"pill" + (dim === NO_GROUP ? " active" : "")}
               onClick={() => setGroupKey(NO_GROUP)}
             >
               None
@@ -719,12 +719,12 @@ export function UptimePage() {
             are the sort control wherever the table shows, and the card layout
             has no headers to click. */}
         {narrow && (
-          <div className="rl-toolbar-group" role="group" aria-label="Sort rides">
-            <span className="rl-toolbar-label">Sort</span>
+          <div className="pill-row" role="group" aria-label="Sort rides">
+            <span className="pill-label">Sort</span>
             {COLUMNS.map((c) => (
               <button
                 key={c.key}
-                className={"rl-win" + (sort === c.key ? " active" : "")}
+                className={"pill" + (sort === c.key ? " active" : "")}
                 onClick={() => {
                   if (sort === c.key) setDesc(!desc);
                   else {
@@ -735,16 +735,16 @@ export function UptimePage() {
               >
                 {c.label}
                 {sort === c.key && (
-                  <span className="rl-sort-arrow">{desc ? "▼" : "▲"}</span>
+                  <span className="pill-arrow">{desc ? "▼" : "▲"}</span>
                 )}
               </button>
             ))}
           </div>
         )}
-        <div className="rl-toolbar-group">
+        <div className="pill-row">
           {thinCount > 0 && (
             <button
-              className={"rl-win" + (showThin ? " active" : "")}
+              className={"pill" + (showThin ? " active" : "")}
               onClick={() => setShowThin(!showThin)}
               title="Present for only part of the window, so the numbers are thin"
             >
@@ -830,7 +830,7 @@ export function UptimePage() {
                   }}
                 >
                   {c.label}
-                  <span className="rl-sort-arrow" aria-hidden="true">
+                  <span className="pill-arrow" aria-hidden="true">
                     {sort === c.key ? (desc ? "▼" : "▲") : ""}
                   </span>
                 </button>

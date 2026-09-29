@@ -995,39 +995,47 @@ main.with-bar {
   gap: 8px 20px;
   margin: 6px 0 20px;
 }
-.q-sort {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-.q-sort-label {
-  color: var(--muted);
-  font-size: 12px;
-  margin-right: 4px;
-}
-.q-sort-btn {
+/* ---- Pills ------------------------------------------------------------------
+   One toggle appearance for the whole site: the Queues sort/group controls and
+   the Uptime window/group/sort ones. They were two near-identical rules that had
+   drifted to different radii, backgrounds and text colours. */
+.pill {
   border: 1px solid var(--grid);
-  background: var(--card);
+  background: var(--bg);
   color: var(--muted);
   font: inherit;
   font-size: 13px;
   padding: 4px 10px;
-  border-radius: 7px;
+  border-radius: 999px;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   -webkit-tap-highlight-color: transparent;
 }
-.q-sort-btn:hover:not(.active) {
+.pill:hover:not(.active) {
   border-color: var(--muted);
 }
-.q-sort-btn.active {
+.pill.active {
+  background: var(--card);
   color: var(--fg);
   font-weight: 600;
   border-color: var(--fg);
 }
-.q-sort-arrow {
-  margin-left: 5px;
+.pill-arrow {
   font-size: 9px;
-  vertical-align: middle;
+}
+/* The row a set of pills sits in, and its leading label. */
+.pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+}
+.pill-label {
+  color: var(--muted);
+  font-size: 12px;
+  margin-right: 4px;
 }
 
 /* ---- Links tab: static per-park directory (booking, access, apps, social) ----
@@ -2028,30 +2036,7 @@ h3.fd-area-head {
   margin-bottom: 0.75rem;
 }
 
-.rl-toolbar-label {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--muted);
-  margin-right: 0.25rem;
-}
 
-.rl-win {
-  border: 1px solid var(--grid);
-  background: var(--bg);
-  color: var(--fg);
-  border-radius: 999px;
-  padding: 0.25rem 0.7rem;
-  font: inherit;
-  font-size: 0.85rem;
-  cursor: pointer;
-}
-
-.rl-win.active {
-  background: var(--card);
-  border-color: var(--muted);
-  font-weight: 600;
-}
 
 /* The table. */
 .rl-table {
@@ -2305,11 +2290,6 @@ h3.fd-area-head {
   gap: 0.5rem 1rem;
 }
 
-.rl-toolbar-group {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-}
 
 .rl-search {
   border: 1px solid var(--grid);
@@ -2347,9 +2327,6 @@ h3.fd-area-head {
   color: var(--fg);
 }
 
-.rl-sort-arrow {
-  font-size: 0.6rem;
-}
 
 /* How each day compared — deviation bars from the median. Zero is the median,
  * a real zero for the quantity being drawn, so bar length is honest. */
@@ -2738,8 +2715,8 @@ h3.fd-area-head {
 }
 
 /* A window that isn't full yet: how many days are really behind it. */
-.rl-win-short {
-  margin-left: 0.35rem;
+/* The real day count on a window that isn't full yet. */
+.pill-count {
   font-variant-numeric: tabular-nums;
   opacity: 0.65;
 }

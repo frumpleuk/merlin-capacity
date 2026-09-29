@@ -944,7 +944,7 @@ function HeadSort({
         aria-pressed={active}
       >
         {label}
-        {active && <span className="q-sort-arrow">{dir === "asc" ? "▲" : "▼"}</span>}
+        {active && <span className="pill-arrow">{dir === "asc" ? "▲" : "▼"}</span>}
       </button>
     </span>
   );
@@ -1157,30 +1157,30 @@ export function QueueList({
       <div className="q-toolbar">
         {/* Phone-only: the column headers are the sort control everywhere the
             head row is visible, and it is hidden below 600px. */}
-        <div className="q-sort q-sort-modes" role="group" aria-label="Sort rides">
-          <span className="q-sort-label">Sort</span>
+        <div className="pill-row q-sort-modes" role="group" aria-label="Sort rides">
+          <span className="pill-label">Sort</span>
           {SORTS.map((s) => (
             <button
               key={s.key}
-              className={"q-sort-btn" + (effectiveSort === s.key ? " active" : "")}
+              className={"pill" + (effectiveSort === s.key ? " active" : "")}
               onClick={() => onSort(s.key)}
               aria-pressed={effectiveSort === s.key}
               title={effectiveSort === s.key ? "Click to reverse" : undefined}
             >
               {s.label}
               {effectiveSort === s.key && (
-                <span className="q-sort-arrow">{effectiveDir === "asc" ? "▲" : "▼"}</span>
+                <span className="pill-arrow">{effectiveDir === "asc" ? "▲" : "▼"}</span>
               )}
             </button>
           ))}
         </div>
         {groupOptions.length > 1 && (
-          <div className="q-sort" role="group" aria-label="Group rides">
-            <span className="q-sort-label">Group</span>
+          <div className="pill-row" role="group" aria-label="Group rides">
+            <span className="pill-label">Group</span>
             {groupOptions.map((o) => (
               <button
                 key={o.key}
-                className={"q-sort-btn" + (activeKey === o.key ? " active" : "")}
+                className={"pill" + (activeKey === o.key ? " active" : "")}
                 onClick={() => setGroupKey(o.key)}
                 aria-pressed={activeKey === o.key}
               >

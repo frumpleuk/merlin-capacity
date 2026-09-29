@@ -170,7 +170,9 @@ publishes a status that distinguishes them.
   complete. Read it as how finely a day is resolved. True coverage would need
   the poll to record a heartbeat on an unchanged feed, which it deliberately
   doesn't — the whole point of the delta log is that a stable wait costs
-  nothing.
+  nothing. It is kept as a caveat on the data and is **not** shown as a figure:
+  it says something about our plumbing, not about the park. The page surfaces it
+  only below 0.6, as a line saying the times are rounded more coarsely.
 - **Statistics** — pooled availability (weighted by day length, not a mean of
   daily rates), median and p10 of the daily rates, minutes between outages,
   outage length as a **median** plus p90 (heavily right-skewed), outages per

@@ -86,16 +86,17 @@ export function QueuesPage() {
   const canPrev = !bounds || date > bounds.minDate;
   const canNext = date < today();
 
-  // Time to hold each still-open sparkline out to, on the samples' UTC-minute
-  // axis: now (today) or the day file's final write (a past day). This used to
-  // prefer the last poll time, which stopped the line short when the collector
-  // had stalled; with no liveness signal published any more, today's line runs
-  // to now regardless.
+  // Time to hold each line's final reading out to, on the samples' UTC-minute
+  // axis: now (today) or the end of the day (a past day; the chart clips to the
+  // window). Not the day file's final write: the file is only rewritten on a
+  // change, so after the last closure its write time IS the last sample, and
+  // the closed stretch to the end of the window drew as nothing.
   const isToday = date === today();
-  const asOfIso = isToday ? new Date().toISOString() : file?.generated_at;
-  const asOf = asOfIso
-    ? Math.floor((Date.parse(asOfIso) - Date.parse(`${date}T00:00:00Z`)) / 60_000)
-    : undefined;
+  const asOf = isToday
+    ? Math.floor((Date.now() - Date.parse(`${date}T00:00:00Z`)) / 60_000)
+    : file
+      ? 24 * 60
+      : undefined;
 
   return (
     <main className="rc-main">

@@ -551,8 +551,8 @@ export interface DailyPoint {
 export interface WindowStats {
   days: number;
   availability: number | null;
-  geometric_mean: number | null;
-  gm_floor: number;
+  /** The middle ride: half did better, half worse. */
+  median_ride: number | null;
   /** How much the park's waits moved — the share of 10-minute buckets in which
    *  any ride changed. NOT a data-coverage figure: only changes are logged, so
    *  a quiet park writes little and is indistinguishable from a missed one. */

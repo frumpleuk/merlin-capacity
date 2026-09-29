@@ -2738,3 +2738,10 @@ h3.fd-area-head {
   );
   opacity: 0.7;
 }
+
+/* A window that isn't full yet: how many days are really behind it. */
+.rl-win-short {
+  margin-left: 0.35rem;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.65;
+}

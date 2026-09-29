@@ -501,17 +501,19 @@ const percentile = (xs: number[], p: number): number | null => {
   return s[Math.min(s.length - 1, Math.max(0, Math.ceil((p / 100) * s.length) - 1))];
 };
 
-/** Geometric mean, floored. One ride at 0% would otherwise zero a whole park's
- *  composite, which is too blunt: a park with nine good rides and one dead one
- *  should score badly, not infinitely badly. The floor is stated in the output
- *  so the number can't be mistaken for an unbounded one. */
-const GM_FLOOR = 0.01;
-function geometricMean(xs: number[]): number | null {
-  if (xs.length === 0) return null;
-  let sum = 0;
-  for (const x of xs) sum += Math.log(Math.max(GM_FLOOR, x));
-  return Math.exp(sum / xs.length);
-}
+/* The park composite used to be a floored geometric mean, on the theory that it
+ * would punish one catastrophic ride the way a visit does. Measured against the
+ * live data it does no such thing: at availabilities between 80% and 99% the log
+ * barely bends, and the geometric mean lands within 0.1 of the ARITHMETIC mean
+ * at Legoland, Flamingo Land and Paulton's, 0.2 at Chessington. It was the mean
+ * wearing a floor constant and a paragraph of explanation.
+ *
+ * The median does differ, and differs usefully — Paulton's median ride is 97.5%
+ * against a mean of 90.8%, because most of its rides are near perfect and two
+ * are not. A tile labelled "typical ride" should say what a typical ride did,
+ * which is the median. So: median wherever an average is wanted, and the pooled
+ * ratio where a TOTAL is wanted (the hero, which is not an average at all — it
+ * is the share of all scheduled ride-minutes that were available). */
 
 /**
  * The queue question: it has stopped, do you stay?
@@ -653,9 +655,9 @@ export interface WindowStats {
   days: number;
   /** Pooled across every ride: the park's own availability. */
   availability: number | null;
-  /** Across rides, floored — closer to what a visit feels like than the mean. */
-  geometric_mean: number | null;
-  gm_floor: number;
+  /** The middle ride: half did better, half worse. Restricted to rides present
+   *  for most of the window, so one that appeared for a day cannot be it. */
+  median_ride: number | null;
   /** Mean of the days' `activity` — how much the park's waits moved, which
    *  bounds how finely anything here is resolved. Not a coverage figure; see
    *  DailyRollup.activity. */
@@ -684,7 +686,10 @@ export interface SummaryFile {
   windows: Record<string, WindowStats>;
 }
 
-const WINDOWS = [7, 28, 90] as const;
+/** Trailing windows, shortest first. A park with only a few days of history
+ *  fills several of them identically; the page drops the duplicates rather than
+ *  offering the same figures under five names. */
+const WINDOWS = [7, 14, 28, 60, 90] as const;
 
 /** The park's own figure for each day in the window. */
 function dailySeries(store: DailyStore, dates: string[]): DailyPoint[] {
@@ -800,16 +805,15 @@ function statsFor(store: DailyStore, dates: string[]): WindowStats {
   return {
     days: dates.length,
     availability: parkKnown > 0 ? parkUp / parkKnown : null,
-    // Only rides present for most of the window. A ride that appears for two
-    // days — a soft launch, or one retired mid-window like Vortex — would
-    // otherwise hit the floor and drag the whole park's composite with it.
-    geometric_mean: geometricMean(
+    // Only rides present for most of the window. A ride that appeared for two
+    // days — a soft launch, or one retired mid-window like Vortex — should not
+    // be able to sit in the middle of the park.
+    median_ride: median(
       rides
         .filter((r) => r.days >= dates.length / 2)
         .map((r) => r.availability)
         .filter((x): x is number => x != null),
     ),
-    gm_floor: GM_FLOOR,
     activity: dates.length ? activity / dates.length : 0,
     open_minutes_mean: dates.length ? openMinutes / dates.length : 0,
     notices_known_days: noticeDays,

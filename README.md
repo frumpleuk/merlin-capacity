@@ -193,8 +193,14 @@ publishes a status that distinguishes them.
 - **Statistics** — pooled availability (weighted by day length, not a mean of
   daily rates), median and p10 of the daily rates, minutes between outages,
   outage length as a **median** plus p90 (heavily right-skewed), outages per
-  day, clean-day rate, and a floored geometric mean across rides for the park
-  composite.
+  day and clean-day rate, with the **median ride** as the park composite.
+  Median wherever an average is wanted; the pooled ratio where a TOTAL is wanted
+  (the headline figure is the share of all scheduled ride-minutes that were
+  available, which is not an average). The composite was a floored geometric
+  mean until measurement showed it landing within 0.1 of the arithmetic mean at
+  three parks and 0.2 at the fourth — it was the mean wearing a floor constant.
+  The median differs usefully: Paulton's middle ride is 97.5% against a mean of
+  90.8%, because most of its rides are near perfect and two are not.
 - **`outage_survival`** answers the queue question: of this ride's past
   stoppages, the share that cleared within 15, 30 and 60 minutes, plus the
   median *remaining* wait given one has already run 15 or 30. Hyperia clears 65%

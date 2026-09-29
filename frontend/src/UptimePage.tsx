@@ -24,9 +24,11 @@ import { useMediaQuery } from "./useMediaQuery";
  */
 
 const WINDOWS = [
-  { key: "d7", label: "7 days" },
-  { key: "d28", label: "28 days" },
-  { key: "d90", label: "90 days" },
+  { key: "d7", label: "7 days", days: 7 },
+  { key: "d14", label: "14 days", days: 14 },
+  { key: "d28", label: "28 days", days: 28 },
+  { key: "d60", label: "60 days", days: 60 },
+  { key: "d90", label: "90 days", days: 90 },
 ] as const;
 
 /** Every column sorts. `get` returns null for "no value", which always sorts
@@ -540,21 +542,37 @@ export function UptimePage() {
     };
   }, [parkDef]);
 
-  // Fall back to whatever windows the file has — a park tracked for three weeks
-  // has no 90-day window and shouldn't show an empty tab.
-  const available = useMemo(() => WINDOWS.filter((w) => data?.windows?.[w.key]), [data]);
-  const stats: WindowStats | undefined =
-    data?.windows?.[win] ??
-    (available.length ? data?.windows?.[available[available.length - 1].key] : undefined);
+  // Which windows are worth offering. A park we have tracked for eleven days
+  // fills 14, 28, 60 and 90 with the same eleven days; showing all five invites
+  // clicking between buttons that cannot differ. Keep a window only when it
+  // reaches further back than the one before it — and say how far, when a window
+  // holds fewer days than its name.
+  //
+  // This matters more as parks are added: a park onboarded tomorrow has one
+  // button for a fortnight, and the page should not pretend otherwise.
+  const available = useMemo(() => {
+    const out: { key: string; label: string; days: number; short: number | null }[] = [];
+    let prev = 0;
+    for (const w of WINDOWS) {
+      const got = data?.windows?.[w.key]?.days;
+      if (!got || got <= prev) continue;
+      out.push({ ...w, short: got < w.days ? got : null });
+      prev = got;
+    }
+    return out;
+  }, [data]);
+  // The chosen window, or the widest one on offer. Resolved against the list
+  // the buttons actually show, so a window deduped away can never be the one
+  // being displayed with nothing highlighted.
+  const winKey =
+    available.find((w) => w.key === win)?.key ?? available[available.length - 1]?.key;
+  const stats: WindowStats | undefined = winKey ? data?.windows?.[winKey] : undefined;
 
   // The day-by-day series rides on the widest window only (it is the superset),
   // so slice its tail to whichever window is on screen.
   // The window's CALENDAR length, which is not `stats.days` — that counts the
   // days the park opened. Paulton's shuts midweek, so its "7 days" holds five.
-  const winDays = useMemo(() => {
-    const key = Object.keys(data?.windows ?? {}).find((k) => data?.windows[k] === stats);
-    return key ? Number(key.slice(1)) : (stats?.days ?? 0);
-  }, [data, stats]);
+  const winDays = winKey ? Number(winKey.slice(1)) : (stats?.days ?? 0);
 
   const daily = useMemo(() => {
     const series = Object.values(data?.windows ?? {}).find((w) => w.daily)?.daily;
@@ -645,7 +663,7 @@ export function UptimePage() {
         </div>
         <div className="rl-tiles">
           <Tile label="Days" value={String(stats.days)} note={`to ${data.to}`} />
-          <Tile label="Typical ride" value={pct(stats.geometric_mean, 1)} note="geometric mean" />
+          <Tile label="Typical ride" value={pct(stats.median_ride, 1)} note="the middle ride" />
           <Tile
             label="Stoppages a day"
             value={stopsPerDay == null ? "—" : stopsPerDay.toFixed(1)}
@@ -660,10 +678,16 @@ export function UptimePage() {
           {available.map((w) => (
             <button
               key={w.key}
-              className={"rl-win" + (stats === data.windows[w.key] ? " active" : "")}
+              className={"rl-win" + (w.key === winKey ? " active" : "")}
               onClick={() => setWin(w.key)}
+              title={
+                w.short == null
+                  ? undefined
+                  : `Only ${w.short} days of history so far, not ${w.days}`
+              }
             >
               {w.label}
+              {w.short != null && <span className="rl-win-short">{w.short}</span>}
             </button>
           ))}
         </div>

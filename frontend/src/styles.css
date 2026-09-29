@@ -2093,7 +2093,7 @@ h3.fd-area-head {
 
 .rl-name-btn {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 0.4rem;
   background: none;
   border: 0;
@@ -2105,9 +2105,20 @@ h3.fd-area-head {
   width: 100%;
 }
 
+/* Disclosure triangles: big enough to see, and to hit on a phone. A fixed
+ * width keeps the names aligned whichever way a row is pointing. */
 .rl-caret {
   color: var(--muted);
-  font-size: 0.7rem;
+  font-size: 0.9rem;
+  line-height: 1;
+  width: 0.8rem;
+  flex: none;
+  text-align: center;
+}
+
+.rl-section-btn .rl-caret {
+  font-size: 1rem;
+  color: var(--fg);
 }
 
 .rl-group {
@@ -2434,27 +2445,37 @@ h3.fd-area-head {
 }
 
 /* Grouped sections, the conditional table, and the portrait-phone cards. */
+/* A section header is not a row. It gets the card fill, a left accent bar and
+ * real padding, so the eye reads a heading rather than another ride. */
 .rl-section > th {
-  padding: 0.6rem 0.5rem 0.2rem;
+  padding: 0;
   border-bottom: 1px solid var(--grid);
+  border-top: 1px solid var(--grid);
+  background: var(--card);
+}
+
+.rl-section:first-child > th {
+  border-top: 0;
 }
 
 .rl-section-btn {
   display: flex;
-  align-items: baseline;
-  gap: 0.4rem;
+  align-items: center;
+  gap: 0.5rem;
   background: none;
   border: 0;
-  padding: 0;
+  border-left: 4px solid var(--muted);
+  padding: 0.55rem 0.75rem;
   font: inherit;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--fg);
   cursor: pointer;
   width: 100%;
   text-align: left;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .rl-section-n {
@@ -2510,7 +2531,9 @@ h3.fd-area-head {
 }
 
 .rl-section-card {
-  padding: 0.9rem 0 0.35rem;
+  margin-top: 0.75rem;
+  background: var(--card);
+  border-top: 1px solid var(--grid);
   border-bottom: 1px solid var(--grid);
 }
 
@@ -2538,7 +2561,7 @@ h3.fd-area-head {
 
 .rl-card-title {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   flex-wrap: wrap;
   gap: 0.4rem;
 }

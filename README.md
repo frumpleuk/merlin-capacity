@@ -162,9 +162,15 @@ publishes a status that distinguishes them.
   but not an outage, or every ride would score one a day just for opening a
   minute after its scheduled time. Late starts are about 30% of Thorpe's
   downtime, so the two are worth keeping apart.
-- **`coverage`** is the share of the day's 10-minute buckets in which the park
-  posted anything. It sits near 1; a dip means *our* poller was out, which would
-  otherwise look like every ride stopping at once.
+- **`activity`** is the share of the day's 10-minute buckets in which any ride
+  changed. It is **not** a data-coverage figure: only changes are logged, so a
+  successful poll that found nothing moved writes nothing, and a quiet park is
+  indistinguishable from a missed one. Blackpool off-season manages 0.73 changes
+  per ride-hour against Thorpe's 2.44 and scores 51% while its data may be
+  complete. Read it as how finely a day is resolved. True coverage would need
+  the poll to record a heartbeat on an unchanged feed, which it deliberately
+  doesn't — the whole point of the delta log is that a stable wait costs
+  nothing.
 - **Statistics** — pooled availability (weighted by day length, not a mean of
   daily rates), median and p10 of the daily rates, minutes between outages,
   outage length as a **median** plus p90 (heavily right-skewed), outages per

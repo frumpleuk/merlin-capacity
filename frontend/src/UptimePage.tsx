@@ -569,7 +569,8 @@ export function UptimePage() {
   }
 
   const partial = stats.notices_known_days < stats.days;
-  const lowCoverage = stats.coverage < 0.9;
+  // Low activity is a quiet park, not a gap — see the note below the table.
+  const quiet = stats.activity < 0.9;
 
   return (
     <main className="rc-main rl-main">
@@ -585,9 +586,9 @@ export function UptimePage() {
           <Tile label="Days" value={String(stats.days)} note={`to ${data.to}`} />
           <Tile label="Typical ride" value={pct(stats.geometric_mean, 1)} note="geometric mean" />
           <Tile
-            label="Data coverage"
-            value={pct(stats.coverage)}
-            note={lowCoverage ? "polling gaps" : "complete"}
+            label="Feed activity"
+            value={pct(stats.activity)}
+            note={quiet ? "quiet — coarse detail" : "waits move often"}
           />
         </div>
       </div>
@@ -775,6 +776,13 @@ export function UptimePage() {
           <strong>Outage</strong>, not fault: the feed reports that a ride stopped, never why. A
           station closed to be cleaned up reads exactly like a mechanical failure.
         </p>
+        {quiet && (
+          <p>
+            Feed activity is how often this park's waits move, not whether we were watching.
+            Only changes are recorded, so a quiet park writes little and the day is resolved
+            more coarsely — it doesn't mean data is missing.
+          </p>
+        )}
         {partial && (
           <p>
             {stats.notices_known_days} of {stats.days} days can say why a ride was shut; for the

@@ -19,8 +19,8 @@ import type { Env } from "./types";
  *   unknown     inside the window, but nothing is known (no day file at all)
  *
  * Availability is `up / (up + down)` — over SCHEDULED minutes, with `unscheduled`
- * excluded rather than buried in downtime. `coverage` is reported next to it so a
- * day where our own poller was out can be discounted instead of read as an outage.
+ * excluded rather than buried in downtime. `activity` is reported next to it as a
+ * caveat on how finely the day is resolved.
  *
  * `unscheduled` only works where the backend publishes per-ride hours, which is
  * the four Attractions.io parks. Paulton's, Flamingo Land and Blackpool fall back
@@ -75,10 +75,13 @@ export interface DailyRollup {
   open: number;
   close: number;
   /** Fraction of the day's 10-minute buckets in which ANY ride in the park
-   *  posted a sample. A live park moves somewhere every few minutes, so this
-   *  sits near 1; a dip means OUR poller was out, which is the one failure that
-   *  would otherwise read as the whole park breaking at once. */
-  coverage: number;
+   *  CHANGED. It is not a measure of whether we polled: the log holds changes
+   *  only, so a successful poll that found nothing moved writes nothing and a
+   *  quiet park is indistinguishable from a missed one. Blackpool off-season
+   *  manages 0.73 changes per ride-hour against Thorpe's 2.44 and scores 51%
+   *  while its data may be complete. Read it as how finely the day is resolved,
+   *  not as a gap. */
+  activity: number;
   /** Did the day file carry the per-notice history? False for days projected
    *  before that shipped — their `maintenance` split is unknown, not zero. */
   notices_known: boolean;
@@ -119,8 +122,9 @@ const RETAIN_DAYS = 400;
  *  run, so anything `statsFor` derives needs no rebuild; this is only for what
  *  is captured while a day is BUILT and then stored.
  *
- *  2 = per-ride grouping axes (`dimGroups`, `dims`). */
-const STORE_VERSION = 2;
+ *  2 = per-ride grouping axes (`dimGroups`, `dims`).
+ *  3 = `coverage` renamed to `activity`, which it always was. */
+const STORE_VERSION = 3;
 
 export const dailyKey = (park: string) => `stats/${park}/daily.json`;
 export const summaryKey = (park: string) => `stats/${park}/summary.json`;
@@ -386,7 +390,7 @@ export async function buildDay(
   // with no notices in it looks identical to a day that couldn't record any,
   // and only the version separates them.
   const noticesKnown = (f.v ?? 1) >= 2;
-  const COVERAGE_BUCKET = 10; // minutes
+  const ACTIVITY_BUCKET = 10; // minutes
   const sampledBuckets = new Set<number>();
 
   for (const r of f.rides) {
@@ -394,7 +398,7 @@ export async function buildDay(
     // for, and they appear and vanish; they'd churn the series for no gain.
     if (r.named === false) continue;
     const line = mainLine(r);
-    for (const s of line?.samples ?? []) sampledBuckets.add(Math.floor(s[0] / COVERAGE_BUCKET));
+    for (const s of line?.samples ?? []) sampledBuckets.add(Math.floor(s[0] / ACTIVITY_BUCKET));
     // The ride's own hours when the backend publishes them, else the park's.
     const from = Math.max(open, r.open ?? open);
     const to = Math.min(close, r.close ?? close);
@@ -417,9 +421,9 @@ export async function buildDay(
   const day: DailyRollup = {
     open,
     close,
-    coverage: Math.min(
+    activity: Math.min(
       1,
-      sampledBuckets.size / Math.max(1, Math.ceil((close - open) / COVERAGE_BUCKET)),
+      sampledBuckets.size / Math.max(1, Math.ceil((close - open) / ACTIVITY_BUCKET)),
     ),
     notices_known: noticesKnown,
     ...(attendance != null ? { attendance } : {}),
@@ -584,7 +588,7 @@ export interface DailyPoint {
   /** Stoppages across the whole park, and rides that never ran at all. */
   outages: number;
   closed_rides: number;
-  coverage: number;
+  activity: number;
 }
 
 export interface WindowStats {
@@ -594,8 +598,10 @@ export interface WindowStats {
   /** Across rides, floored — closer to what a visit feels like than the mean. */
   geometric_mean: number | null;
   gm_floor: number;
-  /** Mean of the parks' daily coverage; low means WE were out, not the park. */
-  coverage: number;
+  /** Mean of the days' `activity` — how much the park's waits moved, which
+   *  bounds how finely anything here is resolved. Not a coverage figure; see
+   *  DailyRollup.activity. */
+  activity: number;
   /** Mean park opening minutes per day in the window. Lets a figure like
    *  "minutes between stoppages" be read in operating DAYS — 24h between stops
    *  is three eight-hour days, and reading it as one is the obvious trap. */
@@ -643,7 +649,7 @@ function dailySeries(store: DailyStore, dates: string[]): DailyPoint[] {
       availability: known > 0 ? up / known : null,
       outages,
       closed_rides: closed,
-      coverage: day.coverage,
+      activity: day.activity,
     };
   });
 }
@@ -652,11 +658,11 @@ function statsFor(store: DailyStore, dates: string[]): WindowStats {
   const ids = new Set<string>();
   for (const d of dates) for (const id of Object.keys(store.days[d].rides)) ids.add(id);
 
-  let coverage = 0;
+  let activity = 0;
   let noticeDays = 0;
   let openMinutes = 0;
   for (const d of dates) {
-    coverage += store.days[d].coverage;
+    activity += store.days[d].activity;
     openMinutes += store.days[d].close - store.days[d].open;
     if (store.days[d].notices_known) noticeDays++;
   }
@@ -743,7 +749,7 @@ function statsFor(store: DailyStore, dates: string[]): WindowStats {
         .filter((x): x is number => x != null),
     ),
     gm_floor: GM_FLOOR,
-    coverage: dates.length ? coverage / dates.length : 0,
+    activity: dates.length ? activity / dates.length : 0,
     open_minutes_mean: dates.length ? openMinutes / dates.length : 0,
     notices_known_days: noticeDays,
     rides,

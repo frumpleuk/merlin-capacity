@@ -548,7 +548,7 @@ export interface DailyPoint {
   availability: number | null;
   outages: number;
   closed_rides: number;
-  coverage: number;
+  activity: number;
 }
 
 export interface WindowStats {
@@ -556,8 +556,10 @@ export interface WindowStats {
   availability: number | null;
   geometric_mean: number | null;
   gm_floor: number;
-  /** Near 1 in normal operation; a dip means OUR poller was out. */
-  coverage: number;
+  /** How much the park's waits moved — the share of 10-minute buckets in which
+   *  any ride changed. NOT a data-coverage figure: only changes are logged, so
+   *  a quiet park writes little and is indistinguishable from a missed one. */
+  activity: number;
   /** Mean park opening minutes per day, so "between stops" can be read in
    *  operating days rather than mistaken for wall-clock hours. Absent on a
    *  summary written before this shipped, which falls back to hours. */

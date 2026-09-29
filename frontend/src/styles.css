@@ -616,6 +616,20 @@ main.with-bar {
 .q-alloc strong {
   color: var(--fg);
 }
+.q-alloc-bar {
+  display: inline-block;
+  width: 48px;
+  height: 6px;
+  vertical-align: middle;
+  background: var(--grid);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.q-alloc-bar > span {
+  display: block;
+  height: 100%;
+  background: var(--q-main);
+}
 .q-alloc-item + .q-alloc-item::before {
   content: "\00a0\00a0|\00a0\00a0";
 }

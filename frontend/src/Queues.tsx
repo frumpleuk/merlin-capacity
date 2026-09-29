@@ -746,12 +746,11 @@ function RideRow({
   );
 }
 
-/** One allocation's state alongside the queues, as a short inline item: the
- *  percentage taken and what is unsold, with the full counts in the tooltip.
- *  Leads on taken rather than on `used` (see takenOf), and says "unsold"
- *  rather than "left" so it reads the same on a past date as a future one. A
- *  buyout day shows its own event allocation in the banner above and
- *  suppresses the ticket item, so the two can never contradict each other.
+/** One allocation's state alongside the queues, as a short inline item: a
+ *  fill bar and percentage for how busy the day is, then the taken count.
+ *  Leads on taken rather than on `used` (see takenOf). A buyout day shows its
+ *  own event allocation in the banner above and suppresses the ticket item,
+ *  so the two can never contradict each other.
  *
  *  Capacity 0 with bookings is the private-event shape: no total to show a
  *  fraction against, so it reports the count alone. */
@@ -772,7 +771,11 @@ function allocItem(tickets: DayObs | undefined, label: string) {
       key={label}
       title={`${takenLong(t, tickets.capacity)}.\n\n${TAKEN_NOTE}`}
     >
-      {label} <strong>{t.pct}%</strong> taken · {t.unsold.toLocaleString()} unsold
+      {label}{" "}
+      <span className="q-alloc-bar" aria-hidden="true">
+        <span style={{ width: `${t.pct}%` }} />
+      </span>{" "}
+      <strong>{t.pct}%</strong> ({t.taken.toLocaleString()} of {tickets.capacity.toLocaleString()})
     </span>
   );
 }

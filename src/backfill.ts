@@ -61,6 +61,8 @@ interface Cursor {
   /** The scan has reached the start of this park's history; only RECENT_DAYS
    *  are checked from now on. */
   complete: boolean;
+  /** Days the scan met, found behind, and could not rebuild. */
+  unresolved?: string[];
   updated_at: string;
 }
 
@@ -72,7 +74,12 @@ async function readCursor(bucket: R2Bucket, park: string): Promise<Cursor | null
   try {
     const c = (await obj.json()) as Partial<Cursor>;
     return c.oldest_scanned
-      ? { oldest_scanned: c.oldest_scanned, complete: !!c.complete, updated_at: c.updated_at ?? "" }
+      ? {
+          oldest_scanned: c.oldest_scanned,
+          complete: !!c.complete,
+          unresolved: c.unresolved ?? [],
+          updated_at: c.updated_at ?? "",
+        }
       : null;
   } catch {
     return null;
@@ -81,6 +88,12 @@ async function readCursor(bucket: R2Bucket, park: string): Promise<Cursor | null
 
 export interface BackfillResult {
   rebuilt: string[];
+  /** Days behind the current version that could NOT be rebuilt, and won't be:
+   *  the scan has passed them and the cursor is complete. Almost always a day
+   *  whose archive never got written. Reported so that "nothing left to do"
+   *  is distinguishable from "one day is beyond repair" — without this, a
+   *  finished run and a run that quietly gave up look identical. */
+  unresolved?: string[];
   /** Days whose archive isn't there — the rows aged out before the archive job
    *  existed, or the park was shut. Nothing to do, and we say so rather than
    *  retrying them every night. */
@@ -217,10 +230,14 @@ export async function backfillQueueDays(
   const parks = queueParks();
   const cursors: Record<string, Cursor | null> = {};
   const missRun: Record<string, number> = {};
+  const unresolved: Record<string, string[]> = {};
   for (const park of parks) {
     out[park.key] = { rebuilt: [], missing: 0, skipped: 0 };
     cursors[park.key] = await readCursor(env.BUCKET, park.key);
     missRun[park.key] = 0;
+    // Carried across runs: once the cursor is complete nothing rescans these,
+    // so the record of what was skipped has to survive with it.
+    unresolved[park.key] = [...(cursors[park.key]?.unresolved ?? [])];
   }
 
   let spent = 0;
@@ -248,6 +265,9 @@ export async function backfillQueueDays(
         spent++;
       } else {
         res.missing++;
+        // Nothing to rebuild it FROM. Remember it, so a completed scan can still
+        // say what it left behind rather than reporting a clean sweep.
+        if (!unresolved[park].includes(date)) unresolved[park].push(date);
       }
     } catch (err) {
       console.error(`backfill failed for ${park}/${date}:`, err);
@@ -284,6 +304,7 @@ export async function backfillQueueDays(
         cursors[park.key] = {
           oldest_scanned: ymd(now - Math.min(i, lookbackDays) * 86_400_000),
           complete: true,
+          unresolved: unresolved[park.key],
           updated_at: new Date(now).toISOString(),
         };
         continue; // this park is done; drop it from the rotation
@@ -301,8 +322,10 @@ export async function backfillQueueDays(
       const c: Cursor = {
         oldest_scanned: ymd(now - Math.min(offset[park.key], lookbackDays) * 86_400_000),
         complete: done,
+        unresolved: unresolved[park.key],
         updated_at: new Date(now).toISOString(),
       };
+      if (unresolved[park.key].length) out[park.key].unresolved = unresolved[park.key];
       return env.BUCKET.put(cursorKey(park.key), JSON.stringify(c), {
         httpMetadata: { contentType: "application/json" },
       });

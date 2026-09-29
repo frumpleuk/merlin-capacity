@@ -774,7 +774,7 @@ export interface QueueRow {
  *  on BOTH columns it degrades to reading everything the park has ever recorded
  *  and the cost of a poll becomes the size of the table. An index on `park` alone
  *  (or one where `observed_at` trails unconstrained columns) does not count. */
-async function readQueueDay(
+export async function readQueueDay(
   db: D1Database,
   park: string,
   date: string,

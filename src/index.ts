@@ -268,14 +268,14 @@ export default {
 
     // Drain the day-file backfill on demand rather than waiting for 04:30, and
     // roll the stats over what it rebuilt. Same POLL_KEY gate as /poll — it
-    // rewrites served files. `?days=` bounds one call (default 30); run it
-    // repeatedly until `rebuilt` comes back empty.
+    // rewrites served files. `?days=` bounds the WHOLE call across every park
+    // (default 60); run it repeatedly until `rebuilt` comes back empty.
     if (url.pathname === "/backfill") {
       const provided = url.searchParams.get("key") ?? req.headers.get("x-poll-key");
       if (!env.POLL_KEY || provided !== env.POLL_KEY) {
         return new Response("forbidden", { status: 403 });
       }
-      const budget = Math.min(200, Math.max(1, Number(url.searchParams.get("days") ?? 30)));
+      const budget = Math.min(400, Math.max(1, Number(url.searchParams.get("days") ?? 60)));
       const res = await backfillQueueDays(env, Date.now(), 400, budget);
       await runReliability(env, Date.now());
       return Response.json(res);

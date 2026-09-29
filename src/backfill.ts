@@ -1,6 +1,6 @@
 import { decodeNdjson, queueArchiveKey } from "./archive";
 import { queueParks } from "./config";
-import { writeQueueDayFile, type QueueRow } from "./db";
+import { readQueueDay, writeQueueDayFile, type QueueRow } from "./db";
 import { readCatalog } from "./rides";
 import type { Env } from "./types";
 
@@ -30,9 +30,11 @@ import type { Env } from "./types";
 /** Day files at or above this are already projected by the current code. */
 const CURRENT_VERSION = 2;
 
-/** One run's budget. Each day is an R2 get of the archive, a get of the existing
- *  file, a gunzip and a put; a few dozen is comfortable inside a cron. */
-const MAX_DAYS_PER_RUN = 30;
+/** One run's budget, ACROSS ALL PARKS. Each day is an R2 get of the archive, a
+ *  get of the existing file, a gunzip and a put; a few dozen is comfortable
+ *  inside a cron. Seven parks make a per-park budget seven times the work it
+ *  looks like, which is the wrong way for a bound to be wrong. */
+const MAX_DAYS_PER_RUN = 60;
 
 export interface BackfillResult {
   rebuilt: string[];
@@ -95,14 +97,26 @@ export async function backfillQueueDay(
   park: string,
   date: string,
 ): Promise<boolean> {
-  const obj = await env.BUCKET.get(queueArchiveKey(park, date));
-  if (!obj) return false;
   let rows: QueueRow[];
-  try {
-    rows = toQueueRows(decodeNdjson(new Uint8Array(await obj.arrayBuffer())));
-  } catch {
-    return false;
+  const obj = await env.BUCKET.get(queueArchiveKey(park, date));
+  if (obj) {
+    try {
+      rows = toQueueRows(decodeNdjson(new Uint8Array(await obj.arrayBuffer())));
+    } catch {
+      return false;
+    }
+  } else {
+    // No archive yet. The 04:00 job keeps today AND yesterday in D1, so at 04:30
+    // yesterday has no archive file and never will until tomorrow — without this
+    // the backfill is permanently one day short, which is invisible in steady
+    // state (the live poll already wrote yesterday at the current version) and
+    // exactly wrong the morning after a projection change. The rows are still in
+    // D1, so read them from there.
+    rows = await readQueueDay(env.DB, park, date);
   }
+  // An empty read is not an empty day — it's a day whose rows have been archived
+  // and deleted, or one we never had. Writing from it would replace a good file
+  // with every ride seeded closed from the catalog.
   if (rows.length === 0) return false;
 
   // Names come from the catalog, not the archive. Without one the projection
@@ -130,9 +144,14 @@ export async function backfillQueueDay(
 
 /**
  * Walk back from yesterday, rebuilding any day file older than the current
- * projection version, for every queue park. Oldest-first would leave the most
- * recent — the days anyone is actually looking at — until last, so this goes
- * newest-first.
+ * projection version. Oldest-first would leave the most recent — the days
+ * anyone is actually looking at — until last, so this goes newest-first.
+ *
+ * Parks advance together, a day at a time across all of them, rather than one
+ * park being finished before the next starts. With a budget that runs out mid-
+ * way, round-robin leaves every park current to the same date; park-by-park
+ * would leave the last park untouched and make the cross-park numbers a
+ * comparison between different amounts of repair.
  */
 export async function backfillQueueDays(
   env: Env,
@@ -142,13 +161,15 @@ export async function backfillQueueDays(
 ): Promise<Record<string, BackfillResult>> {
   const out: Record<string, BackfillResult> = {};
   const ymd = (ms: number) => new Date(ms).toISOString().slice(0, 10);
+  const parks = queueParks();
+  for (const park of parks) out[park.key] = { rebuilt: [], missing: 0, skipped: 0 };
 
-  for (const park of queueParks()) {
-    const res: BackfillResult = { rebuilt: [], missing: 0, skipped: 0 };
-    out[park.key] = res;
-    for (let i = 1; i <= lookbackDays; i++) {
-      if (res.rebuilt.length >= budget) break;
-      const date = ymd(now - i * 86_400_000);
+  let spent = 0;
+  for (let i = 1; i <= lookbackDays && spent < budget; i++) {
+    const date = ymd(now - i * 86_400_000);
+    for (const park of parks) {
+      if (spent >= budget) break;
+      const res = out[park.key];
       const v = await versionOf(env.BUCKET, park.key, date);
       if (v == null) continue; // no day file: park shut, or before we tracked it
       if (v >= CURRENT_VERSION) {
@@ -156,8 +177,12 @@ export async function backfillQueueDays(
         continue;
       }
       try {
-        if (await backfillQueueDay(env, park.key, date)) res.rebuilt.push(date);
-        else res.missing++;
+        if (await backfillQueueDay(env, park.key, date)) {
+          res.rebuilt.push(date);
+          spent++;
+        } else {
+          res.missing++;
+        }
       } catch (err) {
         console.error(`backfill failed for ${park.key}/${date}:`, err);
       }

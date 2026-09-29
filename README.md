@@ -189,9 +189,9 @@ holds every D1 column including the park's own `status` text — the archive is
 the row, not a view of it, precisely so this is possible.
 
 Day files carry `v` (projection version); anything below the current one is
-rebuilt, newest first, bounded per run so the backlog drains over a few nights
-the way the archive's own does. It runs before the stats on the 04:30 cron, and
-on demand:
+rebuilt, newest first, parks advancing together so a budget that runs out leaves
+every park current to the same date. `days` bounds the whole call across all
+parks, not each one. It runs before the stats on the 04:30 cron, and on demand:
 
 ```sh
 curl "https://themeparks.frumple.co.uk/backfill?key=<POLL_KEY>&days=50"
@@ -201,6 +201,12 @@ Repeat until `rebuilt` comes back empty. A rebuild preserves the park window and
 per-ride hours from the existing file (they come from the live feed, not D1) and
 refuses to run at all without a ride catalog, so it can never replace good names
 with `Ride 3840`.
+
+Yesterday has no archive — the 04:00 job keeps today and yesterday in D1 — so
+the backfill reads those rows straight from D1 instead. Without that it would be
+permanently one day short: invisible in steady state, because the live poll
+already wrote yesterday at the current version, and exactly wrong on the morning
+after a projection change.
 
 ## Menu prices
 

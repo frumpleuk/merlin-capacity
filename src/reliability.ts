@@ -628,7 +628,10 @@ export async function rollUpPark(
   env: Env,
   park: ParkConfig,
   now: number,
-  maxNew = 40,
+  // Enough to fill the whole retained history in one run on a cold start; in
+  // steady state there is exactly one new day to add, so this bound only ever
+  // bites on the first fill or after an outage.
+  maxNew = 90,
 ): Promise<number> {
   const store = (await readStore(env.BUCKET, park.key)) ?? {
     park: park.key,

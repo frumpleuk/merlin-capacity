@@ -197,7 +197,15 @@ parks, not each one. It runs before the stats on the 04:30 cron, and on demand:
 curl "https://themeparks.frumple.co.uk/backfill?key=<POLL_KEY>&days=50"
 ```
 
-Repeat until `rebuilt` comes back empty. A rebuild preserves the park window and
+Repeat until `rebuilt` comes back empty. A per-park cursor
+(`stats/<park>/backfill.json`) records how far the backward scan has got, so each
+run resumes rather than re-walking cleared history — a Worker gets ~1000
+subrequests per invocation and every R2 call spends one, so an unbounded scan of
+a year across seven parks is 2800 gets and a 1101 before it returns anything.
+Both the rebuilding and the scanning are bounded per run. The newest three days
+are re-checked every time regardless of the cursor.
+
+A rebuild preserves the park window and
 per-ride hours from the existing file (they come from the live feed, not D1) and
 refuses to run at all without a ride catalog, so it can never replace good names
 with `Ride 3840`.

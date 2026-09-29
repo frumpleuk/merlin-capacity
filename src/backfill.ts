@@ -30,11 +30,54 @@ import type { Env } from "./types";
 /** Day files at or above this are already projected by the current code. */
 const CURRENT_VERSION = 2;
 
-/** One run's budget, ACROSS ALL PARKS. Each day is an R2 get of the archive, a
- *  get of the existing file, a gunzip and a put; a few dozen is comfortable
- *  inside a cron. Seven parks make a per-park budget seven times the work it
- *  looks like, which is the wrong way for a bound to be wrong. */
+/** One run's rebuild budget, ACROSS ALL PARKS. Each rebuild is an R2 get of the
+ *  archive, a get of the existing file, a gunzip and a put. Seven parks make a
+ *  per-park budget seven times the work it looks like, which is the wrong way
+ *  for a bound to be wrong. */
 const MAX_DAYS_PER_RUN = 60;
+
+/** Days we may LOOK at in one run, across all parks — the bound that actually
+ *  matters. A Worker gets ~1000 subrequests per invocation and an R2 binding
+ *  call spends one, so a scan that walks a year of history for seven parks is
+ *  2800 gets and an uncaught 1101, whether or not it rebuilds anything. Checking
+ *  a day costs one get; rebuilding it costs three more. 400 + 60x3 leaves room. */
+const MAX_SCAN_PER_RUN = 400;
+
+/** Always re-check the newest few days, however far back the cursor has got.
+ *  Yesterday is the day most likely to need a rebuild and the one a cursor
+ *  walking backwards would never revisit. */
+const RECENT_DAYS = 3;
+
+/** Consecutive days with no day file at all before we call a park's history
+ *  finished. Parks close for stretches — Blackpool is weekends-only off season —
+ *  so this has to clear a fortnight of shut days without stopping early. */
+const CONSEC_MISSING_IS_END = 21;
+
+/** Where each park's backward scan has got to, so a run resumes instead of
+ *  re-walking history it has already cleared. */
+interface Cursor {
+  /** Oldest date scanned so far. The next run continues below it. */
+  oldest_scanned: string;
+  /** The scan has reached the start of this park's history; only RECENT_DAYS
+   *  are checked from now on. */
+  complete: boolean;
+  updated_at: string;
+}
+
+const cursorKey = (park: string) => `stats/${park}/backfill.json`;
+
+async function readCursor(bucket: R2Bucket, park: string): Promise<Cursor | null> {
+  const obj = await bucket.get(cursorKey(park));
+  if (!obj) return null;
+  try {
+    const c = (await obj.json()) as Partial<Cursor>;
+    return c.oldest_scanned
+      ? { oldest_scanned: c.oldest_scanned, complete: !!c.complete, updated_at: c.updated_at ?? "" }
+      : null;
+  } catch {
+    return null;
+  }
+}
 
 export interface BackfillResult {
   rebuilt: string[];
@@ -143,50 +186,127 @@ export async function backfillQueueDay(
 }
 
 /**
- * Walk back from yesterday, rebuilding any day file older than the current
- * projection version. Oldest-first would leave the most recent — the days
- * anyone is actually looking at — until last, so this goes newest-first.
+ * Rebuild any day file older than the current projection version.
  *
- * Parks advance together, a day at a time across all of them, rather than one
- * park being finished before the next starts. With a budget that runs out mid-
- * way, round-robin leaves every park current to the same date; park-by-park
- * would leave the last park untouched and make the cross-park numbers a
- * comparison between different amounts of repair.
+ * Two budgets, because the expensive thing is not always the rebuilding. A
+ * Worker gets about a thousand subrequests per invocation and every R2 call
+ * spends one, so a run that finds little to do and therefore never exhausts its
+ * REBUILD budget used to keep scanning — 400 days across seven parks is 2800
+ * gets and a 1101 before it returns anything. The scan is now bounded too, and a
+ * per-park cursor means each run resumes where the last one stopped instead of
+ * re-walking history it has already cleared.
+ *
+ * The newest few days are always re-checked regardless of the cursor: yesterday
+ * is both the likeliest day to need a rebuild and the one a backward-walking
+ * cursor would never come back to.
+ *
+ * Parks advance together, a day at a time across all of them. With a budget that
+ * runs out mid-way, round-robin leaves every park current to the same date;
+ * park-by-park would leave the last park untouched and make the cross-park
+ * numbers a comparison between different amounts of repair.
  */
 export async function backfillQueueDays(
   env: Env,
   now: number,
   lookbackDays = 400,
   budget = MAX_DAYS_PER_RUN,
+  scanBudget = MAX_SCAN_PER_RUN,
 ): Promise<Record<string, BackfillResult>> {
   const out: Record<string, BackfillResult> = {};
   const ymd = (ms: number) => new Date(ms).toISOString().slice(0, 10);
   const parks = queueParks();
-  for (const park of parks) out[park.key] = { rebuilt: [], missing: 0, skipped: 0 };
+  const cursors: Record<string, Cursor | null> = {};
+  const missRun: Record<string, number> = {};
+  for (const park of parks) {
+    out[park.key] = { rebuilt: [], missing: 0, skipped: 0 };
+    cursors[park.key] = await readCursor(env.BUCKET, park.key);
+    missRun[park.key] = 0;
+  }
 
   let spent = 0;
-  for (let i = 1; i <= lookbackDays && spent < budget; i++) {
+  let scanned = 0;
+
+  /** Check one park-day, rebuilding it if it is behind. Returns false once a
+   *  budget is gone, so the caller stops rather than looping uselessly. */
+  const visit = async (park: string, date: string): Promise<boolean> => {
+    if (spent >= budget || scanned >= scanBudget) return false;
+    scanned++;
+    const res = out[park];
+    const v = await versionOf(env.BUCKET, park, date);
+    if (v == null) {
+      missRun[park]++;
+      return true; // no day file: park shut, or before we tracked it
+    }
+    missRun[park] = 0;
+    if (v >= CURRENT_VERSION) {
+      res.skipped++;
+      return true;
+    }
+    try {
+      if (await backfillQueueDay(env, park, date)) {
+        res.rebuilt.push(date);
+        spent++;
+      } else {
+        res.missing++;
+      }
+    } catch (err) {
+      console.error(`backfill failed for ${park}/${date}:`, err);
+    }
+    return true;
+  };
+
+  // 1. The newest days, every run, for every park.
+  for (let i = 1; i <= RECENT_DAYS; i++) {
     const date = ymd(now - i * 86_400_000);
-    for (const park of parks) {
-      if (spent >= budget) break;
-      const res = out[park.key];
-      const v = await versionOf(env.BUCKET, park.key, date);
-      if (v == null) continue; // no day file: park shut, or before we tracked it
-      if (v >= CURRENT_VERSION) {
-        res.skipped++;
+    for (const park of parks) await visit(park.key, date);
+  }
+
+  // 2. Continue each park's backward scan from where it left off.
+  const oldestOf = (park: string): number => {
+    const c = cursors[park];
+    if (!c) return RECENT_DAYS; // never scanned: start below the recent window
+    const days = Math.round((now - Date.parse(`${c.oldest_scanned}T00:00:00Z`)) / 86_400_000);
+    return Math.max(RECENT_DAYS, days);
+  };
+  const offset: Record<string, number> = {};
+  for (const park of parks) offset[park.key] = oldestOf(park.key);
+
+  let working = parks.filter((p) => !cursors[p.key]?.complete);
+  while (working.length > 0 && spent < budget && scanned < scanBudget) {
+    const next: typeof working = [];
+    for (const park of working) {
+      if (spent >= budget || scanned >= scanBudget) {
+        next.push(park);
         continue;
       }
-      try {
-        if (await backfillQueueDay(env, park.key, date)) {
-          res.rebuilt.push(date);
-          spent++;
-        } else {
-          res.missing++;
-        }
-      } catch (err) {
-        console.error(`backfill failed for ${park.key}/${date}:`, err);
+      const i = ++offset[park.key];
+      if (i > lookbackDays || missRun[park.key] >= CONSEC_MISSING_IS_END) {
+        cursors[park.key] = {
+          oldest_scanned: ymd(now - Math.min(i, lookbackDays) * 86_400_000),
+          complete: true,
+          updated_at: new Date(now).toISOString(),
+        };
+        continue; // this park is done; drop it from the rotation
       }
+      await visit(park.key, ymd(now - i * 86_400_000));
+      next.push(park);
     }
+    working = next;
   }
+
+  // 3. Persist how far each park got, so the next run picks up from here.
+  await Promise.all(
+    parks.map((park) => {
+      const done = cursors[park.key]?.complete ?? false;
+      const c: Cursor = {
+        oldest_scanned: ymd(now - Math.min(offset[park.key], lookbackDays) * 86_400_000),
+        complete: done,
+        updated_at: new Date(now).toISOString(),
+      };
+      return env.BUCKET.put(cursorKey(park.key), JSON.stringify(c), {
+        httpMetadata: { contentType: "application/json" },
+      });
+    }),
+  );
   return out;
 }

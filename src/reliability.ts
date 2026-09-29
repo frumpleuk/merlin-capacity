@@ -128,8 +128,11 @@ const RETAIN_DAYS = 400;
  *
  *  2 = per-ride grouping axes (`dimGroups`, `dims`).
  *  3 = `coverage` renamed to `activity`, which it always was.
- *  4 = a day we started watching late is trimmed, not charged as downtime. */
-const STORE_VERSION = 4;
+ *  4 = a day we started watching late is trimmed, not charged as downtime.
+ *  5 = feed-absent stretches leave the denominator, and shows and greetings
+ *      leave the stats entirely. Both are decided while a day is built, so a
+ *      store that isn't rebuilt keeps scoring a show as an unreliable ride. */
+const STORE_VERSION = 5;
 
 /** How late the FIRST sample of the whole park may be before we conclude the
  *  gap is ours rather than the park's. On a normal day the park-wide first

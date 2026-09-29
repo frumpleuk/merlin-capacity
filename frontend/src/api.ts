@@ -544,6 +544,8 @@ export interface DailyPoint {
   outages: number;
   closed_rides: number;
   activity: number;
+  /** Collection started after the park opened; the day was trimmed to fit. */
+  partial?: boolean;
 }
 
 export interface WindowStats {
@@ -562,6 +564,8 @@ export interface WindowStats {
   /** Days whose file can say WHY a ride was shut. Below `days`, the
    *  maintenance/seasonal split is unknown for the rest, not zero. */
   notices_known_days: number;
+  /** Days trimmed because we started watching late. Absent on older summaries. */
+  partial_days?: number;
   /** Oldest first. Present on the widest window only. */
   daily?: DailyPoint[];
   rides: RideStats[];

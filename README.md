@@ -162,6 +162,17 @@ publishes a status that distinguishes them.
   but not an outage, or every ride would score one a day just for opening a
   minute after its scheduled time. Late starts are about 30% of Thorpe's
   downtime, so the two are worth keeping apart.
+- **Days we started watching late are trimmed, not charged.** A ride that runs
+  posts its opening transition, so on a normal day the park-wide first sample
+  lands at or before the gates open. Materially later and the gap is ours: the
+  first week ran into the free tier's 10 ms CPU ceiling and the poll kept dying,
+  and on 2026-07-20 all four Merlin parks have their first sample at 13:13.
+  That was being counted as downtime against every ride — 53% of the day at
+  Alton, Thorpe and Chessington, 60% at Legoland. The window is now trimmed to
+  when collection began and the day is flagged `partial`; a day with less than a
+  quarter of its hours left is dropped. A park with no published hours has its
+  window derived from the samples, which is circular, so a derived day shorter
+  than two hours is refused outright.
 - **`activity`** is the share of the day's 10-minute buckets in which any ride
   changed. It is **not** a data-coverage figure: only changes are logged, so a
   successful poll that found nothing moved writes nothing, and a quiet park is

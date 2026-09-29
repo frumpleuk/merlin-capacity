@@ -82,6 +82,10 @@ export interface DailyRollup {
    *  while its data may be complete. Read it as how finely the day is resolved,
    *  not as a gap. */
   activity: number;
+  /** We began watching after the park opened, so the window was trimmed to
+   *  when collection actually started and the day covers less than the park's
+   *  hours. The figures are sound over what is left. */
+  partial?: boolean;
   /** Did the day file carry the per-notice history? False for days projected
    *  before that shipped — their `maintenance` split is unknown, not zero. */
   notices_known: boolean;
@@ -123,8 +127,33 @@ const RETAIN_DAYS = 400;
  *  is captured while a day is BUILT and then stored.
  *
  *  2 = per-ride grouping axes (`dimGroups`, `dims`).
- *  3 = `coverage` renamed to `activity`, which it always was. */
-const STORE_VERSION = 3;
+ *  3 = `coverage` renamed to `activity`, which it always was.
+ *  4 = a day we started watching late is trimmed, not charged as downtime. */
+const STORE_VERSION = 4;
+
+/** How late the FIRST sample of the whole park may be before we conclude the
+ *  gap is ours rather than the park's. On a normal day the park-wide first
+ *  sample lands at or before opening — rides report while the gates are still
+ *  shut — so anything beyond this is us not watching.
+ *
+ *  Which happened: the first week ran into the free tier's 10ms CPU ceiling and
+ *  the poll kept dying. On 2026-07-20 all four Merlin parks have their first
+ *  sample at 13:13, four hours after opening, and `walkLine` counted every one
+ *  of those minutes as downtime — 53% of the day against every ride at Alton,
+ *  Thorpe and Chessington, 60% at Legoland. Four independent parks do not open
+ *  four hours late on the same minute. */
+const LATE_START_GRACE = 30;
+
+/** Below this share of the scheduled day left after trimming, there is too
+ *  little of the day to say anything about it. */
+const MIN_USABLE_DAY = 0.25;
+
+/** A park with no published hours has its window derived from the samples
+ *  themselves, which is circular: on a day we barely collected, the derived
+ *  "day" is however long we happened to be watching. Paulton's 2026-07-21 came
+ *  out as 22:56-23:13, seventeen minutes, and scored 0% — a real park-day is
+ *  longer than this. */
+const MIN_DERIVED_DAY = 120;
 
 export const dailyKey = (park: string) => `stats/${park}/daily.json`;
 export const summaryKey = (park: string) => `stats/${park}/summary.json`;
@@ -373,13 +402,36 @@ export async function buildDay(
   // span the samples themselves cover, which is what the UI does for the axis.
   let open = f.open;
   let close = f.close;
+  let derived = false;
   if (open == null || close == null) {
     const all = f.rides.flatMap((r) => mainLine(r)?.samples.map((s) => s[0]) ?? []);
     if (all.length === 0) return null;
     open = Math.min(...all);
     close = Math.max(...all);
+    derived = true;
   }
   if (close <= open) return null;
+  // A derived window can only be as wide as our own collection, so a thin day
+  // produces a thin "day" rather than a visible gap. Refuse it outright.
+  if (derived && close - open < MIN_DERIVED_DAY) return null;
+
+  // When did WE start watching? A ride that ran posts its opening transition,
+  // so on a normal day the park-wide first sample is at or before the gates
+  // opening. Materially later and the gap is ours — and time we weren't
+  // watching is unknown, not downtime.
+  const firstSeen = Math.min(
+    ...f.rides.flatMap((r) => mainLine(r)?.samples.map((x) => x[0]) ?? [Infinity]),
+  );
+  const scheduled = close - open;
+  let partial = false;
+  if (Number.isFinite(firstSeen) && firstSeen > open + LATE_START_GRACE) {
+    partial = true;
+    open = Math.min(firstSeen, close);
+  }
+  // Too little of the day survived the trim to say anything about it. Flamingo
+  // Land on 2026-07-21 managed 32 samples all told; a day like that is not a
+  // bad day, it is an absent one.
+  if (close - open < scheduled * MIN_USABLE_DAY) return null;
 
   const rides: Record<string, RideDay> = {};
   const names: Record<string, string> = {};
@@ -421,6 +473,7 @@ export async function buildDay(
   const day: DailyRollup = {
     open,
     close,
+    ...(partial ? { partial: true } : {}),
     activity: Math.min(
       1,
       sampledBuckets.size / Math.max(1, Math.ceil((close - open) / ACTIVITY_BUCKET)),
@@ -591,6 +644,9 @@ export interface DailyPoint {
   outages: number;
   closed_rides: number;
   activity: number;
+  /** Collection started after the park opened, so this day covers less than the
+   *  park's hours. */
+  partial?: boolean;
 }
 
 export interface WindowStats {
@@ -609,6 +665,8 @@ export interface WindowStats {
    *  is three eight-hour days, and reading it as one is the obvious trap. */
   open_minutes_mean: number;
   notices_known_days: number;
+  /** Days trimmed because we started watching after the park opened. */
+  partial_days: number;
   /** Oldest first. Only on the widest window, since the shorter ones are its
    *  tail and repeating them would trivially double the file. */
   daily?: DailyPoint[];
@@ -652,6 +710,7 @@ function dailySeries(store: DailyStore, dates: string[]): DailyPoint[] {
       outages,
       closed_rides: closed,
       activity: day.activity,
+      ...(day.partial ? { partial: true } : {}),
     };
   });
 }
@@ -754,6 +813,7 @@ function statsFor(store: DailyStore, dates: string[]): WindowStats {
     activity: dates.length ? activity / dates.length : 0,
     open_minutes_mean: dates.length ? openMinutes / dates.length : 0,
     notices_known_days: noticeDays,
+    partial_days: dates.filter((d) => store.days[d].partial).length,
     rides,
   };
 }

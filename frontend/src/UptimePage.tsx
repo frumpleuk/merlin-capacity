@@ -277,7 +277,7 @@ function DayStrip({ daily, from }: { daily: DailyPoint[]; from: string }) {
                 dev >= 0 ? "+" : ""
               }${dev.toFixed(1)} vs median), ${d.outages} stoppages${
                 d.closed_rides ? `, ${d.closed_rides} not running` : ""
-              }`}
+              }${d.partial ? " · part day, we started watching late" : ""}`}
             >
               <span
                 className={"rl-strip-bar" + (dev < 0 ? " below" : "")}
@@ -840,6 +840,13 @@ export function UptimePage() {
         </p>
         {coarse && (
           <p>This park's waits rarely change, so times here are coarser. Nothing is missing.</p>
+        )}
+        {(stats.partial_days ?? 0) > 0 && (
+          <p>
+            {stats.partial_days} {stats.partial_days === 1 ? "day covers" : "days cover"} only
+            part of the park's hours, because collection started after opening. Those hours are
+            left out rather than counted against the rides.
+          </p>
         )}
         {partial && (
           <p>

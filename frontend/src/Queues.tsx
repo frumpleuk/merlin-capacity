@@ -641,9 +641,9 @@ function RestartHint({
   return (
     <span
       className="q-restart"
-      title={`Over the last ${s.n} stoppages: ${Math.round(
+      title={`Of ${s.n} past stoppages, ${Math.round(
         s.resume_within_15 * 100,
-      )}% were running again within 15 minutes, ${share}% within 30.`}
+      )}% cleared within 15 minutes and ${share}% within 30.`}
     >
       {share}% back in 30m
     </span>
@@ -712,11 +712,10 @@ function RideRow({
                 <span
                   className="q-meta-chip q-meta-rel"
                   title={
-                    `Running ${(rel.availability * 100).toFixed(1)}% of its scheduled hours ` +
-                    `over the last ${rel.days} days` +
+                    `Running ${(rel.availability * 100).toFixed(1)}% of scheduled hours over ` +
+                    `${rel.days} days` +
                     (rel.outages_per_day != null
-                      ? `, stopping ${rel.outages_per_day.toFixed(1)}x a day ` +
-                        `for ${rel.outage_median ?? "?"} min at a time`
+                      ? `; stops ${rel.outages_per_day.toFixed(1)}x a day for ${rel.outage_median ?? "?"} min`
                       : "")
                   }
                 >

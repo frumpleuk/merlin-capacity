@@ -69,9 +69,7 @@ const COLUMNS: {
   {
     key: "minutes_between_outages",
     label: "Between stops",
-    title:
-      "Mean operating time per stoppage (MTBF) — how long it runs before stopping again. " +
-      "Park hours only, so overnight doesn't count.",
+    title: "Mean operating time between stoppages (MTBF). Park hours only.",
     desc: false,
     wide: true,
     get: (r) => r.minutes_between_outages,
@@ -79,7 +77,7 @@ const COLUMNS: {
   {
     key: "clean_days",
     label: "Clear days",
-    title: "Days it ran with no stoppage at all",
+    title: "Days it ran with no stoppage",
     desc: false,
     wide: true,
     get: (r) => r.clean_days,
@@ -195,7 +193,7 @@ function Histogram({ bins, label }: { bins: number[]; label: string }) {
       aria-label={`${label}: ${bins.map((n, i) => `${name(i)} ${n}`).join(", ")}`}
     >
       {bins.map((n, i) => (
-        <div className="rl-hist-col" key={i} title={`${name(i)}: ${n} of ${total} stoppages`}>
+        <div className="rl-hist-col" key={i} title={`${name(i)} — ${n} of ${total}`}>
           <div className="rl-hist-bar-wrap">
             <div className="rl-hist-bar" style={{ height: `${max > 0 ? (n / max) * 100 : 0}%` }} />
           </div>
@@ -259,7 +257,7 @@ function Detail({ r }: { r: RideStats }) {
       <div>
         {s ? (
           <>
-            <h4 className="rl-detail-h">If it stops, it's back within…</h4>
+            <h4 className="rl-detail-h">Back within</h4>
             <table className="rl-survival">
               <tbody>
                 {[
@@ -270,14 +268,13 @@ function Detail({ r }: { r: RideStats }) {
                   <tr key={b.t}>
                     <th scope="row">{b.t}</th>
                     <td>
-                      <Meter value={b.v} title={`${pct(b.v)} of stoppages cleared within ${b.t}`} />
+                      <Meter value={b.v} title={`${pct(b.v)} cleared within ${b.t}`} />
                     </td>
                   </tr>
                 ))}
               </tbody>
             </table>
-            <p className="rl-detail-note">From {s.n} stoppages in this window.</p>
-            <h4 className="rl-detail-h">If it's still down after…</h4>
+            <h4 className="rl-detail-h">Still down after</h4>
             <table className="rl-cond">
               <thead>
                 <tr>
@@ -299,24 +296,20 @@ function Detail({ r }: { r: RideStats }) {
                 ))}
               </tbody>
             </table>
-            <p className="rl-detail-note">
-              Each row counts only the stoppages that were still going at that point — the
-              median is over those, not over all {s.n}.
-            </p>
           </>
         ) : (
           <p className="rl-detail-note">
             {r.outages === 0
-              ? "It didn't stop at all in this window."
-              : `Only ${r.outages} ${r.outages === 1 ? "stoppage" : "stoppages"} in this window — ` +
-                "too few to say how a stoppage is likely to go. A longer window may have enough."}
+              ? "No stoppages in this window."
+              : `Only ${r.outages} ${r.outages === 1 ? "stoppage" : "stoppages"} — too few to judge. ` +
+                "Try a longer window."}
           </p>
         )}
       </div>
       <div>
         {r.outage_bins && r.outages >= MIN_FOR_SHAPE && (
           <>
-            <h4 className="rl-detail-h">How long they last · {r.outages} stoppages</h4>
+            <h4 className="rl-detail-h">Stoppage duration · {r.outages}</h4>
             <Histogram bins={r.outage_bins} label={`${rideName(r.name)} stoppage lengths`} />
           </>
         )}
@@ -381,7 +374,7 @@ function RideCard({
         </span>
         <Meter
           value={r.availability}
-          title={`${rideName(r.name)}: available ${pct(r.availability, 1)} of its scheduled hours`}
+          title={`${rideName(r.name)} — ${pct(r.availability, 1)} of its scheduled hours`}
         />
         <span className="rl-card-stats">
           <span>
@@ -441,7 +434,7 @@ function RideRow({
         <td className="rl-c-meter">
           <Meter
             value={r.availability}
-            title={`${rideName(r.name)}: available ${pct(r.availability, 1)} of its scheduled hours`}
+            title={`${rideName(r.name)} — ${pct(r.availability, 1)} of its scheduled hours`}
           />
         </td>
         <td className="rl-num">{r.outages_per_day == null ? "—" : r.outages_per_day.toFixed(1)}</td>
@@ -561,8 +554,7 @@ export function UptimePage() {
     return (
       <main className="rc-main rl-main">
         <p className="rl-empty">
-          No reliability data for {parkDef.label} yet. It's built once a day from the queue
-          history.
+          No data for {parkDef.label} yet. Built daily from the queue history.
         </p>
       </main>
     );
@@ -637,7 +629,7 @@ export function UptimePage() {
             <button
               className={"rl-win" + (showThin ? " active" : "")}
               onClick={() => setShowThin(!showThin)}
-              title="Rides present for only part of the window — a handful of days can't support these numbers"
+              title="Present for only part of the window, so the numbers are thin"
             >
               {showThin ? "Hide" : "Show"} {thinCount} with little data
             </button>
@@ -772,25 +764,22 @@ export function UptimePage() {
 
       <div className="rl-foot">
         <p>
-          Availability is the share of each ride's <strong>own</strong> scheduled hours that it
-          was open and running. Time outside its hours doesn't count against it, and nor does a
-          season the park has said it is closed for.
+          Availability is the share of a ride's <strong>own</strong> scheduled hours it was
+          running. Hours it wasn't due to run don't count, nor do declared seasonal closures.
         </p>
         <p>
-          <strong>Outage</strong>, not fault: the feed reports that a ride stopped, never why. A
-          station closed to be cleaned up reads exactly like a mechanical failure.
+          The feed says a ride stopped, never why: cleaning and a mechanical failure look
+          identical.
         </p>
         {coarse && (
-          <p>
-            This park's posted waits rarely change, so the times here are rounded to longer
-            stretches than at a busier park. Nothing is missing — there is simply less to
-            record.
-          </p>
+          <p>This park's waits rarely change, so times here are coarser. Nothing is missing.</p>
         )}
         {partial && (
           <p>
-            {stats.notices_known_days} of {stats.days} days can say why a ride was shut; for the
-            rest the reason wasn't recorded, so some closures counted here may have been planned.
+            {stats.notices_known_days === 0
+              ? "No days here record why a ride was shut"
+              : `Only ${stats.notices_known_days} of ${stats.days} days record why a ride was shut`}
+            , so some stoppages may have been planned.
           </p>
         )}
       </div>

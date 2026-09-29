@@ -715,6 +715,32 @@ export function UptimePage() {
             </button>
           </div>
         )}
+        {/* Phone-only, exactly as the Queues tab does it: the column headers
+            are the sort control wherever the table shows, and the card layout
+            has no headers to click. */}
+        {narrow && (
+          <div className="rl-toolbar-group" role="group" aria-label="Sort rides">
+            <span className="rl-toolbar-label">Sort</span>
+            {COLUMNS.map((c) => (
+              <button
+                key={c.key}
+                className={"rl-win" + (sort === c.key ? " active" : "")}
+                onClick={() => {
+                  if (sort === c.key) setDesc(!desc);
+                  else {
+                    setSort(c.key);
+                    setDesc(c.desc);
+                  }
+                }}
+              >
+                {c.label}
+                {sort === c.key && (
+                  <span className="rl-sort-arrow">{desc ? "▼" : "▲"}</span>
+                )}
+              </button>
+            ))}
+          </div>
+        )}
         <div className="rl-toolbar-group">
           {thinCount > 0 && (
             <button

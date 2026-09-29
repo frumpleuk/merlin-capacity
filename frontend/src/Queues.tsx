@@ -74,6 +74,42 @@ function lineStats(line: QueueLineSeries): { current: number | null; peak: numbe
 const ridePeak = (ride: QueueRide): number =>
   Math.max(0, ...ride.lines.map((l) => lineStats(l).peak));
 
+/**
+ * The ride's typical posted wait, weighted by how long each value stood.
+ *
+ * Per MINUTE, not per sample. Samples are change-points, not readings on a
+ * clock: a wait that sat at 5 minutes all afternoon writes one sample while a
+ * busy hour writes twenty, so a median over sample values would describe the
+ * busy hour and call it the day. Every minute the ride was running counts as a
+ * reading at whatever was posted then — a value standing for 180 minutes counts
+ * 180 times — and the median is the value at the halfway minute.
+ *
+ * `end` is where the last value stops holding: now on a live day, the close on
+ * a finished one. Without it the final stretch, often the longest, weighs zero.
+ */
+function rideMedian(ride: QueueRide, end?: number): number | null {
+  const weighted: [wait: number, minutes: number][] = [];
+  for (const line of ride.lines) {
+    const ss = line.samples;
+    for (let i = 0; i < ss.length; i++) {
+      const s = ss[i];
+      if (!isRunning(s) || s[1] == null) continue;
+      const until = ss[i + 1]?.[0] ?? end ?? s[0];
+      const held = Math.max(0, until - s[0]);
+      if (held > 0) weighted.push([s[1], held]);
+    }
+  }
+  if (weighted.length === 0) return null;
+  weighted.sort((a, b) => a[0] - b[0]);
+  const total = weighted.reduce((n, [, m]) => n + m, 0);
+  let seen = 0;
+  for (const [wait, mins] of weighted) {
+    seen += mins;
+    if (seen >= total / 2) return wait;
+  }
+  return weighted[weighted.length - 1][0];
+}
+
 /** The ride's headline current wait (max across its lines), or null if closed. */
 const rideNow = (ride: QueueRide): number | null => {
   const vals = ride.lines
@@ -82,17 +118,17 @@ const rideNow = (ride: QueueRide): number | null => {
   return vals.length ? Math.max(...vals) : null;
 };
 
-export type SortMode = "now" | "peak" | "name";
+export type SortMode = "now" | "median" | "peak" | "name";
 export type SortDir = "asc" | "desc";
 
 /** The natural default direction for each mode (busiest first; A→Z). */
 export const defaultDir = (sort: SortMode): SortDir => (sort === "name" ? "asc" : "desc");
 
 const rideComparator =
-  (sort: SortMode, dir: SortDir) => (a: QueueRide, b: QueueRide) => {
+  (sort: SortMode, dir: SortDir, end?: number) => (a: QueueRide, b: QueueRide) => {
     // Closed rides sink to the bottom regardless of direction — except when
     // sorting by Peak, where a since-closed ride's peak is still meaningful.
-    if (sort !== "peak") {
+    if (sort !== "peak" && sort !== "median") {
       const aClosed = rideNow(a) == null;
       const bClosed = rideNow(b) == null;
       if (aClosed !== bClosed) return aClosed ? 1 : -1;
@@ -100,9 +136,13 @@ const rideComparator =
     let asc: number;
     if (sort === "name") asc = a.name.localeCompare(b.name);
     else {
-      const va = sort === "now" ? rideNow(a) ?? -1 : ridePeak(a);
-      const vb = sort === "now" ? rideNow(b) ?? -1 : ridePeak(b);
-      asc = va - vb;
+      const of = (r: QueueRide) =>
+        sort === "now"
+          ? rideNow(r) ?? -1
+          : sort === "median"
+            ? rideMedian(r, end) ?? -1
+            : ridePeak(r);
+      asc = of(a) - of(b);
     }
     const signed = dir === "asc" ? asc : -asc;
     return signed || a.name.localeCompare(b.name);
@@ -626,6 +666,8 @@ function RestartHint({
   parkWindow,
 }: {
   rel?: RideStats;
+  /** Where the last posted wait stops holding (see rideMedian). */
+  seriesEnd?: number;
   asOf?: number;
   parkWindow?: [number, number];
 }) {
@@ -653,6 +695,7 @@ function RideRow({
   domain,
   parkWindow,
   rel,
+  seriesEnd,
   scale,
   date,
   asOf,
@@ -665,6 +708,8 @@ function RideRow({
   /** This ride's uptime row, when the daily stats have one. Only surfaced
    *  while the ride is shut — that is the moment the question gets asked. */
   rel?: RideStats;
+  /** Where the last posted wait stops holding (see rideMedian). */
+  seriesEnd?: number;
   scale: SparkScale;
   date: string;
   asOf?: number;
@@ -674,6 +719,7 @@ function RideRow({
   const main = ride.lines[0];
   const stats = main ? lineStats(main) : { current: null, peak: 0 };
   const peak = ridePeak(ride);
+  const med = rideMedian(ride, seriesEnd);
   // The park's own closed notice, as of the latest sample — a scheduled opening
   // ("Scheduled to open at 11:00") or a closure reason ("Under maintenance",
   // "Closed all day"). "Closed all day" is meaningful ONLY as an explicit signal
@@ -736,6 +782,9 @@ function RideRow({
               <RestartHint rel={rel} asOf={asOf} parkWindow={parkWindow} />
             </span>
           )}
+        </span>
+        <span className="q-median" title="Median posted wait, per minute of running time">
+          {med != null ? `med ${med}` : "—"}
         </span>
         <span className="q-peak">{peak > 0 ? `peak ${peak}` : "—"}</span>
       </button>
@@ -838,6 +887,7 @@ function sectionsOf(
   dir: SortDir,
   groupOf: (ride: QueueRide) => string | undefined,
   byLand: boolean,
+  end?: number,
 ): Section[] {
   const map = new Map<string, Section>();
   for (const ride of rides) {
@@ -854,7 +904,7 @@ function sectionsOf(
     sec.rides.push(ride);
   }
   const secs = [...map.values()];
-  const cmp = rideComparator(sort, dir);
+  const cmp = rideComparator(sort, dir, end);
   for (const s of secs) s.rides.sort(cmp);
   return secs.sort((a, b) => a.rank - b.rank || a.title.localeCompare(b.title));
 }
@@ -865,8 +915,44 @@ function sectionsOf(
  *  the first ride opens, and after it closes or the last ride closes. */
 const OPEN_BUFFER = 30;
 
+/** A sortable column label. Mirrors the pill row's behaviour: click to sort by
+ *  it, click again to reverse. */
+function HeadSort({
+  className,
+  mode,
+  label,
+  title,
+  sort,
+  dir,
+  onSort,
+}: {
+  className: string;
+  mode: SortMode;
+  label: string;
+  title?: string;
+  sort: SortMode;
+  dir: SortDir;
+  onSort: (m: SortMode) => void;
+}) {
+  const active = sort === mode;
+  return (
+    <span className={className}>
+      <button
+        className={"q-head-sort" + (active ? " active" : "")}
+        onClick={() => onSort(mode)}
+        title={title ?? (active ? "Click to reverse" : `Sort by ${label.toLowerCase()}`)}
+        aria-pressed={active}
+      >
+        {label}
+        {active && <span className="q-sort-arrow">{dir === "asc" ? "▲" : "▼"}</span>}
+      </button>
+    </span>
+  );
+}
+
 const SORTS: { key: SortMode; label: string }[] = [
   { key: "now", label: "Now" },
+  { key: "median", label: "Median" },
   { key: "peak", label: "Peak" },
   { key: "name", label: "A–Z" },
 ];
@@ -900,8 +986,24 @@ export function QueueList({
   rel?: Map<string, RideStats>;
 }) {
   const [openId, setOpenId] = useState<number | null>(null);
+  // Sorting by "now" on a day with no live waits ranks every ride equally at
+  // null, so the list comes back in catalog order. On a closed day — a past
+  // date, or today once the gates have shut — peak is the only figure that
+  // still separates them, so that is the default there. An explicit choice
+  // sticks: `sortTouched` stops the day changing under the reader's selection.
+  const anyLive = useMemo(
+    () => (file?.rides ?? []).some((r) => rideNow(r) != null),
+    [file],
+  );
+  // Where a ride's last posted wait stops holding: now on a live day, the park's
+  // close on a finished one. The per-minute median needs it or the final
+  // stretch — frequently the longest — counts for nothing.
+  const seriesEnd = asOf ?? file?.close;
+  const [sortTouched, setSortTouched] = useState(false);
   const [sort, setSort] = useState<SortMode>("now");
   const [dir, setDir] = useState<SortDir>("desc");
+  const effectiveSort: SortMode = sortTouched ? sort : anyLive ? "now" : "peak";
+  const effectiveDir: SortDir = sortTouched ? dir : defaultDir(effectiveSort);
   const [collapsed, setCollapsed] = useState<Set<string>>(new Set());
   // Active grouping key: a dimension key, the single-grouping sentinel, or
   // NO_GROUP (flat list). null = the park's native default (first option).
@@ -949,22 +1051,27 @@ export function QueueList({
           title: "",
           rank: 0,
           tone: "",
-          rides: [...rides].sort(rideComparator(sort, dir)),
+          rides: [...rides].sort(rideComparator(effectiveSort, effectiveDir, seriesEnd)),
         },
       ];
     return sectionsOf(
       rides,
-      sort,
-      dir,
+      effectiveSort,
+      effectiveDir,
       activeDim ? (r) => r.groups?.[activeDim.key] : (r) => r.group,
       activeDim ? activeDim.by === "land" : file?.groupBy === "land",
+      seriesEnd,
     );
-  }, [file, sort, dir, activeDim, grouped]);
+  }, [file, effectiveSort, effectiveDir, activeDim, grouped, seriesEnd]);
 
-  // Click a sort: switch to it (its natural direction), or flip if already active.
+  // Click a sort: switch to it (its natural direction), or flip if already
+  // active. Either way the choice is now the reader's, not the day's.
   const onSort = (key: SortMode) => {
-    if (key === sort) setDir((d) => (d === "asc" ? "desc" : "asc"));
-    else {
+    setSortTouched(true);
+    if (key === effectiveSort) {
+      setSort(effectiveSort);
+      setDir(effectiveDir === "asc" ? "desc" : "asc");
+    } else {
       setSort(key);
       setDir(defaultDir(key));
     }
@@ -1048,18 +1155,22 @@ export function QueueList({
         </div>
       )}
       <div className="q-toolbar">
-        <div className="q-sort" role="group" aria-label="Sort rides">
+        {/* Phone-only: the column headers are the sort control everywhere the
+            head row is visible, and it is hidden below 600px. */}
+        <div className="q-sort q-sort-modes" role="group" aria-label="Sort rides">
           <span className="q-sort-label">Sort</span>
           {SORTS.map((s) => (
             <button
               key={s.key}
-              className={"q-sort-btn" + (sort === s.key ? " active" : "")}
+              className={"q-sort-btn" + (effectiveSort === s.key ? " active" : "")}
               onClick={() => onSort(s.key)}
-              aria-pressed={sort === s.key}
-              title={sort === s.key ? "Click to reverse" : undefined}
+              aria-pressed={effectiveSort === s.key}
+              title={effectiveSort === s.key ? "Click to reverse" : undefined}
             >
               {s.label}
-              {sort === s.key && <span className="q-sort-arrow">{dir === "asc" ? "▲" : "▼"}</span>}
+              {effectiveSort === s.key && (
+                <span className="q-sort-arrow">{effectiveDir === "asc" ? "▲" : "▼"}</span>
+              )}
             </button>
           ))}
         </div>
@@ -1084,8 +1195,10 @@ export function QueueList({
           All rides closed for this day — tap a ride to see its recorded history.
         </p>
       )}
+      {/* The column labels sort, like any table. The pill row above stays: it
+          is the only sort control on a phone, where this header is hidden. */}
       <div className="q-head-row">
-        <span className="q-name">Ride</span>
+        <HeadSort className="q-name" mode="name" label="Ride" sort={effectiveSort} dir={effectiveDir} onSort={onSort} />
         <span
           className="q-spark-col"
           title={
@@ -1099,8 +1212,17 @@ export function QueueList({
             0-{scale.ceiling} min{scale.top > scale.ceiling ? "+" : ""}
           </span>
         </span>
-        <span className="q-now">Now</span>
-        <span className="q-peak">Peak</span>
+        <HeadSort className="q-now" mode="now" label="Now" sort={effectiveSort} dir={effectiveDir} onSort={onSort} />
+        <HeadSort
+          className="q-median"
+          mode="median"
+          label="Median"
+          title="Median posted wait, counted per minute of running time"
+          sort={effectiveSort}
+          dir={effectiveDir}
+          onSort={onSort}
+        />
+        <HeadSort className="q-peak" mode="peak" label="Peak" sort={effectiveSort} dir={effectiveDir} onSort={onSort} />
       </div>
       {sections.map((sec) => {
         // The ungrouped flat list is one headerless, always-open section.
@@ -1141,6 +1263,7 @@ export function QueueList({
                     }
                     scale={scale}
                     rel={rel?.get(String(ride.id))}
+                    seriesEnd={seriesEnd}
                     date={date}
                     asOf={asOf}
                     open={openId === ride.id}

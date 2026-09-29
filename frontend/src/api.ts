@@ -502,6 +502,10 @@ export interface OutageSurvival {
    *  too few stoppages ran that long to say anything. */
   median_remaining_at_15: number | null;
   median_remaining_at_30: number | null;
+  /** How many stoppages ran past each threshold — the subset the medians above
+   *  are computed over, not the whole set. */
+  n_past_15?: number;
+  n_past_30?: number;
   n: number;
 }
 
@@ -509,6 +513,8 @@ export interface RideStats {
   id: string;
   name: string;
   group?: string;
+  /** Multi-dimension grouping keyed by dim (see ReliabilityFile.groupDims). */
+  groups?: Record<string, string>;
   /** Pooled up / (up + down), weighted by day length rather than a mean of
    *  daily rates. Null when the ride was never observed running in the window. */
   availability: number | null;
@@ -567,6 +573,9 @@ export interface WindowStats {
 export interface ReliabilityFile {
   park: string;
   generated_at: string;
+  /** Grouping axes this park offers — Paulton's has thrill and area. Absent
+   *  where the park has a single grouping, which arrives as RideStats.group. */
+  groupDims?: GroupDim[];
   from: string;
   to: string;
   windows: Record<string, WindowStats>;

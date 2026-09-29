@@ -1,14 +1,16 @@
-import { useEffect, useMemo, useState } from "react";
+import { Fragment, useEffect, useMemo, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import {
   loadReliability,
   RELIABILITY_BINS,
   type DailyPoint,
+  type GroupDim,
   type ReliabilityFile,
   type RideStats,
   type WindowStats,
 } from "./api";
 import { findPark, PARK_HOME } from "./catalog";
+import { useMediaQuery } from "./useMediaQuery";
 
 /* ── Ride reliability ──────────────────────────────────────────────────────────
  *
@@ -90,6 +92,26 @@ const COLUMNS: {
  *  are hidden rather than dropped: the toggle says how many, and shows them. */
 const wellMeasured = (r: RideStats, windowDays: number): boolean =>
   r.days - r.closed_days >= Math.max(3, windowDays / 4);
+
+/** Fewest stoppages that make a histogram worth drawing. Below this the shape
+ *  is three bars of one, which looks like a distribution and is a coincidence.
+ *  The survival curve needs more still (the backend's own floor), so a window
+ *  can have enough for the shape and not enough for the odds. */
+const MIN_FOR_SHAPE = 8;
+
+/** Sentinel for the ungrouped view — a flat ranking across the whole park. */
+const NO_GROUP = "__none__";
+
+/** Which axes this park can be grouped on. A park with a single `group` per
+ *  ride (most of them) gets one unnamed axis; Paulton's declares thrill and
+ *  area. Either way the last option is always "None". */
+function groupOptions(data: ReliabilityFile, rides: RideStats[]): GroupDim[] {
+  if (data.groupDims?.length) return data.groupDims;
+  return rides.some((r) => r.group) ? [{ key: "group", label: "Group", by: "thrill" }] : [];
+}
+
+const groupOf = (r: RideStats, dim: string): string | null =>
+  dim === "group" ? (r.group ?? null) : (r.groups?.[dim] ?? null);
 
 const median = (xs: number[]): number | null => {
   if (xs.length === 0) return null;
@@ -255,36 +277,46 @@ function Detail({ r }: { r: RideStats }) {
               </tbody>
             </table>
             <p className="rl-detail-note">From {s.n} stoppages in this window.</p>
-            <h4 className="rl-detail-h">Once it has been down…</h4>
-            <dl className="rl-dl">
-              <div>
-                <dt>15 minutes</dt>
-                <dd>
-                  {s.median_remaining_at_15 == null
-                    ? "—"
-                    : `about ${mins(s.median_remaining_at_15)} more`}
-                </dd>
-              </div>
-              <div>
-                <dt>30 minutes</dt>
-                <dd>
-                  {s.median_remaining_at_30 == null
-                    ? "—"
-                    : `about ${mins(s.median_remaining_at_30)} more`}
-                </dd>
-              </div>
-            </dl>
+            <h4 className="rl-detail-h">If it's still down after…</h4>
+            <table className="rl-cond">
+              <thead>
+                <tr>
+                  <th scope="col">Still down at</th>
+                  <th scope="col">How often</th>
+                  <th scope="col">Lasted another</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { t: 15, n: s.n_past_15, more: s.median_remaining_at_15 },
+                  { t: 30, n: s.n_past_30, more: s.median_remaining_at_30 },
+                ].map((row) => (
+                  <tr key={row.t}>
+                    <th scope="row">{row.t} min</th>
+                    <td>{row.n == null ? "—" : `${row.n} of ${s.n}`}</td>
+                    <td>{row.more == null ? "too few" : mins(row.more)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <p className="rl-detail-note">
+              Each row counts only the stoppages that were still going at that point — the
+              median is over those, not over all {s.n}.
+            </p>
           </>
         ) : (
           <p className="rl-detail-note">
-            Too few stoppages in this window to say how long they last.
+            {r.outages === 0
+              ? "It didn't stop at all in this window."
+              : `Only ${r.outages} ${r.outages === 1 ? "stoppage" : "stoppages"} in this window — ` +
+                "too few to say how a stoppage is likely to go. A longer window may have enough."}
           </p>
         )}
       </div>
       <div>
-        {r.outage_bins && (
+        {r.outage_bins && r.outages >= MIN_FOR_SHAPE && (
           <>
-            <h4 className="rl-detail-h">How long they last</h4>
+            <h4 className="rl-detail-h">How long they last · {r.outages} stoppages</h4>
             <Histogram bins={r.outage_bins} label={`${rideName(r.name)} stoppage lengths`} />
           </>
         )}
@@ -314,18 +346,80 @@ function Detail({ r }: { r: RideStats }) {
   );
 }
 
-function RideRow({
+/** Portrait phone layout. The meter and the name lead; the numbers follow as a
+ *  labelled strip, because a seven-column table at 390px is either cut off or
+ *  unreadably small. */
+function RideCard({
   r,
   open,
   onToggle,
   openDay,
   windowDays,
+  showGroup,
 }: {
   r: RideStats;
   open: boolean;
   onToggle: () => void;
   openDay: number;
   windowDays: number;
+  showGroup: boolean;
+}) {
+  return (
+    <div className={"rl-card" + (open ? " open" : "")}>
+      <button className="rl-card-head" onClick={onToggle} aria-expanded={open}>
+        <span className="rl-card-title">
+          <span className="rl-caret" aria-hidden="true">
+            {open ? "▾" : "▸"}
+          </span>
+          <span className="rl-name-text">{rideName(r.name)}</span>
+          {showGroup && r.group && <span className="rl-group">{r.group}</span>}
+          {!wellMeasured(r, windowDays) && (
+            <span className="rl-thin" title="Present for only part of the window">
+              {r.days - r.closed_days}d
+            </span>
+          )}
+        </span>
+        <Meter
+          value={r.availability}
+          title={`${rideName(r.name)}: available ${pct(r.availability, 1)} of its scheduled hours`}
+        />
+        <span className="rl-card-stats">
+          <span>
+            <b>{r.outages_per_day == null ? "—" : r.outages_per_day.toFixed(1)}</b>/day
+          </span>
+          <span>
+            <b>{mins(r.outage_median)}</b> med
+          </span>
+          <span>
+            <b>{mins(r.outage_p90)}</b> p90
+          </span>
+          <span>
+            <b>{betweenStops(r.minutes_between_outages, openDay)}</b> between
+          </span>
+          <span>
+            <b>{pct(r.clean_days)}</b> clear
+          </span>
+        </span>
+      </button>
+      {open && <Detail r={r} />}
+    </div>
+  );
+}
+
+function RideRow({
+  r,
+  open,
+  onToggle,
+  openDay,
+  windowDays,
+  showGroup,
+}: {
+  r: RideStats;
+  open: boolean;
+  onToggle: () => void;
+  openDay: number;
+  windowDays: number;
+  showGroup: boolean;
 }) {
   return (
     <>
@@ -336,7 +430,7 @@ function RideRow({
               {open ? "▾" : "▸"}
             </span>
             <span className="rl-name-text">{rideName(r.name)}</span>
-            {r.group && <span className="rl-group">{r.group}</span>}
+            {showGroup && r.group && <span className="rl-group">{r.group}</span>}
             {!wellMeasured(r, windowDays) && (
               <span className="rl-thin" title="Present for only part of the window">
                 {r.days - r.closed_days}d
@@ -377,6 +471,18 @@ export function ReliabilityPage() {
   const [desc, setDesc] = useState<boolean>(false);
   const [query, setQuery] = useState("");
   const [showThin, setShowThin] = useState(false);
+  // null = the park's first axis; NO_GROUP = a flat ranking.
+  const [groupKey, setGroupKey] = useState<string | null>(null);
+  const [collapsed, setCollapsed] = useState<Set<string>>(new Set());
+  const toggleSection = (key: string) =>
+    setCollapsed((prev) => {
+      const next = new Set(prev);
+      if (!next.delete(key)) next.add(key);
+      return next;
+    });
+  // Portrait phones get cards: seven columns cannot be read at 390px, and
+  // hiding enough of them to fit leaves a table that answers nothing.
+  const narrow = useMediaQuery("(max-width: 700px)");
 
   useEffect(() => {
     if (!parkDef) return;
@@ -425,6 +531,22 @@ export function ReliabilityPage() {
       return desc ? -d : d;
     });
   }, [stats, query, col, desc, showThin]);
+
+  const dims = data ? groupOptions(data, stats?.rides ?? []) : [];
+  const dim = groupKey ?? dims[0]?.key ?? NO_GROUP;
+  const sections = useMemo(() => {
+    if (dim === NO_GROUP || !dims.length) return [{ key: "", label: "", rides }];
+    const by = new Map<string, RideStats[]>();
+    for (const r of rides) {
+      const g = groupOf(r, dim) ?? "Other";
+      const list = by.get(g);
+      if (list) list.push(r);
+      else by.set(g, [r]);
+    }
+    // Section order follows the sort: whichever group holds the current
+    // extreme leads, so re-sorting reorders the page rather than just its rows.
+    return [...by.entries()].map(([label, list]) => ({ key: label, label, rides: list }));
+  }, [rides, dim, dims.length]);
 
   if (!parkDef) return <Navigate to={PARK_HOME} replace />;
 
@@ -485,6 +607,26 @@ export function ReliabilityPage() {
             </button>
           ))}
         </div>
+        {dims.length > 0 && (
+          <div className="rl-toolbar-group" role="group" aria-label="Group rides">
+            <span className="rl-toolbar-label">Group</span>
+            {dims.map((d) => (
+              <button
+                key={d.key}
+                className={"rl-win" + (dim === d.key ? " active" : "")}
+                onClick={() => setGroupKey(d.key)}
+              >
+                {d.label}
+              </button>
+            ))}
+            <button
+              className={"rl-win" + (dim === NO_GROUP ? " active" : "")}
+              onClick={() => setGroupKey(NO_GROUP)}
+            >
+              None
+            </button>
+          </div>
+        )}
         <div className="rl-toolbar-group">
           {thinCount > 0 && (
             <button
@@ -506,6 +648,40 @@ export function ReliabilityPage() {
         </div>
       </div>
 
+      {narrow ? (
+        <div className="rl-cards">
+          {sections.map((sec) => (
+            <Fragment key={sec.key}>
+              {sec.label && (
+                <button
+                  className="rl-section-btn rl-section-card"
+                  onClick={() => toggleSection(sec.key)}
+                  aria-expanded={!collapsed.has(sec.key)}
+                >
+                  <span className="rl-caret" aria-hidden="true">
+                    {collapsed.has(sec.key) ? "▸" : "▾"}
+                  </span>
+                  {sec.label}
+                  <span className="rl-section-n">{sec.rides.length}</span>
+                </button>
+              )}
+              {!collapsed.has(sec.key) &&
+                sec.rides.map((r) => (
+                  <RideCard
+                    key={r.id}
+                    r={r}
+                    openDay={stats.open_minutes_mean ?? 0}
+                    windowDays={stats.days}
+                    showGroup={dim === NO_GROUP}
+                    open={openId === r.id}
+                    onToggle={() => setOpenId(openId === r.id ? null : r.id)}
+                  />
+                ))}
+            </Fragment>
+          ))}
+          {rides.length === 0 && <p className="rl-empty">No ride matches “{query}”.</p>}
+        </div>
+      ) : (
       <table className="rl-table">
         <thead>
           <tr>
@@ -545,15 +721,38 @@ export function ReliabilityPage() {
           </tr>
         </thead>
         <tbody>
-          {rides.map((r) => (
-            <RideRow
-              key={r.id}
-              r={r}
-              openDay={stats.open_minutes_mean ?? 0}
-              windowDays={stats.days}
-              open={openId === r.id}
-              onToggle={() => setOpenId(openId === r.id ? null : r.id)}
-            />
+          {sections.map((sec) => (
+            <Fragment key={sec.key}>
+              {sec.label && (
+                <tr className="rl-section">
+                  <th colSpan={COLUMNS.length} scope="colgroup">
+                    <button
+                      className="rl-section-btn"
+                      onClick={() => toggleSection(sec.key)}
+                      aria-expanded={!collapsed.has(sec.key)}
+                    >
+                      <span className="rl-caret" aria-hidden="true">
+                        {collapsed.has(sec.key) ? "▸" : "▾"}
+                      </span>
+                      {sec.label}
+                      <span className="rl-section-n">{sec.rides.length}</span>
+                    </button>
+                  </th>
+                </tr>
+              )}
+              {!collapsed.has(sec.key) &&
+                sec.rides.map((r) => (
+                  <RideRow
+                    key={r.id}
+                    r={r}
+                    openDay={stats.open_minutes_mean ?? 0}
+                    windowDays={stats.days}
+                    showGroup={dim === NO_GROUP}
+                    open={openId === r.id}
+                    onToggle={() => setOpenId(openId === r.id ? null : r.id)}
+                  />
+                ))}
+            </Fragment>
           ))}
           {rides.length === 0 && (
             <tr>
@@ -564,6 +763,7 @@ export function ReliabilityPage() {
           )}
         </tbody>
       </table>
+      )}
 
       <div className="rl-foot">
         <p>

@@ -2155,12 +2155,22 @@ h3.fd-area-head {
 .rl-detail-row > td {
   background: var(--card);
   padding: 0.75rem 1rem 1rem;
+  max-width: 0; /* with table-layout auto, stops a wide child widening the table */
 }
 
 .rl-detail-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
   gap: 1.25rem 2rem;
+}
+
+/* Grid and flex children default to min-content width, which lets a wide child
+ * push the whole page out instead of shrinking. */
+.rl-detail-grid > div,
+.rl-card-head,
+.rl-card-title,
+.rl-meter {
+  min-width: 0;
 }
 
 .rl-detail-h {
@@ -2187,6 +2197,11 @@ h3.fd-area-head {
 .rl-survival {
   width: 100%;
   border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.rl-survival th {
+  width: 4.5rem;
 }
 
 .rl-survival th {
@@ -2333,6 +2348,7 @@ h3.fd-area-head {
 }
 
 .rl-strip {
+  max-width: 100%;
   display: flex;
   align-items: flex-end;
   gap: 1px;
@@ -2371,6 +2387,11 @@ h3.fd-area-head {
   align-items: flex-end;
   gap: 2px;
   height: 72px;
+  max-width: 100%;
+}
+
+.rl-hist-col {
+  min-width: 0;
 }
 
 .rl-hist-col {
@@ -2410,4 +2431,157 @@ h3.fd-area-head {
   border-radius: 999px;
   padding: 0 4px;
   font-variant-numeric: tabular-nums;
+}
+
+/* Grouped sections, the conditional table, and the portrait-phone cards. */
+.rl-section > th {
+  padding: 0.6rem 0.5rem 0.2rem;
+  border-bottom: 1px solid var(--grid);
+}
+
+.rl-section-btn {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--fg);
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+
+.rl-section-n {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.rl-cond {
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  width: 100%;
+  /* Auto layout sizes a table to its content's min-width, which a long header
+   * can push past the viewport — and an overflowing descendant drags the whole
+   * document, clipping the nav as well as the table. Fixed layout makes the
+   * table obey its container instead. */
+  table-layout: fixed;
+}
+
+.rl-cond th,
+.rl-cond td {
+  text-align: left;
+  font-weight: 400;
+  padding: 0.15rem 0.75rem 0.15rem 0;
+}
+
+/* Header cells wrap; the DATA stays on one line. Letting "Then lasted another"
+ * hold a single line was enough to push the whole document past 390px, and an
+ * overflowing page clips the nav as well as the table. */
+.rl-cond tbody th,
+.rl-cond tbody td {
+  white-space: nowrap;
+}
+
+.rl-cond thead th {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+.rl-cond tbody th {
+  color: var(--muted);
+}
+
+.rl-cond tbody td {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Cards — the phone layout. */
+.rl-cards {
+  display: flex;
+  flex-direction: column;
+}
+
+.rl-section-card {
+  padding: 0.9rem 0 0.35rem;
+  border-bottom: 1px solid var(--grid);
+}
+
+.rl-card {
+  border-bottom: 1px solid var(--grid);
+}
+
+.rl-card.open {
+  background: var(--card);
+}
+
+.rl-card-head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  width: 100%;
+  background: none;
+  border: 0;
+  padding: 0.6rem 0;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.rl-card-title {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.rl-card-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 0.9rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.rl-card-stats b {
+  color: var(--fg);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.rl-card .rl-detail-grid {
+  padding: 0 0 0.9rem;
+}
+
+@media (max-width: 700px) {
+  .rl-toolbar {
+    justify-content: flex-start;
+  }
+  .rl-detail-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .rl-name-text {
+    overflow-wrap: anywhere;
+  }
+  .rl-search {
+    min-width: 0;
+    flex: 1;
+  }
+  .rl-head {
+    gap: 1rem 1.75rem;
+  }
+  .rl-tiles {
+    gap: 1.25rem;
+  }
+  .rl-detail-grid {
+    grid-template-columns: 1fr;
+  }
 }

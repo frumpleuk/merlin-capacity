@@ -64,6 +64,10 @@ export interface BuiltDay {
   day: DailyRollup;
   names: Record<string, string>;
   groups: Record<string, string>;
+  /** Ride id → { dim: value } for the multi-dimension parks. */
+  dimGroups: Record<string, Record<string, string>>;
+  /** The dimensions this park offers, if it offers any. */
+  dims?: GroupDim[];
 }
 
 export interface DailyRollup {
@@ -90,8 +94,13 @@ export interface DailyStore {
   generated_at: string;
   /** Ride id → display name, so the summary needn't re-read a day file. */
   names: Record<string, string>;
-  /** Ride id → the park's own grouping ("Top Thrills"). */
+  /** Ride id → the park's own single grouping ("Top Thrills"). */
   groups: Record<string, string>;
+  /** Ride id → { dim: value }, for the parks that group on more than one axis
+   *  (Paulton's by thrill AND by area). */
+  dimGroups?: Record<string, Record<string, string>>;
+  /** The dimensions this park offers, when it offers a choice. */
+  dims?: GroupDim[];
   days: Record<string, DailyRollup>;
 }
 
@@ -117,15 +126,25 @@ interface DayRide {
   id: number;
   name: string;
   group?: string;
+  /** Multi-dimension grouping (Paulton's: thrill + area), keyed by dim. */
+  groups?: Record<string, string>;
   named?: boolean;
   open?: number;
   close?: number;
   lines: DayLine[];
 }
 
+/** One grouping dimension a park offers, as the day file declares it. */
+export interface GroupDim {
+  key: string;
+  label: string;
+  by: string;
+}
+
 interface QueueDayFile {
   park: string;
   date: string;
+  groupDims?: GroupDim[];
   /** Projection version. Absent (or 1) means the file predates per-line notices,
    *  so its maintenance and seasonal splits are unknown rather than zero. */
   v?: number;
@@ -333,6 +352,7 @@ export async function buildDay(
   const rides: Record<string, RideDay> = {};
   const names: Record<string, string> = {};
   const groups: Record<string, string> = {};
+  const dimGroups: Record<string, Record<string, string>> = {};
   // Whether the day CAN tell us why a ride was shut, which is a property of how
   // the file was projected — not of whether anything happened to be shut. A day
   // with no notices in it looks identical to a day that couldn't record any,
@@ -354,6 +374,7 @@ export async function buildDay(
     if (scheduled === 0) continue;
     names[String(r.id)] = r.name;
     if (r.group) groups[String(r.id)] = r.group;
+    if (r.groups) dimGroups[String(r.id)] = r.groups;
     const w = walkLine(line, from, to);
     // An unobserved day is recorded as scheduled-but-nothing-known: up + down is
     // 0, so it drops out of every ratio on its own, and the count of such days
@@ -376,7 +397,7 @@ export async function buildDay(
     ...(attendance != null ? { attendance } : {}),
     rides,
   };
-  return { day, names, groups };
+  return { day, names, groups, dimGroups, ...(f.groupDims ? { dims: f.groupDims } : {}) };
 }
 
 /* ── Windowed statistics ──────────────────────────────────────────────────── */
@@ -424,7 +445,12 @@ export interface OutageSurvival {
   resume_within_60: number;
   median_remaining_at_15: number | null;
   median_remaining_at_30: number | null;
-  /** How many past stoppages this is drawn from. */
+  /** How many stoppages actually ran past each threshold — the subset those
+   *  medians are computed over. Without it "10 minutes more" looks like it
+   *  applies to every stoppage rather than to the ones still going. */
+  n_past_15: number;
+  n_past_30: number;
+  /** How many past stoppages the whole thing is drawn from. */
   n: number;
 }
 
@@ -464,6 +490,8 @@ function survival(durations: number[]): OutageSurvival | null {
     resume_within_60: share(60),
     median_remaining_at_15: remainingAfter(15),
     median_remaining_at_30: remainingAfter(30),
+    n_past_15: durations.filter((d) => d > 15).length,
+    n_past_30: durations.filter((d) => d > 30).length,
     n,
   };
 }
@@ -472,6 +500,8 @@ export interface RideStats {
   id: string;
   name: string;
   group?: string;
+  /** Multi-dimension grouping, keyed by dim (see SummaryFile.groupDims). */
+  groups?: Record<string, string>;
   /** Pooled: total up / total scheduled-and-known across the window. Weighted by
    *  day length, unlike a mean of daily rates — an 11-hour Saturday should not
    *  count the same as a 4-hour Tuesday. */
@@ -552,6 +582,8 @@ export interface WindowStats {
 export interface SummaryFile {
   park: string;
   generated_at: string;
+  /** The grouping axes this park offers, when it offers a choice. */
+  groupDims?: GroupDim[];
   /** Inclusive bounds of the underlying daily store. */
   from: string;
   to: string;
@@ -650,6 +682,7 @@ function statsFor(store: DailyStore, dates: string[]): WindowStats {
       id,
       name: store.names[id] ?? `Ride ${id}`,
       ...(store.groups[id] ? { group: store.groups[id] } : {}),
+      ...(store.dimGroups?.[id] ? { groups: store.dimGroups[id] } : {}),
       availability: known > 0 ? up / known : null,
       median_day: median(dayRates),
       p10_day: percentile(dayRates, 10),
@@ -702,6 +735,8 @@ async function readStore(bucket: R2Bucket, park: string): Promise<DailyStore | n
       generated_at: s.generated_at ?? "",
       names: s.names ?? {},
       groups: s.groups ?? {},
+      dimGroups: s.dimGroups ?? {},
+      ...(s.dims ? { dims: s.dims } : {}),
       days: s.days,
     };
   } catch {
@@ -731,6 +766,7 @@ export async function rollUpPark(
     generated_at: "",
     names: {},
     groups: {},
+    dimGroups: {},
     days: {},
   };
 
@@ -754,6 +790,8 @@ export async function rollUpPark(
     store.days[date] = built.day;
     Object.assign(store.names, built.names);
     Object.assign(store.groups, built.groups);
+    Object.assign((store.dimGroups ??= {}), built.dimGroups);
+    if (built.dims) store.dims = built.dims;
     added++;
   }
 
@@ -790,6 +828,7 @@ export async function rollUpPark(
     const summary: SummaryFile = {
       park: park.key,
       generated_at: store.generated_at,
+      ...(store.dims ? { groupDims: store.dims } : {}),
       from: all[0],
       to: all[all.length - 1],
       windows,

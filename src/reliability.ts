@@ -510,10 +510,9 @@ const percentile = (xs: number[], p: number): number | null => {
  *
  * The median does differ, and differs usefully — Paulton's median ride is 97.5%
  * against a mean of 90.8%, because most of its rides are near perfect and two
- * are not. A tile labelled "typical ride" should say what a typical ride did,
- * which is the median. So: median wherever an average is wanted, and the pooled
- * ratio where a TOTAL is wanted (the hero, which is not an average at all — it
- * is the share of all scheduled ride-minutes that were available). */
+ * are not. So: median wherever an average is wanted, and the pooled ratio where
+ * a TOTAL is wanted (the headline, which is not an average at all — it is the
+ * share of all scheduled ride-minutes that were available). */
 
 /**
  * The queue question: it has stopped, do you stay?
@@ -655,7 +654,7 @@ export interface WindowStats {
   days: number;
   /** Pooled across every ride: the park's own availability. */
   availability: number | null;
-  /** The middle ride: half did better, half worse. Restricted to rides present
+  /** Median availability across the park's rides. Restricted to rides present
    *  for most of the window, so one that appeared for a day cannot be it. */
   median_ride: number | null;
   /** Mean of the days' `activity` — how much the park's waits moved, which

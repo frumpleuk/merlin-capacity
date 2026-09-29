@@ -370,7 +370,7 @@ function Detail({ r }: { r: RideStats }) {
           </div>
           {r.days >= MIN_DAYS_FOR_P10 && (
             <div>
-              <dt>Worst day in ten</dt>
+              <dt>10th percentile day</dt>
               <dd>{pct(r.p10_day, 1)}</dd>
             </div>
           )}
@@ -663,7 +663,11 @@ export function UptimePage() {
         </div>
         <div className="rl-tiles">
           <Tile label="Days" value={String(stats.days)} note={`to ${data.to}`} />
-          <Tile label="Typical ride" value={pct(stats.median_ride, 1)} note="the middle ride" />
+          <Tile
+            label="Median ride"
+            value={pct(stats.median_ride, 1)}
+            note={`of ${stats.rides.length} rides`}
+          />
           <Tile
             label="Stoppages a day"
             value={stopsPerDay == null ? "—" : stopsPerDay.toFixed(1)}

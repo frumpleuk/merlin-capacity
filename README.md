@@ -199,7 +199,7 @@ publishes a status that distinguishes them.
   available, which is not an average). The composite was a floored geometric
   mean until measurement showed it landing within 0.1 of the arithmetic mean at
   three parks and 0.2 at the fourth — it was the mean wearing a floor constant.
-  The median differs usefully: Paulton's middle ride is 97.5% against a mean of
+  The median differs usefully: Paulton's median ride is 97.5% against a mean of
   90.8%, because most of its rides are near perfect and two are not.
 - **`outage_survival`** answers the queue question: of this ride's past
   stoppages, the share that cleared within 15, 30 and 60 minutes, plus the

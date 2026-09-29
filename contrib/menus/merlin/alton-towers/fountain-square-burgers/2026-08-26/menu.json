@@ -1,0 +1,70 @@
+{
+  "date": "2026-08-26",
+  "passDiscount": {
+    "offered": true,
+    "percent": 20,
+    "upTo": true,
+    "applies": "food & drink",
+    "photo": "IMG_3398.HEIC",
+    "source": "board photo"
+  },
+  "sections": [
+    {
+      "name": "Fountain Square Burgers",
+      "note": "Card payments only.",
+      "items": [
+        {
+          "name": "Cheeseburger",
+          "description": "Juicy beef patty topped with melted cheese, sliced gherkins, red onion, and crisp lettuce, served in a soft toasted bun with fries.",
+          "price": 1400,
+          "kcal": 759,
+          "photo": "IMG_3398.HEIC"
+        },
+        {
+          "name": "Double Cheeseburger",
+          "description": "Two juicy beef patties stacked with melted cheese, sliced gherkins, red onion, and crisp lettuce, served in a soft toasted bun with fries.",
+          "price": 1600,
+          "kcal": 911,
+          "photo": "IMG_3398.HEIC"
+        },
+        {
+          "name": "Vegan Fillet Burger",
+          "description": "Crispy vegan fillet topped with fresh lettuce, sliced gherkins, red onion, and creamy vegan sauce, served in a soft toasted bun with fries.",
+          "price": 1500,
+          "kcal": 998,
+          "photo": "IMG_3398.HEIC"
+        },
+        {
+          "name": "Add Bacon",
+          "price": 150,
+          "photo": "IMG_3398.HEIC",
+          "addOn": true
+        },
+        {
+          "name": "Dips",
+          "description": "Heinz Sweet Chilli, Heinz Ketchup, Heinz Garlic Mayo, Heinz BBQ",
+          "price": 50,
+          "photo": "IMG_3398.HEIC"
+        },
+        {
+          "name": "Soft Drink Bottles",
+          "description": "Coca-Cola, Coke Zero, Fanta, Sprite",
+          "price": 350,
+          "photo": "IMG_3398.HEIC"
+        },
+        {
+          "name": "Water",
+          "price": 300,
+          "photo": "IMG_3398.HEIC"
+        }
+      ]
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3398.HEIC",
+      "name": "Fountain-Square-Burgers-main-menu",
+      "caption": "Fountain Square Burgers"
+    }
+  ]
+}

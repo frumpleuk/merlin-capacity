@@ -1,0 +1,27 @@
+{
+  "date": "2026-08-26",
+  "sections": [
+    {
+      "name": "Fountain Square Slush Cart",
+      "items": [
+        {
+          "name": "Souvenir Half Yard Cup",
+          "price": 800,
+          "photo": "IMG_3399.HEIC"
+        },
+        {
+          "name": "Slush Refill",
+          "price": 350,
+          "photo": "IMG_3399.HEIC"
+        }
+      ]
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3399.HEIC",
+      "name": "Fountain-Square-Slush-Cart-main-menu",
+      "caption": "Fountain Square Slush Cart"
+    }
+  ]
+}

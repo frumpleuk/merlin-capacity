@@ -1,0 +1,76 @@
+{
+  "date": "2026-09-27",
+  "passDiscount": {
+    "offered": true,
+    "percent": 20,
+    "upTo": true,
+    "applies": "food & drink",
+    "photo": "IMG_3932.HEIC",
+    "source": "board photo"
+  },
+  "sections": [
+    {
+      "name": "Fountain Square Pizza",
+      "items": [
+        {
+          "name": "Margherita Pizza",
+          "description": "Stone baked classic Italian pizza with rich tomato base, fresh mozzarella, and fragrant basil.",
+          "price": 1300,
+          "kcal": 886,
+          "photo": "IMG_3932.HEIC"
+        },
+        {
+          "name": "Veggie Pizza",
+          "description": "Stone baked Italian pizza with sweetcorn, fresh peppers, and red onion on a rich tomato base with melted mozzarella.",
+          "price": 1400,
+          "kcal": 929,
+          "photo": "IMG_3932.HEIC"
+        },
+        {
+          "name": "Pepperoni",
+          "description": "Stone baked Italian pizza with rich tomato base, pepperoni and fresh mozzarella.",
+          "price": 1400,
+          "kcal": 939,
+          "photo": "IMG_3932.HEIC"
+        },
+        {
+          "name": "Add Hot Honey",
+          "price": 150,
+          "addOn": true,
+          "photo": "IMG_3932.HEIC"
+        },
+        {
+          "name": "Ham & Pineapple",
+          "description": "Stone baked Italian pizza with rich tomato base, fresh mozzarella topped with ham and sweet pineapple.",
+          "price": 1400,
+          "kcal": 945,
+          "photo": "IMG_3932.HEIC"
+        },
+        {
+          "name": "Dips",
+          "description": "Heinz Sweet Chilli, Heinz Ketchup, Heinz Garlic Mayo, Heinz BBQ",
+          "price": 50,
+          "photo": "IMG_3932.HEIC"
+        },
+        {
+          "name": "Soft Drink Bottles",
+          "description": "Coca-Cola, Coke Zero, Fanta, Sprite",
+          "price": 350,
+          "photo": "IMG_3932.HEIC"
+        },
+        {
+          "name": "Water",
+          "price": 300,
+          "photo": "IMG_3932.HEIC"
+        }
+      ]
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3932.HEIC",
+      "name": "Fountain-Square-Pizza-main-menu",
+      "caption": "Fountain Square Pizza"
+    }
+  ]
+}

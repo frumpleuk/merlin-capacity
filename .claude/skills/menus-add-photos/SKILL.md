@@ -38,8 +38,10 @@ thin. Do not transcribe here; that is `/menus-transcribe`.
    - One venue can carry several sub-brand boards sharing one till (e.g.
      Loaded Spuds boards at Mutiny Bay Hot Dogs). File them under the venue;
      the transcription gives each board its own section.
-   - Area-themed boards (e.g. "Fountain Square Burgers") belong to the venue
-     that serves them (Tormented Treats), which may not be the nearest pin.
+   - A unit with its own hatch and board is its own venue, even when the app
+     doesn't list it: the Fountain Square Pizza, Loaded Fries and Nachos &
+     Treats trailers each have a folder (with `displayArea` "Fountain
+     Square"). Don't fold them into a nearby app venue.
    - Food for a temporary event goes under
      `_events/<year>-<event-slug>/<vendor>/`. Create `event.json` (name, area,
      start, end, sources); search the web for official dates and cite them,

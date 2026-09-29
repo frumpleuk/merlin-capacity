@@ -80,7 +80,9 @@ function venue(root, dir, slug, extra = {}) {
     lon: poi.lon ?? null,
     note: poi.note ?? null,
     // Gone from the park app: it's history, not somewhere to eat today.
-    goneSince: poi.appMissingSince ?? null,
+    // appMissingSince for an app venue; goneSince by hand for one the app
+    // never listed (a unit seen gone on a visit).
+    goneSince: poi.appMissingSince ?? poi.goneSince ?? null,
     passDiscount,
     items: (menus[0]?.sections ?? []).reduce((n, s) => n + s.items.length, 0),
     from: prices.length ? Math.min(...prices) : null,

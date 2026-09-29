@@ -1,0 +1,82 @@
+{
+  "date": "2026-09-27",
+  "passDiscount": {
+    "offered": true,
+    "percent": 20,
+    "upTo": true,
+    "applies": "food & drink",
+    "photo": "IMG_3931.HEIC",
+    "source": "board photo"
+  },
+  "sections": [
+    {
+      "name": "Fountain Square Loaded Fries",
+      "items": [
+        {
+          "name": "Mexican Loaded Fries",
+          "description": "Crispy fries topped with pulled beef chilli, spicy jalapeños, and a drizzle of smoky chipotle mayo.",
+          "price": 975,
+          "kcal": 1129,
+          "photo": "IMG_3931.HEIC"
+        },
+        {
+          "name": "Tandoori Loaded Fries",
+          "description": "Crispy fries topped with tandoori-spiced chicken, sweetcorn, and a drizzle of tangy mango chutney mayo.",
+          "price": 975,
+          "kcal": 1150,
+          "photo": "IMG_3931.HEIC"
+        },
+        {
+          "name": "Vexico Loaded Fries",
+          "description": "Crispy fries topped with chilli non carne, spicy jalapeños, and vegan chipotle mayo.",
+          "price": 975,
+          "kcal": 1030,
+          "tags": [
+            "v"
+          ],
+          "photo": "IMG_3931.HEIC"
+        },
+        {
+          "name": "Cheese Loaded Fries",
+          "description": "Crispy fries smothered in warm nacho cheese sauce and finished with a sprinkle of fresh chives.",
+          "price": 800,
+          "kcal": 633,
+          "tags": [
+            "v"
+          ],
+          "photo": "IMG_3931.HEIC"
+        },
+        {
+          "name": "Fang-Tastic Loaded Fries",
+          "price": 895,
+          "kcal": 1082,
+          "photo": "IMG_3931.HEIC"
+        },
+        {
+          "name": "Dips",
+          "description": "Heinz Sweet Chilli, Heinz Ketchup, Heinz Garlic Mayo, Heinz BBQ",
+          "price": 50,
+          "photo": "IMG_3931.HEIC"
+        },
+        {
+          "name": "Soft Drink Bottles",
+          "description": "Coca-Cola, Coke Zero, Fanta, Sprite",
+          "price": 350,
+          "photo": "IMG_3931.HEIC"
+        },
+        {
+          "name": "Water",
+          "price": 300,
+          "photo": "IMG_3931.HEIC"
+        }
+      ]
+    }
+  ],
+  "photos": [
+    {
+      "file": "IMG_3931.HEIC",
+      "name": "Fountain-Square-Loaded-Fries-main-menu",
+      "caption": "Fountain Square Loaded Fries"
+    }
+  ]
+}

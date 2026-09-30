@@ -22,11 +22,20 @@ import { useMediaQuery } from "./useMediaQuery";
 const DOW = ["M", "T", "W", "T", "F", "S", "S"];
 const PREBOOK_NOTE =
   "Passholder pre-book only, general sale not open yet. Figures are the day's total capacity.";
-/** Same underlying state on a date that has passed. "Not open yet" is plainly
- *  wrong there: the day-ticket packages fell out of their validity window when
- *  the date went by, leaving only the prebook anchors reporting. */
-const PREBOOK_PAST_NOTE =
-  "General sale has closed for this date; only passholder pre-book figures remain.";
+/* A PAST date carries no pre-book note at all, and this is why.
+ *
+ * `onSale` records whether any non-anchor package returned the date on the last
+ * poll. A date stops being polled once it passes, and by then the day-ticket
+ * package has usually dropped out of its validity window — so almost every past
+ * date ends up flagged pre-book-only whatever actually happened. Alton has 24 of
+ * August's dates and 28 of September's like that; Legoland 31 of August. Peak
+ * summer, plainly on general sale throughout.
+ *
+ * The flag is therefore an artefact of when we last looked, not a fact about the
+ * date, and it said "General sale has closed for this date" — a claim about the
+ * park's commercial decisions that the data cannot support. On a FUTURE date the
+ * same flag is meaningful, because the date is still being polled and the day
+ * ticket genuinely isn't selling it yet. */
 const BUYOUT_NOTE = "Closed to the public, booked out for a private event.";
 const BOOKED_NOTE =
   "Bookings taken against no published allocation, which is how a private event day reports.";
@@ -247,17 +256,14 @@ function CellContent({ d }: { d: DayDetail }) {
           <div className="rc-line rc-avail rc-booked" title={BOOKED_NOTE}>
             📋 🎟️ {d.main.used.toLocaleString()} booked
           </div>
-        ) : d.main.onSale === false ? (
-          // Pre-book only. The figures are real either way — what changes is
-          // why general sale isn't contributing: not open yet, or closed
-          // because the date has passed. Hiding them before the date left the
-          // cell saying "pre-book" while the detail panel for the same day
-          // showed 20%, 3,605 / 18,000.
-          <CellMeter
-            icon={past ? `${availStatus(d.main).emoji} 🎟️` : "🔒 🎟️"}
-            o={d.main}
-            title={past ? PREBOOK_PAST_NOTE : PREBOOK_NOTE}
-          />
+        ) : d.main.onSale === false && !past ? (
+          // Pre-book only, on a date still to come: the day ticket genuinely
+          // isn't selling it yet. The figures are real — hiding them left the
+          // cell saying "pre-book" while the detail for the same day showed
+          // 20%, 3,605 / 18,000 — so it is the normal meter with a lock and the
+          // reason on hover. A PAST date takes the ordinary branch below: see
+          // the note by PREBOOK_NOTE for why the flag means nothing there.
+          <CellMeter icon="🔒 🎟️" o={d.main} title={PREBOOK_NOTE} />
         ) : (
           <CellMeter icon={`${availStatus(d.main).emoji} 🎟️`} o={d.main} />
         ))}
@@ -379,7 +385,7 @@ function AvailRow({
       label={label}
       o={o}
       icon={prebook && !past ? "🔒" : availStatus(o).emoji}
-      note={prebook ? (past ? PREBOOK_PAST_NOTE : PREBOOK_NOTE) : undefined}
+      note={prebook && !past ? PREBOOK_NOTE : undefined}
     />
   );
 }

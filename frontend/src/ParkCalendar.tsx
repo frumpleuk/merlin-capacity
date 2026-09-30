@@ -195,6 +195,8 @@ function CellContent({ d }: { d: DayDetail }) {
   const tp = themepark(d.hours);
   const closed = tp && /^closed$/i.test(tp.hours);
   const extras = extraLocations(d.hours).filter((l) => l.hours && !/^closed$/i.test(l.hours));
+  const nothingOn =
+    !d.special && !tp?.hours && extras.length === 0 && (d.hours?.events?.length ?? 0) === 0;
 
   return (
     <>
@@ -208,6 +210,13 @@ function CellContent({ d }: { d: DayDetail }) {
         <div className="rc-closed">Closed</div>
       ) : tp?.hours ? (
         <div className="rc-line rc-hours">🎢 {tp.hours}</div>
+      ) : nothingOn ? (
+        // No hours published at all. The feed lists the days a park opens, so
+        // this is a closed day — and it reads the same whether the date is
+        // missing from the data entirely or present for some other reason (a
+        // pass restriction, a RAP figure). Thorpe's 16th, 23rd and 30th are the
+        // same Wednesday closure and used to render three different ways.
+        <div className="rc-closed">Closed</div>
       ) : null}
       {extras.map((l) => (
         <div key={l.kind} className="rc-line rc-extra">
@@ -419,15 +428,17 @@ function MonthGrid({
   for (let day = 1; day <= daysInMonth; day++) {
     const iso = `${mk}-${String(day).padStart(2, "0")}`;
     const isToday = iso === today;
-    const d = details.get(iso);
-    if (!d) {
-      cells.push(
-        <div key={iso} className={"rc-cell empty" + (isToday ? " today" : "")}>
-          <div className="rc-daynum">{day}</div>
-        </div>,
-      );
-      continue;
-    }
+    // A day nothing landed on is a day the park was shut: its hours feed lists
+    // the days it opens. It still gets a real cell — bordered, clickable, with
+    // the same sheet as any other day — because the `empty` styling is what the
+    // leading pad cells use, so a closed day looked like a day outside the
+    // month and couldn't be opened. Thorpe's 30 September against its 23rd,
+    // which is shut just the same but happened to be in the map already.
+    // A date the map has no entry for is a day the park was shut: its hours
+    // feed lists the days it opens. It still gets a real cell — the `empty`
+    // styling belongs to the leading pad cells, so a closed day looked like a
+    // day outside the month and couldn't be opened at all.
+    const d = details.get(iso) ?? { iso };
     const accent = d.rap ? colour(d.rap.available, d.rap.capacity) : undefined;
     cells.push(
       <div
@@ -660,7 +671,9 @@ export function ParkCalendar({
   // A season product names itself in its own file, so the calendar doesn't need
   // to know which park has one.
   const seasonLabel = season?.label ?? "Season";
-  const selDay = selected ? details.get(selected) ?? null : null;
+  // A closed day has no entry, but it is still selectable and its sheet still
+  // says "Closed" — so synthesise the bare day rather than refusing to open it.
+  const selDay = selected ? details.get(selected) ?? { iso: selected } : null;
 
   return (
     <>

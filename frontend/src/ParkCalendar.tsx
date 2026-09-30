@@ -310,7 +310,11 @@ function DayBody({ d, seasonLabel }: { d: DayDetail; seasonLabel: string }) {
           </div>
         ))
       ) : events.length === 0 && !d.special ? (
-        <div className="rc-body-loc rc-muted">No opening hours</div>
+        // The park's hours feed lists the days it opens, so no hours means the
+        // park is shut — which is what a reader wants told, rather than a
+        // statement about our data. Same words the agenda uses for a day the
+        // feed omits entirely, so one situation reads one way.
+        <div className="rc-body-loc rc-muted">Closed</div>
       ) : null}
       {d.special && (
         <div className="rc-body-event rc-buyout">
@@ -502,11 +506,25 @@ function MonthNav({
 function Agenda({
   details,
   seasonLabel,
+  month,
 }: {
   details: Map<string, DayDetail>;
   seasonLabel: string;
+  month: string;
 }) {
-  const isos = [...details.keys()].sort();
+  // Every day of the month, not just the ones with data. A park's hours feed
+  // lists the days it opens, so a closed day is simply absent — Thorpe has no
+  // entry for 13, 16, 23 or 30 September — and an agenda built from the keys
+  // skipped straight from the 29th to October with nothing to say the 30th
+  // existed. The desktop grid already draws those as empty cells; this is the
+  // same day, laid out for a phone.
+  const daysInMonth = new Date(
+    Date.UTC(Number(month.slice(0, 4)), Number(month.slice(5, 7)), 0),
+  ).getUTCDate();
+  const isos = Array.from(
+    { length: daysInMonth },
+    (_, i) => `${month}-${String(i + 1).padStart(2, "0")}`,
+  );
   const today = new Date().toISOString().slice(0, 10);
   const agendaRef = useRef<HTMLDivElement | null>(null);
   const todayRef = useRef<HTMLDivElement | null>(null);
@@ -528,9 +546,24 @@ function Agenda({
   return (
     <div className="rc-agenda" ref={agendaRef}>
       {isos.map((iso) => {
-        const d = details.get(iso)!;
-        const event = d.event ? getEventIcon(d.event) : null;
+        const d = details.get(iso);
         const isToday = iso === today;
+        if (!d) {
+          return (
+            <div
+              className={"rc-agenda-day rc-agenda-shut" + (isToday ? " today" : "")}
+              key={iso}
+              ref={isToday ? todayRef : undefined}
+            >
+              <div className="rc-agenda-date">
+                {longDate(iso)}
+                {isToday && <span className="rc-agenda-today"> · Today</span>}
+              </div>
+              <div className="rc-agenda-closed">Closed</div>
+            </div>
+          );
+        }
+        const event = d.event ? getEventIcon(d.event) : null;
         return (
           <div
             className={"rc-agenda-day" + (isToday ? " today" : "")}
@@ -650,7 +683,7 @@ export function ParkCalendar({
           onSelect={(iso) => setSelected((prev) => (prev === iso ? null : iso))}
         />
       ) : (
-        <Agenda details={details} seasonLabel={seasonLabel} />
+        <Agenda details={details} seasonLabel={seasonLabel} month={month} />
       )}
       {isDesktop && selDay && (
         <DaySheet

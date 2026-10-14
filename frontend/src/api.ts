@@ -162,6 +162,9 @@ export interface SpecialDaysFile {
   park: string;
   generated_at: string;
   days: Record<string, SpecialDay>;
+  /** Future dates the main pool still shows but the park's booking page no
+   *  longer sells. Labels the day; the figures stay. */
+  off_public_sale?: string[];
 }
 
 /** A ticket package name, tidied into a day label: the packaging ("1 Day Pass -",
@@ -183,7 +186,9 @@ export async function loadSpecialDays(park: string): Promise<SpecialDaysFile | n
   const r = await fetch(`/calendar/${park}/special.json`, { cache: "no-store" });
   if (!r.ok) return null;
   const f = (await r.json()) as SpecialDaysFile;
-  return f.days && Object.keys(f.days).length > 0 ? f : null;
+  return Object.keys(f.days ?? {}).length > 0 || (f.off_public_sale?.length ?? 0) > 0
+    ? f
+    : null;
 }
 
 /* ── Merlin Annual Pass entry restrictions ─────────────────────────────────────

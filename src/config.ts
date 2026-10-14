@@ -298,13 +298,25 @@ export interface ExchangeConfig {
  */
 export const EVENT_CLASSES = new Set(["Passholder Day"]);
 
+/**
+ * The catalog keyword the park's own Book Now button launches
+ * (`data-accesso-params="SnapWizard,package,SnapWizardAdmission,<id>"`), the
+ * same at all four Merlin parks. The packages carrying it are what the public
+ * booking page sells, as distinct from promo and partner packages on the same
+ * pool. Legoland 2026-11-22 is the case: every one of these reads capacity 0,
+ * while "Online Saver" 104488, Kellogg's and a Sky offer still report the full
+ * 14,500 pool, which is all the main product's merged query can see.
+ */
+export const FRONT_DOOR_KEYWORD = "SnapWizardAdmission";
+
 /** Partner-day package names, matched against the exchange catalog. Deliberately
  *  narrow and intent-revealing: these sit among hundreds of ordinary trade and
  *  discount packages on the same events, so a class or event filter doesn't
  *  separate them (only Thorpe has a dedicated partner event). Across all four
- *  parks this selects 10 packages and nothing else. */
+ *  parks this selects 11 packages and nothing else; "takeover" is Legoland's
+ *  "SKY VIP Festive Takeover" (merchant 704), which sells only 2026-11-22. */
 export const PARTNER_DAY_NAME =
-  /member day|blue light|john lewis|partnership|defence discount/i;
+  /member day|blue light|john lewis|partnership|defence discount|takeover|buyout/i;
 
 /** Exchange package classes that are add-ons, not park admission. A partner-day
  *  NAME can appear on one ("Adventure Golf - Blue Light Card"), and those must

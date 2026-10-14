@@ -40,7 +40,10 @@ function specialForMonth(
   const days = Object.fromEntries(
     Object.entries(file.days).filter(([iso]) => iso.startsWith(month)),
   );
-  return Object.keys(days).length ? { ...file, days } : null;
+  const off_public_sale = file.off_public_sale?.filter((iso) => iso.startsWith(month));
+  return Object.keys(days).length || off_public_sale?.length
+    ? { ...file, days, off_public_sale }
+    : null;
 }
 
 /** Same reasoning as specialForMonth: the restriction calendar covers ~15

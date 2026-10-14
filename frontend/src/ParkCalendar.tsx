@@ -37,6 +37,8 @@ const PREBOOK_NOTE =
  * same flag is meaningful, because the date is still being polled and the day
  * ticket genuinely isn't selling it yet. */
 const BUYOUT_NOTE = "Closed to the public, booked out for a private event.";
+const OFF_SALE_NOTE =
+  "The park's booking page doesn't sell this date. Figures are the day's total capacity.";
 const BOOKED_NOTE =
   "Bookings taken against no published allocation, which is how a private event day reports.";
 const KIND_ICON: Record<string, string> = {
@@ -65,6 +67,9 @@ export interface DayDetail {
   /** The theme park runs this day but is closed to the public — a buyout, named
    *  by the only package that sells it. */
   special?: SpecialDay;
+  /** The main pool still reports this date but the park's booking page doesn't
+   *  sell it. Future dates only (see src/special-days.ts). */
+  offPublicSale?: boolean;
   /** Merlin Annual Pass levels refused entry on this date, already phrased for
    *  display (see restrictionSummary). Merlin parks only. */
   restricted?: RestrictionSummary;
@@ -171,6 +176,11 @@ export function mergeDetails(
   // no public theme-park hours and no public availability, so without this the
   // day renders as an empty cell despite the park running all day.
   for (const [iso, o] of Object.entries(special?.days ?? {})) get(iso).special = o;
+  // Annotates a ticket figure, so it never creates a date.
+  for (const iso of special?.off_public_sale ?? []) {
+    const d = map.get(iso);
+    if (d) d.offPublicSale = true;
+  }
   // Only on dates the other files already mention: an anomaly annotates a day,
   // it doesn't create one.
   for (const [iso, a] of Object.entries(anomalies)) {
@@ -247,7 +257,9 @@ function CellContent({ d }: { d: DayDetail }) {
       )}
       {/* The private event's own allocation. It isn't the park pool, so it only
           appears on these days and never alongside the public ticket line. */}
-      {d.special && d.special.capacity > 0 && (
+      {/* Not on an off-sale day: there the special reads the same pool as the
+          ticket line below, so it would repeat it. */}
+      {d.special && d.special.capacity > 0 && !d.offPublicSale && (
         <CellMeter icon={`${availStatus(d.special).emoji} 🎟️`} o={d.special} />
       )}
       {/* ⭐, not the 🎟️ of the day ticket: an event night sells both, and two
@@ -265,6 +277,17 @@ function CellContent({ d }: { d: DayDetail }) {
           <div className="rc-line rc-avail rc-booked" title={BOOKED_NOTE}>
             📋 🎟️ {d.main.used.toLocaleString()} booked
           </div>
+        ) : d.offPublicSale && !past ? (
+          // Figures kept: how busy a closed-to-the-public day is still counts.
+          // A named day already says it's closed to the public.
+          <>
+            {!d.special && (
+              <div className="rc-line rc-anomaly" title={OFF_SALE_NOTE}>
+                🔒 Not on public sale
+              </div>
+            )}
+            <CellMeter icon="🔒 🎟️" o={d.main} title={OFF_SALE_NOTE} />
+          </>
         ) : d.main.onSale === false && !past ? (
           // Pre-book only, on a date still to come: the day ticket genuinely
           // isn't selling it yet. The figures are real — hiding them left the
@@ -331,7 +354,7 @@ function DayBody({ d, seasonLabel }: { d: DayDetail; seasonLabel: string }) {
           <div className="rc-prebook-note">{BUYOUT_NOTE}</div>
         </div>
       )}
-      {d.special && d.special.capacity > 0 && (
+      {d.special && d.special.capacity > 0 && !d.offPublicSale && (
         <AllocList>
           <AvailRow label="Event tickets" o={d.special} />
         </AllocList>
@@ -368,7 +391,7 @@ function DayBody({ d, seasonLabel }: { d: DayDetail; seasonLabel: string }) {
       )}
       <AllocList>
         {hasAllocation(d.main) && !showSeason(d) && (
-          <AvailRow label="Tickets" o={d.main} past={past} />
+          <AvailRow label="Tickets" o={d.main} past={past} offSale={d.offPublicSale} />
         )}
         {showSeason(d) && <AvailRow label={seasonLabel} o={d.season!} past={past} />}
         {d.events?.map((e) => (
@@ -386,20 +409,23 @@ function AvailRow({
   label,
   o,
   past,
+  offSale,
 }: {
   label: string;
   o: Allocation & { onSale?: boolean };
   past?: boolean;
+  offSale?: boolean;
 }) {
   if (isUnallocated(o)) return <AllocMeter label={label} o={o} icon="📋" note={BOOKED_NOTE} />;
-  const prebook = o.onSale === false;
+  const note = past
+    ? undefined
+    : offSale
+      ? `Not on public sale. ${OFF_SALE_NOTE}`
+      : o.onSale === false
+        ? PREBOOK_NOTE
+        : undefined;
   return (
-    <AllocMeter
-      label={label}
-      o={o}
-      icon={prebook && !past ? "🔒" : availStatus(o).emoji}
-      note={prebook && !past ? PREBOOK_NOTE : undefined}
-    />
+    <AllocMeter label={label} o={o} icon={note ? "🔒" : availStatus(o).emoji} note={note} />
   );
 }
 

@@ -11,7 +11,12 @@ import {
 } from "./config";
 import { derivePool } from "./anomalies";
 import { readSnapshot, readSpecialDays, upsertSpecialDays } from "./db";
-import { readExclusives, resolvePackages, type ExclusivePackage } from "./discover";
+import {
+  readExclusives,
+  readFrontDoor,
+  resolvePackages,
+  type ExclusivePackage,
+} from "./discover";
 import { writeSeasonNames } from "./season-names";
 import type { DayObs, Env } from "./types";
 
@@ -41,6 +46,10 @@ export interface SpecialDaysFile {
   park: string;
   generated_at: string;
   days: Record<string, SpecialDay>;
+  /** Future dates the main product still reports a pool for, but the park's
+   *  booking page has closed (see fetchFrontDoorClosed). The figures stay on the
+   *  calendar; this only labels them. */
+  off_public_sale?: string[];
 }
 
 /** Package names that describe HOW a ticket was bought, not WHAT the day is —
@@ -59,6 +68,8 @@ interface Candidate {
   /** From a class that IS an event, so it may name a date the prebook anchors
    *  also report (see EVENT_CLASSES and test 1 below). */
   eventClass?: boolean;
+  /** An exchange partner-day package (see PARTNER_DAY_NAME), named for the day. */
+  partner?: boolean;
 }
 
 /**
@@ -70,8 +81,11 @@ interface Candidate {
  */
 export function pickLabel(candidates: Candidate[]): Candidate | undefined {
   return [...candidates].sort((a, b) => {
-    // A class that IS the event names the day better than anything else can.
-    if (!!a.eventClass !== !!b.eventClass) return a.eventClass ? -1 : 1;
+    // A class that IS the event names the day better than anything else can,
+    // then a partner-day package: Legoland 2026-11-22 is sold by three public
+    // "1 Day Ticket + R&R" packages as well as "SKY VIP Festive Takeover".
+    const rank = (c: Candidate) => (c.eventClass ? 0 : c.partner ? 1 : 2);
+    if (rank(a) !== rank(b)) return rank(a) - rank(b);
     const av = VARIANT.test(a.name) ? 1 : 0;
     const bv = VARIANT.test(b.name) ? 1 : 0;
     if (av !== bv) return av - bv;
@@ -113,16 +127,19 @@ interface QueryContext {
   origin: string;
 }
 
-async function fetchPackageDates(
+/** POST one GetMerchantPackageEventDates query and return its days, or null when
+ *  the request fails or the API answers anything but OK. FAILED just means every
+ *  package is out of its validity window for the whole range, which is routine
+ *  for a seasonal ticket rather than an error worth logging. */
+async function queryDates(
   ctx: QueryContext,
   product: ProductConfig,
-  pkg: ExclusivePackage,
-  eventId: string,
+  P: unknown[],
   start: string,
   end: string,
-): Promise<Record<string, Candidate>> {
+): Promise<ApiDay[] | null> {
   const body = {
-    P: [{ CT: [{ id: pkg.ct, qty: 1 }], event_id: eventId, id: pkg.id }],
+    P,
     extra_movie: product.extra_movie,
     identify_customer_types: 1,
     min_capacity: 0,
@@ -159,22 +176,32 @@ async function fetchPackageDates(
       body: JSON.stringify(body),
     });
   } catch {
-    return {};
+    return null;
   }
-  if (!resp.ok) return {};
+  if (!resp.ok) return null;
   let data: { SERVICE?: { status?: string; D?: ApiDay | ApiDay[] } };
   try {
     data = (await resp.json()) as typeof data;
   } catch {
-    return {};
+    return null;
   }
   const svc = data.SERVICE ?? {};
-  // FAILED just means this package is out of its validity window for the whole
-  // range — routine for a seasonal ticket, not an error worth logging.
-  if (svc.status !== "OK") return {};
+  if (svc.status !== "OK") return null;
   // `D` is a bare object when there's one date, an array when there are several.
   const raw = svc.D;
-  const days = Array.isArray(raw) ? raw : raw ? [raw] : [];
+  return Array.isArray(raw) ? raw : raw ? [raw] : [];
+}
+
+async function fetchPackageDates(
+  ctx: QueryContext,
+  product: ProductConfig,
+  pkg: ExclusivePackage,
+  eventId: string,
+  start: string,
+  end: string,
+): Promise<Record<string, Candidate>> {
+  const days =
+(await queryDates(ctx, product, [selector(pkg, eventId)], start, end)) ?? [];
 
   const out: Record<string, Candidate> = {};
   for (const d of days) {
@@ -460,7 +487,7 @@ export async function refreshSpecialDays(
   const end = ymd(now + HORIZON_DAYS * 86_400_000);
   const publicCtx: QueryContext = { merchantId: park.merchantId, origin: park.origin };
 
-  const [publicSnapshot, hours, results, exchangeResults] = await Promise.all([
+  const [publicSnapshot, hours, results, exchangeResults, frontDoorClosed] = await Promise.all([
     readSnapshot(env.BUCKET, park.key, product.key),
     readHoursCoverage(env.BUCKET, park.key, monthsBetween(start, end)),
     Promise.all(
@@ -476,6 +503,9 @@ export async function refreshSpecialDays(
       park.merchantId,
       now,
     ),
+    readFrontDoor(env.BUCKET, park, product).then((pkgs) =>
+      fetchFrontDoorClosed(publicCtx, product, pkgs, eventId, start, end),
+    ),
   ]);
   // Every public package failing means the API is down or the cached ids have
   // rotated. Keep the last good file rather than publishing an empty one — but
@@ -487,9 +517,21 @@ export async function refreshSpecialDays(
     return 0;
   }
 
+  // Only where the main product still shows a pool, and from tomorrow: today's
+  // advance sales close during the day, which zeroes the booking page as a
+  // matter of routine. A failed query keeps the last answer.
+  const offPublicSale =
+    frontDoorClosed === null
+      ? (await readOffPublicSale(env.BUCKET, park.key)).filter((d) => d > start)
+      : frontDoorClosed.filter((d) => d > start && (publicSnapshot[d]?.capacity ?? 0) > 0);
+
   // Dates the public product sells. The main poll records a date only when a
-  // package returned it, so presence here IS public availability.
-  const publicDates = new Set(Object.keys(publicSnapshot));
+  // package returned it, so presence here is public availability, except where
+  // the booking page has closed the date and a promo package still reports the
+  // pool (see fetchFrontDoorClosed).
+  const publicDates = new Set(
+    Object.keys(publicSnapshot).filter((d) => !offPublicSale.includes(d)),
+  );
 
   const byDate = new Map<string, Candidate[]>();
   const add = (date: string, cand: Candidate) => {
@@ -516,7 +558,7 @@ export async function refreshSpecialDays(
     for (const [date, cand] of Object.entries(res)) {
       if (publicDates.has(date)) continue;
       if (hours.themeparkOpen.has(date)) continue;
-      add(date, cand);
+      add(date, { ...cand, partner: true });
     }
   }
 
@@ -601,11 +643,22 @@ export async function refreshSpecialDays(
     park: park.key,
     generated_at: at,
     days: merged,
+    ...(offPublicSale.length ? { off_public_sale: offPublicSale } : {}),
   };
   await env.BUCKET.put(`calendar/${park.key}/special.json`, JSON.stringify(body), {
     httpMetadata: { contentType: "application/json" },
   });
   return Object.keys(days).length;
+}
+
+async function readOffPublicSale(bucket: R2Bucket, park: string): Promise<string[]> {
+  try {
+    const obj = await bucket.get(`calendar/${park}/special.json`);
+    if (!obj) return [];
+    return ((await obj.json()) as SpecialDaysFile).off_public_sale ?? [];
+  } catch {
+    return [];
+  }
 }
 
 const toDay = (r: {
@@ -724,58 +777,38 @@ async function fetchMergedCapacity(
   P: unknown[],
   date: string,
 ): Promise<number | undefined> {
-  const body = {
-    P,
-    extra_movie: product.extra_movie,
-    identify_customer_types: 1,
-    min_capacity: 0,
-    version: "2",
-    start_date: date,
-    end_date: date,
-    display_zero_capacity: "1",
-    include_times: product.include_times,
-    request_type: "GetMerchantPackageEventDates",
-    _version: "6.31.6",
-    application_id: "1500",
-    merchant_id: ctx.merchantId,
-    machine_id: "500",
-    agent_id: "5",
-    user_id: "5",
-    device: "desktop",
-    language: "en-gb",
-  };
-  let resp: Response;
-  try {
-    resp = await fetch(HOST, {
-      method: "POST",
-      headers: {
-        accept: "application/json, text/plain, */*",
-        "com-accessopassport-app-id": "1500",
-        "com-accessopassport-client": "accesso26",
-        "com-accessopassport-language": "en-gb",
-        "com-accessopassport-merchant-id": ctx.merchantId,
-        "content-type": "application/json;charset=UTF-8",
-        origin: ctx.origin,
-        referer: `${ctx.origin}/`,
-        "user-agent": USER_AGENT,
-      },
-      body: JSON.stringify(body),
-    });
-  } catch {
-    return undefined;
-  }
-  if (!resp.ok) return undefined;
-  try {
-    const data = (await resp.json()) as { SERVICE?: { status?: string; D?: ApiDay | ApiDay[] } };
-    const svc = data.SERVICE ?? {};
-    if (svc.status !== "OK") return undefined;
-    const raw = svc.D;
-    const days = Array.isArray(raw) ? raw : raw ? [raw] : [];
-    const t = days.find((d) => d?.date === date)?.T;
-    return t ? Number(t.capacity ?? 0) : undefined;
-  } catch {
-    return undefined;
-  }
+  const days = await queryDates(ctx, product, P, date, date);
+  const t = days?.find((d) => d?.date === date)?.T;
+  return t ? Number(t.capacity ?? 0) : undefined;
+}
+
+/**
+ * The dates the park's booking page has closed: its packages, queried together,
+ * return the date with capacity 0. Absence proves nothing — Alton's and
+ * Chessington's Christmas runs sell through other packages and never appear in
+ * this query — so only an explicit 0 counts. Null when the query fails, so the
+ * caller can keep its last answer.
+ */
+async function fetchFrontDoorClosed(
+  ctx: QueryContext,
+  product: ProductConfig,
+  pkgs: ExclusivePackage[],
+  eventId: string,
+  start: string,
+  end: string,
+): Promise<string[] | null> {
+  if (pkgs.length === 0) return null;
+  const days = await queryDates(
+    ctx,
+    product,
+    pkgs.map((p) => selector(p, eventId)),
+    start,
+    end,
+  );
+  if (!days) return null;
+  return days
+    .filter((d) => d?.date && d.T && Number(d.T.capacity ?? 0) === 0)
+    .map((d) => d.date!);
 }
 
 

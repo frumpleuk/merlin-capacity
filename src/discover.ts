@@ -1,6 +1,7 @@
 import {
   bootstrapUrl,
   EVENT_CLASSES,
+  FRONT_DOOR_KEYWORD,
   USER_AGENT,
   type DiscoverSpec,
   type ParkConfig,
@@ -16,6 +17,8 @@ interface CatalogPackage {
   id: string;
   name?: string;
   package_class?: string;
+  /** Comma-separated catalog keywords, e.g. "LLWOneDayTickets,SnapWizardAdmission". */
+  keyword?: string;
   E?: OneOrMany<{ id?: string }>;
   CT?: OneOrMany<{ id?: string }>;
 }
@@ -41,8 +44,10 @@ interface Bootstrap {
  *  5: also collect EVENT_CLASSES packages (Legoland's "Passholder Day"), which
  *     name a closed-to-the-public day the anchors would otherwise mask.
  *  6: fold in season names learned and verified by the daily job, so a season
- *     selling under a new package name no longer needs a code change. */
-const FILTER_VERSION = 6;
+ *     selling under a new package name no longer needs a code change.
+ *  7: also collect `front_door` — the packages the park's booking page sells
+ *     (see FRONT_DOOR_KEYWORD). */
+const FILTER_VERSION = 7;
 
 /** One day-ticket package on the product's event that ISN'T the public day
  *  ticket — a promo variant, a student ticket, a seasonal-event ticket, or the
@@ -72,6 +77,8 @@ interface CachedList {
   filter_version?: number;
   /** The event's non-public day-ticket packages (see ExclusivePackage). */
   exclusives?: ExclusivePackage[];
+  /** The packages the park's own booking page sells (see FRONT_DOOR_KEYWORD). */
+  front_door?: ExclusivePackage[];
   /** The learned season names this list was built with. A change must force a
    *  rebuild, or the new name sits behind the catalog ETag until accesso next
    *  edits it. */
@@ -141,6 +148,7 @@ export async function refreshPackages(
     etag: fresh.etag,
     filter_version: FILTER_VERSION,
     exclusives: fresh.exclusives,
+    front_door: fresh.frontDoor,
     season_names: learned,
   };
   await bucket.put(key, JSON.stringify(body), {
@@ -161,6 +169,7 @@ async function readCache(bucket: R2Bucket, key: string): Promise<CachedList | nu
       etag: d.etag ?? null,
       filter_version: d.filter_version,
       exclusives: d.exclusives ?? [],
+      front_door: d.front_door ?? [],
       season_names: d.season_names ?? [],
     };
   } catch {
@@ -174,6 +183,7 @@ interface CatalogFetch extends ResolvedPackages {
   etag?: string | null;
   notModified?: boolean;
   exclusives: ExclusivePackage[];
+  frontDoor: ExclusivePackage[];
 }
 
 /** Fetch the bootstrap catalog and build the P[] for the matching packages, plus
@@ -185,7 +195,7 @@ async function fetchCatalogPackages(
   prevEtag?: string | null,
   learnedNames: string[] = [],
 ): Promise<CatalogFetch> {
-  const empty: CatalogFetch = { P: [], anchorIds: [], exclusives: [] };
+  const empty: CatalogFetch = { P: [], anchorIds: [], exclusives: [], frontDoor: [] };
   let resp: Response;
   try {
     resp = await fetch(bootstrapUrl(park.bootstrapSlug ?? ""), {
@@ -201,7 +211,7 @@ async function fetchCatalogPackages(
   } catch {
     return empty;
   }
-  if (resp.status === 304) return { P: [], anchorIds: [], exclusives: [], notModified: true };
+  if (resp.status === 304) return { ...empty, notModified: true };
   if (!resp.ok) return empty;
   const etag = resp.headers.get("etag");
 
@@ -226,6 +236,7 @@ async function fetchCatalogPackages(
   const P: unknown[] = [];
   const anchorIds: string[] = [];
   const exclusives: ExclusivePackage[] = [];
+  const frontDoor: ExclusivePackage[] = [];
   const seen = new Set<string>();
   for (const p of packages) {
     if (!asArray(p.E).some((e) => e.id === spec.event_id)) continue;
@@ -259,6 +270,11 @@ async function fetchCatalogPackages(
       exclusives.push({ id: p.id, ct, name, eventClass: true });
     }
 
+    const keywords = (p.keyword ?? "").split(",").map((k) => k.trim());
+    if (keywords.includes(FRONT_DOOR_KEYWORD) && ct) {
+      frontDoor.push({ id: p.id, ct, name });
+    }
+
     // A day ticket takes precedence: if a package is both, it's a public sale.
     if (!isDayTicket && !isAnchor) continue;
 
@@ -267,7 +283,7 @@ async function fetchCatalogPackages(
     P.push({ CT: [{ id: ct, qty: 1 }], event_id: spec.event_id, id: p.id });
     if (isAnchor && !isDayTicket) anchorIds.push(p.id);
   }
-  return { P, anchorIds, exclusives, etag };
+  return { P, anchorIds, exclusives, frontDoor, etag };
 }
 
 /** The cached exclusive day-ticket packages for a product, or [] when discovery
@@ -280,4 +296,16 @@ export async function readExclusives(
   if (!product.discover) return [];
   const cached = await readCache(bucket, cacheKey(park.key, product.key));
   return cached?.exclusives ?? [];
+}
+
+/** The cached booking-page packages for a product (see FRONT_DOOR_KEYWORD), or []
+ *  when discovery hasn't run since they were added. */
+export async function readFrontDoor(
+  bucket: R2Bucket,
+  park: ParkConfig,
+  product: ProductConfig,
+): Promise<ExclusivePackage[]> {
+  if (!product.discover) return [];
+  const cached = await readCache(bucket, cacheKey(park.key, product.key));
+  return cached?.front_door ?? [];
 }

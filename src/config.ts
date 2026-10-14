@@ -318,6 +318,14 @@ export const FRONT_DOOR_KEYWORD = "SnapWizardAdmission";
 export const PARTNER_DAY_NAME =
   /member day|blue light|john lewis|partnership|defence discount|takeover|buyout/i;
 
+/** Partner-day words matched against an exchange package's catalog KEYWORD, for
+ *  a buyout whose name doesn't say so: "SKY VIP Festive Takeover" carries
+ *  "Daily Tickets - SKY Buyout - Christmas". Narrower than PARTNER_DAY_NAME and
+ *  only on the park's main day-ticket event, because keywords are noisier:
+ *  "Partnerships15" tags Legoland's "15% off Merlin tickets", and "AO - Sky
+ *  Buyout 26" a Father Christmas add-on on another event. */
+export const PARTNER_DAY_KEYWORD = /takeover|buyout/i;
+
 /** Exchange package classes that are add-ons, not park admission. A partner-day
  *  NAME can appear on one ("Adventure Golf - Blue Light Card"), and those must
  *  not name a date. */

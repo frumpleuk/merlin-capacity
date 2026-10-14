@@ -3,6 +3,7 @@ import {
   exchangeBootstrapUrl,
   HORIZON_DAYS,
   HOST,
+  PARTNER_DAY_KEYWORD,
   PARTNER_DAY_NAME,
   USER_AGENT,
   type ExchangeConfig,
@@ -230,6 +231,7 @@ interface ExchangePackage {
   id: string;
   name?: string;
   package_class?: string;
+  keyword?: string;
   /** Display strapline. Often names the partner where the package name doesn't
    *  ("Member Days - November" has "Exclusive for Blue Light Card and Defence
    *  Discount Service"), so it's the better label when it does. See partnerLabel. */
@@ -293,6 +295,7 @@ interface PartnerPackage extends ExclusivePackage {
 async function fetchPartnerPackages(
   ex: ExchangeConfig,
   merchantIds: string[],
+  mainEvent?: string,
 ): Promise<PartnerPackage[]> {
   const perMerchant = await Promise.all(
     merchantIds.map(async (merchantId) => {
@@ -324,14 +327,16 @@ async function fetchPartnerPackages(
       const out: PartnerPackage[] = [];
       for (const p of packages) {
         const name = (p.name ?? "").trim();
-        if (!PARTNER_DAY_NAME.test(name)) continue;
-        if (EXCHANGE_ADDON_CLASSES.has(p.package_class ?? "")) continue;
         const ct = asArray(p.CT)
           .map((c) => c.id)
           .find((id): id is string => !!id);
         const event = asArray(p.E)
           .map((e) => e.id)
           .find((id): id is string => !!id);
+        const byKeyword =
+          !!mainEvent && event === mainEvent && PARTNER_DAY_KEYWORD.test(p.keyword ?? "");
+        if (!PARTNER_DAY_NAME.test(name) && !byKeyword) continue;
+        if (EXCHANGE_ADDON_CLASSES.has(p.package_class ?? "")) continue;
         if (ct && event) {
           out.push({ id: p.id, ct, name: partnerLabel(p), event, merchantId });
         }
@@ -404,7 +409,8 @@ async function fetchExchangeDates(
   if (!ex) return [];
   // Configured ids first, plus anything a previous rescan healed to.
   const known = [...new Set([...ex.merchantIds, ...(await readExchangeIds(bucket, parkKey))])];
-  let packages = await fetchPartnerPackages(ex, known);
+  const mainEvent = product.discover?.event_id;
+  let packages = await fetchPartnerPackages(ex, known, mainEvent);
   if (packages.length === 0) {
     // Every configured merchant has stopped yielding partner packages. Either
     // the park retired them or the ids moved; rescan the neighbourhood of the
@@ -414,7 +420,7 @@ async function fetchExchangeDates(
     const healed = await rescanExchangeIds(ex, publicMerchantId);
     if (healed.length === 0) return [];
     await writeExchangeIds(bucket, parkKey, healed, now);
-    packages = await fetchPartnerPackages(ex, healed);
+    packages = await fetchPartnerPackages(ex, healed, mainEvent);
     if (packages.length === 0) return [];
   }
   const out = await Promise.all(
@@ -526,12 +532,15 @@ export async function refreshSpecialDays(
       : frontDoorClosed.filter((d) => d > start && (publicSnapshot[d]?.capacity ?? 0) > 0);
 
   // Dates the public product sells. The main poll records a date only when a
-  // package returned it, so presence here is public availability, except where
-  // the booking page has closed the date and a promo package still reports the
-  // pool (see fetchFrontDoorClosed).
-  const publicDates = new Set(
-    Object.keys(publicSnapshot).filter((d) => !offPublicSale.includes(d)),
-  );
+  // package returned it, so presence here is public availability.
+  const publicDates = new Set(Object.keys(publicSnapshot));
+  // For partner days, less the dates the booking page has closed while a promo
+  // package still reports the pool (see fetchFrontDoorClosed). Public packages
+  // still face the full set: on such a date they are the promos and hotel
+  // bundles that weren't switched off ("1 Day Ticket + R&R Regular - Peak" on
+  // Legoland 2026-11-22), so they can't name it, and with no partner package
+  // the day stays "Not on public sale".
+  const partnerBlocked = new Set([...publicDates].filter((d) => !offPublicSale.includes(d)));
 
   const byDate = new Map<string, Candidate[]>();
   const add = (date: string, cand: Candidate) => {
@@ -556,7 +565,7 @@ export async function refreshSpecialDays(
   // published calendar by design.
   for (const res of exchangeResults) {
     for (const [date, cand] of Object.entries(res)) {
-      if (publicDates.has(date)) continue;
+      if (partnerBlocked.has(date)) continue;
       if (hours.themeparkOpen.has(date)) continue;
       add(date, { ...cand, partner: true });
     }

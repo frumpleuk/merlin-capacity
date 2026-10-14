@@ -129,9 +129,9 @@ interface QueryContext {
 }
 
 /** POST one GetMerchantPackageEventDates query and return its days, or null when
- *  the request fails or the API answers anything but OK. FAILED just means every
- *  package is out of its validity window for the whole range, which is routine
- *  for a seasonal ticket rather than an error worth logging. */
+ *  the request fails or the API answers anything unexpected. FAILED is not a
+ *  failure: it means every package is out of its validity window for the whole
+ *  range, routine for a seasonal ticket, so it returns no days. */
 async function queryDates(
   ctx: QueryContext,
   product: ProductConfig,
@@ -187,6 +187,7 @@ async function queryDates(
     return null;
   }
   const svc = data.SERVICE ?? {};
+  if (svc.status === "FAILED") return [];
   if (svc.status !== "OK") return null;
   // `D` is a bare object when there's one date, an array when there are several.
   const raw = svc.D;
@@ -200,9 +201,9 @@ async function fetchPackageDates(
   eventId: string,
   start: string,
   end: string,
-): Promise<Record<string, Candidate>> {
-  const days =
-(await queryDates(ctx, product, [selector(pkg, eventId)], start, end)) ?? [];
+): Promise<Record<string, Candidate> | null> {
+  const days = await queryDates(ctx, product, [selector(pkg, eventId)], start, end);
+  if (!days) return null;
 
   const out: Record<string, Candidate> = {};
   for (const d of days) {
@@ -405,7 +406,7 @@ async function fetchExchangeDates(
   parkKey: string,
   publicMerchantId: string,
   now: number,
-): Promise<Record<string, Candidate>[]> {
+): Promise<(Record<string, Candidate> | null)[]> {
   if (!ex) return [];
   // Configured ids first, plus anything a previous rescan healed to.
   const known = [...new Set([...ex.merchantIds, ...(await readExchangeIds(bucket, parkKey))])];
@@ -435,7 +436,8 @@ async function fetchExchangeDates(
       ),
     ),
   );
-  return out.filter((r) => Object.keys(r).length > 0);
+  // Failures stay in as null so the caller knows the run was incomplete.
+  return out.filter((r) => r === null || Object.keys(r).length > 0);
 }
 
 /** Every 'YYYY-MM' from `start`'s month through `end`'s, inclusive. */
@@ -493,7 +495,7 @@ export async function refreshSpecialDays(
   const end = ymd(now + HORIZON_DAYS * 86_400_000);
   const publicCtx: QueryContext = { merchantId: park.merchantId, origin: park.origin };
 
-  const [publicSnapshot, hours, results, exchangeResults, frontDoorClosed] = await Promise.all([
+  const [publicSnapshot, hours, rawResults, rawExchange, frontDoorClosed] = await Promise.all([
     readSnapshot(env.BUCKET, park.key, product.key),
     readHoursCoverage(env.BUCKET, park.key, monthsBetween(start, end)),
     Promise.all(
@@ -513,6 +515,13 @@ export async function refreshSpecialDays(
       fetchFrontDoorClosed(publicCtx, product, pkgs, eventId, start, end),
     ),
   ]);
+  // A package whose query errored (not one that is merely out of window) may
+  // have been the one naming a future day, so an incomplete run keeps the
+  // recorded history for future dates as well (see the merge below).
+  const incomplete =
+    rawResults.some((r) => r === null) || rawExchange.some((r) => r === null);
+  const results = rawResults.map((r) => r ?? {});
+  const exchangeResults = rawExchange.filter((r): r is Record<string, Candidate> => r !== null);
   // Every public package failing means the API is down or the cached ids have
   // rotated. Keep the last good file rather than publishing an empty one — but
   // not when the exchange still answered, since that's real data to publish.
@@ -623,10 +632,16 @@ export async function refreshSpecialDays(
     /* ignore */
   }
 
-  // Record what we can see NOW, then serve that merged with everything ever
-  // recorded. A package is pruned from the catalog once its event passes, so a
-  // day only detectable today would otherwise disappear from the calendar
-  // tomorrow along with the evidence for it.
+  // Record what we can see NOW, then serve that merged with what was recorded
+  // for days already reached. A package is pruned from the catalog once its
+  // event passes, so a day only detectable today would otherwise disappear from
+  // the calendar tomorrow along with the evidence for it.
+  //
+  // History stops at today, unless a package query errored this run. A future
+  // day is otherwise whatever this run detects: Legoland
+  // 2026-11-08 stopped qualifying on 2026-09-28 when the park published hours
+  // for it, and the history row kept serving that morning's 5,357 taken against
+  // a live 7,038.
   const at = new Date(now).toISOString();
   try {
     await upsertSpecialDays(
@@ -643,7 +658,8 @@ export async function refreshSpecialDays(
   let merged = days;
   try {
     const history = await readSpecialDays(env.DB, park.key);
-    merged = { ...Object.fromEntries(history.map((r) => [r.event_date, toDay(r)])), ...days };
+    const reached = incomplete ? history : history.filter((r) => r.event_date <= start);
+    merged = { ...Object.fromEntries(reached.map((r) => [r.event_date, toDay(r)])), ...days };
   } catch {
     /* serve what we detected this run */
   }
@@ -753,7 +769,7 @@ async function deriveSeasonNames(
       fetchPackageDates(ctx, product, pkg, eventId, probe, probe),
       fetchMergedCapacity(ctx, product, [...P, selector(pkg, eventId)], probe),
     ]);
-    const want = alone[probe]?.capacity;
+    const want = alone?.[probe]?.capacity;
     if (!want) continue;
     if (merged === want) names.push(pkg.name);
     else {

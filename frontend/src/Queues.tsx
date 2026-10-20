@@ -848,12 +848,28 @@ function RideRow({
             (rel ? `. ${uptimeTitle(rel)}` : "")
           }
         >
-          {up == null ? "—" : `${Math.round(up * 100)}% up`}
+          {up == null ? "—" : `${Math.round(up * 100)}%`}
         </span>
         <span className="q-median" title="Median posted wait, per minute of running time">
-          {med != null ? `med ${med}` : "—"}
+          {med != null ? (
+            <>
+              <span className="q-lbl">med </span>
+              {med}m
+            </>
+          ) : (
+            "—"
+          )}
         </span>
-        <span className="q-peak">{peak > 0 ? `peak ${peak}` : "—"}</span>
+        <span className="q-peak">
+          {peak > 0 ? (
+            <>
+              <span className="q-lbl">peak </span>
+              {peak}m
+            </>
+          ) : (
+            "—"
+          )}
+        </span>
       </button>
       {open && <RideChart ride={ride} domain={domain} date={date} asOf={asOf} />}
     </div>

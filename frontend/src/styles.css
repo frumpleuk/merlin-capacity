@@ -736,6 +736,11 @@ main.with-bar {
   white-space: nowrap;
 }
 
+/* Desktop column headers name these values; the phone layout shows the label. */
+.q-lbl {
+  display: none;
+}
+
 /* Mobile: the ride name gets its own full-width line (never truncated); the
    sparkline sits underneath with the current wait + peak at its right end. */
 @media (max-width: 600px) {
@@ -792,6 +797,10 @@ main.with-bar {
   }
   .q-peak {
     grid-area: peak;
+  }
+  /* No column headers on a phone, so the values carry their own labels. */
+  .q-lbl {
+    display: inline;
   }
   .q-closed {
     text-align: right;
@@ -2299,7 +2308,8 @@ h3.fd-area-head {
   color: var(--muted);
   font-variant-numeric: tabular-nums;
   margin-top: 0.1rem;
-  white-space: nowrap;
+  /* Wraps to two lines rather than spill into the Uptime column. */
+  white-space: normal;
 }
 
 /* Sortable headers, filter box, and the two small charts. */

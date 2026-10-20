@@ -608,7 +608,7 @@ main.with-bar {
   display: grid;
   /* The chart is the point of the row, so it gets the largest share. The name
      column was 246px against its 369px at 1240 wide; it needs far less. */
-  grid-template-columns: minmax(0, 0.95fr) minmax(120px, 2fr) 54px 54px 52px 58px;
+  grid-template-columns: minmax(0, 0.95fr) minmax(120px, 2fr) 96px 54px 52px 58px;
   align-items: center;
   gap: 10px;
 }
@@ -2308,8 +2308,7 @@ h3.fd-area-head {
   color: var(--muted);
   font-variant-numeric: tabular-nums;
   margin-top: 0.1rem;
-  /* Wraps to two lines rather than spill into the Uptime column. */
-  white-space: normal;
+  white-space: nowrap;
 }
 
 /* Sortable headers, filter box, and the two small charts. */

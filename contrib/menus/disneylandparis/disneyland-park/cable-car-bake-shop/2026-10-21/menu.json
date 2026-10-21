@@ -1,0 +1,79 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR00_cable-car-bake-shop.pdf",
+    "sha256": "0405656a722ad2639e1ef00f233efedc50d71cf3f3d2dc7247c200eb93287058",
+    "stated": "September 2026"
+  },
+  "sections": [
+    {
+      "name": "Our Speciality Treats",
+      "items": [
+        { "name": "Sweet Break", "description": "Presidio Muffin, dark chocolate chunks and a hot or a cold drink", "price": 700 }
+      ]
+    },
+    {
+      "name": "Kiri® Savoury Treats",
+      "items": [
+        { "name": "Focaccia", "description": "Turkey and Kiri® cheese", "price": 800 },
+        { "name": "Sandwich Mickey", "description": "Pretzel bread, ham, emmental cheese and Kiri®", "price": 1050 },
+        { "name": "Sandwich Mickey aux Légumes et Fromage", "description": "Pretzel bread, marinated shredded vegetables, emmental cheese and Kiri®", "price": 1050, "tags": ["v"] }
+      ]
+    },
+    {
+      "name": "Kiri® Sweet Treats",
+      "items": [
+        { "name": "Mystery Mousse Treat", "description": "Breton shortbread with a pomegranate confit filling, Kiri® mousse", "price": 550 },
+        { "name": "Presidio Muffin", "description": "With dark chocolate chunks", "price": 430 },
+        { "name": "Cable Car Carrot Cake", "price": 430 },
+        { "name": "Market St. Cupcake", "description": "Vanilla flavour cupcake with a coffee insert, Kiri® cream, coffee crumble and cocoa powder", "price": 550 },
+        { "name": "Golden Gate Cheesecake", "price": 600 }
+      ]
+    },
+    {
+      "name": "Sweet Treats",
+      "items": [
+        { "name": "Croissant", "price": 230 },
+        { "name": "Pain au Chocolat", "price": 230 }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        { "name": "Espresso 100% Arabica", "price": 330 },
+        { "name": "Coffee 100% Arabica", "price": 350 },
+        { "name": "Double Espresso 100% Arabica", "price": 380 },
+        { "name": "Coffee with milk", "price": 400 },
+        { "name": "Cappuccino", "price": 400 },
+        { "name": "Hot chocolate", "price": 420 },
+        { "name": "Tea, herbal tea", "price": 350 }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        { "name": "Soft drink 50 cl", "description": "Coca-Cola, Fanta, Sprite, FuzeTea, Tropico", "price": 420 },
+        { "name": "Orange juice or apple juice 23,5 cl", "price": 380 },
+        { "name": "Vittel 50 cl", "price": 350 },
+        { "name": "S.Pellegrino 50 cl", "price": 380 },
+        { "name": "Semi-skimmed milk 20 cl", "price": 250 }
+      ]
+    },
+    {
+      "name": "Beer",
+      "items": [
+        { "name": "1664® Premium 33 cl", "price": 630, "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Souvenirs",
+      "items": [
+        { "name": "Mickey or Minnie Straw", "sizes": [ { "label": "Straw only", "price": 600 }, { "label": "With a cold drink", "price": 700 } ] },
+        { "name": "Tumbler", "sizes": [ { "label": "Tumbler only", "price": 1500 }, { "label": "With a cold drink", "price": 1700 } ] },
+        { "name": "Mug", "sizes": [ { "label": "Mug only", "price": 1500 }, { "label": "With a hot drink", "price": 1700 } ] }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR10_walts-american-restaurant.pdf",
+    "sha256": "384a06439255380728c0a9978d25082ab69d0321e94d75f745c1e8f3e19ed6f6",
+    "stated": "October 2025"
+  },
+  "sections": [
+    {
+      "name": "Meal Plans",
+      "items": [
+        {
+          "name": "Menu Walt's",
+          "description": "Starter, Main Course and Dessert. Starters: Seasonal velouté, Chicken Pot Pie (herbs salad and beetroot jus), Walt's salad (romaine lettuce, celery, apple and salted pecan praline, pickled grapes, tangy yoghurt dressing and blue cheese cream) or Red cabbage duo (vegan; raw with citrus and cooked with sesame oil, pickled and served in a cabbage broth, tofu foam, pumpkin seeds and white sesame). Main Courses: Chili con carne (tortilla chips, cheddar and Isigny crème fraîche, red onion, coriander, white rice and kidney beans), Free-range chicken glazed with barbecue sauce and spices (herb polenta, mixed mushrooms, seasonal vegetables and poultry jus with cranberries), Mac & Cheddar Cheese (pasta, smoked cheddar cheese sauce, pastrami and crispy onions), Pan-seared sea bass fillet (black Venere rice risotto with broad beans and peas, braised red cabbage and apples with cider vinegar, Espelette pepper red pepper coulis, polenta crisps) or Stuffed cabbage with marinated pea-soy-sunflower protein shredded filling (vegan; mashed potato and sweet potato duo, sautéed mushrooms and barbecue sauce). Desserts: Lemon Meringue Tart, Pineapple Upside-Down Cake and vanilla-infused Isigny crème fraîche with mascarpone, Flower Street Sundae, Chocolate sweet-potato brookie (vegan; with peanuts and hazelnuts, peanut butter crémeux, cookie ice cream and caramelised almonds) or Mascarpone mille-feuille with praline and caramelised almonds",
+          "price": 5500
+        },
+        {
+          "name": "Flight of 3 wines (3 x 8 cl)",
+          "description": "Suggested with Menu Walt's. IGP Cité de Carcassonne - Gérard Bertrand - Chardonnay or Merlot; AOC Saint Emilion - Fortin Plaisance, AOP Languedoc - Art de vivre - Gérard Bertrand - Rosé or USA: Francis Coppola - Diamond Collection - Sauvignon blanc; Edition Spéciale Disneyland® Paris - Champagne Pierre Mignon Grande Réserve - brut 10 cl or Chili: D.O. Valle del Rapel - Late harvest - Santa Carolina - Sauvignon blanc",
+          "price": 2000,
+          "addOn": true,
+          "tags": ["alcohol"]
+        },
+        {
+          "name": "Steamboat Willie Menu",
+          "description": "For children ages 3 to 11. Starter, Main Course, Dessert and Drink. Seasonal vegetable velouté, carrot cake (Kiri® cream, beetroot, beetroot and carrot juices, fried onions) or soy pancake with vegetables (avocado crémeux and quail egg, cocktail sauce); chicken supreme (carrot purée, chicken jus with barbecue sauce), smoked cheddar mac & cheese (crispy onion) or pan-seared sea bass (potato mousseline, courgette and carrot pearls, red pepper coulis); almond milk smoothie with seasonal fruits, vanilla ice-cream and strawberry sorbet sundae (vanilla Isigny cream and seasonal fruits) or passion fruit, milk chocolate and coconut biscuit entremet dessert with mango coulis; Vittel® 33 cl, orange juice, apple juice 25 cl or milk 20 cl. Or Disney Check Menu: velouté, chicken supreme with carrot purée and chicken jus with barbecue sauce, almond milk smoothie with seasonal fruits, Vittel® 33 cl. A different cold drink (25 cl) may replace similar item on request",
+          "price": 3000,
+          "tags": ["kids"]
+        },
+        {
+          "name": "Birthday dessert to share",
+          "description": "Order before your meal",
+          "sizes": [
+            { "label": "2 or more people", "price": 2500 },
+            { "label": "6 or more people", "price": 4500 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "White Wine",
+      "items": [
+        { "name": "AOC Bordeaux - Agneau Blanc - Baron Philippe de Rothschild", "sizes": [{ "label": "75 cl", "price": 3400 }], "tags": ["alcohol"] },
+        { "name": "AOC Chablis - La Pierrelée - La Chablisienne", "sizes": [{ "label": "37,5 cl", "price": 2400 }, { "label": "75 cl", "price": 4300 }], "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Red Wine",
+      "items": [
+        { "name": "AOC Crozes-Hermitage - La Rollande - Brotte", "sizes": [{ "label": "75 cl", "price": 4300 }], "tags": ["alcohol"] },
+        { "name": "AOC Saint Emilion - Fortin Plaisance", "sizes": [{ "label": "37,5 cl", "price": 2400 }, { "label": "75 cl", "price": 3800 }], "tags": ["alcohol"] },
+        { "name": "U.S.A.: Francis Coppola - Diamond Collection - Zinfandel", "sizes": [{ "label": "75 cl", "price": 4600 }], "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Rosé Wine",
+      "items": [
+        { "name": "AOP Côtes de Provence - Minuty - Prestige rosé", "sizes": [{ "label": "50 cl", "price": 2700 }, { "label": "75 cl", "price": 3800 }], "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        { "name": "Coca-Cola Original, Coca-Cola Zéro Sucres, Coca-Cola Cherry 33 cl", "price": 600 },
+        { "name": "Fanta Orange, Sprite 25 cl", "price": 600 },
+        { "name": "FuzeTea Peach Black Tea 25 cl", "price": 600 },
+        { "name": "Tonic 20 cl", "price": 500 },
+        { "name": "Orange juice, apple juice 25 cl", "price": 600 },
+        { "name": "Fresh orange juice 20 cl", "price": 500 },
+        { "name": "Perrier® 33 cl", "price": 500 }
+      ]
+    },
+    {
+      "name": "Mineral Waters",
+      "items": [
+        { "name": "Vittel®", "sizes": [{ "label": "50 cl", "price": 500 }, { "label": "100 cl", "price": 600 }] },
+        { "name": "S.Pellegrino®", "sizes": [{ "label": "50 cl", "price": 550 }, { "label": "100 cl", "price": 650 }] }
+      ]
+    }
+  ]
+}

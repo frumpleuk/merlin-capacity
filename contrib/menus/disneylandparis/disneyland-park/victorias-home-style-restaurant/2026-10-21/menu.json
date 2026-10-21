@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR09_victorias-home-style-restaurant.pdf",
+    "sha256": "59f25b5d175543540e6088eae9debae1949ffdd08191fffce24b465cec37bbb8",
+    "stated": "September 2026"
+  },
+  "sections": [
+    {
+      "name": "Halloween",
+      "items": [
+        { "name": "Ursula's Curse Cake", "description": "Chocolate mousse, cherry morello creamy centre and chocolate biscuit", "price": 2000 },
+        { "name": "Hades' Underworld Cake", "description": "Cocoa sponge cake, blackcurrant and blueberry confit, vanilla mousse and coloured mousse", "price": 750 },
+        { "name": "Halloween beer 33 cl", "description": "Seasonal beer with hints of blueberries", "price": 850, "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Waffles and Cold Brew",
+      "items": [
+        { "name": "The Mickey's waffle, Nutella, whipped cream and meringues", "price": 900 },
+        { "name": "The Mickey's waffle, salted butter caramel sauce, whipped cream and meringues", "price": 900 },
+        { "name": "Original Cold Brew Coffee", "description": "Milk, coffee flavour cold brew concentrate and cane syrup", "price": 700 },
+        { "name": "Customizable Cold Brew coffee", "description": "Milk, coffee flavour cold brew concentrate, whipped cream, brownie pieces, and a choice of syrup and sauce: Flavoured syrup: Caramel or Popcorn or Speculoos; Sauces: Dark chocolate or Flavoured caramel", "price": 800 }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "note": "33 cl",
+      "items": [
+        { "name": "Perrier®", "price": 430 },
+        { "name": "Jus d'orange ou jus de pomme 25 cl", "price": 500 },
+        { "name": "Coca-Cola Original", "price": 550 },
+        { "name": "Coca-Cola Zéro Sucres", "price": 550 },
+        { "name": "Coca-Cola Cherry", "price": 550 },
+        { "name": "Fanta Orange, Sprite 25 cl", "price": 550 }
+      ]
+    },
+    {
+      "name": "Mineral Waters",
+      "note": "50 cl",
+      "items": [
+        { "name": "Vittel®", "price": 450 },
+        { "name": "S.Pellegrino®", "price": 480 }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "note": "Lavazza",
+      "items": [
+        { "name": "Espresso 100% Arabica", "price": 350 },
+        { "name": "Coffee", "price": 400 },
+        { "name": "Double espresso 100% Arabica", "price": 450 },
+        { "name": "Coffee with milk", "price": 480 },
+        { "name": "Cappuccino", "price": 480 },
+        { "name": "Vienna coffee", "price": 480 },
+        { "name": "Hot chocolate", "price": 500 },
+        { "name": "Vienna hot chocolate", "price": 520 },
+        { "name": "Tea, herbal tea", "price": 400 }
+      ]
+    },
+    {
+      "name": "Beers",
+      "items": [
+        { "name": "Grimbergen d'Abbaye blanche", "description": "Bottled 33 cl", "price": 750, "tags": ["alcohol"] },
+        { "name": "1664® Premium", "description": "Draught", "sizes": [{ "label": "25 cl", "price": 600 }, { "label": "50 cl", "price": 880 }], "tags": ["alcohol"] },
+        { "name": "Grimbergen d'Abbaye blonde", "description": "Draught", "sizes": [{ "label": "25 cl", "price": 650 }, { "label": "50 cl", "price": 900 }], "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Wine Glass",
+      "note": "15 cl",
+      "items": [
+        { "name": "Cuvée Disneyland® Paris - AOP La Clape Château L'Hospitalet - Bio - Demeter", "description": "White", "price": 850, "tags": ["alcohol"] },
+        { "name": "AOP Côtes de Provence - Minuty Prestige rosé", "description": "Rosé", "price": 800, "tags": ["alcohol"] },
+        { "name": "Cuvée Disneyland® Paris - AOP La Clape Château L'Hospitalet - Bio - Demeter", "description": "Red", "price": 850, "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Souvenirs",
+      "items": [
+        { "name": "Collector Flute with Champagne Brut 15 cl", "price": 2000, "tags": ["alcohol"] }
+      ]
+    }
+  ]
+}

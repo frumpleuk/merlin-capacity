@@ -1,0 +1,12 @@
+{
+  "id": "P2DR05",
+  "name": "Chez Berlioz",
+  "category": "Food & Drink > On-the-go",
+  "area": "Adventure Way",
+  "lat": 48.866209,
+  "lon": 2.774238,
+  "menuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P2DR05_chez-berlioz.pdf",
+  "priceBand": "€",
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

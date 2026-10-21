@@ -1,0 +1,99 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1NR07_toad-hall-restaurant.pdf",
+    "sha256": "dac2aa57f9776b2107a449024f4c4f5865d317a2573f5adb073430d2ee3591e5",
+    "stated": "September 2026"
+  },
+  "sections": [
+    {
+      "name": "Mains",
+      "items": [
+        { "name": "Fish & chips", "description": "Tartar or ketchup sauce. Possibility to replace the fries by a salad", "price": 1200 },
+        { "name": "Plant based nuggets & chips x9", "description": "Beyond Meat. Tartar-style vegan sauce. Possibility to replace the fries by a salad", "price": 1200, "tags": ["vg"] },
+        { "name": "Vegan salad", "description": "Quinoa, bulgur, barley, lentils, soybeans, chickpea-coco-curry balls, marinated sun-dried tomatoes and cashew nuts", "price": 1200, "tags": ["vg"] },
+        { "name": "Chicken salad", "description": "Lettuce, chicken, hard-boiled egg, Grana Padano cheese and marinated sun-dried tomatoes", "price": 1200 }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        { "name": "Lay's® Crisps - Salt & Vinegar 45 g", "price": 380 },
+        { "name": "Fries", "price": 450 },
+        { "name": "Roman-style squid fritters x4", "price": 600 }
+      ]
+    },
+    {
+      "name": "Kids' Meal",
+      "note": "For children ages 3 to 11",
+      "items": [
+        { "name": "Petit fish & chips", "description": "Tartare or ketchup sauce. Possibility to replace the fries by a salad", "price": 800, "tags": ["kids"] },
+        { "name": "Pom'Potes® organic apple puree (no added sugar)", "price": 230 },
+        { "name": "Flavoured sweet drinking yoghurt", "price": 230 },
+        { "name": "Organic mini Babybel® cheese", "description": "1 piece for lunch, 1 piece for snacking", "price": 230 }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        { "name": "Crunchy Spell", "description": "Creamy vanilla entremet, cocoa ganache and hazelnut centre", "price": 550 },
+        { "name": "Le Cupcake de Mr Toad", "description": "Lemon cream and meringue cupcake", "price": 400 },
+        { "name": "Yoghurt with a fruit layer", "price": 300 },
+        { "name": "Chocolate and pecan nuts brownie", "price": 380 },
+        { "name": "Fruit bag", "price": 400, "tags": ["vg"] },
+        { "name": "Apple pie", "price": 400 },
+        { "name": "Solero", "description": "Strawberry Twist - Vanilla ice cream", "price": 350 },
+        { "name": "Super Twister®", "description": "Orange, Strawberry, Lemon flavours", "price": 350 },
+        { "name": "Magnum®", "description": "Almond", "price": 400 },
+        { "name": "Magnum® Vegan", "description": "Almond", "price": 400, "tags": ["vg"] },
+        { "name": "Cornetto® Soft", "description": "Stracciatella & Caramel Sauce", "price": 430 },
+        { "name": "Glace Mickey", "description": "Vanilla flavour", "price": 450 }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        { "name": "Soft drink 50 cl", "description": "Coca-Cola, Coca-Cola Zero, Fanta, Sprite, FuzeTea, Tropico", "price": 420 },
+        { "name": "Orange juice or apple juice 23,5 cl", "price": 420 },
+        { "name": "Vittel 50 cl", "price": 350 },
+        { "name": "S.Pellegrino 50 cl", "price": 380 },
+        { "name": "Semi-skimmed milk 20 cl", "price": 250 }
+      ]
+    },
+    {
+      "name": "Draught Beer",
+      "items": [
+        { "name": "1664® Premium", "sizes": [ { "label": "25 cl", "price": 500 }, { "label": "50 cl", "price": 750 } ], "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Wine",
+      "items": [
+        { "name": "White wine 18,7 cl: IGP Pays d'Oc - Gio blanc", "price": 800, "tags": ["alcohol"] },
+        { "name": "Rosé wine 18,7 cl: IGP Pays d'Oc - Gris blanc", "price": 800, "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        { "name": "Espresso 100% Arabica", "price": 330 },
+        { "name": "Coffee 100% Arabica", "price": 350 },
+        { "name": "Double espresso 100% Arabica", "price": 380 },
+        { "name": "Coffee with milk", "price": 400 },
+        { "name": "Cappuccino", "price": 400 },
+        { "name": "Hot chocolate", "price": 420 },
+        { "name": "Tea, herbal tea", "price": 350 }
+      ]
+    },
+    {
+      "name": "Souvenirs",
+      "items": [
+        { "name": "Mickey or Minnie Straw", "sizes": [ { "label": "Straw only", "price": 600 }, { "label": "With a cold drink", "price": 700 } ] },
+        { "name": "Tumbler", "sizes": [ { "label": "Tumbler only", "price": 1500 }, { "label": "With a cold drink", "price": 1700 } ] },
+        { "name": "Mug", "sizes": [ { "label": "Mug only", "price": 1500 }, { "label": "With a hot drink", "price": 1700 } ] }
+      ]
+    }
+  ]
+}

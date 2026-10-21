@@ -1,0 +1,141 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1AR07_restaurant-hakuna-matata.pdf",
+    "sha256": "60922f6bba8cf3853bd5013e5b8b8396ade8bbc53bc846c51cf4bf457f9c5b3a",
+    "stated": "September 2026"
+  },
+  "sections": [
+    {
+      "name": "Menus",
+      "note": "With Sweet potatoes fries or \"Curve\" fries and Cold drink 50 cl (except coconut water)",
+      "items": [
+        { "name": "Fried spicy chicken stripes", "description": "With spicy vegetables in sauce", "price": 1750 },
+        { "name": "Pulled beef sandwich", "description": "Spiced pulled beef, lettuce, candied onions, tomato, coriander and American mustard", "price": 1800 }
+      ]
+    },
+    {
+      "name": "Menus",
+      "note": "With Broken rice and Cold drink 50 cl (except coconut water)",
+      "items": [
+        { "name": "Chakalaka", "description": "Tomatoes, sweet peppers, white beans and chickpeas", "price": 1650, "tags": ["vg"] },
+        { "name": "Yassa Chicken", "description": "Chicken stewed with onions and lemon", "price": 1650 }
+      ]
+    },
+    {
+      "name": "Kids' Menu",
+      "note": "For children ages 3 to 11",
+      "items": [
+        {
+          "name": "Kids' Menu",
+          "description": "Small pulled beef sandwich or crispy chicken bites; sweet potatoes fries, \"Curve\" fries or cherry tomatoes; organic Mini Babybel® cheese, flavoured sweet drinking yoghurt, Pom'Potes® organic apple puree (no added sugar) or Magnum® Mini Almond; Juicy Water (apple-strawberry) 20 cl, milk 20 cl or Vittel® 33 cl. Other cold drink (25 cl) may replace similar item on request",
+          "price": 1050,
+          "tags": ["kids"]
+        }
+      ]
+    },
+    {
+      "name": "Sweet Break",
+      "items": [
+        { "name": "Sweet Break", "description": "Double Mickey Cake Almond-chocolate or Magnum® Mini Almond + hot drink or cold drink", "price": 700 }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        { "name": "Cupcake de la savane", "description": "Bananabread cupcake stuffed with a chocolate flavour buttered cream", "price": 500 },
+        { "name": "Plantain banana with coconut and Nutella®", "price": 400 },
+        { "name": "Double Mickey Cake", "description": "Almond-chocolate", "price": 380 },
+        { "name": "Mickey Dessert", "description": "Chocolate mousse and sponge cake", "price": 500 },
+        { "name": "Yoghurt with a fruit layer", "price": 300 },
+        { "name": "Fruit bag", "price": 400, "tags": ["vg"] }
+      ]
+    },
+    {
+      "name": "A la carte",
+      "items": [
+        { "name": "Hakuna salad", "description": "Lettuce, pineapple, beans, cucumber, sweet potatoes, tomatoes, sweet peppers, red onions, grilled peanuts", "price": 700, "tags": ["vg"] },
+        { "name": "Hakuna chicken salad", "description": "Chicken strips, lettuce, pineapple, beans, cucumber, sweet potatoes, tomatoes, sweet peppers, red onions, grilled peanuts", "price": 750 },
+        { "name": "Chakalaka", "price": 1400, "tags": ["vg"] },
+        { "name": "Fried chicken stripes", "price": 1300 },
+        { "name": "Yassa Chicken", "price": 1400 },
+        { "name": "Pulled beef sandwich", "price": 1300 },
+        { "name": "Sweet potatoes fries", "price": 450 },
+        { "name": "\"Curve\" fries", "price": 450 },
+        { "name": "Broken rice", "price": 350 }
+      ]
+    },
+    {
+      "name": "Ice Creams",
+      "items": [
+        { "name": "Magnum® La Pistache", "price": 400 },
+        { "name": "Magnum® Almond", "price": 400 },
+        { "name": "Magnum® Almond Vegan", "price": 400, "tags": ["vg"] },
+        { "name": "Twister Frrreeze", "description": "Raspberry, orange and peach flavours", "price": 350 },
+        { "name": "Cornetto® Soft", "description": "Stracciatella & caramel sauce", "price": 430 },
+        { "name": "Mickey Ice Cream Bar", "description": "Vanilla flavour", "price": 450 },
+        { "name": "Solero Strawberry Twist", "description": "Vanilla ice cream", "price": 350 }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        { "name": "Soft drink 50 cl", "description": "Coca-Cola range, Fanta, Sprite, Fuze Tea, Tropico", "price": 420 },
+        { "name": "Orange juice or apple juice 23,5 cl", "price": 380 },
+        { "name": "Vittel® 50 cl", "price": 350 },
+        { "name": "S.Pellegrino 50 cl", "price": 380 },
+        { "name": "Semi-skimmed milk 20 cl", "price": 250 },
+        { "name": "Coconut water 50 cl", "price": 480 }
+      ]
+    },
+    {
+      "name": "Draught Beer",
+      "items": [
+        {
+          "name": "1664® Premium",
+          "sizes": [
+            { "label": "25 cl", "price": 500 },
+            { "label": "50 cl", "price": 750 }
+          ],
+          "tags": ["alcohol"]
+        }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        { "name": "Espresso 100% Arabica", "price": 330 },
+        { "name": "Double Espresso 100% Arabica", "price": 380 },
+        { "name": "Coffee 100% Arabica", "price": 350 },
+        { "name": "Coffee with milk", "price": 400 },
+        { "name": "Cappuccino", "price": 400 },
+        { "name": "Hot chocolate", "price": 420 },
+        { "name": "Tea, herbal tea", "price": 350 }
+      ]
+    },
+    {
+      "name": "Slush",
+      "items": [
+        {
+          "name": "Slush",
+          "description": "Strawberry or apple flavour",
+          "sizes": [
+            { "label": "Small cup 25 cl", "price": 350 },
+            { "label": "Large cup 50 cl", "price": 600 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Souvenirs",
+      "items": [
+        { "name": "Tumbler", "sizes": [{ "label": "Tumbler only", "price": 1500 }, { "label": "With a cold drink or a slush", "price": 1700 }] },
+        { "name": "Mug Simba", "sizes": [{ "label": "Mug only", "price": 1500 }, { "label": "With a hot drink", "price": 1700 }] },
+        { "name": "Mickey or Minnie straw", "sizes": [{ "label": "Straw only", "price": 600 }, { "label": "With a cold drink", "price": 700 }] },
+        { "name": "Simba sipper", "sizes": [{ "label": "Sipper only", "price": 1500 }, { "label": "With a cold drink", "price": 1700 }] }
+      ]
+    }
+  ]
+}

@@ -18,3 +18,4 @@ contrib/menus/**/*.[Pp][Nn][Gg]
 contrib/menus/**/*.[Mm][PpOo][4Vv]
 !contrib/menus/**/web/*.jpg
 contrib/menus/.tpj-plan.json
+contrib/menus/.dlp-plan.json

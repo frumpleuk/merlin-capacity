@@ -1,0 +1,12 @@
+{
+  "id": "P1MR06",
+  "name": "Market House Deli",
+  "category": "Food & Drink > Quick Service Restaurant",
+  "area": "Main Street U.S.A.",
+  "lat": 48.871782,
+  "lon": 2.778021,
+  "menuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR06_market-house-deli.pdf",
+  "priceBand": "€",
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

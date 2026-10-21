@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2BR04_speciality-ice-cream.pdf",
+    "sha256": "9998803a1d3bcec84a9bed92fbfa9ae43a45bd406758db1c6899056f85bac820",
+    "stated": "November 2022"
+  },
+  "sections": [
+    {
+      "name": "Ice Cream",
+      "items": [
+        { "name": "Space Ranger's Ice Cream", "description": "Vanilla Flavour Ice Cream", "price": 400 }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        { "name": "Coca-Cola Original (50 cl)", "price": 400 },
+        { "name": "Coca-Cola Sans Sucres (50 cl)", "price": 400 },
+        { "name": "Vittel® (50 cl)", "price": 330 }
+      ]
+    }
+  ]
+}

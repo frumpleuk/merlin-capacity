@@ -1,0 +1,12 @@
+{
+  "id": "P1MR03",
+  "name": "Cookie Kitchen",
+  "category": "Food & Drink > On-the-go",
+  "area": "Main Street U.S.A.",
+  "lat": 48.871931,
+  "lon": 2.777805,
+  "menuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR03_cookie-kitchen.pdf",
+  "priceBand": "€",
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

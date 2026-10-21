@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Worlds of Pixar",
+    "lat": 48.867044,
+    "lon": 2.775501
+  },
+  {
+    "name": "Adventure Way",
+    "lat": 48.865925,
+    "lon": 2.775012
+  },
+  {
+    "name": "Avengers Campus",
+    "lat": 48.865757,
+    "lon": 2.779127
+  },
+  {
+    "name": "World Premiere Plaza",
+    "lat": 48.867409,
+    "lon": 2.779243
+  },
+  {
+    "name": "Toon Studio",
+    "lat": 48.867415,
+    "lon": 2.776595
+  },
+  {
+    "name": "World of Frozen",
+    "lat": 48.864162,
+    "lon": 2.773907
+  }
+]

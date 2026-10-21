@@ -5,12 +5,14 @@ into `menu.json` files for the site's Food tab.
 
 ## Layout
 
-Seven parks, grouped by operator: the Merlin four under `merlin/`, and the three
-independents each under their own folder, because each is its own operator.
+Nine parks, grouped by operator: the Merlin four under `merlin/`, the three
+independents each under their own folder, because each is its own operator, and
+Disneyland Paris's two parks under `disneylandparis/`.
 
 ```
 merlin/<park>/              alton-towers, thorpe-park, legoland, chessington-world-of-adventures
 paultons/ blackpool/ flamingoland/      the independents, each its own operator
+disneylandparis/<park>/     disneyland-park, disney-adventure-world
 
 <park>/                     either of the above; the shape below is the same
   <venue>/                  one per eatery the official app lists (the venue syncs)
@@ -56,8 +58,9 @@ for what it is, with a `poi.json` located from the photos' GPS.
 `sync-venues.mjs` when `id` is an app id, and are overwritten on each sync. Any
 other key (`note`, `display`, `displayArea`, `goneSince`) is yours and survives. For venues outside the app,
 `id` and `category` are `null` and `source` is `"photo GPS (mean)"`. The independents' sources are
-`"paultons app bundle"`, `"blackpool app map markers"` and
-`"flamingo land app (firestore)"`.
+`"paultons app bundle"`, `"blackpool app map markers"`,
+`"flamingo land app (firestore)"` and `"disneyland paris graphql"`. Disney's
+venues also carry `priceBand`, its own "€" to "€€€" rating.
 
 `serves` is the park's own line about what a place sells, which only Flamingo
 Land publishes. It reads well but groups badly (some are a paragraph), so it is
@@ -104,7 +107,9 @@ later event, the new event's `event.json` names it too.
 ## menu.json
 
 One per dated folder: what the boards said on that day. Prices are **integer
-pence** (`£8.75` is `875`).
+pence** (`£8.75` is `875`), or **integer euro cents** at the Disneyland Paris
+parks (`17,5€` is `1750`). The currency is per park (`parkCurrency` in
+`scripts/menus/lib.mjs`), not per menu; the Food tab formats with it.
 
 ```json
 {
@@ -185,6 +190,7 @@ Three importers, one per park, each cached and fetching one page a second:
 | `import-tenkites.mjs` | Paulton's | Every dish, its description, its calories and the park's v/vg marks, from the Tenkites boards. No prices: the park leaves every price field empty. |
 | `import-bpb-menus.mjs` | Blackpool | The dish lists on each `<venue>-menu` page, and whether a Season Pass gets a discount there. No prices either. |
 | `import-flamingoland-menus.mjs` | Flamingo Land | The Coach House food and drinks menus, **with prices**, calories and allergen marks. Drinks are sized items (25ml / Double). |
+| `import-dlp-menus.mjs` | Disneyland Paris | Downloads each restaurant's menu PDF (**with prices**, in euros) and lists the new or changed ones in `.dlp-plan.json`. The bilingual layouts aren't parsed: each listed PDF is transcribed by hand or by agent, in English, into `<venue>/<today>/menu.json` with `source.sha256` set to the PDF's hash, which is how the next run knows it's unchanged. |
 
 A re-run writes nothing when the menu hasn't changed; when it has, the new one
 lands under today's date beside the old one, which is the history.
@@ -252,6 +258,8 @@ ImageMagick.
 |---|---|
 | `node scripts/menus/sync-venues.mjs [park_key...]` | Creates or refreshes the Merlin parks' venue and water folders from the official apps. Reports renames and venues gone from the app; never deletes. |
 | `node scripts/menus/sync-venues-indie.mjs [park_key...] [--poi <file>]` | The same for Paulton's, Blackpool and Flamingo Land, each from its own backend. Paulton's POIs ship inside the APK rather than being served, so pass an unpacked `points_of_interest.json` with `--poi`; without it that park is skipped. Blackpool needs `BPB_EMAIL`/`BPB_PASSWORD` (`.dev.vars`). |
+| `node scripts/menus/sync-venues-dlp.mjs [park_key...]` | The same for Disneyland Paris, from Disney's GraphQL API (restaurants, lands, coordinates, menu PDF links). |
+| `node scripts/menus/import-dlp-menus.mjs` | Disneyland Paris's menu PDFs: fetches them and lists which need transcribing. |
 | `node scripts/menus/import-tenkites.mjs` | Paulton's own menus (dishes, calories, no prices). |
 | `node scripts/menus/import-bpb-menus.mjs` | Blackpool's own menus and its Season Pass discounts. |
 | `node scripts/menus/import-flamingoland-menus.mjs` | Flamingo Land's own menus, with prices. |

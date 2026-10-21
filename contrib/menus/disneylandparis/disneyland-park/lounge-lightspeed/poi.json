@@ -1,0 +1,12 @@
+{
+  "id": "P1DR04",
+  "name": "Lounge Lightspeed",
+  "category": "Food & Drink > Bars",
+  "area": "Discoveryland",
+  "lat": 48.874622,
+  "lon": 2.778907,
+  "menuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P1DR04_lounge-lightspeed.pdf",
+  "priceBand": null,
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

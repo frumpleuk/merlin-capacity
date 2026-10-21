@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Adventureland",
+    "lat": 48.872363,
+    "lon": 2.774086
+  },
+  {
+    "name": "Fantasyland",
+    "lat": 48.874195,
+    "lon": 2.775314
+  },
+  {
+    "name": "Main Street U.S.A.",
+    "lat": 48.872056,
+    "lon": 2.777886
+  },
+  {
+    "name": "Discoveryland",
+    "lat": 48.874077,
+    "lon": 2.778678
+  },
+  {
+    "name": "Frontierland",
+    "lat": 48.871356,
+    "lon": 2.774976
+  }
+]

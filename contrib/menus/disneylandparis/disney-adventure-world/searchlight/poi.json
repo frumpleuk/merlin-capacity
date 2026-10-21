@@ -1,0 +1,12 @@
+{
+  "id": "P2FR02",
+  "name": "Searchlight",
+  "category": "Food & Drink > On-the-go",
+  "area": "World Premiere Plaza",
+  "lat": 48.867534,
+  "lon": 2.779616,
+  "menuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P2FR02_searchlight.pdf",
+  "priceBand": "€",
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

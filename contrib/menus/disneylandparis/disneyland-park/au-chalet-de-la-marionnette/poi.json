@@ -1,0 +1,12 @@
+{
+  "id": "P1NR02",
+  "name": "Au Chalet de la Marionnette",
+  "category": "Food & Drink > Quick Service Restaurant",
+  "area": "Fantasyland",
+  "lat": 48.873528,
+  "lon": 2.774677,
+  "menuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P1NR02_au-chalet-de-la-marionnette.pdf",
+  "priceBand": "€",
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

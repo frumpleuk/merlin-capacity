@@ -1,0 +1,67 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1AR05_cool-post.pdf",
+    "sha256": "10d2b400ea89d1b5305b8b879b28aba5d26ed34903b553eb2dd61f8e5aaeea7e",
+    "stated": "September 2026"
+  },
+  "sections": [
+    {
+      "name": "Sweet Break",
+      "items": [
+        { "name": "Sweet Break", "description": "Mischievous Mickey waffles and a hot or a cold drink", "price": 800 }
+      ]
+    },
+    {
+      "name": "Sweets and Snacks",
+      "items": [
+        { "name": "Phantom Clock Brownie", "description": "Chocolate ganache filled", "price": 550 },
+        { "name": "Jack's Fright Bite", "description": "Chocolate-hazelnut filled", "price": 600 },
+        { "name": "Mischievous mini Mickey Waffles", "description": "And whipped cream", "price": 550 },
+        { "name": "Lay's® Crisps 45g", "price": 380 }
+      ]
+    },
+    {
+      "name": "Ice Cream",
+      "items": [
+        { "name": "Magnum® Almond", "price": 400 },
+        { "name": "Cornetto® Soft", "description": "Stracciatella & Caramel Sauce", "price": 430 },
+        { "name": "Solero® Strawberry Twist", "description": "Vanilla ice cream", "price": 350 },
+        { "name": "Mickey Ice Cream Bar", "description": "Vanilla flavour", "price": 450 }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        { "name": "Espresso 100% Arabica", "price": 330 },
+        { "name": "Double Espresso 100% Arabica", "price": 380 },
+        { "name": "Coffee 100% Arabica", "price": 350 },
+        { "name": "Coffee with milk", "price": 400 },
+        { "name": "Hot chocolate", "price": 420 },
+        { "name": "Cappuccino", "price": 400 },
+        { "name": "Tea, herbal tea", "price": 350 }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        { "name": "Soft drink 50 cl", "description": "Coca-Cola Original, Coca-Cola Zero Sugar, Coca-Cola Cherry, Coca-Cola Vanilla, Fanta, Fuze Tea, Tropico", "price": 420 },
+        { "name": "Vittel® 50 cl", "price": 350 },
+        { "name": "Perrier 50 cl", "price": 380 },
+        { "name": "Orange or apple juice 23,5 cl", "price": 380 }
+      ]
+    },
+    {
+      "name": "Souvenirs",
+      "items": [
+        { "name": "Halloween Mickey Bucket", "description": "With sweet popcorn", "price": 2600 },
+        { "name": "Mug Roi Lion", "description": "With a hot drink", "price": 1700 },
+        { "name": "Mickey or Minnie straw", "description": "With a cold drink", "price": 700 },
+        { "name": "Simba Sipper", "description": "With a cold drink", "price": 1700 },
+        { "name": "Mickey or Minnie Bucket", "description": "With sweet popcorn", "price": 1500 }
+      ]
+    }
+  ]
+}

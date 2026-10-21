@@ -1,0 +1,12 @@
+{
+  "id": "P1MR12",
+  "name": "Character Dining at Plaza Gardens Restaurant",
+  "category": "Food & Drink > All-you-can-eat buffet > Character Dining",
+  "area": "Main Street U.S.A.",
+  "lat": 48.872605,
+  "lon": 2.778027,
+  "menuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR12_character-dining-at-plaza-gardens.pdf",
+  "priceBand": "€€€",
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

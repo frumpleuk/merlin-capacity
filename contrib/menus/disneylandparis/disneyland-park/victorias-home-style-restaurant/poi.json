@@ -1,0 +1,12 @@
+{
+  "id": "P1MR09",
+  "name": "Victoria’s Home-Style Restaurant",
+  "category": "Food & Drink > Bars",
+  "area": "Main Street U.S.A.",
+  "lat": 48.872234,
+  "lon": 2.777902,
+  "menuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR09_victorias-home-style-restaurant.pdf",
+  "priceBand": null,
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

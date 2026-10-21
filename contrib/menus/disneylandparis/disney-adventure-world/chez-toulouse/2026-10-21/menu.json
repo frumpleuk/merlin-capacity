@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2DR04_chez-toulouse.pdf",
+    "sha256": "03b50d7259c1a35c2e0cc9a7bcd1db4015fd38946b4c8b9b40daa5b0d0bb265b",
+    "stated": "September 2026"
+  },
+  "sections": [
+    {
+      "name": "Food",
+      "items": [
+        { "name": "The Curry-sistible", "description": "Curry chicken spread, onion slices, grated beetroot, brioche bread", "price": 950 },
+        { "name": "The Nordi'cool", "description": "Smoked salmon, cheese and rocket sauce, white radish pickles, brioche bread", "price": 1150 },
+        { "name": "The Avocado Love", "description": "Pea and fava protein slice, tomato-onion-coriander mixture, guacamole, grated beetroot, brioche bread", "price": 950, "tags": ["v"] },
+        { "name": "The Lobstervellous", "description": "Crumbled lobster and fish, lobster and cod preparation, brioche bread", "price": 1450 },
+        { "name": "Lay's® Crisps 45 g", "price": 380 }
+      ]
+    },
+    {
+      "name": "Ice Cream",
+      "items": [
+        { "name": "Magnum® Almond", "price": 400 },
+        { "name": "Magnum® Almond Vegan", "price": 400, "tags": ["vg"] },
+        { "name": "Solero® Strawberry Twist", "description": "Vanilla ice cream", "price": 350 }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "note": "50 cl",
+      "items": [
+        { "name": "Soft drink 50 cl", "description": "Coca-Cola, Coca-Cola Zero Sugar, Fuze Tea", "price": 420 },
+        { "name": "Vittel 50 cl", "price": 350 },
+        { "name": "San Pellegrino 50 cl", "price": 380 }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "note": "Lavazza",
+      "items": [
+        { "name": "Espresso 100% Arabica", "price": 330 },
+        { "name": "Double Espresso 100% Arabica", "price": 380 },
+        { "name": "Coffee", "description": "100% Arabica", "price": 350 },
+        { "name": "Coffee with milk", "price": 400 },
+        { "name": "Cappuccino", "price": 400 },
+        { "name": "Hot chocolate", "price": 420 },
+        { "name": "Tea, herbal tea", "price": 350 }
+      ]
+    }
+  ]
+}

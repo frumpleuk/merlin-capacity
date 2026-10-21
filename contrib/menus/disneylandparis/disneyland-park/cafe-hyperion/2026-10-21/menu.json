@@ -1,0 +1,153 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1DR01_cafe-hyperion.pdf",
+    "sha256": "7aec12aeb67481d2dc2ee7e4d134a32731d2733412c3bb39e27dd17f83a91a8d",
+    "stated": "September 2026"
+  },
+  "sections": [
+    {
+      "name": "Halloween Feast Menu",
+      "items": [
+        {
+          "name": "Halloween Feast Menu",
+          "description": "Halloween Feast Burger (beef burger, smoky bacon-flavoured sauce, chilli cheddar, chorizo and Doritos® Sweet Chilli Pepper) + fries or side salad + cold drink 50 cl + Crunchy Spell (creamy vanilla entremet, cocoa ganache and hazelnut centre)",
+          "sizes": [
+            { "label": "Menu", "price": 2200 },
+            { "label": "Without dessert", "price": 2000 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Burger Menu",
+      "note": "And Fries or Side salad and Cold drink 50 cl",
+      "items": [
+        { "name": "Premium cheeseburger", "description": "Beef burger, melted cheddar cheese, lettuce, tomato and sauce", "price": 1750 },
+        { "name": "Plant-based burger", "description": "Beyond Meat. Plant-based patty, tomato, lettuce, pickles and vegan sauce", "price": 1750, "tags": ["vg"] },
+        { "name": "Chicken burger", "description": "Breaded chicken breast, melted cheddar, lettuce, tomato and Thousand Island sauce", "price": 1650 },
+        { "name": "Fish burger", "description": "Fried fish filet, melted cheddar cheese, lettuce, crispy onions and tartar sauce", "price": 1650 }
+      ]
+    },
+    {
+      "name": "Salad Menu",
+      "note": "And Cold drink 50 cl",
+      "items": [
+        { "name": "Chicken salad", "description": "Lettuce, chicken, hard-boiled egg, Grana Padano cheese and marinated sun-dried tomatoes", "price": 1500 },
+        { "name": "Vegan salad", "description": "Quinoa, bulgur, barley, lentils, soybeans, chickpea-coco-curry balls, marinated sun-dried tomatoes and cashew nuts", "price": 1500, "tags": ["vg"] }
+      ]
+    },
+    {
+      "name": "Kid's Menu",
+      "note": "For children ages 3 to 11",
+      "items": [
+        {
+          "name": "Kid's Menu",
+          "description": "Kid's cheeseburger (beef burger, melted cheddar cheese, ketchup sauce), the little chicken burger (chicken, melted cheddar cheese, lettuce, La Vache qui rit® cheese sauce) or chicken nuggets x4; fries or cherry tomatoes; sweet beignets filled with cocoa and hazelnut x2, Pom'Potes® organic apple puree (no added sugar), organic Mini Babybel® cheese, flavoured sweet drinking yoghurt or Magnum® Mini almond; Juicy Water (apple-strawberry) 20 cl, milk 20 cl or Vittel® 33 cl. Other cold drink (25 cl) may replace similar item on request",
+          "price": 1050,
+          "tags": ["kids"]
+        }
+      ]
+    },
+    {
+      "name": "Sweet Break",
+      "items": [
+        { "name": "Sweet Break", "description": "Mickey cookie with milk chocolate chunks, chocolate and pecan nuts brownie or Magnum® Mini almond and a hot or a cold drink 50 cl", "price": 700 }
+      ]
+    },
+    {
+      "name": "A la carte",
+      "items": [
+        { "name": "Side salad", "price": 330, "tags": ["v"] },
+        { "name": "Fries", "price": 450 },
+        { "name": "Chicken nuggets x4", "price": 550 },
+        { "name": "The little chicken burger", "price": 700 },
+        { "name": "Kids' Cheeseburger", "price": 700 },
+        { "name": "Chicken nuggets x6", "price": 750 },
+        { "name": "Chicken nuggets x9", "description": "Sauce: mustard, mayonnaise or ketchup", "price": 1050 },
+        { "name": "Fish burger", "price": 1100 },
+        { "name": "Chicken burger", "price": 1100 },
+        { "name": "Premium cheeseburger", "price": 1200 },
+        { "name": "Chicken salad", "price": 1200 },
+        { "name": "Vegan salad", "price": 1200, "tags": ["vg"] },
+        { "name": "Plant-based burger", "description": "Beyond Meat", "price": 1200, "tags": ["vg"] },
+        { "name": "Halloween Feast Burger", "price": 1500 }
+      ]
+    },
+    {
+      "name": "Ice Cream",
+      "items": [
+        { "name": "Solero® Strawberry Twist", "description": "Vanilla ice cream", "price": 350 },
+        { "name": "Super Twister®", "description": "Orange, Strawberry, Lemon Flavours", "price": 350 },
+        { "name": "Magnum® La Pistache", "price": 400 },
+        { "name": "Magnum® Almond", "price": 400 },
+        { "name": "Magnum® Almond Vegan", "price": 400, "tags": ["vg"] },
+        { "name": "Cornetto® Soft", "description": "Stracciatella & Caramel Sauce", "price": 430 },
+        { "name": "Mickey Ice Cream Bar", "description": "Vanilla flavour", "price": 450 }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        { "name": "Yoghurt with a fruit layer", "price": 300 },
+        { "name": "Chocolate and pecan nuts brownie", "price": 380 },
+        { "name": "Fruit bag", "price": 400, "tags": ["vg"] },
+        { "name": "Cookie Mickey", "description": "Milk chocolate chunks", "price": 430 },
+        { "name": "Dessert Mickey", "description": "Chocolate mousse and sponge cake", "price": 500 },
+        { "name": "Crunchy Spell", "price": 550 }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "note": "50 cl",
+      "items": [
+        { "name": "Vittel®", "price": 350 },
+        { "name": "S.Pellegrino®", "price": 380 },
+        { "name": "Orange or apple juice 23,5 cl", "price": 380 },
+        { "name": "Coca-Cola Original", "price": 420 },
+        { "name": "Coca-Cola Zéro Sucres", "price": 420 },
+        { "name": "Coca-Cola Zéro Sucres Cherry", "price": 420 },
+        { "name": "Fanta Orange Sans Sucres", "price": 420 },
+        { "name": "Sprite Sans Sucres", "price": 420 },
+        { "name": "FuzeTea Peach Black Tea", "price": 420 },
+        { "name": "Tropico Tropical", "price": 420 }
+      ]
+    },
+    {
+      "name": "Draught Beer",
+      "items": [
+        {
+          "name": "1664® Premium",
+          "sizes": [
+            { "label": "25 cl", "price": 500 },
+            { "label": "50 cl", "price": 750 }
+          ],
+          "tags": ["alcohol"]
+        }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        { "name": "Espresso 100% Arabica", "price": 330 },
+        { "name": "Coffee 100% Arabica", "price": 350 },
+        { "name": "Double Espresso 100% Arabica", "price": 380 },
+        { "name": "Coffee with milk", "price": 400 },
+        { "name": "Cappuccino", "price": 400 },
+        { "name": "Hot chocolate", "price": 420 },
+        { "name": "Semi-skimmed milk 20 cl", "price": 250 },
+        { "name": "Tea, herbal tea", "price": 350 }
+      ]
+    },
+    {
+      "name": "Souvenirs",
+      "items": [
+        { "name": "Mickey or Minnie straw", "sizes": [{ "label": "Straw only", "price": 600 }, { "label": "With a cold drink", "price": 700 }] },
+        { "name": "Mug", "sizes": [{ "label": "Mug only", "price": 1500 }, { "label": "With a hot drink", "price": 1700 }] },
+        { "name": "Tumbler", "sizes": [{ "label": "Tumbler only", "price": 1500 }, { "label": "With a cold drink", "price": 1700 }] }
+      ]
+    }
+  ]
+}

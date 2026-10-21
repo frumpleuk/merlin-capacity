@@ -1,0 +1,142 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2ER00_nordic-crowns-tavern.pdf",
+    "sha256": "6bcfbc04b25bbeb9f7b3ef2cbb408a5995dbc670ebbbe5cacd2826d81b423cc7",
+    "stated": "February 2026"
+  },
+  "sections": [
+    {
+      "name": "Menu",
+      "note": "Main course + dessert + cold drink 50 cl. With crushed potatoes and vegetable mix or quinoa and vegetable mix. Arendelle Swirl (vanilla or tutti frutti flavour ice cream, toppings and tulip wafer) or Everlasting Snowflake (shortbread, white chocolate cream, red fruit centre) or Magnum® Vegan Almond",
+      "items": [
+        { "name": "Salmon steak, mustard and dill sauce", "price": 2400 },
+        { "name": "Turkey meatballs, dried cranberry sauce", "price": 2200 },
+        { "name": "Plant-based meatballs, onions and mushrooms sauce", "price": 2200, "tags": ["vg"] }
+      ]
+    },
+    {
+      "name": "Menu Salade",
+      "note": "Salad + cold drink 50 cl",
+      "items": [
+        { "name": "Potato salad", "description": "Smoked fish, wholegrain mustard, white onions, basil-honey dressing, frisée lettuce and pickled red onions", "price": 1500 },
+        { "name": "Grain salad", "description": "Sliced wheat protein with broad beans, frisée lettuce, grated carrots and beetroot with citrus dressing", "price": 1500, "tags": ["vg"] }
+      ]
+    },
+    {
+      "name": "The Mini Trolls Menu",
+      "note": "For children ages 3 to 11",
+      "items": [
+        {
+          "name": "The Mini Trolls Menu",
+          "description": "Salmon steak, mustard and dill sauce or turkey meatballs, dried cranberry sauce or plant-based meatballs, onions and mushrooms sauce; with crushed potatoes and vegetable mix or quinoa and vegetable mix; and Snowy Beignets (doughnut bites with white coating) or Olaf's cold ice cream (vanilla or tutti frutti flavour) or organic apple purée (no added sugar) or sweetened flavoured drinking yoghurt or Organic Mini Babybel® or Magnum® Mini Almond; and Vittel® 33 cl, orange juice 23.5 cl or apple juice 23.5 cl or milk 20 cl. Other cold drink 25 cl may replace similar item on request",
+          "price": 1400,
+          "tags": ["kids"]
+        }
+      ]
+    },
+    {
+      "name": "Sweet Break",
+      "items": [
+        { "name": "Sweet Break", "description": "Winter Muffin or Magnum® Mini Almond and hot or cold drink", "price": 700 }
+      ]
+    },
+    {
+      "name": "Plats",
+      "items": [
+        { "name": "Salmon steak, mustard and dill sauce", "description": "With vegetable mix and crushed potatoes or quinoa", "price": 2000 },
+        { "name": "Turkey meatballs, dried cranberry sauce", "description": "With vegetable mix and crushed potatoes or quinoa", "price": 1800 },
+        { "name": "Pea and rice protein balls, onions and mushrooms sauce", "description": "With vegetable mix and crushed potatoes or quinoa", "price": 1800, "tags": ["vg"] },
+        { "name": "Potato salad", "description": "Smoked fish, wholegrain mustard, white onions, basil-honey dressing, frisée lettuce and pickled red onions", "price": 1200 },
+        { "name": "Grain salad", "description": "Sliced wheat protein with broad beans, frisée lettuce, grated carrots and beetroot with citrus dressing", "price": 1200 },
+        { "name": "Fish fritters (x4)", "description": "Curried tartare sauce", "price": 600 },
+        { "name": "Calamari fritters (x4)", "description": "Curried tartare sauce", "price": 600 }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        { "name": "Everlasting Snowflake", "description": "Shortbread, white chocolate cream, red fruit centre", "price": 500 },
+        { "name": "Winter Muffin - Blueberry", "price": 430 },
+        { "name": "Yoghurt on a fruit layer", "price": 300 },
+        { "name": "Fruit bag", "price": 400, "tags": ["vg"] }
+      ]
+    },
+    {
+      "name": "Ice Cream",
+      "items": [
+        { "name": "Arendelle Swirl", "description": "Vanilla or tutti frutti flavour ice cream, toppings and tulip wafer", "price": 500 },
+        { "name": "Magnum® Vegan Almond", "price": 400, "tags": ["vg"] }
+      ]
+    },
+    {
+      "name": "Draught Beers",
+      "items": [
+        { "name": "Carlsberg", "price": null, "unclear": "two prices printed (5 €, 8 €) with no size labels", "tags": ["alcohol"] },
+        { "name": "Grimbergen blonde", "price": null, "unclear": "two prices printed (5,5 €, 8,5 €) with no size labels", "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Bottled Wine",
+      "items": [
+        { "name": "IGP Pays d'Oc - Gio blanc 18,7 cl", "price": 800, "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "note": "50 cl",
+      "items": [
+        { "name": "Coca-Cola Original", "price": 420 },
+        { "name": "Coca-Cola Zéro Sucres", "price": 420 },
+        { "name": "Coca-Cola Zéro Sucres Cherry", "price": 420 },
+        { "name": "Sprite Sans Sucres", "price": 420 },
+        { "name": "Fanta Orange Sans Sucres", "price": 420 },
+        { "name": "FuzeTea Pêche Intense", "price": 420 },
+        { "name": "Tropico Tropical", "price": 420 },
+        { "name": "Orange or apple juice 23,5 cl", "price": 380 },
+        { "name": "Semi-skimmed milk 20 cl", "price": 250 }
+      ]
+    },
+    {
+      "name": "Mineral Waters",
+      "note": "50 cl",
+      "items": [
+        { "name": "Vittel®", "price": 350 },
+        { "name": "S.Pellegrino®", "price": 380 }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        { "name": "Espresso 100% Arabica", "price": 330 },
+        { "name": "Double Espresso 100% Arabica", "price": 380 },
+        { "name": "Coffee", "price": 350 },
+        { "name": "Coffee with milk", "price": 400 },
+        { "name": "Cappuccino", "price": 400 },
+        { "name": "Hot chocolate", "price": 420 },
+        { "name": "Tea, herbal tea", "price": 350 }
+      ]
+    },
+    {
+      "name": "Souvenirs",
+      "items": [
+        {
+          "name": "Tumbler",
+          "sizes": [
+            { "label": "Tumbler only", "price": 1800 },
+            { "label": "With a cold drink", "price": 2000 }
+          ]
+        },
+        {
+          "name": "Mug",
+          "sizes": [
+            { "label": "Mug only", "price": 1900 },
+            { "label": "With a hot drink", "price": 2100 }
+          ]
+        }
+      ]
+    }
+  ]
+}

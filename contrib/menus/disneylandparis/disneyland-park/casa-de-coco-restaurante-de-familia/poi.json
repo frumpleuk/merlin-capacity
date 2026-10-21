@@ -1,0 +1,12 @@
+{
+  "id": "P1RR01",
+  "name": "Casa de Coco – Restaurante de Familia",
+  "category": "Food & Drink > Quick Service Restaurant",
+  "area": "Frontierland",
+  "lat": 48.871664,
+  "lon": 2.774558,
+  "menuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P1RR01_casa-de-coco.pdf",
+  "priceBand": "€",
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

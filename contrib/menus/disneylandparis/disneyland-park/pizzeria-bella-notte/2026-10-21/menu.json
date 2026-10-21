@@ -1,0 +1,119 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1NR06_pizzeria-bella-notte.pdf",
+    "sha256": "98237837663beebcc03258ff88d75e0e147febc91eb82f53f2d362b54b2c0fd5",
+    "stated": "September 2026"
+  },
+  "sections": [
+    {
+      "name": "Menus",
+      "note": "And Garlic butter bread or Side salad and Cold drink 50 cl",
+      "items": [
+        { "name": "Lady & The Tramp Spaghetti", "description": "With chicken-turkey meatballs", "price": 1800 },
+        { "name": "Portorosso Pesto Pasta", "description": "Trenette al pesto", "price": 1800 },
+        { "name": "Pepperoni Pizza", "price": 1750 },
+        { "name": "4-Cheese Pizza", "price": 1750 },
+        { "name": "Rigatoni Pasta", "description": "Neapolitan sauce", "price": 1650, "tags": ["v"] },
+        { "name": "Lasagna", "description": "Bolognese", "price": 1650 }
+      ]
+    },
+    {
+      "name": "Menus Salade",
+      "note": "And Cold drink 50 cl",
+      "items": [
+        { "name": "Chicken Salad", "description": "Lettuce, chicken, hard-boiled egg, Grana Padano cheese, marinated sun-dried tomatoes", "price": 1500 },
+        { "name": "Vegan Salad", "description": "Quinoa, bulgur, barley, lentils, soybeans, chickpea-coco-curry balls, marinated sun-dried tomatoes, cashew nuts", "price": 1500, "tags": ["vg"] }
+      ]
+    },
+    {
+      "name": "Kids' Menu",
+      "note": "For children ages 3 to 11",
+      "items": [
+        {
+          "name": "Kids' Menu",
+          "description": "Rigatoni pasta Neapolitan sauce, Kids' Mickey's pizza or Portorosso pesto pasta trenette al pesto; side salad or cherry tomatoes; Pom'Potes® organic apple puree (no added sugar), flavoured sweet drinking yoghurt, sweet beignets filled with cocoa and hazelnut x2, organic mini Babybel® cheese x2 or Magnum® Mini Almond; Juicy Water (apple-strawberry), milk 20 cl or Vittel 33 cl. Other cold drink (25 cl) may replace similar item on request",
+          "price": 1050,
+          "tags": ["kids"]
+        }
+      ]
+    },
+    {
+      "name": "Sweet Break",
+      "items": [
+        { "name": "Sweet Break", "description": "Double Mickey cake Almond-chocolate or Magnum® Mini Almond and a cold or a hot drink", "price": 700 }
+      ]
+    },
+    {
+      "name": "À la carte",
+      "items": [
+        { "name": "Side salad", "price": 330, "tags": ["v"] },
+        { "name": "Cherry tomatoes", "price": 330, "tags": ["vg"] },
+        { "name": "Garlic butter bread", "price": 400 },
+        { "name": "Rigatoni pasta Neapolitan sauce", "price": 1100, "tags": ["v"] },
+        { "name": "Bolognese lasagna", "price": 1100 },
+        { "name": "Pepperoni Mickey's pizza", "price": 1200 },
+        { "name": "4-Cheese Mickey's pizza", "price": 1200 },
+        { "name": "Chicken salad", "price": 1200 },
+        { "name": "Vegan salad", "price": 1200, "tags": ["vg"] },
+        { "name": "Lady & The Tramp spaghetti", "price": 1300 },
+        { "name": "Portorosso pesto pasta", "price": 1300 }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        { "name": "Yoghurt with a layer of fruit", "price": 300 },
+        { "name": "Double Mickey cake", "description": "Almond-chocolate", "price": 380 },
+        { "name": "Fruit bag", "price": 400 },
+        { "name": "Crunchy Spell", "description": "Creamy vanilla entremet, cocoa ganache and hazelnut centre", "price": 550 },
+        { "name": "Tiramisù", "price": 500 },
+        { "name": "Magnum® Almond", "price": 400 },
+        { "name": "Magnum® Vegan Almond", "price": 400, "tags": ["vg"] },
+        { "name": "Magnum® La Pistache", "price": 400 },
+        { "name": "Cornetto® Soft", "description": "Stracciatella & Caramel sauce", "price": 430 },
+        { "name": "Solero®", "description": "Strawberry Twist - Vanilla ice cream", "price": 350 },
+        { "name": "Push Up Haribo®", "description": "Vanilla flavour, strawberry sauce", "price": 350 },
+        { "name": "Mickey ice cream bar", "description": "Vanilla flavour", "price": 450 }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        { "name": "Soft drink 50 cl", "description": "Coca-Cola range, Fanta, Sprite, Fuze Tea, Tropico", "price": 420 },
+        { "name": "Orange juice or apple juice 23,5 cl", "price": 380 },
+        { "name": "Vittel® 50 cl", "price": 350 },
+        { "name": "S.Pellegrino 50 cl", "price": 380 },
+        { "name": "Semi-skimmed milk 20 cl", "price": 250 }
+      ]
+    },
+    {
+      "name": "Draught Beer",
+      "items": [
+        { "name": "1664® Premium", "sizes": [{ "label": "25 cl", "price": 500 }, { "label": "50 cl", "price": 750 }], "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        { "name": "Espresso 100% Arabica", "price": 330 },
+        { "name": "Coffee 100% Arabica", "price": 350 },
+        { "name": "Double Espresso 100% Arabica", "price": 380 },
+        { "name": "Coffee with milk", "price": 400 },
+        { "name": "Cappuccino", "price": 400 },
+        { "name": "Hot chocolate", "price": 420 },
+        { "name": "Tea, herbal tea", "price": 350 }
+      ]
+    },
+    {
+      "name": "Souvenirs",
+      "items": [
+        { "name": "Mickey or Minnie straw", "sizes": [{ "label": "Straw only", "price": 600 }, { "label": "With a cold drink", "price": 700 }] },
+        { "name": "Mug", "sizes": [{ "label": "Mug only", "price": 1500 }, { "label": "With a hot drink", "price": 1700 }] },
+        { "name": "Tumbler", "sizes": [{ "label": "Tumbler only", "price": 1500 }, { "label": "With a cold drink", "price": 1700 }] }
+      ]
+    }
+  ]
+}

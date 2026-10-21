@@ -1,0 +1,12 @@
+{
+  "id": "P2DR00",
+  "name": "The Regal View Restaurant",
+  "category": "Food & Drink > Table service > Character Dining > Bars",
+  "area": "Adventure Way",
+  "lat": 48.8659,
+  "lon": 2.776125,
+  "menuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P2DR00_the-regal-view-restaurant-and-lounge.pdf",
+  "priceBand": "€€€",
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

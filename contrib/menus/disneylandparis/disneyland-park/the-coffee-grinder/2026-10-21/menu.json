@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR02_coffee-grinder.pdf",
+    "sha256": "bc51f66b6be2a3b309266626c605bf3e961b3d7867836a6d598b96535ea01d19",
+    "stated": "June 2021"
+  },
+  "sections": [
+    {
+      "name": "Desserts",
+      "note": "Take away only",
+      "items": [
+        { "name": "Muffin", "description": "Vanilla flavour", "price": 400 },
+        { "name": "Muffin", "description": "Double Chocolate", "price": 400 },
+        { "name": "Cookie", "description": "Chocolate", "price": 280 },
+        { "name": "Cookie", "description": "Vanilla White Chocolate - Raspberry", "price": 280 }
+      ]
+    },
+    {
+      "name": "Sweet Break",
+      "items": [
+        { "name": "Muffin and a Hot or a Cold Drink", "description": "Hot drink except Espresso", "price": 680 }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        { "name": "Soft drink", "description": "Coca-Cola, Coca-Cola Zero Sugar, Fanta, Sprite (50 cl); Fuze Tea (40 cl); Minute Maid (33 cl, made from concentrated fruit juice)", "price": 380 },
+        { "name": "Mineral water 50 cl", "description": "Vittel, San Pellegrino", "price": 330 }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "note": "Featuring Segafredo",
+      "items": [
+        { "name": "Espresso 100% arabica", "price": 300 },
+        { "name": "Coffee", "description": "100% arabica", "price": 330 },
+        { "name": "Coffee with Milk", "description": "100% arabica", "price": 330 },
+        { "name": "Cappuccino 100% arabica", "price": 350 },
+        { "name": "Hot Cocoa", "price": 330 },
+        { "name": "Tea, Herbal Tea", "price": 330 }
+      ]
+    }
+  ]
+}

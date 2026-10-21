@@ -1,0 +1,82 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2TR02_bistrot-chez-remy.pdf",
+    "sha256": "59d301978a9391d3f1f711e01f96250cff3be4c406cd0bd2b81996d1dfe28cc4",
+    "stated": "December 2025"
+  },
+  "sections": [
+    {
+      "name": "Meal Plans",
+      "note": "Reservation recommended on the Disney application",
+      "items": [
+        {
+          "name": "Rémy Menu",
+          "description": "Starter and Main Course. Starters: mixed salad, young Cantal cheese, black olives, truffle ham chiffonade and garden-herb vinaigrette; seasonal soup with The Laughing Cow® and mixed herbs; pear, chestnut and duck pâté en croûte, fig marmalade; or green lentil salad with carrot julienne, cherry tomatoes and Greek-style plant-based cubes, garden-herb vinaigrette (veggie). Main courses: grilled steak, french fries (choice of sauce: Café de Paris sauce, green peppercorns, brie or béarnaise); roast cod, crushed potatoes with beurre blanc sauce; vegetable blanquette with sliced soy and pea protein (veggie); or roasted chicken supreme, baby potatoes, mushrooms and mushroom-flavoured sauce",
+          "price": 4500
+        },
+        {
+          "name": "Émile Menu",
+          "description": "Starter, Main Course and Dessert. Starters and main courses as the Rémy Menu. Desserts: Brie de Meaux cheese, raisins, soft apricots; chocolate mousse; fruit salad; lemon meringue tart; fromage blanc-raspberry entremet; or Gusteau's dessert",
+          "price": 5500
+        },
+        {
+          "name": "Flight of 3 wines (3 x 8 cl)",
+          "description": "To accompany your meal, from our selection: AOP Côtes de Provence - Minuty - Prestige rosé 8 cl; AOP Sancerre - Château de Sancerre - Sauvignon blanc 8 cl or Edition Bistrot Chez Rémy - AOC Saint-Emilion - Fleur de Roc 8 cl; Édition Spéciale Disneyland® Paris Champagne Pierre Mignon Grande Réserve - Brut 10 cl or AOC Sainte-Croix-du-Mont - Château des Arroucats 8 cl (sweet wine)",
+          "price": 2000,
+          "addOn": true,
+          "tags": ["alcohol"]
+        },
+        {
+          "name": "Little Chef Menu",
+          "description": "For children ages from 3 to 11. Starter, Main Course, Dessert and Drink. Starters: carrot soup (veggie) or charcuterie plate, vegetable crisps and The Laughing Cow® cheese. Main courses: chicken fillet, fries, cheese cream sauce; Linguine Bolognese or Linguine with tomato sauce (veggie); or roast cod, crushed potatoes, tomato sauce. Desserts: Rémy's eclair, fromage blanc with fruit (No Added Sugar), chocolate mousse or fruit salad. Drink: Vittel® 33 cl, orange or apple juice 25 cl or milk 20 cl. Or Disney Check Menu: carrot soup; Linguine Bolognese or Linguine with tomato sauce; fromage blanc with fresh fruit (No Added Sugar); Vittel® 33 cl. An alternative cold drink (25 cl) may replace a similar item on request",
+          "price": 3000,
+          "tags": ["kids"]
+        }
+      ]
+    },
+    {
+      "name": "Birthday",
+      "note": "Don't forget to order your birthday dessert before your meal!",
+      "items": [
+        {
+          "name": "Birthday dessert to share",
+          "sizes": [
+            { "label": "2 or more people", "price": 2500 },
+            { "label": "6 or more people", "price": 4500 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Selection of drinks",
+      "items": [
+        { "name": "Coca-Cola Original", "price": 600 },
+        { "name": "Coca-Cola Zéro Sucres", "price": 600 },
+        { "name": "Coca-Cola Cherry", "price": 600 },
+        { "name": "Fanta Orange", "price": 600 },
+        { "name": "Sprite", "price": 600 },
+        { "name": "Orange or apple juice", "price": 600 },
+        { "name": "FuzeTea Peach Black Tea", "price": 600 },
+        { "name": "Organic Kombucha Raspberry-Hibiscus Flavoured", "price": 700 },
+        { "name": "Vittel®", "sizes": [{ "label": "50 cl", "price": 500 }, { "label": "100 cl", "price": 600 }] },
+        { "name": "S.Pellegrino®", "sizes": [{ "label": "50 cl", "price": 550 }, { "label": "100 cl", "price": 650 }] },
+        { "name": "Perrier®", "price": 500 }
+      ]
+    },
+    {
+      "name": "Selection of wine",
+      "note": "75 cl",
+      "items": [
+        { "name": "White: AOC Chablis - La Pierrelée - La Chablisienne", "price": 4300, "tags": ["alcohol"] },
+        { "name": "White: IGP Cité de Carcassonne - Gérard Bertrand - Chardonnay", "price": 3400, "tags": ["alcohol"] },
+        { "name": "White: AOC Sainte-Croix-du-Mont - Château des Arroucats - vin liquoreux", "price": 3400, "tags": ["alcohol"] },
+        { "name": "Rosé: AOP Languedoc - Art de vivre - Gérard Bertrand", "price": 3400, "tags": ["alcohol"] },
+        { "name": "Red: Edition Bistrot Chez Rémy - AOC Saint-Emilion - Fleur de Roc", "description": "Produit par Cheval Quancard", "price": 3800, "tags": ["alcohol"] },
+        { "name": "Red: AOC Bourgogne - Hautes-Côtes de Nuits - Pierre Maizière", "price": 4300, "tags": ["alcohol"] }
+      ]
+    }
+  ]
+}

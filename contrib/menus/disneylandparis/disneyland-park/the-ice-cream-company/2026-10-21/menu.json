@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR05_ice-cream-company.pdf",
+    "sha256": "215a7d055b4ba16f50046f9409d2d14160ecd03d27bb09550c9744b63787e214",
+    "stated": "September 2026"
+  },
+  "sections": [
+    {
+      "name": "Affogato",
+      "items": [
+        { "name": "\"Affogato-Style\" Hot Chocolate", "description": "Vanilla flavour ice cream, hot chocolate, whipped cream, cookies pieces, caramelised almonds and hazelnuts", "price": 700 },
+        { "name": "\"Affogalto-Style\" Coffee", "description": "Vanilla flavour ice cream, espresso 100% Arabica, whipped cream, cookies pieces, caramelised almonds and hazelnuts", "price": 700 }
+      ]
+    },
+    {
+      "name": "Ben & Jerry's",
+      "items": [
+        { "name": "Ben & Jerry's® Chocolate Fudge Brownie", "price": 500 },
+        { "name": "Ben & Jerry's® Cookies on Cookie Dough Vegan", "price": 500, "tags": ["vg"] },
+        { "name": "Ben & Jerry's® Vanilla Pecan Blondie", "price": 500 },
+        { "name": "Ben & Jerry's® Cookie Dough", "price": 500 }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        { "name": "Espresso 100% Arabica", "price": 330 },
+        { "name": "Coffee", "price": 350 },
+        { "name": "Double Espresso 100% Arabica", "price": 380 },
+        { "name": "Coffee with milk", "price": 400 },
+        { "name": "Cappuccino", "price": 400 },
+        { "name": "Hot chocolate", "price": 420 },
+        { "name": "Semi-skimmed milk 20 cl", "price": 250 },
+        { "name": "Tea, herbal tea", "price": 350 }
+      ]
+    },
+    {
+      "name": "Souvenirs",
+      "items": [
+        {
+          "name": "Mickey or Minnie straw",
+          "sizes": [
+            { "label": "Straw only", "price": 600 },
+            { "label": "With a cold drink", "price": 700 }
+          ]
+        },
+        {
+          "name": "Mug",
+          "sizes": [
+            { "label": "Mug only", "price": 1500 },
+            { "label": "With a hot drink", "price": 1700 }
+          ]
+        },
+        {
+          "name": "Tumbler",
+          "sizes": [
+            { "label": "Tumbler only", "price": 1500 },
+            { "label": "With a cold drink", "price": 1700 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        { "name": "Soft drink 50 cl", "description": "Coca-Cola, Coca-Cola Zero, Fanta, Sprite, Fuze Tea, Tropico", "price": 420 },
+        { "name": "Orange or apple juice 23,5 cl", "price": 420 },
+        { "name": "Vittel 50 cl", "price": 350 },
+        { "name": "S.Pellegrino 50 cl", "price": 380 }
+      ]
+    }
+  ]
+}

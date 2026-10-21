@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1NR00_l-arbre-enchante.pdf",
+    "sha256": "4781869715809be854fa0cf25d59dd3ea0d3f6d6761175fb2547012af12d71f4",
+    "stated": "September 2026"
+  },
+  "sections": [
+    {
+      "name": "Menu",
+      "items": [
+        { "name": "Corn-dog with Lay's crisps and a cold drink", "price": 1200 },
+        { "name": "Corn-dog", "description": "Cornmeal batter, beef sausage with ketchup or American mustard or BBQ sauce", "price": 850 },
+        { "name": "Lay's® Crisps 45g", "price": 380 }
+      ]
+    },
+    {
+      "name": "Sweet Break",
+      "items": [
+        { "name": "Phantom Clock Brownie and a hot or a cold drink", "price": 800 },
+        { "name": "Phantom Clock Brownie", "description": "Chocolate ganache filled", "price": 550 }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "P1NR01",
+  "name": "Auberge de Cendrillon",
+  "category": "Food & Drink > Table service > Character Dining",
+  "area": "Fantasyland",
+  "lat": 48.873657,
+  "lon": 2.775784,
+  "menuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P1NR01_auberge-de-cendrillon.pdf",
+  "priceBand": "€€€",
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2VK00_laugh-n-go.pdf",
+    "sha256": "1085bb049a1e4adefa9e1564ef0c1154793d45b4d2f39f4f7eae8ebe66bb91b5",
+    "stated": "April 2026"
+  },
+  "sections": [
+    {
+      "name": "Food",
+      "items": [
+        { "name": "Croque McQueen", "description": "Ham and La Vache qui rit® melted cheese sandwich, toasted to order in a flash!", "price": 900 },
+        { "name": "Worlds of Pixar Cupcake", "description": "La Vache qui rit® cream cheese, white chocolate whipped ganache", "price": 430 },
+        { "name": "Flo's Special", "description": "La Vache qui rit® cream cheese, white chocolate whipped ganache", "price": 430 }
+      ]
+    },
+    {
+      "name": "Ice Cream",
+      "items": [
+        { "name": "Magnum®", "description": "Almond", "price": 400 },
+        { "name": "Cornetto® Soft", "description": "Stracciatella & Caramel Sauce", "price": 430 },
+        { "name": "Ben & Jerry's® Cookie Dough", "price": 500 }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        { "name": "Espresso 100% Arabica", "price": 330 },
+        { "name": "Double Espresso 100% Arabica", "price": 380 },
+        { "name": "Coffee 100% Arabica", "price": 350 },
+        { "name": "Coffee with milk", "price": 400 },
+        { "name": "Cappuccino", "price": 400 },
+        { "name": "Hot chocolate", "price": 420 },
+        { "name": "Tea, herbal tea", "price": 350 }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        { "name": "Soft drink", "description": "Coca-Cola, Fanta, Sprite 50 cl; FuzeTea 40 cl", "price": 420 },
+        { "name": "Vittel 50 cl", "price": 350 },
+        { "name": "Perrier 50 cl", "price": 380 },
+        { "name": "Orange or apple juice 23,5 cl", "price": 380 }
+      ]
+    },
+    {
+      "name": "Souvenirs",
+      "items": [
+        { "name": "Mug", "sizes": [ { "label": "Mug only", "price": 1500 }, { "label": "With a hot drink", "price": 1700 } ] },
+        { "name": "Tumbler", "sizes": [ { "label": "Tumbler only", "price": 1500 }, { "label": "With a cold drink", "price": 1700 } ] },
+        { "name": "Mickey or Minnie Straw", "sizes": [ { "label": "Straw only", "price": 600 }, { "label": "With a cold drink", "price": 700 } ] }
+      ]
+    }
+  ]
+}

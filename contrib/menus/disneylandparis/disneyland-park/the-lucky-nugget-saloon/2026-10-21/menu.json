@@ -1,0 +1,102 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1RR03_lucky-nugget-saloon.pdf",
+    "sha256": "d6292b3ab915b0aac7194dba41ed6d797eebdc338896abfef049ff5f863834f7",
+    "stated": "September 2026"
+  },
+  "sections": [
+    {
+      "name": "Menu",
+      "note": "With a Cold drink 33 cl or Mineral water 50 cl",
+      "items": [
+        {
+          "name": "Menu",
+          "description": "Spectral Burger (beef, a slice of Brie cheese, Brie cheese sauce, pickled cabbage and cucumber, rocket and a black bun), Grim Delight (crispy chicken strips, black cheddar sauce and sweet chilli sauce) or Haunted Hog Roll (pulled pork with caramelised onions, black cheddar sauce, pico de gallo, pickled sweetcorn and smoky ketchup), each served with crinkle-cut fries or a side salad; with Happily Never After Cake (sponge cake, strawberry and vanilla mousses, cream cheese and butter icing), Cold Soul Sundae (blackcurrant-flavoured ice cream, cocoa biscuit pieces and blueberry topping) or Scary Berry Bowl (mixed berries, pomegranate and grape, coulis, lime and mint foam)",
+          "price": 3000
+        },
+        { "name": "The steack doubles as if by magic", "description": "Spectral Burger", "price": 400, "addOn": true },
+        { "name": "Singing Cream", "description": "Black craquelin choux, whipped black sesame ganache and passion fruit confit", "price": 200, "addOn": true },
+        {
+          "name": "Vegan Menu",
+          "description": "Love at First Fright (falafels, beans, split peas, lentils, Venere black rice, silken tofu sauce and pico de gallo) with Haunted Garden Compote (blueberry compote, purple sweet potato and coconut cream, puffed rice with cocoa butter and almonds, and caramelised pumpkin seeds)",
+          "price": null,
+          "unclear": "no price printed beside the vegan menu",
+          "tags": ["vg"]
+        }
+      ]
+    },
+    {
+      "name": "Sweat Break",
+      "note": "Available from 3pm to 5:30pm",
+      "items": [
+        { "name": "Sweat Break", "description": "Dessert with a cold drink 33 cl or a hot drink", "price": 1200 },
+        { "name": "Swap your drink for a cocktail", "price": 300, "addOn": true }
+      ]
+    },
+    {
+      "name": "Kids' Menu",
+      "note": "For children ages 3 to 11",
+      "items": [
+        {
+          "name": "Kids' Menu",
+          "description": "The Playful Spoon Burger (beef, Doritos®, Emmental, smoky ketchup and a purple bun) or Lil' Spoons' Supper (crispy chicken strips, black cheddar sauce, and smoked ketchup); crinkle-cut fries or cherry tomatoes; Cold Feet Sundae (blackcurrant-flavoured ice cream, cocoa biscuit pieces and blueberry topping), Time for a Treat (cocoa-flavoured filled éclair), flavoured sweet drinking yoghurt or Pom'Potes® organic apple puree (no added sugar); Juicy Water (apple-strawberry) 20 cl, milk 20 cl or Vittel® 33 cl. Other cold drink 25 cl may replace similar item on request",
+          "price": 1600,
+          "tags": ["kids"]
+        }
+      ]
+    },
+    {
+      "name": "Cocktails",
+      "items": [
+        { "name": "The Ghost's Breath 21 cl", "description": "Mojito-flavoured base, Perrier®, marshmallow and black sugar opaline", "price": 950 },
+        { "name": "The Melancholic Mojito 21 cl", "description": "Mojito-flavoured base, Perrier®, Trois Rivières white rum, cherry blossom-flavoured syrup espuma and red pepper strands", "price": 1250, "tags": ["alcohol"] },
+        { "name": "Groom of Gloom 21 cl", "description": "Hibiscus, strawberry and rose-flavoured base, Perrier®, marshmallow and black sugar opaline", "price": 950 },
+        { "name": "The Macabre Wedding 21 cl", "description": "Hibiscus, strawberry and rose-flavoured base, Perrier®, Gordon's London Dry Gin, cherry blossom-flavoured syrup espuma and red pepper strands", "price": 1200, "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Glass of Wine",
+      "note": "15 cl",
+      "items": [
+        { "name": "White: IGP Pays d'Oc - Naturalys - Gérard Bertrand - Chardonnay - Bio", "price": 700, "tags": ["alcohol"] },
+        { "name": "Rosé: IGP Pays d'Oc - Gris Blanc", "price": 650, "tags": ["alcohol"] },
+        { "name": "Red: IGP Pays d'Oc - Naturalys - Gérard Bertrand - Merlot - Bio", "price": 650, "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        { "name": "Soft drink 33 cl", "description": "Coca-Cola range, Fanta, Sprite", "price": 500 },
+        { "name": "Orange juice or apple juice 25 cl", "price": 430 },
+        { "name": "Vittel® 50 cl", "price": 380 },
+        { "name": "S.Pellegrino 50 cl", "price": 400 }
+      ]
+    },
+    {
+      "name": "Beers",
+      "items": [
+        { "name": "1664® Premium (draught)", "sizes": [{ "label": "25 cl", "price": 550 }, { "label": "50 cl", "price": 850 }], "tags": ["alcohol"] },
+        { "name": "Gallia nouveau Western West coast IPA 33 cl", "price": 700, "tags": ["alcohol"] },
+        { "name": "Bud® 33 cl", "price": 750, "tags": ["alcohol"] },
+        { "name": "Blueberry beer", "price": 800, "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        { "name": "Screaming Coffee 21 cl", "description": "Lavazza espresso, milk, ube-flavoured syrup, whipped cream, crispy raspberry pieces, biscuit and chocolate sauce", "price": 950 },
+        { "name": "Espresso 100% Arabica", "price": 350 },
+        { "name": "Coffee 100% Arabica", "price": 380 },
+        { "name": "Double Espresso 100% Arabica", "price": 400 },
+        { "name": "Coffee with milk", "price": 420 },
+        { "name": "Cappuccino", "price": 420 },
+        { "name": "Hot chocolate", "price": 440 },
+        { "name": "Semi-skimmed milk 20 cl", "price": 350 },
+        { "name": "Tea, herbal tea", "price": 380 }
+      ]
+    }
+  ]
+}

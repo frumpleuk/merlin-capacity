@@ -1,0 +1,271 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2DR01_the-regal-view-lounge.pdf",
+    "sha256": "99cb8a53af39c0da83782bd6c38c628380c38542648310c329ddd7ee917e70aa",
+    "stated": "March 2026"
+  },
+  "sections": [
+    {
+      "name": "Cocktails Signature",
+      "items": [
+        { "name": "Princely Eden", "description": "Trois Rivières white rum, pear and passion fruit nectars, Original Kombucha, sparkling sugar and a green apple touch. Served with fruity jelly", "price": 1800, "tags": ["alcohol"] },
+        { "name": "Floral Majesty", "description": "Hendrick's Gin, jasmine infusion, lychee purée, verjuice - green grape juice and jasmine flavour syrup", "price": 1800, "tags": ["alcohol"] },
+        { "name": "Sereni'Fizz Highness", "description": "José Cuervo Silver tequila, grapefruit juice, ginger drink, elderflower flavoured syrup and tonic", "price": 1800, "tags": ["alcohol"] },
+        { "name": "Apple of Grace", "description": "Double Jus liqueur, Jardin des Reines Infusion - apple, almond and cinnamon, apple juice and maple syrup", "price": 1800, "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Alcohol-Free",
+      "items": [
+        { "name": "Garden Zinger", "description": "Babylon Garden - Botanic distillat, pear and passion fruit nectars, Original Kombucha, sparkling sugar and a green apple touch", "price": 1400 },
+        { "name": "Ruby Diadem", "description": "Hibiscus tea, guava drink, coconut purée, pomegranate syrup, coconut emulsion and crispy raspberry", "price": 1400 },
+        { "name": "Imperial Harvest", "description": "Red grape juice, blueberry purée, verjuice - green grape juice, vanilla syrup and Perrier®", "price": 1400 },
+        { "name": "Enchanted Carriage", "description": "Jardin des Reines Infusion - apple, almond and cinnamon, apple juice and maple syrup", "price": 1400 }
+      ]
+    },
+    {
+      "name": "Classic Cocktails",
+      "items": [
+        { "name": "Espresso Martini", "description": "Red Smirnoff N°21 vodka, Fair coffee liqueur, espresso and cane sugar syrup", "price": 1600, "tags": ["alcohol"] },
+        { "name": "Negroni", "description": "Gordon's gin, Dolin - Chambery red vermouth and bitter Campari", "price": 1600, "tags": ["alcohol"] },
+        { "name": "Passion Martini", "description": "Red Smirnoff N°21 vodka, passion fruit liqueur, passion fruit purée and vanilla syrup. Served with a shot of brut champagne", "price": 1600, "tags": ["alcohol"] },
+        { "name": "Bourbon Old Fashioned", "description": "Maker's Mark Bourbon, sugar, Angostura bitters aromatic and Perrier®", "price": 1600, "tags": ["alcohol"] },
+        { "name": "Mojito", "description": "Trois Rivières white rum, fresh mint, lime, cane sugar syrup, Angostura aromatic bitters and Perrier®", "price": 1600, "tags": ["alcohol"] },
+        { "name": "Bellini", "description": "Pierre Mignon Grande Réserve brut champagne, and peach purée", "price": 1600, "tags": ["alcohol"] },
+        { "name": "Paloma", "description": "José Cuervo Silver téquila, grapefruit juice, fresh lime juice, agave syrup and Perrier®", "price": 1600, "tags": ["alcohol"] },
+        { "name": "Piña Colada", "description": "Saint James white rum, pineapple juice and coconut purée", "price": 1600, "tags": ["alcohol"] },
+        { "name": "Aperol Spritz", "description": "Aperol, DOC Prosecco Extra Dry, orange slice and Perrier®", "price": 1600, "tags": ["alcohol"] },
+        { "name": "Irish Coffee", "description": "Bushmills The Original whiskey, Lavazza coffee, cane sugar syrup and whipped cream", "price": 1400, "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Champagne & Sparkling Wine",
+      "items": [
+        { "name": "Edition Spéciale Disneyland® Paris Pierre Mignon Grande Réserve - brut", "sizes": [{ "label": "15 cl", "price": 1900 }, { "label": "75 cl", "price": 8700 }], "tags": ["alcohol"] },
+        { "name": "Taittinger - Prestige Rosé", "sizes": [{ "label": "15 cl", "price": 2200 }, { "label": "75 cl", "price": 10000 }], "tags": ["alcohol"] },
+        { "name": "Louis Roederer - Collection 246 - brut", "sizes": [{ "label": "15 cl", "price": 2600 }, { "label": "75 cl", "price": 11600 }], "tags": ["alcohol"] },
+        { "name": "Italie : DOC Prosecco Extra Dry", "sizes": [{ "label": "15 cl", "price": 750 }, { "label": "75 cl", "price": 3400 }], "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Cuvées Prestige",
+      "items": [
+        { "name": "Ruinart - Blanc de blancs", "sizes": [{ "label": "75 cl", "price": 18000 }], "tags": ["alcohol"] },
+        { "name": "Louis Roederer - Cristal", "sizes": [{ "label": "75 cl", "price": 48000 }], "tags": ["alcohol"] },
+        { "name": "Dom Pérignon - Vintage - brut", "sizes": [{ "label": "75 cl", "price": 38000 }], "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Draught Beers",
+      "items": [
+        { "name": "1664® Premium", "sizes": [{ "label": "25 cl", "price": 650 }, { "label": "50 cl", "price": 980 }], "tags": ["alcohol"] },
+        { "name": "Brooklyn IPA", "sizes": [{ "label": "25 cl", "price": 750 }, { "label": "50 cl", "price": 1050 }], "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Bottled Beers",
+      "items": [
+        { "name": "Grimbergen d'Abbaye blonde", "sizes": [{ "label": "33 cl", "price": 850 }], "tags": ["alcohol"] },
+        { "name": "Guinness Draught", "sizes": [{ "label": "50 cl", "price": 900 }], "tags": ["alcohol"] },
+        { "name": "1664® 0,0%", "sizes": [{ "label": "33 cl", "price": 700 }] }
+      ]
+    },
+    {
+      "name": "Cider",
+      "items": [
+        { "name": "La Mordue Original - Flavoured cider", "sizes": [{ "label": "27,5 cl", "price": 800 }], "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "White Wine",
+      "items": [
+        { "name": "Cuvée Disneyland® Paris - AOP La Clape Château L'Hospitalet - Bio - Demeter", "sizes": [{ "label": "15 cl", "price": 850 }, { "label": "75 cl", "price": 3800 }], "tags": ["alcohol"] },
+        { "name": "AOC Cheverny - Château de Chambord Sauvignon Blanc - Bio", "sizes": [{ "label": "15 cl", "price": 1000 }, { "label": "75 cl", "price": 4300 }], "tags": ["alcohol"] },
+        { "name": "AOC Alsace Gewurztraminer - Vendange Tardive Famille Hugel", "sizes": [{ "label": "15 cl", "price": 1700 }, { "label": "75 cl", "price": 7800 }], "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Rosé",
+      "items": [
+        { "name": "AOP Côtes de Provence - Minuty - Prestige rosé", "sizes": [{ "label": "15 cl", "price": 850 }, { "label": "75 cl", "price": 3800 }], "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Red Wine",
+      "items": [
+        { "name": "Cuvée Disneyland® Paris - AOP La Clape Château L'Hospitalet - Bio - Demeter", "sizes": [{ "label": "15 cl", "price": 850 }, { "label": "75 cl", "price": 3800 }], "tags": ["alcohol"] },
+        { "name": "AOC Saint-Emilion Grand Cru Château Capet-Guillier", "sizes": [{ "label": "15 cl", "price": 1600 }, { "label": "75 cl", "price": 7000 }], "tags": ["alcohol"] },
+        { "name": "AOC Bourgogne Hautes-Côtes de Nuits Pierre Maizière", "sizes": [{ "label": "15 cl", "price": 1000 }, { "label": "75 cl", "price": 4300 }], "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Alcohol-Free Sparkling",
+      "items": [
+        { "name": "Nooh by La Coste - Effervescent Rosé - 0% alcool", "sizes": [{ "label": "15 cl", "price": 1200 }, { "label": "75 cl", "price": 5500 }] }
+      ]
+    },
+    {
+      "name": "Apéritifs",
+      "note": "6 cl",
+      "items": [
+        { "name": "Dolin - Vermouth de Chambéry White", "price": 850, "tags": ["alcohol"] },
+        { "name": "Dolin - Vermouth de Chambéry Red", "price": 850, "tags": ["alcohol"] },
+        { "name": "Campari bitter", "price": 850, "tags": ["alcohol"] },
+        { "name": "Aperol", "price": 850, "tags": ["alcohol"] },
+        { "name": "Ricard - Pastis de Marseille 4 cl", "price": 850, "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Gins",
+      "note": "4 cl",
+      "items": [
+        { "name": "Gordon's London Dry", "price": 1100, "tags": ["alcohol"] },
+        { "name": "Tanqueray N°Ten", "price": 1200, "tags": ["alcohol"] },
+        { "name": "Hendrick's", "price": 1200, "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Vodkas",
+      "note": "4 cl",
+      "items": [
+        { "name": "Smirnoff N°21 Red", "price": 1100, "tags": ["alcohol"] },
+        { "name": "Belvedere Organic - Bio", "price": 1200, "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Rhums - Cachaça",
+      "note": "4 cl",
+      "items": [
+        { "name": "Trois Rivières blanc", "price": 1100, "tags": ["alcohol"] },
+        { "name": "Saint James Impérial - Rhum blanc agricole - AOC Martinique", "price": 1000, "tags": ["alcohol"] },
+        { "name": "Angostura 5 ans", "price": 1200, "tags": ["alcohol"] },
+        { "name": "Magnífica de Faria - Tradicional Ipê", "price": 1200, "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Tequilas",
+      "note": "4 cl",
+      "items": [
+        { "name": "José Cuervo Silver", "price": 1100, "tags": ["alcohol"] },
+        { "name": "El Espolón Reposado", "price": 1200, "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Whiskies",
+      "note": "4 cl",
+      "items": [
+        { "name": "Maker's Mark Bourbon", "description": "USA", "price": 1200, "tags": ["alcohol"] },
+        { "name": "Jack Daniel's Old No. 7", "description": "USA", "price": 1200, "tags": ["alcohol"] },
+        { "name": "Bulleit Rye Frontier", "description": "USA", "price": 1100, "tags": ["alcohol"] },
+        { "name": "Johnnie Walker - Red Label", "description": "Scotland", "price": 1200, "tags": ["alcohol"] },
+        { "name": "Lagavulin - 16 ans - Islay Single Malt", "description": "Scotland", "price": 1500, "tags": ["alcohol"] },
+        { "name": "Bushmill's The Original", "description": "Ireland", "price": 1200, "tags": ["alcohol"] },
+        { "name": "Nikka Coffey Malt", "description": "Japan", "price": 1400, "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Spirits",
+      "note": "4 cl",
+      "items": [
+        { "name": "Cognac Courvoisier VSOP", "price": 1100, "tags": ["alcohol"] },
+        { "name": "Calvados - Le Domfrontais Christian Drouin", "price": 1200, "tags": ["alcohol"] },
+        { "name": "Château de Laubade - Bas Armagnac VSOP", "price": 1300, "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Liqueurs",
+      "note": "4 cl",
+      "items": [
+        { "name": "Amaretto Disaronno", "price": 1100, "tags": ["alcohol"] },
+        { "name": "Bailey's The Original Irish Cream", "price": 1200, "tags": ["alcohol"] },
+        { "name": "Double jus - Grand apéritif de France", "price": 1100, "tags": ["alcohol"] },
+        { "name": "Grand Marnier Cordon Rouge", "price": 1200, "tags": ["alcohol"] },
+        { "name": "Café - Fair", "price": 1100, "tags": ["alcohol"] },
+        { "name": "Fleur de sureau - Fiorente", "price": 1200, "tags": ["alcohol"] },
+        { "name": "Noisette - Frangelico", "price": 1100, "tags": ["alcohol"] },
+        { "name": "Get 27", "price": 1100, "tags": ["alcohol"] },
+        { "name": "Limoncello Mamma Mia", "price": 1100, "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Cafés Latte Signature",
+      "items": [
+        { "name": "Marshmallow Dream", "description": "Semi-skimmed milk (or plant-based drink: coconut or oat) and Lavazza coffee, toasted marshmallow flavoured syrup, whipped cream and marshmallow", "price": 1300 },
+        { "name": "Latte Regalia", "description": "Semi-skimmed milk (or plant-based drink: coconut or oat) and Lavazza coffee, brownie flavoured syrup, whipped cream and chocolate sauce", "price": 1300 },
+        { "name": "Caramel Coronation", "description": "Semi-skimmed milk (or plant-based drink: coconut or oat) and Lavazza coffee, salted caramel flavoured syrup, whipped cream and caramel sauce", "price": 1300 }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        { "name": "Coca-Cola Original 33 cl", "price": 600 },
+        { "name": "Coca-Cola Zéro Sucres 33 cl", "price": 600 },
+        { "name": "Coca-Cola Cherry 33 cl", "price": 600 },
+        { "name": "Sprite 25 cl", "price": 600 },
+        { "name": "Fanta Orange 25 cl", "price": 600 },
+        { "name": "FuzeTea Peach Black Tea 25 cl", "price": 600 },
+        { "name": "Kombucha Original - Bio 33 cl", "price": 700 },
+        { "name": "Sélection de Tonics 20 cl", "description": "Indian, Raspberry-rhubarb flavour, Elderflower flavour", "price": 600 },
+        { "name": "Ginger Beer Bundaberg 37,5 cl", "price": 700 },
+        { "name": "Perrier® 33 cl", "price": 500 },
+        { "name": "Orange juice 25 cl", "price": 600 },
+        { "name": "Apple juice 25 cl", "price": 600 }
+      ]
+    },
+    {
+      "name": "Mineral Waters",
+      "note": "50 cl",
+      "items": [
+        { "name": "Vittel®", "price": 500 },
+        { "name": "S.Pellegrino®", "price": 550 }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        { "name": "Espresso 100% Arabica", "price": 380 },
+        { "name": "Double Espresso 100% Arabica", "price": 550 },
+        { "name": "Decaffeinated coffee", "price": 380 },
+        { "name": "Coffee", "price": 500 },
+        { "name": "Coffee with milk", "price": 550 },
+        { "name": "Cappuccino", "price": 550 },
+        { "name": "Hot chocolate", "price": 550 },
+        { "name": "Vienna hot chocolate", "price": 600 },
+        { "name": "Tea, herbal tea", "price": 550 },
+        { "name": "Semi-skimmed milk 20 cl", "price": 380 }
+      ]
+    },
+    {
+      "name": "Souvenir",
+      "items": [
+        {
+          "name": "Collector flute",
+          "sizes": [
+            { "label": "Flute only", "price": 1500 },
+            { "label": "With champagne brut 15 cl", "price": 2200 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Savoury Delights",
+      "items": [
+        { "name": "Savoury trio of biscuits", "description": "Mozzarella, parmesan and basil; Chorizo; Lardons and emmental cheese", "price": 700 },
+        { "name": "Warm brioche toast with avocado, egg, red onions, tomatoes and fresh herbs", "price": 1200 },
+        { "name": "Mosaic sandwich with smoked salmon, fish rillettes, cucumber, wasabi cream and omelette", "price": 1300 },
+        { "name": "Roasted potatoes with aromatic herbs, Brie de Meaux cheese espuma and crispy onions", "price": 1000 }
+      ]
+    },
+    {
+      "name": "Sweet Indulgences",
+      "items": [
+        { "name": "Warm chocolate-hazelnut cookie with caramelised pecans", "price": 1000 },
+        { "name": "All chocolate: Warm molten centre with light cocoa mousse", "price": 1000 },
+        { "name": "Red berry compote, vanilla whipped cream and crispy strawberry", "price": 1200 }
+      ]
+    }
+  ]
+}

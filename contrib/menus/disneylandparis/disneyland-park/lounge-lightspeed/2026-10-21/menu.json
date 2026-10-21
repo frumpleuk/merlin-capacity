@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1DR04_lounge-lightspeed.pdf",
+    "sha256": "dd05fde52f8bdf77e179f77f2eb09357c1332350d90693becdbe8c96c3a42ce2",
+    "stated": "May 2025"
+  },
+  "sections": [
+    {
+      "name": "Drinks and Biscuits",
+      "items": [
+        {
+          "name": "Non-alcoholic cocktail and Biscuits (2 pieces)",
+          "description": "Lightspeed Juice (non-alcoholic cocktail: non-alcoholic Chardonnay, verjus juice, elderflower cordial and curaçao syrup) or Starspeeder Fusion (non-alcoholic cocktail: hibiscus-raspberry infusion, non-alcoholic chamomile vermouth, Seedlip, verjus juice, agave syrup and peppermint hydrosol) or Edition Spéciale Disneyland® Paris (15 cl) Champagne Pierre Mignon - Grande Réserve - brut; + savoury or sweet biscuits (2 pieces)",
+          "price": 2200
+        },
+        {
+          "name": "Cold drink and Biscuits (2 pieces)",
+          "description": "Cold drink (Coca-Cola, Fanta, Sprite, FuzeTea 50 cl; Tropico 40 cl; Vittel 50 cl) or Skywalker Vineyards rosé wine (15 cl) AOP Coteaux Varois en Provence Château de Margüi or Bud® beer (33 cl); + savoury or sweet biscuits (2 pieces)",
+          "price": 1500
+        }
+      ]
+    }
+  ]
+}

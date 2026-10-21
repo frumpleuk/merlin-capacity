@@ -1,0 +1,12 @@
+{
+  "id": "P1AR03",
+  "name": "Colonel Hathi’s Outpost Restaurant",
+  "category": "Food & Drink > Quick Service Restaurant",
+  "area": "Adventureland",
+  "lat": 48.87174,
+  "lon": 2.773429,
+  "menuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P1AR03_colonel-hathis-pizza-outpost.pdf",
+  "priceBand": "€",
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

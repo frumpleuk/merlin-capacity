@@ -1,0 +1,1296 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2DR00_the-regal-view-restaurant-and-lounge.pdf",
+    "sha256": "d57f653db618a3f682545819d95442f46749bf4fdfd4ea6e55f09c41f248429b",
+    "stated": "March 2026"
+  },
+  "sections": [
+    {
+      "name": "Breakfast",
+      "note": "Hot drinks: 100% Arabica coffee, decaffeinated coffee, hot chocolate or plant-based alternative, café au lait or plant-based alternative, tea, herbal tea, semi-skimmed milk or plant-based alternative 20 cl",
+      "items": [
+        {
+          "name": "Adult",
+          "description": "Croissant and bread roll; butter, honey; stewed apricots in cane sugar and strawberry preserve with cane sugar; fresh orange juice or apple juice; hot drink. And savory option: smoked salmon and dill cream on Nordic bread, 12-month-aged Comté AOP, thinly-sliced cooked ham, soft-boiled egg, English muffin, beef bacon and hollandaise sauce; or sweet option: seasonal fruit salad, pancakes, blueberries and maple syrup; or duo option (vegan): silken tofu with cashew nuts, banana, kiwi and other fresh fruit, gluten-free muesli and goji berries, plant-based omelette with mushrooms, tomatoes and chives",
+          "price": 6000
+        },
+        {
+          "name": "Children",
+          "description": "For children ages 3 to 11. Croissant and bread roll; butter, honey; stewed apricots in cane sugar and strawberry preserve with cane sugar; fresh orange juice or apple juice; hot drink. And thinly-sliced cooked ham with Kiri® and scrambled eggs; or seasonal fruit salad, pancake and chocolate sauce. Selection of cereals available on request",
+          "price": 4800,
+          "tags": [
+            "kids"
+          ]
+        },
+        {
+          "name": "Mimosa",
+          "description": "Special edition Disneyland® Paris Pierre Mignon Grande Réserve - brut and fresh orange juice",
+          "price": 1600,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Champagne",
+          "description": "Special edition Disneyland® Paris Pierre Mignon Grande Réserve - brut, 15 cl",
+          "price": 1900,
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Royal Oak Set Menu",
+      "items": [
+        {
+          "name": "Royal Oak Set Menu",
+          "description": "Starters: courgette velouté, cauliflower tabbouleh with marigolds and a Colombo-spiced okra fritter (vegan); or bluefin tuna tataki with sesame seeds, daikon and wakame salad, pineapple and Sichuan peppercorn chutney; or Swiss salad: raw and pickled fruit and vegetables, Grisons cured beef, Tête de Moine cheese, raspberry vinegar dressing and pine nuts; or avocado and ginger mousse, mango tartare and pumpkin seed crumble with creamy dill oil sauce (veggie). Main courses: gilthead seabream, kaffir lime and vanilla sauce, sweet potato purée and braised bok choy; or North African-style roast guinea fowl with dried fruits and lemon confit; or slow-cooked beef at low temperature with onion confit, red wine sauce, potato pancake with Comté AOP and thyme; or soy and pea fillet, herb crust and black garlic broth, pan-fried barley with mushrooms, chard and truffle, beer foam (vegan). Desserts: vanilla ganache mousse cake, raspberry insert, crispy praline; or tropical fruit and aloe vera salad, coconut emulsion (vegan); or white chocolate, pineapple-passion fruit, almond and coconut mousse cake; or marc de champagne frozen soufflé (veggie)",
+          "price": 10000
+        },
+        {
+          "name": "Wine Pairing",
+          "description": "Menu served with three 8 cl glasses of wine. Starters: white AOC Cheverny - Château de Chambord - Sauvignon Blanc - Bio or rosé AOP Côtes de Provence - Minuty - Prestige Rosé. Main courses: white AOC Pouilly-Fuissé - Domaine de la Denante or red AOC Saint-Émilion Grand Cru - Château Capet-Guillier. Desserts: white AOC Alsace - Gewurztraminer - Vendange Tardive - Famille Hugel or Pierre Mignon - Ratafia de Champagne",
+          "price": 2500,
+          "tags": [
+            "alcohol"
+          ],
+          "addOn": true
+        },
+        {
+          "name": "Champagne Pairing",
+          "description": "Menu served with three 10 cl glasses of champagne. Starters: Édition Spéciale Disneyland® Paris - Pierre Mignon Grande Réserve - brut. Main courses: Moët & Chandon - Grand Vintage - extra brut or Louis Roederer - Collection 246 - brut. Desserts: Taittinger - Prestige Rosé or Pierre Mignon - Ratafia de Champagne",
+          "price": 4000,
+          "tags": [
+            "alcohol"
+          ],
+          "addOn": true
+        },
+        {
+          "name": "Birthday Dessert",
+          "description": "Order your birthday dessert before your meal",
+          "sizes": [
+            {
+              "label": "To share for 2 or more people",
+              "price": 2500
+            },
+            {
+              "label": "To share for 6 or more people",
+              "price": 4500
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Prince's Elm Menu",
+      "items": [
+        {
+          "name": "Prince's Elm Menu",
+          "description": "For children ages 3 to 11. Starter, main course, dessert and drink. Starters: green pea velouté with okra fritter (vegan), rolled vegetable omelette with mayonnaise and pastrami or fish rillettes with smoked salmon and cocktail sauce; main courses: conchiglie pasta with ricotta cheese, red and yellow tomato sauce, haddock fillet with citrus sauce, yellow carrot purée and purple cauliflower or pulled chicken with buttery mashed potatoes, pan jus and toast strip; desserts: almond sponge cake with white chocolate mousse and blueberry centre, seasonal fruit tartlet with mascarpone mousse or milk chocolate mousse with caramelised puff pastry; drinks: Vittel® 33 cl, orange or apple juice 25 cl or milk 20 cl. Another cold drink 25cl is available upon request as a replacement for the product offered",
+          "price": 5000,
+          "tags": [
+            "kids"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Signature Cocktail",
+      "items": [
+        {
+          "name": "Orchard Whisper",
+          "description": "White wine, apple juice, elderflower liqueur and verjuice",
+          "price": 1800,
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Alcohol-Free Signature Cocktail",
+      "items": [
+        {
+          "name": "Floral Whisper",
+          "description": "Hibiscus and green tea, apple juice, raspberry and blackcurrant flavours",
+          "price": 1400
+        }
+      ]
+    },
+    {
+      "name": "Classic Cocktails",
+      "items": [
+        {
+          "name": "Negroni",
+          "description": "Gordon's gin, Dolin - Chambery red vermouth and bitter Campari",
+          "price": 1600,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Passion Martini",
+          "description": "Red Smirnoff N°21 vodka, passion fruit liqueur, passion fruit purée and vanilla syrup served with a shot of brut champagne",
+          "price": 1600,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Bellini",
+          "description": "Pierre Mignon Grande Réserve brut champagne, and peach purée",
+          "price": 1600,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Aperol Spritz",
+          "description": "Aperol, DOC Prosecco Extra Dry, orange slice and Perrier®",
+          "price": 1600,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Gin Tonic",
+          "description": "Gordon's gin, choise tonic (Indian tonic, Raspberry-Rhubarb flavour tonic, Elderflower flavour tonic)",
+          "price": 1600,
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Beers & Cider",
+      "items": [
+        {
+          "name": "1664® Premium",
+          "description": "Draught",
+          "sizes": [
+            {
+              "label": "25 cl",
+              "price": 650
+            },
+            {
+              "label": "50 cl",
+              "price": 980
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Grimbergen d'Abbaye blonde",
+          "description": "Draught",
+          "sizes": [
+            {
+              "label": "25 cl",
+              "price": 700
+            },
+            {
+              "label": "50 cl",
+              "price": 1050
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Brooklyn IPA",
+          "description": "Bottled, 33 cl",
+          "price": 850,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Guinness Draught",
+          "description": "Bottled, 50 cl",
+          "price": 900,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "1664® 0,0%",
+          "description": "Bottled, 33 cl",
+          "price": 700
+        },
+        {
+          "name": "La Mordue Original",
+          "description": "Flavoured cider, 27,5 cl",
+          "price": 800,
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Apéritifs",
+      "note": "6 cl",
+      "items": [
+        {
+          "name": "Dolin - Vermouth de Chambéry White",
+          "price": 850,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Dolin - Vermouth de Chambéry Red",
+          "price": 850,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Campari bitter",
+          "price": 850,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Aperol",
+          "price": 850,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Ricard - Pastis de Marseille",
+          "description": "4 cl",
+          "price": 850,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Pierre Mignon - Ratafia de Champagne",
+          "price": 850,
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Champagne & Sparkling Wine",
+      "items": [
+        {
+          "name": "Edition Spéciale Disneyland® Paris Pierre Mignon Grande Réserve - brut",
+          "sizes": [
+            {
+              "label": "15 cl",
+              "price": 1900
+            },
+            {
+              "label": "75 cl",
+              "price": 8700
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Taittinger - Prestige Rosé",
+          "sizes": [
+            {
+              "label": "15 cl",
+              "price": 2200
+            },
+            {
+              "label": "75 cl",
+              "price": 10000
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Louis Roederer - Collection 246 - brut",
+          "sizes": [
+            {
+              "label": "15 cl",
+              "price": 2600
+            },
+            {
+              "label": "75 cl",
+              "price": 11600
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Moët & Chandon - Grand Vintage - extra brut",
+          "sizes": [
+            {
+              "label": "15 cl",
+              "price": 2600
+            },
+            {
+              "label": "75 cl",
+              "price": 11600
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Italie : DOC Prosecco Extra Dry",
+          "sizes": [
+            {
+              "label": "15 cl",
+              "price": 750
+            },
+            {
+              "label": "75 cl",
+              "price": 3400
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Ruinart - Blanc de blancs",
+          "description": "Cuvées Prestige, 75 cl",
+          "price": 18000,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Louis Roederer - Cristal",
+          "description": "Cuvées Prestige, 75 cl",
+          "price": 48000,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Dom Pérignon - Vintage - brut",
+          "description": "Cuvées Prestige, 75 cl",
+          "price": 38000,
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Alcohol-Free Sparkling",
+      "items": [
+        {
+          "name": "Nooh by La Coste - Effervescent Rosé - 0% alcool",
+          "sizes": [
+            {
+              "label": "15 cl",
+              "price": 1200
+            },
+            {
+              "label": "75 cl",
+              "price": 5500
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Grands vins d'exception",
+      "items": [
+        {
+          "name": "AOC Puligny-Montrachet 1er cru Truffières - Olivier Leflaive",
+          "description": "75 cl",
+          "price": 29000,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "AOP Languedoc Cabrières - Clos du Temple Gérard Bertrand - Bio - Demeter",
+          "description": "75 cl",
+          "price": 24000,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "AOC Pomerol - Château La Conseillante",
+          "description": "75 cl",
+          "price": 33000,
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "White Wine",
+      "items": [
+        {
+          "name": "AOC Alsace - Gewurztraminer Vendange Tardive - Famille Hugel",
+          "description": "Alsace",
+          "sizes": [
+            {
+              "label": "15 cl",
+              "price": 1700
+            },
+            {
+              "label": "75 cl",
+              "price": 7800
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "AOC Pessac-Léognan - Château Carbonnieux Grand Cru Classé de Graves",
+          "description": "Bordeaux",
+          "sizes": [
+            {
+              "label": "75 cl",
+              "price": 7400
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "AOC Pouilly-Fuissé - Domaine de la Denante",
+          "description": "Bourgogne",
+          "sizes": [
+            {
+              "label": "15 cl",
+              "price": 1400
+            },
+            {
+              "label": "37,5 cl",
+              "price": 3400
+            },
+            {
+              "label": "75 cl",
+              "price": 6100
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "AOC Chablis 1er Cru - Côte de Léchet La Chablisienne",
+          "description": "Bourgogne",
+          "sizes": [
+            {
+              "label": "75 cl",
+              "price": 6300
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "AOC Meursault - Maison Champy",
+          "description": "Bourgogne",
+          "sizes": [
+            {
+              "label": "75 cl",
+              "price": 10800
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Cuvée Disneyland® Paris - AOP La Clape Château L'Hospitalet - Bio - Demeter",
+          "description": "Languedoc",
+          "sizes": [
+            {
+              "label": "15 cl",
+              "price": 850
+            },
+            {
+              "label": "75 cl",
+              "price": 3800
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "AOP Coteaux d'Aix-en-Provence Les Pentes Douces - Château La Coste",
+          "description": "Provence",
+          "sizes": [
+            {
+              "label": "75 cl",
+              "price": 3400
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "AOC Cheverny - Château de Chambord Sauvignon Blanc - Bio",
+          "description": "Vallée de la Loire",
+          "sizes": [
+            {
+              "label": "15 cl",
+              "price": 1000
+            },
+            {
+              "label": "75 cl",
+              "price": 4300
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "AOC Muscadet de Sèvre et Maine sur lie Clos de la Chapelle - Gilbert Chon",
+          "description": "Vallée de la Loire",
+          "sizes": [
+            {
+              "label": "37,5 cl",
+              "price": 1900
+            },
+            {
+              "label": "75 cl",
+              "price": 3400
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ],
+          "unclear": "19 € sits between the 15 cl and 37,5 cl columns; read as 37,5 cl"
+        },
+        {
+          "name": "AOC Châteauneuf-du-Pape - L'Oratoire des Papes",
+          "description": "Vallée du Rhône",
+          "sizes": [
+            {
+              "label": "75 cl",
+              "price": 7000
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "AOP Hermitage - Chante-Alouette - M. Chapoutier",
+          "description": "Vallée du Rhône",
+          "sizes": [
+            {
+              "label": "75 cl",
+              "price": 10800
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Foreign White Wine",
+      "items": [
+        {
+          "name": "Italie : Vénétie - DOC Garda Azienda Agricola Prendina - Pinot Grigio",
+          "description": "75 cl",
+          "price": 4300,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Nouvelle Zélande - Marlborough Greywacke - Sauvignon Blanc",
+          "description": "75 cl",
+          "price": 5700,
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Rosé Wine",
+      "items": [
+        {
+          "name": "AOP Côtes de Provence - Minuty - Prestige rosé",
+          "description": "Côtes de Provence",
+          "sizes": [
+            {
+              "label": "15 cl",
+              "price": 850
+            },
+            {
+              "label": "50 cl",
+              "price": 2100
+            },
+            {
+              "label": "75 cl",
+              "price": 3800
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "AOC Bandol - Château Romassan - Domaines Ott",
+          "description": "Côtes de Provence",
+          "sizes": [
+            {
+              "label": "75 cl",
+              "price": 6200
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Red Wine",
+      "items": [
+        {
+          "name": "AOC Haut-Médoc - Château Cantemerle Grand Cru Classé",
+          "description": "Bordeaux",
+          "sizes": [
+            {
+              "label": "37,5 cl",
+              "price": 3900
+            },
+            {
+              "label": "75 cl",
+              "price": 7000
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "AOC Pauillac - Baron Nathaniel Baron Philippe de Rothschild",
+          "description": "Bordeaux",
+          "sizes": [
+            {
+              "label": "75 cl",
+              "price": 5300
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "AOC Saint-Estèphe - Château de Pez",
+          "description": "Bordeaux",
+          "sizes": [
+            {
+              "label": "75 cl",
+              "price": 7800
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "AOC Saint-Emilion Grand Cru Château Capet-Guillier",
+          "description": "Bordeaux",
+          "sizes": [
+            {
+              "label": "15 cl",
+              "price": 1600
+            },
+            {
+              "label": "75 cl",
+              "price": 7000
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "AOC Saint-Julien - Château Talbot Grand Cru Classé",
+          "description": "Bordeaux",
+          "sizes": [
+            {
+              "label": "37,5 cl",
+              "price": 8600
+            },
+            {
+              "label": "75 cl",
+              "price": 15500
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "AOC Givry 1er Cru - La Grande Berge Domaine Goubard",
+          "description": "Bourgogne",
+          "sizes": [
+            {
+              "label": "75 cl",
+              "price": 6200
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "AOC Bourgogne Hautes-Côtes de Nuits Pierre Maizière",
+          "description": "Bourgogne",
+          "sizes": [
+            {
+              "label": "15 cl",
+              "price": 1000
+            },
+            {
+              "label": "37,5 cl",
+              "price": 2400
+            },
+            {
+              "label": "75 cl",
+              "price": 4300
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "AOC Nuits-Saint-Georges 1er Cru Clos des Argillières - Pierre Maizière",
+          "description": "Bourgogne",
+          "sizes": [
+            {
+              "label": "75 cl",
+              "price": 9500
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "AOC Pommard - La Rue au Port Domaine Coste-Caumartin",
+          "description": "Bourgogne",
+          "sizes": [
+            {
+              "label": "75 cl",
+              "price": 8100
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "AOP Gevrey-Chambertin - Domaine Huguenot",
+          "description": "Bourgogne",
+          "sizes": [
+            {
+              "label": "75 cl",
+              "price": 8100
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Cuvée Disneyland® Paris - AOP La Clape Château L'Hospitalet - Bio - Demeter",
+          "description": "Languedoc",
+          "sizes": [
+            {
+              "label": "15 cl",
+              "price": 850
+            },
+            {
+              "label": "75 cl",
+              "price": 3800
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "AOP Corbières - Le Corbières de Georges Gérard Bertrand",
+          "description": "Languedoc",
+          "sizes": [
+            {
+              "label": "37,5 cl",
+              "price": 2100
+            },
+            {
+              "label": "75 cl",
+              "price": 3800
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "AOP Les Baux-de-Provence Château d'Estoublon - Bio",
+          "description": "Provence",
+          "sizes": [
+            {
+              "label": "75 cl",
+              "price": 4500
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "AOC Cheverny - Château de Chambord Pinot Noir & Gamay - Bio",
+          "description": "Vallée de la Loire",
+          "sizes": [
+            {
+              "label": "75 cl",
+              "price": 4500
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "AOC Châteauneuf-du-Pape - L'Oratoire des Papes",
+          "description": "Vallée du Rhône",
+          "sizes": [
+            {
+              "label": "37,5 cl",
+              "price": 4000
+            },
+            {
+              "label": "75 cl",
+              "price": 7200
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "AOC Côte Rôtie - Les Murets - Brotte - Syrah",
+          "description": "Vallée du Rhône",
+          "sizes": [
+            {
+              "label": "75 cl",
+              "price": 8100
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "AOC Crozes-Hermitage - La Rollande - Brotte",
+          "description": "Vallée du Rhône",
+          "sizes": [
+            {
+              "label": "15 cl",
+              "price": 1000
+            },
+            {
+              "label": "75 cl",
+              "price": 4300
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Foreign Red Wine",
+      "items": [
+        {
+          "name": "Argentine : Lujàn de Cuyo - Agrelo Naoki's Single Vineyard - Casarena - Malbec - Vegan",
+          "description": "75 cl",
+          "price": 6300,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Italien : Piémont - DOCG Barolo - Albe - G.D. Vajra",
+          "description": "75 cl",
+          "price": 8100,
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Spirits",
+      "note": "4 cl",
+      "items": [
+        {
+          "name": "Gordon's London Dry",
+          "description": "Gins",
+          "price": 1100,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Tanqueray N°Ten",
+          "description": "Gins",
+          "price": 1200,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Smirnoff N°21 Red",
+          "description": "Vodkas",
+          "price": 1100,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Belvedere Organic - Bio",
+          "description": "Vodkas",
+          "price": 1200,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Trois Rivières blanc",
+          "description": "Rhums",
+          "price": 1100,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Angostura 5 ans",
+          "description": "Rhums",
+          "price": 1200,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "José Cuervo Silver",
+          "description": "Tequilas",
+          "price": 1100,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Maker's Mark Bourbon",
+          "description": "Whiskies - USA",
+          "price": 1200,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Jack Daniel's Old No. 7",
+          "description": "Whiskies - USA",
+          "price": 1200,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Johnnie Walker - Red Label",
+          "description": "Whiskies - Scotland",
+          "price": 1200,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Lagavulin - 16 ans - Islay Single Malt",
+          "description": "Whiskies - Scotland",
+          "price": 1500,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Bushmill's The Original",
+          "description": "Whiskies - Ireland",
+          "price": 1200,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Nikka Coffey Malt",
+          "description": "Whiskies - Japan",
+          "price": 1400,
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Digestifs & Liqueurs",
+      "note": "4 cl",
+      "items": [
+        {
+          "name": "Cognac Courvoisier VSOP",
+          "description": "Spirits",
+          "price": 1100,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Calvados - Le Domfrontais - Christian Drouin",
+          "description": "Spirits",
+          "price": 1200,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Château de Laubade - Bas Armagnac VSOP",
+          "description": "Spirits",
+          "price": 1300,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Amaretto Disaronno",
+          "description": "Liqueurs",
+          "price": 1100,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Bailey's The Original Irish Cream",
+          "description": "Liqueurs",
+          "price": 1200,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Grand Marnier Cordon Rouge",
+          "description": "Liqueurs",
+          "price": 1200,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Get 27",
+          "description": "Liqueurs",
+          "price": 1100,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Limoncello Mamma Mia",
+          "description": "Liqueurs",
+          "price": 1100,
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "note": "33 cl",
+      "items": [
+        {
+          "name": "Coca-Cola Original",
+          "price": 600
+        },
+        {
+          "name": "Coca-Cola Zéro Sucres",
+          "price": 600
+        },
+        {
+          "name": "Coca-Cola Cherry",
+          "price": 600
+        },
+        {
+          "name": "Sprite",
+          "description": "25 cl",
+          "price": 600
+        },
+        {
+          "name": "Fanta Orange",
+          "description": "25 cl",
+          "price": 600
+        },
+        {
+          "name": "FuzeTea Peach Black Tea",
+          "description": "25 cl",
+          "price": 600
+        },
+        {
+          "name": "Kombucha Original - Bio",
+          "price": 700
+        },
+        {
+          "name": "Sélection de Tonics",
+          "description": "Indian, Raspberry-rhubarb flavour, Elderflower flavour. 20 cl",
+          "price": 600
+        },
+        {
+          "name": "Ginger Beer Bundaberg",
+          "description": "37,5 cl",
+          "price": 700
+        },
+        {
+          "name": "Perrier®",
+          "price": 500
+        },
+        {
+          "name": "Orange juice",
+          "description": "25 cl",
+          "price": 600
+        },
+        {
+          "name": "Apple juice",
+          "description": "25 cl",
+          "price": 600
+        }
+      ]
+    },
+    {
+      "name": "Mineral Waters",
+      "items": [
+        {
+          "name": "Vittel®",
+          "sizes": [
+            {
+              "label": "50 cl",
+              "price": 500
+            },
+            {
+              "label": "100 cl",
+              "price": 600
+            }
+          ]
+        },
+        {
+          "name": "S.Pellegrino®",
+          "sizes": [
+            {
+              "label": "50 cl",
+              "price": 550
+            },
+            {
+              "label": "100 cl",
+              "price": 650
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "note": "Lavazza",
+      "items": [
+        {
+          "name": "Espresso 100% Arabica",
+          "price": 380
+        },
+        {
+          "name": "Double Espresso 100% Arabica",
+          "price": 550
+        },
+        {
+          "name": "Decaffeinated Coffee",
+          "price": 380
+        },
+        {
+          "name": "Coffee",
+          "price": 500
+        },
+        {
+          "name": "Coffee with milk",
+          "price": 550
+        },
+        {
+          "name": "Cappuccino",
+          "price": 550
+        },
+        {
+          "name": "Hot chocolate",
+          "price": 550
+        },
+        {
+          "name": "Vienna hot chocolate",
+          "price": 600
+        },
+        {
+          "name": "Tea, herbal tea",
+          "price": 550
+        },
+        {
+          "name": "Semi-skimmed milk",
+          "description": "20 cl",
+          "price": 380
+        }
+      ]
+    },
+    {
+      "name": "Collector's Champagne Flute",
+      "items": [
+        {
+          "name": "Collector flute",
+          "sizes": [
+            {
+              "label": "Flute only",
+              "price": 1500
+            },
+            {
+              "label": "With champagne brut 15 cl",
+              "price": 2200
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "P1NR00",
+  "name": "L'Arbre Enchanté",
+  "category": "Food & Drink > On-the-go",
+  "area": "Fantasyland",
+  "lat": 48.874138,
+  "lon": 2.775522,
+  "menuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P1NR00_l-arbre-enchante.pdf",
+  "priceBand": "€",
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

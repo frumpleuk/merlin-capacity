@@ -1,0 +1,70 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1NR01_auberge-de-cendrillon.pdf",
+    "sha256": "47fde6e52af9aafd01d4007eaf75155420d1c4d1de0b6931d9e5e083ad0490c1",
+    "stated": "November 2025"
+  },
+  "sections": [
+    {
+      "name": "Menus",
+      "items": [
+        {
+          "name": "Adult Menu",
+          "description": "Cream of pumpkin soup and pumpkin purée (vegan), smoked salmon and spinach roll or duck pâté en croûte with apricot and ginger; beef parmentier, pan-fried turbot fillet in a champagne sauce, roast supreme of chicken or soft chickpea patty (vegan); Cinderella's dessert, warm cocoa fondant (vegan) or seasonal fruits. Wine included: IGP Cité de Carcassonne - Gérard Bertrand - Chardonnay or Merlot 8 cl; AOC Bourgogne Hautes-Côtes de Nuits - Pierre Maizière or AOC Chablis - La Pierrelée - La Chablisienne 8 cl; Edition Spéciale Disneyland® Paris - Champagne Pierre Mignon Grande Réserve - brut 10 cl",
+          "sizes": [
+            { "label": "Menu", "price": 10000 },
+            { "label": "Wine included", "price": 12000 }
+          ]
+        },
+        {
+          "name": "Kids' Menu",
+          "description": "For children ages 3 to 11. Fairy canapé: cream of pumpkin soup with Kiri and pumpkin seed open sandwich, or smoked salmon rolled with Kiri cheese; thyme chicken, tropical sole fillet or gnocchi with vegetables (veggie); Cinderella's surprise or fruit salad with mint; Vittel® 33 cl, orange or apple juice 25 cl or milk 20 cl. A different soft drink (25 cl) may replace a similar item on request",
+          "price": 5000,
+          "tags": ["kids"]
+        }
+      ]
+    },
+    {
+      "name": "White Wine",
+      "items": [
+        { "name": "AOC Chablis - La Pierrelée La Chablisienne", "description": "Bourgogne", "sizes": [{ "label": "37,5 cl", "price": 2400 }, { "label": "75 cl", "price": 4300 }], "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Red Wine",
+      "items": [
+        { "name": "AOC Saint-Emilion - Fortin Plaisance", "description": "Bordeaux", "sizes": [{ "label": "37,5 cl", "price": 2400 }, { "label": "75 cl", "price": 3800 }], "tags": ["alcohol"] },
+        { "name": "AOC Châteauneuf-du-Pape L'Âme - Ogier - Bio", "description": "Vallée du Rhône", "sizes": [{ "label": "75 cl", "price": 6500 }], "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Rosé Wine",
+      "items": [
+        { "name": "AOP Côtes de Provence Minuty - Prestige rosé", "description": "Provence", "sizes": [{ "label": "50 cl", "price": 2700 }, { "label": "75 cl", "price": 3800 }], "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "note": "33 cl",
+      "items": [
+        { "name": "Coca-Cola Original", "price": 600 },
+        { "name": "Coca-Cola Zéro Sucres", "price": 600 },
+        { "name": "Fanta Orange Sans Sucres", "price": 600 },
+        { "name": "Sprite Sans Sucres", "price": 600 },
+        { "name": "FuzeTea Peach Black Tea", "price": 600 },
+        { "name": "Perrier®", "price": 500 },
+        { "name": "Orange or apple juice 25 cl", "price": 600 }
+      ]
+    },
+    {
+      "name": "Mineral Waters",
+      "items": [
+        { "name": "Vittel®", "sizes": [{ "label": "50 cl", "price": 500 }, { "label": "100 cl", "price": 600 }] },
+        { "name": "S.Pellegrino®", "sizes": [{ "label": "50 cl", "price": 550 }, { "label": "100 cl", "price": 650 }] }
+      ]
+    }
+  ]
+}

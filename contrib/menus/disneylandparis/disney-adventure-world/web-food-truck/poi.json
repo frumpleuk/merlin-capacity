@@ -1,0 +1,12 @@
+{
+  "id": "P2PR05",
+  "name": "WEB Food Truck",
+  "category": "Food & Drink > On-the-go",
+  "area": "Avengers Campus",
+  "lat": 48.865524,
+  "lon": 2.778975,
+  "menuUrl": null,
+  "priceBand": "€",
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

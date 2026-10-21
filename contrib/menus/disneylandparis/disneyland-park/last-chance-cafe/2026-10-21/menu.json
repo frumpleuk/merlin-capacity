@@ -1,0 +1,81 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1RR02_last-chance-cafe.pdf",
+    "sha256": "7edc707973cd5f9444695ff542408f531f453bf20aa87c4a1d6ef994de372aac",
+    "stated": "September 2026"
+  },
+  "sections": [
+    {
+      "name": "Halloween",
+      "items": [
+        { "name": "Thunder Mesa Haunted Meal", "description": "Chicken tenders x4 with garlic black sauce served with sweet potato fries", "price": 1500 },
+        { "name": "Sweet potato fries", "price": 450 },
+        { "name": "Strange Feeling donut", "description": "Speculoos filled", "price": 450 }
+      ]
+    },
+    {
+      "name": "Western Fare for Hungry Cowboys",
+      "items": [
+        { "name": "Chicken salad", "description": "Lettuce, chicken, hard-boiled egg, Grana Padano cheese, marinated sun-dried tomatoes", "price": 1200 },
+        { "name": "Vegan salad", "description": "Quinoa, bulgur, barley, lentils, soybeans, chickpea-coco-curry balls, marinated sun-dried tomatoes, cashew nuts", "price": 1200, "tags": ["vg"] },
+        { "name": "Chilli with soya proteins", "price": 800, "tags": ["vg"] },
+        { "name": "Pineapple fritters and icing sugar x2", "price": 500 }
+      ]
+    },
+    {
+      "name": "Ice Cream",
+      "items": [
+        { "name": "Magnum® Almond", "price": 400 },
+        { "name": "Magnum® Vegan Almond", "price": 400, "tags": ["vg"] },
+        { "name": "Cornetto® Soft", "description": "Stracciatella & Caramel Sauce", "price": 430 },
+        { "name": "Super Twister®", "description": "Orange, Strawberry, Lemon Flavours", "price": 350 }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        { "name": "Soft drink 50 cl", "description": "Coca-Cola, Coca-Cola Zero Sugar, Fanta, Sprite, Fuze Tea", "price": 420 },
+        { "name": "Orange juice or apple juice 23,5 cl", "price": 380 },
+        { "name": "Vittel® 50 cl", "price": 350 },
+        { "name": "S.Pellegrino 50 cl", "price": 380 }
+      ]
+    },
+    {
+      "name": "Draught Beer",
+      "items": [
+        {
+          "name": "1664® Premium",
+          "sizes": [
+            { "label": "25 cl", "price": 500 },
+            { "label": "50 cl", "price": 750 }
+          ],
+          "tags": ["alcohol"]
+        }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        { "name": "Espresso 100% Arabica", "price": 330 },
+        { "name": "Coffee 100% Arabica", "price": 350 },
+        { "name": "Double espresso 100% Arabica", "price": 380 },
+        { "name": "Coffee with milk", "price": 400 },
+        { "name": "Cappuccino", "price": 400 },
+        { "name": "Hot chocolate", "price": 420 },
+        { "name": "Semi-skimmed milk 20 cl", "price": 250 },
+        { "name": "Tea, herbal tea", "price": 350 }
+      ]
+    },
+    {
+      "name": "Souvenirs",
+      "items": [
+        { "name": "Mickey or Minnie straw", "sizes": [{ "label": "Straw only", "price": 600 }, { "label": "With a cold drink", "price": 700 }] },
+        { "name": "Mug", "sizes": [{ "label": "Mug only", "price": 1500 }, { "label": "With a hot drink", "price": 1700 }] },
+        { "name": "Tumbler", "sizes": [{ "label": "Tumbler only", "price": 1500 }, { "label": "With a cold drink", "price": 1700 }] }
+      ]
+    }
+  ]
+}

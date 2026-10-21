@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2TR00_ice-cream-creations.pdf",
+    "sha256": "c95f27c683bb786006a47e049068d1d804d32955e67234f5db1aeb108eef4456",
+    "stated": "June 2026"
+  },
+  "sections": [
+    {
+      "name": "Ice cream with character!",
+      "items": [
+        { "name": "Buzz Lightyear Magnum® Ice Cream", "description": "Vanilla ice cream, white chocolate coating and multicoloured sprinkles", "price": 600 },
+        { "name": "The Lion King Magnum® Ice Cream", "description": "Vanilla ice cream, dark chocolate coating, chopped almond, broken corn flakes, almonds and hazelnut bronze-effect slivers", "price": 600 },
+        { "name": "Snowflake Bliss Magnum® Ice Cream", "description": "Vanilla ice cream, white chocolate coating, shredded coconuts and blue flakes", "price": 600 },
+        { "name": "Cowboy Crunch Magnum® Ice Cream", "description": "Vanilla ice cream, milk chocolate coating, chopped almonds and hazelnut slivers", "price": 600 }
+      ]
+    },
+    {
+      "name": "Sweet Break",
+      "items": [
+        { "name": "Sweet Break", "description": "Buzz Lightyear Magnum® ice cream or The Lion King Magnum® ice cream or Snowflake Bliss Magnum® ice cream or Cowboy Crunch Magnum® ice cream and a cold or a hot drink", "price": 900 }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        { "name": "Soft drink", "description": "Coca-Cola 50 cl, Coca-Cola 50 cl, Fanta 50 cl, Sprite 50 cl, Fuze Tea 40 cl", "price": 420 },
+        { "name": "Vittel® 50 cl", "price": 350 },
+        { "name": "Perrier® 50 cl", "price": 380 },
+        { "name": "Orange or apple juice 23,5 cl", "price": 380 }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        { "name": "Espresso 100% Arabica", "price": 330 },
+        { "name": "Double Espresso 100% Arabica", "price": 380 },
+        { "name": "Coffee 100% Arabica", "price": 350 },
+        { "name": "Coffee with milk", "price": 400 },
+        { "name": "Cappuccino", "price": 400 },
+        { "name": "Hot chocolate", "price": 420 },
+        { "name": "Tea, herbal tea", "price": 350 }
+      ]
+    }
+  ]
+}

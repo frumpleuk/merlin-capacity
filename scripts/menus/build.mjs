@@ -8,7 +8,7 @@
 // stale menus.
 import fs from "node:fs";
 import path from "node:path";
-import { ALL_PARK_DIRS, DATE_DIR, REPO, parkDir, parkRoot, readJson } from "./lib.mjs";
+import { ALL_PARK_DIRS, DATE_DIR, REPO, parkCurrency, parkDir, parkRoot, readJson } from "./lib.mjs";
 
 // One file per park, fetched by the Food tab, plus a tiny index that ships in
 // the bundle so the nav knows which parks have anything without a round trip.
@@ -147,7 +147,8 @@ for (const key of Object.keys(ALL_PARK_DIRS)) {
   // Area labels for the map (the syncs write them from the app's own map).
   const areasFile = path.join(base, "areas.json");
   const areas = fs.existsSync(areasFile) ? readJson(areasFile) : [];
-  parks[key] = { venues, water, events, offers, areas };
+  // Prices are integer minor units in this currency (pence, or euro cents).
+  parks[key] = { currency: parkCurrency(key), venues, water, events, offers, areas };
 }
 
 fs.mkdirSync(OUT_DIR, { recursive: true });

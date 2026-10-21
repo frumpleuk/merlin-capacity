@@ -1,0 +1,12 @@
+{
+  "id": "P1RR00",
+  "name": "Cowboy Cookout Barbecue",
+  "category": "Food & Drink > Quick Service Restaurant",
+  "area": "Frontierland",
+  "lat": 48.871027,
+  "lon": 2.773392,
+  "menuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P1RR00_cowboy-cookout-barbecue.pdf",
+  "priceBand": "€",
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

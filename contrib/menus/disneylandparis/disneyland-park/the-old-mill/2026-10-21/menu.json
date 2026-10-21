@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1NR05_the-old-mill.pdf",
+    "sha256": "39d66b6088ce07c62fe8ab89642dcedf4627ec393771c6a1dfd7501b75440a4d",
+    "stated": "September 2026"
+  },
+  "sections": [
+    {
+      "name": "Sweet Break",
+      "items": [
+        { "name": "Sweet Break", "description": "The Queen's Glaze or Goofy Mummy doughnut and a hot (except Espresso) or a cold drink (except slush)", "price": 800 }
+      ]
+    },
+    {
+      "name": "Donuts",
+      "items": [
+        { "name": "The Queen's Glaze", "description": "Strawberry filled donut", "price": 450 },
+        { "name": "Goofy Mummy", "description": "Cocoa filled donut", "price": 450 }
+      ]
+    },
+    {
+      "name": "Snacks",
+      "items": [
+        { "name": "Cheetos® Original 27g", "description": "Cheese", "price": 330 },
+        { "name": "Pide pizza", "description": "Ham and mozzarella or 4-Cheese", "price": 700 },
+        { "name": "Cookie vegan", "description": "Chocolate chunks and hazelnut", "price": 350, "tags": ["vg"] }
+      ]
+    },
+    {
+      "name": "Ice Cream",
+      "items": [
+        { "name": "Magnum® Almond", "price": 400 },
+        { "name": "Twister® Frrreeze", "description": "Raspberry, orange and peach flavours", "price": 350 },
+        { "name": "Cornetto® Soft", "description": "Vanilla & strawberry flavour", "price": 430 },
+        { "name": "Mickey Ice Cream Bar", "description": "Vanilla Flavour", "price": 450 }
+      ]
+    },
+    {
+      "name": "Our Souvenir Gamme",
+      "items": [
+        { "name": "Cinderella carriage bucket", "description": "With sweet popcorn", "price": 1600 },
+        { "name": "Stitch Tumbler", "description": "With a cold drink", "price": 1800 },
+        { "name": "Mug", "description": "With a hot drink", "price": 1700 },
+        { "name": "Mickey or Minnie straw", "description": "With a hot drink", "price": 700 },
+        { "name": "Stitch slush straw", "description": "With a slush. Colour changing with slush", "price": 700 }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2DR03_cafe-luminosity.pdf",
+    "sha256": "78ecd86b582f4007a8cc37872a6fddf85fefc34c71278605b0539b4561702b03",
+    "stated": "September 2026"
+  },
+  "sections": [
+    {
+      "name": "Hot Dogs",
+      "items": [
+        { "name": "The Authentic Onions & Mustard", "description": "Turkey sausage, red onion pickles, American mustard, sweet chilli pepper flavour Doritos®, curry-onion bread", "price": 1050 },
+        { "name": "The Cheddartistic", "description": "Turkey sausage, melted cheddar sauce, crispy onions, crispy bacon, curry-onion bread", "price": 1150 },
+        { "name": "The Cucumber", "description": "Turkey sausage, tomato-onion-coriander mixture, cucumber pickles, relish sauce, curry-onion bread", "price": 1150 },
+        { "name": "The MagnifiCurry", "description": "Peas protein sausage, plant-based grated, beetroot ketchup, rocket salad, curry-onion bread", "price": 1150, "tags": ["vg"] },
+        { "name": "Lay's® Crisps 45 g", "price": 380 }
+      ]
+    },
+    {
+      "name": "Sweet Break",
+      "items": [
+        { "name": "Sweet Break", "description": "Cinnamon roll and a hot or a cold drink", "price": 700 },
+        { "name": "Cinnamon roll", "price": 500 }
+      ]
+    },
+    {
+      "name": "Ice Cream",
+      "items": [
+        { "name": "Magnum® Almond", "price": 400 },
+        { "name": "Magnum® Almond Vegan", "price": 400, "tags": ["vg"] },
+        { "name": "Magnum® La Pistache", "price": 400 },
+        { "name": "Twister® Frrreeze", "description": "Raspberry, orange and peach flavours", "price": 350 }
+      ]
+    },
+    {
+      "name": "Draught Beers",
+      "items": [
+        { "name": "1664® Premium", "sizes": [{ "label": "25 cl", "price": 500 }, { "label": "50 cl", "price": 750 }], "tags": ["alcohol"] },
+        { "name": "Grimbergen blonde", "sizes": [{ "label": "25 cl", "price": 550 }, { "label": "50 cl", "price": 850 }], "tags": ["alcohol"] },
+        { "name": "Mojito cocktail 25 cl", "description": "On-tap Mojito cocktail with lime pieces", "price": 800, "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        { "name": "Soft drink 50 cl", "description": "Coca-Cola Original, Coca-Cola Zero Sugar, Coca-Cola Cherry, Fanta, Sprite, Fuze Tea, Tropico", "price": 420 },
+        { "name": "Innocent smoothie 33 cl", "price": 450 },
+        { "name": "Vittel® 50 cl", "price": 350 },
+        { "name": "S.Pellegrino 50 cl", "price": 380 }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        { "name": "Espresso 100% Arabica", "price": 330 },
+        { "name": "Double Espresso 100% Arabica", "price": 380 },
+        { "name": "Coffee 100% Arabica", "price": 350 },
+        { "name": "Coffee with milk", "price": 400 },
+        { "name": "Cappuccino", "price": 400 },
+        { "name": "Hot chocolate", "price": 420 },
+        { "name": "Tea, herbal tea", "price": 350 }
+      ]
+    },
+    {
+      "name": "Souvenirs",
+      "items": [
+        { "name": "Tumbler", "description": "With a cold drink", "price": 1700 },
+        { "name": "Mug", "description": "With a hot drink", "price": 1700 }
+      ]
+    }
+  ]
+}

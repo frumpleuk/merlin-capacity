@@ -1,0 +1,12 @@
+{
+  "id": "P1AR01",
+  "name": "Café de la Brousse",
+  "category": "Food & Drink > On-the-go",
+  "area": "Adventureland",
+  "lat": 48.872371,
+  "lon": 2.77452,
+  "menuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P1AR01_cafe-de-la-brousse.pdf",
+  "priceBand": "€",
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

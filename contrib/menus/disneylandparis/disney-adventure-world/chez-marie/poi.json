@@ -1,0 +1,12 @@
+{
+  "id": "P2DR06",
+  "name": "Chez Marie",
+  "category": "Food & Drink > On-the-go",
+  "area": "Adventure Way",
+  "lat": 48.866132,
+  "lon": 2.774056,
+  "menuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P2DR06_chez-marie.pdf",
+  "priceBand": "€",
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

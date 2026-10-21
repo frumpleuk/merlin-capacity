@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR04_gibson-girl-ice-cream-parlour.pdf",
+    "sha256": "5f984a32e75ff014fa7206c9eed2e5f71a977f8488182ac34688b45d9411a238",
+    "stated": "September 2026"
+  },
+  "sections": [
+    {
+      "name": "Treats",
+      "items": [
+        { "name": "Icy break", "description": "Carte d'Or 3 scoops and a cold or a hot drink", "price": 900 },
+        { "name": "Sweet break", "description": "Muffin and a hot or a cold drink", "price": 700 },
+        { "name": "Beignet Mickey", "description": "Chocolate-hazelnut", "price": 450 },
+        { "name": "Muffin", "description": "Cocoa with chocolate chunks or vanilla flavour with chocolate chunks", "price": 430 }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        { "name": "Espresso 100% Arabica", "price": 330 },
+        { "name": "Coffee 100% Arabica", "price": 350 },
+        { "name": "Double Espresso 100% Arabica", "price": 380 },
+        { "name": "Coffee with milk", "price": 400 },
+        { "name": "Cappuccino", "price": 400 },
+        { "name": "Hot chocolate", "price": 420 },
+        { "name": "Tea, herbal tea", "price": 350 }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        { "name": "Soft drink 50 cl", "description": "Coca-Cola, Fanta, Sprite, FuzeTea, Tropico", "price": 420 },
+        { "name": "Orange juice or apple juice 23,5 cl", "price": 420 },
+        { "name": "Vittel 50 cl", "price": 350 },
+        { "name": "S.Pellegrino 50 cl", "price": 380 },
+        { "name": "Semi-skimmed milk 20 cl", "price": 250 }
+      ]
+    },
+    {
+      "name": "Souvenirs",
+      "items": [
+        { "name": "Mickey or Minnie Straw", "sizes": [ { "label": "Straw only", "price": 600 }, { "label": "With a cold drink", "price": 700 } ] },
+        { "name": "Mug", "sizes": [ { "label": "Mug only", "price": 1500 }, { "label": "With a hot drink", "price": 1700 } ] },
+        { "name": "Tumbler", "sizes": [ { "label": "Tumbler only", "price": 1500 }, { "label": "With a cold drink", "price": 1700 } ] },
+        { "name": "Collector Flute with champagne brut 15 cl", "price": 2000, "tags": ["alcohol"] }
+      ]
+    }
+  ]
+}

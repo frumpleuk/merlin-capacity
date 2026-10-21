@@ -1,0 +1,148 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1NR02_au-chalet-de-la-marionnette.pdf",
+    "sha256": "95e66f5e6fb6d85ac52f26a4af18c8adc0e431a54314961861b61fa50ff6b0e9",
+    "stated": "September 2026"
+  },
+  "sections": [
+    {
+      "name": "Wicked Feast Menu",
+      "items": [
+        {
+          "name": "Wicked Feast Menu",
+          "description": "Cold drink 50 cl + fries or side salad + Wicked Feast Burger (breaded chicken fillet, smoky bacon-flavoured sauce, chilli cheddar, chorizo and Doritos® Sweet Chilli Pepper) + Crunchy Spell (creamy vanilla entremet, cocoa ganache and hazelnut centre)",
+          "sizes": [
+            { "label": "Menu", "price": 2200 },
+            { "label": "Without dessert", "price": 2000 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Menus",
+      "note": "And Fries or Side salad and Cold drink 50 cl",
+      "items": [
+        { "name": "Chalet Hot Dog", "description": "Pretzel bun, currywurst sauce, turkey sausage, rocket salad, caramelised onions, crispy onions, pickled carrots", "price": 1750 },
+        { "name": "Plant-based burger", "description": "Beyond Meat. Breaded plant-based patty, tomato, lettuce, pickles, beetroot ketchup", "price": 1650, "tags": ["vg"] },
+        { "name": "1/2 Roasted chicken", "price": 1650 }
+      ]
+    },
+    {
+      "name": "Menus Salade",
+      "note": "And Cold drink 50 cl",
+      "items": [
+        { "name": "Chicken salad", "description": "Lettuce, chicken, hard-boiled egg, Grana Padano cheese, marinated sun-dried tomatoes", "price": 1500 },
+        { "name": "Salade vegan", "description": "Quinoa, bulgur, barley, lentils, soybeans, chickpea-coco-curry balls, marinated sun-dried tomatoes, cashew nuts", "price": 1500, "tags": ["vg"] }
+      ]
+    },
+    {
+      "name": "Kids' Menu",
+      "note": "For children ages 3 to 11",
+      "items": [
+        {
+          "name": "Kids' Menu",
+          "description": "The little chicken burger (chicken, melted cheddar cheese, tomato, lettuce, La Vache qui rit® cheese sauce), kid's hot-dog or chicken nuggets x4; fries or cherry tomatoes; Pom'Potes® Bio apple (no added sugar), organic mini Babybel® cheese, flavoured sweet drinking yoghurt, sweet beignets filled with cocoa and hazelnut x2 or Magnum® Mini Almond; Juicy Water (pomme-fraise) 20 cl, milk 20 cl or Vittel® 33 cl. Other cold drink (25 cl) may replace similar item on request",
+          "price": 1050,
+          "tags": ["kids"]
+        }
+      ]
+    },
+    {
+      "name": "Sweet Break",
+      "items": [
+        { "name": "Sweet Break", "description": "Double Mickey Cake Almond-chocolate or Magnum® Mini Almond and a cold drink 50 cl or a hot drink", "price": 700 }
+      ]
+    },
+    {
+      "name": "À la carte",
+      "items": [
+        { "name": "Side salad", "price": 330, "tags": ["v"] },
+        { "name": "Fries", "price": 450 },
+        { "name": "Cheese pretzel", "price": 500 },
+        { "name": "Chicken nuggets x4", "description": "Sauce: mustard, mayonnaise, ketchup", "price": 550 },
+        { "name": "Chalet Hot Dog", "price": 1150 },
+        { "name": "1/2 Roasted chicken", "price": 1200 },
+        { "name": "Plant-based burger", "description": "Beyond Meat", "price": 1200, "tags": ["vg"] },
+        { "name": "Wicked Feast Burger", "price": 1500 },
+        { "name": "Salad", "price": 1200, "tags": ["vg"] },
+        { "name": "Chicken salad", "price": 1200 }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        { "name": "Yoghurt on a fruit layer", "price": 300 },
+        { "name": "Double Mickey Cake", "description": "Almond-chocolate", "price": 380 },
+        { "name": "Fruit bag", "price": 400, "tags": ["vg"] },
+        { "name": "Crunchy Spell", "price": 550 },
+        { "name": "Geppetto's accordeon", "price": 500 },
+        { "name": "Push Up Haribo®", "description": "Vanilla flavour, Strawberry sauce", "price": 350 },
+        { "name": "Solero®", "description": "Strawberry Twist, Vanilla ice cream", "price": 350 },
+        { "name": "Magnum® La Pistache", "price": 400 },
+        { "name": "Magnum® Almond", "price": 400 },
+        { "name": "Magnum® Vegan Almond", "price": 400, "tags": ["vg"] },
+        { "name": "Cornetto® King Cône", "description": "Cocoa sauce", "price": 430 },
+        { "name": "Glace Mickey", "description": "Vanilla flavour", "price": 450 }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        { "name": "Soft drink 50 cl", "description": "Coca-Cola range, Fanta, Sprite, Fuze Tea, Tropico", "price": 420 },
+        { "name": "Orange juice or apple juice 23,5 cl", "price": 380 },
+        { "name": "Vittel® 50 cl", "price": 350 },
+        { "name": "S.Pellegrino 50 cl", "price": 380 },
+        { "name": "Semi-skimmed milk 20 cl", "price": 250 }
+      ]
+    },
+    {
+      "name": "Draught Beer",
+      "items": [
+        {
+          "name": "1664® Premium",
+          "sizes": [
+            { "label": "25 cl", "price": 500 },
+            { "label": "50 cl", "price": 750 }
+          ],
+          "tags": ["alcohol"]
+        }
+      ]
+    },
+    {
+      "name": "Slush",
+      "items": [
+        {
+          "name": "Slush",
+          "description": "Parfum pomme ou fraise",
+          "sizes": [
+            { "label": "25 cl", "price": 350 },
+            { "label": "50 cl", "price": 600 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        { "name": "Espresso 100% Arabica", "price": 330 },
+        { "name": "Coffee 100% Arabica", "price": 350 },
+        { "name": "Double Espresso 100% Arabica", "price": 380 },
+        { "name": "Coffee with milk", "price": 400 },
+        { "name": "Cappuccino", "price": 400 },
+        { "name": "Hot chocolate", "price": 420 },
+        { "name": "Tea, herbal tea", "price": 350 }
+      ]
+    },
+    {
+      "name": "Souvenirs",
+      "items": [
+        { "name": "Mickey or Minnie straw", "sizes": [{ "label": "Straw only", "price": 600 }, { "label": "With a cold drink", "price": 700 }] },
+        { "name": "Tumbler", "sizes": [{ "label": "Tumbler only", "price": 1500 }, { "label": "With a cold drink or slush", "price": 1700 }] },
+        { "name": "Mug", "sizes": [{ "label": "Mug only", "price": 1500 }, { "label": "With a hot drink", "price": 1700 }] }
+      ]
+    }
+  ]
+}

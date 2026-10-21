@@ -1,0 +1,12 @@
+{
+  "id": "P1RR04",
+  "name": "Silver Spur Steakhouse",
+  "category": "Food & Drink > Table service",
+  "area": "Frontierland",
+  "lat": 48.871262,
+  "lon": 2.776632,
+  "menuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P1RR04_silver-spur-steakhouse.pdf",
+  "priceBand": "€€",
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

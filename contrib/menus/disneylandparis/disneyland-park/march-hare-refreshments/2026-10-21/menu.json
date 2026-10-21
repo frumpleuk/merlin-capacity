@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1NR04_march-hare-refreshments.pdf",
+    "sha256": "ca0dba5a2e526008ac32cdd8739a20e90d3d1c6439493f84541232b28f5095fe",
+    "stated": "September 2026"
+  },
+  "sections": [
+    {
+      "name": "Le Festival Halloween Disney",
+      "items": [
+        { "name": "Her Majesty's Meltdown", "description": "Black crimped cone, vanilla flavour ice cream, mango and passion fruit coulis, and cocoa butter hearts", "price": 700 },
+        { "name": "Sweet Break", "description": "Her Majesty's Meltdown and a hot or a cold drink", "price": 1000 }
+      ]
+    },
+    {
+      "name": "Ice Cream",
+      "note": "Miko®",
+      "items": [
+        { "name": "The Unbirthday ice cream", "description": "Vanilla flavour ice cream, salted butter caramel sauce and popcorn", "price": 700 },
+        { "name": "Curious Labyrinth ice cream", "description": "Vanilla flavour ice cream", "price": 700 },
+        { "name": "Won' Door' Land ice cream", "description": "Vanilla flavour ice cream, brownies, caramelized almonds and hazelnuts slivers", "price": 700 }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "note": "Lavazza",
+      "items": [
+        { "name": "Espresso 100% Arabica", "price": 330 },
+        { "name": "Double Espresso 100% Arabica", "price": 380 },
+        { "name": "Coffee", "description": "100% Arabica", "price": 350 },
+        { "name": "Coffee with milk", "price": 400 },
+        { "name": "Cappuccino", "price": 400 },
+        { "name": "Hot chocolate", "price": 420 },
+        { "name": "Tea, herbal tea", "price": 350 }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        { "name": "Soft drink 50 cl", "description": "Coca-Cola, Coca-Cola Zero Sugar, Fanta, Sprite, Fuze Tea, Tropico", "price": 420 },
+        { "name": "Vittel 50 cl", "price": 350 },
+        { "name": "Perrier 50 cl", "price": 380 },
+        { "name": "Orange or apple juice 23,5 cl", "price": 380 }
+      ]
+    }
+  ]
+}

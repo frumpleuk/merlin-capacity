@@ -1,0 +1,12 @@
+{
+  "id": "P2BR04",
+  "name": "Speciality Ice Cream",
+  "category": "Food & Drink > On-the-go",
+  "area": "World Premiere Plaza",
+  "lat": 48.867123,
+  "lon": 2.778548,
+  "menuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P2BR04_speciality-ice-cream.pdf",
+  "priceBand": "€",
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

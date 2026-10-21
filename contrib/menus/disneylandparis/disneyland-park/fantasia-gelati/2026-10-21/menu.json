@@ -1,0 +1,77 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1NR03_fantasia-gelati.pdf",
+    "sha256": "b66ceba87e940d8a4220496b9e33c8c507bb99ad73b771ffc1f8c49d31f9c52c"
+  },
+  "sections": [
+    {
+      "name": "Glaces Italiennes",
+      "items": [
+        { "name": "Pot", "description": "Vanilla flavour, Chocolate flavour or Vanilla-Chocolate flavour", "price": 400 },
+        { "name": "Topping", "description": "Whipped cream or caramelised hazelnut chips or colored balls or broken Daim chocolate or broken Oreo cookies or broken meringue or Mini Smarties", "price": 100, "addOn": true },
+        { "name": "30th Anniversary Fan's Favorite Ice Cream", "description": "Strawberry candy flavoured ice cream, slivers of violet, meringues", "price": 450 }
+      ]
+    },
+    {
+      "name": "Ice Cream",
+      "items": [
+        {
+          "name": "Carte d'Or® pot",
+          "sizes": [
+            { "label": "1 scoop", "price": 350 },
+            { "label": "2 scoops", "price": 400 },
+            { "label": "3 scoops", "price": 450 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sweet Break",
+      "items": [
+        { "name": "Sweet Break", "description": "Carte d'Or® 3 scoops and a cold drink", "price": 680 }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        { "name": "Espresso 100% Arabica", "price": 300 },
+        { "name": "Coffee", "price": 330 },
+        { "name": "Coffee with Milk", "price": 350 },
+        { "name": "Cappuccino", "price": 350 },
+        { "name": "Hot Chocolate", "price": 350 },
+        { "name": "Tea, Herbal Tea", "price": 330 }
+      ]
+    },
+    {
+      "name": "Souvenirs",
+      "items": [
+        { "name": "Straw", "price": 500 },
+        {
+          "name": "30th Tumbler",
+          "sizes": [
+            { "label": "Tumbler only", "price": 1300 },
+            { "label": "With a cold drink", "price": 1400 }
+          ]
+        },
+        {
+          "name": "30th Souvenir Cup",
+          "sizes": [
+            { "label": "Cup only", "price": 1400 },
+            { "label": "With a hot drink", "price": 1500 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        { "name": "Soft drink", "description": "Coca-Cola, Fanta, Sprite, Tropico 50 cl; Fuze Tea 40 cl; Minute Maid 33 cl", "price": 380 },
+        { "name": "Mineral water 50 cl", "description": "Vittel, S.Pellegrino", "price": 330 },
+        { "name": "Cold Milk, semi-skimmed (20 cl)", "price": 180 }
+      ]
+    }
+  ]
+}

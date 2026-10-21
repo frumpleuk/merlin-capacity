@@ -1,0 +1,88 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR06_market-house-deli.pdf",
+    "sha256": "4868ef90437f91a2831746b6a3984c5b969a500cbd6aebf8d6ce471aacb8e522",
+    "stated": "September 2026"
+  },
+  "sections": [
+    {
+      "name": "Food",
+      "note": "Take away only. From 11:00 am",
+      "items": [
+        { "name": "Sandwich Mickey", "description": "Pretzel bread, ham, emmental, Kiri® cheese", "price": 1050 },
+        { "name": "Mickey sandwich with vegetables", "description": "Pretzel bread, shredded vegetables, emmental, Kiri® cheese", "price": 1050, "tags": ["v"] },
+        { "name": "Muffin", "description": "Vanilla flavour with chocolate chunks or cocoa with chocolate chunks", "price": 430 },
+        { "name": "Cookie vegan", "description": "Chocolate chunks and hazelnut", "price": 350, "tags": ["vg"] },
+        { "name": "Cookie Mickey", "description": "Milk chocolate chunks", "price": 430 },
+        { "name": "Beignet Mickey", "description": "Chocolate-hazelnut", "price": 450 },
+        { "name": "Lay's® Crisps 45g", "price": 380 },
+        { "name": "Ham and cheese toastie", "price": 1050 },
+        { "name": "Turkey and cheese toastie", "price": 1050 },
+        { "name": "Chicken salad", "description": "Lettuce, chicken, hard-boiled egg, Grana Padano cheese, marinated sun-dried tomatoes", "price": 1200 },
+        { "name": "Vegan salad", "description": "Quinoa, bulgur, barley, lentils, soybeans, chickpea-coco-curry balls, marinated sun-dried tomatoes, cashew nuts", "price": 1200, "tags": ["vg"] },
+        { "name": "Pom'Potes® organic apple puree", "description": "No added sugar", "price": 230 },
+        { "name": "Flavoured sweet drinking yoghurt", "price": 230 },
+        { "name": "Pain au chocolat", "price": 230 },
+        { "name": "Croissant", "price": 230 },
+        { "name": "Cookie", "description": "3-Chocolate or White chocolate-raspberry", "price": 350 },
+        { "name": "Fruit bag", "price": 400, "tags": ["vg"] },
+        { "name": "Treat", "price": 450 }
+      ]
+    },
+    {
+      "name": "Le Festival Halloween Disney",
+      "items": [
+        { "name": "Devilish Brookie", "description": "Chocolate brookie, vanilla and chocolate flavoured mousses", "price": 550 },
+        { "name": "Chocolate and Praline Hazelnuts Brookie", "price": 550 },
+        { "name": "The Pumpkin King Pastry", "description": "Vanilla mousse entremet with praline heart and a hazelnut shortbreat", "price": 600 },
+        { "name": "Mickey's Halloween Doughnut", "description": "Cocoa flavour filled beignet", "price": 600 }
+      ]
+    },
+    {
+      "name": "Breakfast",
+      "items": [
+        { "name": "Breakfast", "description": "Croissant or Pain au chocolat and a hot drink and orange or apple juice 23,5 cl", "price": 700 }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "note": "Lavazza",
+      "items": [
+        { "name": "Espresso 100% Arabica", "price": 330 },
+        { "name": "Coffee", "description": "100% Arabica", "price": 350 },
+        { "name": "Double Espresso 100% Arabica", "price": 380 },
+        { "name": "Coffee with milk", "price": 400 },
+        { "name": "Cappuccino", "price": 400 },
+        { "name": "Hot chocolate", "price": 420 },
+        { "name": "Tea, herbal tea", "price": 350 }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        { "name": "Soft drink 50 cl", "description": "Coca-Cola, Coca-Cola Zero Sugar, Fanta, Sprite, Fuze Tea, Tropico", "price": 420 },
+        { "name": "Orange or apple juice 23,5 cl", "price": 380 },
+        { "name": "Vittel 50 cl", "price": 350 },
+        { "name": "San Pellegrino 50 cl", "price": 380 },
+        { "name": "Semi-skimmed milk 20 cl", "price": 250 }
+      ]
+    },
+    {
+      "name": "Beer",
+      "items": [
+        { "name": "1664® Premium 33 cl", "price": 630, "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Souvenirs",
+      "items": [
+        { "name": "Mickey or Minnie Straw", "sizes": [{ "label": "Straw only", "price": 600 }, { "label": "With a cold drink", "price": 700 }] },
+        { "name": "Mug", "sizes": [{ "label": "Mug only", "price": 1500 }, { "label": "With a hot drink", "price": 1700 }] },
+        { "name": "Tumbler", "sizes": [{ "label": "Tumbler only", "price": 1500 }, { "label": "With a cold drink", "price": 1700 }] }
+      ]
+    }
+  ]
+}

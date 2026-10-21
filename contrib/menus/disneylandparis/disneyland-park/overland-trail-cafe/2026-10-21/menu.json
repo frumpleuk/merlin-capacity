@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1GR46_overland-trail-cafe.pdf",
+    "sha256": "a9158e37e358ae7eaccc4d1d01c2d7854ae5866175e39ab2cdfb400579640394",
+    "stated": "May 2026"
+  },
+  "sections": [
+    {
+      "name": "À la carte",
+      "items": [
+        { "name": "Doritos® Loaded Short Fuse", "description": "Plain Doritos®, Doritos® cheddar flavour sauce, tomatoes, onions, coriander and guacamole", "price": 900 },
+        { "name": "Doritos® Loaded Short Fuse", "description": "Plain Doritos®, tomatoes, onions, coriander and guacamole", "price": 900, "tags": ["vg"] },
+        { "name": "Doritos® Loaded Smokin'Beef Bounty", "description": "Plain Doritos®, cheddar-piquillo beef sauce, crispy onions, tomatoes, onions, coriander and ground pepper smoked chipotle", "price": 1000 },
+        { "name": "Doritos® Loaded Deputy", "description": "Plain Doritos®, salsa sauce, crispy onions, mexican spiced shreded chicken, tomatoes, onions, coriander", "price": 1000 },
+        { "name": "Churros with sugar", "price": 430 },
+        { "name": "Churros and whipped cream", "price": 550 }
+      ]
+    },
+    {
+      "name": "Sweet Break",
+      "items": [
+        { "name": "Sweet Break", "description": "Churros with sugar and a hot or a cold drink", "price": 700 }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        { "name": "Espresso 100% Arabica", "price": 330 },
+        { "name": "Double Espresso 100% Arabica", "price": 380 },
+        { "name": "Coffee 100% Arabica", "price": 350 },
+        { "name": "Coffee with milk", "price": 400 },
+        { "name": "Cappuccino", "price": 400 },
+        { "name": "Hot chocolate", "price": 420 },
+        { "name": "Tea, herbal tea", "price": 350 }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        { "name": "Soft drink", "description": "Coca-Cola 50 cl, Coca-Cola 50 cl, Fuze Tea 40 cl", "price": 420 },
+        { "name": "Vittel® 50 cl", "price": 350 },
+        { "name": "Perrier® 50 cl", "price": 380 }
+      ]
+    },
+    {
+      "name": "Draught Beer",
+      "items": [
+        { "name": "Brooklyn Bel Air Sour", "sizes": [{ "label": "25 cl", "price": 550 }, { "label": "50 cl", "price": 850 }], "tags": ["alcohol"] }
+      ]
+    }
+  ]
+}

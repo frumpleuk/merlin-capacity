@@ -1,0 +1,82 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2AR01_stark-factory.pdf",
+    "sha256": "a13596910d38f76b915bff702b426f9633ec7aa4ea7e362094d4639db07cdbe8",
+    "stated": "September 2026"
+  },
+  "sections": [
+    {
+      "name": "Pizzas",
+      "note": "Our pizza dough is fresh!",
+      "items": [
+        { "name": "Vegetable and Stracciatella Pizza", "description": "Tomato sauce, sun dried tomato, stracciatella, vegetable spaghetti, rocket salad and basilic sauce", "price": 1400, "tags": ["v"] },
+        { "name": "Pepperoni Pizza", "description": "Tomato sauce, mozzarella, pepperoni, black olives, sweet peppers, jalapeños and pesto rosso", "price": 1400 },
+        { "name": "Brie Pizza", "description": "Parmesan and cream sauce, brie, parmesan, rocket salad and walnuts", "price": 1400 }
+      ]
+    },
+    {
+      "name": "Pasta",
+      "items": [
+        { "name": "Trivelli, Bolognese Sauce", "price": 1300 },
+        { "name": "Cheese Tortellini with a Parmesan and Cream Sauce, Pumpkin Seeds", "price": 1300 },
+        { "name": "Pennette, Neapolitan Sauce and Basil", "price": 1300, "tags": ["vg"] }
+      ]
+    },
+    {
+      "name": "Bowls",
+      "items": [
+        { "name": "Refuel Bowl", "description": "Pasta, rocket salad, cherry tomatoes, mozzarella, parmesan, crispy onions", "price": 850 },
+        { "name": "Hyper Bowl", "description": "Quinoa, vegan smoked slices with soya protein, Greek-style vegetable cubes, soya beans, grated carrots, red cabbage", "price": 850, "tags": ["vg"] },
+        { "name": "Side Salad", "description": "Frisée lettuce and cherry tomatoes", "price": 330 }
+      ]
+    },
+    {
+      "name": "Kids'",
+      "items": [
+        { "name": "Half pizza", "description": "Pepperoni pizza or vegetable and stracciatella pizza or 3-cheese pizza", "price": 700, "tags": ["kids"] },
+        { "name": "Organic Mini Babybel® cheese", "price": 230 },
+        { "name": "Pom'Potes® organic apple puree", "description": "No added sugar", "price": 230 },
+        { "name": "Cherry tomatoes", "price": 330 }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        { "name": "Guardians Choco Orb", "description": "Chocolate sphere, dark chocolate mousse and sea salt, crispy speculoos-almond-sunflower heart", "price": 500 },
+        { "name": "Yoghurt with a fruit layer", "price": 300 },
+        { "name": "Fruit bag", "price": 400, "tags": ["vg"] },
+        { "name": "Mango Passion Fruit Panna Cotta", "price": 500 },
+        { "name": "Tiramisù", "price": 500 }
+      ]
+    },
+    {
+      "name": "Ice Creams",
+      "items": [
+        { "name": "Super Twister®", "description": "Orange, strawberry, lemon flavours", "price": 350 },
+        { "name": "Cornetto® Soft", "description": "Stracciatella & caramel sauce", "price": 430 },
+        { "name": "Magnum® Almond", "price": 400, "tags": ["vg"] },
+        { "name": "Magnum® La Pistache", "price": 400 }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        { "name": "Soft drink 50 cl", "description": "Coca-Cola, Coca-Cola Zero, Coca-Cola Cherry, Fanta, Sprite, Fuze Tea", "price": 420 },
+        { "name": "Orange or apple juice 23,5 cl", "price": 420 },
+        { "name": "Vittel 50 cl", "price": 350 },
+        { "name": "S.Pellegrino 50 cl", "price": 380 },
+        { "name": "Innocent 33 cl", "price": 450 },
+        { "name": "Innocent Super Smoothie 30 cl", "price": 450 }
+      ]
+    },
+    {
+      "name": "Beer",
+      "items": [
+        { "name": "1664® Premium 33 cl", "price": 630, "tags": ["alcohol"] }
+      ]
+    }
+  ]
+}

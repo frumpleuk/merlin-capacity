@@ -1,0 +1,12 @@
+{
+  "id": "P2DR02",
+  "name": "La Terrasse Panoramique",
+  "category": "Food & Drink > On-the-go",
+  "area": "Adventure Way",
+  "lat": 48.865765,
+  "lon": 2.773667,
+  "menuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P2DR02_la-terrasse-panoramique.pdf",
+  "priceBand": "€",
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

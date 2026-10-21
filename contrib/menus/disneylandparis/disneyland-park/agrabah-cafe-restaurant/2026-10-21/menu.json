@@ -1,0 +1,93 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1AR06_agrabah-cafe.pdf",
+    "sha256": "f377b8eacdee2514fac76d2223bddb54ff5faa273676716443b0a8df179fce62",
+    "stated": "March 2026"
+  },
+  "sections": [
+    {
+      "name": "All-you-can-eat Buffet",
+      "note": "Except on December 24th and 31st. The price of the buffet will be charged to any person seated in the restaurant",
+      "items": [
+        {
+          "name": "All-you-can-eat buffet",
+          "description": "Adult: a cold drink 33 cl or a mineral water 50 cl. Kids' (ages 3 to 11): Vittel® 33 cl or orange or apple juice 25 cl or milk 20 cl; other cold drink 25 cl may replace similar item on request",
+          "sizes": [
+            { "label": "Adult", "price": 4500 },
+            { "label": "Kids' (3-11)", "price": 2500 }
+          ]
+        },
+        {
+          "name": "Birthday dessert to share",
+          "description": "Don't forget to order your birthday dessert before your meal!",
+          "sizes": [
+            { "label": "2 or more people", "price": 2500 },
+            { "label": "6 or more people", "price": 4500 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Draught Beer",
+      "items": [
+        { "name": "1664® Premium", "sizes": [ { "label": "25 cl", "price": 600 }, { "label": "50 cl", "price": 880 } ], "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Kir",
+      "items": [
+        { "name": "Kir 15 cl", "description": "White wine, blackcurrant or blackberry liqueur", "price": 800, "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Bottled Wine",
+      "items": [
+        { "name": "Red: Maroc: A.O.G Zenata - MD Excellence Domaine des Ouled Thaleb", "sizes": [ { "label": "15 cl", "price": 700 }, { "label": "37,5 cl", "price": 1800 }, { "label": "75 cl", "price": 3200 } ], "tags": ["alcohol"] },
+        { "name": "Red: Maroc: Boulaouane Domaine de Khmis", "sizes": [ { "label": "15 cl", "price": 700 }, { "label": "75 cl", "price": 3200 } ], "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "note": "33 cl",
+      "items": [
+        { "name": "Coca-Cola Original, Coca-Cola Zéro Sucres", "price": 550 },
+        { "name": "Fanta Orange Sans Sucres, Sprite Sans Sucres", "price": 550 },
+        { "name": "FuzeTea Peach Black Tea", "price": 550 },
+        { "name": "Perrier®", "price": 430 }
+      ]
+    },
+    {
+      "name": "Mineral Water",
+      "note": "50 cl",
+      "items": [
+        { "name": "Vittel®", "price": 450 },
+        { "name": "S.Pellegrino®", "price": 480 }
+      ]
+    },
+    {
+      "name": "Fruit Juices",
+      "note": "25 cl",
+      "items": [
+        { "name": "Orange or apple juice", "price": 500 }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        { "name": "Espresso 100% Arabica", "price": 350 },
+        { "name": "Double Espresso 100% Arabica", "price": 450 },
+        { "name": "Coffee 100% Arabica", "price": 400 },
+        { "name": "Decaffeinated", "price": 330 },
+        { "name": "Coffee with milk", "price": 480 },
+        { "name": "Cappuccino", "price": 480 },
+        { "name": "Hot chocolate", "price": 500 },
+        { "name": "Tea, herbal tea", "price": 400 },
+        { "name": "Agrabah's mint tea", "price": 500 },
+        { "name": "Agrabah's mint tea with pine nuts", "price": 550 }
+      ]
+    }
+  ]
+}

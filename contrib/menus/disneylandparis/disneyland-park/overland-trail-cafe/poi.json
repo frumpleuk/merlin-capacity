@@ -1,0 +1,12 @@
+{
+  "id": "P1GR46",
+  "name": "Overland Trail Cafe",
+  "category": "Food & Drink > On-the-go",
+  "area": "Frontierland",
+  "lat": 48.87168,
+  "lon": 2.774965,
+  "menuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P1GR46_overland-trail-cafe.pdf",
+  "priceBand": "€",
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

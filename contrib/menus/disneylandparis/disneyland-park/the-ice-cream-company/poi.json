@@ -1,0 +1,12 @@
+{
+  "id": "P1MR05",
+  "name": "The Ice Cream Company",
+  "category": "Food & Drink > On-the-go",
+  "area": "Main Street U.S.A.",
+  "lat": 48.871845,
+  "lon": 2.778292,
+  "menuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR05_ice-cream-company.pdf",
+  "priceBand": "€",
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2FR02_searchlight.pdf",
+    "sha256": "d68d1b9e1ed411292fc61cb1a8916e89ebdcfcbe710ced45ee75e7e93668342a",
+    "stated": "June 2026"
+  },
+  "sections": [
+    {
+      "name": "Donuts",
+      "items": [
+        { "name": "Filled Donut", "price": 450 }
+      ]
+    },
+    {
+      "name": "Sweet Break",
+      "items": [
+        { "name": "Sweet Break", "description": "Donut and a Cold drink or a Hot drink", "price": 800 }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        { "name": "Soft drink 50 cl", "description": "Coca-Cola range, Fanta", "price": 420 },
+        { "name": "Fuze Tea 40 cl", "price": 420 },
+        { "name": "Vittel® 50 cl", "price": 350 },
+        { "name": "Perrier® 50 cl", "price": 380 },
+        { "name": "Orange or apple juice 23,5 cl", "price": 380 }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        { "name": "Espresso 100% Arabica", "price": 330 },
+        { "name": "Double Espresso 100% Arabica", "price": 380 },
+        { "name": "Coffee 100% Arabica", "price": 350 },
+        { "name": "Coffee with milk", "price": 400 },
+        { "name": "Cappuccino", "price": 400 },
+        { "name": "Hot chocolate", "price": 420 },
+        { "name": "Tea, herbal tea", "price": 350 }
+      ]
+    }
+  ]
+}

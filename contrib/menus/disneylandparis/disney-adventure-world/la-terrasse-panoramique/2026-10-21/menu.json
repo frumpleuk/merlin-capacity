@@ -1,0 +1,80 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2DR02_la-terrasse-panoramique.pdf",
+    "sha256": "768060f7796e90adb6e81e34dbbbb2da317c9d0bb9510a4a87b23621d37554ab",
+    "stated": "September 2026"
+  },
+  "sections": [
+    {
+      "name": "Bread Bowls",
+      "items": [
+        { "name": "Onion Melt", "description": "Rye and seed bread bowl, onion soup, croutons, emmental cheese", "price": 1050 },
+        { "name": "Supreme Caesar", "description": "Rye and seed bread bowl, chicken, lettuce, hard-boiled egg, bacon, parmesan shavings, cherry tomatoes, Caesar dressing", "price": 1250 },
+        { "name": "Veg Mex", "description": "Rye and seed bread bowl, soy protein chilli, tomatoes and red beans, plant-based grated, chives", "price": 1050, "tags": ["vg"] },
+        { "name": "Nørdic", "description": "Rye and seed bread bowl, salmon, potato and leek sauce", "price": 1400 },
+        { "name": "Lay's® Crisps 45 g", "price": 380 }
+      ]
+    },
+    {
+      "name": "Sweet Break",
+      "items": [
+        { "name": "Sweet Break", "description": "New York Roll and a hot or a cold drink", "price": 900 },
+        { "name": "New York Roll", "description": "Cocoa and hazelnut pastry", "price": 650 }
+      ]
+    },
+    {
+      "name": "Ice Cream",
+      "items": [
+        { "name": "Magnum® Almond", "price": 400 },
+        { "name": "Magnum® Almond Vegan", "price": 400, "tags": ["vg"] },
+        { "name": "Magnum® La Pistache", "price": 400 },
+        { "name": "Twister® Frrreeze", "description": "Raspberry, orange and peach flavours", "price": 350 }
+      ]
+    },
+    {
+      "name": "Gourmet Drinks",
+      "items": [
+        { "name": "POP Lov' LATTE", "description": "Lavazza coffee latte, popcorn-flavour syrup, whipped cream, caramel sauce and popcorn", "price": 600 },
+        { "name": "Hazelnut Heaven", "description": "Hot chocolate, hazelnut syrup, whipped cream, cocoa sauce and hazelnut powder", "price": 600 }
+      ]
+    },
+    {
+      "name": "Draught Beers",
+      "items": [
+        { "name": "1664® Premium", "sizes": [{ "label": "25 cl", "price": 500 }, { "label": "50 cl", "price": 750 }], "tags": ["alcohol"] },
+        { "name": "Grimbergen blonde", "sizes": [{ "label": "25 cl", "price": 550 }, { "label": "50 cl", "price": 850 }], "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        { "name": "Soft drink 50 cl", "description": "Coca-Cola Original, Coca-Cola Zero Sugar, Coca-Cola Cherry, Fanta, Sprite, Fuze Tea, Tropico", "price": 420 },
+        { "name": "Innocent smoothie 33 cl", "price": 450 },
+        { "name": "Vittel® 50 cl", "price": 350 },
+        { "name": "S.Pellegrino 50 cl", "price": 380 }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        { "name": "Espresso 100% Arabica", "price": 330 },
+        { "name": "Double Espresso 100% Arabica", "price": 380 },
+        { "name": "Coffee 100% Arabica", "price": 350 },
+        { "name": "Coffee with milk", "price": 400 },
+        { "name": "Cappuccino", "price": 400 },
+        { "name": "Hot chocolate", "price": 420 },
+        { "name": "Tea, herbal tea", "price": 350 }
+      ]
+    },
+    {
+      "name": "Souvenirs",
+      "items": [
+        { "name": "Tumbler", "description": "With a cold drink", "price": 1700 },
+        { "name": "Mug", "description": "With a hot drink", "price": 1700 }
+      ]
+    }
+  ]
+}

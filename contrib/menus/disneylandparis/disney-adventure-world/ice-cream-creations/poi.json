@@ -1,0 +1,12 @@
+{
+  "id": "P2TR00",
+  "name": "Ice Cream Creations",
+  "category": "Food & Drink > On-the-go",
+  "area": "World Premiere Plaza",
+  "lat": 48.867224,
+  "lon": 2.779329,
+  "menuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P2TR00_ice-cream-creations.pdf",
+  "priceBand": "€",
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

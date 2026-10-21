@@ -1,0 +1,12 @@
+{
+  "id": "P1RR03",
+  "name": "The Lucky Nugget Saloon",
+  "category": "Food & Drink > Table service",
+  "area": "Frontierland",
+  "lat": 48.871646,
+  "lon": 2.776365,
+  "menuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P1RR03_lucky-nugget-saloon.pdf",
+  "priceBand": "€",
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

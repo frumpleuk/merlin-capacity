@@ -1,0 +1,12 @@
+{
+  "id": "P1MR00",
+  "name": "Cable Car Bake Shop",
+  "category": "Food & Drink > Quick Service Restaurant",
+  "area": "Main Street U.S.A.",
+  "lat": 48.871975,
+  "lon": 2.777754,
+  "menuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR00_cable-car-bake-shop.pdf",
+  "priceBand": "€",
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

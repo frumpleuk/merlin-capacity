@@ -1,0 +1,12 @@
+{
+  "id": "P2FR00",
+  "name": "The Hollywood Gardens Restaurant",
+  "category": "Food & Drink > Quick Service Restaurant > Self-service kiosks",
+  "area": "World Premiere Plaza",
+  "lat": 48.867756,
+  "lon": 2.779479,
+  "menuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P2FR00_the-hollywood-gardens-restaurant.pdf",
+  "priceBand": "€",
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "diningZoneFrance",
+  "name": "Le Rendez-Vous Gourmand - French Nibbles",
+  "category": "Food & Drink > Counter Service",
+  "area": "Toon Studio",
+  "lat": 48.867415,
+  "lon": 2.776595,
+  "menuUrl": null,
+  "priceBand": "€",
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

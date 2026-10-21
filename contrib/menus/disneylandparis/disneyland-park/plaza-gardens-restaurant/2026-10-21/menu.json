@@ -1,0 +1,126 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR12_character-dining-at-plaza-gardens.pdf",
+    "sha256": "de0f13db6b3f72d2b1b804590a7624bb1040b8f57d211bcb4be5c1ab55f6a494",
+    "stated": "October 2025"
+  },
+  "sections": [
+    {
+      "name": "All-you-can-eat Buffet with Disney® Characters",
+      "note": "As from 6pm. Except on December 24th and 31st",
+      "items": [
+        {
+          "name": "All-you-can-eat Buffet with Disney® Characters",
+          "description": "Adult: a cold drink 33 cl or a mineral water 50 cl. Kids' (ages 3 to 11): Vittel® 33 cl or orange or apple juice 25 cl or milk 20 cl; other cold drink 25 cl may replace similar item on request",
+          "sizes": [
+            { "label": "Adult", "price": 8000 },
+            { "label": "Kids' (3-11)", "price": 4000 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "All-you-can-eat Buffet",
+      "note": "As from 12pm. Except on December 24th and 31st",
+      "items": [
+        {
+          "name": "All-you-can-eat Buffet",
+          "description": "Adult: a cold drink 33 cl or a mineral water 50 cl. Kids' (ages 3 to 11): Vittel® 33 cl or orange, apple juice 25 cl or milk 20 cl; other cold drink 25 cl may replace similar item on request",
+          "sizes": [
+            { "label": "Adult", "price": 4500 },
+            { "label": "Kids' (3-11)", "price": 2500 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Birthday",
+      "items": [
+        {
+          "name": "Birthday dessert to share",
+          "description": "Don't forget to order your birthday dessert before your meal!",
+          "sizes": [
+            { "label": "2 or more people", "price": 2500 },
+            { "label": "6 or more people", "price": 4500 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Draught Beer",
+      "items": [
+        { "name": "1664® Premium", "sizes": [ { "label": "25 cl", "price": 600 }, { "label": "50 cl", "price": 880 } ], "tags": ["alcohol"] },
+        { "name": "Grimbergen Blonde", "sizes": [ { "label": "25 cl", "price": 600 }, { "label": "50 cl", "price": 880 } ], "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Bottled Beer",
+      "note": "33 cl",
+      "items": [
+        { "name": "Carlsberg", "price": 750, "tags": ["alcohol"] },
+        { "name": "Grimbergen d'Abbaye Blanche", "price": 750, "tags": ["alcohol"] },
+        { "name": "Brooklyn East IPA", "price": 800, "tags": ["alcohol"] },
+        { "name": "Guinness Draught 50 cl", "price": 850, "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Cider",
+      "items": [
+        { "name": "La Mordue Original - Cidre aromatisé 27,5 cl", "price": 750, "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Bottled Wine",
+      "note": "75 cl",
+      "items": [
+        { "name": "Bouteille de Vin du Moment", "price": 2800, "tags": ["alcohol"] },
+        { "name": "White: IGP Cité de Carcassonne - Gérard Bertrand - Chardonnay", "price": 3200, "tags": ["alcohol"] },
+        { "name": "White: AOC Chablis - La Pierrelée - La Chablisienne", "price": 4300, "tags": ["alcohol"] },
+        { "name": "White: Cuvée Disneyland® Paris - AOP La Clape Château L'Hospitalet - Bio - Demeter", "price": 3800, "tags": ["alcohol"] },
+        { "name": "White: U.S.A.: Diamond Collection - Francis Coppola Sauvignon Blanc", "price": 4900, "tags": ["alcohol"] },
+        { "name": "Red: IGP Cité de Carcassonne - Gérard Bertrand - Merlot", "price": 3200, "tags": ["alcohol"] },
+        { "name": "Red: AOC Bordeaux - Mouton Cadet Baron Philippe de Rothschild", "price": 3800, "tags": ["alcohol"] },
+        { "name": "Red: Cuvée Disneyland® Paris - AOP La Clape Château L'Hospitalet - Bio - Demeter", "price": 3500, "tags": ["alcohol"] },
+        { "name": "Red: IGP Méditerranée - La Réserve - Estoublon - Bio", "price": 3400, "tags": ["alcohol"] },
+        { "name": "Red: U.S.A.: Diamond Collection - Francis Coppola - Zinfandel", "price": 4600, "tags": ["alcohol"] },
+        { "name": "Rosé: IGP Pays d'Oc - Gris Blanc", "price": 3200, "tags": ["alcohol"] },
+        { "name": "Rosé: AOP Côtes de Provence - Minuty - Prestige Rosé", "price": 3600, "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "note": "33 cl",
+      "items": [
+        { "name": "Coca-Cola Original, Coca-Cola Zéro Sucres", "price": 550 },
+        { "name": "Fanta Orange Sans Sucres, Sprite Sans Sucres", "price": 550 },
+        { "name": "FuzeTea Peach Black Tea", "price": 550 },
+        { "name": "Perrier®", "price": 430 },
+        { "name": "Orange, apple juice 25 cl", "price": 500 }
+      ]
+    },
+    {
+      "name": "Mineral Water",
+      "items": [
+        { "name": "Vittel®", "sizes": [ { "label": "50 cl", "price": 450 }, { "label": "100 cl", "price": 550 } ] },
+        { "name": "S.Pellegrino®", "sizes": [ { "label": "50 cl", "price": 480 }, { "label": "100 cl", "price": 580 } ] }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        { "name": "Espresso 100% Arabica", "price": 350 },
+        { "name": "Double Espresso 100% Arabica", "price": 450 },
+        { "name": "Coffee 100% Arabica", "price": 400 },
+        { "name": "Decaffeinated", "price": 330 },
+        { "name": "Coffee with Milk", "price": 480 },
+        { "name": "Cappuccino", "price": 480 },
+        { "name": "Hot Chocolate", "price": 500 },
+        { "name": "Tea, Herbal Tea", "price": 400 },
+        { "name": "Semi-skimmed milk 20 cl", "price": 350 }
+      ]
+    }
+  ]
+}

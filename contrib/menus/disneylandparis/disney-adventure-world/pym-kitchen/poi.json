@@ -1,0 +1,12 @@
+{
+  "id": "P2AR02",
+  "name": "PYM Kitchen",
+  "category": "Food & Drink > All-you-can-eat buffet",
+  "area": "Avengers Campus",
+  "lat": 48.866,
+  "lon": 2.779639,
+  "menuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P2AR02_pymkitchen.pdf",
+  "priceBand": "€€",
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

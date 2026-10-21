@@ -1,0 +1,12 @@
+{
+  "id": "P1AR06",
+  "name": "Agrabah Café Restaurant",
+  "category": "Food & Drink > All-you-can-eat buffet",
+  "area": "Adventureland",
+  "lat": 48.87277,
+  "lon": 2.775236,
+  "menuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P1AR06_agrabah-cafe.pdf",
+  "priceBand": "€€",
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

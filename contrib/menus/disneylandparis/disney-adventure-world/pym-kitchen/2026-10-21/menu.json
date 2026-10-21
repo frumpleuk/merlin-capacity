@@ -1,0 +1,92 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2AR02_pymkitchen.pdf",
+    "sha256": "7f82e9f92924c25adf9521489d4a9ab647d9144942a28be5465868eab62ca291",
+    "stated": "November 2022"
+  },
+  "sections": [
+    {
+      "name": "All-You-Can-Eat Buffet",
+      "items": [
+        {
+          "name": "All-You-Can-Eat Buffet",
+          "description": "Adult: a cold drink (33 cl) or a mineral water (50 cl). Child (for children aged from 3 to 11): Vittel® (33 cl) or Minute Maid Orange, Apple or Milk (20 cl); other cold drink (25 cl) may replace similar item on request",
+          "sizes": [
+            { "label": "Adult", "price": 4500 },
+            { "label": "Child (3-11)", "price": 2500 }
+          ]
+        },
+        { "name": "Birthday dessert", "description": "Dessert up to 8 people. Order before your meal", "price": 3500 }
+      ]
+    },
+    {
+      "name": "Signature Cocktail",
+      "items": [
+        { "name": "Blue Spritz and Goji Berries", "description": "Sparkling Blue Chardonnay, White Vermouth, Perrier® and Goji Berries", "price": 1550, "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Signature Mocktail",
+      "items": [
+        { "name": "Particles Mocktail and Red Fruits Serum", "description": "Sprite sans sucres, Blue Curaçao Flavour Syrup, Cranberry Nectar (made from concentrate), Cherries Puree, Lemon Juice and Strawberry Flavour Pearls", "price": 1050 }
+      ]
+    },
+    {
+      "name": "Signature Beers",
+      "items": [
+        { "name": "Small Scale Red Beers (4 x 6 cl) with Mini-Beer Glasses and Ruler Board (to take away)", "description": "Tasting of Four Red Beers (Chouffe Cherry, Red Grimbergen, Raspberry Lindemans and 1664® Premium with Cherry Puree) or Four 1664® Premium Blond", "price": 1900, "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Signature Wine",
+      "items": [
+        { "name": "Brouilly Red Wine In Its Particles Tube (10 cl)", "description": "Brouilly AOC - Château de la Chaize", "price": 800, "tags": ["alcohol"] },
+        { "name": "Vin blanc Orange Gold - Vin de France Gérard Bertrand BIO", "sizes": [{ "label": "15 cl", "price": 900 }, { "label": "75 cl", "price": 4300 }], "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Signature Alcoholic Drink",
+      "items": [
+        { "name": "Blue Chardonnay", "sizes": [{ "label": "15 cl", "price": 900 }, { "label": "25 cl", "price": 1500 }, { "label": "50 cl", "price": 2800 }], "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Beers",
+      "items": [
+        { "name": "1664® Premium", "description": "Draught", "sizes": [{ "label": "25 cl", "price": 550 }, { "label": "50 cl", "price": 800 }], "tags": ["alcohol"] },
+        { "name": "Chouffe cerise (33 cl)", "description": "Bottled", "price": 750, "tags": ["alcohol"] },
+        { "name": "Grimbergen d'Abbaye rouge (33 cl)", "description": "Bottled", "price": 700, "tags": ["alcohol"] },
+        { "name": "Lindemans framboise (25 cl)", "description": "Bottled", "price": 700, "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Wine",
+      "items": [
+        { "name": "Chablis AOC - «La Pierrelée» La Chablisienne", "description": "White", "sizes": [{ "label": "15 cl", "price": 1100 }, { "label": "37,5 cl", "price": 2700 }, { "label": "75 cl", "price": 4300 }], "tags": ["alcohol"] },
+        { "name": "Côtes de Provence AOC Prestige de Minuty", "description": "Rosé", "sizes": [{ "label": "15 cl", "price": 1000 }, { "label": "50 cl", "price": 2400 }, { "label": "75 cl", "price": 3800 }], "tags": ["alcohol"] },
+        { "name": "Bordeaux AOC - Mouton Cadet Baron Philippe de Rothschild", "description": "Red", "sizes": [{ "label": "15 cl", "price": 1000 }, { "label": "37,5 cl", "price": 2400 }, { "label": "75 cl", "price": 3800 }], "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        { "name": "Coca-Cola Original, Coca-Cola Sans Sucres, Fanta Orange sans sucres, Sprite sans sucres (33 cl)", "price": 500 },
+        { "name": "Fuze Tea Intense Peach (33 cl)", "price": 500 },
+        { "name": "Minute Maid Orange or Apple (20 cl)", "description": "Made from concentrate", "price": 450 },
+        { "name": "Vittel®", "sizes": [{ "label": "50 cl", "price": 400 }, { "label": "100 cl", "price": 500 }] },
+        { "name": "S.Pellegrino®", "sizes": [{ "label": "50 cl", "price": 450 }, { "label": "100 cl", "price": 550 }] },
+        { "name": "Perrier® Fines Bulles", "sizes": [{ "label": "50 cl", "price": 450 }, { "label": "100 cl", "price": 550 }] },
+        { "name": "Perrier® (33 cl)", "price": 400 }
+      ]
+    },
+    {
+      "name": "Souvenir",
+      "items": [
+        { "name": "PYM Kitchen Souvenir", "description": "Mini-Beer Glasses and Ruler Board (without Drink)", "price": 1500 }
+      ]
+    }
+  ]
+}

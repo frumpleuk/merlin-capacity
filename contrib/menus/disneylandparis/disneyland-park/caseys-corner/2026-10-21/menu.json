@@ -1,0 +1,263 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR01_caseys-corner.pdf",
+    "sha256": "e79da718fff0b163a8207260be1072cb1b04267f64d01dd443384af69b53f6c4",
+    "stated": "September 2026"
+  },
+  "sections": [
+    {
+      "name": "Hot Dogs",
+      "items": [
+        {
+          "name": "Classic",
+          "description": "Turkey sausage with ketchup and American mustard",
+          "price": 1050
+        },
+        {
+          "name": "Bacon Cheddar",
+          "description": "Turkey sausage with cheddar sauce, bacon, crispy onions, ketchup and American mustard",
+          "price": 1150
+        },
+        {
+          "name": "Nachos",
+          "description": "Turkey sausage with Sweet chilli pepper Doritos®, caramelised onions and barbecue sauce",
+          "price": 1150
+        },
+        {
+          "name": "Plant-based",
+          "description": "Chilli with soya proteins and veggie sausage",
+          "price": 1150,
+          "tags": [
+            "vg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sides and Salad",
+      "items": [
+        {
+          "name": "Cherry tomatoes",
+          "price": 330,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "Fries",
+          "price": 450
+        },
+        {
+          "name": "Chicken nuggets x8",
+          "description": "Sauce: mayonnaise or ketchup",
+          "price": 980
+        },
+        {
+          "name": "Vegan salad",
+          "description": "Quinoa, bulgur, barley, lentils, soybeans, chickpea-coco-curry balls, marinated sun-dried tomatoes, cashew nuts",
+          "price": 1200,
+          "tags": [
+            "vg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sweet Break",
+      "items": [
+        {
+          "name": "Sweet Break",
+          "description": "Chocolate and pecan nuts brownie and a hot or a cold drink",
+          "price": 700
+        }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        {
+          "name": "Dessert Mickey",
+          "description": "Chocolate mousse and sponge cake",
+          "price": 500
+        },
+        {
+          "name": "Flavoured sweet drinking yoghurt",
+          "price": 300
+        },
+        {
+          "name": "Pom'Potes® organic apple puree",
+          "description": "No added sugar",
+          "price": 380
+        },
+        {
+          "name": "Yoghurt with a fruit layer",
+          "price": 300
+        },
+        {
+          "name": "Chocolate and pecan nuts brownie",
+          "price": 380
+        },
+        {
+          "name": "Fruit bag",
+          "price": 400,
+          "tags": [
+            "vg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ice Cream",
+      "items": [
+        {
+          "name": "Magnum® Almond",
+          "price": 400
+        },
+        {
+          "name": "Magnum® Vegan almond",
+          "price": 400,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "Magnum® La Pistache",
+          "price": 400
+        },
+        {
+          "name": "Cornetto® King Cône",
+          "description": "Cocoa sauce",
+          "price": 430
+        },
+        {
+          "name": "Push Up Haribo®",
+          "description": "Vanilla flavour, strawberry sauce",
+          "price": 350
+        },
+        {
+          "name": "Twister® Frrreeze",
+          "description": "Raspberry, orange and peach flavours",
+          "price": 350
+        }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        {
+          "name": "Espresso 100% Arabica",
+          "price": 330
+        },
+        {
+          "name": "Coffee 100% Arabica",
+          "price": 350
+        },
+        {
+          "name": "Double Espresso 100% Arabica",
+          "price": 380
+        },
+        {
+          "name": "Coffee with milk",
+          "price": 400
+        },
+        {
+          "name": "Cappuccino",
+          "price": 400
+        },
+        {
+          "name": "Hot chocolate",
+          "price": 420
+        },
+        {
+          "name": "Tea, herbal tea",
+          "price": 350
+        }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        {
+          "name": "Soft drink 50 cl",
+          "description": "Coca-Cola range, Fanta, Sprite, Fuze Tea, Tropico",
+          "price": 420
+        },
+        {
+          "name": "Orange juice or apple juice 23,5 cl",
+          "price": 420
+        },
+        {
+          "name": "Vittel® 50 cl",
+          "price": 350
+        },
+        {
+          "name": "S.Pellegrino 50 cl",
+          "price": 380
+        },
+        {
+          "name": "Semi-skimmed milk 20 cl",
+          "price": 250
+        }
+      ]
+    },
+    {
+      "name": "Beer",
+      "items": [
+        {
+          "name": "Bud® 33 cl",
+          "price": 630,
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Souvenirs",
+      "items": [
+        {
+          "name": "Mickey or Minnie straw",
+          "sizes": [
+            {
+              "label": "Straw only",
+              "price": 600
+            },
+            {
+              "label": "With a cold drink",
+              "price": 700
+            }
+          ]
+        },
+        {
+          "name": "Mug",
+          "sizes": [
+            {
+              "label": "Mug only",
+              "price": 1500
+            },
+            {
+              "label": "With a hot drink",
+              "price": 1700
+            }
+          ]
+        },
+        {
+          "name": "Tumbler",
+          "sizes": [
+            {
+              "label": "Tumbler only",
+              "price": 1500
+            },
+            {
+              "label": "With a cold drink",
+              "price": 1700
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

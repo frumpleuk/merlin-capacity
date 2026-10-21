@@ -1,0 +1,12 @@
+{
+  "id": "P1NR04",
+  "name": "March Hare Refreshments",
+  "category": "Food & Drink > On-the-go",
+  "area": "Fantasyland",
+  "lat": 48.874474,
+  "lon": 2.77489,
+  "menuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P1NR04_march-hare-refreshments.pdf",
+  "priceBand": "€",
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

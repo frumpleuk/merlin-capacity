@@ -1,0 +1,109 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1RR01_casa-de-coco.pdf",
+    "sha256": "11950e8bfd8f6aa561af8298c0adc34cfd24deb609b209f715cf089150d8464b",
+    "stated": "September 2026"
+  },
+  "sections": [
+    {
+      "name": "Menu Mariachi",
+      "items": [
+        {
+          "name": "Menu Mariachi",
+          "description": "Burrito (beef, chicken or vegan) and fries or side salad and Exotic Melody or ice cream and cold drink 50 cl",
+          "price": 2200
+        }
+      ]
+    },
+    {
+      "name": "Mains",
+      "items": [
+        { "name": "Beef burrito", "description": "Spicy beef chilli, rice, grated cheddar, guacamole, lettuce, tomato, red onion and cilantro", "price": 1200 },
+        { "name": "Chicken burrito", "description": "Spicy chicken, rice, grated cheddar, guacamole, lettuce, tomato, red onion and cilantro", "price": 1200 },
+        { "name": "Vegan burrito", "description": "Chilli with soya proteins, rice, grated plant-based mozzarella flavour, guacamole, lettuce, tomato, red onion and cilantro", "price": 1200, "tags": ["vg"] },
+        { "name": "Vegetarian salad", "description": "Red beans, chickpeas, avocado, pineapple, black olives, corn, pepper, tomato, red onion and cilantro", "price": 1200, "tags": ["v"] },
+        { "name": "Empanadas de carne", "description": "Empanadas with beef, rice, melted cheddar-jalapeño sauce, tomato, red onion and cilantro", "price": 1500 }
+      ]
+    },
+    {
+      "name": "Chamaco Kids' Menu",
+      "note": "For children ages 3 to 11",
+      "items": [
+        {
+          "name": "Chamaco Kids' Menu",
+          "description": "Small chicken burrito (spicy chicken, rice, grated cheddar, guacamole, lettuce, tomato, red onion and cilantro); fries, cherry tomatoes or side salad; Magnum® Mini Almond, organic mini Babybel® or Pom'Potes® organic apple puree (no added sugar); Juicy Water (apple-strawberry), milk 20 cl or Vittel® 33 cl",
+          "price": 1050,
+          "tags": ["kids"]
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        { "name": "Doritos®", "description": "Cheddar cheese sauce", "price": 600 },
+        { "name": "Jalapeños with cheddar cheese", "price": 550 },
+        { "name": "Onion rings", "price": 550 },
+        { "name": "Fries", "description": "Sauce: Mustard, mayonnaise, ketchup", "price": 450 },
+        { "name": "Side salad", "price": 330, "tags": ["v"] },
+        { "name": "Chicken bites, La Vache qui rit® sauce", "price": 700 },
+        { "name": "Organic mini Babybel®", "price": 230 },
+        { "name": "Pom'Potes® organic apple puree", "description": "No added sugar", "price": 230 }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        { "name": "Magnum® Almond", "price": 400 },
+        { "name": "Super Twister®", "description": "Orange, Strawberry, Lemon Flavours", "price": 350 },
+        { "name": "Churros Nutella", "price": 430 },
+        { "name": "Cornetto® King Cône", "description": "Cocoa sauce", "price": 430 },
+        { "name": "Mickey Ice Cream Bar", "description": "Vanilla flavour", "price": 450 },
+        { "name": "Exotic Melody", "description": "Sponge cake and exotic mousse entremet", "price": 500 }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        { "name": "Soft drink 50 cl", "description": "Coca-Cola range, Fanta, Sprite, Fuze Tea, Tropico", "price": 420 },
+        { "name": "Orange juice or apple juice 23,5 cl", "price": 380 },
+        { "name": "Vittel® 50 cl", "price": 350 },
+        { "name": "S.Pellegrino 50 cl", "price": 380 },
+        { "name": "Semi-skimmed milk 20 cl", "price": 250 },
+        { "name": "Slush, strawberry flavour", "sizes": [{ "label": "Small cup 25 cl", "price": 350 }, { "label": "Large cup 50 cl", "price": 600 }] },
+        { "name": "Frozen Margarita flavour with alcohol 25 cl", "price": 900, "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Draught Beer",
+      "items": [
+        { "name": "1664® Premium", "sizes": [{ "label": "25 cl", "price": 500 }, { "label": "50 cl", "price": 750 }], "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        { "name": "Espresso 100% Arabica", "price": 330 },
+        { "name": "Double Espresso 100% Arabica", "price": 380 },
+        { "name": "Coffee 100% Arabica", "price": 350 },
+        { "name": "Coffee with milk", "price": 400 },
+        { "name": "Cappuccino", "price": 400 },
+        { "name": "Hot chocolate", "price": 420 },
+        { "name": "Tea, herbal tea", "price": 350 }
+      ]
+    },
+    {
+      "name": "Souvenirs",
+      "items": [
+        { "name": "Mug Coco gourmand à emporter", "description": "And cold rice-chocolate-hazelnut plant-based drink, vanilla whipped cream, cookie chunks", "price": 1500 },
+        { "name": "Mug Coco", "price": 1000 },
+        { "name": "Dante sipper", "sizes": [{ "label": "Sipper only", "price": 1600 }, { "label": "With a cold drink", "price": 1800 }] },
+        { "name": "Tumbler", "sizes": [{ "label": "Tumbler only", "price": 1500 }, { "label": "With a cold drink or a slush", "price": 1700 }] },
+        { "name": "Mug", "sizes": [{ "label": "Mug only", "price": 1500 }, { "label": "With a hot drink", "price": 1700 }] },
+        { "name": "Mickey or Minnie straw", "sizes": [{ "label": "Straw only", "price": 600 }, { "label": "With a cold drink", "price": 700 }] }
+      ]
+    }
+  ]
+}

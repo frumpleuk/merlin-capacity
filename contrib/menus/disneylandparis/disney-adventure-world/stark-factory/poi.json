@@ -1,0 +1,12 @@
+{
+  "id": "P2AR01",
+  "name": "Stark Factory",
+  "category": "Food & Drink > Quick Service Restaurant",
+  "area": "Avengers Campus",
+  "lat": 48.865667,
+  "lon": 2.780083,
+  "menuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P2AR01_stark-factory.pdf",
+  "priceBand": "€",
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

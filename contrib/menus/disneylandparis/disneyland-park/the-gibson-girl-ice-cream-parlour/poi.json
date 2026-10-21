@@ -1,0 +1,12 @@
+{
+  "id": "P1MR04",
+  "name": "The Gibson Girl Ice Cream Parlour",
+  "category": "Food & Drink > On-the-go",
+  "area": "Main Street U.S.A.",
+  "lat": 48.8721,
+  "lon": 2.77763,
+  "menuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR04_gibson-girl-ice-cream-parlour.pdf",
+  "priceBand": "€",
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

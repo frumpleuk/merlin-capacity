@@ -1,0 +1,12 @@
+{
+  "id": "P1MR08",
+  "name": "Plaza Gardens Restaurant",
+  "category": "Food & Drink > All-you-can-eat buffet",
+  "area": "Main Street U.S.A.",
+  "lat": 48.872605,
+  "lon": 2.77778,
+  "menuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR08_plaza-gardens-restaurant.pdf",
+  "priceBand": "€€",
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "P1AR07",
+  "name": "Restaurant Hakuna Matata",
+  "category": "Food & Drink > Quick Service Restaurant",
+  "area": "Adventureland",
+  "lat": 48.87206,
+  "lon": 2.774473,
+  "menuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P1AR07_restaurant-hakuna-matata.pdf",
+  "priceBand": "€",
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

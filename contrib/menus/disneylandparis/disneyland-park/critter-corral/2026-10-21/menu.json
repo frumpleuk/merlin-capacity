@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1RR05_critter-corral.pdf",
+    "sha256": "9b3df9d3c1781fbd33eb93a6d1ef1101457f00f9bb52bf944d1bcf347b08867b",
+    "stated": "April 2026"
+  },
+  "sections": [
+    {
+      "name": "Menu",
+      "items": [
+        { "name": "Menu", "description": "Pride Rock Croq' (ham and La Vache qui rit® melted cheese) and BBQ Crisps and a cold or a hot drink", "price": 1200 },
+        { "name": "Pride Rock Croq'", "description": "Ham and La Vache qui rit® melted cheese", "price": 850 },
+        { "name": "BBQ Crisps", "description": "Lay's®", "price": 380 }
+      ]
+    },
+    {
+      "name": "Sweet Break",
+      "items": [
+        { "name": "Sweet Break", "description": "Pawsome delight or Choco-coco lollipaw and a hot or a cold drink", "price": 800 },
+        { "name": "Choco-coco lollipaw", "description": "Chocolate-coco", "price": 600 },
+        { "name": "Pawsome delight", "description": "Chocolate-hazelnut flavour", "price": 600 }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        { "name": "Espresso 100% Arabica", "price": 330 },
+        { "name": "Double Espresso 100% Arabica", "price": 380 },
+        { "name": "Coffee 100% Arabica", "price": 350 },
+        { "name": "Coffee with milk", "price": 400 },
+        { "name": "Cappuccino", "price": 400 },
+        { "name": "Hot chocolate", "price": 420 },
+        { "name": "Tea, herbal tea", "price": 350 }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        { "name": "Soft drink", "description": "Coca-Cola, Fanta 50 cl; FuzeTea, Tropico 40 cl", "price": 420 },
+        { "name": "Vittel 50 cl", "price": 350 },
+        { "name": "Perrier 50 cl", "price": 380 },
+        { "name": "Orange or apple juice 33 cl", "price": 380 }
+      ]
+    },
+    {
+      "name": "Souvenirs",
+      "items": [
+        { "name": "Simba mug", "sizes": [ { "label": "Mug only", "price": 1500 }, { "label": "With a hot drink", "price": 1700 } ] },
+        { "name": "Simba sipper", "sizes": [ { "label": "Sipper only", "price": 1500 }, { "label": "With a cold drink", "price": 1700 } ] },
+        { "name": "Mickey or Minnie bucket with sweet popcorn", "price": 1500 }
+      ]
+    }
+  ]
+}

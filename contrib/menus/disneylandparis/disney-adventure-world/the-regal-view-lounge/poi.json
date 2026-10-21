@@ -1,0 +1,12 @@
+{
+  "id": "P2DR01",
+  "name": "The Regal View Lounge",
+  "category": "Food & Drink > Bars",
+  "area": "Adventure Way",
+  "lat": 48.865837,
+  "lon": 2.775951,
+  "menuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P2DR01_the-regal-view-lounge.pdf",
+  "priceBand": "€€€",
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

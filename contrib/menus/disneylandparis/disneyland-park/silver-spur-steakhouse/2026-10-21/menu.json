@@ -1,0 +1,93 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1RR04_silver-spur-steakhouse.pdf",
+    "sha256": "c443b7d42d90b1b1d2f98bb7b6de8537f78b87e8e73a4d53c4ed65e6f4206e11",
+    "stated": "December 2025"
+  },
+  "sections": [
+    {
+      "name": "Meal Plans",
+      "items": [
+        {
+          "name": "Sherif's Menu",
+          "description": "Drink not included. Starters: crispy vegetable fritters with seaside flavours, «Silver Spur Caesar Salad» with dried beef or tomato soup with smoked sweet paprika; mains: flamed-grilled steak skewers, roasted salmon marinated with dill or slow-cooked spelt cocotte with shiitake; desserts: Cowboys treat, chocolate-almond mille-feuille or pineapple ravioli filled with red berries",
+          "sizes": [
+            { "label": "Starter and main course or main course and dessert", "price": 3700 },
+            { "label": "Starter, main course and dessert", "price": 4500 }
+          ]
+        },
+        {
+          "name": "Kids' Menu",
+          "description": "For children ages from 3 to 11. Starter, main course, dessert and drink. Drink: Vittel® 33 cl, orange or apple juice 25 cl or milk 20 cl; starters: toasted roll with turkey breast and Kiri cheese, crispy chicken salad with grated red cheddar, cherry tomatoes and sweetcorn or «Little Far West salad»; mains: stir-fried chicken with peanut sauce, pea purée and smoked cheddar pasta gratin, minced beef steak, pea purée and smoked cheddar pasta gratin or salmon fillet, beurre blanc and Silver rice; desserts: Wild west delight, Little cowboys treats (chocolate-hazelnut cookie with chocolate sauce) or pineapple carpaccio, chocolate-hazelnut cookie and caramelised popcorn. Or Disney Check menu: Little Far West salad, salmon steak, pineapple carpaccio, Vittel® 33 cl",
+          "price": 2500,
+          "tags": ["kids"]
+        }
+      ]
+    },
+    {
+      "name": "Starters",
+      "items": [
+        { "name": "Crispy vegetable fritters with seaside flavours", "description": "Coleslaw with mustard dressing", "price": 1300, "tags": ["vg"] },
+        { "name": "«Silver Spur Caesar Salad» with dried beef", "price": 1500 },
+        { "name": "Smoked trout", "description": "Beetroot pickles and preserved lemon", "price": 1800 },
+        { "name": "Tomato soup with smoked sweet paprika", "description": "Pumpkin seeds and corn cream", "price": 1500 },
+        { "name": "Pulled pork, barbecue sauce", "description": "Avocado salsa, creamed corn and crispy wheat pancake", "price": 1800 }
+      ]
+    },
+    {
+      "name": "Main Courses",
+      "items": [
+        { "name": "Scottish flank steak grilled over wood fire", "description": "Chipotle sauce, smoked cheddar potato gratin", "price": 3500 },
+        { "name": "Flamed-grilled steak skewers", "description": "Chimichurri sauce, smoked cheddar potato gratin, vegetable tempura", "price": 3200 },
+        { "name": "Grilled pork chop marinated in maple syrup", "description": "«Carolina Gold» barbecue sauce, smoked cheddar potato gratin. Carolina Gold BBQ sauce is a mustard-based sauce while other BBQ sauces are mostly tomato-based. This gives Carolina Gold BBQ sauce a unique flavour that is sweet, tangy and mildly spicy.", "price": 3800 },
+        { "name": "Stir-fried chicken marinated with garlic and ginger", "description": "Peanut sauce, «Silver rice» and vegetable tempura", "price": 3200 },
+        { "name": "Roasted salmon marinated with dill", "description": "Green pepper sauce, «Silver rice» and vegetable tempura", "price": 3500 },
+        { "name": "Slow-cooked spelt cocotte with shiitake", "description": "Black beans and soybeans, pea-protein vegan meatball skewers", "price": 3200, "tags": ["vg"] }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        { "name": "Crispy pastry with cinnamon-caramelised apples", "description": "Pecan nuts and raisins, vanilla oat rice crémeux", "price": 1600, "tags": ["vg"] },
+        { "name": "Cowboys treat", "description": "Vanilla sundae with crunchy brownie and caramel sauce", "price": 1500 },
+        { "name": "Custard flan with whisky", "description": "Praline and roasted hazelnuts, Bailey's The Original Irish Cream caramel sauce", "price": 1800 },
+        { "name": "Chocolate-almond mille-feuille", "description": "Vanilla oat rice crémeux", "price": 1500, "tags": ["vg"] },
+        { "name": "Pineapple ravioli filled with red berries", "description": "Smoked-tea infused syrup", "price": 1600 },
+        {
+          "name": "Birthday dessert to share",
+          "description": "Don't forget to order your birthday dessert before your meal!",
+          "sizes": [
+            { "label": "2 or more people", "price": 2500 },
+            { "label": "6 or more people", "price": 4500 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Wine Selection",
+      "note": "75 cl",
+      "items": [
+        { "name": "White: AOP Sancerre - Château de Sancerre - Sauvignon blanc", "price": 4900, "tags": ["alcohol"] },
+        { "name": "White: AOC Chablis - La Pierrelée - La Chablisienne", "price": 4300, "tags": ["alcohol"] },
+        { "name": "Red: AOC Pauillac - Baron Nathaniel - Baron Philippe de Rothschild", "price": 4600, "tags": ["alcohol"] },
+        { "name": "Red: U.S.A.: Beringer Classics - Cabernet Sauvignon", "price": 3800, "tags": ["alcohol"] },
+        { "name": "Rosé: IGP Pays d'Oc - Gris Blanc", "price": 3200, "tags": ["alcohol"] },
+        { "name": "Champagne: Édition Spéciale Disneyland® Paris - Champagne Pierre Mignon Grande Réserve - brut", "price": 8200, "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        { "name": "Coca-Cola Original, Coca-Cola Zéro Sucres 33 cl", "price": 550 },
+        { "name": "Fanta Orange Sans Sucres, Sprite Sans Sucres 33 cl", "price": 550 },
+        { "name": "FuzeTea Peach Black Tea 33 cl", "price": 550 },
+        { "name": "Orange juice, apple juice 25 cl", "price": 500 },
+        { "name": "Vittel®", "sizes": [ { "label": "50 cl", "price": 450 }, { "label": "100 cl", "price": 550 } ] },
+        { "name": "S.Pellegrino®", "sizes": [ { "label": "50 cl", "price": 480 }, { "label": "100 cl", "price": 580 } ] }
+      ]
+    }
+  ]
+}

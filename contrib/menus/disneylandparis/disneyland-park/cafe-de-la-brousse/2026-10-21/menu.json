@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1AR01_cafe-de-la-brousse.pdf",
+    "sha256": "070d0bc56b25866f90961c1dc056e3b068c47e780aee741d8b350c15729e1c4d",
+    "stated": "September 2026"
+  },
+  "sections": [
+    {
+      "name": "Food",
+      "items": [
+        { "name": "Menu", "description": "Crispy chicken bites with Lay's® crisps and a cold drink", "price": 1300 },
+        { "name": "Crispy chicken bites", "description": "With Heinz® ketchup or mayonnaise sauce", "price": 800 },
+        { "name": "Plain or BBQ crisps 45g", "description": "Lay's®", "price": 380 },
+        { "name": "Fresh Fries", "description": "With Heinz® ketchup or mayonnaise or mustard sauce", "price": 530 },
+        { "name": "Pineapple whip", "description": "Pineapple flavour", "price": 600 }
+      ]
+    },
+    {
+      "name": "Sweet Break",
+      "items": [
+        { "name": "Sweet Break", "description": "Phantom Clock Brownie and a hot or a cold drink", "price": 800 },
+        { "name": "Phantom Clock Brownie", "description": "Chocolate ganache filled", "price": 550 },
+        { "name": "Little Ghostie", "description": "Chocolate ganache filled brownie", "price": 550 },
+        { "name": "Bucket", "description": "With sweet popcorn", "price": 2600 }
+      ]
+    }
+  ]
+}

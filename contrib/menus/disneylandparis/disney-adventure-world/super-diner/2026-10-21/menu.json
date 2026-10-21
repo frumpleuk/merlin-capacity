@@ -1,0 +1,82 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2AR03_super-diner.pdf",
+    "sha256": "e282f509489048e3a7572a887825538573ed3f648fe937e69e007e2715325ba4",
+    "stated": "September 2026"
+  },
+  "sections": [
+    {
+      "name": "Mains",
+      "items": [
+        { "name": "Caesar Salad", "description": "Lettuce, chicken emincé, bacon, parmesan cheese, croutons, caesar sauce", "price": 750 },
+        { "name": "Shawarma", "description": "Pita bread, chicken-veal émincé, lettuce, red onions, tomatoes, coriander and humus", "price": 1100 },
+        { "name": "Shawarma", "description": "Pita bread, soya protein strips, lettuce, red onions, tomatoes, coriander and humus", "price": 1100, "tags": ["vg"] }
+      ]
+    },
+    {
+      "name": "Kids' Meal",
+      "note": "For children ages 3 to 11",
+      "items": [
+        { "name": "Shawarma", "description": "Pita bread, chicken-veal émincé, lettuce, red onions, tomatoes, coriander and La Vache qui rit® cheese sauce", "price": 700, "tags": ["kids"] }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        { "name": "Side salad", "price": 330, "tags": ["v"] },
+        { "name": "Cherry tomatoes", "price": 330, "tags": ["vg"] },
+        { "name": "Lay's® Crisps 45g", "price": 380 },
+        { "name": "Lay's® Crisps BBQ 45g", "price": 380 }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        { "name": "Cookie", "description": "Chocolate chunks and hazelnut", "price": 350, "tags": ["vg"] },
+        { "name": "Fruit bag", "price": 400, "tags": ["vg"] },
+        { "name": "The Choco-Blast", "description": "Chocolate bar, caramel and peanut butter", "price": 500 },
+        { "name": "Ben & Jerry's® Cookie Dough", "price": 500 },
+        { "name": "Ben & Jerry's® Chocolate Fudge Brownie", "price": 500 },
+        { "name": "Ben & Jerry's® Vanilla Pecan Blondie", "price": 500 },
+        { "name": "Ben & Jerry's® Cookies on Cookie Dough Vegan", "price": 500, "tags": ["vg"] }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        { "name": "Soft drink 50 cl", "description": "Coca-Cola range, Fanta, Sprite, Fuze Tea", "price": 420 },
+        { "name": "Orange juice or apple juice 23,5 cl", "price": 380 },
+        { "name": "Vittel® 50 cl", "price": 350 },
+        { "name": "S.Pellegrino 50 cl", "price": 380 }
+      ]
+    },
+    {
+      "name": "Beer",
+      "items": [
+        { "name": "Bud® 33 cl", "price": 630, "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Wine",
+      "items": [
+        { "name": "IGP Pays d'Oc - Gio blanc 18,7 cl", "price": 800, "tags": ["alcohol"] },
+        { "name": "IGP Pays d'Oc - Gio rouge 18,7 cl", "price": 800, "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        { "name": "Espresso 100% Arabica", "price": 330 },
+        { "name": "Coffee 100% Arabica", "price": 350 },
+        { "name": "Double Espresso 100% Arabica", "price": 380 },
+        { "name": "Coffee with milk", "price": 400 },
+        { "name": "Cappuccino", "price": 400 },
+        { "name": "Hot chocolate", "price": 420 },
+        { "name": "Tea, herbal tea", "price": 350 }
+      ]
+    }
+  ]
+}

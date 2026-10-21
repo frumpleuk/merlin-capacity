@@ -1,4 +1,12 @@
-import { useEffect, useMemo, useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type PointerEvent as ReactPointerEvent,
+} from "react";
 import { Navigate, useParams, useSearchParams } from "react-router-dom";
 import { findPark, PARK_HOME } from "./catalog";
 import INDEX from "./menus.index.json";
@@ -99,6 +107,8 @@ interface ParkEvent {
   vendors: Venue[];
 }
 interface ParkMenus {
+  /** What the prices are in. Absent in files built before euro parks existed. */
+  currency?: "GBP" | "EUR";
   venues: Venue[];
   water: { slug: string; name: string; lat: number | null; lon: number | null }[];
   events: ParkEvent[];
@@ -110,8 +120,16 @@ const TODAY = new Date().toISOString().slice(0, 10);
 /** Counts only: enough to know a park has food before its data arrives. */
 const COUNTS = INDEX as Record<string, { venues: number; priced: number; water: number }>;
 
-/** Prices are stored as integer pence — "875" reads as £8.75, "500" as £5. */
-const money = (p: number) => "£" + (p / 100).toFixed(2).replace(/\.00$/, "");
+/** Prices are stored as integer minor units: "875" reads as £8.75 (or €8.75 at
+ *  Disneyland Paris), "500" as £5. */
+const CurrencyContext = createContext<"GBP" | "EUR">("GBP");
+const formatMoney = (p: number, currency: "GBP" | "EUR") =>
+  (currency === "EUR" ? "€" : "£") + (p / 100).toFixed(2).replace(/\.00$/, "");
+/** The park's price formatter. */
+const useMoney = () => {
+  const currency = useContext(CurrencyContext);
+  return (p: number) => formatMoney(p, currency);
+};
 
 const TAG_LABEL: Record<string, string> = {
   v: "vegetarian",
@@ -284,6 +302,7 @@ function Mark({ text, query }: { text: string; query: string }) {
 const STATUS_LABEL = { "coming-soon": "Coming soon", unavailable: "Unavailable" };
 
 function ItemRow({ item, query, unpriced }: { item: Item; query: string; unpriced?: boolean }) {
+  const money = useMoney();
   const unclear = item.unclear ? `Couldn't read this on the photo: ${item.unclear}` : undefined;
   const sizes = item.sizes ?? [];
   return (
@@ -381,6 +400,7 @@ function VenueCard({
   onOpen: (slug: string | null) => void;
   onShot: (shot: Shot) => void;
 }) {
+  const money = useMoney();
   const [at, setAt] = useState(0); // 0 is the newest menu we hold
   const menu = venue.menus[at] as Menu | undefined;
   const [open, setOpen] = useState(focus === venue.slug);
@@ -514,6 +534,9 @@ function VenueCard({
                 </a>
               </strong>
               , as {menu.source.name} published it
+              {/* Disney still links some menus printed years ago; the date the
+                  PDF prints says how current its prices are. */}
+              {menu.source.stated ? `, dated ${menu.source.stated}` : ""}
               {menu.unpriced ? ". It lists what's served, but no prices." : "."}
             </p>
           )}
@@ -535,7 +558,9 @@ function VenueCard({
           )}
           <div className="fd-photos">
             <span className="fd-venue-meta">
-              {menu.source ? "Published" : "Seen"} {menu.approxDate ? menu.date.slice(0, 4) : longDate(menu.date)}
+              {/* A park's own menu is dated by when we fetched it, not when the
+                  park printed it (that's `stated`, in the credit above). */}
+              {menu.source?.official ? "Fetched" : menu.source ? "Published" : "Seen"} {menu.approxDate ? menu.date.slice(0, 4) : longDate(menu.date)}
             </span>
             {menu.photos.map((p, n) => (
               <button
@@ -594,6 +619,7 @@ function AreaGroup({
   onOpen: (slug: string | null) => void;
   onShot: (shot: Shot) => void;
 }) {
+  const money = useMoney();
   const holdsFocus = venues.some((v) => v.slug === focus);
   const [open, setOpen] = useState(holdsFocus);
   useEffect(() => {
@@ -846,7 +872,7 @@ export function MenusPage() {
     }
   }
 
-  return (
+  const page = (
     <main className="fd">
       {shot && <Lightbox shot={shot} onClose={() => setShot(null)} />}
       <div className="fd-controls">
@@ -1040,4 +1066,5 @@ export function MenusPage() {
       </div>
     </main>
   );
+  return <CurrencyContext.Provider value={data.currency ?? "GBP"}>{page}</CurrencyContext.Provider>;
 }

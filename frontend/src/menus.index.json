@@ -40,5 +40,17 @@
     "withMenus": 1,
     "priced": 1,
     "water": 0
+  },
+  "disneyland_park": {
+    "venues": 36,
+    "withMenus": 36,
+    "priced": 36,
+    "water": 0
+  },
+  "disney_adventure_world": {
+    "venues": 20,
+    "withMenus": 17,
+    "priced": 17,
+    "water": 0
   }
 }

@@ -1,0 +1,12 @@
+{
+  "id": "P1RR02",
+  "name": "Last Chance Cafe",
+  "category": "Food & Drink > Quick Service Restaurant",
+  "area": "Frontierland",
+  "lat": 48.871533,
+  "lon": 2.776634,
+  "menuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P1RR02_last-chance-cafe.pdf",
+  "priceBand": "€",
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

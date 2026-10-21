@@ -1,0 +1,12 @@
+{
+  "id": "P1DR02",
+  "name": "Cool Station",
+  "category": "Food & Drink > On-the-go",
+  "area": "Discoveryland",
+  "lat": 48.87327,
+  "lon": 2.7781,
+  "menuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P1DR02_cool-station.pdf",
+  "priceBand": "€",
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

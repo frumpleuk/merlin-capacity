@@ -1,0 +1,12 @@
+{
+  "id": "P1MR10",
+  "name": "Walt’s – an American restaurant",
+  "category": "Food & Drink > Table service",
+  "area": "Main Street U.S.A.",
+  "lat": 48.871732,
+  "lon": 2.777713,
+  "menuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR10_walts-american-restaurant.pdf",
+  "priceBand": "€€€",
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

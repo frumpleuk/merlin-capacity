@@ -1,0 +1,12 @@
+{
+  "id": "P1RR05",
+  "name": "Critter Corral",
+  "category": "Food & Drink > On-the-go",
+  "area": "Frontierland",
+  "lat": 48.870677,
+  "lon": 2.772285,
+  "menuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P1RR05_critter-corral.pdf",
+  "priceBand": "€",
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

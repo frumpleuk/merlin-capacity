@@ -1,0 +1,12 @@
+{
+  "id": "P2BR02",
+  "name": "FAN-tastic Food Truck",
+  "category": "Food & Drink > On-the-go",
+  "area": "Avengers Campus",
+  "lat": 48.865702,
+  "lon": 2.77842,
+  "menuUrl": null,
+  "priceBand": "€",
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

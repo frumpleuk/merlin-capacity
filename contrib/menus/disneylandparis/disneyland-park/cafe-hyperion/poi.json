@@ -1,0 +1,12 @@
+{
+  "id": "P1DR01",
+  "name": "Café Hyperion",
+  "category": "Food & Drink > Quick Service Restaurant > Self-service kiosks",
+  "area": "Discoveryland",
+  "lat": 48.874057,
+  "lon": 2.778097,
+  "menuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P1DR01_cafe-hyperion.pdf",
+  "priceBand": "€",
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

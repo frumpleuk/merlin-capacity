@@ -1,0 +1,106 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1AR00_captain-jacks-restaurant-pirates.pdf",
+    "sha256": "978081109b453788a1226e1e28f567b66d5fb424a96602e175397ac83e40831e",
+    "stated": "June 2026"
+  },
+  "sections": [
+    {
+      "name": "Meal Plans",
+      "items": [
+        {
+          "name": "Pirate's Treasure Menu",
+          "description": "Starter, main course and dessert (drink not included). Starters: smoked chicken chiquetaille with green papaya, Caribbean fish soup, black-eyed peas salad or spiced black pudding and smoked sausage; mains: roasted mahi-mahi fillet, chicken and prawn Colombo, vegetable Colombo curry or grilled jerk pork; desserts: Caribbean rice pudding, tropical fruit soup or rum and pineapple shortbread",
+          "price": 5500
+        },
+        {
+          "name": "Moussaillon Menu",
+          "description": "For children ages 3 to 11. Starter, main course, dessert and drink. Drink: Vittel 33 cl, orange or apple juice 25 cl or glass of milk 20 cl; starters: potted tuna and whole wheat tortilla chips, chickpea, sweetcorn, cucumber and tomato salad or quinoa and tomato salad; mains: coconut-crusted chicken fillet or mahi-mahi fillet with coconut and passion fruit sauce (side: rice, sweet potato mash or mixed green vegetables), or pasta with a tomato and vegetable sauce; desserts: coconut and vanilla rice pudding with salted caramel sauce, fruit smoothie, fruit salad or Mousse ahoy! chocolate dessert",
+          "price": 3000,
+          "tags": ["kids"]
+        }
+      ]
+    },
+    {
+      "name": "Starters",
+      "items": [
+        { "name": "Black-eyed peas salad", "description": "Salad with a sauce flavoured with Jamaican pepper, passion fruit and spring onions", "price": 1700, "tags": ["v"] },
+        { "name": "Smoked chicken chiquetaille", "description": "With green papaya", "price": 1800 },
+        { "name": "Shrimp creole", "description": "And Caribbean smashed avocado, with passion fruit dressing", "price": 1900 },
+        { "name": "Salt cod fritters", "description": "Tamarind sauce and Creole-style pickled vegetables", "price": 1800 },
+        { "name": "Albacore tuna ceviche", "description": "With coriander, toasted sesame oil, mango, lime and tostados", "price": 1900 },
+        { "name": "Caribbean fish soup", "price": 1800 },
+        { "name": "Spiced black pudding and smoked sausage", "description": "With Creole-style pickled vegetables", "price": 1800 },
+        { "name": "Vegetable fritters", "description": "With sweet and sour tomato sauce", "price": 1700, "tags": ["vg"] }
+      ]
+    },
+    {
+      "name": "Main Courses",
+      "items": [
+        { "name": "Vegetable Colombo curry", "description": "With coconut, soy and peas protein fillet", "price": 3000, "tags": ["vg"] },
+        { "name": "Grilled wahoo fillet", "description": "Spicy Creole sauce, plantain and black bean mash and carrot slaw", "price": 3800 },
+        { "name": "Baked mahi-mahi fillet", "description": "Stewed peppers, coconut sauce and captain's rice", "price": 3800 },
+        { "name": "Chicken and prawn Colombo", "description": "Captain's rice", "price": 3600 },
+        { "name": "Grilled jerk pork", "description": "Jamaica pepper marinade, sweet potato mash and crunchy pickled vegetables", "price": 3400 },
+        { "name": "Grilled octopus", "description": "Cassava and potato mash, pumpkin and black beans and squid ink aioli", "price": 4200 },
+        { "name": "Roasted king prawns", "description": "Green papaya, carrot and coriander salad, tropical salsa (mango, ginger, pineapple, chilli), sweet potato fries, tamarind and spring onion sauce", "price": 4700 }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        { "name": "Caribbean rice pudding", "description": "Rice pudding with mango compote", "price": 1500 },
+        { "name": "Tropical fruit soup", "description": "Muscovado sugar and coconut and cashew emulsion", "price": 1500, "tags": ["vg"] },
+        { "name": "Tonka bean and pecan nut-flavoured chocolate tart", "description": "Spiced caramel and vanilla ice cream", "price": 1600 },
+        { "name": "Sweet potato and caramelised pecan lava cake", "price": 1600 },
+        { "name": "Rum and pineapple shortbread", "description": "Mascarpone whipped cream and Bourbon vanilla", "price": 1600 },
+        { "name": "Roasted banana with Bourbon vanilla", "description": "Whipped mascarpone cream, chopped nuts, coconut and passion fruit sorbet", "price": 1600 },
+        {
+          "name": "Birthday dessert to share",
+          "description": "Don't forget to order your birthday dessert before your meal!",
+          "sizes": [
+            { "label": "2 or more people", "price": 2500 },
+            { "label": "6 or more people", "price": 4500 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pirate's Choice",
+      "items": [
+        { "name": "The Kraken Black Spiced 4 cl", "description": "Discover this spirit based on spicy black rum and which offers notes of cinnamon, clove, and vanilla.", "price": 1200, "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        { "name": "Coca-Cola original, Coca-Cola zéro sucres 33 cl", "price": 600 },
+        { "name": "Fanta Orange sans sucres, Sprite sans sucres 33 cl", "price": 600 },
+        { "name": "FuzeTea Peach Black Tea 33 cl", "price": 600 },
+        { "name": "Orange or apple juice 25 cl", "price": 600 },
+        { "name": "Perrier® 33 cl", "price": 500 }
+      ]
+    },
+    {
+      "name": "Mineral Waters",
+      "items": [
+        { "name": "Vittel®", "sizes": [ { "label": "50 cl", "price": 500 }, { "label": "100 cl", "price": 600 } ] },
+        { "name": "S.Pellegrino®", "sizes": [ { "label": "50 cl", "price": 550 }, { "label": "100 cl", "price": 650 } ] }
+      ]
+    },
+    {
+      "name": "Wine Selection",
+      "note": "75 cl",
+      "items": [
+        { "name": "White: AOC Entre-Deux-Mers - Cuvée Clémence", "price": 3400, "tags": ["alcohol"] },
+        { "name": "Red: AOC Bourgogne - Pinot Noir - Hudelot-Bajard - Bio", "price": 4100, "tags": ["alcohol"] },
+        { "name": "Red: AOC Côtes du Rhône - Esprit - Brotte", "price": 3400, "tags": ["alcohol"] },
+        { "name": "Red: AOC Saint Emilion - Fortin Plaisance", "price": 3800, "tags": ["alcohol"] },
+        { "name": "Rosé: IGP Pays d'Oc - Gris Blanc", "price": 3400, "tags": ["alcohol"] }
+      ]
+    }
+  ]
+}

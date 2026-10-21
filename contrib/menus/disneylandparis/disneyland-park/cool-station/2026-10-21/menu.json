@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1DR02_cool-station.pdf",
+    "sha256": "5a7ebd9fe11dcf1895b6527d204edc4552e0a63e5bccce2449426765a88c9ea7",
+    "stated": "April 2026"
+  },
+  "sections": [
+    {
+      "name": "Sweet Break",
+      "items": [
+        { "name": "Crepe with sugar or Nutella® and a cold or a hot drink", "price": 700 },
+        { "name": "Biscuit Grogu and a cold or a hot drink", "price": 800 }
+      ]
+    },
+    {
+      "name": "À la carte",
+      "items": [
+        { "name": "Crepe with Nutella®", "price": 450 },
+        { "name": "Crepe with sugar", "price": 400 },
+        { "name": "Add whipped cream", "price": 100, "addOn": true },
+        { "name": "Biscuit Grogu", "description": "Chocolate-hazelnut filled pistachio biscuit", "price": 600 },
+        { "name": "Cookie vegan", "description": "Chocolate and hazelnut chunks", "price": 350, "tags": ["vg"] }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "note": "Lavazza",
+      "items": [
+        { "name": "Espresso 100% Arabica", "price": 330 },
+        { "name": "Double Espresso 100% Arabica", "price": 380 },
+        { "name": "Coffee", "description": "100% Arabica", "price": 350 },
+        { "name": "Coffee with milk", "price": 400 },
+        { "name": "Cappuccino", "price": 400 },
+        { "name": "Hot chocolate", "price": 420 },
+        { "name": "Tea, herbal tea", "price": 350 }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        { "name": "Soft drink", "description": "Coca-Cola, Coca-Cola Zero Sugar, Coca-Cola Cherry, Fanta (50 cl); Fuze Tea, Tropico (40 cl)", "price": 420 },
+        { "name": "Vittel 50 cl", "price": 350 }
+      ]
+    },
+    {
+      "name": "Souvenirs",
+      "items": [
+        { "name": "Stitch tumbler", "description": "With a cold drink: 18€ instead of 20€", "sizes": [{ "label": "Tumbler only", "price": 1600 }, { "label": "With a cold drink", "price": 1800 }] },
+        { "name": "Stitch sipper", "sizes": [{ "label": "Sipper only", "price": 2000 }, { "label": "With a cold drink", "price": 2200 }] },
+        { "name": "Mug", "sizes": [{ "label": "Mug only", "price": 1500 }, { "label": "With a hot drink", "price": 1700 }] }
+      ]
+    }
+  ]
+}

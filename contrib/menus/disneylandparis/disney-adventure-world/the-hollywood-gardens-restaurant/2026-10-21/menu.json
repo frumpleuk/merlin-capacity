@@ -1,0 +1,115 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2FR00_the-hollywood-gardens-restaurant.pdf",
+    "sha256": "10ae6d341b109bede26cba91dec2dd620ac0209aa8e02e845ca735ca6273d029",
+    "stated": "September 2026"
+  },
+  "sections": [
+    {
+      "name": "Halloween Feast Menu",
+      "items": [
+        {
+          "name": "Halloween Feast Menu",
+          "description": "Cold drink 50 cl + fries or side salad + Halloween Feast Burger (beef burger, smoky bacon-flavoured sauce, chilli cheddar, chorizo and Doritos® Sweet Chilli Pepper) + Crunchy Spell (creamy vanilla entremet, cocoa ganache and hazelnut centre)",
+          "sizes": [
+            { "label": "Menu", "price": 2200 },
+            { "label": "Without dessert", "price": 2000 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Menu Nuggets",
+      "note": "And Fries or Side salad and Cold drink",
+      "items": [
+        { "name": "Chicken Star Nuggets x8", "price": 1800 }
+      ]
+    },
+    {
+      "name": "Menu Burger",
+      "note": "And Fries or Side salad and Cold drink",
+      "items": [
+        { "name": "Superstar Burger", "description": "Breaded chicken fillet, melted cheddar cheese, lettuce, fried onion flakes, guacamole and melted cheddar-piquillo sauce", "price": 2000 },
+        { "name": "Say Cheeeese Burger", "description": "Beef burger, melted cheddar cheese, lettuce, fried onion flakes and sauce", "price": 1700 },
+        { "name": "The Premiere Burger", "description": "Breaded fish, rocket salad, lemon dressing, caramelised red onions and tartar-curry sauce", "price": 1900 },
+        { "name": "Holly'Red Boulevard Burger", "description": "Beyond Meat. Plant-based patty, plant-based cheddar-flavoured slice, caramelised red onions, rocket salad, beetroot ketchup and chimichurri sauce", "price": 1900, "tags": ["vg"] }
+      ]
+    },
+    {
+      "name": "Salad Menu",
+      "note": "And Cold drink",
+      "items": [
+        { "name": "Sunset", "description": "Quinoa, bulgur, barley, lentils, soybeans, chickpea-coco-curry balls, marinated sun-dried tomatoes, cashew nuts", "price": 1500, "tags": ["vg"] },
+        { "name": "César Awards", "description": "Lettuce, chicken, hard-boiled egg, Grana Padano cheese and marinated sun-dried tomatoes", "price": 1500 }
+      ]
+    },
+    {
+      "name": "Little Legend's Menu",
+      "note": "For children ages 3 to 11",
+      "items": [
+        {
+          "name": "Little Legend's Menu",
+          "description": "Kids' cheeseburger (beef burger, melted cheddar cheese and ketchup sauce), the little chicken burger (chicken, melted cheddar cheese, lettuce, La Vache qui rit® cheese sauce) or Chicken Star Nuggets 4 pieces; cherry tomatoes or fries; sweet beignets filled with cocoa and hazelnut x2, Pom'Potes® organic apple puree (no added sugar), flavoured sweet drinking yoghurt, organic mini Babybel® cheese (2 pieces) or Magnum® Mini Almond; Juicy Water (apple-strawberry), milk (20 cl) or Vittel® (33 cl). Other cold drink (25 cl) may replace similar item on request",
+          "price": 1050,
+          "tags": ["kids"]
+        }
+      ]
+    },
+    {
+      "name": "A la carte",
+      "items": [
+        { "name": "Side salad", "price": 330, "tags": ["v"] },
+        { "name": "Fries", "price": 450 },
+        { "name": "Kids' Cheeseburger", "price": 700 },
+        { "name": "The Little Chicken Burger", "price": 700 },
+        { "name": "Plant-based Nuggets (x6)", "description": "Beyond Meat. Choice of sauce: mustard, mayonnaise, ketchup", "price": 750 },
+        { "name": "Sunset Salad", "price": 1200, "tags": ["vg"] },
+        { "name": "César Awards Salad", "price": 1200 },
+        { "name": "Say Cheeeese Burger", "price": 1300 },
+        { "name": "Halloween Feast Burger", "price": 1500 },
+        { "name": "The Premiere Burger", "price": 1500 },
+        { "name": "Holly'Red Boulevard Burger", "description": "Beyond Meat", "price": 1500, "tags": ["vg"] },
+        { "name": "Superstar Burger", "price": 1600 }
+      ]
+    },
+    {
+      "name": "Sweet Break",
+      "items": [
+        { "name": "Sweet Break", "description": "Cookie Mickey (milk chocolate chunks), chocolate and pecan nuts brownie or Magnum® Mini Almond and a cold or a hot drink", "price": 700 }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        { "name": "Crunchy Spell", "price": 550 },
+        { "name": "Yoghurt with a fruit layer", "price": 300 },
+        { "name": "Chocolate and pecan nuts brownie", "price": 380 },
+        { "name": "Fruit bag", "price": 400, "tags": ["vg"] },
+        { "name": "Cookie Mickey", "description": "Milk chocolate chunks", "price": 430 },
+        { "name": "Spotlight Swirl", "description": "Chocolate-vanilla", "price": 500 }
+      ]
+    },
+    {
+      "name": "Ice Creams",
+      "items": [
+        { "name": "Super Twister®", "description": "Orange, Strawberry, Lemon Flavours", "price": 350 },
+        { "name": "Solero® Strawberry Twist", "description": "Vanilla ice cream", "price": 350 },
+        { "name": "Magnum® Almond", "price": 400 },
+        { "name": "Magnum® Almond Vegan", "price": 400, "tags": ["vg"] },
+        { "name": "Cornetto® King Cône", "description": "Cocoa sauce", "price": 430 },
+        { "name": "Mickey Ice Cream Bar", "description": "Vanilla flavour", "price": 450 }
+      ]
+    },
+    {
+      "name": "Souvenirs",
+      "items": [
+        { "name": "Mickey or Minnie straw", "sizes": [{ "label": "Straw only", "price": 600 }, { "label": "With a cold drink", "price": 700 }] },
+        { "name": "Tumbler", "sizes": [{ "label": "Tumbler only", "price": 1500 }, { "label": "With a cold drink", "price": 1700 }] },
+        { "name": "Cup", "sizes": [{ "label": "Cup only", "price": 1500 }, { "label": "With a hot drink", "price": 1700 }] }
+      ]
+    }
+  ]
+}

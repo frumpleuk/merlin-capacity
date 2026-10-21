@@ -28,8 +28,20 @@ export const INDIE_PARK_DIRS = {
   flamingoland: "flamingoland",
 };
 
+/** Disneyland Paris's two parks share one operator folder. Their venues and
+ *  menus come from Disney's own GraphQL API and menu PDFs (see
+ *  scripts/menus/sync-venues-dlp.mjs). */
+export const DLP_PARK_DIRS = {
+  disneyland_park: "disneylandparis/disneyland-park",
+  disney_adventure_world: "disneylandparis/disney-adventure-world",
+};
+
 /** Every park with menu folders, Merlin and independent alike. */
-export const ALL_PARK_DIRS = { ...PARK_DIRS, ...INDIE_PARK_DIRS };
+export const ALL_PARK_DIRS = { ...PARK_DIRS, ...INDIE_PARK_DIRS, ...DLP_PARK_DIRS };
+
+/** The currency a park's prices are in. Prices are always integer minor units
+ *  (pence, or cents for the euro parks). */
+export const parkCurrency = (key) => (key in DLP_PARK_DIRS ? "EUR" : "GBP");
 
 /** The operator root a park's folder sits under. Photo keys (and the site's
  *  /menus/ URLs) are relative to this, which is why it isn't just MENUS. */
@@ -44,6 +56,7 @@ export const DATE_DIR = /^\d{4}-\d{2}-\d{2}$/;
 export const slug = (s) =>
   s
     .normalize("NFKD")
+    .replace(/\p{M}/gu, "") // the accents NFKD split off: "Rémy" is "remy", not "re-my"
     .replace(/[®™]/g, "")
     .replace(/\p{Extended_Pictographic}/gu, "")
     .replace(/&/g, " and ")

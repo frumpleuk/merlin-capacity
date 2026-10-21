@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR03_cookie-kitchen.pdf",
+    "sha256": "09139073244344b657e3517c8ded4fcd6bdf0e24516e83da65d4fa75a2b348b2",
+    "stated": "September 2026"
+  },
+  "sections": [
+    {
+      "name": "Bakery",
+      "items": [
+        { "name": "Enchanted Fright Doughnut", "description": "Speculoos filled donut", "price": 450 },
+        { "name": "Maliciously Sweet Doughnut", "description": "Blueberry and blackcurrant filled donut", "price": 450 },
+        { "name": "Cookie", "description": "3-chocolate", "price": 350 },
+        { "name": "Cookie", "description": "White chocolate and raspberry", "price": 350 },
+        { "name": "Cookie", "description": "Chocolate and hazelnut chunks", "price": 350, "tags": ["vg"] },
+        { "name": "Cookie Mickey", "description": "Milk chocolate chunks", "price": 430 },
+        { "name": "Croissant", "price": 230 },
+        { "name": "Pain au chocolat", "price": 230 },
+        { "name": "Muffin", "description": "Cocoa with chocolate chunks or Vanilla flavour with chocolate chunks", "price": 430 },
+        { "name": "Beignet Mickey", "description": "Chocolate-hazelnut flavour", "price": 450 }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        { "name": "Espresso 100% Arabica", "price": 330 },
+        { "name": "Coffee 100% Arabica", "price": 350 },
+        { "name": "Double Espresso 100% Arabica", "price": 380 },
+        { "name": "Coffee with milk", "price": 400 },
+        { "name": "Cappuccino", "price": 400 },
+        { "name": "Hot chocolate", "price": 420 },
+        { "name": "Semi-skimmed milk 20 cl", "price": 250 },
+        { "name": "Tea, herbal tea", "price": 350 }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        { "name": "Soft drink 50 cl", "description": "Coca-Cola range, Fanta, Sprite, Fuze Tea, Tropico", "price": 420 },
+        { "name": "Orange juice or apple juice 23,5 cl", "price": 420 },
+        { "name": "Vittel® 50 cl", "price": 350 },
+        { "name": "S.Pellegrino 50 cl", "price": 380 }
+      ]
+    },
+    {
+      "name": "Souvenirs",
+      "items": [
+        { "name": "Mickey or Minnie straw", "sizes": [{ "label": "Straw only", "price": 600 }, { "label": "With a cold drink", "price": 700 }] },
+        { "name": "Tumbler", "sizes": [{ "label": "Tumbler only", "price": 1500 }, { "label": "With a cold drink", "price": 1700 }] },
+        { "name": "Mug", "sizes": [{ "label": "Mug only", "price": 1500 }, { "label": "With a hot drink", "price": 1700 }] }
+      ]
+    }
+  ]
+}

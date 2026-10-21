@@ -1,0 +1,12 @@
+{
+  "id": "P2ER00",
+  "name": "Nordic Crowns Tavern",
+  "category": "Food & Drink > Quick Service Restaurant > Self-service kiosks",
+  "area": "World of Frozen",
+  "lat": 48.864162,
+  "lon": 2.773907,
+  "menuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P2ER00_nordic-crowns-tavern.pdf",
+  "priceBand": "€",
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

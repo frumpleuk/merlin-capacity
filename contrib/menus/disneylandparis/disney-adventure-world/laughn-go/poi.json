@@ -1,0 +1,12 @@
+{
+  "id": "P2VK00",
+  "name": "Laugh’N' Go!",
+  "category": "Food & Drink > On-the-go",
+  "area": "Worlds of Pixar",
+  "lat": 48.866625,
+  "lon": 2.775209,
+  "menuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P2VK00_laugh-n-go.pdf",
+  "priceBand": "€",
+  "appMissingSince": null,
+  "source": "disneyland paris graphql"
+}

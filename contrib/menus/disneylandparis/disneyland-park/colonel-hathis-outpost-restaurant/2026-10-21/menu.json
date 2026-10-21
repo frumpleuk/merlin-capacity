@@ -1,0 +1,105 @@
+{
+  "date": "2026-10-21",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1AR03_colonel-hathis-pizza-outpost.pdf",
+    "sha256": "1de61c32e16a3ab694d33df6ba482716b40ab7e1b99ad5664187d1c4509fe40c",
+    "stated": "April 2026"
+  },
+  "sections": [
+    {
+      "name": "Menu Pizza",
+      "note": "And cherry tomatoes or side salad and cold drink 50 cl",
+      "items": [
+        { "name": "4-Cheese Mickey's Pizza", "price": 1700 },
+        { "name": "Pepperoni Mickey's Pizza", "price": 1700 }
+      ]
+    },
+    {
+      "name": "Menu",
+      "note": "Main and basmati rice and naan and cold drink 50 cl",
+      "items": [
+        { "name": "Butterchicken", "price": 1800 },
+        { "name": "Lentil dahl", "price": 1800, "tags": ["vg"] }
+      ]
+    },
+    {
+      "name": "Kids' Menu",
+      "items": [
+        {
+          "name": "Kids' Menu",
+          "description": "For children ages 3 to 11. Rigatoni pasta neapolitan sauce (veggie) or kids' Mickey's pizza; side salad or cherry tomatoes (veggie); organic apple purée (no added sugar), organic mini Babybel® cheese x2, flavoured sweet drinking yoghurt or Magnum® mini almond; Juicy Water (apple-strawberry) or milk 20 cl or Vittel® 33 cl. Other cold drink (25 cl) may replace similar item on request. Or Disney Check menu: rigatoni pasta neapolitan sauce, cherry tomatoes, organic apple purée (no added sugar), Vittel® 33 cl",
+          "price": 1000,
+          "tags": ["kids"]
+        }
+      ]
+    },
+    {
+      "name": "Sweet Break",
+      "items": [
+        { "name": "Double Mickey Cake or Magnum® Mini Almond and a hot drink or a cold drink", "description": "Double Mickey Cake almond-chocolate", "price": 700 }
+      ]
+    },
+    {
+      "name": "À la carte",
+      "items": [
+        { "name": "4-Cheese Mickey's Pizza", "price": 1200 },
+        { "name": "Pepperoni Mickey's Pizza", "price": 1200 },
+        { "name": "Butterchicken", "description": "Bazmati rice and naan", "price": 1500 },
+        { "name": "Lentil Dahl", "description": "Bazmati rice and naan", "price": 1500, "tags": ["vg"] },
+        { "name": "Pakora Vegetable Fritters (8 Pieces)", "price": 650, "tags": ["vg"] },
+        { "name": "Bahji Onions Fritters (6 Pieces)", "price": 650, "tags": ["vg"] },
+        { "name": "Rigatoni Pasta Neapolitan Sauce", "price": 600, "tags": ["v"] },
+        { "name": "Kids' Mickey's Pizza", "price": 600 },
+        { "name": "Cherry Tomatoes", "price": 330, "tags": ["vg"] },
+        { "name": "Side Salad", "price": 330 },
+        { "name": "Iced Mango", "price": 480, "tags": ["vg"] },
+        { "name": "Yoghurt with a Fruit Layer", "price": 300 },
+        { "name": "Fruit Bag", "price": 400, "tags": ["vg"] },
+        { "name": "Double Mickey Cake", "description": "Almond-chocolate", "price": 380 },
+        { "name": "Twister® Frrreeze", "description": "Raspberry, orange and peach flavours", "price": 350 },
+        { "name": "Magnum® La Pistache", "price": 400 },
+        { "name": "Magnum® Almond", "price": 400, "tags": ["vg"] },
+        { "name": "Cornetto® King Cône", "description": "Cocoa sauce", "price": 430 }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        { "name": "Soft drink 50 cl", "description": "Coca-Cola, Coca-Cola Zero Sugar, Sprite, Fanta, Fuze Tea, Tropico", "price": 420 },
+        { "name": "Orange or apple juice 23,5 cl", "price": 380 },
+        { "name": "Vittel 50 cl", "price": 350 },
+        { "name": "San Pellegrino 50 cl", "price": 380 }
+      ]
+    },
+    {
+      "name": "Draught Beer",
+      "items": [
+        { "name": "1664® Premium", "sizes": [{ "label": "25 cl", "price": 500 }, { "label": "50 cl", "price": 750 }], "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "note": "Lavazza",
+      "items": [
+        { "name": "Espresso 100% Arabica", "price": 330 },
+        { "name": "Double Espresso 100% Arabica", "price": 380 },
+        { "name": "Coffee", "description": "100% Arabica", "price": 350 },
+        { "name": "Coffee with Milk", "price": 400 },
+        { "name": "Cappuccino", "price": 400 },
+        { "name": "Hot Chocolate", "price": 420 },
+        { "name": "Tea, Herbal Tea", "price": 350 },
+        { "name": "Semi-Skimmed Milk 20 cl", "price": 250 }
+      ]
+    },
+    {
+      "name": "Souvenirs",
+      "items": [
+        { "name": "Mickey or Minnie Straw", "sizes": [{ "label": "Straw only", "price": 600 }, { "label": "With a cold drink", "price": 700 }] },
+        { "name": "Mug", "sizes": [{ "label": "Mug only", "price": 1500 }, { "label": "With a hot drink", "price": 1700 }] },
+        { "name": "Tumbler", "sizes": [{ "label": "Tumbler only", "price": 1500 }, { "label": "With a cold drink", "price": 1700 }] }
+      ]
+    }
+  ]
+}

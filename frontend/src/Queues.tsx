@@ -381,7 +381,7 @@ function Sparkline({
   const y = sparkY(scale);
   const overScale = ridePeak(ride) > scale.ceiling;
 
-  const colours = ["var(--q-main)", "var(--q-alt)"];
+  const colours = ["var(--q-main)", "var(--q-second)"];
 
   return (
     <svg
@@ -458,7 +458,7 @@ function RideChart({
   const y = (w: number) => M.top + (1 - w / yMax) * plotH;
 
   const tz = useContext(TimeZoneContext);
-  const colours = ["var(--q-main)", "var(--q-alt)"];
+  const colours = ["var(--q-main)", "var(--q-second)"];
   const multi = ride.lines.length > 1;
   const svgRef = useRef<SVGSVGElement>(null);
   const [hover, setHover] = useState<Hover | null>(null);

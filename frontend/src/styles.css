@@ -8,6 +8,11 @@
   /* Queue-line series (validated for light surface #f4f4f4 via dataviz). */
   --q-main: #2f7fd1;
   --q-alt: #e07b39;
+  /* A ride's second queue line (Single Rider). Green, not --q-alt's orange,
+     which sat too close to --q-closed. Clear of --q-main under colour-blind
+     simulation; red against green is the weak pair, but closed always sits on
+     the floor. */
+  --q-second: #0e8f5f;
   --q-closed: #d64541; /* closed / non-operational stretches on the line */
   --link: #1a63b0; /* anchors that leave the site (Links tab) */
   /* Buyout days — the park runs, but not for the public. Distinct from the
@@ -32,6 +37,7 @@
     /* Re-stepped for the dark surface #1f1f1f (not an auto-flip). */
     --q-main: #4a90d9;
     --q-alt: #c07b34;
+    --q-second: #1baf7a;
     --q-closed: #f0685c; /* lifted for the dark surface */
     --link: #74b0ec;
     --buyout: #a98fe8;

@@ -40,13 +40,15 @@ Returns about 14 KB: one array covering both parks.
 |---|---|
 | `entityId` | Matches the GraphQL activity `id` |
 | `parkId` | `0/P/P1` Disneyland Park, `0/P/P2` Disney Adventure World |
-| `status` | Seen: `OPERATING`, `DOWN`, `REFURBISHMENT`. `CLOSED` is expected after hours (not yet observed) |
+| `status` | Seen: `OPERATING`, `DOWN`, `REFURBISHMENT`. REFURBISHMENT is the status for ANY closed ride: at park close (observed 2026-10-21, 22:00 Paris) every ride in both parks switches to it |
 | `postedWaitMinutes` | Minutes, as a string. `"0"` on walk-throughs and closed rides |
 | `singleRider` | `{isAvailable, singleRiderWaitMinutes}`; minutes as a string |
 
 How we store it: the wait is kept only while `OPERATING`. `DOWN` is open but
-not operational, so it counts as downtime. `REFURBISHMENT` sets the status
-note "Refurbishment", which the closed-notice logic files as maintenance. Rides
+not operational, so it counts as downtime. Because the feed's `REFURBISHMENT`
+only means closed, the "Refurbishment" note (filed as maintenance by the
+closed-notice logic) comes from Disney's refurbishment schedule instead (3.3).
+Rides
 the catalog marks `singleRider` get a second `single_rider` line.
 
 On 2026-10-21, 24 of the 73 feed entries had no GraphQL activity in any
@@ -108,6 +110,14 @@ fields returned in 1.7 s with 36 KB. Dates past the published horizon return
 `[]`; on 2026-10-21 that horizon was 2026-12-30. Past dates also return `[]`,
 so a day's hours can't be fetched once it has gone.
 
+### 3.3 Refurbishment schedule
+
+The same `activitySchedules` query with
+`types: [{type:"Attraction", status:["REFURBISHMENT"]}]` lists the attractions
+in refurbishment on a date, each with a `00:00:00`-`23:59:59` slot. On
+2026-10-21: both railroad stations, Pirate Galleon and Crush's Coaster. Fetched
+once a day per park into `dlp/<park>/meta.json` as `refurb`.
+
 `themeParks`-style `activities(types:"ThemePark"){schedules{...}}` with no date
 returns today only.
 
@@ -125,5 +135,4 @@ earliest Extra Magic Time and the latest close sit well inside one UTC day.
 
 ## 5. To verify
 
-- What the feed does after close: `CLOSED` status, or entries dropping out.
 - Whether `DOWN` rides recover cleanly in the uptime figures.

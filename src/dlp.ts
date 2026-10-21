@@ -194,6 +194,10 @@ interface DlpMeta {
   rides: Record<string, RideMeta & { singleRider?: boolean }>;
   /** Today's window (minutes since UTC midnight), Extra Magic Time included. */
   window?: { open: number; close: number };
+  /** Entity ids Disney's schedule has in refurbishment today. The live feed
+   *  can't say: it reports every closed ride as REFURBISHMENT, and all of them
+   *  after park close. */
+  refurb?: string[];
 }
 
 interface Attraction {
@@ -209,6 +213,11 @@ const ATTRACTIONS_QUERY =
   "query attraction($market:String!,$types:[String]){activities(market:$market,types:$types)" +
   "{id name location{id} subLocation{value} ... on Attraction{singleRider height{value}}}}";
 
+/** Attractions Disney's schedule has in refurbishment on a date. */
+const REFURB_QUERY =
+  "query activitySchedules($market:String! $types:[ActivityScheduleStatusInput]! $date:String!)" +
+  "{activitySchedules(market:$market,date:$date,types:$types){id}}";
+
 async function readMeta(bucket: R2Bucket, park: string): Promise<DlpMeta | null> {
   const obj = await bucket.get(metaKey(park));
   if (!obj) return null;
@@ -222,12 +231,17 @@ async function readMeta(bucket: R2Bucket, park: string): Promise<DlpMeta | null>
 /** Fetch this park's attractions and today's schedule. Null if the catalog
  *  request fails (a missing window alone isn't a failure). */
 async function fetchMeta(cfg: DlpConfig, today: string, timeZone: string): Promise<DlpMeta | null> {
-  const [cat, sched] = await Promise.all([
+  const [cat, sched, refurb] = await Promise.all([
     graphql<{ activities?: Attraction[] }>(cfg.graphqlUrl, "attraction", ATTRACTIONS_QUERY, {
       market: "en-gb",
       types: ["Attraction"],
     }),
     fetchSchedules(cfg.graphqlUrl, [today]),
+    graphql<{ activitySchedules?: { id?: string }[] }>(cfg.graphqlUrl, "activitySchedules", REFURB_QUERY, {
+      market: "en-gb",
+      date: today,
+      types: [{ type: "Attraction", status: ["REFURBISHMENT"] }],
+    }),
   ]);
   const list = cat.data?.activities;
   if (!list?.length) return null;
@@ -264,7 +278,8 @@ async function fetchMeta(cfg: DlpConfig, today: string, timeZone: string): Promi
       window = { open: Math.min(...opens), close: Math.max(...closes) };
     }
   }
-  return { date: today, rides, ...(window ? { window } : {}) };
+  const refurbIds = (refurb.data?.activitySchedules ?? []).map((a) => a.id).filter((id): id is string => !!id);
+  return { date: today, rides, ...(window ? { window } : {}), refurb: refurbIds };
 }
 
 /** Today's meta: the cached copy if it's from today, else a fresh fetch, else
@@ -277,7 +292,8 @@ async function loadMeta(
   timeZone: string,
 ): Promise<DlpMeta | null> {
   const cached = await readMeta(bucket, park);
-  if (cached?.date === today) return cached;
+  // A copy from before `refurb` existed is refetched once.
+  if (cached?.date === today && cached.refurb) return cached;
   const fresh = await fetchMeta(cfg, today, timeZone);
   if (fresh) {
     await bucket.put(metaKey(park), JSON.stringify(fresh), {
@@ -355,6 +371,7 @@ export async function fetchDlpQueues(
   }
   if (!Array.isArray(rows)) return fail(resp.status);
 
+  const refurb = new Set(meta.date === today ? meta.refurb ?? [] : []);
   const snapshot: QueueSnapshot = {};
   for (const r of rows) {
     const id = r.entityId ?? "";
@@ -366,9 +383,11 @@ export async function fetchDlpQueues(
     const status = (r.status ?? "").toUpperCase();
     const running = status === "OPERATING";
     // DOWN is a breakdown: open but not operational, so it counts as downtime.
-    // REFURBISHMENT carries a note the closed-notice logic files as maintenance.
     const isOpen = running || status === "DOWN";
-    const note = status === "REFURBISHMENT" ? "Refurbishment" : null;
+    // The feed's REFURBISHMENT just means closed (every ride reads it after
+    // close), so the note comes from Disney's refurbishment schedule. The
+    // closed-notice logic files it as maintenance.
+    const note = !isOpen && refurb.has(id) ? "Refurbishment" : null;
 
     const main: QueueObs = {
       rideId,

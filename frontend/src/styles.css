@@ -653,11 +653,12 @@ main.with-bar {
   gap: 2px;
   font-weight: 600;
 }
+/* Wraps rather than truncating: Disneyland Paris names ("Ratatouille :
+   L'Aventure Totalement Toquée de Rémy") run to three lines of this column. */
 .q-name-text {
   min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  line-height: 1.25;
+  overflow-wrap: break-word;
 }
 /* Restriction / opening-times chips under the ride name. */
 .q-meta {

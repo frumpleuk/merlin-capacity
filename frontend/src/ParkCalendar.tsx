@@ -37,6 +37,7 @@ const PREBOOK_NOTE =
  * same flag is meaningful, because the date is still being polled and the day
  * ticket genuinely isn't selling it yet. */
 const BUYOUT_NOTE = "Closed to the public, booked out for a private event.";
+const NO_DATA_NOTE = "Before this site started tracking the park's opening hours.";
 const OFF_SALE_NOTE =
   "The park's booking page doesn't sell this date. Figures are the day's total capacity.";
 const BOOKED_NOTE =
@@ -73,6 +74,9 @@ export interface DayDetail {
   /** Merlin Annual Pass levels refused entry on this date, already phrased for
    *  display (see restrictionSummary). Merlin parks only. */
   restricted?: RestrictionSummary;
+  /** Before we started tracking this park's hours, so a missing entry means we
+   *  don't know, not that the park was shut. */
+  noData?: boolean;
 }
 
 function getEventIcon(name: string): string {
@@ -220,6 +224,10 @@ function CellContent({ d }: { d: DayDetail }) {
         <div className="rc-closed">Closed</div>
       ) : tp?.hours ? (
         <div className="rc-line rc-hours">🎢 {tp.hours}</div>
+      ) : nothingOn && d.noData ? (
+        <div className="rc-closed" title={NO_DATA_NOTE}>
+          No data
+        </div>
       ) : nothingOn ? (
         // No hours published at all. The feed lists the days a park opens, so
         // this is a closed day — and it reads the same whether the date is
@@ -341,6 +349,8 @@ function DayBody({ d, seasonLabel }: { d: DayDetail; seasonLabel: string }) {
             </span>
           </div>
         ))
+      ) : events.length === 0 && !d.special && d.noData ? (
+        <div className="rc-body-loc rc-muted">No data. {NO_DATA_NOTE}</div>
       ) : events.length === 0 && !d.special ? (
         // The park's hours feed lists the days it opens, so no hours means the
         // park is shut — which is what a reader wants told, rather than a
@@ -663,6 +673,7 @@ export function ParkCalendar({
   onNext,
   canPrev,
   canNext,
+  firstMonth,
 }: {
   main: ProductFile | null;
   rap: ProductFile | null;
@@ -678,6 +689,8 @@ export function ParkCalendar({
   onNext: () => void;
   canPrev: boolean;
   canNext: boolean;
+  /** The park's first month of data (index.json minMonth). */
+  firstMonth?: string;
 }) {
   const isDesktop = useMediaQuery("(min-width: 820px)");
   const [selected, setSelected] = useState<string | null>(null);
@@ -694,6 +707,19 @@ export function ParkCalendar({
     anomalies,
     restrictions,
   );
+  // In the park's first month, the days before its earliest hours entry predate
+  // tracking. The hours feeds only list days from the first poll onwards, so
+  // without this they read "Closed".
+  const hoursDays = Object.keys(hours?.days ?? {}).sort();
+  if (month === firstMonth && hoursDays.length > 0) {
+    for (let day = 1; ; day++) {
+      const iso = `${month}-${String(day).padStart(2, "0")}`;
+      if (iso >= hoursDays[0]) break;
+      const d = details.get(iso);
+      if (d) d.noData = true;
+      else details.set(iso, { iso, noData: true });
+    }
+  }
   // A season product names itself in its own file, so the calendar doesn't need
   // to know which park has one.
   const seasonLabel = season?.label ?? "Season";

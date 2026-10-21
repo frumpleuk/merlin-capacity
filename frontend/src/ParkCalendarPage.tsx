@@ -165,6 +165,7 @@ export function ParkCalendarPage() {
         onNext={() => setMonth((m) => addMonths(m, 1))}
         canPrev={canPrev}
         canNext={canNext}
+        firstMonth={bounds?.minMonth}
       />
     </main>
   );

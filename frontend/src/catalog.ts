@@ -22,6 +22,9 @@ export interface ParkDef {
    *  the calendar shows which pass levels are refused on a date (see
    *  loadRestrictions). The independents are on their own pass schemes. */
   merlinPass?: boolean;
+  /** IANA zone the park's clock times are shown in. Default Europe/London; only
+   *  Disneyland Paris sets it. Mirrors `timeZone` in src/config.ts. */
+  timeZone?: string;
 }
 
 // Only list products the poller actually captures. Main tickets for the
@@ -96,6 +99,20 @@ export const PARKS: ParkDef[] = [
     key: "blackpool",
     label: "Blackpool Pleasure Beach",
     products: [],
+  },
+  {
+    // Disneyland Paris's two parks, a calendar + queue park each. They share one
+    // wait feed and one hours query, split by park id in the poller. Paris time.
+    key: "disneyland_park",
+    label: "Disneyland Park",
+    products: [],
+    timeZone: "Europe/Paris",
+  },
+  {
+    key: "disney_adventure_world",
+    label: "Disney Adventure World",
+    products: [],
+    timeZone: "Europe/Paris",
   },
 ];
 

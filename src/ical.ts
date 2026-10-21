@@ -69,32 +69,56 @@ const isoAddDays = (iso: string, days: number): string =>
 const stamp = (isoInstant: string): string =>
   `${isoInstant.slice(0, 19).replace(/[-:]/g, "")}Z`;
 
-/**
- * Europe/London. Emitted only when a feed carries timed events.
+/** The zones a park's hours can be in. Emitted only when a feed carries timed
+ *  events.
  *
  * Park hours are local wall-clock strings ("10am - 6pm"), so the times have to be
  * anchored to the zone: floating times render as 10am wherever the subscriber
- * happens to be, and a UTC conversion is wrong for half the year.
+ * happens to be, and a UTC conversion is wrong for half the year. Both zones
+ * change on the last Sundays of March and October, at 01:00 UTC.
  */
-const VTIMEZONE = [
-  "BEGIN:VTIMEZONE",
-  "TZID:Europe/London",
-  "BEGIN:DAYLIGHT",
-  "TZOFFSETFROM:+0000",
-  "TZOFFSETTO:+0100",
-  "TZNAME:BST",
-  "DTSTART:19700329T010000",
-  "RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU",
-  "END:DAYLIGHT",
-  "BEGIN:STANDARD",
-  "TZOFFSETFROM:+0100",
-  "TZOFFSETTO:+0000",
-  "TZNAME:GMT",
-  "DTSTART:19701025T020000",
-  "RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU",
-  "END:STANDARD",
-  "END:VTIMEZONE",
-];
+const VTIMEZONES: Record<string, string[]> = {
+  "Europe/London": [
+    "BEGIN:VTIMEZONE",
+    "TZID:Europe/London",
+    "BEGIN:DAYLIGHT",
+    "TZOFFSETFROM:+0000",
+    "TZOFFSETTO:+0100",
+    "TZNAME:BST",
+    "DTSTART:19700329T010000",
+    "RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU",
+    "END:DAYLIGHT",
+    "BEGIN:STANDARD",
+    "TZOFFSETFROM:+0100",
+    "TZOFFSETTO:+0000",
+    "TZNAME:GMT",
+    "DTSTART:19701025T020000",
+    "RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU",
+    "END:STANDARD",
+    "END:VTIMEZONE",
+  ],
+  "Europe/Paris": [
+    "BEGIN:VTIMEZONE",
+    "TZID:Europe/Paris",
+    "BEGIN:DAYLIGHT",
+    "TZOFFSETFROM:+0100",
+    "TZOFFSETTO:+0200",
+    "TZNAME:CEST",
+    "DTSTART:19700329T020000",
+    "RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU",
+    "END:DAYLIGHT",
+    "BEGIN:STANDARD",
+    "TZOFFSETFROM:+0200",
+    "TZOFFSETTO:+0100",
+    "TZNAME:CET",
+    "DTSTART:19701025T030000",
+    "RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU",
+    "END:STANDARD",
+    "END:VTIMEZONE",
+  ],
+};
+
+const DEFAULT_TZ = "Europe/London";
 
 interface VEvent {
   /** Stable per (feed, date) — a UID that moved would duplicate the event on
@@ -114,14 +138,14 @@ interface VEvent {
 const hhmm = (mins: number): string =>
   `${String(Math.floor(mins / 60) % 24).padStart(2, "0")}${String(mins % 60).padStart(2, "0")}`;
 
-function renderEvent(e: VEvent, dtstamp: string): string[] {
+function renderEvent(e: VEvent, dtstamp: string, tz: string): string[] {
   const lines = [`BEGIN:VEVENT`, `UID:${e.uid}`, `DTSTAMP:${dtstamp}`];
   if (e.times) {
     // A close past midnight belongs to the next calendar day.
     const endDate = e.times.end >= 1440 ? isoAddDays(e.date, 1) : e.date;
     lines.push(
-      `DTSTART;TZID=Europe/London:${ymdCompact(e.date)}T${hhmm(e.times.start)}00`,
-      `DTEND;TZID=Europe/London:${ymdCompact(endDate)}T${hhmm(e.times.end)}00`,
+      `DTSTART;TZID=${tz}:${ymdCompact(e.date)}T${hhmm(e.times.start)}00`,
+      `DTEND;TZID=${tz}:${ymdCompact(endDate)}T${hhmm(e.times.end)}00`,
     );
   } else {
     lines.push(
@@ -147,7 +171,10 @@ function renderCalendar(opts: {
   events: VEvent[];
   dtstamp: string;
   timed: boolean;
+  /** Zone for timed events; must be a VTIMEZONES key. Default Europe/London. */
+  timeZone?: string;
 }): string {
+  const tz = opts.timeZone && VTIMEZONES[opts.timeZone] ? opts.timeZone : DEFAULT_TZ;
   const lines = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
@@ -156,11 +183,11 @@ function renderCalendar(opts: {
     "METHOD:PUBLISH",
     `X-WR-CALNAME:${esc(opts.name)}`,
     `X-WR-CALDESC:${esc(opts.description)}`,
-    "X-WR-TIMEZONE:Europe/London",
+    `X-WR-TIMEZONE:${tz}`,
     `REFRESH-INTERVAL;VALUE=DURATION:${opts.refresh}`,
     `X-PUBLISHED-TTL:${opts.refresh}`,
-    ...(opts.timed ? VTIMEZONE : []),
-    ...opts.events.flatMap((e) => renderEvent(e, opts.dtstamp)),
+    ...(opts.timed ? VTIMEZONES[tz] : []),
+    ...opts.events.flatMap((e) => renderEvent(e, opts.dtstamp, tz)),
     "END:VCALENDAR",
   ];
   return lines.map(fold).join(CRLF) + CRLF;
@@ -236,6 +263,8 @@ export interface SpecialDaysLike {
 export interface ParkIcalInput {
   parkKey: string;
   parkLabel: string;
+  /** IANA zone of the park's hours (see VTIMEZONES). Default Europe/London. */
+  timeZone?: string;
   /** The hours poll's own snapshot — already in memory, so the feed costs no
    *  extra reads of the month files it was just written from. */
   snapshot: HoursSnapshot;
@@ -332,6 +361,7 @@ export function buildParkIcal(input: ParkIcalInput): string {
     events,
     dtstamp: stamp(input.generatedAt),
     timed: events.some((e) => !!e.times),
+    timeZone: input.timeZone,
   });
 }
 

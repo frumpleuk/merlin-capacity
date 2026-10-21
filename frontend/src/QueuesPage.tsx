@@ -128,6 +128,7 @@ export function QueuesPage() {
         tickets={tickets}
         rap={rap}
         rel={rel}
+        timeZone={parkDef.timeZone}
       />
       {/* A ride absent from this list, or closed all day, is usually out for
           maintenance rather than broken — and only the park says which. Sits

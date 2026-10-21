@@ -1,4 +1,5 @@
-import { USER_AGENT, type OpeningHoursConfig, type ParkConfig } from "./config";
+import { parkTimeZone, USER_AGENT, type OpeningHoursConfig, type ParkConfig } from "./config";
+import { fetchDlpHours } from "./dlp";
 import { buildParkIcal, parkIcalKey, writeIcal, type SpecialDaysLike } from "./ical";
 import { readRestrictions } from "./restrictions";
 import {
@@ -13,7 +14,9 @@ export interface LocationHours {
   kind: string; // "themepark" | "waterpark" | "golf"
   name: string; // as returned by the API (e.g. "Waterpark")
   hours: string; // "10am - 6pm", "Closed", …
-  lastEntry?: string; // genuine last-entry note, when present
+  /** Note shown after the hours: a genuine last-entry note, or Disneyland
+   *  Paris's Extra Magic Time slot. */
+  lastEntry?: string;
   event?: string; // special-event name, when the field is abused for one
 }
 
@@ -86,8 +89,8 @@ export interface HoursFetch {
 
 /** Fetch and parse one park's opening-hours calendar into a snapshot. Dispatches
  *  by source: the Merlin `getcalendar` JSON API (`accesso`), Blackpool's
- *  park-dates-times JSON API (`bpb`), or Paulton's two JSON blobs
- *  (`paultons`). */
+ *  park-dates-times JSON API (`bpb`), Paulton's two JSON blobs (`paultons`),
+ *  Flamingo Land's iCal feed (`flamingoland`), or Disneyland Paris GraphQL (`dlp`). */
 export async function fetchHours(cfg: OpeningHoursConfig): Promise<HoursFetch> {
   switch (cfg.kind) {
     case "bpb":
@@ -96,6 +99,8 @@ export async function fetchHours(cfg: OpeningHoursConfig): Promise<HoursFetch> {
       return fetchPaultonsHours(cfg);
     case "flamingoland":
       return fetchFlamingolandHours(cfg);
+    case "dlp":
+      return fetchDlpHours(cfg);
     default:
       return fetchAccessoHours(cfg);
   }
@@ -541,6 +546,7 @@ async function refreshParkIcal(
     const body = buildParkIcal({
       parkKey: park.key,
       parkLabel: park.label,
+      timeZone: parkTimeZone(park),
       snapshot,
       special,
       restrictions,

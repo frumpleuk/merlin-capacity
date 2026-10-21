@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from "react";
+import { createContext, useContext, useMemo, useRef, useState } from "react";
 import {
   specialLabel,
   type DayObs,
@@ -14,14 +14,17 @@ import { AllocList, AllocMeter } from "./AllocMeter";
 import { longDate } from "./Heatmap";
 
 /* ── Time helpers ──────────────────────────────────────────────────────────────
- * Samples carry minutes since UTC midnight. Park-local time (Europe/London,
- * BST/GMT year-round) is reconstructed from the day's date + the offset so the
- * axis reads in the times guests actually experience. */
+ * Samples carry minutes since UTC midnight. Park-local time (Europe/London for
+ * the UK parks, Europe/Paris for Disneyland Paris) is reconstructed from the
+ * day's date + the offset so the axis reads in the times guests experience. */
 
-const londonTime = (date: string, mins: number): string =>
+/** The park's IANA zone, provided by QueueList from its `timeZone` prop. */
+const TimeZoneContext = createContext("Europe/London");
+
+const parkTime = (date: string, mins: number, timeZone: string): string =>
   new Date(new Date(`${date}T00:00:00Z`).getTime() + mins * 60_000).toLocaleTimeString(
     "en-GB",
-    { hour: "2-digit", minute: "2-digit", timeZone: "Europe/London" },
+    { hour: "2-digit", minute: "2-digit", timeZone },
   );
 
 /* ── Rider restrictions & per-ride hours ─────────────────────────────────────── */
@@ -37,11 +40,12 @@ const formatHeight = (m: number): string =>
 function rideHoursLabel(
   ride: QueueRide,
   date: string,
+  timeZone: string,
   park?: [number, number],
 ): string | null {
   if (ride.open == null || ride.close == null) return null;
   if (park && ride.open === park[0] && ride.close === park[1]) return null;
-  return `${londonTime(date, ride.open)}–${londonTime(date, ride.close)}`;
+  return `${parkTime(date, ride.open, timeZone)}–${parkTime(date, ride.close, timeZone)}`;
 }
 
 /** A sample's operational flag, defaulting to operational for older 3-tuple
@@ -453,6 +457,7 @@ function RideChart({
   const x = (t: number) => M.left + ((t - t0) / span) * plotW;
   const y = (w: number) => M.top + (1 - w / yMax) * plotH;
 
+  const tz = useContext(TimeZoneContext);
   const colours = ["var(--q-main)", "var(--q-alt)"];
   const multi = ride.lines.length > 1;
   const svgRef = useRef<SVGSVGElement>(null);
@@ -536,7 +541,7 @@ function RideChart({
   if (ride.maxChest != null) restrParts.push(`Max chest ${ride.maxChest}″`);
   const hoursText =
     ride.open != null && ride.close != null
-      ? `Open ${londonTime(date, ride.open)}–${londonTime(date, ride.close)}`
+      ? `Open ${parkTime(date, ride.open, tz)}–${parkTime(date, ride.close, tz)}`
       : null;
 
   return (
@@ -579,7 +584,7 @@ function RideChart({
         {/* x labels */}
         {hourTicks.map((t) => (
           <text key={t} x={x(t)} y={CH_H - 8} className="chart-xlabel" textAnchor="middle">
-            {londonTime(date, t)}
+            {parkTime(date, t, tz)}
           </text>
         ))}
         {/* crosshair */}
@@ -626,7 +631,7 @@ function RideChart({
             transform: `translateX(${hover.xFrac > 0.5 ? "-100%" : "0"}) translateX(${hover.xFrac > 0.5 ? "-8px" : "8px"})`,
           }}
         >
-          <div className="chart-tip-time">{londonTime(date, Math.round(hover.t))}</div>
+          <div className="chart-tip-time">{parkTime(date, Math.round(hover.t), tz)}</div>
           {hover.rows.map((r) => (
             <div key={r.label} className="chart-tip-row">
               <span
@@ -792,7 +797,8 @@ function RideRow({
   // stay-or-go line below is the live counterpart, and only appears mid-outage.
   const heightLabel =
     ride.minHeight != null && ride.minHeight > 0 ? `${formatHeight(ride.minHeight)}+` : null;
-  const hoursLabel = rideHoursLabel(ride, date, parkWindow);
+  const tz = useContext(TimeZoneContext);
+  const hoursLabel = rideHoursLabel(ride, date, tz, parkWindow);
 
   return (
     <div className={"q-row" + (open ? " open" : "")}>
@@ -1054,6 +1060,7 @@ export function QueueList({
   tickets,
   rap,
   rel,
+  timeZone = "Europe/London",
 }: {
   file: QueueDayFile | null;
   date: string;
@@ -1069,6 +1076,8 @@ export function QueueList({
   rap?: DayObs;
   /** Ride id → its uptime row, from the daily stats. */
   rel?: Map<string, RideStats>;
+  /** The park's IANA zone, for every clock time the list shows. */
+  timeZone?: string;
 }) {
   const [openId, setOpenId] = useState<number | null>(null);
   // Sorting by "now" on a day with no live waits ranks every ride equally at
@@ -1223,7 +1232,7 @@ export function QueueList({
       return next;
     });
 
-  return (
+  const list = (
     <div className="q-list">
       {/* A buyout publishes no theme-park hours, so without this the charts
           arrive with no explanation of why the park is running on a day the
@@ -1376,4 +1385,5 @@ export function QueueList({
       })}
     </div>
   );
+  return <TimeZoneContext.Provider value={timeZone}>{list}</TimeZoneContext.Provider>;
 }

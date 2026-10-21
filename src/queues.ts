@@ -1,5 +1,6 @@
 import {
   liveFeedUrl,
+  parkTimeZone,
   USER_AGENT,
   type AttractionsConfig,
   type ParkConfig,
@@ -15,6 +16,7 @@ import {
   writeQueueLatest,
 } from "./db";
 import { fetchBpbQueues } from "./bpb";
+import { fetchDlpQueues } from "./dlp";
 import { fetchFirebaseQueues } from "./firebase";
 import { catalogNamesChanged, fetchFirstOptionQueues } from "./firstoption";
 import { applyRestrictions, readPaultonsRestrictions } from "./paultons-restrictions";
@@ -412,7 +414,7 @@ export async function runQueuePoll(
     res = await fetchLiveQueues(park.queue, catalog, prev.etag);
   } else {
     // Inline-name backends (First Option / Paulton's, Firestore / Flamingo Land,
-    // bespoke / Blackpool): the fetch also hands back a catalog synthesised from
+    // bespoke / Blackpool, Disneyland Paris): the fetch also hands back a catalog synthesised from
     // the feed. Persist it to R2 (only when the name set changed) so the day-file
     // projection resolves names consistently.
     const synth =
@@ -420,7 +422,9 @@ export async function runQueuePoll(
         ? await fetchFirstOptionQueues(park.queue, now)
         : park.queue.kind === "firestore"
           ? await fetchFirebaseQueues(park.queue, env.BUCKET, park.key, now)
-          : await fetchBpbQueues(park.queue, env, park.key, now);
+          : park.queue.kind === "dlp"
+            ? await fetchDlpQueues(park.queue, env.BUCKET, park.key, parkTimeZone(park), now)
+            : await fetchBpbQueues(park.queue, env, park.key, now);
     res = synth;
     catalog = synth.ok ? synth.catalog : await readCatalog(env.BUCKET, park.key);
     if (synth.ok) {

@@ -120,6 +120,20 @@ export interface BpbConfig {
   apiUrl: string;
 }
 
+/** Disneyland Paris backend. Waits come from an AWS API Gateway feed
+ *  (`dlp-wt.wdprapps.disney.com`) behind a static `x-api-key` embedded in the
+ *  app's Hermes bundle; ride names, lands and height limits come from the
+ *  unauthenticated GraphQL API the app and website share. One feed covers both
+ *  parks, each entry tagged with its `parkId`, so each park filters to its own.
+ *  See docs/disneylandparis-api.md. */
+export interface DlpConfig {
+  waitTimesUrl: string;
+  apiKey: string;
+  graphqlUrl: string;
+  /** The park's activity id: "P1" Disneyland Park, "P2" Disney Adventure World. */
+  parkId: string;
+}
+
 /** Where a queue-tracked park's live ride waits come from. A discriminated
  *  union: most parks are `attractions` (Attractions.io live feed + content
  *  bundle); Paulton's is `fos` (First Option Software custom backend); Flamingo
@@ -130,7 +144,8 @@ export type QueueSource =
   | ({ kind: "attractions" } & AttractionsConfig)
   | ({ kind: "fos" } & FirstOptionConfig)
   | ({ kind: "firestore" } & FirebaseConfig)
-  | ({ kind: "bpb" } & BpbConfig);
+  | ({ kind: "bpb" } & BpbConfig)
+  | ({ kind: "dlp" } & DlpConfig);
 
 export const liveFeedUrl = (apiKey: string) =>
   `https://live-data.attractions.io/${apiKey}.json`;
@@ -162,7 +177,10 @@ export interface OpeningHoursLocation {
  *  - `flamingoland`: no opening-hours feed exists, so this falls back to special
  *    events — The Events Calendar (Tribe) plugin's public iCal feed, paged into a
  *    rolling What's-On calendar (no per-day hours, just a `DayEvent` lineup +
- *    headline). See docs/flamingoland-calendar.md. */
+ *    headline). See docs/flamingoland-calendar.md.
+ *  - `dlp`: Disneyland Paris GraphQL `activitySchedules`, one date per field,
+ *    every date aliased into one request. Each park day has an OPERATING slot and
+ *    usually an EXTRA_MAGIC_HOURS slot before it. See docs/disneylandparis-api.md. */
 export type OpeningHoursConfig =
   | {
       kind: "accesso";
@@ -183,6 +201,14 @@ export type OpeningHoursConfig =
       /** Date-range special events: `[{start,end,tag,name}]` (unix seconds). */
       eventsUrl: string;
       /** Display name for the single themepark location row. */
+      locationName: string;
+    }
+  | {
+      kind: "dlp";
+      /** The GraphQL endpoint. One request carries every date as an aliased
+       *  `activitySchedules` field. */
+      graphqlUrl: string;
+      parkId: string;
       locationName: string;
     }
   | {
@@ -372,7 +398,24 @@ export interface ParkConfig {
   merlinPass?: boolean;
   /** accesso ticket products to poll. Empty for a queue-only park. */
   products: ProductConfig[];
+  /** IANA zone the park's published times are in. Default Europe/London; only
+   *  Disneyland Paris sets it. Mirrors `timeZone` in frontend/src/catalog.ts. */
+  timeZone?: string;
 }
+
+/** A park's time zone, defaulting to the UK parks'. */
+export const parkTimeZone = (park: { timeZone?: string }): string =>
+  park.timeZone ?? "Europe/London";
+
+/** Disneyland Paris's GraphQL API: unauthenticated, wants `x-application-id`. */
+const DLP_GRAPHQL = "https://api.disneylandparis.com/query";
+
+/** The resort-wide wait feed both Disneyland Paris parks read. */
+const DLP_QUEUE = {
+  waitTimesUrl: "https://dlp-wt.wdprapps.disney.com/prod/v1/waitTimes",
+  apiKey: "3jPT5qMimN3kR2kxqd1ez9iF1C68CrBf7zw5ICo4",
+  graphqlUrl: DLP_GRAPHQL,
+};
 
 /** Build a park's opening-hours calendar URL for the given location ids. */
 const hoursUrl = (host: string, locationIds: string) =>
@@ -684,6 +727,41 @@ export const PARKS: ParkConfig[] = [
       kind: "bpb",
       apiUrl: "https://today.blackpoolpleasurebeach.com",
     },
+    products: [],
+  },
+  {
+    // Disneyland Paris, the resort's first park. A calendar + queue park like
+    // Blackpool, and the only one outside the UK, so its times are Paris time.
+    //  - Queues: the app's wait feed (static `x-api-key` from the Hermes bundle),
+    //    shared with Disney Adventure World and filtered by `parkId`. Names, lands
+    //    and heights come from the public GraphQL API, cached in R2 for a day.
+    //  - Hours: the same GraphQL API, every published date in one aliased query.
+    // See docs/disneylandparis-api.md.
+    key: "disneyland_park",
+    label: "Disneyland Park",
+    timeZone: "Europe/Paris",
+    openingHours: {
+      kind: "dlp",
+      graphqlUrl: DLP_GRAPHQL,
+      parkId: "P1",
+      locationName: "Disneyland Park",
+    },
+    queue: { kind: "dlp", ...DLP_QUEUE, parkId: "P1" },
+    products: [],
+  },
+  {
+    // Disneyland Paris's second park, formerly Walt Disney Studios. Same feeds
+    // as Disneyland Park above, filtered to P2.
+    key: "disney_adventure_world",
+    label: "Disney Adventure World",
+    timeZone: "Europe/Paris",
+    openingHours: {
+      kind: "dlp",
+      graphqlUrl: DLP_GRAPHQL,
+      parkId: "P2",
+      locationName: "Disney Adventure World",
+    },
+    queue: { kind: "dlp", ...DLP_QUEUE, parkId: "P2" },
     products: [],
   },
 ];

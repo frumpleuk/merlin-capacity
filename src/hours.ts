@@ -104,6 +104,10 @@ export async function fetchHours(cfg: OpeningHoursConfig): Promise<HoursFetch> {
       return fetchDlpHours(cfg);
     case "knoebels":
       return fetchKnoebelsHours(cfg);
+    case "pleasurewood":
+      return fetchPleasurewoodHours(cfg);
+    case "crealy":
+      return fetchCrealyHours(cfg);
     default:
       return fetchAccessoHours(cfg);
   }
@@ -240,6 +244,135 @@ async function fetchBpbHours(
     };
   }
   return { ok: true, httpStatus: resp.status, snapshot, datesSeen: Object.keys(snapshot).length };
+}
+
+/* ── Pleasurewood Hills (inline arrays on one page) ──────────────────────────── */
+
+/** "28/03/2026" → "2026-03-28". */
+const ukDate = (s: string): string | null => {
+  const m = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(s.trim());
+  return m ? `${m[3]}-${m[2]}-${m[1]}` : null;
+};
+
+/** Every date from `from` to `to` inclusive (ISO strings). */
+function datesBetween(from: string, to: string): string[] {
+  const out: string[] = [];
+  for (let t = Date.parse(`${from}T00:00:00Z`); t <= Date.parse(`${to}T00:00:00Z`); t += 86_400_000) {
+    out.push(isoDay(t));
+  }
+  return out;
+}
+
+/**
+ * Pleasurewood Hills: the opening-times page builds its calendar from two
+ * arrays written into the page, `openArr` and `eventArr`. Their objects are
+ * plain JSON (the arrays carry a trailing comma, so each object is read on its
+ * own). A blank `times` is what the page shows as "Open 10am - 5pm".
+ */
+async function fetchPleasurewoodHours(
+  cfg: Extract<OpeningHoursConfig, { kind: "pleasurewood" }>,
+): Promise<HoursFetch> {
+  let resp: Response;
+  try {
+    resp = await fetch(cfg.pageUrl, { headers: { "user-agent": USER_AGENT } });
+  } catch {
+    return { ok: false, httpStatus: 0, snapshot: {}, datesSeen: 0 };
+  }
+  if (!resp.ok) return { ok: false, httpStatus: resp.status, snapshot: {}, datesSeen: 0 };
+  const page = await resp.text();
+  const array = (name: string): Record<string, string>[] => {
+    const start = page.indexOf(`var ${name} = [`);
+    if (start < 0) return [];
+    const body = page.slice(start, page.indexOf("];", start));
+    return [...body.matchAll(/\{[^{}]*\}/g)].flatMap((m) => {
+      try {
+        return [JSON.parse(m[0]) as Record<string, string>];
+      } catch {
+        return [];
+      }
+    });
+  };
+  const open = array("openArr");
+  if (open.length === 0) return { ok: false, httpStatus: resp.status, snapshot: {}, datesSeen: 0 };
+
+  const snapshot: HoursSnapshot = {};
+  for (const r of open) {
+    const from = ukDate(r.from ?? "");
+    const to = ukDate(r.to ?? "") ?? from;
+    if (!from || !to) continue;
+    const m = /^(\d{1,2}:\d{2})\s*-\s*(\d{1,2}:\d{2})$/.exec((r.times ?? "").trim());
+    const hours = m ? `${fmt24(m[1])} - ${fmt24(m[2])}` : "10am - 5pm";
+    for (const d of datesBetween(from, to)) {
+      snapshot[d] = { locations: [{ kind: "themepark", name: cfg.locationName, hours }] };
+    }
+  }
+  // Events only label days the park is open.
+  for (const e of array("eventArr")) {
+    const from = ukDate(e.from ?? "");
+    const to = ukDate(e.to ?? "") ?? from;
+    if (!from || !to || !e.title) continue;
+    for (const d of datesBetween(from, to)) if (snapshot[d]) snapshot[d].event = e.title.trim();
+  }
+  return { ok: true, httpStatus: resp.status, snapshot, datesSeen: Object.keys(snapshot).length };
+}
+
+/* ── Crealy (one Umbraco month fragment per request) ──────────────────────────── */
+
+/**
+ * Crealy: `RenderMonth?month=YYYY-MM-01&attractionId=&homePageId=` returns the
+ * month as day buttons, each `data-date="YYYY-MM-DD"` with its hours ("10am -
+ * 5pm"), an optional event banner ("Spook-Fest") and a last-entry time. A day
+ * with no hours is closed and left out. Any failed month fails the poll, so a
+ * partial calendar is never written.
+ */
+async function fetchCrealyHours(
+  cfg: Extract<OpeningHoursConfig, { kind: "crealy" }>,
+): Promise<HoursFetch> {
+  const now = new Date();
+  const snapshot: HoursSnapshot = {};
+  let status = 0;
+  const text = (s: string) =>
+    s
+      .replace(/<[^>]+>/g, " ")
+      .replace(/&amp;/g, "&")
+      .replace(/&#39;|&#x27;/g, "'")
+      .replace(/\s+/g, " ")
+      .trim();
+  for (let i = 0; i < cfg.months; i++) {
+    const d = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() + i, 1));
+    const month = isoDay(d.getTime());
+    const url = `${cfg.monthUrl}?month=${month}&attractionId=${cfg.attractionId}&homePageId=${cfg.homePageId}`;
+    let html: string;
+    try {
+      const resp = await fetch(url, { headers: { "user-agent": USER_AGENT } });
+      status = resp.status;
+      if (!resp.ok) return { ok: false, httpStatus: status, snapshot: {}, datesSeen: 0 };
+      html = await resp.text();
+    } catch {
+      return { ok: false, httpStatus: 0, snapshot: {}, datesSeen: 0 };
+    }
+    for (const b of html.split(/<button\b/).slice(1)) {
+      const date = /data-date="(\d{4}-\d{2}-\d{2})"/.exec(b)?.[1];
+      if (!date || !date.startsWith(month.slice(0, 7))) continue; // other-month padding
+      const times = /class="open-hours--times"[^>]*>([\s\S]*?)<\/li>/.exec(b)?.[1];
+      const hours = times ? text(times).replace(/^Open:\s*/i, "") : "";
+      if (!hours) continue;
+      const banner = /class="open-hours--banner"[^>]*>([\s\S]*?)<\/li>/.exec(b)?.[1];
+      const last = /class="last-entry--time"[^>]*>([\s\S]*?)<\/span>/.exec(b)?.[1];
+      snapshot[date] = {
+        locations: [
+          {
+            kind: "themepark",
+            name: cfg.locationName,
+            hours,
+            ...(last ? { lastEntry: `Last entry ${text(last)}` } : {}),
+          },
+        ],
+        ...(banner ? { event: text(banner) } : {}),
+      };
+    }
+  }
+  return { ok: true, httpStatus: status, snapshot, datesSeen: Object.keys(snapshot).length };
 }
 
 /* ── Knoebels (one request per day) ───────────────────────────────────────────── */

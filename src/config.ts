@@ -183,7 +183,13 @@ export interface OpeningHoursLocation {
  *    usually an EXTRA_MAGIC_HOURS slot before it. See docs/disneylandparis-api.md.
  *  - `knoebels`: the park site's WordPress route `knoebels/v1/hours?day=`, one
  *    request per date. Its month calendar route marks event days but carries no
- *    times, so the window is fetched a day at a time. */
+ *    times, so the window is fetched a day at a time.
+ *  - `pleasurewood`: the opening-times page embeds the whole season as two
+ *    inline JS arrays, `openArr` (date ranges with "HH:MM-HH:MM" times, blank
+ *    meaning 10:00-17:00) and `eventArr` (named date ranges). One request.
+ *  - `crealy`: the Umbraco surface route `OpeningTimesCalendar/RenderMonth`
+ *    returns one month of day buttons (`data-date`, hours, an event banner,
+ *    last entry). One request per month. */
 export type OpeningHoursConfig =
   | {
       kind: "accesso";
@@ -225,6 +231,23 @@ export type OpeningHoursConfig =
       /** Max iCal pages per poll — a subrequest backstop (30 events/page, dense
        *  daily schedule). Default 14. */
       maxPages?: number;
+    }
+  | {
+      kind: "pleasurewood";
+      /** The opening-times page carrying `openArr` / `eventArr`. */
+      pageUrl: string;
+      locationName: string;
+    }
+  | {
+      kind: "crealy";
+      /** `…/umbraco/surface/OpeningTimesCalendar/RenderMonth`. */
+      monthUrl: string;
+      /** The page's `data-attraction-id` and `data-home-page-id`. */
+      attractionId: string;
+      homePageId: string;
+      /** Months to read, the current one included. */
+      months: number;
+      locationName: string;
     }
   | {
       kind: "knoebels";
@@ -1027,6 +1050,44 @@ export const PARKS: ParkConfig[] = [
       kind: "attractions",
       apiKey: "72f0ea9e-d196-508a-bee8-cce62c3228c7",
       slug: "knoebels-amusement-park",
+    },
+    products: [],
+  },
+  // Pleasurewood Hills (Looping Group, Lowestoft): Attractions.io queues; hours
+  // from the opening-times page's inline arrays. Key from the app's BuildConfig.
+  {
+    key: "pleasurewood_hills",
+    label: "Pleasurewood Hills",
+    openingHours: {
+      kind: "pleasurewood",
+      pageUrl: "https://pleasurewoodhills.com/park-info/opening-times/",
+      locationName: "Pleasurewood Hills",
+    },
+    queue: {
+      kind: "attractions",
+      apiKey: "4b498924-bb0f-480b-9c7c-9780b4c8c084",
+      slug: "pleasurewood-hills",
+    },
+    products: [],
+  },
+  // Crealy Theme Park (independent, Exeter): Attractions.io queues, though the
+  // app lists only one queue line (The Twister) as of 2026-10; hours from the
+  // site's Umbraco month calendar.
+  {
+    key: "crealy",
+    label: "Crealy Theme Park",
+    openingHours: {
+      kind: "crealy",
+      monthUrl: "https://www.crealy.co.uk/umbraco/surface/OpeningTimesCalendar/RenderMonth",
+      attractionId: "1849",
+      homePageId: "1824",
+      months: 6,
+      locationName: "Crealy Theme Park",
+    },
+    queue: {
+      kind: "attractions",
+      apiKey: "a76f9f8c-e472-5739-bcf1-b0b0aa72484c",
+      slug: "crealy-theme-park-resort",
     },
     products: [],
   },

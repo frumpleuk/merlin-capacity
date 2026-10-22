@@ -253,6 +253,21 @@ export const PARKS: ParkDef[] = [
     products: [],
     timeZone: "America/New_York",
   },
+  {
+    key: "pleasurewood_hills",
+    slug: "pleasurewood-hills",
+    country: "GB",
+    operator: "Looping Group",
+    label: "Pleasurewood Hills",
+    products: [],
+  },
+  {
+    key: "crealy",
+    slug: "crealy",
+    country: "GB",
+    label: "Crealy Theme Park",
+    products: [],
+  },
 ];
 
 /** A park's base URL: lower-case country code, then its slug (/gb/alton-towers). */

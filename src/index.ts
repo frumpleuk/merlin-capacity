@@ -112,9 +112,7 @@ async function pollReconcile(env: Env, scheduledTime: number): Promise<void> {
  *  and keep their last good cached value on failure. */
 async function preOpen(env: Env, scheduledTime: number): Promise<void> {
   await Promise.all([
-    ...attractionsParks().map((park) =>
-      rebuildCatalog(env.BUCKET, park.key, park.queue, scheduledTime),
-    ),
+    rebuildCatalogs(env, scheduledTime),
     ...allProducts()
       .filter(({ product }) => product.discover)
       .map(({ park, product }) => refreshPackages(env.BUCKET, park, product, scheduledTime)),
@@ -122,6 +120,17 @@ async function preOpen(env: Env, scheduledTime: number): Promise<void> {
     // none), cached in R2 for the every-minute poll to fold onto the catalog.
     ...fosParks().map((park) => refreshPaultonsRestrictions(env.BUCKET, park.key, park.queue)),
   ]);
+}
+
+/** Rebuild the Attractions.io ride catalogs one park at a time. Each rebuild
+ *  streams a 20-50MB content bundle through the unzipper; run in parallel, eight
+ *  of them together outgrow a Worker's 128MB memory, and the whole invocation
+ *  dies, taking every park's rebuild with it. One at a time costs a few seconds
+ *  each at an hour when nothing else is running. */
+async function rebuildCatalogs(env: Env, scheduledTime: number): Promise<void> {
+  for (const park of attractionsParks()) {
+    await rebuildCatalog(env.BUCKET, park.key, park.queue, scheduledTime);
+  }
 }
 
 /** Name the dates the park operates but doesn't sell to the public — private

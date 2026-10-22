@@ -26,8 +26,8 @@ export interface ParkDef {
    *  the calendar shows which pass levels are refused on a date (see
    *  loadRestrictions). The independents are on their own pass schemes. */
   merlinPass?: boolean;
-  /** IANA zone the park's clock times are shown in. Default Europe/London; only
-   *  Disneyland Paris sets it. Mirrors `timeZone` in src/config.ts. */
+  /** IANA zone the park's clock times are shown in. Default Europe/London.
+   *  Mirrors `timeZone` in src/config.ts. */
   timeZone?: string;
   /** ISO 3166-1 alpha-2 code; the park picker groups by it and spells it out
    *  with Intl.DisplayNames. */
@@ -152,6 +152,42 @@ export const PARKS: ParkDef[] = [
     label: "Disney Adventure World",
     products: [],
     timeZone: "Europe/Paris",
+  },
+  {
+    key: "legoland_billund",
+    slug: "legoland-billund",
+    country: "DK",
+    operator: "Merlin Entertainments",
+    label: "Legoland Billund",
+    products: [],
+    timeZone: "Europe/Copenhagen",
+  },
+  {
+    key: "legoland_deutschland",
+    slug: "legoland-deutschland",
+    country: "DE",
+    operator: "Merlin Entertainments",
+    label: "Legoland Deutschland",
+    products: [],
+    timeZone: "Europe/Berlin",
+  },
+  {
+    key: "gardaland",
+    slug: "gardaland",
+    country: "IT",
+    operator: "Merlin Entertainments",
+    label: "Gardaland",
+    products: [],
+    timeZone: "Europe/Rome",
+  },
+  {
+    key: "heide_park",
+    slug: "heide-park",
+    country: "DE",
+    operator: "Merlin Entertainments",
+    label: "Heide Park",
+    products: [],
+    timeZone: "Europe/Berlin",
   },
 ];
 

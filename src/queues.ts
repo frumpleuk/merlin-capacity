@@ -1,6 +1,7 @@
 import {
   liveFeedUrl,
   parkTimeZone,
+  tzOffsetMin,
   USER_AGENT,
   type AttractionsConfig,
   type ParkConfig,
@@ -31,20 +32,6 @@ const ymd = (ms: number) => new Date(ms).toISOString().slice(0, 10);
 const toMinutes = (secs: number | null | undefined): number | null =>
   secs == null ? null : Math.round(secs / 60);
 
-/** London's UTC offset in minutes for a given date (BST → 60, GMT → 0). Used to
- *  put the park's local opening times onto the same minutes-since-UTC-midnight
- *  axis as the samples. */
-function londonOffsetMin(date: string): number {
-  const h = Number(
-    new Intl.DateTimeFormat("en-GB", {
-      timeZone: "Europe/London",
-      hour: "2-digit",
-      hour12: false,
-    }).format(new Date(`${date}T12:00:00Z`)),
-  );
-  return (h - 12) * 60;
-}
-
 /** The park's opening window for the day, as minutes since UTC midnight (to
  *  match the sample axis). Parsed from the live `Resort` record's `OpeningTimes`
  *  (a JSON string of local park times). */
@@ -53,7 +40,10 @@ export interface ResortWindow {
   close: number;
 }
 
-function parseResortWindow(raw: string | null | undefined): ResortWindow | undefined {
+function parseResortWindow(
+  raw: string | null | undefined,
+  timeZone: string,
+): ResortWindow | undefined {
   if (!raw) return undefined;
   let o: { type?: string; start?: string; end?: string };
   try {
@@ -67,7 +57,7 @@ function parseResortWindow(raw: string | null | undefined): ResortWindow | undef
     const hh = Number(s.slice(11, 13));
     const mm = Number(s.slice(14, 16));
     if (!Number.isFinite(hh) || !Number.isFinite(mm)) return null;
-    return hh * 60 + mm - londonOffsetMin(date);
+    return hh * 60 + mm - tzOffsetMin(date, timeZone);
   };
   const open = utcMin(o.start);
   const close = utcMin(o.end);
@@ -116,7 +106,7 @@ export async function fetchPaultonsWindow(
   const row = rows.find((r) => Array.isArray(r.dates) && r.dates.includes(date));
   if (!row?.open || !row?.closed) return undefined;
 
-  const offset = londonOffsetMin(date);
+  const offset = tzOffsetMin(date, "Europe/London");
   const toUtcMin = (hhmm: string): number | null => {
     const m = /^(\d{1,2}):(\d{2})$/.exec(hhmm.trim());
     if (!m) return null;
@@ -219,6 +209,8 @@ export interface QueueFetch {
 export async function fetchLiveQueues(
   cfg: AttractionsConfig,
   catalog: RideCatalog | null,
+  /** The park's IANA zone; the feed's opening times are local wall-clock. */
+  timeZone: string,
   prevEtag?: string | null,
 ): Promise<QueueFetch> {
   let resp: Response;
@@ -253,13 +245,13 @@ export async function fetchLiveQueues(
   const items = (data.entities?.Item?.records as LiveItem[] | undefined) ?? [];
   const qls = (data.entities?.QueueLine?.records as LiveQueueLine[] | undefined) ?? [];
   const resortRec = (data.entities?.Resort?.records as LiveResort[] | undefined)?.[0];
-  const resort = parseResortWindow(resortRec?.OpeningTimes);
+  const resort = parseResortWindow(resortRec?.OpeningTimes, timeZone);
   // Each ride's own scheduled window (may open late / close early vs the park).
   // Captured for every Item that carries one, open or closed, so a closed-all-day
   // ride still shows its intended hours.
   const rideWindows: Record<number, ResortWindow> = {};
   for (const it of items) {
-    const w = parseResortWindow(it.OpeningTimes);
+    const w = parseResortWindow(it.OpeningTimes, timeZone);
     if (w) rideWindows[it._id] = w;
   }
   const itemById = new Map(items.map((i) => [i._id, i]));
@@ -411,7 +403,7 @@ export async function runQueuePoll(
     // feed supports conditional GET, so pass the last ETag: an unchanged feed
     // 304s and the whole poll below short-circuits to a status bump.
     catalog = await readCatalog(env.BUCKET, park.key);
-    res = await fetchLiveQueues(park.queue, catalog, prev.etag);
+    res = await fetchLiveQueues(park.queue, catalog, parkTimeZone(park), prev.etag);
   } else {
     // Inline-name backends (First Option / Paulton's, Firestore / Flamingo Land,
     // bespoke / Blackpool, Disneyland Paris): the fetch also hands back a catalog synthesised from

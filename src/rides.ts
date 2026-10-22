@@ -69,6 +69,17 @@ function parseMaxChest(summary?: string | null): number | undefined {
   return m ? Number(m[1]) : undefined;
 }
 
+/** A text field from the bundle. The UK parks' bundles hold plain strings; the
+ *  multilingual parks (Billund, Gardaland, Heide Park, ...) hold a map of locale
+ *  to string, e.g. {"da-DK": ..., "en-GB": ...}. Take English, else the first
+ *  language given. */
+type Localised = string | Record<string, string>;
+function text(v: Localised | null | undefined): string | undefined {
+  if (v == null) return undefined;
+  if (typeof v === "string") return v;
+  return v["en-GB"] ?? v["en-US"] ?? v.en ?? Object.values(v)[0];
+}
+
 const authHeader = (apiKey: string, token?: string) =>
   token
     ? `Attractions-Io api-key="${apiKey}", installation-token="${token}"`
@@ -176,17 +187,17 @@ async function buildCatalog(
   // thrill grouping, and fall back to themed lands when a park has none.
   const classifications =
     (records.Classification as ApiClassification[] | undefined) ?? [];
-  const classNames = new Map(classifications.map((c) => [c._id, c.Name]));
+  const classNames = new Map(classifications.map((c) => [c._id, text(c.Name) ?? ""]));
   const wtc = collections.find((c) => c.name === "WaitTimeClassifications")?.members;
   const norm = (s: string) => s.replace(/[®™’']/g, "").replace(/\s+/g, " ").trim().toLowerCase();
   const areaNames = new Set(
-    (records.Area as ApiArea[] | undefined)?.map((a) => norm(a.Name)) ?? [],
+    (records.Area as ApiArea[] | undefined)?.map((a) => norm(text(a.Name) ?? "")) ?? [],
   );
   const groupBy: RideCatalog["groupBy"] = wtc?.length ? "thrill" : "land";
   const groupMembers = new Set(
     groupBy === "thrill"
       ? wtc
-      : classifications.filter((c) => areaNames.has(norm(c.Name))).map((c) => c._id),
+      : classifications.filter((c) => areaNames.has(norm(text(c.Name) ?? ""))).map((c) => c._id),
   );
   const groupOf = (it: ApiItem): string | undefined => {
     for (const cid of it.Classifications ?? []) {
@@ -200,11 +211,12 @@ async function buildCatalog(
   const itemsOut: RideCatalog["items"] = {};
   for (const id of rideIds) {
     const it = byId.get(id);
-    if (!it?.Name) continue; // a few QueueLine.Item refs point at absent items
+    const name = text(it?.Name);
+    if (!it || !name) continue; // a few QueueLine.Item refs point at absent items
     const group = groupOf(it);
-    const maxChest = parseMaxChest(it.RestrictionSummary);
+    const maxChest = parseMaxChest(text(it.RestrictionSummary));
     itemsOut[String(id)] = {
-      name: it.Name,
+      name,
       ...(it.Category != null ? { category: it.Category } : {}),
       ...(it.MinimumHeightRequirement != null
         ? { minHeight: it.MinimumHeightRequirement }
@@ -231,13 +243,13 @@ async function buildCatalog(
 
 interface ApiItem {
   _id: number;
-  Name?: string;
+  Name?: Localised;
   Category?: number;
   Classifications?: number[];
   MinimumHeightRequirement?: number | null;
   MinimumUnaccompaniedHeightRequirement?: number | null;
   MaximumHeightRequirement?: number | null;
-  RestrictionSummary?: string | null;
+  RestrictionSummary?: Localised | null;
 }
 interface ApiQueueLine {
   _id: number;
@@ -246,11 +258,11 @@ interface ApiQueueLine {
 }
 interface ApiClassification {
   _id: number;
-  Name: string;
+  Name: Localised;
 }
 interface ApiArea {
   _id: number;
-  Name: string;
+  Name: Localised;
 }
 interface ApiCollection {
   name: string;

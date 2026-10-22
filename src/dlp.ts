@@ -1,4 +1,4 @@
-import type { DlpConfig, OpeningHoursConfig } from "./config";
+import { tzOffsetMin, type DlpConfig, type OpeningHoursConfig } from "./config";
 import { fmt24, type HoursFetch, type HoursSnapshot } from "./hours";
 import type { RideCatalog, RideMeta } from "./rides";
 import type { QueueObs, QueueSnapshot } from "./types";
@@ -44,16 +44,6 @@ export function dlpRideId(entityId: string): number | null {
 /** The single-rider line's id: the entity id with "SR" appended, so it can't
  *  collide with any ride's own line id. */
 const singleRiderLineId = (entityId: string): number => parseInt(`${entityId}SR`, 36);
-
-/** UTC offset in minutes for a zone on a date (Paris: 60 in winter, 120 in summer). */
-export function tzOffsetMin(date: string, timeZone: string): number {
-  const h = Number(
-    new Intl.DateTimeFormat("en-GB", { timeZone, hour: "2-digit", hour12: false }).format(
-      new Date(`${date}T12:00:00Z`),
-    ),
-  );
-  return (h - 12) * 60;
-}
 
 /** "09:00:00" park-local → minutes since UTC midnight. */
 function localToUtcMin(t: string | undefined, offsetMin: number): number | null {

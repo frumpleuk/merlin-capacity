@@ -77,6 +77,33 @@ From there:
   sets the auth header), not in `BuildConfig`.
 - `jadx` / `apktool` — full decompile when strings alone aren't enough.
 
+### Attractions.io apps: the park key is in BuildConfig
+
+Every Attractions.io ("Occasio") park app is the same codebase built per park,
+so the key is always in the same place:
+
+```sh
+apktool d -q -f -r <base>.apk -o out
+grep -E 'API_KEY|FLAVOR_resort|WEB_LINK_DOMAIN' \
+  out/smali_classes*/attractionsio/com/app/BuildConfig.smali
+```
+
+- `API_KEY` is the park key: the `<apiKey>` in `live-data.attractions.io/<apiKey>.json`
+  and the `api-key` in the `Authorization` header. Some are v4 UUIDs, some v5,
+  so don't filter candidates by UUID version.
+- `WEB_LINK_DOMAIN` is `<slug>.app.attractions.io`; the prefix is the bundle slug
+  (`app-data/<slug>/versions/` in the public S3 bucket).
+- The manifest's `io.attractions.API_KEY` meta-data is the same value in every
+  park app (a vendor SDK key), not the park key.
+- `base.apk` alone is enough; the split `config.*.apk` files hold no code.
+
+Check a key with `curl -o /dev/null -w '%{http_code}' https://live-data.attractions.io/<key>.json`:
+200 for a real key, 404 otherwise.
+
+For an app not on APKPure (region-locked, or 410 there), install it on an
+Android phone with USB debugging on, then `adb shell pm path <package>` and
+`adb pull` the `base.apk` path. No root needed.
+
 ## Caveats
 
 - You're trusting APKPure's copy, not Google's signed original — fine for RE, but

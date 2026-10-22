@@ -398,14 +398,24 @@ export interface ParkConfig {
   merlinPass?: boolean;
   /** accesso ticket products to poll. Empty for a queue-only park. */
   products: ProductConfig[];
-  /** IANA zone the park's published times are in. Default Europe/London; only
-   *  Disneyland Paris sets it. Mirrors `timeZone` in frontend/src/catalog.ts. */
+  /** IANA zone the park's published times are in. Default Europe/London.
+   *  Mirrors `timeZone` in frontend/src/catalog.ts. */
   timeZone?: string;
 }
 
 /** A park's time zone, defaulting to the UK parks'. */
 export const parkTimeZone = (park: { timeZone?: string }): string =>
   park.timeZone ?? "Europe/London";
+
+/** UTC offset in minutes for a zone on a date (Paris: 60 in winter, 120 in summer). */
+export function tzOffsetMin(date: string, timeZone: string): number {
+  const h = Number(
+    new Intl.DateTimeFormat("en-GB", { timeZone, hour: "2-digit", hour12: false }).format(
+      new Date(`${date}T12:00:00Z`),
+    ),
+  );
+  return (h - 12) * 60;
+}
 
 /** Disneyland Paris's GraphQL API: unauthenticated, wants `x-application-id`. */
 const DLP_GRAPHQL = "https://api.disneylandparis.com/query";
@@ -762,6 +772,73 @@ export const PARKS: ParkConfig[] = [
       locationName: "Disney Adventure World",
     },
     queue: { kind: "dlp", ...DLP_QUEUE, parkId: "P2" },
+    products: [],
+  },  // Merlin's European parks: Attractions.io queues and the same marketing-site
+  // opening-hours API as the UK parks (location 1716 is the theme park on each).
+  // No accesso ticket tracking and not on the UK Merlin Annual Pass. Keys from
+  // each app's BuildConfig API_KEY (docs/apk-download.md).
+  {
+    key: "legoland_billund",
+    label: "Legoland Billund",
+    timeZone: "Europe/Copenhagen",
+    openingHours: {
+      kind: "accesso",
+      calendarUrl: hoursUrl("legoland.dk", "1716"),
+      locations: [{ id: "1716", kind: "themepark" }],
+    },
+    queue: {
+      kind: "attractions",
+      apiKey: "b55dfc11-e3ae-4f79-a9ee-73a3ee5ca5e4",
+      slug: "legoland-billund",
+    },
+    products: [],
+  },
+  {
+    key: "legoland_deutschland",
+    label: "Legoland Deutschland",
+    timeZone: "Europe/Berlin",
+    openingHours: {
+      kind: "accesso",
+      calendarUrl: hoursUrl("legoland.de", "1716"),
+      locations: [{ id: "1716", kind: "themepark" }],
+    },
+    queue: {
+      kind: "attractions",
+      apiKey: "84f9d04e-b059-4930-90a3-fa2fa4bb32fc",
+      slug: "legoland-deutschland",
+    },
+    products: [],
+  },
+  {
+    key: "gardaland",
+    label: "Gardaland",
+    timeZone: "Europe/Rome",
+    openingHours: {
+      kind: "accesso",
+      calendarUrl: hoursUrl("gardaland.it", "1716"),
+      locations: [{ id: "1716", kind: "themepark" }],
+    },
+    queue: {
+      kind: "attractions",
+      apiKey: "ab9f17bb-92e5-4ff5-8009-4bca4e4b92fe",
+      slug: "gardaland",
+    },
+    products: [],
+  },
+  {
+    key: "heide_park",
+    label: "Heide Park",
+    timeZone: "Europe/Berlin",
+    openingHours: {
+      kind: "accesso",
+      calendarUrl: hoursUrl("heide-park.de", "1716"),
+      locations: [{ id: "1716", kind: "themepark" }],
+    },
+    queue: {
+      kind: "attractions",
+      apiKey: "3d67a479-3b8b-4cac-ab17-1218a1aec37e",
+      slug: "heide-park",
+    },
     products: [],
   },
 ];

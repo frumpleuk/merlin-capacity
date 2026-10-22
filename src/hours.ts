@@ -60,7 +60,8 @@ const isoFromKey = (key: string): string | null =>
  * The `lastEntryTime` field is overloaded. Split it into a genuine last-entry
  * note vs a special-event name:
  *  - "Special Event: X"           → event "X"
- *  - contains last/timeslot/entry/until, or looks like a clock time → lastEntry
+ *  - contains last/timeslot/entry/until/admission, "rides close", or looks like
+ *    a clock time → lastEntry (Billund: "Rides close 1 hr before park closes")
  *  - otherwise non-empty (e.g. "Minecraft Meet the Mobs") → event
  */
 export function classifyLastEntry(raw: string | undefined): {
@@ -74,7 +75,7 @@ export function classifyLastEntry(raw: string | undefined): {
   if (prefix.test(s)) return { event: s.replace(prefix, "").trim() };
 
   const looksLikeTime = /\d\s*(am|pm|:)/i.test(s);
-  const entryWords = /(last|timeslot|entry|until|admission)/i.test(s);
+  const entryWords = /(last|timeslot|entry|until|admission|rides close)/i.test(s);
   if (looksLikeTime || entryWords) return { lastEntry: s };
 
   return { event: s };
@@ -145,7 +146,7 @@ async function fetchAccessoHours(
       const entry: LocationHours = {
         kind,
         name,
-        hours: (day.openingHours ?? "").trim(),
+        hours: to12h(day.openingHours ?? ""),
         ...(lastEntry ? { lastEntry } : {}),
         ...(event ? { event } : {}),
       };
@@ -250,6 +251,13 @@ interface PaultonsEvent {
   start?: string; // unix seconds (string)
   end?: string;
   name?: string;
+}
+
+/** "10:00 - 17:00" → "10am - 5pm". Most Merlin sites already write 12-hour
+ *  times; Heide Park's writes 24-hour ones. Anything else passes through. */
+function to12h(hours: string): string {
+  const m = /^(\d{1,2}:\d{2})\s*-\s*(\d{1,2}:\d{2})$/.exec(hours.trim());
+  return m ? `${fmt24(m[1])} - ${fmt24(m[2])}` : hours.trim();
 }
 
 /** "10:00" → "10am", "17:30" → "5:30pm", "10:30" → "10:30am" — matching the

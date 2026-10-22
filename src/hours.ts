@@ -1,4 +1,4 @@
-import { parkTimeZone, USER_AGENT, type OpeningHoursConfig, type ParkConfig } from "./config";
+import { parkDay, parkTimeZone, USER_AGENT, type OpeningHoursConfig, type ParkConfig } from "./config";
 import { fetchDlpHours } from "./dlp";
 import { buildParkIcal, parkIcalKey, writeIcal, type SpecialDaysLike } from "./ical";
 import { readRestrictions } from "./restrictions";
@@ -102,6 +102,8 @@ export async function fetchHours(cfg: OpeningHoursConfig): Promise<HoursFetch> {
       return fetchFlamingolandHours(cfg);
     case "dlp":
       return fetchDlpHours(cfg);
+    case "knoebels":
+      return fetchKnoebelsHours(cfg);
     default:
       return fetchAccessoHours(cfg);
   }
@@ -238,6 +240,59 @@ async function fetchBpbHours(
     };
   }
   return { ok: true, httpStatus: resp.status, snapshot, datesSeen: Object.keys(snapshot).length };
+}
+
+/* ── Knoebels (one request per day) ───────────────────────────────────────────── */
+
+interface KnoebelsDay {
+  date?: string;
+  open?: boolean;
+  ranges?: { title?: string; status?: string; opens?: string; closes?: string }[];
+}
+
+/**
+ * Knoebels' hours, a day per request, four at a time. A closed day is left
+ * out, as Blackpool's feed leaves it out. The range title names the season or
+ * event ("Hallo-Fun"); plain "Park" is the ordinary season and isn't one.
+ */
+async function fetchKnoebelsHours(
+  cfg: Extract<OpeningHoursConfig, { kind: "knoebels" }>,
+): Promise<HoursFetch> {
+  const start = Date.parse(`${parkDay(Date.now(), cfg.timeZone)}T00:00:00Z`);
+  const dates = Array.from({ length: cfg.windowDays }, (_, i) => isoDay(start + i * 86_400_000));
+  const snapshot: HoursSnapshot = {};
+  let status = 0;
+  let failed = 0;
+  for (let i = 0; i < dates.length; i += 4) {
+    await Promise.all(
+      dates.slice(i, i + 4).map(async (date) => {
+        let day: KnoebelsDay;
+        try {
+          const resp = await fetch(`${cfg.hoursUrl}?day=${date}`, {
+            headers: { accept: "application/json", "user-agent": USER_AGENT },
+          });
+          status = resp.status;
+          if (!resp.ok) throw new Error(String(resp.status));
+          day = (await resp.json()) as KnoebelsDay;
+        } catch {
+          failed++;
+          return;
+        }
+        const open = (day.ranges ?? []).filter((r) => r.status === "open" && r.opens && r.closes);
+        if (!day.open || open.length === 0) return;
+        const hours = open.map((r) => `${fmt24(r.opens!)} - ${fmt24(r.closes!)}`).join(", ");
+        const event = open.map((r) => r.title?.trim()).find((t) => t && t.toLowerCase() !== "park");
+        snapshot[date] = {
+          locations: [{ kind: "themepark", name: cfg.locationName, hours }],
+          ...(event ? { event } : {}),
+        };
+      }),
+    );
+  }
+  // A partial window would write a partial iCal feed; treat it as a failed poll
+  // and keep what's on file.
+  if (failed > 0) return { ok: false, httpStatus: status, snapshot: {}, datesSeen: 0 };
+  return { ok: true, httpStatus: status, snapshot, datesSeen: Object.keys(snapshot).length };
 }
 
 /* ── Paulton's Park (two JSON blobs) ──────────────────────────────────────────── */

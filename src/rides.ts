@@ -211,7 +211,9 @@ async function buildCatalog(
   const itemsOut: RideCatalog["items"] = {};
   for (const id of rideIds) {
     const it = byId.get(id);
-    const name = text(it?.Name);
+    // Legoland Japan prefixes each name with its map number, "①LEGO® Factory
+    // Tour"; that's the map's key, not the ride's name.
+    const name = text(it?.Name)?.replace(/^[\u2460-\u24ff\u2776-\u2793\u3251-\u325f\u32b1-\u32bf]\s*/u, "");
     if (!it || !name) continue; // a few QueueLine.Item refs point at absent items
     const group = groupOf(it);
     const maxChest = parseMaxChest(text(it.RestrictionSummary));

@@ -180,7 +180,10 @@ export interface OpeningHoursLocation {
  *    headline). See docs/flamingoland-calendar.md.
  *  - `dlp`: Disneyland Paris GraphQL `activitySchedules`, one date per field,
  *    every date aliased into one request. Each park day has an OPERATING slot and
- *    usually an EXTRA_MAGIC_HOURS slot before it. See docs/disneylandparis-api.md. */
+ *    usually an EXTRA_MAGIC_HOURS slot before it. See docs/disneylandparis-api.md.
+ *  - `knoebels`: the park site's WordPress route `knoebels/v1/hours?day=`, one
+ *    request per date. Its month calendar route marks event days but carries no
+ *    times, so the window is fetched a day at a time. */
 export type OpeningHoursConfig =
   | {
       kind: "accesso";
@@ -222,6 +225,16 @@ export type OpeningHoursConfig =
       /** Max iCal pages per poll — a subrequest backstop (30 events/page, dense
        *  daily schedule). Default 14. */
       maxPages?: number;
+    }
+  | {
+      kind: "knoebels";
+      /** `…/wp-json/knoebels/v1/hours`; `?day=YYYY-MM-DD` is appended. */
+      hoursUrl: string;
+      /** The park's zone, for which date "today" is. */
+      timeZone: string;
+      /** Days ahead to fetch, today included. */
+      windowDays: number;
+      locationName: string;
     };
 
 /** How to find a product's packages in the bootstrap catalog, in place of a
@@ -895,6 +908,125 @@ export const PARKS: ParkConfig[] = [
       kind: "attractions",
       apiKey: "3d67a479-3b8b-4cac-ab17-1218a1aec37e",
       slug: "heide-park",
+    },
+    products: [],
+  },
+  // Merlin's parks in Asia and the US, then Knoebels (independent, US). Same
+  // Attractions.io queues; hours from each Merlin site's getcalendar API, whose
+  // US parks sit under a path prefix (/florida). Location ids are the page's
+  // `window.locationIds`; 1716 is the theme park except at New York (3147) and
+  // Korea (11321). Japan and Korea need lang=en-US (en-GB returns nothing).
+  {
+    key: "legoland_japan",
+    label: "Legoland Japan",
+    timeZone: "Asia/Tokyo",
+    openingHours: {
+      kind: "accesso",
+      calendarUrl: "https://www.legoland.jp/api/openinghours/getcalendar?lang=en-US&locationIds=1716",
+      locations: [{ id: "1716", kind: "themepark" }],
+    },
+    queue: {
+      kind: "attractions",
+      apiKey: "b58e8a8f-5910-40f8-8693-9384edfc15e4",
+      slug: "legoland-japan",
+    },
+    products: [],
+  },
+  {
+    key: "legoland_korea",
+    label: "Legoland Korea",
+    timeZone: "Asia/Seoul",
+    openingHours: {
+      kind: "accesso",
+      calendarUrl: "https://www.legoland.kr/api/openinghours/getcalendar?lang=en-US&locationIds=11321",
+      locations: [{ id: "11321", kind: "themepark" }],
+    },
+    queue: {
+      kind: "attractions",
+      apiKey: "699e3146-fcc9-5098-b6fe-8c99f08d3d61",
+      slug: "legoland-korea",
+    },
+    products: [],
+  },
+  {
+    key: "legoland_florida",
+    label: "Legoland Florida",
+    timeZone: "America/New_York",
+    openingHours: {
+      kind: "accesso",
+      calendarUrl: "https://www.legoland.com/florida/api/openinghours/getcalendar?lang=en-US&locationIds=1716,1718",
+      locations: [{ id: "1716", kind: "themepark" }, { id: "1718", kind: "waterpark" }],
+    },
+    queue: {
+      kind: "attractions",
+      apiKey: "d1425cde-c466-41ec-b980-bb0dbd6c6a87",
+      slug: "legoland-florida",
+    },
+    products: [],
+  },
+  {
+    key: "peppa_pig_florida",
+    label: "Peppa Pig Theme Park",
+    timeZone: "America/New_York",
+    openingHours: {
+      kind: "accesso",
+      calendarUrl: "https://www.peppapigthemepark.com/florida/api/openinghours/getcalendar?lang=en-US&locationIds=1716",
+      locations: [{ id: "1716", kind: "themepark" }],
+    },
+    queue: {
+      kind: "attractions",
+      apiKey: "ccceb9c9-4362-5cc4-8e0c-91d4a039f5a2",
+      slug: "peppa-pig-theme-park",
+    },
+    products: [],
+  },
+  {
+    key: "legoland_california",
+    label: "Legoland California",
+    timeZone: "America/Los_Angeles",
+    openingHours: {
+      kind: "accesso",
+      calendarUrl: "https://www.legoland.com/california/api/openinghours/getcalendar?lang=en-US&locationIds=1716,1719",
+      locations: [{ id: "1716", kind: "themepark" }, { id: "1719", kind: "waterpark" }],
+    },
+    queue: {
+      kind: "attractions",
+      apiKey: "cba14577-440a-4b85-bd27-423d7253710c",
+      slug: "legoland-california",
+    },
+    products: [],
+  },
+  {
+    key: "legoland_new_york",
+    label: "Legoland New York",
+    timeZone: "America/New_York",
+    openingHours: {
+      kind: "accesso",
+      calendarUrl: "https://www.legoland.com/new-york/api/openinghours/getcalendar?lang=en-US&locationIds=3147",
+      locations: [{ id: "3147", kind: "themepark" }],
+    },
+    queue: {
+      kind: "attractions",
+      apiKey: "729bc28e-e715-5a06-b3b9-4b1d36e4570c",
+      slug: "legoland-new-york",
+    },
+    products: [],
+  },
+  {
+    key: "knoebels",
+    label: "Knoebels",
+    timeZone: "America/New_York",
+    openingHours: {
+      kind: "knoebels",
+      hoursUrl: "https://knoebels.com/wp-json/knoebels/v1/hours",
+      timeZone: "America/New_York",
+      windowDays: 31,
+      locationName: "Knoebels",
+    },
+    queue: {
+      kind: "attractions",
+      apiKey: "72f0ea9e-d196-508a-bee8-cce62c3228c7",
+      slug: "knoebels-amusement-park",
     },
     products: [],
   },

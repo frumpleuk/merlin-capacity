@@ -1,6 +1,6 @@
 import { refreshAnomalies } from "./anomalies";
 import { archiveObservations, archiveQueues } from "./archive";
-import { backfillQueueDays } from "./backfill";
+import { backfillQueueDay, backfillQueueDays } from "./backfill";
 import { allProducts, attractionsParks, fosParks, PARKS, queueParks } from "./config";
 import { rebuildMonthsFromD1 } from "./db";
 import { refreshPackages } from "./discover";
@@ -274,6 +274,15 @@ export default {
       const provided = url.searchParams.get("key") ?? req.headers.get("x-poll-key");
       if (!env.POLL_KEY || provided !== env.POLL_KEY) {
         return new Response("forbidden", { status: 403 });
+      }
+      // `?park=&date=` rebuilds that one day from its rows, even if its file is
+      // already at the current version: the repair for a day file written with
+      // a bad catalog (Disneyland Paris, 2026-10-21, names lost overnight).
+      const onePark = url.searchParams.get("park");
+      const oneDate = url.searchParams.get("date");
+      if (onePark && oneDate && /^\d{4}-\d{2}-\d{2}$/.test(oneDate)) {
+        const rebuilt = await backfillQueueDay(env, onePark, oneDate);
+        return Response.json({ park: onePark, date: oneDate, rebuilt });
       }
       const budget = Math.min(400, Math.max(1, Number(url.searchParams.get("days") ?? 60)));
       const res = await backfillQueueDays(env, Date.now(), 400, budget);

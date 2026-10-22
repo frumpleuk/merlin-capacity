@@ -426,7 +426,10 @@ export async function runQueuePoll(
             ? await fetchDlpQueues(park.queue, env.BUCKET, park.key, parkTimeZone(park), now)
             : await fetchBpbQueues(park.queue, env, park.key, now);
     res = synth;
-    catalog = synth.ok ? synth.catalog : await readCatalog(env.BUCKET, park.key);
+    catalog =
+      synth.ok && Object.keys(synth.catalog.items).length > 0
+        ? synth.catalog
+        : await readCatalog(env.BUCKET, park.key);
     if (synth.ok) {
       // Paulton's restrictions aren't in its feed — fold in the daily-scraped map
       // (see paultons-restrictions.ts) so they ride along on the catalog like the
@@ -438,7 +441,9 @@ export async function runQueuePoll(
         if (restr) applyRestrictions(synth.catalog.items, restr);
       }
       const cached = await readCatalog(env.BUCKET, park.key);
-      if (catalogNamesChanged(cached, synth.catalog)) {
+      // Never replace names with none: a feed that lists nothing (Disneyland
+      // Paris overnight) must not wipe the catalog every day file is named from.
+      if (Object.keys(synth.catalog.items).length > 0 && catalogNamesChanged(cached, synth.catalog)) {
         await putCatalog(env.BUCKET, park.key, synth.catalog);
       }
     }

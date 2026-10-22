@@ -797,6 +797,10 @@ export async function readQueueDay(
   return results;
 }
 
+/** How far after opening the park's first sample can fall before the day
+ *  counts as one we started watching late. Mirrors reliability.ts. */
+const LATE_START_GRACE = 30;
+
 const LINE_LABELS: Record<string, string> = {
   physical_main: "Main",
   single_rider: "Single Rider",
@@ -1160,6 +1164,21 @@ export async function writeQueueDayFile(
     }
   }
 
+  // When did we start watching? A ride that ran posts its opening transition,
+  // so on a normal day the park's first sample is at or before the gates open.
+  // Materially later means collection began mid-day (a park's first day): the
+  // time before is unknown, not closed, so the ride summaries start here and the
+  // chart leaves it blank. Same rule as the uptime rollup (reliability.ts).
+  const firstSeen = Math.min(
+    ...[...rides.values()].flatMap((lines) =>
+      [...lines.values()].map((l) => l.samples[0]?.[0] ?? Infinity),
+    ),
+  );
+  const watchedFrom =
+    window && Number.isFinite(firstSeen) && firstSeen > window.open + LATE_START_GRACE
+      ? firstSeen
+      : undefined;
+
   const ridesOut = [...rides.entries()].map(([rideId, lines]) => {
     const meta = catalog?.items[String(rideId)];
     const win = rideWin?.[rideId];
@@ -1193,7 +1212,11 @@ export async function writeQueueDayFile(
           // on a live day is this poll and on a finished one is the close.
           const isMain = (line.type ?? "").includes("main") || all.length === 1;
           if (!isMain) return line;
-          const from = Math.max(win?.open ?? window?.open ?? 0, window?.open ?? 0);
+          const from = Math.max(
+            win?.open ?? window?.open ?? 0,
+            window?.open ?? 0,
+            watchedFrom ?? -Infinity,
+          );
           const to = Math.min(win?.close ?? window?.close ?? 0, observedTo);
           const summary = summariseLine(line.samples, from, to, line.unseen ?? []);
           return summary ? { ...line, summary } : line;
@@ -1212,6 +1235,7 @@ export async function writeQueueDayFile(
     ...(catalog?.groupBy === "land" ? { groupBy: "land" } : {}),
     ...(catalog?.groupDims ? { groupDims: catalog.groupDims } : {}),
     ...(window ? { open: window.open, close: window.close } : {}),
+    ...(watchedFrom != null ? { watchedFrom } : {}),
     rides: ridesOut,
   });
   await bucket.put(queueDayKey(park, date), body, {

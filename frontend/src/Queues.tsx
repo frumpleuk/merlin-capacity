@@ -23,6 +23,9 @@ import { parkDay, tzOffsetAt } from "./parkDay";
 /** The park's IANA zone, provided by QueueList from its `timeZone` prop. */
 const TimeZoneContext = createContext("Europe/London");
 
+/** The day file's `watchedFrom`: before it a line is drawn blank, not closed. */
+const WatchedFromContext = createContext<number | undefined>(undefined);
+
 /** Local `from`:00 to `to`:00 on the park day, on the sample axis — the axis a
  *  day with no hours and no running rides falls back to. */
 const localHours = (date: string, from: number, to: number, timeZone: string): [number, number] => {
@@ -386,6 +389,7 @@ function Sparkline({
   const [t0, t1] = domain;
   const span = Math.max(1, t1 - t0);
   const x = (t: number) => ((t - t0) / span) * SPARK_W;
+  const watchedFrom = useContext(WatchedFromContext);
   const pad = SPARK_PAD;
   const y = sparkY(scale);
   const overScale = ridePeak(ride) > scale.ceiling;
@@ -428,7 +432,7 @@ function Sparkline({
           width={2}
           dotWidth={5}
           asOf={asOf}
-          domainStart={t0}
+          domainStart={Math.max(t0, watchedFrom ?? -Infinity)}
         />
       ))}
     </svg>
@@ -460,6 +464,7 @@ function RideChart({
 }) {
   const [t0, t1] = domain;
   const span = Math.max(1, t1 - t0);
+  const watchedFrom = useContext(WatchedFromContext);
   const yMax = Math.max(10, ridePeak(ride));
   const plotW = CH_W - M.left - M.right;
   const plotH = CH_H - M.top - M.bottom;
@@ -626,7 +631,7 @@ function RideChart({
               width={2}
               dotWidth={7}
               asOf={asOf}
-              domainStart={t0}
+              domainStart={Math.max(t0, watchedFrom ?? -Infinity)}
             />
           ))}
         </g>
@@ -1394,5 +1399,9 @@ export function QueueList({
       })}
     </div>
   );
-  return <TimeZoneContext.Provider value={timeZone}>{list}</TimeZoneContext.Provider>;
+  return (
+    <TimeZoneContext.Provider value={timeZone}>
+      <WatchedFromContext.Provider value={file?.watchedFrom}>{list}</WatchedFromContext.Provider>
+    </TimeZoneContext.Provider>
+  );
 }

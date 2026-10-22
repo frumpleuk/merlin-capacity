@@ -468,6 +468,9 @@ export interface QueueDayFile {
    *  x-axis). Absent when the day's opening times weren't captured. */
   open?: number;
   close?: number;
+  /** Set when collection began after opening (a park's first day): the minute
+   *  we started watching. Earlier is unknown, not closed. */
+  watchedFrom?: number;
   rides: QueueRide[];
 }
 

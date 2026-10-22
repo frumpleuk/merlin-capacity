@@ -591,11 +591,14 @@ export function UptimePage() {
     () => (stats?.rides ?? []).filter((r) => !wellMeasured(r, stats?.days ?? 0)).length,
     [stats],
   );
+  // A newly added park has no ride with enough days behind it, and hiding them
+  // all left an empty table. Show them, with a note that the figures are early.
+  const allThin = thinCount > 0 && thinCount === (stats?.rides ?? []).length;
   const rides = useMemo(() => {
     const q = query.trim().toLowerCase();
     const rows = (stats?.rides ?? []).filter(
       (r) =>
-        (showThin || wellMeasured(r, stats?.days ?? 0)) &&
+        (showThin || allThin || wellMeasured(r, stats?.days ?? 0)) &&
         (!q || r.name.toLowerCase().includes(q) || (r.group ?? "").toLowerCase().includes(q)),
     );
     return [...rows].sort((a, b) => {
@@ -607,7 +610,9 @@ export function UptimePage() {
       const d = typeof av === "string" ? av.localeCompare(bv as string) : av - (bv as number);
       return desc ? -d : d;
     });
-  }, [stats, query, col, desc, showThin]);
+  }, [stats, query, col, desc, showThin, allThin]);
+
+  const emptyText = query.trim() ? `No ride matches “${query}”.` : "No rides yet.";
 
   const dims = data ? groupOptions(data, stats?.rides ?? []) : [];
   const dim = groupKey ?? dims[0]?.key ?? NO_GROUP;
@@ -743,7 +748,7 @@ export function UptimePage() {
           </div>
         )}
         <div className="pill-row">
-          {thinCount > 0 && (
+          {thinCount > 0 && !allThin && (
             <button
               className={"pill" + (showThin ? " active" : "")}
               onClick={() => setShowThin(!showThin)}
@@ -798,7 +803,7 @@ export function UptimePage() {
                 ))}
             </Fragment>
           ))}
-          {rides.length === 0 && <p className="rl-empty">No ride matches “{query}”.</p>}
+          {rides.length === 0 && <p className="rl-empty">{emptyText}</p>}
         </div>
       ) : (
       <table className="rl-table">
@@ -876,7 +881,7 @@ export function UptimePage() {
           {rides.length === 0 && (
             <tr>
               <td colSpan={COLUMNS.length} className="rl-empty">
-                No ride matches “{query}”.
+                {emptyText}
               </td>
             </tr>
           )}
@@ -895,6 +900,12 @@ export function UptimePage() {
         </p>
         {coarse && (
           <p>This park's waits rarely change, so times here are coarser. Nothing is missing.</p>
+        )}
+        {allThin && (
+          <p>
+            No ride has three days of data here yet, so every figure rests on{" "}
+            {stats.days === 1 ? "one day" : `${stats.days} days`} and will move as more arrive.
+          </p>
         )}
         {(stats.partial_days ?? 0) > 0 && (
           <p>

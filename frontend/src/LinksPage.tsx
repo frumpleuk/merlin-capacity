@@ -323,7 +323,7 @@ export function LinksPage() {
 
         <section className="lk-group">
           <h3>What&apos;s open</h3>
-          <LinkRow link={links.rideAvailability} />
+          {links.rideAvailability && <LinkRow link={links.rideAvailability} />}
           {links.liftAvailability && <LinkRow link={links.liftAvailability} />}
           <LinkRow link={links.openingTimes} />
         </section>

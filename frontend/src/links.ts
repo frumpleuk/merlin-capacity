@@ -28,8 +28,8 @@ export interface AppLink {
 
 /** Social profiles, keyed by platform. Only the platforms a park actually
  *  publishes are set — the renderer iterates PLATFORMS and skips the gaps, so a
- *  park missing TikTok simply shows one chip fewer. Of the seven parks only
- *  Paulton's publishes a Pinterest or LinkedIn profile on its own site. */
+ *  park missing TikTok simply shows one chip fewer. Few parks publish a
+ *  Pinterest or LinkedIn profile on their own site. */
 export interface SocialLinks {
   facebook?: string;
   instagram?: string;
@@ -109,10 +109,12 @@ export interface ParkLinks {
   orders: ParkLink[];
   /** The park's own closure list: which rides are out for maintenance. These
    *  pages carry PLANNED and long-term closures, not live status (the park apps
-   *  do that) — Flamingo Land is the exception, its page is today's list.
+   *  do that) — Flamingo Land and Knoebels are the exceptions, their pages are
+   *  today's list.
    *  A named field rather than a row in a list because the Queues tab links it
-   *  directly, under the ride it explains the absence of. */
-  rideAvailability: ParkLink;
+   *  directly, under the ride it explains the absence of. Unset where the park
+   *  publishes no closure list (Billund, Deutschland, Gardaland). */
+  rideAvailability?: ParkLink;
   /** The park's own opening-times calendar — the source our hours poller reads,
    *  and the authority when the two disagree. */
   openingTimes: ParkLink;
@@ -178,9 +180,10 @@ const fastrackPerk = (origin: string, promocode: string): ParkLink => ({
  *  Wallet passes (SETTINGS.passbook_path), but "Save to Google Wallet"
  *  (SETTINGS.enable_google_wallet) is off at Chessington. Neither the parks nor
  *  the pass site links this page from anywhere obvious. */
-const findOrder = (origin: string, wallet: string): ParkLink => ({
+const findOrder = (origin: string, wallet: string, lang?: string): ParkLink => ({
   label: "Find my tickets",
-  url: `${origin}/orderLookup`,
+  // The non-UK stores default to their own language; `l` asks for English.
+  url: `${origin}/orderLookup${lang ? `?l=${lang}` : ""}`,
   note: `Look up an order with the email address and phone number you booked with - no account needed, and adds to ${wallet}`,
 });
 
@@ -264,6 +267,107 @@ const merlinPhotos = (info: string, pomvom: string, venu: string): ParkLink[] =>
     note: "Older Pomvom photo system",
   },
 ];
+
+// Disneyland Paris - one resort, one site, one app, so both parks share
+// everything except `website` (each park's own destination page).
+const DLP_LINKS: Omit<ParkLinks, "website"> = {
+  location: {
+    // Disney's own address labels (seo.microdata.dlpAddress*), on every en-gb
+    // page. The homepage JSON-LD gives "77777 Marne-la-Vallee" instead, a
+    // CEDEX postal code that map apps don't geocode.
+    address: "Disneyland Paris, Boulevard de Parc, Coupvray, France",
+    postcode: "77700",
+    query: "Disneyland Paris, 77700 Coupvray",
+    // OpenStreetMap way 823369270, "Guest Parking Disneyland Paris"
+    // (amenity=parking, operator=Disneyland Paris, fee=yes, last edited
+    // 2025-06-04), centre of the outline. The site calls it the Disney Car Park.
+    drive: { lat: 48.8757075, lon: 2.7888327, label: "the Disney Car Park" },
+    directions: "https://www.disneylandparis.com/en-gb/guest-services/how-to-get-to-disneyland-paris",
+    note: "The Disney Car Park is EUR 30 a day for cars, free for Bronze, Silver and Gold Disneyland Pass holders, and opens at 08:00.",
+  },
+  booking: [
+    {
+      label: "Book tickets",
+      url: "https://tickets.disneylandparis.com/en-gb/tickets",
+      note: "Dated and undated park tickets",
+    },
+    {
+      label: "Register a visit",
+      url: "https://www.disneylandparis.com/en-gb/register-tickets",
+      note: "Undated tickets and Disneyland Passes need a visit date registered in advance",
+    },
+    {
+      label: "Disney Premier Access",
+      url: "https://www.disneylandparis.com/en-gb/attractions/disney-premier-access",
+      note: "Paid queue skip - Ultimate in advance or on the day, One on the day in the app",
+    },
+    {
+      label: "Disneyland Pass",
+      url: "https://www.disneylandparis.com/en-gb/offers/disneyland-pass",
+      note: "Disney's annual pass",
+    },
+  ],
+  orders: [
+    {
+      label: "View my booking",
+      url: "https://book.disneylandparis.com/en-gb/booking-portfolio",
+      note: "Hotel + Tickets packages",
+    },
+    {
+      label: "My Disneyland account",
+      url: "https://guest.disneylandparis.com/en-gb/my-disneyland/",
+      note: "Sign in to see linked tickets, passes and visit registrations",
+    },
+  ],
+  rideAvailability: rideAvailability(
+    "https://www.disneylandparis.com/en-gb/attractions/",
+    "Every attraction in both parks, with those closed marked",
+  ),
+  openingTimes: openingTimes("https://www.disneylandparis.com/en-gb/calendars/park-hours"),
+  access: [
+    {
+      label: "Accessibility",
+      url: "https://www.disneylandparis.com/en-gb/guest-services/accessibility-at-disneylandparis",
+      note: "Access in attractions, shows and restaurants, and downloadable accessibility guides",
+    },
+    {
+      label: "Priority Card",
+      url: "https://www.disneylandparis.com/en-gb/guest-services/priority-card",
+      note: "Disney's access card - apply online up to 1 month ahead, collect on the day with proof of disability",
+    },
+    {
+      label: "Tickets for guests with disabilities",
+      url: "https://tickets.disneylandparis.com/en-gb/tickets-guests-with-disabilities",
+      note: "Special-rate tickets",
+    },
+  ],
+  photos: [
+    {
+      label: "Disney PhotoPass",
+      url: "https://www.disneylandparis.com/en-gb/guest-services/photopass-service",
+      note: "Ride and character photos; PhotoPass+ covers all of them for 10 days",
+    },
+    {
+      label: "Claim photos",
+      url: "https://www.disneyphotopass.eu/claim/index",
+      note: "View and download photos with the code on the back of a PhotoPass+ card",
+    },
+  ],
+  apps: [
+    {
+      name: "Disneyland Paris",
+      ios: appStore("disneyland-paris", "396908589"),
+      android: playStore("fr.disneylandparis.android"),
+      note: "Also where Disney Premier Access is bought and its QR codes kept",
+    },
+  ],
+  social: {
+    facebook: "https://www.facebook.com/disneylandparis/",
+    instagram: "https://www.instagram.com/disneylandparis/",
+    x: "https://x.com/disneyparis_en",
+    youtube: "https://www.youtube.com/user/disneylandparis",
+  },
+};
 
 export const PARK_LINKS: Record<string, ParkLinks> = {
   alton_towers: {
@@ -719,6 +823,774 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
       tiktok: "https://www.tiktok.com/@pleasure_beach",
       x: "https://x.com/Pleasure_Beach",
       youtube: "https://www.youtube.com/user/PleasureBeachVideos",
+    },
+  },
+
+  // Disneyland Paris - one resort, one site, one app, so both parks share
+  // everything except `website` (DLP_LINKS, above).
+  disneyland_park: {
+    ...DLP_LINKS,
+    website: "https://www.disneylandparis.com/en-gb/destinations/disneyland-park/",
+  },
+  disney_adventure_world: {
+    ...DLP_LINKS,
+    website: "https://www.disneylandparis.com/en-gb/destinations/disney-adventure-world/",
+  },
+
+  // accesso store (ME-LLBILLUND). Its access scheme is the Show Consideration
+  // wristband, issued on the day at Information.
+  legoland_billund: {
+    website: "https://www.legoland.dk/en/",
+    location: {
+      address: "LEGOLAND Billund Resort, Nordmarksvej 9, Billund, Denmark",
+      postcode: "7190",
+      query: "LEGOLAND Billund Resort, Nordmarksvej 9, 7190 Billund",
+      // OSM way 81898191, amenity=parking "Legoland P1" (fee=yes): the P1
+      // polygon north of the entrance.
+      drive: { lat: 55.737205, lon: 9.126992, label: "Car park P1" },
+      directions: "https://www.legoland.dk/en/plan-your-day/pre-visit/directions/",
+      note: "Parking is paid at P1, P2, P3, P5 and P6 and charged by number plate - pay online, at the kiosks, or within 48 hours of leaving.",
+    },
+    booking: [
+      {
+        label: "Book tickets",
+        url: "https://me-llbillund.tickets.legoland.dk/snap-calendar-wizard/SnapWizardEN/SnapWizardAdmissionEN?l=en-dk",
+        note: "Direct to the date picker on the park's ticketing site",
+      },
+      { label: "Day tickets", url: "https://www.legoland.dk/en/tickets-passes/tickets/" },
+      {
+        label: "Fastrack",
+        url: "https://www.legoland.dk/en/tickets-passes/extras/fastrack/",
+        note: "Gold, Silver and Bronze - valid on the chosen date only",
+      },
+      { label: "Season passes", url: "https://www.legoland.dk/en/tickets-passes/season-passes/" },
+    ],
+    orders: [findOrder("https://me-llbillund.tickets.legoland.dk", "Apple Wallet", "en-dk")],
+    openingTimes: openingTimes("https://www.legoland.dk/en/plan-your-day/pre-visit/opening-hours/"),
+    access: [
+      {
+        label: "Guests with special needs",
+        url: "https://www.legoland.dk/en/plan-your-day/information/guests-with-special-needs/",
+        note: "Overview - wristband, companion scheme, wheelchair booking",
+      },
+      {
+        label: "Show Consideration wristband",
+        url: "https://www.legoland.dk/en/plan-your-day/information/show-consideration-wristband/",
+        note: "Billund's equivalent of a Ride Access Pass - issued at Information on the day, with documentation",
+      },
+      {
+        label: "Companion scheme",
+        url: "https://www.legoland.dk/en/plan-your-day/information/companion-scheme/",
+        note: "One free companion with a valid companion card",
+      },
+      {
+        label: "Accessibility guide",
+        url: "https://www.legoland.dk/en/plan-your-day/information/accessibility-at-legoland/",
+        note: "Ride access, wheelchairs, toilets, parking and assistance dogs",
+      },
+    ],
+    photos: [
+      {
+        label: "Photo Pass",
+        url: "https://www.legoland.dk/en/tickets-passes/extras/",
+        note: "A day of park photos to download, plus 4 vouchers for printed products - listed on the extras page",
+      },
+    ],
+    apps: [
+      {
+        name: "LEGOLAND Billund Resort",
+        ios: appStore("legoland-billund-resort", "528921749"),
+        android: playStore("com.merlin.llb"),
+      },
+    ],
+    social: {
+      facebook: "https://www.facebook.com/LEGOLANDBillund/",
+      instagram: "https://www.instagram.com/legolandbillund/",
+      youtube: "https://www.youtube.com/channel/UCpeYoADJY5uwoy2WQFiKHKg",
+      linkedin: "https://www.linkedin.com/company/legoland-billund-resort/",
+    },
+  },
+
+  // accesso store (ME-LLGERMANY). Access is a wristband issued at the entrance
+  // on a severely disabled pass.
+  legoland_deutschland: {
+    website: "https://www.legoland.de/en/",
+    location: {
+      address: "LEGOLAND Deutschland Resort, LEGOLAND Allee 1, Günzburg, Bavaria, Germany",
+      postcode: "89312",
+      query: "LEGOLAND Deutschland Resort, LEGOLAND Allee 1, 89312 Günzburg",
+      // OSM way 163415314, amenity=parking name=Legoland, fee=yes,
+      // access=customers.
+      drive: { lat: 48.422812, lon: 10.297619, label: "the main car park" },
+      directions: "https://www.legoland.de/en/plan-your-visit/plan-your-visit/getting-here/",
+      note: "Leave the A8 at Günzburg and follow the signs. Parking is paid - the ticket is scanned at the barrier on the way out.",
+    },
+    booking: [
+      {
+        label: "Book tickets",
+        url: "https://me-llgermany.tickets.legoland.de/snap-calendar-wizard/SnapWizardEN/SnapAdmissionEN?l=en-de",
+        note: "Direct to the date picker on the park's ticketing site",
+      },
+      { label: "Day tickets", url: "https://www.legoland.de/en/tickets/most-popular-tickets/day-tickets/" },
+      { label: "Fastrack", url: "https://www.legoland.de/en/tickets/most-popular-tickets/fastrack/" },
+      { label: "Parking ticket", url: "https://www.legoland.de/en/tickets/most-popular-tickets/parking-ticket/" },
+    ],
+    orders: [findOrder("https://me-llgermany.tickets.legoland.de", "Apple Wallet", "en-de")],
+    openingTimes: openingTimes("https://www.legoland.de/en/plan-your-visit/plan-your-visit/opening-hours/"),
+    access: [
+      {
+        label: "Disabled visitors",
+        url: "https://www.legoland.de/en/plan-your-visit/plan-your-visit/disabled-visitors/",
+        note: "Wristband for quicker ride access, issued at the entrance on a severely disabled pass; companions with B or H enter free",
+      },
+      {
+        label: "Wristband form",
+        url: "https://www.legoland.de/media/jwtcwni1/nimm-ruecksicht-armband_en.pdf",
+        note: "PDF form for the access wristband",
+      },
+    ],
+    photos: [
+      {
+        label: "Photo Pass",
+        url: "https://www.legoland.de/en/tickets/most-popular-tickets/photo-pass/",
+        note: "Six printed on-ride photos - vouchers collected at the entrance, valid all season",
+      },
+    ],
+    apps: [
+      {
+        name: "LEGOLAND Deutschland Resort",
+        ios: appStore("legoland-deutschland-resort", "1389753425"),
+        android: playStore("biz.merlinentertainments.legoland.deutschland"),
+      },
+    ],
+    social: {
+      facebook: "https://www.facebook.com/LEGOLANDDeutschlandResort/",
+      instagram: "https://www.instagram.com/legolanddeutschlandresort/",
+      tiktok: "https://www.tiktok.com/@legolanddeutschland",
+      youtube: "https://www.youtube.com/legolanddeutschlandresort",
+    },
+  },
+
+  // Vivaticket store, not accesso. Access scheme is the Special Guest pass;
+  // Gardaland Express fast-track runs through its own app.
+  gardaland: {
+    website: "https://www.gardaland.it/en/",
+    location: {
+      address: "Gardaland Resort, Via Derna 4, Castelnuovo del Garda (VR), Italy",
+      postcode: "37014",
+      query: "Gardaland, Via Derna 4, 37014 Castelnuovo del Garda",
+      // No `drive`: OSM has no named main car park, and the park's only
+      // published coordinate is for the motorhome and bus park.
+      directions: "https://www.gardaland.it/en/useful-information/plan-your-visit/directions/",
+      note: "Parking is free; covered spaces can be bought online. Motorhomes use the bus park on Via Ronchi.",
+    },
+    booking: [
+      {
+        label: "Book tickets",
+        url: "https://tickets.gardaland.it/b2c/ticketSale/tickets?category=GPARK&locale=en-GB",
+        note: "Direct to the park's ticket shop",
+      },
+      { label: "Gardaland Park tickets", url: "https://www.gardaland.it/en/tickets-season-passes/tickets/gardaland-park/" },
+      {
+        label: "Gardaland Express",
+        url: "https://www.gardaland.it/en/tickets-season-passes/extra/gardaland-express/",
+        note: "Fast-track bundles of 5, 17 or unlimited rides - used through the Gardaland Express app",
+      },
+      { label: "Covered parking", url: "https://www.gardaland.it/en/tickets-season-passes/extra/car-park-entrance/" },
+    ],
+    // The site's "Manage my bookings" covers hotel stays only; nothing on the
+    // site links a ticket order lookup.
+    orders: [],
+    openingTimes: openingTimes("https://www.gardaland.it/en/useful-information/plan-your-visit/opening-times/"),
+    access: [
+      {
+        label: "Accessibility",
+        url: "https://www.gardaland.it/en/useful-information/plan-your-visit/accessibility/",
+        note: "Overview and the accessibility guide",
+      },
+      {
+        label: "Special Guest pass",
+        url: "https://www.gardaland.it/en/useful-information/plan-your-visit/accessibility/before-your-visit/",
+        note: "Gardaland's equivalent of a Ride Access Pass - priority access for the guest and up to 3 companions, issued on the day at the Welcome Desk",
+      },
+      {
+        label: "Accessibility in the park",
+        url: "https://www.gardaland.it/en/useful-information/plan-your-visit/accessibility/gardaland-park/",
+        note: "Ride admission rules, wheelchairs and services",
+      },
+    ],
+    photos: [
+      {
+        label: "Photo Pass",
+        url: "https://www.gardaland.it/en/tickets-season-passes/extra/photo-passes/",
+        note: "Unlimited digital downloads for 1 or 2 days, and which rides have photos",
+      },
+    ],
+    apps: [
+      {
+        name: "Gardaland Resort",
+        ios: appStore("gardaland-resort-app-ufficiale", "442647354"),
+        android: playStore("com.merlin.gardaland"),
+      },
+      {
+        name: "Gardaland Express",
+        ios: appStore("gardaland-express", "6445852859"),
+        android: playStore("com.merlin.gardalandexpress"),
+        note: "Required to use Gardaland Express fast-track - joins the ride queue for you",
+      },
+    ],
+    social: {
+      facebook: "https://www.facebook.com/gardaland",
+      instagram: "https://www.instagram.com/gardaland/",
+      tiktok: "https://www.tiktok.com/@gardaland_official",
+      // X is linked only in the footer of some pages (e.g. Manage my bookings).
+      x: "https://x.com/gardaland",
+      youtube: "https://www.youtube.com/user/gardaland",
+    },
+  },
+
+  // accesso store (ME-HPGERMANY). Access scheme is the Schwer-in-Ordnung Pass.
+  heide_park: {
+    website: "https://www.heide-park.de/en/",
+    location: {
+      address: "Heide Park Resort, Heide Park 1, Soltau, Germany",
+      postcode: "29614",
+      query: "Heide Park Resort, Heide Park 1, 29614 Soltau",
+      // OSM way 28865941, amenity=parking operator="Heide-Park Resort",
+      // fee=yes, access=customers. The resort has two large car parks; the
+      // other is unnamed (way 28865939, to the north).
+      drive: { lat: 53.02572, lon: 9.872308, label: "the resort car park" },
+      directions: "https://www.heide-park.de/en/plan-your-visit/before-you-visit/directions/",
+      note: "Take the A7 to the Soltau-Ost exit, then follow the signs. Parking is paid and costs more on site than online.",
+    },
+    booking: [
+      {
+        label: "Book tickets",
+        url: "https://me-hpgermany.tickets.heide-park.de/snap-calendar-wizard/SnapWizardEN/SnapWizardAdmissionEN?l=en-de",
+        note: "Direct to the date picker on the park's ticketing site",
+      },
+      { label: "Tickets", url: "https://www.heide-park.de/en/tickets-passes/tickets/" },
+      {
+        label: "Express Ticket",
+        url: "https://www.heide-park.de/en/tickets-passes/extras/express-ticket/",
+        note: "Heide Park's Fastrack - time slots booked in the app",
+      },
+      { label: "Parking", url: "https://www.heide-park.de/en/tickets-passes/extras/parking/" },
+    ],
+    orders: [findOrder("https://me-hpgermany.tickets.heide-park.de", "Apple Wallet", "en-de")],
+    rideAvailability: rideAvailability("https://www.heide-park.de/en/plan-your-visit/infos/ride-availability/"),
+    openingTimes: openingTimes("https://www.heide-park.de/en/plan-your-visit/before-you-visit/opening-hours/"),
+    access: [
+      {
+        label: "Schwer-in-Ordnung Pass",
+        url: "https://www.heide-park.de/en/plan-your-visit/before-you-visit/accessibility/",
+        note: "Heide Park's equivalent of a Ride Access Pass - six rides via the express entrance or exit",
+      },
+      {
+        label: "Accessibility details",
+        url: "https://www.heide-park.de/en/plan-your-visit/before-you-visit/accessibility/accessibility/",
+        note: "Ride access, toilets, car parks and assistance dogs",
+      },
+      {
+        label: "Tickets for visitors with disabilities",
+        url: "https://www.heide-park.de/en/tickets-passes/tickets/visitors-with-disabilities/",
+        note: "Reduced entry with a disability card, free for permanent wheelchair users, one reduced companion ticket",
+      },
+    ],
+    photos: [
+      {
+        label: "Digital Photo Pass",
+        url: "https://www.heide-park.de/en/tickets-passes/extras/unlimited-digital-photos/",
+        note: "Sold on site only for now - online booking is suspended",
+      },
+    ],
+    apps: [
+      {
+        name: "Heide Park Resort",
+        ios: appStore("heide-park-resort", "439867160"),
+        android: playStore("de.heide_park.heidepark"),
+      },
+    ],
+    social: {
+      facebook: "https://www.facebook.com/heideparkresort",
+      instagram: "https://www.instagram.com/heideparkresort/",
+      tiktok: "https://www.tiktok.com/@heideparkresort",
+      youtube: "https://www.youtube.com/HeideParkResort",
+    },
+  },
+
+  // accesso merchant ME-LLJAPAN on accesso's Asia stack. The park has no car
+  // park of its own and sends drivers to the city-run Kinjo Futo Parking.
+  legoland_japan: {
+    website: "https://www.legoland.jp/en/",
+    location: {
+      address: "LEGOLAND Japan Resort, 2-2-1 Kinjoufutou, Minato-ku, Nagoya-shi",
+      postcode: "455-8605",
+      query: "LEGOLAND Japan Resort, 455-8605",
+      // OpenStreetMap way 516644480, Nagoya City Kinjo Futo Parking (operator
+      // Nagoya City, multi-storey, capacity 5010): the lot the park's access
+      // page names.
+      drive: { lat: 35.051164, lon: 136.849811, label: "Kinjo Futo Parking" },
+      directions: "https://www.legoland.jp/en/operation/info/access/",
+      note: "The park has no car park of its own - drivers use the paid city-run Kinjo Futo Parking, and the park asks visitors to come by public transport where possible.",
+    },
+    booking: [
+      {
+        label: "Book tickets",
+        url: "https://me-lljapan.tickets.legoland.jp/packageList/keyword/LEGOLANDDailyTicketsEN?l=en-jp",
+        note: "Direct to the date picker for LEGOLAND-only 1 Day Passes",
+      },
+      {
+        label: "1 Day Pass",
+        url: "https://www.legoland.jp/en/tickets/1daypass/",
+        note: "LEGOLAND, SEA LIFE Nagoya and combined tickets",
+      },
+      { label: "Annual Pass", url: "https://www.legoland.jp/en/tickets/annual-pass/" },
+      { label: "Skip Pass 3-Pack", url: "https://www.legoland.jp/en/tickets/optional/skip-pass-3/" },
+      { label: "Skip Pass UNLIMITED", url: "https://www.legoland.jp/en/tickets/optional/skip-pass-unlimited/" },
+    ],
+    orders: [findOrder("https://me-lljapan.tickets.legoland.jp", "Apple Wallet", "en-jp")],
+    rideAvailability: rideAvailability("https://www.legoland.jp/en/operation/info/closed/"),
+    openingTimes: openingTimes("https://www.legoland.jp/en/operation/info/opening-hours/opening-hours/"),
+    access: [
+      {
+        label: "Guests with disabilities",
+        url: "https://www.legoland.jp/en/resort-guide/service/guests-with-disabilities/",
+        note: "Assisted Access Pass, free escort entry and wheelchair-accessible rides",
+      },
+      {
+        label: "Sensory Guide",
+        url: "https://www.legoland.jp/media/mrbb3oyi/202406_kankakuguide_eng-1.pdf",
+        note: "Stimulation level of every attraction on an 11-point scale (PDF)",
+      },
+    ],
+    photos: [],
+    apps: [
+      {
+        name: "LEGOLAND Japan Resort",
+        ios: appStore("legoland-japan-resort", "1385607830"),
+        android: playStore("biz.merlinentertainments.legoland.japan"),
+      },
+    ],
+    // Linked from the Japanese homepage footer; the English one has none.
+    social: {
+      facebook: "https://www.facebook.com/LEGOLANDJAPAN/",
+      instagram: "https://www.instagram.com/legolandjapanresort/",
+      x: "https://x.com/LEGOLAND_Japan",
+      youtube: "https://www.youtube.com/channel/UC7L5nJk5ORCvxfI6C2HJd2A",
+    },
+  },
+
+  // accesso merchant ME-LLKOREA on accesso's Asia stack. The ride-access scheme
+  // is the Hero Pass.
+  legoland_korea: {
+    website: "https://www.legoland.kr/en/",
+    location: {
+      address: "LEGOLAND Korea Resort, 128 Hajungdo-gil, Chuncheon-si, Gangwon-do",
+      postcode: "24240",
+      query: "LEGOLAND Korea Resort, 24240",
+      // No `drive`: the OpenStreetMap lots on Hajungdo are unnamed.
+      directions: "https://www.legoland.kr/en/plan-your-day/plan-your-visit/parking-directions/",
+      note: "Paid parking (first hour free, 12,000 KRW daily maximum), with a shuttle bus from the car park to the park entrance.",
+    },
+    booking: [
+      {
+        label: "Book tickets",
+        url: "https://me-llkorea.tickets.legoland.kr/packageList/keyword/MainOneDayEntryEN?l=en-kr",
+        note: "Direct to the 1-Day Ticket on the park's ticketing site",
+      },
+      {
+        label: "1-Day Admission Ticket",
+        url: "https://www.legoland.kr/en/tickets-passes/1-day-admission-ticket/buy-1-day-admission-ticket/",
+      },
+      {
+        label: "Fastrack",
+        url: "https://www.legoland.kr/en/tickets-passes/1-day-admission-ticket/fastrack/",
+        note: "Gold, Silver and Bronze queue-skip add-ons",
+      },
+    ],
+    orders: [
+      findOrder("https://me-llkorea.tickets.legoland.kr", "Apple Wallet", "en-kr"),
+      {
+        label: "Refund & re-send request",
+        url: "https://www.legoland.kr/en/plan-your-day/before-your-visit/online-ticket-refund-re-send-request/",
+        note: "Form for refunds and for re-sending online tickets",
+      },
+    ],
+    openingTimes: openingTimes("https://www.legoland.kr/en/plan-your-day/plan-your-visit/opening-hours/"),
+    access: [
+      {
+        label: "Accessibility",
+        url: "https://www.legoland.kr/en/plan-your-day/during-your-visit/accessibility/",
+        note: "Hero Pass - Korea's equivalent of a Ride Access Pass - and accessible attraction details",
+      },
+      {
+        label: "Caregiver discount",
+        url: "https://www.legoland.kr/en/tickets-passes/gate-discount/benefits-for-caregivers-of-guests-with-disabilities/",
+        note: "Discounted entry for caregivers of guests with registered disabilities",
+      },
+    ],
+    photos: [],
+    apps: [
+      {
+        name: "LEGOLAND Korea Resort",
+        ios: appStore("legoland-korea-resort", "1592076860"),
+        android: playStore("kr.legoland.www"),
+      },
+    ],
+    social: {
+      facebook: "https://www.facebook.com/LEGOLANDKoreaResort",
+      instagram: "https://www.instagram.com/legolandkorearesort/",
+      tiktok: "https://www.tiktok.com/@legolandkorearesort",
+      youtube: "https://www.youtube.com/@LEGOLANDKoreaResort",
+    },
+  },
+
+  // accesso on the North American stack (ME-LLFLORIDA). The UK stores' generic
+  // SnapWizardAdmission keyword isn't in the NA catalogs, so booking points at
+  // the park's own tickets page.
+  legoland_florida: {
+    website: "https://www.legoland.com/florida/",
+    location: {
+      address: "LEGOLAND Florida Resort, One LEGOLAND Way, Winter Haven, FL",
+      postcode: "33884",
+      query: "LEGOLAND Florida Resort, Winter Haven, FL 33884",
+      directions: "https://www.legoland.com/florida/plan-your-visit/planning-tools/directions-parking/",
+      note: "The park says some GPS systems don't list it yet - use 6000 Cypress Gardens Boulevard, Winter Haven FL 33884 instead.",
+    },
+    booking: [
+      {
+        label: "Book tickets",
+        url: "https://www.legoland.com/florida/tickets-passes/tickets/",
+        note: "Day tickets - Buy Now opens the accesso checkout on the page",
+      },
+      { label: "Annual passes", url: "https://www.legoland.com/florida/tickets-passes/annual-passes/" },
+      { label: "Fastrack", url: "https://www.legoland.com/florida/tickets-passes/extras-experiences/fastrack/" },
+    ],
+    orders: [
+      {
+        label: "Find my order",
+        url: "https://accountportal.meg-na.accessoticketing.com/accesso90/1000/en-US/recover",
+        note: "Look up an order with the email address and phone number you booked with",
+      },
+      {
+        label: "Ticket booking portal",
+        url: "https://accountportal.meg-na.accessoticketing.com/accesso90/1000/en-US/login",
+        note: "Sign in to change the date or time of your tickets",
+      },
+    ],
+    rideAvailability: rideAvailability(
+      "https://www.legoland.com/florida/plan-your-visit/know-before-you-go/temporary-closures/",
+      "Planned closures across the resort - LEGOLAND Park, Water Park, Peppa Pig Theme Park and hotels",
+    ),
+    openingTimes: openingTimes("https://www.legoland.com/florida/plan-your-visit/planning-tools/opening-hours/"),
+    access: [
+      {
+        label: "Accessibility information",
+        url: "https://www.legoland.com/florida/plan-your-visit/know-before-you-go/accessibility-information/",
+        note: "HERO Access Pass, issued at Guest Services, plus the accessibility and sensory guides",
+      },
+      {
+        label: "Resort accessibility and ADA",
+        url: "https://www.legoland.com/florida/plan-your-visit/know-before-you-go/accessibility-information/resort-accessibility-ada-information/",
+      },
+      {
+        label: "Guide for guests with disabilities",
+        url: "https://www.legoland.com/florida/media/wlvnclob/disabilities-guide-nov-2024.pdf",
+        note: "PDF",
+      },
+    ],
+    photos: [
+      {
+        label: "Unlimited Digital Photos",
+        url: "https://www.legoland.com/florida/tickets-passes/extras-experiences/#product-photos",
+        note: "Pre-bought photo pass for the ride cameras",
+      },
+    ],
+    apps: [
+      {
+        name: "LEGOLAND Florida Resort",
+        ios: appStore("legoland-florida-resort", "1383780299"),
+        android: playStore("biz.merlinentertainments.legoland.florida"),
+      },
+    ],
+    social: {
+      facebook: "https://www.facebook.com/LEGOLANDFlorida",
+      instagram: "https://www.instagram.com/legolandflorida/",
+      tiktok: "https://www.tiktok.com/@legolandflorida",
+      youtube: "https://www.youtube.com/user/LEGOLANDFl",
+      pinterest: "https://www.pinterest.com/legolandflorida/",
+    },
+  },
+
+  // accesso on the North American stack (ME-PEPPAPARKFLORIDA). Shares Legoland
+  // Florida's entrance road and closure list.
+  peppa_pig_florida: {
+    website: "https://www.peppapigthemepark.com/florida/",
+    location: {
+      address: "Peppa Pig Theme Park Florida, One LEGOLAND Way, Winter Haven, FL",
+      postcode: "33884",
+      query: "Peppa Pig Theme Park Florida, Winter Haven, FL 33884",
+      directions: "https://www.peppapigthemepark.com/florida/plan-your-visit/planning-tools/directions-parking/",
+      note: "Shares the LEGOLAND Florida Resort entrance road. The park gives 6000 Cypress Gardens Boulevard, Winter Haven FL 33884 as a second address for GPS.",
+    },
+    booking: [
+      {
+        label: "Book tickets",
+        url: "https://www.peppapigthemepark.com/florida/tickets-passes/tickets/",
+        note: "Day tickets - Buy Now opens the accesso checkout on the page",
+      },
+      { label: "Annual passes", url: "https://www.peppapigthemepark.com/florida/tickets-passes/annual-passes/" },
+    ],
+    // No order lookup or manage-booking page on the Peppa Pig site.
+    orders: [],
+    rideAvailability: rideAvailability(
+      "https://www.peppapigthemepark.com/florida/plan-your-visit/know-before-you-go/temporary-closures/",
+      "The resort-wide closure list, same as LEGOLAND Florida's - Peppa Pig Theme Park has its own section",
+    ),
+    openingTimes: openingTimes("https://www.peppapigthemepark.com/florida/plan-your-visit/planning-tools/opening-hours/"),
+    access: [
+      {
+        label: "Accessibility and sensory guide",
+        url: "https://www.peppapigthemepark.com/florida/plan-your-visit/know-before-you-go/accessibility-sensory-guide/",
+        note: "HERO Access Pass, attraction restrictions and IBCCES sensory ratings",
+      },
+      {
+        label: "HERO accessibility guide",
+        url: "https://www.peppapigthemepark.com/florida/media/fifl3s55/web-pptp-hero-accessibility-guide.pdf",
+        note: "PDF",
+      },
+    ],
+    photos: [],
+    apps: [
+      {
+        name: "Peppa Pig Theme Park Florida",
+        ios: appStore("peppa-pig-theme-park-florida", "1586298603"),
+        android: playStore("com.peppapigthemepark.florida"),
+      },
+    ],
+    social: {
+      facebook: "https://www.facebook.com/PeppaPigThemeParkFlorida",
+      instagram: "https://www.instagram.com/peppapigthemeparkflorida/",
+      x: "https://x.com/PeppaPigFlorida",
+    },
+  },
+
+  // accesso on the North American stack (ME-LLCALIFORNIA).
+  legoland_california: {
+    website: "https://www.legoland.com/california/",
+    location: {
+      address: "LEGOLAND California Resort, One LEGOLAND Drive, Carlsbad, CA",
+      postcode: "92008",
+      query: "LEGOLAND California Resort, Carlsbad, CA 92008",
+      directions: "https://www.legoland.com/california/plan-your-visit/planning-tools/directions/",
+      note: "From the I-5, take Cannon Road east and turn right at LEGOLAND Drive. Regular parking is to the right, Preferred to the left.",
+    },
+    booking: [
+      {
+        label: "Book tickets",
+        url: "https://www.legoland.com/california/tickets-passes/tickets/",
+        note: "Day tickets - Buy Now opens the accesso checkout on the page",
+      },
+      { label: "Annual passes", url: "https://www.legoland.com/california/tickets-passes/annual-passes/" },
+      { label: "Fastrack", url: "https://www.legoland.com/california/tickets-passes/extras-experiences/fastrack/" },
+    ],
+    orders: [
+      {
+        label: "Manage my booking",
+        url: "https://accountportal.meg-na.accessoticketing.com/accesso90/2600/en-US/login",
+        note: "Sign in to manage a day ticket booking",
+      },
+    ],
+    rideAvailability: rideAvailability(
+      "https://www.legoland.com/california/plan-your-visit/know-before-you-go/temporary-closures/",
+    ),
+    openingTimes: openingTimes("https://www.legoland.com/california/plan-your-visit/planning-tools/opening-hours/"),
+    access: [
+      {
+        label: "Accessibility information",
+        url: "https://www.legoland.com/california/plan-your-visit/know-before-you-go/accessibility-information/",
+        note: "Assisted Access Pass, issued at Guest Services, plus wheelchair and ECV rental",
+      },
+      {
+        label: "Assisted Access guide",
+        url: "https://www.legoland.com/california/media/bypc0w2m/legoland-california-assisted-access-guide.pdf",
+        note: "PDF",
+      },
+    ],
+    photos: [
+      {
+        label: "Unlimited Digital Photos",
+        url: "https://www.legoland.com/california/tickets-passes/extras-experiences/unlimited-digital-photos/",
+        note: "Price and which rides have photos, from the park itself",
+      },
+      {
+        label: "Photo web app",
+        url: "https://www.myfunmoments.com/legoland-ca",
+        note: "Sign in with your phone number to view and download photos",
+      },
+    ],
+    apps: [
+      {
+        name: "LEGOLAND California - Official",
+        ios: appStore("legoland-california-official", "452395530"),
+        android: playStore("com.merlin.legocal"),
+      },
+    ],
+    social: {
+      facebook: "https://www.facebook.com/legolandcalifornia",
+      instagram: "https://www.instagram.com/legolandcalifornia/",
+      x: "https://x.com/legoland_ca",
+      youtube: "https://www.youtube.com/user/legolandcalifornia",
+      pinterest: "https://www.pinterest.com/legoland_ca/",
+    },
+  },
+
+  // accesso on the North American stack (ME-LLNEWYORK).
+  legoland_new_york: {
+    website: "https://www.legoland.com/new-york/",
+    location: {
+      address: "LEGOLAND New York Resort, 1 LEGOLAND Way, Goshen, NY",
+      postcode: "10924",
+      query: "LEGOLAND New York Resort, Goshen, NY 10924",
+      directions: "https://www.legoland.com/new-york/plan-your-visit/planning-tools/directions-parking/",
+      note: "Leave Route 17 at Exit 125, follow signs to Harriman Drive, then take the second left at the light onto LEGOLAND Way.",
+    },
+    booking: [
+      {
+        label: "Book tickets",
+        url: "https://www.legoland.com/new-york/tickets-passes/tickets/",
+        note: "Day tickets - Buy Now opens the accesso checkout on the page",
+      },
+      { label: "Season passes", url: "https://www.legoland.com/new-york/tickets-passes/annual-passes/" },
+      { label: "Fastrack", url: "https://www.legoland.com/new-york/tickets-passes/extras-experiences/fastrack/" },
+      {
+        label: "Park reservations",
+        url: "https://www.legoland.com/new-york/plan-your-visit/reservations-required/",
+        note: "Open-dated and third-party tickets need a reservation for the day - dated tickets and passes don't",
+      },
+    ],
+    orders: [
+      {
+        label: "Manage my reservation",
+        url: "https://www.legoland.com/new-york/plan-your-visit/reservations-required/manage-or-change-reservations/",
+        note: "Change or cancel a park reservation",
+      },
+    ],
+    rideAvailability: rideAvailability(
+      "https://www.legoland.com/new-york/plan-your-visit/know-before-you-go/seasonal-closures/",
+      "Early and seasonal ride closures, from the park itself",
+    ),
+    openingTimes: openingTimes("https://www.legoland.com/new-york/plan-your-visit/planning-tools/operating-calendar/"),
+    access: [
+      {
+        label: "Special situations and accessibility",
+        url: "https://www.legoland.com/new-york/plan-your-visit/know-before-you-go/special-situations-accessibility/",
+        note: "Overview, wagon accommodations and ECV rental",
+      },
+      {
+        label: "Resort accessibility",
+        url: "https://www.legoland.com/new-york/plan-your-visit/know-before-you-go/special-situations-accessibility/resort-accessibility/",
+        note: "Assisted Access Pass, issued at the Guest Experience Center",
+      },
+      {
+        label: "Accessibility guide",
+        url: "https://www.legoland.com/new-york/media/o0uhthqm/llny-accessibility-guide-v6-52926.pdf",
+        note: "PDF",
+      },
+    ],
+    photos: [
+      {
+        label: "Unlimited Digital Photos",
+        url: "https://www.legoland.com/new-york/tickets-passes/extras-experiences/unlimited-digital-photos/",
+        note: "Price and which rides have photos, from the park itself",
+      },
+      {
+        label: "Photo web app",
+        url: "https://www.myfunmoments.com/legoland-ny",
+        note: "Register with your phone number to view and download photos",
+      },
+    ],
+    apps: [
+      {
+        name: "LEGOLAND New York Resort",
+        ios: appStore("legoland-new-york-resort", "1551664372"),
+        android: playStore("biz.merlinentertainments.legoland.newyork"),
+      },
+    ],
+    social: {
+      facebook: "https://www.facebook.com/LEGOLANDNewYork/",
+      instagram: "https://www.instagram.com/legoland.newyork/",
+      x: "https://x.com/legolandnewyork",
+      youtube: "https://www.youtube.com/channel/UCXVSSmUxMFqJnH4QTElmhNA",
+    },
+  },
+
+  // Independent, free admission: rides are paid per ride (ticket books) or
+  // with ride-all-day passes. The ticket webstore (Gateway's eGalaxy, at
+  // tickets.knoebels.com) sits behind a Cloudflare challenge, so it isn't
+  // linked directly; the pricing page links each product into it.
+  knoebels: {
+    website: "https://knoebels.com/",
+    location: {
+      address: "Knoebels Amusement Resort, 391 Knoebels Blvd, Route 487, Elysburg, PA",
+      postcode: "17824",
+      query: "Knoebels Amusement Resort, Elysburg, PA 17824",
+      // OpenStreetMap way 297094220 (operator "Knoebels Amusement Resort",
+      // fee=no, the largest lot).
+      drive: { lat: 40.878479, lon: -76.497366, label: "the main parking lot" },
+      directions: "https://knoebels.com/info/plan-your-visit/",
+      note: "Admission and parking are free.",
+    },
+    booking: [
+      {
+        label: "Pricing",
+        url: "https://knoebels.com/info/pricing/",
+        note: "Ticket books, ride-all-day passes and add-ons, each linked to the park's webstore",
+      },
+    ],
+    // No order lookup: the park's FAQ sends questions about an online order to
+    // an email address.
+    orders: [],
+    rideAvailability: rideAvailability(
+      "https://knoebels.com/rides/",
+      "Today's open or closed status for each ride, with height limits and prices",
+    ),
+    openingTimes: openingTimes("https://knoebels.com/calendar/"),
+    access: [
+      {
+        label: "Accessibility",
+        url: "https://knoebels.com/info/accessibility/",
+        note: "Ride Accessibility Program - boarding via exit gates, needs an IBCCES Accessibility Card",
+      },
+      {
+        label: "IBCCES Accessibility Card",
+        url: "https://www.accessibilitycard.org/",
+        note: "Register in advance - only IBCCES issues the card",
+      },
+    ],
+    photos: [
+      {
+        label: "Season Photo Pass",
+        url: "https://knoebels.com/faqs/mobile-app-photo-policy/",
+        note: "Bought in the app - every ride photo all season in an online album",
+      },
+    ],
+    apps: [
+      {
+        name: "Knoebels Amusement Resort",
+        ios: appStore("knoebels-amusement-resort", "1612443277"),
+        android: playStore("com.knoebels"),
+        note: "Also where the Season Photo Pass is bought and photos are collected",
+      },
+    ],
+    social: {
+      facebook: "https://www.facebook.com/KnoebelsAmusementResort/",
+      instagram: "https://www.instagram.com/knoebels/",
+      tiktok: "https://www.tiktok.com/@knoebelsofficial",
+      x: "https://x.com/knoebels",
+      youtube: "https://www.youtube.com/user/KnoebelsTube",
+      linkedin: "https://www.linkedin.com/company/knoebels/",
     },
   },
 };

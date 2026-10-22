@@ -244,6 +244,12 @@ async function fetchBpbHours(
 
 /* ── Knoebels (one request per day) ───────────────────────────────────────────── */
 
+/** knoebels.com robots.txt: Crawl-delay: 10. */
+const KNOEBELS_DELAY_MS = 10_000;
+/** The hourly hours cron's UTC hour at which Knoebels is read (06:00 Eastern
+ *  in summer, before the park opens). */
+export const KNOEBELS_HOUR = 10;
+
 interface KnoebelsDay {
   date?: string;
   open?: boolean;
@@ -251,9 +257,12 @@ interface KnoebelsDay {
 }
 
 /**
- * Knoebels' hours, a day per request, four at a time. A closed day is left
- * out, as Blackpool's feed leaves it out. The range title names the season or
- * event ("Hallo-Fun"); plain "Park" is the ordinary season and isn't one.
+ * Knoebels' hours, a day per request, one request every 10 seconds: the site's
+ * robots.txt asks for a 10-second crawl delay. That makes a pass take about
+ * five minutes, so it runs once a day (KNOEBELS_HOUR), not with every hourly
+ * poll. A closed day is left out, as Blackpool's feed leaves it out. The range
+ * title names the season or event ("Hallo-Fun"); plain "Park" is the ordinary
+ * season and isn't one.
  */
 async function fetchKnoebelsHours(
   cfg: Extract<OpeningHoursConfig, { kind: "knoebels" }>,
@@ -263,31 +272,29 @@ async function fetchKnoebelsHours(
   const snapshot: HoursSnapshot = {};
   let status = 0;
   let failed = 0;
-  for (let i = 0; i < dates.length; i += 4) {
-    await Promise.all(
-      dates.slice(i, i + 4).map(async (date) => {
-        let day: KnoebelsDay;
-        try {
-          const resp = await fetch(`${cfg.hoursUrl}?day=${date}`, {
-            headers: { accept: "application/json", "user-agent": USER_AGENT },
-          });
-          status = resp.status;
-          if (!resp.ok) throw new Error(String(resp.status));
-          day = (await resp.json()) as KnoebelsDay;
-        } catch {
-          failed++;
-          return;
-        }
-        const open = (day.ranges ?? []).filter((r) => r.status === "open" && r.opens && r.closes);
-        if (!day.open || open.length === 0) return;
-        const hours = open.map((r) => `${fmt24(r.opens!)} - ${fmt24(r.closes!)}`).join(", ");
-        const event = open.map((r) => r.title?.trim()).find((t) => t && t.toLowerCase() !== "park");
-        snapshot[date] = {
-          locations: [{ kind: "themepark", name: cfg.locationName, hours }],
-          ...(event ? { event } : {}),
-        };
-      }),
-    );
+  for (let i = 0; i < dates.length; i++) {
+    if (i > 0) await new Promise((r) => setTimeout(r, KNOEBELS_DELAY_MS));
+    const date = dates[i];
+    let day: KnoebelsDay;
+    try {
+      const resp = await fetch(`${cfg.hoursUrl}?day=${date}`, {
+        headers: { accept: "application/json", "user-agent": USER_AGENT },
+      });
+      status = resp.status;
+      if (!resp.ok) throw new Error(String(resp.status));
+      day = (await resp.json()) as KnoebelsDay;
+    } catch {
+      failed++;
+      continue;
+    }
+    const open = (day.ranges ?? []).filter((r) => r.status === "open" && r.opens && r.closes);
+    if (!day.open || open.length === 0) continue;
+    const hours = open.map((r) => `${fmt24(r.opens!)} - ${fmt24(r.closes!)}`).join(", ");
+    const event = open.map((r) => r.title?.trim()).find((t) => t && t.toLowerCase() !== "park");
+    snapshot[date] = {
+      locations: [{ kind: "themepark", name: cfg.locationName, hours }],
+      ...(event ? { event } : {}),
+    };
   }
   // A partial window would write a partial iCal feed; treat it as a failed poll
   // and keep what's on file.
@@ -633,6 +640,8 @@ export async function runHoursPoll(env: Env, park: ParkConfig): Promise<number> 
   // A queue-only park (Paulton's) has no marketing-site calendar to poll.
   const cfg = park.openingHours;
   if (!cfg) return 0;
+  // Once a day: a full pass at Knoebels' crawl delay takes about five minutes.
+  if (cfg.kind === "knoebels" && new Date().getUTCHours() !== KNOEBELS_HOUR) return 0;
   const observedAt = new Date().toISOString();
   const res = await fetchHours(cfg);
   if (res.ok) {

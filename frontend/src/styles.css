@@ -72,8 +72,47 @@ h1 {
 /* Park picker: the current park as one button, opening a searchable list
    grouped by country or operator (ParkPicker.tsx). */
 .park-picker {
-  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 16px;
   margin-top: 8px;
+}
+.pp-anchor {
+  position: relative;
+}
+.pp-row {
+  display: contents;
+}
+.park-link {
+  font-size: 14px;
+  color: var(--muted);
+  text-decoration: none;
+}
+.park-link:hover {
+  color: var(--fg);
+}
+.park-link.active {
+  color: var(--fg);
+  font-weight: 600;
+}
+.pp-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  font: inherit;
+  font-size: 14px;
+  color: var(--muted);
+  background: none;
+  border: 1px solid var(--grid);
+  border-radius: 6px;
+  cursor: pointer;
+}
+.pp-more:hover,
+.pp-more[aria-expanded="true"] {
+  color: var(--fg);
+  border-color: var(--muted);
 }
 .pp-button {
   display: inline-flex;

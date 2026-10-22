@@ -1,6 +1,7 @@
-import { useEffect, useId, useMemo, useRef, useState } from "react";
+import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { PARKS, type ParkDef } from "./catalog";
+import { useMediaQuery } from "./useMediaQuery";
 
 type GroupBy = "country" | "operator";
 
@@ -108,12 +109,17 @@ export function ParkPicker({
     load(GROUP_KEY) === "operator" ? "operator" : "country",
   );
   const [recent, setRecent] = useState<string[]>(loadRecent);
-  const [active, setActive] = useState(0);
+  // The highlighted option; null until the arrows or mouse pick one.
+  const [picked, setPicked] = useState<number | null>(null);
+  // Desktop has room for the recent parks as links, with the full list behind
+  // "More parks"; a phone gets the current park as the one button.
+  const wide = useMediaQuery("(min-width: 820px)");
 
   const rootRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const uid = useId();
@@ -130,6 +136,18 @@ export function ParkPicker({
       return next;
     });
   }, [current.key]);
+
+  // The panel hangs from its button's left edge; "More parks" can sit far
+  // enough right for that to run off the window, so pull it back in.
+  useLayoutEffect(() => {
+    const panel = panelRef.current;
+    const button = buttonRef.current;
+    if (!open || !panel || !button) return;
+    panel.style.left = "0px";
+    const gutter = 16;
+    const over = button.getBoundingClientRect().left + panel.offsetWidth - (window.innerWidth - gutter);
+    if (over > 0) panel.style.left = `${-over}px`;
+  }, [open, wide]);
 
   // Choosing a park changes the route; close on any navigation.
   useEffect(() => setOpen(false), [pathname]);
@@ -154,13 +172,25 @@ export function ParkPicker({
   );
   const sections = useMemo(() => group(filtered, groupBy), [filtered, groupBy]);
   const recentParks =
-    words.length === 0
+    !wide && words.length === 0
       ? recent
           .filter((k) => k !== current.key)
           .slice(0, RECENT_MAX)
           .map((k) => PARKS.find((p) => p.key === k)!)
           .filter(Boolean)
       : [];
+
+  // The desktop row: the current park and the last few viewed, topped up from
+  // the catalog for a new visitor, then shown in catalog order so the links
+  // don't swap places on every switch.
+  const rowParks = (() => {
+    const keys = new Set([current.key, ...recent].slice(0, RECENT_MAX + 1));
+    for (const p of PARKS) {
+      if (keys.size > RECENT_MAX) break;
+      keys.add(p.key);
+    }
+    return PARKS.filter((p) => keys.has(p.key));
+  })();
 
   // Options in display order, for the arrow keys. Recent parks appear twice
   // (in Recent and in their section), so each option gets its own id.
@@ -174,15 +204,13 @@ export function ParkPicker({
   ];
   const indexOf = new Map(options.map((o, i) => [o.id, i]));
 
-  // Start on the current park, or on the first match once a query is typed.
-  useEffect(() => {
-    if (!open) return;
-    const i = words.length
-      ? 0
-      : options.findIndex((o) => o.park.key === current.key && !o.id.includes("-recent-"));
-    setActive(Math.max(0, i));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [open, query, groupBy]);
+  // Until one is picked, highlight the current park, or the first match once
+  // a query is typed. Worked out in render, not an effect, so an Enter typed
+  // straight after a keystroke never meets a stale index.
+  const fallback = words.length
+    ? 0
+    : Math.max(0, options.findIndex((o) => o.park.key === current.key && !o.id.includes("-recent-")));
+  const active = Math.min(picked ?? fallback, options.length - 1);
 
   const activeId = options[active]?.id;
   useEffect(() => {
@@ -204,7 +232,7 @@ export function ParkPicker({
       e.preventDefault();
       if (!options.length) return;
       const step = e.key === "ArrowDown" ? 1 : -1;
-      setActive((i) => (i + step + options.length) % options.length);
+      setPicked((active + step + options.length) % options.length);
     } else if (e.key === "Enter" && e.target === inputRef.current) {
       const o = options[active];
       if (o) {
@@ -217,6 +245,7 @@ export function ParkPicker({
 
   const changeGroup = (by: GroupBy) => {
     setGroupBy(by);
+    setPicked(null);
     save(GROUP_KEY, by);
   };
 
@@ -235,7 +264,7 @@ export function ParkPicker({
           (i === active ? " active" : "") +
           (p.key === current.key ? " current" : "")
         }
-        onMouseMove={() => i !== active && setActive(i)}
+        onMouseMove={() => i !== active && setPicked(i)}
         onClick={() => setOpen(false)}
       >
         {p.label}
@@ -257,92 +286,118 @@ export function ParkPicker({
         }
       }}
     >
-      <button
-        ref={buttonRef}
-        type="button"
-        className="pp-button"
-        aria-haspopup="dialog"
-        aria-expanded={open}
-        aria-controls={open ? panelId : undefined}
-        onClick={() => {
-          setQuery("");
-          setOpen((o) => !o);
-        }}
-      >
-        <span className="pp-name">{current.label}</span>
-        <span className="pp-where">{where}</span>
-        <svg className="pp-caret" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
-          <path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" strokeWidth="1.6" />
-        </svg>
-      </button>
-      {open && (
-        <div id={panelId} className="pp-panel" role="dialog" aria-label="Choose a park">
-          <div className="pp-top">
-            <input
-              ref={inputRef}
-              type="search"
-              className="pp-search"
-              role="combobox"
-              aria-expanded="true"
-              aria-controls={listId}
-              aria-autocomplete="list"
-              aria-activedescendant={options[active]?.id}
-              aria-label="Search parks"
-              placeholder={`Search ${PARKS.length} parks`}
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-            />
-            <div className="pp-groupby" role="group" aria-label="Group parks by">
-              {(["country", "operator"] as const).map((by) => (
-                <button
-                  key={by}
-                  type="button"
-                  aria-pressed={groupBy === by}
-                  className={groupBy === by ? "on" : ""}
-                  onClick={() => changeGroup(by)}
-                >
-                  {by === "country" ? "Country" : "Operator"}
-                </button>
+      {wide && (
+        <nav className="pp-row" aria-label="Recent parks">
+          {rowParks.map((p) => (
+            <Link
+              key={p.key}
+              to={hrefFor(p)}
+              aria-current={p.key === current.key ? "page" : undefined}
+              className={"park-link" + (p.key === current.key ? " active" : "")}
+            >
+              {p.label}
+            </Link>
+          ))}
+        </nav>
+      )}
+      <div className="pp-anchor">
+        <button
+          ref={buttonRef}
+          type="button"
+          className={wide ? "pp-more" : "pp-button"}
+          aria-haspopup="dialog"
+          aria-expanded={open}
+          aria-controls={open ? panelId : undefined}
+          onClick={() => {
+            setQuery("");
+            setPicked(null);
+            setOpen((o) => !o);
+          }}
+        >
+          {wide ? (
+            "More parks"
+          ) : (
+            <>
+              <span className="pp-name">{current.label}</span>
+              <span className="pp-where">{where}</span>
+            </>
+          )}
+          <svg className="pp-caret" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
+            <path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" strokeWidth="1.6" />
+          </svg>
+        </button>
+        {open && (
+          <div ref={panelRef} id={panelId} className="pp-panel" role="dialog" aria-label="Choose a park">
+            <div className="pp-top">
+              <input
+                ref={inputRef}
+                type="search"
+                className="pp-search"
+                role="combobox"
+                aria-expanded="true"
+                aria-controls={listId}
+                aria-autocomplete="list"
+                aria-activedescendant={options[active]?.id}
+                aria-label="Search parks"
+                placeholder={`Search ${PARKS.length} parks`}
+                value={query}
+                onChange={(e) => {
+                  setQuery(e.target.value);
+                  setPicked(null);
+                }}
+              />
+              <div className="pp-groupby" role="group" aria-label="Group parks by">
+                {(["country", "operator"] as const).map((by) => (
+                  <button
+                    key={by}
+                    type="button"
+                    aria-pressed={groupBy === by}
+                    className={groupBy === by ? "on" : ""}
+                    onClick={() => changeGroup(by)}
+                  >
+                    {by === "country" ? "Country" : "Operator"}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div className="pp-list" id={listId} role="listbox" ref={listRef} aria-label="Parks">
+              {recentParks.length > 0 && (
+                <div role="group" aria-labelledby={`${uid}-h-recent`}>
+                  <div className="pp-heading" id={`${uid}-h-recent`}>Recent</div>
+                  {recentParks.map((p) => option(`${uid}-recent-${p.key}`, p))}
+                </div>
+              )}
+              {sections.map((s) => (
+                <div key={s.key} role="group" aria-labelledby={`${uid}-h-${s.key}`}>
+                  <div className="pp-heading" id={`${uid}-h-${s.key}`}>
+                    {s.label}
+                  </div>
+                  {s.entries.map((e) =>
+                    e.resort ? (
+                      <div
+                        key={e.resort}
+                        className="pp-resort"
+                        role="group"
+                        aria-label={e.resort}
+                      >
+                        <div className="pp-resort-name" aria-hidden="true">
+                          {e.resort}
+                        </div>
+                        {e.parks.map((p) => option(`${uid}-${s.key}-${p.key}`, p))}
+                      </div>
+                    ) : (
+                      option(`${uid}-${s.key}-${e.parks[0].key}`, e.parks[0])
+                    ),
+                  )}
+                </div>
               ))}
+              {options.length === 0 && (
+                <div className="pp-empty">No park matches "{query}"</div>
+              )}
             </div>
           </div>
-          <div className="pp-list" id={listId} role="listbox" ref={listRef} aria-label="Parks">
-            {recentParks.length > 0 && (
-              <div role="group" aria-labelledby={`${uid}-h-recent`}>
-                <div className="pp-heading" id={`${uid}-h-recent`}>Recent</div>
-                {recentParks.map((p) => option(`${uid}-recent-${p.key}`, p))}
-              </div>
-            )}
-            {sections.map((s) => (
-              <div key={s.key} role="group" aria-labelledby={`${uid}-h-${s.key}`}>
-                <div className="pp-heading" id={`${uid}-h-${s.key}`}>
-                  {s.label}
-                </div>
-                {s.entries.map((e) =>
-                  e.resort ? (
-                    <div
-                      key={e.resort}
-                      className="pp-resort"
-                      role="group"
-                      aria-label={e.resort}
-                    >
-                      <div className="pp-resort-name" aria-hidden="true">
-                        {e.resort}
-                      </div>
-                      {e.parks.map((p) => option(`${uid}-${s.key}-${p.key}`, p))}
-                    </div>
-                  ) : (
-                    option(`${uid}-${s.key}-${e.parks[0].key}`, e.parks[0])
-                  ),
-                )}
-              </div>
-            ))}
-            {options.length === 0 && (
-              <div className="pp-empty">No park matches "{query}"</div>
-            )}
-          </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }

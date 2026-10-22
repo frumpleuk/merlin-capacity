@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { useParkKey } from "./useParkKey";
 import {
   loadQueueDay,
   loadProductMonth,
@@ -12,7 +13,7 @@ import {
   type RideStats,
   type SpecialDaysFile,
 } from "./api";
-import { findPark, PARK_HOME } from "./catalog";
+import { findPark, PARK_HOME, parkPath } from "./catalog";
 import { PARK_LINKS } from "./links";
 import { DateNav, QueueList } from "./Queues";
 
@@ -26,7 +27,8 @@ function addDays(date: string, delta: number): string {
 }
 
 export function QueuesPage() {
-  const { park, date: dateParam } = useParams();
+  const { date: dateParam } = useParams();
+  const park = useParkKey();
   const parkDef = findPark(park);
   const navigate = useNavigate();
   const date = dateParam ?? today();
@@ -94,7 +96,7 @@ export function QueuesPage() {
 
   // Nav base: date param drops off for "today" so the URL stays clean.
   const go = (d: string) =>
-    navigate(d === today() ? `/${park}/queues` : `/${park}/queues/${d}`);
+    navigate(`${parkPath(parkDef!)}/queues${d === today() ? "" : `/${d}`}`);
   const canPrev = !bounds || date > bounds.minDate;
   const canNext = date < today();
 

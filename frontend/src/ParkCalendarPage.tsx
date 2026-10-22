@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Navigate, useParams } from "react-router-dom";
+import { Navigate } from "react-router-dom";
+import { useParkKey } from "./useParkKey";
 import {
   type HoursFile,
   loadHoursMonth,
@@ -14,7 +15,7 @@ import {
   type RestrictionsFile,
   type SpecialDaysFile,
 } from "./api";
-import { findPark, PARK_HOME } from "./catalog";
+import { findPark, PARK_HOME, parkPath } from "./catalog";
 import { ParkCalendar } from "./ParkCalendar";
 
 interface MonthData {
@@ -69,7 +70,7 @@ function addMonths(month: string, delta: number): string {
 }
 
 export function ParkCalendarPage() {
-  const { park } = useParams();
+  const park = useParkKey();
   const parkDef = findPark(park);
 
   const [month, setMonth] = useState(currentMonth);
@@ -143,7 +144,7 @@ export function ParkCalendarPage() {
 
   if (!parkDef) return <Navigate to={PARK_HOME} replace />;
   // A queue-only park has no calendar — its home is the Queues tab.
-  if (parkDef.queueOnly) return <Navigate to={`/${park}/queues`} replace />;
+  if (parkDef.queueOnly) return <Navigate to={`${parkPath(parkDef)}/queues`} replace />;
 
   const canPrev = !bounds || month > bounds.minMonth;
   const canNext = !bounds || month < bounds.maxMonth;

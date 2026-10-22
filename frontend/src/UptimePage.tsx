@@ -1,5 +1,6 @@
 import { Fragment, useEffect, useMemo, useState } from "react";
-import { Navigate, useParams } from "react-router-dom";
+import { Navigate } from "react-router-dom";
+import { useParkKey } from "./useParkKey";
 import {
   loadUptime,
   OUTAGE_BINS,
@@ -510,7 +511,7 @@ function RideRow({
 }
 
 export function UptimePage() {
-  const { park } = useParams();
+  const park = useParkKey();
   const parkDef = findPark(park);
   const [data, setData] = useState<UptimeFile | null | undefined>(undefined);
   const [win, setWin] = useState<string>("d28");

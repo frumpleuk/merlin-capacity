@@ -1,7 +1,8 @@
-import { NavLink, Outlet, useLocation, useParams } from "react-router-dom";
-import { findPark, PARKS, type ParkDef } from "./catalog";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
+import { findPark, parkPath, PARKS, type ParkDef } from "./catalog";
 import { PARK_LINKS } from "./links";
 import { ParkPicker } from "./ParkPicker";
+import { useParkKey } from "./useParkKey";
 import MENUS from "./menus.index.json";
 
 type MenuCounts = Record<string, { venues: number; water: number }>;
@@ -15,13 +16,14 @@ function hasFood(park: string): boolean {
 }
 
 export function Layout() {
-  const { park } = useParams();
-  const parkDef = findPark(park) ?? PARKS[0];
+  const parkDef = findPark(useParkKey()) ?? PARKS[0];
+  const base = parkPath(parkDef);
 
-  // The path segments after the park (e.g. ["main"], ["queues"], ["queues",
-  // "2026-07-18"]), used to keep you on the same page when you switch parks.
+  // The path segments after /<country>/<slug> (e.g. ["main"], ["queues"],
+  // ["queues", "2026-07-18"]), used to keep you on the same page when you
+  // switch parks.
   const { pathname } = useLocation();
-  const rest = pathname.split("/").filter(Boolean).slice(1);
+  const rest = pathname.split("/").filter(Boolean).slice(2);
   const section = rest[0]; // undefined (calendar) | "queues" | a product key
 
   // Where a given park's nav link should point. Switching parks keeps the same
@@ -32,16 +34,16 @@ export function Layout() {
   const targetFor = (p: ParkDef): string => {
     // Links come before the queue-only check: every park has a link directory,
     // whether or not it has a calendar.
-    if (section === "links" && PARK_LINKS[p.key]) return `/${p.key}/links`;
+    if (section === "links" && PARK_LINKS[p.key]) return `${parkPath(p)}/links`;
     // Food & Drink exists wherever we have the park's outlets or its water.
-    if (section === "food" && hasFood(p.key)) return `/${p.key}/food`;
-    if (p.queueOnly) return `/${p.key}/queues`; // no calendar/products — always queues
-    if (!section) return `/${p.key}`; // calendar home
-    if (section === "queues") return `/${p.key}/${rest.join("/")}`; // queues (+ date)
+    if (section === "food" && hasFood(p.key)) return `${parkPath(p)}/food`;
+    if (p.queueOnly) return `${parkPath(p)}/queues`; // no calendar/products — always queues
+    if (!section) return parkPath(p); // calendar home
+    if (section === "queues") return `${parkPath(p)}/${rest.join("/")}`; // queues (+ date)
     // Uptime exists wherever queues do — it's derived from the same files.
-    if (section === "uptime") return `/${p.key}/uptime`;
-    if (p.products.some((pr) => pr.key === section)) return `/${p.key}/${section}`;
-    return `/${p.key}`; // this park doesn't have that product → its calendar home
+    if (section === "uptime") return `${parkPath(p)}/uptime`;
+    if (p.products.some((pr) => pr.key === section)) return `${parkPath(p)}/${section}`;
+    return parkPath(p); // this park doesn't have that product → its calendar home
   };
 
   return (
@@ -55,7 +57,7 @@ export function Layout() {
           {!parkDef.queueOnly && (
             <NavLink
               end
-              to={`/${parkDef.key}`}
+              to={base}
               className={({ isActive }) => "tab" + (isActive ? " active" : "")}
             >
               Calendar
@@ -63,7 +65,7 @@ export function Layout() {
           )}
           {/* Ride queue times (stays active on the /queues/:date history URLs). */}
           <NavLink
-            to={`/${parkDef.key}/queues`}
+            to={`${base}/queues`}
             className={({ isActive }) => "tab" + (isActive ? " active" : "")}
           >
             Queues
@@ -73,7 +75,7 @@ export function Layout() {
               "Availability": this app already spends that word on TICKET
               availability, and the two sit one tab apart. */}
           <NavLink
-            to={`/${parkDef.key}/uptime`}
+            to={`${base}/uptime`}
             className={({ isActive }) => "tab" + (isActive ? " active" : "")}
           >
             Uptime
@@ -81,7 +83,7 @@ export function Layout() {
           {parkDef.products.map((pr) => (
             <NavLink
               key={pr.key}
-              to={`/${parkDef.key}/${pr.key}`}
+              to={`${base}/${pr.key}`}
               className={({ isActive }) => "tab" + (isActive ? " active" : "")}
             >
               {pr.label}
@@ -91,7 +93,7 @@ export function Layout() {
               boards, every outlet the park's app lists, and the free water. */}
           {hasFood(parkDef.key) && (
             <NavLink
-              to={`/${parkDef.key}/food`}
+              to={`${base}/food`}
               className={({ isActive }) => "tab" + (isActive ? " active" : "")}
             >
               Food &amp; Drink
@@ -101,7 +103,7 @@ export function Layout() {
               last, since it's reference material rather than live data. */}
           {PARK_LINKS[parkDef.key] && (
             <NavLink
-              to={`/${parkDef.key}/links`}
+              to={`${base}/links`}
               className={({ isActive }) => "tab" + (isActive ? " active" : "")}
             >
               Links

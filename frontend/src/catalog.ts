@@ -8,7 +8,11 @@ export interface ProductDef {
 }
 
 export interface ParkDef {
+  /** Internal id: R2 paths, the poller, menus. Never shown in a URL. */
   key: string;
+  /** The park's name in its URL, /<country>/<slug>. Set by hand, not derived
+   *  from the label, so renaming a park doesn't break links to it. */
+  slug: string;
   label: string;
   products: ProductDef[];
   /** Queue-only park (Paulton's): no accesso tickets/calendar, only the live
@@ -42,6 +46,7 @@ export interface ParkDef {
 export const PARKS: ParkDef[] = [
   {
     key: "alton_towers",
+    slug: "alton-towers",
     country: "GB",
     operator: "Merlin Entertainments",
     merlinPass: true,
@@ -55,6 +60,7 @@ export const PARKS: ParkDef[] = [
   },
   {
     key: "thorpe_park",
+    slug: "thorpe-park",
     country: "GB",
     operator: "Merlin Entertainments",
     merlinPass: true,
@@ -68,6 +74,7 @@ export const PARKS: ParkDef[] = [
   },
   {
     key: "legoland",
+    slug: "legoland-windsor",
     country: "GB",
     operator: "Merlin Entertainments",
     merlinPass: true,
@@ -79,6 +86,7 @@ export const PARKS: ParkDef[] = [
   },
   {
     key: "chessington",
+    slug: "chessington",
     country: "GB",
     operator: "Merlin Entertainments",
     merlinPass: true,
@@ -95,6 +103,7 @@ export const PARKS: ParkDef[] = [
     // availability (the "main" heatmap). The calendar's opening times frame the
     // queue sparkline's x-axis.
     key: "paultons",
+    slug: "paultons-park",
     country: "GB",
     label: "Paultons Park",
     products: [{ key: "main", label: "Tickets" }],
@@ -105,6 +114,7 @@ export const PARKS: ParkDef[] = [
     // from The Events Calendar iCal feed — no opening hours) shows alongside live
     // queues.
     key: "flamingoland",
+    slug: "flamingo-land",
     country: "GB",
     label: "Flamingo Land",
     products: [],
@@ -116,6 +126,7 @@ export const PARKS: ParkDef[] = [
     // empty (no availability heatmaps) but the Calendar tab still shows — hours
     // and events only.
     key: "blackpool",
+    slug: "blackpool-pleasure-beach",
     country: "GB",
     label: "Blackpool Pleasure Beach",
     products: [],
@@ -124,6 +135,7 @@ export const PARKS: ParkDef[] = [
     // Disneyland Paris's two parks, a calendar + queue park each. They share one
     // wait feed and one hours query, split by park id in the poller. Paris time.
     key: "disneyland_park",
+    slug: "disneyland-park",
     country: "FR",
     operator: "Disney",
     resort: "Disneyland Paris",
@@ -133,6 +145,7 @@ export const PARKS: ParkDef[] = [
   },
   {
     key: "disney_adventure_world",
+    slug: "disney-adventure-world",
     country: "FR",
     operator: "Disney",
     resort: "Disneyland Paris",
@@ -142,11 +155,27 @@ export const PARKS: ParkDef[] = [
   },
 ];
 
-// The rich per-park calendar (park home) is the default landing view.
-export const PARK_HOME = `/${PARKS[0].key}`;
-// A specific product's heatmap — the drill-down default.
-export const DEFAULT_PATH = `/${PARKS[0].key}/${PARKS[0].products[0].key}`;
+/** A park's base URL: lower-case country code, then its slug (/gb/alton-towers). */
+export function parkPath(p: ParkDef): string {
+  return `/${p.country.toLowerCase()}/${p.slug}`;
+}
 
+// The rich per-park calendar (park home) is the default landing view.
+export const PARK_HOME = parkPath(PARKS[0]);
+// A specific product's heatmap — the drill-down default.
+export const DEFAULT_PATH = `${PARK_HOME}/${PARKS[0].products[0].key}`;
+
+/** By internal key. */
 export function findPark(park: string | undefined): ParkDef | undefined {
   return PARKS.find((p) => p.key === park);
+}
+
+/** By the /:country/:slug URL segments. */
+export function findParkByPath(
+  country: string | undefined,
+  slug: string | undefined,
+): ParkDef | undefined {
+  return PARKS.find(
+    (p) => p.country.toLowerCase() === country?.toLowerCase() && p.slug === slug,
+  );
 }

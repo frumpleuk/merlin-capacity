@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
+import { useParkKey } from "./useParkKey";
 import {
   loadParkIndex,
   loadProduct,
@@ -12,7 +13,8 @@ import { DEFAULT_PATH, findPark } from "./catalog";
 import { DetailBar, ProductCalendar } from "./Heatmap";
 
 export function CalendarPage() {
-  const { park, product } = useParams();
+  const { product } = useParams();
+  const park = useParkKey();
   const parkDef = findPark(park);
   const productDef = parkDef?.products.find((pr) => pr.key === product);
 

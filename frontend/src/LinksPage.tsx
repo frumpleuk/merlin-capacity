@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Navigate, useParams } from "react-router-dom";
+import { Navigate } from "react-router-dom";
+import { useParkKey } from "./useParkKey";
 import { loadRestrictions, tierSlug, type RestrictionsFile } from "./api";
 import { findPark, PARK_HOME, type ParkDef } from "./catalog";
 import {
@@ -283,7 +284,7 @@ function GettingThereGroup({ location }: { location: ParkLocation }) {
  *  The groups lay out as columns on a wide screen and stack on a narrow one;
  *  Social spans the full width so its pills get a full row before wrapping. */
 export function LinksPage() {
-  const { park } = useParams();
+  const park = useParkKey();
   const parkDef = findPark(park);
   if (!parkDef) return <Navigate to={PARK_HOME} replace />;
 

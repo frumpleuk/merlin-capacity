@@ -7,7 +7,8 @@ import {
   useState,
   type PointerEvent as ReactPointerEvent,
 } from "react";
-import { Navigate, useParams, useSearchParams } from "react-router-dom";
+import { Navigate, useSearchParams } from "react-router-dom";
+import { useParkKey } from "./useParkKey";
 import { findPark, PARK_HOME } from "./catalog";
 import INDEX from "./menus.index.json";
 import { ParkMap, type MapArea } from "./ParkMap";
@@ -744,7 +745,7 @@ function Facet({
 }
 
 export function MenusPage() {
-  const { park } = useParams();
+  const park = useParkKey();
   const parkDef = findPark(park);
   const [params, setParams] = useSearchParams();
   // The search lives in the URL, so a "where can I get chips" link is sendable.

@@ -220,15 +220,52 @@ h1 {
 .pp-resort .pp-option {
   padding-left: 28px;
 }
+.pp-item {
+  display: flex;
+  align-items: center;
+}
+.pp-item.active {
+  background: var(--card);
+}
 .pp-option {
-  display: block;
+  flex: 1;
+  min-width: 0;
   padding: 7px 14px;
   font-size: 14px;
   color: var(--fg);
   text-decoration: none;
 }
-.pp-option.active {
-  background: var(--card);
+.pp-pin {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  margin-right: 6px;
+  padding: 0;
+  color: var(--muted);
+  background: none;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  /* Shown on the highlighted row, or always once pinned or on touch. */
+  opacity: 0;
+}
+.pp-item.active .pp-pin,
+.pp-pin:focus-visible,
+.pp-pin.on {
+  opacity: 1;
+}
+.pp-pin.on {
+  color: var(--fg);
+}
+.pp-pin:hover {
+  color: var(--fg);
+  background: var(--grid);
+}
+@media (hover: none) {
+  .pp-pin {
+    opacity: 1;
+  }
 }
 .pp-option.current {
   font-weight: 600;

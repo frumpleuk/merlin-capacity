@@ -1,4 +1,11 @@
-import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState } from "react";
+import {
+  useEffect,
+  useId,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { PARKS, type ParkDef } from "./catalog";
 import { useMediaQuery } from "./useMediaQuery";
@@ -8,6 +15,7 @@ type GroupBy = "country" | "operator";
 const INDEPENDENT = "Independent";
 const RECENT_KEY = "parkPicker.recent";
 const GROUP_KEY = "parkPicker.groupBy";
+const PIN_KEY = "parkPicker.pinned";
 const RECENT_MAX = 4;
 
 const regionNames = new Intl.DisplayNames(["en"], { type: "region" });
@@ -37,10 +45,13 @@ function save(key: string, value: string): void {
     /* storage unavailable */
   }
 }
-function loadRecent(): string[] {
+/** A stored list of park keys, dropping any park no longer in the catalog. */
+function loadKeys(key: string): string[] {
   try {
-    const v = JSON.parse(load(RECENT_KEY) ?? "[]");
-    return Array.isArray(v) ? v.filter((k) => typeof k === "string") : [];
+    const v = JSON.parse(load(key) ?? "[]");
+    return Array.isArray(v)
+      ? v.filter((k) => PARKS.some((p) => p.key === k))
+      : [];
   } catch {
     return [];
   }
@@ -81,7 +92,11 @@ function group(parks: ParkDef[], by: GroupBy): Section[] {
     const key = by === "country" ? p.country : operatorOf(p);
     let s = sections.get(key);
     if (!s) {
-      s = { key, label: by === "country" ? countryName(key) : key, entries: [] };
+      s = {
+        key,
+        label: by === "country" ? countryName(key) : key,
+        entries: [],
+      };
       sections.set(key, s);
     }
     const resort = p.resort && s.entries.find((e) => e.resort === p.resort);
@@ -108,11 +123,13 @@ export function ParkPicker({
   const [groupBy, setGroupBy] = useState<GroupBy>(() =>
     load(GROUP_KEY) === "operator" ? "operator" : "country",
   );
-  const [recent, setRecent] = useState<string[]>(loadRecent);
+  const [recent, setRecent] = useState<string[]>(() => loadKeys(RECENT_KEY));
+  const [pinned, setPinned] = useState<string[]>(() => loadKeys(PIN_KEY));
   // The highlighted option; null until the arrows or mouse pick one.
   const [picked, setPicked] = useState<number | null>(null);
-  // Desktop has room for the recent parks as links, with the full list behind
-  // "More parks"; a phone gets the current park as the one button.
+  // Desktop has room for the pinned (or else recent) parks as links, with the
+  // full list behind "More parks"; a phone gets the current park as the one
+  // button.
   const wide = useMediaQuery("(min-width: 820px)");
 
   const rootRef = useRef<HTMLDivElement>(null);
@@ -145,7 +162,10 @@ export function ParkPicker({
     if (!open || !panel || !button) return;
     panel.style.left = "0px";
     const gutter = 16;
-    const over = button.getBoundingClientRect().left + panel.offsetWidth - (window.innerWidth - gutter);
+    const over =
+      button.getBoundingClientRect().left +
+      panel.offsetWidth -
+      (window.innerWidth - gutter);
     if (over > 0) panel.style.left = `${-over}px`;
   }, [open, wide]);
 
@@ -171,19 +191,39 @@ export function ParkPicker({
     [query],
   );
   const sections = useMemo(() => group(filtered, groupBy), [filtered, groupBy]);
+  const togglePin = (key: string) =>
+    setPinned((prev) => {
+      const next = prev.includes(key)
+        ? prev.filter((k) => k !== key)
+        : [...prev, key];
+      save(PIN_KEY, JSON.stringify(next));
+      return next;
+    });
+
+  // Pinned and recent parks head the list until a query is typed. Pinned
+  // parks show in catalog order; recent ones leave out what's pinned, and on
+  // desktop are left out altogether, as the row above already shows them.
+  const pinnedParks =
+    words.length === 0 ? PARKS.filter((p) => pinned.includes(p.key)) : [];
   const recentParks =
     !wide && words.length === 0
       ? recent
-          .filter((k) => k !== current.key)
+          .filter((k) => k !== current.key && !pinned.includes(k))
           .slice(0, RECENT_MAX)
           .map((k) => PARKS.find((p) => p.key === k)!)
           .filter(Boolean)
       : [];
 
-  // The desktop row: the current park and the last few viewed, topped up from
-  // the catalog for a new visitor, then shown in catalog order so the links
-  // don't swap places on every switch.
+  // The desktop row. With parks pinned: those and the current park. Without:
+  // the current park and the last few viewed, topped up from the catalog for a
+  // new visitor. Either way in catalog order, so links don't swap places on
+  // every switch.
   const rowParks = (() => {
+    if (pinned.length) {
+      return PARKS.filter(
+        (p) => pinned.includes(p.key) || p.key === current.key,
+      );
+    }
     const keys = new Set([current.key, ...recent].slice(0, RECENT_MAX + 1));
     for (const p of PARKS) {
       if (keys.size > RECENT_MAX) break;
@@ -192,13 +232,19 @@ export function ParkPicker({
     return PARKS.filter((p) => keys.has(p.key));
   })();
 
-  // Options in display order, for the arrow keys. Recent parks appear twice
-  // (in Recent and in their section), so each option gets its own id.
-  const options: { id: string; park: ParkDef }[] = [
+  // Options in display order, for the arrow keys. A pinned or recent park
+  // appears twice (up top and in its section), so each option gets its own id;
+  // `listed` marks the copy in its section.
+  const options: { id: string; park: ParkDef; listed?: boolean }[] = [
+    ...pinnedParks.map((p) => ({ id: `${uid}-pinned-${p.key}`, park: p })),
     ...recentParks.map((p) => ({ id: `${uid}-recent-${p.key}`, park: p })),
     ...sections.flatMap((s) =>
       s.entries.flatMap((e) =>
-        e.parks.map((p) => ({ id: `${uid}-${s.key}-${p.key}`, park: p })),
+        e.parks.map((p) => ({
+          id: `${uid}-${s.key}-${p.key}`,
+          park: p,
+          listed: true,
+        })),
       ),
     ),
   ];
@@ -209,7 +255,10 @@ export function ParkPicker({
   // straight after a keystroke never meets a stale index.
   const fallback = words.length
     ? 0
-    : Math.max(0, options.findIndex((o) => o.park.key === current.key && !o.id.includes("-recent-")));
+    : Math.max(
+        0,
+        options.findIndex((o) => o.park.key === current.key && o.listed),
+      );
   const active = Math.min(picked ?? fallback, options.length - 1);
 
   const activeId = options[active]?.id;
@@ -251,24 +300,44 @@ export function ParkPicker({
 
   const option = (id: string, p: ParkDef) => {
     const i = indexOf.get(id) ?? -1;
+    const isPinned = pinned.includes(p.key);
     return (
-      <Link
-        key={id}
-        id={id}
-        role="option"
-        aria-selected={i === active}
-        aria-current={p.key === current.key ? "page" : undefined}
-        to={hrefFor(p)}
-        className={
-          "pp-option" +
-          (i === active ? " active" : "") +
-          (p.key === current.key ? " current" : "")
-        }
-        onMouseMove={() => i !== active && setPicked(i)}
-        onClick={() => setOpen(false)}
-      >
-        {p.label}
-      </Link>
+      <div key={id} className={"pp-item" + (i === active ? " active" : "")}>
+        <Link
+          id={id}
+          role="option"
+          aria-selected={i === active}
+          aria-current={p.key === current.key ? "page" : undefined}
+          to={hrefFor(p)}
+          className={
+            "pp-option" +
+            (i === active ? " active" : "") +
+            (p.key === current.key ? " current" : "")
+          }
+          onMouseMove={() => i !== active && setPicked(i)}
+          onClick={() => setOpen(false)}
+        >
+          {p.label}
+        </Link>
+        <button
+          type="button"
+          className={"pp-pin" + (isPinned ? " on" : "")}
+          aria-pressed={isPinned}
+          aria-label={`${isPinned ? "Unpin" : "Pin"} ${p.label}`}
+          title={isPinned ? "Unpin" : "Pin to the top"}
+          onClick={() => togglePin(p.key)}
+        >
+          <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true">
+            <path
+              d="M10.5 1.5 14.5 5.5 12 6.5 9.5 9 10 12.5 8.5 14 5.5 11 2 14.5 1.5 14 5 10.5 2 7.5 3.5 6 7 6.5 9.5 4Z"
+              fill={isPinned ? "currentColor" : "none"}
+              stroke="currentColor"
+              strokeWidth="1.2"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
+      </div>
     );
   };
 
@@ -281,13 +350,19 @@ export function ParkPicker({
       onKeyDown={open ? onKeyDown : undefined}
       onBlur={(e) => {
         // Tabbing out of the panel closes it, as a click outside does.
-        if (open && !rootRef.current?.contains(e.relatedTarget as Node | null)) {
+        if (
+          open &&
+          !rootRef.current?.contains(e.relatedTarget as Node | null)
+        ) {
           setOpen(false);
         }
       }}
     >
       {wide && (
-        <nav className="pp-row" aria-label="Recent parks">
+        <nav
+          className="pp-row"
+          aria-label={pinned.length ? "Pinned parks" : "Recent parks"}
+        >
           {rowParks.map((p) => (
             <Link
               key={p.key}
@@ -322,12 +397,29 @@ export function ParkPicker({
               <span className="pp-where">{where}</span>
             </>
           )}
-          <svg className="pp-caret" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
-            <path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" strokeWidth="1.6" />
+          <svg
+            className="pp-caret"
+            width="12"
+            height="12"
+            viewBox="0 0 12 12"
+            aria-hidden="true"
+          >
+            <path
+              d="M2.5 4.5 6 8l3.5-3.5"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.6"
+            />
           </svg>
         </button>
         {open && (
-          <div ref={panelRef} id={panelId} className="pp-panel" role="dialog" aria-label="Choose a park">
+          <div
+            ref={panelRef}
+            id={panelId}
+            className="pp-panel"
+            role="dialog"
+            aria-label="Choose a park"
+          >
             <div className="pp-top">
               <input
                 ref={inputRef}
@@ -346,7 +438,11 @@ export function ParkPicker({
                   setPicked(null);
                 }}
               />
-              <div className="pp-groupby" role="group" aria-label="Group parks by">
+              <div
+                className="pp-groupby"
+                role="group"
+                aria-label="Group parks by"
+              >
                 {(["country", "operator"] as const).map((by) => (
                   <button
                     key={by}
@@ -360,15 +456,35 @@ export function ParkPicker({
                 ))}
               </div>
             </div>
-            <div className="pp-list" id={listId} role="listbox" ref={listRef} aria-label="Parks">
+            <div
+              className="pp-list"
+              id={listId}
+              role="listbox"
+              ref={listRef}
+              aria-label="Parks"
+            >
+              {pinnedParks.length > 0 && (
+                <div role="group" aria-labelledby={`${uid}-h-pinned`}>
+                  <div className="pp-heading" id={`${uid}-h-pinned`}>
+                    Pinned
+                  </div>
+                  {pinnedParks.map((p) => option(`${uid}-pinned-${p.key}`, p))}
+                </div>
+              )}
               {recentParks.length > 0 && (
                 <div role="group" aria-labelledby={`${uid}-h-recent`}>
-                  <div className="pp-heading" id={`${uid}-h-recent`}>Recent</div>
+                  <div className="pp-heading" id={`${uid}-h-recent`}>
+                    Recent
+                  </div>
                   {recentParks.map((p) => option(`${uid}-recent-${p.key}`, p))}
                 </div>
               )}
               {sections.map((s) => (
-                <div key={s.key} role="group" aria-labelledby={`${uid}-h-${s.key}`}>
+                <div
+                  key={s.key}
+                  role="group"
+                  aria-labelledby={`${uid}-h-${s.key}`}
+                >
                   <div className="pp-heading" id={`${uid}-h-${s.key}`}>
                     {s.label}
                   </div>
@@ -383,7 +499,9 @@ export function ParkPicker({
                         <div className="pp-resort-name" aria-hidden="true">
                           {e.resort}
                         </div>
-                        {e.parks.map((p) => option(`${uid}-${s.key}-${p.key}`, p))}
+                        {e.parks.map((p) =>
+                          option(`${uid}-${s.key}-${p.key}`, p),
+                        )}
                       </div>
                     ) : (
                       option(`${uid}-${s.key}-${e.parks[0].key}`, e.parks[0])

@@ -14,6 +14,7 @@
     "publish:menus": "node scripts/menus/publish.mjs",
     "deploy:ci": "wrangler d1 migrations apply merlin-capacity --remote && wrangler deploy && npm run publish:menus",
     "typecheck": "tsc --noEmit && tsc -p frontend/tsconfig.json --noEmit",
+    "check:park": "esbuild scripts/check-park.ts --bundle --platform=node --format=esm --outfile=node_modules/.cache/check-park.mjs --log-level=warning && node node_modules/.cache/check-park.mjs",
     "db:migrate": "wrangler d1 migrations apply merlin-capacity --remote",
     "db:migrate:local": "wrangler d1 migrations apply merlin-capacity --local"
   },

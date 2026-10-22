@@ -12,14 +12,23 @@ import {
 } from "./api";
 import { AllocList, AllocMeter } from "./AllocMeter";
 import { longDate } from "./Heatmap";
+import { parkDay, tzOffsetAt } from "./parkDay";
 
 /* ── Time helpers ──────────────────────────────────────────────────────────────
- * Samples carry minutes since UTC midnight. Park-local time (Europe/London for
- * the UK parks, Europe/Paris for Disneyland Paris) is reconstructed from the
- * day's date + the offset so the axis reads in the times guests experience. */
+ * Samples carry minutes since `${date}T00:00:00Z`, where `date` is the park's
+ * own day (see parkDay.ts), so they run negative east of UTC and past 1440 west
+ * of it. Park-local time is reconstructed from the date + the minutes so the
+ * axis reads in the times guests experience. */
 
 /** The park's IANA zone, provided by QueueList from its `timeZone` prop. */
 const TimeZoneContext = createContext("Europe/London");
+
+/** Local `from`:00 to `to`:00 on the park day, on the sample axis — the axis a
+ *  day with no hours and no running rides falls back to. */
+const localHours = (date: string, from: number, to: number, timeZone: string): [number, number] => {
+  const off = tzOffsetAt(Date.parse(`${date}T12:00:00Z`), timeZone);
+  return [from * 60 - off, to * 60 - off];
+};
 
 const parkTime = (date: string, mins: number, timeZone: string): string =>
   new Date(new Date(`${date}T00:00:00Z`).getTime() + mins * 60_000).toLocaleTimeString(
@@ -736,8 +745,8 @@ function RestartHint({
 }) {
   const s = rel?.outage_survival;
   if (!s) return null;
-  // `asOf` is minutes-since-UTC-midnight today, and 1440 on a past day — so the
-  // same test rules out both "after close" and "not today".
+  // `asOf` is now on today's page and the end of the park day on a past one, so
+  // the same test rules out both "after close" and "not today".
   if (asOf == null || !parkWindow) return null;
   if (asOf < parkWindow[0] || asOf >= parkWindow[1]) return null;
   const share = Math.round(s.resume_within_30 * 100);
@@ -1185,7 +1194,7 @@ export function QueueList({
   // same margin of closed time either side.
   const { domain, scale } = useMemo(() => {
     const rs = file?.rides ?? [];
-    const live = file?.date === new Date().toISOString().slice(0, 10);
+    const live = file?.date === parkDay(Date.now(), timeZone);
     let lo = Infinity;
     let hi = -Infinity;
     for (const r of rs) {
@@ -1216,9 +1225,9 @@ export function QueueList({
             Math.min(file?.open ?? Infinity, lo) - OPEN_BUFFER,
             Math.max(file?.close ?? -Infinity, hi) + OPEN_BUFFER,
           ] // no park hours (Flamingo Land) → the rides' span ± buffer
-        : [9 * 60, 18 * 60];
+        : localHours(date, 9, 18, timeZone);
     return { domain: dom, scale: sparkScale(rs.map(ridePeak)) };
-  }, [file, asOf]);
+  }, [file, asOf, date, timeZone]);
 
   if (loading) return <p className="empty">Loading…</p>;
   if (!file || sections.length === 0)

@@ -1,4 +1,4 @@
-import { type BpbConfig } from "./config";
+import { parkDay, tzOffsetMin, type BpbConfig } from "./config";
 import type { RideCatalog } from "./rides";
 import type { Env, QueueObs, QueueSnapshot } from "./types";
 
@@ -32,7 +32,6 @@ const APP_UA = "PleasureBeachResort/3.2.3 (Android)";
  */
 
 const tokenKey = (park: string) => `bpb/${park}/auth.json`;
-const ymd = (ms: number) => new Date(ms).toISOString().slice(0, 10);
 
 interface RideRow {
   id?: number;
@@ -144,19 +143,6 @@ async function login(cfg: BpbConfig, env: Env, park: string): Promise<string | n
 
 /* ── Fetch + normalise ───────────────────────────────────────────────────────── */
 
-/** London's UTC offset in minutes for a date (BST → 60, GMT → 0), so park-local
- *  opening times land on the same minutes-since-UTC-midnight axis as the samples. */
-function londonOffsetMin(date: string): number {
-  const h = Number(
-    new Intl.DateTimeFormat("en-GB", {
-      timeZone: "Europe/London",
-      hour: "2-digit",
-      hour12: false,
-    }).format(new Date(`${date}T12:00:00Z`)),
-  );
-  return (h - 12) * 60;
-}
-
 /** "HH:MM:SS" park-local → minutes since UTC midnight, or null if unparseable. */
 function localTimeToUtcMin(t: string | undefined, offsetMin: number): number | null {
   const m = /^(\d{2}):(\d{2})/.exec(t ?? "");
@@ -215,8 +201,11 @@ export async function fetchBpbQueues(
   }
   if (!Array.isArray(rows)) return fail(resp.status);
 
-  const today = ymd(now);
-  const offset = londonOffsetMin(today);
+  // The park day, not the UTC date: the feed's `latest_ride_time.date` is
+  // Blackpool's own, and between 00:00 and 01:00 BST the UTC date is a day
+  // behind it, which read every ride as "Closed all day".
+  const today = parkDay(now, "Europe/London");
+  const offset = tzOffsetMin(today, "Europe/London");
   const snapshot: QueueSnapshot = {};
   const catalog = emptyCatalog(now);
   let winOpen = Infinity;

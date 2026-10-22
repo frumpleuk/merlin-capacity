@@ -15,9 +15,8 @@ import {
 } from "./api";
 import { findPark, PARK_HOME, parkPath } from "./catalog";
 import { PARK_LINKS } from "./links";
+import { parkDay, parkDayEndMin } from "./parkDay";
 import { DateNav, QueueList } from "./Queues";
-
-const today = () => new Date().toISOString().slice(0, 10);
 
 /** Shift a 'YYYY-MM-DD' by whole days (UTC-safe). */
 function addDays(date: string, delta: number): string {
@@ -31,6 +30,10 @@ export function QueuesPage() {
   const park = useParkKey();
   const parkDef = findPark(park);
   const navigate = useNavigate();
+  // The park's own day, not the browser's or UTC's: Orlando at 21:00 is still on
+  // the date it opened, and London at 00:30 is still on yesterday's.
+  const timeZone = parkDef?.timeZone ?? "Europe/London";
+  const today = () => parkDay(Date.now(), timeZone);
   const date = dateParam ?? today();
 
   const [bounds, setBounds] = useState<QueueIndex | null>(null);
@@ -100,8 +103,8 @@ export function QueuesPage() {
   const canPrev = !bounds || date > bounds.minDate;
   const canNext = date < today();
 
-  // Time to hold each line's final reading out to, on the samples' UTC-minute
-  // axis: now (today) or the end of the day (a past day; the chart clips to the
+  // Time to hold each line's final reading out to, on the samples' minute axis:
+  // now (today) or the end of the park day (a past day; the chart clips to the
   // window). Not the day file's final write: the file is only rewritten on a
   // change, so after the last closure its write time IS the last sample, and
   // the closed stretch to the end of the window drew as nothing.
@@ -109,7 +112,7 @@ export function QueuesPage() {
   const asOf = isToday
     ? Math.floor((Date.now() - Date.parse(`${date}T00:00:00Z`)) / 60_000)
     : file
-      ? 24 * 60
+      ? parkDayEndMin(date, timeZone)
       : undefined;
 
   return (

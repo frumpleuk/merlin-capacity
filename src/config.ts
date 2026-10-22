@@ -407,6 +407,63 @@ export interface ParkConfig {
 export const parkTimeZone = (park: { timeZone?: string }): string =>
   park.timeZone ?? "Europe/London";
 
+/* ── Park days ──────────────────────────────────────────────────────────────
+ *
+ * A park's day is its LOCAL date, running from DAY_ROLLOVER_HOUR to the same
+ * hour the next morning, so a late opening (a Halloween night to 01:00) stays
+ * in the day it started and a park far from London isn't split at UTC
+ * midnight. Queue day files, D1 day reads, the archive and the uptime rollup
+ * all key by it. Times inside a day keep one encoding: minutes since
+ * `${date}T00:00:00Z`, which runs negative east of UTC and past 1440 west of
+ * it. Mirrored in frontend/src/parkDay.ts.
+ */
+export const DAY_ROLLOVER_HOUR = 4;
+
+/** Exact UTC offset of `timeZone` at instant `ms`, in minutes (BST → 60). */
+export function tzOffsetAt(ms: number, timeZone: string): number {
+  const p: Record<string, number> = {};
+  for (const part of new Intl.DateTimeFormat("en-US", {
+    timeZone,
+    hourCycle: "h23",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  }).formatToParts(ms)) {
+    if (part.type !== "literal") p[part.type] = Number(part.value);
+  }
+  const wall = Date.UTC(p.year, p.month - 1, p.day, p.hour, p.minute, p.second);
+  return Math.round((wall - Math.floor(ms / 1000) * 1000) / 60_000);
+}
+
+/** The instant of local wall-clock `hour`:00 on `date` in `timeZone`. Two
+ *  passes, so a guess on the far side of a DST change corrects itself. */
+export function localInstant(date: string, hour: number, timeZone: string): number {
+  const wall = Date.parse(`${date}T00:00:00Z`) + hour * 3_600_000;
+  const first = wall - tzOffsetAt(wall, timeZone) * 60_000;
+  return wall - tzOffsetAt(first, timeZone) * 60_000;
+}
+
+const addDays = (date: string, n: number): string =>
+  new Date(Date.parse(`${date}T00:00:00Z`) + n * 86_400_000).toISOString().slice(0, 10);
+
+/** The park day an instant belongs to. */
+export function parkDay(ms: number, timeZone: string): string {
+  const local = ms + tzOffsetAt(ms, timeZone) * 60_000 - DAY_ROLLOVER_HOUR * 3_600_000;
+  return new Date(local).toISOString().slice(0, 10);
+}
+
+/** A park day as a half-open range of instants [start, end). 23 or 25 hours
+ *  long on a DST change day. */
+export function parkDayBounds(date: string, timeZone: string): { start: number; end: number } {
+  return {
+    start: localInstant(date, DAY_ROLLOVER_HOUR, timeZone),
+    end: localInstant(addDays(date, 1), DAY_ROLLOVER_HOUR, timeZone),
+  };
+}
+
 /** UTC offset in minutes for a zone on a date (Paris: 60 in winter, 120 in summer). */
 export function tzOffsetMin(date: string, timeZone: string): number {
   const h = Number(

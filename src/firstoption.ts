@@ -1,4 +1,4 @@
-import { USER_AGENT, type FirstOptionConfig } from "./config";
+import { parkDay, USER_AGENT, type FirstOptionConfig } from "./config";
 import { PAULTONS_GROUP_DIMS, paultonsGroups } from "./paultons-groups";
 import type { RideCatalog } from "./rides";
 import type { QueueObs, QueueSnapshot } from "./types";
@@ -104,7 +104,7 @@ export async function fetchFirstOptionQueues(
 
   const snapshot: QueueSnapshot = {};
   const catalog = emptyCatalog(now);
-  const nowDay = new Date(now).toISOString().slice(0, 10);
+  const nowDay = parkDay(now, "Europe/London");
   const staleBefore = now - STALE_DAYS * 86_400_000;
   for (const r of rows) {
     if (typeof r.rideId !== "number" || !r.updatedAt) continue;
@@ -125,7 +125,7 @@ export async function fetchFirstOptionQueues(
     // Snapshot: only rides that changed state TODAY (= ran today). `queueTime` is
     // the last-known wait (kept, not nulled); `statusOpen` is the current
     // open/closed state, doubling as is_open and is_operational (one flag).
-    if (r.updatedAt.slice(0, 10) !== nowDay) continue;
+    if (parkDay(upd, "Europe/London") !== nowDay) continue;
     const open = r.statusOpen === true;
     snapshot[`${rideId}:${rideId}`] = {
       rideId,

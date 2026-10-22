@@ -1,5 +1,5 @@
 import { decodeNdjson, queueArchiveKey } from "./archive";
-import { queueParks } from "./config";
+import { PARKS, parkDayBounds, parkTimeZone, queueParks } from "./config";
 import { readQueueDay, writeQueueDayFile, type QueueRow } from "./db";
 import { readCatalog } from "./rides";
 import type { Env } from "./types";
@@ -101,6 +101,9 @@ export interface BackfillResult {
   skipped: number;
 }
 
+const addDays = (date: string, n: number): string =>
+  new Date(Date.parse(`${date}T00:00:00Z`) + n * 86_400_000).toISOString().slice(0, 10);
+
 /** Has this day file already been projected by the current code? */
 async function versionOf(bucket: R2Bucket, park: string, date: string): Promise<number | null> {
   const obj = await bucket.get(`queues/${park}/${date}.json`);
@@ -153,23 +156,40 @@ export async function backfillQueueDay(
   park: string,
   date: string,
 ): Promise<boolean> {
-  let rows: QueueRow[];
-  const obj = await env.BUCKET.get(queueArchiveKey(park, date));
-  if (obj) {
+  const config = PARKS.find((p) => p.key === park);
+  if (!config) return false;
+  const timeZone = parkTimeZone(config);
+  const { start, end } = parkDayBounds(date, timeZone);
+
+  // A park day's rows can sit in up to three places. Archive objects written
+  // before 2026-10-23 each hold a UTC day, which a park day overlaps on either
+  // side, so the neighbouring days' objects are read too. Rows not yet archived
+  // are still in D1: the 04:00 job keeps today AND yesterday there, so without
+  // this the backfill is permanently one day short, which is exactly wrong the
+  // morning after a projection change. Everything is filtered to the park day
+  // and de-duplicated on the primary key, since a row can be in two of them.
+  const byKey = new Map<string, QueueRow>();
+  const add = (r: QueueRow) => {
+    const t = Date.parse(r.observed_at);
+    if (t >= start && t < end) byKey.set(`${r.ride_id}|${r.queue_line_id}|${r.observed_at}`, r);
+  };
+  for (const d of [addDays(date, -1), date, addDays(date, 1)]) {
+    const obj = await env.BUCKET.get(queueArchiveKey(park, d));
+    if (!obj) continue;
     try {
-      rows = toQueueRows(decodeNdjson(new Uint8Array(await obj.arrayBuffer())));
+      toQueueRows(decodeNdjson(new Uint8Array(await obj.arrayBuffer()))).forEach(add);
     } catch {
-      return false;
+      return false; // an unreadable archive: don't rebuild a day from part of it
     }
-  } else {
-    // No archive yet. The 04:00 job keeps today AND yesterday in D1, so at 04:30
-    // yesterday has no archive file and never will until tomorrow — without this
-    // the backfill is permanently one day short, which is invisible in steady
-    // state (the live poll already wrote yesterday at the current version) and
-    // exactly wrong the morning after a projection change. The rows are still in
-    // D1, so read them from there.
-    rows = await readQueueDay(env.DB, park, date);
   }
+  (await readQueueDay(env.DB, park, date, timeZone)).forEach(add);
+  // The projection depends on (observed_at, ride, line) order; see toQueueRows.
+  const rows = [...byKey.values()].sort(
+    (a, b) =>
+      a.observed_at.localeCompare(b.observed_at) ||
+      a.ride_id - b.ride_id ||
+      a.queue_line_id - b.queue_line_id,
+  );
   // An empty read is not an empty day — it's a day whose rows have been archived
   // and deleted, or one we never had. Writing from it would replace a good file
   // with every ride seeded closed from the catalog.
@@ -187,6 +207,7 @@ export async function backfillQueueDay(
     env.BUCKET,
     park,
     date,
+    timeZone,
     catalog,
     // Stamp it as a rebuild rather than claiming the original poll's time: the
     // samples are the day's, the projection is now.

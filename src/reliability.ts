@@ -1,4 +1,4 @@
-import { queueParks, type ParkConfig } from "./config";
+import { parkDay, parkTimeZone, queueParks, type ParkConfig } from "./config";
 import { noticeKind } from "./db";
 import type { Env } from "./types";
 
@@ -71,7 +71,7 @@ export interface BuiltDay {
 }
 
 export interface DailyRollup {
-  /** Park opening window that day, minutes since UTC midnight. */
+  /** Park opening window that day, minutes since `${date}T00:00:00Z`. */
   open: number;
   close: number;
   /** Fraction of the day's 10-minute buckets in which ANY ride in the park
@@ -161,7 +161,9 @@ const MIN_DERIVED_DAY = 120;
 export const dailyKey = (park: string) => `stats/${park}/daily.json`;
 export const summaryKey = (park: string) => `stats/${park}/summary.json`;
 
-const ymd = (ms: number) => new Date(ms).toISOString().slice(0, 10);
+/** `date` moved by `n` calendar days. */
+const addDays = (date: string, n: number): string =>
+  new Date(Date.parse(`${date}T00:00:00Z`) + n * 86_400_000).toISOString().slice(0, 10);
 
 /* ── The day file, as much of it as this needs ─────────────────────────────── */
 
@@ -914,11 +916,14 @@ export async function rollUpPark(
   // first and bounded per run, because what changed is captured while a day is
   // built rather than computed from it. `v_from` is how far back that has got,
   // so a run resumes instead of redoing the recent end every night.
+  // The park's own day: at 04:30 GMT a US park is still on yesterday's date,
+  // which therefore isn't finished and waits for tomorrow's run.
+  const today = parkDay(now, parkTimeZone(park));
   const stale = (store.v ?? 1) < STORE_VERSION;
-  const staleFrom = store.v_from ?? ymd(now);
+  const staleFrom = store.v_from ?? today;
   const wanted: string[] = [];
   for (let i = 1; i <= RETAIN_DAYS && wanted.length < maxNew; i++) {
-    const d = ymd(now - i * 86_400_000);
+    const d = addDays(today, -i);
     if (!store.days[d] || (stale && d < staleFrom)) wanted.push(d);
   }
 
@@ -941,7 +946,7 @@ export async function rollUpPark(
   }
 
   // Trim to the retention window so the store can't grow without bound.
-  const cutoff = ymd(now - RETAIN_DAYS * 86_400_000);
+  const cutoff = addDays(today, -RETAIN_DAYS);
   for (const d of Object.keys(store.days)) if (d < cutoff) delete store.days[d];
 
   // How far the version catch-up has got. Once it passes the oldest day we
@@ -967,7 +972,7 @@ export async function rollUpPark(
     const windows: Record<string, WindowStats> = {};
     let widest = "";
     for (const w of WINDOWS) {
-      const from = ymd(now - w * 86_400_000);
+      const from = addDays(today, -w);
       const dates = all.filter((d) => d >= from);
       if (!dates.length) continue;
       windows[`d${w}`] = statsFor(store, dates);
@@ -977,7 +982,7 @@ export async function rollUpPark(
     // are its tail, and repeating it three times would treble the file for
     // nothing the reader can't slice themselves.
     if (widest) {
-      const from = ymd(now - Number(widest.slice(1)) * 86_400_000);
+      const from = addDays(today, -Number(widest.slice(1)));
       windows[widest].daily = dailySeries(
         store,
         all.filter((d) => d >= from),

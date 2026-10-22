@@ -1,5 +1,6 @@
 import {
   liveFeedUrl,
+  parkDay,
   parkTimeZone,
   tzOffsetMin,
   USER_AGENT,
@@ -24,7 +25,6 @@ import { applyRestrictions, readPaultonsRestrictions } from "./paultons-restrict
 import { putCatalog, readCatalog, type RideCatalog } from "./rides";
 import type { Env, QueueObs, QueueSnapshot } from "./types";
 
-const ymd = (ms: number) => new Date(ms).toISOString().slice(0, 10);
 
 /** The live feed's `QueueTime` is in SECONDS (verified against an open park —
  *  values are always multiples of 300, i.e. 5-minute steps), despite the field
@@ -52,12 +52,17 @@ function parseResortWindow(
     return undefined;
   }
   if (o.type !== "range" || !o.start || !o.end) return undefined;
+  // Minutes since UTC midnight of the OPENING date (the park day). A close
+  // dated the next morning (a late night to 01:00) lands past 1440 rather than
+  // wrapping to the start of the day.
+  const origin = Date.parse(`${o.start.slice(0, 10)}T00:00:00Z`);
   const utcMin = (s: string): number | null => {
     const date = s.slice(0, 10);
     const hh = Number(s.slice(11, 13));
     const mm = Number(s.slice(14, 16));
-    if (!Number.isFinite(hh) || !Number.isFinite(mm)) return null;
-    return hh * 60 + mm - tzOffsetMin(date, timeZone);
+    const day = Date.parse(`${date}T00:00:00Z`);
+    if (!Number.isFinite(hh) || !Number.isFinite(mm) || !Number.isFinite(day)) return null;
+    return (day - origin) / 60_000 + hh * 60 + mm - tzOffsetMin(date, timeZone);
   };
   const open = utcMin(o.start);
   const close = utcMin(o.end);
@@ -380,7 +385,7 @@ export async function runQueuePoll(
 ): Promise<number> {
   const now = Date.now();
   const observedAt = new Date(now).toISOString();
-  const today = ymd(now);
+  const today = parkDay(now, parkTimeZone(park));
 
   const prev = await readQueueLatest(env.BUCKET, park.key);
 
@@ -475,6 +480,7 @@ export async function runQueuePoll(
         env.BUCKET,
         park.key,
         today,
+        parkTimeZone(park),
         catalog,
         observedAt,
         window,

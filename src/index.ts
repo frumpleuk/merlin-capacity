@@ -1,7 +1,7 @@
 import { refreshAnomalies } from "./anomalies";
 import { archiveObservations, archiveQueues } from "./archive";
 import { backfillQueueDay, backfillQueueDays } from "./backfill";
-import { allProducts, attractionsParks, fosParks, PARKS, queueParks } from "./config";
+import { allProducts, attractionsParks, fosParks, PARKS, parkTimeZone, queueParks } from "./config";
 import { rebuildMonthsFromD1 } from "./db";
 import { refreshPackages } from "./discover";
 import { runHoursPoll } from "./hours";
@@ -29,11 +29,11 @@ const CRON_TICKETS = "*/1 * * * *"; // accesso availability (RAP + main) — all
 const CRON_HOURS = "0 * * * *"; // opening-hours calendars — all parks, hourly
 const CRON_REBUILD = "*/30 * * * *"; // self-heal the ticket month files from the projection
 const CRON_RECONCILE = "0 5 * * *"; // 05:00 GMT: re-derive the projection + month files from the log
-const CRON_PREOPEN = "0 7 * * *"; // 07:00 GMT (parks shut): catalog rebuild + discovery
+const CRON_PREOPEN = "0 7 * * *"; // 07:00 GMT (the UK and Europe shut): catalog rebuild + discovery
 const CRON_SPECIAL = "5 7 * * *"; // 07:05 GMT: name the buyout / ticketed-event days
-const CRON_ARCHIVE = "0 4 * * *"; // 04:00 GMT: cold queue days out of D1, into R2
+const CRON_ARCHIVE = "0 4 * * *"; // 04:00 GMT: queue park days older than yesterday out of D1, into R2
 const CRON_MONTH = "0 3 2 * *"; // 03:00 on the 2nd: fully elapsed ticket months to R2
-const CRON_UPTIME = "30 4 * * *"; // 04:30 GMT: roll yesterday into the ride-uptime stats
+const CRON_UPTIME = "30 4 * * *"; // 04:30 GMT: roll each park's finished days into the ride-uptime stats
 
 const currentMonth = (ms: number) => new Date(ms).toISOString().slice(0, 7);
 
@@ -148,15 +148,16 @@ async function pollSpecialDays(env: Env, scheduledTime: number): Promise<void> {
 }
 
 /** Move queue days past the retention window out of D1 and into R2 (archive.ts).
- *  04:00 GMT: every park is shut, nothing is polling hard, and yesterday has been
- *  closed out for hours. Each park is independent — one park failing verification
+ *  It only takes park days older than each park's yesterday, so every day it
+ *  moves finished at least a day ago wherever the park is; 04:00 GMT just keeps
+ *  it clear of the UK's busy hours. Each park is independent — one park failing verification
  *  stops that park for tonight and leaves its rows in D1, which is the safe way
  *  round, and the others still drain. */
 async function runArchive(env: Env, scheduledTime: number): Promise<void> {
   await Promise.all(
     queueParks().map(async (park) => {
       try {
-        await archiveQueues(env.DB, env.BUCKET, park.key, scheduledTime);
+        await archiveQueues(env.DB, env.BUCKET, park.key, parkTimeZone(park), scheduledTime);
       } catch (err) {
         console.error(`archive failed for ${park.key}:`, err);
       }
@@ -403,7 +404,7 @@ export default {
       const queues = await Promise.all(
         queueParks().map(async (park) => {
           try {
-            return { park: park.key, ...(await archiveQueues(env.DB, env.BUCKET, park.key, now)) };
+            return { park: park.key, ...(await archiveQueues(env.DB, env.BUCKET, park.key, parkTimeZone(park), now)) };
           } catch (err) {
             return { park: park.key, days: [], rows: 0, error: String(err) };
           }

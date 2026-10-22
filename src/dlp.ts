@@ -1,4 +1,4 @@
-import { tzOffsetMin, type DlpConfig, type OpeningHoursConfig } from "./config";
+import { parkDay, tzOffsetMin, type DlpConfig, type OpeningHoursConfig } from "./config";
 import { fmt24, type HoursFetch, type HoursSnapshot } from "./hours";
 import type { RideCatalog, RideMeta } from "./rides";
 import type { QueueObs, QueueSnapshot } from "./types";
@@ -178,7 +178,7 @@ export async function fetchDlpHours(
 /* ── Daily meta: catalog + today's window ────────────────────────────────────── */
 
 interface DlpMeta {
-  /** UTC date this was fetched for; a new date triggers a refresh. */
+  /** Park day this was fetched for; a new day triggers a refresh. */
   date: string;
   /** entityId → ride metadata, for this park's attractions. */
   rides: Record<string, RideMeta & { singleRider?: boolean }>;
@@ -340,7 +340,9 @@ export async function fetchDlpQueues(
     linesSeen: 0,
   });
 
-  const today = ymd(now);
+  // Paris's park day, which is a day ahead of the UTC date from 22:00 or 23:00
+  // UTC: the schedule and refurbishment lookups below are by Paris date.
+  const today = parkDay(now, timeZone);
   const [meta, resp] = await Promise.all([
     loadMeta(cfg, bucket, park, today, timeZone),
     fetch(cfg.waitTimesUrl, {

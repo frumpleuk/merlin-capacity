@@ -1,3 +1,4 @@
+import { parkDayBounds } from "./config";
 import type { HoursSnapshot } from "./hours";
 import type { RideCatalog } from "./rides";
 import type { Delta, Product, QueueObs, QueueSnapshot, Snapshot } from "./types";
@@ -769,8 +770,8 @@ export interface QueueRow {
   observed_at: string;
 }
 
-/** All queue observations for one UTC day, oldest first — the raw intraday
- *  series from which a day file is projected.
+/** All queue observations for one park day (see parkDayBounds), oldest first —
+ *  the raw intraday series from which a day file is projected.
  *
  *  Depends on idx_q_park_time (park, observed_at) — see migration 0006. This runs
  *  once per changed poll, per park, every minute, so without an index that seeks
@@ -781,10 +782,9 @@ export async function readQueueDay(
   db: D1Database,
   park: string,
   date: string,
+  timeZone: string,
 ): Promise<QueueRow[]> {
-  const nextDay = new Date(Date.parse(`${date}T00:00:00Z`) + 86_400_000)
-    .toISOString()
-    .slice(0, 10);
+  const { start, end } = parkDayBounds(date, timeZone);
   const { results } = await db
     .prepare(
       `SELECT ride_id, queue_line_id, line_type, queue_time, status, is_open, is_operational, present, observed_at
@@ -792,7 +792,7 @@ export async function readQueueDay(
         WHERE park = ? AND observed_at >= ? AND observed_at < ?
         ORDER BY observed_at ASC`,
     )
-    .bind(park, `${date}T00:00:00.000Z`, `${nextDay}T00:00:00.000Z`)
+    .bind(park, new Date(start).toISOString(), new Date(end).toISOString())
     .all<QueueRow>();
   return results;
 }
@@ -966,15 +966,15 @@ interface QueueLineOut {
   queueLineId: number;
   type: string | null;
   label: string;
-  // [minsSinceUtcMidnight, wait|null, open 0/1, operational 0/1]
+  // [minutes since `${date}T00:00:00Z`, wait|null, open 0/1, operational 0/1]
   samples: [number, number | null, 0 | 1, 0 | 1][];
   // The park's own closed notice, as of the latest sample today — a scheduled
   // opening ("Scheduled to open at 11:00") or a closure reason ("Under
   // maintenance", "Closed all day"). Set only while one is in effect, so the row
   // shows it instead of a derived "Closed all day". Dropped once withdrawn.
   closedNote?: string;
-  // Every notice the day carried, as [start, end, note] in minutes since UTC
-  // midnight — `closedNote` is only the last one, so a notice withdrawn before
+  // Every notice the day carried, as [start, end, note] in minutes since
+  // `${date}T00:00:00Z` — `closedNote` is only the last one, so a notice withdrawn before
   // close used to vanish entirely and a maintenance window read as an ordinary
   // breakdown. `end` is the minute the notice was last observed; when one is
   // still in effect at the final sample it ends there and `closedNote` repeats
@@ -984,7 +984,7 @@ interface QueueLineOut {
    *  a single-rider queue's uptime is the ride's, not its own. */
   summary?: RideDaySummary;
   /** Stretches the park's feed wasn't listing this line at all, as
-   *  [start, end) in minutes since UTC midnight. Not closures: nobody observed
+   *  [start, end) in minutes since `${date}T00:00:00Z`. Not closures: nobody observed
    *  anything. Excluded from the day's up/down, and from availability. */
   unseen?: [number, number][];
 }
@@ -999,6 +999,7 @@ export async function writeQueueDayFile(
   bucket: R2Bucket,
   park: string,
   date: string,
+  timeZone: string,
   catalog: RideCatalog | null,
   generatedAt: string,
   resort?: { open: number; close: number },
@@ -1007,10 +1008,12 @@ export async function writeQueueDayFile(
   // decoded from the R2 archive, which is the only place a past day still lives.
   preRead?: QueueRow[],
 ): Promise<number> {
-  const rows = preRead ?? (await readQueueDay(db, park, date));
+  const rows = preRead ?? (await readQueueDay(db, park, date, timeZone));
+  // Every minute value below is measured from this origin (see parkDayBounds).
   const dayStart = Date.parse(`${date}T00:00:00Z`);
+  const dayEnd = (parkDayBounds(date, timeZone).end - dayStart) / 60_000;
 
-  // The park's opening window (minutes since UTC midnight) frames the sparkline
+  // The park's opening window (minutes since the origin) frames the sparkline
   // x-axis; each ride's own window (rideWindows) is its scheduled hours. Both can
   // be missing from a poll, so we preserve what the existing day file holds:
   //  - park window: preserve when this poll didn't derive one (`!window`).
@@ -1054,7 +1057,7 @@ export async function writeQueueDayFile(
   // Taking the newest SAMPLE instead would be wrong in the same way — a park
   // whose waits haven't moved since lunch has no sample to mark the present.
   const observedTo = Math.min(
-    window?.close ?? 24 * 60,
+    window?.close ?? dayEnd,
     Math.floor((Date.parse(generatedAt) - dayStart) / 60_000),
   );
 
@@ -1131,11 +1134,12 @@ export async function writeQueueDayFile(
 
   // Include catalog lines that produced no observation today. Delta-only logging
   // only writes a row when a line's wait/running-state moves, so a ride that has
-  // been closed since before midnight generates nothing today and would silently
-  // vanish from the list — even though the park's own app still lists it (closed).
-  // The park is shut overnight, so any ride that actually ran today has at least
-  // its morning open-transition logged; a line with zero same-day rows is
-  // therefore closed all day. Seed it with empty samples so it renders as a closed
+  // been closed since before the day began generates nothing today and would
+  // silently vanish from the list — even though the park's own app still lists it
+  // (closed). The park is shut at the 04:00 local rollover, so any ride that
+  // actually ran today has at least its morning open-transition logged; a line
+  // with zero same-day rows is therefore closed all day. (A park open through
+  // 04:00 would break this; none is.) Seed it with empty samples so it renders as a closed
   // row (rideNow is null when a ride has no running samples).
   if (catalog) {
     for (const [qlIdStr, ql] of Object.entries(catalog.queueLines)) {

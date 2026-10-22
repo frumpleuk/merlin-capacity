@@ -1,4 +1,5 @@
 import { gunzipSync, gzipSync, strFromU8, strToU8 } from "fflate";
+import { parkDay, parkDayBounds } from "./config";
 
 /*
  * Moving cold rows out of D1 and into R2.
@@ -189,8 +190,12 @@ const QUEUE_RETAIN_DAYS = 2; // today + yesterday stay in D1
 // it existed); that is drained, so it is back to the bound that fails softly.
 const MAX_QUEUE_DAYS_PER_RUN = 3;
 
-const ymd = (ms: number) => new Date(ms).toISOString().slice(0, 10);
+const iso = (ms: number) => new Date(ms).toISOString();
 
+/** One object per park day. Objects written before 2026-10-23 hold a UTC day
+ *  instead; a park day's first archive can land on the same key as one of those,
+ *  which `putArchive`'s union makes safe, and the backfill reads the neighbouring
+ *  days' objects too and filters to the park day's bounds. */
 export const queueArchiveKey = (park: string, date: string) =>
   `archive/queues/${park}/${date}.ndjson.gz`;
 
@@ -211,17 +216,20 @@ const QUEUE_DELETE_SQL = `DELETE FROM queue_observation
                     WHERE park = ? AND observed_at >= ? AND observed_at < ?
                     LIMIT ?)`;
 
-/** Archive one UTC day for one park, then delete it. Returns rows moved, or 0 if
- *  the day was empty. Throws if the archive could not be verified — the caller
- *  stops that park for this run and nothing has been deleted. */
+/** Archive one park day for one park, then delete it. Returns rows moved, or 0
+ *  if the day was empty. Throws if the archive could not be verified — the
+ *  caller stops that park for this run and nothing has been deleted. The read
+ *  and the delete share one pair of bounds. */
 async function archiveQueueDay(
   db: D1Database,
   bucket: R2Bucket,
   park: string,
   date: string,
+  timeZone: string,
 ): Promise<number> {
-  const from = `${date}T00:00:00.000Z`;
-  const to = `${ymd(Date.parse(from) + 86_400_000)}T00:00:00.000Z`;
+  const bounds = parkDayBounds(date, timeZone);
+  const from = iso(bounds.start);
+  const to = iso(bounds.end);
 
   const rows = await readPaged(
     db,
@@ -260,9 +268,13 @@ export async function archiveQueues(
   db: D1Database,
   bucket: R2Bucket,
   park: string,
+  timeZone: string,
   now: number,
 ): Promise<{ days: string[]; rows: number }> {
-  const keepFrom = `${ymd(now - (QUEUE_RETAIN_DAYS - 1) * 86_400_000)}T00:00:00.000Z`;
+  // The start of yesterday's park day: it and today stay in D1.
+  const keepFrom = iso(
+    parkDayBounds(parkDay(now - (QUEUE_RETAIN_DAYS - 1) * 86_400_000, timeZone), timeZone).start,
+  );
   const days: string[] = [];
   let rows = 0;
 
@@ -274,8 +286,8 @@ export async function archiveQueues(
     const m = oldest?.m;
     if (!m || m >= keepFrom) break; // nothing left outside the retention window
 
-    const date = m.slice(0, 10);
-    const moved = await archiveQueueDay(db, bucket, park, date);
+    const date = parkDay(Date.parse(m), timeZone);
+    const moved = await archiveQueueDay(db, bucket, park, date, timeZone);
     if (moved === 0) break; // can't happen while MIN reports this day; don't spin
     days.push(date);
     rows += moved;

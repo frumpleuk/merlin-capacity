@@ -125,6 +125,10 @@ export function ParkPicker({
   );
   const [recent, setRecent] = useState<string[]>(() => loadKeys(RECENT_KEY));
   const [pinned, setPinned] = useState<string[]>(() => loadKeys(PIN_KEY));
+  // The pins the row and the Pinned section are drawn from. Held while the
+  // panel is open, so pinning fills the icon without moving rows under the
+  // pointer; the layout catches up when the panel closes.
+  const [layoutPins, setLayoutPins] = useState(pinned);
   // The highlighted option; null until the arrows or mouse pick one.
   const [picked, setPicked] = useState<number | null>(null);
   // Desktop has room for the pinned (or else recent) parks as links, with the
@@ -169,6 +173,10 @@ export function ParkPicker({
     if (over > 0) panel.style.left = `${-over}px`;
   }, [open, wide]);
 
+  useEffect(() => {
+    if (!open) setLayoutPins(pinned);
+  }, [open, pinned]);
+
   // Choosing a park changes the route; close on any navigation.
   useEffect(() => setOpen(false), [pathname]);
 
@@ -204,11 +212,11 @@ export function ParkPicker({
   // parks show in catalog order; recent ones leave out what's pinned, and on
   // desktop are left out altogether, as the row above already shows them.
   const pinnedParks =
-    words.length === 0 ? PARKS.filter((p) => pinned.includes(p.key)) : [];
+    words.length === 0 ? PARKS.filter((p) => layoutPins.includes(p.key)) : [];
   const recentParks =
     !wide && words.length === 0
       ? recent
-          .filter((k) => k !== current.key && !pinned.includes(k))
+          .filter((k) => k !== current.key && !layoutPins.includes(k))
           .slice(0, RECENT_MAX)
           .map((k) => PARKS.find((p) => p.key === k)!)
           .filter(Boolean)
@@ -219,9 +227,9 @@ export function ParkPicker({
   // new visitor. Either way in catalog order, so links don't swap places on
   // every switch.
   const rowParks = (() => {
-    if (pinned.length) {
+    if (layoutPins.length) {
       return PARKS.filter(
-        (p) => pinned.includes(p.key) || p.key === current.key,
+        (p) => layoutPins.includes(p.key) || p.key === current.key,
       );
     }
     const keys = new Set([current.key, ...recent].slice(0, RECENT_MAX + 1));
@@ -361,7 +369,7 @@ export function ParkPicker({
       {wide && (
         <nav
           className="pp-row"
-          aria-label={pinned.length ? "Pinned parks" : "Recent parks"}
+          aria-label={layoutPins.length ? "Pinned parks" : "Recent parks"}
         >
           {rowParks.map((p) => (
             <Link

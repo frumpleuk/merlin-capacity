@@ -399,10 +399,15 @@ export async function runQueuePoll(
   let catalog: RideCatalog | null;
   if (park.queue.kind === "attractions") {
     // Attractions.io: names come from the bundle-derived catalog (built off the
-    // hot path by the daily cron); a missing one degrades to unnamed lines. The
-    // feed supports conditional GET, so pass the last ETag: an unchanged feed
-    // 304s and the whole poll below short-circuits to a status bump.
+    // hot path by the daily cron, or by /poll). The feed supports conditional
+    // GET, so pass the last ETag: an unchanged feed 304s and the whole poll
+    // below short-circuits to a status bump.
     catalog = await readCatalog(env.BUCKET, park.key);
+    // No catalog yet: a park added since the last rebuild. Logging now would key
+    // every ride by a placeholder line 0 that the real lines then replace, which
+    // leaves a nameless second line per ride in that day's file (Billund and the
+    // other European parks, 2026-10-22). Wait for the catalog instead.
+    if (!catalog) return 0;
     res = await fetchLiveQueues(park.queue, catalog, parkTimeZone(park), prev.etag);
   } else {
     // Inline-name backends (First Option / Paulton's, Firestore / Flamingo Land,

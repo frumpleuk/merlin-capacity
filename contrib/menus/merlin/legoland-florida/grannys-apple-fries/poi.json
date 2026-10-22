@@ -1,0 +1,15 @@
+{
+  "id": 4927,
+  "name": "Granny's Apple Fries",
+  "category": "Dining > Dessert",
+  "area": "Fun Town",
+  "lat": 27.98975,
+  "lon": -81.691271,
+  "menuUrl": null,
+  "appPassholderDiscount": true,
+  "diningPlans": [
+    "Ultimate"
+  ],
+  "appMissingSince": null,
+  "source": "attractions.io app bundle"
+}

@@ -1,0 +1,42 @@
+[
+  {
+    "name": "MINILAND",
+    "lat": 37.884678,
+    "lon": 127.697252
+  },
+  {
+    "name": "LEGO® Castle",
+    "lat": 37.883933,
+    "lon": 127.695471
+  },
+  {
+    "name": "Bricktopia",
+    "lat": 37.883704,
+    "lon": 127.697541
+  },
+  {
+    "name": "Brick Street",
+    "lat": 37.884509,
+    "lon": 127.698818
+  },
+  {
+    "name": "LEGO® City",
+    "lat": 37.885991,
+    "lon": 127.697895
+  },
+  {
+    "name": "LEGOLAND® Hotel",
+    "lat": 37.884932,
+    "lon": 127.698657
+  },
+  {
+    "name": "Pirate Shores",
+    "lat": 37.885999,
+    "lon": 127.696458
+  },
+  {
+    "name": "LEGO® NINJAGO® World",
+    "lat": 37.884958,
+    "lon": 127.696082
+  }
+]

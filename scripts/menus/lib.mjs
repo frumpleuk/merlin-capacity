@@ -17,6 +17,22 @@ export const PARK_DIRS = {
   thorpe_park: "thorpe-park",
   legoland: "legoland",
   chessington: "chessington-world-of-adventures",
+  legoland_billund: "legoland-billund",
+  legoland_deutschland: "legoland-deutschland",
+  gardaland: "gardaland",
+  heide_park: "heide-park",
+  legoland_japan: "legoland-japan",
+  legoland_korea: "legoland-korea",
+  legoland_florida: "legoland-florida",
+  peppa_pig_florida: "peppa-pig-theme-park",
+  legoland_california: "legoland-california",
+  legoland_new_york: "legoland-new-york",
+};
+
+/** Independents on the same Attractions.io backend as the Merlin parks, so
+ *  sync-venues.mjs reads their apps too; each is its own operator folder. */
+export const ATTRACTIONS_INDIE_PARK_DIRS = {
+  knoebels: "knoebels",
 };
 
 /** The independents are each their own operator, so each sits directly under
@@ -37,11 +53,32 @@ export const DLP_PARK_DIRS = {
 };
 
 /** Every park with menu folders, Merlin and independent alike. */
-export const ALL_PARK_DIRS = { ...PARK_DIRS, ...INDIE_PARK_DIRS, ...DLP_PARK_DIRS };
+export const ALL_PARK_DIRS = {
+  ...PARK_DIRS,
+  ...ATTRACTIONS_INDIE_PARK_DIRS,
+  ...INDIE_PARK_DIRS,
+  ...DLP_PARK_DIRS,
+};
 
-/** The currency a park's prices are in. Prices are always integer minor units
- *  (pence, or cents for the euro parks). */
-export const parkCurrency = (key) => (key in DLP_PARK_DIRS ? "EUR" : "GBP");
+const CURRENCY = {
+  disneyland_park: "EUR",
+  disney_adventure_world: "EUR",
+  legoland_billund: "DKK",
+  legoland_deutschland: "EUR",
+  gardaland: "EUR",
+  heide_park: "EUR",
+  legoland_japan: "JPY",
+  legoland_korea: "KRW",
+  legoland_florida: "USD",
+  peppa_pig_florida: "USD",
+  legoland_california: "USD",
+  legoland_new_york: "USD",
+  knoebels: "USD",
+};
+
+/** The currency a park's prices are in (ISO 4217). Prices are always integer
+ *  minor units: pence, cents, or whole yen and won, which have none. */
+export const parkCurrency = (key) => CURRENCY[key] ?? "GBP";
 
 /** The operator root a park's folder sits under. Photo keys (and the site's
  *  /menus/ URLs) are relative to this, which is why it isn't just MENUS. */
@@ -118,12 +155,18 @@ export function syncVenues(key, records) {
   for (const { water, ...fields } of records) {
     seen.add(fields.id);
     const existing = byId.get(fields.id);
-    const venueDir = existing?.dir ?? path.join(dir, water ? "water" : "", slug(fields.name));
+    // Several venues can share a name (Billund lists five "Water refill point"s).
+    // The first takes the plain name; the rest add their land, or failing that
+    // their app id, so each gets a folder of its own.
+    const base = path.join(dir, water ? "water" : "", slug(fields.name));
+    const venueDir =
+      existing?.dir ??
+      [base, fields.area ? `${base}-${slug(fields.area)}` : null, `${base}-${fields.id}`].find(
+        (d) => d && !fs.existsSync(path.join(d, "poi.json")),
+      );
     if (!existing) {
-      if (fs.existsSync(path.join(venueDir, "poi.json"))) {
-        console.warn(
-          `! ${path.relative(root, venueDir)} already has a poi.json for another id; skipped ${fields.name}`,
-        );
+      if (!venueDir) {
+        console.warn(`! ${path.relative(root, base)}: no free folder name; skipped ${fields.name}`);
         continue;
       }
       fs.mkdirSync(venueDir, { recursive: true });

@@ -109,7 +109,7 @@ for (const key of Object.keys(ALL_PARK_DIRS)) {
     if (name === "water") {
       for (const w of dirs(dir)) {
         const v = venue(root, path.join(dir, w), w);
-        if (v) water.push({ slug: v.slug, name: v.name, lat: v.lat, lon: v.lon });
+        if (v) water.push({ slug: v.slug, name: v.name, area: v.area, lat: v.lat, lon: v.lon });
       }
     } else if (name === "_events") {
       for (const e of dirs(dir)) {

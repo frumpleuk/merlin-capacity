@@ -1,0 +1,15 @@
+{
+  "id": 5111,
+  "name": "Kick'n Chicken Co.",
+  "category": "Dining > American",
+  "area": "LEGO® Galaxy",
+  "lat": 27.994446,
+  "lon": -81.691429,
+  "menuUrl": null,
+  "appPassholderDiscount": true,
+  "diningPlans": [
+    "Ultimate"
+  ],
+  "appMissingSince": null,
+  "source": "attractions.io app bundle"
+}

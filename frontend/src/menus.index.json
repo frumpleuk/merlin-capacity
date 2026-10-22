@@ -23,6 +23,72 @@
     "priced": 15,
     "water": 5
   },
+  "legoland_billund": {
+    "venues": 34,
+    "withMenus": 0,
+    "priced": 0,
+    "water": 5
+  },
+  "legoland_deutschland": {
+    "venues": 17,
+    "withMenus": 0,
+    "priced": 0,
+    "water": 0
+  },
+  "gardaland": {
+    "venues": 23,
+    "withMenus": 0,
+    "priced": 0,
+    "water": 3
+  },
+  "heide_park": {
+    "venues": 18,
+    "withMenus": 0,
+    "priced": 0,
+    "water": 0
+  },
+  "legoland_japan": {
+    "venues": 22,
+    "withMenus": 0,
+    "priced": 0,
+    "water": 0
+  },
+  "legoland_korea": {
+    "venues": 9,
+    "withMenus": 0,
+    "priced": 0,
+    "water": 0
+  },
+  "legoland_florida": {
+    "venues": 28,
+    "withMenus": 0,
+    "priced": 0,
+    "water": 0
+  },
+  "peppa_pig_florida": {
+    "venues": 2,
+    "withMenus": 0,
+    "priced": 0,
+    "water": 0
+  },
+  "legoland_california": {
+    "venues": 15,
+    "withMenus": 0,
+    "priced": 0,
+    "water": 0
+  },
+  "legoland_new_york": {
+    "venues": 20,
+    "withMenus": 0,
+    "priced": 0,
+    "water": 0
+  },
+  "knoebels": {
+    "venues": 36,
+    "withMenus": 0,
+    "priced": 0,
+    "water": 0
+  },
   "paultons": {
     "venues": 19,
     "withMenus": 15,

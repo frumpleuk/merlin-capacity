@@ -1,0 +1,15 @@
+{
+  "id": 9790,
+  "name": "Loop & Kernel",
+  "category": "Dining",
+  "area": "Land of Adventure",
+  "lat": 27.991843,
+  "lon": -81.690517,
+  "menuUrl": null,
+  "appPassholderDiscount": true,
+  "diningPlans": [
+    "Ultimate"
+  ],
+  "appMissingSince": null,
+  "source": "attractions.io app bundle"
+}

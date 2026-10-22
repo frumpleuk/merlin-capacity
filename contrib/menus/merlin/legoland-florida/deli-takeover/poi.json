@@ -1,0 +1,15 @@
+{
+  "id": 49507,
+  "name": "Deli Takeover",
+  "category": "Dining > American",
+  "area": "Imagination Zone",
+  "lat": 27.993506,
+  "lon": -81.691791,
+  "menuUrl": null,
+  "appPassholderDiscount": true,
+  "diningPlans": [
+    "Ultimate"
+  ],
+  "appMissingSince": null,
+  "source": "attractions.io app bundle"
+}

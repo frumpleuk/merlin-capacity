@@ -1,0 +1,15 @@
+{
+  "id": 4952,
+  "name": "Dragon’s Den",
+  "category": "Dining > American",
+  "area": "LEGO® Kingdoms",
+  "lat": 27.990117,
+  "lon": -81.69008,
+  "menuUrl": null,
+  "appPassholderDiscount": true,
+  "diningPlans": [
+    "Ultimate"
+  ],
+  "appMissingSince": null,
+  "source": "attractions.io app bundle"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 31343,
+  "name": "The Grove",
+  "category": "Dining > American",
+  "area": "LEGO® NINJAGO® World",
+  "lat": 27.992802,
+  "lon": -81.690617,
+  "menuUrl": null,
+  "appPassholderDiscount": true,
+  "diningPlans": [
+    "Ultimate"
+  ],
+  "appMissingSince": null,
+  "source": "attractions.io app bundle"
+}

@@ -1,0 +1,15 @@
+{
+  "id": 5078,
+  "name": "Beach-N-Bricks Grill (Water Park)",
+  "category": "Dining > American",
+  "area": "LEGOLAND® Water Park",
+  "lat": 27.99573,
+  "lon": -81.691207,
+  "menuUrl": null,
+  "appPassholderDiscount": true,
+  "diningPlans": [
+    "Ultimate"
+  ],
+  "appMissingSince": null,
+  "source": "attractions.io app bundle"
+}

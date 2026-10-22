@@ -1,0 +1,13 @@
+{
+  "id": 14704,
+  "name": "Tasty Treats",
+  "category": "Dining",
+  "area": "Brick Street",
+  "lat": 37.884631,
+  "lon": 127.698715,
+  "menuUrl": null,
+  "appPassholderDiscount": null,
+  "diningPlans": null,
+  "appMissingSince": null,
+  "source": "attractions.io app bundle"
+}

@@ -108,10 +108,11 @@ interface ParkEvent {
   vendors: Venue[];
 }
 interface ParkMenus {
-  /** What the prices are in. Absent in files built before euro parks existed. */
-  currency?: "GBP" | "EUR";
+  /** What the prices are in (ISO 4217). Absent in files built before euro parks
+   *  existed. */
+  currency?: string;
   venues: Venue[];
-  water: { slug: string; name: string; lat: number | null; lon: number | null }[];
+  water: { slug: string; name: string; area?: string | null; lat: number | null; lon: number | null }[];
   events: ParkEvent[];
   offers: Offer[];
   areas: MapArea[];
@@ -122,15 +123,37 @@ const TODAY = new Date().toISOString().slice(0, 10);
 const COUNTS = INDEX as Record<string, { venues: number; priced: number; water: number }>;
 
 /** Prices are stored as integer minor units: "875" reads as £8.75 (or €8.75 at
- *  Disneyland Paris), "500" as £5. */
-const CurrencyContext = createContext<"GBP" | "EUR">("GBP");
-const formatMoney = (p: number, currency: "GBP" | "EUR") =>
-  (currency === "EUR" ? "€" : "£") + (p / 100).toFixed(2).replace(/\.00$/, "");
+ *  Disneyland Paris), "500" as £5. Yen and won have no minor unit, so "500"
+ *  there is ¥500. */
+const CurrencyContext = createContext("GBP");
+const formatMoney = (p: number, currency: string) => {
+  const nf = new Intl.NumberFormat("en-GB", { style: "currency", currency, currencyDisplay: "narrowSymbol" });
+  const digits = nf.resolvedOptions().maximumFractionDigits ?? 2;
+  const symbol = nf.formatToParts(0).find((x) => x.type === "currency")?.value ?? currency;
+  return symbol + (p / 10 ** digits).toFixed(digits).replace(/\.0+$/, "");
+};
 /** The park's price formatter. */
 const useMoney = () => {
   const currency = useContext(CurrencyContext);
   return (p: number) => formatMoney(p, currency);
 };
+
+/** A water point's chip. Parks name these "Water Refill (Dark Forest)", and the
+ *  useful half is where it is. Where every point shares one generic name
+ *  (Billund's five "Water refill point"s, Gardaland's "Water fountains"), the
+ *  land says where instead. */
+function waterLabel(
+  w: { name: string; area?: string | null },
+  all: { name: string }[],
+): string {
+  const where = w.name
+    .replace(/^water\s*(refills?|fountains?|refill station)?\s*/i, "")
+    .replace(/^[-–(]\s*/, "")
+    .replace(/\)$/, "");
+  const shared = all.filter((o) => o.name === w.name).length > 1;
+  if (where && !/^(points?|stations?)$/i.test(where) && !shared) return where;
+  return w.area ?? (where || w.name);
+}
 
 const TAG_LABEL: Record<string, string> = {
   v: "vegetarian",
@@ -906,16 +929,14 @@ export function MenusPage() {
             <div className="fd-facet fd-water">
               <h4>Free water refills ({data.water.length})</h4>
               <div className="fd-chips">
-                {data.water.map((w) => (
+                {data.water.map((w, _, all) => (
                   <button
                     key={w.slug}
                     className={"fd-chip fd-water-chip" + (focus === w.slug ? " on" : "")}
                     onClick={() => setFocus(focus === w.slug ? null : w.slug)}
                     title="Show on the map"
                   >
-                    {/* The park names these "Water Refill (Dark Forest)" — the
-                        useful half is where it is. */}
-                    {w.name.replace(/^water\s*(refills?|fountain|refill station)?\s*/i, "").replace(/^[-–(]\s*/, "").replace(/\)$/, "") || w.name}
+                    {waterLabel(w, all)}
                   </button>
                 ))}
               </div>

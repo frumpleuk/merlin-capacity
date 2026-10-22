@@ -1,0 +1,15 @@
+{
+  "id": 5506,
+  "name": "Skyline Lounge (LEGOLAND Hotel)",
+  "category": "Dining",
+  "area": "LEGOLAND® Hotel",
+  "lat": 27.988331,
+  "lon": -81.691523,
+  "menuUrl": "https://endpoint910861.azureedge.net/globalassets/florida/pdfs/hotel/uvid-49b479/updates-skyline-lunch-menu_5.18.pdf",
+  "appPassholderDiscount": true,
+  "diningPlans": [
+    "Deluxe"
+  ],
+  "appMissingSince": null,
+  "source": "attractions.io app bundle"
+}

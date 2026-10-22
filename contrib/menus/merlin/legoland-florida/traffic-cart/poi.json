@@ -1,0 +1,15 @@
+{
+  "id": 9791,
+  "name": "Traffic Cart",
+  "category": "Dining",
+  "area": "LEGO® City",
+  "lat": 27.993522,
+  "lon": -81.691317,
+  "menuUrl": null,
+  "appPassholderDiscount": true,
+  "diningPlans": [
+    "Ultimate"
+  ],
+  "appMissingSince": null,
+  "source": "attractions.io app bundle"
+}

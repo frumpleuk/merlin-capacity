@@ -1,0 +1,15 @@
+{
+  "id": 4966,
+  "name": "The Burger Kitchen",
+  "category": "Dining > American",
+  "area": "LEGO® City",
+  "lat": 27.9931,
+  "lon": -81.690961,
+  "menuUrl": null,
+  "appPassholderDiscount": true,
+  "diningPlans": [
+    "Ultimate"
+  ],
+  "appMissingSince": null,
+  "source": "attractions.io app bundle"
+}

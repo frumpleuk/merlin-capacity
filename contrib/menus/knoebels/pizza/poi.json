@@ -1,0 +1,13 @@
+{
+  "id": 15332,
+  "name": "Pizza",
+  "category": "Dine > Counter Service",
+  "area": null,
+  "lat": 40.879423,
+  "lon": -76.505194,
+  "menuUrl": "https://www.knoebels.com/dine/pizza",
+  "appPassholderDiscount": null,
+  "diningPlans": null,
+  "appMissingSince": null,
+  "source": "attractions.io app bundle"
+}

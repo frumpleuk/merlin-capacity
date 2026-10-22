@@ -1,15 +1,26 @@
-// Refresh the venue folders from each Merlin park's official app content
-// (Attractions.io bundle): one folder per eatery, one per water point under
+// Refresh the venue folders from each Attractions.io park's official app content
+// (the Merlin parks and Knoebels): one folder per eatery, one per water point under
 // water/, each with a poi.json. Existing folders keep their photos, menus and
 // any extra poi.json keys (e.g. "note"); only the app-owned fields update.
 // Never deletes: venues that vanished from the app are reported, not removed.
 //
-//   node scripts/menus/sync-venues.mjs [park_key...]   (default: all four)
+//   node scripts/menus/sync-venues.mjs [park_key...]   (default: every one)
 import fs from "node:fs";
 import path from "node:path";
 import { unzipSync } from "fflate";
 import { ATTRACTIONS_API, attractionsParks } from "../../src/config.ts";
-import { PARK_DIRS, ROOT, coord, metres, parkDir, readJson, syncVenues, venues, writeJson } from "./lib.mjs";
+import {
+  ATTRACTIONS_INDIE_PARK_DIRS,
+  PARK_DIRS,
+  ROOT,
+  coord,
+  metres,
+  parkDir,
+  readJson,
+  syncVenues,
+  venues,
+  writeJson,
+} from "./lib.mjs";
 
 const auth = (key, token) =>
   `Attractions-Io api-key="${key}"` + (token ? `, installation-token="${token}"` : "");
@@ -43,7 +54,14 @@ async function records(apiKey) {
   return JSON.parse(new TextDecoder().decode(files["records.json"]));
 }
 
-const text = (n) => (n && typeof n === "object" ? n["en-GB"] ?? Object.values(n)[0] : n);
+// The UK bundles hold plain strings; the rest hold a locale map, in English
+// (en-GB, en-US) beside the local language.
+const text = (n) =>
+  n && typeof n === "object" ? n["en-GB"] ?? n["en-US"] ?? n.en ?? Object.values(n)[0] : n;
+
+/** Each park names its eating category its own way: "Food & Drink(s)", "Food &
+ *  Beverage", "Dining" (California's is upper case), Knoebels' "Dine". */
+const FOOD = /^(Food & (Drinks?|Beverage)|Dining|Dine)\b/i;
 const INFO_ONLY = /^(Allergies & Intolerances|Food & Drink Information)$/;
 
 /** Areas whose label is the whole resort or back-of-house, not a land. */
@@ -59,8 +77,9 @@ const diningPlans = (summary) => [
 ];
 
 const wanted = process.argv.slice(2);
+const DIRS = { ...PARK_DIRS, ...ATTRACTIONS_INDIE_PARK_DIRS };
 for (const park of attractionsParks()) {
-  const dir = PARK_DIRS[park.key];
+  const dir = DIRS[park.key];
   if (!dir || (wanted.length && !wanted.includes(park.key))) continue;
   const r = await records(park.queue.apiKey);
   const cats = new Map(r.Category.map((c) => [c._id, c]));
@@ -95,8 +114,12 @@ for (const park of attractionsParks()) {
     const name = text(item.Name).trim();
     const category = catPath(item.Category);
     const food =
-      /^(Food & Drink|Dining)/.test(category) && !/Freestyle/.test(category) && !INFO_ONLY.test(name);
-    const water = /^Water\b/.test(name) && /^Facilities/.test(category);
+      FOOD.test(category) &&
+      !/Freestyle|Holiday Village/.test(category) &&
+      !/Freestyle/.test(name) && // Gardaland files its refill machines as food
+      !INFO_ONLY.test(name);
+    const water =
+      (/^Water\b/.test(name) && /^Facilities/.test(category)) || /Water refill/i.test(category);
     if (!food && !water) continue;
 
     const [lat, lon] = (item.Location ?? ",").split(",").map(Number);

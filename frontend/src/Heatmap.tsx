@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { DayObs, ProductFile, RecentReading } from "./api";
+import { useParkToday } from "./parkDay";
 
 const DOW = ["M", "T", "W", "T", "F", "S", "S"];
 
@@ -48,7 +49,7 @@ function Month({
     Date.UTC(first.getUTCFullYear(), first.getUTCMonth() + 1, 0),
   ).getUTCDate();
 
-  const today = new Date().toISOString().slice(0, 10);
+  const today = useParkToday();
   const cells = [];
   for (let i = 0; i < lead; i++) {
     cells.push(<div key={`pad${i}`} className="cell empty" />);

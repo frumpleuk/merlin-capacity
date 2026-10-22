@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
+import { useParkToday } from "./parkDay";
 import { useParkKey } from "./useParkKey";
 import {
   loadParkIndex,
@@ -18,7 +19,7 @@ export function CalendarPage() {
   const parkDef = findPark(park);
   const productDef = parkDef?.products.find((pr) => pr.key === product);
 
-  const today = new Date().toISOString().slice(0, 10);
+  const today = useParkToday();
   // undefined = loading, null = no data for this product yet
   const [file, setFile] = useState<ProductFile | null | undefined>(undefined);
   // Default the selection to today, so the detail bar opens on the current day.

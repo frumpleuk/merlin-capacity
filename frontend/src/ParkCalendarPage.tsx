@@ -17,6 +17,7 @@ import {
 } from "./api";
 import { findPark, PARK_HOME, parkPath } from "./catalog";
 import { ParkCalendar } from "./ParkCalendar";
+import { useParkToday } from "./parkDay";
 
 interface MonthData {
   main: ProductFile | null;
@@ -61,7 +62,6 @@ function restrictionsForMonth(
   return Object.keys(days).length ? { ...file, days } : null;
 }
 
-const currentMonth = () => new Date().toISOString().slice(0, 7);
 
 /** Shift a 'YYYY-MM' by whole months (UTC-safe). */
 function addMonths(month: string, delta: number): string {
@@ -73,7 +73,9 @@ export function ParkCalendarPage() {
   const park = useParkKey();
   const parkDef = findPark(park);
 
-  const [month, setMonth] = useState(currentMonth);
+  // The park's own month: on 31 October evening in Orlando it's still October.
+  const thisMonth = useParkToday().slice(0, 7);
+  const [month, setMonth] = useState(thisMonth);
   const [bounds, setBounds] = useState<ParkIndex | null>(null);
   // undefined = loading, else the three per-month files (any may be null)
   const [data, setData] = useState<MonthData | undefined>(undefined);
@@ -86,7 +88,7 @@ export function ParkCalendarPage() {
   // Reset to the current month and refetch bounds whenever the park changes.
   useEffect(() => {
     if (!parkDef || parkDef.queueOnly) return;
-    setMonth(currentMonth());
+    setMonth(thisMonth);
     setBounds(null);
     setSpecial(null);
     setAnomalies({});

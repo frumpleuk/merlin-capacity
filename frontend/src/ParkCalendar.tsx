@@ -18,6 +18,7 @@ import {
 import { AllocList, AllocMeter, CellMeter } from "./AllocMeter";
 import { colour, longDate, monthLabel } from "./Heatmap";
 import { useMediaQuery } from "./useMediaQuery";
+import { useParkToday } from "./parkDay";
 
 const DOW = ["M", "T", "W", "T", "F", "S", "S"];
 const PREBOOK_NOTE =
@@ -205,7 +206,7 @@ export function mergeDetails(
 /* ── Compact cell content (desktop month grid) ─────────────────────────────── */
 
 function CellContent({ d }: { d: DayDetail }) {
-  const past = d.iso < new Date().toISOString().slice(0, 10);
+  const past = d.iso < useParkToday();
   const tp = themepark(d.hours);
   const closed = tp && /^closed$/i.test(tp.hours);
   const extras = extraLocations(d.hours).filter((l) => l.hours && !/^closed$/i.test(l.hours));
@@ -333,7 +334,7 @@ function CellContent({ d }: { d: DayDetail }) {
 /* ── Full detail body (tap sheet + agenda card) ────────────────────────────── */
 
 function DayBody({ d, seasonLabel }: { d: DayDetail; seasonLabel: string }) {
-  const past = d.iso < new Date().toISOString().slice(0, 10);
+  const past = d.iso < useParkToday();
   const locs = d.hours?.locations ?? [];
   const events = d.hours?.events ?? [];
   return (
@@ -458,7 +459,7 @@ function MonthGrid({
     Date.UTC(first.getUTCFullYear(), first.getUTCMonth() + 1, 0),
   ).getUTCDate();
 
-  const today = new Date().toISOString().slice(0, 10);
+  const today = useParkToday();
   const cells = [];
   for (let i = 0; i < lead; i++) cells.push(<div key={`pad${i}`} className="rc-cell empty" />);
   for (let day = 1; day <= daysInMonth; day++) {
@@ -572,7 +573,7 @@ function Agenda({
     { length: daysInMonth },
     (_, i) => `${month}-${String(i + 1).padStart(2, "0")}`,
   );
-  const today = new Date().toISOString().slice(0, 10);
+  const today = useParkToday();
   const agendaRef = useRef<HTMLDivElement | null>(null);
   const todayRef = useRef<HTMLDivElement | null>(null);
 

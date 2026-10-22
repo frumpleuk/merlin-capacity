@@ -12,6 +12,7 @@ import { useParkKey } from "./useParkKey";
 import { findPark, PARK_HOME } from "./catalog";
 import INDEX from "./menus.index.json";
 import { ParkMap, type MapArea } from "./ParkMap";
+import { useParkToday } from "./parkDay";
 
 // Shape of menus.generated.json (built from contrib/menus by scripts/menus/build.mjs).
 interface Size {
@@ -118,7 +119,6 @@ interface ParkMenus {
   areas: MapArea[];
 }
 
-const TODAY = new Date().toISOString().slice(0, 10);
 /** Counts only: enough to know a park has food before its data arrives. */
 const COUNTS = INDEX as Record<string, { venues: number; priced: number; water: number }>;
 
@@ -768,6 +768,8 @@ function Facet({
 }
 
 export function MenusPage() {
+  // The park's own date, for which events are still running.
+  const today = useParkToday();
   const park = useParkKey();
   const parkDef = findPark(park);
   const [params, setParams] = useSearchParams();
@@ -876,8 +878,8 @@ export function MenusPage() {
   const events = data.events
     .map((e) => ({ ...e, vendors: e.vendors.filter((v) => v.menus.length && v.items > 0).filter(passes) }))
     .filter((e) => e.vendors.length);
-  const running = events.filter((e) => !e.end || e.end >= TODAY);
-  const past = events.filter((e) => e.end && e.end < TODAY);
+  const running = events.filter((e) => !e.end || e.end >= today);
+  const past = events.filter((e) => e.end && e.end < today);
   const historic = gone.length + past.reduce((n, e) => n + e.vendors.length, 0);
   const shown = [...current, ...running.flatMap((e) => e.vendors)];
   const matched = new Set(shown.map((v) => v.slug));

@@ -2,6 +2,7 @@ import { NavLink, Outlet, useLocation } from "react-router-dom";
 import { findPark, parkPath, PARKS, type ParkDef } from "./catalog";
 import { PARK_LINKS } from "./links";
 import { ParkPicker } from "./ParkPicker";
+import { ParkTimeZoneContext } from "./parkDay";
 import { useParkKey } from "./useParkKey";
 import MENUS from "./menus.index.json";
 
@@ -111,7 +112,9 @@ export function Layout() {
           )}
         </nav>
       </header>
-      <Outlet />
+      <ParkTimeZoneContext.Provider value={parkDef.timeZone ?? "Europe/London"}>
+        <Outlet />
+      </ParkTimeZoneContext.Provider>
     </>
   );
 }

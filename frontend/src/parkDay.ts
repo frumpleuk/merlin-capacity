@@ -1,3 +1,5 @@
+import { createContext, useContext } from "react";
+
 // Park days, mirrored from src/config.ts (see the comment there). A park's day
 // is its local date, running from DAY_ROLLOVER_HOUR to the same hour the next
 // morning; times inside it are minutes since `${date}T00:00:00Z`.
@@ -41,4 +43,14 @@ export function parkDay(ms: number, timeZone: string): string {
 export function parkDayEndMin(date: string, timeZone: string): number {
   const next = new Date(Date.parse(`${date}T00:00:00Z`) + 86_400_000).toISOString().slice(0, 10);
   return (localInstant(next, DAY_ROLLOVER_HOUR, timeZone) - Date.parse(`${date}T00:00:00Z`)) / 60_000;
+}
+
+/** The park the page is showing: its zone, set once by Layout for every tab. */
+export const ParkTimeZoneContext = createContext("Europe/London");
+
+/** Today's date at the park on the page (its park day, see parkDay). The
+ *  calendars, heatmaps and Food tab use it rather than the UTC date, which is a
+ *  day ahead in a US evening and a day behind in a Japanese morning. */
+export function useParkToday(): string {
+  return parkDay(Date.now(), useContext(ParkTimeZoneContext));
 }

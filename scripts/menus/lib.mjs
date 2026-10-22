@@ -29,10 +29,13 @@ export const PARK_DIRS = {
   legoland_new_york: "legoland-new-york",
 };
 
-/** Independents on the same Attractions.io backend as the Merlin parks, so
- *  sync-venues.mjs reads their apps too; each is its own operator folder. */
+/** Non-Merlin parks on the same Attractions.io backend as the Merlin parks, so
+ *  sync-venues.mjs reads their apps too; each sits directly under
+ *  contrib/menus. */
 export const ATTRACTIONS_INDIE_PARK_DIRS = {
   knoebels: "knoebels",
+  pleasurewood_hills: "pleasurewood-hills",
+  crealy: "crealy",
 };
 
 /** The independents are each their own operator, so each sits directly under

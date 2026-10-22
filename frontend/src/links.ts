@@ -113,7 +113,8 @@ export interface ParkLinks {
    *  today's list.
    *  A named field rather than a row in a list because the Queues tab links it
    *  directly, under the ride it explains the absence of. Unset where the park
-   *  publishes no closure list (Billund, Deutschland, Gardaland). */
+   *  publishes no closure list (Billund, Deutschland, Gardaland, Korea,
+   *  Pleasurewood Hills). */
   rideAvailability?: ParkLink;
   /** The park's own opening-times calendar — the source our hours poller reads,
    *  and the authority when the two disagree. */
@@ -1591,6 +1592,176 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
       x: "https://x.com/knoebels",
       youtube: "https://www.youtube.com/user/KnoebelsTube",
       linkedin: "https://www.linkedin.com/company/knoebels/",
+    },
+  },
+
+  // Independent (Looping Group) - VisiSoft webshop at tickets.pleasurewoodhills.com.
+  // Ride access goes through Nimbus: a free Pleasurewood Digital Access Pass or a
+  // full Access Card unlocks the Ride Access Service and Essential Companion
+  // tickets.
+  pleasurewood_hills: {
+    website: "https://pleasurewoodhills.com/",
+    location: {
+      address: "Pleasurewood Hills, Leisure Way, Lowestoft, Suffolk",
+      postcode: "NR32 5DZ",
+      // The park tells drivers to use NR32 4TZ to arrive via Leisure Way;
+      // OpenStreetMap also tags the park NR32 4TZ.
+      query: "Pleasurewood Hills, NR32 4TZ",
+      // OpenStreetMap way 1190421480 (amenity=parking only - no name, operator
+      // or fee tags), about 25,000 m2, the largest lot beside the park, which it
+      // adjoins to the south. The park's own map pin falls inside the theme-park
+      // outline, not the car park.
+      drive: { lat: 52.5061678, lon: 1.7434321, label: "the car park" },
+      directions: "https://pleasurewoodhills.com/contact-us/",
+      note: "Use NR32 4TZ in a sat nav to arrive via Leisure Way. Parking is £3 a car, added to your booking or paid with RingGo (location 71654); free for Premium season pass holders.",
+    },
+    booking: [
+      {
+        label: "Book tickets",
+        url: "https://tickets.pleasurewoodhills.com/",
+        note: "Day tickets, concessions, season passes and extras including car parking",
+      },
+      {
+        label: "Season passes",
+        url: "https://pleasurewoodhills.com/season-passes/",
+        note: "Standard and Premium - Premium covers every open date and parking",
+      },
+    ],
+    orders: [
+      {
+        label: "Manage order",
+        url: "https://tickets.pleasurewoodhills.com/#manage-order",
+        note: "Look up an order with its reference and your last name - no account needed",
+      },
+    ],
+    openingTimes: openingTimes("https://pleasurewoodhills.com/park-info/opening-times/"),
+    access: [
+      {
+        label: "Accessibility",
+        url: "https://pleasurewoodhills.com/park-info/accessibility/",
+        note: "Ride Access Service and Essential Companion tickets, both through Nimbus",
+      },
+      {
+        label: "Apply via Access Card",
+        url: "https://app.accesscard.online/apply/pleasurewood/form/",
+        note: "Free Pleasurewood Digital Access Pass, or a £15 Nimbus Access Card",
+      },
+    ],
+    photos: [
+      {
+        label: "Ride photos",
+        url: "https://pleasurewoodhills.com/facilities/",
+        note: "Photo booths at Wipeout, Water Fun Factory, Marble Madness and Wavebreaker - card only",
+      },
+    ],
+    apps: [
+      {
+        name: "Pleasurewood Hills Official",
+        ios: appStore("pleasurewood-hills-official", "6758147676"),
+        android: playStore("com.pleasurewoodhills.aio"),
+        note: "Also holds tickets, season passes and ride photos",
+      },
+    ],
+    social: {
+      facebook: "https://www.facebook.com/PleasurewoodHills/",
+      instagram: "https://www.instagram.com/pwhills/",
+      tiktok: "https://www.tiktok.com/@pwhills",
+      youtube: "https://www.youtube.com/@pwhills",
+    },
+  },
+
+  // Independent - day tickets on ngt.crealy.co.uk, annual passes on a separate
+  // store at bookings.crealy.co.uk. Ride access is the Ride Assist Pass, which
+  // needs a Nimbus Access Card or a free Crealy Digital Access Pass.
+  crealy: {
+    website: "https://www.crealy.co.uk/theme-park/",
+    location: {
+      address: "Crealy Theme Park & Resort, Sidmouth Road, Exeter, Devon",
+      postcode: "EX5 1DR",
+      query: "Crealy Theme Park, EX5 1DR",
+      // No `drive`: the park publishes no car park pin, and OpenStreetMap maps
+      // only an overflow lot and a small unnamed one, not the main car park.
+      directions: "https://www.crealy.co.uk/theme-park/plan-your-visit/directions/",
+      note: "Parking is free.",
+    },
+    booking: [
+      {
+        label: "Book tickets",
+        url: "https://ngt.crealy.co.uk/untimed/?templateId=49",
+        note: "Direct to the date picker on the park's ticketing site",
+      },
+      { label: "Ticket prices", url: "https://www.crealy.co.uk/theme-park/tickets-prices/" },
+      {
+        label: "Fast Track Ride Pass",
+        url: "https://www.crealy.co.uk/theme-park/plan-your-visit/ride-fast-track-pass/",
+        note: "£25, one skip on five named rides plus one of your choice - 20 a day, added when booking",
+      },
+      {
+        label: "Annual passes",
+        url: "https://www.crealy.co.uk/annual-passes/",
+        note: "Pay in full or monthly by direct debit",
+      },
+    ],
+    // Day tickets have no lookup: the FAQ sends date changes to an email address.
+    orders: [
+      {
+        label: "Annual Pass Portal",
+        url: "https://bookings.crealy.co.uk/crealy/account/login",
+        note: "Sign in to manage an annual pass",
+      },
+    ],
+    rideAvailability: rideAvailability(
+      "https://www.crealy.co.uk/theme-park/rides-attractions/ride-status/",
+      "Current closures, winter closures and planned maintenance dates",
+    ),
+    openingTimes: openingTimes("https://www.crealy.co.uk/theme-park/plan-your-visit/opening-times/"),
+    access: [
+      {
+        label: "Accessibility",
+        url: "https://www.crealy.co.uk/info-support/accessibility/",
+        note: "Overview, plus ride accessibility restrictions",
+      },
+      {
+        label: "Ride Assist Pass",
+        url: "https://www.crealy.co.uk/info-support/accessibility/ride-assist-pass-rap-scheme/",
+        note: "Crealy's equivalent of a Ride Access Pass - limited each day, needs a Nimbus Access Card",
+      },
+      {
+        label: "Book a Ride Assist Pass",
+        url: "https://ngt.crealy.co.uk/access-pass/",
+        note: "Free, booked in advance with your Access Card number",
+      },
+      {
+        label: "Apply via Access Card",
+        url: "https://app.accesscard.online/apply/crealy/form/",
+        note: "Free Crealy Digital Access Pass, or a £15 Nimbus Access Card",
+      },
+      {
+        label: "Accessibility ticketing",
+        url: "https://www.crealy.co.uk/info-support/accessibility/accessibility-ticketing/",
+        note: "Essential Companion tickets at 25% off, free registered carer tickets",
+      },
+    ],
+    photos: [
+      {
+        label: "Unlimited Photo Downloads",
+        url: "https://www.crealy.co.uk/theme-park/plan-your-visit/unlimited-photo-downloads/",
+        note: "£15, added when booking - collected at the Photo Hub",
+      },
+    ],
+    apps: [
+      {
+        name: "Crealy Theme Park & Resort",
+        ios: appStore("crealy-theme-park-resort", "6786353116"),
+        android: playStore("uk.co.crealy.aio"),
+        note: "Also sells tickets and annual passes",
+      },
+    ],
+    social: {
+      facebook: "https://www.facebook.com/CrealyResort/",
+      instagram: "https://www.instagram.com/crealyresort/",
+      tiktok: "https://www.tiktok.com/@crealyresort",
+      youtube: "https://www.youtube.com/channel/UCPzOIA6SKdj4PwBGHfiPOzg",
     },
   },
 };

@@ -25,6 +25,15 @@ export interface ParkDef {
   /** IANA zone the park's clock times are shown in. Default Europe/London; only
    *  Disneyland Paris sets it. Mirrors `timeZone` in src/config.ts. */
   timeZone?: string;
+  /** ISO 3166-1 alpha-2 code; the park picker groups by it and spells it out
+   *  with Intl.DisplayNames. */
+  country: string;
+  /** Who runs it, for the picker's "by operator" grouping. Unset is an
+   *  independent park. */
+  operator?: string;
+  /** The resort, when it holds more than one park we list (Disneyland Paris).
+   *  The picker nests the resort's parks under this name. */
+  resort?: string;
 }
 
 // Only list products the poller actually captures. Main tickets for the
@@ -33,6 +42,8 @@ export interface ParkDef {
 export const PARKS: ParkDef[] = [
   {
     key: "alton_towers",
+    country: "GB",
+    operator: "Merlin Entertainments",
     merlinPass: true,
     label: "Alton Towers",
     products: [
@@ -44,6 +55,8 @@ export const PARKS: ParkDef[] = [
   },
   {
     key: "thorpe_park",
+    country: "GB",
+    operator: "Merlin Entertainments",
     merlinPass: true,
     label: "Thorpe Park",
     products: [
@@ -55,6 +68,8 @@ export const PARKS: ParkDef[] = [
   },
   {
     key: "legoland",
+    country: "GB",
+    operator: "Merlin Entertainments",
     merlinPass: true,
     label: "Legoland Windsor",
     products: [
@@ -64,6 +79,8 @@ export const PARKS: ParkDef[] = [
   },
   {
     key: "chessington",
+    country: "GB",
+    operator: "Merlin Entertainments",
     merlinPass: true,
     label: "Chessington",
     products: [
@@ -78,6 +95,7 @@ export const PARKS: ParkDef[] = [
     // availability (the "main" heatmap). The calendar's opening times frame the
     // queue sparkline's x-axis.
     key: "paultons",
+    country: "GB",
     label: "Paultons Park",
     products: [{ key: "main", label: "Tickets" }],
   },
@@ -87,6 +105,7 @@ export const PARKS: ParkDef[] = [
     // from The Events Calendar iCal feed — no opening hours) shows alongside live
     // queues.
     key: "flamingoland",
+    country: "GB",
     label: "Flamingo Land",
     products: [],
   },
@@ -97,6 +116,7 @@ export const PARKS: ParkDef[] = [
     // empty (no availability heatmaps) but the Calendar tab still shows — hours
     // and events only.
     key: "blackpool",
+    country: "GB",
     label: "Blackpool Pleasure Beach",
     products: [],
   },
@@ -104,12 +124,18 @@ export const PARKS: ParkDef[] = [
     // Disneyland Paris's two parks, a calendar + queue park each. They share one
     // wait feed and one hours query, split by park id in the poller. Paris time.
     key: "disneyland_park",
+    country: "FR",
+    operator: "Disney",
+    resort: "Disneyland Paris",
     label: "Disneyland Park",
     products: [],
     timeZone: "Europe/Paris",
   },
   {
     key: "disney_adventure_world",
+    country: "FR",
+    operator: "Disney",
+    resort: "Disneyland Paris",
     label: "Disney Adventure World",
     products: [],
     timeZone: "Europe/Paris",

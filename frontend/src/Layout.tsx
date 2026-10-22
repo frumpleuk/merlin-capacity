@@ -1,6 +1,7 @@
-import { Link, NavLink, Outlet, useLocation, useParams } from "react-router-dom";
+import { NavLink, Outlet, useLocation, useParams } from "react-router-dom";
 import { findPark, PARKS, type ParkDef } from "./catalog";
 import { PARK_LINKS } from "./links";
+import { ParkPicker } from "./ParkPicker";
 import MENUS from "./menus.index.json";
 
 type MenuCounts = Record<string, { venues: number; water: number }>;
@@ -47,17 +48,7 @@ export function Layout() {
     <>
       <header>
         <h1>Theme Parks</h1>
-        <nav className="parks">
-          {PARKS.map((p) => (
-            <Link
-              key={p.key}
-              to={targetFor(p)}
-              className={"park-link" + (p.key === parkDef.key ? " active" : "")}
-            >
-              {p.label}
-            </Link>
-          ))}
-        </nav>
+        <ParkPicker current={parkDef} hrefFor={targetFor} />
         <nav className="tabs">
           {/* Rich calendar (park home), then per-product heatmaps. A queue-only
               park (Paulton's) has neither — just the Queues tab. */}

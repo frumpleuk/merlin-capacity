@@ -154,7 +154,8 @@ object literal.
   - North America is on `meg-na`, where app id 1500 has no config.
   - Gardaland uses Vivaticket; Knoebels uses eGalaxy behind Cloudflare.
 
-  Raise it with the user rather than starting.
+  Merchant ids, store hosts, keywords and what each stack returned are in
+  `docs/accesso-api.md` §9. Raise it with the user rather than starting.
 - **Menus:** they come from photos (`/menus-add-photos`, `/menus-transcribe`).
 
 ## 10. Afterwards

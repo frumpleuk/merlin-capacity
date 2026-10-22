@@ -543,3 +543,115 @@ report cover the gap.
   (§6) or a separately-ticketed event. The package that CAN sell it names it.
 - Nothing here is authenticated or contractual; expect drift and log poll status
   (the `poll_log` table) so a park silently going `FAILED` is visible.
+
+---
+
+## 9. Parks not yet tracked (findings, 2026-10-22)
+
+The site covers 20 parks for queues and hours, but ticket availability only for
+the UK four. These notes are from the link research for the other parks: what
+was **observed**, and what is still **untested**. Nobody has yet called
+`GetMerchantPackageEventDates` (§3.1) for any merchant below; start there.
+
+### accesso merchants
+
+| Park | Stack (API host) | Store host | `m=` slug | `merchant_id` |
+|---|---|---|---|---|
+| Legoland Billund | `meg-eu` | `me-llbillund.tickets.legoland.dk` | `ME-LLBILLUND` | `6600` |
+| Legoland Deutschland | `meg-eu` | `me-llgermany.tickets.legoland.de` | `ME-LLGERMANY` | `6700` |
+| Heide Park | `meg-eu` | `me-hpgermany.tickets.heide-park.de` | `ME-HPGERMANY` | `6500` |
+| Legoland Japan | `meg-as` | `me-lljapan.tickets.legoland.jp` | `ME-LLJAPAN` | `1300` |
+| Legoland Korea | `meg-as` | `me-llkorea.tickets.legoland.kr` | `ME-LLKOREA` | `5400` |
+| Legoland Florida | `meg-na` | `me-llflorida.na.tickets.legoland.com` | `ME-LLFLORIDA` | `1000` |
+| Legoland California | `meg-na` | `me-llcalifornia.na.tickets.legoland.com` | `ME-LLCALIFORNIA` | `2600` |
+| Legoland New York | `meg-na` | `me-llnewyork.na.tickets.legoland.com` | `ME-LLNEWYORK` | `3400` |
+| Peppa Pig Theme Park Florida | `meg-na` | `me-peppaparkflorida.na.tickets.peppapigthemepark.com` | `ME-PEPPAPARKFLORIDA` | `4200` |
+
+The API host follows the stack: `ecomm.api.<stack>.accessoticketing.com`.
+
+**Observed, per stack:**
+
+- **`meg-eu` (Billund, Deutschland, Heide Park).**
+  - **Language:** the closest to the UK setup. Their stores default to Danish
+    or German, and the bootstrap works with no `l` or with the store's own
+    `l=en-dk` / `l=en-de`. With `l=en-gb` it returns HTTP 500 ("No
+    configuration information found for application 1500"). Expect the
+    `com-accessopassport-language` header to need the same value; untested.
+  - **Admission keywords:** English, from the park sites' Buy buttons.
+    Billund and Heide Park use `SnapWizardEN` / `SnapWizardAdmissionEN`;
+    Deutschland uses `SnapWizardEN` / `SnapAdmissionEN`.
+  - **Next step:** discovery needs each park's admission `event_id`, which
+    isn't known yet. Find it in the bootstrap as for the UK parks (§3.2, §4).
+  - **Wallet:** none of the three sets `enable_google_wallet`, so Apple Wallet
+    only.
+- **`meg-as` (Japan, Korea).**
+  - **Catalog:** the bootstrap returns 200 without auth with `l=en-jp` /
+    `l=en-kr` (1.7 MB and 860 KB).
+  - **Japan keywords:** Buy buttons use `COMBINEDailyTicketsEN` (park + SEA
+    LIFE), `LEGOLANDDailyTicketsEN` and `SEALIFEDailyTicketsEN`; the catalog
+    also has `SnapWizardEN` and `SnapWizardDailyEN`.
+  - **Japan Queue-it:** the store root sends you through Queue-it (`e_melljapan`,
+    safetynet); deep links loaded without a queue.
+  - **Korea:** keyword `MainOneDayEntryEN`; Fastrack packages 23388 (Gold),
+    23391 (Silver), 23394 (Bronze). The store shows a reCAPTCHA notice.
+- **`meg-na` (Florida, California, New York, Peppa Pig).**
+  - **Errors:** the bootstrap returns HTTP 500 for all four, but the body
+    still holds the full catalog (GetMerchantDetails, GetMerchantKeywords,
+    GetMerchantPackageList; 0.4 to 3.2 MB). The failing part is
+    GetApplicationConsolidated: "No configuration information found for
+    application 1500, merchant <id>". **The UK app id 1500 may not be usable
+    for availability on this stack**; find the app id the NA store sends
+    before anything else.
+  - **Buy buttons:** they open an `accesso.js` overlay
+    (`data-accesso-module="snap-calendar-wizard"`) rather than navigating.
+  - **Keywords are promo-dated and rotate:**
+
+    | Park | Keyword pairs on the Buy buttons |
+    |---|---|
+    | Florida | `BCGSnapWizard2D`/`BCGSnapWizardAdmission2D`, `SnapWizardFlash1D`/`SnapWizardFlashAdmission1D` |
+    | California | `SnapWizardPromo1D`/`SnapWizardPromoAdmission1D`, `SnapWizardPromo2D`/`SnapWizardPromoAdmission2D` |
+    | New York | `SNAPWIZARD2026`/`SNAPWIZARDAdmissions2026` |
+    | Peppa Pig | `SnapWizard1D`/`SnapWizardAdmission1D`, `SnapWizard2D`/`SnapWizardAdmission2D` |
+
+    Florida and Peppa Pig pages also carry `accesso-keyword="FLORIDA7"`. The
+    Florida and California keywords are tied to an "ends November 1, 2026"
+    offer.
+  - **No generic keyword:** the UK `SnapWizard`/`SnapWizardAdmission` pair
+    isn't in these catalogs, so don't assume one.
+  - **Hotel packages:** these go through a separate form posting to
+    `legoland.com/<park>/bookings/` (codes LLFMAIN, LLCMAIN, LLNMAIN, channel
+    STAD).
+  - **Orders and accounts:** at
+    `accountportal.meg-na.accessoticketing.com/accesso90/<merchant_id>/en-US/`.
+
+**All stacks:** the store SPA answers **any path** with 200, so a 200 from a
+store URL proves nothing. Check a keyword exists in the merchant's catalog.
+
+### Not accesso
+
+- **Gardaland:** Vivaticket. `tickets.gardaland.it/b2c` (a Next.js app,
+  "powered-by-vivaticket" in its bundle) behind Imperva Incapsula
+  (`incap_ses_*` / `visid_incap_*` cookies).
+  - **Products:** chosen by code in the URL:
+    `ticketSale/tickets?category=GPARK&selected=G1GDL30`, Express `FASTEX30`,
+    photos `PHOTO30`.
+  - **Routes:** it has `/ticketSale/eventsCalendar` and `/profile/orders`.
+  - **Other systems:** season passes are on `abbonamenti.gardaland.it` (Java,
+    JSESSIONID); hotels on `megibe.gardaland.it` (isotravel).
+- **Knoebels:** Gateway Ticketing's Galaxy/eGalaxy WebStore (inferred from
+  `tickets.knoebels.com/webstore/shop/viewitems.aspx?cg=<group>&c=<code>`
+  and a WordPress route `knoebels/v1/egalaxy-catalog`, which returns an empty
+  catalog).
+  - **Blocked:** behind a Cloudflare managed challenge that blocked curl and
+    headless Chrome.
+  - **Crawl delay:** knoebels.com sets a 10-second crawl delay.
+  - **Not a capacity product:** admission is free, so it may not be worth
+    tracking.
+- **Disneyland Paris:** Disney's own `tickets.disneylandparis.com`, not yet
+  investigated. www.disneylandparis.com sits behind Queue-it.
+
+### Suggested order
+
+Billund, Deutschland and Heide Park first: same stack and headers as the UK
+parks, with only the language and event ids to work out. Then Japan and Korea
+(a new host, catalogs open). Then the US four, once the NA app id is found.

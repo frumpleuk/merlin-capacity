@@ -96,6 +96,10 @@ h1 {
   color: var(--fg);
   font-weight: 600;
 }
+.pp-after-pins {
+  padding-left: 16px;
+  border-left: 1px solid var(--grid);
+}
 .pp-more {
   display: inline-flex;
   align-items: center;

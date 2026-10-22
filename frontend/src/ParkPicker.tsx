@@ -17,6 +17,8 @@ const RECENT_KEY = "parkPicker.recent";
 const GROUP_KEY = "parkPicker.groupBy";
 const PIN_KEY = "parkPicker.pinned";
 const RECENT_MAX = 4;
+/** Links in the desktop row, unless more parks than this are pinned. */
+const ROW_SIZE = 5;
 
 const regionNames = new Intl.DisplayNames(["en"], { type: "region" });
 
@@ -222,20 +224,19 @@ export function ParkPicker({
           .filter(Boolean)
       : [];
 
-  // The desktop row. With parks pinned: those and the current park. Without:
-  // the current park and the last few viewed, topped up from the catalog for a
-  // new visitor. Either way in catalog order, so links don't swap places on
-  // every switch.
-  const rowParks = (() => {
-    if (layoutPins.length) {
-      return PARKS.filter(
-        (p) => layoutPins.includes(p.key) || p.key === current.key,
-      );
-    }
-    const keys = new Set([current.key, ...recent].slice(0, RECENT_MAX + 1));
+  // The desktop row: pinned parks first, then the current park and the last
+  // few viewed, topped up from the catalog for a new visitor, to fill
+  // ROW_SIZE links. Pins always show, however many. Each group is in catalog
+  // order, so links don't swap places on every switch.
+  const rowPinned = PARKS.filter((p) => layoutPins.includes(p.key));
+  const rowRecent = (() => {
+    const room = Math.max(1, ROW_SIZE - rowPinned.length);
+    const keys = new Set(
+      [current.key, ...recent].filter((k) => !layoutPins.includes(k)).slice(0, room),
+    );
     for (const p of PARKS) {
-      if (keys.size > RECENT_MAX) break;
-      keys.add(p.key);
+      if (keys.size >= room) break;
+      if (!layoutPins.includes(p.key)) keys.add(p.key);
     }
     return PARKS.filter((p) => keys.has(p.key));
   })();
@@ -367,16 +368,18 @@ export function ParkPicker({
       }}
     >
       {wide && (
-        <nav
-          className="pp-row"
-          aria-label={layoutPins.length ? "Pinned parks" : "Recent parks"}
-        >
-          {rowParks.map((p) => (
+        <nav className="pp-row" aria-label="Pinned and recent parks">
+          {[...rowPinned, ...rowRecent].map((p, i) => (
             <Link
               key={p.key}
               to={hrefFor(p)}
               aria-current={p.key === current.key ? "page" : undefined}
-              className={"park-link" + (p.key === current.key ? " active" : "")}
+              className={
+                "park-link" +
+                (p.key === current.key ? " active" : "") +
+                // A rule between the pinned parks and the recent ones.
+                (i === rowPinned.length && i > 0 ? " pp-after-pins" : "")
+              }
             >
               {p.label}
             </Link>

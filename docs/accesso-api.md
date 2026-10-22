@@ -650,6 +650,30 @@ store URL proves nothing. Check a keyword exists in the merchant's catalog.
 - **Disneyland Paris:** Disney's own `tickets.disneylandparis.com`, not yet
   investigated. www.disneylandparis.com sits behind Queue-it.
 
+### UK parks outside Merlin (2026-10-23)
+
+- **Drayton Manor (Looping Group): accesso, on a different stack.**
+  - **Store:** `lg-draytonmanor.tickets.draytonmanor.co.uk`, slug
+    `LG-DRAYTONMANOR`, `merchant_id` `100`.
+  - **API host:** `ecomm.api.eu.accessoticketing.com` (not `meg-eu`).
+  - **Catalog:** the bootstrap returns 200 with `l=en-gb` (504 KB) when sent
+    the store as `origin`.
+  - **Keywords:** the site's Buy buttons use `Tickets` and `Groups`.
+
+  The closest of all the parks here to the UK Merlin setup, so a good first
+  try.
+- **Pleasurewood Hills: VisiSoft webshop, not accesso.**
+  - **Store:** `tickets.pleasurewoodhills.com`, a PHP app on
+    `pleasurewoodhills.api.visihost.co.uk`.
+  - **Availability calls:** `/get-available-dates.php` (year, month, event,
+    numTicketsRequired, a `_token` form token) and
+    `/ajax.php?action=getSessionsByDate&event=…&date=YYYYMMDD`.
+- **Crealy: two stores, neither accesso.**
+  - **Day tickets:** `ngt.crealy.co.uk`, vendor unidentified (ASP.NET Core on
+    Azure). The JS calls `/api/month-availability/{a}/{b}/{year}/{month}` and
+    `/api/timeslots/...?showAvailability=true`.
+  - **Annual passes:** `bookings.crealy.co.uk/crealy/`, a WebForms store.
+
 ### Suggested order
 
 Billund, Deutschland and Heide Park first: same stack and headers as the UK

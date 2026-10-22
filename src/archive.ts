@@ -204,7 +204,7 @@ export const queueArchiveKey = (park: string, date: string) =>
  *  so the day stays a range seek and only the ties within a single timestamp
  *  need ordering. */
 const QUEUE_PAGE_SQL = `SELECT park, ride_id, queue_line_id, line_type, queue_time, status,
-         is_open, is_operational, observed_at
+         is_open, is_operational, present, observed_at
     FROM queue_observation
    WHERE park = ? AND observed_at >= ? AND observed_at < ?
      AND (observed_at, ride_id, queue_line_id) > (?, ?, ?)

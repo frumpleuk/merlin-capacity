@@ -131,6 +131,10 @@ function toQueueRows(rows: Record<string, string | number | null>[]): QueueRow[]
       status: (r.status ?? null) as string | null,
       is_open: Number(r.is_open),
       is_operational: Number(r.is_operational),
+      // Archives written before 2026-10-23 dropped this column, so their rows
+      // read as listed; a stretch the park wasn't listing a line then shows as
+      // a closure, as it did before migration 0008.
+      ...(r.present != null ? { present: Number(r.present) } : {}),
       observed_at: String(r.observed_at),
     }))
     .sort(

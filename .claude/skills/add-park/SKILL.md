@@ -81,7 +81,9 @@ backend (`paultons-api.md`, `flamingoland-api.md`, `blackpool-api.md`,
 
 `npm run typecheck`, then `npm run check:park -- <key>`. It runs the real
 catalog build, a live queue read and the hours fetch in Node against the live
-APIs (`wrangler dev` crashes on this Mac). Look for:
+APIs in seconds. For the full pipeline, `wrangler dev --test-scheduled` then
+`curl "localhost:8787/poll?key=$(grep POLL_KEY .dev.vars | cut -d= -f2)"`
+builds catalogs, polls and writes day files to the local D1/R2. Look for:
 - **Ride names:** rides named, not empty, not "Ride NNNN" across the board. A
   bundle with locale-map text is read via `text()` in `src/rides.ts`; extend it
   if a new shape appears.

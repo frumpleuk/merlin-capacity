@@ -1,7 +1,7 @@
-// Check a park end to end against its live sources, without wrangler dev (whose
-// bundled workerd crashes on macOS with a kj "addrlen" fault once the worker
-// fetches anything). Runs the worker's own code in Node with a Map standing in
-// for R2: the ride catalog build, one live queue read, and the opening hours.
+// Check a park against its live sources in a few seconds, without starting
+// wrangler dev or touching D1. Runs the worker's own code in Node with a Map
+// standing in for R2: the ride catalog build, one live queue read, and the
+// opening hours. For the whole pipeline (day files, D1), use wrangler dev.
 //
 //   npm run check:park -- <park_key> [park_key...]
 //

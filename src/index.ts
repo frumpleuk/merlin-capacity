@@ -123,10 +123,10 @@ async function preOpen(env: Env, scheduledTime: number): Promise<void> {
 }
 
 /** Rebuild the Attractions.io ride catalogs one park at a time. Each rebuild
- *  streams a 20-50MB content bundle through the unzipper; run in parallel, eight
- *  of them together outgrow a Worker's 128MB memory, and the whole invocation
- *  dies, taking every park's rebuild with it. One at a time costs a few seconds
- *  each at an hour when nothing else is running. */
+ *  streams a 20-50MB content bundle through the unzipper. In parallel, a dozen
+ *  of them would share one Worker's 128MB memory, and an invocation killed for
+ *  memory loses every park's rebuild at once. One at a time costs a few seconds
+ *  per park at an hour when nothing else is running. */
 async function rebuildCatalogs(env: Env, scheduledTime: number): Promise<void> {
   for (const park of attractionsParks()) {
     await rebuildCatalog(env.BUCKET, park.key, park.queue, scheduledTime);
@@ -307,10 +307,12 @@ export default {
       if (!env.POLL_KEY || provided !== env.POLL_KEY) {
         return new Response("forbidden", { status: 403 });
       }
-      // Refresh discovery caches AND Paulton's restrictions first, so the poll
-      // loops below (which only READ these caches) see fresh data. This is the
-      // manual escape hatch for the daily pre-open refresh.
+      // Refresh discovery caches, Paulton's restrictions and the ride catalogs
+      // first, so the poll loops below (which only READ these caches) see fresh
+      // data. This is the manual escape hatch for the daily pre-open refresh,
+      // and how a newly added park gets ride names before the next 07:00 run.
       await Promise.all([
+        rebuildCatalogs(env, Date.now()),
         ...allProducts()
           .filter(({ product }) => product.discover)
           .map(({ park, product }) => refreshPackages(env.BUCKET, park, product, Date.now())),

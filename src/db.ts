@@ -156,7 +156,7 @@ export async function writeProductFile(
 const monthOf = (isoDate: string) => isoDate.slice(0, 7);
 
 /** Group a snapshot by 'YYYY-MM'. */
-function byMonth<T>(days: Record<string, T>): Map<string, Record<string, T>> {
+export function byMonth<T>(days: Record<string, T>): Map<string, Record<string, T>> {
   const out = new Map<string, Record<string, T>>();
   for (const [date, v] of Object.entries(days)) {
     const mk = monthOf(date);
@@ -169,7 +169,7 @@ function byMonth<T>(days: Record<string, T>): Map<string, Record<string, T>> {
 
 /** Merge `days` into an existing month file (existing wins for dates not in
  *  `days`, `days` wins for the ones it has) and write it back. */
-async function mergeMonthFile<T>(
+export async function mergeMonthFile<T>(
   bucket: R2Bucket,
   objectKey: string,
   base: Record<string, unknown>,

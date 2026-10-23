@@ -12,6 +12,9 @@ export interface Env {
    *  .dev.vars locally), never in config.ts. Absent → the BPB queue poll no-ops. */
   BPB_EMAIL?: string;
   BPB_PASSWORD?: string;
+  /** OpenWeather One Call 4.0 key (src/weather.ts). Worker secret; absent →
+   *  the weather jobs no-op. */
+  OPENWEATHER_KEY?: string;
   /** The keys the parks' apps embed arrive as APP_KEY_<PARK> secrets, read by
    *  name in app-keys.ts. */
 }

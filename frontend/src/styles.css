@@ -3015,3 +3015,62 @@ h3.fd-area-head {
   color: var(--muted);
   padding: 2px 0 0;
 }
+
+/* ---- Weather (Weather.tsx) ------------------------------------------------
+   Forecast is drawn fainter than what was recorded, everywhere it appears. */
+.rc-weather {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.wx-fc {
+  opacity: 0.6;
+}
+.wx-strip-wrap {
+  margin: 4px 0 10px;
+}
+.wx-strip {
+  display: flex;
+  gap: 2px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+}
+.wx-hour {
+  flex: 1 0 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4px 0;
+  border-radius: 6px;
+  font-size: 11.5px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.3;
+}
+.wx-hour.wx-wet {
+  background: color-mix(in srgb, var(--q-main) 14%, transparent);
+}
+.wx-time {
+  color: var(--muted);
+  font-size: 10.5px;
+}
+.wx-icon {
+  font-size: 15px;
+}
+.wx-temp {
+  font-weight: 600;
+}
+.wx-rain {
+  color: var(--q-main);
+  font-size: 10.5px;
+  min-height: 1.3em;
+}
+.wx-note {
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 2px;
+}
+.chart-rain {
+  fill: color-mix(in srgb, var(--q-main) 12%, transparent);
+}
+.chart-rain.wx-fc {
+  opacity: 0.5;
+}

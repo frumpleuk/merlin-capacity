@@ -12,6 +12,7 @@ import { runQueuePoll } from "./queues";
 import { runUptime } from "./reliability";
 import { refreshRestrictions } from "./restrictions";
 import { rebuildCatalog } from "./rides";
+import { backfill as backfillWeather, runWeather } from "./weather";
 import { refreshSpecialDays } from "./special-days";
 import type { Env } from "./types";
 
@@ -35,6 +36,7 @@ const CRON_SPECIAL = "5 7 * * *"; // 07:05 GMT: name the buyout / ticketed-event
 const CRON_ARCHIVE = "0 4 * * *"; // 04:00 GMT: queue park days older than yesterday out of D1, into R2
 const CRON_MONTH = "0 3 2 * *"; // 03:00 on the 2nd: fully elapsed ticket months to R2
 const CRON_UPTIME = "30 4 * * *"; // 04:30 GMT: roll each park's finished days into the ride-uptime stats
+const CRON_WEATHER = "2 * * * *"; // hourly: OpenWeather for every park (weather.ts)
 
 const currentMonth = (ms: number) => new Date(ms).toISOString().slice(0, 7);
 
@@ -221,6 +223,8 @@ export default {
         return void ctx.waitUntil(runMonthArchive(env, event.scheduledTime));
       case CRON_UPTIME:
         return void ctx.waitUntil(runStats(env, event.scheduledTime));
+      case CRON_WEATHER:
+        return void ctx.waitUntil(runWeather(env, PARKS, event.scheduledTime));
       default: // CRON_QUEUES
         return void ctx.waitUntil(pollQueues(env));
     }
@@ -392,6 +396,22 @@ export default {
         anomalies,
         rebuilt,
       });
+    }
+
+    // Weather now: the hourly run, or `?backfill=1` for the backfill alone.
+    // Every call counts against the same daily budget as the cron (weather.ts),
+    // which is why /poll leaves weather out.
+    if (url.pathname === "/weather") {
+      const provided = url.searchParams.get("key") ?? req.headers.get("x-poll-key");
+      if (!env.POLL_KEY || provided !== env.POLL_KEY) {
+        return new Response("forbidden", { status: 403 });
+      }
+      if (!env.OPENWEATHER_KEY) return Response.json({ ok: false, error: "OPENWEATHER_KEY unset" });
+      const done =
+        url.searchParams.get("backfill") === "1"
+          ? await backfillWeather(env, PARKS, Date.now(), 0)
+          : await runWeather(env, PARKS, Date.now());
+      return Response.json({ ok: true, calls: done.length, done });
     }
 
     // Drain the archive backlog on demand, rather than waiting for the nightly

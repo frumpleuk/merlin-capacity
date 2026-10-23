@@ -34,12 +34,14 @@ assets = { directory = "./dist", binding = "ASSETS", not_found_handling = "singl
 #       "0 3 2 * *"    month    — 03:00 on the 2nd: elapsed ticket months to R2
 #       "30 4 * * *"   uptime   — 04:30 GMT: roll yesterday into the ride-uptime
 #                                 stats (reads the served day files, not D1, so it
-#                                 is independent of the 2-day queue retention) ---
+#                                 is independent of the 2-day queue retention)
+#       "2 * * * *"    weather  — OpenWeather, all parks (src/weather.ts); its own
+#                                 invocation so its calls never hold up the hours poll ---
 [triggers]
 crons = [
   "* * * * *", "*/1 * * * *", "0 * * * *", "*/30 * * * *",
   "0 5 * * *", "0 7 * * *", "5 7 * * *", "0 4 * * *", "0 3 2 * *",
-  "30 4 * * *",
+  "30 4 * * *", "2 * * * *",
 ]
 
 # --- History / source of truth ---

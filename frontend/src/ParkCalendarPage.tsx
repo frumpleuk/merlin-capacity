@@ -9,6 +9,8 @@ import {
   loadProductMonth,
   loadRestrictions,
   loadSpecialDays,
+  loadWeatherMonth,
+  type WeatherDay,
   type AnomalyKind,
   type ParkIndex,
   type ProductFile,
@@ -31,6 +33,7 @@ interface MonthData {
   /** One-off ticketed events (ParkDef.events), in catalog order. A month the
    *  event doesn't fall in 404s to null and contributes nothing. */
   events: { label: string; file: ProductFile | null }[];
+  weather: Record<string, WeatherDay>;
 }
 
 /** The special-days file covers the whole horizon in one object; the calendar
@@ -122,7 +125,8 @@ export function ParkCalendarPage() {
     let alive = true;
     const tick = async () => {
       const defs = parkDef.events ?? [];
-      const [main, rap, hours, season, ...events] = await Promise.all([
+      const [weather, main, rap, hours, season, ...events] = await Promise.all([
+        loadWeatherMonth(park!, month),
         loadProductMonth(park!, "main", month),
         loadProductMonth(park!, "rap", month),
         loadHoursMonth(park!, month),
@@ -137,6 +141,7 @@ export function ParkCalendarPage() {
           hours,
           season,
           events: defs.map((e, i) => ({ label: e.label, file: events[i] })),
+          weather,
         });
     };
     tick();
@@ -169,6 +174,7 @@ export function ParkCalendarPage() {
         special={specialForMonth(special, month)}
         anomalies={anomalies}
         restrictions={restrictionsForMonth(restrictions, month)}
+        weather={current?.weather ?? {}}
         loading={current === undefined}
         month={month}
         onPrev={() => setMonth((m) => addMonths(m, -1))}

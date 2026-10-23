@@ -19,6 +19,8 @@ import { AllocList, AllocMeter, CellMeter } from "./AllocMeter";
 import { colour, longDate, monthLabel } from "./Heatmap";
 import { useMediaQuery } from "./useMediaQuery";
 import { useParkToday } from "./parkDay";
+import { BodyWeather, CellWeather, WeatherDaysContext } from "./Weather";
+import type { WeatherDay } from "./api";
 
 const DOW = ["M", "T", "W", "T", "F", "S", "S"];
 const PREBOOK_NOTE =
@@ -260,6 +262,7 @@ function CellContent({ d }: { d: DayDetail }) {
           {KIND_ICON[l.kind] ?? "🏢"} {l.hours}
         </div>
       ))}
+      <CellWeather iso={d.iso} />
       {d.event && (
         <div className="rc-line rc-event">
           {getEventIcon(d.event)} {d.event}
@@ -379,6 +382,7 @@ function DayBody({ d, seasonLabel }: { d: DayDetail; seasonLabel: string }) {
         // feed omits entirely, so one situation reads one way.
         <div className="rc-body-loc rc-muted">Closed</div>
       ) : null}
+      <BodyWeather iso={d.iso} />
       {d.special && (
         <div className="rc-body-event rc-buyout">
           🔐 {specialLabel(d.special.name)}
@@ -688,6 +692,7 @@ export function ParkCalendar({
   events,
   anomalies,
   restrictions,
+  weather,
   month,
   loading,
   onPrev,
@@ -704,6 +709,8 @@ export function ParkCalendar({
   events: { label: string; file: ProductFile | null }[];
   anomalies: Record<string, { kind: AnomalyKind; note: string }>;
   restrictions: RestrictionsFile | null;
+  /** Daily weather by date. Annotates the days shown; never adds one. */
+  weather: Record<string, WeatherDay>;
   month: string;
   loading?: boolean;
   onPrev: () => void;
@@ -753,7 +760,7 @@ export function ParkCalendar({
   const selDay = selected ? details.get(selected) ?? { iso: selected } : null;
 
   return (
-    <>
+    <WeatherDaysContext.Provider value={weather}>
       <MonthNav
         month={month}
         onPrev={onPrev}
@@ -782,6 +789,6 @@ export function ParkCalendar({
           seasonLabel={seasonLabel}
         />
       )}
-    </>
+    </WeatherDaysContext.Provider>
   );
 }

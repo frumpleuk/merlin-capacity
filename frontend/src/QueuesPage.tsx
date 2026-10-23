@@ -7,6 +7,8 @@ import {
   loadQueueIndex,
   loadUptime,
   loadSpecialDays,
+  loadWeatherDay,
+  type WeatherHour,
   type QueueDayFile,
   type DayObs,
   type QueueIndex,
@@ -41,6 +43,7 @@ export function QueuesPage() {
   const [special, setSpecial] = useState<SpecialDaysFile | null>(null);
   const [tickets, setTickets] = useState<DayObs | undefined>(undefined);
   const [rap, setRap] = useState<DayObs | undefined>(undefined);
+  const [weather, setWeather] = useState<WeatherHour[] | undefined>(undefined);
   // Ride id → uptime row, for the "back within 30m" hint on a shut ride.
   // Rebuilt once a day, so it is loaded per park rather than per date.
   const [rel, setRel] = useState<Map<string, RideStats> | undefined>(undefined);
@@ -71,10 +74,13 @@ export function QueuesPage() {
     setFile(undefined);
     setTickets(undefined); // or the previous day's figure shows while loading
     setRap(undefined);
+    setWeather(undefined);
     let alive = true;
     const tick = async () => {
-      const f = await loadQueueDay(park!, date);
-      if (alive) setFile(f);
+      const [f, w] = await Promise.all([loadQueueDay(park!, date), loadWeatherDay(park!, date)]);
+      if (!alive) return;
+      setFile(f);
+      setWeather(w?.hours);
     };
     tick();
     // Ticket availability for the same day, from the month file the calendar
@@ -133,6 +139,7 @@ export function QueuesPage() {
         tickets={tickets}
         rap={rap}
         rel={rel}
+        weather={weather}
         timeZone={parkDef.timeZone}
       />
       {/* A ride absent from this list, or closed all day, is usually out for

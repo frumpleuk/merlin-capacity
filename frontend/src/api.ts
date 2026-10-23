@@ -491,6 +491,66 @@ export interface QueueIndex {
   maxDate: string;
 }
 
+/* ── Weather (OpenWeather, see src/weather.ts) ─────────────────────────────── */
+
+/** One hour. `t` is minutes since `${date}T00:00:00Z`, like the queue samples. */
+export interface WeatherHour {
+  t: number;
+  temp: number;
+  feels?: number;
+  pop?: number;
+  rain?: number;
+  snow?: number;
+  wind?: number;
+  gust?: number;
+  clouds?: number;
+  uvi?: number;
+  id?: number;
+  icon?: string;
+  desc?: string;
+  /** Forecast when the file was written; absent once the hour had passed. */
+  fc?: 1;
+}
+
+export interface WeatherDayFile {
+  date: string;
+  generated_at: string;
+  hours: WeatherHour[];
+}
+
+/** One calendar day. */
+export interface WeatherDay {
+  min: number;
+  max: number;
+  pop?: number;
+  rain?: number;
+  snow?: number;
+  wind?: number;
+  gust?: number;
+  id?: number;
+  icon?: string;
+  desc?: string;
+  fc?: 1;
+}
+
+/** A park day's hourly weather, for the Queues tab. */
+export async function loadWeatherDay(park: string, date: string): Promise<WeatherDayFile | null> {
+  const r = await fetch(`/queues/${park}/weather/${date}.json`, { cache: "no-store" });
+  if (!r.ok) return null;
+  const f = (await r.json()) as WeatherDayFile;
+  return f.hours?.length ? f : null;
+}
+
+/** A month of daily weather, for the Calendar. */
+export async function loadWeatherMonth(
+  park: string,
+  month: string,
+): Promise<Record<string, WeatherDay>> {
+  const r = await fetch(`/calendar/${park}/weather/${month}.json`, { cache: "no-store" });
+  if (!r.ok) return {};
+  return ((await r.json()) as { days?: Record<string, WeatherDay> }).days ?? {};
+}
+
 /** The range of days for which queue data exists — the date-nav bounds. */
 export async function loadQueueIndex(park: string): Promise<QueueIndex | null> {
   const r = await fetch(`/queues/${park}/index.json`, { cache: "no-store" });

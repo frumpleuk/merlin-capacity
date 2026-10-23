@@ -489,6 +489,9 @@ export interface ParkConfig {
   /** IANA zone the park's published times are in. Default Europe/London.
    *  Mirrors `timeZone` in frontend/src/catalog.ts. */
   timeZone?: string;
+  /** Where to ask OpenWeather about (src/weather.ts): the mean of the park's
+   *  mapped food venues (frontend/public/menu-data), to 3 dp. */
+  weather?: { lat: number; lon: number };
 }
 
 /** A park's time zone, defaulting to the UK parks'. */
@@ -591,6 +594,7 @@ const hoursUrl = (host: string, locationIds: string) =>
 export const PARKS: ParkConfig[] = [
   {
     key: "alton_towers",
+    weather: { lat: 52.987, lon: -1.889 },
     label: "Alton Towers",
     merchantId: "800",
     origin: "https://me-twalton.tickets.altontowers.com",
@@ -638,6 +642,7 @@ export const PARKS: ParkConfig[] = [
   },
   {
     key: "thorpe_park",
+    weather: { lat: 51.404, lon: -0.514 },
     label: "Thorpe Park",
     merchantId: "105",
     origin: "https://me-tpr.tickets.thorpepark.com",
@@ -702,6 +707,7 @@ export const PARKS: ParkConfig[] = [
   },
   {
     key: "legoland",
+    weather: { lat: 51.464, lon: -0.650 },
     label: "Legoland Windsor",
     merchantId: "700",
     origin: "https://me-llwindsor.tickets.legoland.co.uk",
@@ -746,6 +752,7 @@ export const PARKS: ParkConfig[] = [
   },
   {
     key: "chessington",
+    weather: { lat: 51.348, lon: -0.317 },
     label: "Chessington",
     merchantId: "6400",
     origin: "https://me-wachessington.tickets.chessington.com",
@@ -818,6 +825,7 @@ export const PARKS: ParkConfig[] = [
     //    app-embedded static token). Names come inline with the feed, so unlike
     //    the Attractions.io parks there's no content bundle / catalog cron.
     key: "paultons",
+    weather: { lat: 50.949, lon: -1.552 },
     label: "Paultons Park",
     openingHours: {
       kind: "paultons",
@@ -858,6 +866,7 @@ export const PARKS: ParkConfig[] = [
     //    whose public iCal feed we page through into a rolling What's-On calendar
     //    (headline act per day + full lineup). See docs/flamingoland-calendar.md.
     key: "flamingoland",
+    weather: { lat: 54.209, lon: -0.808 },
     label: "Flamingo Land",
     openingHours: {
       kind: "flamingoland",
@@ -884,6 +893,7 @@ export const PARKS: ParkConfig[] = [
     //    (park-dates-times/v2) — one entry per open date, no auth or header gotchas.
     // See docs/blackpool-api.md.
     key: "blackpool",
+    weather: { lat: 53.791, lon: -3.056 },
     label: "Blackpool Pleasure Beach",
     openingHours: {
       kind: "bpb",
@@ -905,6 +915,7 @@ export const PARKS: ParkConfig[] = [
     //  - Hours: the same GraphQL API, every published date in one aliased query.
     // See docs/disneylandparis-api.md.
     key: "disneyland_park",
+    weather: { lat: 48.873, lon: 2.776 },
     label: "Disneyland Park",
     timeZone: "Europe/Paris",
     openingHours: {
@@ -920,6 +931,7 @@ export const PARKS: ParkConfig[] = [
     // Disneyland Paris's second park, formerly Walt Disney Studios. Same feeds
     // as Disneyland Park above, filtered to P2.
     key: "disney_adventure_world",
+    weather: { lat: 48.866, lon: 2.777 },
     label: "Disney Adventure World",
     timeZone: "Europe/Paris",
     openingHours: {
@@ -936,6 +948,7 @@ export const PARKS: ParkConfig[] = [
   // each app's BuildConfig API_KEY (docs/apk-download.md).
   {
     key: "legoland_billund",
+    weather: { lat: 55.735, lon: 9.126 },
     label: "Legoland Billund",
     timeZone: "Europe/Copenhagen",
     openingHours: {
@@ -952,6 +965,7 @@ export const PARKS: ParkConfig[] = [
   },
   {
     key: "legoland_deutschland",
+    weather: { lat: 48.424, lon: 10.302 },
     label: "Legoland Deutschland",
     timeZone: "Europe/Berlin",
     openingHours: {
@@ -968,6 +982,7 @@ export const PARKS: ParkConfig[] = [
   },
   {
     key: "gardaland",
+    weather: { lat: 45.457, lon: 10.711 },
     label: "Gardaland",
     timeZone: "Europe/Rome",
     openingHours: {
@@ -984,6 +999,7 @@ export const PARKS: ParkConfig[] = [
   },
   {
     key: "heide_park",
+    weather: { lat: 53.024, lon: 9.879 },
     label: "Heide Park",
     timeZone: "Europe/Berlin",
     openingHours: {
@@ -1005,6 +1021,7 @@ export const PARKS: ParkConfig[] = [
   // Korea (11321). Japan and Korea need lang=en-US (en-GB returns nothing).
   {
     key: "legoland_japan",
+    weather: { lat: 35.050, lon: 136.844 },
     label: "Legoland Japan",
     timeZone: "Asia/Tokyo",
     openingHours: {
@@ -1021,6 +1038,7 @@ export const PARKS: ParkConfig[] = [
   },
   {
     key: "legoland_korea",
+    weather: { lat: 37.885, lon: 127.697 },
     label: "Legoland Korea",
     timeZone: "Asia/Seoul",
     openingHours: {
@@ -1037,6 +1055,7 @@ export const PARKS: ParkConfig[] = [
   },
   {
     key: "legoland_florida",
+    weather: { lat: 27.991, lon: -81.691 },
     label: "Legoland Florida",
     timeZone: "America/New_York",
     openingHours: {
@@ -1053,6 +1072,7 @@ export const PARKS: ParkConfig[] = [
   },
   {
     key: "peppa_pig_florida",
+    weather: { lat: 27.987, lon: -81.689 },
     label: "Peppa Pig Theme Park",
     timeZone: "America/New_York",
     openingHours: {
@@ -1069,6 +1089,7 @@ export const PARKS: ParkConfig[] = [
   },
   {
     key: "legoland_california",
+    weather: { lat: 33.128, lon: -117.312 },
     label: "Legoland California",
     timeZone: "America/Los_Angeles",
     openingHours: {
@@ -1085,6 +1106,7 @@ export const PARKS: ParkConfig[] = [
   },
   {
     key: "legoland_new_york",
+    weather: { lat: 41.380, lon: -74.313 },
     label: "Legoland New York",
     timeZone: "America/New_York",
     openingHours: {
@@ -1101,6 +1123,7 @@ export const PARKS: ParkConfig[] = [
   },
   {
     key: "knoebels",
+    weather: { lat: 40.879, lon: -76.504 },
     label: "Knoebels",
     timeZone: "America/New_York",
     openingHours: {
@@ -1121,6 +1144,7 @@ export const PARKS: ParkConfig[] = [
   // from the opening-times page's inline arrays. Key from the app's BuildConfig.
   {
     key: "pleasurewood_hills",
+    weather: { lat: 52.507, lon: 1.745 },
     label: "Pleasurewood Hills",
     openingHours: {
       kind: "pleasurewood",
@@ -1139,6 +1163,7 @@ export const PARKS: ParkConfig[] = [
   // site's Umbraco month calendar.
   {
     key: "crealy",
+    weather: { lat: 50.705, lon: -3.416 },
     label: "Crealy Theme Park",
     openingHours: {
       kind: "crealy",
@@ -1162,6 +1187,7 @@ export const PARKS: ParkConfig[] = [
   // too, but on its own stack (see docs/accesso-api.md, Drayton Manor).
   {
     key: "drayton_manor",
+    weather: { lat: 52.612, lon: -1.714 },
     label: "Drayton Manor",
     merchantId: "100",
     origin: "https://lg-draytonmanor.tickets.draytonmanor.co.uk",

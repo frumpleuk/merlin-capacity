@@ -9,7 +9,9 @@ import {
   type QueueSample,
   type RideStats,
   type SpecialDay,
+  type WeatherHour,
 } from "./api";
+import { WeatherHoursContext, WeatherStrip, wet } from "./Weather";
 import { AllocList, AllocMeter } from "./AllocMeter";
 import { longDate } from "./Heatmap";
 import { parkDay, tzOffsetAt } from "./parkDay";
@@ -480,6 +482,9 @@ function RideChart({
   const y = (w: number) => M.top + (1 - w / yMax) * plotH;
 
   const tz = useContext(TimeZoneContext);
+  const rainHours = useContext(WeatherHoursContext).filter(
+    (h) => wet(h) && h.t + 60 > t0 && h.t < t1,
+  );
   const colours = ["var(--q-main)", "var(--q-second)"];
   const multi = ride.lines.length > 1;
   const svgRef = useRef<SVGSVGElement>(null);
@@ -587,6 +592,19 @@ function RideChart({
         onTouchMove={(e) => onMove(e.touches[0].clientX)}
         onTouchStart={(e) => onMove(e.touches[0].clientX)}
       >
+        {/* Hours with rain or snow, behind everything. Forecast hours fainter. */}
+        {rainHours.map((h) => (
+          <rect
+            key={h.t}
+            x={x(Math.max(h.t, t0))}
+            y={M.top}
+            width={Math.max(0, x(Math.min(h.t + 60, t1)) - x(Math.max(h.t, t0)))}
+            height={plotH}
+            className={"chart-rain" + (h.fc ? " wx-fc" : "")}
+          >
+            <title>{`${h.fc ? "Forecast: " : ""}${Math.round(((h.rain ?? 0) + (h.snow ?? 0)) * 10) / 10} mm`}</title>
+          </rect>
+        ))}
         {/* y grid + labels */}
         {yTicks.map((v) => (
           <g key={v}>
@@ -1080,6 +1098,7 @@ const SORTS: { key: SortMode; label: string }[] = [
 
 /** The "no grouping" option — one flat list, so a sort spans the whole park. */
 const NO_GROUP = "__none";
+const NO_WEATHER: WeatherHour[] = [];
 
 export function QueueList({
   file,
@@ -1090,6 +1109,7 @@ export function QueueList({
   tickets,
   rap,
   rel,
+  weather,
   timeZone = "Europe/London",
 }: {
   file: QueueDayFile | null;
@@ -1108,6 +1128,8 @@ export function QueueList({
   rel?: Map<string, RideStats>;
   /** The park's IANA zone, for every clock time the list shows. */
   timeZone?: string;
+  /** This day's hourly weather, if fetched. */
+  weather?: WeatherHour[];
 }) {
   const [openId, setOpenId] = useState<number | null>(null);
   // Sorting by "now" on a day with no live waits ranks every ride equally at
@@ -1284,6 +1306,7 @@ export function QueueList({
           </AllocList>
         </div>
       )}
+      {weather && <WeatherStrip hours={weather} date={date} domain={domain} />}
       <div className="q-toolbar">
         {/* Phone-only: the column headers are the sort control everywhere the
             head row is visible, and it is hidden below 600px. */}
@@ -1418,7 +1441,9 @@ export function QueueList({
   );
   return (
     <TimeZoneContext.Provider value={timeZone}>
-      <WatchedFromContext.Provider value={file?.watchedFrom}>{list}</WatchedFromContext.Provider>
+      <WeatherHoursContext.Provider value={weather ?? NO_WEATHER}>
+        <WatchedFromContext.Provider value={file?.watchedFrom}>{list}</WatchedFromContext.Provider>
+      </WeatherHoursContext.Provider>
     </TimeZoneContext.Provider>
   );
 }

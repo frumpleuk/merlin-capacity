@@ -1,0 +1,60 @@
+# OpenWeather One Call 4.0
+
+Weather for every park, in `src/weather.ts`. Docs:
+https://openweathermap.org/api/one-call-4
+
+## Access
+
+- Key: Worker secret `OPENWEATHER_KEY` (`.dev.vars` locally). Absent, the
+  weather cron and `/weather` do nothing.
+- Needs the "One Call by Call" subscription. 1,000 calls a day free, then
+  billed per call. The account's daily cap is set to 1,000 under Billing plans
+  (the default is 2,000).
+- A 401 saying "requires a separate subscription" also comes back while a new
+  key is still activating, along with "Invalid API key" from the 2.5 endpoints.
+
+## Endpoints used
+
+Base `https://api.openweathermap.org/data/4.0/onecall/`, all with `lat`, `lon`,
+`units=metric`, `start` (unix seconds) and `appid`.
+
+| Endpoint | Records | Used for |
+|---|---|---|
+| `timeline/1h` | 20 hours from `start`; history and 48 h ahead | Queues tab, one park day |
+| `timeline/1day` | 10 days from `start`; history and up to 1.5 years ahead | Calendar |
+
+Each record has `dt`, `temp` (an object with `min`/`max` on daily records),
+`feels_like`, `pop`, `rain`/`snow`, `wind_speed`, `wind_gust`, `clouds`, `uvi`
+and `weather[0]` (`id`, `icon`, `description`). Daily `dt` is local noon. Pages
+followed through `next`/`prev` cost a call each; we never follow them.
+
+Coordinates are `ParkConfig.weather`: the mean of each park's mapped food
+venues (`frontend/public/menu-data`), to 3 dp.
+
+## Schedule and budget
+
+Cron `2 * * * *`, its own invocation:
+
+- every hour, `timeline/1h` from 07:00 park time for every park's current park
+  day (23 calls). 20 hours from 07:00 reach 02:00, before the 04:00 rollover;
+- every 6 hours (UTC 00, 06, 12, 18), `timeline/1day` from yesterday for every
+  park with a Calendar tab (17 calls);
+- at 03:00 UTC, backfill with what the rest of the day can spare: calendar
+  days from the park's first tracked month, then queue days that have a queue
+  file but no weather, newest first, a park at a time in turn.
+
+Every call is reserved first against a per-UTC-day count in R2
+(`weather/budget.json`, limit 900). A 429 marks the day spent. `/weather?key=`
+runs the hourly job now; `&backfill=1` runs the backfill with no reserve. Both
+count against the same budget, and `/poll` does not touch weather.
+
+## Files
+
+- `queues/<park>/weather/<date>.json`: `{ date, generated_at, hours: [...] }`.
+  `t` is minutes since `${date}T00:00:00Z`, as in the queue day files.
+  `fc: 1` marks an hour still to come at the time of writing; the last write
+  of a day is after its last hour, so a finished day has none.
+- `calendar/<park>/weather/<YYYY-MM>.json`: `{ days: { "YYYY-MM-DD": {...} } }`,
+  merged so past days keep their last write. `fc: 1` marks a date that was
+  today or later when written; the next 6-hourly run rewrites yesterday as
+  recorded.

@@ -186,25 +186,43 @@ source, and no photos:
 }
 ```
 
-Three importers, one per park, each cached and fetching one page a second:
+Four importers, each cached and fetching one page a second:
 
 | Script | Park | Gets |
 |---|---|---|
 | `import-tenkites.mjs` | Paulton's | Every dish, its description, its calories and the park's v/vg marks, from the Tenkites boards. No prices: the park leaves every price field empty. |
 | `import-bpb-menus.mjs` | Blackpool | The dish lists on each `<venue>-menu` page, and whether a Season Pass gets a discount there. No prices either. |
 | `import-flamingoland-menus.mjs` | Flamingo Land | The Coach House food and drinks menus, **with prices**, calories and allergen marks. Drinks are sized items (25ml / Double). |
-| `import-dlp-menus.mjs` | Disneyland Paris | Downloads each restaurant's menu PDF (**with prices**, in euros) and lists the new or changed ones in `.dlp-plan.json`. The bilingual layouts aren't parsed: each listed PDF is transcribed by hand or by agent, in English, into `<venue>/<today>/menu.json` with `source.sha256` set to the PDF's hash, which is how the next run knows it's unchanged. |
+| `import-pdf-menus.mjs` | Any park | Every venue whose menu link is a PDF (see below). Downloads each, **usually with prices**, and lists the new or changed ones in `.pdf-plan.json`. The layouts aren't parsed: each listed PDF is transcribed by agent into `<venue>/<today>/menu.json` with `source.sha256` set to the PDF's hash, which is how the next run knows it's unchanged. |
 
 A re-run writes nothing when the menu hasn't changed; when it has, the new one
 lands under today's date beside the old one, which is the history.
+
+**A park's PDF menus are always taken this way.** Where a park's website has
+menu PDFs that its app doesn't link (Crealy, Thorpe Park, Legoland New York),
+point the venue at them by hand: `displayMenuUrl` for one PDF, `menuPdfs` (a
+list, in reading order) for several (main and kids, food and drinks). Both are
+yours, so a venue sync leaves them alone. Then:
+
+1. `node scripts/menus/import-pdf-menus.mjs [park_key...]` writes the plan.
+2. For each plan entry, render the PDFs to images in a scratch folder
+   (`pdftoppm -r 150 -png <pdf> <out>`) and transcribe them with the
+   menus-transcribe rules into the entry's `out` path, with
+   `"source": {"name": <park>, "official": true, "url": <first url>, "sha256": <plan sha256>}`.
+   Many park PDFs are outlined artwork with no extractable text, so read the
+   rendered pages rather than `pdftotext`. Add `stated` when the PDF prints its
+   own date ("March 2024").
+3. `node scripts/menus/validate.mjs`, then `node scripts/menus/build.mjs`.
+
+A PDF the app links directly needs only steps 1 to 3 (Disneyland Paris).
 
 ### Menus from someone else
 
 Not every menu is ours. `scripts/menus/import-tpj.mjs` reads the menus Theme
 Park James publishes, including past ones going back years, and writes them as
-ordinary dated menus with a `source` block. He covers six of the seven parks
-(all but Blackpool), and for Paulton's and Flamingo Land his are the **only**
-prices anywhere, back to 2019:
+ordinary dated menus with a `source` block. His menus were imported once and
+taken out again (commit 0d0310d); the importer and the rules below stay for if
+they come back:
 
 ```json
 "source": {
@@ -262,7 +280,7 @@ ImageMagick.
 | `node scripts/menus/sync-venues.mjs [park_key...]` | Creates or refreshes the Merlin parks' venue and water folders from the official apps. Reports renames and venues gone from the app; never deletes. |
 | `node scripts/menus/sync-venues-indie.mjs [park_key...] [--poi <file>]` | The same for Paulton's, Blackpool and Flamingo Land, each from its own backend. Paulton's POIs ship inside the APK rather than being served, so pass an unpacked `points_of_interest.json` with `--poi`; without it that park is skipped. Blackpool needs `BPB_EMAIL`/`BPB_PASSWORD` (`.dev.vars`). |
 | `node scripts/menus/sync-venues-dlp.mjs [park_key...]` | The same for Disneyland Paris, from Disney's GraphQL API (restaurants, lands, coordinates, menu PDF links). |
-| `node scripts/menus/import-dlp-menus.mjs` | Disneyland Paris's menu PDFs: fetches them and lists which need transcribing. |
+| `node scripts/menus/import-pdf-menus.mjs [park...]` | Every venue's menu PDFs: fetches them and lists which need transcribing. |
 | `node scripts/menus/import-tenkites.mjs` | Paulton's own menus (dishes, calories, no prices). |
 | `node scripts/menus/import-bpb-menus.mjs` | Blackpool's own menus and its Season Pass discounts. |
 | `node scripts/menus/import-flamingoland-menus.mjs` | Flamingo Land's own menus, with prices. |

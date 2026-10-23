@@ -9,5 +9,6 @@
   "appPassholderDiscount": null,
   "diningPlans": null,
   "appMissingSince": null,
-  "source": "attractions.io app bundle"
+  "source": "attractions.io app bundle",
+  "displayMenuUrl": "https://www.legoland.com/new-york/media/4x2lr2ps/legoland-coffee-company-2026-menu.pdf"
 }

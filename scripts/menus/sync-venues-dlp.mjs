@@ -8,7 +8,7 @@
 // The API is unauthenticated (see docs/disneylandparis-api.md). Each
 // restaurant carries its park (`location.id`), land, coordinates, Disney's
 // service types and price band, and a link to its menu PDF, which
-// import-dlp-menus.mjs reads.
+// import-pdf-menus.mjs reads.
 import "../dev-keys.mjs";
 import path from "node:path";
 import { PARKS } from "../../src/config.ts";

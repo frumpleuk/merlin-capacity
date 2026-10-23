@@ -9,5 +9,6 @@
   "appPassholderDiscount": true,
   "diningPlans": null,
   "appMissingSince": null,
-  "source": "attractions.io app bundle"
+  "source": "attractions.io app bundle",
+  "displayMenuUrl": "https://www.legoland.com/florida/media/rotffwxi/bricks-family-restaurant-buffet-menu-6-24.pdf"
 }

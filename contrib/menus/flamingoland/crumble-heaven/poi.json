@@ -8,5 +8,6 @@
   "menuUrl": null,
   "appMissingSince": null,
   "source": "flamingo land app (firestore)",
-  "serves": "Apple Crumble"
+  "serves": "Apple Crumble",
+  "displayMenuUrl": "https://www.flamingoland.co.uk/wp-content/uploads/2026/04/crumble-heaven-menu.pdf"
 }

@@ -9,5 +9,10 @@
   "menuUrl": null,
   "appPassholderDiscount": null,
   "diningPlans": null,
-  "appMissingSince": null
+  "appMissingSince": null,
+  "displayMenuUrl": "https://www.legoland.co.uk/media/wg3en1zy/jun-2025-llw-skyline-menu-final.pdf",
+  "menuPdfs": [
+    "https://www.legoland.co.uk/media/wg3en1zy/jun-2025-llw-skyline-menu-final.pdf",
+    "https://www.legoland.co.uk/media/cqmg02b3/2025-llw-skyline-drinks-menu.pdf"
+  ]
 }

@@ -9,5 +9,10 @@
   "appPassholderDiscount": null,
   "diningPlans": null,
   "appMissingSince": null,
-  "source": "attractions.io app bundle"
+  "source": "attractions.io app bundle",
+  "displayMenuUrl": "https://www.legoland.dk/media/gq2bouen/q3-frokost-lunch.pdf",
+  "menuPdfs": [
+    "https://www.legoland.dk/media/gq2bouen/q3-frokost-lunch.pdf",
+    "https://www.legoland.dk/media/owzd5yil/q3-klassikere-classics.pdf"
+  ]
 }

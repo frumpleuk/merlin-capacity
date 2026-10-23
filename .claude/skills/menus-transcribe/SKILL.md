@@ -65,6 +65,15 @@ still to do. If the user named venues or a date, do only those.
    (they come from your section headings); fix a poor one by editing the
    section name and re-running, not by renaming the file.
 
+## From a park's PDF
+
+`contrib/menus/.pdf-plan.json` (written by `import-pdf-menus.mjs`) lists PDF
+menus to do, each with its `out` path, `urls`, `sha256` and the cached `pdfs`.
+Render each page (`pdftoppm -r 150 -png <pdf> <scratch>/<name>`), read the
+images as you would photos, and write `out` with the `source` block the README
+gives ("A park's PDF menus are always taken this way"). There are no photos, so
+items cite none and there is no `skipped` or `optimise.mjs` step.
+
 ## Many folders
 
 For more than a handful of folders, give each venue to a subagent with

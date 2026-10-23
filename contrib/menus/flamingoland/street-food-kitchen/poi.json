@@ -8,5 +8,6 @@
   "menuUrl": null,
   "appMissingSince": null,
   "source": "flamingo land app (firestore)",
-  "serves": "Gourmet Beef & Chicken Burgers, Fried Chicken & Fries, Costa Coffee, Fanta Frozen & Soft drinks"
+  "serves": "Gourmet Beef & Chicken Burgers, Fried Chicken & Fries, Costa Coffee, Fanta Frozen & Soft drinks",
+  "displayMenuUrl": "https://www.flamingoland.co.uk/wp-content/uploads/2026/04/Flamingo-Land-Street-Food-Kitchen-Menu.pdf"
 }

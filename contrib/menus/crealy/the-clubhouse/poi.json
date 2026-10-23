@@ -9,5 +9,10 @@
   "appPassholderDiscount": null,
   "diningPlans": null,
   "appMissingSince": null,
-  "source": "attractions.io app bundle"
+  "source": "attractions.io app bundle",
+  "displayMenuUrl": "https://www.crealy.co.uk/media/3hmc0ba1/clubhouse_menubooklet_all_mains_2026_web.pdf",
+  "menuPdfs": [
+    "https://www.crealy.co.uk/media/3hmc0ba1/clubhouse_menubooklet_all_mains_2026_web.pdf",
+    "https://www.crealy.co.uk/media/hxtftuca/clubhouse-a4-drinks-menu-1.pdf"
+  ]
 }

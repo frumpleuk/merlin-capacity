@@ -1139,7 +1139,7 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
       {
         label: "Book tickets",
         url: "https://me-lljapan.tickets.legoland.jp/packageList/keyword/LEGOLANDDailyTicketsEN?l=en-jp",
-        note: "Direct to the date picker for LEGOLAND-only 1 Day Passes",
+        note: "Direct to the date picker: 1 Day Passes, plus combo and VIP Tour packages",
       },
       {
         label: "1 Day Pass",
@@ -1304,7 +1304,7 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
     photos: [
       {
         label: "Unlimited Digital Photos",
-        url: "https://www.legoland.com/florida/tickets-passes/extras-experiences/#product-photos",
+        url: "https://www.legoland.com/florida/tickets-passes/extras-experiences/unlimited-digital-photos/",
         note: "Pre-bought photo pass for the ride cameras",
       },
     ],

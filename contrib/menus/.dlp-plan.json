@@ -1,0 +1,532 @@
+[
+  {
+    "park": "disneyland_park",
+    "venue": "disneylandparis/disneyland-park/agrabah-cafe-restaurant",
+    "name": "Agrabah Café Restaurant",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1AR06_agrabah-cafe.pdf",
+    "sha256": "f377b8eacdee2514fac76d2223bddb54ff5faa273676716443b0a8df179fce62",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p1ar06-agrabah-cafe-pdf.pdf",
+    "out": "disneylandparis/disneyland-park/agrabah-cafe-restaurant/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disneyland_park",
+    "venue": "disneylandparis/disneyland-park/au-chalet-de-la-marionnette",
+    "name": "Au Chalet de la Marionnette",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1NR02_au-chalet-de-la-marionnette.pdf",
+    "sha256": "95e66f5e6fb6d85ac52f26a4af18c8adc0e431a54314961861b61fa50ff6b0e9",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p1nr02-au-chalet-de-la-marionnette-pdf.pdf",
+    "out": "disneylandparis/disneyland-park/au-chalet-de-la-marionnette/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disneyland_park",
+    "venue": "disneylandparis/disneyland-park/auberge-de-cendrillon",
+    "name": "Auberge de Cendrillon",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1NR01_auberge-de-cendrillon.pdf",
+    "sha256": "47fde6e52af9aafd01d4007eaf75155420d1c4d1de0b6931d9e5e083ad0490c1",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p1nr01-auberge-de-cendrillon-pdf.pdf",
+    "out": "disneylandparis/disneyland-park/auberge-de-cendrillon/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disneyland_park",
+    "venue": "disneylandparis/disneyland-park/cable-car-bake-shop",
+    "name": "Cable Car Bake Shop",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR00_cable-car-bake-shop.pdf",
+    "sha256": "0405656a722ad2639e1ef00f233efedc50d71cf3f3d2dc7247c200eb93287058",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p1mr00-cable-car-bake-shop-pdf.pdf",
+    "out": "disneylandparis/disneyland-park/cable-car-bake-shop/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disneyland_park",
+    "venue": "disneylandparis/disneyland-park/cafe-de-la-brousse",
+    "name": "Café de la Brousse",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1AR01_cafe-de-la-brousse.pdf",
+    "sha256": "070d0bc56b25866f90961c1dc056e3b068c47e780aee741d8b350c15729e1c4d",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p1ar01-cafe-de-la-brousse-pdf.pdf",
+    "out": "disneylandparis/disneyland-park/cafe-de-la-brousse/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disneyland_park",
+    "venue": "disneylandparis/disneyland-park/cafe-hyperion",
+    "name": "Café Hyperion",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1DR01_cafe-hyperion.pdf",
+    "sha256": "7aec12aeb67481d2dc2ee7e4d134a32731d2733412c3bb39e27dd17f83a91a8d",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p1dr01-cafe-hyperion-pdf.pdf",
+    "out": "disneylandparis/disneyland-park/cafe-hyperion/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disneyland_park",
+    "venue": "disneylandparis/disneyland-park/captain-jacks-restaurant-des-pirates",
+    "name": "Captain Jack's - Restaurant des Pirates",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1AR00_captain-jacks-restaurant-pirates.pdf",
+    "sha256": "978081109b453788a1226e1e28f567b66d5fb424a96602e175397ac83e40831e",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p1ar00-captain-jacks-restaurant-pirates-pdf.pdf",
+    "out": "disneylandparis/disneyland-park/captain-jacks-restaurant-des-pirates/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disneyland_park",
+    "venue": "disneylandparis/disneyland-park/casa-de-coco-restaurante-de-familia",
+    "name": "Casa de Coco – Restaurante de Familia",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1RR01_casa-de-coco.pdf",
+    "sha256": "11950e8bfd8f6aa561af8298c0adc34cfd24deb609b209f715cf089150d8464b",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p1rr01-casa-de-coco-pdf.pdf",
+    "out": "disneylandparis/disneyland-park/casa-de-coco-restaurante-de-familia/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disneyland_park",
+    "venue": "disneylandparis/disneyland-park/caseys-corner",
+    "name": "Casey’s Corner",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR01_caseys-corner.pdf",
+    "sha256": "e79da718fff0b163a8207260be1072cb1b04267f64d01dd443384af69b53f6c4",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p1mr01-caseys-corner-pdf.pdf",
+    "out": "disneylandparis/disneyland-park/caseys-corner/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disneyland_park",
+    "venue": "disneylandparis/disneyland-park/character-dining-at-plaza-gardens-restaurant",
+    "name": "Character Dining at Plaza Gardens Restaurant",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR12_character-dining-at-plaza-gardens.pdf",
+    "sha256": "de0f13db6b3f72d2b1b804590a7624bb1040b8f57d211bcb4be5c1ab55f6a494",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p1mr12-character-dining-at-plaza-gardens-pdf.pdf",
+    "out": "disneylandparis/disneyland-park/character-dining-at-plaza-gardens-restaurant/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disneyland_park",
+    "venue": "disneylandparis/disneyland-park/colonel-hathis-outpost-restaurant",
+    "name": "Colonel Hathi’s Outpost Restaurant",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1AR03_colonel-hathis-pizza-outpost.pdf",
+    "sha256": "1de61c32e16a3ab694d33df6ba482716b40ab7e1b99ad5664187d1c4509fe40c",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p1ar03-colonel-hathis-pizza-outpost-pdf.pdf",
+    "out": "disneylandparis/disneyland-park/colonel-hathis-outpost-restaurant/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disneyland_park",
+    "venue": "disneylandparis/disneyland-park/cookie-kitchen",
+    "name": "Cookie Kitchen",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR03_cookie-kitchen.pdf",
+    "sha256": "09139073244344b657e3517c8ded4fcd6bdf0e24516e83da65d4fa75a2b348b2",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p1mr03-cookie-kitchen-pdf.pdf",
+    "out": "disneylandparis/disneyland-park/cookie-kitchen/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disneyland_park",
+    "venue": "disneylandparis/disneyland-park/cool-post",
+    "name": "Cool Post",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1AR05_cool-post.pdf",
+    "sha256": "10d2b400ea89d1b5305b8b879b28aba5d26ed34903b553eb2dd61f8e5aaeea7e",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p1ar05-cool-post-pdf.pdf",
+    "out": "disneylandparis/disneyland-park/cool-post/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disneyland_park",
+    "venue": "disneylandparis/disneyland-park/cool-station",
+    "name": "Cool Station",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1DR02_cool-station.pdf",
+    "sha256": "5a7ebd9fe11dcf1895b6527d204edc4552e0a63e5bccce2449426765a88c9ea7",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p1dr02-cool-station-pdf.pdf",
+    "out": "disneylandparis/disneyland-park/cool-station/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disneyland_park",
+    "venue": "disneylandparis/disneyland-park/cowboy-cookout-barbecue",
+    "name": "Cowboy Cookout Barbecue",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1RR00_cowboy-cookout-barbecue.pdf",
+    "sha256": "a64e985ff0954166efbb77775c1d55f1ac1f3287503bccf628690edaee328e69",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p1rr00-cowboy-cookout-barbecue-pdf.pdf",
+    "out": "disneylandparis/disneyland-park/cowboy-cookout-barbecue/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disneyland_park",
+    "venue": "disneylandparis/disneyland-park/critter-corral",
+    "name": "Critter Corral",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1RR05_critter-corral.pdf",
+    "sha256": "9b3df9d3c1781fbd33eb93a6d1ef1101457f00f9bb52bf944d1bcf347b08867b",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p1rr05-critter-corral-pdf.pdf",
+    "out": "disneylandparis/disneyland-park/critter-corral/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disneyland_park",
+    "venue": "disneylandparis/disneyland-park/fantasia-gelati",
+    "name": "Fantasia Gelati",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1NR03_fantasia-gelati.pdf",
+    "sha256": "b66ceba87e940d8a4220496b9e33c8c507bb99ad73b771ffc1f8c49d31f9c52c",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p1nr03-fantasia-gelati-pdf.pdf",
+    "out": "disneylandparis/disneyland-park/fantasia-gelati/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disneyland_park",
+    "venue": "disneylandparis/disneyland-park/larbre-enchante",
+    "name": "L'Arbre Enchanté",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1NR00_l-arbre-enchante.pdf",
+    "sha256": "4781869715809be854fa0cf25d59dd3ea0d3f6d6761175fb2547012af12d71f4",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p1nr00-l-arbre-enchante-pdf.pdf",
+    "out": "disneylandparis/disneyland-park/larbre-enchante/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disneyland_park",
+    "venue": "disneylandparis/disneyland-park/last-chance-cafe",
+    "name": "Last Chance Cafe",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1RR02_last-chance-cafe.pdf",
+    "sha256": "7edc707973cd5f9444695ff542408f531f453bf20aa87c4a1d6ef994de372aac",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p1rr02-last-chance-cafe-pdf.pdf",
+    "out": "disneylandparis/disneyland-park/last-chance-cafe/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disneyland_park",
+    "venue": "disneylandparis/disneyland-park/lounge-lightspeed",
+    "name": "Lounge Lightspeed",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1DR04_lounge-lightspeed.pdf",
+    "sha256": "dd05fde52f8bdf77e179f77f2eb09357c1332350d90693becdbe8c96c3a42ce2",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p1dr04-lounge-lightspeed-pdf.pdf",
+    "out": "disneylandparis/disneyland-park/lounge-lightspeed/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disneyland_park",
+    "venue": "disneylandparis/disneyland-park/march-hare-refreshments",
+    "name": "March Hare Refreshments",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1NR04_march-hare-refreshments.pdf",
+    "sha256": "ca0dba5a2e526008ac32cdd8739a20e90d3d1c6439493f84541232b28f5095fe",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p1nr04-march-hare-refreshments-pdf.pdf",
+    "out": "disneylandparis/disneyland-park/march-hare-refreshments/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disneyland_park",
+    "venue": "disneylandparis/disneyland-park/market-house-deli",
+    "name": "Market House Deli",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR06_market-house-deli.pdf",
+    "sha256": "4868ef90437f91a2831746b6a3984c5b969a500cbd6aebf8d6ce471aacb8e522",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p1mr06-market-house-deli-pdf.pdf",
+    "out": "disneylandparis/disneyland-park/market-house-deli/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disneyland_park",
+    "venue": "disneylandparis/disneyland-park/overland-trail-cafe",
+    "name": "Overland Trail Cafe",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1GR46_overland-trail-cafe.pdf",
+    "sha256": "a9158e37e358ae7eaccc4d1d01c2d7854ae5866175e39ab2cdfb400579640394",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p1gr46-overland-trail-cafe-pdf.pdf",
+    "out": "disneylandparis/disneyland-park/overland-trail-cafe/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disneyland_park",
+    "venue": "disneylandparis/disneyland-park/pizzeria-bella-notte",
+    "name": "Pizzeria Bella Notte",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1NR06_pizzeria-bella-notte.pdf",
+    "sha256": "98237837663beebcc03258ff88d75e0e147febc91eb82f53f2d362b54b2c0fd5",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p1nr06-pizzeria-bella-notte-pdf.pdf",
+    "out": "disneylandparis/disneyland-park/pizzeria-bella-notte/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disneyland_park",
+    "venue": "disneylandparis/disneyland-park/plaza-gardens-restaurant",
+    "name": "Plaza Gardens Restaurant",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR08_plaza-gardens-restaurant.pdf",
+    "sha256": "de0f13db6b3f72d2b1b804590a7624bb1040b8f57d211bcb4be5c1ab55f6a494",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p1mr08-plaza-gardens-restaurant-pdf.pdf",
+    "out": "disneylandparis/disneyland-park/plaza-gardens-restaurant/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disneyland_park",
+    "venue": "disneylandparis/disneyland-park/restaurant-hakuna-matata",
+    "name": "Restaurant Hakuna Matata",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1AR07_restaurant-hakuna-matata.pdf",
+    "sha256": "60922f6bba8cf3853bd5013e5b8b8396ade8bbc53bc846c51cf4bf457f9c5b3a",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p1ar07-restaurant-hakuna-matata-pdf.pdf",
+    "out": "disneylandparis/disneyland-park/restaurant-hakuna-matata/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disneyland_park",
+    "venue": "disneylandparis/disneyland-park/rocket-cafe",
+    "name": "Rocket Café",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1DR03_rocket-café.pdf",
+    "sha256": "2086f1452f709769aab9bfbf42e71b8a93413a90572bb964555d7755703696e6",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p1dr03-rocket-cafe-pdf.pdf",
+    "out": "disneylandparis/disneyland-park/rocket-cafe/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disneyland_park",
+    "venue": "disneylandparis/disneyland-park/silver-spur-steakhouse",
+    "name": "Silver Spur Steakhouse",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1RR04_silver-spur-steakhouse.pdf",
+    "sha256": "c443b7d42d90b1b1d2f98bb7b6de8537f78b87e8e73a4d53c4ed65e6f4206e11",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p1rr04-silver-spur-steakhouse-pdf.pdf",
+    "out": "disneylandparis/disneyland-park/silver-spur-steakhouse/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disneyland_park",
+    "venue": "disneylandparis/disneyland-park/the-coffee-grinder",
+    "name": "The Coffee Grinder",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR02_coffee-grinder.pdf",
+    "sha256": "bc51f66b6be2a3b309266626c605bf3e961b3d7867836a6d598b96535ea01d19",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p1mr02-coffee-grinder-pdf.pdf",
+    "out": "disneylandparis/disneyland-park/the-coffee-grinder/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disneyland_park",
+    "venue": "disneylandparis/disneyland-park/the-gibson-girl-ice-cream-parlour",
+    "name": "The Gibson Girl Ice Cream Parlour",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR04_gibson-girl-ice-cream-parlour.pdf",
+    "sha256": "5f984a32e75ff014fa7206c9eed2e5f71a977f8488182ac34688b45d9411a238",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p1mr04-gibson-girl-ice-cream-parlour-pdf.pdf",
+    "out": "disneylandparis/disneyland-park/the-gibson-girl-ice-cream-parlour/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disneyland_park",
+    "venue": "disneylandparis/disneyland-park/the-ice-cream-company",
+    "name": "The Ice Cream Company",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR05_ice-cream-company.pdf",
+    "sha256": "215a7d055b4ba16f50046f9409d2d14160ecd03d27bb09550c9744b63787e214",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p1mr05-ice-cream-company-pdf.pdf",
+    "out": "disneylandparis/disneyland-park/the-ice-cream-company/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disneyland_park",
+    "venue": "disneylandparis/disneyland-park/the-lucky-nugget-saloon",
+    "name": "The Lucky Nugget Saloon",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1RR03_lucky-nugget-saloon.pdf",
+    "sha256": "d6292b3ab915b0aac7194dba41ed6d797eebdc338896abfef049ff5f863834f7",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p1rr03-lucky-nugget-saloon-pdf.pdf",
+    "out": "disneylandparis/disneyland-park/the-lucky-nugget-saloon/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disneyland_park",
+    "venue": "disneylandparis/disneyland-park/the-old-mill",
+    "name": "The Old Mill",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1NR05_the-old-mill.pdf",
+    "sha256": "39d66b6088ce07c62fe8ab89642dcedf4627ec393771c6a1dfd7501b75440a4d",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p1nr05-the-old-mill-pdf.pdf",
+    "out": "disneylandparis/disneyland-park/the-old-mill/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disneyland_park",
+    "venue": "disneylandparis/disneyland-park/toad-hall-restaurant",
+    "name": "Toad Hall Restaurant",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1NR07_toad-hall-restaurant.pdf",
+    "sha256": "dac2aa57f9776b2107a449024f4c4f5865d317a2573f5adb073430d2ee3591e5",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p1nr07-toad-hall-restaurant-pdf.pdf",
+    "out": "disneylandparis/disneyland-park/toad-hall-restaurant/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disneyland_park",
+    "venue": "disneylandparis/disneyland-park/victorias-home-style-restaurant",
+    "name": "Victoria’s Home-Style Restaurant",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR09_victorias-home-style-restaurant.pdf",
+    "sha256": "59f25b5d175543540e6088eae9debae1949ffdd08191fffce24b465cec37bbb8",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p1mr09-victorias-home-style-restaurant-pdf.pdf",
+    "out": "disneylandparis/disneyland-park/victorias-home-style-restaurant/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disneyland_park",
+    "venue": "disneylandparis/disneyland-park/walts-an-american-restaurant",
+    "name": "Walt’s – an American restaurant",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR10_walts-american-restaurant.pdf",
+    "sha256": "384a06439255380728c0a9978d25082ab69d0321e94d75f745c1e8f3e19ed6f6",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p1mr10-walts-american-restaurant-pdf.pdf",
+    "out": "disneylandparis/disneyland-park/walts-an-american-restaurant/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disney_adventure_world",
+    "venue": "disneylandparis/disney-adventure-world/bistrot-chez-remy",
+    "name": "Bistrot Chez Rémy",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2TR02_bistrot-chez-remy.pdf",
+    "sha256": "59d301978a9391d3f1f711e01f96250cff3be4c406cd0bd2b81996d1dfe28cc4",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p2tr02-bistrot-chez-remy-pdf.pdf",
+    "out": "disneylandparis/disney-adventure-world/bistrot-chez-remy/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disney_adventure_world",
+    "venue": "disneylandparis/disney-adventure-world/cafe-luminosity",
+    "name": "Café Luminosity",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2DR03_cafe-luminosity.pdf",
+    "sha256": "78ecd86b582f4007a8cc37872a6fddf85fefc34c71278605b0539b4561702b03",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p2dr03-cafe-luminosity-pdf.pdf",
+    "out": "disneylandparis/disney-adventure-world/cafe-luminosity/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disney_adventure_world",
+    "venue": "disneylandparis/disney-adventure-world/chez-berlioz",
+    "name": "Chez Berlioz",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2DR05_chez-berlioz.pdf",
+    "sha256": "209ccc665808cf9c81f4197f36531664f093a39ff3fc55c07883c45bf75ae0b2",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p2dr05-chez-berlioz-pdf.pdf",
+    "out": "disneylandparis/disney-adventure-world/chez-berlioz/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disney_adventure_world",
+    "venue": "disneylandparis/disney-adventure-world/chez-marie",
+    "name": "Chez Marie",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2DR06_chez-marie.pdf",
+    "sha256": "b1a044c266223df8430ff072f3fbafad11029a68f3d3fb5503593e5aadac282c",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p2dr06-chez-marie-pdf.pdf",
+    "out": "disneylandparis/disney-adventure-world/chez-marie/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disney_adventure_world",
+    "venue": "disneylandparis/disney-adventure-world/chez-toulouse",
+    "name": "Chez Toulouse",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2DR04_chez-toulouse.pdf",
+    "sha256": "03b50d7259c1a35c2e0cc9a7bcd1db4015fd38946b4c8b9b40daa5b0d0bb265b",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p2dr04-chez-toulouse-pdf.pdf",
+    "out": "disneylandparis/disney-adventure-world/chez-toulouse/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disney_adventure_world",
+    "venue": "disneylandparis/disney-adventure-world/ice-cream-creations",
+    "name": "Ice Cream Creations",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2TR00_ice-cream-creations.pdf",
+    "sha256": "c95f27c683bb786006a47e049068d1d804d32955e67234f5db1aeb108eef4456",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p2tr00-ice-cream-creations-pdf.pdf",
+    "out": "disneylandparis/disney-adventure-world/ice-cream-creations/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disney_adventure_world",
+    "venue": "disneylandparis/disney-adventure-world/la-terrasse-panoramique",
+    "name": "La Terrasse Panoramique",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2DR02_la-terrasse-panoramique.pdf",
+    "sha256": "768060f7796e90adb6e81e34dbbbb2da317c9d0bb9510a4a87b23621d37554ab",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p2dr02-la-terrasse-panoramique-pdf.pdf",
+    "out": "disneylandparis/disney-adventure-world/la-terrasse-panoramique/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disney_adventure_world",
+    "venue": "disneylandparis/disney-adventure-world/laughn-go",
+    "name": "Laugh’N' Go!",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2VK00_laugh-n-go.pdf",
+    "sha256": "1085bb049a1e4adefa9e1564ef0c1154793d45b4d2f39f4f7eae8ebe66bb91b5",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p2vk00-laugh-n-go-pdf.pdf",
+    "out": "disneylandparis/disney-adventure-world/laughn-go/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disney_adventure_world",
+    "venue": "disneylandparis/disney-adventure-world/nordic-crowns-tavern",
+    "name": "Nordic Crowns Tavern",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2ER00_nordic-crowns-tavern.pdf",
+    "sha256": "6bcfbc04b25bbeb9f7b3ef2cbb408a5995dbc670ebbbe5cacd2826d81b423cc7",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p2er00-nordic-crowns-tavern-pdf.pdf",
+    "out": "disneylandparis/disney-adventure-world/nordic-crowns-tavern/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disney_adventure_world",
+    "venue": "disneylandparis/disney-adventure-world/pym-kitchen",
+    "name": "PYM Kitchen",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2AR02_pymkitchen.pdf",
+    "sha256": "7f82e9f92924c25adf9521489d4a9ab647d9144942a28be5465868eab62ca291",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p2ar02-pymkitchen-pdf.pdf",
+    "out": "disneylandparis/disney-adventure-world/pym-kitchen/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disney_adventure_world",
+    "venue": "disneylandparis/disney-adventure-world/searchlight",
+    "name": "Searchlight",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2FR02_searchlight.pdf",
+    "sha256": "d68d1b9e1ed411292fc61cb1a8916e89ebdcfcbe710ced45ee75e7e93668342a",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p2fr02-searchlight-pdf.pdf",
+    "out": "disneylandparis/disney-adventure-world/searchlight/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disney_adventure_world",
+    "venue": "disneylandparis/disney-adventure-world/speciality-ice-cream",
+    "name": "Speciality Ice Cream",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2BR04_speciality-ice-cream.pdf",
+    "sha256": "9998803a1d3bcec84a9bed92fbfa9ae43a45bd406758db1c6899056f85bac820",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p2br04-speciality-ice-cream-pdf.pdf",
+    "out": "disneylandparis/disney-adventure-world/speciality-ice-cream/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disney_adventure_world",
+    "venue": "disneylandparis/disney-adventure-world/stark-factory",
+    "name": "Stark Factory",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2AR01_stark-factory.pdf",
+    "sha256": "a13596910d38f76b915bff702b426f9633ec7aa4ea7e362094d4639db07cdbe8",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p2ar01-stark-factory-pdf.pdf",
+    "out": "disneylandparis/disney-adventure-world/stark-factory/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disney_adventure_world",
+    "venue": "disneylandparis/disney-adventure-world/super-diner",
+    "name": "Super Diner",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2AR03_super-diner.pdf",
+    "sha256": "e282f509489048e3a7572a887825538573ed3f648fe937e69e007e2715325ba4",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p2ar03-super-diner-pdf.pdf",
+    "out": "disneylandparis/disney-adventure-world/super-diner/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disney_adventure_world",
+    "venue": "disneylandparis/disney-adventure-world/the-hollywood-gardens-restaurant",
+    "name": "The Hollywood Gardens Restaurant",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2FR00_the-hollywood-gardens-restaurant.pdf",
+    "sha256": "10ae6d341b109bede26cba91dec2dd620ac0209aa8e02e845ca735ca6273d029",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p2fr00-the-hollywood-gardens-restaurant-pdf.pdf",
+    "out": "disneylandparis/disney-adventure-world/the-hollywood-gardens-restaurant/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disney_adventure_world",
+    "venue": "disneylandparis/disney-adventure-world/the-regal-view-lounge",
+    "name": "The Regal View Lounge",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2DR01_the-regal-view-lounge.pdf",
+    "sha256": "99cb8a53af39c0da83782bd6c38c628380c38542648310c329ddd7ee917e70aa",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p2dr01-the-regal-view-lounge-pdf.pdf",
+    "out": "disneylandparis/disney-adventure-world/the-regal-view-lounge/2026-10-21/menu.json",
+    "changed": false
+  },
+  {
+    "park": "disney_adventure_world",
+    "venue": "disneylandparis/disney-adventure-world/the-regal-view-restaurant",
+    "name": "The Regal View Restaurant",
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2DR00_the-regal-view-restaurant-and-lounge.pdf",
+    "sha256": "d57f653db618a3f682545819d95442f46749bf4fdfd4ea6e55f09c41f248429b",
+    "pdf": "/var/folders/rv/7t2ln__15ns9171k1d8r5nw40000gn/T/dlp-menu-cache/media-disneylandparis-com-d4th-en-gb-images-p2dr00-the-regal-view-restaurant-and-lounge-pdf.pdf",
+    "out": "disneylandparis/disney-adventure-world/the-regal-view-restaurant/2026-10-21/menu.json",
+    "changed": false
+  }
+]

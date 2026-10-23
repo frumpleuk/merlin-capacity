@@ -8,5 +8,10 @@
   "menuUrl": null,
   "appMissingSince": null,
   "source": "flamingo land app (firestore)",
-  "serves": "Pub Favourites"
+  "serves": "Pub Favourites",
+  "displayMenuUrl": "https://www.flamingoland.co.uk/wp-content/uploads/2009/07/The-Coach-House-Menu.pdf",
+  "menuPdfs": [
+    "https://www.flamingoland.co.uk/wp-content/uploads/2009/07/The-Coach-House-Menu.pdf",
+    "https://www.flamingoland.co.uk/wp-content/uploads/2009/07/The-Coach-House-Kids-Menu-1.pdf"
+  ]
 }

@@ -8,5 +8,12 @@
   "menuUrl": null,
   "appMissingSince": null,
   "source": "flamingo land app (firestore)",
-  "serves": "Breakfast, Burgers, Hotdogs, Sodas, Shakes, Pancakes"
+  "serves": "Breakfast, Burgers, Hotdogs, Sodas, Shakes, Pancakes",
+  "displayMenuUrl": "https://www.flamingoland.co.uk/wp-content/uploads/2025/04/The-American-Diner-Menu.pdf",
+  "menuPdfs": [
+    "https://www.flamingoland.co.uk/wp-content/uploads/2025/04/The-American-Diner-Menu.pdf",
+    "https://www.flamingoland.co.uk/wp-content/uploads/2025/04/The-American-Diner-Breakfast-Menu.pdf",
+    "https://www.flamingoland.co.uk/wp-content/uploads/2025/04/The-American-Diner-Freak-Shakes.pdf",
+    "https://www.flamingoland.co.uk/wp-content/uploads/2025/04/The-American-Diner-Afternoon-Tea.pdf"
+  ]
 }

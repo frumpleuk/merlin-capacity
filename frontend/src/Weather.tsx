@@ -184,8 +184,7 @@ export function WeatherStrip({
         ))}
       </div>
       <div className="wx-note">
-        {anyFc && "Faded hours are forecast. "}Wind in {windUnit(tz)}, gusts after the dash;
-        arrows point the way it blows. Weather from{" "}
+        {anyFc && "Faded hours are forecast. "}Wind in {windUnit(tz)}. Weather from{" "}
         <a href="https://openweathermap.org/" target="_blank" rel="noreferrer noopener">
           OpenWeather
         </a>

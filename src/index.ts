@@ -12,7 +12,7 @@ import { runQueuePoll } from "./queues";
 import { runUptime } from "./reliability";
 import { refreshRestrictions } from "./restrictions";
 import { rebuildCatalog } from "./rides";
-import { backfill as backfillWeather, runWeather } from "./weather";
+import { backfill as backfillWeather, runDaily, runWeather } from "./weather";
 import { refreshSpecialDays } from "./special-days";
 import type { Env } from "./types";
 
@@ -398,7 +398,8 @@ export default {
       });
     }
 
-    // Weather now: the hourly run, or `?backfill=1` for the backfill alone.
+    // Weather now: the hourly run, `?days=1` for the calendar's ten days alone,
+    // or `?backfill=1` for the backfill alone.
     // Every call counts against the same daily budget as the cron (weather.ts),
     // which is why /poll leaves weather out.
     if (url.pathname === "/weather") {
@@ -410,7 +411,9 @@ export default {
       const done =
         url.searchParams.get("backfill") === "1"
           ? await backfillWeather(env, PARKS, Date.now(), 0)
-          : await runWeather(env, PARKS, Date.now());
+          : url.searchParams.get("days") === "1"
+            ? await runDaily(env, PARKS, Date.now())
+            : await runWeather(env, PARKS, Date.now());
       return Response.json({ ok: true, calls: done.length, done });
     }
 

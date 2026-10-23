@@ -503,6 +503,8 @@ export interface WeatherHour {
   snow?: number;
   wind?: number;
   gust?: number;
+  /** Direction the wind blows FROM, degrees clockwise from north. */
+  deg?: number;
   clouds?: number;
   uvi?: number;
   id?: number;
@@ -527,6 +529,7 @@ export interface WeatherDay {
   snow?: number;
   wind?: number;
   gust?: number;
+  deg?: number;
   id?: number;
   icon?: string;
   desc?: string;

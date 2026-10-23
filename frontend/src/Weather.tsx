@@ -25,8 +25,35 @@ const usesMph = (tz: string) => usesF(tz) || tz === "Europe/London";
 export const fmtTemp = (c: number, tz: string): string =>
   `${Math.round(usesF(tz) ? (c * 9) / 5 + 32 : c)}°`;
 
-export const fmtWind = (ms: number, tz: string): string =>
-  usesMph(tz) ? `${Math.round(ms * 2.237)} mph` : `${Math.round(ms * 3.6)} km/h`;
+const windNum = (ms: number, tz: string): number =>
+  Math.round(usesMph(tz) ? ms * 2.237 : ms * 3.6);
+const windUnit = (tz: string) => (usesMph(tz) ? "mph" : "km/h");
+
+export const fmtWind = (ms: number, tz: string): string => `${windNum(ms, tz)} ${windUnit(tz)}`;
+
+const POINTS = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
+/** Where the wind comes from, as a compass point ("SW" for 225°). */
+export const compass = (deg: number): string => POINTS[Math.round(deg / 45) % 8];
+
+/** An arrow pointing the way the wind blows: `deg` is where it comes from. */
+function WindArrow({ deg }: { deg: number }) {
+  return (
+    <span className="wx-arrow" style={{ transform: `rotate(${deg + 180}deg)` }} aria-hidden="true">
+      ↑
+    </span>
+  );
+}
+
+/** "11 mph SW, gusts 25 mph" */
+function windText(w: { wind?: number; gust?: number; deg?: number }, tz: string): string | null {
+  if (w.wind == null) return null;
+  return [
+    `wind ${fmtWind(w.wind, tz)}${w.deg != null ? ` from the ${compass(w.deg)}` : ""}`,
+    w.gust != null ? `gusts ${fmtWind(w.gust, tz)}` : null,
+  ]
+    .filter(Boolean)
+    .join(", ");
+}
 
 const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
 
@@ -47,8 +74,7 @@ function dayTitle(w: WeatherDay, tz: string): string {
     w.fc && w.pop != null ? `${Math.round(w.pop * 100)}% chance of rain` : null,
     w.rain ? `${w.rain} mm rain` : null,
     w.snow ? `${w.snow} mm snow` : null,
-    w.wind != null ? `wind ${fmtWind(w.wind, tz)}` : null,
-    w.gust != null ? `gusts ${fmtWind(w.gust, tz)}` : null,
+    windText(w, tz),
   ];
   return parts.filter(Boolean).join(", ");
 }
@@ -58,11 +84,27 @@ export function CellWeather({ iso }: { iso: string }) {
   const w = useContext(WeatherDaysContext)[iso];
   const tz = useContext(ParkTimeZoneContext);
   if (!w) return null;
+  const wetMm = Math.round(((w.rain ?? 0) + (w.snow ?? 0)) * 10) / 10;
+  const cls = "rc-line rc-weather" + (w.fc ? " wx-fc" : "");
   return (
-    <div className={"rc-line rc-weather" + (w.fc ? " wx-fc" : "")} title={dayTitle(w, tz)}>
-      {weatherEmoji(w.id, w.icon)} {fmtTemp(w.min, tz)}-{fmtTemp(w.max, tz)}
-      {w.fc && w.pop != null && w.pop >= 0.2 ? ` 💧${Math.round(w.pop * 100)}%` : ""}
-    </div>
+    <>
+      <div className={cls} title={dayTitle(w, tz)}>
+        {weatherEmoji(w.id, w.icon)} {fmtTemp(w.min, tz)}-{fmtTemp(w.max, tz)}
+        {w.fc && w.pop != null && w.pop >= 0.2 ? ` 💧${Math.round(w.pop * 100)}%` : ""}
+      </div>
+      {(w.wind != null || wetMm > 0) && (
+        <div className={cls} title={dayTitle(w, tz)}>
+          {w.wind != null && (
+            <>
+              💨 {windNum(w.wind, tz)}
+              {w.gust != null && `-${windNum(w.gust, tz)}`} {windUnit(tz)}
+              {w.deg != null && ` ${compass(w.deg)}`}
+            </>
+          )}
+          {wetMm > 0 && `${w.wind != null ? " · " : ""}${wetMm}mm`}
+        </div>
+      )}
+    </>
   );
 }
 
@@ -114,8 +156,7 @@ export function WeatherStrip({
               h.pop != null ? `${Math.round(h.pop * 100)}% chance of rain` : null,
               h.rain ? `${h.rain} mm rain` : null,
               h.snow ? `${h.snow} mm snow` : null,
-              h.wind != null ? `wind ${fmtWind(h.wind, tz)}` : null,
-              h.gust != null ? `gusts ${fmtWind(h.gust, tz)}` : null,
+              windText(h, tz),
             ]
               .filter(Boolean)
               .join(", ")}
@@ -123,6 +164,15 @@ export function WeatherStrip({
             <span className="wx-time">{hourLabel(h.t)}</span>
             <span className="wx-icon">{weatherEmoji(h.id, h.icon)}</span>
             <span className="wx-temp">{fmtTemp(h.temp, tz)}</span>
+            {h.wind != null && (
+              <span className="wx-wind">
+                {h.deg != null && <WindArrow deg={h.deg} />}
+                {windNum(h.wind, tz)}
+                {h.gust != null && h.gust - h.wind >= 2.2 && (
+                  <span className="wx-gust">-{windNum(h.gust, tz)}</span>
+                )}
+              </span>
+            )}
             <span className="wx-rain">
               {h.rain || h.snow
                 ? `${Math.round(((h.rain ?? 0) + (h.snow ?? 0)) * 10) / 10}mm`
@@ -134,7 +184,8 @@ export function WeatherStrip({
         ))}
       </div>
       <div className="wx-note">
-        {anyFc && "Faded hours are forecast. "}Weather from{" "}
+        {anyFc && "Faded hours are forecast. "}Wind in {windUnit(tz)}, gusts after the dash;
+        arrows point the way it blows. Weather from{" "}
         <a href="https://openweathermap.org/" target="_blank" rel="noreferrer noopener">
           OpenWeather
         </a>

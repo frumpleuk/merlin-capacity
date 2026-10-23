@@ -3082,3 +3082,14 @@ h3.fd-area-head {
 .chart-rain.wx-fc {
   opacity: 0.5;
 }
+.wx-wind {
+  font-size: 10.5px;
+  white-space: nowrap;
+}
+.wx-arrow {
+  display: inline-block;
+  margin-right: 1px;
+}
+.wx-gust {
+  color: var(--muted);
+}

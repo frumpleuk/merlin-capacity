@@ -44,6 +44,8 @@ export interface WeatherHour {
   snow?: number;
   wind?: number;
   gust?: number;
+  /** Direction the wind blows FROM, degrees clockwise from north. */
+  deg?: number;
   clouds?: number;
   uvi?: number;
   /** OpenWeather condition code (2xx thunder … 8xx cloud). */
@@ -70,6 +72,7 @@ export interface WeatherDay {
   snow?: number;
   wind?: number;
   gust?: number;
+  deg?: number;
   id?: number;
   icon?: string;
   desc?: string;
@@ -89,6 +92,7 @@ interface OwmRecord {
   snow?: number | Record<string, number>;
   wind_speed?: number;
   wind_gust?: number;
+  wind_deg?: number;
   clouds?: number;
   uvi?: number;
   weather?: { id?: number; icon?: string; description?: string }[];
@@ -118,6 +122,8 @@ function common(r: OwmRecord) {
   if (wind != null) out.wind = r1(wind);
   const gust = num(r.wind_gust);
   if (gust != null) out.gust = r1(gust);
+  const deg = num(r.wind_deg);
+  if (deg != null) out.deg = Math.round(deg);
   if (w?.id != null) out.id = w.id;
   if (w?.icon) out.icon = w.icon;
   if (w?.description) out.desc = w.description;
@@ -311,12 +317,7 @@ export async function runWeather(env: Env, parks: ParkConfig[], scheduledTime: n
     const date = parkDay(scheduledTime, parkTimeZone(p));
     return { label: `${p.key}/${date}`, run: () => writeDay(env, p, date, scheduledTime) };
   });
-  if (hour % DAILY_EVERY_H === 0) {
-    for (const p of cp) {
-      const yesterday = addDays(localDateOf(scheduledTime, parkTimeZone(p)), -1);
-      jobs.push({ label: `${p.key}/days`, run: () => writeDays(env, p, yesterday, scheduledTime) });
-    }
-  }
+  if (hour % DAILY_EVERY_H === 0) jobs.push(...dailyJobs(env, cp, scheduledTime));
   const done = await spend(env, scheduledTime, jobs);
 
   if (hour === BACKFILL_HOUR) {
@@ -330,6 +331,17 @@ export async function runWeather(env: Env, parks: ParkConfig[], scheduledTime: n
 }
 
 const BACKFILL_HOUR = 3;
+
+function dailyJobs(env: Env, parks: ParkConfig[], nowMs: number): Job[] {
+  return parks.map((p) => {
+    const yesterday = addDays(localDateOf(nowMs, parkTimeZone(p)), -1);
+    return { label: `${p.key}/days`, run: () => writeDays(env, p, yesterday, nowMs) };
+  });
+}
+
+/** The calendar's ten days for every park now, off schedule (`/weather?days=1`). */
+export const runDaily = (env: Env, parks: ParkConfig[], nowMs: number): Promise<string[]> =>
+  env.OPENWEATHER_KEY ? spend(env, nowMs, dailyJobs(env, calendarParks(parks), nowMs)) : Promise.resolve([]);
 
 /**
  * Fill weather for days before the key existed, newest first:

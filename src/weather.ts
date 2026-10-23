@@ -143,17 +143,15 @@ export function parseHour(r: OwmRecord, date: string, nowMs: number): WeatherHou
   return h;
 }
 
-/** A daily record, keyed by its local date (`dt` is local noon). */
-export function parseDay(
-  r: OwmRecord,
-  timeZone: string,
-  today: string,
-): [string, WeatherDay] | null {
+/** A daily record. `dt` is the park's local date written as UTC midnight
+ *  (Tokyo's 23 October is 2026-10-23T00:00Z, with that morning's sunrise), so
+ *  the UTC date of `dt` is the date, wherever the park is. */
+export function parseDay(r: OwmRecord, today: string): [string, WeatherDay] | null {
   if (!num(r.dt) || typeof r.temp !== "object" || r.temp == null) return null;
   const min = num(r.temp.min);
   const max = num(r.temp.max);
   if (min == null || max == null) return null;
-  const date = localDateOf(r.dt * 1000, timeZone);
+  const date = new Date(r.dt * 1000).toISOString().slice(0, 10);
   const d: WeatherDay = { min: r1(min), max: r1(max), ...common(r) };
   if (date >= today) d.fc = 1;
   return [date, d];
@@ -236,10 +234,11 @@ async function writeDay(env: Env, park: ParkConfig, date: string, nowMs: number)
 async function writeDays(env: Env, park: ParkConfig, from: string, nowMs: number): Promise<number> {
   const tz = parkTimeZone(park);
   const today = localDateOf(nowMs, tz);
-  const records = await fetchTimeline(env, "1day", park, localInstant(from, 0, tz));
+  // Same encoding as the records: the date's UTC midnight starts at that date.
+  const records = await fetchTimeline(env, "1day", park, Date.parse(`${from}T00:00:00Z`));
   const days: Record<string, WeatherDay> = {};
   for (const r of records) {
-    const p = parseDay(r, tz, today);
+    const p = parseDay(r, today);
     if (p && p[0] >= from) days[p[0]] = p[1];
   }
   const at = new Date(nowMs).toISOString();

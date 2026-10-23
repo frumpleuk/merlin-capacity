@@ -25,8 +25,20 @@ Base `https://api.openweathermap.org/data/4.0/onecall/`, all with `lat`, `lon`,
 
 Each record has `dt`, `temp` (an object with `min`/`max` on daily records),
 `feels_like`, `pop`, `rain`/`snow`, `wind_speed`, `wind_gust`, `clouds`, `uvi`
-and `weather[0]` (`id`, `icon`, `description`). Daily `dt` is local noon. Pages
-followed through `next`/`prev` cost a call each; we never follow them.
+and `weather[0]` (`id`, `icon`, `description`). Pages followed through
+`next`/`prev` cost a call each; we never follow them.
+
+Checked against live responses on 2026-10-23:
+
+- `start` is honoured: `1h` from 06:00Z returns 06:00Z to 01:00Z, history and
+  forecast in one run.
+- Hourly `rain`/`snow` are `{ "1h": mm }`. `pop` is absent on past hours.
+- Daily `dt` is the local date written as UTC midnight, in every zone (Tokyo's
+  23 October is `2026-10-23T00:00Z`, with sunrise at 06:04 local that day).
+  So the record's date is the UTC date of `dt`, and `start` is that date's
+  UTC midnight. Daily `rain` is a plain number, the day's total in mm.
+- A 4.0 401 ("requires a separate subscription") persisted for a while after
+  subscribing, after the key already worked on 2.5.
 
 Coordinates are `ParkConfig.weather`: the mean of each park's mapped food
 venues (`frontend/public/menu-data`), to 3 dp.

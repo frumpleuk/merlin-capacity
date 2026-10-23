@@ -203,6 +203,18 @@ export function mergeDetails(
   return map;
 }
 
+const NO_HOURS_NOTE = "On sale, but the park has published no opening hours for this day.";
+
+/** No hours, yet tickets sell: a season beyond the end of the hours feed
+ *  (Chessington's 2027, Drayton's Twixmas) or a day the feed marks shut. Not
+ *  "Closed". The closed_but_selling anomaly line already says so in-span. */
+const unpublishedHours = (d: DayDetail): "label" | "anomaly" | null =>
+  (d.main?.capacity ?? 0) > 0 || (d.season?.capacity ?? 0) > 0
+    ? d.anomaly?.kind === "closed_but_selling"
+      ? "anomaly"
+      : "label"
+    : null;
+
 /* ── Compact cell content (desktop month grid) ─────────────────────────────── */
 
 function CellContent({ d }: { d: DayDetail }) {
@@ -229,6 +241,12 @@ function CellContent({ d }: { d: DayDetail }) {
         <div className="rc-closed" title={NO_DATA_NOTE}>
           No data
         </div>
+      ) : nothingOn && unpublishedHours(d) ? (
+        unpublishedHours(d) === "label" && (
+          <div className="rc-closed" title={NO_HOURS_NOTE}>
+            Hours not published
+          </div>
+        )
       ) : nothingOn ? (
         // No hours published at all. The feed lists the days a park opens, so
         // this is a closed day — and it reads the same whether the date is
@@ -352,6 +370,8 @@ function DayBody({ d, seasonLabel }: { d: DayDetail; seasonLabel: string }) {
         ))
       ) : events.length === 0 && !d.special && d.noData ? (
         <div className="rc-body-loc rc-muted">No data. {NO_DATA_NOTE}</div>
+      ) : events.length === 0 && !d.special && unpublishedHours(d) ? (
+        <div className="rc-body-loc rc-muted">{NO_HOURS_NOTE}</div>
       ) : events.length === 0 && !d.special ? (
         // The park's hours feed lists the days it opens, so no hours means the
         // park is shut — which is what a reader wants told, rather than a

@@ -1,4 +1,4 @@
-import { NavLink, Outlet, useLocation } from "react-router-dom";
+import { Navigate, NavLink, Outlet, useLocation } from "react-router-dom";
 import { findPark, parkPath, PARKS, type ParkDef } from "./catalog";
 import { PARK_LINKS } from "./links";
 import { ParkPicker } from "./ParkPicker";
@@ -40,12 +40,16 @@ export function Layout() {
     if (section === "food" && hasFood(p.key)) return `${parkPath(p)}/food`;
     if (p.queueOnly) return `${parkPath(p)}/queues`; // no calendar/products — always queues
     if (!section) return parkPath(p); // calendar home
+    if ((section === "queues" || section === "uptime") && p.noQueues) return parkPath(p);
     if (section === "queues") return `${parkPath(p)}/${rest.join("/")}`; // queues (+ date)
     // Uptime exists wherever queues do — it's derived from the same files.
     if (section === "uptime") return `${parkPath(p)}/uptime`;
     if (p.products.some((pr) => pr.key === section)) return `${parkPath(p)}/${section}`;
     return parkPath(p); // this park doesn't have that product → its calendar home
   };
+
+  if ((section === "queues" || section === "uptime") && parkDef.noQueues)
+    return <Navigate to={base} replace />;
 
   return (
     <>
@@ -65,22 +69,26 @@ export function Layout() {
             </NavLink>
           )}
           {/* Ride queue times (stays active on the /queues/:date history URLs). */}
-          <NavLink
-            to={`${base}/queues`}
-            className={({ isActive }) => "tab" + (isActive ? " active" : "")}
-          >
-            Queues
-          </NavLink>
+          {!parkDef.noQueues && (
+            <NavLink
+              to={`${base}/queues`}
+              className={({ isActive }) => "tab" + (isActive ? " active" : "")}
+            >
+              Queues
+            </NavLink>
+          )}
           {/* How often the rides actually run — same source as Queues, so every
               park that has one has the other. "Uptime" rather than
               "Availability": this app already spends that word on TICKET
               availability, and the two sit one tab apart. */}
-          <NavLink
-            to={`${base}/uptime`}
-            className={({ isActive }) => "tab" + (isActive ? " active" : "")}
-          >
-            Uptime
-          </NavLink>
+          {!parkDef.noQueues && (
+            <NavLink
+              to={`${base}/uptime`}
+              className={({ isActive }) => "tab" + (isActive ? " active" : "")}
+            >
+              Uptime
+            </NavLink>
+          )}
           {parkDef.products.map((pr) => (
             <NavLink
               key={pr.key}

@@ -82,6 +82,9 @@ grant_type=urn:accesso:oauth2:grant-type:anonymous&scope=anonymous openid servic
 - The worker counts a ride as running when it reads OPEN inside today's
   `venue-hours` window, and HOLD, DELAYED, DOWN or TEMPORARILY_CLOSED inside it
   as open but not running. Outside the window every ride is closed.
+- The site hides the Queues and Uptime tabs for Drayton (`noQueues` in
+  frontend/src/catalog.ts) until waits appear: open/closed alone may be static
+  data. The worker keeps polling, so history starts the day they do.
 
 ### Hours
 

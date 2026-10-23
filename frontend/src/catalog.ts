@@ -18,6 +18,10 @@ export interface ParkDef {
   /** Queue-only park (Paulton's): no accesso tickets/calendar, only the live
    *  ride-queue times. The nav shows just the Queues tab and lands there. */
   queueOnly?: boolean;
+  /** No Queues or Uptime tabs: the park's feed posts no wait times (Drayton
+   *  Manor's new app, 2026-10). The worker still polls it, so history starts
+   *  the day waits appear. */
+  noQueues?: boolean;
   /** One-off ticketed events with their own allocation, shown as extra lines on
    *  the Calendar tab. Deliberately NOT in `products`: those drive the nav, and
    *  a single night doesn't deserve a tab that goes dead the morning after. */
@@ -275,6 +279,7 @@ export const PARKS: ParkDef[] = [
     operator: "Looping Group",
     label: "Drayton Manor",
     products: [],
+    noQueues: true,
   },
 ];
 

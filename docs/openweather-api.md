@@ -37,6 +37,9 @@ Checked against live responses on 2026-10-23:
   23 October is `2026-10-23T00:00Z`, with sunrise at 06:04 local that day).
   So the record's date is the UTC date of `dt`, and `start` is that date's
   UTC midnight. Daily `rain` is a plain number, the day's total in mm.
+- Daily records carry no `wind_gust`. The calendar's `gust` is the highest
+  hourly gust from that day's hourly file (07:00 to 02:00), so it exists for
+  today, tomorrow and every past day with a queue file.
 - A 4.0 401 ("requires a separate subscription") persisted for a while after
   subscribing, after the key already worked on 2.5.
 
@@ -50,9 +53,10 @@ Cron `2 * * * *`, its own invocation:
 - every hour, `timeline/1h` from 07:00 park time for every park's current park
   day (23 calls). 20 hours from 07:00 reach 02:00, before the 04:00 rollover;
 - every 6 hours (UTC 00, 06, 12, 18), `timeline/1day` from yesterday for every
-  park with a Calendar tab (23 calls; every park has one);
+  park with a Calendar tab (23 calls; every park has one), and `timeline/1h`
+  for tomorrow's park day (23 calls), whose highest gust is the calendar's;
 - at 03:00 UTC, backfill with what the rest of the day can spare: calendar
-  days from the park's first tracked month, then queue days that have a queue
+  days from the park's first queue day, then queue days that have a queue
   file but no weather, newest first, a park at a time in turn.
 
 Every call is reserved first against a per-UTC-day count in R2

@@ -83,7 +83,7 @@ function dayTitle(w: WeatherDay, tz: string): string {
 export function CellWeather({ iso }: { iso: string }) {
   const w = useContext(WeatherDaysContext)[iso];
   const tz = useContext(ParkTimeZoneContext);
-  if (!w) return null;
+  if (!w || w.min == null) return null;
   const wetMm = Math.round(((w.rain ?? 0) + (w.snow ?? 0)) * 10) / 10;
   const cls = "rc-line rc-weather" + (w.fc ? " wx-fc" : "");
   return (
@@ -112,7 +112,7 @@ export function CellWeather({ iso }: { iso: string }) {
 export function BodyWeather({ iso }: { iso: string }) {
   const w = useContext(WeatherDaysContext)[iso];
   const tz = useContext(ParkTimeZoneContext);
-  if (!w) return null;
+  if (!w || w.min == null) return null;
   return (
     <div className={"rc-body-weather" + (w.fc ? " wx-fc" : "")}>
       {weatherEmoji(w.id, w.icon)} {w.fc ? "Forecast: " : ""}

@@ -1,5 +1,5 @@
 import { localInstant, parkDay, parkTimeZone, type ParkConfig } from "./config";
-import { byMonth, mergeMonthFile } from "./db";
+import { byMonth } from "./db";
 import type { Env } from "./types";
 
 /**
@@ -233,8 +233,47 @@ async function writeDay(env: Env, park: ParkConfig, date: string, nowMs: number)
   await env.BUCKET.put(dayKey(park.key, date), JSON.stringify(file), {
     httpMetadata: { contentType: "application/json" },
   });
+  // Daily records carry no gusts, so the calendar's comes from the hours.
+  const gusts = hours.map((h) => h.gust).filter((g): g is number => g != null);
+  if (gusts.length) await setDayGust(env.BUCKET, park.key, date, Math.max(...gusts), file.generated_at);
   return hours.length;
 }
+
+const monthKey = (park: string, date: string) => `calendar/${park}/weather/${date.slice(0, 7)}.json`;
+
+/** Set one day's gust in its calendar month file, leaving the rest of the day as
+ *  it is. A day the daily fetch hasn't reached yet gets an entry with the gust
+ *  alone, which the calendar ignores until the rest arrives. */
+function setDayGust(bucket: R2Bucket, park: string, date: string, gust: number, at: string) {
+  const key = monthKey(park, date);
+  return serialised(key, async () => {
+    const cur = await readMonth(bucket, key);
+    const days = { ...cur, [date]: { ...cur[date], gust } as WeatherDay };
+    await putMonth(bucket, key, park, date.slice(0, 7), days, at);
+  });
+}
+
+async function readMonth(bucket: R2Bucket, key: string): Promise<Record<string, WeatherDay>> {
+  const obj = await bucket.get(key);
+  if (!obj) return {};
+  try {
+    return ((await obj.json()) as { days?: Record<string, WeatherDay> }).days ?? {};
+  } catch {
+    return {};
+  }
+}
+
+const putMonth = (
+  bucket: R2Bucket,
+  key: string,
+  park: string,
+  month: string,
+  days: Record<string, WeatherDay>,
+  at: string,
+) =>
+  bucket.put(key, JSON.stringify({ park, month, generated_at: at, days }), {
+    httpMetadata: { contentType: "application/json" },
+  });
 
 /** Ten days from `from` into the calendar month files. */
 async function writeDays(env: Env, park: ParkConfig, from: string, nowMs: number): Promise<number> {
@@ -251,7 +290,16 @@ async function writeDays(env: Env, park: ParkConfig, from: string, nowMs: number
   await Promise.all(
     [...byMonth(days)].map(([mk, ds]) => {
       const key = `calendar/${park.key}/weather/${mk}.json`;
-      return serialised(key, () => mergeMonthFile(env.BUCKET, key, { park: park.key, month: mk }, ds, at));
+      return serialised(key, async () => {
+        const cur = await readMonth(env.BUCKET, key);
+        // Each day is replaced whole (so a recorded day loses its forecast
+        // fields), except the gust, which only the hourly fetch supplies.
+        for (const [d, w] of Object.entries(ds)) {
+          const gust = w.gust ?? cur[d]?.gust;
+          cur[d] = gust != null ? { ...w, gust } : w;
+        }
+        await putMonth(env.BUCKET, key, park.key, mk, cur, at);
+      });
     }),
   );
   return Object.keys(days).length;
@@ -324,7 +372,7 @@ export async function runWeather(env: Env, parks: ParkConfig[], scheduledTime: n
     // What the rest of today's scheduled runs will need.
     const hoursLeft = 23 - hour;
     const dailyLeft = Math.floor((23 - hour) / DAILY_EVERY_H);
-    const reserve = hoursLeft * wp.length + dailyLeft * cp.length;
+    const reserve = hoursLeft * wp.length + dailyLeft * 2 * cp.length;
     done.push(...(await backfill(env, parks, scheduledTime, reserve)));
   }
   return done;
@@ -332,10 +380,17 @@ export async function runWeather(env: Env, parks: ParkConfig[], scheduledTime: n
 
 const BACKFILL_HOUR = 3;
 
+/** The calendar's ten days, and tomorrow's hours for its gust (the hourly
+ *  timeline reaches 48 hours ahead; the daily one has no gusts). Two calls a park. */
 function dailyJobs(env: Env, parks: ParkConfig[], nowMs: number): Job[] {
-  return parks.map((p) => {
-    const yesterday = addDays(localDateOf(nowMs, parkTimeZone(p)), -1);
-    return { label: `${p.key}/days`, run: () => writeDays(env, p, yesterday, nowMs) };
+  return parks.flatMap((p) => {
+    const tz = parkTimeZone(p);
+    const yesterday = addDays(localDateOf(nowMs, tz), -1);
+    const tomorrow = addDays(parkDay(nowMs, tz), 1);
+    return [
+      { label: `${p.key}/days`, run: () => writeDays(env, p, yesterday, nowMs) },
+      { label: `${p.key}/${tomorrow}`, run: () => writeDay(env, p, tomorrow, nowMs) },
+    ];
   });
 }
 
@@ -345,7 +400,7 @@ export const runDaily = (env: Env, parks: ParkConfig[], nowMs: number): Promise<
 
 /**
  * Fill weather for days before the key existed, newest first:
- *  - the calendar from the park's first tracked month, ten days a call;
+ *  - the calendar from the park's first queue day, ten days a call;
  *  - the Queues tab for every past day that has a queue file, a call a day,
  *    taken a park at a time in turn so no park waits on another's history.
  * Bounded by the budget left after `reserve`; resumes where it stopped because
@@ -360,19 +415,19 @@ export async function backfill(
   if (!env.OPENWEATHER_KEY) return [];
   const jobs: Job[] = [];
 
+  // From the park's first queue day: weather before that has nothing to sit
+  // beside but ticket numbers.
   for (const p of calendarParks(parks)) {
     const tz = parkTimeZone(p);
-    const idx = await readJson<{ minMonth?: string }>(env, `calendar/${p.key}/index.json`);
-    if (!idx?.minMonth) continue;
-    const first = `${idx.minMonth}-01`;
+    const idx = await readJson<{ minDate?: string }>(env, `queues/${p.key}/index.json`);
+    if (!idx?.minDate) continue;
+    const first = idx.minDate;
     const yesterday = addDays(localDateOf(nowMs, tz), -1);
     const have = new Set<string>();
-    for (let m = idx.minMonth; m <= yesterday.slice(0, 7); m = nextMonth(m)) {
-      const f = await readJson<{ days?: Record<string, unknown> }>(
-        env,
-        `calendar/${p.key}/weather/${m}.json`,
-      );
-      for (const d of Object.keys(f?.days ?? {})) have.add(d);
+    for (let m = first.slice(0, 7); m <= yesterday.slice(0, 7); m = nextMonth(m)) {
+      const days = await readMonth(env.BUCKET, `calendar/${p.key}/weather/${m}.json`);
+      // A gust-only entry (see setDayGust) still needs its day.
+      for (const [d, w] of Object.entries(days)) if (w.min != null) have.add(d);
     }
     // Newest gap first; one call covers it and the nine days before it.
     for (let d = yesterday; d >= first; d = addDays(d, -1)) {

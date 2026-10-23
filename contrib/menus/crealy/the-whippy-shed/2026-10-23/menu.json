@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-23",
+  "source": {"name": "Crealy Theme Park", "official": true, "url": "https://www.crealy.co.uk/media/rmhfzfjj/a0_donutstop_whippy_menu_poster.pdf", "sha256": "ac8ffe52ce55b3f5bdb5b8ead219a214e9a2b50022a242ee4958dab141b9a3be"},
+  "sections": [
+    {
+      "name": "Sundaes",
+      "items": [
+        { "name": "Pick 'n Mix", "price": 550 },
+        { "name": "Oreo", "price": 550 },
+        { "name": "Lotus Biscoff", "price": 550 }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        { "name": "Cookie Dough", "price": 595 },
+        { "name": "Warm Brownie", "price": 595 }
+      ]
+    },
+    {
+      "name": "Whippy",
+      "items": [
+        { "name": "Whippy Flake", "price": 350 },
+        { "name": "Double Whippy Flake", "price": 450 }
+      ]
+    }
+  ]
+}

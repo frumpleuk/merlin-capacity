@@ -1,0 +1,1515 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Crealy Theme Park",
+    "official": true,
+    "url": "https://www.crealy.co.uk/media/3hmc0ba1/clubhouse_menubooklet_all_mains_2026_web.pdf",
+    "sha256": "33a8b5808ddb322424ac00edcb650be38225a342f5ffd720097a0badfa7d4ea9"
+  },
+  "sections": [
+    {
+      "name": "Breakfast",
+      "note": "Served 8:30am - 11am",
+      "items": [
+        {
+          "name": "Mega Breakfast",
+          "description": "Double bacon, sausage, hash brown. Served with baked beans, mini omelette, mushrooms, tomato, toast & butter.",
+          "price": 1095
+        },
+        {
+          "name": "Clubhouse Breakfast",
+          "description": "Double crispy bacon and sausage, golden hash brown, baked beans, mini omelette, grilled mushrooms and roasted tomato. Served with warm toast & butter.",
+          "price": 995
+        },
+        {
+          "name": "Vegetarian Breakfast",
+          "description": "Quorn sausage, halloumi cheese, hash brown. Served with baked beans, mini omelette, mushrooms, tomato, toast & butter.",
+          "price": 995,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Vegan Breakfast",
+          "description": "Quorn sausages, Spinach, hash brown. Served with baked beans, mushrooms, tomato, toast & vegan spread.",
+          "price": 995,
+          "tags": [
+            "v",
+            "vg",
+            "df"
+          ]
+        },
+        {
+          "name": "Breakfast Baguette",
+          "description": "Crispy bacon, seasoned sausage and golden hash brown in a freshly baked baguette.",
+          "price": 895
+        },
+        {
+          "name": "Bacon Roll",
+          "description": "Crispy bacon served in a warm, crusty roll.",
+          "price": 595
+        },
+        {
+          "name": "Sausage Roll",
+          "description": "Seasoned sausages served in a warm, crusty roll.",
+          "price": 595
+        },
+        {
+          "name": "Quorn Sausage Roll",
+          "description": "Quorn sausages served in a warm crusty roll.",
+          "price": 595,
+          "tags": [
+            "v",
+            "vg",
+            "df"
+          ]
+        },
+        {
+          "name": "Halloumi Tomato & Mushroom Roll",
+          "description": "Grilled halloumi, tomato and sautéed mushrooms, in a warm crusty roll.",
+          "price": 595,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Pancakes with Bacon",
+          "description": "Fluffy American-style pancakes topped with crispy bacon and drizzled with maple syrup.",
+          "price": 845
+        },
+        {
+          "name": "Pancakes with Banana & Chocolate",
+          "description": "Fluffy American-style pancakes topped with sliced banana and rich chocolate sauce.",
+          "price": 845,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Waffles with Bacon",
+          "description": "Golden Belgian waffles topped with crispy bacon and maple syrup.",
+          "price": 845
+        },
+        {
+          "name": "Waffles with Banana & Chocolate",
+          "description": "Golden Belgian waffles topped with banana and rich chocolate sauce.",
+          "price": 845,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Kids Menu",
+      "note": "Under 10's",
+      "items": [
+        {
+          "name": "Buddy's Cooked Breakfast",
+          "description": "A mini feast to power up your morning: tasty sausage, yummy bacon, warm baked beans with golden toast and butter.",
+          "price": 495,
+          "tags": [
+            "kids"
+          ]
+        },
+        {
+          "name": "Blossom's Pancakes & Chocolate Sauce",
+          "description": "Soft, stackable pancakes smothered in gooey chocolate sauce.",
+          "price": 395,
+          "tags": [
+            "kids"
+          ]
+        },
+        {
+          "name": "Mini Bacon or Sausage Sandwich",
+          "description": "Tasty sandwich packed with flavour.",
+          "price": 295,
+          "tags": [
+            "kids"
+          ]
+        },
+        {
+          "name": "Beans on Toast",
+          "description": "Golden toasted loaded with warm, squishy beans.",
+          "price": 295,
+          "tags": [
+            "kids"
+          ]
+        },
+        {
+          "name": "Toast",
+          "description": "Crispy toast, ready for spreading your favourite jam and butter",
+          "price": 295,
+          "tags": [
+            "kids"
+          ]
+        },
+        {
+          "name": "Cereal",
+          "description": "Choose between crunchy Rice Krispies or chocolaty Coco Pops served with chilled milk.",
+          "price": 295,
+          "tags": [
+            "kids"
+          ]
+        },
+        {
+          "name": "Add chocolate or strawberry milk",
+          "price": 150,
+          "addOn": true
+        }
+      ]
+    },
+    {
+      "name": "Lunch",
+      "note": "Served 11am - 4pm. Served with refreshing half pint soft drink",
+      "items": [
+        {
+          "name": "Margherita Pizza",
+          "description": "Hand-stretched in Italy for an authentic thin, crisp base, topped with tomato sauce and melted mozzarella.",
+          "price": 1395,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Pepperoni Pizza",
+          "description": "Hand-stretched Italian base topped with tomato sauce, mozzarella and slices of pepperoni.",
+          "price": 1495
+        },
+        {
+          "name": "Clubhouse Club Sandwich",
+          "description": "Chargrilled chicken breast, smoky bacon, lettuce, tomato and mayo, stacked between three slices of bloomer bread, served with nacho crisps.",
+          "price": 1195
+        }
+      ]
+    },
+    {
+      "name": "Delicious Chicken",
+      "note": "Wings tossed in your choice of bold, sticky sauce: Classic BBQ, Korean BBQ, or Frank's Hot Sauce",
+      "items": [
+        {
+          "name": "Chicken Wings",
+          "sizes": [
+            {
+              "label": "6",
+              "price": 795
+            },
+            {
+              "label": "12",
+              "price": 1295
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        {
+          "name": "Mozzarella Sticks",
+          "description": "Golden, crunchy on the outside, gooey, melted mozzarella on the inside.",
+          "price": 450,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Cheesy Garlic Bread",
+          "description": "Crispy, buttery ciabatta bread topped with melted cheese and a punch of garlic flavour.",
+          "price": 495,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Garlic Bread",
+          "description": "Warm, fluffy ciabatta bread with a generous garlic butter spread and a hint of herbs.",
+          "price": 450,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Cheesy Chips",
+          "description": "Crispy fries smothered in a blanket of melted cheese, perfect for sharing.",
+          "price": 495,
+          "tags": [
+            "v",
+            "gf"
+          ]
+        },
+        {
+          "name": "Chips",
+          "description": "Classic golden fries, seasoned to perfection, crispy on the outside, fluffy inside.",
+          "price": 395,
+          "tags": [
+            "v",
+            "vg",
+            "df",
+            "gf"
+          ]
+        },
+        {
+          "name": "Southern Fried Goujons",
+          "description": "Golden, crunchy chicken goujons, perfectly seasoned and fried to perfection. Served with a trio of irresistible dips: Classic BBQ, Korean BBQ and Garlic Mayonnaise.",
+          "sizes": [
+            {
+              "label": "6",
+              "price": 795
+            },
+            {
+              "label": "12",
+              "price": 1295
+            }
+          ]
+        },
+        {
+          "name": "Onion Rings",
+          "description": "Thick-cut onions in a crunchy golden batter, fried to perfection, and lightly seasoned.",
+          "price": 450,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "House Slaw",
+          "description": "Shredded cabbage and carrot, tossed in a creamy, light dressing for a fresh crunch.",
+          "price": 200,
+          "tags": [
+            "v",
+            "gf"
+          ]
+        },
+        {
+          "name": "Corn on the Cob",
+          "description": "Sweet, tender corn on the cob served with butter.",
+          "price": 200,
+          "tags": [
+            "v",
+            "gf"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Costa Coffee Iced Drinks",
+      "items": [
+        {
+          "name": "Iced Cappuccino",
+          "sizes": [
+            {
+              "label": "Small",
+              "price": 395
+            },
+            {
+              "label": "Medium",
+              "price": 425
+            }
+          ]
+        },
+        {
+          "name": "Iced Latte",
+          "sizes": [
+            {
+              "label": "Small",
+              "price": 395
+            },
+            {
+              "label": "Medium",
+              "price": 425
+            }
+          ]
+        },
+        {
+          "name": "Iced Americano",
+          "sizes": [
+            {
+              "label": "Small",
+              "price": 355
+            },
+            {
+              "label": "Medium",
+              "price": 385
+            }
+          ]
+        },
+        {
+          "name": "Iced Mocha",
+          "sizes": [
+            {
+              "label": "Small",
+              "price": 435
+            },
+            {
+              "label": "Medium",
+              "price": 465
+            }
+          ]
+        },
+        {
+          "name": "Add vanilla, caramel, sugar free vanilla, sugar free caramel",
+          "price": 60,
+          "addOn": true
+        },
+        {
+          "name": "Mango & Passion Fruit Cooler",
+          "sizes": [
+            {
+              "label": "Small",
+              "price": 445
+            },
+            {
+              "label": "Medium",
+              "price": 495
+            }
+          ]
+        },
+        {
+          "name": "Red Summer Berries Fruit Cooler",
+          "sizes": [
+            {
+              "label": "Small",
+              "price": 445
+            },
+            {
+              "label": "Medium",
+              "price": 495
+            }
+          ]
+        },
+        {
+          "name": "Peach Iced Tea",
+          "sizes": [
+            {
+              "label": "Small",
+              "price": 315
+            },
+            {
+              "label": "Medium",
+              "price": 350
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Burgers",
+      "note": "Choose your sauce: Smokey BBQ, Korean BBQ, Burger Sauce, Garlic Mayonnaise, Frank's Hot Sauce",
+      "items": [
+        {
+          "name": "Premium Beef Burger",
+          "description": "Flame-cooked 6oz beef burger, juicy and full of flavour. Served in a warm soft brioche bun with crisp lettuce and fresh tomato, alongside golden chips, house slaw and your choice of sauce.",
+          "price": 1495
+        },
+        {
+          "name": "Southern Fried Chicken Fillet",
+          "description": "Tender chicken fillet coated in crispy, golden breadcrumbs. Served in a warm soft brioche bun with crisp lettuce and fresh tomato, alongside golden chips, house slaw and your choice of sauce.",
+          "price": 1495
+        },
+        {
+          "name": "Buttermilk Chicken",
+          "description": "Tender breast fillet coated in crispy buttermilk coating. Served in a warm soft brioche bun with crisp lettuce and fresh tomato, alongside golden chips, house slaw and your choice of sauce.",
+          "price": 1495
+        },
+        {
+          "name": "Chargrilled Chicken",
+          "description": "Juicy chargrilled chicken breast (available gluten free). Served in a warm soft brioche bun with crisp lettuce and fresh tomato, alongside golden chips, house slaw and your choice of sauce.",
+          "price": 1495
+        },
+        {
+          "name": "Vegan Burger",
+          "description": "Oumph! smashed burger (available gluten free). Served in a warm soft brioche bun with crisp lettuce and fresh tomato, alongside golden chips, house slaw and your choice of sauce.",
+          "price": 1495,
+          "tags": [
+            "vg",
+            "df"
+          ]
+        },
+        {
+          "name": "Add Ons",
+          "description": "Streaky bacon, Cheddar Cheese, Gherkins, Jalapeños, Mushrooms, BBQ Pulled Pork, Crispy Onions, Halloumi Cheese, Fried Egg, Beef Chilli, Vegan Chilli",
+          "sizes": [
+            {
+              "label": "Each",
+              "price": 150
+            },
+            {
+              "label": "Double up",
+              "price": 200
+            }
+          ],
+          "addOn": true
+        }
+      ]
+    },
+    {
+      "name": "Family Favourites",
+      "items": [
+        {
+          "name": "Loaded Fries",
+          "description": "Crispy golden fries piled high with melted cheese, spring onions, and your choice of indulgent topping: Beef Chilli, 5 Bean Chilli, BBQ Pulled Pork or Southern Fried Chicken. Choose from: Smokey BBQ, Korean BBQ, Frank's hot sauce, garlic mayonnaise, burger sauce.",
+          "price": null,
+          "unclear": "the PDF prints only \"from £11.50\" for Family Favourites, no price per dish"
+        },
+        {
+          "name": "Homemade Clubhouse Curry",
+          "description": "A fragrant, curry served with fluffy rice or golden chips, a crisp poppadom, and our sweet & tangy mango chutney.",
+          "price": null,
+          "tags": [
+            "df"
+          ],
+          "unclear": "the PDF prints only \"from £11.50\" for Family Favourites, no price per dish"
+        },
+        {
+          "name": "Clubhouse Chilli",
+          "description": "Choose between our hearty Homemade Beef Chilli or 5 Bean Chilli (vg, df) served with fluffy rice, crunchy nachos, and a hit of fiery jalapeños",
+          "price": null,
+          "unclear": "the PDF prints only \"from £11.50\" for Family Favourites, no price per dish"
+        },
+        {
+          "name": "Mac & Cheese",
+          "description": "Creamy, dreamy mac and cheese served with warm garlic ciabatta.",
+          "price": null,
+          "tags": [
+            "v"
+          ],
+          "unclear": "the PDF prints only \"from £11.50\" for Family Favourites, no price per dish"
+        },
+        {
+          "name": "Add Ons",
+          "description": "Streaky bacon, Cheddar Cheese, Gherkins, Jalapeños, Mushrooms, BBQ Pulled Pork, Crispy Onions, Halloumi Cheese, Fried Egg, Beef Chilli, Vegan Chilli",
+          "sizes": [
+            {
+              "label": "Each",
+              "price": 150
+            },
+            {
+              "label": "Double up",
+              "price": 200
+            }
+          ],
+          "addOn": true
+        }
+      ]
+    },
+    {
+      "name": "Mains",
+      "items": [
+        {
+          "name": "Fish & Chips",
+          "description": "Golden, crispy battered fish, served with garden peas, chips, tartare sauce and a fresh lemon wedge.",
+          "price": 1495
+        },
+        {
+          "name": "Home Made Lasagne",
+          "description": "Choose from hearty beef or roasted vegetable (v), layered with rich sauce and melted cheese. Served with warm garlic ciabatta and a fresh mixed salad.",
+          "price": 1595
+        },
+        {
+          "name": "Add Chips",
+          "price": 200,
+          "addOn": true
+        },
+        {
+          "name": "Margherita Pizza",
+          "description": "Hand-stretched in Italy for an authentic thin, crisp base, topped with rich tomato sauce and melted mozzarella.",
+          "price": 1395,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Pepperoni Pizza",
+          "description": "Hand-stretched Italian base topped with tomato sauce, mozzarella and slices of pepperoni",
+          "price": 1495
+        },
+        {
+          "name": "Caesar Salad",
+          "description": "Crisp baby gem lettuce tossed in a creamy Caesar dressing, topped with crunchy garlic croutons and shaved Italian hard cheese.",
+          "price": 995,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add Chargrilled Chicken Breast",
+          "price": 200,
+          "addOn": true
+        },
+        {
+          "name": "Buttermilk Chicken",
+          "description": "Tender chicken breast in a crispy golden coating, served with golden chips, sweetcorn on the cob and fresh house slaw, with your choice of sauce. Choose from: Smokey BBQ, Korean BBQ, Frank's Hot Sauce or Garlic Mayonnaise",
+          "price": 1595
+        },
+        {
+          "name": "Hunter's Chicken",
+          "description": "Succulent chicken fillet wrapped in smoky bacon, topped with melted grated cheese and rich BBQ sauce. Served with golden chips, sweetcorn on the cob and fresh house slaw.",
+          "price": 1595,
+          "tags": [
+            "gf"
+          ]
+        },
+        {
+          "name": "Rack of Ribs",
+          "description": "Slow-cooked, served with corn on the cob, crisp house slaw and golden fries.",
+          "price": 2095
+        },
+        {
+          "name": "Add Chargrilled Chicken Breast",
+          "price": 200,
+          "addOn": true
+        },
+        {
+          "name": "8oz Rump Steak",
+          "description": "A tender 8oz rump steak, cooked just how you like it, served with sautéed mushrooms, grilled tomato, garden peas and a rich garlic butter. Finished with a generous portion of golden chips.",
+          "price": 1995,
+          "tags": [
+            "gf"
+          ]
+        },
+        {
+          "name": "Steak Add Ons",
+          "description": "3 beer-battered onion rings, peppercorn sauce, fried egg, corn on the cob, rich gravy.",
+          "price": 200,
+          "addOn": true
+        },
+        {
+          "name": "Gammon, Egg, & Chips",
+          "description": "A perfectly grilled 10oz gammon steak, topped with a golden fried egg. Served with crisp, fluffy chips, and sweet garden peas.",
+          "price": 1595,
+          "tags": [
+            "df",
+            "gf"
+          ]
+        },
+        {
+          "name": "Meister Sausage Hot Dog",
+          "description": "A juicy Meister sausage served in a warm, soft brioche bun with golden chips, ketchup, American mustard and crispy onions.",
+          "price": 1295
+        },
+        {
+          "name": "Hot Dog Add Ons",
+          "description": "BBQ Pulled Pork, Beef Chilli, Grated Cheese, Jalapeños.",
+          "price": 150,
+          "addOn": true
+        }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        {
+          "name": "Lotus Biscoff Cookie Dough",
+          "description": "Our homemade cookie dough, baked fresh to order with a gooey centre and crisp edges, loaded with melted Biscoff and crunchy crumb. Served warm with vanilla ice cream and extra Biscoff drizzle.",
+          "price": 795,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Oreo Cookie Dough",
+          "description": "Our homemade chocolate chip cookie dough packed with Oreo pieces, baked until golden on the outside and soft in the middle. Finished with vanilla ice cream and rich chocolate sauce.",
+          "price": 795,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Brownie Cookie Dough",
+          "description": "Homemade chocolate cookie dough swirled with chunks of our homemade brownie, baked warm and served with melting vanilla ice cream for the ultimate sweet fix.",
+          "price": 795,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Lotus Biscoff Pancake Stack",
+          "description": "Fluffy American-style pancakes layered with fresh banana, crunchy Biscoff crumb and rich Biscoff sauce, finished with vanilla ice cream for the ultimate sweet fix.",
+          "price": 795,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Lotus Biscoff Sundae",
+          "description": "Vanilla ice cream layered with indulgent Biscoff sauce, crunchy Biscoff crumb and whipped cream, topped with a Lotus biscuit and extra drizzle.",
+          "price": 795,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Oreo Sundae",
+          "description": "Layers of vanilla ice cream, crushed Oreo, rich chocolate sauce and whipped cream, finished with extra drizzle and whole Oreo on top.",
+          "price": 795,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Brownie Sundae",
+          "description": "Chunks of rich homemade brownie layered with vanilla ice cream and chocolate sauce, finished with whipped cream and a generous chocolate drizzle.",
+          "price": 795,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Sticky Toffee Pudding",
+          "description": "A soft, sticky sponge soaked in warm toffee sauce, served with smooth vanilla ice cream that melts straight through.",
+          "price": 795,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Churros",
+          "description": "Golden, crispy churros rolled in cinnamon sugar, served warm with rich chocolate or smooth toffee dipping sauce.",
+          "price": 695,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Waffle & Ice Cream",
+          "description": "Warm golden Belgian waffles topped with vanilla ice cream, whipped cream and a generous drizzle of chocolate sauce.",
+          "price": 695,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Brownie & Ice Cream",
+          "description": "Warm, homemade chocolate brownie, rich and fudgy in the centre, served alongside creamy vanilla ice cream. Topped with a generous drizzle of silky chocolate sauce.",
+          "price": 695,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Trillionaire Tarte",
+          "description": "A chocolate pastry case layered with rich toffee and topped with smooth chocolate-style ganache.",
+          "price": 695,
+          "tags": [
+            "v",
+            "vg",
+            "df",
+            "gf"
+          ]
+        },
+        {
+          "name": "3 Scoop of Ice Cream",
+          "description": "Choose from vanilla, chocolate, salted caramel, cookies & cream, strawberry, vegan chocolate ripple (vg, df) or lemon ice (vg, df). Served with chocolate or toffee.",
+          "price": 595,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Soft Drinks",
+      "items": [
+        {
+          "name": "Pint",
+          "price": 305
+        },
+        {
+          "name": "Half Pint",
+          "price": 205
+        },
+        {
+          "name": "Lime & Soda",
+          "sizes": [
+            {
+              "label": "Half Pint",
+              "price": 250
+            },
+            {
+              "label": "Pint",
+              "price": 305
+            }
+          ]
+        },
+        {
+          "name": "Slush",
+          "price": 395
+        },
+        {
+          "name": "Sooty Refillable Character Bottle",
+          "description": "Slush or soft drink",
+          "price": 695
+        },
+        {
+          "name": "Slush or Soft Drink Refill",
+          "price": 150
+        }
+      ]
+    },
+    {
+      "name": "Bottled Drinks",
+      "items": [
+        {
+          "name": "J20",
+          "price": 350
+        },
+        {
+          "name": "Pepsi 300ml",
+          "price": 295
+        },
+        {
+          "name": "Water 750ml",
+          "price": 220
+        },
+        {
+          "name": "Fruit Shoot",
+          "price": 195
+        },
+        {
+          "name": "Britvic 100% Juice",
+          "sizes": [
+            {
+              "label": "Apple 250ml",
+              "price": 370
+            },
+            {
+              "label": "Orange 250ml",
+              "price": 370
+            }
+          ]
+        },
+        {
+          "name": "Britvic Juice",
+          "sizes": [
+            {
+              "label": "Pineapple 200ml",
+              "price": 290
+            },
+            {
+              "label": "Cranberry 200ml",
+              "price": 290
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Costa Coffee",
+      "items": [
+        {
+          "name": "Latte",
+          "sizes": [
+            {
+              "label": "Small",
+              "price": 395
+            },
+            {
+              "label": "Medium",
+              "price": 425
+            },
+            {
+              "label": "Large",
+              "price": 450
+            }
+          ]
+        },
+        {
+          "name": "Cappuccino",
+          "sizes": [
+            {
+              "label": "Small",
+              "price": 395
+            },
+            {
+              "label": "Medium",
+              "price": 425
+            },
+            {
+              "label": "Large",
+              "price": 450
+            }
+          ]
+        },
+        {
+          "name": "Americano",
+          "sizes": [
+            {
+              "label": "Small",
+              "price": 355
+            },
+            {
+              "label": "Medium",
+              "price": 385
+            },
+            {
+              "label": "Large",
+              "price": 415
+            }
+          ]
+        },
+        {
+          "name": "Flat White",
+          "price": 410
+        },
+        {
+          "name": "Expresso",
+          "sizes": [
+            {
+              "label": "Small",
+              "price": 295
+            },
+            {
+              "label": "Medium",
+              "price": 315
+            }
+          ]
+        },
+        {
+          "name": "Mocha",
+          "sizes": [
+            {
+              "label": "Small",
+              "price": 435
+            },
+            {
+              "label": "Medium",
+              "price": 465
+            },
+            {
+              "label": "Large",
+              "price": 495
+            }
+          ]
+        },
+        {
+          "name": "Hot Chocolate",
+          "sizes": [
+            {
+              "label": "Small",
+              "price": 415
+            },
+            {
+              "label": "Medium",
+              "price": 445
+            },
+            {
+              "label": "Large",
+              "price": 470
+            }
+          ]
+        },
+        {
+          "name": "Tea",
+          "price": 295
+        },
+        {
+          "name": "Add an extra shot of coffee, whipped cream, or flavour syrup",
+          "price": 60,
+          "addOn": true
+        },
+        {
+          "name": "Dairy alternatives",
+          "price": 50,
+          "addOn": true
+        }
+      ]
+    },
+    {
+      "name": "On Draught",
+      "items": [
+        {
+          "name": "Cruzcampo 4.4%",
+          "sizes": [
+            {
+              "label": "Half",
+              "price": 300
+            },
+            {
+              "label": "Pint",
+              "price": 600
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Poretti 4.8%",
+          "sizes": [
+            {
+              "label": "Half",
+              "price": 312
+            },
+            {
+              "label": "Pint",
+              "price": 625
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Thatchers Gold 4.8%",
+          "sizes": [
+            {
+              "label": "Half",
+              "price": 320
+            },
+            {
+              "label": "Pint",
+              "price": 640
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Thatchers Fusion 4%",
+          "sizes": [
+            {
+              "label": "Half",
+              "price": 325
+            },
+            {
+              "label": "Pint",
+              "price": 650
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Korev 4.8%",
+          "sizes": [
+            {
+              "label": "Half",
+              "price": 312
+            },
+            {
+              "label": "Pint",
+              "price": 625
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Bottles",
+      "items": [
+        {
+          "name": "WKD 3.4% 275ml",
+          "price": 520,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Thatchers Zero 0.0% 500ml",
+          "price": 520
+        },
+        {
+          "name": "Thatchers Haze 4.5% 500ml",
+          "price": 605,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Desperados 5.9% 330ml",
+          "price": 555,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Peroni GF 5.0% 330ml",
+          "price": 555,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Peroni Zero 0.0% 330ml",
+          "price": 455
+        }
+      ]
+    },
+    {
+      "name": "Rum",
+      "items": [
+        {
+          "name": "Bacardi Rum 37.5%",
+          "sizes": [
+            {
+              "label": "Single",
+              "price": 350
+            },
+            {
+              "label": "Double",
+              "price": 630
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Captain Morgan Spiced Rum 35%",
+          "sizes": [
+            {
+              "label": "Single",
+              "price": 350
+            },
+            {
+              "label": "Double",
+              "price": 630
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Kraken 40%",
+          "sizes": [
+            {
+              "label": "Single",
+              "price": 450
+            },
+            {
+              "label": "Double",
+              "price": 680
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Add mixer",
+          "price": 170,
+          "addOn": true
+        }
+      ]
+    },
+    {
+      "name": "Spirits",
+      "items": [
+        {
+          "name": "Smirnoff Red Vodka 37.5%",
+          "sizes": [
+            {
+              "label": "Single",
+              "price": 420
+            },
+            {
+              "label": "Double",
+              "price": 680
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Absolute 40%",
+          "sizes": [
+            {
+              "label": "Single",
+              "price": 500
+            },
+            {
+              "label": "Double",
+              "price": 700
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Absolute Raspberry 30%",
+          "sizes": [
+            {
+              "label": "Single",
+              "price": 420
+            },
+            {
+              "label": "Double",
+              "price": 680
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Archers 18%",
+          "sizes": [
+            {
+              "label": "Single",
+              "price": 420
+            },
+            {
+              "label": "Double",
+              "price": 680
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Disaronno 28%",
+          "sizes": [
+            {
+              "label": "Single",
+              "price": 440
+            },
+            {
+              "label": "Double",
+              "price": 690
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Add mixer",
+          "price": 170,
+          "addOn": true
+        }
+      ]
+    },
+    {
+      "name": "Gin",
+      "items": [
+        {
+          "name": "Gordons",
+          "sizes": [
+            {
+              "label": "Single",
+              "price": 395
+            },
+            {
+              "label": "Double",
+              "price": 630
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Gordon's Pink Gin",
+          "sizes": [
+            {
+              "label": "Single",
+              "price": 395
+            },
+            {
+              "label": "Double",
+              "price": 630
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Tanqueray 41.3%",
+          "sizes": [
+            {
+              "label": "Single",
+              "price": 510
+            },
+            {
+              "label": "Double",
+              "price": 810
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Hendricks 41.4%",
+          "sizes": [
+            {
+              "label": "Single",
+              "price": 510
+            },
+            {
+              "label": "Double",
+              "price": 810
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Add mixer",
+          "price": 170,
+          "addOn": true
+        }
+      ]
+    },
+    {
+      "name": "Whisky",
+      "items": [
+        {
+          "name": "Jack Daniel's 40%",
+          "sizes": [
+            {
+              "label": "Single",
+              "price": 400
+            },
+            {
+              "label": "Double",
+              "price": 630
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Bell's Scotch Whisky 40%",
+          "sizes": [
+            {
+              "label": "Single",
+              "price": 420
+            },
+            {
+              "label": "Double",
+              "price": 680
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Add mixer",
+          "price": 170,
+          "addOn": true
+        }
+      ]
+    },
+    {
+      "name": "White Wine",
+      "items": [
+        {
+          "name": "Alta Baliza Sauvignon Blanc",
+          "description": "Chile",
+          "sizes": [
+            {
+              "label": "Bottle",
+              "price": 1800
+            },
+            {
+              "label": "175ml",
+              "price": 650
+            },
+            {
+              "label": "250ml",
+              "price": 725
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Soprano Pinot Grigio",
+          "description": "Italy",
+          "sizes": [
+            {
+              "label": "Bottle",
+              "price": 1850
+            },
+            {
+              "label": "175ml",
+              "price": 655
+            },
+            {
+              "label": "250ml",
+              "price": 730
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Billycan Chardonnay",
+          "description": "Australia",
+          "sizes": [
+            {
+              "label": "Bottle",
+              "price": 1950
+            },
+            {
+              "label": "175ml",
+              "price": 675
+            },
+            {
+              "label": "250ml",
+              "price": 825
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Red Wine",
+      "items": [
+        {
+          "name": "Alta Baliza Merlot",
+          "description": "Chile",
+          "sizes": [
+            {
+              "label": "Bottle",
+              "price": 1850
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Billycan Shiraz",
+          "description": "Australia",
+          "sizes": [
+            {
+              "label": "Bottle",
+              "price": 1950
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Tamari Malbec",
+          "description": "Argentina",
+          "sizes": [
+            {
+              "label": "Bottle",
+              "price": 2450
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Rose Wine",
+      "items": [
+        {
+          "name": "Terrazzo Zinfandel Rosé",
+          "description": "USA",
+          "sizes": [
+            {
+              "label": "Bottle",
+              "price": 1800
+            },
+            {
+              "label": "175ml",
+              "price": 650
+            },
+            {
+              "label": "250ml",
+              "price": 725
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Laroma Pinot Grigio Rosato",
+          "description": "Italy",
+          "sizes": [
+            {
+              "label": "Bottle",
+              "price": 1950
+            },
+            {
+              "label": "175ml",
+              "price": 675
+            },
+            {
+              "label": "250ml",
+              "price": 825
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sparkling Wine",
+      "items": [
+        {
+          "name": "Prosecco Spumante Botter",
+          "description": "Italy",
+          "sizes": [
+            {
+              "label": "Bottle",
+              "price": 2400
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Prosecco Spumante Botter 20c",
+          "description": "Italy",
+          "sizes": [
+            {
+              "label": "Bottle",
+              "price": 825
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    }
+  ],
+  "offers": [
+    {
+      "text": "Add a Costa Coffee hot drink for just £2 (small size hot drinks only, all extras will be charged)"
+    },
+    {
+      "text": "Feed the family breakfast for just £14.95"
+    },
+    {
+      "text": "Kids eat for £1: under 10s when purchased with an adult cooked breakfast, pancakes or waffles. Excludes breakfast rolls or baguettes"
+    },
+    {
+      "text": "Coffee & homemade brownie for just £5"
+    },
+    {
+      "text": "Sooty refillable character bottles: 2 for £12"
+    }
+  ]
+}

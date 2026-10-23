@@ -1,0 +1,81 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Crealy Theme Park",
+    "official": true,
+    "url": "https://www.crealy.co.uk/media/z2snvnrw/street-food_web-menu.pdf",
+    "sha256": "7e016bac6b5d7cb1ddb839f75d2c675639b216a517ff52205b1ca5667f17c4c9"
+  },
+  "sections": [
+    {
+      "name": "Main Menu",
+      "items": [
+        {
+          "name": "Burrito Meal",
+          "price": 1395,
+          "description": "Beef, chicken or chipotle bean burrito. Served with seasoned fries or nachos, and a drink"
+        },
+        {
+          "name": "Quesadilla Meal",
+          "price": 1295,
+          "description": "Beef, chicken, chipotle bean, or cheese quesadilla. Served with seasoned fries or nachos, and a drink"
+        },
+        {
+          "name": "Kids Meal",
+          "price": 745,
+          "description": "Chicken strips, or chicken or cheese quesadilla. Served with seasoned fries, and a drink",
+          "tags": [
+            "kids"
+          ]
+        },
+        {
+          "name": "Southern Fried Goujon Meal",
+          "description": "Includes seasoned fries or nachos & drink",
+          "sizes": [
+            {
+              "label": "5 Goujons",
+              "price": 1295
+            },
+            {
+              "label": "9 Goujons",
+              "price": 1495
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        {
+          "name": "Seasoned Fries",
+          "price": 455
+        },
+        {
+          "name": "Nachos with Salsa & Nacho Cheese",
+          "price": 455
+        },
+        {
+          "name": "Nacho Cheese",
+          "price": 100
+        },
+        {
+          "name": "Guacamole",
+          "price": 100
+        },
+        {
+          "name": "Salsa",
+          "price": 100
+        },
+        {
+          "name": "Sour Cream Sauce",
+          "price": 100
+        },
+        {
+          "name": "Taco Mayo Dip Pot",
+          "price": 100
+        }
+      ]
+    }
+  ]
+}

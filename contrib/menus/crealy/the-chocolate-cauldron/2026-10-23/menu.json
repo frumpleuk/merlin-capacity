@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-23",
+  "source": {"name": "Crealy Theme Park", "official": true, "url": "https://www.crealy.co.uk/media/vkrlixtx/chocolatecauldron_web.pdf", "sha256": "b5d952c7aa9bd129d4fbb278153eb23374c6bec789e592be52e93dfadf3beda2"},
+  "sections": [
+    {
+      "name": "Spooky Treats",
+      "items": [
+        { "name": "Spooky Treats drink", "price": 450, "unclear": "the menu pictures a cup topped with cream, marshmallows and sprinkles but does not name the drink" },
+        { "name": "Mummy Apple", "price": 350 },
+        { "name": "Spooky Sprinkles", "price": 350 },
+        { "name": "White Chocolate Biscoff", "price": 350 }
+      ]
+    }
+  ],
+  "offers": [
+    { "text": "Drinks 2 for £8" },
+    { "text": "Mummy Apple, Spooky Sprinkles and White Chocolate Biscoff 2 for £6" }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Crealy Theme Park",
+    "official": true,
+    "url": "https://www.crealy.co.uk/media/ibglvktk/sooty_diner_main_menu_web_spookfest.pdf",
+    "sha256": "16a394b8da58c3592b8d704f9a44fce35a3c1fe7a158c39cc6c15cca503d65c9"
+  },
+  "sections": [
+    {
+      "name": "Burger Meals",
+      "note": "All meals served with fries & a soft drink",
+      "items": [
+        {
+          "name": "Sooty's Chicken Stack Burger Meal",
+          "price": 1455
+        },
+        {
+          "name": "Sooty's Cheeseburger Meal",
+          "price": 1355
+        },
+        {
+          "name": "Sooty's BBQ Burger Meal",
+          "price": 1395
+        },
+        {
+          "name": "Sooty's Southern Chicken Burger Meal",
+          "price": 1355
+        },
+        {
+          "name": "Sooty's Signature Cheeseburger Meal",
+          "price": 1355
+        },
+        {
+          "name": "Vegan Burger Meal",
+          "price": 1295,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "Gluten Free Chargrilled Chicken Burger Meal",
+          "price": 1495,
+          "tags": [
+            "gf"
+          ]
+        },
+        {
+          "name": "Go Large",
+          "price": 90,
+          "addOn": true
+        },
+        {
+          "name": "Add Sauce",
+          "price": 60,
+          "addOn": true
+        }
+      ]
+    },
+    {
+      "name": "Kids Meals",
+      "note": "Served with small fries & a drink. Choose from: Fruit Shoot, strawberry/chocolate milk or water",
+      "items": [
+        {
+          "name": "Hot Dog Meal",
+          "price": 745,
+          "tags": [
+            "kids"
+          ]
+        },
+        {
+          "name": "Veggie Nuggets Meal",
+          "price": 745,
+          "tags": [
+            "kids",
+            "v"
+          ]
+        },
+        {
+          "name": "Chicken Nuggets Meal",
+          "price": 745,
+          "tags": [
+            "kids"
+          ]
+        },
+        {
+          "name": "Spooky Cupcake",
+          "price": 150,
+          "addOn": true
+        },
+        {
+          "name": "Add Sauce",
+          "price": 60,
+          "addOn": true
+        }
+      ]
+    }
+  ],
+  "passDiscount": {
+    "offered": true,
+    "percent": 20,
+    "upTo": true,
+    "applies": "food + beverage & retail, annual pass holders"
+  }
+}

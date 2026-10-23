@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-23",
+  "source": {"name": "Crealy Theme Park", "official": true, "url": "https://www.crealy.co.uk/media/suhgayml/sweettreatstop_web-menu_spookfest.pdf", "sha256": "d592002fc107459b217773e646b4aec78536f37d7c580fcc214744a32ed6a538"},
+  "sections": [
+    {
+      "name": "Fresh Donuts",
+      "note": "Choose your flavour: Oreo, Lotus Biscoff, Milk Chocolate",
+      "items": [
+        {
+          "name": "Fresh Donuts",
+          "sizes": [
+            { "label": "5", "price": 595 },
+            { "label": "10", "price": 1095 }
+          ]
+        },
+        { "name": "Add Sauce", "price": 100, "addOn": true }
+      ]
+    },
+    {
+      "name": "Spooky Treats",
+      "items": [
+        { "name": "Mummy Waffle Stick", "price": 595 },
+        { "name": "Donut de Fright", "price": 595 },
+        { "name": "Mummy Cookie Dough", "price": 595 },
+        { "name": "Spook Shake", "description": "Made with real ice cream", "price": 595 }
+      ]
+    }
+  ],
+  "offers": [
+    { "text": "Spook Shake 2 for £9.50" }
+  ]
+}

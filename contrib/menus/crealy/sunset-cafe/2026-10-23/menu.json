@@ -1,0 +1,103 @@
+{
+  "date": "2026-10-23",
+  "source": {"name": "Crealy Theme Park", "official": true, "url": "https://www.crealy.co.uk/media/qu3hacng/costa-menu-web.pdf", "sha256": "b4c75609b8bef349fda2510ae783a3d56d4535baf65fdfc52084de34566f27e4"},
+  "sections": [
+    {
+      "name": "Hot Drinks",
+      "items": [
+        { "name": "Latte", "sizes": [
+          { "label": "Small", "price": 435, "kcal": 111 },
+          { "label": "Medium", "price": 455, "kcal": 151 },
+          { "label": "Large", "price": 475, "kcal": 209 } ] },
+        { "name": "Cappuccino", "sizes": [
+          { "label": "Small", "price": 435, "kcal": 123 },
+          { "label": "Medium", "price": 455, "kcal": 154 },
+          { "label": "Large", "price": 475, "kcal": 169 } ] },
+        { "name": "Americano", "sizes": [
+          { "label": "Small", "price": 355, "kcal": 12 },
+          { "label": "Medium", "price": 395, "kcal": 18 },
+          { "label": "Large", "price": 445, "kcal": 23 } ] },
+        { "name": "Flat White", "price": 445, "kcal": 189 },
+        { "name": "Espresso", "sizes": [
+          { "label": "Small", "price": 295, "kcal": 6 },
+          { "label": "Medium", "price": 315, "kcal": 12 } ] },
+        { "name": "Extra Shot of Coffee", "price": 60, "addOn": true },
+        { "name": "Flavour Syrup", "price": 60, "addOn": true },
+        { "name": "Mocha", "sizes": [
+          { "label": "Small", "price": 455, "kcal": 182 },
+          { "label": "Medium", "price": 485, "kcal": 231 },
+          { "label": "Large", "price": 515, "kcal": 278 } ] },
+        { "name": "Hot Chocolate", "sizes": [
+          { "label": "Small", "price": 435, "kcal": 231 },
+          { "label": "Medium", "price": 465, "kcal": 325 },
+          { "label": "Large", "price": 495, "kcal": 438 } ] },
+        { "name": "Tea English Breakfast", "price": 295, "kcal": 1 },
+        { "name": "Speciality Tea", "price": 295, "kcal": 6 },
+        { "name": "Chai Latte", "sizes": [
+          { "label": "Small", "price": 435, "kcal": 166 },
+          { "label": "Medium", "price": 455, "kcal": 213 },
+          { "label": "Large", "price": 475, "kcal": 272 } ] },
+        { "name": "Babyccino", "price": 150, "kcal": 90, "tags": ["kids"] },
+        { "name": "Dairy Alternatives", "price": 50, "addOn": true }
+      ]
+    },
+    {
+      "name": "Frappés",
+      "items": [
+        { "name": "Coffee", "sizes": [
+          { "label": "Small", "price": 465, "kcal": 284 },
+          { "label": "Medium", "price": 515, "kcal": 331 } ] },
+        { "name": "Chocolate Fudge Brownie", "sizes": [
+          { "label": "Small", "price": 465, "kcal": 317 },
+          { "label": "Medium", "price": 515, "kcal": 425 } ] },
+        { "name": "Strawberry & Cream", "sizes": [
+          { "label": "Small", "price": 465, "kcal": 338 },
+          { "label": "Medium", "price": 515, "kcal": 399 } ] },
+        { "name": "Salted Caramel", "sizes": [
+          { "label": "Small", "price": 465, "kcal": 269 },
+          { "label": "Medium", "price": 515, "kcal": 324 } ] },
+        { "name": "Extra Shot of Coffee", "price": 60, "addOn": true }
+      ]
+    },
+    {
+      "name": "Iced Coffees",
+      "items": [
+        { "name": "Cappuccino", "sizes": [
+          { "label": "Small", "price": 435, "kcal": 57 },
+          { "label": "Medium", "price": 455, "kcal": 74 } ] },
+        { "name": "Latte", "sizes": [
+          { "label": "Small", "price": 435, "kcal": 90 },
+          { "label": "Medium", "price": 455, "kcal": 113 } ] },
+        { "name": "Americano", "sizes": [
+          { "label": "Small", "price": 355, "kcal": 12 },
+          { "label": "Medium", "price": 395, "kcal": 18 } ] },
+        { "name": "Mocha", "sizes": [
+          { "label": "Small", "price": 455, "kcal": 136 },
+          { "label": "Medium", "price": 485, "kcal": 209 } ] },
+        { "name": "Syrup", "price": 60, "addOn": true }
+      ]
+    },
+    {
+      "name": "Fruit Coolers",
+      "items": [
+        { "name": "Mango & Passion Fruit", "sizes": [
+          { "label": "Small", "price": 445, "kcal": 125 },
+          { "label": "Medium", "price": 495, "kcal": 165 } ] },
+        { "name": "Red Summer Berries", "sizes": [
+          { "label": "Small", "price": 445, "kcal": 165 },
+          { "label": "Medium", "price": 495, "kcal": 218 } ] }
+      ]
+    },
+    {
+      "name": "Other Drinks",
+      "items": [
+        { "name": "Peach Iced Tea", "sizes": [
+          { "label": "Small", "price": 315, "kcal": 80 },
+          { "label": "Medium", "price": 350, "kcal": 107 } ] }
+      ]
+    }
+  ],
+  "offers": [
+    { "text": "Save 25p on any drink when you use your own reusable cup or travel mug. Only clean cups with lids accepted." }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "date": "2026-10-23",
+  "source": {"name": "Crealy Theme Park", "official": true, "url": "https://www.crealy.co.uk/media/retl2xvf/pizza-menu-web_2026-1.pdf", "sha256": "e099a942892a3e916ae73c0094093a49b0d50f5b45d0c2bc800aa772fba8015d"},
+  "sections": [
+    {
+      "name": "Pizzas",
+      "items": [
+        { "name": "10\" Margherita", "price": 1295 },
+        { "name": "10\" Pepperoni", "price": 1395 },
+        { "name": "10\" Hot Honey Pepperoni", "price": 1445 }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        { "name": "Southern Fried Chicken Strips", "price": 695 },
+        { "name": "Twister Fries", "price": 595 },
+        { "name": "Mozzarella Sticks", "price": 595 },
+        { "name": "Jalapeño Bites", "price": 595 },
+        { "name": "Onion Rings", "price": 495 }
+      ]
+    },
+    {
+      "name": "Chicken Wings",
+      "note": "Choose from BBQ or Korean BBQ",
+      "items": [
+        {
+          "name": "Chicken Wings",
+          "sizes": [
+            { "label": "5", "price": 650 },
+            { "label": "10", "price": 1050 },
+            { "label": "15", "price": 1395 }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Dips",
+      "items": [
+        { "name": "Dip", "description": "Garlic & Herb or BBQ", "price": 60 }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Soft Drink",
+          "description": "Pepsi Max, Pepsi Cherry, Tango, 7Up Free",
+          "sizes": [
+            { "label": "Regular", "price": 285 },
+            { "label": "Large", "price": 340 }
+          ]
+        },
+        { "name": "Bottled Water 750ml", "price": 250 },
+        { "name": "Fruit Shoot", "price": 195, "tags": ["kids"] }
+      ]
+    },
+    {
+      "name": "Ben & Jerry's Ice Cream",
+      "items": [
+        { "name": "Caramel Chew Chew", "price": 345 },
+        { "name": "Strawberry", "price": 345 },
+        { "name": "Vanilla", "price": 345 },
+        { "name": "Chocolate Fudge", "price": 345 }
+      ]
+    }
+  ],
+  "offers": [
+    { "text": "Family Favourite Meal Bundle: 2 Pizzas & 2 Sides £35. Not in conjunction with the Annual Pass discount." },
+    { "text": "Bottled Water 750ml 2 for £3" }
+  ]
+}

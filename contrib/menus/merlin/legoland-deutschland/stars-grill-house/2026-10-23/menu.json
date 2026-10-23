@@ -1,0 +1,615 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Legoland Deutschland",
+    "official": true,
+    "url": "https://www.legoland.de/media/5gpdqnlt/legoland_stars-grill-house_speisekarte_2026.pdf",
+    "sha256": "b07f73755766591e54c4c287de7c93cfd8dfd20a402dd6e1a80390c18058ce33",
+    "stated": "2026"
+  },
+  "sections": [
+    {
+      "name": "Vorspeisen zum Teilen",
+      "note": "Für 2 Personen",
+      "items": [
+        {
+          "name": "\"VIP Veggie\" Platte",
+          "description": "Tortilla Chips, scharfe Jalapeños-Cheese-Nuggets, Gemüsesticks, Käsesoße, Sour Cream und Guacamole",
+          "price": 1290
+        }
+      ]
+    },
+    {
+      "name": "LEGOLAND Stars Burger",
+      "note": "Direkt vom Grill. Zu allen Burgern reichen wir French fries, Ketchup und Mayonnaise",
+      "items": [
+        {
+          "name": "LEGOLAND Classic Burger",
+          "description": "Black Angus Beef (180 g) im Brioche-Brötchen, garniert mit jungem Blattsalat, roten Zwiebeln, Tomaten, Gurken und unserer delikaten LEGOLAND STARS Burgersoße",
+          "price": 1850
+        },
+        {
+          "name": "LEGOLAND Bacon & Cheese Burger",
+          "description": "Black Angus Beef (180 g) im Brioche-Brötchen mit Cheddar Käse und gebratenem Speck, garniert mit jungem Blattsalat, Zwiebeln, Tomaten, Gurken und unserer delikaten LEGOLAND STARS Burgersoße",
+          "price": 1890
+        },
+        {
+          "name": "LEGOLAND Double Crispy Chicken Burger",
+          "description": "Crispy Chicken Patties im Brioche-Brötchen mit Guacamole und Cheddar Käse, garniert mit Paprikastreifen, jungem Blattsalat und Zwiebeln",
+          "price": 1890
+        },
+        {
+          "name": "LEGOLAND Veggie Burger",
+          "description": "Haferflocken Dinkel Patty im Vollkornbrötchen, garniert mit jungem Blattsalat, Gurke, Tomaten, Zwiebel Chutney und unserer delikaten LEGOLAND STARS Burgersoße",
+          "price": 1890,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "LEGOLAND STAR BURGER Parade",
+          "description": "Etagere mit einem LEGOLAND Classic Burger + einem LEGOLAND Burger nach Wahl, serviert mit French fries, Zwiebelringen im Bierteig, BBQ Soße, Sour Cream und Cole Slaw",
+          "price": 3590
+        }
+      ]
+    },
+    {
+      "name": "Grill- & Küchen Spezialitäten",
+      "items": [
+        {
+          "name": "Spare Ribs",
+          "description": "Würzig marinierte und im Ofen gegrillte Loin Ribs vom Kalb, serviert mit Ofenkartoffel und Sour Cream, BBQ Soße",
+          "price": 1790
+        },
+        {
+          "name": "Rumpsteak mit Pfeffer",
+          "description": "250g Rumpsteak vom Grill mit Steakhouse Pfeffer, serviert mit Schmorkartoffeln, Röstgemüse und Kräuter-Knoblauchbutter",
+          "price": 2650,
+          "tags": [
+            "gf"
+          ]
+        },
+        {
+          "name": "Ofenkartoffel mit Sour Cream",
+          "description": "mit geröstetem, mediterranem Gemüse und einem kleinen Beilagensalat",
+          "price": 1490,
+          "tags": [
+            "gf",
+            "v"
+          ]
+        },
+        {
+          "name": "Ofenkartoffel mit Sour Cream",
+          "description": "mit gegrillter Hühnerbrust und einem kleinen Beilagensalat",
+          "price": 1590,
+          "tags": [
+            "gf"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pasta & Sandwiches Spezialitäten",
+      "items": [
+        {
+          "name": "Linguine Pasta an Tomaten-Gemüse-Sugo",
+          "description": "Rucola und Kirschtomaten, garniert mit frisch geriebenem Grana Padano",
+          "sizes": [
+            {
+              "label": "Linguine Pasta",
+              "price": 1490
+            },
+            {
+              "label": "Mit gegrillter Hähnchenbrust",
+              "price": 1650
+            }
+          ]
+        },
+        {
+          "name": "Club Sandwich",
+          "description": "Sandwichtoast mit frisch gegrillter Hähnchenbrust und knusprigem Bacon, serviert mit jungem Blattsalat und Tomaten, verfeinert mit unserer LEGOLAND Soße nach Geheimrezept, French fries und Knoblauch-Kräuter-Dip. Auch glutenfrei erhältlich",
+          "price": 1650
+        },
+        {
+          "name": "Portion French fries",
+          "price": 590
+        }
+      ]
+    },
+    {
+      "name": "Stars Kids Menu",
+      "items": [
+        {
+          "name": "Kids Chicken Drums",
+          "description": "Hähnchenunterkeulen mit Kartoffelpüree und Röstgemüse",
+          "price": 995,
+          "tags": [
+            "gf",
+            "kids"
+          ]
+        },
+        {
+          "name": "Kids Burger",
+          "description": "Rinderhacksteak vom Grill im Brötchen, garniert mit Tomate und jungem Blattsalat, serviert mit French fries",
+          "price": 1090,
+          "tags": [
+            "kids"
+          ]
+        },
+        {
+          "name": "Kids Star Platte",
+          "description": "Knusprig gebratene Rostbratwürstchen auf Röstgemüse und Kartoffelpüree",
+          "price": 995,
+          "tags": [
+            "kids"
+          ]
+        },
+        {
+          "name": "Kids Pasta",
+          "description": "Spaghetti Pasta, serviert mit unserer köstlichen LEGOLAND Tomatensoße, garniert mit frisch geriebenem Grana Padano + 0,3 l Softdrink",
+          "price": 1050,
+          "tags": [
+            "kids"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Magische Salate",
+      "note": "Zu allen Salaten servieren wir unser Rustico Baguette",
+      "items": [
+        {
+          "name": "Caesar Salat",
+          "description": "auf Römersalat, Gurken und Cocktailtomaten, serviert mit Caesardressing, Grana Padano und Croutons",
+          "sizes": [
+            {
+              "label": "Caesar Salat",
+              "price": 1290
+            },
+            {
+              "label": "Mit gegrillter Hähnchenbrust",
+              "price": 1590
+            }
+          ]
+        },
+        {
+          "name": "Gartensalat \"Luft\" mit Fetakäse im Zucchinimantel",
+          "description": "auf Römersalat, Baby Leaf Salat, Cocktailtomaten, Gurken und bunter Paprika, serviert mit italienischem Dressing",
+          "price": 1590,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Beilagen Salat",
+          "price": 500
+        }
+      ]
+    },
+    {
+      "name": "Desserts ... nicht nur für Kinder",
+      "items": [
+        {
+          "name": "Süßer Held",
+          "description": "Pfannkuchen Pommes mit frischen Früchten und Apfelmus",
+          "price": 690
+        },
+        {
+          "name": "Emmas Vanilletraum",
+          "description": "Vanilleeis als Spaghetti auf einem Sahnebett serviert, mit Erdbeersoße und weißen Schokoraspeln garniert",
+          "price": 690
+        }
+      ]
+    },
+    {
+      "name": "Desserts ... nicht nur für Erwachsene",
+      "items": [
+        {
+          "name": "LEGOLAND Apfelstrudel",
+          "description": "Köstlicher, lauwarmer Apfelstrudel, serviert mit einer Kugel Premium Carte D'Or Vanilleeis, garniert mit frischen Früchten",
+          "price": 790
+        },
+        {
+          "name": "Schoko Soufflé",
+          "description": "mit flüssigem Kern, Kokoseis und frischen Früchten",
+          "price": 790
+        }
+      ]
+    },
+    {
+      "name": "LEGOLAND Kids Cocktails",
+      "items": [
+        {
+          "name": "Benny's Cocktail",
+          "description": "Maracujasaft, Orangensaft, Limettensaft und Erdbeersirup",
+          "price": 690,
+          "tags": [
+            "kids"
+          ]
+        },
+        {
+          "name": "Eli's Dragon Fizz",
+          "description": "Ananassaft, Apfelsaft und Waldmeistersirup",
+          "price": 690,
+          "tags": [
+            "kids"
+          ]
+        },
+        {
+          "name": "Unicorn Kitty's Pink World Cocktail",
+          "description": "Ananassaft, Kirschsaft, Kokosnusssirup und Schlagsahne",
+          "price": 690,
+          "tags": [
+            "kids"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Café und mehr",
+      "items": [
+        {
+          "name": "Latte Macchiato",
+          "price": 420
+        },
+        {
+          "name": "Cappuccino",
+          "price": 420
+        },
+        {
+          "name": "Milchkaffee",
+          "price": 420
+        },
+        {
+          "name": "Café Crema",
+          "price": 390
+        },
+        {
+          "name": "Espresso",
+          "price": 280
+        },
+        {
+          "name": "Doppelter Espresso",
+          "price": 380
+        },
+        {
+          "name": "Heiße Schokolade",
+          "price": 390
+        },
+        {
+          "name": "Echter Tee-Genuss im großen Glas",
+          "description": "XL-Teeglas mit klassischer oder trendiger Bio-Tee-Sorte: \"High Darling\" Bio Darjeeling, \"Master Mint\" Bio Minze, \"Orange Safari\" Bio Rooibos/Orange, \"Maybe Baby\" Bio Fruchtmischung, \"Team Spirit\" Bio Kräutertee/Grüntee",
+          "price": 450
+        }
+      ]
+    },
+    {
+      "name": "Aperitif (Piccolo)",
+      "items": [
+        {
+          "name": "Italien - Aperol Spritz",
+          "description": "Venetien, Scavi & Ray, anregend, frisch, leicht herbes Aroma",
+          "sizes": [
+            {
+              "label": "0,2 l",
+              "price": 790
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Italien - Hugo",
+          "description": "Venetien, Scavi & Ray",
+          "sizes": [
+            {
+              "label": "0,2 l",
+              "price": 690
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Wein & Prosecco (Piccolo)",
+      "items": [
+        {
+          "name": "Weinschorle - Fruchtiger Weißer",
+          "description": "Deutschland, Burkhardt, weiß",
+          "sizes": [
+            {
+              "label": "0,33 l",
+              "price": 650
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Weinschorle - Sanfter Rosé",
+          "description": "Deutschland, Burkhardt, rosé",
+          "sizes": [
+            {
+              "label": "0,33 l",
+              "price": 650
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Italien - Prosecco Frizzante D.O.C.",
+          "description": "Venetien, Scavi & Ray, weiß",
+          "sizes": [
+            {
+              "label": "0,2 l Fl.",
+              "price": 650
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Italien - Prosecco Spumante D.O.C. Rosé",
+          "description": "Venetien, Scavi & Ray, rosé",
+          "sizes": [
+            {
+              "label": "0,2 l Fl.",
+              "price": 750
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Deutschland - Weißburgunder Q.b.A.",
+          "description": "Bio. Rheinhessen, Weingut Sander, frisch und fruchtig, weiß",
+          "sizes": [
+            {
+              "label": "0,25 l Fl.",
+              "price": 690
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Deutschland - Dornfelder Q.b.A.",
+          "description": "Bio. Rheinhessen, Weingut Sander, vollmundig und samtig, rot",
+          "sizes": [
+            {
+              "label": "0,25 l Fl.",
+              "price": 690
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Offene Weine",
+      "items": [
+        {
+          "name": "Frankreich - Vanel Chardonnay VdPays d'Oc",
+          "description": "Weiß. Aimery Caves du Sieur d'Arques, frisch und leicht würzig",
+          "sizes": [
+            {
+              "label": "0,2 l",
+              "price": 650
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Deutschland - Rheingau Riesling Qualitätswein",
+          "description": "Weiß. Rheingau, Weingut Ohlig, halbtrocken, süffig und vollmundig",
+          "sizes": [
+            {
+              "label": "0,2 l",
+              "price": 650
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Italien - Bardolino Chiaretto D.O.C.",
+          "description": "Rosé. Italien, Kellerei Pasqua, trocken",
+          "sizes": [
+            {
+              "label": "0,2 l",
+              "price": 650
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Deutschland - Rotling \"Fränkische Machart\" Q.b.A.",
+          "description": "Rosé. Franken, Winzer Sommerach, trocken, fruchtig und anregend",
+          "sizes": [
+            {
+              "label": "0,2 l",
+              "price": 650
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Italien - Sol Mio Negroamaro & Primitivo I.G.T",
+          "description": "Rot. Sizilien, Angelo Rocca & Figli, weich und lange anhaltend mit viel Charme",
+          "sizes": [
+            {
+              "label": "0,2 l",
+              "price": 650
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Frankreich - Vanel Merlot VdPays d'Oc",
+          "description": "Rot. Aimery Caves du Sieur d'Arques, weicher, vollmundiger Wein",
+          "sizes": [
+            {
+              "label": "0,2 l",
+              "price": 650
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Bier",
+      "items": [
+        {
+          "name": "Günzburger Hefe-Weizen oder Helles 5,1 % vol.",
+          "sizes": [
+            {
+              "label": "0,5 l",
+              "price": 550
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Günzburger Radler 2,7 % vol.",
+          "sizes": [
+            {
+              "label": "0,5 l",
+              "price": 550
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Günzburger Alkoholfrei",
+          "description": "Alkoholfreies Hefe-Weizen",
+          "sizes": [
+            {
+              "label": "0,5 l",
+              "price": 550
+            }
+          ]
+        },
+        {
+          "name": "Günzburger Alkoholfrei & Zitrone",
+          "description": "Alkoholfreies Hefe-Weizen mit Zitronenlimonade",
+          "sizes": [
+            {
+              "label": "0,5 l",
+              "price": 550
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Softdrinks",
+      "items": [
+        {
+          "name": "Softdrink",
+          "description": "Coca-Cola, Coca-Cola Zero Sugar, Fanta, Sprite, mezzo mix, Lift Apfelschorle",
+          "sizes": [
+            {
+              "label": "Kleines Getränk 0,3 l",
+              "price": 410
+            },
+            {
+              "label": "Großes Getränk 0,5 l",
+              "price": 450
+            }
+          ]
+        },
+        {
+          "name": "Fuzetea",
+          "description": "Schwarzer Tee Pfirsich, Schwarzer Tee Zitrone",
+          "sizes": [
+            {
+              "label": "0,4 l",
+              "price": 450
+            }
+          ]
+        },
+        {
+          "name": "Flasche ViO Mineralwasser (still)",
+          "sizes": [
+            {
+              "label": "0,25 l",
+              "price": 390
+            },
+            {
+              "label": "0,75 l",
+              "price": 690
+            }
+          ]
+        },
+        {
+          "name": "Flasche Apollinaris Mineralwasser (spritzig)",
+          "sizes": [
+            {
+              "label": "0,25 l",
+              "price": 390
+            },
+            {
+              "label": "0,75 l",
+              "price": 690
+            }
+          ]
+        },
+        {
+          "name": "ViO Schorle Rhabarber",
+          "sizes": [
+            {
+              "label": "0,3 l",
+              "price": 450
+            }
+          ]
+        },
+        {
+          "name": "ViO Schorle Schwarze Johannisbeere",
+          "sizes": [
+            {
+              "label": "0,3 l",
+              "price": 450
+            }
+          ]
+        },
+        {
+          "name": "Flasche Orangensaft/Apfelsaft",
+          "sizes": [
+            {
+              "label": "0,2 l",
+              "price": 400
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

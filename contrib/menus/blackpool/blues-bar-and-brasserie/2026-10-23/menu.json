@@ -1,0 +1,1929 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Blackpool Pleasure Beach",
+    "official": true,
+    "url": "https://www.bigbluehotel.com/app/uploads/2026/08/BBHALC0826.pdf",
+    "sha256": "4464ecffb8cd901dd6ac34d98ea7b652fe11bb8de319a0da319764bec5b1385f",
+    "files": [
+      {
+        "url": "https://www.bigbluehotel.com/app/uploads/2026/08/BBHALC0826.pdf",
+        "sha256": "1a9939ed726e99ac2c770910a6c95f9315eb328c714220c5e42f0b6f5c25807b"
+      },
+      {
+        "url": "https://www.bigbluehotel.com/app/uploads/2026/04/BBHADM0426.pdf",
+        "sha256": "ef00085feda07df1ab4a11d66ec0eddb108714ed7ac3898d441b632ff3d2c319"
+      },
+      {
+        "url": "https://www.bigbluehotel.com/app/uploads/2026/09/BBHTDH-September-October-2026.pdf",
+        "sha256": "d2fad0891cd71541b20d92c8b852b802886fee53bc29fc43d16f990838cfc5e5"
+      },
+      {
+        "url": "https://www.bigbluehotel.com/app/uploads/2026/04/BBHBARFOOD0426.pdf",
+        "sha256": "01184f6896602d3c1f43e9ea8253ea075acd0e75e4f13cfb59e56491be1734a5"
+      },
+      {
+        "url": "https://www.bigbluehotel.com/app/uploads/2026/06/Light-Lunch-Menu-November-2024.pdf",
+        "sha256": "fe0398e233e19d6de68885fd15159b10dde70687da5de73e35bb64b1cbe960a2"
+      },
+      {
+        "url": "https://www.bigbluehotel.com/app/uploads/2026/06/Dessert-Menu-November-2024.pdf",
+        "sha256": "efbbef8da6b3bea283d7eb4635b8f08f4376c7bcba33bb9e37d7fba8bccccf1e"
+      },
+      {
+        "url": "https://www.bigbluehotel.com/app/uploads/2026/06/Kids-Menu-A4-Version-new.pdf",
+        "sha256": "7bf02eb12ce91361319ef04e9545029286ef00424ab4d99e42a5de7fbfe693d1"
+      },
+      {
+        "url": "https://www.bigbluehotel.com/app/uploads/2026/08/Big-Blue-Wine-0826.pdf",
+        "sha256": "4cec6c1551b50b1c57e50df14e807c9d8390fb6be282e35fc34edd48923bea91"
+      },
+      {
+        "url": "https://www.bigbluehotel.com/app/uploads/2026/06/Cocktail-Menu-2024.pdf",
+        "sha256": "3bf042307f2813243b91187394e2b62662442cb53d511c0044c0564eee6d9375"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "name": "A La Carte: Appetisers",
+      "items": [
+        {
+          "name": "Mediterranean Bread Selection",
+          "description": "Olive oil with balsamic vinegar, butter",
+          "price": 450,
+          "kcal": 319,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add Olives & Hummus",
+          "price": 300,
+          "tags": [
+            "v"
+          ],
+          "addOn": true
+        }
+      ]
+    },
+    {
+      "name": "A La Carte: Starters",
+      "items": [
+        {
+          "name": "Classic Prawn Cocktail",
+          "description": "Greenland prawns, dressed iceberg lettuce, Marie Rose sauce",
+          "price": 925,
+          "kcal": 441
+        },
+        {
+          "name": "Wild Mushroom Bruschetta",
+          "description": "Wild mushrooms in a herb, cream sauce",
+          "price": 750,
+          "kcal": 346,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Chicken & Chorizo Arancini",
+          "description": "Golden-fried risotto balls, served on roasted red pepper aioli",
+          "price": 895,
+          "kcal": 402
+        },
+        {
+          "name": "Twice-baked Lancashire Cheese Soufflé",
+          "description": "Served with pickled beetroot",
+          "price": 795,
+          "kcal": 335
+        },
+        {
+          "name": "Crispy Breaded Chicken Strips",
+          "description": "Cajun mayonnaise",
+          "price": 625,
+          "kcal": 381
+        },
+        {
+          "name": "Salt & Pepper Squid",
+          "description": "Served with garlic mayonnaise",
+          "price": 795,
+          "kcal": 397
+        },
+        {
+          "name": "Soup of the Day",
+          "description": "Served with sourdough bread & butter",
+          "price": 625
+        },
+        {
+          "name": "Chicken Liver Parfait",
+          "description": "Served with chutney & toasted sourdough bread",
+          "price": 825,
+          "kcal": 888
+        },
+        {
+          "name": "Morecambe Bay Shrimps",
+          "description": "Served in mace butter on grilled sourdough bread",
+          "price": 1200,
+          "kcal": 404
+        },
+        {
+          "name": "Halloumi Fries",
+          "description": "Served with tomato relish",
+          "price": 695,
+          "kcal": 375,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "A La Carte: Salads",
+      "items": [
+        {
+          "name": "Grilled Chicken Caesar Salad",
+          "description": "Grilled chicken, cos lettuce, Parmesan, croutons, crisp Parma ham",
+          "price": 1500,
+          "kcal": 692
+        },
+        {
+          "name": "Classic Caesar Salad",
+          "description": "Cos lettuce, Parmesan, croutons, crisp Parma ham",
+          "price": 1200,
+          "kcal": 425
+        },
+        {
+          "name": "Niçoise Salad",
+          "description": "Flaked tuna, green beans, olives, new potatoes, hard-boiled egg, anchovies (optional)",
+          "price": 1400,
+          "kcal": 443
+        },
+        {
+          "name": "Tomato & Mozzarella Salad",
+          "description": "Sun-dried tomatoes, mozzarella, rocket, basil pesto & balsamic reduction",
+          "price": 1000,
+          "kcal": 571,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "A La Carte: Mains",
+      "items": [
+        {
+          "name": "Beer Battered Fish and Hand Cut Chips",
+          "description": "Petit pois, tartare sauce",
+          "price": 2000,
+          "kcal": 961
+        },
+        {
+          "name": "Oven-roasted Chicken Breast",
+          "description": "Dauphinoise potatoes, tenderstem broccoli, mushroom cream sauce",
+          "price": 1950,
+          "kcal": 1000
+        },
+        {
+          "name": "Crispy Pork Belly",
+          "description": "Mashed potato, creamed cabbage & bacon",
+          "price": 2200,
+          "kcal": 1324
+        },
+        {
+          "name": "Macaroni Cheese",
+          "price": 1000,
+          "kcal": 914,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add Smoked Bacon Lardons",
+          "price": 150,
+          "addOn": true
+        },
+        {
+          "name": "Tomato & Chorizo Pasta",
+          "description": "Penne pasta, chorizo, tomato sauce, grated Parmesan",
+          "price": 1350,
+          "kcal": 497
+        },
+        {
+          "name": "Chicken Stroganoff",
+          "description": "Cream sauce with Dijon mustard, paprika & brandy; basmati rice",
+          "price": 1900,
+          "kcal": 1155
+        },
+        {
+          "name": "Beef Stroganoff",
+          "description": "Cream sauce with Dijon mustard, paprika & brandy; basmati rice",
+          "price": 1900,
+          "kcal": 1138
+        },
+        {
+          "name": "Oven-roasted Salmon Steak",
+          "description": "Tomato & chorizo, new potatoes",
+          "price": 1895,
+          "kcal": 605
+        },
+        {
+          "name": "Slow Braised Beef",
+          "description": "Mashed potato, pearl onion & smoked bacon jus, seasonal greens",
+          "price": 2250,
+          "kcal": 717
+        },
+        {
+          "name": "Grilled Sea Bass Fillets",
+          "description": "Crushed new potatoes, tenderstem broccoli, garlic & herb butter",
+          "price": 2350,
+          "kcal": 609
+        },
+        {
+          "name": "Five Bean Chili",
+          "description": "Basmati rice, tortilla chips",
+          "price": 1550,
+          "kcal": 411,
+          "tags": [
+            "vg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "A La Carte: Grill",
+      "note": "Served with grilled flat mushrooms, plum tomatoes, onion rings, hand-cut chips & peppercorn sauce",
+      "items": [
+        {
+          "name": "Char-grilled 8oz Fillet Steak",
+          "price": 3775,
+          "kcal": 814
+        },
+        {
+          "name": "Char-grilled 8oz Sirloin Steak",
+          "price": 2995,
+          "kcal": 1027
+        },
+        {
+          "name": "8oz Bacon Chop",
+          "price": 1825,
+          "kcal": 1591
+        },
+        {
+          "name": "French Trim Chicken Breast",
+          "price": 1995,
+          "kcal": 731
+        }
+      ]
+    },
+    {
+      "name": "A La Carte: Sides",
+      "items": [
+        {
+          "name": "Shoestring Fries",
+          "price": 350,
+          "kcal": 234,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Hand-cut Chips",
+          "price": 450,
+          "kcal": 194,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Sweet Potato Fries",
+          "price": 400,
+          "kcal": 210,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Panko Breaded Onion Rings",
+          "price": 400,
+          "kcal": 487,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Mashed Potato",
+          "price": 395,
+          "kcal": 430,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Garlic Ciabatta",
+          "price": 300,
+          "kcal": 620,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Cheese Garlic Ciabatta",
+          "price": 350,
+          "kcal": 767,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Creamed Cabbage & Bacon",
+          "price": 450,
+          "kcal": 237
+        },
+        {
+          "name": "Petit Pois",
+          "price": 350,
+          "kcal": 66,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "Mixed Leaf Salad",
+          "price": 300,
+          "kcal": 430,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Brasserie: Sandwiches",
+      "note": "All sandwiches are served with salted crisps and homemade coleslaw",
+      "items": [
+        {
+          "name": "Cheese",
+          "description": "Available with onion, tomato or pickle",
+          "sizes": [
+            {
+              "label": "Brown",
+              "price": 500,
+              "kcal": 683
+            },
+            {
+              "label": "White",
+              "price": 500,
+              "kcal": 693
+            }
+          ],
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Ham",
+          "description": "Available with mayonnaise or pickle",
+          "sizes": [
+            {
+              "label": "Brown",
+              "price": 600,
+              "kcal": 575
+            },
+            {
+              "label": "White",
+              "price": 600,
+              "kcal": 585
+            }
+          ]
+        },
+        {
+          "name": "Tuna Mayonnaise & Spring Onion",
+          "sizes": [
+            {
+              "label": "Brown",
+              "price": 650,
+              "kcal": 657
+            },
+            {
+              "label": "White",
+              "price": 650,
+              "kcal": 667
+            }
+          ]
+        },
+        {
+          "name": "Bacon, Lettuce & Tomato (Toasted)",
+          "sizes": [
+            {
+              "label": "Brown",
+              "price": 675,
+              "kcal": 671
+            },
+            {
+              "label": "White",
+              "price": 675,
+              "kcal": 683
+            }
+          ]
+        },
+        {
+          "name": "Grilled Chicken, Lettuce & Tomato",
+          "sizes": [
+            {
+              "label": "Brown",
+              "price": 750,
+              "kcal": 707
+            },
+            {
+              "label": "White",
+              "price": 750,
+              "kcal": 717
+            }
+          ]
+        },
+        {
+          "name": "Greenland Prawn & Marie Rose",
+          "sizes": [
+            {
+              "label": "Brown",
+              "price": 800,
+              "kcal": 484
+            },
+            {
+              "label": "White",
+              "price": 800,
+              "kcal": 494
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Brasserie: Panini",
+      "note": "All paninis are served with salted crisps and homemade coleslaw",
+      "items": [
+        {
+          "name": "Ham & Cheese",
+          "price": 650,
+          "kcal": 582
+        },
+        {
+          "name": "Buffalo Mozzarella, Tomato & Basil Pesto",
+          "price": 850,
+          "kcal": 616,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Grilled Chicken, Chorizo & Basil Pesto",
+          "price": 725,
+          "kcal": 655
+        },
+        {
+          "name": "Tuna Mayonnaise, Spring Onion & Cheese",
+          "price": 850,
+          "kcal": 759
+        }
+      ]
+    },
+    {
+      "name": "Brasserie: Light Bites",
+      "items": [
+        {
+          "name": "Prawn Cocktail",
+          "description": "Greenland prawns, dressed iceberg & Marie Rose sauce",
+          "price": 700,
+          "kcal": 440
+        },
+        {
+          "name": "Cajun Chicken Wrap",
+          "description": "Rocket, peppers, Cajun mayonnaise, shoestring fries",
+          "price": 850,
+          "kcal": 1015
+        },
+        {
+          "name": "Club Sandwich",
+          "description": "A classic triple layered chicken, bacon, lettuce, tomato & mayonnaise sandwich",
+          "price": 800,
+          "kcal": 494
+        },
+        {
+          "name": "Sirloin Steak Sandwich",
+          "description": "Caramelised onion, rocket & toasted bloomer, onion rings",
+          "sizes": [
+            {
+              "label": "Brown",
+              "price": 1850,
+              "kcal": 607
+            },
+            {
+              "label": "White",
+              "price": 1850,
+              "kcal": 619
+            }
+          ]
+        },
+        {
+          "name": "Eggs Benedict",
+          "description": "Toasted, halved English breakfast muffin topped with honey roast ham, poached eggs & hollandaise",
+          "price": 950,
+          "kcal": 1145
+        },
+        {
+          "name": "Eggs Florentine",
+          "description": "Toasted, halved English breakfast muffin topped with wilted spinach, poached eggs & hollandaise",
+          "price": 900,
+          "kcal": 1026,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Croque Monsieur",
+          "description": "Toasted sandwich filled with ham & cheese, topped with bechamel",
+          "price": 850,
+          "kcal": 1017
+        },
+        {
+          "name": "Croque Madame",
+          "description": "Toasted sandwich filled with ham & cheese, topped with bechamel & a fried egg",
+          "price": 900,
+          "kcal": 1167
+        }
+      ]
+    },
+    {
+      "name": "Brasserie: Salads",
+      "items": [
+        {
+          "name": "Niçoise Salad",
+          "description": "Classic tuna & egg salad",
+          "price": 1400,
+          "kcal": 442
+        },
+        {
+          "name": "Classic Caesar Salad",
+          "description": "Cos lettuce, Parmesan, croutons & crisp Parma ham",
+          "price": 1200,
+          "kcal": 425
+        },
+        {
+          "name": "Grilled Chicken Caesar Salad",
+          "description": "Cos lettuce, Parmesan, croutons & crisp Parma ham",
+          "price": 1500,
+          "kcal": 692
+        },
+        {
+          "name": "Tomato & Mozzarella Salad",
+          "description": "Sun dried & plum tomatoes, mozzarella, rocket, basil pesto & balsamic",
+          "price": 1100,
+          "kcal": 571,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Smoked Salmon Salad",
+          "description": "Pickled cucumber & dressed rocket",
+          "price": 1650,
+          "kcal": 213
+        }
+      ]
+    },
+    {
+      "name": "Brasserie: Pizza",
+      "items": [
+        {
+          "name": "Margherita",
+          "description": "Our hand-stretched pizza base with cheddar & mozzarella cheese",
+          "price": 1000,
+          "kcal": 510,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Pepperoni",
+          "description": "Our hand-stretched pizza base with pepperoni",
+          "price": 1300,
+          "kcal": 559
+        },
+        {
+          "name": "Meat Feast",
+          "description": "Our hand-stretched pizza base with pepperoni, chicken, ham & bacon",
+          "price": 1400,
+          "kcal": 635
+        },
+        {
+          "name": "Vegetarian",
+          "description": "Our hand-stretched pizza base with peppers, onion, sweetcorn & mushrooms",
+          "price": 1200,
+          "kcal": 550,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Brasserie: Mains",
+      "items": [
+        {
+          "name": "Double Bacon & Cheese Burger",
+          "description": "100% beef burger patties cooked in beef short rib fat, bacon, cheese, onion, barbecue sauce, brioche bun, shoestring fries",
+          "price": 1500,
+          "kcal": 1119
+        },
+        {
+          "name": "Char-grilled Gammon Steak",
+          "description": "Hand-cut chips, poached eggs",
+          "price": 1400,
+          "kcal": 490
+        },
+        {
+          "name": "Honeywell's Sausage & Mash",
+          "description": "Pork & leek sausages, mashed potato & onion gravy",
+          "price": 1400,
+          "kcal": 905
+        },
+        {
+          "name": "Minute Steak",
+          "description": "Shoestring fries, fried onions",
+          "price": 1800,
+          "kcal": 470
+        },
+        {
+          "name": "Macaroni Cheese",
+          "description": "Macaroni pasta in a rich cheese sauce",
+          "price": 1000,
+          "kcal": 914
+        },
+        {
+          "name": "Spaghetti Carbonara",
+          "description": "Bacon, mushroom & Parmesan cream",
+          "price": 1250,
+          "kcal": 629
+        },
+        {
+          "name": "Breaded Scampi Tails",
+          "description": "Shoestring fries, petit pois",
+          "price": 1175,
+          "kcal": 420
+        },
+        {
+          "name": "Classic Fisherman's Pie",
+          "description": "Fresh fish, cream sauce, mashed potato, cheese top",
+          "price": 1800,
+          "kcal": 697
+        }
+      ]
+    },
+    {
+      "name": "Brasserie: Sides",
+      "items": [
+        {
+          "name": "Shoestring Fries",
+          "price": 350,
+          "kcal": 234,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Hand-cut Chips",
+          "price": 450,
+          "kcal": 194,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Sweet Potato Fries",
+          "price": 400,
+          "kcal": 210,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Panko Breaded Onion Rings",
+          "price": 400,
+          "kcal": 487,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Zucchini Fries",
+          "description": "Grated Parmesan, Béarnaise sauce",
+          "price": 500,
+          "kcal": 513
+        },
+        {
+          "name": "Garlic Ciabatta",
+          "price": 300,
+          "kcal": 620,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Cheese Garlic Ciabatta",
+          "price": 350,
+          "kcal": 767,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Creamed Cabbage & Bacon",
+          "price": 450,
+          "kcal": 237
+        },
+        {
+          "name": "Petit Pois",
+          "price": 350,
+          "kcal": 66,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "Mixed Leaf Salad",
+          "price": 300,
+          "kcal": 430,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Table d'Hôte",
+      "items": [
+        {
+          "name": "Sample Table d'Hôte Menu",
+          "description": "Starters: Soup of the Day; Chicken Liver Parfait, chutney, toasted sourdough; Tempura Prawns, sweet chili sauce; Crispy Camembert Bites, dressed leaves, spiced fruit chutney (V). Main Course: Coq au Vin, mashed potato, seasonal greens; Prawn Linguine, tomato & chorizo sauce, Parmesan crumb; Five Bean Chili (VG), tortilla chips, basmati rice. Desserts: Black Cherry & Almond Bakewell, vanilla ice cream; Vanilla Cheesecake, red cherry compote, chocolate drizzle; Mrs. Dowsons Farm-made Ice Cream, a choice of chocolate, vanilla or strawberry",
+          "price": 2895
+        }
+      ]
+    },
+    {
+      "name": "Bar Food: Appetisers",
+      "note": "Available 4pm - 10pm",
+      "items": [
+        {
+          "name": "Mediterranean Breadboard",
+          "description": "Sun-blushed tomato, Parmesan & black olive breads served with mixed olives, olive oil, balsamic vinegar & butter",
+          "price": 450,
+          "kcal": 319,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Soup of the Day",
+          "description": "Sourdough bread, butter",
+          "price": 400
+        }
+      ]
+    },
+    {
+      "name": "Bar Food: Light Bites",
+      "note": "Available 4pm - 10pm",
+      "items": [
+        {
+          "name": "Cheese & Bacon Loaded Fries",
+          "description": "Cheese sauce, diced bacon, spring onion",
+          "price": 700,
+          "kcal": 670
+        },
+        {
+          "name": "Salt & Pepper Chicken Loaded Fries",
+          "description": "Salt & pepper chicken, fresh chillis, roasted garlic flakes, sriracha mayo",
+          "price": 750,
+          "kcal": 517
+        },
+        {
+          "name": "Beef Short Rib Loaded Fries",
+          "description": "Braised beef short rib, chives, red wine gravy",
+          "price": 850,
+          "kcal": 495
+        },
+        {
+          "name": "Mac & Cheese Croquettes",
+          "description": "Macaroni pasta, cheddar and mozzarella cheese sauce with a hint of chipotle, coated in crispy breadcrumbs",
+          "price": 800,
+          "kcal": 409
+        },
+        {
+          "name": "Halloumi Fries",
+          "description": "Breaded halloumi fries, served with sweet chilli sauce",
+          "price": 675,
+          "kcal": 375,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Zucchini Fries",
+          "description": "Sliced zucchini in panko breadcrumbs with grated Parmesan, served with Béarnaise sauce",
+          "price": 500,
+          "kcal": 513,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Southern Fried Chicken Tenders",
+          "description": "Cajun mayonnaise",
+          "price": 550,
+          "kcal": 381
+        },
+        {
+          "name": "Chicken & Chorizo Quesadilla",
+          "description": "Red onion, grated cheddar & mozzarella, Cajun mayonnaise, dressed mixed leaf salad, coleslaw",
+          "price": 850,
+          "kcal": 1156
+        },
+        {
+          "name": "Cajun Chicken Wrap",
+          "description": "Cajun style chicken tenders, lettuce, peppers, Cajun mayonnaise, shoestring fries",
+          "price": 850,
+          "kcal": 781
+        },
+        {
+          "name": "Caesar Salad",
+          "description": "Cos lettuce, Parmesan, Parma ham, croutons",
+          "price": 1200,
+          "kcal": 425,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Chicken Caesar Salad",
+          "description": "Cos lettuce, Parmesan, Parma ham, croutons",
+          "price": 1500,
+          "kcal": 692
+        }
+      ]
+    },
+    {
+      "name": "Bar Food: Burgers",
+      "note": "Available 4pm - 10pm",
+      "items": [
+        {
+          "name": "Double Bacon & Cheese Burger",
+          "description": "100% beef smashed patties cooked in beef short rib fat, bacon, cheese, onion, barbecue sauce, brioche bun, shoestring fries",
+          "price": 1500,
+          "kcal": 1119
+        },
+        {
+          "name": "Double Fuego Burger",
+          "description": "100% beef smashed patties cooked in beef short rib fat, chorizo, jalapenos, sriracha mayonnaise, shoestring fries",
+          "price": 1500,
+          "kcal": 956
+        },
+        {
+          "name": "Chicken Burger",
+          "description": "Buttermilk Cajun chicken burger, lettuce, coleslaw, shoestring fries",
+          "price": 1400,
+          "kcal": 540
+        },
+        {
+          "name": "Halloumi Burger",
+          "description": "Panko breaded halloumi, sweet chilli sauce, lettuce",
+          "price": 1350,
+          "kcal": 773,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Bar Food: Pizza & Pasta",
+      "note": "Available 4pm - 10pm",
+      "items": [
+        {
+          "name": "Mac & Cheese",
+          "description": "Macaroni pasta in a rich cheese sauce",
+          "price": 1000,
+          "kcal": 914,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Margherita Pizza",
+          "description": "Our hand-stretched pizza base with cheddar & mozzarella cheese",
+          "price": 1000,
+          "kcal": 510,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Pepperoni Pizza",
+          "description": "Our hand-stretched pizza base with pepperoni",
+          "price": 1300,
+          "kcal": 559
+        },
+        {
+          "name": "Spaghetti Carbonara",
+          "description": "Bacon, mushrooms, Parmesan cream",
+          "price": 1250,
+          "kcal": 629
+        },
+        {
+          "name": "Meat Feast Pizza",
+          "description": "Our hand-stretched pizza base with pepperoni, chicken, ham & bacon",
+          "price": 1400,
+          "kcal": 635
+        },
+        {
+          "name": "Vegetarian Pizza",
+          "description": "Our hand-stretched pizza base with peppers, onion, sweetcorn & mushrooms",
+          "price": 1200,
+          "kcal": 550,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Bar Food: Sides",
+      "note": "Available 4pm - 10pm",
+      "items": [
+        {
+          "name": "Shoestring Fries",
+          "price": 350,
+          "kcal": 234,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Hand-cut Chips",
+          "price": 450,
+          "kcal": 194,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Sweet Potato Fries",
+          "price": 400,
+          "kcal": 279,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Panko Breaded Onion Rings",
+          "price": 400,
+          "kcal": 487,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Garlic Ciabatta",
+          "price": 300,
+          "kcal": 620,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Cheese Garlic Ciabatta",
+          "price": 350,
+          "kcal": 767,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Petit Pois",
+          "price": 350,
+          "kcal": 66,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "Mixed Leaf Salad",
+          "price": 300,
+          "kcal": 430,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Light Lunch",
+      "note": "Served from 12pm - 4:00pm",
+      "items": [
+        {
+          "name": "Big Blue Afternoon Tea",
+          "description": "Two freshly prepared sandwiches from the Soup & Sandwich selection; a fruit scone with clotted cream & jam; chocolate brownie (515kcal); served with a choice of tea, coffee or hot chocolate",
+          "price": 1500,
+          "kcal": 967
+        },
+        {
+          "name": "Soup & Sandwich",
+          "description": "Ham & pickle (598kcal); tuna, spring onion & mayonnaise (706kcal); roast beef & creamed horseradish (647kcal); mature cheddar & tomato (V) (653kcal)",
+          "price": 775
+        },
+        {
+          "name": "Soup of the Day",
+          "description": "Sourdough bread (50kcal)",
+          "price": 400
+        },
+        {
+          "name": "Cream Tea",
+          "description": "A fruit scone with clotted cream & jam, served with a choice of tea, coffee or hot chocolate",
+          "price": 700,
+          "kcal": 967
+        },
+        {
+          "name": "Children's Picnic",
+          "description": "Ham, cheese or tuna sandwich, fresh fruit, yoghurt & chocolate brownie (257kcal), orange or blackcurrant cordial",
+          "price": 675,
+          "tags": [
+            "kids"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "note": "All drinks are available to takeaway",
+      "items": [
+        {
+          "name": "Cappuccino",
+          "description": "Double espresso topped with steamed milk",
+          "price": 325,
+          "kcal": 117
+        },
+        {
+          "name": "Latte",
+          "description": "Single espresso topped with steamed milk",
+          "price": 300,
+          "kcal": 117
+        },
+        {
+          "name": "Mocha",
+          "description": "Double espresso topped with hot chocolate",
+          "price": 375,
+          "kcal": 179
+        },
+        {
+          "name": "Tea for One",
+          "price": 275,
+          "kcal": 1
+        },
+        {
+          "name": "Herbal & Fruit Tea",
+          "price": 300
+        },
+        {
+          "name": "Flat White",
+          "description": "Double espresso and steamed milk served short",
+          "price": 300,
+          "kcal": 95
+        },
+        {
+          "name": "Americano",
+          "description": "Double espresso topped with hot water and milk on the side",
+          "price": 275,
+          "kcal": 1
+        },
+        {
+          "name": "Espresso",
+          "description": "Intense shot of coffee",
+          "price": 200,
+          "kcal": 1
+        },
+        {
+          "name": "Hot Chocolate",
+          "description": "Served with marshmallows",
+          "price": 375,
+          "kcal": 405
+        }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        {
+          "name": "Cherry Bakewell Tart",
+          "description": "Clotted cream, strawberry coulis",
+          "price": 650,
+          "kcal": 538
+        },
+        {
+          "name": "Apple & Blackberry Crumble",
+          "description": "Granola crumb, custard",
+          "price": 450,
+          "kcal": 166
+        },
+        {
+          "name": "Fruits of the Forrest Crème Brûlée",
+          "description": "Shortbread biscuit (GF option without biscuit)",
+          "price": 450,
+          "kcal": 803
+        },
+        {
+          "name": "Warm Chocolate Brownie",
+          "description": "Vanilla ice cream, honeycomb, chocolate sauce",
+          "price": 500,
+          "kcal": 707
+        },
+        {
+          "name": "Baked Vanilla Cheesecake",
+          "description": "Authentic baked vanilla cheesecake, fruit compote",
+          "price": 650,
+          "kcal": 117,
+          "tags": [
+            "gf"
+          ]
+        },
+        {
+          "name": "Mrs Dowsons Ice Cream",
+          "description": "Local dairy farmhouse ice cream. Chocolate (212kcal per scoop), vanilla (192kcal per scoop), strawberry (192kcal per scoop)",
+          "price": 450
+        },
+        {
+          "name": "Sticky Toffee Pudding",
+          "description": "Toffee sauce, vanilla ice cream",
+          "price": 450,
+          "kcal": 1024
+        },
+        {
+          "name": "Lancashire Cheese Platter",
+          "description": "Lancashire Blue, Grandmas Singleton, Rioja and red onion, Innkeepers Choice, chutney, celery, water crackers",
+          "price": 950,
+          "kcal": 477
+        }
+      ]
+    },
+    {
+      "name": "Desserts: Pairing Wine",
+      "items": [
+        {
+          "name": "Errazuriz Late Harvest, Sauvignon Blanc, Casablanca Valley",
+          "description": "Papaya, peach, apricot and mango combine well with honey and spices",
+          "sizes": [
+            {
+              "label": "100ml",
+              "price": 750
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Kids: Make Your Own",
+      "note": "Drinks: blackcurrant cordial 28kcal, orange cordial 28kcal, lime cordial 23kcal, fresh milk 117kcal",
+      "items": [
+        {
+          "name": "Captain's Pizza",
+          "description": "Make your own pizza, including a soft drink and dessert. 542kcal just tomato and cheese; additional toppings per pot: chicken 23kcal, mushroom 7kcal, pepperoni 166kcal, ham 38kcal",
+          "price": 995,
+          "kcal": 542,
+          "tags": [
+            "kids"
+          ]
+        },
+        {
+          "name": "Tortilla Wrap",
+          "description": "Make your own tortilla wrap with BBQ sauce, cheese, chicken nuggets and coleslaw, including a soft drink and dessert",
+          "price": 995,
+          "kcal": 702,
+          "tags": [
+            "kids"
+          ]
+        },
+        {
+          "name": "Fundae Sundae",
+          "description": "Make your own: vanilla, chocolate or strawberry ice cream; raspberry, chocolate or toffee sauce",
+          "price": 495,
+          "kcal": 983,
+          "tags": [
+            "kids"
+          ]
+        },
+        {
+          "name": "Captain's Cotton Candy Kiddies Cocktail",
+          "description": "Pour your very own cocktail over cotton candy and watch it all disappear into a fruity surprise",
+          "price": 550,
+          "kcal": 135,
+          "tags": [
+            "kids"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Kids: The Big Blue Munch",
+      "note": "V suitable for vegetarians. G gluten free option available, to be requested at time of placing the order.",
+      "items": [
+        {
+          "name": "Small People",
+          "description": "Includes soft drink from reverse menu, excluding kids cotton candy cocktail. Starters: garlic bread 219kcal (V); onion rings 223kcal (V); soup 429kcal (V, G); vegetable sticks & dips 109kcal (V, G). Mini mains: mini burger & fries 424kcal; Margherita pizza 538kcal (V); fish fingers with fries & garden peas 356kcal; pork sausage, mash and garden peas 249kcal (G); chicken nuggets, fries & beans 382kcal; tomato penne pasta 511kcal (V). Desserts: selection of ice cream (G), strawberry 192kcal, chocolate 212kcal, vanilla 142kcal per scoop; mini donuts 337kcal; knickerbocker glory 603kcal (G); banana split 294kcal; chocolate brownie 257kcal",
+          "sizes": [
+            {
+              "label": "2 courses",
+              "price": 1095
+            },
+            {
+              "label": "3 courses",
+              "price": 1195
+            }
+          ],
+          "tags": [
+            "kids"
+          ]
+        },
+        {
+          "name": "Young Adults",
+          "description": "Includes soft drink from reverse menu, excluding kids cotton candy cocktail. Starters: garlic bread 219kcal (V); onion rings 223kcal (V); soup 429kcal (V, G); vegetable sticks & dips 109kcal (V, G). Mains: spaghetti meatballs 694kcal; deep fried fish with fries & garden peas 346kcal; pork & leek sausage with mash and onion gravy 590kcal; cheese burger, 4oz burger with fries and burger relish 520kcal; macaroni cheese 342kcal (V); chargrilled flattened chicken with fries or vegetables 468kcal (G); Margherita pizza with choice of 2 toppings 569kcal (ham 38kcal, pepperoni 144kcal, chicken 23kcal, sweetcorn 43kcal, peppers 7kcal, mushroom 7kcal). Desserts: selection of ice cream (G), strawberry 192kcal, chocolate 212kcal, vanilla 142kcal per scoop; mini donuts 337kcal; knickerbocker glory 603kcal; banana split 294kcal; chocolate brownie 257kcal",
+          "sizes": [
+            {
+              "label": "3 courses",
+              "price": 1295
+            }
+          ],
+          "tags": [
+            "kids"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Wine: Champagne & Sparkling",
+      "items": [
+        {
+          "name": "H. Lanvin & Fils Brut NV, Champagne - France, 12.5%",
+          "description": "Elegant & toasty, fine mousse, yellow fruits, brioche",
+          "sizes": [
+            {
+              "label": "Bottle",
+              "price": 8500
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Aimery, Crémant de Limoux Rosé, Brut NV - France, 12.5%",
+          "description": "Cherry and apple notes with hints of fresh bread",
+          "sizes": [
+            {
+              "label": "Bottle",
+              "price": 4200
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Ponte, Prosecco DOC Extra Dry - Italy, 10.5%",
+          "description": "Clean crisp lemon, citrus, green apple, pear",
+          "sizes": [
+            {
+              "label": "200ml",
+              "price": 825
+            },
+            {
+              "label": "Bottle",
+              "price": 3000
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Ponte, Prosecco DOC Rosé Brut - Italy, 10.5%",
+          "description": "Delicate red berries, cherry, citrus",
+          "sizes": [
+            {
+              "label": "Bottle",
+              "price": 3200
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "La Forma, Glera Spumante - Italy, 8%",
+          "description": "Delicate, medium dry, apple & pear aromas",
+          "sizes": [
+            {
+              "label": "Bottle",
+              "price": 2200
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Wine: White",
+      "note": "All wines available in a 125ml measure on request",
+      "items": [
+        {
+          "name": "Cloud Island, Sauvignon Blanc - New Zealand, 12.5%",
+          "description": "Fresh, juicy tropical fruit flavours & zingy acidity",
+          "sizes": [
+            {
+              "label": "125ml",
+              "price": 650
+            },
+            {
+              "label": "175ml",
+              "price": 800
+            },
+            {
+              "label": "250ml",
+              "price": 1150
+            },
+            {
+              "label": "Bottle",
+              "price": 3400
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Ocarina, Sauvignon Blanc - Chile, 11%",
+          "description": "Gooseberries, lime, herbaceous; house wine",
+          "sizes": [
+            {
+              "label": "125ml",
+              "price": 425
+            },
+            {
+              "label": "175ml",
+              "price": 575
+            },
+            {
+              "label": "250ml",
+              "price": 825
+            },
+            {
+              "label": "Bottle",
+              "price": 2450
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Vignana, Pinot Grigio - Italy, 11%",
+          "description": "Clean, crisp & fresh with plenty of zingy citrus",
+          "sizes": [
+            {
+              "label": "125ml",
+              "price": 450
+            },
+            {
+              "label": "175ml",
+              "price": 600
+            },
+            {
+              "label": "250ml",
+              "price": 850
+            },
+            {
+              "label": "Bottle",
+              "price": 2500
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Grapeful Dead, Chardonnay - Australia, 11%",
+          "description": "Dry with crisp citrus & ripe tropical fruit flavours",
+          "sizes": [
+            {
+              "label": "125ml",
+              "price": 475
+            },
+            {
+              "label": "175ml",
+              "price": 625
+            },
+            {
+              "label": "250ml",
+              "price": 875
+            },
+            {
+              "label": "Bottle",
+              "price": 2600
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Valdocea, Albariño, Rías Baixas - Spain, 12.5%",
+          "description": "Floral & exotic fruits, zingy lemon citrus, fresh & dry",
+          "sizes": [
+            {
+              "label": "125ml",
+              "price": 750
+            },
+            {
+              "label": "175ml",
+              "price": 1025
+            },
+            {
+              "label": "250ml",
+              "price": 1450
+            },
+            {
+              "label": "Bottle",
+              "price": 4300
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Eugene Klipfel, Gewurztraminer - France, 13%",
+          "description": "Bright spice, exotic fruits, rose, apricots, floral finish",
+          "sizes": [
+            {
+              "label": "125ml",
+              "price": 700
+            },
+            {
+              "label": "175ml",
+              "price": 925
+            },
+            {
+              "label": "250ml",
+              "price": 1325
+            },
+            {
+              "label": "Bottle",
+              "price": 3900
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Wine: Red",
+      "note": "All wines available in a 125ml measure on request",
+      "items": [
+        {
+          "name": "Dead Man's Dice, Malbec - Argentina, 13.5%",
+          "description": "Intense nose of plum, damson & dark chocolate",
+          "sizes": [
+            {
+              "label": "125ml",
+              "price": 525
+            },
+            {
+              "label": "175ml",
+              "price": 725
+            },
+            {
+              "label": "250ml",
+              "price": 1025
+            },
+            {
+              "label": "Bottle",
+              "price": 3000
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Ocarina, Merlot - Chile, 11%",
+          "description": "Juicy plum, hints of spice, smooth finish; house wine",
+          "sizes": [
+            {
+              "label": "125ml",
+              "price": 425
+            },
+            {
+              "label": "175ml",
+              "price": 575
+            },
+            {
+              "label": "250ml",
+              "price": 825
+            },
+            {
+              "label": "Bottle",
+              "price": 2450
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Zimor, Cabernet Sauvignon IGT - Italy, 12%",
+          "description": "Medium-bodied, dark berry fruit, silky texture",
+          "sizes": [
+            {
+              "label": "125ml",
+              "price": 475
+            },
+            {
+              "label": "175ml",
+              "price": 650
+            },
+            {
+              "label": "250ml",
+              "price": 925
+            },
+            {
+              "label": "Bottle",
+              "price": 2700
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Grapeful Dead, Shiraz - Australia, 13.5%",
+          "description": "Soft, fruity, bramble notes, soft tannins",
+          "sizes": [
+            {
+              "label": "125ml",
+              "price": 500
+            },
+            {
+              "label": "175ml",
+              "price": 675
+            },
+            {
+              "label": "250ml",
+              "price": 950
+            },
+            {
+              "label": "Bottle",
+              "price": 2800
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Medievo, Crianza Rioja - Spain, 13.5%",
+          "description": "Dense black fruits, wild raspberry, rich tannins",
+          "sizes": [
+            {
+              "label": "125ml",
+              "price": 575
+            },
+            {
+              "label": "175ml",
+              "price": 775
+            },
+            {
+              "label": "250ml",
+              "price": 1125
+            },
+            {
+              "label": "Bottle",
+              "price": 3300
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Bougrier Pure Vallée, Pinot Noir - France, 13%",
+          "description": "Vibrant, bright red cherry, floral hints, toasted spice",
+          "sizes": [
+            {
+              "label": "125ml",
+              "price": 625
+            },
+            {
+              "label": "175ml",
+              "price": 825
+            },
+            {
+              "label": "250ml",
+              "price": 1150
+            },
+            {
+              "label": "Bottle",
+              "price": 3400
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Wine: Rosé",
+      "note": "All wines available in a 125ml measure on request",
+      "items": [
+        {
+          "name": "Fox Hollow, Zinfandel - USA, 9%",
+          "description": "Lively, fresh medium rosé, bright & juicy raspberry fruit",
+          "sizes": [
+            {
+              "label": "125ml",
+              "price": 425
+            },
+            {
+              "label": "175ml",
+              "price": 575
+            },
+            {
+              "label": "250ml",
+              "price": 825
+            },
+            {
+              "label": "Bottle",
+              "price": 2400
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Vignana, Pinot Grigio Blush - Italy, 11%",
+          "description": "Refreshingly crisp, notes of citrus & redcurrant; house wine",
+          "sizes": [
+            {
+              "label": "125ml",
+              "price": 450
+            },
+            {
+              "label": "175ml",
+              "price": 600
+            },
+            {
+              "label": "250ml",
+              "price": 850
+            },
+            {
+              "label": "Bottle",
+              "price": 2500
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Cuvée du Soleil IGP Pays d'Oc Rosé - France, 12.5%",
+          "description": "Elegant, subtle dryish rose, aromas of narcissus & white peach",
+          "sizes": [
+            {
+              "label": "125ml",
+              "price": 650
+            },
+            {
+              "label": "175ml",
+              "price": 825
+            },
+            {
+              "label": "250ml",
+              "price": 1200
+            },
+            {
+              "label": "Bottle",
+              "price": 3500
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cocktails: Vintage",
+      "items": [
+        {
+          "name": "Bloody Mary",
+          "description": "Vodka, tomato juice, celery salt, lemon, Tobasco",
+          "price": 1050,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Aperol Spritz",
+          "description": "Aperol, Prosecco, soda, orange",
+          "price": 1050,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Margarita",
+          "description": "Tequila, Cointreau, lime, syrup de gomme",
+          "price": 1050,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Tom Collins",
+          "description": "Gin, lemon, soda, syrup de gomme",
+          "price": 1050,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Mojito",
+          "description": "Rum, mint, lime, soda, syrup de gomme",
+          "price": 1050,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Rusty Nail",
+          "description": "Whisky, Drambuie, lemon peel",
+          "price": 1050,
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cocktails: Eighties",
+      "items": [
+        {
+          "name": "Blue Lagoon",
+          "description": "Vodka, blue curacao, lemon, lemonade",
+          "price": 1050,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Cosmopolitan",
+          "description": "Vodka, Cointreau, cranberry juice, lime",
+          "price": 1050,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Tequila Sunrise",
+          "description": "Tequila, Cointreau, orange, grenadine",
+          "price": 1050,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Espresso Martini",
+          "description": "Tia Maria, vodka, espresso, syrup de gomme",
+          "price": 1050,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Raspberry Bramble",
+          "description": "Gin, Chambord, lemon, raspberries, syrup de gomme",
+          "price": 1050,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Long Island Iced Tea",
+          "description": "Rum, tequila, gin, Cointreau, vodka, lemon, Pepsi",
+          "price": 1050,
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cocktails: Modern",
+      "items": [
+        {
+          "name": "Passion Fruit Martini",
+          "description": "Vanilla vodka, Passoa, pineapple, lime, passion fruit syrup",
+          "price": 1050,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Hugo Spritz",
+          "description": "Elderflower liqueur, Prosecco, mint, lime, soda",
+          "price": 1050,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Amalfi Spritz",
+          "description": "Limoncello, Prosecco, soda",
+          "price": 1050,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Amaretto & Coconut Sour",
+          "description": "Disaronno, Malibu, lime, cranberry, coconut syrup",
+          "price": 1050,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Very Cherry",
+          "description": "Cherry gin, grenadine, lime, cranberry, bitters",
+          "price": 1050,
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cocktails: Signature Selection",
+      "note": "Hand crafted and chosen by the team",
+      "items": [
+        {
+          "name": "Vigneto",
+          "description": "Muddled red grapes, Prosecco, homemade honey syrup & blackcurrant gin",
+          "price": 1100,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Smoked Old Fashioned",
+          "description": "Bourbon, homemade brown sugar syrup, Angostura bitters and orange peel, stirred over ice, hand smoked with seasonal wood chips, dehydrated orange slices",
+          "price": 1100,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Cheshire Cat",
+          "description": "St. Germain elderflower liqueur, gin, lemon, butterfly pea flower extract, syrup de gomme and soda; changes from blue to pink",
+          "price": 1100,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Off the Cuff",
+          "description": "Fancy something not on the menu? Ask out team what today's \"off the cuff\" cocktail is",
+          "price": 1100,
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    }
+  ]
+}

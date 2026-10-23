@@ -7,5 +7,14 @@
   "lon": -3.057648,
   "menuUrl": "https://www.boulevardhotel.co.uk/beachside-restaurant/",
   "appMissingSince": null,
-  "source": "blackpool app map markers"
+  "source": "blackpool app map markers",
+  "menuPdfs": [
+    "https://www.boulevardhotel.co.uk/app/uploads/2026/10/BLVDALC0826.pdf",
+    "https://www.boulevardhotel.co.uk/app/uploads/2026/09/BLVDTDH0826.pdf",
+    "https://www.boulevardhotel.co.uk/app/uploads/2026/07/BLVDBAR0726.pdf",
+    "https://www.boulevardhotel.co.uk/app/uploads/2026/07/Small-PortionsBLVD0726.pdf",
+    "https://www.boulevardhotel.co.uk/app/uploads/2025/10/Dessert-2025.pdf",
+    "https://www.boulevardhotel.co.uk/app/uploads/2026/08/BLVDWINE0826.pdf",
+    "https://www.boulevardhotel.co.uk/app/uploads/2023/03/Cocktail-menu-2023.pdf"
+  ]
 }

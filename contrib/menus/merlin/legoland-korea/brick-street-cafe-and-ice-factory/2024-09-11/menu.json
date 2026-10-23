@@ -1,0 +1,141 @@
+{
+  "date": "2024-09-11",
+  "approxDate": true,
+  "source": {
+    "name": "Legoland Korea",
+    "official": true,
+    "url": "https://www.legoland.kr/media/ngreucl1/%EB%B8%8C%EB%A6%AD%EC%8A%A4%ED%8A%B8%EB%A6%BF%EC%B9%B4%ED%8E%98%EB%A9%94%EB%89%B4.pdf",
+    "sha256": "e525c575031a8655149663adf79cde8b7fcaf457866fce8022d85b6604367a85"
+  },
+  "sections": [
+    {
+      "name": "Beverages",
+      "items": [
+        {
+          "name": "Espresso",
+          "sizes": [
+            {
+              "label": "Hot",
+              "price": 4000
+            }
+          ]
+        },
+        {
+          "name": "Americano",
+          "sizes": [
+            {
+              "label": "Hot",
+              "price": 4500
+            },
+            {
+              "label": "Iced",
+              "price": 5000
+            }
+          ]
+        },
+        {
+          "name": "Latte",
+          "sizes": [
+            {
+              "label": "Hot",
+              "price": 5000
+            },
+            {
+              "label": "Iced",
+              "price": 5500
+            }
+          ]
+        },
+        {
+          "name": "Vanila Latte",
+          "sizes": [
+            {
+              "label": "Hot",
+              "price": 5500
+            },
+            {
+              "label": "Iced",
+              "price": 6000
+            }
+          ]
+        },
+        {
+          "name": "Peach Ice Tea",
+          "sizes": [
+            {
+              "label": "Iced",
+              "price": 4500
+            }
+          ]
+        },
+        {
+          "name": "Hot Chocolate",
+          "sizes": [
+            {
+              "label": "Hot",
+              "price": 5000
+            },
+            {
+              "label": "Iced",
+              "price": 5500
+            }
+          ]
+        },
+        {
+          "name": "Earl Grey",
+          "sizes": [
+            {
+              "label": "Hot",
+              "price": 5000
+            },
+            {
+              "label": "Iced",
+              "price": 5500
+            }
+          ]
+        },
+        {
+          "name": "Green Tea",
+          "sizes": [
+            {
+              "label": "Hot",
+              "price": 5000
+            },
+            {
+              "label": "Iced",
+              "price": 5500
+            }
+          ]
+        },
+        {
+          "name": "Extrea 1 Shot",
+          "price": 700,
+          "addOn": true
+        }
+      ]
+    },
+    {
+      "name": "Refill Cup",
+      "items": [
+        {
+          "name": "Refill Cup",
+          "price": 10000
+        }
+      ]
+    },
+    {
+      "name": "Slush",
+      "items": [
+        {
+          "name": "Slush",
+          "price": 4500
+        },
+        {
+          "name": "Slush Refill",
+          "price": 3500,
+          "addOn": true
+        }
+      ]
+    }
+  ]
+}

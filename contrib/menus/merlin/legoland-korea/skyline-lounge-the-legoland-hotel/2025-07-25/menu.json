@@ -1,0 +1,450 @@
+{
+  "date": "2025-07-25",
+  "approxDate": true,
+  "source": {
+    "name": "Legoland Korea",
+    "official": true,
+    "url": "https://www.legoland.kr/media/zlkhj3i4/%EC%8A%A4%EC%B9%B4%EC%9D%B4%EB%9D%BC%EC%9A%B4%EC%A7%80-%EB%A9%94%EB%89%B4_%EC%88%98%EC%A0%95.pdf",
+    "sha256": "45a04fef77266665fbe228829275fb19fa341a993d81d46bfbe07fcdacbaf5e8"
+  },
+  "sections": [
+    {
+      "name": "All-Day Menu",
+      "note": "Service Hours 11:30 - 22:00, Last Order 21:30",
+      "items": [
+        {
+          "name": "Chicken Tender Salad",
+          "description": "치킨텐더 - 닭고기: 태국산",
+          "price": 15500
+        }
+      ]
+    },
+    {
+      "name": "Kids Recommended Menu",
+      "items": [
+        {
+          "name": "Ham Egg Mayo Sandwich",
+          "description": "비어햄 - 돼지고기: 국내산",
+          "price": 8500,
+          "tags": [
+            "kids"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Lunch Menu",
+      "note": "Service Hours 11:30 - 15:30, Last Order 15:00",
+      "items": [
+        {
+          "name": "Beef Burger Set",
+          "description": "쇠고기: 호주산, 뉴질랜드산; 돼지고기: 외국산",
+          "price": 16900
+        },
+        {
+          "name": "Toowoomba Pasta Set",
+          "price": 18900
+        },
+        {
+          "name": "Korean Style Stir-fried Spicy Pork Set",
+          "description": "제육볶음 - 돼지고기: 국내산; 미역국 - 쇠고기: 호주산; 김치 - 배추: 국산, 고춧가루: 국산; 쌀: 국내산",
+          "price": 16900
+        },
+        {
+          "name": "Jjajang Fried Rice Set",
+          "description": "탕수육 - 돼지고기: 국내산; 새우볶음밥 - 쌀: 국내산",
+          "price": 13900
+        },
+        {
+          "name": "Cheonggyul Soba & Tenpura Shirimp Set",
+          "price": 11900
+        },
+        {
+          "name": "Kids Jjajang Fried Rice Set",
+          "description": "새우볶음밥 - 쌀: 국내산",
+          "price": 8500,
+          "tags": [
+            "kids"
+          ]
+        },
+        {
+          "name": "Steamed Rice",
+          "description": "쌀: 국내산",
+          "price": 1500
+        }
+      ]
+    },
+    {
+      "name": "Soft Drink & Bottled Drink",
+      "items": [
+        {
+          "name": "Soft Drink",
+          "description": "Coca-Cola, Coke Zero, Sprite, Fanta Orange",
+          "price": 3500
+        },
+        {
+          "name": "Minute Maid",
+          "description": "Orange, Grape",
+          "price": 3500
+        },
+        {
+          "name": "Bottled Water",
+          "price": 1500
+        }
+      ]
+    },
+    {
+      "name": "Coffee & Tea",
+      "items": [
+        {
+          "name": "Americano",
+          "sizes": [
+            {
+              "label": "Hot",
+              "price": 5500
+            },
+            {
+              "label": "Iced",
+              "price": 6000
+            }
+          ]
+        },
+        {
+          "name": "Latte",
+          "sizes": [
+            {
+              "label": "Hot",
+              "price": 6000
+            },
+            {
+              "label": "Iced",
+              "price": 6500
+            }
+          ]
+        },
+        {
+          "name": "Yuzu Tea",
+          "sizes": [
+            {
+              "label": "Hot",
+              "price": 5500
+            },
+            {
+              "label": "Iced",
+              "price": 6000
+            }
+          ]
+        },
+        {
+          "name": "Grapefruit Honey Tea",
+          "sizes": [
+            {
+              "label": "Hot",
+              "price": 6000
+            },
+            {
+              "label": "Iced",
+              "price": 6500
+            }
+          ]
+        },
+        {
+          "name": "Chamomile Relaxer",
+          "sizes": [
+            {
+              "label": "Hot",
+              "price": 5500
+            },
+            {
+              "label": "Iced",
+              "price": 6000
+            }
+          ]
+        },
+        {
+          "name": "Chocolate Milk",
+          "sizes": [
+            {
+              "label": "Hot",
+              "price": 5500
+            },
+            {
+              "label": "Iced",
+              "price": 6000
+            }
+          ]
+        },
+        {
+          "name": "Peach Iced Tea",
+          "sizes": [
+            {
+              "label": "Iced",
+              "price": 5500
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Grab & Go",
+      "note": "Service Hours 19:30 - 22:00, Last Order 21:30. For order inquiries, please visit the Skyline Lounge on the 2nd floor",
+      "items": [
+        {
+          "name": "Chicken Basket & Lager Set",
+          "description": "Includes 2 Cans of Lager, 2 Small Size Cups of Soft Drink, Fried Potato. 치킨 바스켓 - 닭고기: 국내산",
+          "price": 41000,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Chicken Basket with Fried Potato",
+          "description": "치킨 바스켓 - 닭고기: 국내산",
+          "price": 26000
+        },
+        {
+          "name": "Pepperoni Pizza Set",
+          "description": "Includes 2 Small Size Cups of Soft Drink, Pickles",
+          "price": 26000
+        },
+        {
+          "name": "Gorgonzola Pizza Set",
+          "description": "Includes 2 Small Size Cups of Soft Drink, Pickles",
+          "price": 26000
+        },
+        {
+          "name": "Fried Potato",
+          "price": 8000
+        }
+      ]
+    },
+    {
+      "name": "Draft Beer",
+      "items": [
+        {
+          "name": "Local Lager Draft Beer",
+          "price": 10000,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Local Ale Draft Beer",
+          "price": 10000,
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Wine In A Glass",
+      "items": [
+        {
+          "name": "Chardonnay (White Wine)",
+          "price": 10000,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Cabernet Sauvignon (Red Wine)",
+          "price": 10000,
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sparkling & Champagne",
+      "items": [
+        {
+          "name": "Prosecco D.O.C Bio (Black), Italy",
+          "price": 68000,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Jaume Serra Bouquet Semi Seco Cava, Spain",
+          "price": 50000,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Platino Pink Moscato, Spain",
+          "price": 25000,
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "White Wine",
+      "items": [
+        {
+          "name": "Spy Valley Sauvignon Blanc, New Zealand",
+          "price": 68000,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Mud House Sauvignon Blanc, New Zealand",
+          "price": 54000,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Duchessa Lia Moscato d'Asti, Italy",
+          "price": 37000,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "La Chablisienne Chablis 'La Pierrelee', France",
+          "price": 98000,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Bread & Butter Chardonnay, USA",
+          "price": 95000,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Three Blocks Chardonnay, USA",
+          "price": 45000,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "360 Loire Sauvignon Blanc Val de Loire, France",
+          "price": 44000,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Montgras Aura Chardonnay, Chile",
+          "price": 28000,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Mezzacorona Pinot Grigio, Italy",
+          "price": 42000,
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Red Wine",
+      "items": [
+        {
+          "name": "Farmer's Leap Padthaway Shiraz, Australia",
+          "price": 68000,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Rocland Estate Chocolate Box Shiraz, Australia",
+          "price": 83000,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Finca Bacara Time Waits For No One, Spain",
+          "price": 52000,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Promesse de Dourthe, France",
+          "price": 68000,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Powers Merlot, USA",
+          "price": 68000,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Francois Villard L'Appel des Sereines, France",
+          "price": 77000,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Melini San Lorenzo Chianti, Italy",
+          "price": 48000,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Catena Malbec, Argentina",
+          "price": 98000,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Navarro Correas Reserva Malbec, Argentina",
+          "price": 55000,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Callia Signos Malbec, Argentina",
+          "price": 45000,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Three Blocks Cabernet Sauvignon, USA",
+          "price": 45000,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Tarapaca Reserva Cabernet Sauvignon, Chile",
+          "price": 35000,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Montgras Aura Cabernet Sauvignon, Chile",
+          "price": 28000,
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    }
+  ]
+}

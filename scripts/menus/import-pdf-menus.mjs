@@ -109,7 +109,9 @@ for (const key of Object.keys(ALL_PARK_DIRS)) {
     // history: file it under the day the PDF was made, so it neither stands in
     // front of newer prices nor passes for today's.
     const madeOn = got.map((g) => made(g.file)).filter(Boolean).sort().at(-1) ?? null;
-    const older = !!(madeOn && ((prev && madeOn < prev.date) || madeOn < YEAR_AGO));
+    // A prev read from an earlier PDF is dated by its fetch, not its file, and
+    // the park replacing that PDF makes this one the newer menu.
+    const older = !!(madeOn && ((prev && !prev.source?.sha256 && madeOn < prev.date) || madeOn < YEAR_AGO));
     plan.push({
       park: key,
       source: park,

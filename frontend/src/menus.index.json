@@ -55,8 +55,8 @@
   },
   "legoland_korea": {
     "venues": 9,
-    "withMenus": 3,
-    "priced": 3,
+    "withMenus": 5,
+    "priced": 5,
     "water": 0
   },
   "legoland_florida": {
@@ -109,8 +109,8 @@
   },
   "blackpool": {
     "venues": 39,
-    "withMenus": 16,
-    "priced": 0,
+    "withMenus": 18,
+    "priced": 2,
     "water": 0
   },
   "flamingoland": {

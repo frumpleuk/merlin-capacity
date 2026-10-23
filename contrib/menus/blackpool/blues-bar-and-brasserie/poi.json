@@ -7,5 +7,16 @@
   "lon": -3.057176,
   "menuUrl": "https://www.bigbluehotel.com/dining/",
   "appMissingSince": null,
-  "source": "blackpool app map markers"
+  "source": "blackpool app map markers",
+  "menuPdfs": [
+    "https://www.bigbluehotel.com/app/uploads/2026/08/BBHALC0826.pdf",
+    "https://www.bigbluehotel.com/app/uploads/2026/04/BBHADM0426.pdf",
+    "https://www.bigbluehotel.com/app/uploads/2026/09/BBHTDH-September-October-2026.pdf",
+    "https://www.bigbluehotel.com/app/uploads/2026/04/BBHBARFOOD0426.pdf",
+    "https://www.bigbluehotel.com/app/uploads/2026/06/Light-Lunch-Menu-November-2024.pdf",
+    "https://www.bigbluehotel.com/app/uploads/2026/06/Dessert-Menu-November-2024.pdf",
+    "https://www.bigbluehotel.com/app/uploads/2026/06/Kids-Menu-A4-Version-new.pdf",
+    "https://www.bigbluehotel.com/app/uploads/2026/08/Big-Blue-Wine-0826.pdf",
+    "https://www.bigbluehotel.com/app/uploads/2026/06/Cocktail-Menu-2024.pdf"
+  ]
 }

@@ -7,7 +7,9 @@ description: Add a theme park to the site end to end - live queues, opening hour
 
 A park isn't done until it has every tab the others have: Calendar, Queues,
 Uptime, Food & Drink and Links. Work through all of this unless the user scopes
-it down. Commit and push each stage once it's checked (trunk-based, straight to
+it down, and don't scope it down yourself because a park seems minor (seasonal
+scare parks got every tab too). If a park is added at all, it's done
+consistently and well. Commit and push each stage once it's checked (trunk-based, straight to
 main); a push deploys.
 
 Background: `docs/attractions-io-api.md`, `docs/accesso-api.md`,
@@ -117,6 +119,10 @@ builds catalogs, polls and writes day files to the local D1/R2. Look for:
    - **Polling:** D1 `poll_log` shows the park polling:
      `npx wrangler d1 execute merlin-capacity --remote --json --command "SELECT park, MAX(observed_at) FROM poll_log WHERE product='queues' GROUP BY park"`.
    - **Pages:** Queues and Calendar render (playwright-core screenshot).
+4. **Name "Ride NNNN" lines:** `node scripts/past-names.mjs <key>` looks up
+   queue lines the current bundle doesn't name in the park's archived bundles
+   and writes `src/past-names.json`. Commit it, push, and `/poll` again so the
+   catalog picks the names up.
 
 ## 7. Food & Drink
 

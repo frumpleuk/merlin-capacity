@@ -48,9 +48,15 @@ export function parkDayEndMin(date: string, timeZone: string): number {
 /** The park the page is showing: its zone, set once by Layout for every tab. */
 export const ParkTimeZoneContext = createContext("Europe/London");
 
-/** Today's date at the park on the page (its park day, see parkDay). The
+/** The local calendar date at instant `ms` in `timeZone` (midnight rollover). */
+export function localDate(ms: number, timeZone: string): string {
+  return new Date(ms + tzOffsetAt(ms, timeZone) * 60_000).toISOString().slice(0, 10);
+}
+
+/** Today's date at the park on the page, rolling over at local midnight. The
  *  calendars, heatmaps and Food tab use it rather than the UTC date, which is a
- *  day ahead in a US evening and a day behind in a Japanese morning. */
+ *  day ahead in a US evening and a day behind in a Japanese morning, and rather
+ *  than parkDay, whose 04:00 rollover only matters for queue days. */
 export function useParkToday(): string {
-  return parkDay(Date.now(), useContext(ParkTimeZoneContext));
+  return localDate(Date.now(), useContext(ParkTimeZoneContext));
 }

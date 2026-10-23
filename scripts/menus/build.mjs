@@ -140,6 +140,18 @@ for (const key of Object.keys(ALL_PARK_DIRS)) {
         .flatMap((d) => (readJson(path.join(offersDir, d, "menu.json")).offers ?? []).map((o) => ({ ...o, date: d })))
     : [];
 
+  // A park-wide pass discount from the park's own terms (pass.json, by hand):
+  // the fallback for every venue with no evidence of its own, so a board photo
+  // or a venue that refuses the pass still wins. `except` names the venues the
+  // terms leave out.
+  const passFile = path.join(base, "pass.json");
+  if (fs.existsSync(passFile)) {
+    const { except = [], url, ...pass } = readJson(passFile);
+    for (const v of venues) {
+      if (!v.passDiscount && !except.includes(v.slug)) v.passDiscount = { offered: true, ...pass, source: "park terms" };
+    }
+  }
+
   // The app sometimes lists an event as one venue of its own ("CARGO GLOBAL
   // EATS Street food"). The event already shows it, stall by stall, so the
   // app's entry isn't listed again, now or after the event has gone.

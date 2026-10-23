@@ -395,7 +395,9 @@ function PassBadge({ pass }: { pass: PassDiscount | null }) {
       ? "reported, not from a photo"
       : pass.source === "park app"
         ? "from the park's app, no rate given"
-        : null;
+        : pass.source === "park terms"
+          ? "from the park's pass terms"
+          : null;
   const detail = [pass.applies, why].filter(Boolean).join(", ");
   if (!pass.offered) {
     return (

@@ -270,6 +270,23 @@ usual Alton roundel does, so don't promise more than the sign does.
 A venue-level `poi.json` entry is the fallback the site uses when that date's
 photos show nothing either way.
 
+Where the park's pass terms give one rate for all its food (Crealy), say so once
+in `<park>/pass.json` rather than venue by venue:
+
+```json
+{
+  "percent": 20,
+  "upTo": true,
+  "applies": "Platinum 20%, Gold 15%, £99 pass 10%; food & drink, not alcohol or other offers",
+  "url": "https://www.crealy.co.uk/annual-passes/annual-pass-terms-conditions/",
+  "except": []
+}
+```
+
+Every venue without evidence of its own gets it, with `source: "park terms"`;
+`except` lists venue folders the terms leave out. A board photo or a
+`poi.json` entry still wins.
+
 ## Scripts
 
 Need Node 24+, `exiftool`, and (for contact sheets) macOS `sips` and

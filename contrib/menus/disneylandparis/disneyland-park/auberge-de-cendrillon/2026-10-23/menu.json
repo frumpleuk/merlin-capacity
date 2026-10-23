@@ -1,0 +1,183 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1NR01_auberge-de-cendrillon.pdf",
+    "sha256": "8def0465cc4eb2f00ae9364e0a32c3e3a17f60a859e505090f5b4ad57df0cc9a",
+    "stated": "October 2026"
+  },
+  "sections": [
+    {
+      "name": "Menus",
+      "items": [
+        {
+          "name": "Adult Menu",
+          "description": "Pumpkin velouté with pan-fried shiitake mushrooms and pumpkin seeds (vegan), smoked salmon and spinach roll or duck pâté en croûte with apricot and ginger; beef parmentier, garden herb salad, full-bodied truffle sauce, prawn risotto with garden peas and a Parmesan crisp, roasted chicken breast, morel sauce, baby potatoes with sage, or soft chickpea patty (vegan); Cinderella's dessert, warm cocoa fondant, soya and almond syrup emulsion, soya and pistachio cream (vegan), or seasonal fruit in a lemon and lemon verbena jelly, red fruit soup. Wine included: IGP Pays d'Oc Cité de Carcassonne - Gérard Bertrand, IGP Cité de Carcassonne - Gérard Bertrand - Merlot or AOP Côtes de Provence - Minuty - Prestige rosé 10 cl; AOC Bourgogne Hautes-Côtes de Nuits - Pierre Maizière, AOC Chablis - La Pierrelée - La Chablisienne or wine of the moment 10 cl; Edition Spéciale Disneyland® Paris - Champagne Pierre Mignon Grande Réserve - brut 10 cl",
+          "sizes": [
+            {
+              "label": "Menu",
+              "price": 10000
+            },
+            {
+              "label": "Wine included",
+              "price": 12500
+            }
+          ]
+        },
+        {
+          "name": "Kids' Menu",
+          "description": "For children ages 3 to 11. Fairy canapé: cream of pumpkin soup with Kiri® cheese and pumpkin seed open sandwich, or smoked salmon rolled with Kiri® cheese; thyme chicken, tropical sole fillet or pasta with vegetables (veggie); Cinderella's surprise or red fruit soup with light whipped vanilla cream; Vittel® 33 cl, orange or apple juice 25 cl or milk 20 cl. A different soft drink (25 cl) may replace a similar item on request",
+          "price": 5000,
+          "tags": [
+            "kids"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "White Wine",
+      "items": [
+        {
+          "name": "AOC Chablis - La Pierrelée La Chablisienne",
+          "description": "Bourgogne",
+          "sizes": [
+            {
+              "label": "37,5 cl",
+              "price": 2400
+            },
+            {
+              "label": "75 cl",
+              "price": 4300
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Red Wine",
+      "items": [
+        {
+          "name": "AOC Saint-Emilion - Fortin Plaisance",
+          "description": "Bordeaux",
+          "sizes": [
+            {
+              "label": "37,5 cl",
+              "price": 2400
+            },
+            {
+              "label": "75 cl",
+              "price": 3800
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "AOC Châteauneuf-du-Pape L'Oratoire des Papes",
+          "description": "Vallée du Rhône",
+          "sizes": [
+            {
+              "label": "75 cl",
+              "price": 7200
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Rosé Wine",
+      "items": [
+        {
+          "name": "AOP Côtes de Provence Minuty - Prestige rosé",
+          "description": "Provence",
+          "sizes": [
+            {
+              "label": "50 cl",
+              "price": 2700
+            },
+            {
+              "label": "75 cl",
+              "price": 3800
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "note": "33 cl",
+      "items": [
+        {
+          "name": "Coca-Cola Original",
+          "price": 600
+        },
+        {
+          "name": "Coca-Cola Zéro Sucres",
+          "price": 600
+        },
+        {
+          "name": "Fanta Orange Zéro Sucres",
+          "price": 600
+        },
+        {
+          "name": "Sprite Sans Sucres",
+          "price": 600
+        },
+        {
+          "name": "FuzeTea Peach flavour",
+          "price": 600
+        },
+        {
+          "name": "Perrier®",
+          "price": 500
+        },
+        {
+          "name": "Orange or apple juice 25 cl",
+          "price": 600
+        }
+      ]
+    },
+    {
+      "name": "Mineral Waters",
+      "items": [
+        {
+          "name": "Vittel®",
+          "sizes": [
+            {
+              "label": "50 cl",
+              "price": 500
+            },
+            {
+              "label": "100 cl",
+              "price": 600
+            }
+          ]
+        },
+        {
+          "name": "S.Pellegrino®",
+          "sizes": [
+            {
+              "label": "50 cl",
+              "price": 550
+            },
+            {
+              "label": "100 cl",
+              "price": 650
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

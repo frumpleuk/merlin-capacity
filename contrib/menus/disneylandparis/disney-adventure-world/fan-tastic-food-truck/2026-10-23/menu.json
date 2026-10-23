@@ -1,0 +1,160 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2PR05_fan-tastic-food-truck.pdf",
+    "sha256": "c7688479bb5d2cfa6f47741c0ed53f78c87d4aa7753fb30e6c7dab0e265246f6",
+    "stated": "April 2026"
+  },
+  "sections": [
+    {
+      "name": "Hot Dogs",
+      "items": [
+        {
+          "name": "Cap's All American Hot Dog",
+          "description": "Red brioche bread, turkey sausage, Heinz® ketchup and American mustard",
+          "price": 1050
+        },
+        {
+          "name": "Red Rage Hot-Dog",
+          "description": "Red brioche bread, turkey sausage, chipotle sauce, broken Doritos®, red onion pickles and crispy bacon",
+          "price": 1150
+        },
+        {
+          "name": "The Crispy Hot-Dog",
+          "description": "Red brioche bread, plant-based sausage, crispy onions, plant-based grated and American mustard",
+          "price": 1150
+        },
+        {
+          "name": "Lay's® Crisps",
+          "price": 380
+        }
+      ]
+    },
+    {
+      "name": "Sweet Break",
+      "items": [
+        {
+          "name": "Liberty Lollipop and a hot or a cold drink",
+          "description": "Defrosted product",
+          "price": 850
+        },
+        {
+          "name": "Liberty Lollipop",
+          "description": "Vanilla ganache, hazelnut-almond caramel heart. Defrosted product",
+          "price": 550
+        },
+        {
+          "name": "Flora Colossus Biscuits Duo",
+          "price": 800
+        },
+        {
+          "name": "Vegan Cookie",
+          "description": "Chocolate and hazelnut chunks. Defrosted product",
+          "price": 350,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "Flora Colossus Biscuit",
+          "description": "Chocolate-hazelnut",
+          "price": 450
+        }
+      ]
+    },
+    {
+      "name": "Ice Creams",
+      "items": [
+        {
+          "name": "Magnum®",
+          "description": "Almond",
+          "price": 400
+        },
+        {
+          "name": "Cornetto® Soft",
+          "description": "Vanilla & strawberry flavour",
+          "price": 430
+        },
+        {
+          "name": "Super Twister®",
+          "description": "Orange, strawberry, lemon flavours",
+          "price": 350
+        },
+        {
+          "name": "Ben & Jerry's® Inspiration Brookie",
+          "description": "Vanilla ice cream with brownie-style pieces & golden cookie swirls",
+          "price": 500
+        }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        {
+          "name": "Soft drink",
+          "description": "Coca-Cola, Fanta, Sprite 50 cl; FuzeTea 40 cl",
+          "price": 420
+        },
+        {
+          "name": "Perrier® 50 cl",
+          "price": 380
+        },
+        {
+          "name": "Vittel® 50 cl",
+          "price": 350
+        },
+        {
+          "name": "Orange or apple juice 23,5 cl",
+          "price": 380
+        }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        {
+          "name": "Espresso 100% Arabica",
+          "price": 330
+        },
+        {
+          "name": "Double Espresso 100% Arabica",
+          "price": 380
+        },
+        {
+          "name": "Coffee 100% Arabica",
+          "price": 350
+        },
+        {
+          "name": "Coffee with milk",
+          "price": 400
+        },
+        {
+          "name": "Cappuccino",
+          "price": 400
+        },
+        {
+          "name": "Hot chocolate",
+          "price": 420
+        },
+        {
+          "name": "Tea, herbal tea",
+          "price": 350
+        }
+      ]
+    },
+    {
+      "name": "Beer",
+      "items": [
+        {
+          "name": "Bud® 33 cl",
+          "price": 630,
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    }
+  ]
+}

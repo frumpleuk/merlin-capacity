@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Flamingo Land",
+    "official": true,
+    "url": "https://www.flamingoland.co.uk/wp-content/uploads/2026/04/Spud-Stop-Menu-2026.pdf",
+    "sha256": "19e500f1b5f1ccaf2de7d02b7035dfea8a15639b0b5fa37afc5f33a8618d2fa8"
+  },
+  "sections": [
+    {
+      "name": "Classic Spuds",
+      "note": "Choose from: Cheese, Beans, Tuna Mayo, Chilli Con Carne, Chicken Curry, BBQ Beans, Coleslaw",
+      "items": [
+        { "name": "Jacket without toppings", "price": 700 },
+        { "name": "Jacket 1 Topping", "price": 800 },
+        { "name": "Jacket 2 Toppings", "price": 850 },
+        { "name": "Jacket 3 Toppings", "price": 900 },
+        { "name": "Jacket 4 Toppings", "price": 950 }
+      ]
+    },
+    {
+      "name": "Kids Menu",
+      "items": [
+        { "name": "Hash Browns with 2 toppings", "price": 600, "tags": ["kids"] },
+        { "name": "Half a Jacket Potato with 2 Toppings", "price": 600, "tags": ["kids"] }
+      ]
+    },
+    {
+      "name": "£1 Extras",
+      "items": [
+        { "name": "Crispy bacon bits", "price": 100, "addOn": true },
+        { "name": "Crispy onions", "price": 100, "addOn": true },
+        { "name": "Sweetcorn", "price": 100, "addOn": true },
+        { "name": "Salad Garnish", "price": 100, "addOn": true }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        { "name": "Bottles", "sizes": [{ "label": "From", "price": 300 }, { "label": "Up to", "price": 320 }] },
+        { "name": "Water", "price": 250 },
+        { "name": "Kids Drinks", "price": 240, "tags": ["kids"] },
+        { "name": "Tea or Coffee", "price": 250 }
+      ]
+    }
+  ],
+  "offers": [{ "text": "Kids Meal Deal: any kids meal with a kids drink £8.00" }]
+}

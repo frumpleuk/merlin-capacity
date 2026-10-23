@@ -1,0 +1,150 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2BR02_web-truck.pdf",
+    "sha256": "9680ae2122c16726702ed8c9e06cecb615f6e36717d3188f8c4863ed75bcd746",
+    "stated": "April 2026"
+  },
+  "sections": [
+    {
+      "name": "Noodle Chow X-Perience",
+      "items": [
+        {
+          "name": "Noodle Chow X-Perience",
+          "description": "Noodles, garlic-ginger-lemongrass bouillon, cive, black mushrooms. With shrimps, with chicken or with smoked tofu",
+          "price": 1100
+        }
+      ]
+    },
+    {
+      "name": "Sweet Break",
+      "items": [
+        {
+          "name": "Flora Colossus Biscuit and a hot or a cold drink",
+          "description": "Chocolate-hazelnut",
+          "price": 700
+        },
+        {
+          "name": "Flora Colossus Biscuit",
+          "description": "Chocolate-hazelnut",
+          "price": 450
+        }
+      ]
+    },
+    {
+      "name": "Ice Creams",
+      "items": [
+        {
+          "name": "Magnum®",
+          "description": "Almond",
+          "price": 400
+        },
+        {
+          "name": "Cornetto® Soft",
+          "description": "Vanilla & strawberry flavour",
+          "price": 430
+        },
+        {
+          "name": "Super Twister®",
+          "description": "Orange, strawberry, lemon flavours",
+          "price": 350
+        },
+        {
+          "name": "Ben & Jerry's® Inspiration Brookie",
+          "description": "Vanilla ice cream with brownie-style pieces & golden cookie swirls",
+          "price": 500
+        }
+      ]
+    },
+    {
+      "name": "Slushs",
+      "items": [
+        {
+          "name": "Slush",
+          "description": "Apple or strawberry flavour",
+          "sizes": [
+            {
+              "label": "25 cl",
+              "price": 350
+            },
+            {
+              "label": "50 cl",
+              "price": 600
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        {
+          "name": "Flora Colossus Biscuits Duo",
+          "description": "Chocolate-hazelnut",
+          "price": 800
+        },
+        {
+          "name": "Mango Cup",
+          "price": 500
+        }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        {
+          "name": "Soft drink",
+          "description": "Coca-Cola, Fanta, Sprite 50 cl; FuzeTea 40 cl",
+          "price": 420
+        },
+        {
+          "name": "Vittel® 50 cl",
+          "price": 350
+        },
+        {
+          "name": "Perrier® 50 cl",
+          "price": 380
+        },
+        {
+          "name": "Orange or apple juice 23,5 cl",
+          "price": 380
+        }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        {
+          "name": "Espresso 100% Arabica",
+          "price": 330
+        },
+        {
+          "name": "Double Espresso 100% Arabica",
+          "price": 380
+        },
+        {
+          "name": "Coffee 100% Arabica",
+          "price": 350
+        },
+        {
+          "name": "Coffee with milk",
+          "price": 400
+        },
+        {
+          "name": "Cappuccino",
+          "price": 400
+        },
+        {
+          "name": "Hot chocolate",
+          "price": 420
+        },
+        {
+          "name": "Tea, herbal tea",
+          "price": 350
+        }
+      ]
+    }
+  ]
+}

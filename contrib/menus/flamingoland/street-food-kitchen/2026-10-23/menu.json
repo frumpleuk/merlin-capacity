@@ -1,0 +1,79 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Flamingo Land",
+    "official": true,
+    "url": "https://www.flamingoland.co.uk/wp-content/uploads/2026/04/Flamingo-Land-Street-Food-Kitchen-Menu.pdf",
+    "sha256": "9ab82b06017e99af35d8062d55ed5ae15e4a8f684c3cb93f816ef192ef0570a2"
+  },
+  "sections": [
+    {
+      "name": "Burgers",
+      "note": "Gluten free option available",
+      "items": [
+        { "name": "Cheese Burger", "description": "6oz beef patty, little gem lettuce, slice of beef tomato, red onion & burger relish in a toasted brioche bun", "price": 900, "kcal": 768 },
+        { "name": "Chicken Burger", "description": "Chicken fillet, mayonnaise, little gem lettuce, slice of beef tomato in a toasted brioche bun", "price": 980, "kcal": 609 },
+        { "name": "Peri-Peri Chicken Burger", "description": "Peri peri chicken fillet, mayonnaise, little gem lettuce, slice of beef tomato in a toasted brioche bun", "price": 980, "kcal": 633 },
+        { "name": "Plant Based Burger", "description": "Plant based burger, vegan mayonnaise, little gem lettuce, slice of beef tomato in a toasted brioche bun", "price": 980, "kcal": 477 },
+        { "name": "Add Bacon", "price": 150, "kcal": 109, "addOn": true },
+        { "name": "Add Cheese", "price": 100, "kcal": 107, "addOn": true },
+        { "name": "Make it a Double", "price": 220, "addOn": true }
+      ]
+    },
+    {
+      "name": "Chicken Wings",
+      "items": [
+        { "name": "Hoisin Chicken Wings", "description": "Crunchy chicken wings in a hoisin sauce", "price": 850, "kcal": 741 },
+        { "name": "Korean Chicken Wings", "description": "Crunchy chicken wings in a sticky Korean sauce", "price": 850, "kcal": 813 },
+        { "name": "Hot Honey Chicken Wings", "description": "Crunchy chicken wings in a hot honey sauce", "price": 850, "kcal": 846 }
+      ]
+    },
+    {
+      "name": "Sides & Extras",
+      "items": [
+        { "name": "Fries", "price": 420, "kcal": 227 },
+        { "name": "Chicken Strips (5)", "price": 630, "kcal": 391 },
+        { "name": "Vegan Chicken Strips", "price": 580, "kcal": 391 },
+        { "name": "Popcorn Chicken", "price": 630, "kcal": 326 },
+        { "name": "Salad Box", "description": "Fresh garden salad, little gem lettuce, onion, peppers, spring onion & chopped tomato's", "price": 620, "kcal": 121 },
+        { "name": "Peri-Peri Salad Box", "description": "Peri peri shredded chicken, little gem lettuce, onion, peppers, spring onion & chopped tomato's", "price": 790, "kcal": 398 }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        { "name": "Coca-Cola Original Taste", "price": 320, "kcal": 210 },
+        { "name": "Diet Coke", "price": 300, "kcal": 2 },
+        { "name": "Coca-Cola Zero Sugar", "price": 300 },
+        { "name": "Dr Pepper", "price": 300, "kcal": 100 },
+        { "name": "Sprite", "price": 300, "kcal": 70 },
+        { "name": "Fanta", "price": 300, "kcal": 96 },
+        { "name": "Simply Fruity", "price": 240 },
+        { "name": "Harrogate Spring Water", "price": 250, "kcal": 0 },
+        { "name": "Fanta Frozen", "description": "Strawberry or raspberry", "price": 525, "kcal": 135 },
+        { "name": "Yorkshire Tea", "price": 320, "kcal": 2 },
+        { "name": "Costa Americano", "sizes": [{ "label": "Regular", "price": 330, "kcal": 12 }, { "label": "Large", "price": 380, "kcal": 18 }], "unclear": "two prices printed without size names" },
+        { "name": "Costa Latte", "sizes": [{ "label": "Regular", "price": 400, "kcal": 96 }, { "label": "Large", "price": 420, "kcal": 151 }], "unclear": "two prices printed without size names" },
+        { "name": "Costa Cappacino", "sizes": [{ "label": "Regular", "price": 400, "kcal": 123 }, { "label": "Large", "price": 420, "kcal": 154 }], "unclear": "two prices printed without size names" },
+        { "name": "Costa Hot Chocolate", "sizes": [{ "label": "Regular", "price": 420, "kcal": 151 }, { "label": "Large", "price": 455, "kcal": 282 }], "unclear": "two prices printed without size names" }
+      ]
+    },
+    {
+      "name": "Chicken Pots",
+      "items": [
+        { "name": "Plain Jane", "description": "Fries with shredded chicken, garlic mayo & nacho cheese sauce", "price": 900, "kcal": 644 },
+        { "name": "Kung Fu", "description": "Loaded fries with salt & pepper shredded chicken, red onion, mixed apeppers, spring onions & nacho cheese sauce", "price": 950, "kcal": 656 },
+        { "name": "Peri-Peri", "description": "Loaded fries with peri peri shredded chicken, red onion, mixed peppers, spring onions, red chilli, garlic mayo & nacho cheese sauce", "price": 950, "kcal": 650 },
+        { "name": "Veggie", "description": "Loaded fries with tender pieces of vegan chicken, garlic mayo & nacho cheese sauce", "price": 930, "kcal": 641 },
+        { "name": "Add Extra Nacho Cheese", "price": 110, "kcal": 83, "addOn": true }
+      ]
+    },
+    {
+      "name": "Meal Deals",
+      "items": [
+        { "name": "Meal Deal Burger", "description": "Burger + side + drink", "price": 1300 },
+        { "name": "Meal Deal Kids", "description": "Popcorn chicken + fries + Simply Fruity / water", "price": 800, "tags": ["kids"] }
+      ]
+    }
+  ]
+}

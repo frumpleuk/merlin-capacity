@@ -1,0 +1,459 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Disneyland Paris",
+    "official": true,
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2AR02_pym.pdf",
+    "sha256": "d76dd3ed79b93e2bb3e5cba2d6dd300377758f4fca30acb918e18aa6acc76447",
+    "stated": "March 2026"
+  },
+  "sections": [
+    {
+      "name": "All-You-Can-Eat Buffet",
+      "note": "The price of the buffet will be charged to any person seated in the restaurant",
+      "items": [
+        {
+          "name": "All-You-Can-Eat Buffet",
+          "description": "Adult: a cold drink (33 cl) or a mineral water (50 cl). Kids (for children ages 3 to 11): Vittel® (33 cl), orange or apple juice (25 cl) or milk (20 cl); other cold drink (25 cl) may replace similar item on request",
+          "sizes": [
+            {
+              "label": "Adult",
+              "price": 4500
+            },
+            {
+              "label": "Kids (3-11)",
+              "price": 2500
+            }
+          ]
+        },
+        {
+          "name": "Birthday dessert to share",
+          "description": "Order your birthday dessert before your meal",
+          "sizes": [
+            {
+              "label": "2 or more people",
+              "price": 2500
+            },
+            {
+              "label": "6 or more people",
+              "price": 4500
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Signature Cocktail",
+      "items": [
+        {
+          "name": "Blue Spritz and Goji Berries",
+          "description": "Sparkling Blue Chardonnay, White Vermouth, Perrier® and Goji Berries",
+          "price": 1550,
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Signature Mocktail",
+      "items": [
+        {
+          "name": "Particles Mocktail and Red Fruits Serum",
+          "description": "Sprite SANS SUCRES, Blue Curaçao Flavour Syrup, Cranberry Nectar (made from concentrated fruit juice), Cherry Purée, Lemon Juice and Strawberry Flavour Pearls",
+          "price": 1050
+        }
+      ]
+    },
+    {
+      "name": "Signature Beers",
+      "items": [
+        {
+          "name": "Small Scale Red Beers (4 x 6 cl) with Mini-Beer Glasses and Ruler Board (to take away)",
+          "description": "Tasting of Four Red Beers (Cherry Chouffe, Red Grimbergen, Raspberry Lindemans and 1664® Premium with Cherry Purée) or Four 1664® Premium Blond",
+          "price": 1900,
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Signature Alcoholic Drinks",
+      "items": [
+        {
+          "name": "Pasion Blue - Chardonnay Bleu sec",
+          "description": "Dry Blue Chardonnay",
+          "sizes": [
+            {
+              "label": "15 cl",
+              "price": 900
+            },
+            {
+              "label": "25 cl",
+              "price": 1500
+            },
+            {
+              "label": "50 cl",
+              "price": 2800
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Bleu pétillant - Santa Margarita - Chardonnay",
+          "description": "Sparkling Blue Chardonnay",
+          "sizes": [
+            {
+              "label": "15 cl",
+              "price": 900
+            },
+            {
+              "label": "25 cl",
+              "price": 1500
+            },
+            {
+              "label": "50 cl",
+              "price": 2800
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PYM Kitchen Souvenir",
+      "items": [
+        {
+          "name": "Mini-Beer Glasses with Ruler Board (without drink)",
+          "price": 1500
+        }
+      ]
+    },
+    {
+      "name": "Beers",
+      "items": [
+        {
+          "name": "1664® Premium",
+          "description": "Draught",
+          "sizes": [
+            {
+              "label": "25 cl",
+              "price": 600
+            },
+            {
+              "label": "50 cl",
+              "price": 880
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Grimbergen blonde",
+          "description": "Draught",
+          "sizes": [
+            {
+              "label": "25 cl",
+              "price": 600
+            },
+            {
+              "label": "50 cl",
+              "price": 880
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Cherry Chouffe (33 cl)",
+          "description": "Bottled",
+          "price": 800,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Grimbergen d'Abbaye rouge (33 cl)",
+          "description": "Bottled",
+          "price": 800,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Lindemans framboise (25 cl)",
+          "description": "Bottled",
+          "price": 700,
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Wine",
+      "items": [
+        {
+          "name": "AOC Bordeaux - Mouton Cadet Baron Philippe de Rothschild",
+          "description": "Red",
+          "sizes": [
+            {
+              "label": "15 cl",
+              "price": 1000
+            },
+            {
+              "label": "37,5 cl",
+              "price": 2400
+            },
+            {
+              "label": "75 cl",
+              "price": 3800
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "AOC Bourgogne - Pinot Noir - Hudelot-Bajard - Bio",
+          "description": "Red",
+          "sizes": [
+            {
+              "label": "75 cl",
+              "price": 3800
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "AOC Côtes du Rhône - Esprit Rouge - Brotte",
+          "description": "Red",
+          "sizes": [
+            {
+              "label": "75 cl",
+              "price": 3200
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Cuvée Disneyland® Paris - AOP La Clape Château L'Hospitalet - Bio - Demeter",
+          "description": "Red",
+          "sizes": [
+            {
+              "label": "15 cl",
+              "price": 800
+            },
+            {
+              "label": "75 cl",
+              "price": 3500
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "IGP Méditerranée - La Réserve - Estoublon - Bio",
+          "description": "Red",
+          "sizes": [
+            {
+              "label": "75 cl",
+              "price": 3400
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "U.S.A.: Beringer Classics - Cabernet Sauvignon",
+          "description": "Red",
+          "sizes": [
+            {
+              "label": "75 cl",
+              "price": 3800
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "AOP Côtes de Provence Minuty - Prestige rosé",
+          "description": "Rosé",
+          "sizes": [
+            {
+              "label": "15 cl",
+              "price": 800
+            },
+            {
+              "label": "50 cl",
+              "price": 2500
+            },
+            {
+              "label": "75 cl",
+              "price": 3600
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "AOC Chablis - La Pierrelée - La Chablisienne",
+          "description": "White",
+          "sizes": [
+            {
+              "label": "15 cl",
+              "price": 950
+            },
+            {
+              "label": "37,5 cl",
+              "price": 2300
+            },
+            {
+              "label": "75 cl",
+              "price": 4300
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "AOP Sancerre - Château de Sancerre - Sauvignon blanc",
+          "description": "White",
+          "sizes": [
+            {
+              "label": "75 cl",
+              "price": 4900
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Cuvée Disneyland® Paris - AOP La Clape Château L'Hospitalet - Bio - Demeter",
+          "description": "White",
+          "sizes": [
+            {
+              "label": "15 cl",
+              "price": 800
+            },
+            {
+              "label": "75 cl",
+              "price": 3800
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "AOC Alsace - Gentil Hugel - Famille Hugel",
+          "description": "White",
+          "sizes": [
+            {
+              "label": "75 cl",
+              "price": 4100
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "U.S.A: Diamond Collection - Francis Coppola - Sauvignon blanc",
+          "description": "White",
+          "sizes": [
+            {
+              "label": "75 cl",
+              "price": 4900
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "note": "33 cl",
+      "items": [
+        {
+          "name": "Coca-Cola Original, Coca-Cola Zéro Sucres",
+          "price": 550
+        },
+        {
+          "name": "Coca-Cola Zéro Sucres Cherry",
+          "price": 550
+        },
+        {
+          "name": "Fanta Orange Sans Sucres, Sprite Sans Sucres",
+          "price": 550
+        },
+        {
+          "name": "Tropico Original",
+          "price": 550
+        },
+        {
+          "name": "FuzeTea Peach Black Tea",
+          "price": 550
+        },
+        {
+          "name": "Orange or apple juice 25 cl",
+          "price": 500
+        },
+        {
+          "name": "Perrier®",
+          "price": 430
+        }
+      ]
+    },
+    {
+      "name": "Mineral Water",
+      "items": [
+        {
+          "name": "Vittel®",
+          "sizes": [
+            {
+              "label": "50 cl",
+              "price": 450
+            },
+            {
+              "label": "100 cl",
+              "price": 550
+            }
+          ]
+        },
+        {
+          "name": "S.Pellegrino®",
+          "sizes": [
+            {
+              "label": "50 cl",
+              "price": 480
+            },
+            {
+              "label": "100 cl",
+              "price": 580
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

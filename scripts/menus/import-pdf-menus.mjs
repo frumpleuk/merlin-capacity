@@ -22,7 +22,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { PARKS } from "../../src/config.ts";
-import { ALL_PARK_DIRS, DATE_DIR, MENUS, parkDir, readJson, slug, venues, writeJson } from "./lib.mjs";
+import { ALL_PARK_DIRS, DATE_DIR, DLP_PARK_DIRS, MENUS, parkDir, readJson, slug, venues, writeJson } from "./lib.mjs";
 
 const UA = "merlin-capacity/0.1 (+https://themeparks.frumple.co.uk; park menu archive, contact via site)";
 const CACHE = path.join(os.tmpdir(), "park-menu-pdfs");
@@ -56,7 +56,8 @@ const wanted = process.argv.slice(2);
 const plan = [];
 for (const key of Object.keys(ALL_PARK_DIRS)) {
   if (wanted.length && !wanted.includes(key)) continue;
-  const park = PARKS.find((p) => p.key === key)?.label ?? key;
+  // Disney's two parks publish as one resort.
+  const park = key in DLP_PARK_DIRS ? "Disneyland Paris" : (PARKS.find((p) => p.key === key)?.label ?? key);
   const dir0 = parkDir(key);
   if (!fs.existsSync(dir0)) continue;
   for (const { dir, poi } of venues(dir0)) {

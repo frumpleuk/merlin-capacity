@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Flamingo Land",
+    "official": true,
+    "url": "https://www.flamingoland.co.uk/wp-content/uploads/2026/04/crumble-heaven-menu.pdf",
+    "sha256": "aaaf44f6c0da9f83f88e03d75f302b14c0289b0e769d93dd43a59149975e0dbc"
+  },
+  "sections": [
+    {
+      "name": "Choose Your Filling",
+      "note": "All served with crumble & hot custard",
+      "items": [
+        { "name": "Apple", "price": 800 },
+        { "name": "Apple & Cinnamon", "price": 800 },
+        { "name": "Apple & Blackberry", "price": 800 },
+        { "name": "Red Cherry", "price": 800 },
+        { "name": "Or just crumble and custard", "price": 600 }
+      ]
+    },
+    {
+      "name": "Add a Topping",
+      "items": [
+        { "name": "Chocolate & Oreo", "price": 250, "addOn": true },
+        { "name": "Caramel & Biscoff", "price": 250, "addOn": true },
+        { "name": "Toffee & Fudge", "price": 250, "addOn": true },
+        { "name": "Raspberry & Raspberry Pieces", "price": 250, "addOn": true }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        { "name": "Coke", "price": 320 },
+        { "name": "Diet Coke", "price": 300 },
+        { "name": "Fanta Orange", "price": 300 },
+        { "name": "Sprite", "price": 300 },
+        { "name": "Harrogate Water", "price": 250 },
+        { "name": "Simply Fruity", "price": 240 },
+        { "name": "Yorkshire Tea", "price": 270 },
+        { "name": "Nescafé Coffee", "price": 320 },
+        { "name": "Hot Chocolate", "price": 395 },
+        { "name": "Hot Chocolate Cream Marshmallows", "price": 450 }
+      ]
+    }
+  ]
+}

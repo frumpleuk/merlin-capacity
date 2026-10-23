@@ -90,6 +90,13 @@ async function capture(browser, url) {
 /** Ask the Wayback Machine to save `url` now. Returns the snapshot URL, or
  *  null when it declined (rate limit, robots, an error). */
 async function wayback(url) {
+  const got = await waybackOnce(url);
+  // A refusal is usually its rate limit: back off before the next one.
+  if (!got) await sleep(90_000);
+  return got;
+}
+
+async function waybackOnce(url) {
   try {
     const resp = await fetch(`https://web.archive.org/save/${url}`, {
       headers: { "user-agent": UA },
@@ -98,7 +105,7 @@ async function wayback(url) {
       redirect: "manual",
     });
     const loc = resp.headers.get("content-location") ?? resp.headers.get("location");
-    await sleep(6000); // anonymous Save Page Now allows a few a minute
+    await sleep(15_000); // anonymous Save Page Now allows a few a minute
     if (loc && /\/web\/\d{14}/.test(loc)) return new URL(loc, "https://web.archive.org").href;
     if (resp.status === 200) {
       const m = /\/web\/(\d{14})\//.exec(await resp.text());

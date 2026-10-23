@@ -12,7 +12,7 @@ import { runQueuePoll } from "./queues";
 import { runUptime } from "./reliability";
 import { refreshRestrictions } from "./restrictions";
 import { rebuildCatalog } from "./rides";
-import { backfill as backfillWeather, runDaily, runWeather } from "./weather";
+import { backfill as backfillWeather, runDaily, runWeather, scheduledLeft } from "./weather";
 import { refreshSpecialDays } from "./special-days";
 import type { Env } from "./types";
 
@@ -399,7 +399,9 @@ export default {
     }
 
     // Weather now: the hourly run, `?days=1` for the calendar's ten days alone,
-    // or `?backfill=1` for the backfill alone.
+    // or `?backfill=1` for the backfill alone, at most `&limit=` calls (default
+    // 150), leaving the rest of the day's scheduled calls alone. Repeat until
+    // `calls` comes back 0.
     // Every call counts against the same daily budget as the cron (weather.ts),
     // which is why /poll leaves weather out.
     if (url.pathname === "/weather") {
@@ -410,7 +412,13 @@ export default {
       if (!env.OPENWEATHER_KEY) return Response.json({ ok: false, error: "OPENWEATHER_KEY unset" });
       const done =
         url.searchParams.get("backfill") === "1"
-          ? await backfillWeather(env, PARKS, Date.now(), 0)
+          ? await backfillWeather(
+              env,
+              PARKS,
+              Date.now(),
+              scheduledLeft(PARKS, Date.now()),
+              Math.min(300, Math.max(1, Number(url.searchParams.get("limit") ?? 150))),
+            )
           : url.searchParams.get("days") === "1"
             ? await runDaily(env, PARKS, Date.now())
             : await runWeather(env, PARKS, Date.now());

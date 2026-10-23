@@ -369,13 +369,21 @@ export async function runWeather(env: Env, parks: ParkConfig[], scheduledTime: n
   const done = await spend(env, scheduledTime, jobs);
 
   if (hour === BACKFILL_HOUR) {
-    // What the rest of today's scheduled runs will need.
-    const hoursLeft = 23 - hour;
-    const dailyLeft = Math.floor((23 - hour) / DAILY_EVERY_H);
-    const reserve = hoursLeft * wp.length + dailyLeft * 2 * cp.length;
-    done.push(...(await backfill(env, parks, scheduledTime, reserve)));
+    done.push(...(await backfill(env, parks, scheduledTime, scheduledLeft(parks, scheduledTime))));
   }
   return done;
+}
+
+/** Calls the scheduled runs still to come this UTC day will make: what a
+ *  backfill must leave alone. */
+export function scheduledLeft(parks: ParkConfig[], nowMs: number): number {
+  const perHour = weatherParks(parks).length;
+  const perDaily = 2 * calendarParks(parks).length;
+  let n = 0;
+  for (let h = new Date(nowMs).getUTCHours() + 1; h < 24; h++) {
+    n += perHour + (h % DAILY_EVERY_H === 0 ? perDaily : 0);
+  }
+  return n;
 }
 
 const BACKFILL_HOUR = 3;
@@ -411,6 +419,9 @@ export async function backfill(
   parks: ParkConfig[],
   nowMs: number,
   reserve: number,
+  /** Most calls this pass; by hand, a few passes keep each request well inside
+   *  the Worker's subrequest limit. */
+  limit = Infinity,
 ): Promise<string[]> {
   if (!env.OPENWEATHER_KEY) return [];
   const jobs: Job[] = [];
@@ -454,7 +465,7 @@ export async function backfill(
   for (let i = 0; perPark.some((js) => i < js.length); i++)
     for (const js of perPark) if (i < js.length) jobs.push(js[i]);
 
-  return spend(env, nowMs, jobs, reserve);
+  return spend(env, nowMs, jobs.slice(0, limit), reserve);
 }
 
 /** The `YYYY-MM-DD.json` objects directly under `prefix`, as dates. */

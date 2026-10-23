@@ -61,7 +61,7 @@ Cron `2 * * * *`, its own invocation:
 
 Every call is reserved first against a per-UTC-day count in R2
 (`weather/budget.json`, limit 900). A 429 marks the day spent. `/weather?key=`
-runs the hourly job now; `&days=1` the calendar's ten days; `&backfill=1` runs the backfill with no reserve. All
+runs the hourly job now; `&days=1` the calendar's ten days; `&backfill=1` up to `&limit=` (default 150) backfill calls, leaving the rest of the day's scheduled calls alone. All
 count against the same budget, and `/poll` does not touch weather.
 
 ## Files

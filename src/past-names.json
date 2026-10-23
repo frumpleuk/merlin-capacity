@@ -1,0 +1,318 @@
+{
+  "alton_towers": {
+    "4225": {
+      "name": "Congo River Rapids",
+      "seen": "2026-08"
+    },
+    "4231": {
+      "name": "Battle Galleons",
+      "seen": "2026-08"
+    }
+  },
+  "chessington": {
+    "3949": {
+      "name": "KOBRA",
+      "seen": "2024-10"
+    },
+    "3950": {
+      "name": "Monkey Swinger",
+      "seen": "2024-10"
+    },
+    "3951": {
+      "name": "Tuk Tuk Turmoil",
+      "seen": "2024-10"
+    },
+    "3955": {
+      "name": "Jungle Bus",
+      "seen": "2024-10"
+    },
+    "3962": {
+      "name": "Temple of Mayhem",
+      "seen": "2024-06"
+    },
+    "7441": {
+      "name": "River Rafts",
+      "seen": "2026-09"
+    },
+    "8665": {
+      "name": "The Mis-Adventures of WILF & VIOLET and Meet & Greet",
+      "seen": "2024-10"
+    },
+    "8667": {
+      "name": "Enchanted Hollow: Trick or Treat",
+      "seen": "2024-10"
+    },
+    "9223": {
+      "name": "SEATOPIA presents Robin Hood 🏹🐟",
+      "seen": "2024-11"
+    },
+    "12622": {
+      "name": "Vile Villagers",
+      "seen": "2024-10"
+    },
+    "12894": {
+      "name": "Banyan - The Final Flame 🔥",
+      "seen": "2024-10"
+    },
+    "13799": {
+      "name": "Jingle Voices 🎵",
+      "seen": "2024-11"
+    },
+    "13802": {
+      "name": "CoComelon Christmas Fun ⭐🎄",
+      "seen": "2024-11"
+    },
+    "19425": {
+      "name": "The After Party",
+      "seen": "2024-10"
+    },
+    "19456": {
+      "name": "Fancy Dress Competition",
+      "seen": "2024-10"
+    },
+    "25923": {
+      "name": "Pumpkin Patch",
+      "seen": "2024-10"
+    },
+    "29218": {
+      "name": "SEATOPIA",
+      "seen": "2024-10"
+    },
+    "31162": {
+      "name": "The Gruffalo & Friends Meet and Greet",
+      "seen": "2024-09"
+    },
+    "32508": {
+      "name": "CoComelon Show and Meet & Greet",
+      "seen": "2024-10"
+    },
+    "32509": {
+      "name": "Silent Disco",
+      "seen": "2024-10"
+    },
+    "32994": {
+      "name": "Mysterious Marine Life",
+      "seen": "2024-10"
+    },
+    "32995": {
+      "name": "Ascarium",
+      "seen": "2024-10"
+    },
+    "33018": {
+      "name": "Witch Meet & Greet",
+      "seen": "2024-10"
+    },
+    "33433": {
+      "name": "Gruffalo Meet & Greet",
+      "seen": "2024-10"
+    },
+    "33822": {
+      "name": "Elf Sparkle's Selfie Trail",
+      "seen": "2024-11"
+    },
+    "34159": {
+      "name": "Snowy's Conservation Crew",
+      "seen": "2024-11"
+    },
+    "34691": {
+      "name": "Holly Jolly Bites",
+      "seen": "2025-12"
+    }
+  },
+  "gardaland": {
+    "6349": {
+      "name": "Colorado Boat",
+      "seen": "2026-09"
+    },
+    "6362": {
+      "name": "Baby Corsaro",
+      "seen": "2025-01"
+    },
+    "6364": {
+      "name": "Baby Cavalli",
+      "seen": "2025-01"
+    },
+    "21882": {
+      "name": "Il Bosco degli Gnomi",
+      "seen": "2025-01"
+    },
+    "25935": {
+      "name": "Cinema 4D - IT: The 4D Experience® - Scary Fridays",
+      "seen": "2023-10"
+    }
+  },
+  "knoebels": {
+    "15304": {
+      "name": "Cub Cars",
+      "seen": "2023-11"
+    },
+    "15415": {
+      "name": "Super Round-Up",
+      "seen": "2025-03"
+    }
+  },
+  "legoland": {
+    "4808": {
+      "name": "Drench Towers",
+      "seen": "2026-08"
+    },
+    "4818": {
+      "name": "Splash Safari",
+      "seen": "2026-05"
+    },
+    "9487": {
+      "name": "Meet our Festive LEGOLAND® Nutcracker in Knights Kingdom",
+      "seen": "2025-12"
+    },
+    "11535": {
+      "name": "LEGO® Festival: Playtime with Hopsy",
+      "seen": "2026-08"
+    },
+    "14857": {
+      "name": "Meet your favourite Monsters",
+      "seen": "2025-10"
+    },
+    "16531": {
+      "name": "LEGO® Festival: Master Model Builder Show",
+      "seen": "2026-08"
+    },
+    "19235": {
+      "name": "LEGO® Festival: Peely Party",
+      "seen": "2025-05"
+    },
+    "21783": {
+      "name": "LEGO® NINJAGO®: Master of the 4th Dimension",
+      "seen": "2024-08"
+    },
+    "21784": {
+      "name": "LEGO® City 4D: Officer in Pursuit!",
+      "seen": "2025-12"
+    },
+    "23144": {
+      "name": "LEGO® Festival: Battle of the Bands Show",
+      "seen": "2026-08"
+    },
+    "24673": {
+      "name": "LEGO® DREAMZzz 4D - Z-Blob Rescue Rush",
+      "seen": "2025-12"
+    },
+    "27986": {
+      "name": "Meet & Greet with Duke Detain",
+      "seen": "2025-08"
+    },
+    "28103": {
+      "name": "LEGO® Friends 4D: Alien Invasion",
+      "seen": "2025-12"
+    },
+    "45251": {
+      "name": "Elf Training Academy",
+      "seen": "2025-12"
+    },
+    "45252": {
+      "name": "Festival of Flurries",
+      "seen": "2025-12"
+    },
+    "50972": {
+      "name": "LEGO® Festival: LEGO® Pokémon™ Trainer Centre",
+      "seen": "2026-08"
+    }
+  },
+  "legoland_california": {
+    "5764": {
+      "name": "Dune Raiders",
+      "seen": "2026-07"
+    },
+    "5810": {
+      "name": "Sky Patrol",
+      "seen": "2025-10"
+    },
+    "5814": {
+      "name": "Splash Battle",
+      "seen": "2025-09"
+    },
+    "50977": {
+      "name": "LEGO® Pokémon™: Trainer Center VIRTUAL QUEUE",
+      "seen": "2026-07"
+    }
+  },
+  "legoland_deutschland": {
+    "50974": {
+      "name": "LEGO® Pokémon™: Trainer Center",
+      "seen": "2026-07"
+    }
+  },
+  "legoland_florida": {
+    "18548": {
+      "name": "Pirate River Quest",
+      "seen": "2025-07"
+    },
+    "50975": {
+      "name": "LEGO® Pokémon™ Trainer Center",
+      "seen": "2026-07"
+    }
+  },
+  "legoland_new_york": {
+    "50976": {
+      "name": "LEGO® Pokémon™: Trainer Center",
+      "seen": "2026-07"
+    }
+  },
+  "pleasurewood_hills": {
+    "45086": {
+      "name": "Cannonball Express",
+      "seen": "2026-02"
+    },
+    "45236": {
+      "name": "Woody Copters",
+      "seen": "2026-09"
+    },
+    "45494": {
+      "name": "Barnyard Whirl",
+      "seen": "2026-08"
+    },
+    "45497": {
+      "name": "Woody's Wheel",
+      "seen": "2026-08"
+    }
+  },
+  "thorpe_park": {
+    "3881": {
+      "name": "Vortex",
+      "seen": "2026-07"
+    },
+    "3882": {
+      "name": "Zodiac",
+      "seen": "2026-06"
+    },
+    "25861": {
+      "name": "Hell's Angels Show | Lucifer's Lair",
+      "seen": "2025-10"
+    },
+    "32679": {
+      "name": "IT: The 4D Experience® | Ages 15+",
+      "seen": "2025-10"
+    },
+    "36715": {
+      "name": "Amity Beach",
+      "seen": "2026-08"
+    },
+    "52478": {
+      "name": "Launch Pad",
+      "seen": "2026-09"
+    }
+  },
+  "tulleys": {
+    "17165": {
+      "name": "THE CELLAR IMPRISONED",
+      "seen": "2025-03"
+    },
+    "32850": {
+      "name": "THE CARVING",
+      "seen": "2026-01"
+    },
+    "43126": {
+      "name": "GLITCH",
+      "seen": "2026-01"
+    }
+  }
+}

@@ -1,5 +1,6 @@
 import { Unzip, UnzipInflate } from "fflate";
 import { ATTRACTIONS_API, USER_AGENT, type AttractionsConfig } from "./config";
+import PAST_NAMES from "./past-names.json";
 
 /** One grouping dimension a park offers for its rides. `by` picks the section
  *  styling: "thrill" ranks thrill-first with per-tier tones; "land" ties all
@@ -42,6 +43,10 @@ export interface RideMeta {
    *  more than one grouping (see `RideCatalog.groupDims`). Paulton's carries
    *  both {thrill, area}; single-grouping parks use `group` instead. */
   groups?: Record<string, string>;
+  /** The name is one this ride had before the park dropped it from its app
+   *  (see `withPastNames`). It may be retired, so it isn't seeded as closed all
+   *  day; it shows whenever its line posts data. */
+  pastName?: true;
 }
 
 /** The static join tables we keep from a park's content bundle: ride names and
@@ -78,6 +83,16 @@ function text(v: Localised | null | undefined): string | undefined {
   if (v == null) return undefined;
   if (typeof v === "string") return v;
   return v["en-GB"] ?? v["en-US"] ?? v.en ?? Object.values(v)[0];
+}
+
+/** A ride name as the park's app gives it, minus what's decoration: Legoland
+ *  Japan's map numbers ("①LEGO® Factory Tour") and Tulleys' launch-year tag
+ *  ("NEW FOR 2026 - HOUSE OF HADES"). Mirrored in scripts/past-names.mjs. */
+function cleanName(name: string | undefined): string | undefined {
+  return name
+    ?.replace(/^[\u2460-\u24ff\u2776-\u2793\u3251-\u325f\u32b1-\u32bf]\s*/u, "")
+    .replace(/^NEW FOR \d{4}\s*[-–:]\s*/i, "")
+    .trim();
 }
 
 const authHeader = (apiKey: string, token?: string) =>
@@ -118,7 +133,7 @@ export async function rebuildCatalog(
   now: number,
 ): Promise<RideCatalog | null> {
   try {
-    const fresh = await buildCatalog(bucket, park, cfg, now);
+    const fresh = withPastNames(await buildCatalog(bucket, park, cfg, now), park, await readCachedCatalog(bucket, park));
     await bucket.put(catalogKey(park), JSON.stringify(fresh), {
       httpMetadata: { contentType: "application/json" },
     });
@@ -126,6 +141,22 @@ export async function rebuildCatalog(
   } catch {
     return readCachedCatalog(bucket, park);
   }
+}
+
+/** Name the rides the current bundle no longer carries but whose queue lines
+ *  still post: a ride dropped from the app for a season, a renamed maze. The
+ *  name comes from the previous catalog (what we last saw it called), else from
+ *  src/past-names.json, which scripts/past-names.mjs fills from the public
+ *  archive of every bundle the park published. */
+function withPastNames(fresh: RideCatalog, park: string, prev: RideCatalog | null): RideCatalog {
+  const past = (PAST_NAMES as Record<string, Record<string, { name: string }>>)[park] ?? {};
+  for (const { item } of Object.values(fresh.queueLines)) {
+    const id = String(item);
+    if (fresh.items[id]) continue;
+    const name = prev?.items[id]?.name ?? past[id]?.name;
+    if (name) fresh.items[id] = { ...prev?.items[id], name, pastName: true };
+  }
+  return fresh;
 }
 
 /** Persist a park's ride catalog to R2. Used by the Attractions.io rebuild path
@@ -211,9 +242,7 @@ async function buildCatalog(
   const itemsOut: RideCatalog["items"] = {};
   for (const id of rideIds) {
     const it = byId.get(id);
-    // Legoland Japan prefixes each name with its map number, "①LEGO® Factory
-    // Tour"; that's the map's key, not the ride's name.
-    const name = text(it?.Name)?.replace(/^[\u2460-\u24ff\u2776-\u2793\u3251-\u325f\u32b1-\u32bf]\s*/u, "");
+    const name = cleanName(text(it?.Name));
     if (!it || !name) continue; // a few QueueLine.Item refs point at absent items
     const group = groupOf(it);
     const maxChest = parseMaxChest(text(it.RestrictionSummary));

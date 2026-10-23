@@ -61,8 +61,11 @@ grant_type=urn:accesso:oauth2:grant-type:anonymous&scope=anonymous openid servic
 - `Age Restriction`: `2+`, `6+`.
 - The area is `details[id=internalActivity].value.mountainArea` (Thomas Land,
   Frontier Falls, Adventure Cove, Main Street, Vikings; one ride says `Main`).
-- 33 rides appear in the status feed with a `status`. The other 7 tagged rides
-  have no area and no status and are left out.
+- 33 rides have a `status` object in the status feed overnight. The other 7
+  (Troublesome Trucks, Thor, Wave Swinger, Toby's Tram Express, Flynn's Fire
+  Rescue, Winston's Whistle-Stop Tours, Tidal Towers) are listed with no
+  `status` and no area; six are tagged `Wait Times: Real-Time`. They read as
+  closed until a status appears.
 
 ### Status
 

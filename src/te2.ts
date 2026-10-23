@@ -371,16 +371,18 @@ export async function fetchTe2Queues(
   for (const r of rows) {
     const ride = r.id ? meta.rides[r.id] : undefined;
     const rideId = r.id ? te2RideId(r.id) : null;
-    // POIs without a status (shops, food, and a few rides the app no longer
-    // tracks) carry nothing to log.
-    if (!ride || rideId == null || !r.status) continue;
+    if (!ride || rideId == null) continue;
+    // Seven rides (Troublesome Trucks, Thor, ...) list no status object at all
+    // overnight; six of them are tagged for real-time waits. They read as
+    // closed until one does.
+    const status = r.status ?? {};
 
     // Overnight every ride reads operationalStatus OPEN with isOpen false, so
     // OPEN alone doesn't mean running. DOWN is a breakdown: open but not
     // operational, so it counts as downtime.
-    const op = (r.status.operationalStatus ?? "").toUpperCase();
-    const running = op === "OPEN" && r.status.isOpen === true;
-    const wait = r.status.waitTime;
+    const op = (status.operationalStatus ?? "").toUpperCase();
+    const running = op === "OPEN" && status.isOpen === true;
+    const wait = status.waitTime;
     snapshot[`${rideId}:${rideId}`] = {
       rideId,
       queueLineId: rideId,

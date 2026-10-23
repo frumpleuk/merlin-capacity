@@ -1764,4 +1764,107 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
       youtube: "https://www.youtube.com/channel/UCPzOIA6SKdj4PwBGHfiPOzg",
     },
   },
+  // Independent - accesso store LG-DRAYTONMANOR (merchant 100) at
+  // lg-draytonmanor.tickets.draytonmanor.co.uk. The UK SnapWizardAdmission
+  // keyword isn't in its catalog, so booking uses the store's own keywords.
+  // Ride access is the Easy Access Service, which needs a Nimbus Access Card or
+  // a free Drayton Manor Digital Access Pass.
+  drayton_manor: {
+    website: "https://www.draytonmanor.co.uk/",
+    location: {
+      // Street address as the car parking terms give it; the find-us page
+      // shortens it to "Near Tamworth".
+      address: "Drayton Manor Resort, Drayton Manor Drive, Tamworth, Staffordshire",
+      postcode: "B78 3TW",
+      // The find-us page gives B78 3SA for sat navs.
+      query: "Drayton Manor Resort, B78 3SA",
+      // OpenStreetMap way 239162713 (amenity=parking, access=customers,
+      // parking=surface, no name), about 44,600 m2, by the Main Entrance: the lot
+      // the park map labels "Theme Park & Thomas Land Car Park". Coordinate is
+      // the polygon centroid.
+      drive: { lat: 52.613477, lon: -1.7180551, label: "the Theme Park & Thomas Land car park" },
+      directions: "https://www.draytonmanor.co.uk/plan-your-visit/find-us",
+      note: "Use B78 3SA in a sat nav. Parking is £9.90 a car added to your booking or £11.90 on the day; free for Gold, Diamond, Platinum and Ultimate annual passholders.",
+    },
+    booking: [
+      {
+        label: "Book tickets",
+        url: "https://lg-draytonmanor.tickets.draytonmanor.co.uk/packageList/keyword/Tickets",
+        note: "Day tickets and seasonal event tickets on the park's ticketing site",
+      },
+      {
+        label: "Ticket prices",
+        url: "https://www.draytonmanor.co.uk/day-tickets",
+        note: "Dated, Adult & Toddler, Flexi and group tickets",
+      },
+      {
+        label: "Fast Pass",
+        url: "https://www.draytonmanor.co.uk/tickets/extras/fast-pass",
+        note: "Silver £26.90 (3 rides), Gold £39.90 (5 rides), Platinum £99.99 (unlimited) - entry not included, collected from Guest Services",
+      },
+      {
+        label: "Annual passes",
+        url: "https://www.draytonmanor.co.uk/tickets/annual-pass",
+        note: "Silver and Gold, paid in full or monthly - Gold includes parking",
+      },
+      {
+        label: "Passholder Hub",
+        url: "https://www.draytonmanor.co.uk/tickets/annual-pass/passholder-hub",
+        note: "Annual passholders reserve their visit dates here",
+      },
+    ],
+    orders: [findOrder("https://lg-draytonmanor.tickets.draytonmanor.co.uk", "Apple or Google Wallet")],
+    rideAvailability: rideAvailability("https://www.draytonmanor.co.uk/ride-availability"),
+    // Our hours come from the app's API, not this page.
+    openingTimes: {
+      label: "Opening times",
+      url: "https://www.draytonmanor.co.uk/plan-your-visit/opening-times",
+      note: "The park's own calendar",
+    },
+    access: [
+      {
+        label: "Accessibility",
+        url: "https://www.draytonmanor.co.uk/plan-your-visit/accessibility",
+        note: "Easy Access Service (daily ride allowance, not on The Haunting) and Essential Companion tickets, both through Nimbus",
+      },
+      {
+        label: "Apply via Access Card",
+        url: "https://app.accesscard.online/apply/drayton-manor/form/",
+        note: "Free Drayton Manor Digital Access Pass, or a £15 Nimbus Access Card",
+      },
+      {
+        label: "Access guide",
+        url: "https://www.draytonmanor.co.uk/fileadmin/user_upload/drayton_manor/plan-your-visit/accessibility/access-guide-2025.pdf",
+        note: "PDF",
+      },
+      {
+        label: "Ride accessibility chart",
+        url: "https://www.draytonmanor.co.uk/fileadmin/user_upload/drayton_manor/plan-your-visit/accessibility/accessibility-guide-chart-2025.pdf",
+        note: "PDF",
+      },
+    ],
+    photos: [
+      {
+        label: "Ride photos",
+        url: "https://www.draytonmanor.co.uk/tickets/extras/ride-photos",
+        note: "Photo Pass: 4 photos, keyrings or magnets plus their digital copies. On Gold Rush, The Wave, Stormforce 10, Accelerator, Jormungandr, Sleipnir, Troublesome Trucks and Sodor Classic Cars",
+      },
+    ],
+    apps: [
+      {
+        name: "Drayton Manor Resort",
+        ios: appStore("drayton-manor-resort", "6793566826"),
+        android: playStore("com.accesso.draytonmanor"),
+        note: "Live queue times, plus tickets and annual passes in a digital wallet",
+      },
+    ],
+    social: {
+      facebook: "https://www.facebook.com/draytonmanor/",
+      instagram: "https://www.instagram.com/draytonmanor/",
+      tiktok: "https://www.tiktok.com/@drayton_manor",
+      x: "https://x.com/draytonmanor",
+      youtube: "https://www.youtube.com/@DraytonManorResort",
+      linkedin: "https://www.linkedin.com/company/drayton-manor-resort/",
+    },
+  },
 };

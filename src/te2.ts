@@ -15,7 +15,8 @@ import type { QueueObs, QueueSnapshot } from "./types";
  * reused until it is near expiry (an hour), never minted per poll.
  *
  * Three reads:
- *   - `pois/status`: live state per POI, `{isOpen, operationalStatus, waitTime}`;
+ *   - `pois/status`: live state per POI, `{isOpen, operationalStatus, waitTime}`
+ *     (`operationalStatus` is the signal; Drayton posts no waits);
  *   - `pois/`: the catalog (names, Ride Type and height tags, area), refreshed
  *     once a day with today's window;
  *   - `venue-hours` + `calendars/events`: the opening calendar.
@@ -317,7 +318,7 @@ interface StatusRow {
   status?: {
     isOpen?: boolean;
     operationalStatus?: string; // OPEN | DOWN | CLOSED | ...
-    waitTime?: number | null;
+    waitTime?: number | string | null;
   };
 }
 
@@ -367,29 +368,36 @@ export async function fetchTe2Queues(
   const rows = (await resp.json().catch(() => null)) as StatusRow[] | null;
   if (!Array.isArray(rows)) return fail(resp.status);
 
+  // Minutes since `${today}T00:00:00Z`, the frame meta.window is in.
+  const nowMin = (now - Date.parse(`${today}T00:00:00Z`)) / 60_000;
+  const inWindow = !!meta.window && nowMin >= meta.window.open && nowMin < meta.window.close;
+
   const snapshot: QueueSnapshot = {};
   for (const r of rows) {
     const ride = r.id ? meta.rides[r.id] : undefined;
     const rideId = r.id ? te2RideId(r.id) : null;
     if (!ride || rideId == null) continue;
-    // Seven rides (Troublesome Trucks, Thor, ...) list no status object at all
-    // overnight; six of them are tagged for real-time waits. They read as
-    // closed until one does.
+    // Seven rides (Troublesome Trucks, Thor, ...) list no status object at all;
+    // six of them are tagged for real-time waits. They read as closed.
     const status = r.status ?? {};
 
-    // Overnight every ride reads operationalStatus OPEN with isOpen false, so
-    // OPEN alone doesn't mean running. DOWN is a breakdown: open but not
-    // operational, so it counts as downtime.
+    // As the app reads it (resolvePoiStatus): operationalStatus decides, and
+    // isOpen, false all day, is ignored. Every ride reads OPEN overnight too,
+    // so OPEN only counts as running inside today's opening hours. HOLD,
+    // DELAYED, DOWN and TEMPORARILY_CLOSED are open but not running.
     const op = (status.operationalStatus ?? "").toUpperCase();
-    const running = op === "OPEN" && status.isOpen === true;
-    const wait = status.waitTime;
+    const running = inWindow && op === "OPEN";
+    const down =
+      inWindow && (["HOLD", "DELAYED", "DOWN", "TEMPORARILY_CLOSED"].includes(op) || op.includes("MINUTES"));
+    const raw = status.waitTime;
+    const wait = typeof raw === "number" ? raw : typeof raw === "string" && /^\d+$/.test(raw.trim()) ? Number(raw) : null;
     snapshot[`${rideId}:${rideId}`] = {
       rideId,
       queueLineId: rideId,
       lineType: "physical_main",
-      queueTime: running && typeof wait === "number" && Number.isFinite(wait) ? Math.max(0, Math.round(wait)) : null,
+      queueTime: running && wait != null && Number.isFinite(wait) ? Math.max(0, Math.round(wait)) : null,
       status: null,
-      isOpen: running || op === "DOWN",
+      isOpen: running || down,
       isOperational: running,
     } satisfies QueueObs;
     catalog.items[String(rideId)] = ride;

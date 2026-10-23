@@ -69,10 +69,19 @@ grant_type=urn:accesso:oauth2:grant-type:anonymous&scope=anonymous openid servic
 
 ### Status
 
-- Overnight (01:00) every ride reads `operationalStatus: OPEN` with
-  `isOpen: false` and no `waitTime`, so OPEN alone does not mean running.
-- The worker counts a ride as running when `operationalStatus` is OPEN and
-  `isOpen` is true, and DOWN as a breakdown.
+- `isOpen` is false for every ride all day, open or closed (checked 2026-10-23
+  at 12:55 with the park open), and the app ignores it.
+- `operationalStatus` is live: at 12:55 most rides read OPEN, River Rapids and
+  the water rides CLOSED. Overnight every ride reads OPEN.
+- No ride carries a wait. `pois/status` has no `waitTime`; the
+  `internalLegacyCurrentStatus` extension on `v2/pois?venueId=DMR_BG` sends
+  `waitTime: ""`.
+- The app (`resolvePoiStatus`) shows a wait only when `waitTime` is a number,
+  otherwise an Open or Closed pill from `operationalStatus`. It folds HOLD,
+  DELAYED and anything with MINUTES into Hold, TEMPORARILY_CLOSED into Closed.
+- The worker counts a ride as running when it reads OPEN inside today's
+  `venue-hours` window, and HOLD, DELAYED, DOWN or TEMPORARILY_CLOSED inside it
+  as open but not running. Outside the window every ride is closed.
 
 ### Hours
 

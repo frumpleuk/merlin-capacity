@@ -67,13 +67,15 @@ const isRunning = (s: QueueSample): boolean => s[2] === 1 && (s[3] ?? 1) === 1;
 /** The current wait while running, and the day's peak — the row summary. An
  *  open-but-unreported reading holds the last known wait (bridged), so a running
  *  ride reads as its last posted time rather than "Closed". */
-function lineStats(line: QueueLineSeries): { current: number | null; peak: number } {
+function lineStats(line: QueueLineSeries): { current: number | null; peak: number; running: boolean } {
   let current: number | null = null;
   let peak = 0;
   let lastW: number | null = null;
+  let running = false;
   for (const s of line.samples) {
     const w = s[1];
-    if (isRunning(s)) {
+    running = isRunning(s);
+    if (running) {
       if (w != null) {
         lastW = w;
         if (w > peak) peak = w;
@@ -84,7 +86,7 @@ function lineStats(line: QueueLineSeries): { current: number | null; peak: numbe
       lastW = null;
     }
   }
-  return { current, peak };
+  return { current, peak, running };
 }
 
 /** The projection's figures for this ride's day, when the file carries them. */
@@ -140,6 +142,9 @@ const rideNow = (ride: QueueRide): number | null => {
   return vals.length ? Math.max(...vals) : null;
 };
 
+/** Whether any of the ride's lines is running now, wait posted or not. */
+const rideRunning = (ride: QueueRide): boolean => ride.lines.some((l) => lineStats(l).running);
+
 export type SortMode = "now" | "median" | "peak" | "uptime" | "name";
 export type SortDir = "asc" | "desc";
 
@@ -147,15 +152,15 @@ export type SortDir = "asc" | "desc";
 export const defaultDir = (sort: SortMode): SortDir => (sort === "name" ? "asc" : "desc");
 
 const rideComparator =
-  (sort: SortMode, dir: SortDir, end?: number, parkWindow?: [number, number]) =>
+  (sort: SortMode, dir: SortDir, end?: number, parkWindow?: [number, number], watchedFrom?: number) =>
   (a: QueueRide, b: QueueRide) => {
     // Closed rides sink to the bottom regardless of direction — except when
     // sorting by Peak, where a since-closed ride's peak is still meaningful.
     // Closed rides sink, except on the columns whose figure survives a closure:
     // peak and median describe the day just had, uptime the weeks before it.
     if (sort !== "peak" && sort !== "median" && sort !== "uptime") {
-      const aClosed = rideNow(a) == null;
-      const bClosed = rideNow(b) == null;
+      const aClosed = !rideRunning(a);
+      const bClosed = !rideRunning(b);
       if (aClosed !== bClosed) return aClosed ? 1 : -1;
     }
     let asc: number;
@@ -167,7 +172,7 @@ const rideComparator =
           : sort === "median"
             ? rideMedian(r, end) ?? -1
             : sort === "uptime"
-              ? rideUptime(r, parkWindow, end) ?? -1
+              ? rideUptime(r, parkWindow, end, watchedFrom) ?? -1
               : ridePeak(r);
       asc = of(a) - of(b);
     }
@@ -206,10 +211,13 @@ function linePoints(samples: QueueSample[], domainStart?: number): LinePoint[] {
   if (domainStart != null && (samples.length === 0 || samples[0][0] > domainStart)) {
     pts.push({ t: domainStart, w: CLOSED_WAIT, closed: true });
   }
+  // A line that posts no wait all day (Drayton Manor) draws its running
+  // stretches at the baseline, so it still shows when the ride ran.
+  const noWaits = !samples.some((s) => isRunning(s) && s[1] != null);
   let lastW: number | null = null;
   for (const s of samples) {
     if (isRunning(s)) {
-      const v: number | null = s[1] != null ? s[1] : lastW; // bridge open-but-unreported
+      const v: number | null = s[1] != null ? s[1] : noWaits ? CLOSED_WAIT : lastW; // bridge open-but-unreported
       if (v == null) continue; // no level yet — nothing to draw
       pts.push({ t: s[0], w: v, closed: false });
       lastW = v;
@@ -694,12 +702,14 @@ function rideUptime(
   ride: QueueRide,
   parkWindow?: [number, number],
   end?: number,
+  watchedFrom?: number,
 ): number | null {
   const pre = daySummary(ride);
   if (pre) return pre.up + pre.down > 0 ? pre.up / (pre.up + pre.down) : null;
   const line = ride.lines.find((l) => (l.type ?? "").includes("main")) ?? ride.lines[0];
   if (!line) return null;
-  const from = Math.max(ride.open ?? parkWindow?.[0] ?? 0, parkWindow?.[0] ?? 0);
+  // Before watchedFrom the state is unknown, not closed (as in the projection).
+  const from = Math.max(ride.open ?? parkWindow?.[0] ?? 0, parkWindow?.[0] ?? 0, watchedFrom ?? -Infinity);
   const to = Math.min(ride.close ?? parkWindow?.[1] ?? 0, end ?? parkWindow?.[1] ?? 0);
   if (!(to > from)) return null;
   const inWindow = line.samples.filter((x) => x[0] < to);
@@ -794,10 +804,11 @@ function RideRow({
   onToggle: () => void;
 }) {
   const main = ride.lines[0];
-  const stats = main ? lineStats(main) : { current: null, peak: 0 };
+  const stats = main ? lineStats(main) : { current: null, peak: 0, running: false };
   const peak = ridePeak(ride);
   const med = rideMedian(ride, seriesEnd);
-  const up = rideUptime(ride, parkWindow, seriesEnd);
+  const watchedFrom = useContext(WatchedFromContext);
+  const up = rideUptime(ride, parkWindow, seriesEnd, watchedFrom);
   // The park's own closed notice, as of the latest sample — a scheduled opening
   // ("Scheduled to open at 11:00") or a closure reason ("Under maintenance",
   // "Closed all day"). "Closed all day" is meaningful ONLY as an explicit signal
@@ -854,6 +865,10 @@ function RideRow({
               <strong className="q-now-num">{stats.current}</strong>
               <span className="q-unit">min</span>
             </>
+          ) : stats.running ? (
+            <span className="q-open" title="Running, no wait time posted">
+              Open
+            </span>
           ) : (
             <span className="q-closed">
               {note ?? "Closed"}
@@ -992,6 +1007,7 @@ function sectionsOf(
   byLand: boolean,
   end?: number,
   parkWindow?: [number, number],
+  watchedFrom?: number,
 ): Section[] {
   const map = new Map<string, Section>();
   for (const ride of rides) {
@@ -1008,7 +1024,7 @@ function sectionsOf(
     sec.rides.push(ride);
   }
   const secs = [...map.values()];
-  const cmp = rideComparator(sort, dir, end, parkWindow);
+  const cmp = rideComparator(sort, dir, end, parkWindow, watchedFrom);
   for (const s of secs) s.rides.sort(cmp);
   return secs.sort((a, b) => a.rank - b.rank || a.title.localeCompare(b.title));
 }
@@ -1162,7 +1178,7 @@ export function QueueList({
           rank: 0,
           tone: "",
           rides: [...rides].sort(
-            rideComparator(effectiveSort, effectiveDir, seriesEnd, parkWin),
+            rideComparator(effectiveSort, effectiveDir, seriesEnd, parkWin, file?.watchedFrom),
           ),
         },
       ];
@@ -1174,6 +1190,7 @@ export function QueueList({
       activeDim ? activeDim.by === "land" : file?.groupBy === "land",
       seriesEnd,
       parkWin,
+      file?.watchedFrom,
     );
   }, [file, effectiveSort, effectiveDir, activeDim, grouped, seriesEnd, parkWin]);
 
@@ -1238,7 +1255,7 @@ export function QueueList({
   if (!file || sections.length === 0)
     return <p className="empty">No queue data for {longDate(date)} yet.</p>;
 
-  const anyOpen = sections.some((s) => s.rides.some((r) => rideNow(r) != null));
+  const anyOpen = sections.some((s) => s.rides.some(rideRunning));
   const toggleSection = (key: string) =>
     setCollapsed((cur) => {
       const next = new Set(cur);

@@ -932,6 +932,9 @@ main.with-bar {
   display: inline-block;
   line-height: 1.15;
 }
+.q-open {
+  font-size: 13px;
+}
 .q-peak,
 .q-median,
 .q-uptime {

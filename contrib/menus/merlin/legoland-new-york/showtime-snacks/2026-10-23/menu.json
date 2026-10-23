@@ -1,0 +1,100 @@
+{
+  "date": "2026-10-23",
+  "unpriced": true,
+  "source": {
+    "name": "Legoland New York",
+    "official": true,
+    "url": "https://www.legoland.com/new-york/media/v4rdtzqm/showtime-snacks-2026-menu.pdf",
+    "sha256": "ad43ba5cbb0c27e6997db509e1fc5d7a8a4a3d2b3a676763e5cbe6aec776fdc5"
+  },
+  "sections": [
+    {
+      "name": "Showtime Snacks",
+      "note": "Add extra cheese for $1.50",
+      "items": [
+        {
+          "name": "Cookies & Cream Funnel Cake",
+          "description": "Fresh Funnel Cake topped with Crushed Cookies, Icing, Whipped Cream & Powdered Sugar.",
+          "price": null,
+          "kcal": 1120,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "Minifigure Popcorn Bucket",
+          "description": "Freshly popped Popcorn coated in Butter in a LEGO Minifgure Souvenir Bucket. Refill.",
+          "price": null,
+          "kcal": 480
+        },
+        {
+          "name": "Souvenir Popcorn",
+          "description": "Freshly popped Popcorn coated in Butter in a Souvenir Bucket. Refill.",
+          "price": null,
+          "kcal": 480,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "Fresh Funnel Cake",
+          "description": "Fresh Traditional Funnel Cake Sprinkled with Powdered Sugar.",
+          "price": null,
+          "kcal": 620,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "Ben's Jumbo Pretzel",
+          "description": "Salted Pretzel served with warm Cheese Sauce.",
+          "price": null,
+          "kcal": 643,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "Small Popcorn",
+          "description": "Freshly popped Popcorn coated in Butter.",
+          "price": null,
+          "kcal": 160,
+          "tags": [
+            "vg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "ICEE",
+          "description": "Cherry, Blue Raspberry, Coca-Cola.",
+          "price": null,
+          "kcal": 110
+        },
+        {
+          "name": "Bottled Sports Drink",
+          "description": "Powerade Mountain Berry Blast 20oz.",
+          "price": null
+        },
+        {
+          "name": "Bottled Lemonade",
+          "description": "Minute Maid Lemonade 20oz.",
+          "price": null
+        },
+        {
+          "name": "Bottled Soda",
+          "description": "Coca-Cola, Diet Coke, Sprite 20oz.",
+          "price": null
+        },
+        {
+          "name": "Bottled Water",
+          "description": "Dasani 20oz.",
+          "price": null
+        }
+      ]
+    }
+  ]
+}

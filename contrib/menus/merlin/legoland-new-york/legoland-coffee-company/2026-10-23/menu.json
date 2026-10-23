@@ -1,0 +1,244 @@
+{
+  "date": "2026-10-23",
+  "unpriced": true,
+  "source": {
+    "name": "Legoland New York",
+    "official": true,
+    "url": "https://www.legoland.com/new-york/media/4x2lr2ps/legoland-coffee-company-2026-menu.pdf",
+    "sha256": "f0c19ae619e4b3fcdaed27e09ffc3ac4a0bf6622c24e95c3d5e323c134d14545"
+  },
+  "sections": [
+    {
+      "name": "Bottled Beverages",
+      "items": [
+        {
+          "name": "Bottled Sports Drink",
+          "description": "Powerade Mountain Berry Blast 20oz.",
+          "price": null
+        },
+        {
+          "name": "Minute Maid Lemonade",
+          "price": null
+        },
+        {
+          "name": "Minute Maid Apple Juice",
+          "price": null
+        },
+        {
+          "name": "Bottled Milk",
+          "description": "Fairlife Chocolate Milk",
+          "price": null
+        },
+        {
+          "name": "Bottled Soda",
+          "description": "Coca-Cola, Diet Coke, Sprite, Fanta, Coca-Cola Zero Sugar",
+          "price": null
+        },
+        {
+          "name": "Bottled Water",
+          "description": "Dasani 20oz.",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        {
+          "name": "Cafe Mocha",
+          "sizes": [
+            {
+              "label": "Sm",
+              "price": null,
+              "kcal": 130
+            },
+            {
+              "label": "Lg",
+              "price": null,
+              "kcal": 200
+            }
+          ]
+        },
+        {
+          "name": "Chai Latte",
+          "sizes": [
+            {
+              "label": "Sm",
+              "price": null,
+              "kcal": 180
+            },
+            {
+              "label": "Lg",
+              "price": null,
+              "kcal": 240
+            }
+          ]
+        },
+        {
+          "name": "Cappuccino",
+          "sizes": [
+            {
+              "label": "Sm",
+              "price": null,
+              "kcal": 80
+            },
+            {
+              "label": "Lg",
+              "price": null,
+              "kcal": 90
+            }
+          ]
+        },
+        {
+          "name": "Latte",
+          "sizes": [
+            {
+              "label": "Sm",
+              "price": null,
+              "kcal": 100
+            },
+            {
+              "label": "Lg",
+              "price": null,
+              "kcal": 150
+            }
+          ]
+        },
+        {
+          "name": "Hot Tea",
+          "sizes": [
+            {
+              "label": "Sm",
+              "price": null
+            },
+            {
+              "label": "Lg",
+              "price": null
+            }
+          ]
+        },
+        {
+          "name": "Hot Chocolate",
+          "sizes": [
+            {
+              "label": "Sm",
+              "price": null,
+              "kcal": 150
+            },
+            {
+              "label": "Lg",
+              "price": null,
+              "kcal": 230
+            }
+          ]
+        },
+        {
+          "name": "Coffee",
+          "sizes": [
+            {
+              "label": "Sm",
+              "price": null,
+              "kcal": 3
+            },
+            {
+              "label": "Lg",
+              "price": null,
+              "kcal": 4
+            }
+          ]
+        },
+        {
+          "name": "Espresso Shot",
+          "price": null,
+          "kcal": 5
+        }
+      ]
+    },
+    {
+      "name": "Iced Drinks",
+      "note": "Milk substitutes available",
+      "items": [
+        {
+          "name": "Smoothies",
+          "price": null,
+          "kcal": 240
+        },
+        {
+          "name": "Iced Latte",
+          "price": null,
+          "kcal": 270
+        },
+        {
+          "name": "Iced Mocha",
+          "price": null,
+          "kcal": 300
+        },
+        {
+          "name": "Iced Chai",
+          "price": null,
+          "kcal": 340
+        },
+        {
+          "name": "Lemonade",
+          "price": null,
+          "kcal": 260
+        },
+        {
+          "name": "Iced Coffee",
+          "price": null,
+          "kcal": 5
+        },
+        {
+          "name": "Iced Tea",
+          "price": null,
+          "kcal": 240
+        }
+      ]
+    },
+    {
+      "name": "Add Flavor Shot",
+      "items": [
+        {
+          "name": "French Vanilla",
+          "price": null,
+          "addOn": true
+        },
+        {
+          "name": "Hazelnut",
+          "price": null,
+          "addOn": true
+        },
+        {
+          "name": "Caramel",
+          "price": null,
+          "addOn": true
+        },
+        {
+          "name": "Raspberry",
+          "price": null,
+          "addOn": true
+        },
+        {
+          "name": "Cold Foam",
+          "price": null,
+          "addOn": true
+        },
+        {
+          "name": "(SF) French Vanilla",
+          "price": null,
+          "addOn": true
+        },
+        {
+          "name": "(SF) Hazelnut",
+          "price": null,
+          "addOn": true
+        },
+        {
+          "name": "(SF) Caramel",
+          "price": null,
+          "addOn": true
+        }
+      ]
+    }
+  ]
+}

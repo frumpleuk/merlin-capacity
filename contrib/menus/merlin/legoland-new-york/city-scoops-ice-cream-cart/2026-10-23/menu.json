@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Legoland New York",
+    "official": true,
+    "url": "https://www.legoland.com/new-york/media/rlqc0vor/food-carts-2026-menu-2.pdf",
+    "sha256": "9558a661acce347ceaa001f1ae944bd8059b452add2a628db795de065af5902a",
+    "stated": "2026"
+  },
+  "sections": [
+    {
+      "name": "Sweet Treats",
+      "note": "Prices do not include tax",
+      "items": [
+        { "name": "Assorted Ice Cream", "description": "A fresh selection of Hershey's hand crafted ice creams", "price": 799, "kcal": 230 },
+        { "name": "Frozen Fruit Bars", "price": 599, "kcal": 170, "tags": ["vg"] },
+        { "name": "Bottled Water", "description": "Dasani 20 oz.", "price": 549 }
+      ]
+    }
+  ]
+}

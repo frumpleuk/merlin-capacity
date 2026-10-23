@@ -1,0 +1,136 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Legoland Korea",
+    "official": true,
+    "url": "https://www.legoland.kr/media/g3aalhvi/marina-snacks-menuboard.pdf",
+    "sha256": "9b510d2824e1a9c4cd08ca0627a9073fc980762768baf673f0f0ab8890800ada"
+  },
+  "sections": [
+    {
+      "name": "Marina Signature",
+      "items": [
+        {
+          "name": "WAVE EAT",
+          "sizes": [
+            {
+              "label": "Soft Drink",
+              "price": 11900
+            },
+            {
+              "label": "Slush",
+              "price": 12900
+            },
+            {
+              "label": "Lager",
+              "price": 16900
+            }
+          ]
+        },
+        {
+          "name": "Marina Shrimp",
+          "sizes": [
+            {
+              "label": "Single",
+              "price": 15900
+            },
+            {
+              "label": "Soft Drink",
+              "price": 18900
+            },
+            {
+              "label": "Lager",
+              "price": 22900
+            }
+          ]
+        },
+        {
+          "name": "Boneless Chicken, Tteokbokki and Soft Drink",
+          "price": 13900
+        },
+        {
+          "name": "CITY Traffic Light Fish Cake Udon and Rice Ball",
+          "price": 12900
+        },
+        {
+          "name": "Cup Cold Noodle and Rice Ball",
+          "price": 11900
+        }
+      ]
+    },
+    {
+      "name": "Side Menu",
+      "items": [
+        {
+          "name": "Skewered Fish Cake and Mini Tteokbokki",
+          "price": 7900
+        },
+        {
+          "name": "Big Sausage Bites",
+          "price": 6900
+        },
+        {
+          "name": "Big Cheese Hotdog",
+          "price": 6900
+        },
+        {
+          "name": "Plain Popcorn",
+          "price": 4500
+        }
+      ]
+    },
+    {
+      "name": "Drink",
+      "items": [
+        {
+          "name": "Soft Drink",
+          "description": "Coke, Coke Zero, Sprite, Fanta Orange",
+          "price": 3300
+        },
+        {
+          "name": "Slush",
+          "price": 4900
+        },
+        {
+          "name": "Iced Coffee",
+          "price": 5500
+        },
+        {
+          "name": "Lager Draft Beer",
+          "price": 8000,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Bottled Drink",
+          "description": "Minute Maid Orange, Minute Maid Grape, Toreta",
+          "price": 3500
+        },
+        {
+          "name": "Bottled Water",
+          "price": 1600
+        }
+      ]
+    },
+    {
+      "name": "LEGOLAND® Tumbler",
+      "items": [
+        {
+          "name": "LEGOLAND® Tumbler",
+          "price": 9900
+        },
+        {
+          "name": "Soft Drink Refill",
+          "price": 2300,
+          "addOn": true
+        },
+        {
+          "name": "Slush Refill",
+          "price": 3900,
+          "addOn": true
+        }
+      ]
+    }
+  ]
+}

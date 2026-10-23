@@ -1,0 +1,238 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Legoland California",
+    "official": true,
+    "url": "https://www.legoland.com/california/media/coebohrv/ufo-menu.pdf",
+    "sha256": "5736555797abaa5426f7fdae94faed833002dbac2b493b83e0cbeebfd4efd4e8"
+  },
+  "unpriced": true,
+  "sections": [
+    {
+      "name": "Coca-Cola Galaxy Exclusive Collector Cup",
+      "items": [
+        {
+          "name": "Collector Cup",
+          "sizes": [
+            {
+              "label": "One Day",
+              "price": 2399
+            },
+            {
+              "label": "Two Consecutive Days",
+              "price": 2569
+            }
+          ]
+        },
+        {
+          "name": "Daily Reactivation",
+          "price": 1129,
+          "addOn": true
+        }
+      ]
+    },
+    {
+      "name": "Stellar Crusts",
+      "items": [
+        {
+          "name": "Meteor Margherita Pizza",
+          "description": "Crispy artisan crust with tomato sauce, fresh mozzarella, Parmigiano-Reggiano, a drizzle of herb-infused oil & basil.",
+          "price": null
+        },
+        {
+          "name": "Red Star Pepperoni Pizza",
+          "description": "Crispy artisan crust with tomato sauce, a blend of mozzarella cheeses, sliced pepperoni & a drizzle of herb-infused oil.",
+          "price": null
+        },
+        {
+          "name": "Stellar Caesar Salad",
+          "description": "Romaine lettuce, Parmesan cheese, crispy croutons & creamy caesar dressing. Option to add space chicken",
+          "price": null
+        },
+        {
+          "name": "Orion's Chicken Pesto Pizza",
+          "description": "Crispy artisan crust with shredded chicken, mozzarella & Parmigiano-Reggiano, pesto, onions, basil & a drizzle of herb-infused oil.",
+          "price": null
+        },
+        {
+          "name": "Moon Kids Pizza",
+          "description": "Your choice of Star Pepperoni or Cheese pizza in a signature kids kit.",
+          "price": null,
+          "tags": [
+            "kids"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cocina Cósmica",
+      "items": [
+        {
+          "name": "Queso Cosmos Tacos",
+          "description": "Three tacos with choice of chicken, steak or plant-based steak, melty Jack Feathered cheese, topped with pickled red onions, radishes, cilantro in a corn tortilla with tortilla chips & beef consommé.",
+          "price": null
+        },
+        {
+          "name": "Crispy Crater Tacos",
+          "description": "Three tacos with choice of chicken, steak or plant-based steak, shredded lettuce, Oaxacan cheese, pico de gallo and cilantro crema in a crispy corn tortilla with tortilla chips.",
+          "price": null
+        },
+        {
+          "name": "UFO Kids Quesadilla Meal Kit",
+          "description": "A flying saucer shaped chicken or cheese quesadilla in a signature kids kit.",
+          "price": null,
+          "tags": [
+            "kids"
+          ]
+        },
+        {
+          "name": "Supernova Nachos",
+          "description": "Crispy tortilla chips topped with shredded chicken, cheese sauce, guacamole, pico de gallo & cilantro lime crema.",
+          "price": null
+        },
+        {
+          "name": "Astro Chips & Guac",
+          "description": "House made tortilla chips & alien green scratch guacamole.",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Astro Grill",
+      "items": [
+        {
+          "name": "Blaster-Seared Steak Sandwich & Chips",
+          "description": "Prime cuts from the Nebula Ranch with sauteed peppers & onions & nacho cheese on an artisanal roll. Served with kettle chips.",
+          "price": null
+        },
+        {
+          "name": "Rocket Bacon Cheeseburger & Fries",
+          "description": "Signature Angus beef patties, American cheese, maple bacon & special galaxy sauce on a fresh bun. Served with fries.",
+          "price": null
+        },
+        {
+          "name": "Beyond the Stars Burger & Fries",
+          "description": "Featuring Beyond Burger, a plant-based patty topped with guacamole & special galaxy sauce on a fresh bun. Served with fries.",
+          "price": null
+        },
+        {
+          "name": "Galactic Hamburger & Fries",
+          "description": "Signature Angus beef patties and special galaxy sauce on a fresh bun. Served with fries. Cheese option available.",
+          "price": null
+        },
+        {
+          "name": "Out of this World Loaded Fries",
+          "description": "Fries topped with Nebula Ranch's steak, colorful sauteed peppers & onions, smothered in melty nacho cheese & galaxy sauce.",
+          "price": null
+        },
+        {
+          "name": "Mini Astro Burger Kids Meal",
+          "description": "Signature Angus beef patty on a fresh bun. Cheese option available.",
+          "price": null,
+          "tags": [
+            "kids"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Crater Chicken",
+      "items": [
+        {
+          "name": "Lunar Strips & Fries",
+          "description": "Chicken strips (4) with fries & colorful dipping sauces.",
+          "price": null
+        },
+        {
+          "name": "Cosmic Kids Strips Meal",
+          "description": "Chicken strips (3) in a signature kids kit.",
+          "price": null,
+          "tags": [
+            "kids"
+          ]
+        },
+        {
+          "name": "Solar Garden Salad",
+          "description": "Freshly made garden salad with a choice of ranch, Italian, caesar or balsamic vinaigrette dressing.",
+          "price": null,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Blazing Comet Chicken Sandwich & Fries",
+          "description": "A crispy chicken breast tossed in spicy star dust spice, pepper jack cheese, spicy sauce, purple slaw & dill pickles. Served with fries.",
+          "price": null
+        },
+        {
+          "name": "Crater Fries",
+          "description": "Large side of fries.",
+          "price": null,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Stardust Sips & Sweets",
+      "items": [
+        {
+          "name": "Stardust Soda in Souvenir Cup",
+          "description": "Sparkling burst of cosmic flavor served in a collectible galaxy cup.",
+          "price": null
+        },
+        {
+          "name": "Beer & Wine",
+          "description": "Assorted selection.",
+          "price": null,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Spaceport Fruit Cups",
+          "description": "Fresh cut fruit, with an assortment in your favorite LEGO® shapes.",
+          "price": null
+        },
+        {
+          "name": "Galactic Brownies",
+          "description": "Rich, fudgy brownie topped with a shimmering mix of gold, silver, violet, & royal blue sparkle dust.",
+          "price": null
+        },
+        {
+          "name": "Assorted Galaxy Macarons",
+          "description": "Galaxy Macarons: Themed cookies n' cream filled macarons.",
+          "price": null
+        },
+        {
+          "name": "Signature LEGO® Alien Cookie",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Nebula Noodles",
+      "items": [
+        {
+          "name": "Ultra Udon Noodles",
+          "description": "Udon noodles tossed with savory ginger garlic sauce, vegetables & choice of steak, chicken or tofu.",
+          "price": null
+        },
+        {
+          "name": "Planet Pad Thai",
+          "description": "Rice noodles with colorful vegetables, egg, a classic salty sweet sauce & choice of steak, chicken or tofu.",
+          "price": null
+        },
+        {
+          "name": "Little Star Noodle Meal Kit",
+          "description": "A Jr. traveler portion of colorful udon noodles & choice of chicken or tofu in a signature kids kit.",
+          "price": null,
+          "tags": [
+            "kids"
+          ]
+        }
+      ]
+    }
+  ]
+}

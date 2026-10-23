@@ -1,0 +1,108 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Legoland California",
+    "official": true,
+    "url": "https://www.legoland.com/california/media/p10pt15t/satellite-bites-menu.pdf",
+    "sha256": "b83c93c5e5c929cf2f0cfbc36dcf78ff1fc6b304a006f9cdaca75bde23884276"
+  },
+  "unpriced": true,
+  "sections": [
+    {
+      "name": "Satellite Bites",
+      "items": [
+        {
+          "name": "Quantum Cheeseburger Combo",
+          "description": "Classic beef patty topped with American cheese, served with fries. 1160-1420 calories",
+          "price": null
+        },
+        {
+          "name": "Magnetic Hamburger Combo",
+          "description": "Classic beef patty, served with fries. 1060-1320 calories",
+          "price": null
+        },
+        {
+          "name": "Kid's Orbit Kit",
+          "description": "Choice of a Hamburger or Cheeseburger, Chips, and Juice drink. 640-890 calories",
+          "price": null,
+          "tags": [
+            "kids"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        {
+          "name": "Chips",
+          "description": "200-350 cal",
+          "price": null
+        },
+        {
+          "name": "Fries",
+          "price": null,
+          "kcal": 340
+        },
+        {
+          "name": "Brownie",
+          "price": null,
+          "kcal": 540
+        }
+      ]
+    },
+    {
+      "name": "Hydration Pods",
+      "items": [
+        {
+          "name": "Fountain Fuel Soda",
+          "description": "0-260 cal",
+          "price": null
+        },
+        {
+          "name": "Organic Reactor Milk",
+          "description": "110-150 cal",
+          "price": null
+        },
+        {
+          "name": "Large Water",
+          "price": null,
+          "kcal": 0
+        },
+        {
+          "name": "Small Water",
+          "price": null,
+          "kcal": 0
+        }
+      ]
+    },
+    {
+      "name": "Souvenir Soda Pack",
+      "items": [
+        {
+          "name": "1-Day Access Module",
+          "description": "0-260 cal",
+          "price": null
+        },
+        {
+          "name": "2-Day Misson Pack",
+          "description": "0-260 cal",
+          "price": null
+        },
+        {
+          "name": "Extra Day Upload",
+          "description": "0-260 cal",
+          "price": null
+        },
+        {
+          "name": "Kid's Module (Mini-Canister)",
+          "description": "0-150 cal",
+          "price": null,
+          "tags": [
+            "kids"
+          ]
+        }
+      ]
+    }
+  ]
+}

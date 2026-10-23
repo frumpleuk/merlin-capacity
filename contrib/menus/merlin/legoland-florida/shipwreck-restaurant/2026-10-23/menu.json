@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Legoland Florida",
+    "official": true,
+    "url": "https://www.legoland.com/florida/media/5nynlvlz/shipwreck-menu-1.pdf",
+    "sha256": "35d245d25b357e1f7a4bf300ac8e1f518be283d48c47baf67645875115573d97"
+  },
+  "sections": [
+    {
+      "name": "Dinner Menu",
+      "note": "Family-style dinner with an all ye care to feast menu. Each family will receive a three-course meal. Soft drinks included. 18% automatic gratuity will be added to parties of 6 guests or more",
+      "items": [
+        {
+          "name": "Three-course family-style dinner",
+          "description": "Salad: mixed green salad with toasted almonds, dried cranberries, fresh tomatoes, fresh apples, red onion and asiago cheese tossed with homemade poppy seed dressing; vegan option available upon request (65 kcal). Main course, one platter for the family to share: Pirate Platter (slow-smoked beef brisket, BBQ pulled pork, spare ribs, rotisserie chicken, smoked sausage; 1450 kcal), Seadog Skillet (grilled marinated flank steak, herb roasted pork tenderloin, blackened fish, sauteed garlic citrus shrimp, rotisserie chicken; 1100 kcal) or Plant Based Skillet (plant based meatloaf, crispy teriyaki tofu & broccoli, grilled cauliflower steaks, vegetable dumplings; 700 kcal). Dessert: Pirate Captain's Delight, warm chocolate chip cookie skillet with vanilla bean ice cream (275 kcal), or Plant Based Dessert, warm dairy free chocolate fondue (150 kcal). Calories are per person",
+          "sizes": [
+            {
+              "label": "Adult",
+              "price": 4000
+            },
+            {
+              "label": "Child",
+              "price": 1900
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

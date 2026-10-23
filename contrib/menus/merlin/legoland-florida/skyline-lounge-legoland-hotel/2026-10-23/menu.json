@@ -1,0 +1,369 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Legoland Florida",
+    "official": true,
+    "url": "https://www.legoland.com/florida/media/hzljodsd/skyline-lounge_fl_dinner-menu.pdf",
+    "sha256": "fece778f70fb6c084ee8c1c1d2f7551645021a4397fb2a61d3d815adc0590293"
+  },
+  "sections": [
+    {
+      "name": "Appetizers",
+      "items": [
+        {
+          "name": "Parkside Pretzel",
+          "description": "Served with house-made beer cheese sauce, grain mustard",
+          "price": 1430,
+          "kcal": 1010,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Local Pub Loaded Fries",
+          "description": "Molten cheese, shredded cheese, bacon bits, chives and sour cream",
+          "price": 1459,
+          "kcal": 810
+        },
+        {
+          "name": "Onion Ring Tower",
+          "description": "Served with boom-boom and BBQ sauce",
+          "price": 1249,
+          "kcal": 1490,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Westside Chicken Wings",
+          "description": "Twice cooked wings, served with celery, tossed in choice of BBQ or Buffalo sauce",
+          "sizes": [
+            {
+              "label": "6",
+              "price": 1249,
+              "kcal": 910
+            },
+            {
+              "label": "10",
+              "price": 1849,
+              "kcal": 1470
+            }
+          ]
+        },
+        {
+          "name": "Urban Mozzarella Sticks",
+          "description": "Served with marinara sauce",
+          "price": 1049,
+          "kcal": 570,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Sausage and Cornbread",
+          "description": "Available after 5pm. Smoked sausage, hot link, pimento cheese, pickles, sweet BBQ, jalapeno honey cornbread",
+          "price": 2199,
+          "kcal": 1540,
+          "tags": [
+            "gf"
+          ]
+        },
+        {
+          "name": "Chili Town Shrimp",
+          "description": "Available after 5pm. Creamy Thai sauce, tempura shishito peppers, chives, sesame seeds",
+          "price": 1799,
+          "kcal": 850
+        }
+      ]
+    },
+    {
+      "name": "Handhelds",
+      "note": "Served with choice of French fries or sweet potato fries. Gluten friendly buns available",
+      "items": [
+        {
+          "name": "The Skyline Burger",
+          "description": "1/3 lb. chargrilled beef patty, cheddar cheese, house sauce, lettuce, tomato, pickles, brioche bun",
+          "price": 1999,
+          "kcal": 1340
+        },
+        {
+          "name": "City Roots Burger",
+          "description": "Plant based patty, vegan cheese, house sauce, lettuce, tomato, pickles, kaiser bun",
+          "price": 2099,
+          "kcal": 910,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "Add bacon to any burger",
+          "price": 200,
+          "kcal": 480,
+          "addOn": true
+        },
+        {
+          "name": "Add patty to any burger",
+          "price": 500,
+          "kcal": 569,
+          "addOn": true
+        },
+        {
+          "name": "Add avocado to any burger",
+          "price": 300,
+          "kcal": 160,
+          "addOn": true
+        },
+        {
+          "name": "Add onion ring to any burger",
+          "price": 200,
+          "kcal": 200,
+          "addOn": true
+        },
+        {
+          "name": "French Dip",
+          "description": "Shaved roast beef, caramelized onions, Swiss cheese, horseradish aioli, crusty bread, beef jus",
+          "price": 1999,
+          "kcal": 1360
+        },
+        {
+          "name": "Rooftop Turkey Club",
+          "description": "Sliced turkey, Havarti, lemon herb aioli, thick cut bacon, lettuce, tomato, sourdough bread",
+          "price": 1949,
+          "kcal": 1470
+        },
+        {
+          "name": "Borough BBQ Chicken Sandwich",
+          "description": "House spicy BBQ, bacon, pepper jack cheese, lettuce, tomato, pickles on a brioche bun",
+          "sizes": [
+            {
+              "label": "Grilled",
+              "price": 2149,
+              "kcal": 1180
+            },
+            {
+              "label": "Crispy",
+              "price": 2149,
+              "kcal": 1390
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Salads",
+      "items": [
+        {
+          "name": "Add grilled chicken",
+          "price": 700,
+          "kcal": 170,
+          "addOn": true
+        },
+        {
+          "name": "Add shrimp",
+          "price": 700,
+          "kcal": 250,
+          "addOn": true
+        },
+        {
+          "name": "Add salmon",
+          "price": 900,
+          "kcal": 270,
+          "addOn": true
+        },
+        {
+          "name": "Classic Caesar",
+          "description": "Chopped Romaine, Caesar dressing, shaved Asiago, croutons",
+          "price": 1449,
+          "kcal": 570
+        },
+        {
+          "name": "Metro Market Cobb",
+          "description": "Romaine, cherry tomatoes, cucumber, avocado, diced turkey, bacon, hard-boiled eggs and bleu cheese crumbles",
+          "price": 1549,
+          "kcal": 960,
+          "tags": [
+            "gf"
+          ]
+        },
+        {
+          "name": "Hustle & Brussel Salad",
+          "description": "Thick cut bacon, dried cranberries, toasted almonds, grated parmigiano, house-made dressing",
+          "price": 1449,
+          "kcal": 1050,
+          "tags": [
+            "gf"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Entrees",
+      "items": [
+        {
+          "name": "Uptown Bowl",
+          "description": "Available after 5pm. Quinoa, barley, wild rice, sweet potato hash, spiced chickpeas, vegetable slaw, creamy white ginger dressing, toasted almonds, cilantro, and choice of protein",
+          "price": 1649,
+          "kcal": 670,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Uptown Bowl add grilled chicken",
+          "price": 700,
+          "kcal": 170,
+          "addOn": true
+        },
+        {
+          "name": "Uptown Bowl add shrimp",
+          "price": 700,
+          "kcal": 250,
+          "addOn": true
+        },
+        {
+          "name": "Uptown Bowl add salmon",
+          "price": 900,
+          "kcal": 270,
+          "addOn": true
+        },
+        {
+          "name": "Big City Blackened Salmon",
+          "description": "Available after 5pm. Blackened salmon, lemon butter sauce, roasted potatoes, seasonal vegetables",
+          "price": 3049,
+          "kcal": 630,
+          "tags": [
+            "gf"
+          ]
+        },
+        {
+          "name": "Skyscraper Steak Frites",
+          "description": "Available after 5pm. Hanger steak, chimichurri butter, French fries, seasonal vegetables",
+          "price": null,
+          "kcal": 1100,
+          "tags": [
+            "gf"
+          ],
+          "unclear": "market price; no figure printed"
+        },
+        {
+          "name": "Skyline Pasta",
+          "description": "Available after 5pm. Ask your server for seasonal special",
+          "price": null,
+          "unclear": "seasonal special; no price printed"
+        }
+      ]
+    },
+    {
+      "name": "Dessert",
+      "items": [
+        {
+          "name": "Street Festival Brownie",
+          "description": "Warm brownie topped with a chocolate chip cookie ice cream sandwich, served with toffee pieces, chocolate sauce, caramel sauce, and whipped cream",
+          "price": 1699,
+          "kcal": 990
+        },
+        {
+          "name": "Coastal City Key Lime Pie",
+          "price": 899,
+          "kcal": 490
+        },
+        {
+          "name": "Seasonal City Scoops",
+          "description": "Ask your server for our seasonal creation. Served in a Souvenir LEGO® Minifigure Head",
+          "price": 1999
+        }
+      ]
+    },
+    {
+      "name": "Kids Meals",
+      "note": "Includes a beverage. Choice of fries, vegetable, or fresh fruit",
+      "items": [
+        {
+          "name": "Kid's Cheeseburger",
+          "price": 1199,
+          "kcal": 480,
+          "tags": [
+            "kids"
+          ]
+        },
+        {
+          "name": "Kid's Hamburger",
+          "price": 1199,
+          "kcal": 400,
+          "tags": [
+            "kids"
+          ]
+        },
+        {
+          "name": "Chicken Fingers",
+          "price": 1199,
+          "kcal": 710,
+          "tags": [
+            "kids"
+          ]
+        },
+        {
+          "name": "Macaroni and Cheese",
+          "price": 1199,
+          "kcal": 800,
+          "tags": [
+            "kids"
+          ]
+        },
+        {
+          "name": "Pasta with Butter or Red Sauce",
+          "sizes": [
+            {
+              "label": "Butter",
+              "price": 1199,
+              "kcal": 930
+            },
+            {
+              "label": "Red sauce",
+              "price": 1199,
+              "kcal": 580
+            }
+          ],
+          "tags": [
+            "kids"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        {
+          "name": "Fries",
+          "price": 549,
+          "kcal": 370
+        },
+        {
+          "name": "Sweet Potato Fries",
+          "price": 549,
+          "kcal": 290
+        },
+        {
+          "name": "Parmesan Truffle Fries",
+          "price": 749,
+          "kcal": 400
+        },
+        {
+          "name": "Side Salad",
+          "price": 649,
+          "kcal": 210
+        },
+        {
+          "name": "Fresh Fruit",
+          "price": 549,
+          "kcal": 90
+        },
+        {
+          "name": "Seasonal Vegetables",
+          "price": 599,
+          "kcal": 130
+        }
+      ]
+    }
+  ]
+}

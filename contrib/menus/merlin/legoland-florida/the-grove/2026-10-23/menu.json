@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Legoland Florida",
+    "official": true,
+    "url": "https://www.legoland.com/florida/media/acwpaar5/the_grove_menu.pdf",
+    "sha256": "da533875bf41724a369820023c5da2fe188a860042f39ac739b77898aa7e7120"
+  },
+  "sections": [
+    {
+      "name": "Florida Favs",
+      "items": [
+        { "name": "Bavarian Pretzel", "price": 695, "kcal": 560 },
+        { "name": "Bavarian Pretzel Sticks", "description": "Served with local beer cheese", "price": 995, "kcal": 680 },
+        { "name": "Pretzel Necklace", "price": 1989, "kcal": 332 },
+        { "name": "Assorted Chips", "description": "360-450 kcal", "price": 589 },
+        { "name": "Souvenir Popcorn Bucket", "price": 1189, "kcal": 590 },
+        { "name": "Popcorn Bucket Refill", "price": 349, "kcal": 590 },
+        { "name": "Cotton Candy", "price": 900, "kcal": 110 },
+        { "name": "Bottled Soda", "description": "0-350 kcal", "price": 519 },
+        { "name": "Smartwater", "price": 629, "kcal": 0 },
+        { "name": "Powerade", "price": 549, "kcal": 130 },
+        { "name": "Monster", "price": 649, "kcal": 230 },
+        { "name": "Body Armor", "price": 649, "kcal": 120 },
+        { "name": "Domestic Beer", "description": "130-220 kcal", "price": 1079, "tags": ["alcohol"] },
+        { "name": "Premium Beer", "description": "130-250 kcal", "price": 1279, "tags": ["alcohol"] },
+        { "name": "Seltzer", "price": 1279, "kcal": 170, "tags": ["alcohol"] },
+        { "name": "Canned Cocktail", "description": "100-170 kcal", "price": 1279, "tags": ["alcohol"] }
+      ]
+    },
+    {
+      "name": "Sunshine State Beer Depot",
+      "note": "Beer, seltzer, soda; local draft beer",
+      "items": [
+        { "name": "Bottled Soda", "description": "0-350 kcal", "price": 519 },
+        { "name": "Smartwater", "price": 629, "kcal": 0 },
+        { "name": "Powerade", "price": 549, "kcal": 130 },
+        { "name": "Domestic Beer", "description": "130-220 kcal", "price": 1079, "tags": ["alcohol"] },
+        { "name": "Premium Beer", "description": "130-250 kcal", "price": 1279, "tags": ["alcohol"] },
+        { "name": "Draft Beer", "description": "200-250 kcal", "price": 1079, "tags": ["alcohol"] },
+        { "name": "Wine", "price": 959, "kcal": 150, "tags": ["alcohol"] },
+        { "name": "Seltzer", "price": 1279, "kcal": 170, "tags": ["alcohol"] },
+        { "name": "Canned Cocktail", "description": "100-170 kcal", "price": 1279, "tags": ["alcohol"] }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "date": "2026-10-23",
+  "unpriced": true,
+  "source": {
+    "name": "Legoland New York",
+    "official": true,
+    "url": "https://www.legoland.com/new-york/media/lefjafmi/ninja-kitchen-2026-menu.pdf",
+    "sha256": "7c317a3cd6c21a9a17cbdcc01ae800918da474bbed43e0261d4b01eb2f090dde"
+  },
+  "sections": [
+    {
+      "name": "Ninja Kitchen",
+      "items": [
+        {
+          "name": "Orange Ginger Chicken Waffle Cone",
+          "description": "Waffle Cone, Sesame Slaw, Orange Ginger Fried Chicken Bites, Cilantro Aioli, Green Onion",
+          "price": null,
+          "kcal": 700
+        },
+        {
+          "name": "Fried Chicken Waffle Cone",
+          "description": "Waffle Cone, Sesame Slaw, Fried Chicken Bites, Cilantro Aioli, Green Onion.",
+          "price": null,
+          "kcal": 590
+        },
+        {
+          "name": "Gochujang Chicken Waffle Cone",
+          "description": "Spicy. Waffle Cone, Sesame Slaw, Gochujang Honey, Fried Chicken Bites, Cilantro Aioli, Green Onion.",
+          "price": null,
+          "kcal": 860
+        },
+        {
+          "name": "Veggie Dumplings",
+          "description": "Fried Vegetable Dumplings, Soy & Ginger Glaze, Cilantro Aioli, Green Onion.",
+          "price": null,
+          "kcal": 390,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Bottled Sports Drink",
+          "description": "Powerade Mountain Berry Blast 20oz.",
+          "price": null
+        },
+        {
+          "name": "Bottled Lemonade",
+          "description": "Minute Maid Lemonade 20oz.",
+          "price": null
+        },
+        {
+          "name": "Bottled Soda",
+          "description": "Coca-Cola, Diet Coke, Sprite 20oz.",
+          "price": null
+        },
+        {
+          "name": "Bottled Water",
+          "description": "Dasani 20oz.",
+          "price": null
+        }
+      ]
+    }
+  ]
+}

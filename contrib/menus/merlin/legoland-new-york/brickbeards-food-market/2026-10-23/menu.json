@@ -1,0 +1,132 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Legoland New York",
+    "official": true,
+    "url": "https://www.legoland.com/new-york/media/fhcmvcu4/brickbeards-2026-menu.pdf",
+    "sha256": "13ba2dab868aff560d96736c33a6bf613b5600707d7d39960e51a244ae899a0a"
+  },
+  "unpriced": true,
+  "sections": [
+    {
+      "name": "Everything Taco",
+      "note": "Add an additional Salsa to your order.",
+      "items": [
+        {
+          "name": "Taco Trio",
+          "description": "Grilled Corn Tortillas w/ Chicken, Steak, & Pork topped w/ Cilantro, Onion, & Cotija Cheese. 300-570 cal.",
+          "price": null
+        },
+        {
+          "name": "Burrito Bowl",
+          "description": "Flour Tortilla served Open Faced topped w/Corn, Rice, Beans & choice of Protein. 380-540 cal. Make it vegan, no cheese.",
+          "price": null
+        },
+        {
+          "name": "Churro",
+          "description": "Fried Dough dusted w/ Cinnamon & Sugar.",
+          "price": null,
+          "kcal": 340,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Agua Fresca",
+          "description": "Choice of Horchata, Passion Fruit, or Tamarindo. 120-140 cal.",
+          "price": null,
+          "tags": [
+            "gf",
+            "vg"
+          ]
+        },
+        {
+          "name": "Build-your-own Taco Salad",
+          "description": "Add 1 Protein: Your choice of Chicken or Pork. 350-530 cal.",
+          "price": null,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Kid's Cheese Quesadilla",
+          "description": "Cheesy Grilled Tortilla served w/Juice, Chips, & Fruit Snacks in a Souvenir Bag. Includes Exclusive Pop Badge!",
+          "price": null,
+          "kcal": 410,
+          "tags": [
+            "v",
+            "kids"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Captain's Grill",
+      "note": "Gluten Free Buns Available Upon Request",
+      "items": [
+        {
+          "name": "Minifigure Feast",
+          "description": "(6) Crispy Chicken Tenders, with a heaping helping of French Fries, served in a LEGO® Minifigure Head Bucket.",
+          "price": null,
+          "kcal": 2220
+        },
+        {
+          "name": "Chicken Tender Basket",
+          "description": "(3) pcs Crispy Chicken Tenders served w/French Fries.",
+          "price": null,
+          "kcal": 690
+        },
+        {
+          "name": "Single Cheeseburger Combo",
+          "description": "Single Cheeseburger served w/ Crispy French Fries.",
+          "price": null,
+          "kcal": 1400
+        },
+        {
+          "name": "Kid's Chicken Tender Meal",
+          "description": "(2) pcs Crispy Chicken Tenders served w/Juice, Chips, & Fruit Snacks in a Souvenir Bag. Includes Exclusive Pop Badge!",
+          "price": null,
+          "kcal": 580,
+          "tags": [
+            "kids"
+          ]
+        },
+        {
+          "name": "French Fries",
+          "description": "Hot & Crispy, Coated French Fries.",
+          "price": null,
+          "kcal": 360,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pirates Loot",
+      "items": [
+        {
+          "name": "The BIG Cheese",
+          "description": "Our Signature Mac-N-Cheese served in a LEGO® Minifigure Head Cup.",
+          "price": null,
+          "kcal": 500
+        },
+        {
+          "name": "Davy Jones Dog",
+          "description": "Steamed all Beef Hot Dog on a Bun.",
+          "price": null,
+          "kcal": 420
+        },
+        {
+          "name": "Master Builder Mac-N-Cheese",
+          "description": "Shell Noodles tossed in our Signature Cheese Sauce.",
+          "price": null,
+          "kcal": 320,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    }
+  ]
+}

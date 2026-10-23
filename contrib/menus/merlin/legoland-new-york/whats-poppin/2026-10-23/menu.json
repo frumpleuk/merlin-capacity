@@ -1,0 +1,162 @@
+{
+  "date": "2026-10-23",
+  "unpriced": true,
+  "source": {
+    "name": "Legoland New York",
+    "official": true,
+    "url": "https://www.legoland.com/new-york/media/rlqc0vor/food-carts-2026-menu-2.pdf",
+    "sha256": "9558a661acce347ceaa001f1ae944bd8059b452add2a628db795de065af5902a",
+    "stated": "2026"
+  },
+  "sections": [
+    {
+      "name": "Featured Item!",
+      "items": [
+        {
+          "name": "Souvenir Popcorn",
+          "description": "Freshly popped Popcorn coated in Butter in a Souvenir Bucket. Refill.",
+          "price": null,
+          "kcal": 480,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Minifigure Popcorn Guy",
+          "description": "Freshly popped Popcorn coated in Butter in a LEGO Minifgure Souvenir Bucket. Refill.",
+          "price": null,
+          "kcal": 480
+        },
+        {
+          "name": "Small Popcorn",
+          "description": "Freshly popped Popcorn coated in Butter.",
+          "price": null,
+          "kcal": 160,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Ice Cream Cup",
+          "description": "A Fresh Selection of Hershey's Hand Crafted Ice Creams.",
+          "price": null,
+          "kcal": 230
+        },
+        {
+          "name": "Frozen Fruit Punch Bars",
+          "price": null,
+          "kcal": 170
+        }
+      ]
+    },
+    {
+      "name": "Bottled Beverages",
+      "items": [
+        {
+          "name": "Bottled Sports Drink",
+          "description": "Powerade Mountain Berry Blast 20oz.",
+          "price": null
+        },
+        {
+          "name": "Bottled Lemonade",
+          "description": "Minute Maid Lemonade 20oz.",
+          "price": null
+        },
+        {
+          "name": "Bottled Soda",
+          "description": "Coca-Cola, Diet Coke, Sprite",
+          "price": null
+        },
+        {
+          "name": "Bottled Water",
+          "description": "Dasani 20oz.",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Canned Beverages",
+      "items": [
+        {
+          "name": "Kona Big Wave",
+          "description": "25oz.",
+          "price": null,
+          "kcal": 275,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Spiked ADE",
+          "description": "Assorted Flavors",
+          "price": null,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Surfside",
+          "description": "Iced Tea + Vodka",
+          "price": null,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Build it Boss IPA",
+          "description": "Newburgh Brewing Co.",
+          "price": null,
+          "kcal": 210,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Smashed to Pieces",
+          "description": "Pennings Farm Cidery.",
+          "price": null,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Corona Extra",
+          "price": null,
+          "kcal": 148,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Michelob Ultra",
+          "price": null,
+          "kcal": 95,
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Draft Beverages",
+      "items": [
+        {
+          "name": "Craft Standard",
+          "description": "Classic Margarita",
+          "price": null,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Coors Light",
+          "price": null,
+          "kcal": 95,
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    }
+  ]
+}

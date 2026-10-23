@@ -1,0 +1,132 @@
+{
+  "date": "2026-10-23",
+  "unpriced": true,
+  "source": {
+    "name": "Legoland New York",
+    "official": true,
+    "url": "https://www.legoland.com/new-york/media/5q2d3qyx/smokey-s-2026-menu.pdf",
+    "sha256": "0f539ef255e3f7607f38b6f3a4fd4cab84efed5edba4b39ed74d34e838c5a544"
+  },
+  "sections": [
+    {
+      "name": "Entrees",
+      "note": "Gluten Free Buns Available Upon Request",
+      "items": [
+        {
+          "name": "Smokestack Sundae",
+          "description": "Layers of Mac-n-Cheese, Smoked Beans, Your choice of protein, topped with Coleslaw and a Pickle.",
+          "price": null,
+          "kcal": 740
+        },
+        {
+          "name": "Smokin BBQ Platter",
+          "description": "Choice of 2 sandwiches, 2 sides, 4 Chicken Tenders, & Fries. 1700-2000 cal.",
+          "price": null
+        },
+        {
+          "name": "Minifigure Feast",
+          "description": "6 Crispy Chicken Tenders with a heaping helping of French Fries, served in a LEGO Minifigure Head Bucket.",
+          "price": null,
+          "kcal": 2220
+        },
+        {
+          "name": "Pulled Pork Sandwich",
+          "description": "16hr Smoked Pork Sholder Tossed in our Signature Coca Cola BBQ Sauce, topped w/Coleslaw served w/ Choice of 1 Side.",
+          "price": null,
+          "kcal": 490
+        },
+        {
+          "name": "Chopped Chicken Sandwich",
+          "description": "House Smoked Chicken Thighs Glazed with our Coca Cola BBQ Sauce, topped w/Coleslaw Served w/Choice of 1 Side.",
+          "price": null,
+          "kcal": 600
+        },
+        {
+          "name": "Chicken Tender Basket",
+          "description": "(3) Chicken Tenders served w/ Crispy Coated French Fries.",
+          "price": null,
+          "kcal": 690
+        },
+        {
+          "name": "The Big Cheese",
+          "description": "Our Signature Mac-N-Cheese served in a LEGO Minifigure Head Cup.",
+          "price": null,
+          "kcal": 500,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Salads",
+      "note": "Add Protein of your choice $5.99",
+      "items": [
+        {
+          "name": "Southwest Salad",
+          "description": "Chopped Romaine Lettuce, Roasted Corn, Red Onion, Black Beans, Tortilla Strips & Cotija Cheese served w/ a Chipotle Ranch Dressing. Make it Vegan - Ask for no Cheese & Dressing substitute.",
+          "price": null,
+          "kcal": 780,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        {
+          "name": "Master Builder Mac & Cheese",
+          "description": "Shell Noodles Tossed in our Signature Cheese Sauce.",
+          "price": null,
+          "kcal": 320,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "French Fries",
+          "description": "Hot & Crispy, Coated French Fries.",
+          "price": null,
+          "kcal": 360,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Alabama White Coleslaw",
+          "description": "Traditional Alabama White Sauce mixed w/ Shaved Carrots & Cabbage.",
+          "price": null,
+          "kcal": 230,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Hickory Smoked Baked Beans",
+          "description": "Southern Style Hickory Smoked Beans.",
+          "price": null,
+          "kcal": 170,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Kids",
+      "items": [
+        {
+          "name": "Kid's Chicken Tender Meal",
+          "description": "(2) Crispy Chicken Tenders served w/ Juice, Chips, & Fruit Snacks in a Souvenir Bag. Includes exclusive pop badge!",
+          "price": null,
+          "kcal": 580,
+          "tags": [
+            "kids"
+          ]
+        }
+      ]
+    }
+  ]
+}

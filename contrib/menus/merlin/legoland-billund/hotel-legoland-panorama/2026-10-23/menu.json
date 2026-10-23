@@ -1,0 +1,147 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Legoland Billund",
+    "official": true,
+    "url": "https://www.legoland.dk/media/gq2bouen/q3-frokost-lunch.pdf",
+    "sha256": "47e44742e14c988e8d35a471d6ff7b1f199ddd0700864b8cc17342d53b94494d"
+  },
+  "sections": [
+    {
+      "name": "Lunch",
+      "note": "Opening hours 12:00 - 15:00",
+      "items": [
+        {
+          "name": "\"Smørrebrød\" with hand peeled shrimp",
+          "description": "grilled bread, salad, mayo, lemon, lingonberries & dill",
+          "price": 16900
+        },
+        {
+          "name": "\"Smørrebrød\" with chicken salad",
+          "description": "grilled bread, welfare chicken, crispy bacon, pickled asparagus, mustard seeds & herbs",
+          "price": 15900
+        },
+        {
+          "name": "Carpaccio of Danish beef",
+          "description": "Pickled tomatoes, tomato mayo, croutons, mizuna, \"efterglød\" from Arla unika",
+          "price": 16500
+        },
+        {
+          "name": "Caesar salad",
+          "description": "Romaine lettuce, Caesar dressing, butter fried croutons & parmesan",
+          "price": 11900
+        },
+        {
+          "name": "Add on welfare chicken",
+          "price": 6900,
+          "addOn": true
+        },
+        {
+          "name": "Cheeseburger",
+          "description": "Brioche bun, Danish beef, classic burger dressing, cheddar, pickles, onion, tomato & lettuce served with french fries and aioli",
+          "price": 21900
+        },
+        {
+          "name": "Crispy chicken burger",
+          "description": "brioche bun, crispy spicy chicken, mayonnaise, crispy cabbage with pickled carrots & pickled cucumbers served with french fries & aioli",
+          "price": 20900
+        },
+        {
+          "name": "Vegetarian burger",
+          "description": "mushroom/beetroot patty, brioche bun, truffle mayo, pickled red onions, salad & crispy onions Served with french fries and aioli",
+          "price": 20900
+        }
+      ]
+    },
+    {
+      "name": "Dessert & sweet",
+      "note": "Opening hours 12:00 - 15:00",
+      "items": [
+        {
+          "name": "Vanilla mousse with pineapple",
+          "description": "served with pineapple sorbet & crumble",
+          "price": null,
+          "unclear": "no price printed"
+        },
+        {
+          "name": "3 Danish cheeses",
+          "description": "gooseberry jam, malt biscuits & chili honey",
+          "price": 12900
+        },
+        {
+          "name": "Brick chocolate 4 pieces",
+          "price": 5000
+        },
+        {
+          "name": "Soft ice buffet",
+          "description": "all you can eat",
+          "price": 7900
+        }
+      ]
+    },
+    {
+      "name": "Classics",
+      "note": "Opening hours 17:00 - 21:30",
+      "items": [
+        {
+          "name": "Caesar salad",
+          "description": "romaine lettuce, caesar dressing, butter-fried croutons & parmesan",
+          "price": 11900
+        },
+        {
+          "name": "Add-on chicken",
+          "price": 6900,
+          "addOn": true
+        },
+        {
+          "name": "Carpaccio of Danish beef",
+          "description": "Pickled tomatoes, tomato mayo, croutons, mizuna, \"efterglød\" from Arla unika",
+          "price": 16500
+        },
+        {
+          "name": "Cheeseburger",
+          "description": "Brioche bun, Danish beef, classic burger dressing, cheddar, pickles, onion, tomato & lettuce served with french fries and aioli",
+          "price": 21900
+        },
+        {
+          "name": "Crispy chicken burger",
+          "description": "brioche bun, crispy spicy chicken, mayonnaise, crispy cabbage with pickled carrots & pickled cucumbers served with french fries & aioli",
+          "price": 20900
+        },
+        {
+          "name": "Vegetarian burger",
+          "description": "mushroom/beetroot steak, brioche bun, truffle mayo, pickled red onions, salad & crispy onions Served with french fries and aioli",
+          "price": 20900
+        },
+        {
+          "name": "Chicken nuggets & Brick fries",
+          "description": "Served with ketchup, mayo & cucumber sticks",
+          "price": 12900
+        },
+        {
+          "name": "Pizza Margherita",
+          "description": "tomato, mozzarella & basil",
+          "price": 12900
+        },
+        {
+          "name": "Pizza with beef pepperoni",
+          "description": "tomato, mozzarella, beef pepperoni & basil",
+          "price": 14900
+        },
+        {
+          "name": "Truffle fries with aioli",
+          "price": 7900
+        },
+        {
+          "name": "French fries with aioli",
+          "price": 5900
+        },
+        {
+          "name": "Soft ice cream buffet",
+          "description": "all you can eat",
+          "price": 7900
+        }
+      ]
+    }
+  ]
+}

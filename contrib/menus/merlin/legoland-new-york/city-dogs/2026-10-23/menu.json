@@ -1,0 +1,86 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Legoland New York",
+    "official": true,
+    "url": "https://www.legoland.com/new-york/media/vcglputk/city-dog-2026-menu.pdf",
+    "sha256": "956103e825245ddfc0c59352d91ba704f53d41dbc0cfef9d6410283b6e302505"
+  },
+  "unpriced": true,
+  "sections": [
+    {
+      "name": "City Dogs",
+      "items": [
+        {
+          "name": "Chili Cheese Dog",
+          "description": "All Beef Hot Dog w/our Signature Chili & Cheese, served in a Bun.",
+          "price": null,
+          "kcal": 580
+        },
+        {
+          "name": "New York Dog",
+          "description": "All Beef Hot Dog topped w/Sauerkraut & Onions, served in a Bun.",
+          "price": null,
+          "kcal": 420
+        },
+        {
+          "name": "Classic Dog",
+          "description": "All Beef Hot Dog served in a Bun.",
+          "price": null,
+          "kcal": 410
+        },
+        {
+          "name": "Minifigure Popcorn Guy",
+          "description": "Freshly popped Popcorn coated in Butter in a LEGO® Minifigure Souvenir Bucket. Refill available",
+          "price": null,
+          "kcal": 480
+        },
+        {
+          "name": "Souvenir Popcorn",
+          "description": "Freshly popped Popcorn coated in Butter in a Souvenir Bucket. Refill available",
+          "price": null,
+          "kcal": 480,
+          "tags": [
+            "gf",
+            "v"
+          ]
+        },
+        {
+          "name": "Small Popcorn",
+          "description": "Freshly popped Popcorn coated in Butter.",
+          "price": null,
+          "kcal": 160,
+          "tags": [
+            "gf",
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Bottled Beverages",
+      "items": [
+        {
+          "name": "Bottled Sports Drink",
+          "description": "Powerade® Mountain Berry Blast 20 oz.",
+          "price": null
+        },
+        {
+          "name": "Bottled Lemonade",
+          "description": "Minute Maid® Lemonade 20 oz.",
+          "price": null
+        },
+        {
+          "name": "Bottled Soda",
+          "description": "Coca-Cola®, Diet Coke®, Sprite®",
+          "price": null
+        },
+        {
+          "name": "Bottled Water",
+          "description": "Dasani® 20 oz.",
+          "price": null
+        }
+      ]
+    }
+  ]
+}

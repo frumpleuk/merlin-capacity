@@ -1,0 +1,315 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Legoland Windsor",
+    "official": true,
+    "url": "https://www.legoland.co.uk/media/wg3en1zy/jun-2025-llw-skyline-menu-final.pdf",
+    "sha256": "5c480d3924de4b2fd6a1290131c76ba363b46d9b2ddfe6509abd4018a764ad54",
+    "stated": "2025"
+  },
+  "sections": [
+    {
+      "name": "Burgers",
+      "note": "Served in a toasted Brioche Bun with Tomato, Red Onion, Lettuce, Gherkins, Fries and Coleslaw",
+      "items": [
+        {
+          "name": "Smash Beef Burger",
+          "price": 1800,
+          "kcal": 918
+        },
+        {
+          "name": "Extra Beef Patty",
+          "addOn": true,
+          "price": 500,
+          "kcal": 81
+        },
+        {
+          "name": "Buttermilk Grilled Chicken",
+          "price": 1800,
+          "kcal": 1009
+        },
+        {
+          "name": "Fried Halloumi",
+          "tags": [
+            "v"
+          ],
+          "price": 1700,
+          "kcal": 969
+        }
+      ]
+    },
+    {
+      "name": "Build Your Burger",
+      "items": [
+        {
+          "name": "Blue Cheese",
+          "tags": [
+            "v"
+          ],
+          "addOn": true,
+          "price": 150,
+          "kcal": 63
+        },
+        {
+          "name": "Cheddar Slice",
+          "tags": [
+            "v"
+          ],
+          "addOn": true,
+          "price": 150,
+          "kcal": 83
+        },
+        {
+          "name": "Smoked Streaky Bacon",
+          "addOn": true,
+          "price": 200,
+          "kcal": 53
+        },
+        {
+          "name": "Jalapeños",
+          "tags": [
+            "v"
+          ],
+          "addOn": true,
+          "price": 100,
+          "kcal": 4
+        }
+      ]
+    },
+    {
+      "name": "Skyliner Burger",
+      "items": [
+        {
+          "name": "Skyliner Burger",
+          "description": "3 SMASH Beef Burger Patties, Caramalised Onions, Onion Rings, Streaky Bacon, Cheese Slices, Ouzing Sauce, Jalapenos & Fries",
+          "price": 2600,
+          "kcal": 1267
+        }
+      ]
+    },
+    {
+      "name": "Stone Baked Pizza's",
+      "items": [
+        {
+          "name": "Pepperoni Pizza",
+          "description": "Pepperoni, Mozzarella & Tomato Sauce",
+          "price": 1700,
+          "kcal": 887
+        },
+        {
+          "name": "American Hot",
+          "description": "Pepperoni, Jalapeno, Mozzarella & Tomato Sauce",
+          "price": 1700,
+          "kcal": 889
+        },
+        {
+          "name": "BBQ Chicken Pizza",
+          "description": "BBQ Sauce, Chicken, Red Peppers & Red Onion",
+          "price": 1700,
+          "kcal": 923
+        },
+        {
+          "name": "Vegetable Pizza",
+          "description": "Red Onion, Red Peppers, Sweetcorn, Mozzarella & Tomato Sauce",
+          "tags": [
+            "v"
+          ],
+          "price": 1700,
+          "kcal": 827
+        },
+        {
+          "name": "Classic Margherita",
+          "description": "Tomato Sauce & Mozzarella",
+          "tags": [
+            "v"
+          ],
+          "price": 1500,
+          "kcal": 808
+        }
+      ]
+    },
+    {
+      "name": "Salad",
+      "items": [
+        {
+          "name": "House Salad",
+          "description": "Cos Lettuce, Sun Blushed Tomato's, Olives, Cucumber, Pomegranate Seeds & French Dressing",
+          "tags": [
+            "v"
+          ],
+          "price": 1300,
+          "kcal": 86
+        },
+        {
+          "name": "Buttermilk Grilled Chicken",
+          "addOn": true,
+          "price": 400,
+          "kcal": 323
+        },
+        {
+          "name": "Fried Halloumi",
+          "tags": [
+            "v"
+          ],
+          "addOn": true,
+          "price": 300,
+          "kcal": 390
+        },
+        {
+          "name": "Crumbled Falafel",
+          "tags": [
+            "v"
+          ],
+          "addOn": true,
+          "price": 300,
+          "kcal": 263
+        }
+      ]
+    },
+    {
+      "name": "Side Options",
+      "items": [
+        {
+          "name": "Dirty LEGO Fries",
+          "description": "Melted Cheese, Crumbled SMASH Burger, Pickles & Diced Bacon",
+          "price": 1000,
+          "kcal": 798
+        },
+        {
+          "name": "Vegetarian Dirty LEGO Fries",
+          "description": "Our signature LEGO Fries, topped with Crumbled Falafel, Red Onion, Melted Cheese & Red Peppers",
+          "tags": [
+            "v"
+          ],
+          "price": 1000,
+          "kcal": 749
+        },
+        {
+          "name": "Jalapenos",
+          "description": "To either Dirty Fries options",
+          "tags": [
+            "v"
+          ],
+          "addOn": true,
+          "price": 100,
+          "kcal": 4
+        },
+        {
+          "name": "LEGO Fries",
+          "tags": [
+            "v"
+          ],
+          "price": 600,
+          "kcal": 544
+        },
+        {
+          "name": "Garlic Dough Balls with Garlic Butter",
+          "tags": [
+            "v"
+          ],
+          "price": 600,
+          "kcal": 302
+        },
+        {
+          "name": "Frickle's",
+          "tags": [
+            "v"
+          ],
+          "price": 500,
+          "kcal": 382
+        },
+        {
+          "name": "Beer Battererd Onion Rings",
+          "tags": [
+            "v"
+          ],
+          "price": 500,
+          "kcal": 256
+        }
+      ]
+    },
+    {
+      "name": "Kids Menu",
+      "note": "£11.75 per meal. All dishes are served with LEGO Fries and shredded Lettuce except the Vegan Nuggets which are served with Fries",
+      "items": [
+        {
+          "name": "Smash Burger",
+          "tags": [
+            "kids"
+          ],
+          "price": 1175,
+          "kcal": 749
+        },
+        {
+          "name": "Chicken Burger",
+          "tags": [
+            "kids"
+          ],
+          "price": 1175,
+          "kcal": 766
+        },
+        {
+          "name": "Vegan Nuggets",
+          "tags": [
+            "vg",
+            "kids"
+          ],
+          "price": 1175,
+          "kcal": 599
+        },
+        {
+          "name": "Margharita Pizza",
+          "tags": [
+            "v",
+            "kids"
+          ],
+          "price": 1175,
+          "kcal": 898
+        },
+        {
+          "name": "Pepperoni Pizza",
+          "tags": [
+            "kids"
+          ],
+          "price": 1175,
+          "kcal": 960
+        }
+      ]
+    },
+    {
+      "name": "Ice Cream Sundaes",
+      "items": [
+        {
+          "name": "Strawberry Sundae",
+          "description": "Satisfy your sweet tooth with this indulgent sweet strawberry sauce, scoops of vanilla ice cream topped with whipped cream and fresh strawberries",
+          "price": 900,
+          "kcal": 576
+        },
+        {
+          "name": "Chocolate Sundae",
+          "description": "Chocolate sundae, smooth vanilla ice cream with a decadent chocolate sauce topped with whipped cream and chocolate sprinkles a classic summer treat",
+          "price": 900,
+          "kcal": 646
+        },
+        {
+          "name": "Caramel Sundae",
+          "description": "Embrace the delightful pairing of Vanilla ice cream covered in rich caramel sauce topped with whipped cream and melt in your mouth fudge cubes",
+          "price": 900,
+          "kcal": 586
+        },
+        {
+          "name": "Vanilla Sundae",
+          "description": "Vanilla sundae is the classic go to dessert with its smooth and creamy texture vanilla ice cream topped with whipped cream everyone's favourite flavour",
+          "price": 850,
+          "kcal": 511
+        },
+        {
+          "name": "Oreo Doughnut",
+          "description": "Oreo doughnut filled doughnut with whipped cream, chocolate icing and finished with Oreo crumb a perfect blend of creamy, crunchie and chocolatey",
+          "price": 800,
+          "kcal": 558
+        }
+      ]
+    }
+  ]
+}

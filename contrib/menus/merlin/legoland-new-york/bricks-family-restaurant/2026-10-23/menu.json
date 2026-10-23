@@ -1,0 +1,449 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Legoland New York",
+    "official": true,
+    "url": "https://www.legoland.com/new-york/media/rief0ghl/bricks-menus-specialty-pricing.pdf",
+    "sha256": "1ac0a13373aae69086dec58f6bef7bc3787cb27244dace39c7ba4383b057be1a"
+  },
+  "unpriced": true,
+  "sections": [
+    {
+      "name": "All You Can Eat Food Hall",
+      "items": [
+        {
+          "name": "All You Can Eat Food Hall",
+          "sizes": [
+            {
+              "label": "Adults",
+              "price": 3999
+            },
+            {
+              "label": "Kids, with purchase of an adult (was 17.99)",
+              "price": 999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Royal Feast Hall",
+      "note": "Available Sundays",
+      "items": [
+        {
+          "name": "Queen's Garden Greens",
+          "description": "The Enchanted Gardens (Salad Bar). Mixed Lettuce blend.",
+          "price": null
+        },
+        {
+          "name": "Castle Harvest Vegetables",
+          "description": "The Enchanted Gardens (Salad Bar). Cucumbers, Carrots, Peppers, Tomatoes.",
+          "price": null
+        },
+        {
+          "name": "Royal Dressings",
+          "description": "The Enchanted Gardens (Salad Bar). Assorted, Rotating Salad Dressings.",
+          "price": null
+        },
+        {
+          "name": "Prince's Pasta",
+          "description": "Wizard's Summoned Sides (Pasta & Sides). Pasta Marinara.",
+          "price": null
+        },
+        {
+          "name": "Creamy Court Alfredo",
+          "description": "Wizard's Summoned Sides (Pasta & Sides). Alfredo Pasta.",
+          "price": null
+        },
+        {
+          "name": "Harvest Festival Pasta",
+          "description": "Wizard's Summoned Sides (Pasta & Sides). Pasta Primavera.",
+          "price": null
+        },
+        {
+          "name": "Royal Medley",
+          "description": "Wizard's Summoned Sides (Pasta & Sides). Sauteed mixed Vegetables.",
+          "price": null
+        },
+        {
+          "name": "Blacksmith Potatoes",
+          "description": "Wizard's Summoned Sides (Pasta & Sides). Buttery Mashed Potatoes.",
+          "price": null
+        },
+        {
+          "name": "Festival Carrots",
+          "description": "Wizard's Summoned Sides (Pasta & Sides). Honey glazed roasted Carrots.",
+          "price": null
+        },
+        {
+          "name": "Harvest Medley",
+          "description": "Wizard's Summoned Sides (Pasta & Sides). Roasted seasonal Vegetables.",
+          "price": null
+        },
+        {
+          "name": "Blacksmith Smoked Brisket",
+          "description": "The King's Carving Board (Action Carving Station). Slow smoked Brisket with sweet BBQ glaze.",
+          "price": null
+        },
+        {
+          "name": "Village Roasted Potatoes",
+          "description": "The King's Carving Board (Action Carving Station). Crispy roasted Potatoes with Herbs.",
+          "price": null
+        },
+        {
+          "name": "Baker's Maple Beans",
+          "description": "The King's Carving Board (Action Carving Station). Sweet vegetarian Baked Beans.",
+          "price": null
+        },
+        {
+          "name": "Dragon Fire Cauliflower Steaks",
+          "description": "Knights Tavern Staples (Proteins). Roasted Cauliflower with sweet & spicy glaze.",
+          "price": null
+        },
+        {
+          "name": "Blacksmith Meatballs",
+          "description": "Knights Tavern Staples (Proteins). Homestyle Beef Meatballs in rich Gravy.",
+          "price": null
+        },
+        {
+          "name": "Knight's Herb Chicken",
+          "description": "Knights Tavern Staples (Proteins). Garlic Herb roasted Chicken with pan Gravy.",
+          "price": null
+        },
+        {
+          "name": "Royal Guard Golden Nuggets",
+          "description": "Squires Banquete (Kids Fare). Chicken Nuggets.",
+          "price": null
+        },
+        {
+          "name": "Mac & Cheese Cauldron",
+          "description": "Squires Banquete (Kids Fare). Creamy Mac & Cheese.",
+          "price": null
+        },
+        {
+          "name": "Dragon Tater Spears",
+          "description": "Squires Banquete (Kids Fare). Crispy French Fries.",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Heartlake Kitchen",
+      "note": "Available Tuesdays & Fridays",
+      "items": [
+        {
+          "name": "Sunny Garden Greens",
+          "description": "Fresh Greens Market (Salad Bar). Mixed Lettuce blend.",
+          "price": null
+        },
+        {
+          "name": "Garden Party Veggies",
+          "description": "Fresh Greens Market (Salad Bar). Cucumbers, Carrots, Peppers, Tomatoes.",
+          "price": null
+        },
+        {
+          "name": "Friend's Dressings",
+          "description": "Fresh Greens Market (Salad Bar). Assorted, Rotating Salad Dressings.",
+          "price": null
+        },
+        {
+          "name": "Hearty Marinara Twists",
+          "description": "Pasta Party (Pasta & Sides). Pasta Marinara.",
+          "price": null
+        },
+        {
+          "name": "Best Friends Alfredo Rotini",
+          "description": "Pasta Party (Pasta & Sides). Alfredo Pasta.",
+          "price": null
+        },
+        {
+          "name": "Yummy Vodka Rotini",
+          "description": "Pasta Party (Pasta & Sides). Rotini Pasta in Vodka sauce.",
+          "price": null
+        },
+        {
+          "name": "Garden Primavera Pasta",
+          "description": "Pasta Party (Pasta & Sides). Vegetable Pasta tossed in Garlic Olive Oil.",
+          "price": null
+        },
+        {
+          "name": "Farmer's Market Squash",
+          "description": "Pasta Party (Pasta & Sides). Roasted Squash.",
+          "price": null
+        },
+        {
+          "name": "Outdoor Mash",
+          "description": "Pasta Party (Pasta & Sides). Buttery mashed Potatoes.",
+          "price": null
+        },
+        {
+          "name": "Sweetest Carrots",
+          "description": "Pasta Party (Pasta & Sides). Honey glazed roasted Carrots.",
+          "price": null
+        },
+        {
+          "name": "Friends Squash",
+          "description": "Pasta Party (Pasta & Sides). Roasted Squash Medley.",
+          "price": null
+        },
+        {
+          "name": "Best Friend Chicken Parm",
+          "description": "Best Friends Picnic (Action Carving Station). Classic Chicken Parmesan with Mozzarella.",
+          "price": null
+        },
+        {
+          "name": "Grandma's Sunday Meatballs",
+          "description": "Best Friends Picnic (Action Carving Station). Italian Meatballs simmered in Marinara.",
+          "price": null
+        },
+        {
+          "name": "Backyard Lemon Chicken",
+          "description": "Best Friends Picnic (Action Carving Station). Grilled Chicken with Lemon Herb Marinade.",
+          "price": null
+        },
+        {
+          "name": "Sunday Roast Turkey",
+          "description": "The Grille House (Proteins). Roasted Turkey breast with Rosemary Gravy.",
+          "price": null
+        },
+        {
+          "name": "Family Style Potatoes",
+          "description": "The Grille House (Proteins). Seasoned roasted Potatoes.",
+          "price": null
+        },
+        {
+          "name": "Sunny Green Beans",
+          "description": "The Grille House (Proteins). Garlic Butter Green Beans with Parmesan.",
+          "price": null
+        },
+        {
+          "name": "Magical Chicken Stars",
+          "description": "Little Bites Playground (Kids Fare). Chicken Nuggets.",
+          "price": null
+        },
+        {
+          "name": "Easy Cheesy Mac Bowl",
+          "description": "Little Bites Playground (Kids Fare). Mac & Cheese.",
+          "price": null
+        },
+        {
+          "name": "Share & Care Crispy Fries",
+          "description": "Little Bites Playground (Kids Fare). French Fries.",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Sensei's Smorgasbord",
+      "note": "Available Mondays & Thursdays",
+      "items": [
+        {
+          "name": "Master Wu's Garden Greens",
+          "description": "The Green Ninja Garden (Salad Bar). Mixed lettuce blend.",
+          "price": null
+        },
+        {
+          "name": "Dragon Crunchers",
+          "description": "The Green Ninja Garden (Salad Bar). Cucumbers, Carrots, Peppers, Tomatoes.",
+          "price": null
+        },
+        {
+          "name": "Temple Dressings",
+          "description": "The Green Ninja Garden (Salad Bar). Assorted, Rotating Salad Dressings.",
+          "price": null
+        },
+        {
+          "name": "Sensei's Marinara Noodles",
+          "description": "Noodle & Garden Bar (Pasta & Sides). Pasta Marinara.",
+          "price": null
+        },
+        {
+          "name": "Golden Dragon Alfredo",
+          "description": "Noodle & Garden Bar (Pasta & Sides). Alfredo Pasta.",
+          "price": null
+        },
+        {
+          "name": "Temple Fried Rice",
+          "description": "Noodle & Garden Bar (Pasta & Sides). Classic Vegetable Fried Rice with Soy.",
+          "price": null
+        },
+        {
+          "name": "Dojo White Rice",
+          "description": "Noodle & Garden Bar (Pasta & Sides). Fluffy White Rice.",
+          "price": null
+        },
+        {
+          "name": "Zen Garden Roasted Squash",
+          "description": "Noodle & Garden Bar (Pasta & Sides). Roasted Squash.",
+          "price": null
+        },
+        {
+          "name": "Green Ninja Veggies",
+          "description": "Noodle & Garden Bar (Pasta & Sides). Sesame Stir-fried Broccoli.",
+          "price": null
+        },
+        {
+          "name": "Zen Carrots",
+          "description": "Noodle & Garden Bar (Pasta & Sides). Honey glazed roasted Carrots.",
+          "price": null
+        },
+        {
+          "name": "Fire Breath Potatoes",
+          "description": "Noodle & Garden Bar (Pasta & Sides). Soy Ginger glazed Potatoes.",
+          "price": null
+        },
+        {
+          "name": "Elemental Fire Pork",
+          "description": "Sensei's Spinning Blade (Action Carving Station). Gochujang roasted Pork Loin with sticky glaze.",
+          "price": null
+        },
+        {
+          "name": "Green Ninja Stir Fry Veggies",
+          "description": "Sensei's Spinning Blade (Action Carving Station). Mixed green Vegetables.",
+          "price": null
+        },
+        {
+          "name": "Academy Lo Mein",
+          "description": "Sensei's Spinning Blade (Action Carving Station). Savory Noodles with stir-fried Vegetables.",
+          "price": null
+        },
+        {
+          "name": "Golden Dragon Meatballs",
+          "description": "Ninja Warrior Power (Proteins). Teriyaki glazed Beef Meatballs.",
+          "price": null
+        },
+        {
+          "name": "Katana Eggplant Katsu",
+          "description": "Ninja Warrior Power (Proteins). Crispy Eggplant with sweet Chili Sauce.",
+          "price": null
+        },
+        {
+          "name": "Dragon Breath Chicken",
+          "description": "Ninja Warrior Power (Proteins). Tender sweet Soy Chicken.",
+          "price": null
+        },
+        {
+          "name": "Ancient Power Nuggets",
+          "description": "Initiate Training Table (Kids Fare). Chicken Nuggets.",
+          "price": null
+        },
+        {
+          "name": "Grand Master Mac",
+          "description": "Initiate Training Table (Kids Fare). Creamy Mac & Cheese.",
+          "price": null
+        },
+        {
+          "name": "Dragon Fries",
+          "description": "Initiate Training Table (Kids Fare). Crispy French Fries.",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "The Black Brick Tavern",
+      "note": "Available Wednesdays & Saturdays",
+      "items": [
+        {
+          "name": "Captian's Mixed Greens",
+          "description": "Port Salad Market (Salad Bar). Mixed Lettuce blend.",
+          "price": null
+        },
+        {
+          "name": "Fresh Market Cargo",
+          "description": "Port Salad Market (Salad Bar). Cucumbers, Carrots, Peppers, Tomatoes.",
+          "price": null
+        },
+        {
+          "name": "Sailor's Dressings",
+          "description": "Port Salad Market (Salad Bar). Assorted, Rotating Salad Dressings.",
+          "price": null
+        },
+        {
+          "name": "Red Sauce Rigging",
+          "description": "Dockside Provisions (Pasta & Sides). Pasta Marinara.",
+          "price": null
+        },
+        {
+          "name": "Creamy Harbor Alfredo",
+          "description": "Dockside Provisions (Pasta & Sides). Alfredo Pasta.",
+          "price": null
+        },
+        {
+          "name": "Golden Lemon Potatoes",
+          "description": "Dockside Provisions (Pasta & Sides). Roasted Potatoes with Oregano & Lemon.",
+          "price": null
+        },
+        {
+          "name": "Mediterranean Vegetables",
+          "description": "Dockside Provisions (Pasta & Sides). Sauteed seasonal Vegetables.",
+          "price": null
+        },
+        {
+          "name": "Sailor's Potato Plunder",
+          "description": "Dockside Provisions (Pasta & Sides). Buttery Mashed Potatoes.",
+          "price": null
+        },
+        {
+          "name": "Carrot Coins",
+          "description": "Dockside Provisions (Pasta & Sides). Honey glazed roasted Carrots.",
+          "price": null
+        },
+        {
+          "name": "Treasure Coast Squash",
+          "description": "Dockside Provisions (Pasta & Sides). Roasted Squash medley.",
+          "price": null
+        },
+        {
+          "name": "Tradewinds Spice Pork",
+          "description": "Swashbuckler's Deck (Action Carving Station). Spice rubbed Pork loin with Yogurt sauce.",
+          "price": null
+        },
+        {
+          "name": "Dockside Herb Rice",
+          "description": "Swashbuckler's Deck (Action Carving Station). Seasoned Rice Pilaf with Herbs & Vegetables.",
+          "price": null
+        },
+        {
+          "name": "Market Vegetables",
+          "description": "Swashbuckler's Deck (Action Carving Station). Tomatoes, Peppers, Zucchini, & herbs.",
+          "price": null
+        },
+        {
+          "name": "Kofta Mercenary Meatballs",
+          "description": "Scallywag's Sea Rations (Proteins). Beef Meatballs with Cumin and Herbs.",
+          "price": null
+        },
+        {
+          "name": "Shawarma Chicken Strips",
+          "description": "Scallywag's Sea Rations (Proteins). Warm spiced Chicken with Garlic sauce.",
+          "price": null
+        },
+        {
+          "name": "Harbor Citrus Chicken",
+          "description": "Scallywag's Sea Rations (Proteins). Garlic Lemon marinated grilled Chicken.",
+          "price": null
+        },
+        {
+          "name": "Falafel Treasure Bites",
+          "description": "Scallywag's Sea Rations (Proteins). Crispy Chickpea Fritters.",
+          "price": null
+        },
+        {
+          "name": "Captain's Crispy Nuggets",
+          "description": "Buccaneer's Galley (Kids Fare). Chicken Nuggets.",
+          "price": null
+        },
+        {
+          "name": "Seven Seas Mac & Cheese",
+          "description": "Buccaneer's Galley (Kids Fare). Creamy Mac & Cheese.",
+          "price": null
+        },
+        {
+          "name": "Pirate's Golden Booty",
+          "description": "Buccaneer's Galley (Kids Fare). Crispy French Fries.",
+          "price": null
+        }
+      ]
+    }
+  ]
+}

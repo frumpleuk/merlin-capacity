@@ -1,0 +1,97 @@
+{
+  "date": "2026-10-23",
+  "unpriced": true,
+  "source": {
+    "name": "Legoland New York",
+    "official": true,
+    "url": "https://www.legoland.com/new-york/media/hauae4iy/royal-feast-2026-menu.pdf",
+    "sha256": "eaee8b1c681c1ae8dfc85dea62aadedf440e34f7a089a8c10b77dab3c88c5b48",
+    "stated": "2026"
+  },
+  "sections": [
+    {
+      "name": "Royal Feast",
+      "note": "Gluten Free Buns Available Upon Request",
+      "items": [
+        {
+          "name": "Double Cheeseburger Combo",
+          "description": "(2) Patty Cheeseburger Topped w/Lettuce & Tomato served w/ Crispy Coated French Fries.",
+          "price": null,
+          "kcal": 1720
+        },
+        {
+          "name": "Beyond Burger Combo",
+          "description": "Beyond Burger Patty topped w/Lettuce & Tomato served w/Crispy Coated French Fries.",
+          "price": null,
+          "kcal": 880,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Single Cheeseburger Combo",
+          "description": "Single Cheeseburger served w/Crispy Coated French Fries. Available without cheese",
+          "price": null,
+          "kcal": 1170
+        },
+        {
+          "name": "Chicken Tender Basket",
+          "description": "(3) Crispy Chicken Tenders served w/Crispy Coated French Fries.",
+          "price": null,
+          "kcal": 690
+        },
+        {
+          "name": "Kids Chicken Tender Meal",
+          "description": "(2) Crispy Chicken Tenders served w/ Juice, Chips & Fruit Snacks in a Souvenir Bag. Includes Exclusive Pop Badge!",
+          "price": null,
+          "kcal": 580,
+          "tags": [
+            "kids"
+          ]
+        },
+        {
+          "name": "French Fries",
+          "description": "Hot & Crispy, Coated French Fries.",
+          "price": null,
+          "kcal": 360
+        }
+      ]
+    },
+    {
+      "name": "Bottled Drinks",
+      "items": [
+        {
+          "name": "Bottled Sports Drink",
+          "description": "Powerade Mountain Berry Blast 20oz.",
+          "price": null
+        },
+        {
+          "name": "Bottled Lemonade",
+          "description": "Minute Maid Lemonade 20oz.",
+          "price": null
+        },
+        {
+          "name": "Bottled Soda",
+          "description": "Coca-Cola, Diet Coke, Sprite 20oz.",
+          "price": null
+        },
+        {
+          "name": "Bottled Water",
+          "description": "Dasani 20oz.",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Frozen Drinks",
+      "items": [
+        {
+          "name": "Seasonal Slushie",
+          "description": "Frozen Slushie Shake in a Souvenir Cup topped w/ Whipped Cream and a Cherry. Add your choice of Vodka or Rum.",
+          "price": null,
+          "kcal": 275
+        }
+      ]
+    }
+  ]
+}

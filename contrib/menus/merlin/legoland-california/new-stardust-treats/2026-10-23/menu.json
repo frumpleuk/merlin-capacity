@@ -1,0 +1,60 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Legoland California",
+    "official": true,
+    "url": "https://www.legoland.com/california/media/h4wnqstb/stardust-treats-menu.pdf",
+    "sha256": "6ed0ac325bedb7a4121c9e610bdb14b303a9a39e5542d7f04b7cd07baebf36f0"
+  },
+  "unpriced": true,
+  "sections": [
+    {
+      "name": "Stardust Treats",
+      "items": [
+        {
+          "name": "Beetlezoid Churro",
+          "description": "Our signature house-made churros, dusted with vibrant purple sanding sugar, drizzled with rich ube sauce, and finished with a pop of carbonated sugar. Served with whipped cream.",
+          "price": null
+        },
+        {
+          "name": "Luna Churro",
+          "description": "Our signature house-made churros, coated in classic cinnamon sugar and served with our signature house-made chocolate sauce.",
+          "price": null
+        },
+        {
+          "name": "Luminous Ice Cream Cone",
+          "description": "Creamy vanilla soft-serve served in a birthday-cake-flavored waffle cone, with your choice of toppings. Available toppings: Galaxy Sprinkles, Crushed Oreo, or Rainbow Sprinkles",
+          "price": null
+        },
+        {
+          "name": "LEGO® Minifigure Head Sundae",
+          "description": "Vanilla soft-serve topped with fresh strawberries, colorful sprinkles, a freshly made churro, and a cherry on top. Served in a collectible LEGO® minifigure head to take home and enjoy.",
+          "price": null
+        },
+        {
+          "name": "Stardust Popcorn",
+          "description": "Color splashed popcorn with a lightly sweet kettle-corn crunch from across the galaxy.",
+          "price": null
+        },
+        {
+          "name": "Assorted Handcrafted Macarons",
+          "description": "Light, crisp French macarons with a soft, creamy center.",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Fountain Soda Beverages",
+      "items": [
+        {
+          "name": "Reloadable Collectors Cup",
+          "price": null
+        },
+        {
+          "name": "Fountain Soda",
+          "price": null
+        }
+      ]
+    }
+  ]
+}

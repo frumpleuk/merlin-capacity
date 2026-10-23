@@ -1,0 +1,177 @@
+{
+  "date": "2026-10-23",
+  "unpriced": true,
+  "source": {
+    "name": "Peppa Pig Theme Park",
+    "official": true,
+    "url": "https://www.peppapigthemepark.com/florida/media/ovajpnly/miss-rabbit-s-diner-menu.pdf",
+    "sha256": "e87431f8b817faa3a8c1521b9d56c033c2f2942fa7ad717d345188264387281e"
+  },
+  "sections": [
+    {
+      "name": "Little Piggy Entrées",
+      "note": "All kids meals include fruit cup or chips & apple juice",
+      "items": [
+        {
+          "name": "PB&J",
+          "price": null,
+          "tags": [
+            "kids"
+          ]
+        },
+        {
+          "name": "Grilled Cheese",
+          "price": null,
+          "tags": [
+            "kids"
+          ]
+        },
+        {
+          "name": "Mac & Cheese",
+          "price": null,
+          "tags": [
+            "kids"
+          ]
+        },
+        {
+          "name": "Cheese Pizza",
+          "price": null,
+          "tags": [
+            "kids"
+          ]
+        },
+        {
+          "name": "Add Beef Pepperoni",
+          "price": null,
+          "addOn": true
+        }
+      ]
+    },
+    {
+      "name": "Grown-Up Entrées",
+      "items": [
+        {
+          "name": "Potroast Sandwich",
+          "price": null
+        },
+        {
+          "name": "Margherita Flatbread",
+          "price": null
+        },
+        {
+          "name": "Simple Green Salad",
+          "price": null
+        },
+        {
+          "name": "Chicken Caesar Salad",
+          "price": null
+        },
+        {
+          "name": "Turkey & Cheese Sandwich",
+          "price": null
+        },
+        {
+          "name": "Grilled Vegetable Ciabatta",
+          "price": null
+        },
+        {
+          "name": "Chicken Caesar Wrap",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Sides & Snacks",
+      "items": [
+        {
+          "name": "Mixed Fruit Salad",
+          "price": null
+        },
+        {
+          "name": "Fruit & Cheese",
+          "price": null
+        },
+        {
+          "name": "Chips",
+          "price": null
+        },
+        {
+          "name": "Fruit Cup",
+          "price": null
+        },
+        {
+          "name": "Fresh Fruit",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        {
+          "name": "Fountain Drink",
+          "price": null
+        },
+        {
+          "name": "20oz Bottled Water",
+          "price": null
+        },
+        {
+          "name": "Apple Juice",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Sweets & Treats",
+      "items": [
+        {
+          "name": "Muddy Puddle Milkshakes",
+          "price": null,
+          "description": "Chocolate, Strawberry"
+        },
+        {
+          "name": "Mud Cup",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        {
+          "name": "Espresso",
+          "price": null
+        },
+        {
+          "name": "Americano",
+          "price": null
+        },
+        {
+          "name": "Cappuccino",
+          "price": null
+        },
+        {
+          "name": "Macchiato",
+          "price": null
+        },
+        {
+          "name": "Mocha",
+          "price": null
+        },
+        {
+          "name": "Latte",
+          "price": null
+        },
+        {
+          "name": "Hot Tea",
+          "price": null
+        },
+        {
+          "name": "Hot Chocolate",
+          "price": null
+        }
+      ]
+    }
+  ]
+}

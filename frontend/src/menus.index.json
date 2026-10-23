@@ -13,8 +13,8 @@
   },
   "legoland": {
     "venues": 20,
-    "withMenus": 0,
-    "priced": 0,
+    "withMenus": 1,
+    "priced": 1,
     "water": 5
   },
   "chessington": {
@@ -25,14 +25,14 @@
   },
   "legoland_billund": {
     "venues": 34,
-    "withMenus": 0,
-    "priced": 0,
+    "withMenus": 1,
+    "priced": 1,
     "water": 5
   },
   "legoland_deutschland": {
     "venues": 17,
-    "withMenus": 0,
-    "priced": 0,
+    "withMenus": 1,
+    "priced": 1,
     "water": 0
   },
   "gardaland": {
@@ -55,32 +55,32 @@
   },
   "legoland_korea": {
     "venues": 9,
-    "withMenus": 0,
-    "priced": 0,
+    "withMenus": 3,
+    "priced": 3,
     "water": 0
   },
   "legoland_florida": {
     "venues": 28,
-    "withMenus": 0,
-    "priced": 0,
+    "withMenus": 3,
+    "priced": 3,
     "water": 0
   },
   "peppa_pig_florida": {
     "venues": 2,
-    "withMenus": 0,
+    "withMenus": 1,
     "priced": 0,
     "water": 0
   },
   "legoland_california": {
     "venues": 15,
-    "withMenus": 0,
-    "priced": 0,
+    "withMenus": 3,
+    "priced": 1,
     "water": 0
   },
   "legoland_new_york": {
     "venues": 20,
-    "withMenus": 0,
-    "priced": 0,
+    "withMenus": 14,
+    "priced": 3,
     "water": 0
   },
   "knoebels": {
@@ -115,8 +115,8 @@
   },
   "flamingoland": {
     "venues": 25,
-    "withMenus": 1,
-    "priced": 1,
+    "withMenus": 5,
+    "priced": 5,
     "water": 0
   },
   "drayton_manor": {

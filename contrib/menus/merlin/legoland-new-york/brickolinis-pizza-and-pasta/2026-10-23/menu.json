@@ -1,0 +1,206 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Legoland New York",
+    "official": true,
+    "url": "https://www.legoland.com/new-york/media/jidfoksu/brickolini-s-2026-menu.pdf",
+    "sha256": "7fd65ae460a7045e7902f81f8d5f578d90bf8b82ded37d4c9d9d6e5635a2a1bd"
+  },
+  "unpriced": true,
+  "sections": [
+    {
+      "name": "Pizza Pies",
+      "note": "16 in",
+      "items": [
+        {
+          "name": "Pepperoni Pie",
+          "description": "Topped w/our Signature Tomato Sauce, Shredded Mozzarella Cheese, Sliced Pepperoni & Oregano.",
+          "price": null,
+          "kcal": 1160
+        },
+        {
+          "name": "Veggie Pie",
+          "description": "Topped w/ our signature Tomato Sauce, Shredded Mozzarella, Roasted Veggies, Basil Pesto.",
+          "price": null,
+          "kcal": 1100,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Cheese Pie",
+          "description": "Topped w/our Signature Tomato Sauce & Shredded Mozzarella Cheese.",
+          "price": null,
+          "kcal": 980,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Kids Pizza",
+      "note": "7 in",
+      "items": [
+        {
+          "name": "Cheese Pizza",
+          "description": "Topped w/our Signature Tomato Sauce, Shredded Mozzarella Cheese, served with Juice. Includes exclusive Pop Badge!",
+          "price": null,
+          "kcal": 300,
+          "tags": [
+            "kids"
+          ]
+        },
+        {
+          "name": "Pepperoni Pizza",
+          "description": "Topped w/our Signature Tomato Sauce, Shredded Mozzarella Cheese, Sliced Pepperoni & Oregano, served with Juice. Includes exclusive Pop Badge!",
+          "price": null,
+          "kcal": 440,
+          "tags": [
+            "kids"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cauliflower Crust",
+      "note": "10 in",
+      "items": [
+        {
+          "name": "Pepperoni Pizza",
+          "description": "Topped w/our Signature Tomato Sauce, Shredded Mozzarella Cheese, Sliced Pepperoni & Oregano.",
+          "price": null,
+          "kcal": 390,
+          "tags": [
+            "gf"
+          ]
+        },
+        {
+          "name": "Veggie Pizza",
+          "description": "Topped w/our signature Tomato Sauce, Shredded Mozzarella, Roasted Veggies, Basil Pesto.",
+          "price": null,
+          "kcal": 640,
+          "tags": [
+            "gf",
+            "v"
+          ]
+        },
+        {
+          "name": "Cheese Pizza",
+          "description": "Topped w/our Signature Tomato Sauce & Shredded Mozzarella Cheese.",
+          "price": null,
+          "kcal": 350,
+          "tags": [
+            "gf",
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pastas",
+      "note": "Serves 4. Add Chicken",
+      "items": [
+        {
+          "name": "Alfredo Pasta",
+          "description": "Pasta topped w/Creamy Alfredo Sauce.",
+          "price": null,
+          "kcal": 650,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Tomato Pasta",
+          "description": "Pasta topped w/our Signature Tomato Sauce.",
+          "price": null,
+          "kcal": 460,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Salads",
+      "note": "Serves 4",
+      "items": [
+        {
+          "name": "Add Chicken",
+          "price": 599,
+          "addOn": true
+        },
+        {
+          "name": "Classic Caesar Salad",
+          "description": "Chopped Romaine Lettuce, House Herbed Crouton & Grated Parm served w/ a Creamy Caesar Dressing.",
+          "price": null,
+          "kcal": 610,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Mixed Greens Salad",
+          "description": "Mixed Spring Greens, Red Onion, Cucumbers, Shredded Carrots & Choice of Dressing: Ranch(V) Golden Italian(VG) Balsamic Vinaigrette(VG).",
+          "price": null,
+          "kcal": 120,
+          "tags": [
+            "vg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Family 4-Pack",
+      "items": [
+        {
+          "name": "You Choose",
+          "description": "1 Pizza, 1 Salad, 1 Pasta, & 4 Soft Drink (Does not include Cauliflower crust pies)",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Smashed to Pieces",
+          "description": "Pennings Farm Cidery. 16oz.",
+          "price": null,
+          "kcal": 200,
+          "tags": [
+            "gf",
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Build it Boss IPA",
+          "description": "Newburgh Brewing Co. 16oz.",
+          "price": null,
+          "kcal": 210,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Corona Extra",
+          "description": "16oz.",
+          "price": null,
+          "kcal": 148,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "24oz. Fountain Beverage",
+          "price": null
+        },
+        {
+          "name": "Bottled Water",
+          "description": "Dasani® 20 oz.",
+          "price": null
+        }
+      ]
+    }
+  ]
+}

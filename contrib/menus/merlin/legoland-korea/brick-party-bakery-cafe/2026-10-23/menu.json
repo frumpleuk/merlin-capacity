@@ -1,0 +1,188 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Legoland Korea",
+    "official": true,
+    "url": "https://www.legoland.kr/media/iq3lwtht/brick-party-cafe-menuboard.pdf",
+    "sha256": "04995331283a2ffe5ba52b50b10b28ce36a6c896f7c4171228b98c22e63e9f42"
+  },
+  "sections": [
+    {
+      "name": "Kids",
+      "items": [
+        {
+          "name": "Babyccino",
+          "sizes": [
+            {
+              "label": "Hot",
+              "price": 4500
+            }
+          ]
+        },
+        {
+          "name": "Cloud Latte",
+          "sizes": [
+            {
+              "label": "Iced",
+              "price": 6900
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Coffee",
+      "items": [
+        {
+          "name": "Americano",
+          "sizes": [
+            {
+              "label": "Hot",
+              "price": 5000
+            },
+            {
+              "label": "Iced",
+              "price": 5500
+            }
+          ]
+        },
+        {
+          "name": "Latte",
+          "sizes": [
+            {
+              "label": "Hot",
+              "price": 5500
+            },
+            {
+              "label": "Iced",
+              "price": 6000
+            }
+          ]
+        },
+        {
+          "name": "Vanilla Latte",
+          "sizes": [
+            {
+              "label": "Hot",
+              "price": 6000
+            },
+            {
+              "label": "Iced",
+              "price": 6500
+            }
+          ]
+        },
+        {
+          "name": "Cappuccino",
+          "sizes": [
+            {
+              "label": "Hot",
+              "price": 5500
+            }
+          ]
+        },
+        {
+          "name": "Extra Shot",
+          "price": 700,
+          "addOn": true
+        }
+      ]
+    },
+    {
+      "name": "Beverages",
+      "items": [
+        {
+          "name": "Chocolate Milk",
+          "sizes": [
+            {
+              "label": "Hot",
+              "price": 5500
+            },
+            {
+              "label": "Iced",
+              "price": 6000
+            }
+          ]
+        },
+        {
+          "name": "Strawberry Milk Tea",
+          "sizes": [
+            {
+              "label": "Hot",
+              "price": 7000
+            },
+            {
+              "label": "Iced",
+              "price": 7500
+            }
+          ]
+        },
+        {
+          "name": "Green Tangerine Tea",
+          "sizes": [
+            {
+              "label": "Hot",
+              "price": 5500
+            },
+            {
+              "label": "Iced",
+              "price": 6000
+            }
+          ]
+        },
+        {
+          "name": "Yuzu Tea",
+          "sizes": [
+            {
+              "label": "Hot",
+              "price": 5500
+            },
+            {
+              "label": "Iced",
+              "price": 6000
+            }
+          ]
+        },
+        {
+          "name": "Strawberry Latte",
+          "sizes": [
+            {
+              "label": "Iced",
+              "price": 6500
+            }
+          ]
+        },
+        {
+          "name": "Iced Tea",
+          "description": "Peach, Lemon",
+          "sizes": [
+            {
+              "label": "Iced",
+              "price": 4500
+            }
+          ]
+        },
+        {
+          "name": "Ade",
+          "description": "Green Grape, Grapefruit",
+          "sizes": [
+            {
+              "label": "Iced",
+              "price": 5500
+            }
+          ]
+        },
+        {
+          "name": "Ice Chocolate Blend",
+          "description": "Mint, Banana, Strawberry",
+          "sizes": [
+            {
+              "label": "Iced",
+              "price": 6900
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

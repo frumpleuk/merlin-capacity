@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-23",
+  "unpriced": true,
+  "source": {
+    "name": "Legoland New York",
+    "official": true,
+    "url": "https://www.legoland.com/new-york/media/4brpl5c0/granny-s-apple-fries-2026-menu.pdf",
+    "sha256": "02a5a662aa91a7b6cb9d9414edde45a5abd149c2d601d980c6805f185c337f0f"
+  },
+  "sections": [
+    {
+      "name": "Granny's Apple Fries",
+      "items": [
+        {
+          "name": "Granny's Apple Fries",
+          "description": "Crispy Pancake Battered Granny Smith Apple Fries tossed in Cinnamon Sugar and served w/Whipped Cream. Add Caramel Sauce.",
+          "price": null,
+          "kcal": 440,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Deluxe Apple Sundae",
+          "description": "Our Big Apple Sundae served in a souvenir Minifigure head.",
+          "price": null,
+          "kcal": 670,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Big Apple Sundae",
+          "description": "Layers of Apple Fries, Swirled Vanilla & Green Apple Ice Cream, Whipped Cream & Caramel Sauce.",
+          "price": null,
+          "kcal": 670,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Soft Serve Ice Cream",
+          "description": "Vanilla or Green Apple Soft Serve Ice Cream in a cup. Ask about a swirl! Upgrade to a LEGO Minifgure Head!",
+          "price": null,
+          "kcal": 380,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Apple Slices",
+          "description": "Freshly sliced Granny Smith Apples.",
+          "price": null,
+          "kcal": 70,
+          "tags": [
+            "vg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Bottled Sports Drink",
+          "description": "Powerade Mountain Berry Blast 20oz.",
+          "price": null
+        },
+        {
+          "name": "Bottled Lemonade",
+          "description": "Minute Maid Lemonade 20oz.",
+          "price": null
+        },
+        {
+          "name": "Bottled Soda",
+          "description": "Coca-Cola, Diet Coke, Sprite",
+          "price": null
+        },
+        {
+          "name": "Bottled Water",
+          "description": "Dasani 20oz.",
+          "price": null
+        }
+      ]
+    }
+  ]
+}

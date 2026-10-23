@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Legoland Korea",
+    "official": true,
+    "url": "https://www.legoland.kr/media/3r5o33d1/wizard-s-frozen-wonders-menuboard.pdf",
+    "sha256": "4a19e2cdc0e9449e60c0dd55c4d325298629402e6169d46c1597cb5c6f98a443"
+  },
+  "sections": [
+    {
+      "name": "Ice Magic",
+      "items": [
+        {
+          "name": "Two Tone Ice Cream",
+          "description": "Merlin's Pick!",
+          "price": 5500
+        },
+        {
+          "name": "Soft Ice Cream",
+          "description": "Banana, Chocolate",
+          "price": 5000
+        },
+        {
+          "name": "Cone Ice Cream",
+          "description": "Strawberry, Mango, Grape",
+          "price": 4900
+        }
+      ]
+    }
+  ]
+}

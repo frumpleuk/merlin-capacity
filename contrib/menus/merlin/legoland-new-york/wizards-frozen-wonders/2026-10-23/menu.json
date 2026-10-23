@@ -1,0 +1,85 @@
+{
+  "date": "2026-10-23",
+  "unpriced": true,
+  "source": {
+    "name": "Legoland New York",
+    "official": true,
+    "url": "https://www.legoland.com/new-york/media/aevgg5id/wizard-s-frozen-wonders-2026-menu.pdf",
+    "sha256": "67cd11ef5ad5384843094f76281560af7fa5fc59d7d60a12a18b5b9666936fbb"
+  },
+  "sections": [
+    {
+      "name": "Wizard's Frozen Wonders",
+      "note": "Flavors: Vanilla, Chocolate, Strawberry, Banana. Toppings: Rainbow Sprinkles, Chocolate Sprinkles, Whipped Cream, Chocolate Sauce",
+      "items": [
+        {
+          "name": "Mr. Gold Sundae",
+          "description": "Soft Serve Ice Cream w/Golden Cookies & Mini Candies, topped w/ Whipped Cream.",
+          "price": null,
+          "kcal": 480,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Soft Serve Waffle Cone",
+          "description": "Ice Cream served in a colorful Waffle Cone.",
+          "price": null,
+          "kcal": 380,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Soft Serve Cake Cone",
+          "description": "Ice Cream served in a Cake Cone.",
+          "price": null,
+          "kcal": 380,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Soft Serve Ice Cream Cup",
+          "description": "Ice Cream served in a Cup w/choice of 1 topping. Upgrade to a LEGO Minifigure Head!",
+          "price": null,
+          "kcal": 380,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "ICEE",
+          "description": "Cherry, Blue Raspberry, Coca-Cola.",
+          "price": null,
+          "kcal": 110
+        },
+        {
+          "name": "Bottled Sports Drink",
+          "description": "Powerade Mountain Berry Blast 20oz.",
+          "price": null
+        },
+        {
+          "name": "Bottled Lemonade",
+          "description": "Minute Maid Lemonade 20oz.",
+          "price": null
+        },
+        {
+          "name": "Bottled Soda",
+          "description": "Coca-Cola, Diet Coke, Sprite 20oz.",
+          "price": null
+        },
+        {
+          "name": "Bottled Water",
+          "description": "Dasani 20oz.",
+          "price": null
+        }
+      ]
+    }
+  ]
+}

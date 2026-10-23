@@ -1044,8 +1044,8 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
       facebook: "https://www.facebook.com/gardaland",
       instagram: "https://www.instagram.com/gardaland/",
       tiktok: "https://www.tiktok.com/@gardaland_official",
-      // X is linked only in the footer of some pages (e.g. Manage my bookings).
-      x: "https://x.com/gardaland",
+      // No X: the park's footer still links twitter.com/gardaland, but that
+      // handle now belongs to an unrelated personal account (2026-10-23).
       youtube: "https://www.youtube.com/user/gardaland",
     },
   },

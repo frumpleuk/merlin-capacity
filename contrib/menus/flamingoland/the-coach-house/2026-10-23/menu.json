@@ -4,104 +4,406 @@
     "name": "Flamingo Land",
     "official": true,
     "url": "https://www.flamingoland.co.uk/wp-content/uploads/2009/07/The-Coach-House-Menu.pdf",
-    "sha256": "0028c4ec6eb0a7d3852f53e268ae82b8abb6bfbabba75c2126a0a0d52c925a02"
+    "sha256": "0028c4ec6eb0a7d3852f53e268ae82b8abb6bfbabba75c2126a0a0d52c925a02",
+    "files": [
+      {
+        "url": "https://www.flamingoland.co.uk/wp-content/uploads/2009/07/The-Coach-House-Menu.pdf",
+        "sha256": "ed9e9f2b5cf9660049d17d46cc41a820b112958ff627c469f492d379ceab76eb"
+      },
+      {
+        "url": "https://www.flamingoland.co.uk/wp-content/uploads/2009/07/The-Coach-House-Kids-Menu-1.pdf",
+        "sha256": "8bf6f3581e15820a0edf63b87cc9be6b1a0ff410631cc38d818a070ec64b4956"
+      }
+    ]
   },
   "sections": [
     {
       "name": "Sides",
       "items": [
-        { "name": "Beer Battered Onion rings", "price": 550, "kcal": 498 },
-        { "name": "Garlic bread slices", "price": 550, "kcal": 364 },
-        { "name": "Cheesy Garlic bread slices", "price": 700, "kcal": 689 },
-        { "name": "Mash & gravy", "price": 600, "kcal": 380 },
-        { "name": "Chunky Chips", "price": 600, "kcal": 466 },
-        { "name": "Skinny fries", "price": 550, "kcal": 402 }
+        {
+          "name": "Beer Battered Onion rings",
+          "price": 550,
+          "kcal": 498
+        },
+        {
+          "name": "Garlic bread slices",
+          "price": 550,
+          "kcal": 364
+        },
+        {
+          "name": "Cheesy Garlic bread slices",
+          "price": 700,
+          "kcal": 689
+        },
+        {
+          "name": "Mash & gravy",
+          "price": 600,
+          "kcal": 380
+        },
+        {
+          "name": "Chunky Chips",
+          "price": 600,
+          "kcal": 466
+        },
+        {
+          "name": "Skinny fries",
+          "price": 550,
+          "kcal": 402
+        }
       ]
     },
     {
       "name": "Sirloin Steak",
       "items": [
-        { "name": "Sirloin Steak", "description": "8oz sirloin steak, roasted flat mushroom, tomato, onion rings & chunky chips", "price": 2995, "kcal": 1246 },
-        { "name": "Add peppercorn sauce", "price": 200, "kcal": 95, "addOn": true }
+        {
+          "name": "Sirloin Steak",
+          "description": "8oz sirloin steak, roasted flat mushroom, tomato, onion rings & chunky chips",
+          "price": 2995,
+          "kcal": 1246
+        },
+        {
+          "name": "Add peppercorn sauce",
+          "price": 200,
+          "kcal": 95,
+          "addOn": true
+        }
       ]
     },
     {
       "name": "Desserts",
       "items": [
-        { "name": "Chocolate Brownie & Vanilla ice Cream", "price": 800, "kcal": 458 },
-        { "name": "Sticky Toffee Pudding & Custard", "price": 850, "kcal": 1010 },
-        { "name": "Chocolate Cake & Vanilla ice Cream", "price": 850, "kcal": 924 },
-        { "name": "Freshly Baked Cookie Dough & Vanilla ice Cream", "price": 850, "kcal": 832 }
+        {
+          "name": "Chocolate Brownie & Vanilla ice Cream",
+          "price": 800,
+          "kcal": 458
+        },
+        {
+          "name": "Sticky Toffee Pudding & Custard",
+          "price": 850,
+          "kcal": 1010
+        },
+        {
+          "name": "Chocolate Cake & Vanilla ice Cream",
+          "price": 850,
+          "kcal": 924
+        },
+        {
+          "name": "Freshly Baked Cookie Dough & Vanilla ice Cream",
+          "price": 850,
+          "kcal": 832
+        }
       ]
     },
     {
       "name": "Main Meals",
       "note": "Main Menu is served daily 12pm - 8pm",
       "items": [
-        { "name": "Chicken Parmo", "description": "Chicken escalope, béchamel sauce, three cheese mix, served with chunky chips, side salad with house dressing, sweet chili sauce & homemade garlic mayo", "price": 1750, "kcal": 2246, "tags": ["gf"] },
-        { "name": "Traditional Fish & Chips", "description": "Beer Battered Haddock, served with chunky chips, mushy peas & lemon wedge", "price": 1700, "kcal": 1330 },
-        { "name": "Homemade Beef Lasagna", "description": "Beef lasagna served with garlic bread slices & side salad with house dressing", "price": 1700, "kcal": 926 },
-        { "name": "Macaroni Cheese", "description": "Macaroni cheese served with garlic bread slices & side salad with house dressing", "price": 1600, "kcal": 992, "tags": ["v"] },
-        { "name": "Add chunky chips", "description": "To the lasagna or macaroni cheese", "price": 350, "kcal": 201, "addOn": true },
-        { "name": "Coach House Cheeseburger", "description": "Beef patty, cheddar cheese, little gem, tomato & burger relish. Served with chunky chips & coleslaw", "price": 1700, "kcal": 1382 },
-        { "name": "Southern Fried Chicken Burger", "description": "Southern fried chicken burger, little gem lettuce, tomato & mayonnaise. Served with chunky chips & coleslaw", "price": 1650, "kcal": 1270 },
-        { "name": "Sausage & Mash", "description": "Old English sausages, creamy mash potato, garden peas & gravy", "price": 1650, "kcal": 870, "tags": ["gf"] },
-        { "name": "Hunters Chicken", "description": "Grilled chicken breast, bacon, three cheese mix & BBQ sauce. Served with chunky chips & side salad with house dressing", "price": 1700, "kcal": 1605, "tags": ["gf"] },
-        { "name": "Penang Curry", "description": "Vegan Penang curry & wild rice", "price": 1600, "kcal": 554, "tags": ["vg"] },
-        { "name": "Horseshoe Gammon", "description": "Gammon steak, fried egg, pineapple, chunky chips & garden peas", "price": 1800, "kcal": 1047, "tags": ["gf"] },
-        { "name": "Whitby Scampi", "description": "Whitby Scampi served with chips & garden peas", "price": 1650, "kcal": 936 },
-        { "name": "Plant Based Burger", "description": "Plant based burger served with chunky chips, side salad & house dressing", "price": 1600, "kcal": 1013 }
+        {
+          "name": "Chicken Parmo",
+          "description": "Chicken escalope, béchamel sauce, three cheese mix, served with chunky chips, side salad with house dressing, sweet chili sauce & homemade garlic mayo",
+          "price": 1750,
+          "kcal": 2246,
+          "tags": [
+            "gf"
+          ]
+        },
+        {
+          "name": "Traditional Fish & Chips",
+          "description": "Beer Battered Haddock, served with chunky chips, mushy peas & lemon wedge",
+          "price": 1700,
+          "kcal": 1330
+        },
+        {
+          "name": "Homemade Beef Lasagna",
+          "description": "Beef lasagna served with garlic bread slices & side salad with house dressing",
+          "price": 1700,
+          "kcal": 926
+        },
+        {
+          "name": "Macaroni Cheese",
+          "description": "Macaroni cheese served with garlic bread slices & side salad with house dressing",
+          "price": 1600,
+          "kcal": 992,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add chunky chips",
+          "description": "To the lasagna or macaroni cheese",
+          "price": 350,
+          "kcal": 201,
+          "addOn": true
+        },
+        {
+          "name": "Coach House Cheeseburger",
+          "description": "Beef patty, cheddar cheese, little gem, tomato & burger relish. Served with chunky chips & coleslaw",
+          "price": 1700,
+          "kcal": 1382
+        },
+        {
+          "name": "Southern Fried Chicken Burger",
+          "description": "Southern fried chicken burger, little gem lettuce, tomato & mayonnaise. Served with chunky chips & coleslaw",
+          "price": 1650,
+          "kcal": 1270
+        },
+        {
+          "name": "Sausage & Mash",
+          "description": "Old English sausages, creamy mash potato, garden peas & gravy",
+          "price": 1650,
+          "kcal": 870,
+          "tags": [
+            "gf"
+          ]
+        },
+        {
+          "name": "Hunters Chicken",
+          "description": "Grilled chicken breast, bacon, three cheese mix & BBQ sauce. Served with chunky chips & side salad with house dressing",
+          "price": 1700,
+          "kcal": 1605,
+          "tags": [
+            "gf"
+          ]
+        },
+        {
+          "name": "Penang Curry",
+          "description": "Vegan Penang curry & wild rice",
+          "price": 1600,
+          "kcal": 554,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "Horseshoe Gammon",
+          "description": "Gammon steak, fried egg, pineapple, chunky chips & garden peas",
+          "price": 1800,
+          "kcal": 1047,
+          "tags": [
+            "gf"
+          ]
+        },
+        {
+          "name": "Whitby Scampi",
+          "description": "Whitby Scampi served with chips & garden peas",
+          "price": 1650,
+          "kcal": 936
+        },
+        {
+          "name": "Plant Based Burger",
+          "description": "Plant based burger served with chunky chips, side salad & house dressing",
+          "price": 1600,
+          "kcal": 1013
+        }
       ]
     },
     {
       "name": "Light Meals",
       "note": "Light Meals & Jacket Potatoes are served Monday - Saturday 12pm - 5pm",
       "items": [
-        { "name": "Grilled Chicken Salad", "description": "Little gem lettuce, tomato, cucumber, croutons, shaves parmesan & caesar dressing. Crispy chicken available", "price": 1250, "kcal": 711 },
-        { "name": "Brie & Cranberry Ciabatta", "description": "Served hot with fries, side salad & house dressing", "price": 1200, "kcal": 1404 },
-        { "name": "Ham & Cheese Ciabatta", "description": "Served hot with fries, side salad & house dressing", "price": 1150, "kcal": 1077 },
-        { "name": "Cheese & Tomato Ciabatta", "description": "Served hot with fries, side salad & house dressing", "price": 1050, "kcal": 1027 },
-        { "name": "Tuna & Cheese Ciabatta", "description": "Served hot with fries, side salad & house dressing", "price": 1150, "kcal": 1323 },
-        { "name": "Soup Of The Day", "description": "Warming soup, served with bread & butter. GF bread available", "price": 600, "kcal": 460, "tags": ["v"] }
+        {
+          "name": "Grilled Chicken Salad",
+          "description": "Little gem lettuce, tomato, cucumber, croutons, shaves parmesan & caesar dressing. Crispy chicken available",
+          "price": 1250,
+          "kcal": 711
+        },
+        {
+          "name": "Brie & Cranberry Ciabatta",
+          "description": "Served hot with fries, side salad & house dressing",
+          "price": 1200,
+          "kcal": 1404
+        },
+        {
+          "name": "Ham & Cheese Ciabatta",
+          "description": "Served hot with fries, side salad & house dressing",
+          "price": 1150,
+          "kcal": 1077
+        },
+        {
+          "name": "Cheese & Tomato Ciabatta",
+          "description": "Served hot with fries, side salad & house dressing",
+          "price": 1050,
+          "kcal": 1027
+        },
+        {
+          "name": "Tuna & Cheese Ciabatta",
+          "description": "Served hot with fries, side salad & house dressing",
+          "price": 1150,
+          "kcal": 1323
+        },
+        {
+          "name": "Soup Of The Day",
+          "description": "Warming soup, served with bread & butter. GF bread available",
+          "price": 600,
+          "kcal": 460,
+          "tags": [
+            "v"
+          ]
+        }
       ]
     },
     {
       "name": "Jacket Potatoes",
       "note": "Served with side salad & house dressing",
       "items": [
-        { "name": "Plain With Butter", "price": 750, "kcal": 487 },
-        { "name": "With Baked Beans", "price": 800, "kcal": 583 },
-        { "name": "With 3 Cheese mix", "price": 900, "kcal": 703 },
-        { "name": "With Vegan Cheese", "price": 900, "kcal": 732 },
-        { "name": "With Tuna Mayo", "price": 900, "kcal": 869 },
-        { "name": "With Chilli Con Carne", "price": 900, "kcal": 565 },
-        { "name": "Add Toppings", "description": "Three Cheese Mix (216 kcal), Baked Beans (96 kcal), Tuna Mayo (382 kcal), Chilli Con Carne (78 kcal)", "price": 225, "addOn": true }
+        {
+          "name": "Plain With Butter",
+          "price": 750,
+          "kcal": 487
+        },
+        {
+          "name": "With Baked Beans",
+          "price": 800,
+          "kcal": 583
+        },
+        {
+          "name": "With 3 Cheese mix",
+          "price": 900,
+          "kcal": 703
+        },
+        {
+          "name": "With Vegan Cheese",
+          "price": 900,
+          "kcal": 732
+        },
+        {
+          "name": "With Tuna Mayo",
+          "price": 900,
+          "kcal": 869
+        },
+        {
+          "name": "With Chilli Con Carne",
+          "price": 900,
+          "kcal": 565
+        },
+        {
+          "name": "Add Toppings",
+          "description": "Three Cheese Mix (216 kcal), Baked Beans (96 kcal), Tuna Mayo (382 kcal), Chilli Con Carne (78 kcal)",
+          "price": 225,
+          "addOn": true
+        }
       ]
     },
     {
       "name": "Sunday Menu",
       "note": "Served every Sunday 12pm - 5pm. Traditional Sunday Lunch is served with braised red cabbage, roast root vegetables & greens, roast potatoes, Yorkshire pudding & gravy",
       "items": [
-        { "name": "Roast topside beef & horseradish", "price": 1750, "kcal": 708 },
-        { "name": "Roast topside beef - Kids Portion", "price": 900, "kcal": 408, "tags": ["kids"] },
-        { "name": "Slow cooked pork, crackling & apple sauce", "price": 1750, "kcal": 1096 },
-        { "name": "Slow cooked pork, crackling - Kids Portion", "price": 900, "kcal": 678, "tags": ["kids"] },
-        { "name": "Vegetarian sausages", "price": 1800, "kcal": 704, "tags": ["v"] },
-        { "name": "Cauliflower Cheese", "price": 650, "kcal": 379 },
-        { "name": "The Coach House Signature 'Family Chicken Feast'", "description": "Whole roast chicken served with braised red cabbage, roast root vegetables & greens, roast potatoes, 4 Yorkshire puddings & gravy", "price": 4000, "kcal": 3729 }
+        {
+          "name": "Roast topside beef & horseradish",
+          "price": 1750,
+          "kcal": 708
+        },
+        {
+          "name": "Roast topside beef - Kids Portion",
+          "price": 900,
+          "kcal": 408,
+          "tags": [
+            "kids"
+          ]
+        },
+        {
+          "name": "Slow cooked pork, crackling & apple sauce",
+          "price": 1750,
+          "kcal": 1096
+        },
+        {
+          "name": "Slow cooked pork, crackling - Kids Portion",
+          "price": 900,
+          "kcal": 678,
+          "tags": [
+            "kids"
+          ]
+        },
+        {
+          "name": "Vegetarian sausages",
+          "price": 1800,
+          "kcal": 704,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Cauliflower Cheese",
+          "price": 650,
+          "kcal": 379
+        },
+        {
+          "name": "The Coach House Signature 'Family Chicken Feast'",
+          "description": "Whole roast chicken served with braised red cabbage, roast root vegetables & greens, roast potatoes, 4 Yorkshire puddings & gravy",
+          "price": 4000,
+          "kcal": 3729
+        }
       ]
     },
     {
       "name": "Kids Menu",
       "note": "Main meal and one scoop of vanilla, strawberry or chocolate ice cream for £9",
       "items": [
-        { "name": "Chicken Nuggets (Vegan Nuggets Available)", "description": "Skinny fries & baked beans", "price": 900, "kcal": 711, "tags": ["kids"] },
-        { "name": "Grilled Chicken Burger (GF Available)", "description": "Served with lettuce & tomato, skinny fries & baked beans", "price": 900, "kcal": 665, "tags": ["kids"] },
-        { "name": "Spaghetti Bolognese", "description": "Garlic bread", "price": 900, "kcal": 485, "tags": ["kids"] },
-        { "name": "Margheritta Pizza", "description": "Skinny fries & baked beans", "price": 900, "kcal": 700, "tags": ["v", "kids"] },
-        { "name": "Macaroni Cheese", "description": "Garlic bread", "price": 900, "kcal": 669, "tags": ["v", "kids"] },
-        { "name": "Fish & Chips", "description": "Skinny fries & peas", "price": 900, "kcal": 843, "tags": ["kids"] },
-        { "name": "Cheese Burger", "description": "Served with lettuce & tomato, skinny fries & baked beans", "price": 900, "kcal": 1030, "tags": ["kids"] }
+        {
+          "name": "Chicken Nuggets (Vegan Nuggets Available)",
+          "description": "Skinny fries & baked beans",
+          "price": 900,
+          "kcal": 711,
+          "tags": [
+            "kids"
+          ]
+        },
+        {
+          "name": "Grilled Chicken Burger (GF Available)",
+          "description": "Served with lettuce & tomato, skinny fries & baked beans",
+          "price": 900,
+          "kcal": 665,
+          "tags": [
+            "kids"
+          ]
+        },
+        {
+          "name": "Spaghetti Bolognese",
+          "description": "Garlic bread",
+          "price": 900,
+          "kcal": 485,
+          "tags": [
+            "kids"
+          ]
+        },
+        {
+          "name": "Margheritta Pizza",
+          "description": "Skinny fries & baked beans",
+          "price": 900,
+          "kcal": 700,
+          "tags": [
+            "v",
+            "kids"
+          ]
+        },
+        {
+          "name": "Macaroni Cheese",
+          "description": "Garlic bread",
+          "price": 900,
+          "kcal": 669,
+          "tags": [
+            "v",
+            "kids"
+          ]
+        },
+        {
+          "name": "Fish & Chips",
+          "description": "Skinny fries & peas",
+          "price": 900,
+          "kcal": 843,
+          "tags": [
+            "kids"
+          ]
+        },
+        {
+          "name": "Cheese Burger",
+          "description": "Served with lettuce & tomato, skinny fries & baked beans",
+          "price": 900,
+          "kcal": 1030,
+          "tags": [
+            "kids"
+          ]
+        }
       ]
     }
   ]

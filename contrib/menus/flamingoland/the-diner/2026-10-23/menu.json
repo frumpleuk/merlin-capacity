@@ -5,228 +5,872 @@
     "official": true,
     "url": "https://www.flamingoland.co.uk/wp-content/uploads/2025/04/The-American-Diner-Menu.pdf",
     "sha256": "f2c31b287e09ff5256b017af1be44bd5fc3e99428054793387ea77e073f2bf1a",
-    "stated": "April 2025"
+    "stated": "April 2025",
+    "files": [
+      {
+        "url": "https://www.flamingoland.co.uk/wp-content/uploads/2025/04/The-American-Diner-Menu.pdf",
+        "sha256": "36986c6427feeade77338227594e25cda8f07d6dad455851c17c722731b8b6a7"
+      },
+      {
+        "url": "https://www.flamingoland.co.uk/wp-content/uploads/2025/04/The-American-Diner-Breakfast-Menu.pdf",
+        "sha256": "db2d14ab9d74af0d87380065e79fdc13a516e140be0b313299b693e6bcbca51a"
+      },
+      {
+        "url": "https://www.flamingoland.co.uk/wp-content/uploads/2025/04/The-American-Diner-Freak-Shakes.pdf",
+        "sha256": "647e81aa5f589b02490ad0f92a2abd06cfdc8e744bf9528ae534497938d78a5d"
+      },
+      {
+        "url": "https://www.flamingoland.co.uk/wp-content/uploads/2025/04/The-American-Diner-Afternoon-Tea.pdf",
+        "sha256": "2666caca711594583c3c887dfba7605b5014ca456e9518914de75b89f2a41870"
+      }
+    ]
   },
   "sections": [
     {
       "name": "Soft Drinks",
       "items": [
-        { "name": "Simply Fruity Orange", "price": 220, "kcal": 10 },
-        { "name": "Simply Fruity Blackcurrant", "price": 220, "kcal": 11 },
-        { "name": "Fever Tree Indian Tonic", "price": 220, "kcal": 60 },
-        { "name": "Fever Tree Slimline Tonic", "price": 220, "kcal": 30 },
-        { "name": "J2O Apple & Raspberry", "price": 340, "kcal": 58 },
-        { "name": "J2O Orange & Passion Fruit", "price": 340, "kcal": 58 },
-        { "name": "NRB Water Still", "price": 275, "kcal": 0 },
-        { "name": "NRB Water Sparkling", "price": 275, "kcal": 0 },
-        { "name": "Coca Cola", "sizes": [{ "label": "22oz", "price": 380, "kcal": 269 }, { "label": "16oz", "price": 310, "kcal": 196 }] },
-        { "name": "Coca Cola Zero", "sizes": [{ "label": "22oz", "price": 360, "kcal": 3 }, { "label": "16oz", "price": 290, "kcal": 2 }] },
-        { "name": "Diet Coke", "sizes": [{ "label": "22oz", "price": 360, "kcal": 3 }, { "label": "16oz", "price": 290, "kcal": 2 }] },
-        { "name": "Sprite", "sizes": [{ "label": "22oz", "price": 360, "kcal": 6 }, { "label": "16oz", "price": 290, "kcal": 5 }] },
-        { "name": "Fanta Orange", "sizes": [{ "label": "22oz", "price": 360, "kcal": 119 }, { "label": "16oz", "price": 290, "kcal": 86 }] }
+        {
+          "name": "Simply Fruity Orange",
+          "price": 220,
+          "kcal": 10
+        },
+        {
+          "name": "Simply Fruity Blackcurrant",
+          "price": 220,
+          "kcal": 11
+        },
+        {
+          "name": "Fever Tree Indian Tonic",
+          "price": 220,
+          "kcal": 60
+        },
+        {
+          "name": "Fever Tree Slimline Tonic",
+          "price": 220,
+          "kcal": 30
+        },
+        {
+          "name": "J2O Apple & Raspberry",
+          "price": 340,
+          "kcal": 58
+        },
+        {
+          "name": "J2O Orange & Passion Fruit",
+          "price": 340,
+          "kcal": 58
+        },
+        {
+          "name": "NRB Water Still",
+          "price": 275,
+          "kcal": 0
+        },
+        {
+          "name": "NRB Water Sparkling",
+          "price": 275,
+          "kcal": 0
+        },
+        {
+          "name": "Coca Cola",
+          "sizes": [
+            {
+              "label": "22oz",
+              "price": 380,
+              "kcal": 269
+            },
+            {
+              "label": "16oz",
+              "price": 310,
+              "kcal": 196
+            }
+          ]
+        },
+        {
+          "name": "Coca Cola Zero",
+          "sizes": [
+            {
+              "label": "22oz",
+              "price": 360,
+              "kcal": 3
+            },
+            {
+              "label": "16oz",
+              "price": 290,
+              "kcal": 2
+            }
+          ]
+        },
+        {
+          "name": "Diet Coke",
+          "sizes": [
+            {
+              "label": "22oz",
+              "price": 360,
+              "kcal": 3
+            },
+            {
+              "label": "16oz",
+              "price": 290,
+              "kcal": 2
+            }
+          ]
+        },
+        {
+          "name": "Sprite",
+          "sizes": [
+            {
+              "label": "22oz",
+              "price": 360,
+              "kcal": 6
+            },
+            {
+              "label": "16oz",
+              "price": 290,
+              "kcal": 5
+            }
+          ]
+        },
+        {
+          "name": "Fanta Orange",
+          "sizes": [
+            {
+              "label": "22oz",
+              "price": 360,
+              "kcal": 119
+            },
+            {
+              "label": "16oz",
+              "price": 290,
+              "kcal": 86
+            }
+          ]
+        }
       ]
     },
     {
       "name": "Hot Beverages",
       "items": [
-        { "name": "Latte", "price": 315, "kcal": 160 },
-        { "name": "Cappuccino", "price": 315, "kcal": 140 },
-        { "name": "Mocha", "price": 315, "kcal": 149 },
-        { "name": "Hot Chocolate", "price": 275, "kcal": 135 },
-        { "name": "Tea", "price": 275, "kcal": 2 },
-        { "name": "Unlimited Filter Coffee", "price": 375, "kcal": 5 }
+        {
+          "name": "Latte",
+          "price": 315,
+          "kcal": 160
+        },
+        {
+          "name": "Cappuccino",
+          "price": 315,
+          "kcal": 140
+        },
+        {
+          "name": "Mocha",
+          "price": 315,
+          "kcal": 149
+        },
+        {
+          "name": "Hot Chocolate",
+          "price": 275,
+          "kcal": 135
+        },
+        {
+          "name": "Tea",
+          "price": 275,
+          "kcal": 2
+        },
+        {
+          "name": "Unlimited Filter Coffee",
+          "price": 375,
+          "kcal": 5
+        }
       ]
     },
     {
       "name": "Bottled Beers",
       "items": [
-        { "name": "Corona", "description": "4.5%", "price": 450, "tags": ["alcohol"] },
-        { "name": "Budweiser", "description": "4.5%", "price": 450, "tags": ["alcohol"] },
-        { "name": "Corona Zero", "description": "0%", "price": 315 },
-        { "name": "Coors", "description": "3.4%", "price": 440, "tags": ["alcohol"] }
+        {
+          "name": "Corona",
+          "description": "4.5%",
+          "price": 450,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Budweiser",
+          "description": "4.5%",
+          "price": 450,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Corona Zero",
+          "description": "0%",
+          "price": 315
+        },
+        {
+          "name": "Coors",
+          "description": "3.4%",
+          "price": 440,
+          "tags": [
+            "alcohol"
+          ]
+        }
       ]
     },
     {
       "name": "Bottled Cider",
       "items": [
-        { "name": "Rekorderlig Wild Berries", "description": "4%", "price": 580, "tags": ["alcohol"] },
-        { "name": "Rekorderlig S&L", "description": "4%", "price": 580, "tags": ["alcohol"] },
-        { "name": "Rekorderlig S&L Zero", "description": "0%", "price": 580 }
+        {
+          "name": "Rekorderlig Wild Berries",
+          "description": "4%",
+          "price": 580,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Rekorderlig S&L",
+          "description": "4%",
+          "price": 580,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Rekorderlig S&L Zero",
+          "description": "0%",
+          "price": 580
+        }
       ]
     },
     {
       "name": "Spirits",
       "note": "All spirits are 25ml serves, unless stated otherwise",
       "items": [
-        { "name": "Smirnoff Vodka", "description": "37.5%", "price": 410, "tags": ["alcohol"] },
-        { "name": "Bacardi Carta Blanca", "description": "37.5%", "price": 410, "tags": ["alcohol"] },
-        { "name": "Gordon's", "description": "37.5%", "price": 460, "tags": ["alcohol"] },
-        { "name": "Gordon's Pink", "description": "37.5%", "price": 460, "tags": ["alcohol"] },
-        { "name": "Jack Daniels", "description": "40%", "price": 490, "tags": ["alcohol"] },
-        { "name": "Make it double", "price": 200, "addOn": true, "tags": ["alcohol"] }
+        {
+          "name": "Smirnoff Vodka",
+          "description": "37.5%",
+          "price": 410,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Bacardi Carta Blanca",
+          "description": "37.5%",
+          "price": 410,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Gordon's",
+          "description": "37.5%",
+          "price": 460,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Gordon's Pink",
+          "description": "37.5%",
+          "price": 460,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Jack Daniels",
+          "description": "40%",
+          "price": 490,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Make it double",
+          "price": 200,
+          "addOn": true,
+          "tags": [
+            "alcohol"
+          ]
+        }
       ]
     },
     {
       "name": "Burgers",
       "note": "The best burgers served in a brioche bun with lettuce, tomato, fries & coleslaw unless stated otherwise. Served from 12pm midday",
       "items": [
-        { "name": "American Classic", "description": "Beef patty, cheese & relish", "price": 1300, "kcal": 1389 },
-        { "name": "Mac 'N' Cheese", "description": "American classic topped up with mac 'n' cheese", "price": 1450, "kcal": 1597 },
-        { "name": "'Hollygood Burger'", "description": "Double beef patty, double cheese, double bacon, crispy onion rings & BBQ sauce", "price": 1800, "kcal": 1909 },
-        { "name": "Spicy Southern Fried", "description": "Spicy southern fried chicken fillet burger, mayo & cheese", "price": 1400, "kcal": 1472 },
-        { "name": "Classic Chicken", "description": "Grilled chicken, mayo & cheese", "price": 1400, "kcal": 1323 },
-        { "name": "BBQ Chicken Tenders", "description": "BBQ chicken tenders, mayo & cheese", "price": 1400, "kcal": 1581 },
-        { "name": "BBQ Rib Steak Sandwich", "description": "BBQ pork rib steak, & mayo", "price": 1400, "kcal": 1342 },
-        { "name": "'Impossible' Burger", "description": "Vegan beef patty, burger relish & side salad", "price": 1300, "kcal": 1435, "tags": ["vg"] },
-        { "name": "Add cheese or bacon to any burger", "price": 200, "addOn": true },
-        { "name": "Double up on a burger", "price": 350, "addOn": true }
+        {
+          "name": "American Classic",
+          "description": "Beef patty, cheese & relish",
+          "price": 1300,
+          "kcal": 1389
+        },
+        {
+          "name": "Mac 'N' Cheese",
+          "description": "American classic topped up with mac 'n' cheese",
+          "price": 1450,
+          "kcal": 1597
+        },
+        {
+          "name": "'Hollygood Burger'",
+          "description": "Double beef patty, double cheese, double bacon, crispy onion rings & BBQ sauce",
+          "price": 1800,
+          "kcal": 1909
+        },
+        {
+          "name": "Spicy Southern Fried",
+          "description": "Spicy southern fried chicken fillet burger, mayo & cheese",
+          "price": 1400,
+          "kcal": 1472
+        },
+        {
+          "name": "Classic Chicken",
+          "description": "Grilled chicken, mayo & cheese",
+          "price": 1400,
+          "kcal": 1323
+        },
+        {
+          "name": "BBQ Chicken Tenders",
+          "description": "BBQ chicken tenders, mayo & cheese",
+          "price": 1400,
+          "kcal": 1581
+        },
+        {
+          "name": "BBQ Rib Steak Sandwich",
+          "description": "BBQ pork rib steak, & mayo",
+          "price": 1400,
+          "kcal": 1342
+        },
+        {
+          "name": "'Impossible' Burger",
+          "description": "Vegan beef patty, burger relish & side salad",
+          "price": 1300,
+          "kcal": 1435,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "Add cheese or bacon to any burger",
+          "price": 200,
+          "addOn": true
+        },
+        {
+          "name": "Double up on a burger",
+          "price": 350,
+          "addOn": true
+        }
       ]
     },
     {
       "name": "Hot Dogs",
       "note": "Smoked pork hot dogs served in a brioche roll & fries",
       "items": [
-        { "name": "Classic Dog", "description": "Served deliciously simple", "price": 1200, "kcal": 1227 },
-        { "name": "Philly Cheese", "description": "The classic dog topped with cheese, bacon, fried onions, cheese sauce & spring onions", "price": 1300, "kcal": 1595 },
-        { "name": "Dirty Chilli", "description": "The classic topped with torlilla chips, chilli con carne, jalapenos & hot cheese sauce", "price": 1400, "kcal": 1488 },
-        { "name": "Moving Mountain", "description": "Just like the classic but vegan", "price": 1300, "kcal": 912, "tags": ["vg"] }
+        {
+          "name": "Classic Dog",
+          "description": "Served deliciously simple",
+          "price": 1200,
+          "kcal": 1227
+        },
+        {
+          "name": "Philly Cheese",
+          "description": "The classic dog topped with cheese, bacon, fried onions, cheese sauce & spring onions",
+          "price": 1300,
+          "kcal": 1595
+        },
+        {
+          "name": "Dirty Chilli",
+          "description": "The classic topped with torlilla chips, chilli con carne, jalapenos & hot cheese sauce",
+          "price": 1400,
+          "kcal": 1488
+        },
+        {
+          "name": "Moving Mountain",
+          "description": "Just like the classic but vegan",
+          "price": 1300,
+          "kcal": 912,
+          "tags": [
+            "vg"
+          ]
+        }
       ]
     },
     {
       "name": "Dirty Fries",
       "items": [
-        { "name": "Cheesy Bacon", "description": "Cheese & bacon", "price": 800, "kcal": 1372 },
-        { "name": "Burger Fries", "description": "Lettuce, tomato, relish, gherkins, cheese, beef patty & bacon bits", "price": 1200, "kcal": 1592 },
-        { "name": "Chilli & Cheese", "description": "Chilli con carne & cheese", "price": 995, "kcal": 1393 },
-        { "name": "Pepperoni Pizza", "description": "Tomato sauce, cheese & pepperoni slices", "price": 995, "kcal": 1378 }
+        {
+          "name": "Cheesy Bacon",
+          "description": "Cheese & bacon",
+          "price": 800,
+          "kcal": 1372
+        },
+        {
+          "name": "Burger Fries",
+          "description": "Lettuce, tomato, relish, gherkins, cheese, beef patty & bacon bits",
+          "price": 1200,
+          "kcal": 1592
+        },
+        {
+          "name": "Chilli & Cheese",
+          "description": "Chilli con carne & cheese",
+          "price": 995,
+          "kcal": 1393
+        },
+        {
+          "name": "Pepperoni Pizza",
+          "description": "Tomato sauce, cheese & pepperoni slices",
+          "price": 995,
+          "kcal": 1378
+        }
       ]
     },
     {
       "name": "Nachos",
       "items": [
-        { "name": "Classic", "description": "Guacamole, sour cream, cheese sauce, salsa, jalapenos & spriong onions", "price": 1000, "kcal": 927, "tags": ["v"] },
-        { "name": "Cheesy Bacon", "description": "Classic topped with bacon, grated cheese, cheese sauce & spring onions", "price": 1100, "kcal": 1192 },
-        { "name": "Chilli Cheese", "description": "Classic topped with chilli con carne, cheese sauce & spring onions", "price": 1200, "kcal": 1181 }
+        {
+          "name": "Classic",
+          "description": "Guacamole, sour cream, cheese sauce, salsa, jalapenos & spriong onions",
+          "price": 1000,
+          "kcal": 927,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Cheesy Bacon",
+          "description": "Classic topped with bacon, grated cheese, cheese sauce & spring onions",
+          "price": 1100,
+          "kcal": 1192
+        },
+        {
+          "name": "Chilli Cheese",
+          "description": "Classic topped with chilli con carne, cheese sauce & spring onions",
+          "price": 1200,
+          "kcal": 1181
+        }
       ]
     },
     {
       "name": "Salads",
       "items": [
-        { "name": "Diner Mixed Salad", "description": "Lettuce, tomatoes, cucumber, peppers, croutons, honey & mustard dressing", "price": 700, "kcal": 174 },
-        { "name": "Chicken Tender", "description": "Mixed salad with fried chicken strips & bacon", "price": 1200, "kcal": 635 },
-        { "name": "Grilled Chicken", "description": "Mixed salad with grilled chicken", "price": 1200, "kcal": 390 }
+        {
+          "name": "Diner Mixed Salad",
+          "description": "Lettuce, tomatoes, cucumber, peppers, croutons, honey & mustard dressing",
+          "price": 700,
+          "kcal": 174
+        },
+        {
+          "name": "Chicken Tender",
+          "description": "Mixed salad with fried chicken strips & bacon",
+          "price": 1200,
+          "kcal": 635
+        },
+        {
+          "name": "Grilled Chicken",
+          "description": "Mixed salad with grilled chicken",
+          "price": 1200,
+          "kcal": 390
+        }
       ]
     },
     {
       "name": "Sides",
       "items": [
-        { "name": "Fries", "price": 500, "kcal": 957, "tags": ["v"] },
-        { "name": "Onion Rings", "price": 500, "kcal": 768, "tags": ["v"] },
-        { "name": "Sweet Potato Fries", "price": 600, "kcal": 2230, "tags": ["v"] },
-        { "name": "Hot & Spicy Chicken Wings", "price": 900, "kcal": 943 },
-        { "name": "BBQ Chicken Wings", "price": 900, "kcal": 1329 },
-        { "name": "Chicken Strips", "price": 900, "kcal": 1270 }
+        {
+          "name": "Fries",
+          "price": 500,
+          "kcal": 957,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Onion Rings",
+          "price": 500,
+          "kcal": 768,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Sweet Potato Fries",
+          "price": 600,
+          "kcal": 2230,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Hot & Spicy Chicken Wings",
+          "price": 900,
+          "kcal": 943
+        },
+        {
+          "name": "BBQ Chicken Wings",
+          "price": 900,
+          "kcal": 1329
+        },
+        {
+          "name": "Chicken Strips",
+          "price": 900,
+          "kcal": 1270
+        }
       ]
     },
     {
       "name": "Junior Meals",
       "note": "Served with corn on the cob & Simply Fruity orange or blackcurrant",
       "items": [
-        { "name": "Cheeseburger", "description": "Plain bun, cheese & fries", "price": 850, "kcal": 790, "tags": ["kids"] },
-        { "name": "Chicken Nuggets", "description": "With fries", "price": 850, "kcal": 774, "tags": ["kids"] },
-        { "name": "Mac 'N' Cheese", "price": 850, "kcal": 345, "tags": ["v", "kids"] },
-        { "name": "Hot Dog", "description": "With fries", "price": 850, "kcal": 773, "tags": ["kids"] },
-        { "name": "No Chicken Nuggets", "description": "With fries", "price": 850, "kcal": 718, "tags": ["vg", "kids"] }
+        {
+          "name": "Cheeseburger",
+          "description": "Plain bun, cheese & fries",
+          "price": 850,
+          "kcal": 790,
+          "tags": [
+            "kids"
+          ]
+        },
+        {
+          "name": "Chicken Nuggets",
+          "description": "With fries",
+          "price": 850,
+          "kcal": 774,
+          "tags": [
+            "kids"
+          ]
+        },
+        {
+          "name": "Mac 'N' Cheese",
+          "price": 850,
+          "kcal": 345,
+          "tags": [
+            "v",
+            "kids"
+          ]
+        },
+        {
+          "name": "Hot Dog",
+          "description": "With fries",
+          "price": 850,
+          "kcal": 773,
+          "tags": [
+            "kids"
+          ]
+        },
+        {
+          "name": "No Chicken Nuggets",
+          "description": "With fries",
+          "price": 850,
+          "kcal": 718,
+          "tags": [
+            "vg",
+            "kids"
+          ]
+        }
       ]
     },
     {
       "name": "Full Rack of BBQ Ribs",
       "items": [
-        { "name": "Full Rack of BBQ Ribs", "description": "Onion rings, skinny fries, coleslaw & corn on the cob", "price": 1900, "kcal": 3050 }
+        {
+          "name": "Full Rack of BBQ Ribs",
+          "description": "Onion rings, skinny fries, coleslaw & corn on the cob",
+          "price": 1900,
+          "kcal": 3050
+        }
       ]
     },
     {
       "name": "Desserts",
       "items": [
-        { "name": "Loaded Waffle", "description": "Chocolate sauce, vanilla ice cream, strawberries & cream", "price": 800, "kcal": 800 },
-        { "name": "Pancake Stack", "description": "Vanilla ice cream, berries & cream. Choose from chocolate, toffee, strawberry sauce or maple syrup", "price": 800, "kcal": 923 },
-        { "name": "Chocolate Brownie", "description": "Chocolate sauce, vanilla ice cream & strawberries", "price": 750, "kcal": 684 },
-        { "name": "Biscoff Pancake Stack", "description": "Toffee sauce, Biscoff biscuits, vanilla ice cream & cream", "price": 800, "kcal": 980 },
-        { "name": "Add Nutella", "price": 200, "addOn": true },
-        { "name": "Add vanilla, chocolate or strawberry ice cream", "price": 350, "addOn": true }
+        {
+          "name": "Loaded Waffle",
+          "description": "Chocolate sauce, vanilla ice cream, strawberries & cream",
+          "price": 800,
+          "kcal": 800
+        },
+        {
+          "name": "Pancake Stack",
+          "description": "Vanilla ice cream, berries & cream. Choose from chocolate, toffee, strawberry sauce or maple syrup",
+          "price": 800,
+          "kcal": 923
+        },
+        {
+          "name": "Chocolate Brownie",
+          "description": "Chocolate sauce, vanilla ice cream & strawberries",
+          "price": 750,
+          "kcal": 684
+        },
+        {
+          "name": "Biscoff Pancake Stack",
+          "description": "Toffee sauce, Biscoff biscuits, vanilla ice cream & cream",
+          "price": 800,
+          "kcal": 980
+        },
+        {
+          "name": "Add Nutella",
+          "price": 200,
+          "addOn": true
+        },
+        {
+          "name": "Add vanilla, chocolate or strawberry ice cream",
+          "price": 350,
+          "addOn": true
+        }
       ]
     },
     {
       "name": "All American Breakfast",
       "note": "Breakfast menu served until 11am",
       "items": [
-        { "name": "The 'Superstar All-American'", "description": "2 bacon, 2 sausages, 2 fried eggs, 3 pancakes, hash brown nuggets, waffle or toast, maple syrup & butter portion", "price": 1400, "kcal": 1780 },
-        { "name": "Full American", "description": "2 bacon, 2 sausage, fried egg, baked beans, mushrooms, hash brown nuggets, waffle or toast & butter portion", "price": 1200, "kcal": 1027 },
-        { "name": "Vegetarian", "description": "2 vegan sausages, 1 vegan bacon, fried egg, mushrooms, hash brown nuggets, baked beans, waffle or toast & butter portion", "price": 1100, "kcal": 761, "tags": ["v"] },
-        { "name": "Junior", "description": "1 sausage, 1 bacon, fried egg, baked beans, hash brown nuggets, waffle or toast & butter portion", "price": 900, "kcal": 695, "tags": ["kids"] },
-        { "name": "Junior Vegetarian", "description": "1 vegan sausage, 1 vegan bacon, fried egg, hash browns, baked beans, waffle or toast & butter portion", "price": 900, "kcal": 554, "tags": ["v", "kids"] }
+        {
+          "name": "The 'Superstar All-American'",
+          "description": "2 bacon, 2 sausages, 2 fried eggs, 3 pancakes, hash brown nuggets, waffle or toast, maple syrup & butter portion",
+          "price": 1400,
+          "kcal": 1780
+        },
+        {
+          "name": "Full American",
+          "description": "2 bacon, 2 sausage, fried egg, baked beans, mushrooms, hash brown nuggets, waffle or toast & butter portion",
+          "price": 1200,
+          "kcal": 1027
+        },
+        {
+          "name": "Vegetarian",
+          "description": "2 vegan sausages, 1 vegan bacon, fried egg, mushrooms, hash brown nuggets, baked beans, waffle or toast & butter portion",
+          "price": 1100,
+          "kcal": 761,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Junior",
+          "description": "1 sausage, 1 bacon, fried egg, baked beans, hash brown nuggets, waffle or toast & butter portion",
+          "price": 900,
+          "kcal": 695,
+          "tags": [
+            "kids"
+          ]
+        },
+        {
+          "name": "Junior Vegetarian",
+          "description": "1 vegan sausage, 1 vegan bacon, fried egg, hash browns, baked beans, waffle or toast & butter portion",
+          "price": 900,
+          "kcal": 554,
+          "tags": [
+            "v",
+            "kids"
+          ]
+        }
       ]
     },
     {
       "name": "Breakfast Hot Drinks",
       "items": [
-        { "name": "Latte", "price": 315, "kcal": 160 },
-        { "name": "Cappuccino", "price": 315, "kcal": 140 },
-        { "name": "Mocha", "price": 315, "kcal": 149 },
-        { "name": "Hot Chocolate", "price": 275, "kcal": 135 },
-        { "name": "Tea", "price": 275, "kcal": 2 },
-        { "name": "Unlimited Filter Coffee", "price": 375, "kcal": 5 }
+        {
+          "name": "Latte",
+          "price": 315,
+          "kcal": 160
+        },
+        {
+          "name": "Cappuccino",
+          "price": 315,
+          "kcal": 140
+        },
+        {
+          "name": "Mocha",
+          "price": 315,
+          "kcal": 149
+        },
+        {
+          "name": "Hot Chocolate",
+          "price": 275,
+          "kcal": 135
+        },
+        {
+          "name": "Tea",
+          "price": 275,
+          "kcal": 2
+        },
+        {
+          "name": "Unlimited Filter Coffee",
+          "price": 375,
+          "kcal": 5
+        }
       ]
     },
     {
       "name": "All American Pancakes or Waffles",
       "items": [
-        { "name": "Maple Syrup Pancakes", "price": 700, "kcal": 710, "tags": ["v"] },
-        { "name": "Maple Syrup Waffle", "price": 700, "kcal": 534, "tags": ["v"] },
-        { "name": "Maple & Bacon Pancakes", "price": 800, "kcal": 824 },
-        { "name": "Maple & Bacon Waffle", "price": 800, "kcal": 648 },
-        { "name": "Nutella & Banana Pancakes", "price": 800, "kcal": 885, "tags": ["v"] },
-        { "name": "Nutella & Banana Waffle", "price": 800, "kcal": 709, "tags": ["v"] }
+        {
+          "name": "Maple Syrup Pancakes",
+          "price": 700,
+          "kcal": 710,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Maple Syrup Waffle",
+          "price": 700,
+          "kcal": 534,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Maple & Bacon Pancakes",
+          "price": 800,
+          "kcal": 824
+        },
+        {
+          "name": "Maple & Bacon Waffle",
+          "price": 800,
+          "kcal": 648
+        },
+        {
+          "name": "Nutella & Banana Pancakes",
+          "price": 800,
+          "kcal": 885,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Nutella & Banana Waffle",
+          "price": 800,
+          "kcal": 709,
+          "tags": [
+            "v"
+          ]
+        }
       ]
     },
     {
       "name": "Breakfast Sides & Extras",
       "items": [
-        { "name": "Toast & Butter", "price": 300, "kcal": 296 },
-        { "name": "Baked Beans", "price": 300, "kcal": 82, "tags": ["v"] },
-        { "name": "2 Sausages", "price": 300, "kcal": 182 },
-        { "name": "2 Eggs", "price": 300, "kcal": 204, "tags": ["v"] },
-        { "name": "2 Bacon", "price": 300, "kcal": 287 },
-        { "name": "2 Vegan Bacon", "price": 300, "kcal": 152, "tags": ["vg"] },
-        { "name": "2 Vegan Sausages", "price": 300, "kcal": 51, "tags": ["vg"] },
-        { "name": "Maple Syrup", "price": 150, "kcal": 136 },
-        { "name": "Nutella", "price": 250, "kcal": 270 },
-        { "name": "Chocolate, Strawberry or Toffee Sauce", "price": 150, "kcal": 137 },
-        { "name": "Chocolate, Strawberry or Vanilla Ice Cream", "price": 350, "kcal": 257 }
+        {
+          "name": "Toast & Butter",
+          "price": 300,
+          "kcal": 296
+        },
+        {
+          "name": "Baked Beans",
+          "price": 300,
+          "kcal": 82,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "2 Sausages",
+          "price": 300,
+          "kcal": 182
+        },
+        {
+          "name": "2 Eggs",
+          "price": 300,
+          "kcal": 204,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "2 Bacon",
+          "price": 300,
+          "kcal": 287
+        },
+        {
+          "name": "2 Vegan Bacon",
+          "price": 300,
+          "kcal": 152,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "2 Vegan Sausages",
+          "price": 300,
+          "kcal": 51,
+          "tags": [
+            "vg"
+          ]
+        },
+        {
+          "name": "Maple Syrup",
+          "price": 150,
+          "kcal": 136
+        },
+        {
+          "name": "Nutella",
+          "price": 250,
+          "kcal": 270
+        },
+        {
+          "name": "Chocolate, Strawberry or Toffee Sauce",
+          "price": 150,
+          "kcal": 137
+        },
+        {
+          "name": "Chocolate, Strawberry or Vanilla Ice Cream",
+          "price": 350,
+          "kcal": 257
+        }
       ]
     },
     {
       "name": "Breakfast Drinks",
       "items": [
-        { "name": "Simply Fruity Various", "price": 220, "kcal": 11 },
-        { "name": "J2O Various", "price": 340, "kcal": 58 },
-        { "name": "Water Still / Sparkling", "price": 275, "kcal": 0 }
+        {
+          "name": "Simply Fruity Various",
+          "price": 220,
+          "kcal": 11
+        },
+        {
+          "name": "J2O Various",
+          "price": 340,
+          "kcal": 58
+        },
+        {
+          "name": "Water Still / Sparkling",
+          "price": 275,
+          "kcal": 0
+        }
       ]
     },
     {
       "name": "Freak Shakes",
       "items": [
-        { "name": "Chocolate Oreo Cookie", "description": "Chocolate ice cream, chocolate sauce, whipped cream, Oreos, brownies, marshmallows & flake", "price": 800, "kcal": 932 },
-        { "name": "The Flamingo", "description": "Strawberry ice cream, strawberry sauce, donut, whipped cream, sprinkles & candy floss", "price": 800, "kcal": 884 }
+        {
+          "name": "Chocolate Oreo Cookie",
+          "description": "Chocolate ice cream, chocolate sauce, whipped cream, Oreos, brownies, marshmallows & flake",
+          "price": 800,
+          "kcal": 932
+        },
+        {
+          "name": "The Flamingo",
+          "description": "Strawberry ice cream, strawberry sauce, donut, whipped cream, sprinkles & candy floss",
+          "price": 800,
+          "kcal": 884
+        }
       ]
     },
     {
       "name": "American Afternoon Tea for 2",
       "note": "Every Saturday 5pm - 9pm",
       "items": [
-        { "name": "American Afternoon Tea for 2", "description": "Classic American burger, southern fried chicken burger, crispy hot wings & sriracha sauce, BBQ chicken wings & BBQ sauce, breaded chicken strips, nachos & cheese sauce, onion rings, fries, waffles, pancakes & brownie with strawberries, cream & chocolate sauce. Tea & coffee included", "price": 3600 }
+        {
+          "name": "American Afternoon Tea for 2",
+          "description": "Classic American burger, southern fried chicken burger, crispy hot wings & sriracha sauce, BBQ chicken wings & BBQ sauce, breaded chicken strips, nachos & cheese sauce, onion rings, fries, waffles, pancakes & brownie with strawberries, cream & chocolate sauce. Tea & coffee included",
+          "price": 3600
+        }
       ]
     }
   ],
-  "offers": [{ "text": "Freak Hour: 2 Freak Shakes for £12.50, 2:30pm - 3:30pm" }]
+  "offers": [
+    {
+      "text": "Freak Hour: 2 Freak Shakes for £12.50, 2:30pm - 3:30pm"
+    }
+  ]
 }

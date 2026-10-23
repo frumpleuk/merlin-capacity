@@ -71,7 +71,8 @@ still to do. If the user named venues or a date, do only those.
 menus to do, each with its `out` path, `urls`, `sha256` and the cached `pdfs`.
 Render each page (`pdftoppm -r 150 -png <pdf> <scratch>/<name>`), read the
 images as you would photos, and write `out` with the `source` block the README
-gives ("A park's PDF menus are always taken this way"). There are no photos, so
+gives ("A park's PDF menus are always taken this way"). When the plan entry has
+`files` (several PDFs), copy it into `source.files`. There are no photos, so
 items cite none and there is no `skipped` or `optimise.mjs` step.
 
 ## Many folders

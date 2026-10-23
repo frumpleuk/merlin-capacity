@@ -216,6 +216,26 @@ yours, so a venue sync leaves them alone. Then:
 
 A PDF the app links directly needs only steps 1 to 3 (Disneyland Paris).
 
+### Provenance and history
+
+A menu is never edited when the park changes it: the new one gets its own dated
+folder and the old stays, and the Food tab steps back through them. Each
+official menu's `source` says where and when it was read (`url`, the folder
+date as the fetch date, `stated` for the date the park printed) and `sha256`
+names the exact file. A menu read from several PDFs lists each one in
+`source.files` (`[{url, sha256}]`); its `sha256` is then the hash of their
+hashes, in order.
+
+Parks reuse and delete their menu URLs, so the files themselves are kept: every
+PDF `import-pdf-menus.mjs` fetches is copied to R2 under
+`archive/menus/<sha256>.pdf`, a private prefix the worker never serves (the
+artwork is the park's, so it isn't republished), and recorded in
+`archive.json`: `{ "<sha256>": { url, fetched, bytes, type, key } }`. A menu's
+hash looks its file up there. `archive-sources.mjs` did the same, once, for
+menus taken before the archive existed, and says which originals were already
+lost. The menus imported from web pages (Tenkites, Blackpool's venue pages,
+Flamingo Land's Coach House page) are not archived yet.
+
 ### Menus from someone else
 
 Not every menu is ours. `scripts/menus/import-tpj.mjs` reads the menus Theme

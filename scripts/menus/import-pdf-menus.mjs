@@ -16,12 +16,15 @@
 //   "source": { "name": <park>, "official": true, "url": <first pdf>, "sha256": <hash> }
 //
 // An unchanged PDF needs nothing; a changed one gets a new dated menu beside the
-// old, which is the history. Fetching is one PDF a second.
+// old, which is the history. Fetching is one PDF a second. Every file fetched
+// is copied to the private archive (archive-lib.mjs) and recorded in
+// contrib/menus/archive.json, so the source outlives the park's link.
 import crypto from "node:crypto";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { PARKS } from "../../src/config.ts";
+import { archive, saveLedger } from "./archive-lib.mjs";
 import { ALL_PARK_DIRS, DATE_DIR, DLP_PARK_DIRS, MENUS, parkDir, readJson, slug, venues, writeJson } from "./lib.mjs";
 
 const UA = "merlin-capacity/0.1 (+https://themeparks.frumple.co.uk; park menu archive, contact via site)";
@@ -73,6 +76,9 @@ for (const key of Object.keys(ALL_PARK_DIRS)) {
       }
     }
     if (got.length !== urls.length) continue;
+    // Keep a private copy of every file as fetched, before anything is read
+    // from it: the park may change or delete it tomorrow.
+    got.forEach((g, i) => archive({ file: g.file, sha256: g.sha256, url: urls[i], fetched: TODAY }));
     // One PDF: its own hash. Several: the hash of their hashes, in list order.
     const sha256 =
       got.length === 1
@@ -87,6 +93,8 @@ for (const key of Object.keys(ALL_PARK_DIRS)) {
       name: poi.display ?? poi.name,
       urls,
       sha256,
+      // Several PDFs: each one's own hash, for source.files.
+      ...(got.length > 1 ? { files: got.map((g, i) => ({ url: urls[i], sha256: g.sha256 })) } : {}),
       pdfs: got.map((g) => g.file),
       out: path.relative(MENUS, path.join(dir, TODAY, "menu.json")),
       changed: !!prev,
@@ -94,5 +102,6 @@ for (const key of Object.keys(ALL_PARK_DIRS)) {
     console.log(`${prev ? "~ changed" : "+ new    "} ${path.relative(MENUS, dir)}`);
   }
 }
+saveLedger();
 writeJson(PLAN, plan);
 console.log(`${plan.length} menus to transcribe; plan in ${path.relative(process.cwd(), PLAN)}`);

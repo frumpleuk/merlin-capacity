@@ -4,7 +4,17 @@
     "name": "Legoland Billund",
     "official": true,
     "url": "https://www.legoland.dk/media/gq2bouen/q3-frokost-lunch.pdf",
-    "sha256": "47e44742e14c988e8d35a471d6ff7b1f199ddd0700864b8cc17342d53b94494d"
+    "sha256": "47e44742e14c988e8d35a471d6ff7b1f199ddd0700864b8cc17342d53b94494d",
+    "files": [
+      {
+        "url": "https://www.legoland.dk/media/gq2bouen/q3-frokost-lunch.pdf",
+        "sha256": "c4f596d050f6887aca4f1de8a17b862b5b61caa3a24eb5759d1ede8babe776da"
+      },
+      {
+        "url": "https://www.legoland.dk/media/owzd5yil/q3-klassikere-classics.pdf",
+        "sha256": "11d7683f5fd6e81c93a36cefdf6e9943afdaa5f9cf126f661aa464ca0b148bd4"
+      }
+    ]
   },
   "sections": [
     {

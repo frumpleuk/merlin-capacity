@@ -1,0 +1,695 @@
+{
+  "02a5a662aa91a7b6cb9d9414edde45a5abd149c2d601d980c6805f185c337f0f": {
+    "url": "https://www.legoland.com/new-york/media/4brpl5c0/granny-s-apple-fries-2026-menu.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 685821,
+    "type": "application/pdf",
+    "key": "archive/menus/02a5a662aa91a7b6cb9d9414edde45a5abd149c2d601d980c6805f185c337f0f.pdf"
+  },
+  "03b50d7259c1a35c2e0cc9a7bcd1db4015fd38946b4c8b9b40daa5b0d0bb265b": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2DR04_chez-toulouse.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 745536,
+    "type": "application/pdf",
+    "key": "archive/menus/03b50d7259c1a35c2e0cc9a7bcd1db4015fd38946b4c8b9b40daa5b0d0bb265b.pdf"
+  },
+  "0405656a722ad2639e1ef00f233efedc50d71cf3f3d2dc7247c200eb93287058": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR00_cable-car-bake-shop.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 33670209,
+    "type": "application/pdf",
+    "key": "archive/menus/0405656a722ad2639e1ef00f233efedc50d71cf3f3d2dc7247c200eb93287058.pdf"
+  },
+  "04995331283a2ffe5ba52b50b10b28ce36a6c896f7c4171228b98c22e63e9f42": {
+    "url": "https://www.legoland.kr/media/iq3lwtht/brick-party-cafe-menuboard.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 93375,
+    "type": "application/pdf",
+    "key": "archive/menus/04995331283a2ffe5ba52b50b10b28ce36a6c896f7c4171228b98c22e63e9f42.pdf"
+  },
+  "070d0bc56b25866f90961c1dc056e3b068c47e780aee741d8b350c15729e1c4d": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1AR01_cafe-de-la-brousse.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 2023485,
+    "type": "application/pdf",
+    "key": "archive/menus/070d0bc56b25866f90961c1dc056e3b068c47e780aee741d8b350c15729e1c4d.pdf"
+  },
+  "09139073244344b657e3517c8ded4fcd6bdf0e24516e83da65d4fa75a2b348b2": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR03_cookie-kitchen.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 500332,
+    "type": "application/pdf",
+    "key": "archive/menus/09139073244344b657e3517c8ded4fcd6bdf0e24516e83da65d4fa75a2b348b2.pdf"
+  },
+  "0f539ef255e3f7607f38b6f3a4fd4cab84efed5edba4b39ed74d34e838c5a544": {
+    "url": "https://www.legoland.com/new-york/media/5q2d3qyx/smokey-s-2026-menu.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 658574,
+    "type": "application/pdf",
+    "key": "archive/menus/0f539ef255e3f7607f38b6f3a4fd4cab84efed5edba4b39ed74d34e838c5a544.pdf"
+  },
+  "1085bb049a1e4adefa9e1564ef0c1154793d45b4d2f39f4f7eae8ebe66bb91b5": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2VK00_laugh-n-go.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 2253760,
+    "type": "application/pdf",
+    "key": "archive/menus/1085bb049a1e4adefa9e1564ef0c1154793d45b4d2f39f4f7eae8ebe66bb91b5.pdf"
+  },
+  "10ae6d341b109bede26cba91dec2dd620ac0209aa8e02e845ca735ca6273d029": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2FR00_the-hollywood-gardens-restaurant.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 532875,
+    "type": "application/pdf",
+    "key": "archive/menus/10ae6d341b109bede26cba91dec2dd620ac0209aa8e02e845ca735ca6273d029.pdf"
+  },
+  "10d2b400ea89d1b5305b8b879b28aba5d26ed34903b553eb2dd61f8e5aaeea7e": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1AR05_cool-post.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 4764983,
+    "type": "application/pdf",
+    "key": "archive/menus/10d2b400ea89d1b5305b8b879b28aba5d26ed34903b553eb2dd61f8e5aaeea7e.pdf"
+  },
+  "11950e8bfd8f6aa561af8298c0adc34cfd24deb609b209f715cf089150d8464b": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1RR01_casa-de-coco.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 1020140,
+    "type": "application/pdf",
+    "key": "archive/menus/11950e8bfd8f6aa561af8298c0adc34cfd24deb609b209f715cf089150d8464b.pdf"
+  },
+  "11d7683f5fd6e81c93a36cefdf6e9943afdaa5f9cf126f661aa464ca0b148bd4": {
+    "url": "https://www.legoland.dk/media/owzd5yil/q3-klassikere-classics.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 110012,
+    "type": "application/pdf",
+    "key": "archive/menus/11d7683f5fd6e81c93a36cefdf6e9943afdaa5f9cf126f661aa464ca0b148bd4.pdf"
+  },
+  "13ba2dab868aff560d96736c33a6bf613b5600707d7d39960e51a244ae899a0a": {
+    "url": "https://www.legoland.com/new-york/media/fhcmvcu4/brickbeards-2026-menu.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 22982288,
+    "type": "application/pdf",
+    "key": "archive/menus/13ba2dab868aff560d96736c33a6bf613b5600707d7d39960e51a244ae899a0a.pdf"
+  },
+  "16a394b8da58c3592b8d704f9a44fce35a3c1fe7a158c39cc6c15cca503d65c9": {
+    "url": "https://www.crealy.co.uk/media/ibglvktk/sooty_diner_main_menu_web_spookfest.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 2215796,
+    "type": "application/pdf",
+    "key": "archive/menus/16a394b8da58c3592b8d704f9a44fce35a3c1fe7a158c39cc6c15cca503d65c9.pdf"
+  },
+  "19e500f1b5f1ccaf2de7d02b7035dfea8a15639b0b5fa37afc5f33a8618d2fa8": {
+    "url": "https://www.flamingoland.co.uk/wp-content/uploads/2026/04/Spud-Stop-Menu-2026.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 460852,
+    "type": "application/pdf",
+    "key": "archive/menus/19e500f1b5f1ccaf2de7d02b7035dfea8a15639b0b5fa37afc5f33a8618d2fa8.pdf"
+  },
+  "1ac0a13373aae69086dec58f6bef7bc3787cb27244dace39c7ba4383b057be1a": {
+    "url": "https://www.legoland.com/new-york/media/rief0ghl/bricks-menus-specialty-pricing.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 2887470,
+    "type": "application/pdf",
+    "key": "archive/menus/1ac0a13373aae69086dec58f6bef7bc3787cb27244dace39c7ba4383b057be1a.pdf"
+  },
+  "1de61c32e16a3ab694d33df6ba482716b40ab7e1b99ad5664187d1c4509fe40c": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1AR03_colonel-hathis-pizza-outpost.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 65831795,
+    "type": "application/pdf",
+    "key": "archive/menus/1de61c32e16a3ab694d33df6ba482716b40ab7e1b99ad5664187d1c4509fe40c.pdf"
+  },
+  "2086f1452f709769aab9bfbf42e71b8a93413a90572bb964555d7755703696e6": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1DR03_rocket-café.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 3131891,
+    "type": "application/pdf",
+    "key": "archive/menus/2086f1452f709769aab9bfbf42e71b8a93413a90572bb964555d7755703696e6.pdf"
+  },
+  "209ccc665808cf9c81f4197f36531664f093a39ff3fc55c07883c45bf75ae0b2": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2DR05_chez-berlioz.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 901936,
+    "type": "application/pdf",
+    "key": "archive/menus/209ccc665808cf9c81f4197f36531664f093a39ff3fc55c07883c45bf75ae0b2.pdf"
+  },
+  "215a7d055b4ba16f50046f9409d2d14160ecd03d27bb09550c9744b63787e214": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR05_ice-cream-company.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 324918,
+    "type": "application/pdf",
+    "key": "archive/menus/215a7d055b4ba16f50046f9409d2d14160ecd03d27bb09550c9744b63787e214.pdf"
+  },
+  "2666caca711594583c3c887dfba7605b5014ca456e9518914de75b89f2a41870": {
+    "url": "https://www.flamingoland.co.uk/wp-content/uploads/2025/04/The-American-Diner-Afternoon-Tea.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 1879887,
+    "type": "application/pdf",
+    "key": "archive/menus/2666caca711594583c3c887dfba7605b5014ca456e9518914de75b89f2a41870.pdf"
+  },
+  "33a8b5808ddb322424ac00edcb650be38225a342f5ffd720097a0badfa7d4ea9": {
+    "url": "https://www.crealy.co.uk/media/3hmc0ba1/clubhouse_menubooklet_all_mains_2026_web.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 1782320,
+    "type": "application/pdf",
+    "key": "archive/menus/33a8b5808ddb322424ac00edcb650be38225a342f5ffd720097a0badfa7d4ea9.pdf"
+  },
+  "35d245d25b357e1f7a4bf300ac8e1f518be283d48c47baf67645875115573d97": {
+    "url": "https://www.legoland.com/florida/media/5nynlvlz/shipwreck-menu-1.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 6410550,
+    "type": "application/pdf",
+    "key": "archive/menus/35d245d25b357e1f7a4bf300ac8e1f518be283d48c47baf67645875115573d97.pdf"
+  },
+  "36986c6427feeade77338227594e25cda8f07d6dad455851c17c722731b8b6a7": {
+    "url": "https://www.flamingoland.co.uk/wp-content/uploads/2025/04/The-American-Diner-Menu.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 747521,
+    "type": "application/pdf",
+    "key": "archive/menus/36986c6427feeade77338227594e25cda8f07d6dad455851c17c722731b8b6a7.pdf"
+  },
+  "384a06439255380728c0a9978d25082ab69d0321e94d75f745c1e8f3e19ed6f6": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR10_walts-american-restaurant.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 97577,
+    "type": "application/pdf",
+    "key": "archive/menus/384a06439255380728c0a9978d25082ab69d0321e94d75f745c1e8f3e19ed6f6.pdf"
+  },
+  "39d66b6088ce07c62fe8ab89642dcedf4627ec393771c6a1dfd7501b75440a4d": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1NR05_the-old-mill.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 873643,
+    "type": "application/pdf",
+    "key": "archive/menus/39d66b6088ce07c62fe8ab89642dcedf4627ec393771c6a1dfd7501b75440a4d.pdf"
+  },
+  "4781869715809be854fa0cf25d59dd3ea0d3f6d6761175fb2547012af12d71f4": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1NR00_l-arbre-enchante.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 1811991,
+    "type": "application/pdf",
+    "key": "archive/menus/4781869715809be854fa0cf25d59dd3ea0d3f6d6761175fb2547012af12d71f4.pdf"
+  },
+  "4868ef90437f91a2831746b6a3984c5b969a500cbd6aebf8d6ce471aacb8e522": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR06_market-house-deli.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 79477718,
+    "type": "application/pdf",
+    "key": "archive/menus/4868ef90437f91a2831746b6a3984c5b969a500cbd6aebf8d6ce471aacb8e522.pdf"
+  },
+  "4a19e2cdc0e9449e60c0dd55c4d325298629402e6169d46c1597cb5c6f98a443": {
+    "url": "https://www.legoland.kr/media/3r5o33d1/wizard-s-frozen-wonders-menuboard.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 1126895,
+    "type": "application/pdf",
+    "key": "archive/menus/4a19e2cdc0e9449e60c0dd55c4d325298629402e6169d46c1597cb5c6f98a443.pdf"
+  },
+  "5736555797abaa5426f7fdae94faed833002dbac2b493b83e0cbeebfd4efd4e8": {
+    "url": "https://www.legoland.com/california/media/coebohrv/ufo-menu.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 3233797,
+    "type": "application/pdf",
+    "key": "archive/menus/5736555797abaa5426f7fdae94faed833002dbac2b493b83e0cbeebfd4efd4e8.pdf"
+  },
+  "59d301978a9391d3f1f711e01f96250cff3be4c406cd0bd2b81996d1dfe28cc4": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2TR02_bistrot-chez-remy.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 546225,
+    "type": "application/pdf",
+    "key": "archive/menus/59d301978a9391d3f1f711e01f96250cff3be4c406cd0bd2b81996d1dfe28cc4.pdf"
+  },
+  "59f25b5d175543540e6088eae9debae1949ffdd08191fffce24b465cec37bbb8": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR09_victorias-home-style-restaurant.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 609566,
+    "type": "application/pdf",
+    "key": "archive/menus/59f25b5d175543540e6088eae9debae1949ffdd08191fffce24b465cec37bbb8.pdf"
+  },
+  "5a7ebd9fe11dcf1895b6527d204edc4552e0a63e5bccce2449426765a88c9ea7": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1DR02_cool-station.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 2910066,
+    "type": "application/pdf",
+    "key": "archive/menus/5a7ebd9fe11dcf1895b6527d204edc4552e0a63e5bccce2449426765a88c9ea7.pdf"
+  },
+  "5c480d3924de4b2fd6a1290131c76ba363b46d9b2ddfe6509abd4018a764ad54": {
+    "url": "https://www.legoland.co.uk/media/wg3en1zy/jun-2025-llw-skyline-menu-final.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 4833155,
+    "type": "application/pdf",
+    "key": "archive/menus/5c480d3924de4b2fd6a1290131c76ba363b46d9b2ddfe6509abd4018a764ad54.pdf"
+  },
+  "5f984a32e75ff014fa7206c9eed2e5f71a977f8488182ac34688b45d9411a238": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR04_gibson-girl-ice-cream-parlour.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 624737,
+    "type": "application/pdf",
+    "key": "archive/menus/5f984a32e75ff014fa7206c9eed2e5f71a977f8488182ac34688b45d9411a238.pdf"
+  },
+  "60922f6bba8cf3853bd5013e5b8b8396ade8bbc53bc846c51cf4bf457f9c5b3a": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1AR07_restaurant-hakuna-matata.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 369043,
+    "type": "application/pdf",
+    "key": "archive/menus/60922f6bba8cf3853bd5013e5b8b8396ade8bbc53bc846c51cf4bf457f9c5b3a.pdf"
+  },
+  "647e81aa5f589b02490ad0f92a2abd06cfdc8e744bf9528ae534497938d78a5d": {
+    "url": "https://www.flamingoland.co.uk/wp-content/uploads/2025/04/The-American-Diner-Freak-Shakes.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 2721014,
+    "type": "application/pdf",
+    "key": "archive/menus/647e81aa5f589b02490ad0f92a2abd06cfdc8e744bf9528ae534497938d78a5d.pdf"
+  },
+  "67cd11ef5ad5384843094f76281560af7fa5fc59d7d60a12a18b5b9666936fbb": {
+    "url": "https://www.legoland.com/new-york/media/aevgg5id/wizard-s-frozen-wonders-2026-menu.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 679552,
+    "type": "application/pdf",
+    "key": "archive/menus/67cd11ef5ad5384843094f76281560af7fa5fc59d7d60a12a18b5b9666936fbb.pdf"
+  },
+  "6bcfbc04b25bbeb9f7b3ef2cbb408a5995dbc670ebbbe5cacd2826d81b423cc7": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2ER00_nordic-crowns-tavern.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 794425,
+    "type": "application/pdf",
+    "key": "archive/menus/6bcfbc04b25bbeb9f7b3ef2cbb408a5995dbc670ebbbe5cacd2826d81b423cc7.pdf"
+  },
+  "6ed0ac325bedb7a4121c9e610bdb14b303a9a39e5542d7f04b7cd07baebf36f0": {
+    "url": "https://www.legoland.com/california/media/h4wnqstb/stardust-treats-menu.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 2899409,
+    "type": "application/pdf",
+    "key": "archive/menus/6ed0ac325bedb7a4121c9e610bdb14b303a9a39e5542d7f04b7cd07baebf36f0.pdf"
+  },
+  "768060f7796e90adb6e81e34dbbbb2da317c9d0bb9510a4a87b23621d37554ab": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2DR02_la-terrasse-panoramique.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 952274,
+    "type": "application/pdf",
+    "key": "archive/menus/768060f7796e90adb6e81e34dbbbb2da317c9d0bb9510a4a87b23621d37554ab.pdf"
+  },
+  "78ecd86b582f4007a8cc37872a6fddf85fefc34c71278605b0539b4561702b03": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2DR03_cafe-luminosity.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 995297,
+    "type": "application/pdf",
+    "key": "archive/menus/78ecd86b582f4007a8cc37872a6fddf85fefc34c71278605b0539b4561702b03.pdf"
+  },
+  "7aec12aeb67481d2dc2ee7e4d134a32731d2733412c3bb39e27dd17f83a91a8d": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1DR01_cafe-hyperion.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 191534772,
+    "type": "application/pdf",
+    "key": "archive/menus/7aec12aeb67481d2dc2ee7e4d134a32731d2733412c3bb39e27dd17f83a91a8d.pdf"
+  },
+  "7c317a3cd6c21a9a17cbdcc01ae800918da474bbed43e0261d4b01eb2f090dde": {
+    "url": "https://www.legoland.com/new-york/media/lefjafmi/ninja-kitchen-2026-menu.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 585014,
+    "type": "application/pdf",
+    "key": "archive/menus/7c317a3cd6c21a9a17cbdcc01ae800918da474bbed43e0261d4b01eb2f090dde.pdf"
+  },
+  "7e016bac6b5d7cb1ddb839f75d2c675639b216a517ff52205b1ca5667f17c4c9": {
+    "url": "https://www.crealy.co.uk/media/z2snvnrw/street-food_web-menu.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 4220727,
+    "type": "application/pdf",
+    "key": "archive/menus/7e016bac6b5d7cb1ddb839f75d2c675639b216a517ff52205b1ca5667f17c4c9.pdf"
+  },
+  "7edc707973cd5f9444695ff542408f531f453bf20aa87c4a1d6ef994de372aac": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1RR02_last-chance-cafe.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 938926,
+    "type": "application/pdf",
+    "key": "archive/menus/7edc707973cd5f9444695ff542408f531f453bf20aa87c4a1d6ef994de372aac.pdf"
+  },
+  "7f82e9f92924c25adf9521489d4a9ab647d9144942a28be5465868eab62ca291": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2AR02_pymkitchen.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 1269096,
+    "type": "application/pdf",
+    "key": "archive/menus/7f82e9f92924c25adf9521489d4a9ab647d9144942a28be5465868eab62ca291.pdf"
+  },
+  "7fd65ae460a7045e7902f81f8d5f578d90bf8b82ded37d4c9d9d6e5635a2a1bd": {
+    "url": "https://www.legoland.com/new-york/media/jidfoksu/brickolini-s-2026-menu.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 1327956,
+    "type": "application/pdf",
+    "key": "archive/menus/7fd65ae460a7045e7902f81f8d5f578d90bf8b82ded37d4c9d9d6e5635a2a1bd.pdf"
+  },
+  "8bf6f3581e15820a0edf63b87cc9be6b1a0ff410631cc38d818a070ec64b4956": {
+    "url": "https://www.flamingoland.co.uk/wp-content/uploads/2009/07/The-Coach-House-Kids-Menu-1.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 840039,
+    "type": "application/pdf",
+    "key": "archive/menus/8bf6f3581e15820a0edf63b87cc9be6b1a0ff410631cc38d818a070ec64b4956.pdf"
+  },
+  "8def0465cc4eb2f00ae9364e0a32c3e3a17f60a859e505090f5b4ad57df0cc9a": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1NR01_auberge-de-cendrillon.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 521136,
+    "type": "application/pdf",
+    "key": "archive/menus/8def0465cc4eb2f00ae9364e0a32c3e3a17f60a859e505090f5b4ad57df0cc9a.pdf"
+  },
+  "9558a661acce347ceaa001f1ae944bd8059b452add2a628db795de065af5902a": {
+    "url": "https://www.legoland.com/new-york/media/rlqc0vor/food-carts-2026-menu-2.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 29311605,
+    "type": "application/pdf",
+    "key": "archive/menus/9558a661acce347ceaa001f1ae944bd8059b452add2a628db795de065af5902a.pdf"
+  },
+  "956103e825245ddfc0c59352d91ba704f53d41dbc0cfef9d6410283b6e302505": {
+    "url": "https://www.legoland.com/new-york/media/vcglputk/city-dog-2026-menu.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 16462987,
+    "type": "application/pdf",
+    "key": "archive/menus/956103e825245ddfc0c59352d91ba704f53d41dbc0cfef9d6410283b6e302505.pdf"
+  },
+  "95e66f5e6fb6d85ac52f26a4af18c8adc0e431a54314961861b61fa50ff6b0e9": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1NR02_au-chalet-de-la-marionnette.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 3444168,
+    "type": "application/pdf",
+    "key": "archive/menus/95e66f5e6fb6d85ac52f26a4af18c8adc0e431a54314961861b61fa50ff6b0e9.pdf"
+  },
+  "9680ae2122c16726702ed8c9e06cecb615f6e36717d3188f8c4863ed75bcd746": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2BR02_web-truck.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 1399101,
+    "type": "application/pdf",
+    "key": "archive/menus/9680ae2122c16726702ed8c9e06cecb615f6e36717d3188f8c4863ed75bcd746.pdf"
+  },
+  "978081109b453788a1226e1e28f567b66d5fb424a96602e175397ac83e40831e": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1AR00_captain-jacks-restaurant-pirates.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 252378,
+    "type": "application/pdf",
+    "key": "archive/menus/978081109b453788a1226e1e28f567b66d5fb424a96602e175397ac83e40831e.pdf"
+  },
+  "98237837663beebcc03258ff88d75e0e147febc91eb82f53f2d362b54b2c0fd5": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1NR06_pizzeria-bella-notte.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 1985183,
+    "type": "application/pdf",
+    "key": "archive/menus/98237837663beebcc03258ff88d75e0e147febc91eb82f53f2d362b54b2c0fd5.pdf"
+  },
+  "9998803a1d3bcec84a9bed92fbfa9ae43a45bd406758db1c6899056f85bac820": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2BR04_speciality-ice-cream.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 137778,
+    "type": "application/pdf",
+    "key": "archive/menus/9998803a1d3bcec84a9bed92fbfa9ae43a45bd406758db1c6899056f85bac820.pdf"
+  },
+  "99cb8a53af39c0da83782bd6c38c628380c38542648310c329ddd7ee917e70aa": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2DR01_the-regal-view-lounge.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 2704086,
+    "type": "application/pdf",
+    "key": "archive/menus/99cb8a53af39c0da83782bd6c38c628380c38542648310c329ddd7ee917e70aa.pdf"
+  },
+  "9ab82b06017e99af35d8062d55ed5ae15e4a8f684c3cb93f816ef192ef0570a2": {
+    "url": "https://www.flamingoland.co.uk/wp-content/uploads/2026/04/Flamingo-Land-Street-Food-Kitchen-Menu.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 1142783,
+    "type": "application/pdf",
+    "key": "archive/menus/9ab82b06017e99af35d8062d55ed5ae15e4a8f684c3cb93f816ef192ef0570a2.pdf"
+  },
+  "9b3df9d3c1781fbd33eb93a6d1ef1101457f00f9bb52bf944d1bcf347b08867b": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1RR05_critter-corral.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 2403721,
+    "type": "application/pdf",
+    "key": "archive/menus/9b3df9d3c1781fbd33eb93a6d1ef1101457f00f9bb52bf944d1bcf347b08867b.pdf"
+  },
+  "9b510d2824e1a9c4cd08ca0627a9073fc980762768baf673f0f0ab8890800ada": {
+    "url": "https://www.legoland.kr/media/g3aalhvi/marina-snacks-menuboard.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 341450,
+    "type": "application/pdf",
+    "key": "archive/menus/9b510d2824e1a9c4cd08ca0627a9073fc980762768baf673f0f0ab8890800ada.pdf"
+  },
+  "a13596910d38f76b915bff702b426f9633ec7aa4ea7e362094d4639db07cdbe8": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2AR01_stark-factory.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 1343684,
+    "type": "application/pdf",
+    "key": "archive/menus/a13596910d38f76b915bff702b426f9633ec7aa4ea7e362094d4639db07cdbe8.pdf"
+  },
+  "a64e985ff0954166efbb77775c1d55f1ac1f3287503bccf628690edaee328e69": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1RR00_cowboy-cookout-barbecue.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 547165,
+    "type": "application/pdf",
+    "key": "archive/menus/a64e985ff0954166efbb77775c1d55f1ac1f3287503bccf628690edaee328e69.pdf"
+  },
+  "a9158e37e358ae7eaccc4d1d01c2d7854ae5866175e39ab2cdfb400579640394": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1GR46_overland-trail-cafe.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 2664582,
+    "type": "application/pdf",
+    "key": "archive/menus/a9158e37e358ae7eaccc4d1d01c2d7854ae5866175e39ab2cdfb400579640394.pdf"
+  },
+  "aaaf44f6c0da9f83f88e03d75f302b14c0289b0e769d93dd43a59149975e0dbc": {
+    "url": "https://www.flamingoland.co.uk/wp-content/uploads/2026/04/crumble-heaven-menu.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 4901763,
+    "type": "application/pdf",
+    "key": "archive/menus/aaaf44f6c0da9f83f88e03d75f302b14c0289b0e769d93dd43a59149975e0dbc.pdf"
+  },
+  "ac8ffe52ce55b3f5bdb5b8ead219a214e9a2b50022a242ee4958dab141b9a3be": {
+    "url": "https://www.crealy.co.uk/media/rmhfzfjj/a0_donutstop_whippy_menu_poster.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 9098385,
+    "type": "application/pdf",
+    "key": "archive/menus/ac8ffe52ce55b3f5bdb5b8ead219a214e9a2b50022a242ee4958dab141b9a3be.pdf"
+  },
+  "ad43ba5cbb0c27e6997db509e1fc5d7a8a4a3d2b3a676763e5cbe6aec776fdc5": {
+    "url": "https://www.legoland.com/new-york/media/v4rdtzqm/showtime-snacks-2026-menu.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 669785,
+    "type": "application/pdf",
+    "key": "archive/menus/ad43ba5cbb0c27e6997db509e1fc5d7a8a4a3d2b3a676763e5cbe6aec776fdc5.pdf"
+  },
+  "b1a044c266223df8430ff072f3fbafad11029a68f3d3fb5503593e5aadac282c": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2DR06_chez-marie.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 706137,
+    "type": "application/pdf",
+    "key": "archive/menus/b1a044c266223df8430ff072f3fbafad11029a68f3d3fb5503593e5aadac282c.pdf"
+  },
+  "b3430180d72ffab48e6897ee0c4a550340ac01853bbd7742faf17fab703dc2e7": {
+    "url": "https://www.legoland.de/media/xefdidzg/starsgrillhouse_en_2025_speisekarte.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 4867474,
+    "type": "application/pdf",
+    "key": "archive/menus/b3430180d72ffab48e6897ee0c4a550340ac01853bbd7742faf17fab703dc2e7.pdf"
+  },
+  "b4c75609b8bef349fda2510ae783a3d56d4535baf65fdfc52084de34566f27e4": {
+    "url": "https://www.crealy.co.uk/media/qu3hacng/costa-menu-web.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 5264175,
+    "type": "application/pdf",
+    "key": "archive/menus/b4c75609b8bef349fda2510ae783a3d56d4535baf65fdfc52084de34566f27e4.pdf"
+  },
+  "b5d952c7aa9bd129d4fbb278153eb23374c6bec789e592be52e93dfadf3beda2": {
+    "url": "https://www.crealy.co.uk/media/vkrlixtx/chocolatecauldron_web.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 868486,
+    "type": "application/pdf",
+    "key": "archive/menus/b5d952c7aa9bd129d4fbb278153eb23374c6bec789e592be52e93dfadf3beda2.pdf"
+  },
+  "b66ceba87e940d8a4220496b9e33c8c507bb99ad73b771ffc1f8c49d31f9c52c": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1NR03_fantasia-gelati.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 206031,
+    "type": "application/pdf",
+    "key": "archive/menus/b66ceba87e940d8a4220496b9e33c8c507bb99ad73b771ffc1f8c49d31f9c52c.pdf"
+  },
+  "b83c93c5e5c929cf2f0cfbc36dcf78ff1fc6b304a006f9cdaca75bde23884276": {
+    "url": "https://www.legoland.com/california/media/p10pt15t/satellite-bites-menu.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 9402816,
+    "type": "application/pdf",
+    "key": "archive/menus/b83c93c5e5c929cf2f0cfbc36dcf78ff1fc6b304a006f9cdaca75bde23884276.pdf"
+  },
+  "bc51f66b6be2a3b309266626c605bf3e961b3d7867836a6d598b96535ea01d19": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR02_coffee-grinder.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 558267,
+    "type": "application/pdf",
+    "key": "archive/menus/bc51f66b6be2a3b309266626c605bf3e961b3d7867836a6d598b96535ea01d19.pdf"
+  },
+  "c443b7d42d90b1b1d2f98bb7b6de8537f78b87e8e73a4d53c4ed65e6f4206e11": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1RR04_silver-spur-steakhouse.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 3088558,
+    "type": "application/pdf",
+    "key": "archive/menus/c443b7d42d90b1b1d2f98bb7b6de8537f78b87e8e73a4d53c4ed65e6f4206e11.pdf"
+  },
+  "c4f596d050f6887aca4f1de8a17b862b5b61caa3a24eb5759d1ede8babe776da": {
+    "url": "https://www.legoland.dk/media/gq2bouen/q3-frokost-lunch.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 129428,
+    "type": "application/pdf",
+    "key": "archive/menus/c4f596d050f6887aca4f1de8a17b862b5b61caa3a24eb5759d1ede8babe776da.pdf"
+  },
+  "c7688479bb5d2cfa6f47741c0ed53f78c87d4aa7753fb30e6c7dab0e265246f6": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2PR05_fan-tastic-food-truck.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 1340679,
+    "type": "application/pdf",
+    "key": "archive/menus/c7688479bb5d2cfa6f47741c0ed53f78c87d4aa7753fb30e6c7dab0e265246f6.pdf"
+  },
+  "c95f27c683bb786006a47e049068d1d804d32955e67234f5db1aeb108eef4456": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2TR00_ice-cream-creations.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 1188451,
+    "type": "application/pdf",
+    "key": "archive/menus/c95f27c683bb786006a47e049068d1d804d32955e67234f5db1aeb108eef4456.pdf"
+  },
+  "ca0dba5a2e526008ac32cdd8739a20e90d3d1c6439493f84541232b28f5095fe": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1NR04_march-hare-refreshments.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 901435,
+    "type": "application/pdf",
+    "key": "archive/menus/ca0dba5a2e526008ac32cdd8739a20e90d3d1c6439493f84541232b28f5095fe.pdf"
+  },
+  "d57f653db618a3f682545819d95442f46749bf4fdfd4ea6e55f09c41f248429b": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2DR00_the-regal-view-restaurant-and-lounge.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 7194523,
+    "type": "application/pdf",
+    "key": "archive/menus/d57f653db618a3f682545819d95442f46749bf4fdfd4ea6e55f09c41f248429b.pdf"
+  },
+  "d592002fc107459b217773e646b4aec78536f37d7c580fcc214744a32ed6a538": {
+    "url": "https://www.crealy.co.uk/media/suhgayml/sweettreatstop_web-menu_spookfest.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 4668803,
+    "type": "application/pdf",
+    "key": "archive/menus/d592002fc107459b217773e646b4aec78536f37d7c580fcc214744a32ed6a538.pdf"
+  },
+  "d6292b3ab915b0aac7194dba41ed6d797eebdc338896abfef049ff5f863834f7": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1RR03_lucky-nugget-saloon.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 1257392,
+    "type": "application/pdf",
+    "key": "archive/menus/d6292b3ab915b0aac7194dba41ed6d797eebdc338896abfef049ff5f863834f7.pdf"
+  },
+  "d68d1b9e1ed411292fc61cb1a8916e89ebdcfcbe710ced45ee75e7e93668342a": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2FR02_searchlight.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 817247,
+    "type": "application/pdf",
+    "key": "archive/menus/d68d1b9e1ed411292fc61cb1a8916e89ebdcfcbe710ced45ee75e7e93668342a.pdf"
+  },
+  "d76dd3ed79b93e2bb3e5cba2d6dd300377758f4fca30acb918e18aa6acc76447": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2AR02_pym.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 2068428,
+    "type": "application/pdf",
+    "key": "archive/menus/d76dd3ed79b93e2bb3e5cba2d6dd300377758f4fca30acb918e18aa6acc76447.pdf"
+  },
+  "da533875bf41724a369820023c5da2fe188a860042f39ac739b77898aa7e7120": {
+    "url": "https://www.legoland.com/florida/media/acwpaar5/the_grove_menu.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 59977,
+    "type": "application/pdf",
+    "key": "archive/menus/da533875bf41724a369820023c5da2fe188a860042f39ac739b77898aa7e7120.pdf"
+  },
+  "dac2aa57f9776b2107a449024f4c4f5865d317a2573f5adb073430d2ee3591e5": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1NR07_toad-hall-restaurant.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 1124775,
+    "type": "application/pdf",
+    "key": "archive/menus/dac2aa57f9776b2107a449024f4c4f5865d317a2573f5adb073430d2ee3591e5.pdf"
+  },
+  "db2d14ab9d74af0d87380065e79fdc13a516e140be0b313299b693e6bcbca51a": {
+    "url": "https://www.flamingoland.co.uk/wp-content/uploads/2025/04/The-American-Diner-Breakfast-Menu.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 509846,
+    "type": "application/pdf",
+    "key": "archive/menus/db2d14ab9d74af0d87380065e79fdc13a516e140be0b313299b693e6bcbca51a.pdf"
+  },
+  "dd05fde52f8bdf77e179f77f2eb09357c1332350d90693becdbe8c96c3a42ce2": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1DR04_lounge-lightspeed.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 831227,
+    "type": "application/pdf",
+    "key": "archive/menus/dd05fde52f8bdf77e179f77f2eb09357c1332350d90693becdbe8c96c3a42ce2.pdf"
+  },
+  "de0f13db6b3f72d2b1b804590a7624bb1040b8f57d211bcb4be5c1ab55f6a494": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR12_character-dining-at-plaza-gardens.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 419351,
+    "type": "application/pdf",
+    "key": "archive/menus/de0f13db6b3f72d2b1b804590a7624bb1040b8f57d211bcb4be5c1ab55f6a494.pdf"
+  },
+  "e099a942892a3e916ae73c0094093a49b0d50f5b45d0c2bc800aa772fba8015d": {
+    "url": "https://www.crealy.co.uk/media/retl2xvf/pizza-menu-web_2026-1.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 1064351,
+    "type": "application/pdf",
+    "key": "archive/menus/e099a942892a3e916ae73c0094093a49b0d50f5b45d0c2bc800aa772fba8015d.pdf"
+  },
+  "e282f509489048e3a7572a887825538573ed3f648fe937e69e007e2715325ba4": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2AR03_super-diner.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 1096758,
+    "type": "application/pdf",
+    "key": "archive/menus/e282f509489048e3a7572a887825538573ed3f648fe937e69e007e2715325ba4.pdf"
+  },
+  "e79da718fff0b163a8207260be1072cb1b04267f64d01dd443384af69b53f6c4": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR01_caseys-corner.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 503121,
+    "type": "application/pdf",
+    "key": "archive/menus/e79da718fff0b163a8207260be1072cb1b04267f64d01dd443384af69b53f6c4.pdf"
+  },
+  "e87431f8b817faa3a8c1521b9d56c033c2f2942fa7ad717d345188264387281e": {
+    "url": "https://www.peppapigthemepark.com/florida/media/ovajpnly/miss-rabbit-s-diner-menu.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 2349651,
+    "type": "application/pdf",
+    "key": "archive/menus/e87431f8b817faa3a8c1521b9d56c033c2f2942fa7ad717d345188264387281e.pdf"
+  },
+  "eaee8b1c681c1ae8dfc85dea62aadedf440e34f7a089a8c10b77dab3c88c5b48": {
+    "url": "https://www.legoland.com/new-york/media/hauae4iy/royal-feast-2026-menu.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 687341,
+    "type": "application/pdf",
+    "key": "archive/menus/eaee8b1c681c1ae8dfc85dea62aadedf440e34f7a089a8c10b77dab3c88c5b48.pdf"
+  },
+  "ec17eca7d9880a9b999aedfa5ffa06b45cdfa6b3759f932ae50c1c4704663b64": {
+    "url": "https://www.legoland.com/new-york/media/rq4eq3iw/ben-s-pretzels-2026-menu.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 1249416,
+    "type": "application/pdf",
+    "key": "archive/menus/ec17eca7d9880a9b999aedfa5ffa06b45cdfa6b3759f932ae50c1c4704663b64.pdf"
+  },
+  "ed9e9f2b5cf9660049d17d46cc41a820b112958ff627c469f492d379ceab76eb": {
+    "url": "https://www.flamingoland.co.uk/wp-content/uploads/2009/07/The-Coach-House-Menu.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 19309349,
+    "type": "application/pdf",
+    "key": "archive/menus/ed9e9f2b5cf9660049d17d46cc41a820b112958ff627c469f492d379ceab76eb.pdf"
+  },
+  "f0c19ae619e4b3fcdaed27e09ffc3ac4a0bf6622c24e95c3d5e323c134d14545": {
+    "url": "https://www.legoland.com/new-york/media/4x2lr2ps/legoland-coffee-company-2026-menu.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 332997,
+    "type": "application/pdf",
+    "key": "archive/menus/f0c19ae619e4b3fcdaed27e09ffc3ac4a0bf6622c24e95c3d5e323c134d14545.pdf"
+  },
+  "f377b8eacdee2514fac76d2223bddb54ff5faa273676716443b0a8df179fce62": {
+    "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1AR06_agrabah-cafe.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 469342,
+    "type": "application/pdf",
+    "key": "archive/menus/f377b8eacdee2514fac76d2223bddb54ff5faa273676716443b0a8df179fce62.pdf"
+  },
+  "fece778f70fb6c084ee8c1c1d2f7551645021a4397fb2a61d3d815adc0590293": {
+    "url": "https://www.legoland.com/florida/media/hzljodsd/skyline-lounge_fl_dinner-menu.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 1037200,
+    "type": "application/pdf",
+    "key": "archive/menus/fece778f70fb6c084ee8c1c1d2f7551645021a4397fb2a61d3d815adc0590293.pdf"
+  }
+}

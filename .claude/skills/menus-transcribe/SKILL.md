@@ -72,7 +72,9 @@ menus to do, each with its `out` path, `urls`, `sha256` and the cached `pdfs`.
 Render each page (`pdftoppm -r 150 -png <pdf> <scratch>/<name>`), read the
 images as you would photos, and write `out` with the `source` block the README
 gives ("A park's PDF menus are always taken this way"). When the plan entry has
-`files` (several PDFs), copy it into `source.files`. There are no photos, so
+`files` (several PDFs), copy it into `source.files`. When it has `older: true`,
+the PDF predates the venue's newest menu and `out` is dated by the file: set
+`"approxDate": true`. There are no photos, so
 items cite none and there is no `skipped` or `optimise.mjs` step.
 
 ## Many folders

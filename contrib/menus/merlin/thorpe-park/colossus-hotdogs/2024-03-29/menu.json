@@ -1,0 +1,186 @@
+{
+  "date": "2024-03-29",
+  "approxDate": true,
+  "source": {
+    "name": "Thorpe Park",
+    "official": true,
+    "url": "https://www.thorpepark.com/media/xemlla0x/colossus-hotdogs-menu.pdf",
+    "sha256": "0c32bba60eee12d5f99a1672f5c2a26f5e75523421286c9f42831571f3d6fa38"
+  },
+  "sections": [
+    {
+      "name": "Hotdogs",
+      "items": [
+        {
+          "name": "Hotdog",
+          "sizes": [
+            {
+              "label": "Regular",
+              "price": 645,
+              "kcal": 531
+            },
+            {
+              "label": "Large",
+              "price": 750,
+              "kcal": 661
+            }
+          ]
+        },
+        {
+          "name": "Veggie Hotdog",
+          "price": 645,
+          "kcal": 494
+        }
+      ]
+    },
+    {
+      "name": "Fries",
+      "items": [
+        {
+          "name": "Regular Fries",
+          "price": 335,
+          "kcal": 364
+        },
+        {
+          "name": "Seasoned Fries",
+          "price": 335,
+          "kcal": 368
+        },
+        {
+          "name": "Cheesy Fries",
+          "price": 400,
+          "kcal": 571
+        }
+      ]
+    },
+    {
+      "name": "Hot drinks",
+      "items": [
+        {
+          "name": "Americano",
+          "price": 315,
+          "kcal": 10
+        },
+        {
+          "name": "Latte",
+          "price": 340,
+          "kcal": 62
+        },
+        {
+          "name": "Cappuccino",
+          "price": 340,
+          "kcal": 60
+        },
+        {
+          "name": "Mocha",
+          "price": 370,
+          "kcal": 113
+        },
+        {
+          "name": "Hot chocolate",
+          "price": 370,
+          "kcal": 206
+        },
+        {
+          "name": "Tea",
+          "price": 260,
+          "kcal": 6
+        },
+        {
+          "name": "Espresso",
+          "price": 260,
+          "kcal": 6
+        },
+        {
+          "name": "White coffee",
+          "price": 340,
+          "kcal": 40
+        }
+      ]
+    },
+    {
+      "name": "Cold drinks",
+      "items": [
+        {
+          "name": "Soft drink",
+          "description": "Diet Coke (0 kcal), Coca-Cola Zero Sugar (0 kcal), Fanta (13 kcal), Sprite Zero (0 kcal)",
+          "sizes": [
+            {
+              "label": "Regular 16oz",
+              "price": 335
+            },
+            {
+              "label": "Large 22oz",
+              "price": 375
+            }
+          ]
+        },
+        {
+          "name": "Slush Cup 16oz",
+          "price": 450,
+          "kcal": 100
+        },
+        {
+          "name": "Slush Refill",
+          "price": 300,
+          "kcal": 100
+        },
+        {
+          "name": "Slush Half Yard",
+          "price": 650,
+          "kcal": 100
+        },
+        {
+          "name": "SmartWater 600ml",
+          "price": 250,
+          "kcal": 0
+        },
+        {
+          "name": "Coke 500ml",
+          "price": 290,
+          "kcal": 200
+        },
+        {
+          "name": "Coke Zero 500ml",
+          "price": 275,
+          "kcal": 0
+        },
+        {
+          "name": "Diet Coke 500ml",
+          "price": 275,
+          "kcal": 0
+        },
+        {
+          "name": "Fanta 500ml",
+          "price": 275,
+          "kcal": 73
+        },
+        {
+          "name": "Sprite 500ml",
+          "price": 275,
+          "kcal": 70
+        },
+        {
+          "name": "Tyrells Crisps",
+          "price": 175
+        }
+      ]
+    },
+    {
+      "name": "Meal deals",
+      "note": "Meal deal calories dependent on selection made. Please refer to calories information stated in the menu.",
+      "items": [
+        {
+          "name": "Hot Dog Meal Deal",
+          "description": "Hot Dog + Fries + Regular Drink (16oz)",
+          "price": 1100
+        },
+        {
+          "name": "Large Hot Dog Meal Deal",
+          "description": "Hot Dog + Fries + Large Drink (22oz)",
+          "price": 1250
+        }
+      ]
+    }
+  ]
+}

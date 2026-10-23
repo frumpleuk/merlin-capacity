@@ -7,13 +7,13 @@
   },
   "thorpe_park": {
     "venues": 35,
-    "withMenus": 12,
-    "priced": 12,
+    "withMenus": 15,
+    "priced": 15,
     "water": 5
   },
   "legoland": {
     "venues": 20,
-    "withMenus": 1,
+    "withMenus": 2,
     "priced": 1,
     "water": 5
   },

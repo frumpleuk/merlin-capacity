@@ -9,5 +9,8 @@
   "menuUrl": null,
   "appPassholderDiscount": null,
   "diningPlans": null,
-  "appMissingSince": null
+  "appMissingSince": null,
+  "menuPdfs": [
+    "https://www.chessington.com/media/h4adafh5/smokehouse-a4-menus-final-cropped-reduced-file-size.pdf"
+  ]
 }

@@ -1,0 +1,302 @@
+{
+  "date": "2025-03-19",
+  "approxDate": true,
+  "unpriced": true,
+  "source": {
+    "name": "Legoland Windsor",
+    "official": true,
+    "url": "https://www.legoland.co.uk/media/jq5psrbr/llw-apr-2025-bricks-breakfast-menu.pdf",
+    "sha256": "3be7ec68da6e287124e9850d70f7ecaaa64b88a30099448b2199916f80032da5",
+    "stated": "2025"
+  },
+  "sections": [
+    {
+      "name": "Drinks",
+      "note": "Breakfast buffet",
+      "items": [
+        {
+          "name": "Freshly Brewed Coffee",
+          "price": null,
+          "kcal": 12
+        },
+        {
+          "name": "Selection of Teas",
+          "price": null,
+          "kcal": 6
+        },
+        {
+          "name": "Orange Juice",
+          "price": null,
+          "kcal": 20
+        },
+        {
+          "name": "Apple Juice",
+          "price": null,
+          "kcal": 1
+        },
+        {
+          "name": "Water",
+          "price": null
+        },
+        {
+          "name": "Milk",
+          "price": null,
+          "kcal": 34
+        },
+        {
+          "name": "Oats Milk",
+          "price": null,
+          "kcal": 93
+        },
+        {
+          "name": "Soya Milk",
+          "price": null,
+          "kcal": 42
+        }
+      ]
+    },
+    {
+      "name": "Toast Station",
+      "items": [
+        {
+          "name": "White Toast",
+          "price": null,
+          "kcal": 92
+        },
+        {
+          "name": "Brown Toast",
+          "price": null,
+          "kcal": 86
+        },
+        {
+          "name": "Jams",
+          "price": null,
+          "kcal": 97
+        },
+        {
+          "name": "Honey",
+          "price": null,
+          "kcal": 76
+        },
+        {
+          "name": "Butter",
+          "price": null,
+          "kcal": 91
+        },
+        {
+          "name": "Sunflower Spread",
+          "price": null,
+          "kcal": 85
+        }
+      ]
+    },
+    {
+      "name": "Cereal Station",
+      "items": [
+        {
+          "name": "Weetabix",
+          "price": null,
+          "kcal": 362
+        },
+        {
+          "name": "Rice Crispies",
+          "price": null,
+          "kcal": 378
+        },
+        {
+          "name": "Bran Flakes",
+          "price": null,
+          "kcal": 143
+        },
+        {
+          "name": "Coco Pops",
+          "price": null,
+          "kcal": 368
+        },
+        {
+          "name": "Corn Flakes",
+          "price": null,
+          "kcal": 378
+        }
+      ]
+    },
+    {
+      "name": "Cooked Breakfast",
+      "items": [
+        {
+          "name": "Mushrooms",
+          "tags": [
+            "v"
+          ],
+          "price": null,
+          "kcal": 26
+        },
+        {
+          "name": "Fried Egg",
+          "tags": [
+            "v"
+          ],
+          "price": null,
+          "kcal": 147
+        },
+        {
+          "name": "Srambled Egg",
+          "tags": [
+            "v"
+          ],
+          "price": null,
+          "kcal": 224
+        },
+        {
+          "name": "Boiled Egg",
+          "tags": [
+            "v"
+          ],
+          "price": null,
+          "kcal": 100
+        },
+        {
+          "name": "Hash Browns",
+          "tags": [
+            "v"
+          ],
+          "price": null,
+          "kcal": 118
+        },
+        {
+          "name": "Grilled Tomatoes",
+          "tags": [
+            "v"
+          ],
+          "price": null,
+          "kcal": 20
+        },
+        {
+          "name": "Baked Beans",
+          "tags": [
+            "v"
+          ],
+          "price": null,
+          "kcal": 10
+        },
+        {
+          "name": "Bacon",
+          "price": null,
+          "kcal": 90
+        },
+        {
+          "name": "Sausage",
+          "price": null,
+          "kcal": 131
+        },
+        {
+          "name": "Vegetarian Sausage",
+          "tags": [
+            "v"
+          ],
+          "price": null,
+          "kcal": 69
+        },
+        {
+          "name": "Vegan Sausage",
+          "price": null,
+          "kcal": 69
+        }
+      ]
+    },
+    {
+      "name": "American Style Pancakes",
+      "items": [
+        {
+          "name": "American Style Pancakes",
+          "tags": [
+            "v"
+          ],
+          "price": null,
+          "kcal": 193
+        },
+        {
+          "name": "Maple Syrup",
+          "price": null,
+          "kcal": 78
+        },
+        {
+          "name": "Chocolate Sauce",
+          "price": null,
+          "kcal": 23
+        },
+        {
+          "name": "Strawberry Sauce",
+          "price": null,
+          "kcal": 24
+        }
+      ]
+    },
+    {
+      "name": "Continental Breakfast",
+      "items": [
+        {
+          "name": "Granola",
+          "price": null,
+          "kcal": 209
+        },
+        {
+          "name": "Natural Yogurt",
+          "price": null,
+          "kcal": 133
+        },
+        {
+          "name": "Fruits of the Forest Compote",
+          "price": null,
+          "kcal": 15
+        },
+        {
+          "name": "Peaches",
+          "price": null,
+          "kcal": 48
+        },
+        {
+          "name": "Grapefruit Segments",
+          "price": null,
+          "kcal": 67
+        },
+        {
+          "name": "Sliced Watermelon",
+          "price": null,
+          "kcal": 53
+        },
+        {
+          "name": "Frosted Blueberries",
+          "price": null,
+          "kcal": 21
+        },
+        {
+          "name": "Frosted Raspberries",
+          "price": null,
+          "kcal": 32
+        },
+        {
+          "name": "Frosted Strawberries",
+          "price": null,
+          "kcal": 19
+        }
+      ]
+    },
+    {
+      "name": "Morning Pastries",
+      "note": "All kcal are per portion",
+      "items": [
+        {
+          "name": "Pain au Chocolat",
+          "price": null,
+          "kcal": 107
+        },
+        {
+          "name": "Croissants",
+          "price": null,
+          "kcal": 103
+        }
+      ]
+    }
+  ]
+}

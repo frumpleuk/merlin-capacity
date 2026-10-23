@@ -1,0 +1,82 @@
+{
+  "date": "2024-03-23",
+  "approxDate": true,
+  "unpriced": true,
+  "source": {
+    "name": "Thorpe Park",
+    "official": true,
+    "url": "https://www.thorpepark.com/media/ej1japvv/cape-cod-menu.pdf",
+    "sha256": "394adff3cadd88772fe67093adbfbb3220891d45ab2d410198ab3bebc0892700"
+  },
+  "sections": [
+    {
+      "name": "Mains",
+      "items": [
+        {
+          "name": "Fish & Chips",
+          "price": null
+        },
+        {
+          "name": "Sausage & Chips",
+          "price": null
+        },
+        {
+          "name": "Scampi & Chips",
+          "price": null
+        },
+        {
+          "name": "Pie & Chips",
+          "price": null
+        },
+        {
+          "name": "Fish Finger Sandwich",
+          "description": "With rocket & tartar sauce",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Meal Deal",
+      "items": [
+        {
+          "name": "Meal Deal",
+          "description": "A choice of fish, scampi, sausage or pie, with curry, mushy peas or gravy and any soft drink",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Sides & Drinks",
+      "items": [
+        {
+          "name": "Chips",
+          "price": null
+        },
+        {
+          "name": "Curry Sauce",
+          "price": null
+        },
+        {
+          "name": "Gravy",
+          "price": null
+        },
+        {
+          "name": "Mushy Peas",
+          "price": null
+        },
+        {
+          "name": "Coke Classic",
+          "price": null
+        },
+        {
+          "name": "Soft Drinks",
+          "price": null
+        },
+        {
+          "name": "Water",
+          "price": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "date": "2024-03-17",
+  "approxDate": true,
+  "unpriced": true,
+  "source": {
+    "name": "Thorpe Park",
+    "official": true,
+    "url": "https://www.thorpepark.com/media/1bxe5nf4/spice-kitchen-menu.pdf",
+    "sha256": "360c0eb55f9a8aed8a5d5a0d8db18320ab018c7a12361b5d03b07f1cc467d98f"
+  },
+  "sections": [
+    {
+      "name": "Street Food",
+      "items": [
+        {
+          "name": "Aromatic spiced chicken Mezze bowl",
+          "price": null
+        },
+        {
+          "name": "Indian spiced chicken wrap",
+          "description": "In naan bread",
+          "price": null
+        },
+        {
+          "name": "Beef madras with rice",
+          "price": null
+        },
+        {
+          "name": "Chicken tikka masala with rice",
+          "price": null
+        },
+        {
+          "name": "Chicken korma with rice",
+          "price": null
+        },
+        {
+          "name": "Spicy or plain fried noodles",
+          "description": "With chicken or without",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Sides & Drinks",
+      "items": [
+        {
+          "name": "Meat or veg samosas (2)",
+          "price": null
+        },
+        {
+          "name": "Onion bhaji",
+          "price": null
+        },
+        {
+          "name": "Masala chips",
+          "price": null
+        },
+        {
+          "name": "Soft drinks",
+          "price": null
+        },
+        {
+          "name": "Bottled beers",
+          "price": null
+        }
+      ]
+    }
+  ]
+}

@@ -9,5 +9,8 @@
   "menuUrl": null,
   "appPassholderDiscount": null,
   "diningPlans": null,
-  "appMissingSince": null
+  "appMissingSince": null,
+  "menuPdfs": [
+    "https://www.thorpepark.com/media/1bxe5nf4/spice-kitchen-menu.pdf"
+  ]
 }

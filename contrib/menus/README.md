@@ -216,6 +216,13 @@ yours, so a venue sync leaves them alone. Then:
 
 A PDF the app links directly needs only steps 1 to 3 (Disneyland Paris).
 
+A PDF made before the venue's newest menu (Thorpe Park's 2024 and 2025 sheets,
+behind boards photographed in September 2026), or more than a year before the
+fetch, is history, not the current menu: the plan marks it `older` and its `out` is dated by the PDF's own
+metadata date, so write `approxDate: true` in its menu.json. Put such a PDF in
+`menuPdfs` rather than `displayMenuUrl`, so the Food tab doesn't offer it as
+the official menu.
+
 ### Provenance and history
 
 A menu is never edited when the park changes it: the new one gets its own dated

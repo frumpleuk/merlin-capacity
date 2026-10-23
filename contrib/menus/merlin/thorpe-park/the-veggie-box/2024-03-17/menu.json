@@ -1,0 +1,136 @@
+{
+  "date": "2024-03-17",
+  "approxDate": true,
+  "unpriced": true,
+  "source": {
+    "name": "Thorpe Park",
+    "official": true,
+    "url": "https://www.thorpepark.com/media/dc0pery5/veggie-box-menu.pdf",
+    "sha256": "d90fce2e82e10c8df9cccf3c515d8dccaa712400ff669e3c0e74e6274a3969ca"
+  },
+  "sections": [
+    {
+      "name": "Salad Rice Bowls",
+      "items": [
+        {
+          "name": "Salad Rice Bowl",
+          "price": null
+        },
+        {
+          "name": "With Halloumi",
+          "price": null
+        },
+        {
+          "name": "With Falafel",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Open Wraps",
+      "items": [
+        {
+          "name": "Halloumi",
+          "price": null
+        },
+        {
+          "name": "Falafel",
+          "price": null
+        },
+        {
+          "name": "Mixed",
+          "price": null
+        },
+        {
+          "name": "Onion Bhaji",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Spicy Bean Burger",
+      "items": [
+        {
+          "name": "Spicy Bean Burger",
+          "price": null
+        },
+        {
+          "name": "Halloumi",
+          "addOn": true,
+          "price": null
+        },
+        {
+          "name": "Falafel",
+          "addOn": true,
+          "price": null
+        },
+        {
+          "name": "Cheese",
+          "addOn": true,
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Fries",
+      "items": [
+        {
+          "name": "Skin on Fries",
+          "price": null
+        },
+        {
+          "name": "3 Bean Chilli",
+          "addOn": true,
+          "price": null
+        },
+        {
+          "name": "Curry",
+          "addOn": true,
+          "price": null
+        },
+        {
+          "name": "Cheese",
+          "addOn": true,
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Samosa or Bhaji",
+      "items": [
+        {
+          "name": "Samosa",
+          "description": "Two pieces",
+          "price": null
+        },
+        {
+          "name": "Bhaji",
+          "description": "Two pieces",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Juices",
+          "description": "Cranberry, Orange or Apple",
+          "price": null
+        },
+        {
+          "name": "Coke Classic",
+          "price": null
+        },
+        {
+          "name": "Soft Drinks",
+          "price": null
+        },
+        {
+          "name": "Smart Water",
+          "price": null
+        }
+      ]
+    }
+  ]
+}

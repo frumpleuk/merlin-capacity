@@ -1,0 +1,311 @@
+{
+  "date": "2025-07-11",
+  "approxDate": true,
+  "source": {
+    "name": "Thorpe Park",
+    "official": true,
+    "url": "https://www.thorpepark.com/media/0nci3zhn/vibes-food-menu-summer-2025-1.pdf",
+    "sha256": "ec41a0f2401a20f7f0833ef71d6c85ca65031281a4e70120f231a77030ea47eb",
+    "files": [
+      {
+        "url": "https://www.thorpepark.com/media/0nci3zhn/vibes-food-menu-summer-2025-1.pdf",
+        "sha256": "b970e4c285de52a0d71db52830dc7bc95489737904e98708e7871480f2e20d7f"
+      },
+      {
+        "url": "https://www.thorpepark.com/media/bzgny0uo/vibes-kids-menu-2025-april.pdf",
+        "sha256": "0bb12649e6faeff3277268cd05cc6a79f5752138a125dcbda62ca47445f62042"
+      }
+    ],
+    "stated": "Summer 2025"
+  },
+  "sections": [
+    {
+      "name": "Cold Salads",
+      "items": [
+        {
+          "name": "Goat's Cheese Salad",
+          "description": "Roasted vegetable salad with crumbled goat's cheese and a balsamic glaze.",
+          "price": 800,
+          "kcal": 188
+        },
+        {
+          "name": "Beetroot and Feta Salad",
+          "description": "Beetroot and Vegetable salad with crumbled feta and a honey and mustard dressing.",
+          "price": 800,
+          "kcal": 220
+        }
+      ]
+    },
+    {
+      "name": "Mains",
+      "items": [
+        {
+          "name": "Crispy Chicken Mexican Rice",
+          "description": "Spiced rice with crispy southern friend chicken, fresh mango and lime salsa, garnished with a leafy salad, spring onion and lime wedge.",
+          "price": 1650,
+          "kcal": 607
+        },
+        {
+          "name": "Crispy Mozzarella Mexican Rice",
+          "description": "Spiced rice with crispy mozzarella sticks, fresh mango and lime salsa, garnished with a leafy salad, spring onion and lime wedge.",
+          "price": 1650,
+          "kcal": 819
+        },
+        {
+          "name": "Chicken Katsu Curry",
+          "description": "Crispy sliced chicken served with steamed rice with a tidal wave of curry sauce, accompanied by a roasted vegetable medley and an Asian-style garnish.",
+          "price": 1100,
+          "kcal": 808
+        },
+        {
+          "name": "Veggie Katsu Curry",
+          "description": "Crispy vegan fillet with a vegetable medley served with steamed rice with a tidal wave of curry sauce, paired and an Asian-style garnish.",
+          "price": 1100,
+          "kcal": 862
+        },
+        {
+          "name": "Sausages and Mash",
+          "description": "Cumberland pork sausages on creamy mashed potatoes, served with green beans, herby gravy, crispy beer-battered onion rings and pea shoots.",
+          "price": 1100,
+          "kcal": 947
+        },
+        {
+          "name": "Pork 'Yorkshire Burrito'",
+          "description": "Yorkshire pudding wrap stuffed with roast pork, sage and onion stuffing, roast potatoes, and apple sauce. Served with house fries and a pot of herby gravy.",
+          "price": 1100,
+          "kcal": 1286
+        },
+        {
+          "name": "Veggie 'Yorkshire Burrito'",
+          "description": "Yorkshire pudding wrap stuffed with roasted falafel, sage and onion stuffing, roast potatoes, and apple sauce. Served with house fries and a pot of herby gravy.",
+          "price": 1100,
+          "kcal": 1332
+        }
+      ]
+    },
+    {
+      "name": "Burgers",
+      "items": [
+        {
+          "name": "Slammer's Smashed Cheese Burger",
+          "description": "Two thinly smashed beef patties in a sourdough bun with cheese, lettuce, tomato, red onion and pickled gherkin. Served with house fries, coleslaw and a salad garnish. Named in honor of the classic Thorpe Park ride, Slammer.",
+          "price": 1600,
+          "kcal": 987
+        },
+        {
+          "name": "Arch Nemesis Burger",
+          "description": "Two thinly smashed beef patties with cheese, lettuce, beef tomato, red onion, fire-cracker sauce, jalapenos, stacked in a sourdough bun and garnished with pickled gherkin. Served with house fries, coleslaw and a salad garnish.",
+          "price": 1700,
+          "kcal": 979
+        },
+        {
+          "name": "Golden Goddess Burger",
+          "description": "Two thinly smashed beef patties with cheese, lettuce, beef tomato, red onion, beer-battered onion rings, crispy hash brown and streaky bacon, stacked in a sourdough bun and garnished with pickled gherkin. Served with house fries, coleslaw and a salad garnish.",
+          "price": 1900,
+          "kcal": 875
+        },
+        {
+          "name": "Colossal Chicken Burger",
+          "description": "Crispy panko-coated chicken breast in a sourdough bun with lettuce and tomato. Served with house fries, buttery sweetcorn cobette, coleslaw, and a salad garnish.",
+          "price": 1350,
+          "kcal": 1019
+        },
+        {
+          "name": "The 'Big Easy' Veggie Burger",
+          "description": "Plant-based burger in a sourdough bun with crisp lettuce, tomato, and red onion. Served with house fries, pickled gherkin, coleslaw, and a salad garnish.",
+          "price": 1350,
+          "kcal": 914
+        }
+      ]
+    },
+    {
+      "name": "12\" Sourdough Pizzas to Dine In or Takeaway",
+      "items": [
+        {
+          "name": "Margherita",
+          "description": "Tomato and mozzarella, finished with garlic oil and a watercress garnish.",
+          "price": 1350,
+          "kcal": 1352
+        },
+        {
+          "name": "Roasted Vegetable and Feta",
+          "description": "Tomato, mozzarella and roasted vegetables, crumbled feta, finished with hot honey and a watercress garnish.",
+          "price": 1350,
+          "kcal": 1302
+        },
+        {
+          "name": "Southern Fried Chicken",
+          "description": "Tomato, mozzarella, southern fried chicken, red onion, finished with hot honey and a watercress garnish.",
+          "price": 1350,
+          "kcal": 1264
+        }
+      ]
+    },
+    {
+      "name": "Sides and Snacks",
+      "items": [
+        {
+          "name": "Chips and Dips",
+          "description": "Basket of tortilla chips served with guacamole, salsa, sour cream dipping pots.",
+          "price": 500,
+          "kcal": 335
+        },
+        {
+          "name": "House Fries",
+          "description": "Crunchy fries with a flavourful seasoning blend.",
+          "price": 500,
+          "kcal": 410
+        },
+        {
+          "name": "Inferno's Hot House Fries",
+          "description": "The Nemesis of fries! Topped with nacho cheese sauce, firecracker sauce, crispy onions, and a spring onions.",
+          "price": 800,
+          "kcal": 633
+        },
+        {
+          "name": "Beer-Battered Onion Loops",
+          "description": "Crispy onion rings with a leaf garnish.",
+          "price": 700,
+          "kcal": 755
+        },
+        {
+          "name": "Mozzarella Sticks",
+          "description": "Golden breaded mozzarella with a salad garnish.",
+          "price": 700,
+          "kcal": 609
+        },
+        {
+          "name": "Charred Garlic Bread",
+          "description": "Grilled ciabatta garlic bread.",
+          "price": 550,
+          "kcal": 574
+        },
+        {
+          "name": "Chicken Tenders",
+          "description": "Crispy southern-fried tenders finished with a fresh spring onion garnish.",
+          "price": 800,
+          "kcal": 419
+        },
+        {
+          "name": "Inferno's Chicken Tenders",
+          "description": "Crispy southern-fried tenders coated in fiery BBQ sauce finished with a duo of crispy and fresh spring onion garnish.",
+          "price": 800,
+          "kcal": 542
+        },
+        {
+          "name": "House Salad",
+          "description": "Mixed salad of lettuce, cucumber, carrot and peppers.",
+          "price": 525,
+          "kcal": 22
+        },
+        {
+          "name": "Buttered Corn Cobettes",
+          "description": "Sweetcorn cobettes, lightly seasoned and rolled in butter.",
+          "price": 550,
+          "kcal": 296
+        },
+        {
+          "name": "Samurai Slaw",
+          "description": "Thinly sliced slaw with vegan mayo, lightly seasoned.",
+          "price": 550,
+          "kcal": 146
+        },
+        {
+          "name": "Hot Greens",
+          "description": "Steamed green beans, peas, and tenderstem broccoli.",
+          "price": 500,
+          "kcal": 137
+        }
+      ]
+    },
+    {
+      "name": "'Vortex' Shakes",
+      "note": "Carte D'or milkshakes with aerated cream and drizzled with chocolate or strawberry sauce.",
+      "items": [
+        {
+          "name": "Triple Chocolate",
+          "price": 700,
+          "kcal": 628
+        },
+        {
+          "name": "Strawberry",
+          "price": 700,
+          "kcal": 314
+        },
+        {
+          "name": "Banana and Chocolate",
+          "price": 700,
+          "kcal": 412
+        }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        {
+          "name": "Tropical Travels Pineapple Crunch",
+          "description": "Juicy pineapple with a golden oat crunch, paired with Jude's creamy coconut ice cream.",
+          "price": 700,
+          "kcal": 503
+        },
+        {
+          "name": "Gluten-Free Chocolate Fudge Cake",
+          "description": "Rich chocolate fudge cake with aerated cream and mixed berry compote.",
+          "tags": [
+            "gf"
+          ],
+          "price": 600,
+          "kcal": 460
+        },
+        {
+          "name": "Lemon Tart",
+          "description": "Zesty tart with aerated cream and mixed berry compote.",
+          "price": 700,
+          "kcal": 552
+        },
+        {
+          "name": "Depth Charge Cheesecake",
+          "description": "Dive into a deep baked vanilla cheesecake with a Belgian chocolate drizzle and mixed berry compote.",
+          "price": 600,
+          "kcal": 529
+        }
+      ]
+    },
+    {
+      "name": "Rangers Grub: Kids Individual Meals",
+      "items": [
+        {
+          "name": "Mr Monkey's Smashed Burger",
+          "description": "Beef patty with cheese, lettuce, fries and a leaf garnish.",
+          "tags": [
+            "kids"
+          ],
+          "price": 750,
+          "kcal": 567
+        },
+        {
+          "name": "Miss Frog's Mac and Cheese",
+          "description": "Served with garlic bread.",
+          "tags": [
+            "kids"
+          ],
+          "price": 750,
+          "kcal": 546
+        }
+      ]
+    },
+    {
+      "name": "Rangers Grub: Chief Ranger's Set Meal",
+      "items": [
+        {
+          "name": "Chief Ranger's Set Meal",
+          "description": "Includes apple or orange juice. 1 | Pick a main: The Chief's Fish Goujons, battered cod goujons (82 kcal); Harley's Chicken Goujons, southern fried goujons (207 kcal); Miss Hippo's Pork Sausages, Cumberland sausages (185 kcal); Mr Rabbit's Vegan Nuggets, breaded Quorn nuggets (561 kcal). 2 | Fries or mash?: Frontier Fries, small portion of crispy house fries (255 kcal); Mountainous Mash, small side of creamy mashed potato (115 kcal). 3 | Choose a side: Backcountry Beans, mini side of Heinz Baked Beans (54 kcal); Grasslands Gravy, mini side of herby gravy (13 kcal); Pioneer's Peas, mini side of garden peas (47 kcal). 4 | For pudding: Wild Fruits, little pot of mixed fruits (47 kcal).",
+          "tags": [
+            "kids"
+          ],
+          "price": 750
+        }
+      ]
+    }
+  ]
+}

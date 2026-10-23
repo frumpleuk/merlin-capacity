@@ -1,0 +1,140 @@
+{
+  "date": "2023-04-06",
+  "approxDate": true,
+  "source": {
+    "name": "Thorpe Park",
+    "official": true,
+    "url": "https://link.assetfile.io/2TbnyEKOJbiPFoTO9aWXGJ/THORPE+PERK+Express+Menu+2023.pdf",
+    "sha256": "8ca7054e15e3367603f4e168dae6a482f5b62561cd2d42d8e42008641a1083cc"
+  },
+  "sections": [
+    {
+      "name": "Stone Baked Pizzas",
+      "items": [
+        {
+          "name": "Margarita",
+          "price": 1125
+        },
+        {
+          "name": "Pepperoni",
+          "price": 1240
+        },
+        {
+          "name": "Garden",
+          "price": 1240
+        }
+      ]
+    },
+    {
+      "name": "Hotdogs",
+      "items": [
+        {
+          "name": "Hotdog",
+          "sizes": [
+            {
+              "label": "Small",
+              "price": 645
+            },
+            {
+              "label": "Large",
+              "price": 750
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Snacks",
+      "items": [
+        {
+          "name": "Chocolate Bars",
+          "price": 150
+        },
+        {
+          "name": "Tyrrells Crisps",
+          "price": 175
+        }
+      ]
+    },
+    {
+      "name": "Soft Drinks",
+      "items": [
+        {
+          "name": "Fanta Orange 500ml",
+          "price": 275
+        },
+        {
+          "name": "Sprite 500ml",
+          "price": 275
+        },
+        {
+          "name": "Diet Coke 500ml",
+          "price": 275
+        },
+        {
+          "name": "Coca Cola Original 500ml",
+          "price": 290
+        },
+        {
+          "name": "Smartwater 600ml",
+          "price": 250
+        }
+      ]
+    },
+    {
+      "name": "Beers & Cider",
+      "items": [
+        {
+          "name": "Stella Artrois",
+          "description": "4.6%",
+          "tags": [
+            "alcohol"
+          ],
+          "sizes": [
+            {
+              "label": "Pint",
+              "price": 675
+            },
+            {
+              "label": "Half",
+              "price": 340
+            }
+          ]
+        },
+        {
+          "name": "Magners Dark Fruits",
+          "description": "4.5%",
+          "tags": [
+            "alcohol"
+          ],
+          "sizes": [
+            {
+              "label": "Pint",
+              "price": 675
+            },
+            {
+              "label": "Half",
+              "price": 340
+            }
+          ]
+        },
+        {
+          "name": "Corona Bottle 330ml",
+          "description": "4.6%",
+          "tags": [
+            "alcohol"
+          ],
+          "price": 600
+        },
+        {
+          "name": "Budweiser Bottle 330ml",
+          "description": "4.8%",
+          "tags": [
+            "alcohol"
+          ],
+          "price": 600
+        }
+      ]
+    }
+  ]
+}

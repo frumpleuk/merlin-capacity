@@ -9,5 +9,8 @@
   "menuUrl": null,
   "appPassholderDiscount": null,
   "diningPlans": null,
-  "appMissingSince": null
+  "appMissingSince": null,
+  "menuPdfs": [
+    "https://www.legoland.co.uk/media/jq5psrbr/llw-apr-2025-bricks-breakfast-menu.pdf"
+  ]
 }

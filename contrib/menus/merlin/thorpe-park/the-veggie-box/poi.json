@@ -9,5 +9,8 @@
   "menuUrl": null,
   "appPassholderDiscount": null,
   "diningPlans": null,
-  "appMissingSince": null
+  "appMissingSince": null,
+  "menuPdfs": [
+    "https://www.thorpepark.com/media/dc0pery5/veggie-box-menu.pdf"
+  ]
 }

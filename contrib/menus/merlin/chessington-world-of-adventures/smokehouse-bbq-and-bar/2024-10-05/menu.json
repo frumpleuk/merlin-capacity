@@ -1,0 +1,644 @@
+{
+  "date": "2024-10-05",
+  "approxDate": true,
+  "source": {
+    "name": "Chessington",
+    "official": true,
+    "url": "https://www.chessington.com/media/h4adafh5/smokehouse-a4-menus-final-cropped-reduced-file-size.pdf",
+    "sha256": "ecfa4bbd56f457ca7112a25c0f9a9c855ab47db91ae31e62cea5e32daf977354"
+  },
+  "sections": [
+    {
+      "name": "Signature Smoked Sharing Platters",
+      "items": [
+        {
+          "name": "Smokehouse Platter for 4",
+          "description": "A massive selection of all the best smoked meats, 1lb of brisket, 1lb of pulled pork, whole rack of ribs, served with your choice of curly fries or rustic fries, coleslaw & BBQ sauce",
+          "price": 6975,
+          "kcal": 4058
+        },
+        {
+          "name": "Southern Fried Platter for 4",
+          "description": "A huge southern fried chicken feast, featuring 2 chicken burgers, 1 chicken Po'Boy, 8 chicken tenders, served with your choice of curly fries or rustic fries, coleslaw & BBQ sauce",
+          "price": 6575,
+          "kcal": 6186
+        }
+      ]
+    },
+    {
+      "name": "Classic Mains",
+      "note": "All classic mains include a portion of curly fries or rustic fries. Calories do not include sides or drinks",
+      "items": [
+        {
+          "name": "Full Rack of Ribs",
+          "price": 2875,
+          "kcal": 778
+        },
+        {
+          "name": "Half Rack of Ribs",
+          "price": 2275,
+          "kcal": 778
+        },
+        {
+          "name": "Brisket Po'Boy",
+          "price": 1775,
+          "kcal": 859
+        },
+        {
+          "name": "Pulled Pork Po'Boy",
+          "price": 1775,
+          "kcal": 1000
+        },
+        {
+          "name": "Southern Fried Chicken Po'Boy",
+          "price": 1775,
+          "kcal": 1067
+        },
+        {
+          "name": "Brisket Burger",
+          "price": 1775,
+          "kcal": 1043
+        },
+        {
+          "name": "Pulled Pork Burger",
+          "price": 1775,
+          "kcal": 1167
+        },
+        {
+          "name": "Chicken Burger",
+          "price": 1775,
+          "kcal": 1040
+        },
+        {
+          "name": "Vegetarian Burger",
+          "tags": [
+            "v"
+          ],
+          "price": 1775
+        },
+        {
+          "name": "Half BBQ Chicken",
+          "price": 1675,
+          "kcal": 778
+        }
+      ]
+    },
+    {
+      "name": "Loaded Jackets",
+      "note": "Calories do not include sides or drinks",
+      "items": [
+        {
+          "name": "Loaded BBQ Brisket",
+          "price": 1575,
+          "kcal": 900
+        },
+        {
+          "name": "Nacho Cheese Pulled Pork",
+          "price": 1575,
+          "kcal": 957
+        },
+        {
+          "name": "Bacon and Pulled Pork",
+          "price": 1575,
+          "kcal": 803
+        }
+      ]
+    },
+    {
+      "name": "Salads",
+      "note": "Calories do not include sides or drinks",
+      "items": [
+        {
+          "name": "Pulled Pork Salad",
+          "price": 1150,
+          "kcal": 323
+        },
+        {
+          "name": "Brisket Salad",
+          "price": 1150,
+          "kcal": 314
+        },
+        {
+          "name": "Chicken Salad",
+          "price": 1150,
+          "kcal": 423
+        }
+      ]
+    },
+    {
+      "name": "Kids Meals",
+      "note": "All kids meals include a choice of curly fries (460kcal) or baked potato (338kcal). Calories do not include sides or drinks",
+      "items": [
+        {
+          "name": "Chicken Tenders x3",
+          "tags": [
+            "kids"
+          ],
+          "price": 750,
+          "kcal": 275
+        },
+        {
+          "name": "Fish Fingers",
+          "tags": [
+            "kids"
+          ],
+          "price": 750,
+          "kcal": 216
+        },
+        {
+          "name": "Quorn Nuggets",
+          "tags": [
+            "kids"
+          ],
+          "price": 750,
+          "kcal": 183
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        {
+          "name": "Hot Wings",
+          "price": 700,
+          "kcal": 649
+        },
+        {
+          "name": "Jacket Potato",
+          "price": 550,
+          "kcal": 338
+        },
+        {
+          "name": "Coleslaw",
+          "price": 450,
+          "kcal": 360
+        },
+        {
+          "name": "BBQ Beans",
+          "price": 450,
+          "kcal": 125
+        },
+        {
+          "name": "Corn on the Cob",
+          "price": 450,
+          "kcal": 224
+        },
+        {
+          "name": "Curly Fries",
+          "price": 450,
+          "kcal": 460
+        },
+        {
+          "name": "Garden Salad",
+          "price": 775,
+          "kcal": 148
+        }
+      ]
+    },
+    {
+      "name": "Draught Beers",
+      "items": [
+        {
+          "name": "Corona",
+          "description": "4.5%",
+          "tags": [
+            "alcohol"
+          ],
+          "sizes": [
+            {
+              "label": "1/2 Pint",
+              "price": 375
+            },
+            {
+              "label": "Pint",
+              "price": 725
+            }
+          ]
+        },
+        {
+          "name": "Stella",
+          "description": "4.6%",
+          "tags": [
+            "alcohol"
+          ],
+          "sizes": [
+            {
+              "label": "1/2 Pint",
+              "price": 375
+            },
+            {
+              "label": "Pint",
+              "price": 750
+            }
+          ]
+        },
+        {
+          "name": "Bud Light",
+          "description": "3.5%",
+          "tags": [
+            "alcohol"
+          ],
+          "sizes": [
+            {
+              "label": "1/2 Pint",
+              "price": 350
+            },
+            {
+              "label": "Pint",
+              "price": 675
+            }
+          ]
+        },
+        {
+          "name": "Goose Island IPA",
+          "description": "4.1%",
+          "tags": [
+            "alcohol"
+          ],
+          "sizes": [
+            {
+              "label": "1/2 Pint",
+              "price": 400
+            },
+            {
+              "label": "Pint",
+              "price": 800
+            }
+          ]
+        },
+        {
+          "name": "Guinness",
+          "description": "4.5%",
+          "tags": [
+            "alcohol"
+          ],
+          "sizes": [
+            {
+              "label": "1/2 Pint",
+              "price": 500
+            },
+            {
+              "label": "Pint",
+              "price": 875
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Bottles/Cans",
+      "items": [
+        {
+          "name": "Corona",
+          "description": "4.5%",
+          "tags": [
+            "alcohol"
+          ],
+          "price": 575
+        },
+        {
+          "name": "Stella",
+          "description": "4.5%",
+          "tags": [
+            "alcohol"
+          ],
+          "price": 550
+        },
+        {
+          "name": "Budweiser",
+          "description": "4.5%",
+          "tags": [
+            "alcohol"
+          ],
+          "price": 550
+        },
+        {
+          "name": "Magners",
+          "description": "4.5%",
+          "tags": [
+            "alcohol"
+          ],
+          "price": 825
+        }
+      ]
+    },
+    {
+      "name": "Wines",
+      "items": [
+        {
+          "name": "Pontebello - Pinot Grigio",
+          "description": "South-Eastern Australia 11.5%",
+          "tags": [
+            "alcohol"
+          ],
+          "sizes": [
+            {
+              "label": "175ml",
+              "price": 550
+            },
+            {
+              "label": "250ml",
+              "price": 800
+            },
+            {
+              "label": "Bottle",
+              "price": 1925
+            }
+          ]
+        },
+        {
+          "name": "Lavender Hill Chardonnay",
+          "description": "California 13.5%",
+          "tags": [
+            "alcohol"
+          ],
+          "sizes": [
+            {
+              "label": "175ml",
+              "price": 675
+            },
+            {
+              "label": "250ml",
+              "price": 925
+            },
+            {
+              "label": "Bottle",
+              "price": 2200
+            }
+          ]
+        },
+        {
+          "name": "Vendange - White Zinfandel",
+          "description": "California 11%",
+          "tags": [
+            "alcohol"
+          ],
+          "sizes": [
+            {
+              "label": "175ml",
+              "price": 600
+            },
+            {
+              "label": "250ml",
+              "price": 725
+            },
+            {
+              "label": "Bottle",
+              "price": 2200
+            }
+          ]
+        },
+        {
+          "name": "Monte Verde - Merlot",
+          "description": "Central Valley 13.5%",
+          "tags": [
+            "alcohol"
+          ],
+          "sizes": [
+            {
+              "label": "175ml",
+              "price": 775
+            },
+            {
+              "label": "250ml",
+              "price": 1025
+            },
+            {
+              "label": "Bottle",
+              "price": 1925
+            }
+          ]
+        },
+        {
+          "name": "Nederburg The Manor - Cabernet Sauvignon",
+          "description": "Western Cape, 13.5%",
+          "tags": [
+            "alcohol"
+          ],
+          "sizes": [
+            {
+              "label": "175ml",
+              "price": 675
+            },
+            {
+              "label": "250ml",
+              "price": 925
+            },
+            {
+              "label": "Bottle",
+              "price": 2200
+            }
+          ]
+        },
+        {
+          "name": "Prosecco",
+          "description": "Italy, Small 11% Bottle 11.5%",
+          "tags": [
+            "alcohol"
+          ],
+          "sizes": [
+            {
+              "label": "250ml",
+              "price": 675
+            },
+            {
+              "label": "Bottle",
+              "price": 3225
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Spirits",
+      "items": [
+        {
+          "name": "Spirits",
+          "description": "From £4.00",
+          "tags": [
+            "alcohol"
+          ],
+          "price": 400
+        }
+      ]
+    },
+    {
+      "name": "House Cocktails",
+      "items": [
+        {
+          "name": "Smirnoff Espresso Martini",
+          "tags": [
+            "alcohol"
+          ],
+          "price": 1150
+        },
+        {
+          "name": "Captain Morgans Strawberry Daiquiri",
+          "tags": [
+            "alcohol"
+          ],
+          "price": 1150
+        },
+        {
+          "name": "Gordons Pink Gin Cocktail",
+          "tags": [
+            "alcohol"
+          ],
+          "price": 1150
+        },
+        {
+          "name": "Smirnoff Passionfruit Martini",
+          "tags": [
+            "alcohol"
+          ],
+          "price": 1150
+        }
+      ]
+    },
+    {
+      "name": "Soft Drinks",
+      "items": [
+        {
+          "name": "Diet Coke",
+          "sizes": [
+            {
+              "label": "Regular 16oz",
+              "price": 425,
+              "kcal": 0
+            },
+            {
+              "label": "Large 22oz",
+              "price": 450,
+              "kcal": 0
+            }
+          ]
+        },
+        {
+          "name": "Coca-Cola Zero Sugar",
+          "sizes": [
+            {
+              "label": "Regular 16oz",
+              "price": 425,
+              "kcal": 0
+            },
+            {
+              "label": "Large 22oz",
+              "price": 450,
+              "kcal": 0
+            }
+          ]
+        },
+        {
+          "name": "Fanta",
+          "sizes": [
+            {
+              "label": "Regular 16oz",
+              "price": 425,
+              "kcal": 13
+            },
+            {
+              "label": "Large 22oz",
+              "price": 450,
+              "kcal": 13
+            }
+          ]
+        },
+        {
+          "name": "Sprite Zero",
+          "sizes": [
+            {
+              "label": "Regular 16oz",
+              "price": 425,
+              "kcal": 0
+            },
+            {
+              "label": "Large 22oz",
+              "price": 450,
+              "kcal": 0
+            }
+          ],
+          "unclear": "name read from a small logo"
+        },
+        {
+          "name": "Capri-Sun",
+          "price": 300,
+          "kcal": 96
+        },
+        {
+          "name": "Slush Cup 16oz",
+          "price": 500,
+          "kcal": 100
+        },
+        {
+          "name": "Slush Refill",
+          "price": 325,
+          "kcal": 100
+        },
+        {
+          "name": "Slush Half Yard",
+          "price": 725,
+          "kcal": 100
+        },
+        {
+          "name": "J20 Apple and Raspberry",
+          "price": 400,
+          "kcal": 52
+        },
+        {
+          "name": "J20 Orange and Passionfruit",
+          "price": 400,
+          "kcal": 52
+        },
+        {
+          "name": "J20 Apple and Mango",
+          "price": 400,
+          "kcal": 50
+        }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "note": "Primo",
+      "items": [
+        {
+          "name": "Cappuccino",
+          "price": 425,
+          "kcal": 60
+        },
+        {
+          "name": "Latte",
+          "price": 450,
+          "kcal": 62
+        },
+        {
+          "name": "Mocha",
+          "price": 450,
+          "kcal": 113
+        },
+        {
+          "name": "Hot Chocolate",
+          "price": 425,
+          "kcal": 206
+        },
+        {
+          "name": "Tea",
+          "price": 325,
+          "kcal": 6
+        },
+        {
+          "name": "Espresso",
+          "sizes": [
+            {
+              "label": "Single",
+              "price": 350
+            },
+            {
+              "label": "Double",
+              "price": 375
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

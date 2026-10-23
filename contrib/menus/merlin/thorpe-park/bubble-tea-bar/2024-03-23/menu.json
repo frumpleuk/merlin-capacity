@@ -1,0 +1,33 @@
+{
+  "date": "2024-03-23",
+  "approxDate": true,
+  "unpriced": true,
+  "source": {
+    "name": "Thorpe Park",
+    "official": true,
+    "url": "https://www.thorpepark.com/media/x1bfnx0a/bubble-tea-bar.pdf",
+    "sha256": "d330dafe4824300e282ab327f408434e72f6c49f3ccf846051f7fcfc0144a692"
+  },
+  "sections": [
+    {
+      "name": "Bubble Tea Bar",
+      "note": "Card payments only",
+      "items": [
+        {
+          "name": "Bubble tea",
+          "description": "Choose your size: 12oz, 16oz. Choose your tea: Green Tea, Fruit Tea, Milk Tea, Taro. Choose a flavour: Passion Fruit, Mango, Strawberry, Apple, Lychee. Choose a popping boba: Strawberry, Mango, Apple, Blueberry, Passion Fruit, Lychee, Tapioca, Strawberry Jelly, Mango Jelly.",
+          "sizes": [
+            {
+              "label": "12oz",
+              "price": null
+            },
+            {
+              "label": "16oz",
+              "price": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

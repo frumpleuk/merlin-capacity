@@ -1,0 +1,185 @@
+{
+  "date": "2024-04-20",
+  "approxDate": true,
+  "source": {
+    "name": "Thorpe Park",
+    "official": true,
+    "url": "https://www.thorpepark.com/media/tyhizxaa/tacotaria-menu.pdf",
+    "sha256": "5b82641ec772afaadb625ec5fa8a2d6478696d9dd93e31a1fc2d4dff2b03c691",
+    "stated": "March 2024"
+  },
+  "sections": [
+    {
+      "name": "12\" Burritos",
+      "items": [
+        {
+          "name": "Chicken Al Pastor",
+          "description": "Tortilla wrap filled with rice, fajita chicken, kidney beans, salsa, sour cream and cheese",
+          "price": 1150,
+          "kcal": 752
+        },
+        {
+          "name": "Meatless Meatball Chilli",
+          "description": "Tortilla wrap filled with rice, meatless meatball chilli sin carne, refried beans, rice, salsa, vegan cheese sauce and vegan grated cheese",
+          "tags": [
+            "v"
+          ],
+          "price": 1150,
+          "kcal": 694
+        },
+        {
+          "name": "Beef Barbacoa Chilli",
+          "description": "Tortilla wrap filled with rice, beef barbacoa chilli, refried beans, salsa, sour cream and cheese",
+          "price": 1150,
+          "kcal": 780
+        }
+      ]
+    },
+    {
+      "name": "Naked Burritos",
+      "items": [
+        {
+          "name": "Chicken Al Pastor",
+          "description": "Fajita chicken with rice, crunchy salad slaw, sweetcorn, tortilla chips, salsa, soured cream, guacamole and jalapeños",
+          "price": 1150,
+          "kcal": 590
+        },
+        {
+          "name": "No Meatball Chilli",
+          "description": "Meatless meatball chilli sin carne, with rice, crunchy salad slaw, sweetcorn, tortilla chips, salsa, vegan cheese sauce, guacamole and jalapeños",
+          "tags": [
+            "v"
+          ],
+          "price": 1150,
+          "kcal": 593
+        },
+        {
+          "name": "Beef Barbacoa Chilli",
+          "description": "Barbacoa beef chilli with rice, crunchy salad slaw, sweetcorn, tortilla chips, salsa, soured cream, guacamole and jalapeños",
+          "price": 1150,
+          "kcal": 589
+        }
+      ]
+    },
+    {
+      "name": "Soft Shell Tacos (x2)",
+      "items": [
+        {
+          "name": "Chicken Al Pastor",
+          "description": "Soft tacos with fajita chicken, soured cream, cheese, lettuce and salsa",
+          "price": 1150,
+          "kcal": 350
+        },
+        {
+          "name": "No Meatball Chilli",
+          "description": "Soft tacos with meatless meatball chilli sin carne, vegan cheese sauce, vegan cheese, lettuce and salsa",
+          "tags": [
+            "v"
+          ],
+          "price": 1150,
+          "kcal": 365
+        },
+        {
+          "name": "Beef Barbacoa Chilli",
+          "description": "Soft tacos with barbacoa beef chilli, soured cream, cheese, lettuce and salsa",
+          "price": 1150,
+          "kcal": 351
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Slush",
+          "price": 500
+        },
+        {
+          "name": "Coke Zero",
+          "sizes": [
+            {
+              "label": "Regular",
+              "price": 425
+            },
+            {
+              "label": "Large",
+              "price": 450
+            }
+          ]
+        },
+        {
+          "name": "Diet Coke",
+          "sizes": [
+            {
+              "label": "Regular",
+              "price": 425
+            },
+            {
+              "label": "Large",
+              "price": 450
+            }
+          ]
+        },
+        {
+          "name": "Fanta Orange Zero",
+          "sizes": [
+            {
+              "label": "Regular",
+              "price": 425
+            },
+            {
+              "label": "Large",
+              "price": 450
+            }
+          ]
+        },
+        {
+          "name": "Sprite Zero",
+          "sizes": [
+            {
+              "label": "Regular",
+              "price": 425
+            },
+            {
+              "label": "Large",
+              "price": 450
+            }
+          ]
+        },
+        {
+          "name": "Corona",
+          "description": "4.6% ABV",
+          "tags": [
+            "alcohol"
+          ],
+          "sizes": [
+            {
+              "label": "Pint",
+              "price": 825
+            },
+            {
+              "label": "Half pint",
+              "price": 550
+            }
+          ]
+        },
+        {
+          "name": "Magners Dark Fruits",
+          "tags": [
+            "alcohol"
+          ],
+          "sizes": [
+            {
+              "label": "Pint",
+              "price": 750
+            },
+            {
+              "label": "Half pint",
+              "price": 375
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

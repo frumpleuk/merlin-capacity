@@ -10,5 +10,9 @@
   "appPassholderDiscount": null,
   "diningPlans": null,
   "appMissingSince": null,
-  "displayMenuUrl": ""
+  "displayMenuUrl": "",
+  "menuPdfs": [
+    "https://www.thorpepark.com/media/0nci3zhn/vibes-food-menu-summer-2025-1.pdf",
+    "https://www.thorpepark.com/media/bzgny0uo/vibes-kids-menu-2025-april.pdf"
+  ]
 }

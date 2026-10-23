@@ -16,9 +16,12 @@
 //   "source": { "name": <park>, "official": true, "url": <first pdf>, "sha256": <hash> }
 //
 // An unchanged PDF needs nothing; a changed one gets a new dated menu beside the
-// old, which is the history. Fetching is one PDF a second. Every file fetched
+// old, which is the history. A PDF made before the venue's newest menu (an old
+// sheet still linked after we photographed newer boards), or more than a year
+// ago, is filed under the day the PDF was made, with `approxDate: true`. Fetching is one PDF a second. Every file fetched
 // is copied to the private archive (archive-lib.mjs) and recorded in
 // contrib/menus/archive.json, so the source outlives the park's link.
+import { execFileSync } from "node:child_process";
 import crypto from "node:crypto";
 import fs from "node:fs";
 import os from "node:os";
@@ -31,6 +34,7 @@ const UA = "merlin-capacity/0.1 (+https://themeparks.frumple.co.uk; park menu ar
 const CACHE = path.join(os.tmpdir(), "park-menu-pdfs");
 const PLAN = path.join(MENUS, ".pdf-plan.json");
 const TODAY = new Date().toISOString().slice(0, 10);
+const YEAR_AGO = new Date(Date.now() - 365 * 864e5).toISOString().slice(0, 10);
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const isPdf = (url) => /\.pdf(?:[?#]|$)/i.test(url ?? "");
 
@@ -46,13 +50,25 @@ async function pdf(url) {
   return { file, sha256: crypto.createHash("sha256").update(buf).digest("hex") };
 }
 
-/** The newest menu.json in a venue folder, if any. */
-function latestMenu(dir) {
-  const dates = fs
+/** A venue's menu.json files, oldest first. */
+function menus(dir) {
+  return fs
     .readdirSync(dir)
     .filter((d) => DATE_DIR.test(d) && fs.existsSync(path.join(dir, d, "menu.json")))
-    .sort();
-  return dates.length ? readJson(path.join(dir, dates.at(-1), "menu.json")) : null;
+    .sort()
+    .map((d) => readJson(path.join(dir, d, "menu.json")));
+}
+
+/** The day a PDF was made, from its metadata (ModDate, else CreationDate). */
+function made(file) {
+  let info = "";
+  try {
+    info = execFileSync("pdfinfo", ["-isodates", file], { encoding: "utf8" });
+  } catch {
+    return null;
+  }
+  const date = (k) => info.match(new RegExp(`^${k}:\\s+(\\d{4}-\\d{2}-\\d{2})`, "m"))?.[1];
+  return date("ModDate") ?? date("CreationDate") ?? null;
 }
 
 const wanted = process.argv.slice(2);
@@ -84,8 +100,16 @@ for (const key of Object.keys(ALL_PARK_DIRS)) {
       got.length === 1
         ? got[0].sha256
         : crypto.createHash("sha256").update(got.map((g) => g.sha256).join("\n")).digest("hex");
-    const prev = latestMenu(dir);
-    if (prev?.source?.sha256 === sha256) continue;
+    const all = menus(dir);
+    // Already transcribed, as the current menu or as history.
+    if (all.some((m) => m.source?.sha256 === sha256)) continue;
+    const prev = all.at(-1);
+    // A PDF older than the newest menu we have (a park still linking a 2024
+    // sheet after we photographed 2026 boards), or more than a year old, is
+    // history: file it under the day the PDF was made, so it neither stands in
+    // front of newer prices nor passes for today's.
+    const madeOn = got.map((g) => made(g.file)).filter(Boolean).sort().at(-1) ?? null;
+    const older = !!(madeOn && ((prev && madeOn < prev.date) || madeOn < YEAR_AGO));
     plan.push({
       park: key,
       source: park,
@@ -96,10 +120,13 @@ for (const key of Object.keys(ALL_PARK_DIRS)) {
       // Several PDFs: each one's own hash, for source.files.
       ...(got.length > 1 ? { files: got.map((g, i) => ({ url: urls[i], sha256: g.sha256 })) } : {}),
       pdfs: got.map((g) => g.file),
-      out: path.relative(MENUS, path.join(dir, TODAY, "menu.json")),
+      made: madeOn,
+      out: path.relative(MENUS, path.join(dir, older ? madeOn : TODAY, "menu.json")),
+      // Dated by the file, not a fetch: the menu.json gets approxDate: true.
+      ...(older ? { older: true } : {}),
       changed: !!prev,
     });
-    console.log(`${prev ? "~ changed" : "+ new    "} ${path.relative(MENUS, dir)}`);
+    console.log(`${older ? "< older  " : prev ? "~ changed" : "+ new    "} ${path.relative(MENUS, dir)}`);
   }
 }
 saveLedger();

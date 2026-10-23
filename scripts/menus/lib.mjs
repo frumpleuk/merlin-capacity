@@ -45,6 +45,7 @@ export const INDIE_PARK_DIRS = {
   paultons: "paultons",
   blackpool: "blackpool",
   flamingoland: "flamingoland",
+  drayton_manor: "drayton-manor",
 };
 
 /** Disneyland Paris's two parks share one operator folder. Their venues and

@@ -13,6 +13,8 @@
 //                 Sanctum bearer token from BPB_EMAIL / BPB_PASSWORD.
 //   flamingoland  Firestore collections food_drink_data (the venues) joined to
 //                 markers_data (the coordinates) on parkMapMarkerId.
+//   drayton_manor the app's TE2 POI list (docs/drayton-api.md), POIs with a
+//                 "Dining Type" tag, behind an anonymous token.
 //   paultons      the app's bundled points_of_interest.json, type "restaurant".
 //                 It ships inside the APK rather than being served, so pass an
 //                 unpacked copy with --poi <file>; without it Paulton's is
@@ -238,7 +240,69 @@ function centres(records) {
   return [...acc].map(([name, a]) => ({ name, lat: a.lat / a.n, lon: a.lon / a.n }));
 }
 
-const SOURCES = { blackpool, flamingoland };
+/** Drayton Manor: the app's TE2 POIs with a "Dining Type" tag (Quick Service,
+ *  Snacks, Cafe, Table Service). The tag also marks bookable functions and the
+ *  hotel, which aren't places to eat in the park. The POIs carry no area, so a
+ *  venue takes the area of the nearest ride, within 150m. */
+const DRAYTON_NOT_A_VENUE = /birthday|conference|corporate|hotel/i;
+async function drayton() {
+  const cfg = config("drayton_manor").queue;
+  const tok = await fetch(cfg.tokenUrl, {
+    method: "POST",
+    headers: {
+      Authorization: `Basic ${btoa(`${cfg.clientId}:${cfg.clientSecret}`)}`,
+      "Content-Type": "application/x-www-form-urlencoded",
+      "User-Agent": "dev-tool",
+    },
+    body: new URLSearchParams({
+      grant_type: "urn:accesso:oauth2:grant-type:anonymous",
+      scope: "anonymous openid service.all",
+    }),
+  });
+  if (!tok.ok) throw new Error(`token ${tok.status}`);
+  const { access_token } = await tok.json();
+  const resp = await fetch(`${cfg.apiUrl}/api/v1/public/venues/${cfg.venueId}/pois/`, {
+    headers: {
+      Authorization: `Bearer ${access_token}`,
+      appID: cfg.venueId,
+      "X-Customer-ID": cfg.customerId,
+      "User-Agent": "dev-tool",
+    },
+  });
+  if (!resp.ok) throw new Error(`pois ${resp.status}`);
+  const pois = await resp.json();
+  const tag = (p, label) => (p.tags ?? []).find((t) => t.label === label)?.valueLabel?.trim();
+  const rides = pois
+    .map((p) => ({
+      name: (p.details ?? []).find((d) => d.id === "internalActivity")?.value?.mountainArea?.trim(),
+      lat: p.location?.lat,
+      lon: p.location?.lon,
+    }))
+    .filter((r) => r.name && r.lat != null);
+  const areaFor = (lat, lon) => {
+    const near = rides.map((r) => ({ ...r, m: metres(lat, lon, r.lat, r.lon) })).sort((a, b) => a.m - b.m)[0];
+    return near && near.m < 150 ? near.name : null;
+  };
+  return pois
+    .filter((p) => tag(p, "Dining Type") && !DRAYTON_NOT_A_VENUE.test(p.label ?? ""))
+    .map((p) => {
+      const lat = p.location?.lat ?? null;
+      const lon = p.location?.lon ?? null;
+      return {
+        id: p.id,
+        name: decode(p.label),
+        category: `Food & Drink > ${tag(p, "Dining Type")}`,
+        area: lat != null ? areaFor(lat, lon) : null,
+        lat: coord(lat),
+        lon: coord(lon),
+        menuUrl: null,
+        appMissingSince: null,
+        source: "drayton manor app (te2)",
+      };
+    });
+}
+
+const SOURCES = { blackpool, flamingoland, drayton_manor: drayton };
 
 for (const key of Object.keys(INDIE_PARK_DIRS)) {
   if (wanted.length && !wanted.includes(key)) continue;

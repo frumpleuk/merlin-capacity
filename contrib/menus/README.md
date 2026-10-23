@@ -275,8 +275,14 @@ a copy; it usually answers scripts with a CAPTCHA). Each archived PDF's URL is
 sent to the Wayback Machine too, recorded as `wayback` on its `archive.json`
 entry.
 
-`archive-pages.mjs` does all of this and only what's missing; every importer
-runs it when it finishes.
+`archive-pages.mjs` does all of this and only what's missing. Every importer
+takes the snapshots when it finishes; the public copies go at the Wayback
+Machine's pace (a few a minute, an hour or more for a big import), so they're
+left to a separate run in the background:
+
+    nohup node scripts/menus/archive-pages.mjs > /tmp/archive-pages.log 2>&1 &
+
+then commit the `wayback` fields it writes.
 
 ### Menus from someone else
 

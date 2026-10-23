@@ -224,5 +224,7 @@ for (const v of venues(parkDir(PARK))) {
 }
 console.log(`${PARK}: ${written} written, ${unchanged} unchanged, ${empty} with nothing listed, ${passes} pass discounts recorded`);
 
-// Snapshot the pages just read and ask the public archives for copies.
-await archivePages();
+// Snapshot the pages just read. The public copies are slow (the Wayback
+// Machine takes a few a minute), so they're left to archive-pages.mjs, run on
+// its own in the background.
+await archivePages({ publicCopies: false });

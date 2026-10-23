@@ -36,6 +36,8 @@ export const ATTRACTIONS_INDIE_PARK_DIRS = {
   knoebels: "knoebels",
   pleasurewood_hills: "pleasurewood-hills",
   crealy: "crealy",
+  tulleys: "tulleys",
+  xtreme_scream_park: "xtreme-scream-park",
 };
 
 /** The independents are each their own operator, so each sits directly under

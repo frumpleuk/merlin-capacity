@@ -208,5 +208,7 @@ for (const { v, url, sections } of byVenue.values()) {
 }
 console.log(`${PARK}: ${written} written, ${unchanged} unchanged`);
 
-// Snapshot the pages just read and ask the public archives for copies.
-await archivePages();
+// Snapshot the pages just read. The public copies are slow (the Wayback
+// Machine takes a few a minute), so they're left to archive-pages.mjs, run on
+// its own in the background.
+await archivePages({ publicCopies: false });

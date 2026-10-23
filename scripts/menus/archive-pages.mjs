@@ -3,8 +3,11 @@
 //
 //   node scripts/menus/archive-pages.mjs [--no-public]
 //
-// The importers call `archivePages()` after writing menus; run it by hand to
-// catch up. It is idempotent: it only does what's missing.
+// The importers call `archivePages({ publicCopies: false })` after writing
+// menus, which takes the snapshots. Run this script on its own, in the
+// background, for the public copies (step 2), which go at the Wayback
+// Machine's pace of a few a minute. It is idempotent: it only does what's
+// missing, so a stopped run picks up where it left off.
 //
 // 1. Every official menu whose source is a web page (Tenkites boards,
 //    Blackpool's venue pages, Flamingo Land's Coach House page) and has no
@@ -90,6 +93,8 @@ async function wayback(url) {
   try {
     const resp = await fetch(`https://web.archive.org/save/${url}`, {
       headers: { "user-agent": UA },
+      // Save Page Now can sit on a request for minutes; give up and move on.
+      signal: AbortSignal.timeout(120_000),
       redirect: "manual",
     });
     const loc = resp.headers.get("content-location") ?? resp.headers.get("location");
@@ -111,6 +116,7 @@ async function archiveToday(url) {
       method: "POST",
       headers: { "user-agent": UA, "content-type": "application/x-www-form-urlencoded" },
       body: new URLSearchParams({ url }),
+      signal: AbortSignal.timeout(60_000),
       redirect: "manual",
     });
     const loc = resp.headers.get("refresh")?.split("url=")[1] ?? resp.headers.get("location");

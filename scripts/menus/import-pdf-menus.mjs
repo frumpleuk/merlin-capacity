@@ -149,5 +149,7 @@ saveLedger();
 writeJson(PLAN, plan);
 console.log(`${plan.length} menus to transcribe; plan in ${path.relative(process.cwd(), PLAN)}`);
 
-// Snapshot the pages just read and ask the public archives for copies.
-await archivePages();
+// Snapshot the pages just read. The public copies are slow (the Wayback
+// Machine takes a few a minute), so they're left to archive-pages.mjs, run on
+// its own in the background.
+await archivePages({ publicCopies: false });

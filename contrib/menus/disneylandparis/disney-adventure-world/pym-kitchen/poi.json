@@ -8,5 +8,6 @@
   "menuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P2AR02_pymkitchen.pdf",
   "priceBand": "€€",
   "appMissingSince": null,
-  "source": "disneyland paris graphql"
+  "source": "disneyland paris graphql",
+  "displayMenuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P2AR02_pym.pdf"
 }

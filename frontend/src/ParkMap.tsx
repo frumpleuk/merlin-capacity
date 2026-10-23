@@ -20,7 +20,14 @@ export interface MapArea {
  *  and only the park you're looking at is needed. */
 interface Basemap {
   attribution: string;
-  features: { l: "wood" | "water" | "building" | "road" | "path"; c: 0 | 1; p: number[] }[];
+  /** `p` is one line or ring; `h`, on a multipolygon, its further rings
+   *  (islands cut out by the even-odd fill). */
+  features: {
+    l: "wood" | "water" | "stream" | "building" | "road" | "path";
+    c: 0 | 1;
+    p: number[];
+    h?: number[][];
+  }[];
 }
 
 /** A park is a few hundred metres across, so a flat projection is exact
@@ -94,13 +101,18 @@ export function ParkMap({
   // The basemap's shapes as SVG paths, in the same projection.
   const shapes = useMemo(() => {
     if (!base || !place) return [];
-    return base.features.map((f, i) => {
+    const line = (p: number[], close: boolean) => {
       let d = "";
-      for (let n = 0; n < f.p.length; n += 2) {
-        d += `${n ? "L" : "M"}${place.x(f.p[n + 1]).toFixed(1)} ${place.y(f.p[n]).toFixed(1)}`;
+      for (let n = 0; n < p.length; n += 2) {
+        d += `${n ? "L" : "M"}${place.x(p[n + 1]).toFixed(1)} ${place.y(p[n]).toFixed(1)}`;
       }
-      return { key: `${f.l}-${i}`, layer: f.l, d: f.c ? d + "Z" : d };
-    });
+      return close ? d + "Z" : d;
+    };
+    return base.features.map((f, i) => ({
+      key: `${f.l}-${i}`,
+      layer: f.l,
+      d: [f.p, ...(f.h ?? [])].map((p) => line(p, !!f.c)).join(""),
+    }));
   }, [base, place]);
 
   // Label an area only where there is food, and only where the label won't sit

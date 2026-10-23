@@ -56,7 +56,7 @@ for what it is, with a `poi.json` located from the photos' GPS.
 `id`, `name`, `category`, `area`, `lat`, `lon`, `menuUrl`, `serves`,
 `diningPlans`, `appPassholderDiscount`, `appMissingSince` and `source` are owned by
 `sync-venues.mjs` when `id` is an app id, and are overwritten on each sync. Any
-other key (`note`, `display`, `displayArea`, `goneSince`) is yours and survives. For venues outside the app,
+other key (`note`, `display`, `displayArea`, `displayMenuUrl`, `goneSince`) is yours and survives. For venues outside the app,
 `id` and `category` are `null` and `source` is `"photo GPS (mean)"`. The independents' sources are
 `"paultons app bundle"`, `"blackpool app map markers"`,
 `"flamingo land app (firestore)"` and `"disneyland paris graphql"`. Disney's
@@ -75,6 +75,9 @@ disappears from the app — the site then files it under what used to be there.
 Where the nearest label is wrong (Fountain Square has none, so its venues
 came out as World of David Walliams), set `displayArea` by hand; the site uses
 it in place of `area`.
+Where the app's `menuUrl` is dead or the park's site has a better official
+menu, set `displayMenuUrl` by hand; the site links it in place of `menuUrl`.
+An empty string hides a dead link that has no replacement.
 A venue outside the app has no `appMissingSince`, so when a visit finds it
 gone, set `goneSince` (the date of that visit) by hand.
 

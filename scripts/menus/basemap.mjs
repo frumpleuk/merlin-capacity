@@ -17,9 +17,12 @@ const UA = "merlin-capacity/0.1 (themeparks.frumple.co.uk)";
 const MARGIN_M = 120; // beyond the outermost venue, so the park has edges
 const TOLERANCE_M = 3; // simplification: finer than anything the map can show
 
-/** What we draw, in the order it stacks. Everything else is dropped. */
+/** What we draw, in the order it stacks. Everything else is dropped. A
+ *  `waterway` is a line (a river, a stream), drawn as one; `water` and `wood`
+ *  are areas. */
 const LAYER = (tags) => {
-  if (tags.natural === "water" || tags.waterway) return "water";
+  if (tags.waterway && tags.waterway !== "riverbank") return "stream";
+  if (tags.natural === "water" || tags.waterway === "riverbank") return "water";
   if (tags.natural === "wood" || tags.landuse === "forest" || tags.natural === "scrub") return "wood";
   if (tags.building) return "building";
   if (tags.highway) {
@@ -70,6 +73,38 @@ function simplify(points, tolerance) {
 
 const round = (n) => +n.toFixed(5); // ~1.1m
 
+const same = (a, b) => a[0] === b[0] && a[1] === b[1];
+
+/** Join a multipolygon's member ways into closed rings. A big lake is mapped
+ *  as a relation whose outline is split over several open ways; filled one by
+ *  one, each piece draws a straight chord across the park. Pieces that never
+ *  close (cut off by the query box) are dropped. */
+function rings(ways) {
+  const open = ways.map((w) => [...w]);
+  const out = [];
+  while (open.length) {
+    let ring = open.shift();
+    let grew = true;
+    while (!same(ring[0], ring[ring.length - 1]) && grew) {
+      grew = false;
+      for (let i = 0; i < open.length; i++) {
+        const w = open[i];
+        const end = ring[ring.length - 1];
+        if (same(end, w[0])) ring = ring.concat(w.slice(1));
+        else if (same(end, w[w.length - 1])) ring = ring.concat([...w].reverse().slice(1));
+        else if (same(ring[0], w[w.length - 1])) ring = w.concat(ring.slice(1));
+        else if (same(ring[0], w[0])) ring = [...w].reverse().concat(ring.slice(1));
+        else continue;
+        open.splice(i, 1);
+        grew = true;
+        break;
+      }
+    }
+    if (ring.length > 3 && same(ring[0], ring[ring.length - 1])) out.push(ring);
+  }
+  return out;
+}
+
 async function overpass(bbox) {
   const [s, w, n, e] = bbox;
   const box = `(${s},${w},${n},${e})`;
@@ -79,12 +114,18 @@ async function overpass(bbox) {
     way["waterway"]${box};
     way["landuse"]${box};
     way["building"]${box};
+    relation["type"="multipolygon"]["natural"~"^(water|wood|scrub)$"]${box};
+    relation["type"="multipolygon"]["landuse"="forest"]${box};
   );out geom;`;
-  const resp = await fetch(`${OVERPASS}?data=${encodeURIComponent(query)}`, {
-    headers: { "user-agent": UA },
-  });
-  if (!resp.ok) throw new Error(`overpass ${resp.status}`);
-  return resp.json();
+  // Overpass sheds load with 429, 502 and 504: wait and try again.
+  for (let attempt = 1; ; attempt++) {
+    const resp = await fetch(`${OVERPASS}?data=${encodeURIComponent(query)}`, {
+      headers: { "user-agent": UA },
+    });
+    if (resp.ok) return resp.json();
+    if (![429, 502, 504].includes(resp.status) || attempt === 5) throw new Error(`overpass ${resp.status}`);
+    await new Promise((r) => setTimeout(r, attempt * 20_000));
+  }
 }
 
 const wanted = process.argv.slice(2);
@@ -113,21 +154,36 @@ for (const key of Object.keys(ALL_PARK_DIRS)) {
 
   const data = await overpass(bbox);
   const features = [];
+  const AREAS = new Set(["wood", "water", "building"]);
+  const tidy = (pts) => simplify(pts, TOLERANCE_M).map(([a, b]) => [round(a), round(b)]);
   for (const el of data.elements ?? []) {
-    if (!el.geometry?.length) continue;
     const layer = LAYER(el.tags ?? {});
     if (!layer) continue;
-    const pointsRaw = el.geometry.map((g) => [g.lat, g.lon]);
-    const points = simplify(pointsRaw, TOLERANCE_M).map(([a, b]) => [round(a), round(b)]);
+    if (el.type === "relation") {
+      // Outer rings fill, inner rings (islands) cut holes: one feature with
+      // every ring, drawn even-odd.
+      const member = (role) =>
+        (el.members ?? [])
+          .filter((m) => m.type === "way" && m.geometry?.length && (m.role || "outer") === role)
+          .map((m) => m.geometry.map((g) => [g.lat, g.lon]));
+      const all = [...rings(member("outer")), ...rings(member("inner"))]
+        .map(tidy)
+        .filter((r) => r.length > 3);
+      if (!all.length) continue;
+      features.push({ l: layer, c: 1, p: all[0].flat(), ...(all.length > 1 ? { h: all.slice(1).map((r) => r.flat()) } : {}) });
+      continue;
+    }
+    if (!el.geometry?.length) continue;
+    const points = tidy(el.geometry.map((g) => [g.lat, g.lon]));
     if (points.length < 2) continue;
-    const closed =
-      points.length > 2 &&
-      points[0][0] === points[points.length - 1][0] &&
-      points[0][1] === points[points.length - 1][1];
+    const closed = points.length > 3 && same(points[0], points[points.length - 1]);
+    // An open way tagged as an area is a piece of a relation's outline, drawn
+    // with its relation above.
+    if (AREAS.has(layer) && !closed) continue;
     features.push({ l: layer, c: closed ? 1 : 0, p: points.flat() });
   }
   // Biggest shapes first so a building never hides under a wood.
-  const order = { wood: 0, water: 1, building: 2, road: 3, path: 4 };
+  const order = { wood: 0, water: 1, stream: 2, building: 3, road: 4, path: 5 };
   features.sort((a, b) => order[a.l] - order[b.l]);
 
   const out = path.join(OUT_DIR, `${key}.json`);

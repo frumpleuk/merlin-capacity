@@ -8,5 +8,6 @@
   "menuUrl": null,
   "priceBand": "€",
   "appMissingSince": null,
-  "source": "disneyland paris graphql"
+  "source": "disneyland paris graphql",
+  "displayMenuUrl": "https://media.disneylandparis.com/d4th/en-gb/images/P2PR05_fan-tastic-food-truck.pdf"
 }

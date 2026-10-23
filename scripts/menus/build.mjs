@@ -74,7 +74,10 @@ function venue(root, dir, slug, extra = {}) {
     category: poi.category ?? null,
     // What the park says this place sells, in its own words (Flamingo Land).
     serves: poi.serves ?? null,
-    menuUrl: poi.menuUrl ?? null,
+    // displayMenuUrl is set by hand where the app's link is dead or a better
+    // official menu exists (the sync owns menuUrl and would undo a fix there).
+    // An empty string hides a dead link that has no replacement.
+    menuUrl: (poi.displayMenuUrl ?? poi.menuUrl) || null,
     diningPlans: poi.diningPlans ?? null,
     lat: poi.lat ?? null,
     lon: poi.lon ?? null,

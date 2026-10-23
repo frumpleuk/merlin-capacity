@@ -1522,11 +1522,18 @@ main.with-bar {
 }
 .fd-wood {
   fill: var(--map-wood);
+  fill-rule: evenodd;
   stroke: none;
 }
 .fd-water {
   fill: var(--map-water);
+  fill-rule: evenodd;
   stroke: none;
+}
+.fd-stream {
+  stroke: var(--map-water);
+  stroke-width: 2;
+  stroke-linecap: round;
 }
 .fd-building {
   fill: var(--map-building);

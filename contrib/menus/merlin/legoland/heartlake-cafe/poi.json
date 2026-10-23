@@ -9,5 +9,16 @@
   "menuUrl": null,
   "appPassholderDiscount": null,
   "diningPlans": null,
-  "appMissingSince": null
+  "appMissingSince": null,
+  "site": {
+    "url": "https://www.legoland.co.uk/explore/facilities/dining/heartlake-cafe/",
+    "serves": null,
+    "features": [
+      "Indoor seating available",
+      "Toilet block outside with Baby Changing facilities available",
+      "'Grab & Go' available",
+      "Card Payments Only"
+    ],
+    "fetched": "2026-10-23"
+  }
 }

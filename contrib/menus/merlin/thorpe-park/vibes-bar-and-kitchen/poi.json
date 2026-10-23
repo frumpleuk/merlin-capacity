@@ -14,5 +14,22 @@
   "menuPdfs": [
     "https://www.thorpepark.com/media/0nci3zhn/vibes-food-menu-summer-2025-1.pdf",
     "https://www.thorpepark.com/media/bzgny0uo/vibes-kids-menu-2025-april.pdf"
-  ]
+  ],
+  "site": {
+    "url": "https://www.thorpepark.com/explore/theme-park/restaurants-shops/",
+    "serves": null,
+    "features": [
+      "Hotel breakfast buffet, lunch & evening menu",
+      "Vegan & vegetarian options",
+      "Non-gluten containing ingredient meals on request",
+      "Card payments only"
+    ],
+    "fetched": "2026-10-23"
+  },
+  "passDiscount": {
+    "offered": true,
+    "percent": null,
+    "applies": "Gold & Platinum Annual Pass",
+    "source": "park website"
+  }
 }

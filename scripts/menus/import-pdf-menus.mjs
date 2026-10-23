@@ -1,5 +1,5 @@
-// Fetch the parks' own menu PDFs and say which venues need their menu.json
-// (re)written.
+// Fetch the parks' own menu PDFs (and board images) and say which venues need
+// their menu.json (re)written.
 //
 //   node scripts/menus/import-pdf-menus.mjs [park_key...]
 //
@@ -37,18 +37,29 @@ const PLAN = path.join(MENUS, ".pdf-plan.json");
 const TODAY = new Date().toISOString().slice(0, 10);
 const YEAR_AGO = new Date(Date.now() - 365 * 864e5).toISOString().slice(0, 10);
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-const isPdf = (url) => /\.pdf(?:[?#]|$)/i.test(url ?? "");
+// A menu file: a PDF, or an image of the board (Thorpe Park's app links
+// Camden Junction's as a JPG).
+const TYPES = { pdf: "application/pdf", jpg: "image/jpeg", jpeg: "image/jpeg", png: "image/png" };
+const ext = (url) => (url ?? "").match(/\.(pdf|jpe?g|png)(?:[?#]|$)/i)?.[1].toLowerCase();
+const isMenuFile = (url) => !!ext(url);
 
 /** Download (fresh each run: parks reuse a URL when they update a menu). */
 async function pdf(url) {
   fs.mkdirSync(CACHE, { recursive: true });
-  const file = path.join(CACHE, slug(url.replace(/^https?:\/\//, "")) + ".pdf");
+  const file = path.join(CACHE, slug(url.replace(/^https?:\/\//, "")) + "." + ext(url));
   const resp = await fetch(url, { headers: { "user-agent": UA } });
   if (!resp.ok) throw new Error(`${url} -> ${resp.status}`);
   const buf = Buffer.from(await resp.arrayBuffer());
   fs.writeFileSync(file, buf);
   await sleep(1000);
-  return { file, sha256: crypto.createHash("sha256").update(buf).digest("hex") };
+  // An image has no PDF metadata; its server's Last-Modified dates it instead.
+  const lastModified = resp.headers.get("last-modified");
+  return {
+    file,
+    type: TYPES[ext(url)],
+    sha256: crypto.createHash("sha256").update(buf).digest("hex"),
+    lastModified: lastModified ? new Date(lastModified).toISOString().slice(0, 10) : null,
+  };
 }
 
 /** A venue's menu.json files, oldest first. */
@@ -60,8 +71,10 @@ function menus(dir) {
     .map((d) => readJson(path.join(dir, d, "menu.json")));
 }
 
-/** The day a PDF was made, from its metadata (ModDate, else CreationDate). */
-function made(file) {
+/** The day a file was made: a PDF's metadata (ModDate, else CreationDate), an
+ *  image's Last-Modified. */
+function made({ file, type, lastModified }) {
+  if (type !== "application/pdf") return lastModified;
   let info = "";
   try {
     info = execFileSync("pdfinfo", ["-isodates", file], { encoding: "utf8" });
@@ -82,7 +95,7 @@ for (const key of Object.keys(ALL_PARK_DIRS)) {
   if (!fs.existsSync(dir0)) continue;
   for (const { dir, poi } of venues(dir0)) {
     if (poi.appMissingSince || poi.goneSince) continue;
-    const urls = (poi.menuPdfs ?? [poi.displayMenuUrl ?? poi.menuUrl]).filter(isPdf);
+    const urls = (poi.menuPdfs ?? [poi.displayMenuUrl ?? poi.menuUrl]).filter(isMenuFile);
     if (!urls.length) continue;
     const got = [];
     for (const url of urls) {
@@ -95,7 +108,7 @@ for (const key of Object.keys(ALL_PARK_DIRS)) {
     if (got.length !== urls.length) continue;
     // Keep a private copy of every file as fetched, before anything is read
     // from it: the park may change or delete it tomorrow.
-    got.forEach((g, i) => archive({ file: g.file, sha256: g.sha256, url: urls[i], fetched: TODAY }));
+    got.forEach((g, i) => archive({ file: g.file, sha256: g.sha256, url: urls[i], type: g.type, fetched: TODAY }));
     // One PDF: its own hash. Several: the hash of their hashes, in list order.
     const sha256 =
       got.length === 1
@@ -109,7 +122,7 @@ for (const key of Object.keys(ALL_PARK_DIRS)) {
     // sheet after we photographed 2026 boards), or more than a year old, is
     // history: file it under the day the PDF was made, so it neither stands in
     // front of newer prices nor passes for today's.
-    const madeOn = got.map((g) => made(g.file)).filter(Boolean).sort().at(-1) ?? null;
+    const madeOn = got.map(made).filter(Boolean).sort().at(-1) ?? null;
     // A prev read from an earlier PDF is dated by its fetch, not its file, and
     // the park replacing that PDF makes this one the newer menu.
     const older = !!(madeOn && ((prev && !prev.source?.sha256 && madeOn < prev.date) || madeOn < YEAR_AGO));

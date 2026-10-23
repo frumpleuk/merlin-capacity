@@ -5,5 +5,20 @@
   "lat": 51.404133,
   "lon": -0.515122,
   "source": "photo GPS (median)",
-  "area": "Big Easy Boulevard"
+  "area": "Big Easy Boulevard",
+  "site": {
+    "url": "https://www.thorpepark.com/explore/theme-park/restaurants-shops/",
+    "serves": "Hand-crafted doughnuts made fresh daily by a team of doughnut designers. The biggest and boldest doughnuts around!",
+    "features": [
+      "Vegan & vegetarian options",
+      "Card payments only"
+    ],
+    "fetched": "2026-10-23"
+  },
+  "passDiscount": {
+    "offered": true,
+    "percent": null,
+    "applies": "Gold & Platinum Annual Pass",
+    "source": "park website"
+  }
 }

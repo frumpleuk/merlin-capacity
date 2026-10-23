@@ -9,5 +9,13 @@
   "menuUrl": null,
   "appPassholderDiscount": null,
   "diningPlans": null,
-  "appMissingSince": null
+  "appMissingSince": null,
+  "site": {
+    "url": "https://www.chessington.com/explore/food-drinks-shops/places-to-eat/",
+    "serves": "Cool down or treat yourselves to a delicious ice cream!",
+    "features": [
+      "Card payments only"
+    ],
+    "fetched": "2026-10-23"
+  }
 }

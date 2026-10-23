@@ -10,5 +10,21 @@
   "appPassholderDiscount": null,
   "diningPlans": null,
   "appMissingSince": null,
-  "displayMenuUrl": ""
+  "displayMenuUrl": "",
+  "site": {
+    "url": "https://www.thorpepark.com/explore/theme-park/restaurants-shops/",
+    "serves": "Dive into an unlimited pizza, pasta and salad buffet.",
+    "features": [
+      "Vegetarian options",
+      "Kids meals",
+      "Non-gluten containing ingredient options"
+    ],
+    "fetched": "2026-10-23"
+  },
+  "passDiscount": {
+    "offered": true,
+    "percent": null,
+    "applies": "Gold & Platinum Annual Pass",
+    "source": "park website"
+  }
 }

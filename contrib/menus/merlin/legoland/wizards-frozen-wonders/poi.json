@@ -9,5 +9,18 @@
   "menuUrl": null,
   "appPassholderDiscount": null,
   "diningPlans": null,
-  "appMissingSince": null
+  "appMissingSince": null,
+  "site": {
+    "url": "https://www.legoland.co.uk/explore/facilities/dining/wizards-frozen-wonders/",
+    "serves": null,
+    "features": [
+      "High Chairs available",
+      "Accessible for wheelchair users",
+      "Indoor seating available",
+      "Toilet block outside with Baby Changing facilities available",
+      "'Grab & Go' available",
+      "Card Payments Only"
+    ],
+    "fetched": "2026-10-23"
+  }
 }

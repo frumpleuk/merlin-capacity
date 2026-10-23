@@ -9,5 +9,13 @@
   "menuUrl": null,
   "appPassholderDiscount": null,
   "diningPlans": null,
-  "appMissingSince": null
+  "appMissingSince": null,
+  "site": {
+    "url": "https://www.thorpepark.com/explore/theme-park/restaurants-shops/",
+    "serves": "Classic Kentucky fried chicken, sides and drink freshly prepared daily using only the finest ingredients.",
+    "features": [
+      "Card and cash payments"
+    ],
+    "fetched": "2026-10-23"
+  }
 }

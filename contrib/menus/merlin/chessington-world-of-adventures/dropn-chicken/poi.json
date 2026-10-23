@@ -9,5 +9,13 @@
   "menuUrl": null,
   "appPassholderDiscount": true,
   "diningPlans": null,
-  "appMissingSince": null
+  "appMissingSince": null,
+  "site": {
+    "url": "https://www.chessington.com/explore/food-drinks-shops/places-to-eat/",
+    "serves": "Try our burgers and a variety of kids meals too.",
+    "features": [
+      "Card payments only"
+    ],
+    "fetched": "2026-10-23"
+  }
 }

@@ -9,5 +9,19 @@
   "menuUrl": null,
   "appPassholderDiscount": null,
   "diningPlans": null,
-  "appMissingSince": null
+  "appMissingSince": null,
+  "site": {
+    "url": "https://www.thorpepark.com/explore/theme-park/restaurants-shops/",
+    "serves": "Beers, ciders, spirits, and soft drinks.",
+    "features": [
+      "Card payments only"
+    ],
+    "fetched": "2026-10-23"
+  },
+  "passDiscount": {
+    "offered": true,
+    "percent": null,
+    "applies": "Gold & Platinum Annual Pass",
+    "source": "park website"
+  }
 }

@@ -1,0 +1,252 @@
+{
+  "date": "2023-04-11",
+  "approxDate": true,
+  "source": {
+    "name": "Thorpe Park",
+    "official": true,
+    "url": "https://link.assetfile.io/21pvgXMwzjg0RgAqVHqynW/Camden+Junction+Menu+2023.jpg",
+    "sha256": "6abc9b8777144fcea879645a13d976829ed442b61ef4c9c6663020082af9a5a8",
+    "stated": "2023"
+  },
+  "sections": [
+    {
+      "name": "Draught",
+      "items": [
+        {
+          "name": "Camden Hells",
+          "sizes": [
+            {
+              "label": "Half Pint",
+              "price": 340
+            },
+            {
+              "label": "Pint",
+              "price": 675
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Camden Pale Ale",
+          "sizes": [
+            {
+              "label": "Half Pint",
+              "price": 340
+            },
+            {
+              "label": "Pint",
+              "price": 675
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Spaten",
+          "sizes": [
+            {
+              "label": "Half Pint",
+              "price": 340
+            },
+            {
+              "label": "Pint",
+              "price": 665
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Magners Original",
+          "sizes": [
+            {
+              "label": "Half Pint",
+              "price": 315
+            },
+            {
+              "label": "Pint",
+              "price": 635
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Bottles",
+      "items": [
+        {
+          "name": "Stella 330ml",
+          "price": 655,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Peroni 330ml",
+          "price": 600,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Corona 330ml",
+          "price": 600,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "Smirnoff Ice 275ml",
+          "price": 600,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "WKD Original Blue 275ml",
+          "price": 600,
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Wine",
+      "note": "187.5ml",
+      "items": [
+        {
+          "name": "A Day at the Vineyards Red",
+          "price": 530,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "A Day at the Vineyards Rosé",
+          "price": 530,
+          "tags": [
+            "alcohol"
+          ]
+        },
+        {
+          "name": "A Day at the Vineyards White",
+          "price": 530,
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Spirits",
+      "items": [
+        {
+          "name": "Selection of spirits",
+          "sizes": [
+            {
+              "label": "From",
+              "price": 400
+            }
+          ],
+          "tags": [
+            "alcohol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mixers",
+      "items": [
+        {
+          "name": "Schweppes Ginger Beer",
+          "price": 230
+        },
+        {
+          "name": "Schweppes Slim Tonic",
+          "price": 230
+        },
+        {
+          "name": "Schweppes Tonic",
+          "price": 230
+        },
+        {
+          "name": "Schweppes Lemonade",
+          "price": 230
+        }
+      ]
+    },
+    {
+      "name": "Soft Drinks",
+      "items": [
+        {
+          "name": "Glacéau Smartwater 600ml",
+          "price": 250
+        },
+        {
+          "name": "Juice - Apple, Orange",
+          "price": 185
+        },
+        {
+          "name": "Coca Cola",
+          "sizes": [
+            {
+              "label": "Regular",
+              "price": 335
+            },
+            {
+              "label": "Large",
+              "price": 375
+            }
+          ]
+        },
+        {
+          "name": "Fanta Zero",
+          "sizes": [
+            {
+              "label": "Regular",
+              "price": 335
+            },
+            {
+              "label": "Large",
+              "price": 375
+            }
+          ]
+        },
+        {
+          "name": "Sprite Zero",
+          "sizes": [
+            {
+              "label": "Regular",
+              "price": 335
+            },
+            {
+              "label": "Large",
+              "price": 375
+            }
+          ]
+        },
+        {
+          "name": "Diet Coke",
+          "sizes": [
+            {
+              "label": "Regular",
+              "price": 335
+            },
+            {
+              "label": "Large",
+              "price": 375
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

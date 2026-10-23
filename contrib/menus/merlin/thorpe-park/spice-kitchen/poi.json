@@ -12,5 +12,21 @@
   "appMissingSince": null,
   "menuPdfs": [
     "https://www.thorpepark.com/media/1bxe5nf4/spice-kitchen-menu.pdf"
-  ]
+  ],
+  "site": {
+    "url": "https://www.thorpepark.com/explore/theme-park/restaurants-shops/",
+    "serves": "The Spice Kitchen is dishing out your beloved Indian curries and sides.",
+    "features": [
+      "Vegan & vegetarian options",
+      "Halal options on request",
+      "Card payments only"
+    ],
+    "fetched": "2026-10-23"
+  },
+  "passDiscount": {
+    "offered": true,
+    "percent": null,
+    "applies": "Gold & Platinum Annual Pass",
+    "source": "park website"
+  }
 }

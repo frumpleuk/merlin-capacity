@@ -9,5 +9,14 @@
   "menuUrl": null,
   "appPassholderDiscount": null,
   "diningPlans": null,
-  "appMissingSince": null
+  "appMissingSince": null,
+  "site": {
+    "url": "https://www.thorpepark.com/explore/theme-park/restaurants-shops/",
+    "serves": "The original HOME OF THE WHOPPER® plus a selection of Burger King classics, drinks, and desserts.",
+    "features": [
+      "Vegetarian options",
+      "Card and cash payments"
+    ],
+    "fetched": "2026-10-23"
+  }
 }

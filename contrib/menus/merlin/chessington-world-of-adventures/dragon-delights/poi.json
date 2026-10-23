@@ -9,5 +9,13 @@
   "menuUrl": null,
   "appPassholderDiscount": null,
   "diningPlans": null,
-  "appMissingSince": null
+  "appMissingSince": null,
+  "site": {
+    "url": "https://www.chessington.com/explore/food-drinks-shops/places-to-eat/",
+    "serves": "Treat yourself to the Dragon’s latest favourite treat - a Freakshake! Choose from a variety of colourful and tasty flavours.",
+    "features": [
+      "Card & Cash payments accepted"
+    ],
+    "fetched": "2026-10-23"
+  }
 }

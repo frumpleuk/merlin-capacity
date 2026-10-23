@@ -9,5 +9,20 @@
   "menuUrl": null,
   "appPassholderDiscount": null,
   "diningPlans": null,
-  "appMissingSince": null
+  "appMissingSince": null,
+  "site": {
+    "url": "https://www.legoland.co.uk/explore/facilities/dining/pirates-burger-kitchen/",
+    "serves": null,
+    "features": [
+      "Vegan options available",
+      "High Chairs available",
+      "Accessible for wheelchair users",
+      "Indoor seating available",
+      "Toilet block outside with Baby Changing facilities available",
+      "'Grab & Go' available",
+      "Self service kiosks available",
+      "Card Payments Only"
+    ],
+    "fetched": "2026-10-23"
+  }
 }

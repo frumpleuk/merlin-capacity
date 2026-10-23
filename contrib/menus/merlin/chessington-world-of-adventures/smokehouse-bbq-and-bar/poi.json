@@ -12,5 +12,13 @@
   "appMissingSince": null,
   "menuPdfs": [
     "https://www.chessington.com/media/h4adafh5/smokehouse-a4-menus-final-cropped-reduced-file-size.pdf"
-  ]
+  ],
+  "site": {
+    "url": "https://www.chessington.com/explore/food-drinks-shops/places-to-eat/",
+    "serves": "Enjoy 12 hour smoked meat all cooked to perfection, including Pulled Pork, Beef Brisket, Ribs and much more!",
+    "features": [
+      "Card payments only"
+    ],
+    "fetched": "2026-10-23"
+  }
 }

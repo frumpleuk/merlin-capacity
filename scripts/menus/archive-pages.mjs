@@ -34,7 +34,9 @@ const UA = "merlin-capacity/0.1 (+https://themeparks.frumple.co.uk; park menu ar
 const BROWSER_UA =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36";
 const OUT = path.join(os.tmpdir(), "park-menu-pages");
-const isPdf = (url) => /\.pdf(?:[?#]|$)/i.test(url ?? "");
+// A menu file (a PDF, or an image of the board) is archived by the importer;
+// only web pages are captured here.
+const isFile = (url) => /\.(pdf|jpe?g|png)(?:[?#]|$)/i.test(url ?? "");
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const today = () => new Date().toISOString().slice(0, 10);
 const hashFile = (f) => crypto.createHash("sha256").update(fs.readFileSync(f)).digest("hex");
@@ -121,7 +123,7 @@ function webMenus() {
         const file = path.join(dir, d, "menu.json");
         if (!fs.existsSync(file)) continue;
         const menu = readJson(file);
-        if (menu.source?.official && menu.source.url && !isPdf(menu.source.url)) out.push({ file, menu });
+        if (menu.source?.official && menu.source.url && !isFile(menu.source.url)) out.push({ file, menu });
       }
     }
   }
@@ -163,11 +165,12 @@ export async function archivePages({ publicCopies = true } = {}) {
       await browser.close();
     }
   }
-  // PDFs: the files are ours already; ask for public copies of their URLs.
+  // Menu files: ours already; ask for public copies of their URLs.
   let pdfs = 0;
   if (publicCopies) {
     for (const [sha256, e] of ledgerEntries()) {
-      if (e.type !== "application/pdf" || e.wayback) continue;
+      // The menu files the importers fetched, not our own page captures.
+      if (!isFile(e.url) || e.wayback) continue;
       const w = await wayback(e.url);
       if (w) {
         setLedgerField(sha256, "wayback", w);

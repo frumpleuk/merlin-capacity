@@ -9,5 +9,13 @@
   "menuUrl": null,
   "appPassholderDiscount": true,
   "diningPlans": null,
-  "appMissingSince": null
+  "appMissingSince": null,
+  "site": {
+    "url": "https://www.chessington.com/explore/food-drinks-shops/places-to-eat/",
+    "serves": "Delicious fresh pizza & pasta with drink meal deal with salad.",
+    "features": [
+      "Card payments only"
+    ],
+    "fetched": "2026-10-23"
+  }
 }

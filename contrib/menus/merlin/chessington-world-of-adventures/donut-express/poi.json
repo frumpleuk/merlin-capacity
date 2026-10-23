@@ -9,5 +9,13 @@
   "menuUrl": null,
   "appPassholderDiscount": null,
   "diningPlans": null,
-  "appMissingSince": null
+  "appMissingSince": null,
+  "site": {
+    "url": "https://www.chessington.com/explore/food-drinks-shops/places-to-eat/",
+    "serves": "These donuts are the talk of Adventure Point! Enjoy fresh donuts made right before your eyes, and some fantastic Costa Coffee.",
+    "features": [
+      "Card & Cash payments accepted"
+    ],
+    "fetched": "2026-10-23"
+  }
 }

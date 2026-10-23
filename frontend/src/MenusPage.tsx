@@ -82,8 +82,11 @@ interface Venue {
   area: string | null;
   category: string | null;
   note: string | null;
-  /** The park's own line about what this place sells (Flamingo Land). */
+  /** The park's own line about what this place sells (Flamingo Land's app, the
+   *  UK Merlin parks' websites). */
   serves?: string | null;
+  /** What the park's website ticks for this place ("Card payments only"). */
+  features?: string[] | null;
   menuUrl: string | null;
   diningPlans: string[] | null;
   goneSince: string | null;
@@ -513,9 +516,12 @@ function VenueCard({
           </a>
         </p>
       )}
+      {!priced && venue.serves && <p className="fd-note fd-elsewhere">{venue.serves}</p>}
+      {!priced && venue.features && <p className="fd-note fd-elsewhere">{venue.features.join(" · ")}</p>}
       {show && menu && (
         <div className="fd-sections">
           {venue.serves && <p className="fd-note">{venue.serves}</p>}
+          {venue.features && <p className="fd-note">{venue.features.join(" · ")}</p>}
           {venue.note && <p className="fd-note">{venue.note}</p>}
           {shared && <p className="fd-note">{shared}</p>}
           <div className="fd-menu">

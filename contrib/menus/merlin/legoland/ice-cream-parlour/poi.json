@@ -9,5 +9,13 @@
   "menuUrl": null,
   "appPassholderDiscount": null,
   "diningPlans": null,
-  "appMissingSince": null
+  "appMissingSince": null,
+  "site": {
+    "url": "https://www.legoland.co.uk/explore/facilities/dining/ice-cream-parlour/",
+    "serves": null,
+    "features": [
+      "Card Payments Only"
+    ],
+    "fetched": "2026-10-23"
+  }
 }

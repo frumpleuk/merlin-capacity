@@ -66,6 +66,13 @@ venues also carry `priceBand`, its own "€" to "€€€" rating.
 Land publishes. It reads well but groups badly (some are a paragraph), so it is
 shown on the venue and never used as a category.
 
+`site` is what the park's website says about the place, written by
+`import-merlin-sites.mjs` (Thorpe Park, Chessington, Legoland Windsor):
+`{ url, serves, features, fetched }`, where `serves` is the site's line about it
+(shown as `serves` is) and `features` the ticks as printed ("Card payments
+only", "Vegan & vegetarian options"). A pass-discount tick becomes the venue's
+`passDiscount` with `source: "park website"` instead.
+
 `area` is the nearest land label on the app's map (within 400m), so it groups
 venues but isn't authoritative. Paulton's tags only two of its outlets with an
 area, so the rest take the area of the nearest POI that has one (within 150m);
@@ -193,6 +200,7 @@ Four importers, each cached and fetching one page a second:
 | `import-tenkites.mjs` | Paulton's, Alton Towers | Every dish, its description, its calories and the park's v/vg marks, from the Tenkites boards (`displayMenuUrl`, else `menuUrl`). No prices: the parks leave every price field empty. A board holding several outlets' menus (Paulton's `peppapigworldrefreshments`, `sweettreatkiosks`) is read per venue by the menu's name, set by hand as `tenkitesMenu`. An `addOn` set by hand on an imported dish carries to the next import. |
 | `import-bpb-menus.mjs` | Blackpool | The dish lists on each `<venue>-menu` page, and whether a Season Pass gets a discount there. No prices either. |
 | `import-flamingoland-menus.mjs` | Flamingo Land | The Coach House food and drinks menus, **with prices**, calories and allergen marks. Drinks are sized items (25ml / Double). |
+| `import-merlin-sites.mjs` | Thorpe Park, Chessington, Legoland Windsor | Not menus: each venue's line, features and Annual Pass discount from the park's website, into `poi.json` (`site`, `passDiscount`). |
 | `import-knoebels.mjs` | Knoebels | Every stand's menu page (`knoebels.com/menu/<slug>/`, the venue's `displayMenuUrl`), **with prices** in cents. Not the seasonal Hall-O-Fun menus. Ten seconds between pages, as the site's robots.txt asks. |
 | `import-legoland-japan.mjs` | Legoland Japan | The featured dishes ("Recommended Menus") on each restaurant's English page, **with prices** in yen. Not the whole board. |
 | `import-pdf-menus.mjs` | Any park | Every venue whose menu link is a PDF (see below). Downloads each, **usually with prices**, and lists the new or changed ones in `.pdf-plan.json`. The layouts aren't parsed: each listed PDF is transcribed by agent into `<venue>/<today>/menu.json` with `source.sha256` set to the PDF's hash, which is how the next run knows it's unchanged. |
@@ -217,6 +225,8 @@ yours, so a venue sync leaves them alone. Then:
 3. `node scripts/menus/validate.mjs`, then `node scripts/menus/build.mjs`.
 
 A PDF the app links directly needs only steps 1 to 3 (Disneyland Paris).
+A JPG or PNG of the board is taken the same way (Thorpe Park's app links
+Camden Junction's menu as a JPG), dated by its server's Last-Modified.
 
 A PDF made before the venue's newest menu (Thorpe Park's 2024 and 2025 sheets,
 behind boards photographed in September 2026), or more than a year before the

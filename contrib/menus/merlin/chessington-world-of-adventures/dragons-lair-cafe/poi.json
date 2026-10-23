@@ -9,5 +9,13 @@
   "menuUrl": null,
   "appPassholderDiscount": true,
   "diningPlans": null,
-  "appMissingSince": null
+  "appMissingSince": null,
+  "site": {
+    "url": "https://www.chessington.com/explore/food-drinks-shops/places-to-eat/",
+    "serves": "Sip a delicious Costa Coffee and why not treat yourself with our selection of cakes, muffins and Sandwiches.",
+    "features": [
+      "Card payments only"
+    ],
+    "fetched": "2026-10-23"
+  }
 }

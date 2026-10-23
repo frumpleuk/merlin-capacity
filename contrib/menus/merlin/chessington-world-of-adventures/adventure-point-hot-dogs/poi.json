@@ -9,5 +9,13 @@
   "menuUrl": null,
   "appPassholderDiscount": true,
   "diningPlans": null,
-  "appMissingSince": null
+  "appMissingSince": null,
+  "site": {
+    "url": "https://www.chessington.com/explore/food-drinks-shops/places-to-eat/",
+    "serves": "Create your own hot dog and enjoy a tasty selection of toppings too!",
+    "features": [
+      "Card & Cash payments accepted"
+    ],
+    "fetched": "2026-10-23"
+  }
 }

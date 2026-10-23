@@ -11,7 +11,8 @@
     "fetched": "2026-10-23",
     "bytes": 84596,
     "type": "application/pdf",
-    "key": "archive/menus/01184f6896602d3c1f43e9ea8253ea075acd0e75e4f13cfb59e56491be1734a5.pdf"
+    "key": "archive/menus/01184f6896602d3c1f43e9ea8253ea075acd0e75e4f13cfb59e56491be1734a5.pdf",
+    "wayback": "https://web.archive.org/web/20261023215600/https://www.bigbluehotel.com/app/uploads/2026/04/BBHBARFOOD0426.pdf"
   },
   "0198681d605e0aec4ccc513d69429e50bb020a9960d9557bbcbf66cc71510ddd": {
     "url": "https://menus.tenkites.com/aramarkuk/cbeebieslandhotel",
@@ -20,33 +21,12 @@
     "type": "application/json",
     "key": "archive/menus/0198681d605e0aec4ccc513d69429e50bb020a9960d9557bbcbf66cc71510ddd.har"
   },
-  "01a8b909375d6d570b4330c359e13fc3996d23f7da34cf7a3a07a03ec2d9d2d3": {
-    "url": "https://menus.tenkites.com/paultonspark/ciaobella",
-    "fetched": "2026-10-23",
-    "bytes": 5739058,
-    "type": "multipart/related",
-    "key": "archive/menus/01a8b909375d6d570b4330c359e13fc3996d23f7da34cf7a3a07a03ec2d9d2d3.mhtml"
-  },
-  "029e7989b38bd8b3e3e08cfd09d290536e2acb9f8fafa12f3f412051ce2f68f4": {
-    "url": "https://knoebels.com/menu/backyard-bbq/",
-    "fetched": "2026-10-23",
-    "bytes": 640633,
-    "type": "text/html",
-    "key": "archive/menus/029e7989b38bd8b3e3e08cfd09d290536e2acb9f8fafa12f3f412051ce2f68f4.html"
-  },
   "02a5a662aa91a7b6cb9d9414edde45a5abd149c2d601d980c6805f185c337f0f": {
     "url": "https://www.legoland.com/new-york/media/4brpl5c0/granny-s-apple-fries-2026-menu.pdf",
     "fetched": "2026-10-23",
     "bytes": 685821,
     "type": "application/pdf",
     "key": "archive/menus/02a5a662aa91a7b6cb9d9414edde45a5abd149c2d601d980c6805f185c337f0f.pdf"
-  },
-  "02fee77bfce6cdc697e3fb4b5089cb34996f7ab985865fdf960053c04295653c": {
-    "url": "https://www.blackpoolpleasurebeach.com/bubble-waffle-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 561087,
-    "type": "image/png",
-    "key": "archive/menus/02fee77bfce6cdc697e3fb4b5089cb34996f7ab985865fdf960053c04295653c.png"
   },
   "03271743d0c3eab5c025bd7b2d45f950bcb9b9506b7b9ec6d1acecbbc5c3029a": {
     "url": "https://menus.tenkites.com/aramarkuk/ataltontowersparkcatering",
@@ -60,7 +40,8 @@
     "fetched": "2026-10-23",
     "bytes": 745536,
     "type": "application/pdf",
-    "key": "archive/menus/03b50d7259c1a35c2e0cc9a7bcd1db4015fd38946b4c8b9b40daa5b0d0bb265b.pdf"
+    "key": "archive/menus/03b50d7259c1a35c2e0cc9a7bcd1db4015fd38946b4c8b9b40daa5b0d0bb265b.pdf",
+    "wayback": "https://web.archive.org/web/20261023215627/https://media.disneylandparis.com/d4th/en-gb/images/P2DR04_chez-toulouse.pdf"
   },
   "03ed847c6fe5d546e8d172af865e4c99f49d87fa36a8034145df996b4f8bbd60": {
     "url": "https://www.legoland.jp/en/resort-guide/legoland/food/marina-snack-shack/",
@@ -74,7 +55,8 @@
     "fetched": "2026-10-23",
     "bytes": 33670209,
     "type": "application/pdf",
-    "key": "archive/menus/0405656a722ad2639e1ef00f233efedc50d71cf3f3d2dc7247c200eb93287058.pdf"
+    "key": "archive/menus/0405656a722ad2639e1ef00f233efedc50d71cf3f3d2dc7247c200eb93287058.pdf",
+    "wayback": "https://web.archive.org/web/20261023224937/https://media.disneylandparis.com/d4th/en-gb/images/P1MR00_cable-car-bake-shop.pdf"
   },
   "04469fc949a5e4a76607d0e65f627cff1e22ae11e6f2890fd787a929a6aab7de": {
     "url": "https://menus.tenkites.com/aramarkuk/athotel02",
@@ -97,68 +79,13 @@
     "type": "multipart/related",
     "key": "archive/menus/05ca28a989088ca48428e059d51a4cbf5b866b150a03d4cbff743eeb8fbd89ae.mhtml"
   },
-  "05d3077180cfd2f2f51003c99bf14b7e3c2e5e621137bb46fd7a719d97a25a58": {
-    "url": "https://www.blackpoolpleasurebeach.com/chocolate-by-percent/",
-    "fetched": "2026-10-23",
-    "bytes": 8850381,
-    "type": "multipart/related",
-    "key": "archive/menus/05d3077180cfd2f2f51003c99bf14b7e3c2e5e621137bb46fd7a719d97a25a58.mhtml"
-  },
-  "0656c1083c829c799a867c32dec0b104176880cce33ce0660fc38e7b0ffe0f43": {
-    "url": "https://www.blackpoolpleasurebeach.com/chocolate-by-percent/",
-    "fetched": "2026-10-23",
-    "bytes": 15904555,
-    "type": "application/json",
-    "key": "archive/menus/0656c1083c829c799a867c32dec0b104176880cce33ce0660fc38e7b0ffe0f43.har"
-  },
-  "0659e878b368a208ae755550891028bee4f69d77a97560d4def09cc5d518cddd": {
-    "url": "https://knoebels.com/menu/slush-n-such/",
-    "fetched": "2026-10-23",
-    "bytes": 630329,
-    "type": "text/html",
-    "key": "archive/menus/0659e878b368a208ae755550891028bee4f69d77a97560d4def09cc5d518cddd.html"
-  },
-  "06a6fad047fff1fc7f0f3163929cbf38c377cee95d88e10e4750e2c2ed71c680": {
-    "url": "https://menus.tenkites.com/paultonspark/pavilionkiosk",
-    "fetched": "2026-10-23",
-    "bytes": 814267,
-    "type": "multipart/related",
-    "key": "archive/menus/06a6fad047fff1fc7f0f3163929cbf38c377cee95d88e10e4750e2c2ed71c680.mhtml"
-  },
   "070d0bc56b25866f90961c1dc056e3b068c47e780aee741d8b350c15729e1c4d": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1AR01_cafe-de-la-brousse.pdf",
     "fetched": "2026-10-23",
     "bytes": 2023485,
     "type": "application/pdf",
-    "key": "archive/menus/070d0bc56b25866f90961c1dc056e3b068c47e780aee741d8b350c15729e1c4d.pdf"
-  },
-  "073b12e3162b90edd52815af44f8be8a6c4294c93d61d2dff80f4d181a0d661c": {
-    "url": "https://knoebels.com/menu/alamo-food-truck/",
-    "fetched": "2026-10-23",
-    "bytes": 20493460,
-    "type": "application/json",
-    "key": "archive/menus/073b12e3162b90edd52815af44f8be8a6c4294c93d61d2dff80f4d181a0d661c.har"
-  },
-  "079af8d7330b0d2676c9941feeb25811b2c99f7f33b444e471d49744827c0e16": {
-    "url": "https://www.blackpoolpleasurebeach.com/beach-burger-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 13376664,
-    "type": "application/json",
-    "key": "archive/menus/079af8d7330b0d2676c9941feeb25811b2c99f7f33b444e471d49744827c0e16.har"
-  },
-  "082302727ed9a00cffe580a92a13929ea205817b0ec48aaa3078227e217f55d1": {
-    "url": "https://www.blackpoolpleasurebeach.com/lokis-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 466420,
-    "type": "image/png",
-    "key": "archive/menus/082302727ed9a00cffe580a92a13929ea205817b0ec48aaa3078227e217f55d1.png"
-  },
-  "08748f290d16f0fc4a89705d4358d3f6c6f71756c9922314f778928ec0631306": {
-    "url": "https://knoebels.com/menu/kandy-korners/",
-    "fetched": "2026-10-23",
-    "bytes": 1267868,
-    "type": "image/png",
-    "key": "archive/menus/08748f290d16f0fc4a89705d4358d3f6c6f71756c9922314f778928ec0631306.png"
+    "key": "archive/menus/070d0bc56b25866f90961c1dc056e3b068c47e780aee741d8b350c15729e1c4d.pdf",
+    "wayback": "https://web.archive.org/web/20261023225002/https://media.disneylandparis.com/d4th/en-gb/images/P1AR01_cafe-de-la-brousse.pdf"
   },
   "08d75ea364f3715340c73f57af1be32eacbc0eb82b8d6c8facb6289d68f8e77d": {
     "url": "https://www.legoland.jp/en/resort-guide/legoland/food/kitchen-car-city/",
@@ -167,33 +94,13 @@
     "type": "text/html",
     "key": "archive/menus/08d75ea364f3715340c73f57af1be32eacbc0eb82b8d6c8facb6289d68f8e77d.html"
   },
-  "090bd33c4b8d5109fcfd3ebba96726aedb44337cfda800787eb22b0d1a23e810": {
-    "url": "https://menus.tenkites.com/paultonspark/tornadotreats",
-    "fetched": "2026-10-23",
-    "bytes": 344649,
-    "type": "text/html",
-    "key": "archive/menus/090bd33c4b8d5109fcfd3ebba96726aedb44337cfda800787eb22b0d1a23e810.html"
-  },
   "09139073244344b657e3517c8ded4fcd6bdf0e24516e83da65d4fa75a2b348b2": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR03_cookie-kitchen.pdf",
     "fetched": "2026-10-23",
     "bytes": 500332,
     "type": "application/pdf",
-    "key": "archive/menus/09139073244344b657e3517c8ded4fcd6bdf0e24516e83da65d4fa75a2b348b2.pdf"
-  },
-  "0984f6b62f04ce979f5a75d68a81a2fc44542654df1a03d8f75b524f93010f83": {
-    "url": "https://knoebels.com/menu/oasis-cafeteria/",
-    "fetched": "2026-10-23",
-    "bytes": 3850680,
-    "type": "multipart/related",
-    "key": "archive/menus/0984f6b62f04ce979f5a75d68a81a2fc44542654df1a03d8f75b524f93010f83.mhtml"
-  },
-  "0986b740fe39df6573529db63267baac1b555e0c0baaa48d9d1c1b048758b62a": {
-    "url": "https://www.blackpoolpleasurebeach.com/krispy-kreme-rocket-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 13078360,
-    "type": "application/json",
-    "key": "archive/menus/0986b740fe39df6573529db63267baac1b555e0c0baaa48d9d1c1b048758b62a.har"
+    "key": "archive/menus/09139073244344b657e3517c8ded4fcd6bdf0e24516e83da65d4fa75a2b348b2.pdf",
+    "wayback": "https://web.archive.org/web/20261023225015/https://media.disneylandparis.com/d4th/en-gb/images/P1MR03_cookie-kitchen.pdf"
   },
   "0aad866fa9289c74fb3e1c17d258056293d903411f828374806f80250af5c7de": {
     "url": "https://menus.tenkites.com/aramarkuk/rollercoasterrestaurantat02",
@@ -201,27 +108,6 @@
     "bytes": 3999726,
     "type": "application/json",
     "key": "archive/menus/0aad866fa9289c74fb3e1c17d258056293d903411f828374806f80250af5c7de.har"
-  },
-  "0ae51beb1f3e8e2266f108d8e17aaa73a7370f2465e845bf329cd0cbb92928ea": {
-    "url": "https://menus.tenkites.com/paultonspark/coffeeshops",
-    "fetched": "2026-10-23",
-    "bytes": 1188544,
-    "type": "text/html",
-    "key": "archive/menus/0ae51beb1f3e8e2266f108d8e17aaa73a7370f2465e845bf329cd0cbb92928ea.html"
-  },
-  "0b0da359d12e8f5c11436a3b13619eb7b32e6dfb91a6584ec4cba5892582b64d": {
-    "url": "https://www.blackpoolpleasurebeach.com/fy4-fish-chips-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 7997505,
-    "type": "multipart/related",
-    "key": "archive/menus/0b0da359d12e8f5c11436a3b13619eb7b32e6dfb91a6584ec4cba5892582b64d.mhtml"
-  },
-  "0b517cc0401a768500beb2338fabd3e803bd9a71524b0e27cc4738c7452c1887": {
-    "url": "https://www.blackpoolpleasurebeach.com/fy4-fish-chips-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 381476,
-    "type": "image/png",
-    "key": "archive/menus/0b517cc0401a768500beb2338fabd3e803bd9a71524b0e27cc4738c7452c1887.png"
   },
   "0bb12649e6faeff3277268cd05cc6a79f5752138a125dcbda62ca47445f62042": {
     "url": "https://www.thorpepark.com/media/bzgny0uo/vibes-kids-menu-2025-april.pdf",
@@ -237,26 +123,12 @@
     "type": "application/pdf",
     "key": "archive/menus/0c32bba60eee12d5f99a1672f5c2a26f5e75523421286c9f42831571f3d6fa38.pdf"
   },
-  "0d2a70785ecb3a7eea9a36c05065db54a6c8ef022608877855920d982c221b97": {
-    "url": "https://menus.tenkites.com/paultonspark/takeawaykiosks",
-    "fetched": "2026-10-23",
-    "bytes": 4320794,
-    "type": "multipart/related",
-    "key": "archive/menus/0d2a70785ecb3a7eea9a36c05065db54a6c8ef022608877855920d982c221b97.mhtml"
-  },
   "0db65ca0c053142e8182dc658717b6e065e7cb573bc0837772f2961cf5ee65a3": {
     "url": "https://menus.tenkites.com/aramarkuk/ataltontowersparkcatering",
     "fetched": "2026-10-23",
     "bytes": 1542519,
     "type": "text/html",
     "key": "archive/menus/0db65ca0c053142e8182dc658717b6e065e7cb573bc0837772f2961cf5ee65a3.html"
-  },
-  "0e2576e2de1b797091a6996acb0cfa37b77009e1bf610c3ab1c84277d9ddaeec": {
-    "url": "https://knoebels.com/menu/alamo-food-truck/",
-    "fetched": "2026-10-23",
-    "bytes": 3733038,
-    "type": "multipart/related",
-    "key": "archive/menus/0e2576e2de1b797091a6996acb0cfa37b77009e1bf610c3ab1c84277d9ddaeec.mhtml"
   },
   "0e63721841ab9bd95ab36ca8b64087d268b0fe4662b17c1a5d35320a96a9db8e": {
     "url": "https://www.legoland.jp/en/resort-guide/legoland/food/pit-stop-juice-drive/",
@@ -265,40 +137,12 @@
     "type": "image/png",
     "key": "archive/menus/0e63721841ab9bd95ab36ca8b64087d268b0fe4662b17c1a5d35320a96a9db8e.png"
   },
-  "0e9a459efbeacdde561d29ac47e28a45fe90344c0bd4312bc5587cda9a9537d8": {
-    "url": "https://menus.tenkites.com/paultonspark/sweettreatkiosks?mguid=a2590c85-cfae-4800-84d7-89dd585dbbcc",
-    "fetched": "2026-10-23",
-    "bytes": 4221119,
-    "type": "multipart/related",
-    "key": "archive/menus/0e9a459efbeacdde561d29ac47e28a45fe90344c0bd4312bc5587cda9a9537d8.mhtml"
-  },
-  "0e9ba6fe0ad660adf43f4cf2a155f67df70d35680674aa3c929f3dabaaac2708": {
-    "url": "https://www.flamingoland.co.uk/food-and-drink-menu/the-coach-house/",
-    "fetched": "2026-10-23",
-    "bytes": 1320423,
-    "type": "image/png",
-    "key": "archive/menus/0e9ba6fe0ad660adf43f4cf2a155f67df70d35680674aa3c929f3dabaaac2708.png"
-  },
-  "0eabed14525a5e0cb93b92c703de732a17a412010dcb1c6ce9636989a737ce1d": {
-    "url": "https://knoebels.com/menu/jolly-trolley/",
-    "fetched": "2026-10-23",
-    "bytes": 3954833,
-    "type": "multipart/related",
-    "key": "archive/menus/0eabed14525a5e0cb93b92c703de732a17a412010dcb1c6ce9636989a737ce1d.mhtml"
-  },
   "0edf8f2cc12aebfec061c1769bc6e64c03460092a827321338d2d1b72daa1a90": {
     "url": "https://www.legoland.jp/en/resort-guide/legoland/food/kitchen-car-bricktopia-popcorn/",
     "fetched": "2026-10-23",
     "bytes": 1930079,
     "type": "multipart/related",
     "key": "archive/menus/0edf8f2cc12aebfec061c1769bc6e64c03460092a827321338d2d1b72daa1a90.mhtml"
-  },
-  "0f4e1faf95cde76b409b3093944aa52ea0d6ad733b90b6925693130b0778bfc9": {
-    "url": "https://menus.tenkites.com/paultonspark/route83diner",
-    "fetched": "2026-10-23",
-    "bytes": 7679887,
-    "type": "multipart/related",
-    "key": "archive/menus/0f4e1faf95cde76b409b3093944aa52ea0d6ad733b90b6925693130b0778bfc9.mhtml"
   },
   "0f539ef255e3f7607f38b6f3a4fd4cab84efed5edba4b39ed74d34e838c5a544": {
     "url": "https://www.legoland.com/new-york/media/5q2d3qyx/smokey-s-2026-menu.pdf",
@@ -307,33 +151,12 @@
     "type": "application/pdf",
     "key": "archive/menus/0f539ef255e3f7607f38b6f3a4fd4cab84efed5edba4b39ed74d34e838c5a544.pdf"
   },
-  "0f9ec9c319748e316c90ddc0bd7a835168486bb515aa343b3ccc45004f663937": {
-    "url": "https://www.blackpoolpleasurebeach.com/bbq-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 487180,
-    "type": "image/png",
-    "key": "archive/menus/0f9ec9c319748e316c90ddc0bd7a835168486bb515aa343b3ccc45004f663937.png"
-  },
   "0ff071f02fd31d58dbc713e5a2051c495517d148901a3365192bb2036006ed19": {
     "url": "https://menus.tenkites.com/paultonspark/grandecentral",
     "fetched": "2026-10-23",
     "bytes": 1988356,
     "type": "text/html",
     "key": "archive/menus/0ff071f02fd31d58dbc713e5a2051c495517d148901a3365192bb2036006ed19.html"
-  },
-  "106cc0336cfb9140cc3628dcc629872aa43a034fcdcf0b4f8e3a83174dabdfcb": {
-    "url": "https://www.blackpoolpleasurebeach.com/bbq-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 15582212,
-    "type": "application/json",
-    "key": "archive/menus/106cc0336cfb9140cc3628dcc629872aa43a034fcdcf0b4f8e3a83174dabdfcb.har"
-  },
-  "106dba66c89ff9f6ae6abf04a15d76d27de9f429dff1161d39a4f31121a1500e": {
-    "url": "https://www.blackpoolpleasurebeach.com/snack-shack-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 9434976,
-    "type": "multipart/related",
-    "key": "archive/menus/106dba66c89ff9f6ae6abf04a15d76d27de9f429dff1161d39a4f31121a1500e.mhtml"
   },
   "1085bb049a1e4adefa9e1564ef0c1154793d45b4d2f39f4f7eae8ebe66bb91b5": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2VK00_laugh-n-go.pdf",
@@ -342,47 +165,21 @@
     "type": "application/pdf",
     "key": "archive/menus/1085bb049a1e4adefa9e1564ef0c1154793d45b4d2f39f4f7eae8ebe66bb91b5.pdf"
   },
-  "10901865ed665f24e1c11e42cf1f7e60c1c511e476052db30f3fcd971278cb63": {
-    "url": "https://www.blackpoolpleasurebeach.com/coasters-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 574618,
-    "type": "image/png",
-    "key": "archive/menus/10901865ed665f24e1c11e42cf1f7e60c1c511e476052db30f3fcd971278cb63.png"
-  },
   "10ae6d341b109bede26cba91dec2dd620ac0209aa8e02e845ca735ca6273d029": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2FR00_the-hollywood-gardens-restaurant.pdf",
     "fetched": "2026-10-23",
     "bytes": 532875,
     "type": "application/pdf",
-    "key": "archive/menus/10ae6d341b109bede26cba91dec2dd620ac0209aa8e02e845ca735ca6273d029.pdf"
-  },
-  "10b53e27056e6076fed4d1cf7afaa25eb80c14964edfa698b7d5a9ae52a12124": {
-    "url": "https://www.blackpoolpleasurebeach.com/lokis-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 183625,
-    "type": "text/html",
-    "key": "archive/menus/10b53e27056e6076fed4d1cf7afaa25eb80c14964edfa698b7d5a9ae52a12124.html"
+    "key": "archive/menus/10ae6d341b109bede26cba91dec2dd620ac0209aa8e02e845ca735ca6273d029.pdf",
+    "wayback": "https://web.archive.org/web/20261023225101/https://media.disneylandparis.com/d4th/en-gb/images/P2FR00_the-hollywood-gardens-restaurant.pdf"
   },
   "10d2b400ea89d1b5305b8b879b28aba5d26ed34903b553eb2dd61f8e5aaeea7e": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1AR05_cool-post.pdf",
     "fetched": "2026-10-23",
     "bytes": 4764983,
     "type": "application/pdf",
-    "key": "archive/menus/10d2b400ea89d1b5305b8b879b28aba5d26ed34903b553eb2dd61f8e5aaeea7e.pdf"
-  },
-  "10e4755fad4ad7873f6e8488586dd1c175b924d3c0455ed058ffd29cc25eccd7": {
-    "url": "https://knoebels.com/menu/potato-cake-stand/",
-    "fetched": "2026-10-23",
-    "bytes": 3996007,
-    "type": "multipart/related",
-    "key": "archive/menus/10e4755fad4ad7873f6e8488586dd1c175b924d3c0455ed058ffd29cc25eccd7.mhtml"
-  },
-  "11022c5917a42247b313ce15f0f3de6dd0a4aae6d399f8a35df353b10433e63e": {
-    "url": "https://knoebels.com/menu/starbucks-express/",
-    "fetched": "2026-10-23",
-    "bytes": 965876,
-    "type": "image/png",
-    "key": "archive/menus/11022c5917a42247b313ce15f0f3de6dd0a4aae6d399f8a35df353b10433e63e.png"
+    "key": "archive/menus/10d2b400ea89d1b5305b8b879b28aba5d26ed34903b553eb2dd61f8e5aaeea7e.pdf",
+    "wayback": "https://web.archive.org/web/20261023225205/https://media.disneylandparis.com/d4th/en-gb/images/P1AR05_cool-post.pdf"
   },
   "11792bc1bd9341570b3a356d129769687e670c57d62d902c0a8e7b2070038030": {
     "url": "https://menus.tenkites.com/aramarkuk/enchantedvillage02",
@@ -396,7 +193,8 @@
     "fetched": "2026-10-23",
     "bytes": 1020140,
     "type": "application/pdf",
-    "key": "archive/menus/11950e8bfd8f6aa561af8298c0adc34cfd24deb609b209f715cf089150d8464b.pdf"
+    "key": "archive/menus/11950e8bfd8f6aa561af8298c0adc34cfd24deb609b209f715cf089150d8464b.pdf",
+    "wayback": "https://web.archive.org/web/20261023215806/https://media.disneylandparis.com/d4th/en-gb/images/P1RR01_casa-de-coco.pdf"
   },
   "11d7683f5fd6e81c93a36cefdf6e9943afdaa5f9cf126f661aa464ca0b148bd4": {
     "url": "https://www.legoland.dk/media/owzd5yil/q3-klassikere-classics.pdf",
@@ -412,27 +210,6 @@
     "type": "application/json",
     "key": "archive/menus/1231a9bf41ad6c255204f98a8ce8033b14517615d81a50fd7e2201284df3f1ec.har"
   },
-  "12baf8429f748d061ba5aac692f4c02a8fcb8eedce1692269bd7efc0297bb539": {
-    "url": "https://menus.tenkites.com/paultonspark/thenestkiosk",
-    "fetched": "2026-10-23",
-    "bytes": 1387282,
-    "type": "text/html",
-    "key": "archive/menus/12baf8429f748d061ba5aac692f4c02a8fcb8eedce1692269bd7efc0297bb539.html"
-  },
-  "12c1a4e512fa970a0f212a1db0f0ded78d0ec57bf9092cb3241c783760dcbb4f": {
-    "url": "https://menus.tenkites.com/paultonspark/sweettreatkiosks?mguid=b0c1539e-4c76-4317-a257-7bfa6741656b",
-    "fetched": "2026-10-23",
-    "bytes": 4751025,
-    "type": "application/json",
-    "key": "archive/menus/12c1a4e512fa970a0f212a1db0f0ded78d0ec57bf9092cb3241c783760dcbb4f.har"
-  },
-  "135a74011252e94fc26871e3585cfa57e1c3bddd32413dafa7c6986065c35042": {
-    "url": "https://www.blackpoolpleasurebeach.com/t-cafe-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 15015708,
-    "type": "application/json",
-    "key": "archive/menus/135a74011252e94fc26871e3585cfa57e1c3bddd32413dafa7c6986065c35042.har"
-  },
   "139a5f4c9a54ac5c9bcdec111cde87ef45de02ad6c02f59357fc2a42e27d0a5e": {
     "url": "https://menus.tenkites.com/paultonspark/beastiebites",
     "fetched": "2026-10-23",
@@ -447,75 +224,21 @@
     "type": "application/pdf",
     "key": "archive/menus/13ba2dab868aff560d96736c33a6bf613b5600707d7d39960e51a244ae899a0a.pdf"
   },
-  "142bdb9a2ec2e6efd20260c8e59563f6a3bd87baab3349c2bbeab33d930980f1": {
-    "url": "https://www.blackpoolpleasurebeach.com/donut-dream-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 7782272,
-    "type": "multipart/related",
-    "key": "archive/menus/142bdb9a2ec2e6efd20260c8e59563f6a3bd87baab3349c2bbeab33d930980f1.mhtml"
-  },
-  "1496ee2c6c8d35397aaaafef734176ffa24e43ff734fae4e3c18064d4f8f890b": {
-    "url": "https://www.blackpoolpleasurebeach.com/snack-shack-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 438974,
-    "type": "image/png",
-    "key": "archive/menus/1496ee2c6c8d35397aaaafef734176ffa24e43ff734fae4e3c18064d4f8f890b.png"
-  },
-  "14c88d430cd24dd41c893f59c9d5675dd1f92f1622fed3e72fc1047db0eacef3": {
-    "url": "https://www.blackpoolpleasurebeach.com/big-pizza-kitchen-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 9382576,
-    "type": "multipart/related",
-    "key": "archive/menus/14c88d430cd24dd41c893f59c9d5675dd1f92f1622fed3e72fc1047db0eacef3.mhtml"
-  },
-  "151e9d93b22f06a9c8de63c1df856b725cdee0622c79d076ab8765c97af376aa": {
-    "url": "https://www.blackpoolpleasurebeach.com/bubble-waffle-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 185115,
-    "type": "text/html",
-    "key": "archive/menus/151e9d93b22f06a9c8de63c1df856b725cdee0622c79d076ab8765c97af376aa.html"
-  },
-  "163278d32a9942bae7fba3a96d7c8fed35c7003e795ed3b9b1dd4b6d125600b7": {
-    "url": "https://knoebels.com/menu/oasis-cafeteria/",
-    "fetched": "2026-10-23",
-    "bytes": 654571,
-    "type": "text/html",
-    "key": "archive/menus/163278d32a9942bae7fba3a96d7c8fed35c7003e795ed3b9b1dd4b6d125600b7.html"
-  },
   "16a394b8da58c3592b8d704f9a44fce35a3c1fe7a158c39cc6c15cca503d65c9": {
     "url": "https://www.crealy.co.uk/media/ibglvktk/sooty_diner_main_menu_web_spookfest.pdf",
     "fetched": "2026-10-23",
     "bytes": 2215796,
     "type": "application/pdf",
-    "key": "archive/menus/16a394b8da58c3592b8d704f9a44fce35a3c1fe7a158c39cc6c15cca503d65c9.pdf"
-  },
-  "16c82217d546cd12c79ed5792b53235ee8b88d961b53b194cb0395a7ac0ccbc6": {
-    "url": "https://knoebels.com/menu/wharf/",
-    "fetched": "2026-10-23",
-    "bytes": 1231358,
-    "type": "image/png",
-    "key": "archive/menus/16c82217d546cd12c79ed5792b53235ee8b88d961b53b194cb0395a7ac0ccbc6.png"
-  },
-  "17e3ed24e86c39bb931d199320ee85472c7b0d415577baac36c58ca141195260": {
-    "url": "https://www.blackpoolpleasurebeach.com/coasters-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 9824484,
-    "type": "multipart/related",
-    "key": "archive/menus/17e3ed24e86c39bb931d199320ee85472c7b0d415577baac36c58ca141195260.mhtml"
-  },
-  "1833d6d08cc38668f5b58360d63a37c11a0ed5af740886b3486322cb363356e0": {
-    "url": "https://menus.tenkites.com/paultonspark/tornadotreats",
-    "fetched": "2026-10-23",
-    "bytes": 601822,
-    "type": "multipart/related",
-    "key": "archive/menus/1833d6d08cc38668f5b58360d63a37c11a0ed5af740886b3486322cb363356e0.mhtml"
+    "key": "archive/menus/16a394b8da58c3592b8d704f9a44fce35a3c1fe7a158c39cc6c15cca503d65c9.pdf",
+    "wayback": "https://web.archive.org/web/20261023225340/https://www.crealy.co.uk/media/ibglvktk/sooty_diner_main_menu_web_spookfest.pdf"
   },
   "19e500f1b5f1ccaf2de7d02b7035dfea8a15639b0b5fa37afc5f33a8618d2fa8": {
     "url": "https://www.flamingoland.co.uk/wp-content/uploads/2026/04/Spud-Stop-Menu-2026.pdf",
     "fetched": "2026-10-23",
     "bytes": 460852,
     "type": "application/pdf",
-    "key": "archive/menus/19e500f1b5f1ccaf2de7d02b7035dfea8a15639b0b5fa37afc5f33a8618d2fa8.pdf"
+    "key": "archive/menus/19e500f1b5f1ccaf2de7d02b7035dfea8a15639b0b5fa37afc5f33a8618d2fa8.pdf",
+    "wayback": "https://web.archive.org/web/20261023215904/https://www.flamingoland.co.uk/wp-content/uploads/2026/04/Spud-Stop-Menu-2026.pdf"
   },
   "1a00dc6552ed8595c29ef7bab999ca3a09204e3ca67b36671d383607796000ff": {
     "url": "https://menus.tenkites.com/aramarkuk/cbeebieslunchboxat",
@@ -531,19 +254,13 @@
     "type": "multipart/related",
     "key": "archive/menus/1a5808a51a39e71be8e6e1018d92e8140e933023d62cbe8c44f2322c0bb33db7.mhtml"
   },
-  "1a83f8f8089ac3131633a3dce81cfcfab0746861046882df553dafeb5e92643e": {
-    "url": "https://www.blackpoolpleasurebeach.com/bbq-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 8822507,
-    "type": "multipart/related",
-    "key": "archive/menus/1a83f8f8089ac3131633a3dce81cfcfab0746861046882df553dafeb5e92643e.mhtml"
-  },
   "1a9939ed726e99ac2c770910a6c95f9315eb328c714220c5e42f0b6f5c25807b": {
     "url": "https://www.bigbluehotel.com/app/uploads/2026/08/BBHALC0826.pdf",
     "fetched": "2026-10-23",
     "bytes": 67217,
     "type": "application/pdf",
-    "key": "archive/menus/1a9939ed726e99ac2c770910a6c95f9315eb328c714220c5e42f0b6f5c25807b.pdf"
+    "key": "archive/menus/1a9939ed726e99ac2c770910a6c95f9315eb328c714220c5e42f0b6f5c25807b.pdf",
+    "wayback": "https://web.archive.org/web/20261023215920/https://www.bigbluehotel.com/app/uploads/2026/08/BBHALC0826.pdf"
   },
   "1ac0a13373aae69086dec58f6bef7bc3787cb27244dace39c7ba4383b057be1a": {
     "url": "https://www.legoland.com/new-york/media/rief0ghl/bricks-menus-specialty-pricing.pdf",
@@ -551,27 +268,6 @@
     "bytes": 2887470,
     "type": "application/pdf",
     "key": "archive/menus/1ac0a13373aae69086dec58f6bef7bc3787cb27244dace39c7ba4383b057be1a.pdf"
-  },
-  "1bf07234ccc0d937f1b90731840faf4557c19456eae57ef41cc5d42c23a3a675": {
-    "url": "https://www.blackpoolpleasurebeach.com/donut-dream-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 7858652,
-    "type": "multipart/related",
-    "key": "archive/menus/1bf07234ccc0d937f1b90731840faf4557c19456eae57ef41cc5d42c23a3a675.mhtml"
-  },
-  "1c01c20f3c24a7abe0146e526b9dbacc9f65e637d5bde090595d6c163190922d": {
-    "url": "https://knoebels.com/menu/potato-cake-stand/",
-    "fetched": "2026-10-23",
-    "bytes": 21004796,
-    "type": "application/json",
-    "key": "archive/menus/1c01c20f3c24a7abe0146e526b9dbacc9f65e637d5bde090595d6c163190922d.har"
-  },
-  "1d0afab516413f596cde86ede9d7368845cbfb2678813ed4be8c282136991168": {
-    "url": "https://menus.tenkites.com/paultonspark/missrabbitsicecreamparlour",
-    "fetched": "2026-10-23",
-    "bytes": 1951040,
-    "type": "application/json",
-    "key": "archive/menus/1d0afab516413f596cde86ede9d7368845cbfb2678813ed4be8c282136991168.har"
   },
   "1dcb4c6bce7b945a908c15388ded885815f8819fec504db1f84446878fd584a2": {
     "url": "https://www.legoland.jp/en/resort-guide/legoland/food/factory-sandwich-co/",
@@ -585,14 +281,8 @@
     "fetched": "2026-10-23",
     "bytes": 65831795,
     "type": "application/pdf",
-    "key": "archive/menus/1de61c32e16a3ab694d33df6ba482716b40ab7e1b99ad5664187d1c4509fe40c.pdf"
-  },
-  "1e143604d24a557267428ae5fa2afc41d0a18b1f3b0aa544c89ac2a152581d67": {
-    "url": "https://knoebels.com/menu/alamo-front-counter/",
-    "fetched": "2026-10-23",
-    "bytes": 640277,
-    "type": "text/html",
-    "key": "archive/menus/1e143604d24a557267428ae5fa2afc41d0a18b1f3b0aa544c89ac2a152581d67.html"
+    "key": "archive/menus/1de61c32e16a3ab694d33df6ba482716b40ab7e1b99ad5664187d1c4509fe40c.pdf",
+    "wayback": "https://web.archive.org/web/20261023225406/https://media.disneylandparis.com/d4th/en-gb/images/P1AR03_colonel-hathis-pizza-outpost.pdf"
   },
   "1f8731e2b3a0ef8cb59a17ff29f3d3aab38f483d48832019379d3a9d1b920b75": {
     "url": "https://menus.tenkites.com/paultonspark/therailroaddiner",
@@ -606,21 +296,16 @@
     "fetched": "2026-10-23",
     "bytes": 3131891,
     "type": "application/pdf",
-    "key": "archive/menus/2086f1452f709769aab9bfbf42e71b8a93413a90572bb964555d7755703696e6.pdf"
+    "key": "archive/menus/2086f1452f709769aab9bfbf42e71b8a93413a90572bb964555d7755703696e6.pdf",
+    "wayback": "https://web.archive.org/web/20261023225418/https://media.disneylandparis.com/d4th/en-gb/images/P1DR03_rocket-caf%C3%A9.pdf"
   },
   "209ccc665808cf9c81f4197f36531664f093a39ff3fc55c07883c45bf75ae0b2": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2DR05_chez-berlioz.pdf",
     "fetched": "2026-10-23",
     "bytes": 901936,
     "type": "application/pdf",
-    "key": "archive/menus/209ccc665808cf9c81f4197f36531664f093a39ff3fc55c07883c45bf75ae0b2.pdf"
-  },
-  "20e5454d176ebc40aba027d79cf95d4d7936c83949722e8c517de57780d0e0f3": {
-    "url": "https://www.blackpoolpleasurebeach.com/infusion-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 411369,
-    "type": "image/png",
-    "key": "archive/menus/20e5454d176ebc40aba027d79cf95d4d7936c83949722e8c517de57780d0e0f3.png"
+    "key": "archive/menus/209ccc665808cf9c81f4197f36531664f093a39ff3fc55c07883c45bf75ae0b2.pdf",
+    "wayback": "https://web.archive.org/web/20261023225430/https://media.disneylandparis.com/d4th/en-gb/images/P2DR05_chez-berlioz.pdf"
   },
   "213473ad707a5f95eda8370d6e173dc1140b66e38454886c120eb819a7c3e643": {
     "url": "https://menus.tenkites.com/paultonspark/basecamp",
@@ -634,14 +319,16 @@
     "fetched": "2026-10-23",
     "bytes": 533516,
     "type": "application/pdf",
-    "key": "archive/menus/215478faa5f9f8a2d2f2c324879a04f8f9b910e8634ce4c313165226b4f43a4f.pdf"
+    "key": "archive/menus/215478faa5f9f8a2d2f2c324879a04f8f9b910e8634ce4c313165226b4f43a4f.pdf",
+    "wayback": "https://web.archive.org/web/20261023220002/https://www.boulevardhotel.co.uk/app/uploads/2026/08/BLVDWINE0826.pdf"
   },
   "215a7d055b4ba16f50046f9409d2d14160ecd03d27bb09550c9744b63787e214": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR05_ice-cream-company.pdf",
     "fetched": "2026-10-23",
     "bytes": 324918,
     "type": "application/pdf",
-    "key": "archive/menus/215a7d055b4ba16f50046f9409d2d14160ecd03d27bb09550c9744b63787e214.pdf"
+    "key": "archive/menus/215a7d055b4ba16f50046f9409d2d14160ecd03d27bb09550c9744b63787e214.pdf",
+    "wayback": "https://web.archive.org/web/20261023220014/https://media.disneylandparis.com/d4th/en-gb/images/P1MR05_ice-cream-company.pdf"
   },
   "21fcb72ebea42a3148940f81b7ddfbf9f23abef2cfedecdf1963d19d209e120e": {
     "url": "https://menus.tenkites.com/paultonspark/daddypigsbigtummycafe",
@@ -664,40 +351,12 @@
     "type": "text/html",
     "key": "archive/menus/22c923dfc7ad36d68c86eba20b373e87521538d12b529dc999d274858c54b2f8.html"
   },
-  "22cc44375043518ec263f185a2acecba320c4a8c47cd1f318fc413727568377e": {
-    "url": "https://menus.tenkites.com/paultonspark/thehaybarn",
-    "fetched": "2026-10-23",
-    "bytes": 8280796,
-    "type": "multipart/related",
-    "key": "archive/menus/22cc44375043518ec263f185a2acecba320c4a8c47cd1f318fc413727568377e.mhtml"
-  },
-  "22ea99354bb2a25d24550eebfb7ccf9e31c0fbcc2516f8b83018793d6e7036c9": {
-    "url": "https://www.blackpoolpleasurebeach.com/big-pizza-kitchen-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 471217,
-    "type": "image/png",
-    "key": "archive/menus/22ea99354bb2a25d24550eebfb7ccf9e31c0fbcc2516f8b83018793d6e7036c9.png"
-  },
-  "23fea0bae61eaa0f76aa8273b0d84790902637bd561415f3a1eab224e2ae3b02": {
-    "url": "https://menus.tenkites.com/paultonspark/missrabbitsicecreamparlour",
-    "fetched": "2026-10-23",
-    "bytes": 447269,
-    "type": "multipart/related",
-    "key": "archive/menus/23fea0bae61eaa0f76aa8273b0d84790902637bd561415f3a1eab224e2ae3b02.mhtml"
-  },
   "244157b0d00fdcbfc9f3a86a9a5d4573ed3d956145e270e4584a0206c72c3546": {
     "url": "https://www.legoland.jp/en/resort-guide/legoland/food/pit-stop-juice-drive/",
     "fetched": "2026-10-23",
     "bytes": 903068,
     "type": "text/html",
     "key": "archive/menus/244157b0d00fdcbfc9f3a86a9a5d4573ed3d956145e270e4584a0206c72c3546.html"
-  },
-  "24cf6353ebaeb68057074f72c715a516492cdda77f9bc5da205d1c2e0fd0c19e": {
-    "url": "https://menus.tenkites.com/paultonspark/peppapigworldrefreshments?mguid=c678cde0-2412-4246-a60b-5210e485e480",
-    "fetched": "2026-10-23",
-    "bytes": 4840114,
-    "type": "application/json",
-    "key": "archive/menus/24cf6353ebaeb68057074f72c715a516492cdda77f9bc5da205d1c2e0fd0c19e.har"
   },
   "251fa8a6b772021c06fc97b1c62fdbaaa2d1f1a637c5244f2b2564a069432ab4": {
     "url": "https://www.legoland.jp/en/resort-guide/legoland/food/kitchen-car-event-area/",
@@ -706,61 +365,13 @@
     "type": "application/json",
     "key": "archive/menus/251fa8a6b772021c06fc97b1c62fdbaaa2d1f1a637c5244f2b2564a069432ab4.har"
   },
-  "2551ebfd3aa2f1fdfcf3f0fac77568976f2969c7d203c735fa5816f72c73482e": {
-    "url": "https://knoebels.com/menu/totem-treats/",
-    "fetched": "2026-10-23",
-    "bytes": 3679694,
-    "type": "multipart/related",
-    "key": "archive/menus/2551ebfd3aa2f1fdfcf3f0fac77568976f2969c7d203c735fa5816f72c73482e.mhtml"
-  },
   "2666caca711594583c3c887dfba7605b5014ca456e9518914de75b89f2a41870": {
     "url": "https://www.flamingoland.co.uk/wp-content/uploads/2025/04/The-American-Diner-Afternoon-Tea.pdf",
     "fetched": "2026-10-23",
     "bytes": 1879887,
     "type": "application/pdf",
-    "key": "archive/menus/2666caca711594583c3c887dfba7605b5014ca456e9518914de75b89f2a41870.pdf"
-  },
-  "278cf616b8dbb6631f86286dd60d7092bc420b31b0b629919916f379f12b743b": {
-    "url": "https://menus.tenkites.com/paultonspark/takeawaykiosks",
-    "fetched": "2026-10-23",
-    "bytes": 532510,
-    "type": "image/png",
-    "key": "archive/menus/278cf616b8dbb6631f86286dd60d7092bc420b31b0b629919916f379f12b743b.png"
-  },
-  "280d46e7e080b5ca9cbbf81511337828b87430bb4fec3b315b25415b6ddbb521": {
-    "url": "https://www.blackpoolpleasurebeach.com/spudz-2-go-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 426752,
-    "type": "image/png",
-    "key": "archive/menus/280d46e7e080b5ca9cbbf81511337828b87430bb4fec3b315b25415b6ddbb521.png"
-  },
-  "28b1f2d1c4326d838496d0049f6526de67ae3b919048b6fc18bdb5f48542729e": {
-    "url": "https://www.blackpoolpleasurebeach.com/donut-cafe-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 181422,
-    "type": "text/html",
-    "key": "archive/menus/28b1f2d1c4326d838496d0049f6526de67ae3b919048b6fc18bdb5f48542729e.html"
-  },
-  "2a6f3dec3e6f00dea7908369f8c2f30e0be9cc6a559e87653cab2656ca3ad49d": {
-    "url": "https://menus.tenkites.com/paultonspark/missrabbitsicecreamparlour",
-    "fetched": "2026-10-23",
-    "bytes": 200671,
-    "type": "text/html",
-    "key": "archive/menus/2a6f3dec3e6f00dea7908369f8c2f30e0be9cc6a559e87653cab2656ca3ad49d.html"
-  },
-  "2a78ec03ed8c92d594560863579ca10a04e22775ecea380be9a3ea1fff3c8c8b": {
-    "url": "https://menus.tenkites.com/paultonspark/coffeeshops",
-    "fetched": "2026-10-23",
-    "bytes": 3975230,
-    "type": "multipart/related",
-    "key": "archive/menus/2a78ec03ed8c92d594560863579ca10a04e22775ecea380be9a3ea1fff3c8c8b.mhtml"
-  },
-  "2abe26d1901872c119c80cac841e2d1bbe8bafb3ced8d56c669835cb2cb96973": {
-    "url": "https://menus.tenkites.com/paultonspark/thehaybarn",
-    "fetched": "2026-10-23",
-    "bytes": 1472596,
-    "type": "text/html",
-    "key": "archive/menus/2abe26d1901872c119c80cac841e2d1bbe8bafb3ced8d56c669835cb2cb96973.html"
+    "key": "archive/menus/2666caca711594583c3c887dfba7605b5014ca456e9518914de75b89f2a41870.pdf",
+    "wayback": "https://web.archive.org/web/20261023220027/https://www.flamingoland.co.uk/wp-content/uploads/2025/04/The-American-Diner-Afternoon-Tea.pdf"
   },
   "2b1d255fe3f47db5f225ff8b74355b316de8a225f1022df59416fd18a7d04ea9": {
     "url": "https://menus.tenkites.com/paultonspark/therailroaddiner",
@@ -776,68 +387,12 @@
     "type": "image/png",
     "key": "archive/menus/2b882db529a06430379d5a3e3728838d877a817ab78e808a57af9fc0e36a0eb3.png"
   },
-  "2ccc3bdef432d4618e206825d0bdf2047392d6041f429277415d3559bc50d244": {
-    "url": "https://knoebels.com/menu/dippin-dots/",
-    "fetched": "2026-10-23",
-    "bytes": 11405026,
-    "type": "application/json",
-    "key": "archive/menus/2ccc3bdef432d4618e206825d0bdf2047392d6041f429277415d3559bc50d244.har"
-  },
-  "2cff13b3a6084322397735c9d1c2168b779f7b271014497813ac9a4c210248cd": {
-    "url": "https://knoebels.com/menu/jolly-trolley/",
-    "fetched": "2026-10-23",
-    "bytes": 639355,
-    "type": "text/html",
-    "key": "archive/menus/2cff13b3a6084322397735c9d1c2168b779f7b271014497813ac9a4c210248cd.html"
-  },
-  "2d13c432a06bf5322adc5b10d13db65a64d7f7efda87f6551cdc2e60281c0738": {
-    "url": "https://menus.tenkites.com/paultonspark/sweettreatkiosks?mguid=a2590c85-cfae-4800-84d7-89dd585dbbcc",
-    "fetched": "2026-10-23",
-    "bytes": 4785982,
-    "type": "application/json",
-    "key": "archive/menus/2d13c432a06bf5322adc5b10d13db65a64d7f7efda87f6551cdc2e60281c0738.har"
-  },
   "2dc803d8d2d77ce949e33ac47450f43376a0566b70d28fb98dedb7ac073d926e": {
     "url": "https://knoebels.com/menu/lemon/",
     "fetched": "2026-10-23",
     "bytes": 3676932,
     "type": "multipart/related",
     "key": "archive/menus/2dc803d8d2d77ce949e33ac47450f43376a0566b70d28fb98dedb7ac073d926e.mhtml"
-  },
-  "2edc98fc6fbe8d06833b38e84c84d7bb26850ccf1dd60ee6fb855b65c11932e2": {
-    "url": "https://menus.tenkites.com/paultonspark/tornadotreats",
-    "fetched": "2026-10-23",
-    "bytes": 344649,
-    "type": "text/html",
-    "key": "archive/menus/2edc98fc6fbe8d06833b38e84c84d7bb26850ccf1dd60ee6fb855b65c11932e2.html"
-  },
-  "2ffcd4b7792f0475a08fc4b89f30d19d34570f86e02527e56aa24d19a44e3efd": {
-    "url": "https://menus.tenkites.com/paultonspark/thequeenskitchen",
-    "fetched": "2026-10-23",
-    "bytes": 448510,
-    "type": "multipart/related",
-    "key": "archive/menus/2ffcd4b7792f0475a08fc4b89f30d19d34570f86e02527e56aa24d19a44e3efd.mhtml"
-  },
-  "30fcfced0df5f13d39885873b320ebf2d5146944b5fcb940b42d4156e4f85133": {
-    "url": "https://www.blackpoolpleasurebeach.com/beach-burger-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 6469453,
-    "type": "multipart/related",
-    "key": "archive/menus/30fcfced0df5f13d39885873b320ebf2d5146944b5fcb940b42d4156e4f85133.mhtml"
-  },
-  "320cb17b49e2612a8a46770dcdd2d64a9f2081ade74bd74f42955ffea233d8c4": {
-    "url": "https://www.blackpoolpleasurebeach.com/t-cafe-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 15657781,
-    "type": "application/json",
-    "key": "archive/menus/320cb17b49e2612a8a46770dcdd2d64a9f2081ade74bd74f42955ffea233d8c4.har"
-  },
-  "328a89f55893be28750a81be8ea7ec1bd1ed0984bcbed85107039efd4d1e9c11": {
-    "url": "https://www.blackpoolpleasurebeach.com/bbq-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 186077,
-    "type": "text/html",
-    "key": "archive/menus/328a89f55893be28750a81be8ea7ec1bd1ed0984bcbed85107039efd4d1e9c11.html"
   },
   "32915c9367533eca6b45b19d28d76506e8b35bcc33d5f01a638f6c8209421b87": {
     "url": "https://knoebels.com/menu/casa-de-refrescos/",
@@ -852,13 +407,6 @@
     "bytes": 422405,
     "type": "multipart/related",
     "key": "archive/menus/329680b2723e35cd6857a7776c7ae72a9d97cec9ee002175b917a93323ddbacf.mhtml"
-  },
-  "330b3e35c915d327e6e19980a21e16e333aa33980c827cd9a126115745084b70": {
-    "url": "https://knoebels.com/menu/rinkside-refreshments/",
-    "fetched": "2026-10-23",
-    "bytes": 3698887,
-    "type": "multipart/related",
-    "key": "archive/menus/330b3e35c915d327e6e19980a21e16e333aa33980c827cd9a126115745084b70.mhtml"
   },
   "3358ad6dc550fb8d448ab94f5c5b8a554582b4cbd4fdc2cb15b9be45184f94ed": {
     "url": "https://menus.tenkites.com/paultonspark/grandecentral",
@@ -881,13 +429,6 @@
     "type": "application/pdf",
     "key": "archive/menus/33a8b5808ddb322424ac00edcb650be38225a342f5ffd720097a0badfa7d4ea9.pdf"
   },
-  "33ce3977a4205e8bd7142f69341608dd1fc77ad89cec05a422d0240f23e4d2dc": {
-    "url": "https://www.blackpoolpleasurebeach.com/krispy-kreme-rocket-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 6251709,
-    "type": "multipart/related",
-    "key": "archive/menus/33ce3977a4205e8bd7142f69341608dd1fc77ad89cec05a422d0240f23e4d2dc.mhtml"
-  },
   "35006d57b7fb4d5b4eb5a9ee5d46d0efd0375a0f3c33b93feb02b43bda66a1b1": {
     "url": "https://www.legoland.jp/en/resort-guide/legoland/food/kitchen-car-city/",
     "fetched": "2026-10-23",
@@ -902,26 +443,12 @@
     "type": "text/html",
     "key": "archive/menus/35471b4a66ee3f7d185fa76b026e30f343ec56f39c749975f75e40242153d913.html"
   },
-  "359fc46e28bededea05a7f53b326962b29044771179091517ee58e5596c49cd4": {
-    "url": "https://www.blackpoolpleasurebeach.com/snack-shack-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 16120973,
-    "type": "application/json",
-    "key": "archive/menus/359fc46e28bededea05a7f53b326962b29044771179091517ee58e5596c49cd4.har"
-  },
   "35d245d25b357e1f7a4bf300ac8e1f518be283d48c47baf67645875115573d97": {
     "url": "https://www.legoland.com/florida/media/5nynlvlz/shipwreck-menu-1.pdf",
     "fetched": "2026-10-23",
     "bytes": 6410550,
     "type": "application/pdf",
     "key": "archive/menus/35d245d25b357e1f7a4bf300ac8e1f518be283d48c47baf67645875115573d97.pdf"
-  },
-  "35fc42486275d5d636269630316d9f6487628bb7b528d4b91012dbff4e8af8f2": {
-    "url": "https://menus.tenkites.com/paultonspark/route83diner",
-    "fetched": "2026-10-23",
-    "bytes": 3428131,
-    "type": "text/html",
-    "key": "archive/menus/35fc42486275d5d636269630316d9f6487628bb7b528d4b91012dbff4e8af8f2.html"
   },
   "360c0eb55f9a8aed8a5d5a0d8db18320ab018c7a12361b5d03b07f1cc467d98f": {
     "url": "https://www.thorpepark.com/media/1bxe5nf4/spice-kitchen-menu.pdf",
@@ -930,75 +457,21 @@
     "type": "application/pdf",
     "key": "archive/menus/360c0eb55f9a8aed8a5d5a0d8db18320ab018c7a12361b5d03b07f1cc467d98f.pdf"
   },
-  "36718a9e012a4cc776c8f88cb5cdc061d1f283218403cf1d951a921b07424493": {
-    "url": "https://menus.tenkites.com/paultonspark/missrabbitsicecreamparlour",
-    "fetched": "2026-10-23",
-    "bytes": 51757,
-    "type": "image/png",
-    "key": "archive/menus/36718a9e012a4cc776c8f88cb5cdc061d1f283218403cf1d951a921b07424493.png"
-  },
-  "36726ebeb67bd6a8f3e989e91cc4323fa1fcf8c7401077e47f0266beab4735c4": {
-    "url": "https://menus.tenkites.com/paultonspark/route83diner",
-    "fetched": "2026-10-23",
-    "bytes": 9639914,
-    "type": "application/json",
-    "key": "archive/menus/36726ebeb67bd6a8f3e989e91cc4323fa1fcf8c7401077e47f0266beab4735c4.har"
-  },
-  "3688d86d0bc9327daf7be9a6ed1114883b63d8b4089e0cad4d2f8e9959ff92f2": {
-    "url": "https://knoebels.com/menu/roast-beef-stand/",
-    "fetched": "2026-10-23",
-    "bytes": 1250617,
-    "type": "image/png",
-    "key": "archive/menus/3688d86d0bc9327daf7be9a6ed1114883b63d8b4089e0cad4d2f8e9959ff92f2.png"
-  },
   "36986c6427feeade77338227594e25cda8f07d6dad455851c17c722731b8b6a7": {
     "url": "https://www.flamingoland.co.uk/wp-content/uploads/2025/04/The-American-Diner-Menu.pdf",
     "fetched": "2026-10-23",
     "bytes": 747521,
     "type": "application/pdf",
-    "key": "archive/menus/36986c6427feeade77338227594e25cda8f07d6dad455851c17c722731b8b6a7.pdf"
-  },
-  "37ae75e4545f82ed9607bbb30c1f92f97be05512843965dde0f6e31c2751f02c": {
-    "url": "https://www.blackpoolpleasurebeach.com/t-cafe-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 187389,
-    "type": "text/html",
-    "key": "archive/menus/37ae75e4545f82ed9607bbb30c1f92f97be05512843965dde0f6e31c2751f02c.html"
-  },
-  "3831e64807df2f67130f6be23d1aeb37131f2272a0f2bb09c73fa260f154f939": {
-    "url": "https://menus.tenkites.com/paultonspark/pavilionkiosk",
-    "fetched": "2026-10-23",
-    "bytes": 222290,
-    "type": "image/png",
-    "key": "archive/menus/3831e64807df2f67130f6be23d1aeb37131f2272a0f2bb09c73fa260f154f939.png"
+    "key": "archive/menus/36986c6427feeade77338227594e25cda8f07d6dad455851c17c722731b8b6a7.pdf",
+    "wayback": "https://web.archive.org/web/20261023225504/https://www.flamingoland.co.uk/wp-content/uploads/2025/04/The-American-Diner-Menu.pdf"
   },
   "384a06439255380728c0a9978d25082ab69d0321e94d75f745c1e8f3e19ed6f6": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR10_walts-american-restaurant.pdf",
     "fetched": "2026-10-23",
     "bytes": 97577,
     "type": "application/pdf",
-    "key": "archive/menus/384a06439255380728c0a9978d25082ab69d0321e94d75f745c1e8f3e19ed6f6.pdf"
-  },
-  "3868aac4b64f30e6c4362bccefd08443c202ff659ed5e32cfbfe051abf7e7c01": {
-    "url": "https://menus.tenkites.com/paultonspark/peppapigworldrefreshments?mguid=29634edb-567a-4a3e-8557-3ecd8b89805e",
-    "fetched": "2026-10-23",
-    "bytes": 1464214,
-    "type": "text/html",
-    "key": "archive/menus/3868aac4b64f30e6c4362bccefd08443c202ff659ed5e32cfbfe051abf7e7c01.html"
-  },
-  "389ede66c7d0e427415b5193eb1ae01ca29bc19ae0b606899666800870742377": {
-    "url": "https://knoebels.com/menu/international-food-court/",
-    "fetched": "2026-10-23",
-    "bytes": 3920165,
-    "type": "multipart/related",
-    "key": "archive/menus/389ede66c7d0e427415b5193eb1ae01ca29bc19ae0b606899666800870742377.mhtml"
-  },
-  "3918667c2abed6a4a3b2f73ec10617763d02a12a04e8799d89a46acf932ab6b5": {
-    "url": "https://menus.tenkites.com/paultonspark/wildforestrestaurant",
-    "fetched": "2026-10-23",
-    "bytes": 6552574,
-    "type": "application/json",
-    "key": "archive/menus/3918667c2abed6a4a3b2f73ec10617763d02a12a04e8799d89a46acf932ab6b5.har"
+    "key": "archive/menus/384a06439255380728c0a9978d25082ab69d0321e94d75f745c1e8f3e19ed6f6.pdf",
+    "wayback": "https://web.archive.org/web/20261023220106/https://media.disneylandparis.com/d4th/en-gb/images/P1MR10_walts-american-restaurant.pdf"
   },
   "394adff3cadd88772fe67093adbfbb3220891d45ab2d410198ab3bebc0892700": {
     "url": "https://www.thorpepark.com/media/ej1japvv/cape-cod-menu.pdf",
@@ -1026,7 +499,8 @@
     "fetched": "2026-10-23",
     "bytes": 873643,
     "type": "application/pdf",
-    "key": "archive/menus/39d66b6088ce07c62fe8ab89642dcedf4627ec393771c6a1dfd7501b75440a4d.pdf"
+    "key": "archive/menus/39d66b6088ce07c62fe8ab89642dcedf4627ec393771c6a1dfd7501b75440a4d.pdf",
+    "wayback": "https://web.archive.org/web/20261023220210/https://media.disneylandparis.com/d4th/en-gb/images/P1NR05_the-old-mill.pdf"
   },
   "3a227336926c089c82bf93d33841874261aa3c6cbd199bf931099e4d57200272": {
     "url": "https://menus.tenkites.com/paultonspark/therailroaddiner",
@@ -1042,41 +516,6 @@
     "type": "application/json",
     "key": "archive/menus/3a245e8cdc262c2b3865df38ea429345b35af63c367f8d9a9390b5d01885bc1a.har"
   },
-  "3a319b481faa6064adb04e7d555c79d652f10db25ca1c516cc010cd2a7ae7684": {
-    "url": "https://knoebels.com/menu/funnel-cakes/",
-    "fetched": "2026-10-23",
-    "bytes": 1265439,
-    "type": "image/png",
-    "key": "archive/menus/3a319b481faa6064adb04e7d555c79d652f10db25ca1c516cc010cd2a7ae7684.png"
-  },
-  "3a75c4232d48d7638784f86a16880c2a55c3380561527712f4a002afe0aa8d35": {
-    "url": "https://knoebels.com/menu/pizza/",
-    "fetched": "2026-10-23",
-    "bytes": 661029,
-    "type": "text/html",
-    "key": "archive/menus/3a75c4232d48d7638784f86a16880c2a55c3380561527712f4a002afe0aa8d35.html"
-  },
-  "3a815cbb2fa4d1283199e91d8b8db75856fedbe480e8a5559c4072dd7cb93a73": {
-    "url": "https://knoebels.com/menu/stony-gables/",
-    "fetched": "2026-10-23",
-    "bytes": 3855283,
-    "type": "multipart/related",
-    "key": "archive/menus/3a815cbb2fa4d1283199e91d8b8db75856fedbe480e8a5559c4072dd7cb93a73.mhtml"
-  },
-  "3badd93fabd2aa4113da8bc2eac365a57479d784b7362ee338df15facb638d07": {
-    "url": "https://www.blackpoolpleasurebeach.com/coasters-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 16814292,
-    "type": "application/json",
-    "key": "archive/menus/3badd93fabd2aa4113da8bc2eac365a57479d784b7362ee338df15facb638d07.har"
-  },
-  "3bc9c193a28f0e5f2eff28d7d52b633aefc9880054b00971101adeef73fbca6f": {
-    "url": "https://www.blackpoolpleasurebeach.com/infusion-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 178823,
-    "type": "text/html",
-    "key": "archive/menus/3bc9c193a28f0e5f2eff28d7d52b633aefc9880054b00971101adeef73fbca6f.html"
-  },
   "3be7ec68da6e287124e9850d70f7ecaaa64b88a30099448b2199916f80032da5": {
     "url": "https://www.legoland.co.uk/media/jq5psrbr/llw-apr-2025-bricks-breakfast-menu.pdf",
     "fetched": "2026-10-23",
@@ -1089,28 +528,8 @@
     "fetched": "2026-10-23",
     "bytes": 267393,
     "type": "application/pdf",
-    "key": "archive/menus/3bf042307f2813243b91187394e2b62662442cb53d511c0044c0564eee6d9375.pdf"
-  },
-  "3caf06827715fd04fcb3c7531bc554614fcb7a58b885757add1f6d83a0d0563f": {
-    "url": "https://www.blackpoolpleasurebeach.com/fy4-fish-chips-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 396408,
-    "type": "image/png",
-    "key": "archive/menus/3caf06827715fd04fcb3c7531bc554614fcb7a58b885757add1f6d83a0d0563f.png"
-  },
-  "3dd060efb08243d53ca172a5706f365a7c73488451e581baa0446edda4d47416": {
-    "url": "https://menus.tenkites.com/paultonspark/tornadotreats",
-    "fetched": "2026-10-23",
-    "bytes": 601822,
-    "type": "multipart/related",
-    "key": "archive/menus/3dd060efb08243d53ca172a5706f365a7c73488451e581baa0446edda4d47416.mhtml"
-  },
-  "3e588cbe9fa22a741238cf208c013cc1e236c750cec522357802a36d37525c4e": {
-    "url": "https://knoebels.com/menu/pizza/",
-    "fetched": "2026-10-23",
-    "bytes": 3909040,
-    "type": "multipart/related",
-    "key": "archive/menus/3e588cbe9fa22a741238cf208c013cc1e236c750cec522357802a36d37525c4e.mhtml"
+    "key": "archive/menus/3bf042307f2813243b91187394e2b62662442cb53d511c0044c0564eee6d9375.pdf",
+    "wayback": "https://web.archive.org/web/20261023220234/https://www.bigbluehotel.com/app/uploads/2026/06/Cocktail-Menu-2024.pdf"
   },
   "3f7bd92a7c64de0c74c3b1fca578b5f41f79d0f6e3f50c8be7f4c877a2542c88": {
     "url": "https://www.legoland.jp/en/resort-guide/legoland/food/marina-snack-shack/",
@@ -1126,61 +545,12 @@
     "type": "image/png",
     "key": "archive/menus/400b03de4784b94f57a99bdcb65a7c0f9654f77ec90b60fc70225cf4dae67294.png"
   },
-  "407cf58a56752fca09b8667ac59de75ac96d05201ceef0a6d1f795b048ece59c": {
-    "url": "https://www.blackpoolpleasurebeach.com/chocolate-by-percent/",
-    "fetched": "2026-10-23",
-    "bytes": 8967031,
-    "type": "multipart/related",
-    "key": "archive/menus/407cf58a56752fca09b8667ac59de75ac96d05201ceef0a6d1f795b048ece59c.mhtml"
-  },
-  "419ade332849b5e7919dcc0696111a3d72f4bb2e22f9954fe59e6d5a4458548a": {
-    "url": "https://www.blackpoolpleasurebeach.com/bubble-waffle-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 9078206,
-    "type": "multipart/related",
-    "key": "archive/menus/419ade332849b5e7919dcc0696111a3d72f4bb2e22f9954fe59e6d5a4458548a.mhtml"
-  },
-  "421052d84aeade1cae398cfe358d67784473388cf7a241f1000625bf934e489c": {
-    "url": "https://menus.tenkites.com/paultonspark/coffeeshops",
-    "fetched": "2026-10-23",
-    "bytes": 284615,
-    "type": "image/png",
-    "key": "archive/menus/421052d84aeade1cae398cfe358d67784473388cf7a241f1000625bf934e489c.png"
-  },
-  "42243304a692aeddc6a7305db955f8dd8cc60bb472bc3a5212dc7f9c9d3b135a": {
-    "url": "https://knoebels.com/menu/old-mill-ice-cream/",
-    "fetched": "2026-10-23",
-    "bytes": 10464366,
-    "type": "application/json",
-    "key": "archive/menus/42243304a692aeddc6a7305db955f8dd8cc60bb472bc3a5212dc7f9c9d3b135a.har"
-  },
-  "4261d720a7ba726810ca9191bd7a42f2ad16d29f83295793e6798764a5841f59": {
-    "url": "https://www.blackpoolpleasurebeach.com/fy4-fish-chips-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 8073435,
-    "type": "multipart/related",
-    "key": "archive/menus/4261d720a7ba726810ca9191bd7a42f2ad16d29f83295793e6798764a5841f59.mhtml"
-  },
   "42849f8762cd3b91d4cf0bcc691b47aabf59a0c7ff4a9972d52f8f4a0d8031f8": {
     "url": "https://www.legoland.jp/en/resort-guide/legoland/food/pirate-apple-fries/",
     "fetched": "2026-10-23",
     "bytes": 2198136,
     "type": "multipart/related",
     "key": "archive/menus/42849f8762cd3b91d4cf0bcc691b47aabf59a0c7ff4a9972d52f8f4a0d8031f8.mhtml"
-  },
-  "42bff6f4a304c76ee44d8e809a0986be9a33f3d1f1e39057cc7ab35abe3221a0": {
-    "url": "https://www.blackpoolpleasurebeach.com/infusion-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 423651,
-    "type": "image/png",
-    "key": "archive/menus/42bff6f4a304c76ee44d8e809a0986be9a33f3d1f1e39057cc7ab35abe3221a0.png"
-  },
-  "42caf1d354e50f93601a09220ab64876b8288aa30583b772f91c21558e81376f": {
-    "url": "https://www.blackpoolpleasurebeach.com/spudz-2-go-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 441458,
-    "type": "image/png",
-    "key": "archive/menus/42caf1d354e50f93601a09220ab64876b8288aa30583b772f91c21558e81376f.png"
   },
   "437dc498419c710ca136b62d3300c972224acdc96ca8d3e99ba9e9da8d762029": {
     "url": "https://www.legoland.jp/en/resort-guide/legoland/food/kitchen-car-event-area/",
@@ -1189,33 +559,13 @@
     "type": "image/png",
     "key": "archive/menus/437dc498419c710ca136b62d3300c972224acdc96ca8d3e99ba9e9da8d762029.png"
   },
-  "43d2677afd2954b6befeb617a9ff72b36e4930b655c9a0850ceabd0a20ddfc85": {
-    "url": "https://www.blackpoolpleasurebeach.com/ice-lounge-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 178968,
-    "type": "text/html",
-    "key": "archive/menus/43d2677afd2954b6befeb617a9ff72b36e4930b655c9a0850ceabd0a20ddfc85.html"
-  },
   "447be2cd307827745fe888408e70977a30bbbfe7d0436e72c788d8d9858d1857": {
     "url": "https://www.boulevardhotel.co.uk/app/uploads/2026/07/BLVDBAR0726.pdf",
     "fetched": "2026-10-23",
     "bytes": 300232,
     "type": "application/pdf",
-    "key": "archive/menus/447be2cd307827745fe888408e70977a30bbbfe7d0436e72c788d8d9858d1857.pdf"
-  },
-  "44c22fcaf7ccd5f008020fec65b5fc059a21259eaa145f24e23c39148f2c9176": {
-    "url": "https://menus.tenkites.com/paultonspark/pavilionkiosk",
-    "fetched": "2026-10-23",
-    "bytes": 2152744,
-    "type": "application/json",
-    "key": "archive/menus/44c22fcaf7ccd5f008020fec65b5fc059a21259eaa145f24e23c39148f2c9176.har"
-  },
-  "44ef02b94515c480aa2a38bfcd328708a7c059dd26af71e9fb0b1b9602f6d4f0": {
-    "url": "https://knoebels.com/menu/round-stand/",
-    "fetched": "2026-10-23",
-    "bytes": 1237788,
-    "type": "image/png",
-    "key": "archive/menus/44ef02b94515c480aa2a38bfcd328708a7c059dd26af71e9fb0b1b9602f6d4f0.png"
+    "key": "archive/menus/447be2cd307827745fe888408e70977a30bbbfe7d0436e72c788d8d9858d1857.pdf",
+    "wayback": "https://web.archive.org/web/20261023220246/https://www.boulevardhotel.co.uk/app/uploads/2026/07/BLVDBAR0726.pdf"
   },
   "45a04fef77266665fbe228829275fb19fa341a993d81d46bfbe07fcdacbaf5e8": {
     "url": "https://www.legoland.kr/media/zlkhj3i4/%EC%8A%A4%EC%B9%B4%EC%9D%B4%EB%9D%BC%EC%9A%B4%EC%A7%80-%EB%A9%94%EB%89%B4_%EC%88%98%EC%A0%95.pdf",
@@ -1224,33 +574,12 @@
     "type": "application/pdf",
     "key": "archive/menus/45a04fef77266665fbe228829275fb19fa341a993d81d46bfbe07fcdacbaf5e8.pdf"
   },
-  "45bda77c4549c3b3b90ac29757096494e83096185753e75c68c81a8f37f2f7fb": {
-    "url": "https://menus.tenkites.com/paultonspark/ciaobella",
-    "fetched": "2026-10-23",
-    "bytes": 978282,
-    "type": "image/png",
-    "key": "archive/menus/45bda77c4549c3b3b90ac29757096494e83096185753e75c68c81a8f37f2f7fb.png"
-  },
   "45c78c76c14d052196d7edccf22908223bc49b4db3eb4a85b48cf557a4fbb02a": {
     "url": "https://www.legoland.jp/en/resort-guide/legoland/food/chicken-diner/",
     "fetched": "2026-10-23",
     "bytes": 2854584,
     "type": "image/png",
     "key": "archive/menus/45c78c76c14d052196d7edccf22908223bc49b4db3eb4a85b48cf557a4fbb02a.png"
-  },
-  "46712c24844dee71a6086f22fd59ae2a4079934757b18dba2cf5a9e6ce97df38": {
-    "url": "https://www.blackpoolpleasurebeach.com/lokis-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 479049,
-    "type": "image/png",
-    "key": "archive/menus/46712c24844dee71a6086f22fd59ae2a4079934757b18dba2cf5a9e6ce97df38.png"
-  },
-  "4702269b91429c9afcf2045b7edbeda0a95a521123eef8c1a6b24c026c3da4ca": {
-    "url": "https://www.blackpoolpleasurebeach.com/big-pizza-kitchen-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 9382576,
-    "type": "multipart/related",
-    "key": "archive/menus/4702269b91429c9afcf2045b7edbeda0a95a521123eef8c1a6b24c026c3da4ca.mhtml"
   },
   "4705e214d254f36bb56e98e794a65a6f88d43b22e24046ce5acd108cf529f79c": {
     "url": "https://www.legoland.jp/en/resort-guide/legoland/food/factory-sandwich-co/",
@@ -1271,14 +600,8 @@
     "fetched": "2026-10-23",
     "bytes": 1811991,
     "type": "application/pdf",
-    "key": "archive/menus/4781869715809be854fa0cf25d59dd3ea0d3f6d6761175fb2547012af12d71f4.pdf"
-  },
-  "4850f3b30c43cb2962f79f0279c1d39bfac1aee25e7fe15c74b446a94e08b4cd": {
-    "url": "https://knoebels.com/menu/kandy-korners/",
-    "fetched": "2026-10-23",
-    "bytes": 21037669,
-    "type": "application/json",
-    "key": "archive/menus/4850f3b30c43cb2962f79f0279c1d39bfac1aee25e7fe15c74b446a94e08b4cd.har"
+    "key": "archive/menus/4781869715809be854fa0cf25d59dd3ea0d3f6d6761175fb2547012af12d71f4.pdf",
+    "wayback": "https://web.archive.org/web/20261023220305/https://media.disneylandparis.com/d4th/en-gb/images/P1NR00_l-arbre-enchante.pdf"
   },
   "4868ef90437f91a2831746b6a3984c5b969a500cbd6aebf8d6ce471aacb8e522": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR06_market-house-deli.pdf",
@@ -1286,20 +609,6 @@
     "bytes": 79477718,
     "type": "application/pdf",
     "key": "archive/menus/4868ef90437f91a2831746b6a3984c5b969a500cbd6aebf8d6ce471aacb8e522.pdf"
-  },
-  "48a9afeccdbc50a005eaa5b301c1e66b3bed81cc0254821fe8c60e5a36f7f289": {
-    "url": "https://www.blackpoolpleasurebeach.com/spudz-2-go-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 14831387,
-    "type": "application/json",
-    "key": "archive/menus/48a9afeccdbc50a005eaa5b301c1e66b3bed81cc0254821fe8c60e5a36f7f289.har"
-  },
-  "48d92dd33dfabd824e4d55e873b31136680616b6bbfeaa9fd2075ca2552a0784": {
-    "url": "https://menus.tenkites.com/paultonspark/thenestkiosk",
-    "fetched": "2026-10-23",
-    "bytes": 1722332,
-    "type": "multipart/related",
-    "key": "archive/menus/48d92dd33dfabd824e4d55e873b31136680616b6bbfeaa9fd2075ca2552a0784.mhtml"
   },
   "4988134f5eb049f72944d028b293ad4ef25c889dc67e80070eb0a3dfcf379f00": {
     "url": "https://knoebels.com/menu/french-fry-stand/",
@@ -1343,20 +652,6 @@
     "type": "image/png",
     "key": "archive/menus/4a87ded1d64c2b46aab88e2eb6a2a93787e78185a1b9059e9811e99311bc6251.png"
   },
-  "4b4f41a83715fb60e4564c896bb63b3fc6493253f4fa74d4f1552b96b309a051": {
-    "url": "https://knoebels.com/menu/starbucks-express/",
-    "fetched": "2026-10-23",
-    "bytes": 20494200,
-    "type": "application/json",
-    "key": "archive/menus/4b4f41a83715fb60e4564c896bb63b3fc6493253f4fa74d4f1552b96b309a051.har"
-  },
-  "4b5a5d2971735471a4c0b2312ef06f90630bbcc1eb95ad50bc7c439c88c7df11": {
-    "url": "https://menus.tenkites.com/paultonspark/sweettreatkiosks?mguid=a2590c85-cfae-4800-84d7-89dd585dbbcc",
-    "fetched": "2026-10-23",
-    "bytes": 1423006,
-    "type": "text/html",
-    "key": "archive/menus/4b5a5d2971735471a4c0b2312ef06f90630bbcc1eb95ad50bc7c439c88c7df11.html"
-  },
   "4cdd7e3cd9c53e829de8375bf46fa9951531a5aa1d195954199280f71b41095e": {
     "url": "https://menus.tenkites.com/aramarkuk/pizzapastaat",
     "fetched": "2026-10-23",
@@ -1364,19 +659,13 @@
     "type": "text/html",
     "key": "archive/menus/4cdd7e3cd9c53e829de8375bf46fa9951531a5aa1d195954199280f71b41095e.html"
   },
-  "4ce2aa7ebf1b4ac6dee27d223c2da800868d03ece82431e4b850dd2556d95c31": {
-    "url": "https://www.flamingoland.co.uk/food-and-drink-menu/the-coach-house/",
-    "fetched": "2026-10-23",
-    "bytes": 814975,
-    "type": "multipart/related",
-    "key": "archive/menus/4ce2aa7ebf1b4ac6dee27d223c2da800868d03ece82431e4b850dd2556d95c31.mhtml"
-  },
   "4cec6c1551b50b1c57e50df14e807c9d8390fb6be282e35fc34edd48923bea91": {
     "url": "https://www.bigbluehotel.com/app/uploads/2026/08/Big-Blue-Wine-0826.pdf",
     "fetched": "2026-10-23",
     "bytes": 85299,
     "type": "application/pdf",
-    "key": "archive/menus/4cec6c1551b50b1c57e50df14e807c9d8390fb6be282e35fc34edd48923bea91.pdf"
+    "key": "archive/menus/4cec6c1551b50b1c57e50df14e807c9d8390fb6be282e35fc34edd48923bea91.pdf",
+    "wayback": "https://web.archive.org/web/20261023220703/https://www.bigbluehotel.com/app/uploads/2026/08/Big-Blue-Wine-0826.pdf"
   },
   "4d0828c381431bebb908e51390979e4b2bbda2657aaf955f40ee9809a46636c1": {
     "url": "https://menus.tenkites.com/aramarkuk/enchantedvillage02",
@@ -1392,47 +681,12 @@
     "type": "application/json",
     "key": "archive/menus/4d38cee1099d9d5bea46f0cc8ffbe5fcd845787aeabf4b14b00be10658cae048.har"
   },
-  "4dc932a0e9d140839407413c31c87a46d611a6b524164570845afc99f0cef06c": {
-    "url": "https://www.blackpoolpleasurebeach.com/donut-dream-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 178741,
-    "type": "text/html",
-    "key": "archive/menus/4dc932a0e9d140839407413c31c87a46d611a6b524164570845afc99f0cef06c.html"
-  },
-  "4df8a4439ebfc58553d290201a99795e190712807a6047abf7665f7663fe65be": {
-    "url": "https://menus.tenkites.com/paultonspark/peppapigworldrefreshments?mguid=29634edb-567a-4a3e-8557-3ecd8b89805e",
-    "fetched": "2026-10-23",
-    "bytes": 4266094,
-    "type": "multipart/related",
-    "key": "archive/menus/4df8a4439ebfc58553d290201a99795e190712807a6047abf7665f7663fe65be.mhtml"
-  },
-  "4ed6b759686d602644e6f5fb2882a404ce184eebcaef6c029ad335d8c004b6ce": {
-    "url": "https://knoebels.com/menu/old-mill-ice-cream/",
-    "fetched": "2026-10-23",
-    "bytes": 3746564,
-    "type": "multipart/related",
-    "key": "archive/menus/4ed6b759686d602644e6f5fb2882a404ce184eebcaef6c029ad335d8c004b6ce.mhtml"
-  },
   "4ee913685b6e209f4fd98d21c6108f267655887c0f7c50a518e808b16170aff7": {
     "url": "https://knoebels.com/menu/casa-de-refrescos/",
     "fetched": "2026-10-23",
     "bytes": 3746348,
     "type": "multipart/related",
     "key": "archive/menus/4ee913685b6e209f4fd98d21c6108f267655887c0f7c50a518e808b16170aff7.mhtml"
-  },
-  "4efc93c8fbd6b23315aea726cda8b777bba43332722852e56c235b8cbcdb8236": {
-    "url": "https://knoebels.com/menu/international-food-court/",
-    "fetched": "2026-10-23",
-    "bytes": 20896302,
-    "type": "application/json",
-    "key": "archive/menus/4efc93c8fbd6b23315aea726cda8b777bba43332722852e56c235b8cbcdb8236.har"
-  },
-  "4f6dc946fb01fd490e8b49e634c5c8af5fdbecb1eb4975e1aa4a82cbcdb69d17": {
-    "url": "https://knoebels.com/menu/wharf/",
-    "fetched": "2026-10-23",
-    "bytes": 627554,
-    "type": "text/html",
-    "key": "archive/menus/4f6dc946fb01fd490e8b49e634c5c8af5fdbecb1eb4975e1aa4a82cbcdb69d17.html"
   },
   "50c48baceafd583e44cb4cbd70bc176a507d6817ce9b7f6aa8ed252c18f2a9a1": {
     "url": "https://knoebels.com/menu/candy-apple-orchard/",
@@ -1441,33 +695,12 @@
     "type": "application/json",
     "key": "archive/menus/50c48baceafd583e44cb4cbd70bc176a507d6817ce9b7f6aa8ed252c18f2a9a1.har"
   },
-  "516630f4ab22f8e6a3fb099a01a9c1543feddcab31a0d4bf31ceb18ab6a2367a": {
-    "url": "https://menus.tenkites.com/paultonspark/wildforestrestaurant",
-    "fetched": "2026-10-23",
-    "bytes": 1833137,
-    "type": "text/html",
-    "key": "archive/menus/516630f4ab22f8e6a3fb099a01a9c1543feddcab31a0d4bf31ceb18ab6a2367a.html"
-  },
-  "520d2a91f953ec37aebe3150cbb3fdefca16ccebe3da42df9e8f7dfd7f6defee": {
-    "url": "https://menus.tenkites.com/paultonspark/takeawaykiosks",
-    "fetched": "2026-10-23",
-    "bytes": 4843582,
-    "type": "application/json",
-    "key": "archive/menus/520d2a91f953ec37aebe3150cbb3fdefca16ccebe3da42df9e8f7dfd7f6defee.har"
-  },
   "526fb5a35ff766f5a82922ccd79b6edad538a5744941687e149c703245541453": {
     "url": "https://menus.tenkites.com/aramarkuk/rollercoasterrestaurantat02",
     "fetched": "2026-10-23",
     "bytes": 2568610,
     "type": "multipart/related",
     "key": "archive/menus/526fb5a35ff766f5a82922ccd79b6edad538a5744941687e149c703245541453.mhtml"
-  },
-  "52a7558b44a7acb37b3292ba6b353e203de8a9d672460290327d7214a3f4cf56": {
-    "url": "https://menus.tenkites.com/paultonspark/wildforestrestaurant",
-    "fetched": "2026-10-23",
-    "bytes": 6552611,
-    "type": "application/json",
-    "key": "archive/menus/52a7558b44a7acb37b3292ba6b353e203de8a9d672460290327d7214a3f4cf56.har"
   },
   "52fdcd5fdbd033fcb913f8b105726a2e62e443b20e81683f2ad5e9a39ee4b614": {
     "url": "https://menus.tenkites.com/paultonspark/daddypigsbigtummycafe",
@@ -1476,33 +709,12 @@
     "type": "application/json",
     "key": "archive/menus/52fdcd5fdbd033fcb913f8b105726a2e62e443b20e81683f2ad5e9a39ee4b614.har"
   },
-  "5328d5494418254384f1f03b9a6f4cdb46f757b1e9adbb7b25c6a2646a3b5aef": {
-    "url": "https://knoebels.com/menu/slush-n-such/",
-    "fetched": "2026-10-23",
-    "bytes": 3862811,
-    "type": "multipart/related",
-    "key": "archive/menus/5328d5494418254384f1f03b9a6f4cdb46f757b1e9adbb7b25c6a2646a3b5aef.mhtml"
-  },
   "54a2b03010e4e100fe4744f144c82f7b3c3ca1ae3d9329020b7fb626932fcb0a": {
     "url": "https://www.legoland.jp/en/resort-guide/legoland/food/marina-snack-shack/",
     "fetched": "2026-10-23",
     "bytes": 889130,
     "type": "text/html",
     "key": "archive/menus/54a2b03010e4e100fe4744f144c82f7b3c3ca1ae3d9329020b7fb626932fcb0a.html"
-  },
-  "56028e19e8642dee4dd7823ad5836750876657a4428ff563866f1906c56e2078": {
-    "url": "https://www.blackpoolpleasurebeach.com/snack-shack-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 16256587,
-    "type": "application/json",
-    "key": "archive/menus/56028e19e8642dee4dd7823ad5836750876657a4428ff563866f1906c56e2078.har"
-  },
-  "567bc85abe8cc1d6a6ee092f1df7843606c6aeae501461d7e550b41ee6ace878": {
-    "url": "https://menus.tenkites.com/paultonspark/wildforestrestaurant",
-    "fetched": "2026-10-23",
-    "bytes": 6214470,
-    "type": "multipart/related",
-    "key": "archive/menus/567bc85abe8cc1d6a6ee092f1df7843606c6aeae501461d7e550b41ee6ace878.mhtml"
   },
   "5736555797abaa5426f7fdae94faed833002dbac2b493b83e0cbeebfd4efd4e8": {
     "url": "https://www.legoland.com/california/media/coebohrv/ufo-menu.pdf",
@@ -1511,40 +723,21 @@
     "type": "application/pdf",
     "key": "archive/menus/5736555797abaa5426f7fdae94faed833002dbac2b493b83e0cbeebfd4efd4e8.pdf"
   },
-  "57cfc9aa886fbb0ce1d41a9309f0bce300becc66a7a638d90a21923b0360360b": {
-    "url": "https://www.blackpoolpleasurebeach.com/infusion-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 182932,
-    "type": "text/html",
-    "key": "archive/menus/57cfc9aa886fbb0ce1d41a9309f0bce300becc66a7a638d90a21923b0360360b.html"
-  },
-  "57fb42ea5bf4305c9664bf5833e2e6728f82e617ecdff46821fc22c3ed3d37c2": {
-    "url": "https://www.blackpoolpleasurebeach.com/coasters-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 194374,
-    "type": "text/html",
-    "key": "archive/menus/57fb42ea5bf4305c9664bf5833e2e6728f82e617ecdff46821fc22c3ed3d37c2.html"
-  },
-  "58eb40d460891d844bb8a32805ffa095ba6da8bd688ca02fa70d8123244a5ac5": {
-    "url": "https://www.blackpoolpleasurebeach.com/lokis-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 187734,
-    "type": "text/html",
-    "key": "archive/menus/58eb40d460891d844bb8a32805ffa095ba6da8bd688ca02fa70d8123244a5ac5.html"
-  },
   "59d301978a9391d3f1f711e01f96250cff3be4c406cd0bd2b81996d1dfe28cc4": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2TR02_bistrot-chez-remy.pdf",
     "fetched": "2026-10-23",
     "bytes": 546225,
     "type": "application/pdf",
-    "key": "archive/menus/59d301978a9391d3f1f711e01f96250cff3be4c406cd0bd2b81996d1dfe28cc4.pdf"
+    "key": "archive/menus/59d301978a9391d3f1f711e01f96250cff3be4c406cd0bd2b81996d1dfe28cc4.pdf",
+    "wayback": "https://web.archive.org/web/20261023220728/https://media.disneylandparis.com/d4th/en-gb/images/P2TR02_bistrot-chez-remy.pdf"
   },
   "59f25b5d175543540e6088eae9debae1949ffdd08191fffce24b465cec37bbb8": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR09_victorias-home-style-restaurant.pdf",
     "fetched": "2026-10-23",
     "bytes": 609566,
     "type": "application/pdf",
-    "key": "archive/menus/59f25b5d175543540e6088eae9debae1949ffdd08191fffce24b465cec37bbb8.pdf"
+    "key": "archive/menus/59f25b5d175543540e6088eae9debae1949ffdd08191fffce24b465cec37bbb8.pdf",
+    "wayback": "https://web.archive.org/web/20261023220749/https://media.disneylandparis.com/d4th/en-gb/images/P1MR09_victorias-home-style-restaurant.pdf"
   },
   "5a7ebd9fe11dcf1895b6527d204edc4552e0a63e5bccce2449426765a88c9ea7": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1DR02_cool-station.pdf",
@@ -1560,13 +753,6 @@
     "type": "image/png",
     "key": "archive/menus/5a86e8c7f7abdae4dcd9ff266a77c8b944aec998eda6df4c6917377f074aaa85.png"
   },
-  "5af04c04ecef23b84b2d40840887b2e9c51a3235940db90a316a847bfc09d86e": {
-    "url": "https://menus.tenkites.com/paultonspark/thenestkiosk",
-    "fetched": "2026-10-23",
-    "bytes": 298095,
-    "type": "image/png",
-    "key": "archive/menus/5af04c04ecef23b84b2d40840887b2e9c51a3235940db90a316a847bfc09d86e.png"
-  },
   "5b4b523fa25306bc4c735d525f99804d95934f3f75fcdf47771775a3b913a024": {
     "url": "https://menus.tenkites.com/aramarkuk/cbeebieslandhotel",
     "fetched": "2026-10-23",
@@ -1581,26 +767,12 @@
     "type": "application/pdf",
     "key": "archive/menus/5b82641ec772afaadb625ec5fa8a2d6478696d9dd93e31a1fc2d4dff2b03c691.pdf"
   },
-  "5b96edb41d300dce5e24a616958efa63b67fbd3d961daa7126d8e856df8705e0": {
-    "url": "https://knoebels.com/menu/backyard-bbq/",
-    "fetched": "2026-10-23",
-    "bytes": 11489685,
-    "type": "application/json",
-    "key": "archive/menus/5b96edb41d300dce5e24a616958efa63b67fbd3d961daa7126d8e856df8705e0.har"
-  },
   "5bd3f0ca05e195a1b5ad2bf0cd86f4decd737e321d1afe3f1c1ced77ac9c970d": {
     "url": "https://www.boulevardhotel.co.uk/app/uploads/2025/10/Dessert-2025.pdf",
     "fetched": "2026-10-23",
     "bytes": 84246,
     "type": "application/pdf",
     "key": "archive/menus/5bd3f0ca05e195a1b5ad2bf0cd86f4decd737e321d1afe3f1c1ced77ac9c970d.pdf"
-  },
-  "5c2812d8fb6117bd85f7c567ae1c9fb1698a24cd809e34baa2f1a5edd9100966": {
-    "url": "https://www.blackpoolpleasurebeach.com/chocolate-by-percent/",
-    "fetched": "2026-10-23",
-    "bytes": 428398,
-    "type": "image/png",
-    "key": "archive/menus/5c2812d8fb6117bd85f7c567ae1c9fb1698a24cd809e34baa2f1a5edd9100966.png"
   },
   "5c480d3924de4b2fd6a1290131c76ba363b46d9b2ddfe6509abd4018a764ad54": {
     "url": "https://www.legoland.co.uk/media/wg3en1zy/jun-2025-llw-skyline-menu-final.pdf",
@@ -1609,20 +781,6 @@
     "type": "application/pdf",
     "key": "archive/menus/5c480d3924de4b2fd6a1290131c76ba363b46d9b2ddfe6509abd4018a764ad54.pdf"
   },
-  "5c6947e1f3d429cb4cbebafdb05100f68340f2b145fa0ed2c3636a64abc65bc5": {
-    "url": "https://knoebels.com/menu/old-mill-ice-cream/",
-    "fetched": "2026-10-23",
-    "bytes": 1171659,
-    "type": "image/png",
-    "key": "archive/menus/5c6947e1f3d429cb4cbebafdb05100f68340f2b145fa0ed2c3636a64abc65bc5.png"
-  },
-  "5d33f56e4c775400ac761e573944b9db685ae8e1910f151de0a1ce06571ed52c": {
-    "url": "https://www.blackpoolpleasurebeach.com/bbq-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 15680763,
-    "type": "application/json",
-    "key": "archive/menus/5d33f56e4c775400ac761e573944b9db685ae8e1910f151de0a1ce06571ed52c.har"
-  },
   "5d3a1e85cf5897d109d624224dd98e65579390d6f2c0f26137e4fd61776bd8d0": {
     "url": "https://menus.tenkites.com/paultonspark/basecamp",
     "fetched": "2026-10-23",
@@ -1630,47 +788,12 @@
     "type": "application/json",
     "key": "archive/menus/5d3a1e85cf5897d109d624224dd98e65579390d6f2c0f26137e4fd61776bd8d0.har"
   },
-  "5d8613b94c88244b4f1e3dff3f84daa7a9829197edc71501f9f1f404298f88fa": {
-    "url": "https://knoebels.com/menu/potato-cake-stand/",
-    "fetched": "2026-10-23",
-    "bytes": 625244,
-    "type": "text/html",
-    "key": "archive/menus/5d8613b94c88244b4f1e3dff3f84daa7a9829197edc71501f9f1f404298f88fa.html"
-  },
-  "5e66f2bbee0e880c154e809435a2b37ed2b2859464d8de8547a823f5b2e3c769": {
-    "url": "https://menus.tenkites.com/paultonspark/pavilionkiosk",
-    "fetched": "2026-10-23",
-    "bytes": 547302,
-    "type": "text/html",
-    "key": "archive/menus/5e66f2bbee0e880c154e809435a2b37ed2b2859464d8de8547a823f5b2e3c769.html"
-  },
-  "5ec4abb5051dec3fed1d7db0ca93f3bbf053182d0d431432ff15467750a3bd54": {
-    "url": "https://menus.tenkites.com/paultonspark/wildforestrestaurant",
-    "fetched": "2026-10-23",
-    "bytes": 1833137,
-    "type": "text/html",
-    "key": "archive/menus/5ec4abb5051dec3fed1d7db0ca93f3bbf053182d0d431432ff15467750a3bd54.html"
-  },
   "5f984a32e75ff014fa7206c9eed2e5f71a977f8488182ac34688b45d9411a238": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR04_gibson-girl-ice-cream-parlour.pdf",
     "fetched": "2026-10-23",
     "bytes": 624737,
     "type": "application/pdf",
     "key": "archive/menus/5f984a32e75ff014fa7206c9eed2e5f71a977f8488182ac34688b45d9411a238.pdf"
-  },
-  "602390026e57c5f9833e2768a1ea9f1002475252101b824421a022a27d0a8d36": {
-    "url": "https://knoebels.com/menu/cookie-nook/",
-    "fetched": "2026-10-23",
-    "bytes": 734954,
-    "type": "text/html",
-    "key": "archive/menus/602390026e57c5f9833e2768a1ea9f1002475252101b824421a022a27d0a8d36.html"
-  },
-  "60381737beec91a59fab6fa86f2d4fd4603afb672d7750c4cd50a28bad657187": {
-    "url": "https://www.blackpoolpleasurebeach.com/big-pizza-kitchen-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 183571,
-    "type": "text/html",
-    "key": "archive/menus/60381737beec91a59fab6fa86f2d4fd4603afb672d7750c4cd50a28bad657187.html"
   },
   "60922f6bba8cf3853bd5013e5b8b8396ade8bbc53bc846c51cf4bf457f9c5b3a": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1AR07_restaurant-hakuna-matata.pdf",
@@ -1685,34 +808,6 @@
     "bytes": 7727386,
     "type": "application/json",
     "key": "archive/menus/60d202be1fd661ecfd0b26ce760a28332ae78d78ccd98d9ba539b87675a1ec15.har"
-  },
-  "60febe37e65c312b84bc071a42e564817affb4ddecca3a8e8589ddf1b8b07e6f": {
-    "url": "https://www.flamingoland.co.uk/food-and-drink-menu/the-coach-house/",
-    "fetched": "2026-10-23",
-    "bytes": 1221313,
-    "type": "image/png",
-    "key": "archive/menus/60febe37e65c312b84bc071a42e564817affb4ddecca3a8e8589ddf1b8b07e6f.png"
-  },
-  "612887d51c5e91bc1e6656a5024e9e9fdf095b5fbbc05463853403e7bfecabdd": {
-    "url": "https://knoebels.com/menu/pizza/",
-    "fetched": "2026-10-23",
-    "bytes": 1530099,
-    "type": "image/png",
-    "key": "archive/menus/612887d51c5e91bc1e6656a5024e9e9fdf095b5fbbc05463853403e7bfecabdd.png"
-  },
-  "61f90372df379b3aecbe844ddebb72af31491834d265eadd4703b5d8b8055283": {
-    "url": "https://knoebels.com/menu/soft-serve-ice-cream/",
-    "fetched": "2026-10-23",
-    "bytes": 20592293,
-    "type": "application/json",
-    "key": "archive/menus/61f90372df379b3aecbe844ddebb72af31491834d265eadd4703b5d8b8055283.har"
-  },
-  "62a33155814c78b7b07b863ce8d9c9e2671e9e312891d637aaaf1b3976d912af": {
-    "url": "https://knoebels.com/menu/round-stand/",
-    "fetched": "2026-10-23",
-    "bytes": 3816385,
-    "type": "multipart/related",
-    "key": "archive/menus/62a33155814c78b7b07b863ce8d9c9e2671e9e312891d637aaaf1b3976d912af.mhtml"
   },
   "62c2296d5d1304f4cc5515305f79d1c1eb08960eac3a0c759fe130f4f4b571ba": {
     "url": "https://menus.tenkites.com/aramarkuk/cbeebieslunchboxat",
@@ -1735,26 +830,12 @@
     "type": "multipart/related",
     "key": "archive/menus/632e02f43126e4dc97a4f9ddd04a3a1d69392c84ff99c5894b5a74ab11289ffe.mhtml"
   },
-  "6348cbeb871041a97478908c4107e91993f6a102ae41bbb43ac10e9896ec2e28": {
-    "url": "https://menus.tenkites.com/paultonspark/peppapigworldrefreshments?mguid=6a9f8f8f-1ba1-48c9-ad46-e37269316c92",
-    "fetched": "2026-10-23",
-    "bytes": 4759023,
-    "type": "application/json",
-    "key": "archive/menus/6348cbeb871041a97478908c4107e91993f6a102ae41bbb43ac10e9896ec2e28.har"
-  },
   "639cfbff733fc01feafd869f8ea38ee1eeb417f7fd3857aaede7d2a7138db7b9": {
     "url": "https://menus.tenkites.com/aramarkuk/enchantedvillage02",
     "fetched": "2026-10-23",
     "bytes": 228673,
     "type": "image/png",
     "key": "archive/menus/639cfbff733fc01feafd869f8ea38ee1eeb417f7fd3857aaede7d2a7138db7b9.png"
-  },
-  "63f2548591ca79ef8b1e91bcd03c7e39991ca3b858d7e6fb7e45fc37ccde2b54": {
-    "url": "https://knoebels.com/menu/roast-beef-stand/",
-    "fetched": "2026-10-23",
-    "bytes": 20643564,
-    "type": "application/json",
-    "key": "archive/menus/63f2548591ca79ef8b1e91bcd03c7e39991ca3b858d7e6fb7e45fc37ccde2b54.har"
   },
   "647e81aa5f589b02490ad0f92a2abd06cfdc8e744bf9528ae534497938d78a5d": {
     "url": "https://www.flamingoland.co.uk/wp-content/uploads/2025/04/The-American-Diner-Freak-Shakes.pdf",
@@ -1770,61 +851,12 @@
     "type": "multipart/related",
     "key": "archive/menus/64f3dda01775f1ecab72f1e54d47557c4d6d296cf0b371c9e25a0616a5b2952d.mhtml"
   },
-  "653091a55c3e046999737b0250ecd8f8770e494cd9459069754971402856aada": {
-    "url": "https://menus.tenkites.com/paultonspark/peppapigworldrefreshments?mguid=29634edb-567a-4a3e-8557-3ecd8b89805e",
-    "fetched": "2026-10-23",
-    "bytes": 4810858,
-    "type": "application/json",
-    "key": "archive/menus/653091a55c3e046999737b0250ecd8f8770e494cd9459069754971402856aada.har"
-  },
-  "653e8c8739922c4f75d56688d1b751c0a0ef8ff9f847a071bcf530a23dcaecc9": {
-    "url": "https://menus.tenkites.com/paultonspark/peppapigworldrefreshments?mguid=6a9f8f8f-1ba1-48c9-ad46-e37269316c92",
-    "fetched": "2026-10-23",
-    "bytes": 4171760,
-    "type": "multipart/related",
-    "key": "archive/menus/653e8c8739922c4f75d56688d1b751c0a0ef8ff9f847a071bcf530a23dcaecc9.mhtml"
-  },
-  "6586ee24b344483c0348d607b8bf25a15d144fcf8919378441b88924b994bf4d": {
-    "url": "https://menus.tenkites.com/paultonspark/grandecentral",
-    "fetched": "2026-10-23",
-    "bytes": 1988356,
-    "type": "text/html",
-    "key": "archive/menus/6586ee24b344483c0348d607b8bf25a15d144fcf8919378441b88924b994bf4d.html"
-  },
-  "65daa2b7b29a7a77796634ccba46d7ddb49ab9e4c88223bcc9b0e2c06dbb735c": {
-    "url": "https://www.blackpoolpleasurebeach.com/donut-cafe-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 14682084,
-    "type": "application/json",
-    "key": "archive/menus/65daa2b7b29a7a77796634ccba46d7ddb49ab9e4c88223bcc9b0e2c06dbb735c.har"
-  },
   "666cdc95ab0ad023d73f600c6ee791eb24dce847f3873a664d67166a7160803e": {
     "url": "https://www.legoland.jp/en/resort-guide/legoland/food/kitchen-car-kight/",
     "fetched": "2026-10-23",
     "bytes": 1970371,
     "type": "multipart/related",
     "key": "archive/menus/666cdc95ab0ad023d73f600c6ee791eb24dce847f3873a664d67166a7160803e.mhtml"
-  },
-  "667b4e049da57fb370eb618f59f76ebb28112d64ca4aa81a6b84c42e47bc6647": {
-    "url": "https://knoebels.com/menu/funnel-cakes/",
-    "fetched": "2026-10-23",
-    "bytes": 20753096,
-    "type": "application/json",
-    "key": "archive/menus/667b4e049da57fb370eb618f59f76ebb28112d64ca4aa81a6b84c42e47bc6647.har"
-  },
-  "66fce32d56811b1b148429f31860b4fc4f3c33babe844e13a56574a060e41dc4": {
-    "url": "https://www.blackpoolpleasurebeach.com/bbq-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 8927415,
-    "type": "multipart/related",
-    "key": "archive/menus/66fce32d56811b1b148429f31860b4fc4f3c33babe844e13a56574a060e41dc4.mhtml"
-  },
-  "6725585f1d6750a09ee2fa90ee18a050a608f5b5d596b065431e421a8cf2536e": {
-    "url": "https://www.blackpoolpleasurebeach.com/chocolate-by-percent/",
-    "fetched": "2026-10-23",
-    "bytes": 413455,
-    "type": "image/png",
-    "key": "archive/menus/6725585f1d6750a09ee2fa90ee18a050a608f5b5d596b065431e421a8cf2536e.png"
   },
   "67866847fe6b32940e28092ff3f636c715df396a11b96d82e704e9b28ab78421": {
     "url": "https://knoebels.com/menu/lemon/",
@@ -1847,26 +879,12 @@
     "type": "text/html",
     "key": "archive/menus/683709b8c96bdb08390d262ac3b730044324224be057a969388d73bad5920b57.html"
   },
-  "6878ae42fbce36bbba20e1df8e09c0bba062b7754b1abda26d8d5c9a6c7d1b03": {
-    "url": "https://menus.tenkites.com/paultonspark/wildforestrestaurant",
-    "fetched": "2026-10-23",
-    "bytes": 1833137,
-    "type": "text/html",
-    "key": "archive/menus/6878ae42fbce36bbba20e1df8e09c0bba062b7754b1abda26d8d5c9a6c7d1b03.html"
-  },
   "6a41321150b22487ec40474ecf444a71cb518fc5d3238ff915b6a2e54b99ba6f": {
     "url": "https://menus.tenkites.com/aramarkuk/rollercoasterrestaurantat02",
     "fetched": "2026-10-23",
     "bytes": 1787048,
     "type": "text/html",
     "key": "archive/menus/6a41321150b22487ec40474ecf444a71cb518fc5d3238ff915b6a2e54b99ba6f.html"
-  },
-  "6b0546d3ed0d29e3bdb7898cf51960e403e490f0bcb9c46422da28d9d1df94f8": {
-    "url": "https://www.blackpoolpleasurebeach.com/chocolate-by-percent/",
-    "fetched": "2026-10-23",
-    "bytes": 183019,
-    "type": "text/html",
-    "key": "archive/menus/6b0546d3ed0d29e3bdb7898cf51960e403e490f0bcb9c46422da28d9d1df94f8.html"
   },
   "6bcfbc04b25bbeb9f7b3ef2cbb408a5995dbc670ebbbe5cacd2826d81b423cc7": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2ER00_nordic-crowns-tavern.pdf",
@@ -1875,47 +893,12 @@
     "type": "application/pdf",
     "key": "archive/menus/6bcfbc04b25bbeb9f7b3ef2cbb408a5995dbc670ebbbe5cacd2826d81b423cc7.pdf"
   },
-  "6c18a7b397c49d218cc3c634b42fd80cbec282282f64308cfb5ac23a0fb42484": {
-    "url": "https://knoebels.com/menu/stony-gables/",
-    "fetched": "2026-10-23",
-    "bytes": 618215,
-    "type": "text/html",
-    "key": "archive/menus/6c18a7b397c49d218cc3c634b42fd80cbec282282f64308cfb5ac23a0fb42484.html"
-  },
   "6c38d2e3d1149666aade9d0cf06e05f336d84959dfb0cd29a4febcb68044c839": {
     "url": "https://www.legoland.jp/en/resort-guide/legoland/food/irodori/",
     "fetched": "2026-10-23",
     "bytes": 7933622,
     "type": "application/json",
     "key": "archive/menus/6c38d2e3d1149666aade9d0cf06e05f336d84959dfb0cd29a4febcb68044c839.har"
-  },
-  "6ca51c53ae51eff4d4aebd9b5be1f98a2e9b7ab4f16cd3c5780c5ebf54384363": {
-    "url": "https://www.blackpoolpleasurebeach.com/ice-lounge-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 183077,
-    "type": "text/html",
-    "key": "archive/menus/6ca51c53ae51eff4d4aebd9b5be1f98a2e9b7ab4f16cd3c5780c5ebf54384363.html"
-  },
-  "6cb51a150540fa3a91facae1d05d449dcd4732d612cbf3f7978876d9009a7683": {
-    "url": "https://knoebels.com/menu/potato-barn/",
-    "fetched": "2026-10-23",
-    "bytes": 3860690,
-    "type": "multipart/related",
-    "key": "archive/menus/6cb51a150540fa3a91facae1d05d449dcd4732d612cbf3f7978876d9009a7683.mhtml"
-  },
-  "6d15d06e2ce039d0f0dc2ec356c422f5ad49505ed404a09b5de64e63babb3f8e": {
-    "url": "https://knoebels.com/menu/soft-serve-ice-cream/",
-    "fetched": "2026-10-23",
-    "bytes": 1199016,
-    "type": "image/png",
-    "key": "archive/menus/6d15d06e2ce039d0f0dc2ec356c422f5ad49505ed404a09b5de64e63babb3f8e.png"
-  },
-  "6d2bc98910f95903a287ac36e303ae9dac0dd0ca2c29a0e969adb16e42f8085a": {
-    "url": "https://knoebels.com/menu/soft-serve-ice-cream/",
-    "fetched": "2026-10-23",
-    "bytes": 636161,
-    "type": "text/html",
-    "key": "archive/menus/6d2bc98910f95903a287ac36e303ae9dac0dd0ca2c29a0e969adb16e42f8085a.html"
   },
   "6e7a11c7155b75a1a29f7402c1cd6f98182e9d665472e0d3e18439af7e9eb9e9": {
     "url": "https://www.legoland.jp/en/resort-guide/legoland/food/pit-stop-juice-drive/",
@@ -1938,33 +921,12 @@
     "type": "application/pdf",
     "key": "archive/menus/7066171cd70a438deb3766b66844bdc9fc11f8b9ff991cb56a66bc3081b8176a.pdf"
   },
-  "711d79986bc7d10249535b20bb74d834fcfe6281ac54d83472005d7938e6b3b8": {
-    "url": "https://menus.tenkites.com/paultonspark/tornadotreats",
-    "fetched": "2026-10-23",
-    "bytes": 75771,
-    "type": "image/png",
-    "key": "archive/menus/711d79986bc7d10249535b20bb74d834fcfe6281ac54d83472005d7938e6b3b8.png"
-  },
   "7170cc3e6ddc542c10850040abd498ec636ee36ac01e34dac7f69bd0b65b2b4f": {
     "url": "https://menus.tenkites.com/aramarkuk/cbeebieslunchboxat",
     "fetched": "2026-10-23",
     "bytes": 6630666,
     "type": "multipart/related",
     "key": "archive/menus/7170cc3e6ddc542c10850040abd498ec636ee36ac01e34dac7f69bd0b65b2b4f.mhtml"
-  },
-  "7262642aaa0a89efdf0943f8ccc1b70baacd4e4797c6c76af3d508dea33ffb83": {
-    "url": "https://www.blackpoolpleasurebeach.com/bubble-waffle-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 15701165,
-    "type": "application/json",
-    "key": "archive/menus/7262642aaa0a89efdf0943f8ccc1b70baacd4e4797c6c76af3d508dea33ffb83.har"
-  },
-  "72f1fccc70b1b65c94503a9d9dbafbc415783ecde23b100caee2d98da1e85201": {
-    "url": "https://www.blackpoolpleasurebeach.com/big-pizza-kitchen-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 16131387,
-    "type": "application/json",
-    "key": "archive/menus/72f1fccc70b1b65c94503a9d9dbafbc415783ecde23b100caee2d98da1e85201.har"
   },
   "730b96c28ba0be8021d67c8e1a3476226e3d36e453784f6c00e2512a35dcf9c6": {
     "url": "https://www.legoland.jp/en/resort-guide/legoland/food/kitchen-car-bricktopia-popcorn/",
@@ -1980,54 +942,12 @@
     "type": "application/json",
     "key": "archive/menus/7359e5c1a1b051259d820d903ee68394aa2ff5d703db85027aa6cf70c59a28ca.har"
   },
-  "744603b66e8b53a1de2360b88fcd2f5de03168c21c0904016dc9a01a6a441939": {
-    "url": "https://knoebels.com/menu/starbucks-express/",
-    "fetched": "2026-10-23",
-    "bytes": 716557,
-    "type": "text/html",
-    "key": "archive/menus/744603b66e8b53a1de2360b88fcd2f5de03168c21c0904016dc9a01a6a441939.html"
-  },
-  "7462f645b0c05a8c90cded4ae4d870b15553e6d97ea219358bbc92b36c9712e8": {
-    "url": "https://knoebels.com/menu/dippin-dots/",
-    "fetched": "2026-10-23",
-    "bytes": 3785078,
-    "type": "multipart/related",
-    "key": "archive/menus/7462f645b0c05a8c90cded4ae4d870b15553e6d97ea219358bbc92b36c9712e8.mhtml"
-  },
-  "767bbd4188cb2586930e1fde1ab3b20e1869a404a69137b8e1e6eb2fd187a682": {
-    "url": "https://menus.tenkites.com/paultonspark/thenestkiosk",
-    "fetched": "2026-10-23",
-    "bytes": 3601715,
-    "type": "application/json",
-    "key": "archive/menus/767bbd4188cb2586930e1fde1ab3b20e1869a404a69137b8e1e6eb2fd187a682.har"
-  },
   "768060f7796e90adb6e81e34dbbbb2da317c9d0bb9510a4a87b23621d37554ab": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2DR02_la-terrasse-panoramique.pdf",
     "fetched": "2026-10-23",
     "bytes": 952274,
     "type": "application/pdf",
     "key": "archive/menus/768060f7796e90adb6e81e34dbbbb2da317c9d0bb9510a4a87b23621d37554ab.pdf"
-  },
-  "76e005dc9c51481cf8026df29917172a042cdcca2a4cd44f58435d85e60f9f9a": {
-    "url": "https://www.blackpoolpleasurebeach.com/beach-burger-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 6555988,
-    "type": "multipart/related",
-    "key": "archive/menus/76e005dc9c51481cf8026df29917172a042cdcca2a4cd44f58435d85e60f9f9a.mhtml"
-  },
-  "771d5e8dc43d510b7483a4ebf9712047a4c0a70aa731d5ba6fe5dbda5979ba45": {
-    "url": "https://knoebels.com/menu/cookie-nook/",
-    "fetched": "2026-10-23",
-    "bytes": 1376462,
-    "type": "image/png",
-    "key": "archive/menus/771d5e8dc43d510b7483a4ebf9712047a4c0a70aa731d5ba6fe5dbda5979ba45.png"
-  },
-  "77cdc90bd4d274b6e0f88c323992f6f547ccbf564ecab6983327ba152db11b2d": {
-    "url": "https://menus.tenkites.com/paultonspark/wildforestrestaurant",
-    "fetched": "2026-10-23",
-    "bytes": 786873,
-    "type": "image/png",
-    "key": "archive/menus/77cdc90bd4d274b6e0f88c323992f6f547ccbf564ecab6983327ba152db11b2d.png"
   },
   "77e99d3a351fe8f980f0db26f3584820df8ad0466c5ed6fe5127359b9db38a5c": {
     "url": "https://menus.tenkites.com/paultonspark/cascades",
@@ -2050,33 +970,12 @@
     "type": "text/html",
     "key": "archive/menus/77fd1f2879cfbab271f6f4bb78d46860d35af14a322fa1743f4039b1d123519d.html"
   },
-  "78a7379d513dc04a05574869b6185d7a1e827a4457fba6ca92bc4b0a3a055cda": {
-    "url": "https://www.blackpoolpleasurebeach.com/snack-shack-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 9518214,
-    "type": "multipart/related",
-    "key": "archive/menus/78a7379d513dc04a05574869b6185d7a1e827a4457fba6ca92bc4b0a3a055cda.mhtml"
-  },
   "78ecd86b582f4007a8cc37872a6fddf85fefc34c71278605b0539b4561702b03": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2DR03_cafe-luminosity.pdf",
     "fetched": "2026-10-23",
     "bytes": 995297,
     "type": "application/pdf",
     "key": "archive/menus/78ecd86b582f4007a8cc37872a6fddf85fefc34c71278605b0539b4561702b03.pdf"
-  },
-  "790c8b2f7251130da1ce86f6fa946ee5c55a17dbea8315fcac4e0a67afad3cc2": {
-    "url": "https://menus.tenkites.com/paultonspark/grandecentral",
-    "fetched": "2026-10-23",
-    "bytes": 4381303,
-    "type": "multipart/related",
-    "key": "archive/menus/790c8b2f7251130da1ce86f6fa946ee5c55a17dbea8315fcac4e0a67afad3cc2.mhtml"
-  },
-  "793507ede0c953b2e429bc57ab7390205e619b791e344b5889367933cea7764b": {
-    "url": "https://menus.tenkites.com/paultonspark/thehaybarn",
-    "fetched": "2026-10-23",
-    "bytes": 8730640,
-    "type": "application/json",
-    "key": "archive/menus/793507ede0c953b2e429bc57ab7390205e619b791e344b5889367933cea7764b.har"
   },
   "79ce72251a84339b96c5b0546e0e6080791ead5420b7e849feee187956332097": {
     "url": "https://www.legoland.jp/en/resort-guide/legoland/food/brick-house-burgers/",
@@ -2085,33 +984,12 @@
     "type": "application/json",
     "key": "archive/menus/79ce72251a84339b96c5b0546e0e6080791ead5420b7e849feee187956332097.har"
   },
-  "79f35a2aa7ee75dcdd835aec1de7f78bca9c9c8362dc06c2412cb3d0604bfb63": {
-    "url": "https://www.blackpoolpleasurebeach.com/krispy-kreme-rocket-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 6281847,
-    "type": "multipart/related",
-    "key": "archive/menus/79f35a2aa7ee75dcdd835aec1de7f78bca9c9c8362dc06c2412cb3d0604bfb63.mhtml"
-  },
-  "7a6ccd53dd9e8c19fc611fb92ed1dd1dab40f078f5f60f211e3201782cd8ac6d": {
-    "url": "https://www.blackpoolpleasurebeach.com/infusion-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 14468719,
-    "type": "application/json",
-    "key": "archive/menus/7a6ccd53dd9e8c19fc611fb92ed1dd1dab40f078f5f60f211e3201782cd8ac6d.har"
-  },
   "7aec12aeb67481d2dc2ee7e4d134a32731d2733412c3bb39e27dd17f83a91a8d": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1DR01_cafe-hyperion.pdf",
     "fetched": "2026-10-23",
     "bytes": 191534772,
     "type": "application/pdf",
     "key": "archive/menus/7aec12aeb67481d2dc2ee7e4d134a32731d2733412c3bb39e27dd17f83a91a8d.pdf"
-  },
-  "7bba901ea5584e384fc888ebf479d088e62b91fb279584da0881b173a925d483": {
-    "url": "https://www.blackpoolpleasurebeach.com/beach-burger-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 13294363,
-    "type": "application/json",
-    "key": "archive/menus/7bba901ea5584e384fc888ebf479d088e62b91fb279584da0881b173a925d483.har"
   },
   "7bc2df063cb9ef361714701fc9900eb200d604a5b27d69a332b24adf84b4ae91": {
     "url": "https://www.boulevardhotel.co.uk/app/uploads/2026/09/BLVDTDH0826.pdf",
@@ -2141,13 +1019,6 @@
     "type": "application/pdf",
     "key": "archive/menus/7c317a3cd6c21a9a17cbdcc01ae800918da474bbed43e0261d4b01eb2f090dde.pdf"
   },
-  "7cd5206be4a0c2591056d95353adc41e3e12fd581ebb56726d530b75af23d970": {
-    "url": "https://www.blackpoolpleasurebeach.com/donut-dream-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 182850,
-    "type": "text/html",
-    "key": "archive/menus/7cd5206be4a0c2591056d95353adc41e3e12fd581ebb56726d530b75af23d970.html"
-  },
   "7d34367ea0fd81adad4fdc10222dbeef54c92e2dace90aacfcca51662a2fdb51": {
     "url": "https://www.legoland.jp/en/resort-guide/legoland/food/pit-stop-juice-drive/",
     "fetched": "2026-10-23",
@@ -2162,26 +1033,12 @@
     "type": "application/pdf",
     "key": "archive/menus/7e016bac6b5d7cb1ddb839f75d2c675639b216a517ff52205b1ca5667f17c4c9.pdf"
   },
-  "7e8752b8c59ae41dc0dc9fc3d8d4cd77a22540772f77f1b82499ab4bdf544209": {
-    "url": "https://knoebels.com/menu/phoenix-junction/",
-    "fetched": "2026-10-23",
-    "bytes": 20844860,
-    "type": "application/json",
-    "key": "archive/menus/7e8752b8c59ae41dc0dc9fc3d8d4cd77a22540772f77f1b82499ab4bdf544209.har"
-  },
   "7edc707973cd5f9444695ff542408f531f453bf20aa87c4a1d6ef994de372aac": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1RR02_last-chance-cafe.pdf",
     "fetched": "2026-10-23",
     "bytes": 938926,
     "type": "application/pdf",
     "key": "archive/menus/7edc707973cd5f9444695ff542408f531f453bf20aa87c4a1d6ef994de372aac.pdf"
-  },
-  "7f3bac45e13d591dbfb88001017d631568cee4efd4dcb38aaa8071f1f247fa7c": {
-    "url": "https://menus.tenkites.com/paultonspark/tornadotreats",
-    "fetched": "2026-10-23",
-    "bytes": 2033677,
-    "type": "application/json",
-    "key": "archive/menus/7f3bac45e13d591dbfb88001017d631568cee4efd4dcb38aaa8071f1f247fa7c.har"
   },
   "7f57f4b129270ccd0e36fea2b48e079629158d684f7bfeee40c5435e5ea6ca81": {
     "url": "https://menus.tenkites.com/aramarkuk/pizzapastaat",
@@ -2197,13 +1054,6 @@
     "type": "application/pdf",
     "key": "archive/menus/7f82e9f92924c25adf9521489d4a9ab647d9144942a28be5465868eab62ca291.pdf"
   },
-  "7f910022d56609430573d2684ea5641332b1d3b98a31d88f17e6c149c8b7b7bd": {
-    "url": "https://knoebels.com/menu/cookie-nook/",
-    "fetched": "2026-10-23",
-    "bytes": 3912550,
-    "type": "multipart/related",
-    "key": "archive/menus/7f910022d56609430573d2684ea5641332b1d3b98a31d88f17e6c149c8b7b7bd.mhtml"
-  },
   "7fd65ae460a7045e7902f81f8d5f578d90bf8b82ded37d4c9d9d6e5635a2a1bd": {
     "url": "https://www.legoland.com/new-york/media/jidfoksu/brickolini-s-2026-menu.pdf",
     "fetched": "2026-10-23",
@@ -2218,33 +1068,12 @@
     "type": "image/png",
     "key": "archive/menus/7fd7800ef863483e663a731395adaf0a44e1f74a0e7058eac81c76188bfbaf65.png"
   },
-  "80979fa900198c25411cd6f59a2a4ec094d75fe925b7c7fb9acee07d2c4ff189": {
-    "url": "https://menus.tenkites.com/paultonspark/coffeeshops",
-    "fetched": "2026-10-23",
-    "bytes": 4647513,
-    "type": "application/json",
-    "key": "archive/menus/80979fa900198c25411cd6f59a2a4ec094d75fe925b7c7fb9acee07d2c4ff189.har"
-  },
-  "8237c6e2c201bb0f6c1f3b81f49d60d55fc37e0b602e59a72d97124aa42fd2e9": {
-    "url": "https://menus.tenkites.com/paultonspark/thehaybarn",
-    "fetched": "2026-10-23",
-    "bytes": 8280796,
-    "type": "multipart/related",
-    "key": "archive/menus/8237c6e2c201bb0f6c1f3b81f49d60d55fc37e0b602e59a72d97124aa42fd2e9.mhtml"
-  },
   "82e9134b484d00d7bb49a3afb948c6d72141a332e723c86e60a48fa3dde80c95": {
     "url": "https://knoebels.com/menu/alamo/",
     "fetched": "2026-10-23",
     "bytes": 1960033,
     "type": "image/png",
     "key": "archive/menus/82e9134b484d00d7bb49a3afb948c6d72141a332e723c86e60a48fa3dde80c95.png"
-  },
-  "82fad6cea79ba0741d86bf84f086f989c4b973f68e16bcfe069fdd52a02c3890": {
-    "url": "https://www.blackpoolpleasurebeach.com/ice-lounge-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 8354889,
-    "type": "multipart/related",
-    "key": "archive/menus/82fad6cea79ba0741d86bf84f086f989c4b973f68e16bcfe069fdd52a02c3890.mhtml"
   },
   "83087ba28d5912073d6f51de81226845067188cde3a3568352b31f7879751012": {
     "url": "https://menus.tenkites.com/aramarkuk/ataltontowersparkcatering",
@@ -2253,26 +1082,12 @@
     "type": "multipart/related",
     "key": "archive/menus/83087ba28d5912073d6f51de81226845067188cde3a3568352b31f7879751012.mhtml"
   },
-  "8329bf16482dcb49b544e6b255814f8e65a8517c5914f147a1f9a890c2342cf7": {
-    "url": "https://www.blackpoolpleasurebeach.com/ice-lounge-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 8286705,
-    "type": "multipart/related",
-    "key": "archive/menus/8329bf16482dcb49b544e6b255814f8e65a8517c5914f147a1f9a890c2342cf7.mhtml"
-  },
   "8334480b741f267c5233c70f84068b67f195c6c0dc4e1053d18abc5eb39894e3": {
     "url": "https://www.boulevardhotel.co.uk/app/uploads/2026/10/BLVDALC0826.pdf",
     "fetched": "2026-10-23",
     "bytes": 73880,
     "type": "application/pdf",
     "key": "archive/menus/8334480b741f267c5233c70f84068b67f195c6c0dc4e1053d18abc5eb39894e3.pdf"
-  },
-  "85276d083c01e55c4af1a00997aef71620078ab951407b588752045be8396f85": {
-    "url": "https://www.blackpoolpleasurebeach.com/bbq-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 485471,
-    "type": "image/png",
-    "key": "archive/menus/85276d083c01e55c4af1a00997aef71620078ab951407b588752045be8396f85.png"
   },
   "855ef21c1dd2f8ae1748aae3aa52a5003b19503656b58d8b28df9b2df6c477b3": {
     "url": "https://www.legoland.jp/en/resort-guide/legoland/food/abominable-slushies/",
@@ -2295,20 +1110,6 @@
     "type": "application/json",
     "key": "archive/menus/867143cfd2d56ec2b3f58ecca4d9cc381d7572a1b02244aea6ddc159680fde63.har"
   },
-  "87c9efc8e5c7132af310ca8439b321b23b070d6b6ae260f94489b7a6cb5c8e9c": {
-    "url": "https://www.blackpoolpleasurebeach.com/donut-dream-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 14508805,
-    "type": "application/json",
-    "key": "archive/menus/87c9efc8e5c7132af310ca8439b321b23b070d6b6ae260f94489b7a6cb5c8e9c.har"
-  },
-  "88c1e710b25c3bf8eae22a4ed2ae72b4a14053eba62f9c2605100a8f82576d36": {
-    "url": "https://knoebels.com/menu/dippin-dots/",
-    "fetched": "2026-10-23",
-    "bytes": 1138947,
-    "type": "image/png",
-    "key": "archive/menus/88c1e710b25c3bf8eae22a4ed2ae72b4a14053eba62f9c2605100a8f82576d36.png"
-  },
   "89539a7235c0bc4573683aa9245db6b12b96337b83311d4b2f2bf8ddc038ce4d": {
     "url": "https://www.legoland.jp/en/resort-guide/legoland/food/ice-factory/",
     "fetched": "2026-10-23",
@@ -2330,40 +1131,12 @@
     "type": "image/png",
     "key": "archive/menus/89d5ee22ba18d588905286d0789393a5b8f701da1f7a6f099390f03c422f3807.png"
   },
-  "89d7987fce55a1e740fbf0a4bcfd7f242dcb0654f17fff62dac1d8525ac26698": {
-    "url": "https://menus.tenkites.com/paultonspark/ciaobella",
-    "fetched": "2026-10-23",
-    "bytes": 5793849,
-    "type": "application/json",
-    "key": "archive/menus/89d7987fce55a1e740fbf0a4bcfd7f242dcb0654f17fff62dac1d8525ac26698.har"
-  },
-  "8a3521a2dca4e48e31bab6bd8971a09cfd6339a1dafc605597564202680bfd54": {
-    "url": "https://www.blackpoolpleasurebeach.com/ice-lounge-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 14997397,
-    "type": "application/json",
-    "key": "archive/menus/8a3521a2dca4e48e31bab6bd8971a09cfd6339a1dafc605597564202680bfd54.har"
-  },
   "8ab7ee99ef7cf39046fafefce651dba0afa8feaded97645bea0a8406e5841792": {
     "url": "https://www.legoland.jp/en/resort-guide/legoland/food/oasis-snacks/",
     "fetched": "2026-10-23",
     "bytes": 1437376,
     "type": "image/png",
     "key": "archive/menus/8ab7ee99ef7cf39046fafefce651dba0afa8feaded97645bea0a8406e5841792.png"
-  },
-  "8bb328ff7979e6fd857889f7b17041f9b41f04e7451ba515ddb9be1b2686b946": {
-    "url": "https://www.blackpoolpleasurebeach.com/infusion-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 14936100,
-    "type": "application/json",
-    "key": "archive/menus/8bb328ff7979e6fd857889f7b17041f9b41f04e7451ba515ddb9be1b2686b946.har"
-  },
-  "8bd481a3daac1824a274eabbe2321541f05c99da52125b8dd17f79ab1bc96695": {
-    "url": "https://knoebels.com/menu/wharf/",
-    "fetched": "2026-10-23",
-    "bytes": 20638757,
-    "type": "application/json",
-    "key": "archive/menus/8bd481a3daac1824a274eabbe2321541f05c99da52125b8dd17f79ab1bc96695.har"
   },
   "8bf6f3581e15820a0edf63b87cc9be6b1a0ff410631cc38d818a070ec64b4956": {
     "url": "https://www.flamingoland.co.uk/wp-content/uploads/2009/07/The-Coach-House-Kids-Menu-1.pdf",
@@ -2386,13 +1159,6 @@
     "type": "application/json",
     "key": "archive/menus/8d043fe71ab2b8d348c265f70e205951fa52b2a7c628458d186c6a3c93b659ea.har"
   },
-  "8dbeb2c3a9faddaba9af5ca50d844fa1e9657ab772668f6a16877ba32c96be81": {
-    "url": "https://menus.tenkites.com/paultonspark/thehaybarn",
-    "fetched": "2026-10-23",
-    "bytes": 1472596,
-    "type": "text/html",
-    "key": "archive/menus/8dbeb2c3a9faddaba9af5ca50d844fa1e9657ab772668f6a16877ba32c96be81.html"
-  },
   "8def0465cc4eb2f00ae9364e0a32c3e3a17f60a859e505090f5b4ad57df0cc9a": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1NR01_auberge-de-cendrillon.pdf",
     "fetched": "2026-10-23",
@@ -2414,40 +1180,12 @@
     "type": "multipart/related",
     "key": "archive/menus/8e3d07bf9273567dab4db4074f5ddca4d2b8c0cb9ade68185c69bf3b995b358d.mhtml"
   },
-  "8ec4f29241be3abdc0f665226b39ec4535f8eecdafc1e8c2eec0a0d60e20a6b5": {
-    "url": "https://www.blackpoolpleasurebeach.com/t-cafe-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 8292570,
-    "type": "multipart/related",
-    "key": "archive/menus/8ec4f29241be3abdc0f665226b39ec4535f8eecdafc1e8c2eec0a0d60e20a6b5.mhtml"
-  },
-  "8f3ce1a7bb918170e71d3583d658d87305ddd1b4c5dcca39dc37095b822cb3ec": {
-    "url": "https://knoebels.com/menu/potato-barn/",
-    "fetched": "2026-10-23",
-    "bytes": 1268288,
-    "type": "image/png",
-    "key": "archive/menus/8f3ce1a7bb918170e71d3583d658d87305ddd1b4c5dcca39dc37095b822cb3ec.png"
-  },
-  "8f967f5b22fa67645099b37fac87096b012d4a74760d51f08bcf2dfe8bbe3c98": {
-    "url": "https://www.blackpoolpleasurebeach.com/donut-cafe-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 421116,
-    "type": "image/png",
-    "key": "archive/menus/8f967f5b22fa67645099b37fac87096b012d4a74760d51f08bcf2dfe8bbe3c98.png"
-  },
   "900c08933100869a5addceeaceec0bbb29d6a121aeaf67a615b7e009d803ae53": {
     "url": "https://menus.tenkites.com/aramarkuk/pizzapastaat",
     "fetched": "2026-10-23",
     "bytes": 6962876,
     "type": "application/json",
     "key": "archive/menus/900c08933100869a5addceeaceec0bbb29d6a121aeaf67a615b7e009d803ae53.har"
-  },
-  "9040bfc48671e18d4d674ebe6363c41fbe5b0ae43105e76b7e5cd4c905466d95": {
-    "url": "https://www.blackpoolpleasurebeach.com/ice-lounge-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 15124624,
-    "type": "application/json",
-    "key": "archive/menus/9040bfc48671e18d4d674ebe6363c41fbe5b0ae43105e76b7e5cd4c905466d95.har"
   },
   "914ec7278123b89f944ed066cf80e9ae323f3a38bcd0a12ce67a1dc956cc1b40": {
     "url": "https://knoebels.com/menu/kettle-korn/",
@@ -2463,34 +1201,6 @@
     "type": "multipart/related",
     "key": "archive/menus/91dc9b3ef44965c403364d1159887167c185e4f22e2d75cceeae4884c1cf5c50.mhtml"
   },
-  "927f2b6cd2160c3bde0676b16a574efe97f1501cf7e45372d92aa7dbf9e62857": {
-    "url": "https://www.blackpoolpleasurebeach.com/donut-cafe-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 14765460,
-    "type": "application/json",
-    "key": "archive/menus/927f2b6cd2160c3bde0676b16a574efe97f1501cf7e45372d92aa7dbf9e62857.har"
-  },
-  "92ff67cd96af0fe78aa34115b2bac20865ecb9c269544f65034f655ab27f9541": {
-    "url": "https://www.flamingoland.co.uk/food-and-drink-menu/the-coach-house/",
-    "fetched": "2026-10-23",
-    "bytes": 1382570,
-    "type": "application/json",
-    "key": "archive/menus/92ff67cd96af0fe78aa34115b2bac20865ecb9c269544f65034f655ab27f9541.har"
-  },
-  "9460bb05e310b7fc808efe4098b27efdb235d0356b9474dd3a5a9dc92919cc15": {
-    "url": "https://menus.tenkites.com/paultonspark/sweettreatkiosks?mguid=b0c1539e-4c76-4317-a257-7bfa6741656b",
-    "fetched": "2026-10-23",
-    "bytes": 1364423,
-    "type": "text/html",
-    "key": "archive/menus/9460bb05e310b7fc808efe4098b27efdb235d0356b9474dd3a5a9dc92919cc15.html"
-  },
-  "952b591eaaa66f93c3d37169a40d39a1f16862b667a3763aa2d1e19325f286d6": {
-    "url": "https://knoebels.com/menu/totem-treats/",
-    "fetched": "2026-10-23",
-    "bytes": 1063482,
-    "type": "image/png",
-    "key": "archive/menus/952b591eaaa66f93c3d37169a40d39a1f16862b667a3763aa2d1e19325f286d6.png"
-  },
   "9558a661acce347ceaa001f1ae944bd8059b452add2a628db795de065af5902a": {
     "url": "https://www.legoland.com/new-york/media/rlqc0vor/food-carts-2026-menu-2.pdf",
     "fetched": "2026-10-23",
@@ -2505,26 +1215,12 @@
     "type": "application/pdf",
     "key": "archive/menus/956103e825245ddfc0c59352d91ba704f53d41dbc0cfef9d6410283b6e302505.pdf"
   },
-  "957382dfdf887da0237000cf98af5dab9d5f167aeec35163666ccd94b9f3b650": {
-    "url": "https://knoebels.com/menu/phoenix-junction/",
-    "fetched": "2026-10-23",
-    "bytes": 1430593,
-    "type": "image/png",
-    "key": "archive/menus/957382dfdf887da0237000cf98af5dab9d5f167aeec35163666ccd94b9f3b650.png"
-  },
   "95e66f5e6fb6d85ac52f26a4af18c8adc0e431a54314961861b61fa50ff6b0e9": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1NR02_au-chalet-de-la-marionnette.pdf",
     "fetched": "2026-10-23",
     "bytes": 3444168,
     "type": "application/pdf",
     "key": "archive/menus/95e66f5e6fb6d85ac52f26a4af18c8adc0e431a54314961861b61fa50ff6b0e9.pdf"
-  },
-  "96364ca725b98ff37a4bfa3f7a845d596f61d99f8ce70577d67012c289407256": {
-    "url": "https://www.blackpoolpleasurebeach.com/coasters-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 16669175,
-    "type": "application/json",
-    "key": "archive/menus/96364ca725b98ff37a4bfa3f7a845d596f61d99f8ce70577d67012c289407256.har"
   },
   "9647ceba0c3841010da4a2a581842a6134525181b093728fc797d73132fde65c": {
     "url": "https://www.legoland.jp/en/resort-guide/legoland/food/kitchen-car-kight/",
@@ -2568,40 +1264,12 @@
     "type": "text/html",
     "key": "archive/menus/97d4b48c95c417be281e00ee64bbe56d0cfe192b88d1281900a401744337d5ad.html"
   },
-  "98083ce2aad8241551228441d76c3af81bc47dd2e09749f34ed749f7d8dec210": {
-    "url": "https://menus.tenkites.com/paultonspark/sweettreatkiosks?mguid=b0c1539e-4c76-4317-a257-7bfa6741656b",
-    "fetched": "2026-10-23",
-    "bytes": 4158946,
-    "type": "multipart/related",
-    "key": "archive/menus/98083ce2aad8241551228441d76c3af81bc47dd2e09749f34ed749f7d8dec210.mhtml"
-  },
   "98237837663beebcc03258ff88d75e0e147febc91eb82f53f2d362b54b2c0fd5": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1NR06_pizzeria-bella-notte.pdf",
     "fetched": "2026-10-23",
     "bytes": 1985183,
     "type": "application/pdf",
     "key": "archive/menus/98237837663beebcc03258ff88d75e0e147febc91eb82f53f2d362b54b2c0fd5.pdf"
-  },
-  "9861291301684290ed9b3fb4338973c2dfb427abedd968a5c3764522d1e2b7d5": {
-    "url": "https://menus.tenkites.com/paultonspark/route83diner",
-    "fetched": "2026-10-23",
-    "bytes": 3428131,
-    "type": "text/html",
-    "key": "archive/menus/9861291301684290ed9b3fb4338973c2dfb427abedd968a5c3764522d1e2b7d5.html"
-  },
-  "9865e061d7330f961bccf9396d8665869270c5f2a2cf97eb07266a7227698f51": {
-    "url": "https://menus.tenkites.com/paultonspark/wildforestrestaurant",
-    "fetched": "2026-10-23",
-    "bytes": 6552617,
-    "type": "application/json",
-    "key": "archive/menus/9865e061d7330f961bccf9396d8665869270c5f2a2cf97eb07266a7227698f51.har"
-  },
-  "98ef515d7da92393e6641c71725e52751c19d773aaa1943bb6dbf8510d682846": {
-    "url": "https://www.blackpoolpleasurebeach.com/beach-burger-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 431018,
-    "type": "image/png",
-    "key": "archive/menus/98ef515d7da92393e6641c71725e52751c19d773aaa1943bb6dbf8510d682846.png"
   },
   "997789880a4fe810001b9929085b5ae920b97f235659be536c36127c65545568": {
     "url": "https://www.legoland.jp/en/resort-guide/legoland/food/abominable-slushies/",
@@ -2617,20 +1285,6 @@
     "type": "application/pdf",
     "key": "archive/menus/9998803a1d3bcec84a9bed92fbfa9ae43a45bd406758db1c6899056f85bac820.pdf"
   },
-  "99a88021dd9178743d2e19492821c578c5a4f17d19147d9b326b57cb2a852078": {
-    "url": "https://menus.tenkites.com/paultonspark/thequeenskitchen",
-    "fetched": "2026-10-23",
-    "bytes": 1951753,
-    "type": "application/json",
-    "key": "archive/menus/99a88021dd9178743d2e19492821c578c5a4f17d19147d9b326b57cb2a852078.har"
-  },
-  "99c2da5f5c83b08498276c32bdc234d1b09a0a19e7c93bba2c0c90811ea7b7fd": {
-    "url": "https://www.blackpoolpleasurebeach.com/fy4-fish-chips-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 14847600,
-    "type": "application/json",
-    "key": "archive/menus/99c2da5f5c83b08498276c32bdc234d1b09a0a19e7c93bba2c0c90811ea7b7fd.har"
-  },
   "99cb8a53af39c0da83782bd6c38c628380c38542648310c329ddd7ee917e70aa": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2DR01_the-regal-view-lounge.pdf",
     "fetched": "2026-10-23",
@@ -2644,13 +1298,6 @@
     "bytes": 1142783,
     "type": "application/pdf",
     "key": "archive/menus/9ab82b06017e99af35d8062d55ed5ae15e4a8f684c3cb93f816ef192ef0570a2.pdf"
-  },
-  "9b066b316d4049671fd305df9c4045473051520e7ed03bab9497ebb3d3558cc1": {
-    "url": "https://www.blackpoolpleasurebeach.com/donut-cafe-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 8014317,
-    "type": "multipart/related",
-    "key": "archive/menus/9b066b316d4049671fd305df9c4045473051520e7ed03bab9497ebb3d3558cc1.mhtml"
   },
   "9b20d295628e1f6a3ae46457b89a27eebe52122cc9d8426bb9e7cf2be40cf456": {
     "url": "https://knoebels.com/menu/candy-apple-orchard/",
@@ -2680,131 +1327,12 @@
     "type": "application/json",
     "key": "archive/menus/9ba1924f99283d93ad95265efd4cb9bc4b30854aa4c907098b6e3a73b3ba4f01.har"
   },
-  "9c23b6b12105a410cd395427910e3bff7cce8c5c1be5ea0a3b74aaba20c7259f": {
-    "url": "https://menus.tenkites.com/paultonspark/takeawaykiosks",
-    "fetched": "2026-10-23",
-    "bytes": 1519275,
-    "type": "text/html",
-    "key": "archive/menus/9c23b6b12105a410cd395427910e3bff7cce8c5c1be5ea0a3b74aaba20c7259f.html"
-  },
-  "9c56db929a7db431f9b09e876733a97888301711d229187f501c000b59293aa3": {
-    "url": "https://menus.tenkites.com/paultonspark/thenestkiosk",
-    "fetched": "2026-10-23",
-    "bytes": 1387282,
-    "type": "text/html",
-    "key": "archive/menus/9c56db929a7db431f9b09e876733a97888301711d229187f501c000b59293aa3.html"
-  },
-  "9d6de0ec9e647647ada888d15f1c40598d2ea0414547e5d12c74dbf737111f98": {
-    "url": "https://knoebels.com/menu/jolly-trolley/",
-    "fetched": "2026-10-23",
-    "bytes": 1261130,
-    "type": "image/png",
-    "key": "archive/menus/9d6de0ec9e647647ada888d15f1c40598d2ea0414547e5d12c74dbf737111f98.png"
-  },
-  "9d7475e81cfe9dad038265b9cacd2a041d16ddea0ce8ebbb1286b3849a8144df": {
-    "url": "https://knoebels.com/menu/international-food-court/",
-    "fetched": "2026-10-23",
-    "bytes": 809893,
-    "type": "text/html",
-    "key": "archive/menus/9d7475e81cfe9dad038265b9cacd2a041d16ddea0ce8ebbb1286b3849a8144df.html"
-  },
-  "9e2912c9e46993062db401299f85c7974e1ffe4eea35f780a8a26433257d9b12": {
-    "url": "https://www.blackpoolpleasurebeach.com/bbq-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 186068,
-    "type": "text/html",
-    "key": "archive/menus/9e2912c9e46993062db401299f85c7974e1ffe4eea35f780a8a26433257d9b12.html"
-  },
-  "9e5c95708636a104a609cb5a75b4d79d73ae1371c5df24cf89d7e45eed361c2c": {
-    "url": "https://knoebels.com/menu/alamo-front-counter/",
-    "fetched": "2026-10-23",
-    "bytes": 1139138,
-    "type": "image/png",
-    "key": "archive/menus/9e5c95708636a104a609cb5a75b4d79d73ae1371c5df24cf89d7e45eed361c2c.png"
-  },
-  "9f3b6da5d5f79b485e554febf0ad0098facd031a3e85e12dc10ca9391e6e6201": {
-    "url": "https://www.blackpoolpleasurebeach.com/t-cafe-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 8888796,
-    "type": "multipart/related",
-    "key": "archive/menus/9f3b6da5d5f79b485e554febf0ad0098facd031a3e85e12dc10ca9391e6e6201.mhtml"
-  },
-  "a01529fa83753ea987887ea0afc956846bc10cda6fd793b4a72bfaee8a030b47": {
-    "url": "https://menus.tenkites.com/paultonspark/thenestkiosk",
-    "fetched": "2026-10-23",
-    "bytes": 1722332,
-    "type": "multipart/related",
-    "key": "archive/menus/a01529fa83753ea987887ea0afc956846bc10cda6fd793b4a72bfaee8a030b47.mhtml"
-  },
-  "a0b621f0ea4e9ba04f80849fbe3f3910cd49be211b7a85e12d0d3ac193981e33": {
-    "url": "https://knoebels.com/menu/round-stand/",
-    "fetched": "2026-10-23",
-    "bytes": 626888,
-    "type": "text/html",
-    "key": "archive/menus/a0b621f0ea4e9ba04f80849fbe3f3910cd49be211b7a85e12d0d3ac193981e33.html"
-  },
-  "a0d18a13080794b11f3ea34f20f025ea17dcda8a4f1ec9ca1ab9343c90f408cc": {
-    "url": "https://menus.tenkites.com/paultonspark/peppapigworldrefreshments?mguid=c678cde0-2412-4246-a60b-5210e485e480",
-    "fetched": "2026-10-23",
-    "bytes": 1512117,
-    "type": "text/html",
-    "key": "archive/menus/a0d18a13080794b11f3ea34f20f025ea17dcda8a4f1ec9ca1ab9343c90f408cc.html"
-  },
-  "a0f77b33341ca866831331ae314ebd33875aef9fe39e688c6d13b0e6d0903832": {
-    "url": "https://menus.tenkites.com/paultonspark/wildforestrestaurant",
-    "fetched": "2026-10-23",
-    "bytes": 6214470,
-    "type": "multipart/related",
-    "key": "archive/menus/a0f77b33341ca866831331ae314ebd33875aef9fe39e688c6d13b0e6d0903832.mhtml"
-  },
   "a13596910d38f76b915bff702b426f9633ec7aa4ea7e362094d4639db07cdbe8": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2AR01_stark-factory.pdf",
     "fetched": "2026-10-23",
     "bytes": 1343684,
     "type": "application/pdf",
     "key": "archive/menus/a13596910d38f76b915bff702b426f9633ec7aa4ea7e362094d4639db07cdbe8.pdf"
-  },
-  "a1bbcdcf94f2ee3784ba8a39fd499c7850c86b9956080091df2ed4fd20783478": {
-    "url": "https://knoebels.com/menu/oasis-cafeteria/",
-    "fetched": "2026-10-23",
-    "bytes": 1327445,
-    "type": "image/png",
-    "key": "archive/menus/a1bbcdcf94f2ee3784ba8a39fd499c7850c86b9956080091df2ed4fd20783478.png"
-  },
-  "a23e74435c7c5a84f1a325eefb8dd1bafd144be34b48ddd1b7ded6aa85c8861d": {
-    "url": "https://www.blackpoolpleasurebeach.com/krispy-kreme-rocket-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 181600,
-    "type": "text/html",
-    "key": "archive/menus/a23e74435c7c5a84f1a325eefb8dd1bafd144be34b48ddd1b7ded6aa85c8861d.html"
-  },
-  "a2d82339cd986a71a096e46cfedd83456b2f657ad4302aeb1afd1da6bbf65ce3": {
-    "url": "https://knoebels.com/menu/old-mill-ice-cream/",
-    "fetched": "2026-10-23",
-    "bytes": 657461,
-    "type": "text/html",
-    "key": "archive/menus/a2d82339cd986a71a096e46cfedd83456b2f657ad4302aeb1afd1da6bbf65ce3.html"
-  },
-  "a32dd51ceef2dc1cca87b2625cad7369e364cf9fc52955cbcb116d4cacbe2bc6": {
-    "url": "https://www.blackpoolpleasurebeach.com/spudz-2-go-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 183021,
-    "type": "text/html",
-    "key": "archive/menus/a32dd51ceef2dc1cca87b2625cad7369e364cf9fc52955cbcb116d4cacbe2bc6.html"
-  },
-  "a3ad6df6e8c658941703fd5ae14240d558f70cb8d6c0a612835fd18963254721": {
-    "url": "https://knoebels.com/menu/pizza/",
-    "fetched": "2026-10-23",
-    "bytes": 20819023,
-    "type": "application/json",
-    "key": "archive/menus/a3ad6df6e8c658941703fd5ae14240d558f70cb8d6c0a612835fd18963254721.har"
-  },
-  "a473bfba4d90a129d90d5bdd048aa0a89bd4044031bfc28e7cc5041b6cf4c563": {
-    "url": "https://knoebels.com/menu/patio-grill/",
-    "fetched": "2026-10-23",
-    "bytes": 1258548,
-    "type": "image/png",
-    "key": "archive/menus/a473bfba4d90a129d90d5bdd048aa0a89bd4044031bfc28e7cc5041b6cf4c563.png"
   },
   "a64e985ff0954166efbb77775c1d55f1ac1f3287503bccf628690edaee328e69": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1RR00_cowboy-cookout-barbecue.pdf",
@@ -2820,20 +1348,6 @@
     "type": "text/html",
     "key": "archive/menus/a6e96383d29bfc60ced08dbbc882e24a14901233c5f24dde7db15de1df3b1191.html"
   },
-  "a7e89bae924641459c5bcaabefa95929be4414852cc62872e9d7ad7be5d7a721": {
-    "url": "https://knoebels.com/menu/slush-n-such/",
-    "fetched": "2026-10-23",
-    "bytes": 20721785,
-    "type": "application/json",
-    "key": "archive/menus/a7e89bae924641459c5bcaabefa95929be4414852cc62872e9d7ad7be5d7a721.har"
-  },
-  "a80baa7a47d106ea0573f244c4889382c5ba0df7e3ff13f71101b0f61c3fd861": {
-    "url": "https://www.blackpoolpleasurebeach.com/snack-shack-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 453069,
-    "type": "image/png",
-    "key": "archive/menus/a80baa7a47d106ea0573f244c4889382c5ba0df7e3ff13f71101b0f61c3fd861.png"
-  },
   "a9158e37e358ae7eaccc4d1d01c2d7854ae5866175e39ab2cdfb400579640394": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1GR46_overland-trail-cafe.pdf",
     "fetched": "2026-10-23",
@@ -2848,26 +1362,12 @@
     "type": "text/html",
     "key": "archive/menus/a9391a818d9a2b4f8675f9cbc37a255c97665982382c4589dafbd9e2b2177551.html"
   },
-  "a94d159cc683c8d1abe004fbff546448e5296def7096e1a952fc97973143924c": {
-    "url": "https://www.blackpoolpleasurebeach.com/bubble-waffle-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 561195,
-    "type": "image/png",
-    "key": "archive/menus/a94d159cc683c8d1abe004fbff546448e5296def7096e1a952fc97973143924c.png"
-  },
   "a957497b7f7ecc5e3454f5d62e3591213e4470c89d765fb823c5ad3ed17eecfe": {
     "url": "https://menus.tenkites.com/paultonspark/basecamp",
     "fetched": "2026-10-23",
     "bytes": 373026,
     "type": "image/png",
     "key": "archive/menus/a957497b7f7ecc5e3454f5d62e3591213e4470c89d765fb823c5ad3ed17eecfe.png"
-  },
-  "aa8e593742071e992a0c293e3be5c915b82485925b30c2d2a07f24374d244966": {
-    "url": "https://www.blackpoolpleasurebeach.com/spudz-2-go-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 8043326,
-    "type": "multipart/related",
-    "key": "archive/menus/aa8e593742071e992a0c293e3be5c915b82485925b30c2d2a07f24374d244966.mhtml"
   },
   "aaaf44f6c0da9f83f88e03d75f302b14c0289b0e769d93dd43a59149975e0dbc": {
     "url": "https://www.flamingoland.co.uk/wp-content/uploads/2026/04/crumble-heaven-menu.pdf",
@@ -2876,13 +1376,6 @@
     "type": "application/pdf",
     "key": "archive/menus/aaaf44f6c0da9f83f88e03d75f302b14c0289b0e769d93dd43a59149975e0dbc.pdf"
   },
-  "ab3f0f04f4fc159035b1ce0b25b3b06880cd67fd1b3638264d4a74ce69853603": {
-    "url": "https://www.blackpoolpleasurebeach.com/krispy-kreme-rocket-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 467232,
-    "type": "image/png",
-    "key": "archive/menus/ab3f0f04f4fc159035b1ce0b25b3b06880cd67fd1b3638264d4a74ce69853603.png"
-  },
   "ab518a8d0ce0e23893530084a2b648563b6285ad4a316f7293af0f45118f3a8a": {
     "url": "https://menus.tenkites.com/aramarkuk/splashlandingshotel02",
     "fetched": "2026-10-23",
@@ -2890,40 +1383,12 @@
     "type": "text/html",
     "key": "archive/menus/ab518a8d0ce0e23893530084a2b648563b6285ad4a316f7293af0f45118f3a8a.html"
   },
-  "abc36ca93280d2472dbf5d27a30a811f289968cc8afa2e0b31e50d949cc0c240": {
-    "url": "https://knoebels.com/menu/slush-n-such/",
-    "fetched": "2026-10-23",
-    "bytes": 1181138,
-    "type": "image/png",
-    "key": "archive/menus/abc36ca93280d2472dbf5d27a30a811f289968cc8afa2e0b31e50d949cc0c240.png"
-  },
-  "ac782aa432850606d762fc6f5f3c0bacdfa66d37e380b0a74f3be357b8aeb7bd": {
-    "url": "https://knoebels.com/menu/alamo-front-counter/",
-    "fetched": "2026-10-23",
-    "bytes": 3695726,
-    "type": "multipart/related",
-    "key": "archive/menus/ac782aa432850606d762fc6f5f3c0bacdfa66d37e380b0a74f3be357b8aeb7bd.mhtml"
-  },
-  "ac8e2103a78ac3e8f108523ac16012bcd79a6734e59f8d90d25285e2b78d7cd5": {
-    "url": "https://menus.tenkites.com/paultonspark/route83diner",
-    "fetched": "2026-10-23",
-    "bytes": 7679887,
-    "type": "multipart/related",
-    "key": "archive/menus/ac8e2103a78ac3e8f108523ac16012bcd79a6734e59f8d90d25285e2b78d7cd5.mhtml"
-  },
   "ac8ffe52ce55b3f5bdb5b8ead219a214e9a2b50022a242ee4958dab141b9a3be": {
     "url": "https://www.crealy.co.uk/media/rmhfzfjj/a0_donutstop_whippy_menu_poster.pdf",
     "fetched": "2026-10-23",
     "bytes": 9098385,
     "type": "application/pdf",
     "key": "archive/menus/ac8ffe52ce55b3f5bdb5b8ead219a214e9a2b50022a242ee4958dab141b9a3be.pdf"
-  },
-  "acff75576b362a09dd61c484b81f7d93abea3dab60469ace4603c303c21d9d93": {
-    "url": "https://menus.tenkites.com/paultonspark/peppapigworldrefreshments?mguid=6a9f8f8f-1ba1-48c9-ad46-e37269316c92",
-    "fetched": "2026-10-23",
-    "bytes": 407030,
-    "type": "image/png",
-    "key": "archive/menus/acff75576b362a09dd61c484b81f7d93abea3dab60469ace4603c303c21d9d93.png"
   },
   "ad155a446e3086ca7e1c7a3f86355db7e347c73e753a7d93ad749f93fb1d05b7": {
     "url": "https://knoebels.com/menu/kettle-korn/",
@@ -2938,20 +1403,6 @@
     "bytes": 669785,
     "type": "application/pdf",
     "key": "archive/menus/ad43ba5cbb0c27e6997db509e1fc5d7a8a4a3d2b3a676763e5cbe6aec776fdc5.pdf"
-  },
-  "adb8def7ebdb5bbdc59258178cc99a16ad3d52860066f30a7673ec8a929854e6": {
-    "url": "https://knoebels.com/menu/alamo-food-truck/",
-    "fetched": "2026-10-23",
-    "bytes": 623223,
-    "type": "text/html",
-    "key": "archive/menus/adb8def7ebdb5bbdc59258178cc99a16ad3d52860066f30a7673ec8a929854e6.html"
-  },
-  "aea26c13bce80c6d914dee644df2af09282abc0ed1dc138a71f817932c2128fd": {
-    "url": "https://www.flamingoland.co.uk/food-and-drink-menu/the-coach-house/",
-    "fetched": "2026-10-23",
-    "bytes": 890325,
-    "type": "application/json",
-    "key": "archive/menus/aea26c13bce80c6d914dee644df2af09282abc0ed1dc138a71f817932c2128fd.har"
   },
   "aea6c18519bf00e8e658762c7013aacecda6c2f19d9b67ee66d0d8cff3dd657b": {
     "url": "https://menus.tenkites.com/aramarkuk/ataltontowersparkcatering",
@@ -2974,33 +1425,12 @@
     "type": "image/png",
     "key": "archive/menus/aefd30022e348a573b3f4a5be30884444551aead2beeb8342626919bd26dd45d.png"
   },
-  "af38c7be91c69dcaf3bb6ef8368b58a41ced0da5299ae42268e4526e1f168fb5": {
-    "url": "https://menus.tenkites.com/paultonspark/sweettreatkiosks?mguid=b0c1539e-4c76-4317-a257-7bfa6741656b",
-    "fetched": "2026-10-23",
-    "bytes": 4158946,
-    "type": "multipart/related",
-    "key": "archive/menus/af38c7be91c69dcaf3bb6ef8368b58a41ced0da5299ae42268e4526e1f168fb5.mhtml"
-  },
-  "afc72be5b7997644b71fd3ee09efd56a15a1a4ea3aefe519b034d386d74d2604": {
-    "url": "https://knoebels.com/menu/oasis-cafeteria/",
-    "fetched": "2026-10-23",
-    "bytes": 20725887,
-    "type": "application/json",
-    "key": "archive/menus/afc72be5b7997644b71fd3ee09efd56a15a1a4ea3aefe519b034d386d74d2604.har"
-  },
   "b04b849e0a1895176cfcce89bd9aabe60f2990f3c515eda9077feec0295d983b": {
     "url": "https://menus.tenkites.com/aramarkuk/athotel02",
     "fetched": "2026-10-23",
     "bytes": 3233816,
     "type": "application/json",
     "key": "archive/menus/b04b849e0a1895176cfcce89bd9aabe60f2990f3c515eda9077feec0295d983b.har"
-  },
-  "b05b211b605e7da28a218989b0df42aa31179c0b78895ffa5be8161e1ba06191": {
-    "url": "https://www.blackpoolpleasurebeach.com/snack-shack-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 179639,
-    "type": "text/html",
-    "key": "archive/menus/b05b211b605e7da28a218989b0df42aa31179c0b78895ffa5be8161e1ba06191.html"
   },
   "b07f73755766591e54c4c287de7c93cfd8dfd20a402dd6e1a80390c18058ce33": {
     "url": "https://www.legoland.de/media/5gpdqnlt/legoland_stars-grill-house_speisekarte_2026.pdf",
@@ -3009,13 +1439,6 @@
     "type": "application/pdf",
     "key": "archive/menus/b07f73755766591e54c4c287de7c93cfd8dfd20a402dd6e1a80390c18058ce33.pdf"
   },
-  "b0aeb7b9b505154738657098f71ba7c2d684beefb43e206adcb7f559a6bb7704": {
-    "url": "https://knoebels.com/menu/starbucks-express/",
-    "fetched": "2026-10-23",
-    "bytes": 3741696,
-    "type": "multipart/related",
-    "key": "archive/menus/b0aeb7b9b505154738657098f71ba7c2d684beefb43e206adcb7f559a6bb7704.mhtml"
-  },
   "b1a044c266223df8430ff072f3fbafad11029a68f3d3fb5503593e5aadac282c": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2DR06_chez-marie.pdf",
     "fetched": "2026-10-23",
@@ -3023,26 +1446,12 @@
     "type": "application/pdf",
     "key": "archive/menus/b1a044c266223df8430ff072f3fbafad11029a68f3d3fb5503593e5aadac282c.pdf"
   },
-  "b1c917b43a641f6e3775780e595a33ffa03183d1a0f9a9921b7e590c586ff73e": {
-    "url": "https://www.flamingoland.co.uk/food-and-drink-menu/the-coach-house/",
-    "fetched": "2026-10-23",
-    "bytes": 1320083,
-    "type": "multipart/related",
-    "key": "archive/menus/b1c917b43a641f6e3775780e595a33ffa03183d1a0f9a9921b7e590c586ff73e.mhtml"
-  },
   "b3430180d72ffab48e6897ee0c4a550340ac01853bbd7742faf17fab703dc2e7": {
     "url": "https://www.legoland.de/media/xefdidzg/starsgrillhouse_en_2025_speisekarte.pdf",
     "fetched": "2026-10-23",
     "bytes": 4867474,
     "type": "application/pdf",
     "key": "archive/menus/b3430180d72ffab48e6897ee0c4a550340ac01853bbd7742faf17fab703dc2e7.pdf"
-  },
-  "b3f8d691afec75a4ffd70d58ce62cc4827cec84bc470a370934378d0a13680e7": {
-    "url": "https://knoebels.com/menu/soft-serve-ice-cream/",
-    "fetched": "2026-10-23",
-    "bytes": 3785469,
-    "type": "multipart/related",
-    "key": "archive/menus/b3f8d691afec75a4ffd70d58ce62cc4827cec84bc470a370934378d0a13680e7.mhtml"
   },
   "b3fcb2e9bb6342a0a3266e54823bc9f0068762ffc9d8e45ff0632a7dfd9ce240": {
     "url": "https://www.legoland.jp/en/resort-guide/legoland/food/brick-house-burgers/",
@@ -3058,33 +1467,12 @@
     "type": "application/json",
     "key": "archive/menus/b3fec37f6ae0754e01d0f5c4c9aee0cce67e5af54658526fcebb47afc6aed4f1.har"
   },
-  "b40005a4ba70e71f5fe39f0cc069fbb30fc5ca0c26f717b7b2b6d597519c3646": {
-    "url": "https://knoebels.com/menu/stony-gables/",
-    "fetched": "2026-10-23",
-    "bytes": 20723099,
-    "type": "application/json",
-    "key": "archive/menus/b40005a4ba70e71f5fe39f0cc069fbb30fc5ca0c26f717b7b2b6d597519c3646.har"
-  },
   "b4c75609b8bef349fda2510ae783a3d56d4535baf65fdfc52084de34566f27e4": {
     "url": "https://www.crealy.co.uk/media/qu3hacng/costa-menu-web.pdf",
     "fetched": "2026-10-23",
     "bytes": 5264175,
     "type": "application/pdf",
     "key": "archive/menus/b4c75609b8bef349fda2510ae783a3d56d4535baf65fdfc52084de34566f27e4.pdf"
-  },
-  "b4e4274e2e534f11ccc1ab7ff4ea885736e303e69ff8bf707248b81f4df8fba8": {
-    "url": "https://www.flamingoland.co.uk/food-and-drink-menu/the-coach-house/",
-    "fetched": "2026-10-23",
-    "bytes": 32402,
-    "type": "text/html",
-    "key": "archive/menus/b4e4274e2e534f11ccc1ab7ff4ea885736e303e69ff8bf707248b81f4df8fba8.html"
-  },
-  "b5d683aa247b1d74e4ea80d024fc7a0301416445c1fad418d06fb0a9db51d89e": {
-    "url": "https://www.blackpoolpleasurebeach.com/infusion-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 7774119,
-    "type": "multipart/related",
-    "key": "archive/menus/b5d683aa247b1d74e4ea80d024fc7a0301416445c1fad418d06fb0a9db51d89e.mhtml"
   },
   "b5d952c7aa9bd129d4fbb278153eb23374c6bec789e592be52e93dfadf3beda2": {
     "url": "https://www.crealy.co.uk/media/vkrlixtx/chocolatecauldron_web.pdf",
@@ -3093,13 +1481,6 @@
     "type": "application/pdf",
     "key": "archive/menus/b5d952c7aa9bd129d4fbb278153eb23374c6bec789e592be52e93dfadf3beda2.pdf"
   },
-  "b62a42f61e3a74d21c63a512a2ccaa6c702a186e0504fac4bba7187604ed1501": {
-    "url": "https://knoebels.com/menu/roast-beef-stand/",
-    "fetched": "2026-10-23",
-    "bytes": 642157,
-    "type": "text/html",
-    "key": "archive/menus/b62a42f61e3a74d21c63a512a2ccaa6c702a186e0504fac4bba7187604ed1501.html"
-  },
   "b66ceba87e940d8a4220496b9e33c8c507bb99ad73b771ffc1f8c49d31f9c52c": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1NR03_fantasia-gelati.pdf",
     "fetched": "2026-10-23",
@@ -3107,61 +1488,12 @@
     "type": "application/pdf",
     "key": "archive/menus/b66ceba87e940d8a4220496b9e33c8c507bb99ad73b771ffc1f8c49d31f9c52c.pdf"
   },
-  "b66f01c45d5a30666f31f4c19996c9c19b69d05b3ffa437fab2cd224683a2090": {
-    "url": "https://www.blackpoolpleasurebeach.com/beach-burger-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 186651,
-    "type": "text/html",
-    "key": "archive/menus/b66f01c45d5a30666f31f4c19996c9c19b69d05b3ffa437fab2cd224683a2090.html"
-  },
-  "b6f16bdd134d050278aca4effed7461a84a102b8d54706bbc3394ece35da2036": {
-    "url": "https://www.blackpoolpleasurebeach.com/ice-lounge-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 464486,
-    "type": "image/png",
-    "key": "archive/menus/b6f16bdd134d050278aca4effed7461a84a102b8d54706bbc3394ece35da2036.png"
-  },
-  "b72d861de69819e0d8efc0baa2a1c8a50777f7c5c59662565b4f713cac5e85ca": {
-    "url": "https://www.blackpoolpleasurebeach.com/krispy-kreme-rocket-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 177497,
-    "type": "text/html",
-    "key": "archive/menus/b72d861de69819e0d8efc0baa2a1c8a50777f7c5c59662565b4f713cac5e85ca.html"
-  },
-  "b73483328ea004b2274f8a7f5c2e63285c9d61dc473efeb505def1fa85542197": {
-    "url": "https://menus.tenkites.com/paultonspark/wildforestrestaurant",
-    "fetched": "2026-10-23",
-    "bytes": 1833137,
-    "type": "text/html",
-    "key": "archive/menus/b73483328ea004b2274f8a7f5c2e63285c9d61dc473efeb505def1fa85542197.html"
-  },
-  "b7812239af599be6d06a6125466db83f99c9283ceec382fead6aac37bfe2d9a4": {
-    "url": "https://www.blackpoolpleasurebeach.com/chocolate-by-percent/",
-    "fetched": "2026-10-23",
-    "bytes": 187131,
-    "type": "text/html",
-    "key": "archive/menus/b7812239af599be6d06a6125466db83f99c9283ceec382fead6aac37bfe2d9a4.html"
-  },
-  "b788d19250637e69d7eda1220faa082b1fd9acf564aeca12f561b47ca75155ed": {
-    "url": "https://menus.tenkites.com/paultonspark/thehaybarn",
-    "fetched": "2026-10-23",
-    "bytes": 984259,
-    "type": "image/png",
-    "key": "archive/menus/b788d19250637e69d7eda1220faa082b1fd9acf564aeca12f561b47ca75155ed.png"
-  },
   "b83c93c5e5c929cf2f0cfbc36dcf78ff1fc6b304a006f9cdaca75bde23884276": {
     "url": "https://www.legoland.com/california/media/p10pt15t/satellite-bites-menu.pdf",
     "fetched": "2026-10-23",
     "bytes": 9402816,
     "type": "application/pdf",
     "key": "archive/menus/b83c93c5e5c929cf2f0cfbc36dcf78ff1fc6b304a006f9cdaca75bde23884276.pdf"
-  },
-  "b8965186dd0c611b4c87f165dbeb156f86dc973ec72618d43235a78bba0db17f": {
-    "url": "https://www.flamingoland.co.uk/food-and-drink-menu/the-coach-house/",
-    "fetched": "2026-10-23",
-    "bytes": 32402,
-    "type": "text/html",
-    "key": "archive/menus/b8965186dd0c611b4c87f165dbeb156f86dc973ec72618d43235a78bba0db17f.html"
   },
   "b8c60826f16444ad52a81459aa058a8b5ee965b38a3797a1fb8033b6f528d600": {
     "url": "https://www.legoland.jp/en/resort-guide/legoland/food/knight-s-table-restaurant/",
@@ -3177,27 +1509,6 @@
     "type": "application/pdf",
     "key": "archive/menus/b970e4c285de52a0d71db52830dc7bc95489737904e98708e7871480f2e20d7f.pdf"
   },
-  "b97ee301cd1e8c869de6ae8be56f4172657328fb5ac6945e2fe8c7f34d2ecd30": {
-    "url": "https://knoebels.com/menu/round-stand/",
-    "fetched": "2026-10-23",
-    "bytes": 20652421,
-    "type": "application/json",
-    "key": "archive/menus/b97ee301cd1e8c869de6ae8be56f4172657328fb5ac6945e2fe8c7f34d2ecd30.har"
-  },
-  "bba9f84430613c6be9890e4fdb3911e661aeefafa3d398c628cd4526765a1c5e": {
-    "url": "https://menus.tenkites.com/paultonspark/peppapigworldrefreshments?mguid=c678cde0-2412-4246-a60b-5210e485e480",
-    "fetched": "2026-10-23",
-    "bytes": 4317149,
-    "type": "multipart/related",
-    "key": "archive/menus/bba9f84430613c6be9890e4fdb3911e661aeefafa3d398c628cd4526765a1c5e.mhtml"
-  },
-  "bbd533860d7eb6b3b8ab3d39917e6dd745f0fa9bee65e4c8b5ab7babeef39a89": {
-    "url": "https://www.blackpoolpleasurebeach.com/coasters-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 9910944,
-    "type": "multipart/related",
-    "key": "archive/menus/bbd533860d7eb6b3b8ab3d39917e6dd745f0fa9bee65e4c8b5ab7babeef39a89.mhtml"
-  },
   "bc51f66b6be2a3b309266626c605bf3e961b3d7867836a6d598b96535ea01d19": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR02_coffee-grinder.pdf",
     "fetched": "2026-10-23",
@@ -3211,34 +1522,6 @@
     "bytes": 1932632,
     "type": "application/json",
     "key": "archive/menus/bc87d92ad22a5693a3454cb83de2eb8fa9e0cfb030fae71f1b448194927e9ffc.har"
-  },
-  "bd9f61aa83bdf1211ea9ba9611dffc9938b2f3c22824778c4c16c8020581e7b3": {
-    "url": "https://www.blackpoolpleasurebeach.com/ice-lounge-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 450630,
-    "type": "image/png",
-    "key": "archive/menus/bd9f61aa83bdf1211ea9ba9611dffc9938b2f3c22824778c4c16c8020581e7b3.png"
-  },
-  "beb5870fa6b9a2f4c51d06d494a45bef21cef0527d13ec5ec2694a15300ff4d4": {
-    "url": "https://menus.tenkites.com/paultonspark/sweettreatkiosks?mguid=b0c1539e-4c76-4317-a257-7bfa6741656b",
-    "fetched": "2026-10-23",
-    "bytes": 4751058,
-    "type": "application/json",
-    "key": "archive/menus/beb5870fa6b9a2f4c51d06d494a45bef21cef0527d13ec5ec2694a15300ff4d4.har"
-  },
-  "bfccfd9547594c12c112ee4ab74fd82ebdc9b8d0448063e4d9439a637274cb7e": {
-    "url": "https://knoebels.com/menu/potato-barn/",
-    "fetched": "2026-10-23",
-    "bytes": 10591155,
-    "type": "application/json",
-    "key": "archive/menus/bfccfd9547594c12c112ee4ab74fd82ebdc9b8d0448063e4d9439a637274cb7e.har"
-  },
-  "bfd22bffae16d0eb82b9b7a3ca0f65c69a087cb09739fade7e57b0f7dc774e9e": {
-    "url": "https://knoebels.com/menu/rinkside-refreshments/",
-    "fetched": "2026-10-23",
-    "bytes": 1084210,
-    "type": "image/png",
-    "key": "archive/menus/bfd22bffae16d0eb82b9b7a3ca0f65c69a087cb09739fade7e57b0f7dc774e9e.png"
   },
   "c01629b81d50452c6c7bd979eee6ea2155206e47b56081efd9d44f75331f236e": {
     "url": "https://www.legoland.jp/en/resort-guide/legoland/food/ice-factory/",
@@ -3254,54 +1537,12 @@
     "type": "image/png",
     "key": "archive/menus/c060ea6fbd699826112f595e22d663d4c053ed357d96ebf42be7382c2f08a6bb.png"
   },
-  "c0be3b295b6540ebee6826cfbf9d2d0a02d9c2e3fbd6024e3f5547a4be58e002": {
-    "url": "https://www.blackpoolpleasurebeach.com/spudz-2-go-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 14327016,
-    "type": "application/json",
-    "key": "archive/menus/c0be3b295b6540ebee6826cfbf9d2d0a02d9c2e3fbd6024e3f5547a4be58e002.har"
-  },
   "c15bd55da11a002fbd2f053f6af5d276fccd5584ba55e997264ddb8d844e3c30": {
     "url": "https://menus.tenkites.com/aramarkuk/splashlandingshotel02",
     "fetched": "2026-10-23",
     "bytes": 6164297,
     "type": "multipart/related",
     "key": "archive/menus/c15bd55da11a002fbd2f053f6af5d276fccd5584ba55e997264ddb8d844e3c30.mhtml"
-  },
-  "c1c82dc22eda20fd257b02265250815a33d76f3d3d32a20c4f7f8fb8966e1cf2": {
-    "url": "https://knoebels.com/menu/backyard-bbq/",
-    "fetched": "2026-10-23",
-    "bytes": 3850354,
-    "type": "multipart/related",
-    "key": "archive/menus/c1c82dc22eda20fd257b02265250815a33d76f3d3d32a20c4f7f8fb8966e1cf2.mhtml"
-  },
-  "c1d81f9de94e9a14aed8814c097c3a70ac21e4dd33490fdc29de06ab9a971777": {
-    "url": "https://www.blackpoolpleasurebeach.com/beach-burger-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 186642,
-    "type": "text/html",
-    "key": "archive/menus/c1d81f9de94e9a14aed8814c097c3a70ac21e4dd33490fdc29de06ab9a971777.html"
-  },
-  "c22ab6127038c77aab02b6cbbd0c1fc6c2d389497f65d9184ec4ad0c17a68e79": {
-    "url": "https://www.blackpoolpleasurebeach.com/spudz-2-go-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 7569079,
-    "type": "multipart/related",
-    "key": "archive/menus/c22ab6127038c77aab02b6cbbd0c1fc6c2d389497f65d9184ec4ad0c17a68e79.mhtml"
-  },
-  "c33d26db340155dac7e60860191e0cdc8b078131052406b77cb671558ba39250": {
-    "url": "https://knoebels.com/menu/funnel-cakes/",
-    "fetched": "2026-10-23",
-    "bytes": 610805,
-    "type": "text/html",
-    "key": "archive/menus/c33d26db340155dac7e60860191e0cdc8b078131052406b77cb671558ba39250.html"
-  },
-  "c369157edccb861c72886766b2d76432b80660f0556945b867bf06119cd78048": {
-    "url": "https://www.blackpoolpleasurebeach.com/donut-dream-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 428634,
-    "type": "image/png",
-    "key": "archive/menus/c369157edccb861c72886766b2d76432b80660f0556945b867bf06119cd78048.png"
   },
   "c443b7d42d90b1b1d2f98bb7b6de8537f78b87e8e73a4d53c4ed65e6f4206e11": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1RR04_silver-spur-steakhouse.pdf",
@@ -3310,40 +1551,12 @@
     "type": "application/pdf",
     "key": "archive/menus/c443b7d42d90b1b1d2f98bb7b6de8537f78b87e8e73a4d53c4ed65e6f4206e11.pdf"
   },
-  "c4629fb12ecaad494068821f691044fa1669a9b8f9b37916344575dd119cc70d": {
-    "url": "https://menus.tenkites.com/paultonspark/sweettreatkiosks?mguid=b0c1539e-4c76-4317-a257-7bfa6741656b",
-    "fetched": "2026-10-23",
-    "bytes": 414132,
-    "type": "image/png",
-    "key": "archive/menus/c4629fb12ecaad494068821f691044fa1669a9b8f9b37916344575dd119cc70d.png"
-  },
-  "c488d786f491f0cce54cb67de4194efa716f1ffacd27a8fc89c4f29bde151106": {
-    "url": "https://menus.tenkites.com/paultonspark/tornadotreats",
-    "fetched": "2026-10-23",
-    "bytes": 2033625,
-    "type": "application/json",
-    "key": "archive/menus/c488d786f491f0cce54cb67de4194efa716f1ffacd27a8fc89c4f29bde151106.har"
-  },
-  "c49384e31789f4910e71db9807dbfa35b81150651b9dd35665dcf1aeeb99bb15": {
-    "url": "https://menus.tenkites.com/paultonspark/ciaobella",
-    "fetched": "2026-10-23",
-    "bytes": 2614113,
-    "type": "text/html",
-    "key": "archive/menus/c49384e31789f4910e71db9807dbfa35b81150651b9dd35665dcf1aeeb99bb15.html"
-  },
   "c4f596d050f6887aca4f1de8a17b862b5b61caa3a24eb5759d1ede8babe776da": {
     "url": "https://www.legoland.dk/media/gq2bouen/q3-frokost-lunch.pdf",
     "fetched": "2026-10-23",
     "bytes": 129428,
     "type": "application/pdf",
     "key": "archive/menus/c4f596d050f6887aca4f1de8a17b862b5b61caa3a24eb5759d1ede8babe776da.pdf"
-  },
-  "c5c4a4213100a6f8febd5898cc049765fe4b05f575135160d422104b36dc7e8a": {
-    "url": "https://knoebels.com/menu/alamo-food-truck/",
-    "fetched": "2026-10-23",
-    "bytes": 1067326,
-    "type": "image/png",
-    "key": "archive/menus/c5c4a4213100a6f8febd5898cc049765fe4b05f575135160d422104b36dc7e8a.png"
   },
   "c5ed991f2e3f48e1c03378e56a458b3efcb30884e93e1aec412e6b12eda5083f": {
     "url": "https://knoebels.com/menu/french-fry-stand/",
@@ -3380,47 +1593,12 @@
     "type": "multipart/related",
     "key": "archive/menus/c6de84c994925ef90160e4cafcffae925b97e2256c60c33627e0abd09d82a9b0.mhtml"
   },
-  "c72b9e0e13073b9a3107dd84c0e8300a1fb337e993062c47b1491ab77732babc": {
-    "url": "https://menus.tenkites.com/paultonspark/thequeenskitchen",
-    "fetched": "2026-10-23",
-    "bytes": 201859,
-    "type": "text/html",
-    "key": "archive/menus/c72b9e0e13073b9a3107dd84c0e8300a1fb337e993062c47b1491ab77732babc.html"
-  },
   "c7688479bb5d2cfa6f47741c0ed53f78c87d4aa7753fb30e6c7dab0e265246f6": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2PR05_fan-tastic-food-truck.pdf",
     "fetched": "2026-10-23",
     "bytes": 1340679,
     "type": "application/pdf",
     "key": "archive/menus/c7688479bb5d2cfa6f47741c0ed53f78c87d4aa7753fb30e6c7dab0e265246f6.pdf"
-  },
-  "c78495e7baeee3165771cc52026dfaa0093294051841d963c6ed93c48f2a39cd": {
-    "url": "https://menus.tenkites.com/paultonspark/grandecentral",
-    "fetched": "2026-10-23",
-    "bytes": 4739404,
-    "type": "application/json",
-    "key": "archive/menus/c78495e7baeee3165771cc52026dfaa0093294051841d963c6ed93c48f2a39cd.har"
-  },
-  "c79b47e546b71073d989991fc00aa4c7ca7e52bd46ddd4916ecfee85ddbf1101": {
-    "url": "https://www.blackpoolpleasurebeach.com/krispy-kreme-rocket-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 12987505,
-    "type": "application/json",
-    "key": "archive/menus/c79b47e546b71073d989991fc00aa4c7ca7e52bd46ddd4916ecfee85ddbf1101.har"
-  },
-  "c7a0ecd9f5c73365306cd7e5c7a91137f9fbac6deddd3bc29d49f0d0d655dae7": {
-    "url": "https://menus.tenkites.com/paultonspark/wildforestrestaurant",
-    "fetched": "2026-10-23",
-    "bytes": 6214470,
-    "type": "multipart/related",
-    "key": "archive/menus/c7a0ecd9f5c73365306cd7e5c7a91137f9fbac6deddd3bc29d49f0d0d655dae7.mhtml"
-  },
-  "c85d88810e928746f7852a36dc3d6cbc24a8460c0572f28123a822d4ece3582a": {
-    "url": "https://www.blackpoolpleasurebeach.com/donut-dream-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 14642142,
-    "type": "application/json",
-    "key": "archive/menus/c85d88810e928746f7852a36dc3d6cbc24a8460c0572f28123a822d4ece3582a.har"
   },
   "c8bc1aba79f6fb1d765ac620684cb5cc69386e6c61e7728bac9a50419114075c": {
     "url": "https://knoebels.com/menu/kettle-korn/",
@@ -3457,26 +1635,12 @@
     "type": "application/pdf",
     "key": "archive/menus/ca0dba5a2e526008ac32cdd8739a20e90d3d1c6439493f84541232b28f5095fe.pdf"
   },
-  "cb77829ca1f977d37bd51f991ad106a7c7920f626f2837adbcc1fd9da42d0c77": {
-    "url": "https://www.blackpoolpleasurebeach.com/donut-cafe-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 177307,
-    "type": "text/html",
-    "key": "archive/menus/cb77829ca1f977d37bd51f991ad106a7c7920f626f2837adbcc1fd9da42d0c77.html"
-  },
   "cbfbd92a2e1a6622e4c343b9f8c8c767b7f74316e2148ca305b18b7ad699527f": {
     "url": "https://www.legoland.jp/en/resort-guide/legoland/food/marina-snack-shack/",
     "fetched": "2026-10-23",
     "bytes": 1070486,
     "type": "image/png",
     "key": "archive/menus/cbfbd92a2e1a6622e4c343b9f8c8c767b7f74316e2148ca305b18b7ad699527f.png"
-  },
-  "cbfe554031bb1da0ca09a7fa4b0c97dc8f18b151ff41f34e156cfd2a91d3084b": {
-    "url": "https://menus.tenkites.com/paultonspark/thenestkiosk",
-    "fetched": "2026-10-23",
-    "bytes": 3601733,
-    "type": "application/json",
-    "key": "archive/menus/cbfe554031bb1da0ca09a7fa4b0c97dc8f18b151ff41f34e156cfd2a91d3084b.har"
   },
   "cc3397fd58e70b9ff4a939df0e92dfef60e20612d56ef295b163705a119b4cbd": {
     "url": "https://www.legoland.jp/en/resort-guide/legoland/food/kitchen-car-event-area/",
@@ -3485,47 +1649,12 @@
     "type": "multipart/related",
     "key": "archive/menus/cc3397fd58e70b9ff4a939df0e92dfef60e20612d56ef295b163705a119b4cbd.mhtml"
   },
-  "ccb6d1f753ebfc5799d8703cffcc52badb120db99dc71c73d36d5141b9059d84": {
-    "url": "https://menus.tenkites.com/paultonspark/thehaybarn",
-    "fetched": "2026-10-23",
-    "bytes": 8730669,
-    "type": "application/json",
-    "key": "archive/menus/ccb6d1f753ebfc5799d8703cffcc52badb120db99dc71c73d36d5141b9059d84.har"
-  },
   "cce5b45216c250268701343effbbe10036ca764a0f359579845baa342e04b5e6": {
     "url": "https://www.legoland.jp/en/resort-guide/legoland/food/ollie-s-popcorn-stand/",
     "fetched": "2026-10-23",
     "bytes": 1876154,
     "type": "multipart/related",
     "key": "archive/menus/cce5b45216c250268701343effbbe10036ca764a0f359579845baa342e04b5e6.mhtml"
-  },
-  "cd9551068321eaebb2c02328606591c9bb73a37b78892ae412e455bbc9de0206": {
-    "url": "https://www.blackpoolpleasurebeach.com/donut-dream-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 442450,
-    "type": "image/png",
-    "key": "archive/menus/cd9551068321eaebb2c02328606591c9bb73a37b78892ae412e455bbc9de0206.png"
-  },
-  "ce506dd9c855efd0247920746978e3fb667228c42914e4d5447eed13b9e81455": {
-    "url": "https://knoebels.com/menu/wharf/",
-    "fetched": "2026-10-23",
-    "bytes": 3809432,
-    "type": "multipart/related",
-    "key": "archive/menus/ce506dd9c855efd0247920746978e3fb667228c42914e4d5447eed13b9e81455.mhtml"
-  },
-  "ce90d3bd09a9c0baa53363bd5f6ed3cad0b33841a9bb75d7a91ccb918f11f2e0": {
-    "url": "https://knoebels.com/menu/dippin-dots/",
-    "fetched": "2026-10-23",
-    "bytes": 599596,
-    "type": "text/html",
-    "key": "archive/menus/ce90d3bd09a9c0baa53363bd5f6ed3cad0b33841a9bb75d7a91ccb918f11f2e0.html"
-  },
-  "ce92b32e321618299eaa1423edad938c8d1884b094e10b342c025b28958be3d8": {
-    "url": "https://www.blackpoolpleasurebeach.com/fy4-fish-chips-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 178774,
-    "type": "text/html",
-    "key": "archive/menus/ce92b32e321618299eaa1423edad938c8d1884b094e10b342c025b28958be3d8.html"
   },
   "cf136e853c296d4d1b0a4f70009a3184b4a024fe4efc0d2283715b4c302d05f8": {
     "url": "https://knoebels.com/menu/french-fry-stand/",
@@ -3541,13 +1670,6 @@
     "type": "multipart/related",
     "key": "archive/menus/cf603936d8cd06ea08a9ea3e598fd50e231acfae91dd9951faed7119821e2226.mhtml"
   },
-  "cf78b5128f295b3089f5f366f7f8e19dd415e968bc2ccd669e6a56a2a5764cd7": {
-    "url": "https://www.blackpoolpleasurebeach.com/fy4-fish-chips-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 14714358,
-    "type": "application/json",
-    "key": "archive/menus/cf78b5128f295b3089f5f366f7f8e19dd415e968bc2ccd669e6a56a2a5764cd7.har"
-  },
   "cfea9c98f3b6d24e8312b4eb22573421f81d27aa121267ee642d9db8e8fe3aa5": {
     "url": "https://www.legoland.jp/en/resort-guide/legoland/food/kitchen-car-event-area/",
     "fetched": "2026-10-23",
@@ -3561,13 +1683,6 @@
     "bytes": 914409,
     "type": "text/html",
     "key": "archive/menus/d0adbc57bfaa96220cbbc97ca03415c650e72e361ae2c30c88bbcdcbcafc92d9.html"
-  },
-  "d0d87c9160e4716a508427bfa58aca80bf9d41eff390618beb8d4c615a8cc786": {
-    "url": "https://www.blackpoolpleasurebeach.com/lokis-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 6418836,
-    "type": "multipart/related",
-    "key": "archive/menus/d0d87c9160e4716a508427bfa58aca80bf9d41eff390618beb8d4c615a8cc786.mhtml"
   },
   "d2129ee4897c150ea84494d0761f132a47f7c1dba968246e472c8176c55fce27": {
     "url": "https://www.legoland.jp/en/resort-guide/legoland/food/factory-sandwich-co/",
@@ -3583,26 +1698,12 @@
     "type": "image/png",
     "key": "archive/menus/d21c4b7fc944892e8610465556f3b5fd5f21ece203a252c5d3b8b0e8e1f9c8d3.png"
   },
-  "d22d87fc352efbb49e7dab54a1e9930fb3f4447e01ef562e8189503ded96433f": {
-    "url": "https://www.blackpoolpleasurebeach.com/big-pizza-kitchen-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 471217,
-    "type": "image/png",
-    "key": "archive/menus/d22d87fc352efbb49e7dab54a1e9930fb3f4447e01ef562e8189503ded96433f.png"
-  },
   "d2343d2b742ac24850dd87843dc9cb5b9377a654cc6d2d13e12f62496bce9bc2": {
     "url": "https://www.legoland.jp/en/resort-guide/legoland/food/big-bricks-stand/",
     "fetched": "2026-10-23",
     "bytes": 1594516,
     "type": "image/png",
     "key": "archive/menus/d2343d2b742ac24850dd87843dc9cb5b9377a654cc6d2d13e12f62496bce9bc2.png"
-  },
-  "d2ef1d933b66cc537403a8b36235c8fe7cf9c6988d15d19941e59c694cd05bc1": {
-    "url": "https://knoebels.com/menu/patio-grill/",
-    "fetched": "2026-10-23",
-    "bytes": 20733794,
-    "type": "application/json",
-    "key": "archive/menus/d2ef1d933b66cc537403a8b36235c8fe7cf9c6988d15d19941e59c694cd05bc1.har"
   },
   "d2fad0891cd71541b20d92c8b852b802886fee53bc29fc43d16f990838cfc5e5": {
     "url": "https://www.bigbluehotel.com/app/uploads/2026/09/BBHTDH-September-October-2026.pdf",
@@ -3625,13 +1726,6 @@
     "type": "application/pdf",
     "key": "archive/menus/d330dafe4824300e282ab327f408434e72f6c49f3ccf846051f7fcfc0144a692.pdf"
   },
-  "d35d1e83ff3db53ac1abce58ad175b55e275e322244a8e44b84281edd5231922": {
-    "url": "https://knoebels.com/menu/kandy-korners/",
-    "fetched": "2026-10-23",
-    "bytes": 4009755,
-    "type": "multipart/related",
-    "key": "archive/menus/d35d1e83ff3db53ac1abce58ad175b55e275e322244a8e44b84281edd5231922.mhtml"
-  },
   "d3617053b802a71789984950b580369820f54766ce0db22d594e4d51ef342c4c": {
     "url": "https://menus.tenkites.com/aramarkuk/enchantedvillage02",
     "fetched": "2026-10-23",
@@ -3645,27 +1739,6 @@
     "bytes": 2722577,
     "type": "multipart/related",
     "key": "archive/menus/d374b4cafc72b540cc73a1fe52f7673cbf9aa8cae0ac9fcbc53f8bf6b5c14a1f.mhtml"
-  },
-  "d38b975f5b45c25d862707e8c55d269a9653e64a7f7881faa5cebb223e22d4e0": {
-    "url": "https://knoebels.com/menu/patio-grill/",
-    "fetched": "2026-10-23",
-    "bytes": 3857924,
-    "type": "multipart/related",
-    "key": "archive/menus/d38b975f5b45c25d862707e8c55d269a9653e64a7f7881faa5cebb223e22d4e0.mhtml"
-  },
-  "d41244886511ebdad853e96613a43e473ce9d7f8ddb14dd001148aa4a2a2e091": {
-    "url": "https://knoebels.com/menu/potato-cake-stand/",
-    "fetched": "2026-10-23",
-    "bytes": 1409068,
-    "type": "image/png",
-    "key": "archive/menus/d41244886511ebdad853e96613a43e473ce9d7f8ddb14dd001148aa4a2a2e091.png"
-  },
-  "d4d49fa15a07da270bd8ff95b7e236129e69f38f0608be7201074f1f96c8740e": {
-    "url": "https://www.blackpoolpleasurebeach.com/coasters-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 198483,
-    "type": "text/html",
-    "key": "archive/menus/d4d49fa15a07da270bd8ff95b7e236129e69f38f0608be7201074f1f96c8740e.html"
   },
   "d57f653db618a3f682545819d95442f46749bf4fdfd4ea6e55f09c41f248429b": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2DR00_the-regal-view-restaurant-and-lounge.pdf",
@@ -3695,33 +1768,12 @@
     "type": "application/pdf",
     "key": "archive/menus/d68d1b9e1ed411292fc61cb1a8916e89ebdcfcbe710ced45ee75e7e93668342a.pdf"
   },
-  "d69d9cc72f445f7664cd79426d222898667ef597f9d7a133b2145843f14e8f0d": {
-    "url": "https://www.blackpoolpleasurebeach.com/t-cafe-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 183361,
-    "type": "text/html",
-    "key": "archive/menus/d69d9cc72f445f7664cd79426d222898667ef597f9d7a133b2145843f14e8f0d.html"
-  },
-  "d756a1a2c543791711d95d505b297ae4133f030a75d89748c9064aea30ff63d2": {
-    "url": "https://www.blackpoolpleasurebeach.com/beach-burger-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 431658,
-    "type": "image/png",
-    "key": "archive/menus/d756a1a2c543791711d95d505b297ae4133f030a75d89748c9064aea30ff63d2.png"
-  },
   "d76dd3ed79b93e2bb3e5cba2d6dd300377758f4fca30acb918e18aa6acc76447": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2AR02_pym.pdf",
     "fetched": "2026-10-23",
     "bytes": 2068428,
     "type": "application/pdf",
     "key": "archive/menus/d76dd3ed79b93e2bb3e5cba2d6dd300377758f4fca30acb918e18aa6acc76447.pdf"
-  },
-  "d7d240d953aa968a045e911891c19ebeb5dc3d72999f183356de3f8f7116cd87": {
-    "url": "https://www.blackpoolpleasurebeach.com/fy4-fish-chips-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 182883,
-    "type": "text/html",
-    "key": "archive/menus/d7d240d953aa968a045e911891c19ebeb5dc3d72999f183356de3f8f7116cd87.html"
   },
   "d84112221ce590894f870ccbb8e0b834780052ac7a612b730164b06cf7407ce5": {
     "url": "https://menus.tenkites.com/aramarkuk/rollercoasterrestaurantat02",
@@ -3730,33 +1782,12 @@
     "type": "image/png",
     "key": "archive/menus/d84112221ce590894f870ccbb8e0b834780052ac7a612b730164b06cf7407ce5.png"
   },
-  "d8e5abc8ba0c248be6b18f90b8af57181536301d0961e918da7c49e6e8f5df45": {
-    "url": "https://www.blackpoolpleasurebeach.com/bubble-waffle-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 185092,
-    "type": "text/html",
-    "key": "archive/menus/d8e5abc8ba0c248be6b18f90b8af57181536301d0961e918da7c49e6e8f5df45.html"
-  },
-  "d8fc44b438c6af4fe191f8dffb4f6a9a3aec98f446d9270540f1c82c64483ac0": {
-    "url": "https://www.blackpoolpleasurebeach.com/big-pizza-kitchen-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 183594,
-    "type": "text/html",
-    "key": "archive/menus/d8fc44b438c6af4fe191f8dffb4f6a9a3aec98f446d9270540f1c82c64483ac0.html"
-  },
   "d90fce2e82e10c8df9cccf3c515d8dccaa712400ff669e3c0e74e6274a3969ca": {
     "url": "https://www.thorpepark.com/media/dc0pery5/veggie-box-menu.pdf",
     "fetched": "2026-10-23",
     "bytes": 1279289,
     "type": "application/pdf",
     "key": "archive/menus/d90fce2e82e10c8df9cccf3c515d8dccaa712400ff669e3c0e74e6274a3969ca.pdf"
-  },
-  "d9275f984fb4c61f5950a661bf5aa2e89272ca25a165f1ffb76f0ef8149f1738": {
-    "url": "https://knoebels.com/menu/backyard-bbq/",
-    "fetched": "2026-10-23",
-    "bytes": 1187332,
-    "type": "image/png",
-    "key": "archive/menus/d9275f984fb4c61f5950a661bf5aa2e89272ca25a165f1ffb76f0ef8149f1738.png"
   },
   "d97fa5a9056f7e9801e7b1686cf8ad2bcd68397c1fd94d914c45d717ad467624": {
     "url": "https://menus.tenkites.com/aramarkuk/enchantedvillage02",
@@ -3771,13 +1802,6 @@
     "bytes": 59977,
     "type": "application/pdf",
     "key": "archive/menus/da533875bf41724a369820023c5da2fe188a860042f39ac739b77898aa7e7120.pdf"
-  },
-  "da6025f130e38f50dc7efdeb7299626a031e58e8d4c4c84d40c6abffbb3784e1": {
-    "url": "https://knoebels.com/menu/patio-grill/",
-    "fetched": "2026-10-23",
-    "bytes": 636426,
-    "type": "text/html",
-    "key": "archive/menus/da6025f130e38f50dc7efdeb7299626a031e58e8d4c4c84d40c6abffbb3784e1.html"
   },
   "dac2aa57f9776b2107a449024f4c4f5865d317a2573f5adb073430d2ee3591e5": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1NR07_toad-hall-restaurant.pdf",
@@ -3800,13 +1824,6 @@
     "type": "multipart/related",
     "key": "archive/menus/dc2b74efb120da4c03953877c05e0f09c700b34a5e079f2831bd575541536e35.mhtml"
   },
-  "dc6d917b17f82432cfd545dc0356e7ed2df04529e0faf564b756f98f0ab420ed": {
-    "url": "https://knoebels.com/menu/international-food-court/",
-    "fetched": "2026-10-23",
-    "bytes": 1735682,
-    "type": "image/png",
-    "key": "archive/menus/dc6d917b17f82432cfd545dc0356e7ed2df04529e0faf564b756f98f0ab420ed.png"
-  },
   "dd05fde52f8bdf77e179f77f2eb09357c1332350d90693becdbe8c96c3a42ce2": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1DR04_lounge-lightspeed.pdf",
     "fetched": "2026-10-23",
@@ -3827,27 +1844,6 @@
     "bytes": 419351,
     "type": "application/pdf",
     "key": "archive/menus/de0f13db6b3f72d2b1b804590a7624bb1040b8f57d211bcb4be5c1ab55f6a494.pdf"
-  },
-  "df0310fbe29191636eba8994bfdb805c1a2f425030dee95a4f6bf37594b8c416": {
-    "url": "https://knoebels.com/menu/totem-treats/",
-    "fetched": "2026-10-23",
-    "bytes": 627231,
-    "type": "text/html",
-    "key": "archive/menus/df0310fbe29191636eba8994bfdb805c1a2f425030dee95a4f6bf37594b8c416.html"
-  },
-  "df83023ee0aa9d06fb6bcc38f4db1d541169f684efedccd7657b38b978ac8864": {
-    "url": "https://www.blackpoolpleasurebeach.com/donut-cafe-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 435902,
-    "type": "image/png",
-    "key": "archive/menus/df83023ee0aa9d06fb6bcc38f4db1d541169f684efedccd7657b38b978ac8864.png"
-  },
-  "dfb16798161f5defe6b9772c468ea859abf4087f2a3eb8edbb763b7f7c01b8d5": {
-    "url": "https://knoebels.com/menu/phoenix-junction/",
-    "fetched": "2026-10-23",
-    "bytes": 667375,
-    "type": "text/html",
-    "key": "archive/menus/dfb16798161f5defe6b9772c468ea859abf4087f2a3eb8edbb763b7f7c01b8d5.html"
   },
   "dffced298e0e48c245a7ef92f83a7d1197eb3a8caff336e6158091d57ab4ace9": {
     "url": "https://knoebels.com/menu/alamo/",
@@ -3884,40 +1880,12 @@
     "type": "multipart/related",
     "key": "archive/menus/e0ffe7929832154053223464bd158a9bcb904257a47b013afabbddf33700c706.mhtml"
   },
-  "e14c76ff72b0852ccd21765e061ad573c7d804fac40ed5babf37fa7c490b36d4": {
-    "url": "https://knoebels.com/menu/kandy-korners/",
-    "fetched": "2026-10-23",
-    "bytes": 656939,
-    "type": "text/html",
-    "key": "archive/menus/e14c76ff72b0852ccd21765e061ad573c7d804fac40ed5babf37fa7c490b36d4.html"
-  },
   "e17dd2fda8ee1e861981111eb8b2b1028354a50f2a4eec50b6000ab0e07474f6": {
     "url": "https://menus.tenkites.com/paultonspark/beastiebites",
     "fetched": "2026-10-23",
     "bytes": 2019291,
     "type": "application/json",
     "key": "archive/menus/e17dd2fda8ee1e861981111eb8b2b1028354a50f2a4eec50b6000ab0e07474f6.har"
-  },
-  "e1a55b8b7fa441a5de248abcb57d3a66b6330e034616c629f7efd368c55c3de1": {
-    "url": "https://www.blackpoolpleasurebeach.com/coasters-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 588808,
-    "type": "image/png",
-    "key": "archive/menus/e1a55b8b7fa441a5de248abcb57d3a66b6330e034616c629f7efd368c55c3de1.png"
-  },
-  "e22658f9e0b15419e9677da29def3635d09da732a5bf307f67c79aeff503396b": {
-    "url": "https://knoebels.com/menu/alamo-front-counter/",
-    "fetched": "2026-10-23",
-    "bytes": 20421872,
-    "type": "application/json",
-    "key": "archive/menus/e22658f9e0b15419e9677da29def3635d09da732a5bf307f67c79aeff503396b.har"
-  },
-  "e27b9da8e249521a50604edceeb0d2b61402c13213fca76809c7cf2952b1d181": {
-    "url": "https://www.blackpoolpleasurebeach.com/lokis-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 6560728,
-    "type": "multipart/related",
-    "key": "archive/menus/e27b9da8e249521a50604edceeb0d2b61402c13213fca76809c7cf2952b1d181.mhtml"
   },
   "e282f509489048e3a7572a887825538573ed3f648fe937e69e007e2715325ba4": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2AR03_super-diner.pdf",
@@ -3933,61 +1901,12 @@
     "type": "text/html",
     "key": "archive/menus/e32880011a371cd21fc0257215206d84ba4fd86f76169b67e1a3b4ac0723d84b.html"
   },
-  "e3543a8ed86c6b9bd7380e5a1a7e74df34962e2ad3b38e61fcc4ae0efd6d6db6": {
-    "url": "https://knoebels.com/menu/cookie-nook/",
-    "fetched": "2026-10-23",
-    "bytes": 20840507,
-    "type": "application/json",
-    "key": "archive/menus/e3543a8ed86c6b9bd7380e5a1a7e74df34962e2ad3b38e61fcc4ae0efd6d6db6.har"
-  },
-  "e3657fcadc0250b4c0a3348315b58ab9a6ca81624481a9a70cb1b3f2dadadd8b": {
-    "url": "https://knoebels.com/menu/rinkside-refreshments/",
-    "fetched": "2026-10-23",
-    "bytes": 20424768,
-    "type": "application/json",
-    "key": "archive/menus/e3657fcadc0250b4c0a3348315b58ab9a6ca81624481a9a70cb1b3f2dadadd8b.har"
-  },
-  "e3b67665643fdc546f6697d6fb8cc51b8cc44ed30f379a0e78198bfe53b34ee0": {
-    "url": "https://www.blackpoolpleasurebeach.com/t-cafe-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 397557,
-    "type": "image/png",
-    "key": "archive/menus/e3b67665643fdc546f6697d6fb8cc51b8cc44ed30f379a0e78198bfe53b34ee0.png"
-  },
-  "e438fe164baacd2867df84560f7ccc5cd337d56dc55c1673610eec6892141c92": {
-    "url": "https://menus.tenkites.com/paultonspark/wildforestrestaurant",
-    "fetched": "2026-10-23",
-    "bytes": 6552592,
-    "type": "application/json",
-    "key": "archive/menus/e438fe164baacd2867df84560f7ccc5cd337d56dc55c1673610eec6892141c92.har"
-  },
   "e4505d8b1c0d9d229601d8c00ccc07a96eea78e43f8f1f7961553116a6c54027": {
     "url": "https://www.legoland.jp/en/resort-guide/legoland/food/factory-sandwich-co/",
     "fetched": "2026-10-23",
     "bytes": 2191606,
     "type": "multipart/related",
     "key": "archive/menus/e4505d8b1c0d9d229601d8c00ccc07a96eea78e43f8f1f7961553116a6c54027.mhtml"
-  },
-  "e47cdd40718978bbaa92a1354258c32a2b31c598e102823f44ce232603ce1ed4": {
-    "url": "https://menus.tenkites.com/paultonspark/peppapigworldrefreshments?mguid=6a9f8f8f-1ba1-48c9-ad46-e37269316c92",
-    "fetched": "2026-10-23",
-    "bytes": 1376480,
-    "type": "text/html",
-    "key": "archive/menus/e47cdd40718978bbaa92a1354258c32a2b31c598e102823f44ce232603ce1ed4.html"
-  },
-  "e4fe8e3964376d45de5aee4a7d5ef8c0eb0fb156cf6a854d2eccffce3f0470d9": {
-    "url": "https://www.blackpoolpleasurebeach.com/infusion-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 8192127,
-    "type": "multipart/related",
-    "key": "archive/menus/e4fe8e3964376d45de5aee4a7d5ef8c0eb0fb156cf6a854d2eccffce3f0470d9.mhtml"
-  },
-  "e5216778761439a8a333a80354c8fddefeb470ce303025e6ba3f082addc0da9e": {
-    "url": "https://www.blackpoolpleasurebeach.com/bubble-waffle-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 8944425,
-    "type": "multipart/related",
-    "key": "archive/menus/e5216778761439a8a333a80354c8fddefeb470ce303025e6ba3f082addc0da9e.mhtml"
   },
   "e525c575031a8655149663adf79cde8b7fcaf457866fce8022d85b6604367a85": {
     "url": "https://www.legoland.kr/media/ngreucl1/%EB%B8%8C%EB%A6%AD%EC%8A%A4%ED%8A%B8%EB%A6%BF%EC%B9%B4%ED%8E%98%EB%A9%94%EB%89%B4.pdf",
@@ -4002,27 +1921,6 @@
     "bytes": 26502,
     "type": "image/png",
     "key": "archive/menus/e6a1fd0cfabd6f09eb7a58d1272b91c55a504aaaa577d8684555db9c503e5641.png"
-  },
-  "e6c3e53b92f6f8647edceecf1b3431211379ce642f77846b02bdcb089be34a63": {
-    "url": "https://www.blackpoolpleasurebeach.com/t-cafe-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 412042,
-    "type": "image/png",
-    "key": "archive/menus/e6c3e53b92f6f8647edceecf1b3431211379ce642f77846b02bdcb089be34a63.png"
-  },
-  "e7038c8a4c787b68ada0ce186e2c7bd0bb558dcf13dd1366f5c5f028e05a7b9a": {
-    "url": "https://www.blackpoolpleasurebeach.com/donut-cafe-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 7986941,
-    "type": "multipart/related",
-    "key": "archive/menus/e7038c8a4c787b68ada0ce186e2c7bd0bb558dcf13dd1366f5c5f028e05a7b9a.mhtml"
-  },
-  "e730231082b19312d7ba3b9bad9569eae14c0bd7bee20fd1030a7ec87fe9004d": {
-    "url": "https://knoebels.com/menu/roast-beef-stand/",
-    "fetched": "2026-10-23",
-    "bytes": 3809688,
-    "type": "multipart/related",
-    "key": "archive/menus/e730231082b19312d7ba3b9bad9569eae14c0bd7bee20fd1030a7ec87fe9004d.mhtml"
   },
   "e79da718fff0b163a8207260be1072cb1b04267f64d01dd443384af69b53f6c4": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR01_caseys-corner.pdf",
@@ -4080,13 +1978,6 @@
     "type": "application/pdf",
     "key": "archive/menus/ecfa4bbd56f457ca7112a25c0f9a9c855ab47db91ae31e62cea5e32daf977354.pdf"
   },
-  "ed79ea19d724cde30977b1db1b8c1320fc5ebefebffaac13540952cbd1fbb054": {
-    "url": "https://www.blackpoolpleasurebeach.com/chocolate-by-percent/",
-    "fetched": "2026-10-23",
-    "bytes": 15732126,
-    "type": "application/json",
-    "key": "archive/menus/ed79ea19d724cde30977b1db1b8c1320fc5ebefebffaac13540952cbd1fbb054.har"
-  },
   "ed9e9f2b5cf9660049d17d46cc41a820b112958ff627c469f492d379ceab76eb": {
     "url": "https://www.flamingoland.co.uk/wp-content/uploads/2009/07/The-Coach-House-Menu.pdf",
     "fetched": "2026-10-23",
@@ -4122,40 +2013,12 @@
     "type": "application/pdf",
     "key": "archive/menus/f0c19ae619e4b3fcdaed27e09ffc3ac4a0bf6622c24e95c3d5e323c134d14545.pdf"
   },
-  "f18ec09b949cc10247dbd89576dcc13068ad9b1e76e46bac63f59fa6c3c950c8": {
-    "url": "https://menus.tenkites.com/paultonspark/route83diner",
-    "fetched": "2026-10-23",
-    "bytes": 9639867,
-    "type": "application/json",
-    "key": "archive/menus/f18ec09b949cc10247dbd89576dcc13068ad9b1e76e46bac63f59fa6c3c950c8.har"
-  },
-  "f20607ec08363c51931f326845bd97a678c01ebda70a96bba7a75b67429fcdb8": {
-    "url": "https://menus.tenkites.com/paultonspark/wildforestrestaurant",
-    "fetched": "2026-10-23",
-    "bytes": 6214470,
-    "type": "multipart/related",
-    "key": "archive/menus/f20607ec08363c51931f326845bd97a678c01ebda70a96bba7a75b67429fcdb8.mhtml"
-  },
-  "f216fd762dd53c3f80b22cf65aa76096016fcac1d42bda7c69a75d5dc5ec4226": {
-    "url": "https://knoebels.com/menu/phoenix-junction/",
-    "fetched": "2026-10-23",
-    "bytes": 3911836,
-    "type": "multipart/related",
-    "key": "archive/menus/f216fd762dd53c3f80b22cf65aa76096016fcac1d42bda7c69a75d5dc5ec4226.mhtml"
-  },
   "f2180656d8007a48611eebe40d74f25d146a36edb8a60203ff015dd2f84b557a": {
     "url": "https://www.legoland.jp/en/resort-guide/legoland/food/ninja-kitchen/",
     "fetched": "2026-10-23",
     "bytes": 1623300,
     "type": "image/png",
     "key": "archive/menus/f2180656d8007a48611eebe40d74f25d146a36edb8a60203ff015dd2f84b557a.png"
-  },
-  "f2758f0e1cf6a01092bd2abebff2dfbb7a48da0c85a168388d9df51083ebe266": {
-    "url": "https://menus.tenkites.com/paultonspark/sweettreatkiosks?mguid=b0c1539e-4c76-4317-a257-7bfa6741656b",
-    "fetched": "2026-10-23",
-    "bytes": 1364423,
-    "type": "text/html",
-    "key": "archive/menus/f2758f0e1cf6a01092bd2abebff2dfbb7a48da0c85a168388d9df51083ebe266.html"
   },
   "f2c2c2e3cdca0245e3ddb0c108960357ce180286cbf36c64483411315f92d614": {
     "url": "https://www.legoland.jp/en/resort-guide/legoland/food/ollie-s-popcorn-stand/",
@@ -4164,33 +2027,12 @@
     "type": "application/json",
     "key": "archive/menus/f2c2c2e3cdca0245e3ddb0c108960357ce180286cbf36c64483411315f92d614.har"
   },
-  "f33217112b11226bbc70ad48d3601fd0cc6c8974f2e23b5a7294a5e5182b85fb": {
-    "url": "https://knoebels.com/menu/funnel-cakes/",
-    "fetched": "2026-10-23",
-    "bytes": 3869998,
-    "type": "multipart/related",
-    "key": "archive/menus/f33217112b11226bbc70ad48d3601fd0cc6c8974f2e23b5a7294a5e5182b85fb.mhtml"
-  },
   "f377b8eacdee2514fac76d2223bddb54ff5faa273676716443b0a8df179fce62": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1AR06_agrabah-cafe.pdf",
     "fetched": "2026-10-23",
     "bytes": 469342,
     "type": "application/pdf",
     "key": "archive/menus/f377b8eacdee2514fac76d2223bddb54ff5faa273676716443b0a8df179fce62.pdf"
-  },
-  "f527b5780c61439528811fcbf302c889b751ca03b73acf417a3b0aaa143f21b1": {
-    "url": "https://www.blackpoolpleasurebeach.com/lokis-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 13392606,
-    "type": "application/json",
-    "key": "archive/menus/f527b5780c61439528811fcbf302c889b751ca03b73acf417a3b0aaa143f21b1.har"
-  },
-  "f58375776453f7ed31a69b557a27d60b0ada61a9a9c2ad718d9fbbb3d425e864": {
-    "url": "https://www.blackpoolpleasurebeach.com/spudz-2-go-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 179008,
-    "type": "text/html",
-    "key": "archive/menus/f58375776453f7ed31a69b557a27d60b0ada61a9a9c2ad718d9fbbb3d425e864.html"
   },
   "f5e06f6beb208df15d6962960b4654f739d6f244af222684051748a74a542f78": {
     "url": "https://menus.tenkites.com/aramarkuk/enchantedvillage02",
@@ -4199,20 +2041,6 @@
     "type": "multipart/related",
     "key": "archive/menus/f5e06f6beb208df15d6962960b4654f739d6f244af222684051748a74a542f78.mhtml"
   },
-  "f6458514fcfb14e2269d20090d5cfaf3eec1b7f21364c3cad3a2ecd4842d38e1": {
-    "url": "https://www.blackpoolpleasurebeach.com/snack-shack-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 183748,
-    "type": "text/html",
-    "key": "archive/menus/f6458514fcfb14e2269d20090d5cfaf3eec1b7f21364c3cad3a2ecd4842d38e1.html"
-  },
-  "f6e08fb647a5dbb71f420e26293eb6d6d14ccd9c32d6ca966ef233d64e4b7487": {
-    "url": "https://www.blackpoolpleasurebeach.com/krispy-kreme-rocket-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 481353,
-    "type": "image/png",
-    "key": "archive/menus/f6e08fb647a5dbb71f420e26293eb6d6d14ccd9c32d6ca966ef233d64e4b7487.png"
-  },
   "f6e4f1ad9ee84b2b380c7ef944ec203b97273bb7e41670bc40d36644cc7a2ecb": {
     "url": "https://menus.tenkites.com/paultonspark/cascades",
     "fetched": "2026-10-23",
@@ -4220,40 +2048,12 @@
     "type": "application/json",
     "key": "archive/menus/f6e4f1ad9ee84b2b380c7ef944ec203b97273bb7e41670bc40d36644cc7a2ecb.har"
   },
-  "f7d2da99f6ba8a62acb52d3de5559ad56ab72137850621361ab62983720fc66f": {
-    "url": "https://knoebels.com/menu/potato-barn/",
-    "fetched": "2026-10-23",
-    "bytes": 677412,
-    "type": "text/html",
-    "key": "archive/menus/f7d2da99f6ba8a62acb52d3de5559ad56ab72137850621361ab62983720fc66f.html"
-  },
-  "f7d6bf7f20d0502e73b379ed35b2d70e1d9fdde29319aab5659047d7727de49f": {
-    "url": "https://menus.tenkites.com/paultonspark/peppapigworldrefreshments?mguid=29634edb-567a-4a3e-8557-3ecd8b89805e",
-    "fetched": "2026-10-23",
-    "bytes": 417335,
-    "type": "image/png",
-    "key": "archive/menus/f7d6bf7f20d0502e73b379ed35b2d70e1d9fdde29319aab5659047d7727de49f.png"
-  },
-  "f841633defe3ac9eb0d05b952506efaad6e0c95a50ec3812574e112d78bbd02d": {
-    "url": "https://menus.tenkites.com/paultonspark/thequeenskitchen",
-    "fetched": "2026-10-23",
-    "bytes": 50276,
-    "type": "image/png",
-    "key": "archive/menus/f841633defe3ac9eb0d05b952506efaad6e0c95a50ec3812574e112d78bbd02d.png"
-  },
   "f9f12fc5bdb183ae9f969c30f6dac8adaba68e090b1ba12d3f3145fe18443a8d": {
     "url": "https://www.legoland.jp/en/resort-guide/legoland/food/abominable-slushies/",
     "fetched": "2026-10-23",
     "bytes": 1828692,
     "type": "multipart/related",
     "key": "archive/menus/f9f12fc5bdb183ae9f969c30f6dac8adaba68e090b1ba12d3f3145fe18443a8d.mhtml"
-  },
-  "faa194fb5bed3ab883786c81ec8b234f75afb586511d9b2845d0920753344018": {
-    "url": "https://www.blackpoolpleasurebeach.com/lokis-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 13187708,
-    "type": "application/json",
-    "key": "archive/menus/faa194fb5bed3ab883786c81ec8b234f75afb586511d9b2845d0920753344018.har"
   },
   "fc255c56a91c4aa8f4d02742836bc65b9478888902b91cef0d64cb39c808d0cf": {
     "url": "https://www.legoland.jp/en/resort-guide/legoland/food/ollie-s-popcorn-stand/",
@@ -4283,27 +2083,6 @@
     "type": "text/html",
     "key": "archive/menus/fd343af2cea01e53763131043eac19dc765f3a41c6e120896a2dfc17eb751031.html"
   },
-  "fd3a63e5665eaa28468695de1bbe3663d2679ffe27cf809cab9cd8c85c7af4ee": {
-    "url": "https://knoebels.com/menu/rinkside-refreshments/",
-    "fetched": "2026-10-23",
-    "bytes": 634285,
-    "type": "text/html",
-    "key": "archive/menus/fd3a63e5665eaa28468695de1bbe3663d2679ffe27cf809cab9cd8c85c7af4ee.html"
-  },
-  "fd3ba6dbfcc9de32a6a38e0e9f8f61beac801670296d22c64313fd20f10f8408": {
-    "url": "https://menus.tenkites.com/paultonspark/peppapigworldrefreshments?mguid=c678cde0-2412-4246-a60b-5210e485e480",
-    "fetched": "2026-10-23",
-    "bytes": 443777,
-    "type": "image/png",
-    "key": "archive/menus/fd3ba6dbfcc9de32a6a38e0e9f8f61beac801670296d22c64313fd20f10f8408.png"
-  },
-  "fd8921c4fcf8aae77140d3e35335975beee2f7245fac6a26bbbe1c213f58b447": {
-    "url": "https://www.blackpoolpleasurebeach.com/big-pizza-kitchen-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 16135343,
-    "type": "application/json",
-    "key": "archive/menus/fd8921c4fcf8aae77140d3e35335975beee2f7245fac6a26bbbe1c213f58b447.har"
-  },
   "fe0398e233e19d6de68885fd15159b10dde70687da5de73e35bb64b1cbe960a2": {
     "url": "https://www.bigbluehotel.com/app/uploads/2026/06/Light-Lunch-Menu-November-2024.pdf",
     "fetched": "2026-10-23",
@@ -4318,27 +2097,6 @@
     "type": "text/html",
     "key": "archive/menus/fe08e6ff325ac4c99eed1f3e4bf3a2f69186e1ce4d24e43ca2386564210cbb71.html"
   },
-  "fe09668ec93f439ab0afbd44422940ed326ed69793bb8e86137e9e7882e9fa96": {
-    "url": "https://menus.tenkites.com/paultonspark/route83diner",
-    "fetched": "2026-10-23",
-    "bytes": 1482543,
-    "type": "image/png",
-    "key": "archive/menus/fe09668ec93f439ab0afbd44422940ed326ed69793bb8e86137e9e7882e9fa96.png"
-  },
-  "fe7141a0866dfd2609aa557c3848ffeb84ce3e7d930e11b6a470080bac263500": {
-    "url": "https://knoebels.com/menu/stony-gables/",
-    "fetched": "2026-10-23",
-    "bytes": 1228622,
-    "type": "image/png",
-    "key": "archive/menus/fe7141a0866dfd2609aa557c3848ffeb84ce3e7d930e11b6a470080bac263500.png"
-  },
-  "fe71a18bc371e4ec4bb71b4997ebd35d6c259604d5f7ef157559b91afe56ffc2": {
-    "url": "https://menus.tenkites.com/paultonspark/sweettreatkiosks?mguid=a2590c85-cfae-4800-84d7-89dd585dbbcc",
-    "fetched": "2026-10-23",
-    "bytes": 392960,
-    "type": "image/png",
-    "key": "archive/menus/fe71a18bc371e4ec4bb71b4997ebd35d6c259604d5f7ef157559b91afe56ffc2.png"
-  },
   "fece778f70fb6c084ee8c1c1d2f7551645021a4397fb2a61d3d815adc0590293": {
     "url": "https://www.legoland.com/florida/media/hzljodsd/skyline-lounge_fl_dinner-menu.pdf",
     "fetched": "2026-10-23",
@@ -4346,32 +2104,11 @@
     "type": "application/pdf",
     "key": "archive/menus/fece778f70fb6c084ee8c1c1d2f7551645021a4397fb2a61d3d815adc0590293.pdf"
   },
-  "ff8a76811f584d6e8e5be26b19e06443d7a3a087b6ee2ad9f5de6711d14d2d8d": {
-    "url": "https://knoebels.com/menu/totem-treats/",
-    "fetched": "2026-10-23",
-    "bytes": 20384611,
-    "type": "application/json",
-    "key": "archive/menus/ff8a76811f584d6e8e5be26b19e06443d7a3a087b6ee2ad9f5de6711d14d2d8d.har"
-  },
   "ff9e0a8b88137fea95051877a9b08465a70d91b7cccd26e318e31f59295a38fe": {
     "url": "https://menus.tenkites.com/paultonspark/cascades",
     "fetched": "2026-10-23",
     "bytes": 222740,
     "type": "image/png",
     "key": "archive/menus/ff9e0a8b88137fea95051877a9b08465a70d91b7cccd26e318e31f59295a38fe.png"
-  },
-  "ff9f0401bd78e7398c1a00765903627a61b9b66de035b37c24f6d2995181323c": {
-    "url": "https://www.blackpoolpleasurebeach.com/bubble-waffle-menu/",
-    "fetched": "2026-10-23",
-    "bytes": 15840219,
-    "type": "application/json",
-    "key": "archive/menus/ff9f0401bd78e7398c1a00765903627a61b9b66de035b37c24f6d2995181323c.har"
-  },
-  "ffedd8397b9047f9a8ab76370fb8535b3b21991572128db5e556fa81ce604a40": {
-    "url": "https://knoebels.com/menu/jolly-trolley/",
-    "fetched": "2026-10-23",
-    "bytes": 10665562,
-    "type": "application/json",
-    "key": "archive/menus/ffedd8397b9047f9a8ab76370fb8535b3b21991572128db5e556fa81ce604a40.har"
   }
 }

@@ -1867,4 +1867,147 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
       linkedin: "https://www.linkedin.com/company/drayton-manor-resort/",
     },
   },
+
+  // Independent (Tulleys Entertainment Group) - seasonal scare park at Tulleys
+  // Farm. Tickets on the DigiTickets store tulleyshalloween.digitickets.co.uk.
+  // Queuing Support and Essential Companion tickets go through Nimbus: an
+  // Access Card or a free Tulleys Digital Access Pass.
+  tulleys: {
+    website: "https://www.shocktoberfest.co.uk/",
+    location: {
+      address: "Tulleys Farm, Turners Hill Road, Turners Hill, Crawley, West Sussex",
+      postcode: "RH10 4PE",
+      query: "Tulleys Farm, RH10 4PE",
+      // OpenStreetMap way 891951852 (amenity=parking, operator "Tulleys farm",
+      // fee=no, access=customers), the largest Tulleys lot, south of the farm;
+      // polygon centroid.
+      drive: { lat: 51.1053573, lon: -0.1100977, label: "the car park" },
+      directions: "https://www.shocktoberfest.co.uk/contact-us",
+      note: "Parking is free and cannot be prebooked; expect delays leaving the car park. Vehicles cannot be left overnight. Metrobus 84 runs from Crawley bus station and Three Bridges station on open nights.",
+    },
+    booking: [
+      {
+        label: "Book tickets",
+        url: "https://tulleyshalloween.digitickets.co.uk/category/73365",
+        note: "XScream Pass, with 3, 6 or 12 single Fast Tracks, or the RIP bundle with unlimited Fast Track",
+      },
+    ],
+    orders: [
+      {
+        label: "Manage your booking",
+        url: "https://tulleyshalloween.digitickets.co.uk/account/login",
+        note: "Sign in to change your date - needs an account made when booking",
+      },
+    ],
+    openingTimes: openingTimes("https://www.shocktoberfest.co.uk/passes"),
+    access: [
+      {
+        label: "Accessibility",
+        url: "https://www.shocktoberfest.co.uk/accessibility",
+        note: "Queuing Support and Essential Companion tickets, both through Nimbus",
+      },
+      {
+        label: "Apply via Access Card",
+        url: "https://app.accesscard.online/apply/tulleys/tulleys-shocktober-fest/",
+        note: "Free Tulleys Digital Access Pass - up to 5 working days to review at peak times",
+      },
+      {
+        label: "Essential Companion tickets",
+        url: "https://www.shocktoberfest.co.uk/essential-companion-tickets",
+        note: "Free, for the +1 or +2 symbol - matches the guest's own ticket, booked in advance",
+      },
+      {
+        label: "Book an Essential Companion ticket",
+        url: "https://tulleyshalloween.digitickets.co.uk/category/74388",
+        note: "Needs your Access Card or Digital Access Pass ID number",
+      },
+      {
+        label: "Queuing Support",
+        url: "https://www.shocktoberfest.co.uk/queuing-support",
+        note: "Fast Track entrance for the guest and one companion - for the Difficulty Standing, Difficulty with Crowds or Urgent Toilet Needs symbols, may sell out",
+      },
+      {
+        label: "Book Queuing Support",
+        url: "https://tulleyshalloween.digitickets.co.uk/category/74907",
+        note: "Booked in advance for your date, with your Access Card or Digital Access Pass ID number",
+      },
+      {
+        label: "Accessibility guide",
+        url: "https://www.shocktoberfest.co.uk/accessibility-guide",
+        note: "Blue Badge parking, accessible toilets; the Haunted Hayride is the only attraction that takes a wheelchair",
+      },
+    ],
+    // No ride photo product: a digital photo comes only inside the RIP bundle.
+    photos: [],
+    apps: [
+      {
+        name: "Tulleys Shocktober Fest",
+        ios: appStore("tulleys-shocktober-fest", "1627013379"),
+        android: playStore("com.tulleysfarm"),
+        note: "Site map and visit information",
+      },
+    ],
+    social: {
+      facebook: "https://www.facebook.com/TulleysShock/",
+      instagram: "https://www.instagram.com/tulleys_shock/",
+      tiktok: "https://www.tiktok.com/@tulleys_shock",
+      youtube: "https://www.youtube.com/channel/UCuW76NWYhbj-I8AN0zUY8tA",
+    },
+  },
+
+  // Independent - seasonal scare park run by Twinlakes Park (B B & B Leisure
+  // Parks Ltd) on its site. Tickets on the Twinlakes DigiTickets store, branch
+  // 2340. The park publishes no accessibility scheme; its FAQs are the only
+  // access information.
+  xtreme_scream_park: {
+    website: "https://www.xtremescreampark.co.uk/",
+    location: {
+      address: "Xtreme Scream Park, Twinlakes Family Theme Park, Melton Spinney Road, Melton Mowbray, Leicestershire",
+      postcode: "LE14 4FF",
+      // How-to-find-us and the FAQs give LE14 4FF for sat navs; both tell
+      // Google Maps users to search "Twinlakes Park".
+      query: "Twinlakes Park, LE14 4FF",
+      // OpenStreetMap way 235215364 (amenity=parking only - no name, operator or
+      // fee tags), the larger of two adjoining lots inside the Twinlakes park
+      // outline; polygon centroid.
+      drive: { lat: 52.7840099, lon: -0.8601678, label: "the Twinlakes car park" },
+      directions: "https://www.xtremescreampark.co.uk/how-to-find-us/",
+      note: "Parking is free. In Google Maps, search Twinlakes Park.",
+    },
+    booking: [
+      {
+        label: "Book tickets",
+        url: "https://twinlakes.digitickets.co.uk/tickets?branches.branchID=2340",
+        note: "All Haunts or Fast Track All 7, priced by night - online is cheaper than the gate, £1.25 booking fee",
+      },
+    ],
+    // No order lookup: the site never mentions an account or managing a
+    // booking, and its FAQ says tickets cannot be refunded or transferred.
+    orders: [],
+    openingTimes: openingTimes("https://www.xtremescreampark.co.uk/dates-prices/"),
+    access: [
+      {
+        label: "FAQs",
+        url: "https://www.xtremescreampark.co.uk/faqs/",
+        note: "Walk routes are at ground level, with uneven floors and steps; every attraction requires guests to be ambulant",
+      },
+    ],
+    // No ride photos: photography and filming are banned on site.
+    photos: [],
+    apps: [
+      {
+        name: "Xtreme Scream Park",
+        ios: appStore("xtreme-scream-park", "6807445729"),
+        android: playStore("uk.co.xtremescreampark.aio"),
+        note: "Show times, queue times and park information",
+      },
+    ],
+    social: {
+      facebook: "https://www.facebook.com/XtremeScreamPark",
+      instagram: "https://www.instagram.com/xtremescream/",
+      tiktok: "https://www.tiktok.com/@xtremescreampark",
+      x: "https://x.com/XtremeScreams",
+      youtube: "https://www.youtube.com/@XtremeScreamPark1",
+    },
+  },
 };

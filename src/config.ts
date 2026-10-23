@@ -78,6 +78,8 @@ export const MERLIN_PASS_KEY = "merlin";
  *  queue times (see docs/attractions-io-api.md). `apiKey` is the app's public
  *  per-park UUID (live-feed filename + Authorization); `slug` is the content
  *  bundle path segment. Both are app-embedded client identifiers, not secrets. */
+/** Every app-embedded key below (`apiKey`, `token`, `clientSecret`) is left
+ *  empty here and filled in from the APP_KEYS secret (app-keys.ts). */
 export interface AttractionsConfig {
   apiKey: string;
   slug: string;
@@ -134,6 +136,23 @@ export interface DlpConfig {
   parkId: string;
 }
 
+/** accesso's TE2 app platform (Drayton Manor). Reads need an anonymous OAuth
+ *  token from accesso's global-auth server, granted to the app's own client id
+ *  and secret from its Hermes bundle. App-embedded identifiers like DLP's
+ *  `apiKey`, not account credentials. See docs/drayton-api.md. */
+export interface Te2Config {
+  /** API host; paths sit under `/api/`. */
+  apiUrl: string;
+  /** global-auth token endpoint. */
+  tokenUrl: string;
+  clientId: string;
+  clientSecret: string;
+  /** Venue and app id ("DMR_BG"), sent as the `appID` header too. */
+  venueId: string;
+  /** Organisation, sent as `X-Customer-ID`. */
+  customerId: string;
+}
+
 /** Where a queue-tracked park's live ride waits come from. A discriminated
  *  union: most parks are `attractions` (Attractions.io live feed + content
  *  bundle); Paulton's is `fos` (First Option Software custom backend); Flamingo
@@ -145,7 +164,8 @@ export type QueueSource =
   | ({ kind: "fos" } & FirstOptionConfig)
   | ({ kind: "firestore" } & FirebaseConfig)
   | ({ kind: "bpb" } & BpbConfig)
-  | ({ kind: "dlp" } & DlpConfig);
+  | ({ kind: "dlp" } & DlpConfig)
+  | ({ kind: "te2" } & Te2Config);
 
 export const liveFeedUrl = (apiKey: string) =>
   `https://live-data.attractions.io/${apiKey}.json`;
@@ -189,7 +209,10 @@ export interface OpeningHoursLocation {
  *    meaning 10:00-17:00) and `eventArr` (named date ranges). One request.
  *  - `crealy`: the Umbraco surface route `OpeningTimesCalendar/RenderMonth`
  *    returns one month of day buttons (`data-date`, hours, an event banner,
- *    last entry). One request per month. */
+ *    last entry). One request per month.
+ *  - `te2`: accesso's TE2 app API (Drayton Manor), `venue-hours` for the days
+ *    and `calendars/events` for named events, behind the same anonymous token
+ *    as its queues. */
 export type OpeningHoursConfig =
   | {
       kind: "accesso";
@@ -249,6 +272,10 @@ export type OpeningHoursConfig =
       months: number;
       locationName: string;
     }
+  | ({
+      kind: "te2";
+      locationName: string;
+    } & Te2Config)
   | {
       kind: "knoebels";
       /** `…/wp-json/knoebels/v1/hours`; `?day=YYYY-MM-DD` is appended. */
@@ -516,8 +543,20 @@ const DLP_GRAPHQL = "https://api.disneylandparis.com/query";
 /** The resort-wide wait feed both Disneyland Paris parks read. */
 const DLP_QUEUE = {
   waitTimesUrl: "https://dlp-wt.wdprapps.disney.com/prod/v1/waitTimes",
-  apiKey: "3jPT5qMimN3kR2kxqd1ez9iF1C68CrBf7zw5ICo4",
+  apiKey: "",
   graphqlUrl: DLP_GRAPHQL,
+};
+
+/** Drayton Manor's TE2 app identifiers, from its Hermes bundle
+ *  (`draytonManorConfig`, prod). The client secret is filled in from APP_KEYS
+ *  (src/app-keys.ts). */
+const DRAYTON_TE2: Te2Config = {
+  apiUrl: "https://api.us.te2.io",
+  tokenUrl: "https://api.us.te2.io/global-auth/oauth2/token",
+  clientId: "ngap_dmr_prod",
+  clientSecret: "",
+  venueId: "DMR_BG",
+  customerId: "dmr",
 };
 
 /** Build a park's opening-hours calendar URL for the given location ids. */
@@ -549,7 +588,7 @@ export const PARKS: ParkConfig[] = [
     },
     queue: {
       kind: "attractions",
-      apiKey: "e6c2bbf8-da54-47a2-a5ed-8b7797137113",
+      apiKey: "",
       slug: "alton-towers-resort",
     },
     products: [
@@ -591,7 +630,7 @@ export const PARKS: ParkConfig[] = [
     },
     queue: {
       kind: "attractions",
-      apiKey: "a070eedc-db3a-4c69-b55a-b79336ce723f",
+      apiKey: "",
       slug: "thorpe-park",
     },
     products: [
@@ -659,7 +698,7 @@ export const PARKS: ParkConfig[] = [
     },
     queue: {
       kind: "attractions",
-      apiKey: "7b56aa91-d4c6-4f8f-bac6-441a141a8e81",
+      apiKey: "",
       slug: "legoland-windsor",
     },
     products: [
@@ -699,7 +738,7 @@ export const PARKS: ParkConfig[] = [
     },
     queue: {
       kind: "attractions",
-      apiKey: "307f27cd-2be1-4b43-aee8-7832cfadb85f",
+      apiKey: "",
       slug: "chessington",
     },
     products: [
@@ -764,7 +803,7 @@ export const PARKS: ParkConfig[] = [
     queue: {
       kind: "fos",
       apiUrl: "https://paultonsapp.firstoptionsoftware.com",
-      token: "Nn2ibRudVbMVlAsp",
+      token: "",
     },
     products: [
       {
@@ -802,7 +841,7 @@ export const PARKS: ParkConfig[] = [
     queue: {
       kind: "firestore",
       projectId: "flamingo-land-app",
-      apiKey: "AIzaSyA2yrf4wI5a5oynBWu7ehjFzai-vtFr64Y",
+      apiKey: "",
       collection: "rides_data",
     },
     products: [],
@@ -881,7 +920,7 @@ export const PARKS: ParkConfig[] = [
     },
     queue: {
       kind: "attractions",
-      apiKey: "b55dfc11-e3ae-4f79-a9ee-73a3ee5ca5e4",
+      apiKey: "",
       slug: "legoland-billund",
     },
     products: [],
@@ -897,7 +936,7 @@ export const PARKS: ParkConfig[] = [
     },
     queue: {
       kind: "attractions",
-      apiKey: "84f9d04e-b059-4930-90a3-fa2fa4bb32fc",
+      apiKey: "",
       slug: "legoland-deutschland",
     },
     products: [],
@@ -913,7 +952,7 @@ export const PARKS: ParkConfig[] = [
     },
     queue: {
       kind: "attractions",
-      apiKey: "ab9f17bb-92e5-4ff5-8009-4bca4e4b92fe",
+      apiKey: "",
       slug: "gardaland",
     },
     products: [],
@@ -929,7 +968,7 @@ export const PARKS: ParkConfig[] = [
     },
     queue: {
       kind: "attractions",
-      apiKey: "3d67a479-3b8b-4cac-ab17-1218a1aec37e",
+      apiKey: "",
       slug: "heide-park",
     },
     products: [],
@@ -950,7 +989,7 @@ export const PARKS: ParkConfig[] = [
     },
     queue: {
       kind: "attractions",
-      apiKey: "b58e8a8f-5910-40f8-8693-9384edfc15e4",
+      apiKey: "",
       slug: "legoland-japan",
     },
     products: [],
@@ -966,7 +1005,7 @@ export const PARKS: ParkConfig[] = [
     },
     queue: {
       kind: "attractions",
-      apiKey: "699e3146-fcc9-5098-b6fe-8c99f08d3d61",
+      apiKey: "",
       slug: "legoland-korea",
     },
     products: [],
@@ -982,7 +1021,7 @@ export const PARKS: ParkConfig[] = [
     },
     queue: {
       kind: "attractions",
-      apiKey: "d1425cde-c466-41ec-b980-bb0dbd6c6a87",
+      apiKey: "",
       slug: "legoland-florida",
     },
     products: [],
@@ -998,7 +1037,7 @@ export const PARKS: ParkConfig[] = [
     },
     queue: {
       kind: "attractions",
-      apiKey: "ccceb9c9-4362-5cc4-8e0c-91d4a039f5a2",
+      apiKey: "",
       slug: "peppa-pig-theme-park",
     },
     products: [],
@@ -1014,7 +1053,7 @@ export const PARKS: ParkConfig[] = [
     },
     queue: {
       kind: "attractions",
-      apiKey: "cba14577-440a-4b85-bd27-423d7253710c",
+      apiKey: "",
       slug: "legoland-california",
     },
     products: [],
@@ -1030,7 +1069,7 @@ export const PARKS: ParkConfig[] = [
     },
     queue: {
       kind: "attractions",
-      apiKey: "729bc28e-e715-5a06-b3b9-4b1d36e4570c",
+      apiKey: "",
       slug: "legoland-new-york",
     },
     products: [],
@@ -1048,7 +1087,7 @@ export const PARKS: ParkConfig[] = [
     },
     queue: {
       kind: "attractions",
-      apiKey: "72f0ea9e-d196-508a-bee8-cce62c3228c7",
+      apiKey: "",
       slug: "knoebels-amusement-park",
     },
     products: [],
@@ -1065,7 +1104,7 @@ export const PARKS: ParkConfig[] = [
     },
     queue: {
       kind: "attractions",
-      apiKey: "4b498924-bb0f-480b-9c7c-9780b4c8c084",
+      apiKey: "",
       slug: "pleasurewood-hills",
     },
     products: [],
@@ -1086,9 +1125,20 @@ export const PARKS: ParkConfig[] = [
     },
     queue: {
       kind: "attractions",
-      apiKey: "a76f9f8c-e472-5739-bcf1-b0b0aa72484c",
+      apiKey: "",
       slug: "crealy-theme-park-resort",
     },
+    products: [],
+  },
+  // Drayton Manor (independent, Staffordshire; Looping Group). Its app runs on
+  // accesso's TE2 platform, which serves both the live ride status and the
+  // opening calendar behind one anonymous token. Its Attractions.io bundle
+  // (`drayton-manor`) stopped updating in February 2022.
+  {
+    key: "drayton_manor",
+    label: "Drayton Manor",
+    openingHours: { kind: "te2", ...DRAYTON_TE2, locationName: "Drayton Manor" },
+    queue: { kind: "te2", ...DRAYTON_TE2 },
     products: [],
   },
 ];

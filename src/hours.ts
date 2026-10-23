@@ -2,6 +2,7 @@ import { parkDay, parkTimeZone, USER_AGENT, type OpeningHoursConfig, type ParkCo
 import { fetchDlpHours } from "./dlp";
 import { buildParkIcal, parkIcalKey, writeIcal, type SpecialDaysLike } from "./ical";
 import { readRestrictions } from "./restrictions";
+import { fetchTe2Hours } from "./te2";
 import {
   logPoll,
   updateParkIndex,
@@ -92,8 +93,13 @@ export interface HoursFetch {
  *  by source: the Merlin `getcalendar` JSON API (`accesso`), Blackpool's
  *  park-dates-times JSON API (`bpb`), Paulton's two JSON blobs (`paultons`),
  *  Flamingo Land's iCal feed (`flamingoland`), or Disneyland Paris GraphQL (`dlp`). */
-export async function fetchHours(cfg: OpeningHoursConfig): Promise<HoursFetch> {
+export async function fetchHours(
+  cfg: OpeningHoursConfig,
+  bucket: R2Bucket | null = null,
+): Promise<HoursFetch> {
   switch (cfg.kind) {
+    case "te2":
+      return fetchTe2Hours(cfg, bucket);
     case "bpb":
       return fetchBpbHours(cfg);
     case "paultons":
@@ -776,7 +782,7 @@ export async function runHoursPoll(env: Env, park: ParkConfig): Promise<number> 
   // Once a day: a full pass at Knoebels' crawl delay takes about five minutes.
   if (cfg.kind === "knoebels" && new Date().getUTCHours() !== KNOEBELS_HOUR) return 0;
   const observedAt = new Date().toISOString();
-  const res = await fetchHours(cfg);
+  const res = await fetchHours(cfg, env.BUCKET);
   if (res.ok) {
     await writeHoursMonths(env.BUCKET, park.key, res.snapshot, observedAt);
     // Keep the calendar's month-nav bounds current. Availability products drive

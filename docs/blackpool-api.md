@@ -19,7 +19,7 @@ Unlike Paulton's/Flamingo Land (Capacitor web apps), this is a **native Flutter
 app**. The Dart code is AOT-compiled into `lib/arm64-v8a/libapp.so`, so there is
 no JS bundle to read — the endpoint list and header names were recovered with
 `strings` over `libapp.so`. Firebase is present but only for analytics/cloud
-messaging (`AIzaSyBVe1A0eVFHmypVa4jqt1Wx1lJvqt7LSmE`, project number
+messaging (an `AIza…` key, project number
 `57025524556`); it is **not** used for the ride data.
 
 All ride/park data comes from a **bespoke Laravel REST API**:

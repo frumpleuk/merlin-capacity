@@ -28,7 +28,7 @@ Attractions.io live feed.
 | | |
 |---|---|
 | **Backend** | Firebase Cloud Firestore, project **`flamingo-land-app`** |
-| **Web apiKey** | `AIzaSyA2yrf4wI5a5oynBWu7ehjFzai-vtFr64Y` (app-embedded, in the env config block) |
+| **Web apiKey** | secret `APP_KEY_FLAMINGOLAND` (app-embedded, in the env config block) |
 | **Read transport** | Firestore REST API (`https://firestore.googleapis.com/v1`) |
 | **Auth** | a Firebase **ID token** — reads are NOT public (unauthenticated → `403 PERMISSION_DENIED`) |
 

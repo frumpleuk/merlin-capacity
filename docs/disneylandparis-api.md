@@ -23,7 +23,7 @@ not needed.
 
 ```
 GET https://dlp-wt.wdprapps.disney.com/prod/v1/waitTimes
-x-api-key: 3jPT5qMimN3kR2kxqd1ez9iF1C68CrBf7zw5ICo4
+x-api-key: <APP_KEY_DISNEYLAND_PARIS secret>
 ```
 
 AWS API Gateway behind CloudFront. Without the key: `403 {"message":"Forbidden"}`.

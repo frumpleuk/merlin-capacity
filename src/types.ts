@@ -12,6 +12,8 @@ export interface Env {
    *  .dev.vars locally), never in config.ts. Absent → the BPB queue poll no-ops. */
   BPB_EMAIL?: string;
   BPB_PASSWORD?: string;
+  /** The keys the parks' apps embed arrive as APP_KEY_<PARK> secrets, read by
+   *  name in app-keys.ts. */
 }
 
 /** A product key: 'main', 'rap', or a special-event key. */

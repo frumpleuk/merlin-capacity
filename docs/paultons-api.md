@@ -36,7 +36,7 @@ come from a custom backend by **First Option Software**.
 |---|---|
 | **Base URL** | `https://paultonsapp.firstoptionsoftware.com` |
 | **Auth** | static app-embedded token in the **`x-token`** header |
-| **Token** | `Nn2ibRudVbMVlAsp` (the app's `apiFixedToken`; also accepted as `?token=`) |
+| **Token** | secret `APP_KEY_PAULTONS` (the app's `apiFixedToken`; also accepted as `?token=`) |
 
 The app's HTTP interceptor attaches every in-`/api` request with
 `.set("x-token", apiFixedToken).set("is-mobile", …)`. The token is a static

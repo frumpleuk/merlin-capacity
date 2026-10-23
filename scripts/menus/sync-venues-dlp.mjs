@@ -9,6 +9,7 @@
 // restaurant carries its park (`location.id`), land, coordinates, Disney's
 // service types and price band, and a link to its menu PDF, which
 // import-dlp-menus.mjs reads.
+import "../dev-keys.mjs";
 import path from "node:path";
 import { PARKS } from "../../src/config.ts";
 import { DLP_PARK_DIRS, coord, parkDir, syncVenues, writeJson } from "./lib.mjs";

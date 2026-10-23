@@ -268,6 +268,14 @@ export const PARKS: ParkDef[] = [
     label: "Crealy Theme Park",
     products: [],
   },
+  {
+    key: "drayton_manor",
+    slug: "drayton-manor",
+    country: "GB",
+    operator: "Looping Group",
+    label: "Drayton Manor",
+    products: [],
+  },
 ];
 
 /** A park's base URL: lower-case country code, then its slug (/gb/alton-towers). */

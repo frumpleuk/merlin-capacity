@@ -22,10 +22,10 @@ than directly observed, it is marked *(inferred)*.
 
 | Park | Android package | Slug | api-key (UUID) |
 |---|---|---|---|
-| Alton Towers | `com.thrillseeker.altontowers` | `alton-towers-resort` | `e6c2bbf8-da54-47a2-a5ed-8b7797137113` |
-| Thorpe Park | `io.attractions.thorpepark` | `thorpe-park` | `a070eedc-db3a-4c69-b55a-b79336ce723f` |
-| Chessington | `thrillseeker.app.chessington` | `chessington` | `307f27cd-2be1-4b43-aee8-7832cfadb85f` |
-| LEGOLAND Windsor | `com.merlin.legowi` | `legoland-windsor` | `7b56aa91-d4c6-4f8f-bac6-441a141a8e81` |
+| Alton Towers | `com.thrillseeker.altontowers` | `alton-towers-resort` | secret `APP_KEY_ALTON_TOWERS` |
+| Thorpe Park | `io.attractions.thorpepark` | `thorpe-park` | secret `APP_KEY_THORPE_PARK` |
+| Chessington | `thrillseeker.app.chessington` | `chessington` | secret `APP_KEY_CHESSINGTON` |
+| LEGOLAND Windsor | `com.merlin.legowi` | `legoland-windsor` | secret `APP_KEY_LEGOLAND` |
 
 - **api-key** — a per-park UUID embedded in the app (`BuildConfig.API_KEY`). It is
   a public client identifier, not a secret. It is used in two places: as the
@@ -216,7 +216,7 @@ Response:
 
 ```
 201 Created
-{ "token": "778a726c-56f4-47b2-af4f-20ba1201c832" }
+{ "token": "<uuid>" }
 ```
 
 The `token` is a UUID. Store it and reuse it. If any authenticated call returns

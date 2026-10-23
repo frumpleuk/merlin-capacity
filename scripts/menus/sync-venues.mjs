@@ -5,6 +5,7 @@
 // Never deletes: venues that vanished from the app are reported, not removed.
 //
 //   node scripts/menus/sync-venues.mjs [park_key...]   (default: every one)
+import "../dev-keys.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import { unzipSync } from "fflate";

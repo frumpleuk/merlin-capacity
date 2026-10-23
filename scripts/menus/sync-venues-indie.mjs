@@ -17,6 +17,7 @@
 //                 It ships inside the APK rather than being served, so pass an
 //                 unpacked copy with --poi <file>; without it Paulton's is
 //                 skipped and the committed poi.json files stand.
+import "../dev-keys.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import { PARKS } from "../../src/config.ts";

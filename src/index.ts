@@ -1,4 +1,5 @@
 import { refreshAnomalies } from "./anomalies";
+import { applyAppKeys } from "./app-keys";
 import { archiveObservations, archiveQueues } from "./archive";
 import { backfillQueueDay, backfillQueueDays } from "./backfill";
 import { allProducts, attractionsParks, fosParks, PARKS, parkTimeZone, queueParks } from "./config";
@@ -200,6 +201,7 @@ async function runStats(env: Env, scheduledTime: number): Promise<void> {
 export default {
   // Dispatch by which schedule fired — each concern in its own invocation.
   async scheduled(event: ScheduledEvent, env: Env, ctx: ExecutionContext) {
+    applyAppKeys(env as unknown as Record<string, unknown>, PARKS);
     switch (event.cron) {
       case CRON_TICKETS:
         return void ctx.waitUntil(pollTickets(env));
@@ -225,6 +227,7 @@ export default {
   },
 
   async fetch(req: Request, env: Env): Promise<Response> {
+    applyAppKeys(env as unknown as Record<string, unknown>, PARKS);
     const url = new URL(req.url);
 
     // Precomputed calendar / queue / status JSON from R2 (cached at the edge).

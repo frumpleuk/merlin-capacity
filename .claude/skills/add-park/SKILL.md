@@ -13,7 +13,7 @@ main); a push deploys.
 Background: `docs/attractions-io-api.md`, `docs/accesso-api.md`,
 `docs/apk-download.md`, and one `docs/<park>-api.md` per non-Attractions.io
 backend (`paultons-api.md`, `flamingoland-api.md`, `blackpool-api.md`,
-`disneylandparis-api.md`).
+`disneylandparis-api.md`, `drayton-api.md`).
 
 ## 1. Find the backend
 
@@ -45,6 +45,17 @@ backend (`paultons-api.md`, `flamingoland-api.md`, `blackpool-api.md`,
    manifest's `io.attractions.API_KEY` is a vendor key shared by every park;
    don't use it. Check: `https://live-data.attractions.io/<key>.json` returns
    200.
+4. React Native apps (Expo, `assets/index.android.bundle` is Hermes bytecode):
+   decompile with `hbc-decompiler` (`pip install
+   git+https://github.com/P1sec/hermes-dec`) and grep the output for the config
+   object (`discoveryUrl`, `apiKey`, `baseUrl`). Drayton Manor's TE2 config was
+   found this way (`docs/drayton-api.md`).
+5. **Keys never go in the repo; it's public.** Each park's key is a Worker
+   secret, `APP_KEY_<PARK KEY IN CAPS>`:
+   `npx wrangler secret put APP_KEY_<PARK>`, plus the same line in `.dev.vars`.
+   Leave the field empty in config.ts; `src/app-keys.ts` fills it in. Set the
+   secret before pushing, or the park's polls run keyless. Never paste a key
+   into docs either.
 
 ## 3. Opening hours
 
@@ -64,7 +75,8 @@ backend (`paultons-api.md`, `flamingoland-api.md`, `blackpool-api.md`,
 ## 4. Config and park picker
 
 - **`src/config.ts` `PARKS`:** `key`, `label`, `timeZone` (IANA; default is
-  London), `openingHours` and `queue`. Leave `products: []` unless ticket
+  London), `openingHours` and `queue` (key field left `""`, see §2.5). A new
+  `queue.kind` with a key also needs a case in `src/app-keys.ts`. Leave `products: []` unless ticket
   tracking is in scope. Set `merlinPass: true` only for parks on the UK Merlin
   Annual Pass.
 - **`frontend/src/catalog.ts` `PARKS`:** the same `key`, `label` and `timeZone`,

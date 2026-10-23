@@ -1215,6 +1215,32 @@ export const PARKS: ParkConfig[] = [
       },
     ],
   },
+  // Two seasonal scare parks on Attractions.io: their apps list the scare mazes
+  // as queue lines, open for the Halloween season only. No opening-hours source
+  // (neither site publishes one we can read), so the catalog marks them
+  // queueOnly. Weather points are the mean of the mazes' app locations.
+  {
+    key: "tulleys",
+    weather: { lat: 51.107, lon: -0.112 },
+    label: "Tulleys Shocktober Fest",
+    queue: {
+      kind: "attractions",
+      apiKey: "",
+      slug: "tulleys-farm",
+    },
+    products: [],
+  },
+  {
+    key: "xtreme_scream_park",
+    weather: { lat: 52.785, lon: -0.858 },
+    label: "Xtreme Scream Park",
+    queue: {
+      kind: "attractions",
+      apiKey: "",
+      slug: "xtreme-scream-park",
+    },
+    products: [],
+  },
 ];
 
 /** Every (park, product) pair, flattened — used to force a full manual poll. */

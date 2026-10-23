@@ -7,11 +7,22 @@
 //
 // Attractions.io parks only for the catalog and queue steps; any park for hours.
 import "./dev-keys.mjs";
+import { readFileSync } from "node:fs";
+import { applyAppKeys } from "../src/app-keys";
 import { PARKS, parkTimeZone, type AttractionsConfig } from "../src/config";
 import { fetchHours } from "../src/hours";
 import { fetchLiveQueues } from "../src/queues";
 import { rebuildCatalog, type RideCatalog } from "../src/rides";
 import { fetchTe2Queues } from "../src/te2";
+
+// The apps' keys are Worker secrets, kept locally in .dev.vars (src/app-keys.ts).
+const vars = Object.fromEntries(
+  readFileSync(".dev.vars", "utf8")
+    .split("\n")
+    .filter((l) => /^[A-Z_]+=/.test(l))
+    .map((l) => [l.slice(0, l.indexOf("=")), l.slice(l.indexOf("=") + 1).trim()]),
+);
+applyAppKeys(vars, PARKS);
 
 const store = new Map<string, string>();
 const bucket = {

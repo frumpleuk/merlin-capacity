@@ -281,6 +281,23 @@ export const PARKS: ParkDef[] = [
     products: [{ key: "main", label: "Tickets" }],
     noQueues: true,
   },
+  {
+    key: "tulleys",
+    slug: "tulleys-shocktober-fest",
+    country: "GB",
+    label: "Tulleys Shocktober Fest",
+    products: [],
+    queueOnly: true,
+  },
+  {
+    // At Twinlakes Park, Melton Mowbray.
+    key: "xtreme_scream_park",
+    slug: "xtreme-scream-park",
+    country: "GB",
+    label: "Xtreme Scream Park",
+    products: [],
+    queueOnly: true,
+  },
 ];
 
 /** A park's base URL: lower-case country code, then its slug (/gb/alton-towers). */

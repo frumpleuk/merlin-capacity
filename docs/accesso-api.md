@@ -683,6 +683,13 @@ store URL proves nothing. Check a keyword exists in the merchant's catalog.
     (`DiscoverSpec.keyword: "Tickets"`, event 2), which picks up 10 packages.
     Keyword mode collects no exclusives, so the special-days job skips the
     park.
+  - **Risk:** keyword discovery adopts every new package listed under
+    `Tickets`. If one ever sells from a ring-fenced sub-allocation, the merge
+    reports that smaller figure for its dates (the Thorpe failure of
+    2026-08-21, §3.1), and nothing checks for it.
+  - **Hours gaps, 2026-10-23:** 18 Dec sells (Magical Christmas, 75 sold) on a
+    day `venue-hours` marks CLOSED; 27-31 Dec (Twixmas) sell beyond the end of
+    the published hours (25 Dec).
 - **Pleasurewood Hills: VisiSoft webshop, not accesso.**
   - **Store:** `tickets.pleasurewoodhills.com`, a PHP app on
     `pleasurewoodhills.api.visihost.co.uk`.

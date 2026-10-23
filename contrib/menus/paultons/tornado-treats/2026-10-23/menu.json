@@ -1,0 +1,456 @@
+{
+  "date": "2026-10-23",
+  "unpriced": true,
+  "source": {
+    "name": "Paultons Park",
+    "official": true,
+    "url": "https://menus.tenkites.com/paultonspark/sweettreatkiosks",
+    "menu": "Tornado Treats"
+  },
+  "sections": [
+    {
+      "name": "Donuts-Snacks",
+      "items": [
+        {
+          "name": "Berry White Donut",
+          "price": null,
+          "kcal": 288,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Caramazing Donut",
+          "price": null,
+          "kcal": 310,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Spectaculous Donut",
+          "price": null,
+          "kcal": 253,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Nutty Zafari Donut",
+          "price": null,
+          "kcal": 265,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Strawjelly Jam Donut",
+          "price": null,
+          "kcal": 288,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Queen V Donut",
+          "price": null,
+          "kcal": 291,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Sugar Ring Donut.",
+          "price": null,
+          "kcal": 213,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Doughnut Delight.",
+          "description": "Sugar Ring Doughnut topped with soft vanilla ice cream, chocolate sauce and a chocolate flake.",
+          "price": null,
+          "kcal": 397,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Sweet Popcorn",
+          "price": null,
+          "kcal": 333,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Halloween Caramel Traybake",
+          "price": null,
+          "kcal": 305
+        }
+      ]
+    },
+    {
+      "name": "Sundaes",
+      "items": [
+        {
+          "name": "Cheeky Monkey Sundae",
+          "description": "Soft vanilla ice cream topped with toffee sauce and sliced banana",
+          "price": null,
+          "kcal": 398,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Go Nuts Sundae",
+          "description": "Soft vanilla ice cream topped with chocolate sauce, M&M pieces and a wafer twirl.",
+          "price": null,
+          "kcal": 475,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Mud Slide Sundae",
+          "description": "Soft vanilla ice cream topped with Oreo crumb and a chocolate flake.",
+          "price": null,
+          "kcal": 464,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mini Melts",
+      "items": [
+        {
+          "name": "Mini Melts - Banana Split",
+          "price": null,
+          "kcal": 171,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Mini Melts - Bubble Gum",
+          "price": null,
+          "kcal": 170,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Mini Melts - Chocolate",
+          "price": null,
+          "kcal": 172,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Mini Melts - Cotton Candy",
+          "price": null,
+          "kcal": 177,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Mini Melts - Vanilla Cookie",
+          "price": null,
+          "kcal": 198,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Mini Melts - Lemon & Lime",
+          "price": null,
+          "kcal": 51,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Mini Melts - Mango",
+          "price": null,
+          "kcal": 61,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Mini Melts - Strawberry",
+          "price": null,
+          "kcal": 165,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Whippy Ice Cream",
+      "items": [
+        {
+          "name": "Pumpkin Ice Scream",
+          "price": null,
+          "kcal": 164,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Standard Whippy Tub",
+          "description": "Soft vanilla ice cream.",
+          "price": null,
+          "kcal": 114,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Standard Whippy Tub with Flake",
+          "description": "Soft vanilla ice cream served with a chocolate flake.",
+          "price": null,
+          "kcal": 155,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Small Whippy Cone",
+          "description": "Soft vanilla ice cream served on a wafer cone.",
+          "price": null,
+          "kcal": 99,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Small Whippy Cone with Flake",
+          "description": "Soft vanilla ice cream served with a chocolate flake on a wafer cone.",
+          "price": null,
+          "kcal": 140,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Standard Whippy Cone",
+          "description": "Soft vanilla ice cream served on a wafer cone.",
+          "price": null,
+          "kcal": 133,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Standard Whippy Cone with Flake",
+          "description": "Soft vanilla ice cream served with a chocolate flake on a wafer cone.",
+          "price": null,
+          "kcal": 175,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Dole soft serve",
+          "price": null,
+          "kcal": 93,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Add Chocolate Sauce to your ice cream",
+          "price": null,
+          "kcal": 29,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Extra Flake",
+          "price": null,
+          "kcal": 42,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Hot Drinks",
+      "items": [
+        {
+          "name": "Hot Chocolate",
+          "price": null,
+          "kcal": 122,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Black Tea",
+          "price": null,
+          "kcal": 0,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Clipper Everyday Tea - Black",
+          "price": null,
+          "kcal": 0,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Clipper Decaf Tea",
+          "price": null,
+          "kcal": 7,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Americano 12oz",
+          "price": null,
+          "kcal": 48,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Americano with Milk",
+          "price": null,
+          "kcal": 106,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Espresso",
+          "price": null,
+          "kcal": 28,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Double Espresso",
+          "price": null,
+          "kcal": 41,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Cappuccino",
+          "price": null,
+          "kcal": 184,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Latte",
+          "price": null,
+          "kcal": 106,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Flat White.",
+          "price": null,
+          "kcal": 122,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Mocha",
+          "price": null,
+          "kcal": 226,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Milk Portion",
+          "price": null,
+          "kcal": 6,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Soya Milk Portion",
+          "price": null,
+          "kcal": 5,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cold Drinks",
+      "items": [
+        {
+          "name": "12oz Slushy Jacks Strawberry",
+          "price": null,
+          "kcal": 108,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "12oz Slushy Jacks Raspberry",
+          "price": null,
+          "kcal": 108,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Slushy Jacks Twister Cup - Raspberry",
+          "price": null,
+          "kcal": 158,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Slushy Jacks Twister Cup - Strawberry",
+          "price": null,
+          "kcal": 158,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Legoland Japan",
+    "official": true,
+    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/ninja-kitchen/"
+  },
+  "sections": [
+    {
+      "name": "Recommended Menus",
+      "items": [
+        {
+          "name": "Power-Up Salt Yakisoba",
+          "description": "with Shrimp Mayo",
+          "price": 950
+        },
+        {
+          "name": "Power-Up Fried Rice",
+          "description": "BBQ Beef",
+          "price": 950
+        },
+        {
+          "name": "Ninja Castella",
+          "sizes": [
+            {
+              "label": "5 pieces",
+              "price": 500
+            },
+            {
+              "label": "10 pieces",
+              "price": 900
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

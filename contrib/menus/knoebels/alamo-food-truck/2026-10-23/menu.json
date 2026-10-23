@@ -1,0 +1,107 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Knoebels",
+    "official": true,
+    "url": "https://knoebels.com/menu/alamo-food-truck/"
+  },
+  "sections": [
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Alani Drinks",
+          "description": "Cotton Candy & Orange Kiss",
+          "price": 400
+        },
+        {
+          "name": "Boba Tea",
+          "description": "Blueberry, Passion Fruit, Strawberry",
+          "price": 600
+        },
+        {
+          "name": "Bottled Drinks",
+          "description": "Pepsi, Diet Pepsi, Mountain Dew, Starry, Dr. Pepper",
+          "price": 350
+        },
+        {
+          "name": "Bottled Water",
+          "price": 350
+        }
+      ]
+    },
+    {
+      "name": "Salads",
+      "items": [
+        {
+          "name": "Caesar",
+          "description": "Crisp romaine lettuce, croutons, and parmesan cheese. Served with ceaser dressing.",
+          "price": 800
+        },
+        {
+          "name": "Chef",
+          "description": "A classic salad made with lettuce, sliced meat and cheese, hard boiled eggs, & croutons.",
+          "price": 800
+        },
+        {
+          "name": "Garden",
+          "description": "Fresh lettuce, carrots, purple cabbage, cucumbers and grape tomatoes. Served with your choice of salad dressing and crispy croutons.",
+          "price": 800
+        }
+      ]
+    },
+    {
+      "name": "Fruits",
+      "items": [
+        {
+          "name": "Berry Banana Bliss",
+          "description": "Strawberries & Bananas covered in chocolate topped with whipped cream",
+          "price": 1000
+        },
+        {
+          "name": "Fresh Fruit",
+          "description": "A blend of different fruits",
+          "price": 600
+        },
+        {
+          "name": "Watermelon",
+          "price": 700
+        }
+      ]
+    },
+    {
+      "name": "Parfaits",
+      "items": [
+        {
+          "name": "Strawberry",
+          "price": 600
+        },
+        {
+          "name": "Vanilla",
+          "price": 600
+        }
+      ]
+    },
+    {
+      "name": "Frozen Items",
+      "items": [
+        {
+          "name": "Coconut Chiller",
+          "price": 900
+        },
+        {
+          "name": "Lemon Chiller",
+          "price": 900
+        },
+        {
+          "name": "Orange Chiller",
+          "price": 900
+        },
+        {
+          "name": "Pineapple Chiller",
+          "price": 900
+        }
+      ]
+    }
+  ]
+}

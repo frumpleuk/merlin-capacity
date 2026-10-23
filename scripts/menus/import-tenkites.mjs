@@ -1,6 +1,7 @@
 // Import the menus a park publishes on Tenkites, the digital menu system its
-// poi.json `menuUrl` points at. Paulton's publishes most of its outlets this
-// way; Alton's hotel restaurants go through Aramark's Tenkites account.
+// poi.json `displayMenuUrl` (else `menuUrl`) points at. Paulton's publishes
+// most of its outlets this way; Alton's restaurants go through Aramark's
+// Tenkites account.
 //
 //   node scripts/menus/import-tenkites.mjs [park_key...]   (default: all of them)
 //
@@ -105,7 +106,8 @@ function parseMenu(html) {
     // Everything about a dish sits between its name and the next dish.
     const rest = body.slice(t.end, tokens[i + 1]?.at ?? t.end + 4000);
     const desc = strip((rest.match(/class="[^"]*k10-recipe__desc[\s"][^"]*"[^>]*>([\s\S]*?)<\/div>/) ?? [, ""])[1]);
-    const kcal = rest.match(/k10-primary-nutrient__item["']>\s*([\d,]+)\s*cal/);
+    // Paulton's prints "1,151 cal", Aramark's boards (Alton) "574 kcal".
+    const kcal = rest.match(/k10-primary-nutrient__item["']>\s*([\d,]+)\s*k?cal/);
     const tags = [
       ...new Set(
         [...rest.matchAll(/class="[^"]*k10-recipe__label[\s"][^"]*"[^>]*>([\s\S]*?)<\/span>/g)]
@@ -124,8 +126,8 @@ function parseMenu(html) {
   return sections.filter((s) => s.items.length);
 }
 
-/** The newest menu already imported from this page, if any. */
-function previous(venueDir, url) {
+/** The newest menu already imported from Tenkites, if any. */
+function previous(venueDir) {
   const dates = fs
     .readdirSync(venueDir, { withFileTypes: true })
     .filter((e) => e.isDirectory() && DATE_DIR.test(e.name))
@@ -136,7 +138,10 @@ function previous(venueDir, url) {
     const file = path.join(venueDir, d, "menu.json");
     if (!fs.existsSync(file)) continue;
     const m = readJson(file);
-    if (m.source?.url === url) return { date: d, menu: m };
+    // Any of our Tenkites reads counts, so a venue moved to another board
+    // (Paulton's per-outlet boards to the ones its site links) isn't written
+    // again when the dishes are the same.
+    if (m.source?.url?.includes(HOST)) return { date: d, menu: m };
   }
   return null;
 }
@@ -156,6 +161,20 @@ async function resolve(link) {
   return html.match(new RegExp(`https://${HOST}/[\\w/-]+`))?.[0] ?? "";
 }
 
+/**
+ * A board can hold several menus (Paulton's peppapigworldrefreshments has one
+ * per Peppa Pig World outlet) and renders only the first; the others load from
+ * `?mguid=<id>`. The id may change when the park republishes, so the venue
+ * names its menu (`tenkitesMenu`) and the id is looked up on each run.
+ */
+async function named(board, name) {
+  const html = await page(board);
+  for (const m of html.matchAll(/data-menu-identifier="([\w-]+)"[^>]*class="[^"]*k10-menu-selector__option-name[\s"][^>]*>([\s\S]*?)<\/a>/g)) {
+    if (strip(m[2]).toLowerCase() === name.toLowerCase()) return `${board}?mguid=${m[1]}`;
+  }
+  throw new Error(`${board}: no menu called "${name}"`);
+}
+
 const wanted = process.argv.slice(2).filter((a) => !a.startsWith("--"));
 for (const key of Object.keys(ALL_PARK_DIRS)) {
   if (!PARK_NAMES[key] || (wanted.length && !wanted.includes(key))) continue;
@@ -166,9 +185,12 @@ for (const key of Object.keys(ALL_PARK_DIRS)) {
     // A venue's menuUrl is sometimes the park's own page about the place,
     // which then links to its Tenkites board (Alton's hotel restaurants do
     // this). Follow that one hop rather than skipping the venue.
-    const url = await resolve(v.poi.menuUrl ?? "");
+    // displayMenuUrl is set by hand where the park's site links a better board
+    // than the app does (the venue sync owns menuUrl).
+    const url = await resolve(v.poi.displayMenuUrl ?? v.poi.menuUrl ?? "");
     if (!url) continue;
-    const sections = parseMenu(await page(url));
+    const menu = v.poi.tenkitesMenu ?? null;
+    const sections = parseMenu(await page(menu ? await named(url, menu) : url));
     const items = sections.reduce((n, s) => n + s.items.length, 0);
     if (!items) {
       // A live URL with nothing on it: the outlet is between menus (the park
@@ -177,7 +199,13 @@ for (const key of Object.keys(ALL_PARK_DIRS)) {
       console.log(`- ${path.relative(MENUS, v.dir)}: no dishes on ${url}`);
       continue;
     }
-    const before = previous(v.dir, url);
+    const before = previous(v.dir);
+    // addOn is set by hand on an imported menu (Paulton's "Add ..." dishes), so
+    // it isn't a change on the board; carry it to the dishes that remain.
+    const handAddOns = new Set(
+      (before?.menu.sections ?? []).flatMap((s) => s.items.filter((i) => i.addOn).map((i) => `${s.name}\n${i.name}`)),
+    );
+    for (const s of sections) for (const i of s.items) if (handAddOns.has(`${s.name}\n${i.name}`)) i.addOn = true;
     if (before && JSON.stringify(before.menu.sections) === JSON.stringify(sections)) {
       unchanged++;
       continue;
@@ -188,7 +216,7 @@ for (const key of Object.keys(ALL_PARK_DIRS)) {
       date: TODAY,
       // The park lists the dishes and their calories but no prices.
       unpriced: true,
-      source: { name: PARK_NAMES[key], official: true, url },
+      source: { name: PARK_NAMES[key], official: true, url, ...(menu ? { menu } : {}) },
       sections,
     });
     written++;

@@ -1,0 +1,146 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Knoebels",
+    "official": true,
+    "url": "https://knoebels.com/menu/alamo-front-counter/"
+  },
+  "sections": [
+    {
+      "name": "Hand-Dipped Ice Cream",
+      "items": [
+        {
+          "name": "2 Scoops",
+          "price": 425
+        },
+        {
+          "name": "3 Scoops",
+          "price": 625
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Bottled Water",
+          "price": 350
+        },
+        {
+          "name": "Coffee",
+          "price": 225
+        },
+        {
+          "name": "Hot Chocolate",
+          "price": 300
+        },
+        {
+          "name": "Large Soda",
+          "price": 400
+        },
+        {
+          "name": "Milk",
+          "description": "white or chocolate",
+          "price": 275
+        },
+        {
+          "name": "Slushie",
+          "description": "Blue raspberry and lemonade",
+          "price": 400
+        },
+        {
+          "name": "Small Soda",
+          "price": 300
+        }
+      ]
+    },
+    {
+      "name": "Other Snacks",
+      "items": [
+        {
+          "name": "Apple Dumpling",
+          "description": "with ice cream $8.25",
+          "price": 700
+        },
+        {
+          "name": "Bag Chips",
+          "description": "BBQ, Plain, Sour Cream",
+          "price": 200
+        },
+        {
+          "name": "Pickle On A Stick",
+          "price": 200
+        },
+        {
+          "name": "Soup of the Day",
+          "price": 500
+        }
+      ]
+    },
+    {
+      "name": "Hot Food",
+      "items": [
+        {
+          "name": "Cheeseburger",
+          "description": "Add lettuce and tomato $0.50 Extra Cheese $0.50",
+          "price": 500
+        },
+        {
+          "name": "Chicken Sandwich",
+          "description": "crispy or grilled with lettuce and tomato",
+          "price": 675
+        },
+        {
+          "name": "Chili Dog",
+          "price": 400
+        },
+        {
+          "name": "Double Cheeseburger",
+          "price": 800
+        },
+        {
+          "name": "Double Hamburger",
+          "price": 750
+        },
+        {
+          "name": "Fiesta Dog",
+          "description": "A cheese and jalapeno stuffed hot dog",
+          "price": 500
+        },
+        {
+          "name": "Hamburger",
+          "description": "Add lettuce and tomato $0.50",
+          "price": 450
+        },
+        {
+          "name": "Hot Dog",
+          "price": 300
+        },
+        {
+          "name": "Kraut Dog",
+          "price": 400
+        },
+        {
+          "name": "Sidewinder Fries",
+          "description": "w/ bacon & cheese $7.00, extra cheese $1.00 more",
+          "price": 550
+        },
+        {
+          "name": "Spicy Chicken Sandwich",
+          "description": "with lettuce and tomato",
+          "price": 675
+        },
+        {
+          "name": "Trash Can Fries",
+          "description": "Lettuce, Onions, Tomatoes, Chili, Cheese, Jalapenos, Sour Cream. Extra cheese $1.00 more",
+          "price": 850
+        },
+        {
+          "name": "Turkey Burger",
+          "description": "Add lettuce and tomato $0.50 Extra Cheese $0.50",
+          "price": 725
+        }
+      ]
+    }
+  ]
+}

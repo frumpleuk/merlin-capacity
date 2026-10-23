@@ -1,0 +1,66 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Knoebels",
+    "official": true,
+    "url": "https://knoebels.com/menu/bavarian-nut-shoppe/"
+  },
+  "sections": [
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Bottled Soda",
+          "description": "Pepsi, Diet Pepsi, Gatorade",
+          "price": 350
+        },
+        {
+          "name": "Bottled Water",
+          "price": 350
+        },
+        {
+          "name": "Slushie",
+          "description": "Flavors: Blue Raspberry",
+          "price": 400
+        }
+      ]
+    },
+    {
+      "name": "Nuts",
+      "items": [
+        {
+          "name": "Almond 1/2 Pound",
+          "price": 950
+        },
+        {
+          "name": "Cashews 1/2 Pound",
+          "price": 950
+        },
+        {
+          "name": "Pecans 1/2 Pound",
+          "price": 950
+        }
+      ]
+    },
+    {
+      "name": "Acai Bowls",
+      "items": [
+        {
+          "name": "Happy Camper",
+          "description": "Acai Base topped with Strawberries, Banana, Peanut Butter, & Granola.",
+          "price": 850
+        },
+        {
+          "name": "Summer Sunset",
+          "description": "Acai Base topped with Strawberries. Banana, Coconut, Nutella, & Granola.",
+          "price": 950
+        },
+        {
+          "name": "Swan Dive",
+          "description": "Coconut Base topped with Strawberries, Blueberris, Chocolate, & Sliced Almonds",
+          "price": 850
+        }
+      ]
+    }
+  ]
+}

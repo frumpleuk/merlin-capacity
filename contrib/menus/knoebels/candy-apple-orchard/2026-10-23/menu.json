@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Knoebels",
+    "official": true,
+    "url": "https://knoebels.com/menu/candy-apple-orchard/"
+  },
+  "sections": [
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Apple Cider Slush",
+          "price": 475
+        }
+      ]
+    },
+    {
+      "name": "Apples",
+      "items": [
+        {
+          "name": "Candy Apple",
+          "price": 500
+        },
+        {
+          "name": "Candy Apple with Nuts",
+          "price": 525
+        },
+        {
+          "name": "Carmel Apple",
+          "price": 700
+        },
+        {
+          "name": "Carmel Apple with Nuts",
+          "price": 750
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,260 @@
+{
+  "date": "2026-10-23",
+  "unpriced": true,
+  "source": {
+    "name": "Alton Towers Resort",
+    "official": true,
+    "url": "https://menus.tenkites.com/aramarkuk/rollercoasterrestaurantat02"
+  },
+  "sections": [
+    {
+      "name": "Rollercoaster Burgers",
+      "items": [
+        {
+          "name": "Escape The Forest Burger",
+          "description": "Crispy vegan fillet with a fresh salad stack, sliced gherkins, vegan mayo and sweet chilli sauce, served in a toasted maple-flavoured seeded bun with seasoned Twister “coaster” fries. Plant-powered and wickedly good no map needed to escape this forest.",
+          "price": null
+        },
+        {
+          "name": "Ministry Of Joy Burger",
+          "description": "Buttermilk fried chicken with a fresh salad stack, mac & cheese, crunchy slaw and Peri-Peri BBQ bacon mayo, packed into a toasted maple-flavoured seeded bun. Served with seasoned Twister “coaster” fries. A seriously twisted chicken stack from the Ministry",
+          "price": null
+        },
+        {
+          "name": "Roller Coaster Burger",
+          "description": "A full-throttle cheeseburger stacked with a fresh salad stack, crunchy pickles, signature Roller Coaster sauce and a double drop of maple ketchup and crispy streaky bacon, all packed into a toasted maple-flavoured seeded bun. Served with seasoned Twister",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Big Rides & Classics",
+      "items": [
+        {
+          "name": "Galactica Greens Caesar",
+          "description": "Crisp romaine lettuce, crunchy croutons and grated cheese tossed in a creamy Caesar-style dressing, topped with crunchy streaky bacon, shaved parmesan and chives. A lighter bite inspired by Galactica smooth, gliding and seriously moreish between rides.",
+          "price": null
+        },
+        {
+          "name": "BBQ Peri Peri Chicken Wrap",
+          "description": "Savour crispy chicken tenders coated in BBQ and lemon herb sauces, wrapped in a 12-inch tortilla with fresh mixed leaves and curly fries. Garnished with spring onions, chillies, and chives, this wrap offers a delightful mix of tangy and savoury flavours.",
+          "price": null
+        },
+        {
+          "name": "Wicker Fire Nachos",
+          "description": "Crispy golden nachos topped with creamy plant-based cheese, cool vegan sour cream, fresh zesty salsa, smooth guacamole, fiery red chillies, vibrant chives and crisp spring onion. A full-on blaze of flavour no meat, all heat.",
+          "price": null
+        },
+        {
+          "name": "Wicker Fire Nachos with BBQ Pulled Pork",
+          "description": "Crispy nachos loaded with tender smoky pulled pork, rich BBQ coating, zesty salsa, creamy sour cream, smooth guacamole and topped with fiery chillies, chives and fresh spring onion. A loaded, smoky Wicker feast for bigger appetites.",
+          "price": null
+        },
+        {
+          "name": "Peri-Peri Pit Stop Tenders",
+          "description": "Crispy chicken tenders coated in Peri-Peri BBQ sauce, served on a bed of mixed leaves with curly fries. Finished with spring onions, chillies and chives for a punchy mix of tangy and savoury flavours. A fiery pit stop between rides.",
+          "price": null
+        },
+        {
+          "name": "Rita's Rocket Wings",
+          "description": "Buffalo-tossed chicken wings served on a bed of mixed leaves with cool ranch dressing. Garnished with chillies and chives for an extra kick just like Rita, they don’t hold back. Served with seasoned Twister “coaster” fries.",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Big Rides & Classics (Dinner)",
+      "items": [
+        {
+          "name": "Blazing Shicken Tikka Skewers",
+          "description": "Tikka-spiced vegan skewers served on crisp mixed leaves, paired with a cool minted mayo dressing for a fresh, herby contrast to the bold, smoky flavours.",
+          "price": null
+        },
+        {
+          "name": "Dark Forest Wild Boar & Apple Sausage Mash",
+          "description": "Wild boar and apple sausages served on creamy mashed potato with a rich red wine sauce, topped with crispy onions. A hearty, full-flavour ride straight out of the Dark Forest.",
+          "price": null
+        },
+        {
+          "name": "Rita's Quarter Chicken Leg Piri Piri",
+          "description": "Piri Piri Quarter chicken leg roasted until juicy and golden, served with Coaster fries and crunchy sweetcorn ribs. Fast, fiery or fresh you choose the launch on this ride.",
+          "price": null
+        },
+        {
+          "name": "Rita's Quarter Chicken Leg Lemon & Herb",
+          "description": "Lemon & Herb Quarter chicken leg roasted until juicy and golden, served with Coaster fries and crunchy sweetcorn ribs. Fast, fiery or fresh you choose the launch on this ride.",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Spice Track Curries (Dinner)",
+      "items": [
+        {
+          "name": "Coaster Chicken Katsu",
+          "description": "Crispy breaded chicken served with Japanese-style katsu curry sauce, sticky rice and a cucumber and carrot pickle sprinkled with toasted sesame seeds. Crisp, saucy and ultra-satisfying a perfectly balanced katsu run.",
+          "price": null
+        },
+        {
+          "name": "Thai Green Chicken Curry",
+          "description": "Fragrant Thai green curry with tender chicken, vegetables and coconut sauce, served with steamed rice. Fresh, aromatic and full of smooth, rolling drops of flavour.",
+          "price": null
+        },
+        {
+          "name": "Coaster Chicken Tikka",
+          "description": "Marinated chicken tikka in a rich tomato and spice sauce, served with fragrant rice, warm chapati and mango chutney, garnished with fresh coriander and onion seeds. A classic tikka ride with just the right amount of thrill.",
+          "price": null
+        },
+        {
+          "name": "Vegan Shicken Tikka Skewers",
+          "description": "Plant-based “Shicken” tikka skewers grilled and served with fragrant rice, chapati and mango chutney, finished with fresh coriander and onion seeds. All the tikka flavour, none of the meat a plant-powered loop.",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Trackside Pasta & Salad (Dinner)",
+      "items": [
+        {
+          "name": "Tomato & Basil Pasta",
+          "description": "Penne pasta tossed in a tomato and basil sauce with parmesan cheese and fresh rocket. A fiery little kick for those who like a sharper drop.",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Little Thrill-Seekers",
+      "items": [
+        {
+          "name": "Kids Cheeseburger & Fries",
+          "description": "CHEESEBURGER 4oz burger in a soft brioche bun with melted cheese, corn cob and fries. Small in size, big on flavour – built for junior coasters.",
+          "price": null
+        },
+        {
+          "name": "Kids Mozzarella Sticks & Fries",
+          "description": "Ooey-gooey cheesy sticks served with a side of skin-on fries. A tasty vegetarian adventure for little riders.",
+          "price": null
+        },
+        {
+          "name": "Fish Fingers & Fries",
+          "description": "Golden crispy fish fingers with a pile of fries. Served with cucumber and carrots sticks.",
+          "price": null
+        },
+        {
+          "name": "Crispy Chicken Nuggets",
+          "description": "Crispy golden chicken nuggets served with a pile of kids fries and maple ketchup. The perfect fuel for your next little adventure.",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Little Thrill-Seekers (Dinner)",
+      "items": [
+        {
+          "name": "Penne Pasta & Tomato Sauce",
+          "description": "Penne pasta tossed in a smooth tomato sauce. Simple, comforting and kid-approved. Ideal for little riders who like to keep things straightforward.",
+          "price": null
+        },
+        {
+          "name": "Sausage & Mash",
+          "description": "Pork sausages served on creamy mashed potato with gravy and peas. A proper classic for little thrill-seekers.",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Fries & Rides",
+      "items": [
+        {
+          "name": "Curly Fries",
+          "description": "Seasoned Twister “coaster” curly fries. Classic, curly and ready to ride alongside any main.",
+          "price": null
+        },
+        {
+          "name": "Bacon, Bacon Fries",
+          "description": "Twister “coaster” curly fries loaded with crispy bacon pieces and smoky bacon mayo (Smokey Baconnaise), finished with chopped chives. A double-bacon crash of flavour — simple, salty and seriously moreish.",
+          "price": null
+        },
+        {
+          "name": "Mac Balls",
+          "description": "Twister “coaster” curly fries topped with crispy, gooey mac ’n’ cheese bites and drizzled with sweet smoky mayo (Smokey Baconnaise). Finished with chopped chives. Full-on comfort food — the ultimate loaded lap.",
+          "price": null
+        },
+        {
+          "name": "Seasoned Fries",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Fries & Rides (Dinner)",
+      "items": [
+        {
+          "name": "Crunchy Corn Ribs",
+          "description": "Charred sweetcorn “ribs” with a sweet, smoky crunch and seasoning. A funfair-style side with big flavour and even bigger crunch.",
+          "price": null
+        },
+        {
+          "name": "Loop-The-Loop Onion Rings",
+          "description": "Crispy battered onion rings, perfect for sharing. Golden loops made for dipping.",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Sauce",
+      "items": [
+        {
+          "name": "Mango Sweet Chilli",
+          "description": "Mango chutney with sweet chilli sauce",
+          "price": null
+        },
+        {
+          "name": "Roller Ranch Dip",
+          "description": "Ranch dressing with unique seasonings.",
+          "price": null
+        },
+        {
+          "name": "Spicy Tangy Sweet BBQ",
+          "description": "BBQ sauce with franks original hot sauce",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        {
+          "name": "Phalanx Control Salted Vegan Caramel Cake",
+          "description": "Three layers of rich chocolate sponge filled and iced with salted caramel and chocolate fudge, side-masked and finished with cocoa nibs and a glossy chocolate topping",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Desserts (Dinner)",
+      "items": [
+        {
+          "name": "Towers Sticky Toffee Pudding",
+          "description": "Classic sticky toffee sponge served warm with custard and vanilla ice cream. Rich, nostalgic and perfect for a slow, sweet finish.",
+          "price": null
+        },
+        {
+          "name": "Salted Caramel Rocky Road Brownie",
+          "description": "Baked brownie loaded with salted caramel and rocky road pieces, served with vanilla ice cream, toffee sauce and Biscoff crumb. Crunchy, gooey and over-the-top a multi-loop dessert.",
+          "price": null
+        },
+        {
+          "name": "Ice Cream Selection",
+          "description": "Choose three flavours from: Vanilla , Strawberry, Triple Chocolate",
+          "price": null
+        },
+        {
+          "name": "Sorbet Selection",
+          "description": "Choose three flavours from: Mango, Raspberry, Lemon",
+          "price": null
+        }
+      ]
+    }
+  ]
+}

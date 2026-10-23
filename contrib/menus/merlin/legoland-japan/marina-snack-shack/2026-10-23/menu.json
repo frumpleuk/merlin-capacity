@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Legoland Japan",
+    "official": true,
+    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/marina-snack-shack/"
+  },
+  "sections": [
+    {
+      "name": "Recommended Menus",
+      "items": [
+        {
+          "name": "Smoked Chicken",
+          "price": 900
+        }
+      ]
+    }
+  ]
+}

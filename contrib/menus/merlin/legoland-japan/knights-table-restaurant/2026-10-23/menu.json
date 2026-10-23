@@ -1,0 +1,110 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Legoland Japan",
+    "official": true,
+    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/knight-s-table-restaurant/"
+  },
+  "sections": [
+    {
+      "name": "Recommended Menus",
+      "items": [
+        {
+          "name": "Chef's Secret Curry White (White rice)",
+          "description": "Drink Bar Included",
+          "price": 1300
+        },
+        {
+          "name": "Chef’s Secret Curry – Yellow (Saffron Rice)",
+          "description": "Drink Bar Included",
+          "price": 1300
+        },
+        {
+          "name": "Chef’s Secret Kids’ Curry – White (White Rice)",
+          "description": "Drink Bar Included",
+          "price": 1000
+        },
+        {
+          "name": "Chef’s Secret Kids’ Curry – Yellow (Saffron Rice)",
+          "description": "Drink Bar Included",
+          "price": 1000
+        }
+      ]
+    },
+    {
+      "name": "Various Toppings",
+      "items": [
+        {
+          "name": "Ghost Naan",
+          "price": 400,
+          "addOn": true
+        },
+        {
+          "name": "Monster Egg & Bacon",
+          "price": 400,
+          "addOn": true
+        },
+        {
+          "name": "Ghost Chips",
+          "price": 200,
+          "addOn": true
+        },
+        {
+          "name": "Koukun® Pork Sausages",
+          "price": 300,
+          "addOn": true
+        },
+        {
+          "name": "Grilled Vegetables",
+          "price": 300,
+          "addOn": true
+        },
+        {
+          "name": "Bacon & Hamburger Steak",
+          "price": 700,
+          "addOn": true
+        },
+        {
+          "name": "Fried Shrimp",
+          "price": 500,
+          "addOn": true
+        },
+        {
+          "name": "Cheese",
+          "price": 200,
+          "addOn": true
+        },
+        {
+          "name": "Brick Fries",
+          "price": 200,
+          "addOn": true
+        },
+        {
+          "name": "Fried Calamari Rings",
+          "price": 300,
+          "addOn": true
+        },
+        {
+          "name": "Fried Chicken",
+          "price": 400,
+          "addOn": true
+        },
+        {
+          "name": "Pork Fillet Katsu",
+          "price": 400,
+          "addOn": true
+        },
+        {
+          "name": "Jumbo Chicken Skewer",
+          "price": 700,
+          "addOn": true
+        },
+        {
+          "name": "Colorful Marshmallows",
+          "price": 200,
+          "addOn": true
+        }
+      ]
+    }
+  ]
+}

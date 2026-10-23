@@ -7,5 +7,7 @@
   "lon": -1.555877,
   "menuUrl": "https://menus.tenkites.com/paultonspark/thenestkiosk",
   "appMissingSince": null,
-  "source": "paultons app bundle"
+  "source": "paultons app bundle",
+  "displayMenuUrl": "https://menus.tenkites.com/paultonspark/sweettreatkiosks",
+  "tenkitesMenu": "The Nest"
 }

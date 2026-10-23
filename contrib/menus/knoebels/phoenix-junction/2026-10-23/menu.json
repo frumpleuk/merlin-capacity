@@ -1,0 +1,163 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Knoebels",
+    "official": true,
+    "url": "https://knoebels.com/menu/phoenix-junction/"
+  },
+  "sections": [
+    {
+      "name": "Kids Meals",
+      "items": [
+        {
+          "name": "Chicken Fingers (2)",
+          "price": 925
+        },
+        {
+          "name": "Hamburger",
+          "price": 925
+        },
+        {
+          "name": "Hot Dog",
+          "price": 825
+        }
+      ]
+    },
+    {
+      "name": "Dessert",
+      "items": [
+        {
+          "name": "Tiger Tail",
+          "description": "Pretzel rolled in cinnamon sugar striped with caramel and chocolate sauce.",
+          "price": 450
+        }
+      ]
+    },
+    {
+      "name": "From the Fryer",
+      "items": [
+        {
+          "name": "Chicken Fingers (3)",
+          "description": "Add fries $3.75",
+          "price": 600
+        },
+        {
+          "name": "Fried Chicken Sandwich",
+          "description": "Comes with lettuce and tomato",
+          "price": 825
+        },
+        {
+          "name": "Fries",
+          "description": "Add cheese $1.00. Loaded - (cheese, sour cream and bacon) add $2.75",
+          "price": 450
+        },
+        {
+          "name": "Garlic Parm Fries",
+          "description": "Fries with Garlic Aioli and Parmesan Cheese",
+          "price": 750
+        },
+        {
+          "name": "Gluten Free Chicken Fingers",
+          "price": 700
+        },
+        {
+          "name": "Great White Fish Sandwich",
+          "description": "Battered haddock served on a toasted roll",
+          "price": 1000
+        },
+        {
+          "name": "Mozzerella Sticks (6)",
+          "description": "Served with marinara dipping sauce",
+          "price": 750
+        },
+        {
+          "name": "Onion Rings",
+          "description": "Generous serving of golden-brown circular perfection",
+          "price": 600
+        },
+        {
+          "name": "Spicy Garlic Parm",
+          "description": "Fries with Garlic Aioli, Boom Boom Sauce and Parmesan Cheese",
+          "price": 750
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        {
+          "name": "Creamy Cole Slaw",
+          "price": 200
+        },
+        {
+          "name": "Sauerkraut",
+          "price": 100
+        }
+      ]
+    },
+    {
+      "name": "From the Grill",
+      "items": [
+        {
+          "name": "Bacon & Cheddar Burger",
+          "description": "Smoked bacon and sharp cheddar cheese. Substitute Chicken $10.25 or Beyond Burger $10.75",
+          "price": 1025
+        },
+        {
+          "name": "Bourbon Burger",
+          "description": "Sweet and smoky bourbon sauce with melted cooper cheese, bacon and deep fried onion rings. Substitute Chicken $10.25 or Beyond Burger $10.75",
+          "price": 1025
+        },
+        {
+          "name": "Brisket Sandwich",
+          "description": "Beef brisket between the bun.",
+          "price": 800
+        },
+        {
+          "name": "Chili Cheese Dog",
+          "description": "Housemade Chili Sauce with melted cheddar cheese",
+          "price": 700
+        },
+        {
+          "name": "Coney Style Burger",
+          "description": "Housemade Chili Sauce, Fried Onions, American Cheese with mustard drizzled on top",
+          "price": 1025
+        },
+        {
+          "name": "Garlic Butter Bacon Burger",
+          "description": "A taste explosion! Garlic butter, Cooper Sharp Cheese, smoky bacon and garlic aioli all served on an onion brioche roll. Substitute Chicken $10.25 or Beyond Burger $10.75",
+          "price": 1025
+        },
+        {
+          "name": "Hot Dog",
+          "price": 300
+        },
+        {
+          "name": "Mushroom & Swiss Burger",
+          "description": "Sauteed mushrooms and savory melted swiss on a toasted roll. Substitute chicken $9.00 or Beyond Burger $9.75",
+          "price": 1025
+        },
+        {
+          "name": "Steakhouse Salad Chicken",
+          "description": "Grilled or crispy chicken w/ mixed greens, cherry tom.,cheddar cheese,cucumbers & croutons",
+          "price": 975
+        },
+        {
+          "name": "Steakhouse Salad Garden",
+          "description": "Mixed Greens with cherry tomatoes,cheddar cheese,cucumbers and croutons",
+          "price": 700
+        },
+        {
+          "name": "Steakhouse Salad Steak",
+          "description": "Chipped Steak w/ mixed greens, cherry tomatoes, cheddar cheese, cucumbers & croutons",
+          "price": 1050
+        },
+        {
+          "name": "The Original Phoenix Burger",
+          "description": "Burger with lettuce and tomato on a toasted roll. Substitute chicken $7.75 or Beyond Burger $8.25. Add American cheese $.25 Swiss $.50",
+          "price": 775
+        }
+      ]
+    }
+  ]
+}

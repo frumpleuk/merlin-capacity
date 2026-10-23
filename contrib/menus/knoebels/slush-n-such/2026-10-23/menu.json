@@ -1,0 +1,60 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Knoebels",
+    "official": true,
+    "url": "https://knoebels.com/menu/slush-n-such/"
+  },
+  "sections": [
+    {
+      "name": "Apple",
+      "items": [
+        {
+          "name": "Candy Apple",
+          "price": 500
+        },
+        {
+          "name": "Candy Apple w/ Nuts",
+          "price": 525
+        }
+      ]
+    },
+    {
+      "name": "Frozen Drinks",
+      "items": [
+        {
+          "name": "ICEE",
+          "description": "Flavors: Pepsi, Mountain Dew, Red Cherry, Blue Raspberry, Strawberry Mango",
+          "price": 375
+        },
+        {
+          "name": "Smoothie",
+          "description": "Flavors: Strawberry, Strawberry Banana, & Raspberry",
+          "price": 775
+        },
+        {
+          "name": "The Brain Freeze",
+          "description": "Layered slush with your choice of ICEE and Dippin' Dot",
+          "price": 1000
+        }
+      ]
+    },
+    {
+      "name": "Dippin' Dots",
+      "items": [
+        {
+          "name": "Childs Size",
+          "price": 600
+        },
+        {
+          "name": "LOL Size",
+          "price": 875
+        },
+        {
+          "name": "Regular Size",
+          "price": 700
+        }
+      ]
+    }
+  ]
+}

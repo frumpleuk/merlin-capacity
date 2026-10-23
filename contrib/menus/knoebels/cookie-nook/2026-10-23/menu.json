@@ -1,0 +1,199 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Knoebels",
+    "official": true,
+    "url": "https://knoebels.com/menu/cookie-nook/"
+  },
+  "sections": [
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Americano",
+          "price": 475
+        },
+        {
+          "name": "Cappuccino",
+          "price": 575
+        },
+        {
+          "name": "Chai",
+          "description": "hot (iced add .25)",
+          "price": 600
+        },
+        {
+          "name": "Espresso Shot",
+          "price": 350
+        },
+        {
+          "name": "Frappes",
+          "description": "Flavors: Java Chip, Salted Caramel, or Mocha",
+          "price": 750
+        },
+        {
+          "name": "Hot Chocolate",
+          "description": "instant hot chocolate",
+          "price": 300
+        },
+        {
+          "name": "Iced Carmel Macchiato",
+          "description": "hot (iced add .25)",
+          "price": 650
+        },
+        {
+          "name": "Iced Coffee",
+          "price": 425
+        },
+        {
+          "name": "Iced Tea",
+          "description": "Sweet or Unsweet",
+          "price": 400
+        },
+        {
+          "name": "Juice",
+          "description": "Apple or Cranberry",
+          "price": 300
+        },
+        {
+          "name": "Large Coffee",
+          "description": "Add Flavor Shot $1.00",
+          "price": 375
+        },
+        {
+          "name": "Large Soda",
+          "price": 400
+        },
+        {
+          "name": "Latte",
+          "description": "Iced or hot",
+          "price": 600
+        },
+        {
+          "name": "Milk",
+          "description": "White or Chocolate",
+          "price": 275
+        },
+        {
+          "name": "Mocha Latte",
+          "description": "Iced or hot",
+          "price": 600
+        },
+        {
+          "name": "Refresher",
+          "description": "Peach Mango, Watermelon Cucumber Mint, Add Lemonade +$0.50",
+          "price": 550
+        },
+        {
+          "name": "Small Coffee",
+          "description": "Add Flavor Shot $1.00",
+          "price": 225
+        },
+        {
+          "name": "Small Soda",
+          "price": 300
+        },
+        {
+          "name": "Smore’s Cold Brew",
+          "description": "Topped with Sweet Foam",
+          "price": 650
+        },
+        {
+          "name": "Smore’s Frappe",
+          "description": "Frozen Frappe topped off with whipped cream,chocolate bar, graham cracker",
+          "price": 800
+        },
+        {
+          "name": "Smore’s Iced Coffee",
+          "price": 500
+        },
+        {
+          "name": "Smore’s Large Coffee",
+          "price": 375
+        },
+        {
+          "name": "Smore’s Latte",
+          "description": "Available Iced or Hot",
+          "price": 700
+        },
+        {
+          "name": "Smore’s Small Coffee",
+          "price": 300
+        },
+        {
+          "name": "White Chocolate Macchiato",
+          "price": 650
+        }
+      ]
+    },
+    {
+      "name": "Bakery Items",
+      "items": [
+        {
+          "name": "Brownie Container",
+          "price": 600
+        },
+        {
+          "name": "Cannoli (1)",
+          "price": 250
+        },
+        {
+          "name": "Cannolis (3)",
+          "price": 700
+        },
+        {
+          "name": "Chocolate Covered Banana",
+          "description": "Add nuts $.25",
+          "price": 475
+        },
+        {
+          "name": "Chocolate Covered Cheesecake",
+          "price": 675
+        },
+        {
+          "name": "Chocolate Covered Rice Crispy",
+          "description": "Also available in white chocolate",
+          "price": 625
+        },
+        {
+          "name": "Cookie (1)",
+          "price": 225
+        },
+        {
+          "name": "Cookie Cups",
+          "price": 600
+        },
+        {
+          "name": "Cookies (12)",
+          "price": 2500
+        },
+        {
+          "name": "Cookies (3)",
+          "price": 675
+        },
+        {
+          "name": "Cookies (6)",
+          "price": 1250
+        },
+        {
+          "name": "Crumb Cake or Apple Crumb",
+          "price": 450
+        },
+        {
+          "name": "Fresh Fruit",
+          "description": "Apple or Banana",
+          "price": 50
+        },
+        {
+          "name": "Fruit Cup",
+          "description": "Availability may vary.",
+          "price": 600
+        },
+        {
+          "name": "Whoopie Pie",
+          "price": 350
+        }
+      ]
+    }
+  ]
+}

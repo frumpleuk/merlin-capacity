@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Knoebels",
+    "official": true,
+    "url": "https://knoebels.com/menu/french-fry-stand/"
+  },
+  "sections": [
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Bottled Drinks",
+          "price": 350
+        },
+        {
+          "name": "Bottled Water",
+          "price": 350
+        }
+      ]
+    },
+    {
+      "name": "Food",
+      "items": [
+        {
+          "name": "Cheese Fries",
+          "description": "Fresh cut fries with cheese sauce",
+          "price": 650
+        },
+        {
+          "name": "French Fries",
+          "description": "Fresh cut",
+          "price": 550
+        },
+        {
+          "name": "Pickle on a Stick",
+          "price": 200
+        }
+      ]
+    }
+  ]
+}

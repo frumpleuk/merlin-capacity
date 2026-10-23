@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Legoland Japan",
+    "official": true,
+    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/ollie-s-popcorn-stand/"
+  },
+  "sections": [
+    {
+      "name": "Recommended Menus",
+      "items": [
+        {
+          "name": "Popcorn Junior Bucket",
+          "description": "With Popcorn",
+          "price": 4900
+        },
+        {
+          "name": "Dragon Bucket",
+          "description": "With Popcorn",
+          "price": 3200
+        },
+        {
+          "name": "Popcorn",
+          "description": "Salt (Cup)",
+          "price": 600
+        }
+      ]
+    }
+  ]
+}

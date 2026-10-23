@@ -1,0 +1,556 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Knoebels",
+    "official": true,
+    "url": "https://knoebels.com/menu/alamo/"
+  },
+  "sections": [
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Chocolate Milk*",
+          "price": 275
+        },
+        {
+          "name": "Coffee (Regular or Decaf)",
+          "price": 395
+        },
+        {
+          "name": "Fresh Brewed Iced Tea",
+          "description": "Sweet or Unsweet",
+          "price": 395
+        },
+        {
+          "name": "Gatorade",
+          "description": "Fruit Punch",
+          "price": 395
+        },
+        {
+          "name": "Hot Chocolate*",
+          "price": 275
+        },
+        {
+          "name": "Hot Tea",
+          "price": 395
+        },
+        {
+          "name": "Soda",
+          "description": "Pepsi, Pepsi Zero Sugar, Diet Pepsi, Starry, Pennsylvania Dutch White Birch Beer, Mountain Dew, Dr Pepper",
+          "price": 395
+        },
+        {
+          "name": "Tropicana Apple Juice",
+          "price": 395
+        },
+        {
+          "name": "Tropicana Lemonade",
+          "price": 395
+        },
+        {
+          "name": "White Milk*",
+          "price": 275
+        }
+      ]
+    },
+    {
+      "name": "Baskets",
+      "items": [
+        {
+          "name": "Chicken Fingers",
+          "price": 1050
+        },
+        {
+          "name": "Chicken Sandwich",
+          "description": "choice of grilled or crispy",
+          "price": 1050
+        },
+        {
+          "name": "Deep Fried Shrimp",
+          "price": 1050
+        },
+        {
+          "name": "Fish & Chips",
+          "price": 1050
+        },
+        {
+          "name": "Plant Based Chik’n",
+          "price": 1050
+        }
+      ]
+    },
+    {
+      "name": "Cold Sandwiches",
+      "items": [
+        {
+          "name": "B.L.T.",
+          "price": 550
+        },
+        {
+          "name": "Chicken Salad",
+          "price": 550
+        },
+        {
+          "name": "Tuna Salad",
+          "price": 575
+        },
+        {
+          "name": "Turkey Club",
+          "price": 850
+        }
+      ]
+    },
+    {
+      "name": "Wraps",
+      "items": [
+        {
+          "name": "Baked Ham",
+          "price": 975
+        },
+        {
+          "name": "Buffalo Chicken",
+          "description": "choice of blue cheese or ranch",
+          "price": 975
+        },
+        {
+          "name": "Chicken Caesar",
+          "price": 975
+        },
+        {
+          "name": "Roast Turkey",
+          "price": 975
+        },
+        {
+          "name": "Veggie",
+          "description": "Mix of lettuce & spinach with fresh onions, peppers, & tomatoes & served with salad dressing",
+          "price": 975
+        }
+      ]
+    },
+    {
+      "name": "Hot Sandwiches & Handhelds",
+      "items": [
+        {
+          "name": "Alamo Burger",
+          "description": "Our signature 8 oz. burger w/ lettuce, tomato, & onion on a Kaiser roll.",
+          "price": 1050
+        },
+        {
+          "name": "Asian Chicken Sandwich",
+          "description": "Grilled chicken marinated in a honey garlic soy sauce with lettuce and tomato.",
+          "price": 1025
+        },
+        {
+          "name": "Beef Tenderloin",
+          "description": "Tender beef on a kaiser roll.",
+          "price": 1250
+        },
+        {
+          "name": "Black Bean Burger",
+          "description": "Black Bean Burger w/ lettuce, tomato & onion on a Kaiser roll.",
+          "price": 1050
+        },
+        {
+          "name": "Cheesesteak",
+          "description": "Thin sliced steak with melted mozzarella or american cheese on a roll. Served with sauted onions, sweet peppers, marinara sauce or in the garden .",
+          "price": 975
+        },
+        {
+          "name": "Chicken Cheesesteak",
+          "description": "All-white meat chicken breast, onions, sweet peppers, and melted mozzarella or american cheese on a roll or in the garden .",
+          "price": 975
+        },
+        {
+          "name": "Chicken Waffle Sandwich",
+          "description": "Deep fried original or spicy chicken topped with bacon, spinach, tomato, sour cream & maple syrup.",
+          "price": 975
+        },
+        {
+          "name": "Crab Cake Sandwich",
+          "description": "Homemade fried lump & claw meat on a bun with lettuce and tomato. Served with a side of coleslaw and choice of cocktail or tartar sauce.",
+          "price": 975
+        },
+        {
+          "name": "Extras",
+          "description": "extra chicken patty, grilled chicken, or fajita strip",
+          "price": 500
+        },
+        {
+          "name": "Eye Opener",
+          "description": "Our 8 oz. Alamo burger, with american cheese, bacon, hashbrown tater tot ring and a fried egg on a Kaiser roll.",
+          "price": 1325
+        },
+        {
+          "name": "French Dip",
+          "description": "Thinly sliced roast beef on a roll, with a side of au jus for dipping. Served with mashed potatoes or fries.",
+          "price": 900
+        },
+        {
+          "name": "Hot Roast Beef",
+          "description": "Slow roasted, marinated beef piled high on white bread and topped with gravy. Served with mashed potatoes or fries.",
+          "price": 950
+        },
+        {
+          "name": "Hot Roast Turkey",
+          "description": "Thick slices of roasted turkey, piled high on white bread and topped with gravy. Served with mashed potatoes or fries.",
+          "price": 950
+        },
+        {
+          "name": "Q Burger",
+          "description": "Our 8 oz. Alamo burger, with bacon, shredded beef brisket, onion rings and tangy BBQ sauce on a Kaiser roll.",
+          "price": 1325
+        },
+        {
+          "name": "Rachel",
+          "description": "Thinly sliced turkey, swiss cheese, creamy coleslaw and thousand island dressing. Served on grilled rye bread.",
+          "price": 925
+        },
+        {
+          "name": "Reuben",
+          "description": "Thinly sliced corned beef topped with sauerkraut, swiss cheese, and 1000 island dressing. Served on grilled rye bread.",
+          "price": 950
+        },
+        {
+          "name": "Smash Burger",
+          "description": "Two 3 oz. patties, american cheese, and fried onions, housemade sauce on a roll.",
+          "price": 1025
+        },
+        {
+          "name": "The “Weck”",
+          "description": "Slow roasted & thin sliced roast beef served on a pretzel bun dipped in au jus and spread with horseradish creme sauce. Or try Ham on Weck similarly created with thin sliced ham served on a pretzel bun and dressed with honey mustard.",
+          "price": 950
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        {
+          "name": "Apple Sauce",
+          "price": 395
+        },
+        {
+          "name": "Baked Beans",
+          "price": 395
+        },
+        {
+          "name": "Baked Potato",
+          "price": 395
+        },
+        {
+          "name": "Bread Filling",
+          "price": 395
+        },
+        {
+          "name": "Creamy Coleslaw",
+          "price": 395
+        },
+        {
+          "name": "French Fries",
+          "price": 395
+        },
+        {
+          "name": "Fresh Fruit",
+          "price": 395
+        },
+        {
+          "name": "Macaroni & Cheese",
+          "price": 395
+        },
+        {
+          "name": "Mashed Potatoes",
+          "price": 395
+        },
+        {
+          "name": "Vegatable du jour",
+          "price": 395
+        }
+      ]
+    },
+    {
+      "name": "Italian Specialties",
+      "items": [
+        {
+          "name": "Chicken Parmigiana",
+          "description": "Breaded or grilled and served over spaghetti marinara.",
+          "price": 1325
+        },
+        {
+          "name": "Extras",
+          "description": "Meatball (1)",
+          "price": 200
+        },
+        {
+          "name": "Extras",
+          "description": "Grilled Chicken or Crispy Chicken",
+          "price": 500
+        },
+        {
+          "name": "Fettuccine Alfredo",
+          "description": "Fettuccine noodles covered with a classic parmesan creme cheese sauce.",
+          "price": 1175
+        },
+        {
+          "name": "Macaroni & Cheese",
+          "description": "Creamy homemade macaroni and cheese with stewed tomatoes.",
+          "price": 975
+        },
+        {
+          "name": "Pasta al Limone",
+          "description": "Spaghetti lightly tossed with olive oil, lemon zest, cashews, red pepper flakes & parsley and served with a side of broccoli.",
+          "price": 1075
+        },
+        {
+          "name": "Spaghetti & Meatballs",
+          "description": "Spaghetti topped with marinara sauce and two homemade meatballs.",
+          "price": 1125
+        }
+      ]
+    },
+    {
+      "name": "Land & Sea",
+      "items": [
+        {
+          "name": "Alamo Crab Cakes",
+          "description": "Two crispy fried lump and claw meat cakes, served with cocktail or tartar sauce. Two additional sides.",
+          "price": 1750
+        },
+        {
+          "name": "Broiled Sea Scallops",
+          "description": "Served in a garlic butter sauce. Two additional sides.",
+          "price": 1750
+        },
+        {
+          "name": "Chicken & Waffles",
+          "description": "Our own homemade waffles, off the bone chicken and mashed potatoes. One additional side.",
+          "price": 1550
+        },
+        {
+          "name": "Liver & Onions",
+          "description": "Grilled and topped with sauteed onions. Served with mashed potatoes. One additional side.",
+          "price": 1425
+        },
+        {
+          "name": "Roast Beef",
+          "description": "Slow roasted and marinated in au jus with mashed potatoes. One additional side.",
+          "price": 1650
+        },
+        {
+          "name": "Roast Turkey",
+          "description": "Slow roasted turkey w/ cranberry sauce, bread filling, mashed potatoes and gravy.",
+          "price": 1625
+        },
+        {
+          "name": "Salmon",
+          "description": "8 oz broiled filet seasoned with lemon pepper and butter. Two additional sides.",
+          "price": 1750
+        },
+        {
+          "name": "Southern Fried Chicken",
+          "description": "Four hand-breaded pieces of bone-in chicken, fried 'til golden and crispy. One additional side.",
+          "price": 1625
+        }
+      ]
+    },
+    {
+      "name": "Salad",
+      "items": [
+        {
+          "name": "Add Protein to any Salad",
+          "description": "Grilled Chicken or Crispy Chicken",
+          "price": 500
+        },
+        {
+          "name": "Add Protein to any Salad",
+          "description": "Plant Based Chik'n",
+          "price": 700
+        },
+        {
+          "name": "Add Protein to any Salad",
+          "description": "Steak",
+          "price": 800
+        },
+        {
+          "name": "Caesar Salad",
+          "description": "Crisp romaine lettuce, hand tossed croutons, and parmesan cheese. Served with our homemade creamy ceaser dressing.",
+          "price": 625
+        },
+        {
+          "name": "Chef Salad",
+          "description": "A classic, made with lettuce, sliced meat and cheese, hard boiled eggs, and hand tossed croutons.",
+          "price": 850
+        },
+        {
+          "name": "Garden",
+          "description": "Fresh lettuce, carrots, purple cabbage and grape tomatoes. Served with your choice of salad dressing and crispy croutons.",
+          "price": 600
+        },
+        {
+          "name": "Mandarin Orange",
+          "description": "A bed of mixed green lettuce topped with mandarin oranges, dried cranberries, and glazed walnuts. Served with our creamy poppyseed dressing.",
+          "price": 1025
+        },
+        {
+          "name": "Mixed Berry",
+          "description": "A bed of mixed green lettuce topped with strawberries, blueberries, candied walnuts, and blue cheese crumbles. Served with housemade balsamic vinaigrette dressing.",
+          "price": 950
+        }
+      ]
+    },
+    {
+      "name": "Soup",
+      "items": [
+        {
+          "name": "French Onion",
+          "description": "A rich and savory soup made with caramelized onions, beef broth, and topped with toasted croutons and melted mozzarella.",
+          "price": 500
+        },
+        {
+          "name": "Soup Du Jour Bowl",
+          "description": "Ask our servers about the soup of the day.",
+          "price": 500
+        },
+        {
+          "name": "Soup Du Jour Cup",
+          "description": "Ask our servers about the soup of the day.",
+          "price": 400
+        }
+      ]
+    },
+    {
+      "name": "Starters",
+      "items": [
+        {
+          "name": "Chicken Wings",
+          "description": "BBQ, Medium, Hot, Zesty Ranch, & Garlic Parmesan. Extra celery with Blue Cheese or Ranch +$2.50",
+          "sizes": [
+            {
+              "label": "6",
+              "price": 925
+            },
+            {
+              "label": "12",
+              "price": 1525
+            }
+          ]
+        },
+        {
+          "name": "Fried Green Beans",
+          "description": "Seasoned, breaded cripsy fried green beans. Served with Ranch for dipping.",
+          "price": 625
+        },
+        {
+          "name": "Fried Pickle Spears",
+          "description": "Seasoned, breaded and deep-fried pickle spears. Served with ranch for dipping.",
+          "price": 675
+        },
+        {
+          "name": "Jalapeno Poppers",
+          "description": "Five, breaded crispy fried jalapeno poppers, stuffed with cheddar cheese. Served with Ranch or Boom Boom sauce for dipping.",
+          "price": 725
+        },
+        {
+          "name": "Mozz Sticks",
+          "description": "Five breaded and deep-fried mozzarella cheese sticks. Served with marinara for dipping.",
+          "price": 725
+        },
+        {
+          "name": "Onion Rings",
+          "description": "White onions breaded and fried. Served with ranch for dipping.",
+          "price": 625
+        }
+      ]
+    },
+    {
+      "name": "Kids",
+      "items": [
+        {
+          "name": "Antique Car",
+          "description": "Peanut Butter & Jelly (Toasted or Not Toasted Bread), French Fries",
+          "price": 450
+        },
+        {
+          "name": "Ferris Wheel",
+          "description": "Hamburger & French Fries (Cheeseburger $8.50) (Bacon Cheeseburger $9.50)",
+          "price": 750
+        },
+        {
+          "name": "Galleon",
+          "description": "Mac & Cheese, Broccoli or Apple Sauce",
+          "price": 650
+        },
+        {
+          "name": "Helicopter",
+          "description": "Chicken & Waffles, Mashed Potato & Gravy, Apple Sauce or Coleslaw",
+          "price": 850
+        },
+        {
+          "name": "Italian Trapeze",
+          "description": "Spaghetti & Meatball (1)",
+          "price": 750
+        },
+        {
+          "name": "Kiddie Boat",
+          "description": "Grilled Cheese, Tomato Soup, Potato Chips",
+          "price": 700
+        },
+        {
+          "name": "Ole Smokey",
+          "description": "Grilled Hot Dog & French Fries",
+          "price": 650
+        },
+        {
+          "name": "Sky Fighter",
+          "description": "Chicken Tenders (2), French Fries, Apple Sauce",
+          "price": 825
+        }
+      ]
+    },
+    {
+      "name": "100th Specials",
+      "items": [
+        {
+          "name": "1926 Cobb Salad",
+          "description": "Mixed greens, hard boiled egg, avocado, chopped bacon, tomatoes, blue cheese crumbles and croutons. With choice of dressing.",
+          "price": 1025
+        },
+        {
+          "name": "Chicken Cordon Blue",
+          "description": "Crispy chicken, ham, Swiss, and Dijon mustard on a kaiser roll. Spicy chicken also available.",
+          "price": 1095
+        },
+        {
+          "name": "Founders Chopped Sirloin",
+          "description": "Chopped Sirloin topped with mushrooms and gravy. Served with mashed potatoes and a vegtable, roll and butter.",
+          "price": 1225
+        },
+        {
+          "name": "Lake Glory Fish Bites",
+          "description": "Pollock bites battered and deep-fried. Served with Boom-boom sauce.",
+          "price": 750
+        },
+        {
+          "name": "Old Grove Seafood Pasta",
+          "description": "Scallops and muscles over fettuccine tossed in a garlic butter sauce. Served with a side salad.",
+          "price": 1400
+        },
+        {
+          "name": "Portabella Kurtz",
+          "description": "Sliced portabella mushrooms, lighted breaded with Italian seasoning, deep-fried to a golden brown. Served with marinara sauce.",
+          "price": 775
+        },
+        {
+          "name": "Portabella Parmesean",
+          "description": "Our spaghetti topped with marinara, deep fried portabella Kurtz and mozzarella. Served with a side salad.",
+          "price": 1350
+        },
+        {
+          "name": "Yucca Mozzies",
+          "description": "Mozzarella balls coated in yucca rott. Served with garlic aioli.",
+          "price": 750
+        }
+      ]
+    }
+  ]
+}

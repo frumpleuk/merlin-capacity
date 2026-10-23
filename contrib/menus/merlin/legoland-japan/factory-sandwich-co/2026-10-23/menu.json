@@ -1,0 +1,69 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Legoland Japan",
+    "official": true,
+    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/factory-sandwich-co/"
+  },
+  "sections": [
+    {
+      "name": "Recommended Menus",
+      "items": [
+        {
+          "name": "Minifigure Head Cup",
+          "description": "Includes a Slush or a drink",
+          "price": 3400
+        },
+        {
+          "name": "Tonkotsu Ramen Set with Fried Chicken and Fried Rice Includes a soft drink",
+          "price": 1750
+        },
+        {
+          "name": "Kids Ramen Set with Pork Bun",
+          "description": "Includes a Pork Bun Includes Soft Drink",
+          "price": 1000
+        },
+        {
+          "name": "Smoked Salmon & Cream Sandwich",
+          "price": 950
+        },
+        {
+          "name": "Katsu Tama Sandwich",
+          "price": 950
+        },
+        {
+          "name": "Monster Cornet",
+          "price": 950
+        },
+        {
+          "name": "Monster Cup Cake Chocolate",
+          "price": 800
+        },
+        {
+          "name": "Tsukimi Parfait",
+          "price": 800
+        },
+        {
+          "name": "Halloween Sweets Cupcake",
+          "price": 800
+        },
+        {
+          "name": "Sweet Potato Cheesecake Latte",
+          "price": 800
+        },
+        {
+          "name": "Ghost Hot Chocolate",
+          "price": 800
+        },
+        {
+          "name": "Ghost Iced Chocolate",
+          "price": 800
+        },
+        {
+          "name": "Slush bottle Observation Tower",
+          "price": 2500
+        }
+      ]
+    }
+  ]
+}

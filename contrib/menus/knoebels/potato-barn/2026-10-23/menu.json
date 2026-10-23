@@ -1,0 +1,155 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Knoebels",
+    "official": true,
+    "url": "https://knoebels.com/menu/potato-barn/"
+  },
+  "sections": [
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Gatorade",
+          "price": 350
+        },
+        {
+          "name": "Iced Coffee",
+          "price": 425
+        },
+        {
+          "name": "Large Fountain Beverage",
+          "price": 400
+        },
+        {
+          "name": "Small Fountain Beverage",
+          "price": 300
+        }
+      ]
+    },
+    {
+      "name": "Nachos",
+      "items": [
+        {
+          "name": "Nacho Grande",
+          "description": "Pulled pork, cheese, sour cream, salsa, and jalapeno peppers",
+          "price": 1050
+        },
+        {
+          "name": "Nachos and Cheese",
+          "description": "Add sour cream, salsa $1.00",
+          "price": 550
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        {
+          "name": "Homemade Cole Slaw",
+          "price": 200
+        }
+      ]
+    },
+    {
+      "name": "Sandwiches",
+      "items": [
+        {
+          "name": "Potbelly",
+          "description": "Rib-B-Q topped with pulled pork and cole slaw",
+          "price": 925
+        },
+        {
+          "name": "Pulled Pork",
+          "price": 700
+        },
+        {
+          "name": "Rib-B-Q",
+          "description": "Boneless pork patty with BBQ Sauce",
+          "price": 525
+        }
+      ]
+    },
+    {
+      "name": "Toppings",
+      "items": [
+        {
+          "name": "Add a Second Rib",
+          "description": "Add a second Rib-B-Q to your sandwich.",
+          "price": 350
+        },
+        {
+          "name": "Bacon",
+          "price": 100
+        },
+        {
+          "name": "Brown Sugar",
+          "price": 75
+        },
+        {
+          "name": "Cheese",
+          "price": 100
+        },
+        {
+          "name": "Chives",
+          "price": 75
+        },
+        {
+          "name": "Fried Onion Straws",
+          "price": 75
+        },
+        {
+          "name": "Garlic Parmesan Sauce",
+          "price": 75
+        },
+        {
+          "name": "Honey",
+          "price": 75
+        },
+        {
+          "name": "Jalapeno Peppers",
+          "price": 75
+        },
+        {
+          "name": "Marshmallow",
+          "price": 75
+        },
+        {
+          "name": "Pulled Pork",
+          "price": 325
+        },
+        {
+          "name": "Ranch",
+          "price": 100
+        },
+        {
+          "name": "Salsa",
+          "price": 100
+        },
+        {
+          "name": "Sauerkraut",
+          "price": 100
+        },
+        {
+          "name": "Sour Cream",
+          "price": 100
+        }
+      ]
+    },
+    {
+      "name": "Baked Potatoes",
+      "items": [
+        {
+          "name": "Baked Potato",
+          "description": "Includes butter",
+          "price": 400
+        },
+        {
+          "name": "Sweet Potato",
+          "description": "With butter",
+          "price": 450
+        }
+      ]
+    }
+  ]
+}

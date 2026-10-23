@@ -1,0 +1,103 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Knoebels",
+    "official": true,
+    "url": "https://knoebels.com/menu/round-stand/"
+  },
+  "sections": [
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Large Fountain Beverage",
+          "price": 400
+        },
+        {
+          "name": "Small Fountain Beverage",
+          "price": 300
+        }
+      ]
+    },
+    {
+      "name": "Hot Food",
+      "items": [
+        {
+          "name": "Beef Cheese Steak",
+          "description": "Choice of American cheese or cheese whiz, and sauce",
+          "price": 950
+        },
+        {
+          "name": "Chicken Cheese Steak",
+          "description": "Choice of American cheese or cheese whiz, and sauce",
+          "price": 950
+        },
+        {
+          "name": "Hot Dog",
+          "description": "Add sauerkraut $1.00 Add Bacon or Cheese $1.00",
+          "price": 300
+        },
+        {
+          "name": "Hot Italian Sausage",
+          "description": "Served with peppers, onions, and sauce",
+          "price": 825
+        },
+        {
+          "name": "Loaded Pierogies",
+          "description": "Includes cheese, bacon, and sour cream",
+          "price": 675
+        },
+        {
+          "name": "Loaded Tri-Taters",
+          "description": "Includes cheese, bacon, and sour cream",
+          "price": 675
+        },
+        {
+          "name": "Meatball Sub",
+          "price": 900
+        },
+        {
+          "name": "Pierogies",
+          "description": "Deep fried. Add sour cream $1.00",
+          "price": 400
+        },
+        {
+          "name": "Taco Salad",
+          "description": "Lettuce, tomato, cheese, seasoned taco beef, salsa, and sour cream",
+          "price": 725
+        },
+        {
+          "name": "Travelin’ Taco",
+          "description": "Seasoned taco beef, lettuce, tomatoes, and cheese, served in a snack size chip bag - choose from Flamin' Hot Cheetos or Doritos chips",
+          "price": 675
+        },
+        {
+          "name": "Tri-Taters",
+          "description": "Deep fried hash brown potatoes",
+          "price": 400
+        }
+      ]
+    },
+    {
+      "name": "Toppings",
+      "items": [
+        {
+          "name": "Mushrooms",
+          "price": 75
+        },
+        {
+          "name": "Onions",
+          "price": 75
+        },
+        {
+          "name": "Pepper Strips",
+          "price": 75
+        },
+        {
+          "name": "Sweet Peppers",
+          "price": 75
+        }
+      ]
+    }
+  ]
+}

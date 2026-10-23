@@ -9,5 +9,6 @@
   "appPassholderDiscount": null,
   "diningPlans": null,
   "appMissingSince": null,
-  "source": "attractions.io app bundle"
+  "source": "attractions.io app bundle",
+  "displayMenuUrl": "https://www.legoland.jp/en/resort-guide/legoland/food/irodori/"
 }

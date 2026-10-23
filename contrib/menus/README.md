@@ -190,9 +190,11 @@ Four importers, each cached and fetching one page a second:
 
 | Script | Park | Gets |
 |---|---|---|
-| `import-tenkites.mjs` | Paulton's | Every dish, its description, its calories and the park's v/vg marks, from the Tenkites boards. No prices: the park leaves every price field empty. |
+| `import-tenkites.mjs` | Paulton's, Alton Towers | Every dish, its description, its calories and the park's v/vg marks, from the Tenkites boards (`displayMenuUrl`, else `menuUrl`). No prices: the parks leave every price field empty. A board holding several outlets' menus (Paulton's `peppapigworldrefreshments`, `sweettreatkiosks`) is read per venue by the menu's name, set by hand as `tenkitesMenu`. An `addOn` set by hand on an imported dish carries to the next import. |
 | `import-bpb-menus.mjs` | Blackpool | The dish lists on each `<venue>-menu` page, and whether a Season Pass gets a discount there. No prices either. |
 | `import-flamingoland-menus.mjs` | Flamingo Land | The Coach House food and drinks menus, **with prices**, calories and allergen marks. Drinks are sized items (25ml / Double). |
+| `import-knoebels.mjs` | Knoebels | Every stand's menu page (`knoebels.com/menu/<slug>/`, the venue's `displayMenuUrl`), **with prices** in cents. Not the seasonal Hall-O-Fun menus. Ten seconds between pages, as the site's robots.txt asks. |
+| `import-legoland-japan.mjs` | Legoland Japan | The featured dishes ("Recommended Menus") on each restaurant's English page, **with prices** in yen. Not the whole board. |
 | `import-pdf-menus.mjs` | Any park | Every venue whose menu link is a PDF (see below). Downloads each, **usually with prices**, and lists the new or changed ones in `.pdf-plan.json`. The layouts aren't parsed: each listed PDF is transcribed by agent into `<venue>/<today>/menu.json` with `source.sha256` set to the PDF's hash, which is how the next run knows it's unchanged. |
 
 A re-run writes nothing when the menu hasn't changed; when it has, the new one
@@ -325,9 +327,11 @@ ImageMagick.
 | `node scripts/menus/sync-venues-indie.mjs [park_key...] [--poi <file>]` | The same for Paulton's, Blackpool and Flamingo Land, each from its own backend. Paulton's POIs ship inside the APK rather than being served, so pass an unpacked `points_of_interest.json` with `--poi`; without it that park is skipped. Blackpool needs `BPB_EMAIL`/`BPB_PASSWORD` (`.dev.vars`). |
 | `node scripts/menus/sync-venues-dlp.mjs [park_key...]` | The same for Disneyland Paris, from Disney's GraphQL API (restaurants, lands, coordinates, menu PDF links). |
 | `node scripts/menus/import-pdf-menus.mjs [park...]` | Every venue's menu PDFs: fetches them and lists which need transcribing. |
-| `node scripts/menus/import-tenkites.mjs` | Paulton's own menus (dishes, calories, no prices). |
+| `node scripts/menus/import-tenkites.mjs` | Paulton's and Alton Towers' Tenkites menus (dishes, calories, no prices). |
 | `node scripts/menus/import-bpb-menus.mjs` | Blackpool's own menus and its Season Pass discounts. |
 | `node scripts/menus/import-flamingoland-menus.mjs` | Flamingo Land's own menus, with prices. |
+| `node scripts/menus/import-knoebels.mjs` | Knoebels' own menus, with prices. |
+| `node scripts/menus/import-legoland-japan.mjs` | Legoland Japan's featured dishes, with prices. |
 | `node scripts/menus/ingest.mjs plan` | Suggests a venue for each loose photo by GPS; writes `contrib/menus/.ingest-plan.json`. |
 | `node scripts/menus/ingest.mjs sheets` | Makes labelled contact sheets of the planned photos. |
 | `node scripts/menus/ingest.mjs apply` | Moves photos (with sidecars) into `<venue>/<date>/` as planned. |

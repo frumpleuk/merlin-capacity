@@ -1,0 +1,472 @@
+{
+  "date": "2026-10-23",
+  "unpriced": true,
+  "source": {
+    "name": "Paultons Park",
+    "official": true,
+    "url": "https://menus.tenkites.com/paultonspark/peppapigworldrefreshments",
+    "menu": "Daddy Pigs Café"
+  },
+  "sections": [
+    {
+      "name": "Hot Food",
+      "items": [
+        {
+          "name": "Cornish Pasty",
+          "price": null,
+          "kcal": 652
+        },
+        {
+          "name": "Sausage Roll",
+          "price": null,
+          "kcal": 598
+        },
+        {
+          "name": "Vegan Kerelan, Cauliflower, Chickpea & Onion Bhaji Pasty",
+          "price": null,
+          "kcal": 823,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Margherita Handheld Pizza",
+          "price": null,
+          "kcal": 478,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Ham & Cheese Handheld Pizza",
+          "price": null,
+          "kcal": 422
+        },
+        {
+          "name": "Hellmann's Tomato Ketchup Bottle.",
+          "price": null,
+          "kcal": 13,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Hellmann's Mayonnaise Bottle.",
+          "price": null,
+          "kcal": 108
+        }
+      ]
+    },
+    {
+      "name": "Ice Creams",
+      "items": [
+        {
+          "name": "Pumpkin Ice Scream",
+          "price": null,
+          "kcal": 164,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Standard Whippy Tub",
+          "description": "Soft vanilla ice cream.",
+          "price": null,
+          "kcal": 114,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Standard Whippy Tub with Flake",
+          "description": "Soft vanilla ice cream served with a chocolate flake.",
+          "price": null,
+          "kcal": 155,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Small Whippy Cone",
+          "description": "Soft vanilla ice cream served on a wafer cone.",
+          "price": null,
+          "kcal": 99,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Small Whippy Cone with Flake",
+          "description": "Soft vanilla ice cream served with a chocolate flake on a wafer cone.",
+          "price": null,
+          "kcal": 140,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Standard Whippy Cone",
+          "description": "Soft vanilla ice cream served on a wafer cone.",
+          "price": null,
+          "kcal": 133,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Standard Whippy Cone with Flake",
+          "description": "Soft vanilla ice cream served with a chocolate flake on a wafer cone.",
+          "price": null,
+          "kcal": 175,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add Chocolate Sauce to your ice cream",
+          "price": null,
+          "kcal": 29,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Extra Flake",
+          "price": null,
+          "kcal": 42,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Iced Latte",
+          "price": null,
+          "kcal": 130,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Iced Latte with Oat Milk",
+          "price": null,
+          "kcal": 150,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Iced Latte with Soya Milk.",
+          "price": null,
+          "kcal": 112,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Slushy Jack Reduced Sugar - Strawberry.",
+          "price": null,
+          "kcal": 86
+        },
+        {
+          "name": "Slushy Jacks Reduced Sugar - White Peach.",
+          "price": null,
+          "kcal": 86
+        },
+        {
+          "name": "Slushy Jacks Reduced Sugar - Bubble Gum",
+          "price": null,
+          "kcal": 86
+        },
+        {
+          "name": "Espresso",
+          "price": null,
+          "kcal": 28,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Double Espresso",
+          "price": null,
+          "kcal": 41,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Americano 12oz",
+          "price": null,
+          "kcal": 48,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "White Coffee 12oz",
+          "price": null,
+          "kcal": 70,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Latte 12oz",
+          "price": null,
+          "kcal": 140,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Cappuccino 12oz",
+          "price": null,
+          "kcal": 152,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Flat White 12oz",
+          "price": null,
+          "kcal": 140,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Black Tea",
+          "price": null,
+          "kcal": 0,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Clipper Everyday Tea - Black",
+          "price": null,
+          "kcal": 0,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Clipper English Breakfast Black Tea",
+          "price": null,
+          "kcal": 7,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Clipper Earl Grey Tea",
+          "price": null,
+          "kcal": 0
+        },
+        {
+          "name": "Clipper Berry Burst Tea",
+          "price": null,
+          "kcal": 0,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Clipper Lemon & Ginger Tea",
+          "price": null,
+          "kcal": 7,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Clipper Green Tea",
+          "price": null,
+          "kcal": 0,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Clipper Peppermint Tea",
+          "price": null,
+          "kcal": 0,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Tea with Milk 12oz",
+          "price": null,
+          "kcal": 22,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Clipper Decaf Tea",
+          "price": null,
+          "kcal": 7,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Mocha 12oz",
+          "price": null,
+          "kcal": 270,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Hot Chocolate",
+          "price": null,
+          "kcal": 122,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "The Works Hot Chocolate",
+          "description": "Hot chocolate topped with squirty cream, marshmallows and a flake.",
+          "price": null,
+          "kcal": 319
+        },
+        {
+          "name": "Orange Hot Chocolate",
+          "price": null,
+          "kcal": 414
+        },
+        {
+          "name": "Mint Hot Chocolate",
+          "price": null,
+          "kcal": 404
+        },
+        {
+          "name": "Babyccino",
+          "price": null,
+          "kcal": 17,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Milk",
+          "price": null,
+          "kcal": 176,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Soya Milk",
+          "price": null,
+          "kcal": 217,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Oat Milk",
+          "price": null,
+          "kcal": 217,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Caramel Syrup Shot",
+          "price": null,
+          "kcal": 47,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Vanilla Syrup Shot",
+          "price": null,
+          "kcal": 47,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Irish Cream Syrup Shot",
+          "price": null,
+          "kcal": 47,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Amaretto Syrup Shot",
+          "price": null,
+          "kcal": 47,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Hazelnut Syrup Shot",
+          "price": null,
+          "kcal": 47
+        },
+        {
+          "name": "Pumpkin Spice Syrup Shot",
+          "price": null,
+          "kcal": 47,
+          "tags": [
+            "vg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Snacks",
+      "items": [
+        {
+          "name": "Homemade Chocolate Brownie",
+          "price": null,
+          "kcal": 636,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Homemade Cookie Dough Tray Bake",
+          "price": null,
+          "kcal": 594,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Banana & Chocolate Chip Loaf",
+          "price": null,
+          "kcal": 331
+        }
+      ]
+    }
+  ]
+}

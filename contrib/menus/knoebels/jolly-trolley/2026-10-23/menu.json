@@ -1,0 +1,82 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Knoebels",
+    "official": true,
+    "url": "https://knoebels.com/menu/jolly-trolley/"
+  },
+  "sections": [
+    {
+      "name": "Snacks",
+      "items": [
+        {
+          "name": "Cannonball",
+          "description": "Warm Italian Cream Puff filled with your choice of Gelato",
+          "price": 700
+        },
+        {
+          "name": "Gelato",
+          "description": "single scoop",
+          "price": 400
+        },
+        {
+          "name": "Gelato",
+          "description": "double scoop",
+          "price": 775
+        },
+        {
+          "name": "Gluten Free Brownie",
+          "price": 300
+        },
+        {
+          "name": "Gluten Free Cookie",
+          "price": 300
+        },
+        {
+          "name": "Popcorn",
+          "price": 500
+        },
+        {
+          "name": "Sorbetto",
+          "description": "single scoop",
+          "price": 400
+        },
+        {
+          "name": "Sorbetto",
+          "description": "double scoop",
+          "price": 775
+        },
+        {
+          "name": "Sugar Waffles",
+          "price": 700
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Bottled Gatorade",
+          "price": 350
+        },
+        {
+          "name": "Bottled Soda",
+          "price": 350
+        },
+        {
+          "name": "Bottled Water",
+          "price": 350
+        },
+        {
+          "name": "Bubble Tea",
+          "price": 600
+        },
+        {
+          "name": "Lemonade",
+          "description": "Strawberry, Blue Raspberry, or Blackberry +$1.00",
+          "price": 400
+        }
+      ]
+    }
+  ]
+}

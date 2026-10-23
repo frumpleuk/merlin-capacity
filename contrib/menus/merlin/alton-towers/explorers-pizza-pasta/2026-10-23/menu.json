@@ -1,0 +1,226 @@
+{
+  "date": "2026-10-23",
+  "unpriced": true,
+  "source": {
+    "name": "Alton Towers Resort",
+    "official": true,
+    "url": "https://menus.tenkites.com/aramarkuk/pizzapastaat"
+  },
+  "sections": [
+    {
+      "name": "Pizza Hot",
+      "items": [
+        {
+          "name": "Hamburger Pizza",
+          "description": "A stonebaked pizza base topped with tomato sauce, mozzarella cheese, spicy meatballs, sliced gherkins, red onion and burger sauce, cooked until piping hot with a crisp base and burger-style finish.",
+          "price": null,
+          "kcal": 1043
+        },
+        {
+          "name": "Banana Smores Pizza",
+          "description": "Dessert pizza topped with smooth chocolate spread, sliced banana and chopped marshmallow, baked until crisp, then finished with banana chips and crushed digestive biscuit.",
+          "price": null,
+          "kcal": 903
+        },
+        {
+          "name": "Red Berry Juice",
+          "price": null,
+          "kcal": 1
+        },
+        {
+          "name": "Tandoori Delight Pizza",
+          "description": "A stonebaked pizza base topped with tomato sauce, mozzarella cheese, tandoori chicken, sweetcorn and a mango chutney mayonnaise drizzle, cooked until piping hot with a crisp base and vibrant spiced finish.",
+          "price": null,
+          "kcal": 1087
+        },
+        {
+          "name": "Toffee Apple Crumble Pizza",
+          "description": "Dessert pizza topped with toffee sauce, apple pieces, icing sugar and granola, baked until crisp and served hot.",
+          "price": null,
+          "kcal": 986
+        },
+        {
+          "name": "Mexican Hot",
+          "price": null,
+          "kcal": 941
+        },
+        {
+          "name": "Pepperoni Pizza (Non-Gluten Ingredients)",
+          "price": null,
+          "kcal": 730
+        },
+        {
+          "name": "Hawaiian Pizza",
+          "description": "A classic 10 inch Hawaiian pizza with rich tomato sauce, melted mozzarella, smoked ham and sweet pineapple, cooked until piping hot with an even golden finish.",
+          "price": null,
+          "kcal": 839
+        },
+        {
+          "name": "Bolognaise Pasta",
+          "price": null,
+          "kcal": 411
+        },
+        {
+          "name": "BBQ Chicken Pizza",
+          "description": "A stonebaked pizza base topped with tomato sauce, mozzarella cheese, BBQ chicken, red onion and sweetcorn, cooked until piping hot with a crisp base and smoky BBQ finish.",
+          "price": null,
+          "kcal": 954
+        },
+        {
+          "name": "Oranka Apple Concentrate Juice",
+          "description": "Oranka Apple Concentrate Juice",
+          "price": null,
+          "kcal": 3
+        },
+        {
+          "name": "Garlic Pizza Bread",
+          "price": null,
+          "kcal": 845
+        },
+        {
+          "name": "Pepperoni Pizza",
+          "description": "A classic 10 inch Pepperoni pizza with rich tomato sauce, melted mozzarella and slices of pepperoni, cooked until piping hot with a crisp base and even golden finish.",
+          "price": null,
+          "kcal": 842
+        },
+        {
+          "name": "Tomato & Basil Pasta",
+          "price": null,
+          "kcal": 275
+        },
+        {
+          "name": "Vinaigrette",
+          "price": null,
+          "kcal": 255
+        },
+        {
+          "name": "Oranka Orange Concentrate Juice",
+          "description": "Oranka Orange Concentrate Juice",
+          "price": null,
+          "kcal": 3
+        },
+        {
+          "name": "Salad Bar Buffet",
+          "description": "Salad Bar Buffet",
+          "price": null,
+          "kcal": 421
+        },
+        {
+          "name": "Vegetarian Pizza",
+          "description": "A classic 10 inch vegetarian pizza with rich tomato sauce, melted mozzarella, roasted Mediterranean vegetables and sweetcorn, cooked until piping hot with a crisp base and even golden finish.",
+          "price": null,
+          "kcal": 816
+        },
+        {
+          "name": "Margherita Pizza (Non-Gluten Ingredients)",
+          "price": null,
+          "kcal": 745
+        },
+        {
+          "name": "Margherita Pizza",
+          "description": "A classic 10 inch Margherita pizza with a crisp base, rich tomato sauce and melted mozzarella, cooked until piping hot with an even golden finish.",
+          "price": null,
+          "kcal": 779
+        },
+        {
+          "name": "Cheese pasta",
+          "price": null,
+          "kcal": 389
+        }
+      ]
+    },
+    {
+      "name": "Kids Reduced VAT Pizza",
+      "items": [
+        {
+          "name": "Hawaiian Pizza",
+          "description": "A classic 10 inch Hawaiian pizza with rich tomato sauce, melted mozzarella, smoked ham and sweet pineapple, cooked until piping hot with an even golden finish.",
+          "price": null,
+          "kcal": 839
+        },
+        {
+          "name": "Bolognaise Pasta",
+          "price": null,
+          "kcal": 411
+        },
+        {
+          "name": "Vinaigrette",
+          "price": null,
+          "kcal": 255
+        },
+        {
+          "name": "Oranka Apple Concentrate Juice",
+          "description": "Oranka Apple Concentrate Juice",
+          "price": null,
+          "kcal": 3
+        },
+        {
+          "name": "Garlic Pizza Bread",
+          "price": null,
+          "kcal": 845
+        },
+        {
+          "name": "Pepperoni Pizza",
+          "description": "A classic 10 inch Pepperoni pizza with rich tomato sauce, melted mozzarella and slices of pepperoni, cooked until piping hot with a crisp base and even golden finish.",
+          "price": null,
+          "kcal": 842
+        },
+        {
+          "name": "Tomato & Basil Pasta",
+          "price": null,
+          "kcal": 275
+        },
+        {
+          "name": "Oranka Orange Concentrate Juice",
+          "description": "Oranka Orange Concentrate Juice",
+          "price": null,
+          "kcal": 3
+        },
+        {
+          "name": "Salad Bar Buffet",
+          "description": "Salad Bar Buffet",
+          "price": null,
+          "kcal": 421
+        },
+        {
+          "name": "Vegetarian Pizza",
+          "description": "A classic 10 inch vegetarian pizza with rich tomato sauce, melted mozzarella, roasted Mediterranean vegetables and sweetcorn, cooked until piping hot with a crisp base and even golden finish.",
+          "price": null,
+          "kcal": 816
+        },
+        {
+          "name": "Margherita Pizza (Non-Gluten Ingredients)",
+          "price": null,
+          "kcal": 745
+        },
+        {
+          "name": "Margherita Pizza",
+          "description": "A classic 10 inch Margherita pizza with a crisp base, rich tomato sauce and melted mozzarella, cooked until piping hot with an even golden finish.",
+          "price": null,
+          "kcal": 779
+        },
+        {
+          "name": "Cheese pasta",
+          "price": null,
+          "kcal": 389
+        },
+        {
+          "name": "BBQ Chicken Pizza",
+          "description": "A stonebaked pizza base topped with tomato sauce, mozzarella cheese, BBQ chicken, red onion and sweetcorn, cooked until piping hot with a crisp base and smoky BBQ finish.",
+          "price": null,
+          "kcal": 954
+        },
+        {
+          "name": "Pepperoni Pizza (Non-Gluten Ingredients)",
+          "price": null,
+          "kcal": 730
+        },
+        {
+          "name": "Mexican Hot",
+          "price": null,
+          "kcal": 941
+        }
+      ]
+    }
+  ]
+}

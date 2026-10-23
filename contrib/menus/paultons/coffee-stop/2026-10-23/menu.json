@@ -1,0 +1,370 @@
+{
+  "date": "2026-10-23",
+  "unpriced": true,
+  "source": {
+    "name": "Paultons Park",
+    "official": true,
+    "url": "https://menus.tenkites.com/paultonspark/coffeeshops"
+  },
+  "sections": [
+    {
+      "name": "Breakfast",
+      "items": [
+        {
+          "name": "Butter Croissant",
+          "price": null,
+          "kcal": 197,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Chocolate Croissant",
+          "price": null,
+          "kcal": 353,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Snacks",
+      "items": [
+        {
+          "name": "Berry White Donut",
+          "price": null,
+          "kcal": 288,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Caramazing Donut",
+          "price": null,
+          "kcal": 310,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Spectaculous Donut",
+          "price": null,
+          "kcal": 253,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Nutty Zafari Donut",
+          "price": null,
+          "kcal": 265,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Strawjelly Jam Donut",
+          "price": null,
+          "kcal": 288,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Queen V Donut",
+          "price": null,
+          "kcal": 291,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Sugar Ring Donut.",
+          "price": null,
+          "kcal": 213,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Oreo Muffin",
+          "price": null,
+          "kcal": 490,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Lotus Biscoff Muffin",
+          "price": null,
+          "kcal": 506,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Homemade Chocolate Brownie",
+          "price": null,
+          "kcal": 636,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Homemade Cookie Dough Tray Bake",
+          "price": null,
+          "kcal": 594,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Halloween Caramel Traybake",
+          "price": null,
+          "kcal": 305
+        },
+        {
+          "name": "Sweet Popcorn",
+          "price": null,
+          "kcal": 333,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Black Tea",
+          "price": null,
+          "kcal": 0,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Clipper Everyday Tea - Black",
+          "price": null,
+          "kcal": 0,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Americano 12oz",
+          "price": null,
+          "kcal": 48,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "White Coffee 12oz",
+          "price": null,
+          "kcal": 70,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Latte 12oz",
+          "price": null,
+          "kcal": 140,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Cappuccino 12oz",
+          "price": null,
+          "kcal": 152,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Flat White 12oz",
+          "price": null,
+          "kcal": 140,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Mocha 12oz",
+          "price": null,
+          "kcal": 270,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Hot Chocolate",
+          "price": null,
+          "kcal": 122,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Orange Hot Chocolate",
+          "price": null,
+          "kcal": 414
+        },
+        {
+          "name": "Mint Hot Chocolate",
+          "price": null,
+          "kcal": 404
+        },
+        {
+          "name": "The Works Hot Chocolate",
+          "description": "Hot chocolate topped with squirty cream, marshmallows and a flake.",
+          "price": null,
+          "kcal": 319
+        },
+        {
+          "name": "Espresso",
+          "price": null,
+          "kcal": 28,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Double Espresso",
+          "price": null,
+          "kcal": 41,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Babyccino",
+          "price": null,
+          "kcal": 12,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Green Tea with Lemon",
+          "price": null,
+          "kcal": 0,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Green Tea",
+          "price": null,
+          "kcal": 2,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Peppermint Tea",
+          "price": null,
+          "kcal": 0,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Clipper Decaf Tea",
+          "price": null,
+          "kcal": 7,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Iced Latte",
+          "price": null,
+          "kcal": 130,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Iced Latte with Oat Milk",
+          "price": null,
+          "kcal": 150,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Iced Latte with Soya Milk",
+          "price": null,
+          "kcal": 112,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Caramel Syrup Shot",
+          "price": null,
+          "kcal": 47,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Amaretto Syrup Shot",
+          "price": null,
+          "kcal": 47,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Vanilla Syrup Shot",
+          "price": null,
+          "kcal": 47,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Irish Cream Syrup Shot",
+          "price": null,
+          "kcal": 47,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Hazelnut Syrup Shot",
+          "price": null,
+          "kcal": 47
+        },
+        {
+          "name": "Pumpkin Spice Syrup Shot",
+          "price": null,
+          "kcal": 47,
+          "tags": [
+            "vg"
+          ]
+        }
+      ]
+    }
+  ]
+}

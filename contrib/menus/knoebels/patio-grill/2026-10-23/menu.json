@@ -1,0 +1,113 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Knoebels",
+    "official": true,
+    "url": "https://knoebels.com/menu/patio-grill/"
+  },
+  "sections": [
+    {
+      "name": "Handhelds",
+      "items": [
+        {
+          "name": "Buffalo Chicken Sandwich",
+          "description": "Grilled chicken with buffalo sauce. Add Ranch or Blue Cheese $1.00",
+          "price": 675
+        },
+        {
+          "name": "Cheese Burger",
+          "price": 500
+        },
+        {
+          "name": "Double Burger",
+          "price": 750
+        },
+        {
+          "name": "Double Cheese Burger",
+          "price": 800
+        },
+        {
+          "name": "Grilled Chicken Sandwich",
+          "description": "With lettuce and tomato",
+          "price": 675
+        },
+        {
+          "name": "Hamburger",
+          "price": 450
+        },
+        {
+          "name": "Hot Dog",
+          "description": "Add chili or cheese $0.75",
+          "price": 300
+        },
+        {
+          "name": "Nachos",
+          "description": "With cheese",
+          "price": 550
+        },
+        {
+          "name": "Spicy Chicken Bacon Ranch Sandwitch",
+          "price": 1025
+        }
+      ]
+    },
+    {
+      "name": "Fried Foods",
+      "items": [
+        {
+          "name": "Breaded Dill Pickle Spears",
+          "price": 625
+        },
+        {
+          "name": "Buffalo Chicken Fries",
+          "description": "Fries Topped with Buffalo Dip",
+          "price": 900
+        },
+        {
+          "name": "Cheesesteak Fries",
+          "description": "Fries Topped with Steak and Cheese",
+          "price": 900
+        },
+        {
+          "name": "Chicken Nuggets",
+          "price": 600
+        },
+        {
+          "name": "Fries",
+          "description": "Add cheese $0.75",
+          "price": 450
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "AMP Energy Drink",
+          "price": 375
+        },
+        {
+          "name": "Bottled Water",
+          "price": 350
+        },
+        {
+          "name": "Gatorade",
+          "price": 350
+        },
+        {
+          "name": "Juice",
+          "description": "Cranberry or Apple",
+          "price": 300
+        },
+        {
+          "name": "Large Soda",
+          "price": 400
+        },
+        {
+          "name": "Small Soda",
+          "price": 300
+        }
+      ]
+    }
+  ]
+}

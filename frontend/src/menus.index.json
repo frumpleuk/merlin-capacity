@@ -1,7 +1,7 @@
 {
   "alton_towers": {
     "venues": 38,
-    "withMenus": 31,
+    "withMenus": 33,
     "priced": 27,
     "water": 6
   },
@@ -49,8 +49,8 @@
   },
   "legoland_japan": {
     "venues": 22,
-    "withMenus": 0,
-    "priced": 0,
+    "withMenus": 18,
+    "priced": 18,
     "water": 0
   },
   "legoland_korea": {
@@ -85,8 +85,8 @@
   },
   "knoebels": {
     "venues": 36,
-    "withMenus": 0,
-    "priced": 0,
+    "withMenus": 32,
+    "priced": 32,
     "water": 0
   },
   "pleasurewood_hills": {
@@ -103,7 +103,7 @@
   },
   "paultons": {
     "venues": 19,
-    "withMenus": 15,
+    "withMenus": 16,
     "priced": 0,
     "water": 0
   },

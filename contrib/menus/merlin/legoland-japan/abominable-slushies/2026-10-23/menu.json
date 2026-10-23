@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Legoland Japan",
+    "official": true,
+    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/abominable-slushies/"
+  },
+  "sections": [
+    {
+      "name": "Recommended Menus",
+      "items": [
+        {
+          "name": "Slush Bottle Observation Tower",
+          "price": 2500
+        },
+        {
+          "name": "Minifigure Head Cup",
+          "price": 3400
+        }
+      ]
+    }
+  ]
+}

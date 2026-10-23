@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Legoland Japan",
+    "official": true,
+    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/kitchen-car-city/"
+  },
+  "sections": [
+    {
+      "name": "Recommended Menus",
+      "items": [
+        {
+          "name": "Grilled Beef Rice Burger",
+          "price": 900
+        },
+        {
+          "name": "Pumpkin Cheese Chowder",
+          "price": 900
+        },
+        {
+          "name": "Crepe with Butter and Sugar",
+          "price": 900
+        },
+        {
+          "name": "Sword Soft-Serve Ice Cream Strawberry Sauce / Chocolate Sauce",
+          "price": 900
+        },
+        {
+          "name": "Halloween Drink Orange",
+          "price": 750
+        },
+        {
+          "name": "Halloween Drink Grape",
+          "price": 750
+        }
+      ]
+    }
+  ]
+}

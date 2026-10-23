@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Legoland Japan",
+    "official": true,
+    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/pit-stop-juice-drive/"
+  },
+  "sections": [
+    {
+      "name": "Recommended Menus",
+      "items": [
+        {
+          "name": "Minifigure Head Cup",
+          "description": "Includes a soft drink",
+          "price": 3400
+        },
+        {
+          "name": "Plain Churro",
+          "price": 650
+        },
+        {
+          "name": "Chocolate Churro",
+          "price": 650
+        },
+        {
+          "name": "Halloween Drink Orange",
+          "price": 750
+        },
+        {
+          "name": "Halloween Drink Grape",
+          "price": 750
+        },
+        {
+          "name": "Halloween Soda Drink Orange",
+          "price": 750
+        },
+        {
+          "name": "Halloween Soda Drink Grape",
+          "price": 750
+        }
+      ]
+    }
+  ]
+}

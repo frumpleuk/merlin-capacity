@@ -1,0 +1,109 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Knoebels",
+    "official": true,
+    "url": "https://knoebels.com/menu/potato-cake-stand/"
+  },
+  "sections": [
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Bottled Drinks",
+          "price": 350
+        },
+        {
+          "name": "Bottled Water",
+          "price": 350
+        },
+        {
+          "name": "Gatorade",
+          "price": 350
+        },
+        {
+          "name": "Large Fountain Drink",
+          "price": 400
+        },
+        {
+          "name": "Lemonade",
+          "description": "extra flavoring add $1",
+          "price": 400
+        },
+        {
+          "name": "Small Fountain Drink",
+          "price": 300
+        }
+      ]
+    },
+    {
+      "name": "Food",
+      "items": [
+        {
+          "name": "Apple Sauce",
+          "price": 125
+        },
+        {
+          "name": "Chicken Tenders (3)",
+          "price": 600
+        },
+        {
+          "name": "Extra Cheese",
+          "price": 100
+        },
+        {
+          "name": "Funnel Cake Fries",
+          "price": 600
+        },
+        {
+          "name": "Hot Dog",
+          "price": 300
+        },
+        {
+          "name": "Marinara Sauce",
+          "price": 100
+        },
+        {
+          "name": "Nachos and Cheese",
+          "price": 550
+        },
+        {
+          "name": "Pickle on a Stick",
+          "price": 200
+        },
+        {
+          "name": "Pizza Rolls (3)",
+          "description": "$2.75 Each - Add Marinara sauce $1.00",
+          "price": 725
+        },
+        {
+          "name": "Potato Cake (1)",
+          "price": 200
+        },
+        {
+          "name": "Potato Cakes (3)",
+          "price": 525
+        },
+        {
+          "name": "Soft Pretzel Stix",
+          "description": "Add German Mustard or Cheese $1.00",
+          "price": 400
+        },
+        {
+          "name": "Sour Cream",
+          "price": 100
+        },
+        {
+          "name": "Strawberry & Cream Rolls (3)",
+          "description": "$2.75 Each",
+          "price": 725
+        },
+        {
+          "name": "Taco Roll (3)",
+          "description": "$2.75 Each",
+          "price": 725
+        }
+      ]
+    }
+  ]
+}

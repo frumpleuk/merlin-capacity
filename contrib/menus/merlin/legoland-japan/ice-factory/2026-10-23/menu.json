@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Legoland Japan",
+    "official": true,
+    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/ice-factory/"
+  },
+  "sections": [
+    {
+      "name": "Recommended Menus",
+      "items": [
+        {
+          "name": "Ice Cream Cone / Cup",
+          "sizes": [
+            {
+              "label": "1 Scoop",
+              "price": 500
+            },
+            {
+              "label": "2 Scoops",
+              "price": 700
+            },
+            {
+              "label": "3 Scoops",
+              "price": 850
+            }
+          ]
+        },
+        {
+          "name": "Ninja Waffle with Ice Cream",
+          "price": 900
+        }
+      ]
+    }
+  ]
+}

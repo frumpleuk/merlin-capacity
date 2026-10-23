@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Knoebels",
+    "official": true,
+    "url": "https://knoebels.com/menu/dippin-dots/"
+  },
+  "sections": [
+    {
+      "name": "Dippin' Dots",
+      "items": [
+        {
+          "name": "Childs Size",
+          "price": 600
+        },
+        {
+          "name": "LOL Size",
+          "price": 875
+        },
+        {
+          "name": "Regular Size",
+          "price": 700
+        }
+      ]
+    }
+  ]
+}

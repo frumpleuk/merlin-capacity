@@ -1,0 +1,168 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Knoebels",
+    "official": true,
+    "url": "https://knoebels.com/menu/oasis-cafeteria/"
+  },
+  "sections": [
+    {
+      "name": "All You Can Eat Spaghetti",
+      "items": [
+        {
+          "name": "All You Can Eat Spaghetti (Adult) (Wednesdays Only)",
+          "description": "AYCE Spaghetti, plus choice of (2) Meatballs or (1) Sausage, Garlic Roll & Salad",
+          "price": 1075
+        },
+        {
+          "name": "All You Can Eat Spaghetti (Child) (Wednesdays Only)",
+          "description": "AYCE Spaghetti plus (1) Meatball, Garlic Roll & Salad",
+          "price": 775
+        },
+        {
+          "name": "Spaghetti & Chicken Parmesan Dinner (Wednesdays Only)",
+          "description": "AYCE Spaghetti plus (1) Chicken Parm, Garlic Roll & Salad",
+          "price": 1350
+        },
+        {
+          "name": "Spaghetti & Eggplant Parmesan Dinner (Wednesdays Only)",
+          "description": "AYCE Spaghetti plus (1) Eggplant Parm, Garlic Roll & Salad",
+          "price": 1300
+        }
+      ]
+    },
+    {
+      "name": "All You Can Eat Spaghetti - Extra Sides",
+      "items": [
+        {
+          "name": "Chicken Parmesan or Eggplant (Wednesdays Only)",
+          "price": 600
+        },
+        {
+          "name": "Garlic Bread (Wednesdays Only)",
+          "description": "2 pieces",
+          "price": 100
+        },
+        {
+          "name": "Meatball (Wednesdays Only)",
+          "price": 225
+        },
+        {
+          "name": "Sausage (Wednesdays Only)",
+          "price": 375
+        }
+      ]
+    },
+    {
+      "name": "All You Can Eat Fish Fry",
+      "items": [
+        {
+          "name": "Fish Fry (Fridays Only)",
+          "description": "Includes Cole Slaw, French Fries, Roll & Butter. (After Initial: Fish Only)",
+          "price": 1200
+        }
+      ]
+    },
+    {
+      "name": "All You Can Eat Fish Fry - A la Carte",
+      "items": [
+        {
+          "name": "French Fries (Fridays Only)",
+          "price": 550
+        }
+      ]
+    },
+    {
+      "name": "All You Can Eat Fish Fry - Drinks",
+      "items": [
+        {
+          "name": "Coffee",
+          "price": 300
+        },
+        {
+          "name": "Fountain Beverage",
+          "price": 400
+        },
+        {
+          "name": "Hot Tea",
+          "price": 300
+        },
+        {
+          "name": "Milk",
+          "description": "Chocolate or White",
+          "price": 275
+        },
+        {
+          "name": "Water",
+          "price": 350
+        }
+      ]
+    },
+    {
+      "name": "Weekend Dinner Specials",
+      "items": [
+        {
+          "name": "BBQ Chicken Dinner",
+          "description": "Includes Mashed Potatoes, Vegetable, Coleslaw, Roll & Butter",
+          "price": 1075
+        },
+        {
+          "name": "BBQ Chicken Dinner (Child)",
+          "description": "Includes 1 Side, Roll & Butter",
+          "price": 925
+        },
+        {
+          "name": "Meat Loaf Dinner",
+          "description": "Includes 2 Sides, Roll & Butter.",
+          "price": 1075
+        },
+        {
+          "name": "Meat Loaf Dinner (Child)",
+          "description": "Includes 1 Side, Roll & Butter.",
+          "price": 925
+        }
+      ]
+    },
+    {
+      "name": "Weekend Dinner Specials - A la Carte",
+      "items": [
+        {
+          "name": "1/2 Chicken Only",
+          "price": 900
+        },
+        {
+          "name": "Chef Salad",
+          "price": 700
+        },
+        {
+          "name": "Extra Vegetables",
+          "price": 350
+        },
+        {
+          "name": "French Fries",
+          "price": 550
+        },
+        {
+          "name": "Fruit Cup",
+          "price": 600
+        },
+        {
+          "name": "Jello",
+          "price": 250
+        },
+        {
+          "name": "Mac & Cheese",
+          "price": 725
+        },
+        {
+          "name": "Salad",
+          "price": 450
+        },
+        {
+          "name": "Soup",
+          "price": 500
+        }
+      ]
+    }
+  ]
+}

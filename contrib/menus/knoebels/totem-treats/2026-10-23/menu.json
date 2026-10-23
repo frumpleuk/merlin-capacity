@@ -1,0 +1,91 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Knoebels",
+    "official": true,
+    "url": "https://knoebels.com/menu/totem-treats/"
+  },
+  "sections": [
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Big Ben’s Bottled Soda",
+          "description": "Blue Birch Beer, Orange Cream",
+          "price": 350
+        },
+        {
+          "name": "Bottled Soda",
+          "description": "Pepsi, Diet Pepsi, Pepsi Zero, Mt. Dew, Dr. Pepper, Starry",
+          "price": 350
+        },
+        {
+          "name": "Gatorade",
+          "price": 350
+        },
+        {
+          "name": "Juice",
+          "description": "Orange or Apple",
+          "price": 300
+        },
+        {
+          "name": "Milk",
+          "description": "White or Chocolate",
+          "price": 275
+        }
+      ]
+    },
+    {
+      "name": "Snacks",
+      "items": [
+        {
+          "name": "Small Italian Water Ice",
+          "description": "Mango, Lemon, Rainbow, Blue Raspberry, Cotton Candy, Cherry",
+          "price": 400
+        }
+      ]
+    },
+    {
+      "name": "Hot Food",
+      "items": [
+        {
+          "name": "Cheese on a stick",
+          "description": "Mozzarella cheese cubes on a stick",
+          "price": 700
+        },
+        {
+          "name": "Chicken Nuggets",
+          "description": "BBQ, Honey Mustard, or Sweet & Sour Sauce",
+          "price": 600
+        },
+        {
+          "name": "Corn Dog On A Stick",
+          "price": 550
+        },
+        {
+          "name": "Corn Nuggets",
+          "price": 500
+        },
+        {
+          "name": "Frickles",
+          "description": "Batter Dipped Pickle chips with Ranch",
+          "price": 525
+        },
+        {
+          "name": "Hot Dog",
+          "price": 300
+        },
+        {
+          "name": "Mac Bites",
+          "description": "Mac & Cheese, battered & fried",
+          "price": 550
+        },
+        {
+          "name": "Waffle Fries",
+          "description": "Seasoned Coated Waffle Fries",
+          "price": 450
+        }
+      ]
+    }
+  ]
+}

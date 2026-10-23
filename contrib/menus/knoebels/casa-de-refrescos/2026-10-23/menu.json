@@ -1,0 +1,67 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Knoebels",
+    "official": true,
+    "url": "https://knoebels.com/menu/casa-de-refrescos/"
+  },
+  "sections": [
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Bottled Soda",
+          "price": 350
+        },
+        {
+          "name": "Bottled Water",
+          "price": 350
+        },
+        {
+          "name": "Gatorade",
+          "price": 350
+        }
+      ]
+    },
+    {
+      "name": "Snack",
+      "items": [
+        {
+          "name": "Candy Apple",
+          "price": 500
+        },
+        {
+          "name": "Candy Apple with Nuts",
+          "price": 525
+        },
+        {
+          "name": "Chocolate Covered Banana",
+          "description": "Add Nuts $0.50",
+          "price": 475
+        },
+        {
+          "name": "Chocolate Covered Cheesecake",
+          "price": 675
+        },
+        {
+          "name": "Cotton Candy",
+          "price": 650
+        },
+        {
+          "name": "Nachos with Cheese",
+          "price": 550
+        },
+        {
+          "name": "Sno-Cone",
+          "description": "Choose from Blue Raspberry, Cherry, Lemon-Lime, Orange, or Root Beer (extra syrup $0.50)",
+          "price": 450
+        },
+        {
+          "name": "Soft Pretzel",
+          "description": "Add cheese $1.00",
+          "price": 300
+        }
+      ]
+    }
+  ]
+}

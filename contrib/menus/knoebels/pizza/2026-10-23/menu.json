@@ -1,0 +1,196 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Knoebels",
+    "official": true,
+    "url": "https://knoebels.com/menu/pizza/"
+  },
+  "sections": [
+    {
+      "name": "Desserts",
+      "items": [
+        {
+          "name": "Cannoli Nachos",
+          "description": "vanilla or chocolate cream with cannoli shell chips",
+          "price": 900
+        },
+        {
+          "name": "Featured Cannoli Nacho",
+          "description": "orange cream or Blueberry cream with cannoli shell chips",
+          "price": 900
+        },
+        {
+          "name": "Lemon Chiller",
+          "description": "A refreshing scoop of lemon sorbetto nestled in a real lemon shell—pure citrus bliss in every bite",
+          "price": 900
+        },
+        {
+          "name": "Orange Chiller",
+          "description": "A refreshing scoop of orange sorbet nestled in a real orange shell—pure citrus bliss in every bite",
+          "price": 900
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Bottled Water",
+          "price": 350
+        },
+        {
+          "name": "Fountain Drinks",
+          "sizes": [
+            {
+              "label": "Small 16 oz",
+              "price": 300
+            },
+            {
+              "label": "Large 24 oz",
+              "price": 400
+            }
+          ]
+        },
+        {
+          "name": "Gatorade",
+          "price": 350
+        },
+        {
+          "name": "Ice Tea",
+          "sizes": [
+            {
+              "label": "Small 16 oz",
+              "price": 300
+            },
+            {
+              "label": "Large 24 oz",
+              "price": 400
+            }
+          ]
+        },
+        {
+          "name": "Lavender Lemonade",
+          "description": "A cool and calming blend of lemonade and lavender, offering a light floral twist on a sweet and tangy classic.",
+          "price": 500
+        },
+        {
+          "name": "Lemonade",
+          "price": 350
+        },
+        {
+          "name": "Slush",
+          "description": "Cherry or Blue Raspberry",
+          "price": 350
+        }
+      ]
+    },
+    {
+      "name": "Whole Pie",
+      "items": [
+        {
+          "name": "Buffalo Chicken Pizza",
+          "description": "Buffalo chicken, cheese, drizzled with hot sauce, with a choice of blue cheese or ranch",
+          "price": 2600
+        },
+        {
+          "name": "Cauliflower Crust Pizza",
+          "description": "10 pizza",
+          "price": 1600
+        },
+        {
+          "name": "Cheese Pie",
+          "price": 2000
+        },
+        {
+          "name": "Toppings on a Pie",
+          "description": "extra cheese, pepperoni, broccoli",
+          "price": 300
+        },
+        {
+          "name": "White Broccoli Pizza",
+          "description": "Ricotta mix, cheese, topped with broccoli",
+          "price": 2600
+        }
+      ]
+    },
+    {
+      "name": "Slice",
+      "items": [
+        {
+          "name": "Buffalo Chicken Slice",
+          "description": "Buffalo chicken, cheese, drizzled with hot sauce, with a choice of blue cheese or ranch",
+          "price": 600
+        },
+        {
+          "name": "Maple Bacon Sweet Potato Slice",
+          "description": "Sweet Potato, bacon, marshmallows, mallo cream, maple syrup",
+          "price": 600
+        },
+        {
+          "name": "Plain Slice",
+          "price": 450
+        },
+        {
+          "name": "Southern Style Chicken Slice",
+          "description": "Shredded chicken mixed with pickle aioli, pickles, topped with mozzarella cheese and bacon",
+          "price": 600
+        },
+        {
+          "name": "Stuffed Meatball Parm Slice",
+          "description": "Pizza Sauce, meatballs, parmeasan and mozzarella cheese, garlic butter, & 2 Crusts!",
+          "price": 650
+        },
+        {
+          "name": "Toppings on a Slice",
+          "description": "extra cheese, pepperoni, mushrooms",
+          "price": 50
+        },
+        {
+          "name": "White Broccoli Slice",
+          "description": "Ricotta mix, cheese, topped with broccoli",
+          "price": 600
+        }
+      ]
+    },
+    {
+      "name": "Giant Pretzel",
+      "items": [
+        {
+          "name": "Cinnamon Sugar Giant Pretzel",
+          "description": "our giant soft pretzel brushed with butter and tossed in cinnamon and sugar",
+          "price": 1400
+        },
+        {
+          "name": "Garlic Knot Giant Pretzel",
+          "description": "our giant soft pretzel brushed with garlic butter, sprinkled with parmesan and italian herbs. served with a cup of our pizza sauce.",
+          "price": 1600
+        },
+        {
+          "name": "Giant Pretzel",
+          "description": "Cheese Sauce +$2.00",
+          "price": 1200
+        }
+      ]
+    },
+    {
+      "name": "Pizza Of The Week",
+      "items": [
+        {
+          "name": "Maple Bacon Sweet Potato Pizza",
+          "description": "Sweet Potato, bacon, marshmallows, mallo cream, maple syrup",
+          "price": 2600
+        },
+        {
+          "name": "Southern Style Chicken Pizza",
+          "description": "Shredded chicken mixed with pickle aioli, pickles, topped with mozzarella cheese and bacon",
+          "price": 2600
+        },
+        {
+          "name": "Stuffed Meatball Parm Pizza",
+          "description": "Pizza Sauce, meatballs, parmeasan and mozzarella cheese, garlic butter, & 2 Crusts!",
+          "price": 3000
+        }
+      ]
+    }
+  ]
+}

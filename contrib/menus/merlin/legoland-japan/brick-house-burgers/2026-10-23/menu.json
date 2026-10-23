@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Legoland Japan",
+    "official": true,
+    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/brick-house-burgers/"
+  },
+  "sections": [
+    {
+      "name": "Recommended Menus",
+      "items": [
+        {
+          "name": "Chef’s Recommendation!",
+          "description": "Brick House Burger Set Includes Brick Fries and Drink Bar",
+          "price": 1950
+        },
+        {
+          "name": "Teriyaki Burger Set",
+          "price": 1750
+        },
+        {
+          "name": "Shrimp Cutlet Burger Set",
+          "price": 1650
+        },
+        {
+          "name": "Cheeseburger Set",
+          "price": 1650
+        },
+        {
+          "name": "Kids' Pancake and Waffle Set",
+          "price": 1000
+        }
+      ]
+    }
+  ]
+}

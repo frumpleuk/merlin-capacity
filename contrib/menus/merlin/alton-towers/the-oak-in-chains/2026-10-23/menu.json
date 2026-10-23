@@ -1,0 +1,210 @@
+{
+  "date": "2026-10-23",
+  "unpriced": true,
+  "source": {
+    "name": "Alton Towers Resort",
+    "official": true,
+    "url": "https://menus.tenkites.com/aramarkuk/ataltontowersparkcatering"
+  },
+  "sections": [
+    {
+      "name": "Fountain Square Burgers",
+      "items": [
+        {
+          "name": "The Chained Oak Burger",
+          "description": "Double beef burger with lettuce, ketchup, tortilla chips, nacho cheese sauce, crispy fried onions and pepperoni. Served with Alverton Lodge Fries.",
+          "price": null
+        },
+        {
+          "name": "Hexed Delight Chicken Burger",
+          "description": "Crispy breaded chicken breast with Korean BBQ sauce, lettuce, halloumi and coleslaw in a toasted maple-glazed bun. Served with Alverton Lodge Fries.",
+          "price": null
+        },
+        {
+          "name": "The Earl's Cuban",
+          "description": "Gammon ham slice topped with pulled pork and melted Emmental cheese, with mustard mayonnaise, lettuce and pickles. Served with Alverton Lodge Fries.",
+          "price": null
+        },
+        {
+          "name": "Quixhill Drive Mac & Cheese",
+          "description": "Beef burger with Frank’s RedHot sauce, lettuce, bacon and a crown of creamy macaroni cheese. Served with Alverton Lodge Fries.",
+          "price": null
+        },
+        {
+          "name": "Gatekeeper’s Bacon Bliss",
+          "description": "Beef burger with chipotle mayo, lettuce, bacon and Monterey Jack cheese. Served with Alverton Lodge Fries.",
+          "price": null
+        },
+        {
+          "name": "Garden Follies Vegan Fillet Burger",
+          "description": "Crispy vegan fillet with Korean BBQ sauce, rocket, red onion and vegan cheese. Served with Alverton Lodge Fries.",
+          "price": null
+        },
+        {
+          "name": "Inferno Dog with Fries",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Fajita Sizzlers",
+      "items": [
+        {
+          "name": "Chicken Thigh Fajita Skewer",
+          "description": "Marinated chicken thigh skewers on sizzling peppers and onions, served with warm tortillas, soured cream, salsa and guacamole.",
+          "price": null
+        },
+        {
+          "name": "Halloumi & Sweet Potato Fajita Sizzler (V)",
+          "description": "Griddled halloumi and roasted sweet potato on a sizzling pan of peppers and onions, ready to wrap in warm tortillas with dips.",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Hexed Hanging Skewers",
+      "items": [
+        {
+          "name": "Tandoori Hanging Chicken Kebabs",
+          "description": "Tandoori chicken skewered with pepper, red onion, courgette and corn on the cob. Served with khobez flatbread, lettuce, tomato, red onion, cucumber, mint yoghurt, mango mayonnaise and a portion of Alverton Lodge Fries.",
+          "price": null
+        },
+        {
+          "name": "Beggars' Lamb Kofta",
+          "description": "Seasoned lamb skewer served with khobez flatbread, lettuce, tomato, red onion, cucumber, mint yoghurt and a portion of Alverton Lodge Fries.",
+          "price": null
+        },
+        {
+          "name": "Meat Plant Based Skewer",
+          "description": "Plant-based vegan “lamb” flavoured skewer served with khobez flatbread, lettuce, tomato, red onion, cucumber, mint-style vegan yoghurt and a portion of Alverton Lodge Fries.",
+          "price": null
+        },
+        {
+          "name": "Vault Breaded Mozzarella",
+          "description": "Fried giant mozzarella coated in golden breadcrumbs, served with khobez flatbread, lettuce, tomato, red onion, cucumber and chipotle mayonnaise, plus a portion of Alverton Lodge Fries.",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Hexling Kids Meals",
+      "items": [
+        {
+          "name": "Kids Cheeseburger",
+          "description": "Beef burger topped with cheese, served with seasoned fries and baked beans.",
+          "price": null
+        },
+        {
+          "name": "Crispy Chicken Nuggets",
+          "description": "Crispy chicken tenders served with seasoned fries and a ketchup dip.",
+          "price": null
+        },
+        {
+          "name": "Mozzarella Sticks & Fries",
+          "description": "Breaded mozzarella sticks served with seasoned fries and a ketchup dip.",
+          "price": null
+        },
+        {
+          "name": "Fish Fingers",
+          "description": "Golden fish fingers served with garden peas and seasoned fries.",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Hexed Skewered Fries & Nachos",
+      "items": [
+        {
+          "name": "Chained Oak Chilli Cheese Chips",
+          "description": "Skewered chunky chips loaded with chilli con carne, nacho cheese sauce, crispy onions, Roquito pearly peppers and a drizzle of Hex Fire Sauce.",
+          "price": null
+        },
+        {
+          "name": "Italian Garden Pizza Chips",
+          "description": "Skewered chunky chips topped with mozzarella cheese, red onion, diced pepper and seasoning.",
+          "price": null
+        },
+        {
+          "name": "Octagon Fajita Veggie Chips (V)",
+          "description": "Skewered chunky chips loaded with sizzling fajita peppers and onions, baked with mozzarella, finished with tomato salsa, sour cream, a drizzle of Hex-Fire Sauce, crispy onions, chives and house Unique Seasonings. Served as a shareable Vault Stack-style lo",
+          "price": null
+        },
+        {
+          "name": "Hexed Pepperoni Pizza Fries",
+          "description": "Skewered chunky chips topped with mozzarella cheese, pepperoni, rocket and seasoning.",
+          "price": null
+        },
+        {
+          "name": "Chained Oak Nachos",
+          "description": "Crispy nachos topped with melted cheese, soured cream, guacamole, sweet pepper drops and crispy onions. Inspired by the ancient Chained Oak Tree, these nachos symbolise its strength and the Earl’s mysterious experiments.",
+          "price": null
+        },
+        {
+          "name": "Chained Oak Nachos with BBQ Pulled Pork",
+          "description": "Crispy nachos, melted cheese, sour cream, guacamole, BBQ pulled pork, sweet pepper drop, crispy onion. Inspired by the ancient Chained Oak Tree, these nachos symbolize its strength and the Earl's mysterious experiments.",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        {
+          "name": "Gothic Revival Historic Hummus",
+          "description": "Smooth classic houmous served with crunchy carrot and cucumber batons, finished with Gothic “Unique Seasonings” sprinkled over the top for extra flavour and colour.",
+          "price": null
+        },
+        {
+          "name": "Mozzarella Sticks",
+          "description": "Golden fried mozzarella sticks with a gooey centre.",
+          "price": null
+        },
+        {
+          "name": "Towers Grand Conservatory Salad",
+          "description": "Mixed greens, cucumber and mint with a zesty lemon dressing. A light, refreshing side salad inspired by the glasshouse gardens of the Towers.",
+          "price": null
+        },
+        {
+          "name": "Onion Rings",
+          "description": "Crispy battered onion rings with a light seasoned crunch.",
+          "price": null
+        },
+        {
+          "name": "Alverton Lodge Fries",
+          "description": "Crispy coated fries seasoned with a signature blend of spices.",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Sauce Cauldron",
+      "items": [
+        {
+          "name": "Hex-Fire Sauce",
+          "description": "Frank’s RedHot, vegan mayonnaise, paprika and garlic.",
+          "price": null
+        },
+        {
+          "name": "Hexed Honey Mustard",
+          "description": "Honey mustard with a hint of cayenne pepper.",
+          "price": null
+        },
+        {
+          "name": "Mystic Maple BBQ",
+          "description": "Maple and bourbon-flavoured barbecue sauce.",
+          "price": null
+        },
+        {
+          "name": "Oak Dipping Sauce",
+          "description": "Vegan mayonnaise with chives and house seasoning.",
+          "price": null
+        },
+        {
+          "name": "Phantom Herb Aioli",
+          "description": "Garlic aioli with vegan pesto and mixed herbs.",
+          "price": null
+        }
+      ]
+    }
+  ]
+}

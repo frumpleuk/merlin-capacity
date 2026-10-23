@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Legoland Japan",
+    "official": true,
+    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/irodori/"
+  },
+  "sections": [
+    {
+      "name": "Recommended Menus",
+      "items": [
+        {
+          "name": "Fuji Autumn Irodori Set Meal",
+          "description": "(with Drink Bar included)",
+          "price": 3600
+        },
+        {
+          "name": "Ai Grilled Eal Set (Hitsumabushi)",
+          "description": "（with Drink Bar included）",
+          "price": 3950
+        },
+        {
+          "name": "Moegi",
+          "description": "Chicken Nanban Set Meal",
+          "price": 2850
+        },
+        {
+          "name": "Seasonal Rice &",
+          "description": "Kishimen Tsukimi Beef Sukiyaki Noodles Set Meal",
+          "price": 2800
+        },
+        {
+          "name": "Daidai",
+          "description": "Miso Katsu Set Meal",
+          "price": 2650
+        },
+        {
+          "name": "Ao Kids’ Meal",
+          "description": "Udon & Teriyaki Chicken RIced Bowl Set",
+          "price": 1000
+        },
+        {
+          "name": "Mizuiro Kid's Meal",
+          "description": "Udon&Brick RIced Ball Set",
+          "price": 1000
+        },
+        {
+          "name": "Aka",
+          "description": "Halloween Box Cake",
+          "price": 800
+        },
+        {
+          "name": "Aka",
+          "description": "Warabi Mochi Vanilla Ice Cream",
+          "price": 800
+        },
+        {
+          "name": "Aka",
+          "description": "Kids' Submarine Jello",
+          "price": 500
+        }
+      ]
+    }
+  ]
+}

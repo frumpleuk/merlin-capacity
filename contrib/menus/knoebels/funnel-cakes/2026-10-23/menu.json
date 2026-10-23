@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Knoebels",
+    "official": true,
+    "url": "https://knoebels.com/menu/funnel-cakes/"
+  },
+  "sections": [
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Bottled Water",
+          "price": 350
+        },
+        {
+          "name": "Large Soda",
+          "description": "Pepsi, Diet Pepsi, Pepsi Zero, Unsweetened Iced Tea, Starry, Birch Beer, Hawaiian Punch, & Mountain Dew",
+          "price": 400
+        },
+        {
+          "name": "Small Soda",
+          "description": "Pepsi, Diet Pepsi, Pepsi Zero, Unsweetened Iced Tea, Starry, Birch Beer, Hawaiian Punch, & Mountain Dew",
+          "price": 300
+        }
+      ]
+    },
+    {
+      "name": "Funnel Cakes",
+      "items": [
+        {
+          "name": "Deep Fried Oreos (3)",
+          "description": "Oreos dipped in funnel cake batter and fried to perfection",
+          "price": 775
+        },
+        {
+          "name": "Funnel Cakes",
+          "price": 800
+        },
+        {
+          "name": "Strawberry Shortcake Funnel Cake",
+          "description": "Funnel Cake with powdered sugar, strawberry topping, whipped cream, and home-made shortcake pieces",
+          "price": 1450
+        }
+      ]
+    }
+  ]
+}

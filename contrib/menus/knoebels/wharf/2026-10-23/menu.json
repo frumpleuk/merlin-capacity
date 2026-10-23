@@ -1,0 +1,124 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Knoebels",
+    "official": true,
+    "url": "https://knoebels.com/menu/wharf/"
+  },
+  "sections": [
+    {
+      "name": "Beverages & Italian Ice",
+      "items": [
+        {
+          "name": "Bottled Water",
+          "price": 350
+        },
+        {
+          "name": "Gatorade",
+          "price": 350
+        },
+        {
+          "name": "Italian Water Ice",
+          "description": "Flavors: Blue Raspberry, Cherry, Cotton Candy, Mango, Rainbow, Root Beer, Watermelon",
+          "price": 400
+        },
+        {
+          "name": "Large Fountain Drink",
+          "price": 400
+        },
+        {
+          "name": "Small Fountain Drink",
+          "price": 300
+        },
+        {
+          "name": "Wharf Refreshers",
+          "description": "Lemonade & Rotating Featured Flavors. Add a flavor shot for $1.00.",
+          "price": 400
+        }
+      ]
+    },
+    {
+      "name": "Fries and Sides",
+      "items": [
+        {
+          "name": "Loaded Waffle Fries",
+          "description": "Bacon, cheese, sour cream",
+          "price": 750
+        },
+        {
+          "name": "Mac Bites",
+          "description": "Mac & Cheese, battered & fried",
+          "price": 550
+        },
+        {
+          "name": "Soup of the Day",
+          "price": 500
+        },
+        {
+          "name": "Waffle Fries",
+          "description": "Add cheese $1.00",
+          "price": 450
+        }
+      ]
+    },
+    {
+      "name": "Entrees",
+      "items": [
+        {
+          "name": "Buffalo Chicken Sandwich",
+          "description": "Tossed in mild buffalo sauce serviced with lettuce, tomato, & a side of ranch",
+          "price": 850
+        },
+        {
+          "name": "Clam Strips",
+          "description": "Add cocktail sauce $1.00",
+          "price": 575
+        },
+        {
+          "name": "Fish Sandwich",
+          "description": "With lettuce & tomato",
+          "price": 750
+        },
+        {
+          "name": "Garlic Chicken Caprese Waffle Fries",
+          "description": "Garlic Parmesan Shredded Chicken, Mozzarella, Tomato, Balsamic",
+          "price": 850
+        },
+        {
+          "name": "Gyro Waffle Fries",
+          "description": "Gyro Meat, Lettuce, Tomato, Drizzle Tzatziki",
+          "price": 850
+        },
+        {
+          "name": "Homestyle Chicken Sandwich",
+          "description": "With lettuce, tomato, & pickles.",
+          "price": 800
+        },
+        {
+          "name": "Hot Dog",
+          "price": 300
+        },
+        {
+          "name": "Original Gyro",
+          "description": "Seasoned Beef and Lamb with lettuce, tomato, onions and tzatziki sauce on pita bread.",
+          "price": 900
+        },
+        {
+          "name": "Sloppy Joe",
+          "description": "Hamburger BBQ",
+          "price": 550
+        },
+        {
+          "name": "Steak Burger",
+          "description": "1/3 Lb Steak burger with lettuce and tomato, add cheese $.50, bacon $2.00, or sloppy joe $2.50",
+          "price": 750
+        },
+        {
+          "name": "Taco Waffle Fries",
+          "description": "Taco Meat, Cheese, Lettuce, Tomato",
+          "price": 850
+        }
+      ]
+    }
+  ]
+}

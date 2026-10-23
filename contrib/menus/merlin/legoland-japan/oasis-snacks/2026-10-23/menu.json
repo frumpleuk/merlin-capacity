@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Legoland Japan",
+    "official": true,
+    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/oasis-snacks/"
+  },
+  "sections": [
+    {
+      "name": "Recommended Menus",
+      "items": [
+        {
+          "name": "Minifigure Head Cup",
+          "description": "Includes a soft drink",
+          "price": 3400
+        },
+        {
+          "name": "Brick Fries",
+          "price": 600
+        },
+        {
+          "name": "Mini Mummy Dogs",
+          "price": 850
+        },
+        {
+          "name": "Chewy Mummy Dog",
+          "price": 800
+        },
+        {
+          "name": "Halloween Drink Orange",
+          "price": 750
+        },
+        {
+          "name": "Halloween Drink Grape",
+          "price": 750
+        },
+        {
+          "name": "Sweet Potato Cheesecake Latte",
+          "price": 800
+        },
+        {
+          "name": "Ghost Hot Chocolate",
+          "price": 800
+        },
+        {
+          "name": "Ghost Iced Chocolate",
+          "price": 800
+        }
+      ]
+    }
+  ]
+}

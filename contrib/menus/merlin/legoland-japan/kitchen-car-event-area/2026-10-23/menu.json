@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Legoland Japan",
+    "official": true,
+    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/kitchen-car-event-area/"
+  },
+  "sections": [
+    {
+      "name": "Recommended Menus",
+      "items": [
+        {
+          "name": "Currywurst",
+          "price": 900
+        },
+        {
+          "name": "Chicken Ramen in Salt Broth",
+          "price": 900
+        },
+        {
+          "name": "German Potato Dog",
+          "price": 900
+        },
+        {
+          "name": "Kids' Mini Burger Plate",
+          "price": 900
+        },
+        {
+          "name": "Fish & Chips",
+          "price": 900
+        },
+        {
+          "name": "Philly Cheesesteak",
+          "price": 900
+        },
+        {
+          "name": "Juicy Kakuni Fried Rice",
+          "price": 900
+        },
+        {
+          "name": "Aebleskiver",
+          "price": 900
+        },
+        {
+          "name": "Grilled Sweet Potato & Vanilla Ice Cream",
+          "price": 900
+        }
+      ]
+    }
+  ]
+}

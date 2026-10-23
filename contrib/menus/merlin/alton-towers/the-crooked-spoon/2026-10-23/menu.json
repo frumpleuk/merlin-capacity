@@ -1,0 +1,201 @@
+{
+  "date": "2026-10-23",
+  "unpriced": true,
+  "source": {
+    "name": "Alton Towers Resort",
+    "official": true,
+    "url": "https://menus.tenkites.com/aramarkuk/enchantedvillage02"
+  },
+  "sections": [
+    {
+      "name": "Smokey Jumbo Wings",
+      "items": [
+        {
+          "name": "BBQ Smokey Jumbo Wings Small",
+          "price": null,
+          "kcal": 574
+        },
+        {
+          "name": "BBQ Smokey Jumbo Wings Large",
+          "price": null,
+          "kcal": 1128
+        },
+        {
+          "name": "Hot Smokey Jumbo Wings Small",
+          "price": null,
+          "kcal": 635
+        },
+        {
+          "name": "Hot Smokey Jumbo Wings Large",
+          "price": null,
+          "kcal": 1249
+        },
+        {
+          "name": "Sweet Chili Jam Smokey Jumbo Wings Small",
+          "price": null,
+          "kcal": 740
+        },
+        {
+          "name": "Sweet Chili Jam Smokey Jumbo Wings Large",
+          "price": null,
+          "kcal": 1458
+        },
+        {
+          "name": "Black & Blue Smokey Jumbo Wings Small",
+          "price": null,
+          "kcal": 739
+        },
+        {
+          "name": "Black & Blue Smokey Jumbo Wings Large",
+          "price": null,
+          "kcal": 1457
+        }
+      ]
+    },
+    {
+      "name": "Crispy Chicken Strips",
+      "items": [
+        {
+          "name": "BBQ Crispy Chicken Strips Small",
+          "price": null,
+          "kcal": 433
+        },
+        {
+          "name": "BBQ Crispy Chicken Strips Large",
+          "price": null,
+          "kcal": 862
+        },
+        {
+          "name": "Hot Crispy Chicken Strips Small",
+          "price": null,
+          "kcal": 494
+        },
+        {
+          "name": "Hot Crispy Chicken Strips Large",
+          "price": null,
+          "kcal": 983
+        },
+        {
+          "name": "Sweet Chili Jam Chicken Strips Small",
+          "price": null,
+          "kcal": 598
+        },
+        {
+          "name": "Sweet Chili Jam Crispy Chicken Strips Large",
+          "price": null,
+          "kcal": 1192
+        },
+        {
+          "name": "Black & Blue Crispy Chicken Strips Small",
+          "price": null,
+          "kcal": 598
+        },
+        {
+          "name": "Black & Blue Crispy Chicken Strips Large",
+          "price": null,
+          "kcal": 1191
+        }
+      ]
+    },
+    {
+      "name": "Cauliflower Wings",
+      "items": [
+        {
+          "name": "BBQ Cauliflower Wings Small",
+          "price": null,
+          "kcal": 373
+        },
+        {
+          "name": "BBQ Cauliflower Wings Large",
+          "price": null,
+          "kcal": 741
+        },
+        {
+          "name": "Hot Cauliflower Wings Small",
+          "price": null,
+          "kcal": 434
+        },
+        {
+          "name": "Hot Cauliflower Wings Large",
+          "price": null,
+          "kcal": 863
+        },
+        {
+          "name": "Sweet Chili Jam Cauliflower Wings Small",
+          "price": null,
+          "kcal": 538
+        },
+        {
+          "name": "Sweet Chili Jam Cauliflower Wings Large",
+          "price": null,
+          "kcal": 1071
+        },
+        {
+          "name": "Black & Blue Cauliflower Wings Small",
+          "price": null,
+          "kcal": 538
+        },
+        {
+          "name": "Black & Blue Cauliflower Wings Large",
+          "price": null,
+          "kcal": 1071
+        }
+      ]
+    },
+    {
+      "name": "Woodland Nachos",
+      "items": [
+        {
+          "name": "Woodland Nachos",
+          "price": null,
+          "kcal": 803
+        }
+      ]
+    },
+    {
+      "name": "Pizza",
+      "items": [
+        {
+          "name": "Margherita Pizza",
+          "price": null,
+          "kcal": 779
+        },
+        {
+          "name": "Pepperoni Pizza",
+          "price": null,
+          "kcal": 842
+        },
+        {
+          "name": "Vegetarian Pizza",
+          "price": null,
+          "kcal": 816
+        },
+        {
+          "name": "BBQ Chicken Pizza",
+          "price": null,
+          "kcal": 954
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        {
+          "name": "Dusted Cajun Onion Rings",
+          "price": null,
+          "kcal": 480
+        },
+        {
+          "name": "Village Slaw",
+          "price": null,
+          "kcal": 132
+        },
+        {
+          "name": "Village Fries",
+          "price": null,
+          "kcal": 429
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,194 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Knoebels",
+    "official": true,
+    "url": "https://knoebels.com/menu/starbucks-express/"
+  },
+  "sections": [
+    {
+      "name": "Bottled Drinks",
+      "items": [
+        {
+          "name": "Bottled Soda",
+          "description": "Pepsi or Diet Pepsi",
+          "price": 350
+        },
+        {
+          "name": "Bottled Water",
+          "price": 350
+        },
+        {
+          "name": "Gatorade",
+          "price": 350
+        }
+      ]
+    },
+    {
+      "name": "Snacks and Sweets",
+      "items": [
+        {
+          "name": "Bakery Muffin",
+          "description": "Chocolate Chip",
+          "price": 450
+        },
+        {
+          "name": "Beignet",
+          "description": "Raspberry or Hazelnut",
+          "price": 400
+        },
+        {
+          "name": "Cake Pop",
+          "description": "Birthday Cake or Strawberry",
+          "price": 500
+        },
+        {
+          "name": "Liege Waffle",
+          "description": "Fresh made authentic Belgian style pearl sugar waffle.",
+          "price": 500
+        },
+        {
+          "name": "Liege Waffle w/ Vanilla Ice Cream",
+          "description": "Fresh made authentic Belgian style pearl sugar waffle topped with hand dipped Vanilla Ice Cream.",
+          "price": 700
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Brewed Coffee",
+          "description": "Pikes Place",
+          "price": 375
+        },
+        {
+          "name": "Brown Sugar Shaken Espresso",
+          "price": 750
+        },
+        {
+          "name": "Caffe Americano",
+          "description": "iced or hot",
+          "price": 450
+        },
+        {
+          "name": "Caffe Latte",
+          "description": "iced or hot",
+          "price": 600
+        },
+        {
+          "name": "Caffe Mocha",
+          "description": "iced or hot",
+          "price": 650
+        },
+        {
+          "name": "Cappuccino",
+          "price": 575
+        },
+        {
+          "name": "Caramel Macchiato",
+          "description": "iced or hot",
+          "price": 650
+        },
+        {
+          "name": "Chai Tea Latte",
+          "description": "iced or hot",
+          "price": 600
+        },
+        {
+          "name": "Cold Brew Coffee",
+          "price": 550
+        },
+        {
+          "name": "Creme (Coffee- Free)",
+          "description": "Vanilla Bean",
+          "price": 750
+        },
+        {
+          "name": "Espresso Doppio",
+          "description": "2 Ounces",
+          "price": 350
+        },
+        {
+          "name": "Espresso Solo",
+          "description": "1 ounce",
+          "price": 300
+        },
+        {
+          "name": "Flavor Shot",
+          "description": "Brown Sugar, Caramel, Vanilla, Sugar Free Vanilla",
+          "price": 100
+        },
+        {
+          "name": "Frappuccino",
+          "description": "Caramel, Mocha, White Chocolate Mocha",
+          "price": 750
+        },
+        {
+          "name": "Hot Chocolate",
+          "price": 550
+        },
+        {
+          "name": "Iced Black Tea",
+          "price": 425
+        },
+        {
+          "name": "Iced Black Tea Lemonade",
+          "price": 475
+        },
+        {
+          "name": "Iced Coffee",
+          "price": 450
+        },
+        {
+          "name": "Lemonade",
+          "price": 475
+        },
+        {
+          "name": "Nitro Cold Brew",
+          "price": 625
+        },
+        {
+          "name": "Refreshers",
+          "description": "Dragon Fruit, Strawberry Acai",
+          "price": 550
+        },
+        {
+          "name": "Specialty Drinks",
+          "description": "Pink Drink, Dragon Drink",
+          "price": 650
+        },
+        {
+          "name": "White Chocolate Mocha",
+          "description": "iced or hot",
+          "price": 650
+        },
+        {
+          "name": "White Hot Chocolate",
+          "price": 550
+        }
+      ]
+    },
+    {
+      "name": "Add a Topping",
+      "items": [
+        {
+          "name": "Blueberries",
+          "price": 100
+        },
+        {
+          "name": "Nutella",
+          "price": 100
+        },
+        {
+          "name": "Powdered Sugar",
+          "price": 100
+        },
+        {
+          "name": "Strawberry",
+          "price": 100
+        }
+      ]
+    }
+  ]
+}

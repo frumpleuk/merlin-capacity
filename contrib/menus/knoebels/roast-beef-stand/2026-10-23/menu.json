@@ -1,0 +1,141 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Knoebels",
+    "official": true,
+    "url": "https://knoebels.com/menu/roast-beef-stand/"
+  },
+  "sections": [
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Bottled Water",
+          "price": 350
+        },
+        {
+          "name": "Large Fountain Beverage",
+          "price": 400
+        },
+        {
+          "name": "Small Fountain Beverage",
+          "price": 300
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        {
+          "name": "American Cheese Slice",
+          "price": 50
+        },
+        {
+          "name": "Cheese Fries",
+          "price": 650
+        },
+        {
+          "name": "Chicken Fries",
+          "price": 675
+        },
+        {
+          "name": "Cole Slaw",
+          "price": 200
+        },
+        {
+          "name": "French Fries",
+          "price": 550
+        },
+        {
+          "name": "Liquid Cheese",
+          "price": 100
+        },
+        {
+          "name": "Pickle on a Stick",
+          "price": 200
+        },
+        {
+          "name": "Pierogies (5)",
+          "description": "Comes with butter and onions",
+          "price": 700
+        }
+      ]
+    },
+    {
+      "name": "Bowls",
+      "items": [
+        {
+          "name": "Beef Bowl",
+          "description": "Roast beef topped with corn & beef gravy",
+          "price": 725
+        },
+        {
+          "name": "Cheesy Pig Bowl",
+          "description": "Macaroni & cheese topped with pulled pork",
+          "price": 975
+        },
+        {
+          "name": "Louisiana Pig Bowl",
+          "description": "Macaroni & cheese topped with pulled pork and cole slaw",
+          "price": 1125
+        },
+        {
+          "name": "Mac & Cheese Bowl",
+          "description": "Macaroni & cheese topped with popcorn chicken and sauce",
+          "price": 800
+        },
+        {
+          "name": "Potato Bowl",
+          "description": "Mashed potatoes topped with popcorn chicken, creamed corn & gravy",
+          "price": 725
+        },
+        {
+          "name": "Roast Beef Bowl",
+          "description": "Mashed potatoes topped with hot roast beef and gravy",
+          "price": 925
+        }
+      ]
+    },
+    {
+      "name": "Sandwiches",
+      "items": [
+        {
+          "name": "Hot Sausage Sandwich",
+          "description": "Sausage served on a steak roll with peppers and onions",
+          "price": 800
+        },
+        {
+          "name": "Pork BBQ Sandwich",
+          "description": "Pulled pork with bbq sauce served on a kaiser roll",
+          "price": 700
+        },
+        {
+          "name": "Roast Beef Sandwich",
+          "description": "Hot roast beef served on a steak roll",
+          "price": 800
+        }
+      ]
+    },
+    {
+      "name": "Chicken & Waffle",
+      "items": [
+        {
+          "name": "Chicken & Waffle on a stick w/ gravy",
+          "price": 975
+        },
+        {
+          "name": "Chicken & Waffle on a stick w/ mashed potatoes & gravy",
+          "price": 1025
+        },
+        {
+          "name": "Waffle Plain (1)",
+          "price": 350
+        },
+        {
+          "name": "Waffle w/ syrup",
+          "price": 400
+        }
+      ]
+    }
+  ]
+}

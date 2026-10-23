@@ -1,0 +1,106 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Knoebels",
+    "official": true,
+    "url": "https://knoebels.com/menu/old-mill-ice-cream/"
+  },
+  "sections": [
+    {
+      "name": "Sundaes",
+      "items": [
+        {
+          "name": "Brownie",
+          "description": "Fresh brownie with vanilla ice cream, topped w/ hot fudge, whipped cream, peanuts & cherry.",
+          "price": 800
+        },
+        {
+          "name": "Build Your Own Banana Split",
+          "description": "Customize your own banana by picking your own ice cream flavors and 3 toppings",
+          "price": 1050
+        },
+        {
+          "name": "Build Your Own Sundae",
+          "description": "Includes your choice of ice cream flavors, one sundae topping, whipped cream, peanuts, and cherry",
+          "price": 775
+        },
+        {
+          "name": "Chocolate Chip Cookie Dough",
+          "description": "Chocolate Chip Cookie Dough ice cream, topped with hot fudge & cookie pieces, whipped cream, peanuts & cherry.",
+          "price": 800
+        },
+        {
+          "name": "Cookie Batter Sundae",
+          "description": "Yellow Cake Batter ice cream, topped w/ Biscoff cookie crumbles, salted caramel topping, a pinch of flaky salt, & a whole Biscoff cookie",
+          "price": 800
+        },
+        {
+          "name": "Hot Fudge",
+          "description": "Vanilla ice cream topped with hot fudge, whipped cream, peanuts & cherry.",
+          "price": 775
+        },
+        {
+          "name": "Reese’s Peanut Butter Cup",
+          "description": "Vanilla ice cream, chopped Reese's Peanut Butter Cups, topped with peanut butter sauce, hot fudge, whipped cream, peanuts & cherry.",
+          "price": 800
+        },
+        {
+          "name": "Traditional Banana Split",
+          "description": "Vanilla, chocolate & strawberry ice cream sandwiched between banana halves with chocolate, pineapple & strawberry topping, whipped cream, peanuts & cherry",
+          "price": 950
+        }
+      ]
+    },
+    {
+      "name": "Floats & Sandwiches",
+      "items": [
+        {
+          "name": "Cookie Sandwich",
+          "description": "You choose your flavor ice cream sandwiched between chocolate chip cookies",
+          "price": 575
+        },
+        {
+          "name": "Large Float",
+          "description": "Your favorite soda on top of vanilla ice cream! Choose from Root Beer, Pepsi, Diet Pepsi, Orange Crush or White Birch Beer",
+          "price": 675
+        },
+        {
+          "name": "Waffle Sandwich",
+          "description": "Your favorite ice cream sandwiched between a hot homemade waffle",
+          "price": 575
+        }
+      ]
+    },
+    {
+      "name": "Hand-Dipped Ice Cream",
+      "items": [
+        {
+          "name": "Large Cup or Cone",
+          "price": 625
+        },
+        {
+          "name": "Large Waffle Cone",
+          "price": 775
+        },
+        {
+          "name": "Small Cup or Cone",
+          "price": 425
+        },
+        {
+          "name": "Small Waffle Cone",
+          "price": 600
+        }
+      ]
+    },
+    {
+      "name": "Ice Cream",
+      "items": [
+        {
+          "name": "Dairy-Free Vanilla",
+          "price": null,
+          "unclear": "price printed as \"\""
+        }
+      ]
+    }
+  ]
+}

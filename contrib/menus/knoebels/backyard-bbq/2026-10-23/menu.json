@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Knoebels",
+    "official": true,
+    "url": "https://knoebels.com/menu/backyard-bbq/"
+  },
+  "sections": [
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Bottled Soda",
+          "description": "Pepsi, Diet Pepsi, Mountain Dew, Starry",
+          "price": 350
+        },
+        {
+          "name": "Bottled Water",
+          "price": 350
+        },
+        {
+          "name": "Lemonade",
+          "description": "Add Strawberry or Raspberry Flavor for $1.00",
+          "price": 400
+        }
+      ]
+    },
+    {
+      "name": "Hot Food",
+      "items": [
+        {
+          "name": "1/4lb. Beef Frank",
+          "price": 500
+        },
+        {
+          "name": "1/4lb. Bratwurst",
+          "price": 500
+        },
+        {
+          "name": "Bacon on a Stick",
+          "description": "Add chocolate $0.50",
+          "price": 400
+        },
+        {
+          "name": "Burnt Ends",
+          "description": "served with BBQ Sauce",
+          "price": 1000
+        },
+        {
+          "name": "Fresh Roasted Corn",
+          "price": 400
+        },
+        {
+          "name": "German Delight",
+          "description": "Broiled Brat or Kielbasa served on a grilled pretzel roll with saurkraut and spicy mustard",
+          "price": null,
+          "unclear": "price printed as \"10\""
+        },
+        {
+          "name": "Pulled BBQ Chicken Sandwich",
+          "price": 800
+        },
+        {
+          "name": "Smoked Turkey Leg",
+          "price": 1000
+        },
+        {
+          "name": "St. Louis BBQ",
+          "price": 1100
+        },
+        {
+          "name": "Street Corn",
+          "price": 600
+        }
+      ]
+    },
+    {
+      "name": "Cold Food",
+      "items": [
+        {
+          "name": "Pickle on a Stick",
+          "price": 200
+        }
+      ]
+    }
+  ]
+}

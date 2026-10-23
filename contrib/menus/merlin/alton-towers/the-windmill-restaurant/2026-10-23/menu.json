@@ -1,0 +1,514 @@
+{
+  "date": "2026-10-23",
+  "unpriced": true,
+  "source": {
+    "name": "Alton Towers Resort",
+    "official": true,
+    "url": "https://menus.tenkites.com/aramarkuk/cbeebieslandhotel"
+  },
+  "sections": [
+    {
+      "name": "Grazing Windmill",
+      "items": [
+        {
+          "name": "Crunchy Leaf",
+          "price": null,
+          "kcal": 10
+        },
+        {
+          "name": "Mixed Peppers",
+          "price": null,
+          "kcal": 7
+        },
+        {
+          "name": "Tortilla Chips",
+          "price": null,
+          "kcal": 144
+        },
+        {
+          "name": "Breadsticks",
+          "description": "Breadsticks",
+          "price": null,
+          "kcal": 44
+        },
+        {
+          "name": "Tomatoes",
+          "price": null,
+          "kcal": 4
+        },
+        {
+          "name": "Cucumber",
+          "price": null,
+          "kcal": 2
+        },
+        {
+          "name": "Diced Beetroot",
+          "description": "Diced Beetroot",
+          "price": null,
+          "kcal": 7
+        },
+        {
+          "name": "Carrots",
+          "price": null,
+          "kcal": 10
+        },
+        {
+          "name": "Red Onion",
+          "price": null,
+          "kcal": 8
+        },
+        {
+          "name": "Crispy Fried Onion",
+          "price": null,
+          "kcal": 24
+        },
+        {
+          "name": "Caesar Dressing",
+          "description": "Caesar Dressing",
+          "price": null,
+          "kcal": 14
+        },
+        {
+          "name": "Honey Mustard Dressing",
+          "price": null,
+          "kcal": 27
+        },
+        {
+          "name": "Sweetcorn",
+          "description": "Sweetcorn",
+          "price": null,
+          "kcal": 7
+        },
+        {
+          "name": "Thousand Island Dressing",
+          "price": null,
+          "kcal": 13
+        }
+      ]
+    },
+    {
+      "name": "Smaller Plates",
+      "items": [
+        {
+          "name": "Beef Taco Supreme",
+          "description": "Salsa | Chipotle Sauce | Pickled Onion | Sweet Pepper | Queso | Soured Cream",
+          "price": null,
+          "kcal": 1540
+        },
+        {
+          "name": "Halloumi Burrito",
+          "description": "Salsa | Creole Rice | Cajun Mixed Beans | Sweetcorn | Soured Cream",
+          "price": null,
+          "kcal": 1455
+        },
+        {
+          "name": "Crispy Chicken Wrap",
+          "price": null,
+          "kcal": 1496
+        }
+      ]
+    },
+    {
+      "name": "Mains",
+      "items": [
+        {
+          "name": "Baked Halloumi Aubergine",
+          "description": "Spiced Giant Couscous | Roasted Chickpea and Olives | Bliss Tomatoes | Khobez Flat Bread",
+          "price": null,
+          "kcal": 1242
+        },
+        {
+          "name": "Fish & Fries",
+          "description": "Haddock Fillet in Beer Batter | Tartare Sauce | Mushy Peas",
+          "price": null,
+          "kcal": 1680
+        },
+        {
+          "name": "Rigatoni Pasta",
+          "description": "Tomato Sauce | Sweet Basil | Mushroom and Wilted Spinach",
+          "price": null,
+          "kcal": 966
+        },
+        {
+          "name": "Roasted Sweet Potato Chickpea Salad",
+          "description": "Rocket Salad | Vegan Pesto | Scallions | Red Onion | Sweet Pepper Drops",
+          "price": null,
+          "kcal": 375
+        },
+        {
+          "name": "Roasted Sweet Potato Chickpea Salad with Chicken",
+          "description": "Rocket Salad | Vegan Pesto | Scallions | Red Onion | Sweet Pepper Drops",
+          "price": null,
+          "kcal": 535
+        },
+        {
+          "name": "Margherita Pizza",
+          "description": "A classic 10 inch Margherita pizza with a crisp base, rich tomato sauce and melted mozzarella, cooked until piping hot with an even golden finish.",
+          "price": null,
+          "kcal": 779
+        },
+        {
+          "name": "Pepperoni Pizza",
+          "description": "A classic 10 inch Pepperoni pizza with rich tomato sauce, melted mozzarella and slices of pepperoni, cooked until piping hot with a crisp base and even golden finish.",
+          "price": null,
+          "kcal": 842
+        }
+      ]
+    },
+    {
+      "name": "From the Grill",
+      "items": [
+        {
+          "name": "Double Beef Burger",
+          "description": "Double Beef Burger | Smoked Applewood Cheese | BBQ Mayonnaise | Lettuce | Pickled Cucumber | Seeded Brioche Bun | Skinny Fries",
+          "price": null,
+          "kcal": 1147
+        },
+        {
+          "name": "8oz Rib Eye Steak",
+          "description": "Served with Roasted Plum Tomatoes | Field Mushroom | Skinny Fries | Shallot & Cress Salad",
+          "price": null,
+          "kcal": 1041
+        },
+        {
+          "name": "Lemon Herb Chicken",
+          "description": "Lemon Herb Chicken Served with Roasted Plum Tomatoes | Field Mushroom | Skinny Fries | Shallot & Cress Salad",
+          "price": null,
+          "kcal": 774
+        },
+        {
+          "name": "Gammon & Pineapple",
+          "description": "Basted in Pineapple Juice | Flat Field Mushroom | Village Fries",
+          "price": null,
+          "kcal": 815
+        }
+      ]
+    },
+    {
+      "name": "Sauces and Sides",
+      "items": [
+        {
+          "name": "Peppercorn Sauce",
+          "description": "Peppercorn Sauce",
+          "price": null,
+          "kcal": 324
+        },
+        {
+          "name": "Red Wine Sauce",
+          "description": "Redwine Sauce",
+          "price": null,
+          "kcal": 142
+        },
+        {
+          "name": "Seasoned Fries",
+          "description": "Seasoned Fries",
+          "price": null,
+          "kcal": 429
+        },
+        {
+          "name": "Beer Battered Onion Rings",
+          "description": "Beer Battered Onion Rings",
+          "price": null,
+          "kcal": 282
+        },
+        {
+          "name": "Sauteed Tender Stem Broccoli",
+          "description": "Sauteed Tender Stem Broccoli",
+          "price": null,
+          "kcal": 81
+        },
+        {
+          "name": "Buttered Creamed Mash",
+          "description": "Buttered Creamed Mash",
+          "price": null,
+          "kcal": 210
+        }
+      ]
+    },
+    {
+      "name": "Tiny Tots Mains",
+      "items": [
+        {
+          "name": "Loaded Cheese Baked Potato Skin",
+          "description": "Choose any two of your side dishes fries mashed potato cucumber and carrots sticks baked beans sweet corn garden peas",
+          "price": null,
+          "kcal": 178
+        },
+        {
+          "name": "Crispy Fish Fingers",
+          "description": "Choose any two of your side dishes, fries, mashed potato, cucumber and carrots sticks, baked beans, sweet corn, garden peas",
+          "price": null,
+          "kcal": 144
+        },
+        {
+          "name": "Chicken Goujons",
+          "description": "Chicken Goujons",
+          "price": null,
+          "kcal": 160
+        },
+        {
+          "name": "Quorn Dippers",
+          "description": "Choose any two of your side dishes, fries, mashed potato, cucumber and carrots sticks, baked beans, sweet corn, garden peas",
+          "price": null,
+          "kcal": 90
+        },
+        {
+          "name": "Tomato Pasta",
+          "description": "Choose any two of your side dishes fries mashed potato cucumber and carrots sticks baked beans sweet corn garden peas",
+          "price": null,
+          "kcal": 184
+        }
+      ]
+    },
+    {
+      "name": "Junior Mains",
+      "items": [
+        {
+          "name": "Beef burger",
+          "description": "Choose any two of your side dishes, fries, mashed potato, cucumber and carrots sticks, baked beans, sweet corn, garden peas",
+          "price": null,
+          "kcal": 308
+        },
+        {
+          "name": "Cheeseburger",
+          "description": "Choose any two of your side dishes, fries, mashed potato, cucumber and carrots sticks, baked beans, sweet corn, garden peas",
+          "price": null,
+          "kcal": 382
+        },
+        {
+          "name": "Chicken Goujons",
+          "description": "Choose any two of your side dishes, fries, mashed potato, cucumber and carrots sticks, baked beans, sweet corn, garden peas",
+          "price": null,
+          "kcal": 321
+        },
+        {
+          "name": "Grilled Pork Sausages",
+          "description": "Choose any two of your side dishes, fries, mashed potato, cucumber and carrots sticks, baked beans, sweet corn, garden peas",
+          "price": null,
+          "kcal": 240
+        },
+        {
+          "name": "Crispy Fish Fingers",
+          "description": "Choose any two of your side dishes, fries, mashed potato, cucumber and carrots sticks, baked beans, sweet corn, garden peas",
+          "price": null,
+          "kcal": 288
+        },
+        {
+          "name": "Quorn Dippers",
+          "description": "Choose any two of your side dishes, fries, mashed potato, cucumber and carrots sticks, baked beans, sweet corn, garden peas",
+          "price": null,
+          "kcal": 226
+        },
+        {
+          "name": "Tomato Pasta",
+          "description": "Choose any two of your side dishes, fries, mashed potato, cucumber and carrots sticks, baked beans, sweet corn, garden peas",
+          "price": null,
+          "kcal": 368
+        }
+      ]
+    },
+    {
+      "name": "Tiny Tots/Juniors Sides",
+      "items": [
+        {
+          "name": "Mashed Potato",
+          "description": "Mashed Potato",
+          "price": null,
+          "kcal": 72
+        },
+        {
+          "name": "Fries for Junior Meals",
+          "description": "Fries for Junior Meals",
+          "price": null,
+          "kcal": 195
+        },
+        {
+          "name": "Cucumber, Carrots Sticks",
+          "description": "Cucumber, Carrots Sticks",
+          "price": null,
+          "kcal": 6
+        },
+        {
+          "name": "Baked Beans",
+          "description": "Baked Beans",
+          "price": null,
+          "kcal": 7
+        },
+        {
+          "name": "Garden Peas",
+          "description": "Garden Peas",
+          "price": null,
+          "kcal": 9
+        },
+        {
+          "name": "Sweetcorn",
+          "description": "Sweetcorn",
+          "price": null,
+          "kcal": 6
+        }
+      ]
+    },
+    {
+      "name": "Grown up Guests Desserts",
+      "items": [
+        {
+          "name": "Cinnamon Swirl Cheesecake",
+          "description": "Caramel Biscuit",
+          "price": null,
+          "kcal": 449
+        },
+        {
+          "name": "Vanilla Panna Cotta",
+          "description": "Fresh Berries | Fruit Coulis",
+          "price": null,
+          "kcal": 655
+        },
+        {
+          "name": "Fruit Blocks",
+          "description": "Kiwi | Pineapple | Watermelon with Fruit Coulis",
+          "price": null,
+          "kcal": 414
+        },
+        {
+          "name": "Ice Cream Selection",
+          "description": "Ice Cream Selection",
+          "price": null,
+          "kcal": 381
+        },
+        {
+          "name": "Sorbet Selection",
+          "description": "Sorbet Selection",
+          "price": null,
+          "kcal": 297
+        }
+      ]
+    },
+    {
+      "name": "Tiny Tots Desserts",
+      "items": [
+        {
+          "name": "Cannon Balls",
+          "description": "Chocolate Brownie with Vanilla Ice Cream, Chocolate Sauce",
+          "price": null,
+          "kcal": 162
+        },
+        {
+          "name": "Dipping Doughnuts",
+          "description": "Cinnamon Sugared, Strawberry Sauce, Chocolate Sauce",
+          "price": null,
+          "kcal": 202
+        },
+        {
+          "name": "Fruit Blocks",
+          "description": "Kiwi, Pineapple, Watermelon with Fruit Coulis",
+          "price": null,
+          "kcal": 138
+        },
+        {
+          "name": "Chocolate Pizza",
+          "description": "Chocolate Spread Pizza with Mini Mallows",
+          "price": null,
+          "kcal": 347
+        },
+        {
+          "name": "1 Scoop Ice Cream Selection",
+          "description": "All Served With Wafers",
+          "price": null,
+          "kcal": 100
+        },
+        {
+          "name": "Sorbet Selection with Wafer",
+          "description": "Sorbet Selection with Wafer",
+          "price": null,
+          "kcal": 148
+        }
+      ]
+    },
+    {
+      "name": "Junior Dessers",
+      "items": [
+        {
+          "name": "Cannon Balls",
+          "description": "Chocolate Brownie with Vanilla Ice Cream, Chocolate Sauce",
+          "price": null,
+          "kcal": 324
+        },
+        {
+          "name": "Dipping Doughnuts",
+          "description": "Cinnamon Sugared Strawberry Sauce Chocolate Sauce",
+          "price": null,
+          "kcal": 405
+        },
+        {
+          "name": "Fruit Blocks",
+          "description": "Kiwi Pineapple Watermelon with Fruit Coulis",
+          "price": null,
+          "kcal": 276
+        },
+        {
+          "name": "Chocolate Pizza",
+          "description": "Chocolate spread pizza with mini mallows",
+          "price": null,
+          "kcal": 694
+        },
+        {
+          "name": "Ice Cream Selection with Wafer",
+          "description": "Ice Cream Selection with Wafer",
+          "price": null,
+          "kcal": 100
+        },
+        {
+          "name": "Sorbet Selection with Wafer",
+          "description": "Sorbet Selection with Wafer",
+          "price": null,
+          "kcal": 148
+        }
+      ]
+    },
+    {
+      "name": "Ice Cream Flavours",
+      "items": [
+        {
+          "name": "Carte D'Or - Triple Choc Cone 1 scoop",
+          "description": "Carte D'Or - Triple Choc Cone 1 scoop",
+          "price": null,
+          "kcal": 188
+        },
+        {
+          "name": "Carte Dor - Strawberry single scoop",
+          "description": "Carte Dor - Strawberry single scoop",
+          "price": null,
+          "kcal": 66
+        },
+        {
+          "name": "Carte D'Or - Vanilla Cone 1 Scoop",
+          "description": "Carte D'Or - Vanilla Cone 1 Scoop",
+          "price": null,
+          "kcal": 158
+        }
+      ]
+    },
+    {
+      "name": "Bar Food",
+      "items": [
+        {
+          "name": "Pepperoni Pizza",
+          "description": "A classic 10 inch Pepperoni pizza with rich tomato sauce, melted mozzarella and slices of pepperoni, cooked until piping hot with a crisp base and even golden finish.",
+          "price": null,
+          "kcal": 842
+        },
+        {
+          "name": "Carrot Sticks & Cucumber Slices",
+          "price": null,
+          "kcal": 16
+        },
+        {
+          "name": "Margherita Pizza",
+          "description": "A classic 10 inch Margherita pizza with a crisp base, rich tomato sauce and melted mozzarella, cooked until piping hot with an even golden finish.",
+          "price": null,
+          "kcal": 779
+        }
+      ]
+    }
+  ]
+}

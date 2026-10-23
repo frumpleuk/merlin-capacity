@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Legoland Japan",
+    "official": true,
+    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/big-bricks-stand/"
+  },
+  "sections": [
+    {
+      "name": "Recommended Menus",
+      "items": [
+        {
+          "name": "Popcorn Junior Bucket",
+          "description": "With Popcorn",
+          "price": 4900
+        },
+        {
+          "name": "Train Bucket",
+          "description": "With Popcorn",
+          "price": 3500
+        },
+        {
+          "name": "Dragon Bucket",
+          "description": "With Popcorn",
+          "price": 3200
+        },
+        {
+          "name": "Submarine Bucket",
+          "description": "With Popcorn",
+          "price": 2900
+        },
+        {
+          "name": "Popcorn",
+          "description": "Honey Butter (Cup)",
+          "price": 600
+        },
+        {
+          "name": "Popcorn",
+          "description": "Caramel (Cup)",
+          "price": 600
+        }
+      ]
+    }
+  ]
+}

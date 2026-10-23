@@ -1,0 +1,479 @@
+{
+  "date": "2026-10-23",
+  "unpriced": true,
+  "source": {
+    "name": "Paultons Park",
+    "official": true,
+    "url": "https://menus.tenkites.com/paultonspark/peppapigworldrefreshments",
+    "menu": "The Pancake Kitchen"
+  },
+  "sections": [
+    {
+      "name": "Sundaes",
+      "items": [
+        {
+          "name": "Mud Slide Sundae",
+          "description": "Soft vanilla ice cream topped with Oreo crumb and a chocolate flake.",
+          "price": null,
+          "kcal": 464,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Cheeky Monkey Sundae",
+          "description": "Soft vanilla ice cream topped with toffee sauce and sliced banana",
+          "price": null,
+          "kcal": 398,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Go Nuts Sundae",
+          "description": "Soft vanilla ice cream topped with chocolate sauce, M&M pieces and a wafer twirl.",
+          "price": null,
+          "kcal": 475,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Snacks",
+      "items": [
+        {
+          "name": "Berry White Donut",
+          "price": null,
+          "kcal": 288,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Caramazing Donut",
+          "price": null,
+          "kcal": 310,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Spectaculous Donut",
+          "price": null,
+          "kcal": 253,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Nutty Zafari Donut",
+          "price": null,
+          "kcal": 265,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Strawjelly Jam Donut",
+          "price": null,
+          "kcal": 288,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Queen V Donut",
+          "price": null,
+          "kcal": 291,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Sugar Ring Donut.",
+          "price": null,
+          "kcal": 213,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Homemade Chocolate Brownie",
+          "price": null,
+          "kcal": 636,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ice Creams",
+      "items": [
+        {
+          "name": "Standard Whippy Tub",
+          "description": "Soft vanilla ice cream.",
+          "price": null,
+          "kcal": 114,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Standard Whippy Tub with Flake",
+          "description": "Soft vanilla ice cream served with a chocolate flake.",
+          "price": null,
+          "kcal": 155,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Small Whippy Cone",
+          "description": "Soft vanilla ice cream served on a wafer cone.",
+          "price": null,
+          "kcal": 99,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Small Whippy Cone with Flake",
+          "description": "Soft vanilla ice cream served with a chocolate flake on a wafer cone.",
+          "price": null,
+          "kcal": 140,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Standard Whippy Cone",
+          "description": "Soft vanilla ice cream served on a wafer cone.",
+          "price": null,
+          "kcal": 133,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Standard Whippy Cone with Flake",
+          "description": "Soft vanilla ice cream served with a chocolate flake on a wafer cone.",
+          "price": null,
+          "kcal": 175,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Extra Flake",
+          "price": null,
+          "kcal": 42,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Chocolate Sauce",
+          "price": null,
+          "kcal": 29,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Americano",
+          "price": null,
+          "kcal": 42,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Americano with Milk",
+          "price": null,
+          "kcal": 106,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Latte",
+          "price": null,
+          "kcal": 106,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Flat White.",
+          "price": null,
+          "kcal": 122,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Cappuccino",
+          "price": null,
+          "kcal": 184,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Mocha",
+          "price": null,
+          "kcal": 226,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Espresso",
+          "price": null,
+          "kcal": 28,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Double Espresso",
+          "price": null,
+          "kcal": 41,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Black Decaf Coffee 12oz",
+          "price": null,
+          "kcal": 50,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Clipper Everyday Tea - Black",
+          "price": null,
+          "kcal": 0,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Clipper Decaf Tea",
+          "price": null,
+          "kcal": 7,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Hot Chocolate",
+          "price": null,
+          "kcal": 122,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Slushy Jacks Reduced Sugar - Bubble Gum",
+          "price": null,
+          "kcal": 86
+        },
+        {
+          "name": "Slushy Jack Reduced Sugar - Strawberry.",
+          "price": null,
+          "kcal": 86
+        },
+        {
+          "name": "Slushy Jacks - Orange Twister",
+          "price": null,
+          "kcal": 104
+        },
+        {
+          "name": "Slushy Jacks Twister Cup - Orange Twister",
+          "price": null,
+          "kcal": 158
+        },
+        {
+          "name": "Slushy Jacks - Appleberry.",
+          "price": null,
+          "kcal": 104
+        },
+        {
+          "name": "Slushy Jacks Twister Cup - Appleberry",
+          "price": null,
+          "kcal": 158
+        },
+        {
+          "name": "Milk Portion",
+          "price": null,
+          "kcal": 6,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Soya Milk Portion",
+          "price": null,
+          "kcal": 5,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fruit Boba Tea",
+      "items": [
+        {
+          "name": "Passionfruit Jasmine Tea",
+          "price": null,
+          "kcal": 118,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Mango Jasmine Tea",
+          "price": null,
+          "kcal": 114,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Add Passionfruit Boba",
+          "price": null,
+          "kcal": 154,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Add Mango Boba",
+          "price": null,
+          "kcal": 77,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pancakes",
+      "items": [
+        {
+          "name": "Pancakes",
+          "price": null,
+          "kcal": 517,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Dusting Sugar",
+          "price": null,
+          "kcal": 8,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add Nutella",
+          "price": null,
+          "kcal": 107,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add White Chocolate Hazelnut Sauce",
+          "price": null,
+          "kcal": 60,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add Milk Chocolate Sauce",
+          "price": null,
+          "kcal": 87,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add Toffee Sauce",
+          "price": null,
+          "kcal": 29,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add Banana",
+          "price": null,
+          "kcal": 45,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Add Strawberries",
+          "price": null,
+          "kcal": 11,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Add Lemon",
+          "price": null,
+          "kcal": 9,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Add Sugar",
+          "price": null,
+          "kcal": 61,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Whipped Cream",
+          "price": null,
+          "kcal": 64,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    }
+  ]
+}

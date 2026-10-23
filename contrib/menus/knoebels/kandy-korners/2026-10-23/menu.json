@@ -1,0 +1,107 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Knoebels",
+    "official": true,
+    "url": "https://knoebels.com/menu/kandy-korners/"
+  },
+  "sections": [
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Large Soda",
+          "price": 400
+        },
+        {
+          "name": "Large Tea or Lemon Slush",
+          "description": "Add Flavor Shot (strawberry, raspberry, peach) $1.00",
+          "price": 400
+        },
+        {
+          "name": "Small Soda",
+          "price": 300
+        },
+        {
+          "name": "Small Tea or Lemon Slush",
+          "description": "Add Flavor Shot (strawberry, raspberry, peach) $0.50",
+          "price": 300
+        }
+      ]
+    },
+    {
+      "name": "Flavored Popcorn",
+      "items": [
+        {
+          "name": "Kettle Korn",
+          "price": 900
+        },
+        {
+          "name": "Oreo Popcorn",
+          "price": 1250
+        },
+        {
+          "name": "Tub",
+          "description": "Flavors: Cheddar, White Cheddar & Hot",
+          "price": 775
+        }
+      ]
+    },
+    {
+      "name": "Butter Popcorn",
+      "items": [
+        {
+          "name": "Large",
+          "price": 500
+        },
+        {
+          "name": "Small",
+          "price": 375
+        },
+        {
+          "name": "Tub",
+          "price": 675
+        }
+      ]
+    },
+    {
+      "name": "Apples",
+      "items": [
+        {
+          "name": "Candy Apple",
+          "price": 500
+        },
+        {
+          "name": "Candy Apple with Nuts",
+          "price": 525
+        },
+        {
+          "name": "Caramel Apple",
+          "price": 700
+        },
+        {
+          "name": "Caramel Apple Chips",
+          "description": "Gooey caramel drizzled over freshly sliced apples with a dollop of whipped cream.",
+          "price": 700
+        },
+        {
+          "name": "Caramel Apple Chips with Nuts",
+          "price": 750
+        },
+        {
+          "name": "Caramel Apples with Nuts",
+          "price": 750
+        }
+      ]
+    },
+    {
+      "name": "Karamel Korn",
+      "items": [
+        {
+          "name": "Tub",
+          "price": 950
+        }
+      ]
+    }
+  ]
+}

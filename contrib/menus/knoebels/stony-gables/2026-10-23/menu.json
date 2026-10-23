@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Knoebels",
+    "official": true,
+    "url": "https://knoebels.com/menu/stony-gables/"
+  },
+  "sections": [
+    {
+      "name": "Snacks",
+      "items": [
+        {
+          "name": "1 lb. Roasted Peanuts",
+          "price": 500
+        },
+        {
+          "name": "1/2 l b. Roasted Peanuts",
+          "price": 300
+        },
+        {
+          "name": "1/2lb Bavarian Roasted Nuts",
+          "description": "Almonds, Cashews or Pecans- coated in cinnamon sugar and vanilla",
+          "price": 950
+        },
+        {
+          "name": "1/4 lb. of Fudge",
+          "description": "16 Flavors",
+          "price": 450
+        },
+        {
+          "name": "Whirzle",
+          "description": "1/4lb Piece of Fudge together with ice and our whirzle secret mix, then blended until smooth perfection",
+          "price": 699
+        }
+      ]
+    }
+  ]
+}

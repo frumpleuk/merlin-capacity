@@ -1,0 +1,485 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Knoebels",
+    "official": true,
+    "url": "https://knoebels.com/menu/international-food-court/"
+  },
+  "sections": [
+    {
+      "name": "Dexter's Deli",
+      "items": [
+        {
+          "name": "Boneless Wings",
+          "description": "your choice of sauce",
+          "price": 1100
+        },
+        {
+          "name": "Brownie",
+          "description": "A Gluten FREE treat",
+          "price": 400
+        },
+        {
+          "name": "Cheese on a Stick",
+          "price": 700
+        },
+        {
+          "name": "Chili Cheese Corn Dog",
+          "price": 700
+        },
+        {
+          "name": "Chocolate Chip Cookie",
+          "description": "a Gluten FREE treat",
+          "price": 400
+        },
+        {
+          "name": "Fiesta Dog",
+          "price": 500
+        },
+        {
+          "name": "Fried Cheese Curds",
+          "description": "served with Marinara sauce",
+          "price": 700
+        },
+        {
+          "name": "Fried Corn Dog",
+          "price": 550
+        },
+        {
+          "name": "Fried Street Corn Dog",
+          "price": 700
+        },
+        {
+          "name": "Nachos",
+          "description": "served with cheese",
+          "price": 550
+        },
+        {
+          "name": "New-German Sushi",
+          "price": 800
+        },
+        {
+          "name": "New-Ham or Turkey Melt",
+          "price": 800
+        },
+        {
+          "name": "New-Monte Cristo Melt",
+          "price": 900
+        },
+        {
+          "name": "New-Philly Cheesecake Melt",
+          "description": "Strawberry or Blueberry Filling",
+          "price": 800
+        },
+        {
+          "name": "Soft Pretzel Sticks",
+          "description": "Add Cheese Sauce + $1.00",
+          "price": 300
+        }
+      ]
+    },
+    {
+      "name": "Beverages",
+      "items": [
+        {
+          "name": "Coffee/Tea",
+          "price": 225
+        },
+        {
+          "name": "Frozen Drinks",
+          "description": "Choice of Frozen Lemonade or Cherry. Add Flavor Shot + $1.00",
+          "price": 400
+        },
+        {
+          "name": "Hot Chocolate/Cappuccino",
+          "price": 300
+        },
+        {
+          "name": "Juice",
+          "description": "Orange, Apple, Cranberry, Grape",
+          "price": 325
+        },
+        {
+          "name": "Large Fountain Beverages",
+          "price": 400
+        },
+        {
+          "name": "Lemonade",
+          "description": "Add Flavor Shot + $1.00",
+          "price": 400
+        },
+        {
+          "name": "Small Fountain Beverages",
+          "price": 300
+        }
+      ]
+    },
+    {
+      "name": "World",
+      "items": [
+        {
+          "name": "Bison Burger",
+          "description": "Right off the range! Low in fat, big on taste",
+          "price": 1000
+        },
+        {
+          "name": "Fish & Chips",
+          "description": "Three pieces of beer battered cod served with a generous portion of steak fries",
+          "price": 950
+        },
+        {
+          "name": "Fruit Salad",
+          "description": "Served from Memorial Day until Labor Day, our fruit salad contains fresh apples, grapes, strawberries, and blueberries. Then we throw in some pineapple and mandarin oranges for good measure.",
+          "price": 600
+        },
+        {
+          "name": "Gator Bites",
+          "description": "Yes, it really is alligator meat. Breaded and deep fried to legendary peculiarity!",
+          "price": 1000
+        },
+        {
+          "name": "Haluski",
+          "description": "A polish delight! We slowly fry cabbage and onions in butter and add broadn Kluski Noodles",
+          "price": 325
+        },
+        {
+          "name": "Hog Wild Fries",
+          "description": "Our delicious pulled pork mounded on top of thick cut steak fries",
+          "price": 800
+        },
+        {
+          "name": "Kielbasa",
+          "price": 500
+        },
+        {
+          "name": "Memphis Pork Sundae",
+          "description": "Sweet cornbread covered with our smokey pulled pork, Monterey Cheddar Cheese and sour cream",
+          "price": 650
+        },
+        {
+          "name": "Polish Platter",
+          "description": "A sampling of: Kielbasa, Haluski, Potato Cakes (2 small)",
+          "price": 900
+        },
+        {
+          "name": "Potato Pancakes",
+          "description": "Our recipe resembles the traditional potato pancake. Grilled not fried",
+          "price": 425
+        },
+        {
+          "name": "Pulled Pork Sandwich",
+          "description": "On a ciabatta roll w/BBQ sauce",
+          "price": 700
+        },
+        {
+          "name": "Steak Fries",
+          "price": 500
+        },
+        {
+          "name": "Supreme Sweeties",
+          "description": "Our waffle cut sweet potato fries drizzled with gooey caramel and dusted with sea salt",
+          "price": 600
+        },
+        {
+          "name": "Sweet Potato Fries",
+          "price": 475
+        }
+      ]
+    },
+    {
+      "name": "Mexican Kids Meals",
+      "items": [
+        {
+          "name": "Kids Meal",
+          "description": "One Taco (Hard or Soft Shell), Small Cheese Nachos, Small Drink, & Activity and Treat",
+          "price": 750
+        }
+      ]
+    },
+    {
+      "name": "Mexican",
+      "items": [
+        {
+          "name": "Burrito",
+          "description": "Choose from Bean & Cheese, Chicken, or Beef",
+          "price": 400
+        },
+        {
+          "name": "Chips and Cheese",
+          "price": 550
+        },
+        {
+          "name": "Quesadilla",
+          "description": "Cheese & Toppings, Add Chicken or Beef (+$2.00)",
+          "price": 400
+        },
+        {
+          "name": "Rice Bowl",
+          "description": "Latin rice,choice of protein,fiesta sauce,montery jack cheese,lettuce,tomatoes, jalapenos w/ lime sauce",
+          "price": 1000
+        },
+        {
+          "name": "Tacos (2)",
+          "description": "Choice of Hard or Soft Shell. Choice of Plain, Chicken, or Beef",
+          "price": 400
+        },
+        {
+          "name": "The Antonio",
+          "description": "Fried Tortilla Shell Coated with Cinnamon Sugar, Filled with Vanilla Ice Cream, Topped with your choice of Caramel or Chocolate Topping, & Finished with Whipped Cream and a Cherry",
+          "price": 500
+        },
+        {
+          "name": "The Three Amigos",
+          "description": "One Burrito, One Taco, & One Quesadilla, Choice of All Beef or All Chicken",
+          "price": 1000
+        }
+      ]
+    },
+    {
+      "name": "American Kids Meals",
+      "items": [
+        {
+          "name": "Chicken Nuggets (6)",
+          "price": 800
+        },
+        {
+          "name": "Grilled Cheese",
+          "price": 700
+        },
+        {
+          "name": "Hamburger",
+          "description": "add cheese +$.25",
+          "price": 800
+        },
+        {
+          "name": "Hot Dog",
+          "price": 700
+        }
+      ]
+    },
+    {
+      "name": "American",
+      "items": [
+        {
+          "name": "Cheeseburger",
+          "description": "Make it deluxe! Add lettuce, tomato, onion, and pickles for only $0.75!",
+          "price": 500
+        },
+        {
+          "name": "Chicken Nuggets (6)",
+          "price": 600
+        },
+        {
+          "name": "Chicken Sandwiches",
+          "description": "Grilled chicken never had it so good! So many varieties to choose from! Each served on a Kaiser roll with lettuce, tomato, and a pickle. Choicen Of: All-American (Ham & Cheese); Western (Bacon, Cheese, BBQ Sauce);n Mardi Gras (Cheese, Bacon, Stinger Sauce, Purple Onion); Boneless Buffalon Wing (Hot Wing Sauce & Blue Cheese Packet); Southern Style (Deepn Fried, Loaded with Pickles, & a Creamy Pickle Aioli)",
+          "price": 850
+        },
+        {
+          "name": "Chili & Cheese Fries",
+          "price": 750
+        },
+        {
+          "name": "Club Wrap",
+          "description": "Freshly sliced meats, mayo, ripe tomatoes, and crisp lettuce combine in a flavorful wrap. Choose: Turkey, Ham, Buffalo Chicken (+$1.00), or Vegetable",
+          "price": 800
+        },
+        {
+          "name": "Disco Fries",
+          "description": "Get down with melted mozzarella and beefy gravy on some French fries",
+          "price": 700
+        },
+        {
+          "name": "French Fries",
+          "description": "W/ Cheese add $1.00 - W/ Gravy add $1.00",
+          "price": 550
+        },
+        {
+          "name": "Grilled Cheese",
+          "price": 275
+        },
+        {
+          "name": "Hamburger",
+          "description": "Make it deluxe! Add lettuce, tomato, onion, and pickles for only $0.75!",
+          "price": 450
+        },
+        {
+          "name": "Hot Dog",
+          "price": 300
+        },
+        {
+          "name": "Loaded Fries",
+          "description": "All the things!",
+          "price": 725
+        },
+        {
+          "name": "Pulled Pork",
+          "description": "Smoked fresh pulled pork, layered on a toasted ciabatta roll with BBQ sauce. YUM!",
+          "price": 700
+        },
+        {
+          "name": "Salads",
+          "description": "Choose: Garden, Crunchy or Grilled Chicken, or Buffalo Chicken",
+          "price": 975
+        },
+        {
+          "name": "Side Salad",
+          "price": 400
+        },
+        {
+          "name": "Texas Sized B.L.T.",
+          "description": "2 Thick slices of smoked bacon, layers of sliced tomatoes, piles of green lettuce on Texas sized toast.",
+          "price": 800
+        }
+      ]
+    },
+    {
+      "name": "Breakfast Ala Carte",
+      "items": [
+        {
+          "name": "Bagel",
+          "description": "Add cream cheese $1.00",
+          "price": 300
+        },
+        {
+          "name": "Breakfast Potatoes",
+          "price": 350
+        },
+        {
+          "name": "Cereal & Milk",
+          "price": 300
+        },
+        {
+          "name": "Cinnamon Bun",
+          "price": 400
+        },
+        {
+          "name": "Coffee or Hot Tea",
+          "price": 250
+        },
+        {
+          "name": "Cream Chipped Beef",
+          "description": "served on toast",
+          "price": 750
+        },
+        {
+          "name": "Eggs (2)",
+          "price": 350
+        },
+        {
+          "name": "English Muffin",
+          "price": 225
+        },
+        {
+          "name": "French Toast (2)",
+          "price": 450
+        },
+        {
+          "name": "French Toast Stix (3)",
+          "price": 300
+        },
+        {
+          "name": "Hot Chocolate or Cappuccino",
+          "price": 300
+        },
+        {
+          "name": "Hot Oatmeal",
+          "price": 300
+        },
+        {
+          "name": "Juice",
+          "description": "Orange, Apple, Cranberry",
+          "price": 325
+        },
+        {
+          "name": "Milk 2% (white or chocolate)",
+          "price": 275
+        },
+        {
+          "name": "Pancakes (3)",
+          "price": 450
+        },
+        {
+          "name": "Sausage (2), Bacon (3), or Ham",
+          "price": 300
+        },
+        {
+          "name": "Toast & Jelly",
+          "price": 175
+        }
+      ]
+    },
+    {
+      "name": "Breakfast Sandwiches",
+      "items": [
+        {
+          "name": "Egg, & Cheese on Bagel",
+          "description": "plain, blueberry, or everything",
+          "price": 625
+        },
+        {
+          "name": "Egg, & Cheese on English Muffin",
+          "price": 550
+        },
+        {
+          "name": "Egg, & Cheese on Toast",
+          "description": "white or wheat",
+          "price": 525
+        },
+        {
+          "name": "Meat, Egg, & Cheese on Bagel",
+          "description": "plain, blueberry, or everything",
+          "price": 800
+        },
+        {
+          "name": "Meat, Egg, & Cheese on English Muffin",
+          "price": 725
+        },
+        {
+          "name": "Meat, Egg, & Cheese on Toast",
+          "description": "white or wheat",
+          "price": 700
+        },
+        {
+          "name": "Open Faced Waffle Sandwich",
+          "description": "Choice of Sausage (2), Bacon (3), or Ham",
+          "price": 950
+        }
+      ]
+    },
+    {
+      "name": "Breakfast Specials",
+      "items": [
+        {
+          "name": "#1",
+          "description": "(2) eggs & toast. Add (2) sausage, (3) bacon, or ham $1.75",
+          "price": 450
+        },
+        {
+          "name": "#2",
+          "description": "(2) eggs, breakfast potatoes, toast. Add (2) sausage, (3) Bacon, or hamn for $1.75",
+          "price": 525
+        },
+        {
+          "name": "#3",
+          "description": "(3) pancakes and choose (2) sausage, (3) bacon, or ham",
+          "price": 625
+        },
+        {
+          "name": "#4",
+          "description": "(2) pieces of french toast and choose (2) sausage, (3) bacon, or ham",
+          "price": 625
+        },
+        {
+          "name": "Food Court Special",
+          "description": "(2) eggs, toast, coffee, and choose (2) sausage, (3) bacon, or ham",
+          "price": 750
+        },
+        {
+          "name": "Park Special",
+          "description": "(2) eggs, breakfast potatoes, toast, coffee and choose (2) sausage, (3) bacon, or ham",
+          "price": 775
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,323 @@
+{
+  "date": "2026-10-23",
+  "unpriced": true,
+  "source": {
+    "name": "Alton Towers Resort",
+    "official": true,
+    "url": "https://menus.tenkites.com/aramarkuk/athotel02"
+  },
+  "sections": [
+    {
+      "name": "Desserts Cold",
+      "items": [
+        {
+          "name": "3 Scoop Sorbet Selection",
+          "description": "All Served With Wafers",
+          "price": null
+        },
+        {
+          "name": "Chocolate Brownie",
+          "description": "Served with vanilla ice cream and chocolate sauce ,wafers",
+          "price": null
+        },
+        {
+          "name": "Fruit Bowl",
+          "description": "Fruit Bowl with fruit compote and fresh strawberries",
+          "price": null
+        },
+        {
+          "name": "Baked Caramel Brownie Cheesecake",
+          "description": "Baked brownie topped with a dark chocolate cheesecake & salted caramel sauce served with Vanilla ice cream",
+          "price": null
+        },
+        {
+          "name": "Banana Sharing Sundae",
+          "description": "Crushed banana with vanilla ice cream, caramel sauce, fudge, malted chocolate and whipped cream",
+          "price": null
+        },
+        {
+          "name": "Chocolate Orange Tart",
+          "description": "Chocolate orange tart with blood orange sorbet and caramelized mandarin segment",
+          "price": null
+        },
+        {
+          "name": "3 Scoop Ice Cream",
+          "description": "Selection of 3 ice cream scoops served with strawberry and wafer",
+          "price": null
+        },
+        {
+          "name": "Lemon Meringue Pie",
+          "description": "Lemon meringue pie with raspberry sorbet, lemon curd and candied lemon",
+          "price": null
+        },
+        {
+          "name": "3 Scoop Sorbet",
+          "description": "3 scoops of sorbet served with strawberry half and wafer",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Starter Hot",
+      "items": [
+        {
+          "name": "8 Hidden vegetable served with breadsticks",
+          "description": "8 Hidden vegetable served with breadsticks",
+          "price": null
+        },
+        {
+          "name": "Mini Doughballs",
+          "description": "Baked Mini Doughballs",
+          "price": null
+        },
+        {
+          "name": "Mini Doughballs with Cheese",
+          "description": "Baked Mini Doughballs with Cheese",
+          "price": null
+        },
+        {
+          "name": "Just Breads",
+          "description": "Mixtures of Baked Artisan Sourdoughs | Whipped Smoked Salted Butter",
+          "price": null
+        },
+        {
+          "name": "Sweet Chipolatas",
+          "description": "Glazed in honey grain mustard, maple ketchup",
+          "price": null
+        },
+        {
+          "name": "Chicken Wings",
+          "description": "Marinated on Sriracha | Sweet Chili Jam Mayonnaise",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Starter Cold",
+      "items": [
+        {
+          "name": "Mini Nachos with Cheese Sauce",
+          "description": "Mini Crispy Nachos topped with Cheese Sauce",
+          "price": null
+        },
+        {
+          "name": "Smoked Salmon Tartare",
+          "description": "Avocado | Yuzu Cucumber | Dill Crème Fraiche",
+          "price": null
+        },
+        {
+          "name": "Harissa Hummus",
+          "description": "Rosemary Focaccia | Crispy Chickpea | Sweet Pepper Drops",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Main Course Hot",
+      "items": [
+        {
+          "name": "Crispy Chicken Tenders",
+          "description": "Served with ketchup dip and fries",
+          "price": null
+        },
+        {
+          "name": "Fish Fingers",
+          "description": "Golden fish fingers served with garden peas and seasoned fries.",
+          "price": null
+        },
+        {
+          "name": "Rigatoni Pasta",
+          "description": "Rigatoni Pasta with Rustic Tomato Sauce",
+          "price": null
+        },
+        {
+          "name": "8oz Rib Eye Steak",
+          "description": "8oz rib eye steak Served with Roasted Plum Tomatoes | Field Mushroom | Skinny Fries | Shallot & Cress Salad",
+          "price": null
+        },
+        {
+          "name": "Barbery Duck Breast",
+          "description": "Barbery duck breast cooked medium served with smooth carrot puree and cinnamon heritage carrots, and a rich red wine jus",
+          "price": null
+        },
+        {
+          "name": "Pork Cutlet",
+          "description": "Pork cutlet served with roasted plum tomatoes, flat mushroom, skinny fries and a shallot & cress salad",
+          "price": null
+        },
+        {
+          "name": "Rigatoni Burrata [v]",
+          "description": "Cream Tomato Sauce | Sweet Basil |Black Olive Crumb |Parmigiano Shavings",
+          "price": null
+        },
+        {
+          "name": "Rigatoni Burrata with Chicken",
+          "description": "Cream Tomato Sauce | Sweet Basil |Black Olive Crumb |Parmigiano Shavings",
+          "price": null
+        },
+        {
+          "name": "Fang-Tastic Chicken Burger Regular",
+          "description": "Crispy chicken, cheese, slaw , crispy onions and spicy ketchup.",
+          "price": null
+        },
+        {
+          "name": "Fang-Tastic Wings",
+          "description": "Wings tossed in Fang-tastic ketchup glaze and garnished.",
+          "price": null
+        },
+        {
+          "name": "Kids Cheeseburger",
+          "description": "Beef burger topped with cheese, served with seasoned fries and baked beans.",
+          "price": null
+        },
+        {
+          "name": "Bang Bang Cauliflower Steak",
+          "description": "Cauliflower marinated and roasted with bang bang spices, served over kimchi fried rice noodles, pak choi and coriander spicy, bold, and unforgettable.",
+          "price": null
+        },
+        {
+          "name": "Bang Bang Chicken",
+          "description": "Chicken breast, Kimchi Fried Rice noodles, Sweet Chilli Sauce, Pak Choi",
+          "price": null
+        },
+        {
+          "name": "Chicken, Pancetta, Leek and Creme Fraiche Pie",
+          "description": "Chicken, Pancetta, Leek and Creme Fraiche Pie served with Buttered Mash, Minted Peas, Red Wine and Crispy Onions",
+          "price": null
+        },
+        {
+          "name": "Homemade Steak, Ale and Blue Cheese Pie",
+          "description": "Steak, Ale and Blue Cheese pie, served with Buttered Mash, Minted Peas, Red Wine and Crispy Onions",
+          "price": null
+        },
+        {
+          "name": "Homemade Triple Cheese and Red Onion Pie",
+          "description": "Homemade Triple Cheese and Red Onion Pie served with Buttered Mash, Minted Peas, Red Wine and Crispy Onions",
+          "price": null
+        },
+        {
+          "name": "Lemon Herb Chicken Skewers",
+          "description": "Lemon and Herb Chicken Skewers, Skin on Fries, Plum Tomato, Field mushroom, Watercres and shallot Salad",
+          "price": null
+        },
+        {
+          "name": "Fish and Chips",
+          "description": "Beer battered haddock, served with fries, mushy peas and tartare sauce, garnished with a lemon.",
+          "price": null
+        },
+        {
+          "name": "The Garden Burger",
+          "description": "Two beef patties, smoked cheddar, burger sauce, red cabbage slaw & fries.",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Salad Cold",
+      "items": [
+        {
+          "name": "Burrata & Heirloom Tomatoes",
+          "description": "Burrata Balls |Avocado | Wild Rocket Salad | Balsamic | Basil Pesto",
+          "price": null
+        },
+        {
+          "name": "Burrata & Heirloom Tomatoes Salad",
+          "description": "Wild Rocket Salad | Balsamic | Basil Pesto Dressing",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Salad Hot",
+      "items": [
+        {
+          "name": "Burrata & Heirloom Tomatoes with Chicken",
+          "description": "Chicken with burrata balls, avocado, wild rocket salad and nut free basil pesto",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Sides Cold",
+      "items": [
+        {
+          "name": "Cypressa Olives",
+          "description": "Cypressa olives season with smoked sea salt",
+          "price": null
+        },
+        {
+          "name": "Cafe de Paris Butter",
+          "description": "Fresh herbs and citrus butter",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Sauce Hot",
+      "items": [
+        {
+          "name": "Peppercorn Sauce",
+          "description": "Peppercorn Sauce",
+          "price": null
+        },
+        {
+          "name": "Red wine Sauce",
+          "description": "A rich red wine jus made with a demi-glace base, reduced with aromatics and thyme for depth and flavour.",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Sides Hot",
+      "items": [
+        {
+          "name": "Tender Stem Broccoli",
+          "description": "Sauteed tender stem broccoli",
+          "price": null
+        },
+        {
+          "name": "Seasoned Fries",
+          "description": "Crispy fries",
+          "price": null
+        },
+        {
+          "name": "Truffle Fries",
+          "description": "Fries topped with Truffle oil & Parmesan Cheese",
+          "price": null
+        },
+        {
+          "name": "Beer Battered Onion Rings",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Beverage Cold",
+      "items": [
+        {
+          "name": "Glass of Milk",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Ice Cream",
+      "items": [
+        {
+          "name": "Kids Ice Cream",
+          "price": null
+        }
+      ]
+    },
+    {
+      "name": "Desserts Hot",
+      "items": [
+        {
+          "name": "Topped Churros",
+          "description": "Topped Churros",
+          "price": null
+        }
+      ]
+    }
+  ]
+}

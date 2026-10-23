@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Legoland Japan",
+    "official": true,
+    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/kitchen-car-kight/"
+  },
+  "sections": [
+    {
+      "name": "Recommended Menus",
+      "items": [
+        {
+          "name": "Meat Sauce Danish Pizza",
+          "price": 900
+        },
+        {
+          "name": "Mummy Cornet Pie",
+          "price": 800
+        },
+        {
+          "name": "Frozen Yogurt Soft Serve (Cup/Cone)",
+          "price": 650
+        },
+        {
+          "name": "Fuwamoco Sugar Drink",
+          "price": 800
+        }
+      ]
+    }
+  ]
+}

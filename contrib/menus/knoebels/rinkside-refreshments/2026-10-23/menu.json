@@ -1,0 +1,85 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Knoebels",
+    "official": true,
+    "url": "https://knoebels.com/menu/rinkside-refreshments/"
+  },
+  "sections": [
+    {
+      "name": "Beverages",
+      "items": [
+        {
+          "name": "“All Skate” Sips",
+          "description": "Brisk w/ Strawberry & Lemon, Cold Foam & a Strawberry",
+          "price": 600
+        },
+        {
+          "name": "Blackberry Boulevard",
+          "description": "Pepsi w/ Vanilla & Blackberry Syrup, Cream & a Vanilla Wafer",
+          "price": 600
+        },
+        {
+          "name": "Bottled Drinks",
+          "description": "Water and Gatorade",
+          "price": 350
+        },
+        {
+          "name": "Brass Ring",
+          "description": "Diet Pepsi w/ Caramel & Peach, Whipped Cream & a Peach Ring",
+          "price": 600
+        },
+        {
+          "name": "Coconut Coaster",
+          "description": "Mtn. Dew w/ Pineapple & Coconut Syrup, Whipped Cream & Coconut Flakes",
+          "price": 600
+        },
+        {
+          "name": "Cosmotron Cream",
+          "description": "Dr. Pepper w/ Almond & Chocolate, Cold Foam & Mini Chocolate Chips",
+          "price": 600
+        },
+        {
+          "name": "Creekside Limeade",
+          "description": "Lemonade w/ Cherry & Lime, Cold Foam, and a Lime Slice",
+          "price": 600
+        },
+        {
+          "name": "Energy Boost",
+          "description": "Add a shot to any Dirty Soda for 80mg of Caffine",
+          "price": 100
+        },
+        {
+          "name": "Galaxy Grove",
+          "description": "Starry w/ Cotton Candy & Blue Razz Syrup, Cream & Rock Candy",
+          "price": 600
+        },
+        {
+          "name": "Root Beer Rocket",
+          "description": "Root Beer w/ Raspberry & Butterscotch, Whipped Cream & a Root Beer Barrel",
+          "price": 600
+        }
+      ]
+    },
+    {
+      "name": "Food",
+      "items": [
+        {
+          "name": "Southwest Turkey",
+          "description": "Turkey, Pepperjack, Spinach & Tomato topped w/ Red Pepper Flakes & Chipotle Ranch",
+          "price": 900
+        },
+        {
+          "name": "Spinach Caprese",
+          "description": "Pesto, Mozzarella, Spinach & Tomato Topped w/ Balsamic Glaze",
+          "price": 800
+        },
+        {
+          "name": "Turkey Bacon Ranch",
+          "description": "Turkey, Mozzarella & Bacon topped w/ Ranch",
+          "price": 700
+        }
+      ]
+    }
+  ]
+}

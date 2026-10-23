@@ -1,0 +1,321 @@
+{
+  "date": "2026-10-23",
+  "unpriced": true,
+  "source": {
+    "name": "Alton Towers Resort",
+    "official": true,
+    "url": "https://menus.tenkites.com/aramarkuk/cbeebieslunchboxat"
+  },
+  "sections": [
+    {
+      "name": "Kids Meals",
+      "items": [
+        {
+          "name": "Junior Chicken Nuggets",
+          "description": "Crispy chicken nuggets served with carrot & cucumber sticks and a pot of ready-salted crisps.",
+          "price": null,
+          "kcal": 184
+        },
+        {
+          "name": "Junior Fish Fingers",
+          "description": "Crispy fish fingers served with carrot & cucumber sticks and a pot of ready-salted crisps.",
+          "price": null,
+          "kcal": 382
+        },
+        {
+          "name": "Junior Quorn Nuggets",
+          "description": "Crispy Quorn nuggets served with carrot & cucumber sticks and a pot of ready-salted crisps.",
+          "price": null,
+          "kcal": 291
+        },
+        {
+          "name": "Tots Chicken Nuggets",
+          "description": "Tots-sized chicken nuggets, cooked until golden and crisp. Served with carrot & cucumber sticks.",
+          "price": null,
+          "kcal": 90
+        },
+        {
+          "name": "Tots Fish Fingers",
+          "description": "Tots-sized crispy fish fingers, cooked until golden and crisp. Served with carrot & cucumber sticks.",
+          "price": null,
+          "kcal": 152
+        },
+        {
+          "name": "Tots Cheese Toastie",
+          "description": "Golden toasted bread with a melty cheese middle, cut into easy toastie fingers for little hands. Served with carrot & cucumber sticks.",
+          "price": null,
+          "kcal": 256
+        },
+        {
+          "name": "Juniors Ham & Cheese Toastie",
+          "description": "Warm pressed ham & cheese toastie, golden and melty. Served with carrot & cucumber sticks and a pot of ready-salted crisps.",
+          "price": null,
+          "kcal": 653
+        },
+        {
+          "name": "Juniors Cheese Toastie",
+          "description": "Warm pressed cheese toastie crispy outside and melty inside. Served with carrot & cucumber sticks and a pot of ready-salted crisps.",
+          "price": null,
+          "kcal": 589
+        },
+        {
+          "name": "Tots Quorn Nuggets",
+          "description": "Tots-sized Quorn nuggets, cooked until golden and crisp. Served with carrot & cucumber sticks.",
+          "price": null,
+          "kcal": 98
+        }
+      ]
+    },
+    {
+      "name": "Grown Ups Paninis",
+      "items": [
+        {
+          "name": "Cheese & Tomato Panini",
+          "price": null,
+          "kcal": 576
+        },
+        {
+          "name": "Ham & Cheese Panini",
+          "description": "Toasted panini filled with sliced ham and melted cheese. Served with balsamic dressed leaf salad and a side of crisps.",
+          "price": null,
+          "kcal": 690
+        },
+        {
+          "name": "Sweet Honey Chicken & Goat Cheese Panini",
+          "description": "Sweet Honey Chicken & Goat Cheese Panini",
+          "price": null,
+          "kcal": 619
+        },
+        {
+          "name": "Tuna Melt Panini Bread",
+          "description": "Tuna Melt Panini Bread",
+          "price": null,
+          "kcal": 869
+        }
+      ]
+    },
+    {
+      "name": "Pasta",
+      "items": [
+        {
+          "name": "Small Penne Pasta",
+          "description": "A junior explorer portion of penne pasta, heated through and ready to combine with your chosen Sauce Route and Cheese Finish",
+          "price": null,
+          "kcal": 197
+        },
+        {
+          "name": "Large Penne Pasta",
+          "description": "A grown-up explorer portion of penne pasta, heated through and ready to combine with your chosen Sauce Route and Cheese Finish.",
+          "price": null,
+          "kcal": 394
+        },
+        {
+          "name": "Meatballs In Tomato Sauce",
+          "description": "Warm meatballs in a rich tomato sauce - ready to ladle over pasta bowls as part of the Pasta Trail build.",
+          "price": null,
+          "kcal": 134
+        },
+        {
+          "name": "Cheese Sauce",
+          "description": "Smooth, creamy cheese sauce route for Pasta Trail bowls",
+          "price": null,
+          "kcal": 117
+        },
+        {
+          "name": "Tomato and Basil Sauce",
+          "description": "Warm tomato & basil sauce finished with mixed herb",
+          "price": null,
+          "kcal": 56
+        },
+        {
+          "name": "Grated Parmesan",
+          "description": "Grated Parmesan cheese finish for Pasta Trail bowls",
+          "price": null,
+          "kcal": 122
+        },
+        {
+          "name": "Grated Cheese",
+          "price": null,
+          "kcal": 330
+        }
+      ]
+    },
+    {
+      "name": "Jacket Potato's",
+      "items": [
+        {
+          "name": "Grown-Up Explorers Jacket Potato",
+          "price": null,
+          "kcal": 204
+        },
+        {
+          "name": "Half Jacket Potato",
+          "description": "A junior-sized half-portion jacket potato, baked until the skin is crisp and the centre is fluffy, finished with chopped chives. Base component for Spud Basecamp topping routes.",
+          "price": null,
+          "kcal": 102
+        },
+        {
+          "name": "Junior Jacket Potato with Baked Beans",
+          "description": "A junior-sized half-portion jacket potato topped with warm baked beans, finished with chopped chives. Served hot for little explorers.",
+          "price": null,
+          "kcal": 140
+        },
+        {
+          "name": "Tots Jacket Potato with Grated Cheese",
+          "description": "A junior-sized half-portion jacket potato topped with a grated cheese topping, finished with chopped chives. Served hot for little explorers.",
+          "price": null,
+          "kcal": 268
+        },
+        {
+          "name": "Tots Jacket Potato with Pulled Beef Chilli",
+          "description": "A junior-sized half-portion jacket potato topped with pulled beef chilli, finished with chopped chives. Served hot for little explorers.",
+          "price": null,
+          "kcal": 166
+        },
+        {
+          "name": "Tots Jacket Potato with Coronation Chicken",
+          "description": "A junior-sized half-portion jacket potato topped with coronation chicken, finished with chopped chives. Served hot for little explorers.",
+          "price": null,
+          "kcal": 152
+        },
+        {
+          "name": "Tots Jacket Potato with Tuna & Sweetcorn Spring Onion",
+          "description": "A junior-sized half-portion jacket potato topped with tuna & sweetcorn with spring onion, finished with chopped chives. Served hot for little explorers.",
+          "price": null,
+          "kcal": 188
+        },
+        {
+          "name": "Beans Base (Jacket Potato with Baked Beans)",
+          "description": "Oven-baked jacket potato with crispy skin and fluffy centre, topped with warm baked beans. Served with a small side of mixed leaf salad and finished with chopped chives.",
+          "price": null,
+          "kcal": 280
+        },
+        {
+          "name": "Cheese Peak (Jacket Potato with Grated Cheese)",
+          "description": "Oven-baked jacket potato with crispy skin and fluffy centre, topped with grated cheese and finished with chopped chives. Served with a small side of mixed leaf salad.",
+          "price": null,
+          "kcal": 536
+        },
+        {
+          "name": "Jacket Potato with Pulled Beef Chilli",
+          "description": "Hot oven-baked jacket potato (crispy skin, fluffy centre) topped with pulled beef chilli and finished with chopped chives. Served with a small side of mixed leaf salad.",
+          "price": null,
+          "kcal": 332
+        },
+        {
+          "name": "Jacket Potato with Coronation Chicken",
+          "description": "Hot oven-baked jacket potato (crispy skin, fluffy centre) topped with coronation chicken and finished with chopped chives. Served with a small side of mixed leaf salad.",
+          "price": null,
+          "kcal": 304
+        },
+        {
+          "name": "Jacket Potato with Tuna & Sweetcorn Spring Onion",
+          "description": "Hot oven-baked jacket potato (crispy skin, fluffy centre) topped with tuna mayo, sweetcorn and spring onion mix, finished with chopped chives. Served with a small side of mixed leaf salad.",
+          "price": null,
+          "kcal": 375
+        }
+      ]
+    },
+    {
+      "name": "Pizza's",
+      "items": [
+        {
+          "name": "Margherita Pizza",
+          "description": "A classic 10 inch Margherita pizza with a crisp base, rich tomato sauce and melted mozzarella, cooked until piping hot with an even golden finish.",
+          "price": null,
+          "kcal": 779
+        },
+        {
+          "name": "Grated Cheese",
+          "description": "Grated cheese finish for Pasta Trail bowls",
+          "price": null,
+          "kcal": 330
+        },
+        {
+          "name": "Mixed Peppers",
+          "price": null,
+          "kcal": 4
+        },
+        {
+          "name": "Mushrooms",
+          "price": null,
+          "kcal": 5
+        },
+        {
+          "name": "Pepperoni Slices",
+          "price": null,
+          "kcal": 156
+        },
+        {
+          "name": "Pineapple Chunks",
+          "price": null,
+          "kcal": 21
+        },
+        {
+          "name": "Red Onion",
+          "price": null,
+          "kcal": 12
+        },
+        {
+          "name": "Roasted Chicken Breast",
+          "price": null,
+          "kcal": 26
+        },
+        {
+          "name": "Sweetcorn",
+          "price": null,
+          "kcal": 24
+        }
+      ]
+    },
+    {
+      "name": "Sides",
+      "items": [
+        {
+          "name": "Carrot Sticks & Cucumber Slices",
+          "price": null,
+          "kcal": 16
+        },
+        {
+          "name": "Cheesy Fries",
+          "description": "Oven baked fries topped with warm cheddar cheese sauce.",
+          "price": null,
+          "kcal": 385
+        },
+        {
+          "name": "Fries",
+          "description": "Oven-baked skin-on coated fries baked until golden and crisp.",
+          "price": null,
+          "kcal": 320
+        },
+        {
+          "name": "Garlic Flatbread Fingers (V)",
+          "description": "Warm garlic & herb flatbread, baked and sliced into dippable fingers - perfect for sharing.",
+          "price": null,
+          "kcal": 302
+        },
+        {
+          "name": "Tots Garlic Flatbread",
+          "price": null,
+          "kcal": 151
+        },
+        {
+          "name": "Corn Cobettes",
+          "price": null,
+          "kcal": 187
+        }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        {
+          "name": "Double Belgian Chocolate Cookie",
+          "description": "Double Belgian Chocolate Cookie",
+          "price": null,
+          "kcal": 368
+        }
+      ]
+    }
+  ]
+}

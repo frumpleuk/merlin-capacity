@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Legoland Japan",
+    "official": true,
+    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/chicken-diner/"
+  },
+  "sections": [
+    {
+      "name": "Recommended Menus",
+      "items": [
+        {
+          "name": "Brick Chicken Sandwich Set Tartar Sauce",
+          "price": 1750
+        },
+        {
+          "name": "LEGO Chicken Sandwich Set Teriyaki Sauce",
+          "price": 1750
+        },
+        {
+          "name": "Chicken Wrap Set",
+          "price": 1700
+        },
+        {
+          "name": "2 Piece Chicken Set / 4 Piece Chicken Set",
+          "sizes": [
+            {
+              "label": "2 Piece Chicken Set",
+              "price": 1650
+            },
+            {
+              "label": "4 Piece Chicken Set",
+              "price": 3200
+            }
+          ]
+        },
+        {
+          "name": "Family Bucket",
+          "price": 5700
+        },
+        {
+          "name": "Soft Serve Iced Cream Chocolate",
+          "price": 450
+        },
+        {
+          "name": "Caramel Churos",
+          "price": 400
+        },
+        {
+          "name": "Kids' Pancake and Waffle Set",
+          "description": "with Drink Bar",
+          "price": 1000
+        }
+      ]
+    }
+  ]
+}

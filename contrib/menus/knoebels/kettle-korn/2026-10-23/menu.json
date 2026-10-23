@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Knoebels",
+    "official": true,
+    "url": "https://knoebels.com/menu/kettle-korn/"
+  },
+  "sections": [
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Bottled Juice",
+          "price": 300
+        },
+        {
+          "name": "Bottled Soda",
+          "price": 350
+        },
+        {
+          "name": "Bottled Water",
+          "price": 350
+        },
+        {
+          "name": "Gatorade",
+          "price": 350
+        }
+      ]
+    },
+    {
+      "name": "Candy",
+      "items": [
+        {
+          "name": "Cotton Candy Tub",
+          "price": 650
+        }
+      ]
+    },
+    {
+      "name": "Popcorn",
+      "items": [
+        {
+          "name": "Caramel Corn Tub",
+          "price": 950
+        },
+        {
+          "name": "Cheese Corn Tub",
+          "description": "Cheddar Corn or White Cheddar",
+          "price": 775
+        },
+        {
+          "name": "Kettle Korn",
+          "price": 900
+        },
+        {
+          "name": "Oreo Popcorn",
+          "price": 1250
+        }
+      ]
+    }
+  ]
+}

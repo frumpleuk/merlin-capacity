@@ -1,0 +1,445 @@
+{
+  "date": "2026-10-23",
+  "unpriced": true,
+  "source": {
+    "name": "Paultons Park",
+    "official": true,
+    "url": "https://menus.tenkites.com/paultonspark/peppapigworldrefreshments",
+    "menu": "Miss Rabbits"
+  },
+  "sections": [
+    {
+      "name": "Sundaes",
+      "items": [
+        {
+          "name": "Mud Slide Sundae",
+          "description": "Soft vanilla ice cream topped with Oreo crumb and a chocolate flake.",
+          "price": null,
+          "kcal": 464,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Cheeky Monkey Sundae",
+          "description": "Soft vanilla ice cream topped with toffee sauce and sliced banana",
+          "price": null,
+          "kcal": 398,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Go Nuts Sundae",
+          "description": "Soft vanilla ice cream topped with chocolate sauce, M&M pieces and a wafer twirl.",
+          "price": null,
+          "kcal": 475,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Chocolate Fountain Pots",
+      "items": [
+        {
+          "name": "The Lil Apple Bites",
+          "price": null,
+          "kcal": 326,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "The Caramba Bites",
+          "price": null,
+          "kcal": 346,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "The Choc-O-Lot Bites",
+          "price": null,
+          "kcal": 410,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "The Berry Bites",
+          "price": null,
+          "kcal": 337,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Large Marshmallows",
+          "price": null,
+          "kcal": 135
+        },
+        {
+          "name": "Marshmallows.",
+          "price": null,
+          "kcal": 421
+        },
+        {
+          "name": "Strawberries",
+          "price": null,
+          "kcal": 64,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Liquid Milk Chocolate Pot",
+          "price": null,
+          "kcal": 283,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Liquid White Chocolate Pot",
+          "price": null,
+          "kcal": 276
+        },
+        {
+          "name": "Toffee Sauce Dipping Pot",
+          "price": null,
+          "kcal": 173
+        },
+        {
+          "name": "Sprinkles",
+          "price": null,
+          "kcal": 7,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Lotus Biscoff Crumb",
+          "price": null,
+          "kcal": 19,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Oreo Crumb",
+          "price": null,
+          "kcal": 32,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Extra M&M's",
+          "price": null,
+          "kcal": 71,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Donuts-Sweet Treats",
+      "items": [
+        {
+          "name": "Berry White Donut",
+          "price": null,
+          "kcal": 288,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Caramazing Donut",
+          "price": null,
+          "kcal": 310,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Spectaculous Donut",
+          "price": null,
+          "kcal": 253,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Nutty Zafari Donut",
+          "price": null,
+          "kcal": 265,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Strawjelly Jam Donut",
+          "price": null,
+          "kcal": 288,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Queen V Donut",
+          "price": null,
+          "kcal": 291,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Sugar Ring Donut.",
+          "price": null,
+          "kcal": 213,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Doughnut Delight.",
+          "description": "Sugar Ring Doughnut topped with soft vanilla ice cream, chocolate sauce and a chocolate flake.",
+          "price": null,
+          "kcal": 397,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Whippy Ice Creams",
+      "items": [
+        {
+          "name": "Standard Whippy Tub",
+          "description": "Soft vanilla ice cream.",
+          "price": null,
+          "kcal": 114,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Standard Whippy Tub with Flake",
+          "description": "Soft vanilla ice cream served with a chocolate flake.",
+          "price": null,
+          "kcal": 155,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Small Whippy Cone",
+          "description": "Soft vanilla ice cream served on a wafer cone.",
+          "price": null,
+          "kcal": 99,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Small Whippy Cone with Flake",
+          "description": "Soft vanilla ice cream served with a chocolate flake on a wafer cone.",
+          "price": null,
+          "kcal": 140,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Standard Whippy Cone",
+          "description": "Soft vanilla ice cream served on a wafer cone.",
+          "price": null,
+          "kcal": 133,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Standard Whippy Cone with Flake",
+          "description": "Soft vanilla ice cream served with a chocolate flake on a wafer cone.",
+          "price": null,
+          "kcal": 175,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add Strawberry syrup to your ice cream",
+          "price": null,
+          "kcal": 8,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add Mango syrup to your ice cream",
+          "price": null,
+          "kcal": 8,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add Forest Berries syrup to your ice cream",
+          "price": null,
+          "kcal": 8,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add Chocolate Sauce to your ice cream",
+          "price": null,
+          "kcal": 29,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Extra Flake",
+          "price": null,
+          "kcal": 42,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Black Decaf Coffee 12oz",
+          "price": null,
+          "kcal": 50,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Black Tea",
+          "price": null,
+          "kcal": 0,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Clipper Everyday Tea - Black",
+          "price": null,
+          "kcal": 0,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Americano",
+          "price": null,
+          "kcal": 42,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Americano with Milk",
+          "price": null,
+          "kcal": 106,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Espresso",
+          "price": null,
+          "kcal": 28,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Double Espresso",
+          "price": null,
+          "kcal": 41,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Latte",
+          "price": null,
+          "kcal": 106,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Flat White.",
+          "price": null,
+          "kcal": 122,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Cappuccino",
+          "price": null,
+          "kcal": 184,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Mocha",
+          "price": null,
+          "kcal": 226,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Hot Chocolate",
+          "price": null,
+          "kcal": 122,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Milk Portion",
+          "price": null,
+          "kcal": 6,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Soya Milk Portion",
+          "price": null,
+          "kcal": 5,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        }
+      ]
+    }
+  ]
+}

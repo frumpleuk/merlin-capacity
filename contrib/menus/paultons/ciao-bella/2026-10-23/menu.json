@@ -1,0 +1,862 @@
+{
+  "date": "2026-10-23",
+  "unpriced": true,
+  "source": {
+    "name": "Paultons Park",
+    "official": true,
+    "url": "https://menus.tenkites.com/paultonspark/ciaobella"
+  },
+  "sections": [
+    {
+      "name": "Shakes-Waffles",
+      "items": [
+        {
+          "name": "Cookies & Cream Shake",
+          "price": null,
+          "kcal": 722,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Strawberry & Cream Shake",
+          "price": null,
+          "kcal": 572,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Vanilla Milkshake",
+          "price": null,
+          "kcal": 334,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Vegan Vanilla Milkshake",
+          "price": null,
+          "kcal": 358,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Loaded Waffle",
+          "price": null,
+          "kcal": 600
+        }
+      ]
+    },
+    {
+      "name": "Gelato",
+      "items": [
+        {
+          "name": "Rum & Raisin Ice Cream Scoop",
+          "price": null,
+          "kcal": 168,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Lotus Caramelised Biscoff Ice Cream Scoop",
+          "price": null,
+          "kcal": 211,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Mint Choc Chip Ripple Ice Cream Scoop",
+          "price": null,
+          "kcal": 180,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Bubblegum Ice Cream Scoop",
+          "price": null,
+          "kcal": 153,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Brownie & White Chocolate Ice Cream Scoop",
+          "price": null,
+          "kcal": 194,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Coffee Mocha Swirl Ice Cream Scoop",
+          "price": null,
+          "kcal": 168,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Chewy Choc Cup Scoop Ice Cream",
+          "price": null,
+          "kcal": 188,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Clotted Cream Raspberry Ripple Ice Cream Scoop",
+          "price": null,
+          "kcal": 184,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Dairy Vanilla Ice Cream Scoop",
+          "price": null,
+          "kcal": 163,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Choc Chip Cookie Dough Ice Cream Scoop",
+          "price": null,
+          "kcal": 185,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Salted Caramel Scoop Ice Cream",
+          "price": null,
+          "kcal": 169,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Strawberry Scoop Ice Cream",
+          "price": null,
+          "kcal": 155,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Chocolate Scoop Ice Cream",
+          "price": null,
+          "kcal": 183,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Tropical Mango Blast Scoop Ice Cream Scoop",
+          "price": null,
+          "kcal": 189,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Turkish Delight Ice Cream Scoop",
+          "price": null,
+          "kcal": 169,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Butterscotch Ice Cream Scoop",
+          "price": null,
+          "kcal": 153,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Cookies & Cream Ice Cream Scoop",
+          "price": null,
+          "kcal": 187
+        },
+        {
+          "name": "Pistachio Ice Cream Scoop",
+          "price": null,
+          "kcal": 156,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Honeycomb Swirl Scoop Ice Cream",
+          "price": null,
+          "kcal": 184,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Vegan Vanilla Scoop Ice Cream",
+          "price": null,
+          "kcal": 126,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Vegan Pineapple & Coconut Scoop Ice Cream",
+          "price": null,
+          "kcal": 109,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Lemon & Lime Sorbet Scoop",
+          "price": null,
+          "kcal": 111,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Highfruit Blackcurrant Sorbet Scoop",
+          "price": null,
+          "kcal": 113,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Toppings-Extras",
+      "items": [
+        {
+          "name": "Vegan Chocolate Sauce",
+          "price": null,
+          "kcal": 13,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Chocolate Sauce",
+          "price": null,
+          "kcal": 29,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Strawberry Sauce",
+          "price": null,
+          "kcal": 15,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Toffee Sauce",
+          "price": null,
+          "kcal": 16,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add Bubblegum Sauce",
+          "price": null,
+          "kcal": 31,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Add Speculoos Sauce",
+          "price": null,
+          "kcal": 30,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add White Chocolate Hazelnut Sauce",
+          "price": null,
+          "kcal": 60,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add Chocolate Hazelnut Sauce",
+          "price": null,
+          "kcal": 58,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Oreo Crumb",
+          "price": null,
+          "kcal": 32,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Ciao Bella Wafer",
+          "price": null,
+          "kcal": 11,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Em & Em Chocolate Dipped Waffle Cone",
+          "price": null,
+          "kcal": 125,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Sprinkle Chocolate Dipped Waffle Cone",
+          "price": null,
+          "kcal": 121,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Salted Caramel Waffle Cone",
+          "price": null,
+          "kcal": 175
+        },
+        {
+          "name": "Medium Chocolate Dipped Waffle Cone",
+          "price": null,
+          "kcal": 133,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Waffle Cone",
+          "price": null,
+          "kcal": 80,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Individual Wafer Ice Cream Cone",
+          "price": null,
+          "kcal": 16,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Whippy Waffle Cones",
+      "items": [
+        {
+          "name": "Whippy Waffle Cone",
+          "price": null,
+          "kcal": 193
+        },
+        {
+          "name": "Whippy Sprinkle Waffle Cone",
+          "price": null,
+          "kcal": 246,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Whippy Em & Em Waffle Cone",
+          "price": null,
+          "kcal": 239,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add Strawberry syrup to your ice cream",
+          "price": null,
+          "kcal": 8,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add Chocolate Sauce to your ice cream",
+          "price": null,
+          "kcal": 29,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add Mango syrup to your ice cream",
+          "price": null,
+          "kcal": 8,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add Forest Berries syrup to your ice cream",
+          "price": null,
+          "kcal": 8,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add Bubble Gum Syrup to your Ice Cream",
+          "price": null,
+          "kcal": 4
+        },
+        {
+          "name": "Cadburys Flake",
+          "price": null,
+          "kcal": 42,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Whippy Ice Creams",
+      "items": [
+        {
+          "name": "Pumpkin Ice Scream",
+          "price": null,
+          "kcal": 164,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Standard Whippy Tub",
+          "description": "Soft vanilla ice cream.",
+          "price": null,
+          "kcal": 114,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Standard Whippy Tub with Flake",
+          "description": "Soft vanilla ice cream served with a chocolate flake.",
+          "price": null,
+          "kcal": 155,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Small Whippy Cone",
+          "description": "Soft vanilla ice cream served on a wafer cone.",
+          "price": null,
+          "kcal": 99,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Small Whippy Cone with Flake",
+          "description": "Soft vanilla ice cream served with a chocolate flake on a wafer cone.",
+          "price": null,
+          "kcal": 140,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Standard Whippy Cone",
+          "description": "Soft vanilla ice cream served on a wafer cone.",
+          "price": null,
+          "kcal": 133,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Standard Whippy Cone with Flake",
+          "description": "Soft vanilla ice cream served with a chocolate flake on a wafer cone.",
+          "price": null,
+          "kcal": 175,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add Strawberry syrup to your ice cream",
+          "price": null,
+          "kcal": 8,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add Chocolate Sauce to your ice cream",
+          "price": null,
+          "kcal": 29,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add Mango syrup to your ice cream",
+          "price": null,
+          "kcal": 8,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Add Forest Berries syrup to your ice cream",
+          "price": null,
+          "kcal": 8,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Cadburys Flake",
+          "price": null,
+          "kcal": 42,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Dole Soft Serve",
+      "items": [
+        {
+          "name": "Dole soft serve",
+          "price": null,
+          "kcal": 93,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Donuts-Snacks",
+      "items": [
+        {
+          "name": "Nutty Zafari Donut",
+          "price": null,
+          "kcal": 265,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Spectaculous Donut",
+          "price": null,
+          "kcal": 253,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Caramazing Donut",
+          "price": null,
+          "kcal": 310,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Berry White Donut",
+          "price": null,
+          "kcal": 288,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Strawjelly Jam Donut",
+          "price": null,
+          "kcal": 288,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Queen V Donut",
+          "price": null,
+          "kcal": 291,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Sugar Ring Donut.",
+          "price": null,
+          "kcal": 213,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Doughnut Delight.",
+          "description": "Sugar Ring Doughnut topped with soft vanilla ice cream, chocolate sauce and a chocolate flake.",
+          "price": null,
+          "kcal": 397,
+          "tags": [
+            "v"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Espresso",
+          "price": null,
+          "kcal": 28,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Double Espresso",
+          "price": null,
+          "kcal": 41,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Babyccino",
+          "price": null,
+          "kcal": 12,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Americano",
+          "price": null,
+          "kcal": 42,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "White Coffee 12oz",
+          "price": null,
+          "kcal": 70,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Flat White 12oz",
+          "price": null,
+          "kcal": 140,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Latte 12oz",
+          "price": null,
+          "kcal": 140,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Cappuccino 12oz",
+          "price": null,
+          "kcal": 152,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Mocha 12oz",
+          "price": null,
+          "kcal": 270,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Hot Chocolate",
+          "price": null,
+          "kcal": 122,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Orange Hot Chocolate",
+          "price": null,
+          "kcal": 414
+        },
+        {
+          "name": "Mint Hot Chocolate",
+          "price": null,
+          "kcal": 404
+        },
+        {
+          "name": "The Works Hot Chocolate",
+          "description": "Hot chocolate topped with squirty cream, marshmallows and a flake.",
+          "price": null,
+          "kcal": 319
+        },
+        {
+          "name": "Black Tea",
+          "price": null,
+          "kcal": 0,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Tea with Milk 12oz",
+          "price": null,
+          "kcal": 22,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Clipper Everyday Tea - Black",
+          "price": null,
+          "kcal": 0,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Clipper Decaf Tea",
+          "price": null,
+          "kcal": 7,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Iced Latte",
+          "price": null,
+          "kcal": 130,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Iced Latte with Oat Milk",
+          "price": null,
+          "kcal": 150,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Iced Latte with Soya Milk",
+          "price": null,
+          "kcal": 112,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Oat Milk",
+          "price": null,
+          "kcal": 217,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Soya Milk",
+          "price": null,
+          "kcal": 150,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Caramel Syrup Shot",
+          "price": null,
+          "kcal": 47,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Vanilla Syrup Shot",
+          "price": null,
+          "kcal": 47,
+          "tags": [
+            "v",
+            "vg"
+          ]
+        },
+        {
+          "name": "Hazelnut Syrup Shot",
+          "price": null,
+          "kcal": 47
+        },
+        {
+          "name": "Irish Cream Syrup Shot",
+          "price": null,
+          "kcal": 47,
+          "tags": [
+            "v"
+          ]
+        },
+        {
+          "name": "Pumpkin Spice Syrup Shot",
+          "price": null,
+          "kcal": 47,
+          "tags": [
+            "vg"
+          ]
+        }
+      ]
+    }
+  ]
+}

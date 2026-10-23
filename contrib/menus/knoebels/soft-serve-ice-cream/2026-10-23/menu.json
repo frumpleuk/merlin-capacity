@@ -1,0 +1,94 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Knoebels",
+    "official": true,
+    "url": "https://knoebels.com/menu/soft-serve-ice-cream/"
+  },
+  "sections": [
+    {
+      "name": "Specialty",
+      "items": [
+        {
+          "name": "Floats",
+          "price": 675
+        },
+        {
+          "name": "Ice Cream Nachos",
+          "description": "Waffle Cone Chips with choice of Ice Cream and topping",
+          "price": 900
+        },
+        {
+          "name": "Milkshake",
+          "description": "Flavors: Vanilla, Chocolate, Strawberry, Pineapple, Raspberry, Peanut Butter",
+          "price": 750
+        }
+      ]
+    },
+    {
+      "name": "Sundae",
+      "items": [
+        {
+          "name": "Banana Split",
+          "description": "Stick with tradition or build your own.",
+          "price": 900
+        },
+        {
+          "name": "Fudge Boat",
+          "description": "Any (3) flavors of ice cream topped with hot fudge, banana, whipped cream, peanuts & a cherry on top!",
+          "price": 900
+        },
+        {
+          "name": "One-Size",
+          "description": "Include whipped cream, cherry and choice of topping. Toppings: Marshmallow, Peanut Butter, Raspberry, Hot Fudge, Pineapple, Butter scotch, Strawberry, Chocolate Syrup",
+          "price": 675
+        }
+      ]
+    },
+    {
+      "name": "Toppings",
+      "items": [
+        {
+          "name": "Krunch Kote",
+          "description": "Candy coated peanuts and rainbow sprinkles",
+          "price": 100
+        },
+        {
+          "name": "Peanuts",
+          "price": 100
+        },
+        {
+          "name": "Sprinkles",
+          "description": "Rainbow or Chocolate",
+          "price": 100
+        }
+      ]
+    },
+    {
+      "name": "Waffle Cone",
+      "items": [
+        {
+          "name": "One Size",
+          "price": 700
+        }
+      ]
+    },
+    {
+      "name": "Cake Cone or Dish",
+      "items": [
+        {
+          "name": "Kids",
+          "price": 250
+        },
+        {
+          "name": "Large",
+          "price": 600
+        },
+        {
+          "name": "Small",
+          "price": 400
+        }
+      ]
+    }
+  ]
+}

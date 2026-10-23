@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-23",
+  "source": {
+    "name": "Legoland Japan",
+    "official": true,
+    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/kitchen-car-bricktopia-popcorn/"
+  },
+  "sections": [
+    {
+      "name": "Recommended Menus",
+      "items": [
+        {
+          "name": "Popcorn Junior Bucket",
+          "description": "With Popcorn",
+          "price": 4900
+        },
+        {
+          "name": "Train Bucket",
+          "description": "With Popcorn",
+          "price": 3500
+        },
+        {
+          "name": "Submarine Bucket",
+          "description": "With Popcorn",
+          "price": 2900
+        },
+        {
+          "name": "Popcorn",
+          "description": "Chocolate (Cup)",
+          "price": 600
+        }
+      ]
+    }
+  ]
+}

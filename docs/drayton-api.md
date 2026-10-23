@@ -88,6 +88,16 @@ grant_type=urn:accesso:oauth2:grant-type:anonymous&scope=anonymous openid servic
 
 ### Hours
 
+- The website's calendar (`https://www.draytonmanor.co.uk/calendar`, TYPO3)
+  overrides the app for its month. It shows the current month only: other
+  months need a `cHash` URL, which robots.txt disallows (`Disallow:
+  /*cHash=*`), and the month parameters without `cHash` are ignored. Read
+  2026-10-23, it differs from the app: Blazing Halloween is on weekends and the
+  half term only (the app spans 10 Oct-1 Nov); 18 Dec opens 10:00-17:00 (the
+  app says CLOSED); Twixmas 27-31 Dec opens 10:30-17:00 (past the app's last
+  date, 25 Dec, and not in its events feed). So those December days arrive on
+  1 December.
+
 - A CLOSED day comes back as 00:00-23:59 and is left out of the calendar.
 - Times are the park's wall clock whatever the suffix: winter dates carry `Z`,
   summer ones `+01:00`.

@@ -282,6 +282,11 @@ export type OpeningHoursConfig =
   | ({
       kind: "te2";
       locationName: string;
+      /** The park website's own calendar page, read for its CURRENT month only
+       *  and preferred over the app's feed for that month: it lists days the
+       *  app marks shut (Drayton 2026-12-18) and per-day events. Its other
+       *  months need a `cHash` URL, which robots.txt disallows. */
+      webCalendarUrl?: string;
     } & Te2Config)
   | {
       kind: "knoebels";
@@ -1163,7 +1168,12 @@ export const PARKS: ParkConfig[] = [
     bootstrapSlug: "LG-DRAYTONMANOR",
     accessoApi: "https://ecomm.api.eu.accessoticketing.com",
     accessoClient: "accesso304",
-    openingHours: { kind: "te2", ...DRAYTON_TE2, locationName: "Drayton Manor" },
+    openingHours: {
+      kind: "te2",
+      ...DRAYTON_TE2,
+      locationName: "Drayton Manor",
+      webCalendarUrl: "https://www.draytonmanor.co.uk/calendar",
+    },
     queue: { kind: "te2", ...DRAYTON_TE2 },
     products: [
       {

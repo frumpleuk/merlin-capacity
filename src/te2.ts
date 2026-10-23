@@ -1,4 +1,4 @@
-import { parkDay, tzOffsetMin, type OpeningHoursConfig, type Te2Config } from "./config";
+import { parkDay, tzOffsetMin, USER_AGENT, type OpeningHoursConfig, type Te2Config } from "./config";
 import { fmt24, type HoursFetch, type HoursSnapshot } from "./hours";
 import type { GroupDim, RideCatalog, RideMeta } from "./rides";
 import type { QueueObs, QueueSnapshot } from "./types";
@@ -206,7 +206,81 @@ export async function fetchTe2Hours(
       if (iso >= from && iso < to) snapshot[iso].event = title;
     }
   }
+
+  // The website's month replaces the app's for that month: days it doesn't
+  // list are shut, and its events are per day where the app's are ranges
+  // (Blazing Halloween runs 10 Oct-1 Nov in the app, weekends only on the site).
+  const web = cfg.webCalendarUrl ? await fetchWebMonth(cfg.webCalendarUrl, cfg.locationName) : null;
+  if (web) {
+    for (const iso of Object.keys(snapshot)) if (iso.startsWith(web.month)) delete snapshot[iso];
+    Object.assign(snapshot, web.days);
+  }
   return { ok: true, httpStatus: hoursResp.status, snapshot, datesSeen: Object.keys(snapshot).length };
+}
+
+const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+/** The text of an HTML fragment, entities decoded. */
+const htmlText = (s: string) =>
+  s
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&#0?39;|&#x27;|&rsquo;/g, "'")
+    .replace(/\s+/g, " ")
+    .trim();
+
+/**
+ * Drayton Manor's TYPO3 calendar page, which always shows the current month. A
+ * day it opens has a `date<YYYYMMDD>` block with "Open from 10:30 - 16:00" and
+ * an optional Events list; a shut day has none. Null when the page can't be
+ * read or parsed, so the app's hours stand.
+ */
+async function fetchWebMonth(
+  url: string,
+  locationName: string,
+): Promise<{ month: string; days: HoursSnapshot } | null> {
+  let html: string;
+  try {
+    const resp = await fetch(url, { headers: { "user-agent": USER_AGENT } });
+    if (!resp.ok) return null;
+    html = await resp.text();
+  } catch {
+    return null;
+  }
+  return parseWebMonth(html, locationName);
+}
+
+export function parseWebMonth(
+  html: string,
+  locationName: string,
+): { month: string; days: HoursSnapshot } | null {
+  const title = /<\/a>\s*([A-Z][a-z]+)\s+(\d{4})\s*<a[^>]*class="nextmonth"/.exec(html);
+  const mi = title ? MONTHS.indexOf(title[1]) : -1;
+  if (!title || mi < 0) return null;
+  const month = `${title[2]}-${String(mi + 1).padStart(2, "0")}`;
+  const days: HoursSnapshot = {};
+  const parts = html.split(/id="date(\d{8})"/);
+  for (let i = 1; i < parts.length; i += 2) {
+    const iso = `${parts[i].slice(0, 4)}-${parts[i].slice(4, 6)}-${parts[i].slice(6, 8)}`;
+    if (!iso.startsWith(month)) continue;
+    const body = parts[i + 1];
+    const hours = /Open from\s*(\d{1,2}:\d{2})\s*-\s*(\d{1,2}:\d{2})/.exec(htmlText(body));
+    if (!hours) continue;
+    // Each event under the "Events" heading is a card with its name in an
+    // `aside` paragraph; "Park Information" follows the list.
+    const evBlock = /<h4>\s*Events\s*<\/h4>([\s\S]*?)Park Information/.exec(body)?.[1] ?? "";
+    const names = [...evBlock.matchAll(/class="aside"[^>]*>\s*<p>([\s\S]*?)<\/p>/g)]
+      .map((m) => htmlText(m[1]))
+      .filter(Boolean);
+    const event = names.join(" · ");
+    days[iso] = {
+      locations: [
+        { kind: "themepark", name: locationName, hours: `${fmt24(hours[1])} - ${fmt24(hours[2])}` },
+      ],
+      ...(event ? { event } : {}),
+    };
+  }
+  return { month, days };
 }
 
 /* ── Daily meta: catalog + today's window ────────────────────────────────────── */

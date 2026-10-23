@@ -659,6 +659,25 @@ store URL proves nothing. Check a keyword exists in the merchant's catalog.
   - **Catalog:** the bootstrap returns 200 with `l=en-gb` (504 KB) when sent
     the store as `origin`.
   - **Keywords:** the site's Buy buttons use `Tickets` and `Groups`.
+  - **Client header:** `com-accessopassport-client: accesso304`. With the
+    Merlin parks' `accesso26` every call, even `GetNewCartID`, returns
+    `status: FAILED`, `http_response_code: 500`. With `accesso304` the usual
+    stateless `GetMerchantPackageEventDates` works with no session or cart.
+  - **The site's calendar is `GetKeywordCalendar`** (keyword `Tickets`). Its
+    per-package `available` and `capacity` are always equal, and read 10, 20
+    or 25: per-order caps, not stock. Checked 2026-10-23 over 28 dates.
+  - **The pool is event `2`** (catalog capacity 10000). Every package on it
+    reports the same `T.capacity` / `available` / `used` for a date. Read
+    2026-10-23: capacity 10000 on normal days, 6000 on Blazing Halloween days
+    (24-31 Oct); 1625 sold for that day, 2869 for 31 Oct, 2-31 for Twixmas.
+  - **Coverage:** no single package covers the season. Day Tickets (9, 230)
+    and Adult and Toddler (13) sold only the current day; Blazing Halloween
+    (114, 147), Magical Christmas (217, 221) and Twixmas (232) cover their own
+    dates; the passholder reservations (14, 15) and Annual Pass Family & Friends
+    (80) cover all 28 dates to 31 Dec. Sending every event-2 package in one
+    `P[]` (each with its own CT) merges to one entry per date with the same
+    figures as each package alone, so there is no ring-fenced sub-allocation
+    to avoid as at Thorpe.
 
   The closest of all the parks here to the UK Merlin setup, so a good first
   try.

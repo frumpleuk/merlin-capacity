@@ -217,6 +217,13 @@ export interface OpeningHoursLocation {
  *  - `crealy`: the Umbraco surface route `OpeningTimesCalendar/RenderMonth`
  *    returns one month of day buttons (`data-date`, hours, an event banner,
  *    last entry). One request per month.
+ *  - `tulleys`: Shocktober Fest's dates page lists every night as "2nd October
+ *    2026 | Open Today: 4:30pm - 11:30pm" with a note line under it. One
+ *    request.
+ *  - `datelist`: a page that only lists the open dates ("Friday 2nd October
+ *    2026"), with the gate time published once elsewhere (Xtreme Scream Park's
+ *    FAQ: gates about 18:30, closing 22:00 to 23:30 by night). The day reads
+ *    "From 6:30pm"; the closing time isn't made up.
  *  - `te2`: accesso's TE2 app API (Drayton Manor), `venue-hours` for the days
  *    and `calendars/events` for named events, behind the same anonymous token
  *    as its queues. */
@@ -266,6 +273,18 @@ export type OpeningHoursConfig =
       kind: "pleasurewood";
       /** The opening-times page carrying `openArr` / `eventArr`. */
       pageUrl: string;
+      locationName: string;
+    }
+  | {
+      kind: "tulleys";
+      pageUrl: string;
+      locationName: string;
+    }
+  | {
+      kind: "datelist";
+      pageUrl: string;
+      /** "18:30": when the gates open on every listed date. */
+      opensAt: string;
       locationName: string;
     }
   | {
@@ -1216,13 +1235,17 @@ export const PARKS: ParkConfig[] = [
     ],
   },
   // Two seasonal scare parks on Attractions.io: their apps list the scare mazes
-  // as queue lines, open for the Halloween season only. No opening-hours source
-  // (neither site publishes one we can read), so the catalog marks them
-  // queueOnly. Weather points are the mean of the mazes' app locations.
+  // as queue lines, open for the Halloween season only. Weather points are the
+  // mean of the mazes' app locations.
   {
     key: "tulleys",
     weather: { lat: 51.107, lon: -0.112 },
     label: "Tulleys Shocktober Fest",
+    openingHours: {
+      kind: "tulleys",
+      pageUrl: "https://www.shocktoberfest.co.uk/passes",
+      locationName: "Shocktober Fest",
+    },
     queue: {
       kind: "attractions",
       apiKey: "",
@@ -1234,6 +1257,12 @@ export const PARKS: ParkConfig[] = [
     key: "xtreme_scream_park",
     weather: { lat: 52.785, lon: -0.858 },
     label: "Xtreme Scream Park",
+    openingHours: {
+      kind: "datelist",
+      pageUrl: "https://www.xtremescreampark.co.uk/dates-prices/",
+      opensAt: "18:30",
+      locationName: "Xtreme Scream Park",
+    },
     queue: {
       kind: "attractions",
       apiKey: "",

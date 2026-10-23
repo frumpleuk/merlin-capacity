@@ -287,7 +287,6 @@ export const PARKS: ParkDef[] = [
     country: "GB",
     label: "Tulleys Shocktober Fest",
     products: [],
-    queueOnly: true,
   },
   {
     // At Twinlakes Park, Melton Mowbray.
@@ -296,7 +295,6 @@ export const PARKS: ParkDef[] = [
     country: "GB",
     label: "Xtreme Scream Park",
     products: [],
-    queueOnly: true,
   },
 ];
 

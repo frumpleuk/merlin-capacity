@@ -61,8 +61,11 @@ const text = (n) =>
   n && typeof n === "object" ? n["en-GB"] ?? n["en-US"] ?? n.en ?? Object.values(n)[0] : n;
 
 /** Each park names its eating category its own way: "Food & Drink(s)", "Food &
- *  Beverage", "Dining" (California's is upper case), Knoebels' "Dine". */
-const FOOD = /^(Food & (Drinks?|Beverage)|Dining|Dine)\b/i;
+ *  Beverage", "Dining" (California's is upper case), Knoebels' "Dine", Xtreme
+ *  Scream Park's "Food, Drink & Retail". */
+const FOOD = /^(Food & (Drinks?|Beverage)|Food, Drink|Dining|Dine)\b/i;
+/** Shops and token booths filed under a mixed food-and-retail category. */
+const NOT_FOOD = /^(Ride Tokens|Merch Shop)$/i;
 const INFO_ONLY = /^(Allergies & Intolerances|Food & Drink Information)$/;
 
 /** Areas whose label is the whole resort or back-of-house, not a land. */
@@ -118,6 +121,7 @@ for (const park of attractionsParks()) {
       FOOD.test(category) &&
       !/Freestyle|Holiday Village/.test(category) &&
       !/Freestyle/.test(name) && // Gardaland files its refill machines as food
+      !NOT_FOOD.test(name) &&
       !INFO_ONLY.test(name);
     const water =
       (/^Water\b/.test(name) && /^Facilities/.test(category)) || /Water refill/i.test(category);

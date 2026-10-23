@@ -114,6 +114,10 @@ export async function fetchHours(
       return fetchPleasurewoodHours(cfg);
     case "crealy":
       return fetchCrealyHours(cfg);
+    case "tulleys":
+      return fetchTulleysHours(cfg);
+    case "datelist":
+      return fetchDateListHours(cfg);
     default:
       return fetchAccessoHours(cfg);
   }
@@ -320,6 +324,99 @@ async function fetchPleasurewoodHours(
     for (const d of datesBetween(from, to)) if (snapshot[d]) snapshot[d].event = e.title.trim();
   }
   return { ok: true, httpStatus: resp.status, snapshot, datesSeen: Object.keys(snapshot).length };
+}
+
+/* ── Pages that list dates in prose (Tulleys, Xtreme Scream Park) ────────────── */
+
+const MONTHS = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
+
+/** "2nd October 2026" → "2026-10-02". */
+function proseDate(day: string, month: string, year: string): string | null {
+  const m = MONTHS.indexOf(month.toLowerCase());
+  if (m < 0) return null;
+  return `${year}-${String(m + 1).padStart(2, "0")}-${day.padStart(2, "0")}`;
+}
+
+/** A page's visible text, one line per block, entities decoded. */
+async function pageLines(url: string): Promise<{ status: number; lines: string[] | null }> {
+  let resp: Response;
+  try {
+    resp = await fetch(url, { headers: { "user-agent": USER_AGENT } });
+  } catch {
+    return { status: 0, lines: null };
+  }
+  if (!resp.ok) return { status: resp.status, lines: null };
+  const lines = (await resp.text())
+    .replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g, " ")
+    .replace(/<[^>]+>/g, "\n")
+    .replace(/&amp;/g, "&")
+    .replace(/&#39;|&#x27;|&rsquo;/g, "'")
+    .replace(/&nbsp;/g, " ")
+    .split("\n")
+    .map((l) => l.replace(/\s+/g, " ").trim())
+    .filter(Boolean);
+  return { status: resp.status, lines };
+}
+
+/**
+ * Tulleys Shocktober Fest: "2nd October 2026 | Open Today: 4:30pm - 11:30pm",
+ * then a note ("Park opens 4:30pm. Haunts open 5:30pm-11.30pm", sometimes with
+ * more after it, such as a celebrity black-carpet night). Whatever the note adds
+ * beyond the standard times sentence is the day's event.
+ */
+async function fetchTulleysHours(
+  cfg: Extract<OpeningHoursConfig, { kind: "tulleys" }>,
+): Promise<HoursFetch> {
+  const { status, lines } = await pageLines(cfg.pageUrl);
+  if (!lines) return { ok: false, httpStatus: status, snapshot: {}, datesSeen: 0 };
+  const snapshot: HoursSnapshot = {};
+  lines.forEach((line, i) => {
+    const m = /^(\d{1,2})(?:st|nd|rd|th) ([A-Za-z]+) (\d{4}) \| Open Today: (.+)$/.exec(line);
+    if (!m) return;
+    const date = proseDate(m[1], m[2], m[3]);
+    if (!date) return;
+    const note = lines[i + 1] ?? "";
+    const extra = note
+      .replace(/^Park opens [^.]*\.\s*Haunts open [\d.:apm\s-]+/i, "")
+      .replace(/\s*\([^)]*\)\s*$/, "") // "(Very Limited public tickets available)"
+      .trim();
+    snapshot[date] = {
+      locations: [{ kind: "themepark", name: cfg.locationName, hours: m[4].trim() }],
+      ...(extra && !/^Buy Tickets$/i.test(extra) ? { event: extra } : {}),
+    };
+  });
+  if (Object.keys(snapshot).length === 0) {
+    return { ok: false, httpStatus: status, snapshot: {}, datesSeen: 0 };
+  }
+  return { ok: true, httpStatus: status, snapshot, datesSeen: Object.keys(snapshot).length };
+}
+
+/**
+ * A page listing only the open dates, one per line as "Friday 2nd October 2026"
+ * (Xtreme Scream Park's dates and prices page). Each listed date reads "From
+ * <opensAt>".
+ */
+async function fetchDateListHours(
+  cfg: Extract<OpeningHoursConfig, { kind: "datelist" }>,
+): Promise<HoursFetch> {
+  const { status, lines } = await pageLines(cfg.pageUrl);
+  if (!lines) return { ok: false, httpStatus: status, snapshot: {}, datesSeen: 0 };
+  const hours = `From ${fmt24(cfg.opensAt)}`;
+  const oldest = isoDay(Date.now() - 60 * 86_400_000);
+  const snapshot: HoursSnapshot = {};
+  for (const line of lines) {
+    const m = /^(?:Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day (\d{1,2})(?:st|nd|rd|th) ([A-Za-z]+) (\d{4})$/.exec(line);
+    const date = m && proseDate(m[1], m[2], m[3]);
+    // The page also mentions past seasons in passing ("Thursday 30th October
+    // 2025"); only this season's dates belong on the calendar.
+    if (date && date >= oldest) {
+      snapshot[date] = { locations: [{ kind: "themepark", name: cfg.locationName, hours }] };
+    }
+  }
+  if (Object.keys(snapshot).length === 0) {
+    return { ok: false, httpStatus: status, snapshot: {}, datesSeen: 0 };
+  }
+  return { ok: true, httpStatus: status, snapshot, datesSeen: Object.keys(snapshot).length };
 }
 
 /* ── Crealy (one Umbraco month fragment per request) ──────────────────────────── */

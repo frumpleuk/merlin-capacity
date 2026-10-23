@@ -101,6 +101,18 @@
     "priced": 9,
     "water": 0
   },
+  "tulleys": {
+    "venues": 22,
+    "withMenus": 0,
+    "priced": 0,
+    "water": 0
+  },
+  "xtreme_scream_park": {
+    "venues": 11,
+    "withMenus": 0,
+    "priced": 0,
+    "water": 0
+  },
   "paultons": {
     "venues": 19,
     "withMenus": 16,

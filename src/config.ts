@@ -220,10 +220,12 @@ export interface OpeningHoursLocation {
  *  - `tulleys`: Shocktober Fest's dates page lists every night as "2nd October
  *    2026 | Open Today: 4:30pm - 11:30pm" with a note line under it. One
  *    request.
- *  - `datelist`: a page that only lists the open dates ("Friday 2nd October
- *    2026"), with the gate time published once elsewhere (Xtreme Scream Park's
- *    FAQ: gates about 18:30, closing 22:00 to 23:30 by night). The day reads
- *    "From 6:30pm"; the closing time isn't made up.
+ *  - `digitickets`: a DigiTickets ticket store's own availability calendar
+ *    (`/availability?catID=&return=json&year=&month=`), which lists every
+ *    bookable date with its sessions' start and end times. The store only
+ *    answers inside a session holding a basket, so the fetch walks the store's
+ *    flow first: branch, event page, one ticket into the basket (never bought).
+ *    Xtreme Scream Park; see docs/digitickets.md.
  *  - `te2`: accesso's TE2 app API (Drayton Manor), `venue-hours` for the days
  *    and `calendars/events` for named events, behind the same anonymous token
  *    as its queues. */
@@ -281,10 +283,15 @@ export type OpeningHoursConfig =
       locationName: string;
     }
   | {
-      kind: "datelist";
-      pageUrl: string;
-      /** "18:30": when the gates open on every listed date. */
-      opensAt: string;
+      kind: "digitickets";
+      /** The store's origin, e.g. https://twinlakes.digitickets.co.uk */
+      store: string;
+      /** The venue on a multi-venue store (`branches.branchID`). */
+      branchId: string;
+      /** The ticket category the event lives under (`catID`). */
+      catId: string;
+      /** Months to read, the current one included. */
+      months: number;
       locationName: string;
     }
   | {
@@ -1258,9 +1265,11 @@ export const PARKS: ParkConfig[] = [
     weather: { lat: 52.785, lon: -0.858 },
     label: "Xtreme Scream Park",
     openingHours: {
-      kind: "datelist",
-      pageUrl: "https://www.xtremescreampark.co.uk/dates-prices/",
-      opensAt: "18:30",
+      kind: "digitickets",
+      store: "https://twinlakes.digitickets.co.uk",
+      branchId: "2340",
+      catId: "34521",
+      months: 2,
       locationName: "Xtreme Scream Park",
     },
     queue: {

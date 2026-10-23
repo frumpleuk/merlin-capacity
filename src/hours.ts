@@ -116,8 +116,8 @@ export async function fetchHours(
       return fetchCrealyHours(cfg);
     case "tulleys":
       return fetchTulleysHours(cfg);
-    case "datelist":
-      return fetchDateListHours(cfg);
+    case "digitickets":
+      return fetchDigiticketsHours(cfg);
     default:
       return fetchAccessoHours(cfg);
   }
@@ -326,7 +326,7 @@ async function fetchPleasurewoodHours(
   return { ok: true, httpStatus: resp.status, snapshot, datesSeen: Object.keys(snapshot).length };
 }
 
-/* ── Pages that list dates in prose (Tulleys, Xtreme Scream Park) ────────────── */
+/* ── Pages that list dates in prose (Tulleys) ─────────────────────────────────── */
 
 const MONTHS = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
 
@@ -391,30 +391,110 @@ async function fetchTulleysHours(
   return { ok: true, httpStatus: status, snapshot, datesSeen: Object.keys(snapshot).length };
 }
 
+/* ── DigiTickets stores (the ticket shop's availability calendar) ─────────────── */
+
+/** The DigiTickets availability calendar, as the store's own page reads it. */
+interface DigiAvailability {
+  events?: {
+    date?: string;
+    sessions?: { time?: string; endTime?: string }[];
+  }[];
+}
+
 /**
- * A page listing only the open dates, one per line as "Friday 2nd October 2026"
- * (Xtreme Scream Park's dates and prices page). Each listed date reads "From
- * <opensAt>".
+ * Walk a DigiTickets store's booking flow far enough for its availability
+ * calendar to answer: the store keeps the venue, event and basket in a session
+ * cookie and redirects `/availability` back to `/tickets` without them. One
+ * ticket goes into the basket; nothing is bought or held. Returns the session
+ * cookie, or null if the store didn't play along.
  */
-async function fetchDateListHours(
-  cfg: Extract<OpeningHoursConfig, { kind: "datelist" }>,
-): Promise<HoursFetch> {
-  const { status, lines } = await pageLines(cfg.pageUrl);
-  if (!lines) return { ok: false, httpStatus: status, snapshot: {}, datesSeen: 0 };
-  const hours = `From ${fmt24(cfg.opensAt)}`;
-  const oldest = isoDay(Date.now() - 60 * 86_400_000);
-  const snapshot: HoursSnapshot = {};
-  for (const line of lines) {
-    const m = /^(?:Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day (\d{1,2})(?:st|nd|rd|th) ([A-Za-z]+) (\d{4})$/.exec(line);
-    const date = m && proseDate(m[1], m[2], m[3]);
-    // The page also mentions past seasons in passing ("Thursday 30th October
-    // 2025"); only this season's dates belong on the calendar.
-    if (date && date >= oldest) {
-      snapshot[date] = { locations: [{ kind: "themepark", name: cfg.locationName, hours }] };
+async function digiticketsSession(store: string, branchId: string, catId: string): Promise<string | null> {
+  const jar = new Map<string, string>();
+  const cookie = () => [...jar].map(([k, v]) => `${k}=${v}`).join("; ");
+  const go = async (url: string, init: RequestInit = {}): Promise<Response> => {
+    const resp = await fetch(url, {
+      ...init,
+      redirect: "manual",
+      headers: { "user-agent": USER_AGENT, cookie: cookie(), ...(init.headers ?? {}) },
+    });
+    for (const c of resp.headers.getSetCookie()) {
+      const [pair] = c.split(";");
+      const at = pair.indexOf("=");
+      if (at > 0) jar.set(pair.slice(0, at).trim(), pair.slice(at + 1).trim());
     }
+    return resp;
+  };
+  await go(`${store}/tickets?branches.branchID=${branchId}`);
+  // The category redirects to its event page, which carries the form.
+  let resp = await go(`${store}/category/${catId}`);
+  for (let hop = 0; hop < 3 && resp.status >= 300 && resp.status < 400; hop++) {
+    const to = resp.headers.get("location");
+    if (!to) break;
+    resp = await go(new URL(to, store).toString());
   }
-  if (Object.keys(snapshot).length === 0) {
-    return { ok: false, httpStatus: status, snapshot: {}, datesSeen: 0 };
+  if (!resp.ok) return null;
+  const page = await resp.text();
+  const token = /name="csrf-token" value="([^"]+)"/.exec(page)?.[1];
+  const ticket = /name="(tickets\[\d+\]\[qty\])"/.exec(page)?.[1];
+  if (!token || !ticket) return null;
+  const add = await go(`${store}/cart/add?catID=${catId}&date=`, {
+    method: "POST",
+    headers: { "content-type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({ "csrf-token": token, [ticket]: "1" }).toString(),
+  });
+  return (add.headers.get("location") ?? "").includes("/availability") ? cookie() : null;
+}
+
+/**
+ * Opening hours from a DigiTickets store: each bookable date, from its first
+ * session's start to its last session's end ("6:30pm - 11pm"). A sold-out date
+ * is still listed, so it still shows as open.
+ */
+async function fetchDigiticketsHours(
+  cfg: Extract<OpeningHoursConfig, { kind: "digitickets" }>,
+): Promise<HoursFetch> {
+  let session: string | null;
+  try {
+    session = await digiticketsSession(cfg.store, cfg.branchId, cfg.catId);
+  } catch {
+    session = null;
+  }
+  if (!session) return { ok: false, httpStatus: 0, snapshot: {}, datesSeen: 0 };
+
+  const now = new Date();
+  const snapshot: HoursSnapshot = {};
+  let status = 0;
+  for (let i = 0; i < cfg.months; i++) {
+    const d = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() + i, 1));
+    const url =
+      `${cfg.store}/availability?catID=${cfg.catId}&return=json` +
+      `&year=${d.getUTCFullYear()}&month=${d.getUTCMonth() + 1}`;
+    let data: DigiAvailability;
+    try {
+      const resp = await fetch(url, {
+        redirect: "manual",
+        headers: {
+          "user-agent": USER_AGENT,
+          cookie: session,
+          accept: "application/json",
+          "x-requested-with": "XMLHttpRequest",
+        },
+      });
+      status = resp.status;
+      if (!resp.ok) return { ok: false, httpStatus: status, snapshot: {}, datesSeen: 0 };
+      data = (await resp.json()) as DigiAvailability;
+    } catch {
+      return { ok: false, httpStatus: status, snapshot: {}, datesSeen: 0 };
+    }
+    for (const e of data.events ?? []) {
+      const times = (e.sessions ?? []).filter((s) => s.time && s.endTime);
+      if (!e.date || !/^\d{4}-\d{2}-\d{2}$/.test(e.date) || times.length === 0) continue;
+      const open = times.map((s) => s.time!).sort()[0];
+      const close = times.map((s) => s.endTime!).sort().at(-1)!;
+      snapshot[e.date] = {
+        locations: [{ kind: "themepark", name: cfg.locationName, hours: `${fmt24(open)} - ${fmt24(close)}` }],
+      };
+    }
   }
   return { ok: true, httpStatus: status, snapshot, datesSeen: Object.keys(snapshot).length };
 }

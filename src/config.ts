@@ -9,13 +9,20 @@
  * returning data (watch the poll_log table). Sending a superset of old+new
  * package ids is fine; the API uses whichever are valid per date.
  */
-export const HOST =
-  "https://ecomm.api.meg-eu.accessoticketing.com/api/request/getmerchantpackageeventdates";
+/** The Merlin parks' accesso stack. Another stack (Drayton Manor's) sets
+ *  `ParkConfig.accessoApi`. */
+export const MEG_EU_API = "https://ecomm.api.meg-eu.accessoticketing.com";
+
+export const HOST = `${MEG_EU_API}/api/request/getmerchantpackageeventdates`;
+
+/** A park's GetMerchantPackageEventDates endpoint. */
+export const eventDatesUrl = (park: { accessoApi?: string }) =>
+  `${park.accessoApi ?? MEG_EU_API}/api/request/getmerchantpackageeventdates`;
 
 /** The public, unauthenticated catalog blob for a park (see docs/accesso-api.md).
  *  We derive main-ticket package ids from this instead of hardcoding them. */
-export const bootstrapUrl = (slug: string) =>
-  `https://ecomm.api.meg-eu.accessoticketing.com/static-api/bootstrap?m=${slug}&l=en-gb`;
+export const bootstrapUrl = (slug: string, api: string = MEG_EU_API) =>
+  `${api}/static-api/bootstrap?m=${slug}&l=en-gb`;
 
 /** Same endpoint for an exchange merchant. The `merchant_id` parameter is what
  *  makes it serve the real catalog: with the slug alone it answers a shell whose
@@ -319,6 +326,13 @@ export interface DiscoverSpec {
    *  date shows a figure instead of a gap. Matches "Prebook" and Alton's "AP
    *  Prebook"; on normal dates it doesn't change the numbers. "" disables. */
   anchorClassMatch?: string; // default "prebook"
+  /** Match the public tickets by catalog keyword instead of class + name: every
+   *  package on the event whose `keyword` list holds this, whatever its class.
+   *  Drayton Manor's "Tickets" keyword spans Day Tickets, Blazing Halloween,
+   *  Magical Christmas and Twixmas, each selling only its own dates, all on one
+   *  pool (docs/accesso-api.md, Drayton Manor). Collects no exclusives, so the
+   *  special-days job, built around Merlin's catalogs, skips the park. */
+  keyword?: string;
 }
 
 export interface ProductConfig {
@@ -444,6 +458,12 @@ export interface ParkConfig {
   /** Bootstrap catalog slug (NOT the subdomain — e.g. Chessington is
    *  ME-WACHESSINGTON, not ME-CWOA). From the park's landing-page `bootstrap?m=`. */
   bootstrapSlug?: string;
+  /** accesso API origin when the park isn't on the Merlin stack (MEG_EU_API).
+   *  Drayton Manor: https://ecomm.api.eu.accessoticketing.com. */
+  accessoApi?: string;
+  /** `com-accessopassport-client` header. Default "accesso26" (Merlin); Drayton's
+   *  store needs "accesso304" and answers every call with a 500 otherwise. */
+  accessoClient?: string;
   /** Opening-hours source (park marketing site). Separate from the accesso
    *  availability API — a different host, endpoint, and response shape. Absent
    *  for a queue-only park (no marketing-site calendar to poll). */
@@ -1133,13 +1153,31 @@ export const PARKS: ParkConfig[] = [
   // Drayton Manor (independent, Staffordshire; Looping Group). Its app runs on
   // accesso's TE2 platform, which serves both the live ride status and the
   // opening calendar behind one anonymous token. Its Attractions.io bundle
-  // (`drayton-manor`) stopped updating in February 2022.
+  // (`drayton-manor`) stopped updating in February 2022. Tickets are accesso
+  // too, but on its own stack (see docs/accesso-api.md, Drayton Manor).
   {
     key: "drayton_manor",
     label: "Drayton Manor",
+    merchantId: "100",
+    origin: "https://lg-draytonmanor.tickets.draytonmanor.co.uk",
+    bootstrapSlug: "LG-DRAYTONMANOR",
+    accessoApi: "https://ecomm.api.eu.accessoticketing.com",
+    accessoClient: "accesso304",
     openingHours: { kind: "te2", ...DRAYTON_TE2, locationName: "Drayton Manor" },
     queue: { kind: "te2", ...DRAYTON_TE2 },
-    products: [],
+    products: [
+      {
+        // Event 2 is the one park pool (10,000 a day, 6,000 on Blazing
+        // Halloween days). No single package covers the season: the day ticket
+        // sells only today and each season sells its own dates, so match every
+        // package the booking site's "Tickets" keyword lists. All report the
+        // same pool, so the merge loses nothing.
+        key: "main",
+        extra_movie: "",
+        include_times: false,
+        discover: { event_id: "2", keyword: "Tickets", anchorClassMatch: "" },
+      },
+    ],
   },
 ];
 

@@ -278,7 +278,7 @@ export const PARKS: ParkDef[] = [
     country: "GB",
     operator: "Looping Group",
     label: "Drayton Manor",
-    products: [],
+    products: [{ key: "main", label: "Tickets" }],
     noQueues: true,
   },
 ];

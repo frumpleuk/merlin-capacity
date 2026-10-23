@@ -678,9 +678,11 @@ store URL proves nothing. Check a keyword exists in the merchant's catalog.
     `P[]` (each with its own CT) merges to one entry per date with the same
     figures as each package alone, so there is no ring-fenced sub-allocation
     to avoid as at Thorpe.
-
-  The closest of all the parks here to the UK Merlin setup, so a good first
-  try.
+  - **Tracked since 2026-10-23** as product `main`: `accessoApi` and
+    `accessoClient` on the park config, and discovery by catalog keyword
+    (`DiscoverSpec.keyword: "Tickets"`, event 2), which picks up 10 packages.
+    Keyword mode collects no exclusives, so the special-days job skips the
+    park.
 - **Pleasurewood Hills: VisiSoft webshop, not accesso.**
   - **Store:** `tickets.pleasurewoodhills.com`, a PHP app on
     `pleasurewoodhills.api.visihost.co.uk`.

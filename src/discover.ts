@@ -198,7 +198,7 @@ async function fetchCatalogPackages(
   const empty: CatalogFetch = { P: [], anchorIds: [], exclusives: [], frontDoor: [] };
   let resp: Response;
   try {
-    resp = await fetch(bootstrapUrl(park.bootstrapSlug ?? ""), {
+    resp = await fetch(bootstrapUrl(park.bootstrapSlug ?? "", park.accessoApi), {
       headers: {
         accept: "application/json, text/plain, */*",
         // See merlin.ts: `?? ""` is type-only; only reached for ticket parks.
@@ -247,8 +247,10 @@ async function fetchCatalogPackages(
     // ring-fenced sub-allocation of the same event, and one of those in P[] makes
     // the API report THAT bucket for the date instead of the park pool — see
     // docs/accesso-api.md §3.1 "Multiple allocations per date".
-    const isDayTicket =
-      cls === wantClass && wantNames.has((p.name ?? "").trim().toLowerCase());
+    const keywords = (p.keyword ?? "").split(",").map((k) => k.trim());
+    const isDayTicket = spec.keyword
+      ? keywords.includes(spec.keyword)
+      : cls === wantClass && wantNames.has((p.name ?? "").trim().toLowerCase());
     // The yield anchor — annual-pass prebooks (see DiscoverSpec.anchorClassMatch).
     const isAnchor = anchorMatch !== "" && cls.toLowerCase().includes(anchorMatch);
     // Each package is queried with its OWN customer type. Forcing a single CT
@@ -264,13 +266,14 @@ async function fetchCatalogPackages(
     // whole, variants included, so special-days.ts can still spot a buyout whose
     // package happens to be named like a promo; the label is chosen there.
     const name = (p.name ?? "").trim();
-    if (cls === wantClass && !isDayTicket && ct && name) {
+    if (spec.keyword) {
+      // Keyword mode collects no exclusives (see DiscoverSpec.keyword).
+    } else if (cls === wantClass && !isDayTicket && ct && name) {
       exclusives.push({ id: p.id, ct, name });
     } else if (EVENT_CLASSES.has(cls) && ct && name) {
       exclusives.push({ id: p.id, ct, name, eventClass: true });
     }
 
-    const keywords = (p.keyword ?? "").split(",").map((k) => k.trim());
     if (keywords.includes(FRONT_DOOR_KEYWORD) && ct) {
       frontDoor.push({ id: p.id, ct, name });
     }

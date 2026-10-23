@@ -1,4 +1,4 @@
-import { HOST, USER_AGENT, type ParkConfig, type ProductConfig } from "./config";
+import { eventDatesUrl, USER_AGENT, type ParkConfig, type ProductConfig } from "./config";
 import type { DayObs, Snapshot } from "./types";
 
 export interface FetchResult {
@@ -43,7 +43,7 @@ function headers(park: ParkConfig) {
     accept: "application/json, text/plain, */*",
     "accept-language": "en-GB,en-US;q=0.9,en;q=0.8",
     "com-accessopassport-app-id": "1500",
-    "com-accessopassport-client": "accesso26",
+    "com-accessopassport-client": park.accessoClient ?? "accesso26",
     "com-accessopassport-language": "en-gb",
     // `?? ""` only satisfies the type: these accesso fields are always set for a
     // park with ticket products, and this path is never reached for a queue-only
@@ -91,7 +91,7 @@ export async function fetchProduct(
   startDate: string,
   endDate: string,
 ): Promise<FetchResult> {
-  const resp = await fetch(HOST, {
+  const resp = await fetch(eventDatesUrl(park), {
     method: "POST",
     headers: headers(park),
     body: JSON.stringify(buildPayload(park, product, P, startDate, endDate)),

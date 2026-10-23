@@ -242,8 +242,31 @@ artwork is the park's, so it isn't republished), and recorded in
 `archive.json`: `{ "<sha256>": { url, fetched, bytes, type, key } }`. A menu's
 hash looks its file up there. `archive-sources.mjs` did the same, once, for
 menus taken before the archive existed, and says which originals were already
-lost. The menus imported from web pages (Tenkites, Blackpool's venue pages,
-Flamingo Land's Coach House page) are not archived yet.
+lost.
+
+A menu read from a web page (Tenkites boards, Blackpool's venue pages) is kept
+as the page rendered in headless Chromium, four ways, each archived by hash the
+same way and listed in `source.snapshot`:
+
+```json
+"snapshot": { "captured": "2026-10-23", "png": "<sha256>", "html": "<sha256>", "mhtml": "<sha256>", "har": "<sha256>" }
+```
+
+`png` is the full page as a visitor saw it, `html` the DOM after its scripts
+ran, `mhtml` the page with its CSS and images (opens offline in Chrome), and
+`har` every request and response with contents, including the JS, CSS and the
+data calls the page made. `captured` is the day it was taken; for menus read
+before captures existed it is later than the menu's date.
+
+Public copies, so the evidence doesn't rest on us alone: each web source is
+sent to the Wayback Machine's Save Page Now (`source.wayback`, the snapshot
+URL) and to archive.today (`source.archiveToday`, recorded only when it makes
+a copy; it usually answers scripts with a CAPTCHA). Each archived PDF's URL is
+sent to the Wayback Machine too, recorded as `wayback` on its `archive.json`
+entry.
+
+`archive-pages.mjs` does all of this and only what's missing; every importer
+runs it when it finishes.
 
 ### Menus from someone else
 

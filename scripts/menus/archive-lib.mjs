@@ -19,7 +19,22 @@ const ledger = fs.existsSync(LEDGER) ? readJson(LEDGER) : {};
 
 export const isArchived = (sha256) => !!ledger[sha256];
 
-const EXT = { "application/pdf": "pdf", "text/html": "html", "image/jpeg": "jpg", "image/png": "png" };
+const EXT = {
+  "application/pdf": "pdf",
+  "text/html": "html",
+  "image/jpeg": "jpg",
+  "image/png": "png",
+  "multipart/related": "mhtml",
+  "application/json": "har",
+};
+
+/** [sha256, entry] for every archived file. */
+export const ledgerEntries = () => Object.entries(ledger);
+
+/** Add a field to an entry (a public copy found later). */
+export function setLedgerField(sha256, field, value) {
+  ledger[sha256][field] = value;
+}
 
 /** Copy one fetched file to the private archive, once per hash, and record it.
  *  Returns the ledger entry. Throws if the upload fails, so nothing is recorded

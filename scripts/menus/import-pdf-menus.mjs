@@ -28,6 +28,7 @@ import os from "node:os";
 import path from "node:path";
 import { PARKS } from "../../src/config.ts";
 import { archive, saveLedger } from "./archive-lib.mjs";
+import { archivePages } from "./archive-pages.mjs";
 import { ALL_PARK_DIRS, DATE_DIR, DLP_PARK_DIRS, MENUS, parkDir, readJson, slug, venues, writeJson } from "./lib.mjs";
 
 const UA = "merlin-capacity/0.1 (+https://themeparks.frumple.co.uk; park menu archive, contact via site)";
@@ -134,3 +135,6 @@ for (const key of Object.keys(ALL_PARK_DIRS)) {
 saveLedger();
 writeJson(PLAN, plan);
 console.log(`${plan.length} menus to transcribe; plan in ${path.relative(process.cwd(), PLAN)}`);
+
+// Snapshot the pages just read and ask the public archives for copies.
+await archivePages();

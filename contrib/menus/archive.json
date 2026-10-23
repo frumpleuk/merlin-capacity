@@ -1,4 +1,11 @@
 {
+  "01184f6896602d3c1f43e9ea8253ea075acd0e75e4f13cfb59e56491be1734a5": {
+    "url": "https://www.bigbluehotel.com/app/uploads/2026/04/BBHBARFOOD0426.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 84596,
+    "type": "application/pdf",
+    "key": "archive/menus/01184f6896602d3c1f43e9ea8253ea075acd0e75e4f13cfb59e56491be1734a5.pdf"
+  },
   "02a5a662aa91a7b6cb9d9414edde45a5abd149c2d601d980c6805f185c337f0f": {
     "url": "https://www.legoland.com/new-york/media/4brpl5c0/granny-s-apple-fries-2026-menu.pdf",
     "fetched": "2026-10-23",
@@ -19,6 +26,13 @@
     "bytes": 33670209,
     "type": "application/pdf",
     "key": "archive/menus/0405656a722ad2639e1ef00f233efedc50d71cf3f3d2dc7247c200eb93287058.pdf"
+  },
+  "04469fc949a5e4a76607d0e65f627cff1e22ae11e6f2890fd787a929a6aab7de": {
+    "url": "https://menus.tenkites.com/aramarkuk/athotel02",
+    "fetched": "2026-10-23",
+    "bytes": 2722577,
+    "type": "multipart/related",
+    "key": "archive/menus/04469fc949a5e4a76607d0e65f627cff1e22ae11e6f2890fd787a929a6aab7de.mhtml"
   },
   "04995331283a2ffe5ba52b50b10b28ce36a6c896f7c4171228b98c22e63e9f42": {
     "url": "https://www.legoland.kr/media/iq3lwtht/brick-party-cafe-menuboard.pdf",
@@ -41,12 +55,33 @@
     "type": "application/pdf",
     "key": "archive/menus/09139073244344b657e3517c8ded4fcd6bdf0e24516e83da65d4fa75a2b348b2.pdf"
   },
+  "0bb12649e6faeff3277268cd05cc6a79f5752138a125dcbda62ca47445f62042": {
+    "url": "https://www.thorpepark.com/media/bzgny0uo/vibes-kids-menu-2025-april.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 1237699,
+    "type": "application/pdf",
+    "key": "archive/menus/0bb12649e6faeff3277268cd05cc6a79f5752138a125dcbda62ca47445f62042.pdf"
+  },
+  "0c32bba60eee12d5f99a1672f5c2a26f5e75523421286c9f42831571f3d6fa38": {
+    "url": "https://www.thorpepark.com/media/xemlla0x/colossus-hotdogs-menu.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 419013,
+    "type": "application/pdf",
+    "key": "archive/menus/0c32bba60eee12d5f99a1672f5c2a26f5e75523421286c9f42831571f3d6fa38.pdf"
+  },
   "0f539ef255e3f7607f38b6f3a4fd4cab84efed5edba4b39ed74d34e838c5a544": {
     "url": "https://www.legoland.com/new-york/media/5q2d3qyx/smokey-s-2026-menu.pdf",
     "fetched": "2026-10-23",
     "bytes": 658574,
     "type": "application/pdf",
     "key": "archive/menus/0f539ef255e3f7607f38b6f3a4fd4cab84efed5edba4b39ed74d34e838c5a544.pdf"
+  },
+  "0ff071f02fd31d58dbc713e5a2051c495517d148901a3365192bb2036006ed19": {
+    "url": "https://menus.tenkites.com/paultonspark/grandecentral",
+    "fetched": "2026-10-23",
+    "bytes": 1988356,
+    "type": "text/html",
+    "key": "archive/menus/0ff071f02fd31d58dbc713e5a2051c495517d148901a3365192bb2036006ed19.html"
   },
   "1085bb049a1e4adefa9e1564ef0c1154793d45b4d2f39f4f7eae8ebe66bb91b5": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2VK00_laugh-n-go.pdf",
@@ -69,6 +104,13 @@
     "type": "application/pdf",
     "key": "archive/menus/10d2b400ea89d1b5305b8b879b28aba5d26ed34903b553eb2dd61f8e5aaeea7e.pdf"
   },
+  "11792bc1bd9341570b3a356d129769687e670c57d62d902c0a8e7b2070038030": {
+    "url": "https://menus.tenkites.com/aramarkuk/enchantedvillage02",
+    "fetched": "2026-10-23",
+    "bytes": 2877643,
+    "type": "application/json",
+    "key": "archive/menus/11792bc1bd9341570b3a356d129769687e670c57d62d902c0a8e7b2070038030.har"
+  },
   "11950e8bfd8f6aa561af8298c0adc34cfd24deb609b209f715cf089150d8464b": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1RR01_casa-de-coco.pdf",
     "fetched": "2026-10-23",
@@ -82,6 +124,13 @@
     "bytes": 110012,
     "type": "application/pdf",
     "key": "archive/menus/11d7683f5fd6e81c93a36cefdf6e9943afdaa5f9cf126f661aa464ca0b148bd4.pdf"
+  },
+  "139a5f4c9a54ac5c9bcdec111cde87ef45de02ad6c02f59357fc2a42e27d0a5e": {
+    "url": "https://menus.tenkites.com/paultonspark/beastiebites",
+    "fetched": "2026-10-23",
+    "bytes": 573291,
+    "type": "multipart/related",
+    "key": "archive/menus/139a5f4c9a54ac5c9bcdec111cde87ef45de02ad6c02f59357fc2a42e27d0a5e.mhtml"
   },
   "13ba2dab868aff560d96736c33a6bf613b5600707d7d39960e51a244ae899a0a": {
     "url": "https://www.legoland.com/new-york/media/fhcmvcu4/brickbeards-2026-menu.pdf",
@@ -104,6 +153,20 @@
     "type": "application/pdf",
     "key": "archive/menus/19e500f1b5f1ccaf2de7d02b7035dfea8a15639b0b5fa37afc5f33a8618d2fa8.pdf"
   },
+  "1a5808a51a39e71be8e6e1018d92e8140e933023d62cbe8c44f2322c0bb33db7": {
+    "url": "https://menus.tenkites.com/paultonspark/therailroaddiner",
+    "fetched": "2026-10-23",
+    "bytes": 3412857,
+    "type": "multipart/related",
+    "key": "archive/menus/1a5808a51a39e71be8e6e1018d92e8140e933023d62cbe8c44f2322c0bb33db7.mhtml"
+  },
+  "1a9939ed726e99ac2c770910a6c95f9315eb328c714220c5e42f0b6f5c25807b": {
+    "url": "https://www.bigbluehotel.com/app/uploads/2026/08/BBHALC0826.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 67217,
+    "type": "application/pdf",
+    "key": "archive/menus/1a9939ed726e99ac2c770910a6c95f9315eb328c714220c5e42f0b6f5c25807b.pdf"
+  },
   "1ac0a13373aae69086dec58f6bef7bc3787cb27244dace39c7ba4383b057be1a": {
     "url": "https://www.legoland.com/new-york/media/rief0ghl/bricks-menus-specialty-pricing.pdf",
     "fetched": "2026-10-23",
@@ -117,6 +180,13 @@
     "bytes": 65831795,
     "type": "application/pdf",
     "key": "archive/menus/1de61c32e16a3ab694d33df6ba482716b40ab7e1b99ad5664187d1c4509fe40c.pdf"
+  },
+  "1f8731e2b3a0ef8cb59a17ff29f3d3aab38f483d48832019379d3a9d1b920b75": {
+    "url": "https://menus.tenkites.com/paultonspark/therailroaddiner",
+    "fetched": "2026-10-23",
+    "bytes": 4335679,
+    "type": "application/json",
+    "key": "archive/menus/1f8731e2b3a0ef8cb59a17ff29f3d3aab38f483d48832019379d3a9d1b920b75.har"
   },
   "2086f1452f709769aab9bfbf42e71b8a93413a90572bb964555d7755703696e6": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1DR03_rocket-café.pdf",
@@ -132,6 +202,20 @@
     "type": "application/pdf",
     "key": "archive/menus/209ccc665808cf9c81f4197f36531664f093a39ff3fc55c07883c45bf75ae0b2.pdf"
   },
+  "213473ad707a5f95eda8370d6e173dc1140b66e38454886c120eb819a7c3e643": {
+    "url": "https://menus.tenkites.com/paultonspark/basecamp",
+    "fetched": "2026-10-23",
+    "bytes": 1253046,
+    "type": "text/html",
+    "key": "archive/menus/213473ad707a5f95eda8370d6e173dc1140b66e38454886c120eb819a7c3e643.html"
+  },
+  "215478faa5f9f8a2d2f2c324879a04f8f9b910e8634ce4c313165226b4f43a4f": {
+    "url": "https://www.boulevardhotel.co.uk/app/uploads/2026/08/BLVDWINE0826.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 533516,
+    "type": "application/pdf",
+    "key": "archive/menus/215478faa5f9f8a2d2f2c324879a04f8f9b910e8634ce4c313165226b4f43a4f.pdf"
+  },
   "215a7d055b4ba16f50046f9409d2d14160ecd03d27bb09550c9744b63787e214": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR05_ice-cream-company.pdf",
     "fetched": "2026-10-23",
@@ -139,12 +223,47 @@
     "type": "application/pdf",
     "key": "archive/menus/215a7d055b4ba16f50046f9409d2d14160ecd03d27bb09550c9744b63787e214.pdf"
   },
+  "21fcb72ebea42a3148940f81b7ddfbf9f23abef2cfedecdf1963d19d209e120e": {
+    "url": "https://menus.tenkites.com/paultonspark/daddypigsbigtummycafe",
+    "fetched": "2026-10-23",
+    "bytes": 271940,
+    "type": "text/html",
+    "key": "archive/menus/21fcb72ebea42a3148940f81b7ddfbf9f23abef2cfedecdf1963d19d209e120e.html"
+  },
+  "22843f3ea7c97bba7fcc8a55d22d5dcac692f0a7b548fb26bffc41e1bd359656": {
+    "url": "https://menus.tenkites.com/paultonspark/cascades",
+    "fetched": "2026-10-23",
+    "bytes": 898755,
+    "type": "text/html",
+    "key": "archive/menus/22843f3ea7c97bba7fcc8a55d22d5dcac692f0a7b548fb26bffc41e1bd359656.html"
+  },
   "2666caca711594583c3c887dfba7605b5014ca456e9518914de75b89f2a41870": {
     "url": "https://www.flamingoland.co.uk/wp-content/uploads/2025/04/The-American-Diner-Afternoon-Tea.pdf",
     "fetched": "2026-10-23",
     "bytes": 1879887,
     "type": "application/pdf",
     "key": "archive/menus/2666caca711594583c3c887dfba7605b5014ca456e9518914de75b89f2a41870.pdf"
+  },
+  "2b1d255fe3f47db5f225ff8b74355b316de8a225f1022df59416fd18a7d04ea9": {
+    "url": "https://menus.tenkites.com/paultonspark/therailroaddiner",
+    "fetched": "2026-10-23",
+    "bytes": 237487,
+    "type": "image/png",
+    "key": "archive/menus/2b1d255fe3f47db5f225ff8b74355b316de8a225f1022df59416fd18a7d04ea9.png"
+  },
+  "329680b2723e35cd6857a7776c7ae72a9d97cec9ee002175b917a93323ddbacf": {
+    "url": "https://menus.tenkites.com/paultonspark/coffeestop",
+    "fetched": "2026-10-23",
+    "bytes": 422405,
+    "type": "multipart/related",
+    "key": "archive/menus/329680b2723e35cd6857a7776c7ae72a9d97cec9ee002175b917a93323ddbacf.mhtml"
+  },
+  "3358ad6dc550fb8d448ab94f5c5b8a554582b4cbd4fdc2cb15b9be45184f94ed": {
+    "url": "https://menus.tenkites.com/paultonspark/grandecentral",
+    "fetched": "2026-10-23",
+    "bytes": 4381303,
+    "type": "multipart/related",
+    "key": "archive/menus/3358ad6dc550fb8d448ab94f5c5b8a554582b4cbd4fdc2cb15b9be45184f94ed.mhtml"
   },
   "33a8b5808ddb322424ac00edcb650be38225a342f5ffd720097a0badfa7d4ea9": {
     "url": "https://www.crealy.co.uk/media/3hmc0ba1/clubhouse_menubooklet_all_mains_2026_web.pdf",
@@ -160,6 +279,13 @@
     "type": "application/pdf",
     "key": "archive/menus/35d245d25b357e1f7a4bf300ac8e1f518be283d48c47baf67645875115573d97.pdf"
   },
+  "360c0eb55f9a8aed8a5d5a0d8db18320ab018c7a12361b5d03b07f1cc467d98f": {
+    "url": "https://www.thorpepark.com/media/1bxe5nf4/spice-kitchen-menu.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 758162,
+    "type": "application/pdf",
+    "key": "archive/menus/360c0eb55f9a8aed8a5d5a0d8db18320ab018c7a12361b5d03b07f1cc467d98f.pdf"
+  },
   "36986c6427feeade77338227594e25cda8f07d6dad455851c17c722731b8b6a7": {
     "url": "https://www.flamingoland.co.uk/wp-content/uploads/2025/04/The-American-Diner-Menu.pdf",
     "fetched": "2026-10-23",
@@ -174,12 +300,61 @@
     "type": "application/pdf",
     "key": "archive/menus/384a06439255380728c0a9978d25082ab69d0321e94d75f745c1e8f3e19ed6f6.pdf"
   },
+  "394adff3cadd88772fe67093adbfbb3220891d45ab2d410198ab3bebc0892700": {
+    "url": "https://www.thorpepark.com/media/ej1japvv/cape-cod-menu.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 71404,
+    "type": "application/pdf",
+    "key": "archive/menus/394adff3cadd88772fe67093adbfbb3220891d45ab2d410198ab3bebc0892700.pdf"
+  },
   "39d66b6088ce07c62fe8ab89642dcedf4627ec393771c6a1dfd7501b75440a4d": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1NR05_the-old-mill.pdf",
     "fetched": "2026-10-23",
     "bytes": 873643,
     "type": "application/pdf",
     "key": "archive/menus/39d66b6088ce07c62fe8ab89642dcedf4627ec393771c6a1dfd7501b75440a4d.pdf"
+  },
+  "3a227336926c089c82bf93d33841874261aa3c6cbd199bf931099e4d57200272": {
+    "url": "https://menus.tenkites.com/paultonspark/therailroaddiner",
+    "fetched": "2026-10-23",
+    "bytes": 656652,
+    "type": "text/html",
+    "key": "archive/menus/3a227336926c089c82bf93d33841874261aa3c6cbd199bf931099e4d57200272.html"
+  },
+  "3a245e8cdc262c2b3865df38ea429345b35af63c367f8d9a9390b5d01885bc1a": {
+    "url": "https://menus.tenkites.com/aramarkuk/splashlandingshotel02",
+    "fetched": "2026-10-23",
+    "bytes": 5980393,
+    "type": "application/json",
+    "key": "archive/menus/3a245e8cdc262c2b3865df38ea429345b35af63c367f8d9a9390b5d01885bc1a.har"
+  },
+  "3be7ec68da6e287124e9850d70f7ecaaa64b88a30099448b2199916f80032da5": {
+    "url": "https://www.legoland.co.uk/media/jq5psrbr/llw-apr-2025-bricks-breakfast-menu.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 1231945,
+    "type": "application/pdf",
+    "key": "archive/menus/3be7ec68da6e287124e9850d70f7ecaaa64b88a30099448b2199916f80032da5.pdf"
+  },
+  "3bf042307f2813243b91187394e2b62662442cb53d511c0044c0564eee6d9375": {
+    "url": "https://www.bigbluehotel.com/app/uploads/2026/06/Cocktail-Menu-2024.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 267393,
+    "type": "application/pdf",
+    "key": "archive/menus/3bf042307f2813243b91187394e2b62662442cb53d511c0044c0564eee6d9375.pdf"
+  },
+  "447be2cd307827745fe888408e70977a30bbbfe7d0436e72c788d8d9858d1857": {
+    "url": "https://www.boulevardhotel.co.uk/app/uploads/2026/07/BLVDBAR0726.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 300232,
+    "type": "application/pdf",
+    "key": "archive/menus/447be2cd307827745fe888408e70977a30bbbfe7d0436e72c788d8d9858d1857.pdf"
+  },
+  "45a04fef77266665fbe228829275fb19fa341a993d81d46bfbe07fcdacbaf5e8": {
+    "url": "https://www.legoland.kr/media/zlkhj3i4/%EC%8A%A4%EC%B9%B4%EC%9D%B4%EB%9D%BC%EC%9A%B4%EC%A7%80-%EB%A9%94%EB%89%B4_%EC%88%98%EC%A0%95.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 256942,
+    "type": "application/pdf",
+    "key": "archive/menus/45a04fef77266665fbe228829275fb19fa341a993d81d46bfbe07fcdacbaf5e8.pdf"
   },
   "4781869715809be854fa0cf25d59dd3ea0d3f6d6761175fb2547012af12d71f4": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1NR00_l-arbre-enchante.pdf",
@@ -195,12 +370,40 @@
     "type": "application/pdf",
     "key": "archive/menus/4868ef90437f91a2831746b6a3984c5b969a500cbd6aebf8d6ce471aacb8e522.pdf"
   },
+  "49b35d146ef39e078966afa37e8abec7f3ee3e751cb3e4a83a8771051076199c": {
+    "url": "https://menus.tenkites.com/paultonspark/coffeestop",
+    "fetched": "2026-10-23",
+    "bytes": 172787,
+    "type": "text/html",
+    "key": "archive/menus/49b35d146ef39e078966afa37e8abec7f3ee3e751cb3e4a83a8771051076199c.html"
+  },
   "4a19e2cdc0e9449e60c0dd55c4d325298629402e6169d46c1597cb5c6f98a443": {
     "url": "https://www.legoland.kr/media/3r5o33d1/wizard-s-frozen-wonders-menuboard.pdf",
     "fetched": "2026-10-23",
     "bytes": 1126895,
     "type": "application/pdf",
     "key": "archive/menus/4a19e2cdc0e9449e60c0dd55c4d325298629402e6169d46c1597cb5c6f98a443.pdf"
+  },
+  "4cec6c1551b50b1c57e50df14e807c9d8390fb6be282e35fc34edd48923bea91": {
+    "url": "https://www.bigbluehotel.com/app/uploads/2026/08/Big-Blue-Wine-0826.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 85299,
+    "type": "application/pdf",
+    "key": "archive/menus/4cec6c1551b50b1c57e50df14e807c9d8390fb6be282e35fc34edd48923bea91.pdf"
+  },
+  "4d38cee1099d9d5bea46f0cc8ffbe5fcd845787aeabf4b14b00be10658cae048": {
+    "url": "https://menus.tenkites.com/paultonspark/grandecentral",
+    "fetched": "2026-10-23",
+    "bytes": 4739386,
+    "type": "application/json",
+    "key": "archive/menus/4d38cee1099d9d5bea46f0cc8ffbe5fcd845787aeabf4b14b00be10658cae048.har"
+  },
+  "52fdcd5fdbd033fcb913f8b105726a2e62e443b20e81683f2ad5e9a39ee4b614": {
+    "url": "https://menus.tenkites.com/paultonspark/daddypigsbigtummycafe",
+    "fetched": "2026-10-23",
+    "bytes": 1992927,
+    "type": "application/json",
+    "key": "archive/menus/52fdcd5fdbd033fcb913f8b105726a2e62e443b20e81683f2ad5e9a39ee4b614.har"
   },
   "5736555797abaa5426f7fdae94faed833002dbac2b493b83e0cbeebfd4efd4e8": {
     "url": "https://www.legoland.com/california/media/coebohrv/ufo-menu.pdf",
@@ -230,12 +433,40 @@
     "type": "application/pdf",
     "key": "archive/menus/5a7ebd9fe11dcf1895b6527d204edc4552e0a63e5bccce2449426765a88c9ea7.pdf"
   },
+  "5a86e8c7f7abdae4dcd9ff266a77c8b944aec998eda6df4c6917377f074aaa85": {
+    "url": "https://menus.tenkites.com/aramarkuk/athotel02",
+    "fetched": "2026-10-23",
+    "bytes": 835026,
+    "type": "image/png",
+    "key": "archive/menus/5a86e8c7f7abdae4dcd9ff266a77c8b944aec998eda6df4c6917377f074aaa85.png"
+  },
+  "5b82641ec772afaadb625ec5fa8a2d6478696d9dd93e31a1fc2d4dff2b03c691": {
+    "url": "https://www.thorpepark.com/media/tyhizxaa/tacotaria-menu.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 464640,
+    "type": "application/pdf",
+    "key": "archive/menus/5b82641ec772afaadb625ec5fa8a2d6478696d9dd93e31a1fc2d4dff2b03c691.pdf"
+  },
+  "5bd3f0ca05e195a1b5ad2bf0cd86f4decd737e321d1afe3f1c1ced77ac9c970d": {
+    "url": "https://www.boulevardhotel.co.uk/app/uploads/2025/10/Dessert-2025.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 84246,
+    "type": "application/pdf",
+    "key": "archive/menus/5bd3f0ca05e195a1b5ad2bf0cd86f4decd737e321d1afe3f1c1ced77ac9c970d.pdf"
+  },
   "5c480d3924de4b2fd6a1290131c76ba363b46d9b2ddfe6509abd4018a764ad54": {
     "url": "https://www.legoland.co.uk/media/wg3en1zy/jun-2025-llw-skyline-menu-final.pdf",
     "fetched": "2026-10-23",
     "bytes": 4833155,
     "type": "application/pdf",
     "key": "archive/menus/5c480d3924de4b2fd6a1290131c76ba363b46d9b2ddfe6509abd4018a764ad54.pdf"
+  },
+  "5d3a1e85cf5897d109d624224dd98e65579390d6f2c0f26137e4fd61776bd8d0": {
+    "url": "https://menus.tenkites.com/paultonspark/basecamp",
+    "fetched": "2026-10-23",
+    "bytes": 4687294,
+    "type": "application/json",
+    "key": "archive/menus/5d3a1e85cf5897d109d624224dd98e65579390d6f2c0f26137e4fd61776bd8d0.har"
   },
   "5f984a32e75ff014fa7206c9eed2e5f71a977f8488182ac34688b45d9411a238": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR04_gibson-girl-ice-cream-parlour.pdf",
@@ -250,6 +481,13 @@
     "bytes": 369043,
     "type": "application/pdf",
     "key": "archive/menus/60922f6bba8cf3853bd5013e5b8b8396ade8bbc53bc846c51cf4bf457f9c5b3a.pdf"
+  },
+  "639cfbff733fc01feafd869f8ea38ee1eeb417f7fd3857aaede7d2a7138db7b9": {
+    "url": "https://menus.tenkites.com/aramarkuk/enchantedvillage02",
+    "fetched": "2026-10-23",
+    "bytes": 228673,
+    "type": "image/png",
+    "key": "archive/menus/639cfbff733fc01feafd869f8ea38ee1eeb417f7fd3857aaede7d2a7138db7b9.png"
   },
   "647e81aa5f589b02490ad0f92a2abd06cfdc8e744bf9528ae534497938d78a5d": {
     "url": "https://www.flamingoland.co.uk/wp-content/uploads/2025/04/The-American-Diner-Freak-Shakes.pdf",
@@ -279,12 +517,26 @@
     "type": "application/pdf",
     "key": "archive/menus/6ed0ac325bedb7a4121c9e610bdb14b303a9a39e5542d7f04b7cd07baebf36f0.pdf"
   },
+  "7066171cd70a438deb3766b66844bdc9fc11f8b9ff991cb56a66bc3081b8176a": {
+    "url": "https://www.boulevardhotel.co.uk/app/uploads/2023/03/Cocktail-menu-2023.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 1005944,
+    "type": "application/pdf",
+    "key": "archive/menus/7066171cd70a438deb3766b66844bdc9fc11f8b9ff991cb56a66bc3081b8176a.pdf"
+  },
   "768060f7796e90adb6e81e34dbbbb2da317c9d0bb9510a4a87b23621d37554ab": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2DR02_la-terrasse-panoramique.pdf",
     "fetched": "2026-10-23",
     "bytes": 952274,
     "type": "application/pdf",
     "key": "archive/menus/768060f7796e90adb6e81e34dbbbb2da317c9d0bb9510a4a87b23621d37554ab.pdf"
+  },
+  "77e99d3a351fe8f980f0db26f3584820df8ad0466c5ed6fe5127359b9db38a5c": {
+    "url": "https://menus.tenkites.com/paultonspark/cascades",
+    "fetched": "2026-10-23",
+    "bytes": 3670137,
+    "type": "multipart/related",
+    "key": "archive/menus/77e99d3a351fe8f980f0db26f3584820df8ad0466c5ed6fe5127359b9db38a5c.mhtml"
   },
   "78ecd86b582f4007a8cc37872a6fddf85fefc34c71278605b0539b4561702b03": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2DR03_cafe-luminosity.pdf",
@@ -299,6 +551,20 @@
     "bytes": 191534772,
     "type": "application/pdf",
     "key": "archive/menus/7aec12aeb67481d2dc2ee7e4d134a32731d2733412c3bb39e27dd17f83a91a8d.pdf"
+  },
+  "7bc2df063cb9ef361714701fc9900eb200d604a5b27d69a332b24adf84b4ae91": {
+    "url": "https://www.boulevardhotel.co.uk/app/uploads/2026/09/BLVDTDH0826.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 213810,
+    "type": "application/pdf",
+    "key": "archive/menus/7bc2df063cb9ef361714701fc9900eb200d604a5b27d69a332b24adf84b4ae91.pdf"
+  },
+  "7bf02eb12ce91361319ef04e9545029286ef00424ab4d99e42a5de7fbfe693d1": {
+    "url": "https://www.bigbluehotel.com/app/uploads/2026/06/Kids-Menu-A4-Version-new.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 2082409,
+    "type": "application/pdf",
+    "key": "archive/menus/7bf02eb12ce91361319ef04e9545029286ef00424ab4d99e42a5de7fbfe693d1.pdf"
   },
   "7c317a3cd6c21a9a17cbdcc01ae800918da474bbed43e0261d4b01eb2f090dde": {
     "url": "https://www.legoland.com/new-york/media/lefjafmi/ninja-kitchen-2026-menu.pdf",
@@ -335,6 +601,20 @@
     "type": "application/pdf",
     "key": "archive/menus/7fd65ae460a7045e7902f81f8d5f578d90bf8b82ded37d4c9d9d6e5635a2a1bd.pdf"
   },
+  "7fd7800ef863483e663a731395adaf0a44e1f74a0e7058eac81c76188bfbaf65": {
+    "url": "https://menus.tenkites.com/aramarkuk/splashlandingshotel02",
+    "fetched": "2026-10-23",
+    "bytes": 1418156,
+    "type": "image/png",
+    "key": "archive/menus/7fd7800ef863483e663a731395adaf0a44e1f74a0e7058eac81c76188bfbaf65.png"
+  },
+  "8334480b741f267c5233c70f84068b67f195c6c0dc4e1053d18abc5eb39894e3": {
+    "url": "https://www.boulevardhotel.co.uk/app/uploads/2026/10/BLVDALC0826.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 73880,
+    "type": "application/pdf",
+    "key": "archive/menus/8334480b741f267c5233c70f84068b67f195c6c0dc4e1053d18abc5eb39894e3.pdf"
+  },
   "8bf6f3581e15820a0edf63b87cc9be6b1a0ff410631cc38d818a070ec64b4956": {
     "url": "https://www.flamingoland.co.uk/wp-content/uploads/2009/07/The-Coach-House-Kids-Menu-1.pdf",
     "fetched": "2026-10-23",
@@ -342,12 +622,26 @@
     "type": "application/pdf",
     "key": "archive/menus/8bf6f3581e15820a0edf63b87cc9be6b1a0ff410631cc38d818a070ec64b4956.pdf"
   },
+  "8ca7054e15e3367603f4e168dae6a482f5b62561cd2d42d8e42008641a1083cc": {
+    "url": "https://link.assetfile.io/2TbnyEKOJbiPFoTO9aWXGJ/THORPE+PERK+Express+Menu+2023.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 252850,
+    "type": "application/pdf",
+    "key": "archive/menus/8ca7054e15e3367603f4e168dae6a482f5b62561cd2d42d8e42008641a1083cc.pdf"
+  },
   "8def0465cc4eb2f00ae9364e0a32c3e3a17f60a859e505090f5b4ad57df0cc9a": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1NR01_auberge-de-cendrillon.pdf",
     "fetched": "2026-10-23",
     "bytes": 521136,
     "type": "application/pdf",
     "key": "archive/menus/8def0465cc4eb2f00ae9364e0a32c3e3a17f60a859e505090f5b4ad57df0cc9a.pdf"
+  },
+  "8e3d07bf9273567dab4db4074f5ddca4d2b8c0cb9ade68185c69bf3b995b358d": {
+    "url": "https://menus.tenkites.com/paultonspark/daddypigsbigtummycafe",
+    "fetched": "2026-10-23",
+    "bytes": 522929,
+    "type": "multipart/related",
+    "key": "archive/menus/8e3d07bf9273567dab4db4074f5ddca4d2b8c0cb9ade68185c69bf3b995b358d.mhtml"
   },
   "9558a661acce347ceaa001f1ae944bd8059b452add2a628db795de065af5902a": {
     "url": "https://www.legoland.com/new-york/media/rlqc0vor/food-carts-2026-menu-2.pdf",
@@ -376,6 +670,20 @@
     "bytes": 1399101,
     "type": "application/pdf",
     "key": "archive/menus/9680ae2122c16726702ed8c9e06cecb615f6e36717d3188f8c4863ed75bcd746.pdf"
+  },
+  "96da8c3f09e4f7be8ba0180d384af30513392cc54a5c853dbf9edcc35f1ebf71": {
+    "url": "https://menus.tenkites.com/paultonspark/grandecentral",
+    "fetched": "2026-10-23",
+    "bytes": 872056,
+    "type": "image/png",
+    "key": "archive/menus/96da8c3f09e4f7be8ba0180d384af30513392cc54a5c853dbf9edcc35f1ebf71.png"
+  },
+  "977ab85de281640e5a05f146ee7482feefab7af7b26c15bd7297c5aae053d8fe": {
+    "url": "https://menus.tenkites.com/aramarkuk/splashlandingshotel02",
+    "fetched": "2026-10-23",
+    "bytes": 6164297,
+    "type": "multipart/related",
+    "key": "archive/menus/977ab85de281640e5a05f146ee7482feefab7af7b26c15bd7297c5aae053d8fe.mhtml"
   },
   "978081109b453788a1226e1e28f567b66d5fb424a96602e175397ac83e40831e": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1AR00_captain-jacks-restaurant-pirates.pdf",
@@ -426,6 +734,13 @@
     "type": "application/pdf",
     "key": "archive/menus/9b510d2824e1a9c4cd08ca0627a9073fc980762768baf673f0f0ab8890800ada.pdf"
   },
+  "9ba1924f99283d93ad95265efd4cb9bc4b30854aa4c907098b6e3a73b3ba4f01": {
+    "url": "https://menus.tenkites.com/aramarkuk/athotel02",
+    "fetched": "2026-10-23",
+    "bytes": 3233821,
+    "type": "application/json",
+    "key": "archive/menus/9ba1924f99283d93ad95265efd4cb9bc4b30854aa4c907098b6e3a73b3ba4f01.har"
+  },
   "a13596910d38f76b915bff702b426f9633ec7aa4ea7e362094d4639db07cdbe8": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2AR01_stark-factory.pdf",
     "fetched": "2026-10-23",
@@ -447,6 +762,13 @@
     "type": "application/pdf",
     "key": "archive/menus/a9158e37e358ae7eaccc4d1d01c2d7854ae5866175e39ab2cdfb400579640394.pdf"
   },
+  "a957497b7f7ecc5e3454f5d62e3591213e4470c89d765fb823c5ad3ed17eecfe": {
+    "url": "https://menus.tenkites.com/paultonspark/basecamp",
+    "fetched": "2026-10-23",
+    "bytes": 373026,
+    "type": "image/png",
+    "key": "archive/menus/a957497b7f7ecc5e3454f5d62e3591213e4470c89d765fb823c5ad3ed17eecfe.png"
+  },
   "aaaf44f6c0da9f83f88e03d75f302b14c0289b0e769d93dd43a59149975e0dbc": {
     "url": "https://www.flamingoland.co.uk/wp-content/uploads/2026/04/crumble-heaven-menu.pdf",
     "fetched": "2026-10-23",
@@ -467,6 +789,13 @@
     "bytes": 669785,
     "type": "application/pdf",
     "key": "archive/menus/ad43ba5cbb0c27e6997db509e1fc5d7a8a4a3d2b3a676763e5cbe6aec776fdc5.pdf"
+  },
+  "b07f73755766591e54c4c287de7c93cfd8dfd20a402dd6e1a80390c18058ce33": {
+    "url": "https://www.legoland.de/media/5gpdqnlt/legoland_stars-grill-house_speisekarte_2026.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 4214915,
+    "type": "application/pdf",
+    "key": "archive/menus/b07f73755766591e54c4c287de7c93cfd8dfd20a402dd6e1a80390c18058ce33.pdf"
   },
   "b1a044c266223df8430ff072f3fbafad11029a68f3d3fb5503593e5aadac282c": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2DR06_chez-marie.pdf",
@@ -510,12 +839,26 @@
     "type": "application/pdf",
     "key": "archive/menus/b83c93c5e5c929cf2f0cfbc36dcf78ff1fc6b304a006f9cdaca75bde23884276.pdf"
   },
+  "b970e4c285de52a0d71db52830dc7bc95489737904e98708e7871480f2e20d7f": {
+    "url": "https://www.thorpepark.com/media/0nci3zhn/vibes-food-menu-summer-2025-1.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 441056,
+    "type": "application/pdf",
+    "key": "archive/menus/b970e4c285de52a0d71db52830dc7bc95489737904e98708e7871480f2e20d7f.pdf"
+  },
   "bc51f66b6be2a3b309266626c605bf3e961b3d7867836a6d598b96535ea01d19": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR02_coffee-grinder.pdf",
     "fetched": "2026-10-23",
     "bytes": 558267,
     "type": "application/pdf",
     "key": "archive/menus/bc51f66b6be2a3b309266626c605bf3e961b3d7867836a6d598b96535ea01d19.pdf"
+  },
+  "bc87d92ad22a5693a3454cb83de2eb8fa9e0cfb030fae71f1b448194927e9ffc": {
+    "url": "https://menus.tenkites.com/paultonspark/coffeestop",
+    "fetched": "2026-10-23",
+    "bytes": 1932632,
+    "type": "application/json",
+    "key": "archive/menus/bc87d92ad22a5693a3454cb83de2eb8fa9e0cfb030fae71f1b448194927e9ffc.har"
   },
   "c443b7d42d90b1b1d2f98bb7b6de8537f78b87e8e73a4d53c4ed65e6f4206e11": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1RR04_silver-spur-steakhouse.pdf",
@@ -531,12 +874,26 @@
     "type": "application/pdf",
     "key": "archive/menus/c4f596d050f6887aca4f1de8a17b862b5b61caa3a24eb5759d1ede8babe776da.pdf"
   },
+  "c69d2267aaa674e1ba209be852e5878fd004bbf806ddf3370539c0daf0cf7cef": {
+    "url": "https://menus.tenkites.com/paultonspark/daddypigsbigtummycafe",
+    "fetched": "2026-10-23",
+    "bytes": 55892,
+    "type": "image/png",
+    "key": "archive/menus/c69d2267aaa674e1ba209be852e5878fd004bbf806ddf3370539c0daf0cf7cef.png"
+  },
   "c7688479bb5d2cfa6f47741c0ed53f78c87d4aa7753fb30e6c7dab0e265246f6": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2PR05_fan-tastic-food-truck.pdf",
     "fetched": "2026-10-23",
     "bytes": 1340679,
     "type": "application/pdf",
     "key": "archive/menus/c7688479bb5d2cfa6f47741c0ed53f78c87d4aa7753fb30e6c7dab0e265246f6.pdf"
+  },
+  "c9158615d8eff9b82b741b776b18a09227935cc8fc19465d44d8d9cb06ba73d9": {
+    "url": "https://menus.tenkites.com/paultonspark/beastiebites",
+    "fetched": "2026-10-23",
+    "bytes": 62382,
+    "type": "image/png",
+    "key": "archive/menus/c9158615d8eff9b82b741b776b18a09227935cc8fc19465d44d8d9cb06ba73d9.png"
   },
   "c95f27c683bb786006a47e049068d1d804d32955e67234f5db1aeb108eef4456": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2TR00_ice-cream-creations.pdf",
@@ -551,6 +908,34 @@
     "bytes": 901435,
     "type": "application/pdf",
     "key": "archive/menus/ca0dba5a2e526008ac32cdd8739a20e90d3d1c6439493f84541232b28f5095fe.pdf"
+  },
+  "cf603936d8cd06ea08a9ea3e598fd50e231acfae91dd9951faed7119821e2226": {
+    "url": "https://menus.tenkites.com/paultonspark/basecamp",
+    "fetched": "2026-10-23",
+    "bytes": 4040536,
+    "type": "multipart/related",
+    "key": "archive/menus/cf603936d8cd06ea08a9ea3e598fd50e231acfae91dd9951faed7119821e2226.mhtml"
+  },
+  "d2fad0891cd71541b20d92c8b852b802886fee53bc29fc43d16f990838cfc5e5": {
+    "url": "https://www.bigbluehotel.com/app/uploads/2026/09/BBHTDH-September-October-2026.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 31413,
+    "type": "application/pdf",
+    "key": "archive/menus/d2fad0891cd71541b20d92c8b852b802886fee53bc29fc43d16f990838cfc5e5.pdf"
+  },
+  "d330dafe4824300e282ab327f408434e72f6c49f3ccf846051f7fcfc0144a692": {
+    "url": "https://www.thorpepark.com/media/x1bfnx0a/bubble-tea-bar.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 103736,
+    "type": "application/pdf",
+    "key": "archive/menus/d330dafe4824300e282ab327f408434e72f6c49f3ccf846051f7fcfc0144a692.pdf"
+  },
+  "d3617053b802a71789984950b580369820f54766ce0db22d594e4d51ef342c4c": {
+    "url": "https://menus.tenkites.com/aramarkuk/enchantedvillage02",
+    "fetched": "2026-10-23",
+    "bytes": 1617616,
+    "type": "text/html",
+    "key": "archive/menus/d3617053b802a71789984950b580369820f54766ce0db22d594e4d51ef342c4c.html"
   },
   "d57f653db618a3f682545819d95442f46749bf4fdfd4ea6e55f09c41f248429b": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2DR00_the-regal-view-restaurant-and-lounge.pdf",
@@ -587,6 +972,20 @@
     "type": "application/pdf",
     "key": "archive/menus/d76dd3ed79b93e2bb3e5cba2d6dd300377758f4fca30acb918e18aa6acc76447.pdf"
   },
+  "d90fce2e82e10c8df9cccf3c515d8dccaa712400ff669e3c0e74e6274a3969ca": {
+    "url": "https://www.thorpepark.com/media/dc0pery5/veggie-box-menu.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 1279289,
+    "type": "application/pdf",
+    "key": "archive/menus/d90fce2e82e10c8df9cccf3c515d8dccaa712400ff669e3c0e74e6274a3969ca.pdf"
+  },
+  "d97fa5a9056f7e9801e7b1686cf8ad2bcd68397c1fd94d914c45d717ad467624": {
+    "url": "https://menus.tenkites.com/aramarkuk/enchantedvillage02",
+    "fetched": "2026-10-23",
+    "bytes": 2345053,
+    "type": "multipart/related",
+    "key": "archive/menus/d97fa5a9056f7e9801e7b1686cf8ad2bcd68397c1fd94d914c45d717ad467624.mhtml"
+  },
   "da533875bf41724a369820023c5da2fe188a860042f39ac739b77898aa7e7120": {
     "url": "https://www.legoland.com/florida/media/acwpaar5/the_grove_menu.pdf",
     "fetched": "2026-10-23",
@@ -615,6 +1014,13 @@
     "type": "application/pdf",
     "key": "archive/menus/dd05fde52f8bdf77e179f77f2eb09357c1332350d90693becdbe8c96c3a42ce2.pdf"
   },
+  "dd92e56c141713cdbe7cdddf511090de8b67a03a1ca48030e82ca49d3e54d2a9": {
+    "url": "https://menus.tenkites.com/aramarkuk/athotel02",
+    "fetched": "2026-10-23",
+    "bytes": 2268454,
+    "type": "text/html",
+    "key": "archive/menus/dd92e56c141713cdbe7cdddf511090de8b67a03a1ca48030e82ca49d3e54d2a9.html"
+  },
   "de0f13db6b3f72d2b1b804590a7624bb1040b8f57d211bcb4be5c1ab55f6a494": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR12_character-dining-at-plaza-gardens.pdf",
     "fetched": "2026-10-23",
@@ -629,12 +1035,40 @@
     "type": "application/pdf",
     "key": "archive/menus/e099a942892a3e916ae73c0094093a49b0d50f5b45d0c2bc800aa772fba8015d.pdf"
   },
+  "e17dd2fda8ee1e861981111eb8b2b1028354a50f2a4eec50b6000ab0e07474f6": {
+    "url": "https://menus.tenkites.com/paultonspark/beastiebites",
+    "fetched": "2026-10-23",
+    "bytes": 2019291,
+    "type": "application/json",
+    "key": "archive/menus/e17dd2fda8ee1e861981111eb8b2b1028354a50f2a4eec50b6000ab0e07474f6.har"
+  },
   "e282f509489048e3a7572a887825538573ed3f648fe937e69e007e2715325ba4": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P2AR03_super-diner.pdf",
     "fetched": "2026-10-23",
     "bytes": 1096758,
     "type": "application/pdf",
     "key": "archive/menus/e282f509489048e3a7572a887825538573ed3f648fe937e69e007e2715325ba4.pdf"
+  },
+  "e32880011a371cd21fc0257215206d84ba4fd86f76169b67e1a3b4ac0723d84b": {
+    "url": "https://menus.tenkites.com/paultonspark/beastiebites",
+    "fetched": "2026-10-23",
+    "bytes": 318807,
+    "type": "text/html",
+    "key": "archive/menus/e32880011a371cd21fc0257215206d84ba4fd86f76169b67e1a3b4ac0723d84b.html"
+  },
+  "e525c575031a8655149663adf79cde8b7fcaf457866fce8022d85b6604367a85": {
+    "url": "https://www.legoland.kr/media/ngreucl1/%EB%B8%8C%EB%A6%AD%EC%8A%A4%ED%8A%B8%EB%A6%BF%EC%B9%B4%ED%8E%98%EB%A9%94%EB%89%B4.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 50115887,
+    "type": "application/pdf",
+    "key": "archive/menus/e525c575031a8655149663adf79cde8b7fcaf457866fce8022d85b6604367a85.pdf"
+  },
+  "e6a1fd0cfabd6f09eb7a58d1272b91c55a504aaaa577d8684555db9c503e5641": {
+    "url": "https://menus.tenkites.com/paultonspark/coffeestop",
+    "fetched": "2026-10-23",
+    "bytes": 26502,
+    "type": "image/png",
+    "key": "archive/menus/e6a1fd0cfabd6f09eb7a58d1272b91c55a504aaaa577d8684555db9c503e5641.png"
   },
   "e79da718fff0b163a8207260be1072cb1b04267f64d01dd443384af69b53f6c4": {
     "url": "https://media.disneylandparis.com/d4th/en-gb/images/P1MR01_caseys-corner.pdf",
@@ -650,6 +1084,13 @@
     "type": "application/pdf",
     "key": "archive/menus/e87431f8b817faa3a8c1521b9d56c033c2f2942fa7ad717d345188264387281e.pdf"
   },
+  "e959d3979767d897cde3fee99ffd81c8d19bf017a5d70a5adfbf8cd2b239318d": {
+    "url": "https://menus.tenkites.com/aramarkuk/splashlandingshotel02",
+    "fetched": "2026-10-23",
+    "bytes": 3635785,
+    "type": "text/html",
+    "key": "archive/menus/e959d3979767d897cde3fee99ffd81c8d19bf017a5d70a5adfbf8cd2b239318d.html"
+  },
   "eaee8b1c681c1ae8dfc85dea62aadedf440e34f7a089a8c10b77dab3c88c5b48": {
     "url": "https://www.legoland.com/new-york/media/hauae4iy/royal-feast-2026-menu.pdf",
     "fetched": "2026-10-23",
@@ -664,12 +1105,40 @@
     "type": "application/pdf",
     "key": "archive/menus/ec17eca7d9880a9b999aedfa5ffa06b45cdfa6b3759f932ae50c1c4704663b64.pdf"
   },
+  "ecfa4bbd56f457ca7112a25c0f9a9c855ab47db91ae31e62cea5e32daf977354": {
+    "url": "https://www.chessington.com/media/h4adafh5/smokehouse-a4-menus-final-cropped-reduced-file-size.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 5986378,
+    "type": "application/pdf",
+    "key": "archive/menus/ecfa4bbd56f457ca7112a25c0f9a9c855ab47db91ae31e62cea5e32daf977354.pdf"
+  },
   "ed9e9f2b5cf9660049d17d46cc41a820b112958ff627c469f492d379ceab76eb": {
     "url": "https://www.flamingoland.co.uk/wp-content/uploads/2009/07/The-Coach-House-Menu.pdf",
     "fetched": "2026-10-23",
     "bytes": 19309349,
     "type": "application/pdf",
     "key": "archive/menus/ed9e9f2b5cf9660049d17d46cc41a820b112958ff627c469f492d379ceab76eb.pdf"
+  },
+  "edff629cdae3aaac475cbcb9f6ff7190909deee433266a7a13d5d6ae257b2dfb": {
+    "url": "https://www.boulevardhotel.co.uk/app/uploads/2026/07/Small-PortionsBLVD0726.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 117848,
+    "type": "application/pdf",
+    "key": "archive/menus/edff629cdae3aaac475cbcb9f6ff7190909deee433266a7a13d5d6ae257b2dfb.pdf"
+  },
+  "ef00085feda07df1ab4a11d66ec0eddb108714ed7ac3898d441b632ff3d2c319": {
+    "url": "https://www.bigbluehotel.com/app/uploads/2026/04/BBHADM0426.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 93072,
+    "type": "application/pdf",
+    "key": "archive/menus/ef00085feda07df1ab4a11d66ec0eddb108714ed7ac3898d441b632ff3d2c319.pdf"
+  },
+  "efbbef8da6b3bea283d7eb4635b8f08f4376c7bcba33bb9e37d7fba8bccccf1e": {
+    "url": "https://www.bigbluehotel.com/app/uploads/2026/06/Dessert-Menu-November-2024.pdf",
+    "fetched": "2026-10-23",
+    "bytes": 261753,
+    "type": "application/pdf",
+    "key": "archive/menus/efbbef8da6b3bea283d7eb4635b8f08f4376c7bcba33bb9e37d7fba8bccccf1e.pdf"
   },
   "f0c19ae619e4b3fcdaed27e09ffc3ac4a0bf6622c24e95c3d5e323c134d14545": {
     "url": "https://www.legoland.com/new-york/media/4x2lr2ps/legoland-coffee-company-2026-menu.pdf",
@@ -685,131 +1154,12 @@
     "type": "application/pdf",
     "key": "archive/menus/f377b8eacdee2514fac76d2223bddb54ff5faa273676716443b0a8df179fce62.pdf"
   },
-  "fece778f70fb6c084ee8c1c1d2f7551645021a4397fb2a61d3d815adc0590293": {
-    "url": "https://www.legoland.com/florida/media/hzljodsd/skyline-lounge_fl_dinner-menu.pdf",
+  "f6e4f1ad9ee84b2b380c7ef944ec203b97273bb7e41670bc40d36644cc7a2ecb": {
+    "url": "https://menus.tenkites.com/paultonspark/cascades",
     "fetched": "2026-10-23",
-    "bytes": 1037200,
-    "type": "application/pdf",
-    "key": "archive/menus/fece778f70fb6c084ee8c1c1d2f7551645021a4397fb2a61d3d815adc0590293.pdf"
-  },
-  "d90fce2e82e10c8df9cccf3c515d8dccaa712400ff669e3c0e74e6274a3969ca": {
-    "url": "https://www.thorpepark.com/media/dc0pery5/veggie-box-menu.pdf",
-    "fetched": "2026-10-23",
-    "bytes": 1279289,
-    "type": "application/pdf",
-    "key": "archive/menus/d90fce2e82e10c8df9cccf3c515d8dccaa712400ff669e3c0e74e6274a3969ca.pdf"
-  },
-  "360c0eb55f9a8aed8a5d5a0d8db18320ab018c7a12361b5d03b07f1cc467d98f": {
-    "url": "https://www.thorpepark.com/media/1bxe5nf4/spice-kitchen-menu.pdf",
-    "fetched": "2026-10-23",
-    "bytes": 758162,
-    "type": "application/pdf",
-    "key": "archive/menus/360c0eb55f9a8aed8a5d5a0d8db18320ab018c7a12361b5d03b07f1cc467d98f.pdf"
-  },
-  "8ca7054e15e3367603f4e168dae6a482f5b62561cd2d42d8e42008641a1083cc": {
-    "url": "https://link.assetfile.io/2TbnyEKOJbiPFoTO9aWXGJ/THORPE+PERK+Express+Menu+2023.pdf",
-    "fetched": "2026-10-23",
-    "bytes": 252850,
-    "type": "application/pdf",
-    "key": "archive/menus/8ca7054e15e3367603f4e168dae6a482f5b62561cd2d42d8e42008641a1083cc.pdf"
-  },
-  "5b82641ec772afaadb625ec5fa8a2d6478696d9dd93e31a1fc2d4dff2b03c691": {
-    "url": "https://www.thorpepark.com/media/tyhizxaa/tacotaria-menu.pdf",
-    "fetched": "2026-10-23",
-    "bytes": 464640,
-    "type": "application/pdf",
-    "key": "archive/menus/5b82641ec772afaadb625ec5fa8a2d6478696d9dd93e31a1fc2d4dff2b03c691.pdf"
-  },
-  "0c32bba60eee12d5f99a1672f5c2a26f5e75523421286c9f42831571f3d6fa38": {
-    "url": "https://www.thorpepark.com/media/xemlla0x/colossus-hotdogs-menu.pdf",
-    "fetched": "2026-10-23",
-    "bytes": 419013,
-    "type": "application/pdf",
-    "key": "archive/menus/0c32bba60eee12d5f99a1672f5c2a26f5e75523421286c9f42831571f3d6fa38.pdf"
-  },
-  "0bb12649e6faeff3277268cd05cc6a79f5752138a125dcbda62ca47445f62042": {
-    "url": "https://www.thorpepark.com/media/bzgny0uo/vibes-kids-menu-2025-april.pdf",
-    "fetched": "2026-10-23",
-    "bytes": 1237699,
-    "type": "application/pdf",
-    "key": "archive/menus/0bb12649e6faeff3277268cd05cc6a79f5752138a125dcbda62ca47445f62042.pdf"
-  },
-  "ecfa4bbd56f457ca7112a25c0f9a9c855ab47db91ae31e62cea5e32daf977354": {
-    "url": "https://www.chessington.com/media/h4adafh5/smokehouse-a4-menus-final-cropped-reduced-file-size.pdf",
-    "fetched": "2026-10-23",
-    "bytes": 5986378,
-    "type": "application/pdf",
-    "key": "archive/menus/ecfa4bbd56f457ca7112a25c0f9a9c855ab47db91ae31e62cea5e32daf977354.pdf"
-  },
-  "394adff3cadd88772fe67093adbfbb3220891d45ab2d410198ab3bebc0892700": {
-    "url": "https://www.thorpepark.com/media/ej1japvv/cape-cod-menu.pdf",
-    "fetched": "2026-10-23",
-    "bytes": 71404,
-    "type": "application/pdf",
-    "key": "archive/menus/394adff3cadd88772fe67093adbfbb3220891d45ab2d410198ab3bebc0892700.pdf"
-  },
-  "3be7ec68da6e287124e9850d70f7ecaaa64b88a30099448b2199916f80032da5": {
-    "url": "https://www.legoland.co.uk/media/jq5psrbr/llw-apr-2025-bricks-breakfast-menu.pdf",
-    "fetched": "2026-10-23",
-    "bytes": 1231945,
-    "type": "application/pdf",
-    "key": "archive/menus/3be7ec68da6e287124e9850d70f7ecaaa64b88a30099448b2199916f80032da5.pdf"
-  },
-  "b970e4c285de52a0d71db52830dc7bc95489737904e98708e7871480f2e20d7f": {
-    "url": "https://www.thorpepark.com/media/0nci3zhn/vibes-food-menu-summer-2025-1.pdf",
-    "fetched": "2026-10-23",
-    "bytes": 441056,
-    "type": "application/pdf",
-    "key": "archive/menus/b970e4c285de52a0d71db52830dc7bc95489737904e98708e7871480f2e20d7f.pdf"
-  },
-  "d330dafe4824300e282ab327f408434e72f6c49f3ccf846051f7fcfc0144a692": {
-    "url": "https://www.thorpepark.com/media/x1bfnx0a/bubble-tea-bar.pdf",
-    "fetched": "2026-10-23",
-    "bytes": 103736,
-    "type": "application/pdf",
-    "key": "archive/menus/d330dafe4824300e282ab327f408434e72f6c49f3ccf846051f7fcfc0144a692.pdf"
-  },
-  "4cec6c1551b50b1c57e50df14e807c9d8390fb6be282e35fc34edd48923bea91": {
-    "url": "https://www.bigbluehotel.com/app/uploads/2026/08/Big-Blue-Wine-0826.pdf",
-    "fetched": "2026-10-23",
-    "bytes": 85299,
-    "type": "application/pdf",
-    "key": "archive/menus/4cec6c1551b50b1c57e50df14e807c9d8390fb6be282e35fc34edd48923bea91.pdf"
-  },
-  "efbbef8da6b3bea283d7eb4635b8f08f4376c7bcba33bb9e37d7fba8bccccf1e": {
-    "url": "https://www.bigbluehotel.com/app/uploads/2026/06/Dessert-Menu-November-2024.pdf",
-    "fetched": "2026-10-23",
-    "bytes": 261753,
-    "type": "application/pdf",
-    "key": "archive/menus/efbbef8da6b3bea283d7eb4635b8f08f4376c7bcba33bb9e37d7fba8bccccf1e.pdf"
-  },
-  "447be2cd307827745fe888408e70977a30bbbfe7d0436e72c788d8d9858d1857": {
-    "url": "https://www.boulevardhotel.co.uk/app/uploads/2026/07/BLVDBAR0726.pdf",
-    "fetched": "2026-10-23",
-    "bytes": 300232,
-    "type": "application/pdf",
-    "key": "archive/menus/447be2cd307827745fe888408e70977a30bbbfe7d0436e72c788d8d9858d1857.pdf"
-  },
-  "8334480b741f267c5233c70f84068b67f195c6c0dc4e1053d18abc5eb39894e3": {
-    "url": "https://www.boulevardhotel.co.uk/app/uploads/2026/10/BLVDALC0826.pdf",
-    "fetched": "2026-10-23",
-    "bytes": 73880,
-    "type": "application/pdf",
-    "key": "archive/menus/8334480b741f267c5233c70f84068b67f195c6c0dc4e1053d18abc5eb39894e3.pdf"
-  },
-  "215478faa5f9f8a2d2f2c324879a04f8f9b910e8634ce4c313165226b4f43a4f": {
-    "url": "https://www.boulevardhotel.co.uk/app/uploads/2026/08/BLVDWINE0826.pdf",
-    "fetched": "2026-10-23",
-    "bytes": 533516,
-    "type": "application/pdf",
-    "key": "archive/menus/215478faa5f9f8a2d2f2c324879a04f8f9b910e8634ce4c313165226b4f43a4f.pdf"
-  },
-  "7bc2df063cb9ef361714701fc9900eb200d604a5b27d69a332b24adf84b4ae91": {
-    "url": "https://www.boulevardhotel.co.uk/app/uploads/2026/09/BLVDTDH0826.pdf",
-    "fetched": "2026-10-23",
-    "bytes": 213810,
-    "type": "application/pdf",
-    "key": "archive/menus/7bc2df063cb9ef361714701fc9900eb200d604a5b27d69a332b24adf84b4ae91.pdf"
+    "bytes": 4477276,
+    "type": "application/json",
+    "key": "archive/menus/f6e4f1ad9ee84b2b380c7ef944ec203b97273bb7e41670bc40d36644cc7a2ecb.har"
   },
   "fe0398e233e19d6de68885fd15159b10dde70687da5de73e35bb64b1cbe960a2": {
     "url": "https://www.bigbluehotel.com/app/uploads/2026/06/Light-Lunch-Menu-November-2024.pdf",
@@ -818,88 +1168,18 @@
     "type": "application/pdf",
     "key": "archive/menus/fe0398e233e19d6de68885fd15159b10dde70687da5de73e35bb64b1cbe960a2.pdf"
   },
-  "5bd3f0ca05e195a1b5ad2bf0cd86f4decd737e321d1afe3f1c1ced77ac9c970d": {
-    "url": "https://www.boulevardhotel.co.uk/app/uploads/2025/10/Dessert-2025.pdf",
+  "fece778f70fb6c084ee8c1c1d2f7551645021a4397fb2a61d3d815adc0590293": {
+    "url": "https://www.legoland.com/florida/media/hzljodsd/skyline-lounge_fl_dinner-menu.pdf",
     "fetched": "2026-10-23",
-    "bytes": 84246,
+    "bytes": 1037200,
     "type": "application/pdf",
-    "key": "archive/menus/5bd3f0ca05e195a1b5ad2bf0cd86f4decd737e321d1afe3f1c1ced77ac9c970d.pdf"
+    "key": "archive/menus/fece778f70fb6c084ee8c1c1d2f7551645021a4397fb2a61d3d815adc0590293.pdf"
   },
-  "01184f6896602d3c1f43e9ea8253ea075acd0e75e4f13cfb59e56491be1734a5": {
-    "url": "https://www.bigbluehotel.com/app/uploads/2026/04/BBHBARFOOD0426.pdf",
+  "ff9e0a8b88137fea95051877a9b08465a70d91b7cccd26e318e31f59295a38fe": {
+    "url": "https://menus.tenkites.com/paultonspark/cascades",
     "fetched": "2026-10-23",
-    "bytes": 84596,
-    "type": "application/pdf",
-    "key": "archive/menus/01184f6896602d3c1f43e9ea8253ea075acd0e75e4f13cfb59e56491be1734a5.pdf"
-  },
-  "3bf042307f2813243b91187394e2b62662442cb53d511c0044c0564eee6d9375": {
-    "url": "https://www.bigbluehotel.com/app/uploads/2026/06/Cocktail-Menu-2024.pdf",
-    "fetched": "2026-10-23",
-    "bytes": 267393,
-    "type": "application/pdf",
-    "key": "archive/menus/3bf042307f2813243b91187394e2b62662442cb53d511c0044c0564eee6d9375.pdf"
-  },
-  "1a9939ed726e99ac2c770910a6c95f9315eb328c714220c5e42f0b6f5c25807b": {
-    "url": "https://www.bigbluehotel.com/app/uploads/2026/08/BBHALC0826.pdf",
-    "fetched": "2026-10-23",
-    "bytes": 67217,
-    "type": "application/pdf",
-    "key": "archive/menus/1a9939ed726e99ac2c770910a6c95f9315eb328c714220c5e42f0b6f5c25807b.pdf"
-  },
-  "7bf02eb12ce91361319ef04e9545029286ef00424ab4d99e42a5de7fbfe693d1": {
-    "url": "https://www.bigbluehotel.com/app/uploads/2026/06/Kids-Menu-A4-Version-new.pdf",
-    "fetched": "2026-10-23",
-    "bytes": 2082409,
-    "type": "application/pdf",
-    "key": "archive/menus/7bf02eb12ce91361319ef04e9545029286ef00424ab4d99e42a5de7fbfe693d1.pdf"
-  },
-  "ef00085feda07df1ab4a11d66ec0eddb108714ed7ac3898d441b632ff3d2c319": {
-    "url": "https://www.bigbluehotel.com/app/uploads/2026/04/BBHADM0426.pdf",
-    "fetched": "2026-10-23",
-    "bytes": 93072,
-    "type": "application/pdf",
-    "key": "archive/menus/ef00085feda07df1ab4a11d66ec0eddb108714ed7ac3898d441b632ff3d2c319.pdf"
-  },
-  "45a04fef77266665fbe228829275fb19fa341a993d81d46bfbe07fcdacbaf5e8": {
-    "url": "https://www.legoland.kr/media/zlkhj3i4/%EC%8A%A4%EC%B9%B4%EC%9D%B4%EB%9D%BC%EC%9A%B4%EC%A7%80-%EB%A9%94%EB%89%B4_%EC%88%98%EC%A0%95.pdf",
-    "fetched": "2026-10-23",
-    "bytes": 256942,
-    "type": "application/pdf",
-    "key": "archive/menus/45a04fef77266665fbe228829275fb19fa341a993d81d46bfbe07fcdacbaf5e8.pdf"
-  },
-  "e525c575031a8655149663adf79cde8b7fcaf457866fce8022d85b6604367a85": {
-    "url": "https://www.legoland.kr/media/ngreucl1/%EB%B8%8C%EB%A6%AD%EC%8A%A4%ED%8A%B8%EB%A6%BF%EC%B9%B4%ED%8E%98%EB%A9%94%EB%89%B4.pdf",
-    "fetched": "2026-10-23",
-    "bytes": 50115887,
-    "type": "application/pdf",
-    "key": "archive/menus/e525c575031a8655149663adf79cde8b7fcaf457866fce8022d85b6604367a85.pdf"
-  },
-  "7066171cd70a438deb3766b66844bdc9fc11f8b9ff991cb56a66bc3081b8176a": {
-    "url": "https://www.boulevardhotel.co.uk/app/uploads/2023/03/Cocktail-menu-2023.pdf",
-    "fetched": "2026-10-23",
-    "bytes": 1005944,
-    "type": "application/pdf",
-    "key": "archive/menus/7066171cd70a438deb3766b66844bdc9fc11f8b9ff991cb56a66bc3081b8176a.pdf"
-  },
-  "d2fad0891cd71541b20d92c8b852b802886fee53bc29fc43d16f990838cfc5e5": {
-    "url": "https://www.bigbluehotel.com/app/uploads/2026/09/BBHTDH-September-October-2026.pdf",
-    "fetched": "2026-10-23",
-    "bytes": 31413,
-    "type": "application/pdf",
-    "key": "archive/menus/d2fad0891cd71541b20d92c8b852b802886fee53bc29fc43d16f990838cfc5e5.pdf"
-  },
-  "b07f73755766591e54c4c287de7c93cfd8dfd20a402dd6e1a80390c18058ce33": {
-    "url": "https://www.legoland.de/media/5gpdqnlt/legoland_stars-grill-house_speisekarte_2026.pdf",
-    "fetched": "2026-10-23",
-    "bytes": 4214915,
-    "type": "application/pdf",
-    "key": "archive/menus/b07f73755766591e54c4c287de7c93cfd8dfd20a402dd6e1a80390c18058ce33.pdf"
-  },
-  "edff629cdae3aaac475cbcb9f6ff7190909deee433266a7a13d5d6ae257b2dfb": {
-    "url": "https://www.boulevardhotel.co.uk/app/uploads/2026/07/Small-PortionsBLVD0726.pdf",
-    "fetched": "2026-10-23",
-    "bytes": 117848,
-    "type": "application/pdf",
-    "key": "archive/menus/edff629cdae3aaac475cbcb9f6ff7190909deee433266a7a13d5d6ae257b2dfb.pdf"
+    "bytes": 222740,
+    "type": "image/png",
+    "key": "archive/menus/ff9e0a8b88137fea95051877a9b08465a70d91b7cccd26e318e31f59295a38fe.png"
   }
 }

@@ -4,7 +4,15 @@
   "source": {
     "name": "Alton Towers Resort",
     "official": true,
-    "url": "https://menus.tenkites.com/aramarkuk/athotel02"
+    "url": "https://menus.tenkites.com/aramarkuk/athotel02",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "5a86e8c7f7abdae4dcd9ff266a77c8b944aec998eda6df4c6917377f074aaa85",
+      "html": "dd92e56c141713cdbe7cdddf511090de8b67a03a1ca48030e82ca49d3e54d2a9",
+      "mhtml": "04469fc949a5e4a76607d0e65f627cff1e22ae11e6f2890fd787a929a6aab7de",
+      "har": "9ba1924f99283d93ad95265efd4cb9bc4b30854aa4c907098b6e3a73b3ba4f01"
+    },
+    "wayback": "https://web.archive.org/web/20261023023038/https://menus.tenkites.com/aramarkuk/athotel02"
   },
   "sections": [
     {

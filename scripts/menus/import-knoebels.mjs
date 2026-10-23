@@ -21,6 +21,7 @@
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
+import { archivePages } from "./archive-pages.mjs";
 import { DATE_DIR, MENUS, parkDir, readJson, slug, venues, writeJson } from "./lib.mjs";
 
 const UA = "merlin-capacity/0.1 (+https://themeparks.frumple.co.uk; park menu archive, contact via site)";
@@ -143,3 +144,6 @@ for (const v of venues(parkDir("knoebels"))) {
   console.log(`+ ${path.relative(MENUS, dir)}/menu.json  (${items} dishes, ${sections.length} sections)`);
 }
 console.log(`knoebels: ${written} written, ${unchanged} unchanged, ${empty} with nothing published`);
+
+// Snapshot the pages just read and ask the public archives for copies.
+await archivePages();

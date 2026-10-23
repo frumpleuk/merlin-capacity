@@ -4,7 +4,15 @@
   "source": {
     "name": "Paultons Park",
     "official": true,
-    "url": "https://menus.tenkites.com/paultonspark/beastiebites"
+    "url": "https://menus.tenkites.com/paultonspark/beastiebites",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "c9158615d8eff9b82b741b776b18a09227935cc8fc19465d44d8d9cb06ba73d9",
+      "html": "e32880011a371cd21fc0257215206d84ba4fd86f76169b67e1a3b4ac0723d84b",
+      "mhtml": "139a5f4c9a54ac5c9bcdec111cde87ef45de02ad6c02f59357fc2a42e27d0a5e",
+      "har": "e17dd2fda8ee1e861981111eb8b2b1028354a50f2a4eec50b6000ab0e07474f6"
+    },
+    "wayback": "https://web.archive.org/web/20261023023516/https://menus.tenkites.com/paultonspark/beastiebites"
   },
   "sections": [
     {

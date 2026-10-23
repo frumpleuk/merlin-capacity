@@ -4,7 +4,15 @@
   "source": {
     "name": "Paultons Park",
     "official": true,
-    "url": "https://menus.tenkites.com/paultonspark/therailroaddiner"
+    "url": "https://menus.tenkites.com/paultonspark/therailroaddiner",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "2b1d255fe3f47db5f225ff8b74355b316de8a225f1022df59416fd18a7d04ea9",
+      "html": "3a227336926c089c82bf93d33841874261aa3c6cbd199bf931099e4d57200272",
+      "mhtml": "1a5808a51a39e71be8e6e1018d92e8140e933023d62cbe8c44f2322c0bb33db7",
+      "har": "1f8731e2b3a0ef8cb59a17ff29f3d3aab38f483d48832019379d3a9d1b920b75"
+    },
+    "wayback": "https://web.archive.org/web/20261023023813/https://menus.tenkites.com/paultonspark/therailroaddiner"
   },
   "sections": [
     {

@@ -4,7 +4,15 @@
   "source": {
     "name": "Paultons Park",
     "official": true,
-    "url": "https://menus.tenkites.com/paultonspark/coffeestop"
+    "url": "https://menus.tenkites.com/paultonspark/coffeestop",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "e6a1fd0cfabd6f09eb7a58d1272b91c55a504aaaa577d8684555db9c503e5641",
+      "html": "49b35d146ef39e078966afa37e8abec7f3ee3e751cb3e4a83a8771051076199c",
+      "mhtml": "329680b2723e35cd6857a7776c7ae72a9d97cec9ee002175b917a93323ddbacf",
+      "har": "bc87d92ad22a5693a3454cb83de2eb8fa9e0cfb030fae71f1b448194927e9ffc"
+    },
+    "wayback": "https://web.archive.org/web/20261023023602/https://menus.tenkites.com/paultonspark/coffeestop"
   },
   "sections": [
     {

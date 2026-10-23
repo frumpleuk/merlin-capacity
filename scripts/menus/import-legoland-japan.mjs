@@ -18,6 +18,7 @@
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
+import { archivePages } from "./archive-pages.mjs";
 import { DATE_DIR, MENUS, parkDir, readJson, slug, venues, writeJson } from "./lib.mjs";
 
 const UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0 Safari/537.36";
@@ -159,3 +160,6 @@ for (const v of venues(parkDir("legoland_japan"))) {
   console.log(`+ ${path.relative(MENUS, dir)}/menu.json  (${items} dishes)`);
 }
 console.log(`legoland_japan: ${written} written, ${unchanged} unchanged, ${empty} with nothing published`);
+
+// Snapshot the pages just read and ask the public archives for copies.
+await archivePages();

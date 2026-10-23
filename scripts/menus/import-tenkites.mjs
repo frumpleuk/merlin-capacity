@@ -19,6 +19,7 @@
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
+import { archivePages } from "./archive-pages.mjs";
 import { ALL_PARK_DIRS, DATE_DIR, MENUS, parkDir, readJson, slug, venues, writeJson } from "./lib.mjs";
 
 const HOST = "menus.tenkites.com";
@@ -190,7 +191,8 @@ for (const key of Object.keys(ALL_PARK_DIRS)) {
     const url = await resolve(v.poi.displayMenuUrl ?? v.poi.menuUrl ?? "");
     if (!url) continue;
     const menu = v.poi.tenkitesMenu ?? null;
-    const sections = parseMenu(await page(menu ? await named(url, menu) : url));
+    const shown = menu ? await named(url, menu) : url;
+    const sections = parseMenu(await page(shown));
     const items = sections.reduce((n, s) => n + s.items.length, 0);
     if (!items) {
       // A live URL with nothing on it: the outlet is between menus (the park
@@ -216,7 +218,8 @@ for (const key of Object.keys(ALL_PARK_DIRS)) {
       date: TODAY,
       // The park lists the dishes and their calories but no prices.
       unpriced: true,
-      source: { name: PARK_NAMES[key], official: true, url, ...(menu ? { menu } : {}) },
+      // `page` is the board with this venue's menu open, for archive-pages.mjs.
+      source: { name: PARK_NAMES[key], official: true, url, ...(menu ? { menu, page: shown } : {}) },
       sections,
     });
     written++;
@@ -224,3 +227,6 @@ for (const key of Object.keys(ALL_PARK_DIRS)) {
   }
   console.log(`${key}: ${written} written, ${unchanged} unchanged, ${empty} with nothing published`);
 }
+
+// Snapshot the pages just read and ask the public archives for copies.
+await archivePages();

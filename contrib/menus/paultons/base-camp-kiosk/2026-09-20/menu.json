@@ -4,7 +4,15 @@
   "source": {
     "name": "Paultons Park",
     "official": true,
-    "url": "https://menus.tenkites.com/paultonspark/basecamp"
+    "url": "https://menus.tenkites.com/paultonspark/basecamp",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "a957497b7f7ecc5e3454f5d62e3591213e4470c89d765fb823c5ad3ed17eecfe",
+      "html": "213473ad707a5f95eda8370d6e173dc1140b66e38454886c120eb819a7c3e643",
+      "mhtml": "cf603936d8cd06ea08a9ea3e598fd50e231acfae91dd9951faed7119821e2226",
+      "har": "5d3a1e85cf5897d109d624224dd98e65579390d6f2c0f26137e4fd61776bd8d0"
+    },
+    "wayback": "https://web.archive.org/web/20261023023334/https://menus.tenkites.com/paultonspark/basecamp"
   },
   "sections": [
     {

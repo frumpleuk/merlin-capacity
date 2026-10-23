@@ -4,7 +4,15 @@
   "source": {
     "name": "Paultons Park",
     "official": true,
-    "url": "https://menus.tenkites.com/paultonspark/cascades"
+    "url": "https://menus.tenkites.com/paultonspark/cascades",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "ff9e0a8b88137fea95051877a9b08465a70d91b7cccd26e318e31f59295a38fe",
+      "html": "22843f3ea7c97bba7fcc8a55d22d5dcac692f0a7b548fb26bffc41e1bd359656",
+      "mhtml": "77e99d3a351fe8f980f0db26f3584820df8ad0466c5ed6fe5127359b9db38a5c",
+      "har": "f6e4f1ad9ee84b2b380c7ef944ec203b97273bb7e41670bc40d36644cc7a2ecb"
+    },
+    "wayback": "https://web.archive.org/web/20261023023729/https://menus.tenkites.com/paultonspark/cascades"
   },
   "sections": [
     {

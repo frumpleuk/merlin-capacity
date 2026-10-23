@@ -4,7 +4,15 @@
   "source": {
     "name": "Paultons Park",
     "official": true,
-    "url": "https://menus.tenkites.com/paultonspark/grandecentral"
+    "url": "https://menus.tenkites.com/paultonspark/grandecentral",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "96da8c3f09e4f7be8ba0180d384af30513392cc54a5c853dbf9edcc35f1ebf71",
+      "html": "0ff071f02fd31d58dbc713e5a2051c495517d148901a3365192bb2036006ed19",
+      "mhtml": "3358ad6dc550fb8d448ab94f5c5b8a554582b4cbd4fdc2cb15b9be45184f94ed",
+      "har": "4d38cee1099d9d5bea46f0cc8ffbe5fcd845787aeabf4b14b00be10658cae048"
+    },
+    "wayback": "https://web.archive.org/web/20261023023859/https://menus.tenkites.com/paultonspark/grandecentral"
   },
   "sections": [
     {

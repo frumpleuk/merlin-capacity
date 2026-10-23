@@ -4,7 +4,15 @@
   "source": {
     "name": "Paultons Park",
     "official": true,
-    "url": "https://menus.tenkites.com/paultonspark/daddypigsbigtummycafe"
+    "url": "https://menus.tenkites.com/paultonspark/daddypigsbigtummycafe",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "c69d2267aaa674e1ba209be852e5878fd004bbf806ddf3370539c0daf0cf7cef",
+      "html": "21fcb72ebea42a3148940f81b7ddfbf9f23abef2cfedecdf1963d19d209e120e",
+      "mhtml": "8e3d07bf9273567dab4db4074f5ddca4d2b8c0cb9ade68185c69bf3b995b358d",
+      "har": "52fdcd5fdbd033fcb913f8b105726a2e62e443b20e81683f2ad5e9a39ee4b614"
+    },
+    "wayback": "https://web.archive.org/web/20261023023645/https://menus.tenkites.com/paultonspark/daddypigsbigtummycafe"
   },
   "sections": [
     {

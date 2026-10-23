@@ -17,6 +17,7 @@
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
+import { archivePages } from "./archive-pages.mjs";
 import { DATE_DIR, MENUS, parkDir, readJson, slug, venues, writeJson } from "./lib.mjs";
 
 const PARK = "flamingoland";
@@ -206,3 +207,6 @@ for (const { v, url, sections } of byVenue.values()) {
   console.log(`+ ${path.relative(MENUS, dir)}/menu.json  (${items} dishes, ${sections.length} sections)`);
 }
 console.log(`${PARK}: ${written} written, ${unchanged} unchanged`);
+
+// Snapshot the pages just read and ask the public archives for copies.
+await archivePages();

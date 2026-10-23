@@ -4,7 +4,15 @@
   "source": {
     "name": "Pleasure Beach Resort",
     "official": true,
-    "url": "https://www.blackpoolpleasurebeach.com/krispy-kreme-rocket-menu/"
+    "url": "https://www.blackpoolpleasurebeach.com/krispy-kreme-rocket-menu/",
+    "wayback": "https://web.archive.org/web/20261023214923/https://www.blackpoolpleasurebeach.com/krispy-kreme-rocket-menu/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "ab3f0f04f4fc159035b1ce0b25b3b06880cd67fd1b3638264d4a74ce69853603",
+      "html": "b72d861de69819e0d8efc0baa2a1c8a50777f7c5c59662565b4f713cac5e85ca",
+      "mhtml": "33ce3977a4205e8bd7142f69341608dd1fc77ad89cec05a422d0240f23e4d2dc",
+      "har": "c79b47e546b71073d989991fc00aa4c7ca7e52bd46ddd4916ecfee85ddbf1101"
+    }
   },
   "sections": [
     {

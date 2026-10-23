@@ -3,7 +3,15 @@
   "source": {
     "name": "Knoebels",
     "official": true,
-    "url": "https://knoebels.com/menu/patio-grill/"
+    "url": "https://knoebels.com/menu/patio-grill/",
+    "wayback": "https://web.archive.org/web/20261023210828/https://knoebels.com/menu/patio-grill/?v=0b3b97fa6688",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "a473bfba4d90a129d90d5bdd048aa0a89bd4044031bfc28e7cc5041b6cf4c563",
+      "html": "da6025f130e38f50dc7efdeb7299626a031e58e8d4c4c84d40c6abffbb3784e1",
+      "mhtml": "d38b975f5b45c25d862707e8c55d269a9653e64a7f7881faa5cebb223e22d4e0",
+      "har": "d2ef1d933b66cc537403a8b36235c8fe7cf9c6988d15d19941e59c694cd05bc1"
+    }
   },
   "sections": [
     {

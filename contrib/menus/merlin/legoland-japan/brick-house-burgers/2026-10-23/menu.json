@@ -3,7 +3,14 @@
   "source": {
     "name": "Legoland Japan",
     "official": true,
-    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/brick-house-burgers/"
+    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/brick-house-burgers/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "b3fcb2e9bb6342a0a3266e54823bc9f0068762ffc9d8e45ff0632a7dfd9ce240",
+      "html": "683709b8c96bdb08390d262ac3b730044324224be057a969388d73bad5920b57",
+      "mhtml": "e0ffe7929832154053223464bd158a9bcb904257a47b013afabbddf33700c706",
+      "har": "79ce72251a84339b96c5b0546e0e6080791ead5420b7e849feee187956332097"
+    }
   },
   "sections": [
     {

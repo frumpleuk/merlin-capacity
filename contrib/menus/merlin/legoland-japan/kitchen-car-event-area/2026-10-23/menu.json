@@ -3,7 +3,14 @@
   "source": {
     "name": "Legoland Japan",
     "official": true,
-    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/kitchen-car-event-area/"
+    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/kitchen-car-event-area/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "437dc498419c710ca136b62d3300c972224acdc96ca8d3e99ba9e9da8d762029",
+      "html": "cfea9c98f3b6d24e8312b4eb22573421f81d27aa121267ee642d9db8e8fe3aa5",
+      "mhtml": "cc3397fd58e70b9ff4a939df0e92dfef60e20612d56ef295b163705a119b4cbd",
+      "har": "251fa8a6b772021c06fc97b1c62fdbaaa2d1f1a637c5244f2b2564a069432ab4"
+    }
   },
   "sections": [
     {

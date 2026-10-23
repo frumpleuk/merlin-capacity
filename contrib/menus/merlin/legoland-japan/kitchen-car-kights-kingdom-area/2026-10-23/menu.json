@@ -3,7 +3,14 @@
   "source": {
     "name": "Legoland Japan",
     "official": true,
-    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/kitchen-car-kight/"
+    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/kitchen-car-kight/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "9647ceba0c3841010da4a2a581842a6134525181b093728fc797d73132fde65c",
+      "html": "97d4b48c95c417be281e00ee64bbe56d0cfe192b88d1281900a401744337d5ad",
+      "mhtml": "666cdc95ab0ad023d73f600c6ee791eb24dce847f3873a664d67166a7160803e",
+      "har": "867143cfd2d56ec2b3f58ecca4d9cc381d7572a1b02244aea6ddc159680fde63"
+    }
   },
   "sections": [
     {

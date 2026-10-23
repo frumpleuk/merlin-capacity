@@ -3,7 +3,14 @@
   "source": {
     "name": "Legoland Japan",
     "official": true,
-    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/knight-s-table-restaurant/"
+    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/knight-s-table-restaurant/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "aefd30022e348a573b3f4a5be30884444551aead2beeb8342626919bd26dd45d",
+      "html": "3967c9f4b5e59aac43cb129f071a91cd3c374661ced42000e3f905300f44a24f",
+      "mhtml": "05ca28a989088ca48428e059d51a4cbf5b866b150a03d4cbff743eeb8fbd89ae",
+      "har": "b8c60826f16444ad52a81459aa058a8b5ee965b38a3797a1fb8033b6f528d600"
+    }
   },
   "sections": [
     {

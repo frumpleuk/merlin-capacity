@@ -3,7 +3,14 @@
   "source": {
     "name": "Legoland Japan",
     "official": true,
-    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/irodori/"
+    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/irodori/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "4a87ded1d64c2b46aab88e2eb6a2a93787e78185a1b9059e9811e99311bc6251",
+      "html": "6306730512b5d45b782cfda615b0f6baa808d56d6d0eac2d1e706021c415e100",
+      "mhtml": "91dc9b3ef44965c403364d1159887167c185e4f22e2d75cceeae4884c1cf5c50",
+      "har": "6c38d2e3d1149666aade9d0cf06e05f336d84959dfb0cd29a4febcb68044c839"
+    }
   },
   "sections": [
     {

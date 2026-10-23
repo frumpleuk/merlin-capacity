@@ -3,7 +3,15 @@
   "source": {
     "name": "Knoebels",
     "official": true,
-    "url": "https://knoebels.com/menu/bavarian-nut-shoppe/"
+    "url": "https://knoebels.com/menu/bavarian-nut-shoppe/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "7c2122be6f7e6ca4d1601e8fdbf9986b36bcd5db74330e3c8f4d26d458e241fa",
+      "html": "22c923dfc7ad36d68c86eba20b373e87521538d12b529dc999d274858c54b2f8",
+      "mhtml": "471941eb8c00431650f000d2c54dcbc4c4e205ece3775f97f41e9b4b569710fd",
+      "har": "8d043fe71ab2b8d348c265f70e205951fa52b2a7c628458d186c6a3c93b659ea"
+    },
+    "wayback": "https://web.archive.org/web/20261023204821/https://knoebels.com/menu/bavarian-nut-shoppe/?v=0b3b97fa6688"
   },
   "sections": [
     {

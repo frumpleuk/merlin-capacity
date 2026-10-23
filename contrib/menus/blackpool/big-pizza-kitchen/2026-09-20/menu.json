@@ -4,7 +4,15 @@
   "source": {
     "name": "Pleasure Beach Resort",
     "official": true,
-    "url": "https://www.blackpoolpleasurebeach.com/big-pizza-kitchen-menu/"
+    "url": "https://www.blackpoolpleasurebeach.com/big-pizza-kitchen-menu/",
+    "wayback": "https://web.archive.org/web/20261023214116/https://www.blackpoolpleasurebeach.com/big-pizza-kitchen-menu/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "d22d87fc352efbb49e7dab54a1e9930fb3f4447e01ef562e8189503ded96433f",
+      "html": "d8fc44b438c6af4fe191f8dffb4f6a9a3aec98f446d9270540f1c82c64483ac0",
+      "mhtml": "4702269b91429c9afcf2045b7edbeda0a95a521123eef8c1a6b24c026c3da4ca",
+      "har": "fd8921c4fcf8aae77140d3e35335975beee2f7245fac6a26bbbe1c213f58b447"
+    }
   },
   "sections": [
     {

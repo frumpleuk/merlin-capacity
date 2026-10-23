@@ -4,7 +4,14 @@
   "source": {
     "name": "Paultons Park",
     "official": true,
-    "url": "https://menus.tenkites.com/paultonspark/coffeeshops"
+    "url": "https://menus.tenkites.com/paultonspark/coffeeshops",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "421052d84aeade1cae398cfe358d67784473388cf7a241f1000625bf934e489c",
+      "html": "0ae51beb1f3e8e2266f108d8e17aaa73a7370f2465e845bf329cd0cbb92928ea",
+      "mhtml": "2a78ec03ed8c92d594560863579ca10a04e22775ecea380be9a3ea1fff3c8c8b",
+      "har": "80979fa900198c25411cd6f59a2a4ec094d75fe925b7c7fb9acee07d2c4ff189"
+    }
   },
   "sections": [
     {

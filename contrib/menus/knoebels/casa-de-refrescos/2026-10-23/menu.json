@@ -3,7 +3,15 @@
   "source": {
     "name": "Knoebels",
     "official": true,
-    "url": "https://knoebels.com/menu/casa-de-refrescos/"
+    "url": "https://knoebels.com/menu/casa-de-refrescos/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "c9d20fab1c5cb647c51cf1f84dcd4343f664a0c71e3ed5ca80dba701d7740cc5",
+      "html": "32915c9367533eca6b45b19d28d76506e8b35bcc33d5f01a638f6c8209421b87",
+      "mhtml": "4ee913685b6e209f4fd98d21c6108f267655887c0f7c50a518e808b16170aff7",
+      "har": "fd31d90bb5bf3a1634ae8ead8363d5317cbe0746486610d06e01487ce27cc45c"
+    },
+    "wayback": "https://web.archive.org/web/20261023205011/https://knoebels.com/menu/casa-de-refrescos/?v=0b3b97fa6688"
   },
   "sections": [
     {

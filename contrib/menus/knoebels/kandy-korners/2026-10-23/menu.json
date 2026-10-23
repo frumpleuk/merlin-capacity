@@ -3,7 +3,15 @@
   "source": {
     "name": "Knoebels",
     "official": true,
-    "url": "https://knoebels.com/menu/kandy-korners/"
+    "url": "https://knoebels.com/menu/kandy-korners/",
+    "wayback": "https://web.archive.org/web/20261023210028/https://knoebels.com/menu/kandy-korners/?v=0b3b97fa6688",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "08748f290d16f0fc4a89705d4358d3f6c6f71756c9922314f778928ec0631306",
+      "html": "e14c76ff72b0852ccd21765e061ad573c7d804fac40ed5babf37fa7c490b36d4",
+      "mhtml": "d35d1e83ff3db53ac1abce58ad175b55e275e322244a8e44b84281edd5231922",
+      "har": "4850f3b30c43cb2962f79f0279c1d39bfac1aee25e7fe15c74b446a94e08b4cd"
+    }
   },
   "sections": [
     {

@@ -3,7 +3,14 @@
   "source": {
     "name": "Legoland Japan",
     "official": true,
-    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/oasis-snacks/"
+    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/oasis-snacks/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "8ab7ee99ef7cf39046fafefce651dba0afa8feaded97645bea0a8406e5841792",
+      "html": "4a6c199da8cb709f102f052166a8364653bc2e82e96d746c80830f375907350a",
+      "mhtml": "398ba68b124925e7d89ff7331f0596f4d2fa6d5f6795a4fc423462a69a855160",
+      "har": "aef1fd4ac7546a055b96399d5a46264a0e6f9b896be5ec157539e8fc9f7d6f09"
+    }
   },
   "sections": [
     {

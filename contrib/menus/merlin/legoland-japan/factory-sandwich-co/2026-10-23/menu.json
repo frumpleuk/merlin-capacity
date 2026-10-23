@@ -3,7 +3,14 @@
   "source": {
     "name": "Legoland Japan",
     "official": true,
-    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/factory-sandwich-co/"
+    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/factory-sandwich-co/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "1dcb4c6bce7b945a908c15388ded885815f8819fec504db1f84446878fd584a2",
+      "html": "4705e214d254f36bb56e98e794a65a6f88d43b22e24046ce5acd108cf529f79c",
+      "mhtml": "e4505d8b1c0d9d229601d8c00ccc07a96eea78e43f8f1f7961553116a6c54027",
+      "har": "d2129ee4897c150ea84494d0761f132a47f7c1dba968246e472c8176c55fce27"
+    }
   },
   "sections": [
     {

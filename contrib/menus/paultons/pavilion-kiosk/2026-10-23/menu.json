@@ -4,7 +4,14 @@
   "source": {
     "name": "Paultons Park",
     "official": true,
-    "url": "https://menus.tenkites.com/paultonspark/takeawaykiosks"
+    "url": "https://menus.tenkites.com/paultonspark/takeawaykiosks",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "278cf616b8dbb6631f86286dd60d7092bc420b31b0b629919916f379f12b743b",
+      "html": "9c23b6b12105a410cd395427910e3bff7cce8c5c1be5ea0a3b74aaba20c7259f",
+      "mhtml": "0d2a70785ecb3a7eea9a36c05065db54a6c8ef022608877855920d982c221b97",
+      "har": "520d2a91f953ec37aebe3150cbb3fdefca16ccebe3da42df9e8f7dfd7f6defee"
+    }
   },
   "sections": [
     {

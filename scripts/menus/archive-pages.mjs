@@ -53,7 +53,14 @@ async function capture(browser, url) {
     recordHar: { path: har, content: "embed" },
   });
   const page = await context.newPage();
-  await page.goto(url, { waitUntil: "networkidle", timeout: 60_000 });
+  try {
+    await page.goto(url, { waitUntil: "networkidle", timeout: 30_000 });
+  } catch {
+    // Some pages never go quiet (Knoebels' keep polling): take them once
+    // loaded, with a moment for late content.
+    await page.goto(url, { waitUntil: "load", timeout: 60_000 });
+    await page.waitForTimeout(5000);
+  }
   await page.waitForTimeout(1500);
   await page.screenshot({ path: `${base}.png`, fullPage: true });
   fs.writeFileSync(`${base}.html`, await page.content());

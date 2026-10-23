@@ -4,7 +4,15 @@
   "source": {
     "name": "Paultons Park",
     "official": true,
-    "url": "https://menus.tenkites.com/paultonspark/tornadotreats"
+    "url": "https://menus.tenkites.com/paultonspark/tornadotreats",
+    "wayback": "https://web.archive.org/web/20261023213603/https://menus.tenkites.com/paultonspark/tornadotreats",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "711d79986bc7d10249535b20bb74d834fcfe6281ac54d83472005d7938e6b3b8",
+      "html": "090bd33c4b8d5109fcfd3ebba96726aedb44337cfda800787eb22b0d1a23e810",
+      "mhtml": "3dd060efb08243d53ca172a5706f365a7c73488451e581baa0446edda4d47416",
+      "har": "c488d786f491f0cce54cb67de4194efa716f1ffacd27a8fc89c4f29bde151106"
+    }
   },
   "sections": [
     {

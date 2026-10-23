@@ -4,7 +4,15 @@
   "source": {
     "name": "Pleasure Beach Resort",
     "official": true,
-    "url": "https://www.blackpoolpleasurebeach.com/ice-lounge-menu/"
+    "url": "https://www.blackpoolpleasurebeach.com/ice-lounge-menu/",
+    "wayback": "https://web.archive.org/web/20261023214811/https://www.blackpoolpleasurebeach.com/ice-lounge-menu/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "bd9f61aa83bdf1211ea9ba9611dffc9938b2f3c22824778c4c16c8020581e7b3",
+      "html": "43d2677afd2954b6befeb617a9ff72b36e4930b655c9a0850ceabd0a20ddfc85",
+      "mhtml": "8329bf16482dcb49b544e6b255814f8e65a8517c5914f147a1f9a890c2342cf7",
+      "har": "8a3521a2dca4e48e31bab6bd8971a09cfd6339a1dafc605597564202680bfd54"
+    }
   },
   "sections": [
     {

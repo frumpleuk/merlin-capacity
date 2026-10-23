@@ -3,7 +3,14 @@
   "source": {
     "name": "Legoland Japan",
     "official": true,
-    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/kitchen-car-bricktopia-popcorn/"
+    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/kitchen-car-bricktopia-popcorn/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "c6947ba30ed8613f53a00f101dc5d0c8f83480fa9535464abd7973617199fde2",
+      "html": "fc256ed311b1d10087755dd6379a88add1a1d129011dcdfcf3d8e80322edf558",
+      "mhtml": "0edf8f2cc12aebfec061c1769bc6e64c03460092a827321338d2d1b72daa1a90",
+      "har": "730b96c28ba0be8021d67c8e1a3476226e3d36e453784f6c00e2512a35dcf9c6"
+    }
   },
   "sections": [
     {

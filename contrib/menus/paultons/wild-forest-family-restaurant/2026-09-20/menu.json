@@ -4,7 +4,15 @@
   "source": {
     "name": "Paultons Park",
     "official": true,
-    "url": "https://menus.tenkites.com/paultonspark/wildforestrestaurant"
+    "url": "https://menus.tenkites.com/paultonspark/wildforestrestaurant",
+    "wayback": "https://web.archive.org/web/20261023213805/https://menus.tenkites.com/paultonspark/wildforestrestaurant",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "77cdc90bd4d274b6e0f88c323992f6f547ccbf564ecab6983327ba152db11b2d",
+      "html": "516630f4ab22f8e6a3fb099a01a9c1543feddcab31a0d4bf31ceb18ab6a2367a",
+      "mhtml": "a0f77b33341ca866831331ae314ebd33875aef9fe39e688c6d13b0e6d0903832",
+      "har": "52a7558b44a7acb37b3292ba6b353e203de8a9d672460290327d7214a3f4cf56"
+    }
   },
   "sections": [
     {

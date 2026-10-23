@@ -4,7 +4,15 @@
   "source": {
     "name": "Pleasure Beach Resort",
     "official": true,
-    "url": "https://www.blackpoolpleasurebeach.com/fy4-fish-chips-menu/"
+    "url": "https://www.blackpoolpleasurebeach.com/fy4-fish-chips-menu/",
+    "wayback": "https://web.archive.org/web/20261023214649/https://www.blackpoolpleasurebeach.com/fy4-fish-chips-menu/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "0b517cc0401a768500beb2338fabd3e803bd9a71524b0e27cc4738c7452c1887",
+      "html": "ce92b32e321618299eaa1423edad938c8d1884b094e10b342c025b28958be3d8",
+      "mhtml": "0b0da359d12e8f5c11436a3b13619eb7b32e6dfb91a6584ec4cba5892582b64d",
+      "har": "cf78b5128f295b3089f5f366f7f8e19dd415e968bc2ccd669e6a56a2a5764cd7"
+    }
   },
   "sections": [
     {

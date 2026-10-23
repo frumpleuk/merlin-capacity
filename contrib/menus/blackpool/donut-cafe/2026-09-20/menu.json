@@ -4,7 +4,15 @@
   "source": {
     "name": "Pleasure Beach Resort",
     "official": true,
-    "url": "https://www.blackpoolpleasurebeach.com/donut-cafe-menu/"
+    "url": "https://www.blackpoolpleasurebeach.com/donut-cafe-menu/",
+    "wayback": "https://web.archive.org/web/20261023214448/https://www.blackpoolpleasurebeach.com/donut-cafe-menu/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "8f967f5b22fa67645099b37fac87096b012d4a74760d51f08bcf2dfe8bbe3c98",
+      "html": "cb77829ca1f977d37bd51f991ad106a7c7920f626f2837adbcc1fd9da42d0c77",
+      "mhtml": "e7038c8a4c787b68ada0ce186e2c7bd0bb558dcf13dd1366f5c5f028e05a7b9a",
+      "har": "65daa2b7b29a7a77796634ccba46d7ddb49ab9e4c88223bcc9b0e2c06dbb735c"
+    }
   },
   "sections": [
     {

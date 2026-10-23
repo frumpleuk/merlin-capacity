@@ -4,7 +4,15 @@
   "source": {
     "name": "Pleasure Beach Resort",
     "official": true,
-    "url": "https://www.blackpoolpleasurebeach.com/beach-burger-menu/"
+    "url": "https://www.blackpoolpleasurebeach.com/beach-burger-menu/",
+    "wayback": "https://web.archive.org/web/20261023213938/https://www.blackpoolpleasurebeach.com/beach-burger-menu/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "d756a1a2c543791711d95d505b297ae4133f030a75d89748c9064aea30ff63d2",
+      "html": "c1d81f9de94e9a14aed8814c097c3a70ac21e4dd33490fdc29de06ab9a971777",
+      "mhtml": "30fcfced0df5f13d39885873b320ebf2d5146944b5fcb940b42d4156e4f85133",
+      "har": "7bba901ea5584e384fc888ebf479d088e62b91fb279584da0881b173a925d483"
+    }
   },
   "sections": [
     {

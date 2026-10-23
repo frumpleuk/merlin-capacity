@@ -4,7 +4,15 @@
   "source": {
     "name": "Alton Towers Resort",
     "official": true,
-    "url": "https://menus.tenkites.com/aramarkuk/rollercoasterrestaurantat02"
+    "url": "https://menus.tenkites.com/aramarkuk/rollercoasterrestaurantat02",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "d84112221ce590894f870ccbb8e0b834780052ac7a612b730164b06cf7407ce5",
+      "html": "6a41321150b22487ec40474ecf444a71cb518fc5d3238ff915b6a2e54b99ba6f",
+      "mhtml": "526fb5a35ff766f5a82922ccd79b6edad538a5744941687e149c703245541453",
+      "har": "0aad866fa9289c74fb3e1c17d258056293d903411f828374806f80250af5c7de"
+    },
+    "wayback": "https://web.archive.org/web/20261023201456/https://menus.tenkites.com/aramarkuk/rollercoasterrestaurantat02"
   },
   "sections": [
     {

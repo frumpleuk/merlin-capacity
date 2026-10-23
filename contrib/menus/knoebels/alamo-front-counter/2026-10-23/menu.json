@@ -3,7 +3,15 @@
   "source": {
     "name": "Knoebels",
     "official": true,
-    "url": "https://knoebels.com/menu/alamo-front-counter/"
+    "url": "https://knoebels.com/menu/alamo-front-counter/",
+    "wayback": "https://web.archive.org/web/20261023204400/https://knoebels.com/menu/alamo-front-counter/?v=0b3b97fa6688",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "9e5c95708636a104a609cb5a75b4d79d73ae1371c5df24cf89d7e45eed361c2c",
+      "html": "1e143604d24a557267428ae5fa2afc41d0a18b1f3b0aa544c89ac2a152581d67",
+      "mhtml": "ac782aa432850606d762fc6f5f3c0bacdfa66d37e380b0a74f3be357b8aeb7bd",
+      "har": "e22658f9e0b15419e9677da29def3635d09da732a5bf307f67c79aeff503396b"
+    }
   },
   "sections": [
     {

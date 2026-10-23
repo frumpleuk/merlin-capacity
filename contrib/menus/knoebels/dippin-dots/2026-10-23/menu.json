@@ -3,7 +3,15 @@
   "source": {
     "name": "Knoebels",
     "official": true,
-    "url": "https://knoebels.com/menu/dippin-dots/"
+    "url": "https://knoebels.com/menu/dippin-dots/",
+    "wayback": "https://web.archive.org/web/20261023205319/https://knoebels.com/menu/dippin-dots/?v=0b3b97fa6688",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "88c1e710b25c3bf8eae22a4ed2ae72b4a14053eba62f9c2605100a8f82576d36",
+      "html": "ce90d3bd09a9c0baa53363bd5f6ed3cad0b33841a9bb75d7a91ccb918f11f2e0",
+      "mhtml": "7462f645b0c05a8c90cded4ae4d870b15553e6d97ea219358bbc92b36c9712e8",
+      "har": "2ccc3bdef432d4618e206825d0bdf2047392d6041f429277415d3559bc50d244"
+    }
   },
   "sections": [
     {

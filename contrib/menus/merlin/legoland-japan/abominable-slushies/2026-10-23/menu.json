@@ -3,7 +3,14 @@
   "source": {
     "name": "Legoland Japan",
     "official": true,
-    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/abominable-slushies/"
+    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/abominable-slushies/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "997789880a4fe810001b9929085b5ae920b97f235659be536c36127c65545568",
+      "html": "fe08e6ff325ac4c99eed1f3e4bf3a2f69186e1ce4d24e43ca2386564210cbb71",
+      "mhtml": "f9f12fc5bdb183ae9f969c30f6dac8adaba68e090b1ba12d3f3145fe18443a8d",
+      "har": "855ef21c1dd2f8ae1748aae3aa52a5003b19503656b58d8b28df9b2df6c477b3"
+    }
   },
   "sections": [
     {

@@ -4,7 +4,14 @@
   "source": {
     "name": "Paultons Park",
     "official": true,
-    "url": "https://menus.tenkites.com/paultonspark/thequeenskitchen"
+    "url": "https://menus.tenkites.com/paultonspark/thequeenskitchen",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "f841633defe3ac9eb0d05b952506efaad6e0c95a50ec3812574e112d78bbd02d",
+      "html": "c72b9e0e13073b9a3107dd84c0e8300a1fb337e993062c47b1491ab77732babc",
+      "mhtml": "2ffcd4b7792f0475a08fc4b89f30d19d34570f86e02527e56aa24d19a44e3efd",
+      "har": "99a88021dd9178743d2e19492821c578c5a4f17d19147d9b326b57cb2a852078"
+    }
   },
   "sections": [
     {

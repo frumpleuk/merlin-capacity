@@ -3,7 +3,15 @@
   "source": {
     "name": "Knoebels",
     "official": true,
-    "url": "https://knoebels.com/menu/kettle-korn/"
+    "url": "https://knoebels.com/menu/kettle-korn/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "914ec7278123b89f944ed066cf80e9ae323f3a38bcd0a12ce67a1dc956cc1b40",
+      "html": "ad155a446e3086ca7e1c7a3f86355db7e347c73e753a7d93ad749f93fb1d05b7",
+      "mhtml": "c6de84c994925ef90160e4cafcffae925b97e2256c60c33627e0abd09d82a9b0",
+      "har": "c8bc1aba79f6fb1d765ac620684cb5cc69386e6c61e7728bac9a50419114075c"
+    },
+    "wayback": "https://web.archive.org/web/20261023210137/https://knoebels.com/menu/kettle-korn/?v=0b3b97fa6688"
   },
   "sections": [
     {

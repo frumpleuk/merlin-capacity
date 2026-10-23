@@ -3,7 +3,15 @@
   "source": {
     "name": "Knoebels",
     "official": true,
-    "url": "https://knoebels.com/menu/funnel-cakes/"
+    "url": "https://knoebels.com/menu/funnel-cakes/",
+    "wayback": "https://web.archive.org/web/20261023205546/https://knoebels.com/menu/funnel-cakes/?v=0b3b97fa6688",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "3a319b481faa6064adb04e7d555c79d652f10db25ca1c516cc010cd2a7ae7684",
+      "html": "c33d26db340155dac7e60860191e0cdc8b078131052406b77cb671558ba39250",
+      "mhtml": "f33217112b11226bbc70ad48d3601fd0cc6c8974f2e23b5a7294a5e5182b85fb",
+      "har": "667b4e049da57fb370eb618f59f76ebb28112d64ca4aa81a6b84c42e47bc6647"
+    }
   },
   "sections": [
     {

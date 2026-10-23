@@ -3,7 +3,14 @@
   "source": {
     "name": "Legoland Japan",
     "official": true,
-    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/marina-snack-shack/"
+    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/marina-snack-shack/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "cbfbd92a2e1a6622e4c343b9f8c8c767b7f74316e2148ca305b18b7ad699527f",
+      "html": "54a2b03010e4e100fe4744f144c82f7b3c3ca1ae3d9329020b7fb626932fcb0a",
+      "mhtml": "3f7bd92a7c64de0c74c3b1fca578b5f41f79d0f6e3f50c8be7f4c877a2542c88",
+      "har": "03ed847c6fe5d546e8d172af865e4c99f49d87fa36a8034145df996b4f8bbd60"
+    }
   },
   "sections": [
     {

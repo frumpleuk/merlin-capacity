@@ -3,7 +3,14 @@
   "source": {
     "name": "Legoland Japan",
     "official": true,
-    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/chicken-diner/"
+    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/chicken-diner/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "45c78c76c14d052196d7edccf22908223bc49b4db3eb4a85b48cf557a4fbb02a",
+      "html": "d0adbc57bfaa96220cbbc97ca03415c650e72e361ae2c30c88bbcdcbcafc92d9",
+      "mhtml": "dc2b74efb120da4c03953877c05e0f09c700b34a5e079f2831bd575541536e35",
+      "har": "85df85be02c35eaa4cdbac657365da1dc63aed2011a5282b2876327c004d0170"
+    }
   },
   "sections": [
     {

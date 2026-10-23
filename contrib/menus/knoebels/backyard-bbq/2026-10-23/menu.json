@@ -3,7 +3,15 @@
   "source": {
     "name": "Knoebels",
     "official": true,
-    "url": "https://knoebels.com/menu/backyard-bbq/"
+    "url": "https://knoebels.com/menu/backyard-bbq/",
+    "wayback": "https://web.archive.org/web/20261023204634/https://knoebels.com/menu/backyard-bbq/?v=0b3b97fa6688",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "d9275f984fb4c61f5950a661bf5aa2e89272ca25a165f1ffb76f0ef8149f1738",
+      "html": "029e7989b38bd8b3e3e08cfd09d290536e2acb9f8fafa12f3f412051ce2f68f4",
+      "mhtml": "c1c82dc22eda20fd257b02265250815a33d76f3d3d32a20c4f7f8fb8966e1cf2",
+      "har": "5b96edb41d300dce5e24a616958efa63b67fbd3d961daa7126d8e856df8705e0"
+    }
   },
   "sections": [
     {

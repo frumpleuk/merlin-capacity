@@ -3,7 +3,15 @@
   "source": {
     "name": "Knoebels",
     "official": true,
-    "url": "https://knoebels.com/menu/old-mill-ice-cream/"
+    "url": "https://knoebels.com/menu/old-mill-ice-cream/",
+    "wayback": "https://web.archive.org/web/20261023210553/https://knoebels.com/menu/old-mill-ice-cream/?v=0b3b97fa6688",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "5c6947e1f3d429cb4cbebafdb05100f68340f2b145fa0ed2c3636a64abc65bc5",
+      "html": "a2d82339cd986a71a096e46cfedd83456b2f657ad4302aeb1afd1da6bbf65ce3",
+      "mhtml": "4ed6b759686d602644e6f5fb2882a404ce184eebcaef6c029ad335d8c004b6ce",
+      "har": "42243304a692aeddc6a7305db955f8dd8cc60bb472bc3a5212dc7f9c9d3b135a"
+    }
   },
   "sections": [
     {

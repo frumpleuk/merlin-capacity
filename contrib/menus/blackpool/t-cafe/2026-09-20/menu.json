@@ -4,7 +4,15 @@
   "source": {
     "name": "Pleasure Beach Resort",
     "official": true,
-    "url": "https://www.blackpoolpleasurebeach.com/t-cafe-menu/"
+    "url": "https://www.blackpoolpleasurebeach.com/t-cafe-menu/",
+    "wayback": "https://web.archive.org/web/20261023215457/https://www.blackpoolpleasurebeach.com/t-cafe-menu/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "e3b67665643fdc546f6697d6fb8cc51b8cc44ed30f379a0e78198bfe53b34ee0",
+      "html": "d69d9cc72f445f7664cd79426d222898667ef597f9d7a133b2145843f14e8f0d",
+      "mhtml": "8ec4f29241be3abdc0f665226b39ec4535f8eecdafc1e8c2eec0a0d60e20a6b5",
+      "har": "135a74011252e94fc26871e3585cfa57e1c3bddd32413dafa7c6986065c35042"
+    }
   },
   "sections": [
     {

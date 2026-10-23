@@ -3,7 +3,15 @@
   "source": {
     "name": "Knoebels",
     "official": true,
-    "url": "https://knoebels.com/menu/international-food-court/"
+    "url": "https://knoebels.com/menu/international-food-court/",
+    "wayback": "https://web.archive.org/web/20261023205717/https://knoebels.com/menu/international-food-court/?v=0b3b97fa6688",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "dc6d917b17f82432cfd545dc0356e7ed2df04529e0faf564b756f98f0ab420ed",
+      "html": "9d7475e81cfe9dad038265b9cacd2a041d16ddea0ce8ebbb1286b3849a8144df",
+      "mhtml": "389ede66c7d0e427415b5193eb1ae01ca29bc19ae0b606899666800870742377",
+      "har": "4efc93c8fbd6b23315aea726cda8b777bba43332722852e56c235b8cbcdb8236"
+    }
   },
   "sections": [
     {

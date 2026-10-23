@@ -6,7 +6,15 @@
     "official": true,
     "url": "https://menus.tenkites.com/paultonspark/sweettreatkiosks",
     "menu": "Tornado Treats",
-    "page": "https://menus.tenkites.com/paultonspark/sweettreatkiosks?mguid=b0c1539e-4c76-4317-a257-7bfa6741656b"
+    "page": "https://menus.tenkites.com/paultonspark/sweettreatkiosks?mguid=b0c1539e-4c76-4317-a257-7bfa6741656b",
+    "wayback": "https://web.archive.org/web/20261023213735/https://menus.tenkites.com/paultonspark/sweettreatkiosks?mguid=b0c1539e-4c76-4317-a257-7bfa6741656b",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "c4629fb12ecaad494068821f691044fa1669a9b8f9b37916344575dd119cc70d",
+      "html": "9460bb05e310b7fc808efe4098b27efdb235d0356b9474dd3a5a9dc92919cc15",
+      "mhtml": "af38c7be91c69dcaf3bb6ef8368b58a41ced0da5299ae42268e4526e1f168fb5",
+      "har": "12c1a4e512fa970a0f212a1db0f0ded78d0ec57bf9092cb3241c783760dcbb4f"
+    }
   },
   "sections": [
     {

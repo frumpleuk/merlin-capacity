@@ -3,7 +3,14 @@
   "source": {
     "name": "Knoebels",
     "official": true,
-    "url": "https://knoebels.com/menu/round-stand/"
+    "url": "https://knoebels.com/menu/round-stand/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "44ef02b94515c480aa2a38bfcd328708a7c059dd26af71e9fb0b1b9602f6d4f0",
+      "html": "a0b621f0ea4e9ba04f80849fbe3f3910cd49be211b7a85e12d0d3ac193981e33",
+      "mhtml": "62a33155814c78b7b07b863ce8d9c9e2671e9e312891d637aaaf1b3976d912af",
+      "har": "b97ee301cd1e8c869de6ae8be56f4172657328fb5ac6945e2fe8c7f34d2ecd30"
+    }
   },
   "sections": [
     {

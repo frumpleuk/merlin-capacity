@@ -3,7 +3,14 @@
   "source": {
     "name": "Knoebels",
     "official": true,
-    "url": "https://knoebels.com/menu/slush-n-such/"
+    "url": "https://knoebels.com/menu/slush-n-such/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "abc36ca93280d2472dbf5d27a30a811f289968cc8afa2e0b31e50d949cc0c240",
+      "html": "0659e878b368a208ae755550891028bee4f69d77a97560d4def09cc5d518cddd",
+      "mhtml": "5328d5494418254384f1f03b9a6f4cdb46f757b1e9adbb7b25c6a2646a3b5aef",
+      "har": "a7e89bae924641459c5bcaabefa95929be4414852cc62872e9d7ad7be5d7a721"
+    }
   },
   "sections": [
     {

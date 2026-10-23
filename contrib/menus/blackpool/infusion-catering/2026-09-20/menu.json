@@ -4,7 +4,15 @@
   "source": {
     "name": "Pleasure Beach Resort",
     "official": true,
-    "url": "https://www.blackpoolpleasurebeach.com/infusion-menu/"
+    "url": "https://www.blackpoolpleasurebeach.com/infusion-menu/",
+    "wayback": "https://web.archive.org/web/20261023214846/https://www.blackpoolpleasurebeach.com/infusion-menu/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "20e5454d176ebc40aba027d79cf95d4d7936c83949722e8c517de57780d0e0f3",
+      "html": "3bc9c193a28f0e5f2eff28d7d52b633aefc9880054b00971101adeef73fbca6f",
+      "mhtml": "b5d683aa247b1d74e4ea80d024fc7a0301416445c1fad418d06fb0a9db51d89e",
+      "har": "7a6ccd53dd9e8c19fc611fb92ed1dd1dab40f078f5f60f211e3201782cd8ac6d"
+    }
   },
   "sections": [
     {

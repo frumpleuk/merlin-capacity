@@ -3,7 +3,14 @@
   "source": {
     "name": "Knoebels",
     "official": true,
-    "url": "https://knoebels.com/menu/potato-cake-stand/"
+    "url": "https://knoebels.com/menu/potato-cake-stand/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "d41244886511ebdad853e96613a43e473ce9d7f8ddb14dd001148aa4a2a2e091",
+      "html": "5d8613b94c88244b4f1e3dff3f84daa7a9829197edc71501f9f1f404298f88fa",
+      "mhtml": "10e4755fad4ad7873f6e8488586dd1c175b924d3c0455ed058ffd29cc25eccd7",
+      "har": "1c01c20f3c24a7abe0146e526b9dbacc9f65e637d5bde090595d6c163190922d"
+    }
   },
   "sections": [
     {

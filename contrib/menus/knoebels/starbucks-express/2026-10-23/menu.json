@@ -3,7 +3,14 @@
   "source": {
     "name": "Knoebels",
     "official": true,
-    "url": "https://knoebels.com/menu/starbucks-express/"
+    "url": "https://knoebels.com/menu/starbucks-express/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "11022c5917a42247b313ce15f0f3de6dd0a4aae6d399f8a35df353b10433e63e",
+      "html": "744603b66e8b53a1de2360b88fcd2f5de03168c21c0904016dc9a01a6a441939",
+      "mhtml": "b0aeb7b9b505154738657098f71ba7c2d684beefb43e206adcb7f559a6bb7704",
+      "har": "4b4f41a83715fb60e4564c896bb63b3fc6493253f4fa74d4f1552b96b309a051"
+    }
   },
   "sections": [
     {

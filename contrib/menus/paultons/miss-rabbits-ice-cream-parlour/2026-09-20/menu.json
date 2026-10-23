@@ -4,7 +4,14 @@
   "source": {
     "name": "Paultons Park",
     "official": true,
-    "url": "https://menus.tenkites.com/paultonspark/missrabbitsicecreamparlour"
+    "url": "https://menus.tenkites.com/paultonspark/missrabbitsicecreamparlour",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "36718a9e012a4cc776c8f88cb5cdc061d1f283218403cf1d951a921b07424493",
+      "html": "2a6f3dec3e6f00dea7908369f8c2f30e0be9cc6a559e87653cab2656ca3ad49d",
+      "mhtml": "23fea0bae61eaa0f76aa8273b0d84790902637bd561415f3a1eab224e2ae3b02",
+      "har": "1d0afab516413f596cde86ede9d7368845cbfb2678813ed4be8c282136991168"
+    }
   },
   "sections": [
     {

@@ -4,7 +4,15 @@
   "source": {
     "name": "Alton Towers Resort",
     "official": true,
-    "url": "https://menus.tenkites.com/aramarkuk/splashlandingshotel02"
+    "url": "https://menus.tenkites.com/aramarkuk/splashlandingshotel02",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "7fd7800ef863483e663a731395adaf0a44e1f74a0e7058eac81c76188bfbaf65",
+      "html": "ab518a8d0ce0e23893530084a2b648563b6285ad4a316f7293af0f45118f3a8a",
+      "mhtml": "c15bd55da11a002fbd2f053f6af5d276fccd5584ba55e997264ddb8d844e3c30",
+      "har": "7359e5c1a1b051259d820d903ee68394aa2ff5d703db85027aa6cf70c59a28ca"
+    },
+    "wayback": "https://web.archive.org/web/20261023201056/https://menus.tenkites.com/aramarkuk/splashlandingshotel02"
   },
   "sections": [
     {

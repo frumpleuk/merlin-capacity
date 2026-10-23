@@ -3,7 +3,14 @@
   "source": {
     "name": "Legoland Japan",
     "official": true,
-    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/big-bricks-stand/"
+    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/big-bricks-stand/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "d2343d2b742ac24850dd87843dc9cb5b9377a654cc6d2d13e12f62496bce9bc2",
+      "html": "35471b4a66ee3f7d185fa76b026e30f343ec56f39c749975f75e40242153d913",
+      "mhtml": "3375bae26cbe4fa3d1b54d98b7e6eb144df2f03667cd2c423a552877fca10c8c",
+      "har": "d2fbb409b1e6c411e5af6283f8d24e7197d1a2b09b3b6982dce8704cb494ec2d"
+    }
   },
   "sections": [
     {

@@ -4,7 +4,15 @@
   "source": {
     "name": "Pleasure Beach Resort",
     "official": true,
-    "url": "https://www.blackpoolpleasurebeach.com/donut-dream-menu/"
+    "url": "https://www.blackpoolpleasurebeach.com/donut-dream-menu/",
+    "wayback": "https://web.archive.org/web/20261023214612/https://www.blackpoolpleasurebeach.com/donut-dream-menu/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "c369157edccb861c72886766b2d76432b80660f0556945b867bf06119cd78048",
+      "html": "4dc932a0e9d140839407413c31c87a46d611a6b524164570845afc99f0cef06c",
+      "mhtml": "142bdb9a2ec2e6efd20260c8e59563f6a3bd87baab3349c2bbeab33d930980f1",
+      "har": "87c9efc8e5c7132af310ca8439b321b23b070d6b6ae260f94489b7a6cb5c8e9c"
+    }
   },
   "sections": [
     {

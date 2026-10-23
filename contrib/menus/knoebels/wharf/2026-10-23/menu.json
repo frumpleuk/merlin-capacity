@@ -3,7 +3,14 @@
   "source": {
     "name": "Knoebels",
     "official": true,
-    "url": "https://knoebels.com/menu/wharf/"
+    "url": "https://knoebels.com/menu/wharf/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "16c82217d546cd12c79ed5792b53235ee8b88d961b53b194cb0395a7ac0ccbc6",
+      "html": "4f6dc946fb01fd490e8b49e634c5c8af5fdbecb1eb4975e1aa4a82cbcdb69d17",
+      "mhtml": "ce506dd9c855efd0247920746978e3fb667228c42914e4d5447eed13b9e81455",
+      "har": "8bd481a3daac1824a274eabbe2321541f05c99da52125b8dd17f79ab1bc96695"
+    }
   },
   "sections": [
     {

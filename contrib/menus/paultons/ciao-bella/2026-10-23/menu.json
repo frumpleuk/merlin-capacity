@@ -4,7 +4,14 @@
   "source": {
     "name": "Paultons Park",
     "official": true,
-    "url": "https://menus.tenkites.com/paultonspark/ciaobella"
+    "url": "https://menus.tenkites.com/paultonspark/ciaobella",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "45bda77c4549c3b3b90ac29757096494e83096185753e75c68c81a8f37f2f7fb",
+      "html": "c49384e31789f4910e71db9807dbfa35b81150651b9dd35665dcf1aeeb99bb15",
+      "mhtml": "01a8b909375d6d570b4330c359e13fc3996d23f7da34cf7a3a07a03ec2d9d2d3",
+      "har": "89d7987fce55a1e740fbf0a4bcfd7f242dcb0654f17fff62dac1d8525ac26698"
+    }
   },
   "sections": [
     {

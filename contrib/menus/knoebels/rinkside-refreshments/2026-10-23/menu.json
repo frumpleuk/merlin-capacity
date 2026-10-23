@@ -3,7 +3,14 @@
   "source": {
     "name": "Knoebels",
     "official": true,
-    "url": "https://knoebels.com/menu/rinkside-refreshments/"
+    "url": "https://knoebels.com/menu/rinkside-refreshments/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "bfd22bffae16d0eb82b9b7a3ca0f65c69a087cb09739fade7e57b0f7dc774e9e",
+      "html": "fd3a63e5665eaa28468695de1bbe3663d2679ffe27cf809cab9cd8c85c7af4ee",
+      "mhtml": "330b3e35c915d327e6e19980a21e16e333aa33980c827cd9a126115745084b70",
+      "har": "e3657fcadc0250b4c0a3348315b58ab9a6ca81624481a9a70cb1b3f2dadadd8b"
+    }
   },
   "sections": [
     {

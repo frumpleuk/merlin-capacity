@@ -4,7 +4,15 @@
   "source": {
     "name": "Pleasure Beach Resort",
     "official": true,
-    "url": "https://www.blackpoolpleasurebeach.com/bubble-waffle-menu/"
+    "url": "https://www.blackpoolpleasurebeach.com/bubble-waffle-menu/",
+    "wayback": "https://web.archive.org/web/20261023214151/https://www.blackpoolpleasurebeach.com/bubble-waffle-menu/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "02fee77bfce6cdc697e3fb4b5089cb34996f7ab985865fdf960053c04295653c",
+      "html": "151e9d93b22f06a9c8de63c1df856b725cdee0622c79d076ab8765c97af376aa",
+      "mhtml": "e5216778761439a8a333a80354c8fddefeb470ce303025e6ba3f082addc0da9e",
+      "har": "7262642aaa0a89efdf0943f8ccc1b70baacd4e4797c6c76af3d508dea33ffb83"
+    }
   },
   "sections": [
     {

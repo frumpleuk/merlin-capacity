@@ -3,7 +3,14 @@
   "source": {
     "name": "Knoebels",
     "official": true,
-    "url": "https://knoebels.com/menu/soft-serve-ice-cream/"
+    "url": "https://knoebels.com/menu/soft-serve-ice-cream/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "6d15d06e2ce039d0f0dc2ec356c422f5ad49505ed404a09b5de64e63babb3f8e",
+      "html": "6d2bc98910f95903a287ac36e303ae9dac0dd0ca2c29a0e969adb16e42f8085a",
+      "mhtml": "b3f8d691afec75a4ffd70d58ce62cc4827cec84bc470a370934378d0a13680e7",
+      "har": "61f90372df379b3aecbe844ddebb72af31491834d265eadd4703b5d8b8055283"
+    }
   },
   "sections": [
     {

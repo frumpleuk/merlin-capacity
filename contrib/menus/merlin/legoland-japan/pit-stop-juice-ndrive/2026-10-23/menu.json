@@ -3,7 +3,14 @@
   "source": {
     "name": "Legoland Japan",
     "official": true,
-    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/pit-stop-juice-drive/"
+    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/pit-stop-juice-drive/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "0e63721841ab9bd95ab36ca8b64087d268b0fe4662b17c1a5d35320a96a9db8e",
+      "html": "244157b0d00fdcbfc9f3a86a9a5d4573ed3d956145e270e4584a0206c72c3546",
+      "mhtml": "6e7a11c7155b75a1a29f7402c1cd6f98182e9d665472e0d3e18439af7e9eb9e9",
+      "har": "7d34367ea0fd81adad4fdc10222dbeef54c92e2dace90aacfcca51662a2fdb51"
+    }
   },
   "sections": [
     {

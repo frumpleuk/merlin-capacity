@@ -4,7 +4,15 @@
   "source": {
     "name": "Alton Towers Resort",
     "official": true,
-    "url": "https://menus.tenkites.com/aramarkuk/pizzapastaat"
+    "url": "https://menus.tenkites.com/aramarkuk/pizzapastaat",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "400b03de4784b94f57a99bdcb65a7c0f9654f77ec90b60fc70225cf4dae67294",
+      "html": "4cdd7e3cd9c53e829de8375bf46fa9951531a5aa1d195954199280f71b41095e",
+      "mhtml": "7f57f4b129270ccd0e36fea2b48e079629158d684f7bfeee40c5435e5ea6ca81",
+      "har": "900c08933100869a5addceeaceec0bbb29d6a121aeaf67a615b7e009d803ae53"
+    },
+    "wayback": "https://web.archive.org/web/20261023201009/https://menus.tenkites.com/aramarkuk/pizzapastaat"
   },
   "sections": [
     {

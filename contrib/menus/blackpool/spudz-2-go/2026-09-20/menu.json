@@ -4,7 +4,15 @@
   "source": {
     "name": "Pleasure Beach Resort",
     "official": true,
-    "url": "https://www.blackpoolpleasurebeach.com/spudz-2-go-menu/"
+    "url": "https://www.blackpoolpleasurebeach.com/spudz-2-go-menu/",
+    "wayback": "https://web.archive.org/web/20261023215320/https://www.blackpoolpleasurebeach.com/spudz-2-go-menu/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "280d46e7e080b5ca9cbbf81511337828b87430bb4fec3b315b25415b6ddbb521",
+      "html": "f58375776453f7ed31a69b557a27d60b0ada61a9a9c2ad718d9fbbb3d425e864",
+      "mhtml": "c22ab6127038c77aab02b6cbbd0c1fc6c2d389497f65d9184ec4ad0c17a68e79",
+      "har": "c0be3b295b6540ebee6826cfbf9d2d0a02d9c2e3fbd6024e3f5547a4be58e002"
+    }
   },
   "sections": [
     {

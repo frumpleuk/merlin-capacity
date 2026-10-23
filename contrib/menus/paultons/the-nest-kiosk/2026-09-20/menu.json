@@ -4,7 +4,15 @@
   "source": {
     "name": "Paultons Park",
     "official": true,
-    "url": "https://menus.tenkites.com/paultonspark/thenestkiosk"
+    "url": "https://menus.tenkites.com/paultonspark/thenestkiosk",
+    "wayback": "https://web.archive.org/web/20261023213528/https://menus.tenkites.com/paultonspark/thenestkiosk",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "5af04c04ecef23b84b2d40840887b2e9c51a3235940db90a316a847bfc09d86e",
+      "html": "12baf8429f748d061ba5aac692f4c02a8fcb8eedce1692269bd7efc0297bb539",
+      "mhtml": "48d92dd33dfabd824e4d55e873b31136680616b6bbfeaa9fd2075ca2552a0784",
+      "har": "767bbd4188cb2586930e1fde1ab3b20e1869a404a69137b8e1e6eb2fd187a682"
+    }
   },
   "sections": [
     {

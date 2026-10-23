@@ -4,7 +4,15 @@
   "source": {
     "name": "Pleasure Beach Resort",
     "official": true,
-    "url": "https://www.blackpoolpleasurebeach.com/chocolate-by-percent/"
+    "url": "https://www.blackpoolpleasurebeach.com/chocolate-by-percent/",
+    "wayback": "https://web.archive.org/web/20261023214321/https://www.blackpoolpleasurebeach.com/chocolate-by-percent/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "6725585f1d6750a09ee2fa90ee18a050a608f5b5d596b065431e421a8cf2536e",
+      "html": "6b0546d3ed0d29e3bdb7898cf51960e403e490f0bcb9c46422da28d9d1df94f8",
+      "mhtml": "05d3077180cfd2f2f51003c99bf14b7e3c2e5e621137bb46fd7a719d97a25a58",
+      "har": "ed79ea19d724cde30977b1db1b8c1320fc5ebefebffaac13540952cbd1fbb054"
+    }
   },
   "sections": [
     {

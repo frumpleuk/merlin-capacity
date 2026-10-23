@@ -3,7 +3,14 @@
   "source": {
     "name": "Knoebels",
     "official": true,
-    "url": "https://knoebels.com/menu/potato-barn/"
+    "url": "https://knoebels.com/menu/potato-barn/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "8f3ce1a7bb918170e71d3583d658d87305ddd1b4c5dcca39dc37095b822cb3ec",
+      "html": "f7d2da99f6ba8a62acb52d3de5559ad56ab72137850621361ab62983720fc66f",
+      "mhtml": "6cb51a150540fa3a91facae1d05d449dcd4732d612cbf3f7978876d9009a7683",
+      "har": "bfccfd9547594c12c112ee4ab74fd82ebdc9b8d0448063e4d9439a637274cb7e"
+    }
   },
   "sections": [
     {

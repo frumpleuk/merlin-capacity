@@ -3,7 +3,14 @@
   "source": {
     "name": "Knoebels",
     "official": true,
-    "url": "https://knoebels.com/menu/phoenix-junction/"
+    "url": "https://knoebels.com/menu/phoenix-junction/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "957382dfdf887da0237000cf98af5dab9d5f167aeec35163666ccd94b9f3b650",
+      "html": "dfb16798161f5defe6b9772c468ea859abf4087f2a3eb8edbb763b7f7c01b8d5",
+      "mhtml": "f216fd762dd53c3f80b22cf65aa76096016fcac1d42bda7c69a75d5dc5ec4226",
+      "har": "7e8752b8c59ae41dc0dc9fc3d8d4cd77a22540772f77f1b82499ab4bdf544209"
+    }
   },
   "sections": [
     {

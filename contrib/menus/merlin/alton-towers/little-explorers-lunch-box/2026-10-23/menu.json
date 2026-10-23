@@ -4,7 +4,15 @@
   "source": {
     "name": "Alton Towers Resort",
     "official": true,
-    "url": "https://menus.tenkites.com/aramarkuk/cbeebieslunchboxat"
+    "url": "https://menus.tenkites.com/aramarkuk/cbeebieslunchboxat",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "62c2296d5d1304f4cc5515305f79d1c1eb08960eac3a0c759fe130f4f4b571ba",
+      "html": "77fd1f2879cfbab271f6f4bb78d46860d35af14a322fa1743f4039b1d123519d",
+      "mhtml": "7170cc3e6ddc542c10850040abd498ec636ee36ac01e34dac7f69bd0b65b2b4f",
+      "har": "1a00dc6552ed8595c29ef7bab999ca3a09204e3ca67b36671d383607796000ff"
+    },
+    "wayback": "https://web.archive.org/web/20261023201308/https://menus.tenkites.com/aramarkuk/cbeebieslunchboxat"
   },
   "sections": [
     {

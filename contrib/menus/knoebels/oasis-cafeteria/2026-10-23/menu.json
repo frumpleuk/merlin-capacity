@@ -3,7 +3,15 @@
   "source": {
     "name": "Knoebels",
     "official": true,
-    "url": "https://knoebels.com/menu/oasis-cafeteria/"
+    "url": "https://knoebels.com/menu/oasis-cafeteria/",
+    "wayback": "https://web.archive.org/web/20261023210415/https://knoebels.com/menu/oasis-cafeteria/?v=0b3b97fa6688",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "a1bbcdcf94f2ee3784ba8a39fd499c7850c86b9956080091df2ed4fd20783478",
+      "html": "163278d32a9942bae7fba3a96d7c8fed35c7003e795ed3b9b1dd4b6d125600b7",
+      "mhtml": "0984f6b62f04ce979f5a75d68a81a2fc44542654df1a03d8f75b524f93010f83",
+      "har": "afc72be5b7997644b71fd3ee09efd56a15a1a4ea3aefe519b034d386d74d2604"
+    }
   },
   "sections": [
     {

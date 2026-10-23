@@ -4,7 +4,15 @@
   "source": {
     "name": "Alton Towers Resort",
     "official": true,
-    "url": "https://menus.tenkites.com/aramarkuk/cbeebieslandhotel"
+    "url": "https://menus.tenkites.com/aramarkuk/cbeebieslandhotel",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "8df2a02be8bc266cf608f6ed8e4c87b95aa57187b29439f588eff1d4c491f140",
+      "html": "5b4b523fa25306bc4c735d525f99804d95934f3f75fcdf47771775a3b913a024",
+      "mhtml": "e90da3322c234f1a1c0b5a5077c15a35f5277d75b94f210c8c1cd9ca57ef285d",
+      "har": "0198681d605e0aec4ccc513d69429e50bb020a9960d9557bbcbf66cc71510ddd"
+    },
+    "wayback": "https://web.archive.org/web/20261023201946/https://menus.tenkites.com/aramarkuk/cbeebieslandhotel"
   },
   "sections": [
     {

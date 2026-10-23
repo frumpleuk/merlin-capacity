@@ -4,7 +4,15 @@
   "source": {
     "name": "Pleasure Beach Resort",
     "official": true,
-    "url": "https://www.blackpoolpleasurebeach.com/lokis-menu/"
+    "url": "https://www.blackpoolpleasurebeach.com/lokis-menu/",
+    "wayback": "https://web.archive.org/web/20261023215103/https://www.blackpoolpleasurebeach.com/lokis-menu/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "082302727ed9a00cffe580a92a13929ea205817b0ec48aaa3078227e217f55d1",
+      "html": "10b53e27056e6076fed4d1cf7afaa25eb80c14964edfa698b7d5a9ae52a12124",
+      "mhtml": "d0d87c9160e4716a508427bfa58aca80bf9d41eff390618beb8d4c615a8cc786",
+      "har": "faa194fb5bed3ab883786c81ec8b234f75afb586511d9b2845d0920753344018"
+    }
   },
   "sections": [
     {

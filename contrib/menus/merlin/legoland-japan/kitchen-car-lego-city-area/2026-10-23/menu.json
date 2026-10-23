@@ -3,7 +3,14 @@
   "source": {
     "name": "Legoland Japan",
     "official": true,
-    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/kitchen-car-city/"
+    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/kitchen-car-city/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "89d5ee22ba18d588905286d0789393a5b8f701da1f7a6f099390f03c422f3807",
+      "html": "08d75ea364f3715340c73f57af1be32eacbc0eb82b8d6c8facb6289d68f8e77d",
+      "mhtml": "35006d57b7fb4d5b4eb5a9ee5d46d0efd0375a0f3c33b93feb02b43bda66a1b1",
+      "har": "60d202be1fd661ecfd0b26ce760a28332ae78d78ccd98d9ba539b87675a1ec15"
+    }
   },
   "sections": [
     {

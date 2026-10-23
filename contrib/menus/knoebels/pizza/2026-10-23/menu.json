@@ -3,7 +3,14 @@
   "source": {
     "name": "Knoebels",
     "official": true,
-    "url": "https://knoebels.com/menu/pizza/"
+    "url": "https://knoebels.com/menu/pizza/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "612887d51c5e91bc1e6656a5024e9e9fdf095b5fbbc05463853403e7bfecabdd",
+      "html": "3a75c4232d48d7638784f86a16880c2a55c3380561527712f4a002afe0aa8d35",
+      "mhtml": "3e588cbe9fa22a741238cf208c013cc1e236c750cec522357802a36d37525c4e",
+      "har": "a3ad6df6e8c658941703fd5ae14240d558f70cb8d6c0a612835fd18963254721"
+    }
   },
   "sections": [
     {

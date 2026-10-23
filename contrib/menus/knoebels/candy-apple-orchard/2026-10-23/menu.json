@@ -3,7 +3,15 @@
   "source": {
     "name": "Knoebels",
     "official": true,
-    "url": "https://knoebels.com/menu/candy-apple-orchard/"
+    "url": "https://knoebels.com/menu/candy-apple-orchard/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "0104f3bd4ca888429c3bd57ecb0b21ab0afa7d266fc631311560dc1ff71b1c48",
+      "html": "9b20d295628e1f6a3ae46457b89a27eebe52122cc9d8426bb9e7cf2be40cf456",
+      "mhtml": "632e02f43126e4dc97a4f9ddd04a3a1d69392c84ff99c5894b5a74ab11289ffe",
+      "har": "50c48baceafd583e44cb4cbd70bc176a507d6817ce9b7f6aa8ed252c18f2a9a1"
+    },
+    "wayback": "https://web.archive.org/web/20261023204915/https://knoebels.com/menu/candy-apple-orchard/?v=0b3b97fa6688"
   },
   "sections": [
     {

@@ -4,7 +4,15 @@
   "source": {
     "name": "Paultons Park",
     "official": true,
-    "url": "https://menus.tenkites.com/paultonspark/thehaybarn"
+    "url": "https://menus.tenkites.com/paultonspark/thehaybarn",
+    "wayback": "https://web.archive.org/web/20261023213354/https://menus.tenkites.com/paultonspark/thehaybarn",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "b788d19250637e69d7eda1220faa082b1fd9acf564aeca12f561b47ca75155ed",
+      "html": "2abe26d1901872c119c80cac841e2d1bbe8bafb3ced8d56c669835cb2cb96973",
+      "mhtml": "22cc44375043518ec263f185a2acecba320c4a8c47cd1f318fc413727568377e",
+      "har": "793507ede0c953b2e429bc57ab7390205e619b791e344b5889367933cea7764b"
+    }
   },
   "sections": [
     {

@@ -6,7 +6,14 @@
     "official": true,
     "url": "https://menus.tenkites.com/paultonspark/sweettreatkiosks",
     "menu": "Churros",
-    "page": "https://menus.tenkites.com/paultonspark/sweettreatkiosks?mguid=a2590c85-cfae-4800-84d7-89dd585dbbcc"
+    "page": "https://menus.tenkites.com/paultonspark/sweettreatkiosks?mguid=a2590c85-cfae-4800-84d7-89dd585dbbcc",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "fe71a18bc371e4ec4bb71b4997ebd35d6c259604d5f7ef157559b91afe56ffc2",
+      "html": "4b5a5d2971735471a4c0b2312ef06f90630bbcc1eb95ad50bc7c439c88c7df11",
+      "mhtml": "0e9a459efbeacdde561d29ac47e28a45fe90344c0bd4312bc5587cda9a9537d8",
+      "har": "2d13c432a06bf5322adc5b10d13db65a64d7f7efda87f6551cdc2e60281c0738"
+    }
   },
   "sections": [
     {

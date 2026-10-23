@@ -3,7 +3,14 @@
   "source": {
     "name": "Legoland Japan",
     "official": true,
-    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/ice-factory/"
+    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/ice-factory/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "d21c4b7fc944892e8610465556f3b5fd5f21ece203a252c5d3b8b0e8e1f9c8d3",
+      "html": "89539a7235c0bc4573683aa9245db6b12b96337b83311d4b2f2bf8ddc038ce4d",
+      "mhtml": "64f3dda01775f1ecab72f1e54d47557c4d6d296cf0b371c9e25a0616a5b2952d",
+      "har": "c01629b81d50452c6c7bd979eee6ea2155206e47b56081efd9d44f75331f236e"
+    }
   },
   "sections": [
     {

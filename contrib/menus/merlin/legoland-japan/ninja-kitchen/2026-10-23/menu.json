@@ -3,7 +3,14 @@
   "source": {
     "name": "Legoland Japan",
     "official": true,
-    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/ninja-kitchen/"
+    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/ninja-kitchen/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "f2180656d8007a48611eebe40d74f25d146a36edb8a60203ff015dd2f84b557a",
+      "html": "a9391a818d9a2b4f8675f9cbc37a255c97665982382c4589dafbd9e2b2177551",
+      "mhtml": "c6a8c075c579888122ec85f37a5890064e23ebba1147ab74255f0ad2fcf7b75d",
+      "har": "4a5786521f376d53405ca923fbcce4d3903f5427a8db7a0e8b0da367a50ece9b"
+    }
   },
   "sections": [
     {

@@ -4,7 +4,15 @@
   "source": {
     "name": "Pleasure Beach Resort",
     "official": true,
-    "url": "https://www.blackpoolpleasurebeach.com/coasters-menu/"
+    "url": "https://www.blackpoolpleasurebeach.com/coasters-menu/",
+    "wayback": "https://web.archive.org/web/20261023214413/https://www.blackpoolpleasurebeach.com/coasters-menu/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "10901865ed665f24e1c11e42cf1f7e60c1c511e476052db30f3fcd971278cb63",
+      "html": "57fb42ea5bf4305c9664bf5833e2e6728f82e617ecdff46821fc22c3ed3d37c2",
+      "mhtml": "17e3ed24e86c39bb931d199320ee85472c7b0d415577baac36c58ca141195260",
+      "har": "96364ca725b98ff37a4bfa3f7a845d596f61d99f8ce70577d67012c289407256"
+    }
   },
   "sections": [
     {

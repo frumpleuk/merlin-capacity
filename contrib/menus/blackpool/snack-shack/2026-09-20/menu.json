@@ -4,7 +4,15 @@
   "source": {
     "name": "Pleasure Beach Resort",
     "official": true,
-    "url": "https://www.blackpoolpleasurebeach.com/snack-shack-menu/"
+    "url": "https://www.blackpoolpleasurebeach.com/snack-shack-menu/",
+    "wayback": "https://web.archive.org/web/20261023215143/https://www.blackpoolpleasurebeach.com/snack-shack-menu/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "1496ee2c6c8d35397aaaafef734176ffa24e43ff734fae4e3c18064d4f8f890b",
+      "html": "b05b211b605e7da28a218989b0df42aa31179c0b78895ffa5be8161e1ba06191",
+      "mhtml": "106dba66c89ff9f6ae6abf04a15d76d27de9f429dff1161d39a4f31121a1500e",
+      "har": "359fc46e28bededea05a7f53b326962b29044771179091517ee58e5596c49cd4"
+    }
   },
   "sections": [
     {

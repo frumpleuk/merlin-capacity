@@ -4,7 +4,15 @@
   "source": {
     "name": "Pleasure Beach Resort",
     "official": true,
-    "url": "https://www.blackpoolpleasurebeach.com/bbq-menu/"
+    "url": "https://www.blackpoolpleasurebeach.com/bbq-menu/",
+    "wayback": "https://web.archive.org/web/20261023213901/https://www.blackpoolpleasurebeach.com/bbq-menu/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "0f9ec9c319748e316c90ddc0bd7a835168486bb515aa343b3ccc45004f663937",
+      "html": "328a89f55893be28750a81be8ea7ec1bd1ed0984bcbed85107039efd4d1e9c11",
+      "mhtml": "1a83f8f8089ac3131633a3dce81cfcfab0746861046882df553dafeb5e92643e",
+      "har": "106cc0336cfb9140cc3628dcc629872aa43a034fcdcf0b4f8e3a83174dabdfcb"
+    }
   },
   "sections": [
     {

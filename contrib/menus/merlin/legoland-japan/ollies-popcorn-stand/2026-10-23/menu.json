@@ -3,7 +3,14 @@
   "source": {
     "name": "Legoland Japan",
     "official": true,
-    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/ollie-s-popcorn-stand/"
+    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/ollie-s-popcorn-stand/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "fc255c56a91c4aa8f4d02742836bc65b9478888902b91cef0d64cb39c808d0cf",
+      "html": "a6e96383d29bfc60ced08dbbc882e24a14901233c5f24dde7db15de1df3b1191",
+      "mhtml": "cce5b45216c250268701343effbbe10036ca764a0f359579845baa342e04b5e6",
+      "har": "f2c2c2e3cdca0245e3ddb0c108960357ce180286cbf36c64483411315f92d614"
+    }
   },
   "sections": [
     {

@@ -4,7 +4,14 @@
   "source": {
     "name": "Paultons Park",
     "official": true,
-    "url": "https://menus.tenkites.com/paultonspark/route83diner"
+    "url": "https://menus.tenkites.com/paultonspark/route83diner",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "fe09668ec93f439ab0afbd44422940ed326ed69793bb8e86137e9e7882e9fa96",
+      "html": "35fc42486275d5d636269630316d9f6487628bb7b528d4b91012dbff4e8af8f2",
+      "mhtml": "ac8e2103a78ac3e8f108523ac16012bcd79a6734e59f8d90d25285e2b78d7cd5",
+      "har": "f18ec09b949cc10247dbd89576dcc13068ad9b1e76e46bac63f59fa6c3c950c8"
+    }
   },
   "sections": [
     {

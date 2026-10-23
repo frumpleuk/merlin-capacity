@@ -3,7 +3,14 @@
   "source": {
     "name": "Knoebels",
     "official": true,
-    "url": "https://knoebels.com/menu/roast-beef-stand/"
+    "url": "https://knoebels.com/menu/roast-beef-stand/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "3688d86d0bc9327daf7be9a6ed1114883b63d8b4089e0cad4d2f8e9959ff92f2",
+      "html": "b62a42f61e3a74d21c63a512a2ccaa6c702a186e0504fac4bba7187604ed1501",
+      "mhtml": "e730231082b19312d7ba3b9bad9569eae14c0bd7bee20fd1030a7ec87fe9004d",
+      "har": "63f2548591ca79ef8b1e91bcd03c7e39991ca3b858d7e6fb7e45fc37ccde2b54"
+    }
   },
   "sections": [
     {

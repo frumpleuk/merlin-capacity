@@ -4,7 +4,15 @@
   "source": {
     "name": "Alton Towers Resort",
     "official": true,
-    "url": "https://menus.tenkites.com/aramarkuk/enchantedvillage02"
+    "url": "https://menus.tenkites.com/aramarkuk/enchantedvillage02",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "639cfbff733fc01feafd869f8ea38ee1eeb417f7fd3857aaede7d2a7138db7b9",
+      "html": "4d0828c381431bebb908e51390979e4b2bbda2657aaf955f40ee9809a46636c1",
+      "mhtml": "f5e06f6beb208df15d6962960b4654f739d6f244af222684051748a74a542f78",
+      "har": "b3fec37f6ae0754e01d0f5c4c9aee0cce67e5af54658526fcebb47afc6aed4f1"
+    },
+    "wayback": "https://web.archive.org/web/20261023201716/https://menus.tenkites.com/aramarkuk/enchantedvillage02"
   },
   "sections": [
     {

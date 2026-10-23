@@ -3,7 +3,14 @@
   "source": {
     "name": "Legoland Japan",
     "official": true,
-    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/pirate-apple-fries/"
+    "url": "https://www.legoland.jp/en/resort-guide/legoland/food/pirate-apple-fries/",
+    "snapshot": {
+      "captured": "2026-10-23",
+      "png": "2b882db529a06430379d5a3e3728838d877a817ab78e808a57af9fc0e36a0eb3",
+      "html": "89bc045b1d7202ea15a0e0e11af05fbc3c5697bd30c9d943b84275b01c83c14f",
+      "mhtml": "42849f8762cd3b91d4cf0bcc691b47aabf59a0c7ff4a9972d52f8f4a0d8031f8",
+      "har": "77ead18da70f27ea74659b90ede34c53f3f8b0b8f5c764ca047d53333ed577d6"
+    }
   },
   "sections": [
     {

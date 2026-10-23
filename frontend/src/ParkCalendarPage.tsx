@@ -20,6 +20,8 @@ import { ParkCalendar } from "./ParkCalendar";
 import { useParkToday } from "./parkDay";
 
 interface MonthData {
+  /** The month these files are for. */
+  month: string;
   main: ProductFile | null;
   rap: ProductFile | null;
   hours: HoursFile | null;
@@ -129,6 +131,7 @@ export function ParkCalendarPage() {
       ]);
       if (alive)
         setData({
+          month,
           main,
           rap,
           hours,
@@ -148,21 +151,25 @@ export function ParkCalendarPage() {
   // A queue-only park has no calendar — its home is the Queues tab.
   if (parkDef.queueOnly) return <Navigate to={`${parkPath(parkDef)}/queues`} replace />;
 
+  // The first render after a month change still holds the previous month's
+  // files; treat them as loading rather than draw them under the new month.
+  const current = data?.month === month ? data : undefined;
+
   const canPrev = !bounds || month > bounds.minMonth;
   const canNext = !bounds || month < bounds.maxMonth;
 
   return (
     <main className="rc-main">
       <ParkCalendar
-        main={data?.main ?? null}
-        rap={data?.rap ?? null}
-        hours={data?.hours ?? null}
-        season={data?.season ?? null}
-        events={data?.events ?? []}
+        main={current?.main ?? null}
+        rap={current?.rap ?? null}
+        hours={current?.hours ?? null}
+        season={current?.season ?? null}
+        events={current?.events ?? []}
         special={specialForMonth(special, month)}
         anomalies={anomalies}
         restrictions={restrictionsForMonth(restrictions, month)}
-        loading={data === undefined}
+        loading={current === undefined}
         month={month}
         onPrev={() => setMonth((m) => addMonths(m, -1))}
         onNext={() => setMonth((m) => addMonths(m, 1))}

@@ -713,7 +713,11 @@ export function ParkCalendar({
   // without this they read "Closed".
   const hoursDays = Object.keys(hours?.days ?? {}).sort();
   if (month === firstMonth && hoursDays.length > 0) {
-    for (let day = 1; ; day++) {
+    // Bounded by the month's length: hours from another month (a stale render
+    // mid-navigation) all sort after this month's dates, so the cutoff alone
+    // never stops the loop.
+    const last = new Date(Date.UTC(+month.slice(0, 4), +month.slice(5, 7), 0)).getUTCDate();
+    for (let day = 1; day <= last; day++) {
       const iso = `${month}-${String(day).padStart(2, "0")}`;
       if (iso >= hoursDays[0]) break;
       const d = details.get(iso);

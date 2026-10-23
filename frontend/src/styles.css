@@ -3027,6 +3027,14 @@ h3.fd-area-head {
 }
 .wx-strip-wrap {
   margin: 4px 0 10px;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+.rc-body-weather {
+  color: var(--muted);
+  font-size: 12.5px;
+  overflow-wrap: anywhere;
 }
 .wx-strip {
   display: flex;

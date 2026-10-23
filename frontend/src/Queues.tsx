@@ -1275,7 +1275,16 @@ export function QueueList({
 
   if (loading) return <p className="empty">Loading…</p>;
   if (!file || sections.length === 0)
-    return <p className="empty">No queue data for {longDate(date)} yet.</p>;
+    return (
+      <>
+        {/* Before the first ride posts a wait there's no queue file, but the
+            day's forecast is still worth showing. */}
+        {weather && (
+          <WeatherStrip hours={weather} date={date} domain={localHours(date, 8, 22, timeZone)} />
+        )}
+        <p className="empty">No queue data for {longDate(date)} yet.</p>
+      </>
+    );
 
   const anyOpen = sections.some((s) => s.rides.some(rideRunning));
   const toggleSection = (key: string) =>

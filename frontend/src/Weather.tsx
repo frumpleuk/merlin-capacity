@@ -72,10 +72,9 @@ export function BodyWeather({ iso }: { iso: string }) {
   const tz = useContext(ParkTimeZoneContext);
   if (!w) return null;
   return (
-    <div className={"rc-body-loc rc-weather" + (w.fc ? " wx-fc" : "")}>
-      <span className="rc-body-icon">{weatherEmoji(w.id, w.icon)}</span>
-      <span className="rc-body-name">{w.fc ? "Forecast" : "Weather"}</span>
-      <span className="rc-body-hours">{dayTitle(w, tz).replace(/^(Forecast|Recorded), /, "")}</span>
+    <div className={"rc-body-weather" + (w.fc ? " wx-fc" : "")}>
+      {weatherEmoji(w.id, w.icon)} {w.fc ? "Forecast: " : ""}
+      {dayTitle(w, tz).replace(/^(Forecast|Recorded), /, "")}
     </div>
   );
 }

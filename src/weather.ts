@@ -244,11 +244,22 @@ async function writeDays(env: Env, park: ParkConfig, from: string, nowMs: number
   }
   const at = new Date(nowMs).toISOString();
   await Promise.all(
-    [...byMonth(days)].map(([mk, ds]) =>
-      mergeMonthFile(env.BUCKET, `calendar/${park.key}/weather/${mk}.json`, { park: park.key, month: mk }, ds, at),
-    ),
+    [...byMonth(days)].map(([mk, ds]) => {
+      const key = `calendar/${park.key}/weather/${mk}.json`;
+      return serialised(key, () => mergeMonthFile(env.BUCKET, key, { park: park.key, month: mk }, ds, at));
+    }),
   );
   return Object.keys(days).length;
+}
+
+/** Backfill runs several ten-day calls for one park at once, and neighbouring
+ *  ones land in the same month file. Each merge is a read and a write, so they
+ *  take turns per file or the last write drops the others' days. */
+const fileQueue = new Map<string, Promise<unknown>>();
+function serialised<T>(key: string, fn: () => Promise<T>): Promise<T> {
+  const next = (fileQueue.get(key) ?? Promise.resolve()).then(fn, fn);
+  fileQueue.set(key, next.catch(() => {}));
+  return next;
 }
 
 /* ── Jobs ───────────────────────────────────────────────────────────────────── */

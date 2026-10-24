@@ -1658,6 +1658,86 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
       youtube: "https://www.youtube.com/user/DjursSommerlandFilm",
     },
   },
+  // Ride access is an exit-entry wristband issued on a doctor's certificate;
+  // wheelchair users and blind guests need none.
+  plopsaland: {
+    website: "https://www.plopsa.com/en/plopsaland-belgium",
+    location: {
+      address: "Plopsaland Belgium, De Pannelaan 68, De Panne, Belgium",
+      postcode: "8660",
+      query: "Plopsaland Belgium, De Pannelaan 68, 8660 De Panne",
+      // OpenStreetMap way 292618502, amenity=parking "P2" (operator Plopsaland
+      // Belgium): the lot beside the entrance, with the disabled spaces.
+      drive: { lat: 51.0795012, lon: 2.5997427, label: "car park P2" },
+      directions: "https://www.plopsa.com/en/plopsaland-belgium/itinerary",
+      note: "Leave the E40 at exit 1 Adinkerke; the car park is on the left at the roundabout after the railway crossing. €15 a car per day, online, at the machines or at the barrier by QR code; 2,100 spaces.",
+    },
+    booking: [
+      {
+        label: "Tickets",
+        url: "https://www.plopsa.com/en/plopsaland-belgium/tickets",
+        note: "Dated, undated (valid 1 year) and family tickets - dated are cheapest",
+      },
+      { label: "Buy tickets", url: "https://www.plopsa.com/en/plopsaland-belgium/buy-tickets" },
+      {
+        label: "Express Pass",
+        url: "https://www.plopsa.com/en/plopsaland-belgium/express-pass",
+        note: "Single (1 ride), Classic (9 rides) or Unlimited - per person per day, limited availability",
+      },
+      {
+        label: "Parking ticket",
+        url: "https://www.plopsa.com/en/plopsaland-belgium/buy-tickets?offers=MTAyMzA",
+        note: "€15 a car per day",
+      },
+      { label: "Annual passes", url: "https://www.plopsa.com/en/plopsaland-belgium/annual-passes" },
+    ],
+    orders: [],
+    openingTimes: openingTimes("https://www.plopsa.com/en/plopsaland-belgium/opening-times"),
+    access: [
+      {
+        label: "People with disabilities",
+        url: "https://www.plopsa.com/en/plopsaland-belgium/people-with-disabilities",
+        note: "Wristband for entry via ride exits with a doctor's certificate under 1 year old; free companion for wheelchair users and blind guests",
+      },
+      {
+        label: "Declaration of Knowledge",
+        url: "https://www.plopsa.com/sites/default/files/documents/2025-06/PLOPSA25_VerklaringKennisname-EN.pdf",
+        note: "PDF - complete before the visit to collect the wristband faster",
+      },
+      {
+        label: "Reserve a wheelchair",
+        url: "https://www.plopsa.com/en/plopsaland-belgium/people-with-disabilities/wheelchair-reservation",
+        note: "Limited number - ID card held as deposit",
+      },
+    ],
+    photos: [
+      {
+        label: "Photopass",
+        url: "https://www.plopsa.com/en/plopsaland-belgium/photopass",
+        note: "Meet and greet and ride photos - Digital, Print, All-in or Digital 365",
+      },
+      {
+        label: "View your photos",
+        url: "https://photopass.plopsa.com/",
+        note: "Link photos by QR code or photo number, then download or buy",
+      },
+    ],
+    apps: [
+      {
+        name: "Plopsaland Resort Belgium",
+        ios: appStore("plopsaland-resort-belgium", "6742180351"),
+        android: playStore("com.plopsa.plopsalandresort"),
+        note: "Live waiting times, show times and park map; stores tickets and Express Passes, sells parking",
+      },
+    ],
+    social: {
+      facebook: "https://www.facebook.com/Plopsaparken/",
+      instagram: "https://www.instagram.com/plopsa_official/",
+      tiktok: "https://www.tiktok.com/@plopsa_official",
+      x: "https://x.com/Plopsa",
+      youtube: "https://www.youtube.com/channel/UClEtcDQs1wL13Foc9p1YUIg",
+    },
+  },
   // Ride access goes through Nimbus: a free Pleasurewood Digital Access Pass or a
   // full Access Card unlocks the Ride Access Service and Essential Companion
   // tickets.

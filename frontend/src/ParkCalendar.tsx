@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
 import {
   ANOMALY_SHORT,
   restrictionSummary,
@@ -41,11 +41,15 @@ const PREBOOK_NOTE =
  * same flag is meaningful, because the date is still being polled and the day
  * ticket genuinely isn't selling it yet. */
 const BUYOUT_NOTE = "Closed to the public, booked out for a private event.";
-const NO_DATA_NOTE = "Before this site started tracking the park's opening hours.";
+const NO_DATA_NOTE =
+  "Before this site started tracking the park's opening hours.";
 const OFF_SALE_NOTE =
   "The park's booking page doesn't sell this date. Figures are the day's total capacity.";
 const BOOKED_NOTE =
   "Bookings taken against no published allocation, which is how a private event day reports.";
+/** The park's icon for its own hours (catalog `hoursIcon`), set by ParkCalendar. */
+const HoursIconContext = createContext("🎢");
+
 const KIND_ICON: Record<string, string> = {
   themepark: "🎢",
   waterpark: "🏊",
@@ -93,7 +97,8 @@ function getEventIcon(name: string): string {
   if (n.includes("fireworks")) return "🎆";
   if (n.includes("fright")) return "👻";
   if (n.includes("halloween")) return "🎃";
-  if (n.includes("fifa") || n.includes("world cup") || n.includes("football")) return "⚽";
+  if (n.includes("fifa") || n.includes("world cup") || n.includes("football"))
+    return "⚽";
   if (n.includes("minecraft")) return "⛏️";
   if (n.includes("summer")) return "☀️";
   if (n.includes("winter")) return "❄️";
@@ -125,12 +130,14 @@ function availStatus(o: Allocation): AvailStatus {
  * carry 150 and 131 RAP bookings against capacity 0. Hiding on capacity alone
  * swallowed 27 such dates. Only a genuine 0/0 is noise.
  */
-const hasAllocation = (o?: DayObs): o is DayObs => !!o && (o.capacity > 0 || o.used > 0);
+const hasAllocation = (o?: DayObs): o is DayObs =>
+  !!o && (o.capacity > 0 || o.used > 0);
 
 /** Bookings exist but no allocation was published, so there is no total to show
  *  a fraction or a percentage against — `available` is negative here (capacity
  *  minus used). Report the count alone. */
-const isUnallocated = (o: Allocation): boolean => o.capacity === 0 && o.used > 0;
+const isUnallocated = (o: Allocation): boolean =>
+  o.capacity === 0 && o.used > 0;
 
 /** Whether the season ticket is what sells this day. The season package reports
  *  a figure on ordinary public dates too (Chessington 2026-11-01: 5,720 against
@@ -175,7 +182,8 @@ export function mergeDetails(
   }
   for (const [iso, o] of Object.entries(main?.days ?? {})) get(iso).main = o;
   for (const [iso, o] of Object.entries(rap?.days ?? {})) get(iso).rap = o;
-  for (const [iso, o] of Object.entries(season?.days ?? {})) get(iso).season = o;
+  for (const [iso, o] of Object.entries(season?.days ?? {}))
+    get(iso).season = o;
   // An event can CREATE a date: Thorpe's Stealth 20 sells on a night the park
   // publishes no separate hours for, and it must still get a calendar row.
   for (const e of events)
@@ -186,7 +194,8 @@ export function mergeDetails(
   // Buyouts come last and can CREATE a date the other three files never mention:
   // no public theme-park hours and no public availability, so without this the
   // day renders as an empty cell despite the park running all day.
-  for (const [iso, o] of Object.entries(special?.days ?? {})) get(iso).special = o;
+  for (const [iso, o] of Object.entries(special?.days ?? {}))
+    get(iso).special = o;
   // Annotates a ticket figure, so it never creates a date.
   for (const iso of special?.off_public_sale ?? []) {
     const d = map.get(iso);
@@ -211,7 +220,8 @@ export function mergeDetails(
   return map;
 }
 
-const NO_HOURS_NOTE = "On sale, but the park has published no opening hours for this day.";
+const NO_HOURS_NOTE =
+  "On sale, but the park has published no opening hours for this day.";
 
 /** No hours, yet tickets sell: a season beyond the end of the hours feed
  *  (Chessington's 2027, Drayton's Twixmas) or a day the feed marks shut. Not
@@ -226,12 +236,18 @@ const unpublishedHours = (d: DayDetail): "label" | "anomaly" | null =>
 /* ── Compact cell content (desktop month grid) ─────────────────────────────── */
 
 function CellContent({ d }: { d: DayDetail }) {
+  const hoursIcon = useContext(HoursIconContext);
   const past = d.iso < useParkToday();
   const tp = themepark(d.hours);
   const closed = tp && /^closed$/i.test(tp.hours);
-  const extras = extraLocations(d.hours).filter((l) => l.hours && !/^closed$/i.test(l.hours));
+  const extras = extraLocations(d.hours).filter(
+    (l) => l.hours && !/^closed$/i.test(l.hours),
+  );
   const nothingOn =
-    !d.special && !tp?.hours && extras.length === 0 && (d.hours?.events?.length ?? 0) === 0;
+    !d.special &&
+    !tp?.hours &&
+    extras.length === 0 &&
+    (d.hours?.events?.length ?? 0) === 0;
 
   return (
     <>
@@ -244,7 +260,9 @@ function CellContent({ d }: { d: DayDetail }) {
       ) : closed ? (
         <div className="rc-closed">Closed</div>
       ) : tp?.hours ? (
-        <div className="rc-line rc-hours">🎢 {tp.hours}</div>
+        <div className="rc-line rc-hours">
+          {hoursIcon} {tp.hours}
+        </div>
       ) : nothingOn && d.noData ? (
         <div className="rc-closed" title={NO_DATA_NOTE}>
           No data
@@ -278,14 +296,18 @@ function CellContent({ d }: { d: DayDetail }) {
           cell reads as "open, with entertainment" even without a headline act. */}
       {!tp?.hours && (d.hours?.events?.length ?? 0) > 0 && (
         <div className="rc-line rc-shows">
-          🎭 {d.hours!.events!.length} event{d.hours!.events!.length === 1 ? "" : "s"}
+          🎭 {d.hours!.events!.length} event
+          {d.hours!.events!.length === 1 ? "" : "s"}
         </div>
       )}
       {/* Which pass levels can't get in. A near-total block says what still
           gets in rather than naming four levels — see restrictionSummary. */}
       {d.restricted && (
         <div
-          className={"rc-line rc-restricted" + (d.restricted.blackout ? " rc-blackout" : "")}
+          className={
+            "rc-line rc-restricted" +
+            (d.restricted.blackout ? " rc-blackout" : "")
+          }
           title={d.restricted.note}
         >
           🚫 {d.restricted.label}
@@ -313,7 +335,8 @@ function CellContent({ d }: { d: DayDetail }) {
           {BAND_EMOJI[d.bands.band]} 🎟️ {BAND_LABELS[d.bands.band]}
         </div>
       )}
-      {hasAllocation(d.main) && !showSeason(d) &&
+      {hasAllocation(d.main) &&
+        !showSeason(d) &&
         (isUnallocated(d.main) ? (
           <div className="rc-line rc-avail rc-booked" title={BOOKED_NOTE}>
             📋 🎟️ {d.main.used.toLocaleString()} booked
@@ -366,6 +389,7 @@ function CellContent({ d }: { d: DayDetail }) {
 /* ── Full detail body (tap sheet + agenda card) ────────────────────────────── */
 
 function DayBody({ d, seasonLabel }: { d: DayDetail; seasonLabel: string }) {
+  const hoursIcon = useContext(HoursIconContext);
   const past = d.iso < useParkToday();
   const locs = d.hours?.locations ?? [];
   const events = d.hours?.events ?? [];
@@ -374,7 +398,9 @@ function DayBody({ d, seasonLabel }: { d: DayDetail; seasonLabel: string }) {
       {locs.length > 0 ? (
         locs.map((l) => (
           <div key={l.kind} className="rc-body-loc">
-            <span className="rc-body-icon">{KIND_ICON[l.kind] ?? "🏢"}</span>
+            <span className="rc-body-icon">
+              {l.kind === "themepark" ? hoursIcon : (KIND_ICON[l.kind] ?? "🏢")}
+            </span>
             <span className="rc-body-name">{l.name || l.kind}</span>
             <span className="rc-body-hours">
               {l.hours || "—"}
@@ -423,7 +449,10 @@ function DayBody({ d, seasonLabel }: { d: DayDetail; seasonLabel: string }) {
       )}
       {d.restricted && (
         <div
-          className={"rc-body-avail rc-restricted" + (d.restricted.blackout ? " rc-blackout" : "")}
+          className={
+            "rc-body-avail rc-restricted" +
+            (d.restricted.blackout ? " rc-blackout" : "")
+          }
         >
           🚫 Pass restricted: {d.restricted.label}
           <div className="rc-prebook-note">{d.restricted.note}</div>
@@ -437,9 +466,16 @@ function DayBody({ d, seasonLabel }: { d: DayDetail; seasonLabel: string }) {
       )}
       <AllocList>
         {hasAllocation(d.main) && !showSeason(d) && (
-          <AvailRow label="Tickets" o={d.main} past={past} offSale={d.offPublicSale} />
+          <AvailRow
+            label="Tickets"
+            o={d.main}
+            past={past}
+            offSale={d.offPublicSale}
+          />
         )}
-        {showSeason(d) && <AvailRow label={seasonLabel} o={d.season!} past={past} />}
+        {showSeason(d) && (
+          <AvailRow label={seasonLabel} o={d.season!} past={past} />
+        )}
         {d.events?.map((e) => (
           <AvailRow key={e.label} label={e.label} o={e.obs} past={past} />
         ))}
@@ -470,7 +506,8 @@ function BandBlock({ b }: { b: BandDay }) {
     });
   // The store says "sold out" from the moment it is; first seen already sold
   // out, the history's first entry is the best we know.
-  const firstSoldOut = b.soldOutAt ?? b.history.find(([, band]) => band === 0)?.[0];
+  const firstSoldOut =
+    b.soldOutAt ?? b.history.find(([, band]) => band === 0)?.[0];
   return (
     <div className="rc-body-avail rc-bands">
       <div>
@@ -486,7 +523,11 @@ function BandBlock({ b }: { b: BandDay }) {
       {b.slots && (
         <div className="rc-band-slots" aria-label="Arrival slots">
           {b.slots.map(([time, band]) => (
-            <span key={time} className={"rc-band-slot rc-band-" + band} title={BAND_LABELS[band]}>
+            <span
+              key={time}
+              className={"rc-band-slot rc-band-" + band}
+              title={BAND_LABELS[band]}
+            >
               {time} {BAND_EMOJI[band]}
             </span>
           ))}
@@ -509,7 +550,8 @@ function AvailRow({
   past?: boolean;
   offSale?: boolean;
 }) {
-  if (isUnallocated(o)) return <AllocMeter label={label} o={o} icon="📋" note={BOOKED_NOTE} />;
+  if (isUnallocated(o))
+    return <AllocMeter label={label} o={o} icon="📋" note={BOOKED_NOTE} />;
   const note = past
     ? undefined
     : offSale
@@ -518,7 +560,12 @@ function AvailRow({
         ? PREBOOK_NOTE
         : undefined;
   return (
-    <AllocMeter label={label} o={o} icon={note ? "🔒" : availStatus(o).emoji} note={note} />
+    <AllocMeter
+      label={label}
+      o={o}
+      icon={note ? "🔒" : availStatus(o).emoji}
+      note={note}
+    />
   );
 }
 
@@ -543,7 +590,8 @@ function MonthGrid({
 
   const today = useParkToday();
   const cells = [];
-  for (let i = 0; i < lead; i++) cells.push(<div key={`pad${i}`} className="rc-cell empty" />);
+  for (let i = 0; i < lead; i++)
+    cells.push(<div key={`pad${i}`} className="rc-cell empty" />);
   for (let day = 1; day <= daysInMonth; day++) {
     const iso = `${mk}-${String(day).padStart(2, "0")}`;
     const isToday = iso === today;
@@ -562,7 +610,11 @@ function MonthGrid({
     cells.push(
       <div
         key={iso}
-        className={"rc-cell" + (selectedIso === iso ? " sel" : "") + (isToday ? " today" : "")}
+        className={
+          "rc-cell" +
+          (selectedIso === iso ? " sel" : "") +
+          (isToday ? " today" : "")
+        }
         style={accent ? { borderLeftColor: accent } : undefined}
         onClick={() => onSelect(iso)}
         role="button"
@@ -668,7 +720,8 @@ function Agenda({
     const container = agendaRef.current;
     if (!el || !container) return;
     requestAnimationFrame(() => {
-      const delta = el.getBoundingClientRect().top - container.getBoundingClientRect().top;
+      const delta =
+        el.getBoundingClientRect().top - container.getBoundingClientRect().top;
       container.scrollTop += delta - 8; // small gap ≈ the today ring's scroll-margin
     });
   }, []);
@@ -681,7 +734,9 @@ function Agenda({
         if (!d) {
           return (
             <div
-              className={"rc-agenda-day rc-agenda-shut" + (isToday ? " today" : "")}
+              className={
+                "rc-agenda-day rc-agenda-shut" + (isToday ? " today" : "")
+              }
               key={iso}
               ref={isToday ? todayRef : undefined}
             >
@@ -729,7 +784,11 @@ function DaySheet({
       <div className="day-sheet-inner">
         <div className="day-sheet-head">
           <strong>{longDate(d.iso)}</strong>
-          <button className="detail-close" onClick={onClose} aria-label="Close detail">
+          <button
+            className="detail-close"
+            onClick={onClose}
+            aria-label="Close detail"
+          >
             ×
           </button>
         </div>
@@ -751,6 +810,7 @@ export function ParkCalendar({
   anomalies,
   restrictions,
   bands,
+  hoursIcon = "🎢",
   weather,
   month,
   loading,
@@ -770,6 +830,8 @@ export function ParkCalendar({
   restrictions: RestrictionsFile | null;
   /** Ticket availability bands, for a band-only store (DigiTickets). */
   bands?: BandsFile | null;
+  /** Icon for the park's own hours (🎢 unless the catalog says otherwise). */
+  hoursIcon?: string;
   /** Daily weather by date. Annotates the days shown; never adds one. */
   weather: Record<string, WeatherDay>;
   month: string;
@@ -805,7 +867,9 @@ export function ParkCalendar({
     // Bounded by the month's length: hours from another month (a stale render
     // mid-navigation) all sort after this month's dates, so the cutoff alone
     // never stops the loop.
-    const last = new Date(Date.UTC(+month.slice(0, 4), +month.slice(5, 7), 0)).getUTCDate();
+    const last = new Date(
+      Date.UTC(+month.slice(0, 4), +month.slice(5, 7), 0),
+    ).getUTCDate();
     for (let day = 1; day <= last; day++) {
       const iso = `${month}-${String(day).padStart(2, "0")}`;
       if (iso >= hoursDays[0]) break;
@@ -819,38 +883,42 @@ export function ParkCalendar({
   const seasonLabel = season?.label ?? "Season";
   // A closed day has no entry, but it is still selectable and its sheet still
   // says "Closed" — so synthesise the bare day rather than refusing to open it.
-  const selDay = selected ? details.get(selected) ?? { iso: selected } : null;
+  const selDay = selected ? (details.get(selected) ?? { iso: selected }) : null;
 
   return (
-    <WeatherDaysContext.Provider value={weather}>
-      <MonthNav
-        month={month}
-        onPrev={onPrev}
-        onNext={onNext}
-        canPrev={canPrev}
-        canNext={canNext}
-      />
-      {loading ? (
-        <div className="page-meta">Loading…</div>
-      ) : details.size === 0 ? (
-        <div className="empty">No data for {monthLabel(month)}.</div>
-      ) : isDesktop ? (
-        <MonthGrid
-          mk={month}
-          details={details}
-          selectedIso={selected}
-          onSelect={(iso) => setSelected((prev) => (prev === iso ? null : iso))}
+    <HoursIconContext.Provider value={hoursIcon}>
+      <WeatherDaysContext.Provider value={weather}>
+        <MonthNav
+          month={month}
+          onPrev={onPrev}
+          onNext={onNext}
+          canPrev={canPrev}
+          canNext={canNext}
         />
-      ) : (
-        <Agenda details={details} seasonLabel={seasonLabel} month={month} />
-      )}
-      {isDesktop && selDay && (
-        <DaySheet
-          d={selDay}
-          onClose={() => setSelected(null)}
-          seasonLabel={seasonLabel}
-        />
-      )}
-    </WeatherDaysContext.Provider>
+        {loading ? (
+          <div className="page-meta">Loading…</div>
+        ) : details.size === 0 ? (
+          <div className="empty">No data for {monthLabel(month)}.</div>
+        ) : isDesktop ? (
+          <MonthGrid
+            mk={month}
+            details={details}
+            selectedIso={selected}
+            onSelect={(iso) =>
+              setSelected((prev) => (prev === iso ? null : iso))
+            }
+          />
+        ) : (
+          <Agenda details={details} seasonLabel={seasonLabel} month={month} />
+        )}
+        {isDesktop && selDay && (
+          <DaySheet
+            d={selDay}
+            onClose={() => setSelected(null)}
+            seasonLabel={seasonLabel}
+          />
+        )}
+      </WeatherDaysContext.Provider>
+    </HoursIconContext.Provider>
   );
 }

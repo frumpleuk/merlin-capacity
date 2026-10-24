@@ -25,6 +25,9 @@ export interface ParkDef {
   /** The ticket store publishes availability as bands, not numbers
    *  (calendar/<park>/bands.json; src/ticket-bands.ts). Shown on the Calendar. */
   ticketBands?: boolean;
+  /** The Calendar's icon for the park's own hours, in place of 🎢 (a scare
+   *  park isn't a theme park day). */
+  hoursIcon?: string;
   /** One-off ticketed events with their own allocation, shown as extra lines on
    *  the Calendar tab. Deliberately NOT in `products`: those drive the nav, and
    *  a single night doesn't deserve a tab that goes dead the morning after. */
@@ -291,6 +294,7 @@ export const PARKS: ParkDef[] = [
     label: "Tulleys Shocktober Fest",
     products: [],
     ticketBands: true,
+    hoursIcon: "👻",
   },
   {
     // At Twinlakes Park, Melton Mowbray.
@@ -300,6 +304,7 @@ export const PARKS: ParkDef[] = [
     label: "Xtreme Scream Park",
     products: [],
     ticketBands: true,
+    hoursIcon: "👻",
   },
 ];
 

@@ -183,6 +183,7 @@ export function ParkCalendarPage() {
         anomalies={anomalies}
         restrictions={restrictionsForMonth(restrictions, month)}
         bands={bands}
+        hoursIcon={parkDef.hoursIcon}
         weather={current?.weather ?? {}}
         loading={current === undefined}
         month={month}

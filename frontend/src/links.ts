@@ -1658,6 +1658,93 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
       youtube: "https://www.youtube.com/user/DjursSommerlandFilm",
     },
   },
+  // Independent. No Express Pass; virtual queues for the big rides are booked
+  // in the app.
+  liseberg: {
+    website: "https://www.liseberg.se/en/",
+    location: {
+      address: "Liseberg, Örgrytevägen 5, Gothenburg, Sweden",
+      postcode: "402 22",
+      query: "Liseberg, Örgrytevägen 5, 402 22 Göteborg",
+      // OpenStreetMap way 1243475153, amenity=parking "Liseberg södra"
+      // (underground): the garage under World of Volvo by the South entrance.
+      drive: { lat: 57.6896015, lon: 11.9983986, label: "the Liseberg Södra car park" },
+      directions: "https://www.liseberg.se/en/park/plan-your-visit/parking/",
+      note: "Liseberg Södra multi-storey under World of Volvo, by the South entrance: 1,170 spaces, 4 disabled spaces on level 2. Focus garage at Fabriksgatan 45 has 1,057 spaces.",
+    },
+    booking: [
+      {
+        label: "Tickets and prices",
+        url: "https://www.liseberg.se/en/park/tickets-prices/",
+        note: "Admission, ride passes, annual passes and ride coupons - cheaper online than at the gate",
+      },
+      {
+        label: "Admission + Ride Pass",
+        url: "https://www.liseberg.se/en/park/tickets-prices/admission-ride-pass/",
+        note: "Admission and unlimited rides for one day",
+      },
+      {
+        label: "Ride Pass",
+        url: "https://www.liseberg.se/en/park/tickets-prices/ride-pass/",
+        note: "Unlimited rides for one day - admission sold separately",
+      },
+      {
+        label: "Virtual queueing",
+        url: "https://www.liseberg.se/en/virtual-queueing/",
+        note: "Book a place in the queue for the big rides in the app, then enter via the Express entrance",
+      },
+      {
+        label: "Annual passes",
+        url: "https://www.liseberg.se/en/park/annual-pass/",
+        note: "Liseberg Pass, Duo and Senior for admission; Gold Pass and Gold Pass Kanin add rides",
+      },
+    ],
+    orders: [
+      {
+        label: "My Liseberg",
+        url: "https://mitt.liseberg.se/",
+        note: "Account holding annual passes - sign-in page in Swedish. Day tickets are changed through the confirmation email",
+      },
+    ],
+    openingTimes: openingTimes("https://www.liseberg.se/en/calendar/"),
+    access: [
+      {
+        label: "Accessibility at Liseberg Park",
+        url: "https://www.liseberg.se/en/accessibility/liseberg-park/",
+        note: "Disabled parking, entrances, steep paths, accessible toilets",
+      },
+      {
+        label: "Accessible Queue",
+        url: "https://www.liseberg.se/en/accessibility/liseberg-park/accessible-queue/",
+        note: "Skip the physical queue with up to 3 companions on a signed Liseberg certificate; Return Time booking at the busiest rides. EU Disability Card accepted",
+      },
+      {
+        label: "Personal attendant",
+        url: "https://www.liseberg.se/en/accessibility/liseberg-park/personal-attendant/",
+        note: "Up to 2 attendants get free admission and ride free",
+      },
+      {
+        label: "Certificate",
+        url: "https://www.liseberg.se/2a6a885e/globalassets/tillganglighet/tillganglighet/intyg/blankett-intyg-for-ledsagning-och-anpassad-ko-2026_en.pdf",
+        note: "PDF - for Accessible Queue and personal attendant; valid 3 years",
+      },
+    ],
+    photos: [],
+    apps: [
+      {
+        name: "Liseberg",
+        ios: appStore("liseberg", "452190254"),
+        android: playStore("se.liseberg.liseberg"),
+        note: "Virtual queues, queue times, park map and day programme; buy and hold annual passes",
+      },
+    ],
+    social: {
+      facebook: "https://www.facebook.com/lisebergab/",
+      instagram: "https://www.instagram.com/lisebergab/",
+      tiktok: "https://www.tiktok.com/@liseberg",
+      youtube: "https://www.youtube.com/user/liseberggoteborg",
+    },
+  },
   // Ride access is an exit-entry wristband issued on a doctor's certificate;
   // wheelchair users and blind guests need none.
   plopsaland: {

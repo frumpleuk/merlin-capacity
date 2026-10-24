@@ -149,6 +149,12 @@
     "priced": 0,
     "water": 0
   },
+  "liseberg": {
+    "venues": 27,
+    "withMenus": 0,
+    "priced": 0,
+    "water": 0
+  },
   "disneyland_park": {
     "venues": 36,
     "withMenus": 36,

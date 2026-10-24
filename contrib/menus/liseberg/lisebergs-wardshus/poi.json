@@ -1,0 +1,11 @@
+{
+  "id": 2,
+  "name": "Lisebergs Wärdshus",
+  "category": "Food & Drink",
+  "area": null,
+  "lat": 57.696049,
+  "lon": 11.992188,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "liseberg app api, positions from openstreetmap"
+}

@@ -1,0 +1,11 @@
+{
+  "id": 89,
+  "name": "Fröken Ellens Café",
+  "category": "Food & Drink",
+  "area": null,
+  "lat": 57.695002,
+  "lon": 11.993561,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "liseberg app api, positions from openstreetmap"
+}

@@ -1,0 +1,11 @@
+{
+  "id": 88,
+  "name": "Gelato",
+  "category": "Food & Drink",
+  "area": null,
+  "lat": null,
+  "lon": null,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "liseberg app api, positions from openstreetmap"
+}

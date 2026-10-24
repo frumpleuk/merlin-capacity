@@ -1,0 +1,11 @@
+{
+  "id": 95,
+  "name": "Tomtebyns Teatercafé",
+  "category": "Food & Drink",
+  "area": null,
+  "lat": null,
+  "lon": null,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "liseberg app api, positions from openstreetmap"
+}

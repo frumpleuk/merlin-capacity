@@ -20,6 +20,10 @@
 //                 those come from scripts/menus/plopsaland-locations.json, by
 //                 name, copied from ThemeParks/parksapi (MIT,
 //                 src/parks/plopsa/locations).
+//   liseberg      the app API's restaurant/list (names and today's hours, no
+//                 positions). A venue is placed where the one OpenStreetMap
+//                 eatery inside the park outline with its name stands; a name
+//                 that matches none, or several (Max), stays unplaced.
 //   paultons      the app's bundled points_of_interest.json, type "restaurant".
 //                 It ships inside the APK rather than being served, so pass an
 //                 unpacked copy with --poi <file>; without it Paulton's is
@@ -338,7 +342,46 @@ async function plopsaland() {
     });
 }
 
-const SOURCES = { blackpool, flamingoland, drayton_manor: drayton, plopsaland };
+async function liseberg() {
+  const cfg = config("liseberg").queue;
+  const resp = await fetch(`${cfg.apiUrl}restaurant/list`, { headers: { "User-Agent": "dev-tool" } });
+  if (!resp.ok) throw new Error(`restaurant/list ${resp.status}`);
+  const list = await resp.json();
+  const q = `[out:json][timeout:25];nwr["tourism"="theme_park"]["name"="Liseberg"](57.68,11.98,57.70,12.01)->.p;.p map_to_area->.a;(nwr["amenity"~"restaurant|cafe|fast_food|ice_cream|bar|pub|food_court"](area.a););out center tags;`;
+  const osm = await fetch("https://overpass-api.de/api/interpreter", {
+    method: "POST",
+    headers: { "User-Agent": "dev-tool", "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({ data: q }),
+  });
+  if (!osm.ok) throw new Error(`overpass ${osm.status}`);
+  const norm = (s) => s.normalize("NFKD").toLowerCase().replace(/[^a-z0-9]/g, "");
+  const places = (await osm.json()).elements
+    .filter((e) => e.tags?.name)
+    .map((e) => ({ key: norm(e.tags.name), lat: e.lat ?? e.center?.lat, lon: e.lon ?? e.center?.lon }));
+  const placeOf = (name) => {
+    const n = norm(name);
+    let hits = places.filter((p) => p.key === n);
+    if (!hits.length) hits = places.filter((p) => n.startsWith(p.key) || p.key.startsWith(n));
+    return hits.length === 1 ? hits[0] : null;
+  };
+  return list.map((r) => {
+    const name = decode(r.name);
+    const at = placeOf(name);
+    return {
+      id: r.id,
+      name,
+      category: "Food & Drink",
+      area: null,
+      lat: coord(at?.lat ?? null),
+      lon: coord(at?.lon ?? null),
+      menuUrl: null,
+      appMissingSince: null,
+      source: "liseberg app api, positions from openstreetmap",
+    };
+  });
+}
+
+const SOURCES = { blackpool, flamingoland, drayton_manor: drayton, plopsaland, liseberg };
 
 for (const key of Object.keys(INDIE_PARK_DIRS)) {
   if (wanted.length && !wanted.includes(key)) continue;

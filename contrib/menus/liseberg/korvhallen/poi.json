@@ -1,0 +1,11 @@
+{
+  "id": 81,
+  "name": "Korvhallen",
+  "category": "Food & Drink",
+  "area": null,
+  "lat": 57.694674,
+  "lon": 11.993382,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "liseberg app api, positions from openstreetmap"
+}

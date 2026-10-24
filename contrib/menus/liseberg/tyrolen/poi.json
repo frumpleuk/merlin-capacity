@@ -1,0 +1,11 @@
+{
+  "id": 4,
+  "name": "Tyrolen",
+  "category": "Food & Drink",
+  "area": null,
+  "lat": 57.693577,
+  "lon": 11.993439,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "liseberg app api, positions from openstreetmap"
+}

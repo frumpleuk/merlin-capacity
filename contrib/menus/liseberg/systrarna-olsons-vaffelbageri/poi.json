@@ -1,0 +1,11 @@
+{
+  "id": 90,
+  "name": "Systrarna Olsons Våffelbageri",
+  "category": "Food & Drink",
+  "area": null,
+  "lat": 57.694856,
+  "lon": 11.993658,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "liseberg app api, positions from openstreetmap"
+}

@@ -1,0 +1,11 @@
+{
+  "id": 7,
+  "name": "Järnvägsrestaurangen",
+  "category": "Food & Drink",
+  "area": null,
+  "lat": 57.694791,
+  "lon": 11.992907,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "liseberg app api, positions from openstreetmap"
+}

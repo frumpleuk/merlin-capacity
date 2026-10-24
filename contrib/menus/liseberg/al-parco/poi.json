@@ -1,0 +1,11 @@
+{
+  "id": 48,
+  "name": "Al Parco",
+  "category": "Food & Drink",
+  "area": null,
+  "lat": 57.694757,
+  "lon": 11.993844,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "liseberg app api, positions from openstreetmap"
+}

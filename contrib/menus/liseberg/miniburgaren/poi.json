@@ -1,0 +1,11 @@
+{
+  "id": 85,
+  "name": "Miniburgaren",
+  "category": "Food & Drink",
+  "area": null,
+  "lat": 57.69351,
+  "lon": 11.991619,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "liseberg app api, positions from openstreetmap"
+}

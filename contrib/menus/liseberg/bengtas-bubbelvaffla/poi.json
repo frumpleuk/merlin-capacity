@@ -1,0 +1,11 @@
+{
+  "id": 86,
+  "name": "Bengtas Bubbelvåffla",
+  "category": "Food & Drink",
+  "area": null,
+  "lat": 57.69484,
+  "lon": 11.993542,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "liseberg app api, positions from openstreetmap"
+}

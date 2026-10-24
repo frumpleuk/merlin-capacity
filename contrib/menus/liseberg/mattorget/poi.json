@@ -1,0 +1,11 @@
+{
+  "id": 83,
+  "name": "Mattorget",
+  "category": "Food & Drink",
+  "area": null,
+  "lat": 57.694165,
+  "lon": 11.993806,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "liseberg app api, positions from openstreetmap"
+}

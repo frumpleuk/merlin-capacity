@@ -1,0 +1,11 @@
+{
+  "id": 1,
+  "name": "Hamnkrogen",
+  "category": "Food & Drink",
+  "area": null,
+  "lat": 57.695029,
+  "lon": 11.996048,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "liseberg app api, positions from openstreetmap"
+}

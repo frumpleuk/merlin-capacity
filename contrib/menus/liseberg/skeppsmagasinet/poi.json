@@ -1,0 +1,11 @@
+{
+  "id": 13,
+  "name": "Skeppsmagasinet",
+  "category": "Food & Drink",
+  "area": null,
+  "lat": 57.695035,
+  "lon": 11.995439,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "liseberg app api, positions from openstreetmap"
+}

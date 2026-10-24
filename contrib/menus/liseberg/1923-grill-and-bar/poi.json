@@ -1,0 +1,11 @@
+{
+  "id": 46,
+  "name": "1923 Grill & Bar",
+  "category": "Food & Drink",
+  "area": null,
+  "lat": 57.696312,
+  "lon": 11.991962,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "liseberg app api, positions from openstreetmap"
+}

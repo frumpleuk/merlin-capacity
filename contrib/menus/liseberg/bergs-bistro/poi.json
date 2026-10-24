@@ -1,0 +1,11 @@
+{
+  "id": 12,
+  "name": "Bergs Bistro",
+  "category": "Food & Drink",
+  "area": null,
+  "lat": 57.695864,
+  "lon": 11.992955,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "liseberg app api, positions from openstreetmap"
+}

@@ -1,0 +1,11 @@
+{
+  "id": 87,
+  "name": "Tornets Glasscafé",
+  "category": "Food & Drink",
+  "area": null,
+  "lat": 57.695468,
+  "lon": 11.990965,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "liseberg app api, positions from openstreetmap"
+}

@@ -1,0 +1,11 @@
+{
+  "id": 82,
+  "name": "Lättlagat",
+  "category": "Food & Drink",
+  "area": null,
+  "lat": 57.695258,
+  "lon": 11.994372,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "liseberg app api, positions from openstreetmap"
+}

@@ -1,0 +1,11 @@
+{
+  "id": 80,
+  "name": "Falafel",
+  "category": "Food & Drink",
+  "area": null,
+  "lat": 57.695104,
+  "lon": 11.994339,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "liseberg app api, positions from openstreetmap"
+}

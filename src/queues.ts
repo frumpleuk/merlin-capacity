@@ -23,6 +23,7 @@ import { fetchFirebaseQueues } from "./firebase";
 import { catalogNamesChanged, fetchFirstOptionQueues } from "./firstoption";
 import { applyRestrictions, readPaultonsRestrictions } from "./paultons-restrictions";
 import { putCatalog, readCatalog, type RideCatalog } from "./rides";
+import { fetchEftelingQueues } from "./efteling";
 import { fetchLisebergQueues } from "./liseberg";
 import { fetchPlopsaQueues } from "./plopsa";
 import { fetchTe2Queues } from "./te2";
@@ -435,7 +436,9 @@ export async function runQueuePoll(
                 ? await fetchPlopsaQueues(park.queue, env.BUCKET, park.key, parkTimeZone(park), now)
                 : park.queue.kind === "liseberg"
                   ? await fetchLisebergQueues(park.queue, parkTimeZone(park), now)
-                  : await fetchBpbQueues(park.queue, env, park.key, now);
+                  : park.queue.kind === "efteling"
+                    ? await fetchEftelingQueues(park.queue, env.BUCKET, park.key, parkTimeZone(park), now)
+                    : await fetchBpbQueues(park.queue, env, park.key, now);
     res = synth;
     catalog =
       synth.ok && Object.keys(synth.catalog.items).length > 0

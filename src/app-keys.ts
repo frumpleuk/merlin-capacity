@@ -35,6 +35,9 @@ export function applyAppKeys(vars: Record<string, unknown>, parks: ParkConfig[])
       case "fos":
         q.token = key;
         break;
+      case "efteling":
+        q.apiKey = key;
+        break;
       case "te2":
         q.clientSecret = key;
         if (park.openingHours?.kind === "te2") park.openingHours.clientSecret = key;

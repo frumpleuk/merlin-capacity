@@ -281,6 +281,14 @@ export const PARKS: ParkDef[] = [
     timeZone: "Europe/Brussels",
   },
   {
+    key: "efteling",
+    slug: "efteling",
+    country: "NL",
+    label: "Efteling",
+    products: [],
+    timeZone: "Europe/Amsterdam",
+  },
+  {
     key: "liseberg",
     slug: "liseberg",
     country: "SE",

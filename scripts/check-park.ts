@@ -13,6 +13,7 @@ import { PARKS, parkTimeZone, type AttractionsConfig } from "../src/config";
 import { fetchHours } from "../src/hours";
 import { fetchLiveQueues } from "../src/queues";
 import { rebuildCatalog, type RideCatalog } from "../src/rides";
+import { fetchEftelingQueues } from "../src/efteling";
 import { fetchLisebergQueues } from "../src/liseberg";
 import { fetchPlopsaQueues } from "../src/plopsa";
 import { fetchTe2Queues } from "../src/te2";
@@ -76,13 +77,20 @@ for (const key of keys) {
       `   live: ok=${live.ok} http=${live.httpStatus} lines=${live.linesSeen} running=${running} ` +
         `window=${live.resort ? `${local(live.resort.open)}-${local(live.resort.close)} local` : "none (closed today?)"}`,
     );
-  } else if (park.queue?.kind === "te2" || park.queue?.kind === "plopsa" || park.queue?.kind === "liseberg") {
+  } else if (
+    park.queue?.kind === "te2" ||
+    park.queue?.kind === "plopsa" ||
+    park.queue?.kind === "liseberg" ||
+    park.queue?.kind === "efteling"
+  ) {
     const live =
       park.queue.kind === "te2"
         ? await fetchTe2Queues(park.queue, bucket, key, tz, Date.now())
         : park.queue.kind === "plopsa"
           ? await fetchPlopsaQueues(park.queue, bucket, key, tz, Date.now())
-          : { ...(await fetchLisebergQueues(park.queue, tz, Date.now())), resort: undefined };
+          : park.queue.kind === "efteling"
+            ? await fetchEftelingQueues(park.queue, bucket, key, tz, Date.now())
+            : { ...(await fetchLisebergQueues(park.queue, tz, Date.now())), resort: undefined };
     const items = Object.values(live.catalog.items);
     const running = Object.values(live.snapshot).filter((o) => o.isOpen && o.isOperational);
     const types = [...new Set(items.map((i) => i.groups?.type).filter(Boolean))];

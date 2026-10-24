@@ -176,6 +176,18 @@ export interface LisebergConfig {
   apiUrl: string;
 }
 
+/** Efteling's app API (api.efteling.com/app). The key is a Worker secret
+ *  (APP_KEY_EFTELING); appVersion is the app's x-app-version. See
+ *  docs/efteling-api.md. */
+export interface EftelingConfig {
+  /** API base, ending in `/` (`https://api.efteling.com/app/`). */
+  apiUrl: string;
+  /** The app's key, filled from the secret (src/app-keys.ts). */
+  apiKey: string;
+  /** The app's `x-app-version` ("v5.18.0"). */
+  appVersion: string;
+}
+
 /** Where a queue-tracked park's live ride waits come from. A discriminated
  *  union: most parks are `attractions` (Attractions.io live feed + content
  *  bundle); Paulton's is `fos` (First Option Software custom backend); Flamingo
@@ -190,7 +202,8 @@ export type QueueSource =
   | ({ kind: "dlp" } & DlpConfig)
   | ({ kind: "te2" } & Te2Config)
   | ({ kind: "plopsa" } & PlopsaConfig)
-  | ({ kind: "liseberg" } & LisebergConfig);
+  | ({ kind: "liseberg" } & LisebergConfig)
+  | ({ kind: "efteling" } & EftelingConfig);
 
 export const liveFeedUrl = (apiKey: string) =>
   `https://live-data.attractions.io/${apiKey}.json`;
@@ -244,6 +257,8 @@ export interface OpeningHoursLocation {
  *    answers inside a session holding a basket, so the fetch walks the store's
  *    flow first: branch, event page, one ticket into the basket (never bought).
  *    Xtreme Scream Park; see docs/digitickets.md.
+ *  - `efteling`: the public website's `getpoiinfo/<lang>/<year>/<month>`, one
+ *    request a month, each day with its opening slots. See docs/efteling-api.md.
  *  - `liseberg`: the app API's `calendar/<date>/<days>`, one entry a day,
  *    closed or whole-hour from/to. One request.
  *  - `plopsa`: plopsa.com's opening-hours calendar, every date in a range,
@@ -303,6 +318,15 @@ export type OpeningHoursConfig =
       kind: "pleasurewood";
       /** The opening-times page carrying `openArr` / `eventArr`. */
       pageUrl: string;
+      locationName: string;
+    }
+  | {
+      kind: "efteling";
+      /** The public website's `getpoiinfo` base
+       *  (`https://www.efteling.com/service/cached/getpoiinfo`). */
+      calendarUrl: string;
+      /** Months to read, the current one included. */
+      months: number;
       locationName: string;
     }
   | {
@@ -1247,6 +1271,28 @@ export const PARKS: ParkConfig[] = [
       kind: "plopsa",
       apiUrl: "https://apim-stp-gwc-prd-infra.azure-api.net/app-middleware",
       park: "plopsaland-de-panne",
+    },
+    products: [],
+  },
+  // Efteling (Kaatsheuvel, Netherlands): the app API for queues (key from the
+  // app), the public website for hours. On the Blackpool Pleasure Beach
+  // Platinum pass.
+  {
+    key: "efteling",
+    weather: { lat: 51.65, lon: 5.049 },
+    label: "Efteling",
+    timeZone: "Europe/Amsterdam",
+    openingHours: {
+      kind: "efteling",
+      calendarUrl: "https://www.efteling.com/service/cached/getpoiinfo",
+      months: 4,
+      locationName: "Efteling",
+    },
+    queue: {
+      kind: "efteling",
+      apiUrl: "https://api.efteling.com/app/",
+      apiKey: "",
+      appVersion: "v5.18.0",
     },
     products: [],
   },

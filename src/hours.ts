@@ -1,6 +1,7 @@
 import { parkDay, parkTimeZone, USER_AGENT, type OpeningHoursConfig, type ParkConfig } from "./config";
 import { readDigitickets } from "./digitickets";
 import { fetchDlpHours } from "./dlp";
+import { fetchEftelingHours } from "./efteling";
 import { fetchLisebergHours } from "./liseberg";
 import { fetchPlopsaHours } from "./plopsa";
 import { buildParkIcal, parkIcalKey, writeIcal, type SpecialDaysLike } from "./ical";
@@ -125,6 +126,8 @@ export async function fetchHours(
       return fetchPlopsaHours(cfg);
     case "liseberg":
       return fetchLisebergHours(cfg);
+    case "efteling":
+      return fetchEftelingHours(cfg);
     case "digitickets":
       return fetchDigiticketsHours(cfg);
     default:

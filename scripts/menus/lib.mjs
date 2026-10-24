@@ -49,6 +49,7 @@ export const INDIE_PARK_DIRS = {
   blackpool: "blackpool",
   flamingoland: "flamingoland",
   drayton_manor: "drayton-manor",
+  plopsaland: "plopsaland",
 };
 
 /** Disneyland Paris's two parks share one operator folder. Their venues and
@@ -82,6 +83,7 @@ const CURRENCY = {
   legoland_new_york: "USD",
   knoebels: "USD",
   djurs_sommerland: "DKK",
+  plopsaland: "EUR",
 };
 
 /** The currency a park's prices are in (ISO 4217). Prices are always integer

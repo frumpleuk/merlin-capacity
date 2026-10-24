@@ -15,6 +15,11 @@
 //                 markers_data (the coordinates) on parkMapMarkerId.
 //   drayton_manor the app's TE2 POI list (docs/drayton-api.md), POIs with a
 //                 "Dining Type" tag, behind an anonymous token.
+//   plopsaland    the app API's points of interest, type "foods_and_drinks"
+//                 (docs/plopsa-api.md). They carry map pixels, not coordinates;
+//                 those come from scripts/menus/plopsaland-locations.json, by
+//                 name, copied from ThemeParks/parksapi (MIT,
+//                 src/parks/plopsa/locations).
 //   paultons      the app's bundled points_of_interest.json, type "restaurant".
 //                 It ships inside the APK rather than being served, so pass an
 //                 unpacked copy with --poi <file>; without it Paulton's is
@@ -302,7 +307,38 @@ async function drayton() {
     });
 }
 
-const SOURCES = { blackpool, flamingoland, drayton_manor: drayton };
+/** Plopsaland: the app's food and drink POIs, categorised by the park's own
+ *  service type (Take away, Restaurant, ...). */
+async function plopsaland() {
+  const cfg = config("plopsaland").queue;
+  const resp = await fetch(`${cfg.apiUrl}/api/points-of-interest?language=en&park=${cfg.park}`, {
+    headers: { "User-Agent": "dev-tool" },
+  });
+  if (!resp.ok) throw new Error(`pois ${resp.status}`);
+  const { items } = await resp.json();
+  const where = JSON.parse(fs.readFileSync(path.join(REPO, "scripts/menus/plopsaland-locations.json"), "utf8"));
+  return items
+    .flatMap((i) => i.contains ?? [])
+    .filter((p) => p.type === "foods_and_drinks" && p.title)
+    .map((p) => {
+      const name = decode(p.title);
+      const at = where[p.title] ?? where[name];
+      const kind = (p.categories ?? []).map((c) => c.label).filter(Boolean)[0];
+      return {
+        id: p.plopsa_id ?? p.id,
+        name,
+        category: kind ? `Food & Drink > ${kind}` : "Food & Drink",
+        area: null,
+        lat: coord(at?.latitude ?? null),
+        lon: coord(at?.longitude ?? null),
+        menuUrl: null,
+        appMissingSince: null,
+        source: "plopsa app api",
+      };
+    });
+}
+
+const SOURCES = { blackpool, flamingoland, drayton_manor: drayton, plopsaland };
 
 for (const key of Object.keys(INDIE_PARK_DIRS)) {
   if (wanted.length && !wanted.includes(key)) continue;

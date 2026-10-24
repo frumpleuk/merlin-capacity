@@ -1,0 +1,11 @@
+{
+  "id": "2000",
+  "name": "Restaurant Le Grand Buffet",
+  "category": "Food & Drink > All-you-can-eat buffet",
+  "area": null,
+  "lat": 51.081238,
+  "lon": 2.601123,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "plopsa app api"
+}

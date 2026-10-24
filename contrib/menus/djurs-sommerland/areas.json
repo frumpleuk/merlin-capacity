@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Piratland",
+    "lat": 56.426627,
+    "lon": 10.548768
+  },
+  {
+    "name": "Mexicoland",
+    "lat": 56.424517,
+    "lon": 10.547432
+  },
+  {
+    "name": "Wild Asia",
+    "lat": 56.426159,
+    "lon": 10.552249
+  },
+  {
+    "name": "Bondegårdsland",
+    "lat": 56.425322,
+    "lon": 10.54934
+  },
+  {
+    "name": "Westernland",
+    "lat": 56.423924,
+    "lon": 10.550127
+  },
+  {
+    "name": "Sommerland",
+    "lat": 56.424623,
+    "lon": 10.549459
+  },
+  {
+    "name": "Vikingeland",
+    "lat": 56.422856,
+    "lon": 10.547099
+  },
+  {
+    "name": "Dinosaurland",
+    "lat": 56.422474,
+    "lon": 10.54934
+  },
+  {
+    "name": "Vandland",
+    "lat": 56.421809,
+    "lon": 10.548529
+  }
+]

@@ -38,6 +38,7 @@ export const ATTRACTIONS_INDIE_PARK_DIRS = {
   crealy: "crealy",
   tulleys: "tulleys",
   xtreme_scream_park: "xtreme-scream-park",
+  djurs_sommerland: "djurs-sommerland",
 };
 
 /** The independents are each their own operator, so each sits directly under
@@ -80,6 +81,7 @@ const CURRENCY = {
   legoland_california: "USD",
   legoland_new_york: "USD",
   knoebels: "USD",
+  djurs_sommerland: "DKK",
 };
 
 /** The currency a park's prices are in (ISO 4217). Prices are always integer
@@ -98,6 +100,9 @@ export const DATE_DIR = /^\d{4}-\d{2}-\d{2}$/;
 
 export const slug = (s) =>
   s
+    .replace(/[æÆ]/g, "ae") // letters NFKD keeps whole: "Brændte" is "braendte", not "br-ndte"
+    .replace(/[øØ]/g, "oe")
+    .replace(/ß/g, "ss")
     .normalize("NFKD")
     .replace(/\p{M}/gu, "") // the accents NFKD split off: "Rémy" is "remy", not "re-my"
     .replace(/[®™]/g, "")

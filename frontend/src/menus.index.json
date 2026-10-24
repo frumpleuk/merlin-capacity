@@ -113,6 +113,12 @@
     "priced": 0,
     "water": 0
   },
+  "djurs_sommerland": {
+    "venues": 32,
+    "withMenus": 0,
+    "priced": 0,
+    "water": 0
+  },
   "paultons": {
     "venues": 19,
     "withMenus": 16,

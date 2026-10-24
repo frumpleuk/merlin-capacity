@@ -13,6 +13,7 @@ import { PARKS, parkTimeZone, type AttractionsConfig } from "../src/config";
 import { fetchHours } from "../src/hours";
 import { fetchLiveQueues } from "../src/queues";
 import { rebuildCatalog, type RideCatalog } from "../src/rides";
+import { fetchPlopsaQueues } from "../src/plopsa";
 import { fetchTe2Queues } from "../src/te2";
 
 // The apps' keys are Worker secrets, kept locally in .dev.vars (src/app-keys.ts).
@@ -74,8 +75,11 @@ for (const key of keys) {
       `   live: ok=${live.ok} http=${live.httpStatus} lines=${live.linesSeen} running=${running} ` +
         `window=${live.resort ? `${local(live.resort.open)}-${local(live.resort.close)} local` : "none (closed today?)"}`,
     );
-  } else if (park.queue?.kind === "te2") {
-    const live = await fetchTe2Queues(park.queue, bucket, key, tz, Date.now());
+  } else if (park.queue?.kind === "te2" || park.queue?.kind === "plopsa") {
+    const live =
+      park.queue.kind === "te2"
+        ? await fetchTe2Queues(park.queue, bucket, key, tz, Date.now())
+        : await fetchPlopsaQueues(park.queue, bucket, key, tz, Date.now());
     const items = Object.values(live.catalog.items);
     const running = Object.values(live.snapshot).filter((o) => o.isOpen && o.isOperational);
     const types = [...new Set(items.map((i) => i.groups?.type).filter(Boolean))];

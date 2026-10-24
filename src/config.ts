@@ -161,6 +161,15 @@ export interface Te2Config {
   customerId: string;
 }
 
+/** Plopsa's app middleware (Plopsaland De Panne). Public, no key. See
+ *  docs/plopsa-api.md. */
+export interface PlopsaConfig {
+  /** API host; paths sit under `/api/`. */
+  apiUrl: string;
+  /** The park's slug in the API (`plopsaland-de-panne`). */
+  park: string;
+}
+
 /** Where a queue-tracked park's live ride waits come from. A discriminated
  *  union: most parks are `attractions` (Attractions.io live feed + content
  *  bundle); Paulton's is `fos` (First Option Software custom backend); Flamingo
@@ -173,7 +182,8 @@ export type QueueSource =
   | ({ kind: "firestore" } & FirebaseConfig)
   | ({ kind: "bpb" } & BpbConfig)
   | ({ kind: "dlp" } & DlpConfig)
-  | ({ kind: "te2" } & Te2Config);
+  | ({ kind: "te2" } & Te2Config)
+  | ({ kind: "plopsa" } & PlopsaConfig);
 
 export const liveFeedUrl = (apiKey: string) =>
   `https://live-data.attractions.io/${apiKey}.json`;
@@ -227,6 +237,9 @@ export interface OpeningHoursLocation {
  *    answers inside a session holding a basket, so the fetch walks the store's
  *    flow first: branch, event page, one ticket into the basket (never bought).
  *    Xtreme Scream Park; see docs/digitickets.md.
+ *  - `plopsa`: plopsa.com's opening-hours calendar, every date in a range,
+ *    closed or open with ISO-offset slots and labels (events, and longer notes
+ *    about the day). One request.
  *  - `djurs`: Djurs Sommerland's opening-hours page carries the season as a
  *    `data-model` attribute: `parkEvents[]`, each a type (1 park, 2 water park,
  *    4 park during an event), a start and end time and the days as indexes
@@ -281,6 +294,14 @@ export type OpeningHoursConfig =
       kind: "pleasurewood";
       /** The opening-times page carrying `openArr` / `eventArr`. */
       pageUrl: string;
+      locationName: string;
+    }
+  | {
+      kind: "plopsa";
+      /** plopsa.com's `opening-hours-calendar` (`start`/`end` appended). */
+      calendarUrl: string;
+      /** Days ahead to read. */
+      windowDays: number;
       locationName: string;
     }
   | {
@@ -1190,6 +1211,26 @@ export const PARKS: ParkConfig[] = [
       kind: "attractions",
       apiKey: "",
       slug: "djurs-sommerland",
+    },
+    products: [],
+  },
+  // Plopsaland De Panne (Plopsa, Belgium): the app's public API for queues, the
+  // site's calendar for hours. The closest park to Calais.
+  {
+    key: "plopsaland",
+    weather: { lat: 51.081, lon: 2.598 },
+    label: "Plopsaland De Panne",
+    timeZone: "Europe/Brussels",
+    openingHours: {
+      kind: "plopsa",
+      calendarUrl: "https://www.plopsa.com/en/plopsaland-belgium/api/opening-hours-calendar",
+      windowDays: 183,
+      locationName: "Plopsaland De Panne",
+    },
+    queue: {
+      kind: "plopsa",
+      apiUrl: "https://apim-stp-gwc-prd-infra.azure-api.net/app-middleware",
+      park: "plopsaland-de-panne",
     },
     products: [],
   },

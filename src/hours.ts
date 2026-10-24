@@ -1,6 +1,7 @@
 import { parkDay, parkTimeZone, USER_AGENT, type OpeningHoursConfig, type ParkConfig } from "./config";
 import { readDigitickets } from "./digitickets";
 import { fetchDlpHours } from "./dlp";
+import { fetchPlopsaHours } from "./plopsa";
 import { buildParkIcal, parkIcalKey, writeIcal, type SpecialDaysLike } from "./ical";
 import { readRestrictions } from "./restrictions";
 import { fetchTe2Hours } from "./te2";
@@ -119,6 +120,8 @@ export async function fetchHours(
       return fetchTulleysHours(cfg);
     case "djurs":
       return fetchDjursHours(cfg);
+    case "plopsa":
+      return fetchPlopsaHours(cfg);
     case "digitickets":
       return fetchDigiticketsHours(cfg);
     default:

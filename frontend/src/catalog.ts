@@ -272,6 +272,15 @@ export const PARKS: ParkDef[] = [
     timeZone: "Europe/Copenhagen",
   },
   {
+    key: "plopsaland",
+    slug: "plopsaland-de-panne",
+    country: "BE",
+    operator: "Plopsa",
+    label: "Plopsaland De Panne",
+    products: [],
+    timeZone: "Europe/Brussels",
+  },
+  {
     key: "pleasurewood_hills",
     slug: "pleasurewood-hills",
     country: "GB",

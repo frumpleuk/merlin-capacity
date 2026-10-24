@@ -1658,6 +1658,82 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
       youtube: "https://www.youtube.com/user/DjursSommerlandFilm",
     },
   },
+  // Independent Dutch park - tickets on its own webshop, no fast-pass or
+  // single-rider line. Ride access for disabled visitors is the facility card.
+  efteling: {
+    website: "https://www.efteling.com/en",
+    location: {
+      address: "Efteling, Europalaan 1, Kaatsheuvel, Netherlands",
+      postcode: "5171 KW",
+      query: "Efteling, Europalaan 1, 5171 KW Kaatsheuvel",
+      // OpenStreetMap way 985814368, amenity=parking ref=P1 (operator Efteling,
+      // fee=yes, access=customers): the main visitor car park.
+      drive: { lat: 51.6513504, lon: 5.0414966, label: "car park P1" },
+      directions: "https://www.efteling.com/en/address-route",
+      note: "Parking is €15 a day for cars; hotel and resort guests park free in their own car park.",
+    },
+    booking: [
+      {
+        label: "Book tickets",
+        url: "https://www.efteling.com/en/tickets/order",
+        note: "Order entrance tickets - price depends on the day of visit",
+      },
+      {
+        label: "Ticket prices and validity",
+        url: "https://www.efteling.com/en/park/information/ticket-overview",
+      },
+      {
+        label: "Annual pass",
+        url: "https://www.efteling.com/en/park/annual-pass",
+      },
+    ],
+    orders: [
+      {
+        label: "Efteling account",
+        url: "https://www.efteling.com/en/account",
+        note: "Sign in to see your tickets and annual passes - sign-in page shown in Dutch",
+      },
+    ],
+    rideAvailability: rideAvailability(
+      "https://www.efteling.com/en/park/information/in-maintenance",
+      "Attractions closed for maintenance, from the park itself",
+    ),
+    openingTimes: openingTimes("https://www.efteling.com/en/park/opening-hours"),
+    access: [
+      {
+        label: "Visitors with a disability",
+        url: "https://www.efteling.com/en/park/information/disabled-visitors",
+        note: "Overview of facilities, facility card, wheelchair and scooter hire",
+      },
+      {
+        label: "Facility card",
+        url: "https://www.efteling.com/en/park/information/disabled-visitors/plan-your-visit",
+        note: "For guests unable to join the regular queues - apply via the digital form; EUR 2.00 off for you and up to 3 companions",
+      },
+      {
+        label: "Accessibility in the park",
+        url: "https://www.efteling.com/en/park/information/disabled-visitors/discover-the-park",
+        note: "Attraction and toilet access, wheelchair entrances and assistance dogs",
+      },
+    ],
+    photos: [],
+    apps: [
+      {
+        name: "Efteling",
+        ios: appStore("efteling", "727498391"),
+        android: playStore("nl.efteling.android"),
+        note: "Live queue times, park map and plan your favourites",
+      },
+    ],
+    social: {
+      facebook: "https://www.facebook.com/EftelingUK",
+      instagram: "https://www.instagram.com/eftelinguk/",
+      tiktok: "https://www.tiktok.com/@efteling",
+      x: "https://x.com/Efteling",
+      youtube: "https://www.youtube.com/@efteling",
+      linkedin: "https://www.linkedin.com/company/efteling",
+    },
+  },
   // Independent. No Express Pass; virtual queues for the big rides are booked
   // in the app.
   liseberg: {

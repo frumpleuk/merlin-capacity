@@ -227,6 +227,11 @@ export interface OpeningHoursLocation {
  *    answers inside a session holding a basket, so the fetch walks the store's
  *    flow first: branch, event page, one ticket into the basket (never bought).
  *    Xtreme Scream Park; see docs/digitickets.md.
+ *  - `djurs`: Djurs Sommerland's opening-hours page carries the season as a
+ *    `data-model` attribute: `parkEvents[]`, each a type (1 park, 2 water park,
+ *    4 park during an event), a start and end time and the days as day-of-year
+ *    numbers for the year in the page's "Åbningstider YYYY" heading. One
+ *    request.
  *  - `te2`: accesso's TE2 app API (Drayton Manor), `venue-hours` for the days
  *    and `calendars/events` for named events, behind the same anonymous token
  *    as its queues. */
@@ -277,6 +282,14 @@ export type OpeningHoursConfig =
       /** The opening-times page carrying `openArr` / `eventArr`. */
       pageUrl: string;
       locationName: string;
+    }
+  | {
+      kind: "djurs";
+      pageUrl: string;
+      locationName: string;
+      waterparkName: string;
+      /** The name for type 4 days (an event the park opens for). */
+      eventName: string;
     }
   | {
       kind: "tulleys";
@@ -1156,6 +1169,27 @@ export const PARKS: ParkConfig[] = [
       kind: "attractions",
       apiKey: "",
       slug: "knoebels-amusement-park",
+    },
+    products: [],
+  },
+  // Djurs Sommerland (Nimtofte, Denmark): Attractions.io queues; hours from the
+  // opening-hours page's data-model. Key from the app's BuildConfig.
+  {
+    key: "djurs_sommerland",
+    weather: { lat: 56.424, lon: 10.549 },
+    label: "Djurs Sommerland",
+    timeZone: "Europe/Copenhagen",
+    openingHours: {
+      kind: "djurs",
+      pageUrl: "https://www.djurssommerland.dk/planlaeg-dit-besoeg/abningstider/",
+      locationName: "Djurs Sommerland",
+      waterparkName: "Aqua park",
+      eventName: "Magical Halloween",
+    },
+    queue: {
+      kind: "attractions",
+      apiKey: "",
+      slug: "djurs-sommerland",
     },
     products: [],
   },

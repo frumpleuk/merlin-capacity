@@ -117,6 +117,8 @@ export async function fetchHours(
       return fetchCrealyHours(cfg);
     case "tulleys":
       return fetchTulleysHours(cfg);
+    case "djurs":
+      return fetchDjursHours(cfg);
     case "digitickets":
       return fetchDigiticketsHours(cfg);
     default:
@@ -325,6 +327,83 @@ async function fetchPleasurewoodHours(
     for (const d of datesBetween(from, to)) if (snapshot[d]) snapshot[d].event = e.title.trim();
   }
   return { ok: true, httpStatus: resp.status, snapshot, datesSeen: Object.keys(snapshot).length };
+}
+
+/* ── Djurs Sommerland (a data-model attribute) ───────────────────────────────── */
+
+interface DjursEvent {
+  type: number;
+  start: string;
+  end: string;
+  days?: { ranges?: number[] };
+}
+
+/**
+ * Djurs Sommerland: the page's calendar widget reads `parkEvents` from a
+ * `data-model` attribute. Type 1 is the park, 2 the water park, 4 the park
+ * during an event (Magisk Halloween). An entry whose start isn't a time names a
+ * day (Blå Mandag) and gives the park's hours in its end ("10.00 - 20.00").
+ */
+async function fetchDjursHours(
+  cfg: Extract<OpeningHoursConfig, { kind: "djurs" }>,
+): Promise<HoursFetch> {
+  let resp: Response;
+  try {
+    resp = await fetch(cfg.pageUrl, { headers: { "user-agent": USER_AGENT } });
+  } catch {
+    return { ok: false, httpStatus: 0, snapshot: {}, datesSeen: 0 };
+  }
+  if (!resp.ok) return { ok: false, httpStatus: resp.status, snapshot: {}, datesSeen: 0 };
+  const page = await resp.text();
+  const attr = /data-model="(\{&quot;parkEvents[^"]*)"/.exec(page)?.[1];
+  const year = Number(/Åbningstider (\d{4})/.exec(page)?.[1] ?? new Date().getUTCFullYear());
+  let events: DjursEvent[];
+  try {
+    events = (JSON.parse(attr!.replace(/&quot;/g, '"').replace(/&amp;/g, "&")) as { parkEvents: DjursEvent[] })
+      .parkEvents;
+  } catch {
+    return { ok: false, httpStatus: resp.status, snapshot: {}, datesSeen: 0 };
+  }
+  const time = (s: string) => /^(\d{1,2})[:.](\d{2})$/.exec(s.trim());
+  const hhmm = (m: RegExpExecArray) => `${m[1].padStart(2, "0")}:${m[2]}`;
+
+  const snapshot: HoursSnapshot = {};
+  const day = (n: number) => isoDay(Date.UTC(year, 0, n));
+  const at = (d: string) => (snapshot[d] ??= { locations: [] });
+  const set = (d: string, loc: LocationHours) => {
+    const ls = at(d).locations;
+    const i = ls.findIndex((l) => l.kind === loc.kind);
+    if (i >= 0) ls[i] = loc;
+    else ls.push(loc);
+  };
+  // Plain days first, so a named day's hours override them.
+  const named = (e: DjursEvent) => !time(e.start);
+  for (const e of [...events.filter((e) => !named(e)), ...events.filter(named)]) {
+    for (const n of e.days?.ranges ?? []) {
+      const d = day(n);
+      if (named(e)) {
+        const m = /^(\d{1,2}[:.]\d{2})\s*-\s*(\d{1,2}[:.]\d{2})$/.exec(e.end.trim());
+        const a = m && time(m[1]);
+        const b = m && time(m[2]);
+        if (a && b) set(d, { kind: "themepark", name: cfg.locationName, hours: `${fmt24(hhmm(a))} - ${fmt24(hhmm(b))}` });
+        at(d).event = e.start.trim();
+        continue;
+      }
+      const a = time(e.start);
+      const b = time(e.end);
+      if (!a || !b) continue;
+      const hours = `${fmt24(hhmm(a))} - ${fmt24(hhmm(b))}`;
+      if (e.type === 2) set(d, { kind: "waterpark", name: cfg.waterparkName, hours });
+      else {
+        set(d, { kind: "themepark", name: cfg.locationName, hours });
+        if (e.type === 4) at(d).event = cfg.eventName;
+      }
+    }
+  }
+  // Themepark row first, as the calendar expects.
+  for (const v of Object.values(snapshot)) v.locations.sort((x, y) => (x.kind === "themepark" ? -1 : y.kind === "themepark" ? 1 : 0));
+  const dates = Object.keys(snapshot).length;
+  return { ok: dates > 0, httpStatus: resp.status, snapshot, datesSeen: dates };
 }
 
 /* ── Pages that list dates in prose (Tulleys) ─────────────────────────────────── */

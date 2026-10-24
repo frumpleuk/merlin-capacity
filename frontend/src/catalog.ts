@@ -264,6 +264,14 @@ export const PARKS: ParkDef[] = [
     timeZone: "America/New_York",
   },
   {
+    key: "djurs_sommerland",
+    slug: "djurs-sommerland",
+    country: "DK",
+    label: "Djurs Sommerland",
+    products: [],
+    timeZone: "Europe/Copenhagen",
+  },
+  {
     key: "pleasurewood_hills",
     slug: "pleasurewood-hills",
     country: "GB",

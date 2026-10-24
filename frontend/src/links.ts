@@ -1596,6 +1596,68 @@ export const PARK_LINKS: Record<string, ParkLinks> = {
   },
 
   // Independent (Looping Group) - VisiSoft webshop at tickets.pleasurewoodhills.com.
+  // Independent. The webshop (tickets.djurssommerland.dk) answers a Cloudflare
+  // challenge, so the ticket pages, which link each product into it, stand in.
+  djurs_sommerland: {
+    website: "https://djurssommerland.dk/en/",
+    location: {
+      address: "Djurs Sommerland, Battrupholtvej 3, Nimtofte, Denmark",
+      postcode: "8581",
+      query: "Djurs Sommerland, Battrupholtvej 3, 8581 Nimtofte",
+      // OpenStreetMap way 98726846, amenity=parking: the main lot east of the park.
+      drive: { lat: 56.42504, lon: 10.5552, label: "the main car park" },
+      directions: "https://djurssommerland.dk/en/plan-your-trip/how-to-get-to-djurs-sommerland/",
+      note: "Free parking, over 5,000 spaces. Caravans, motorhomes and buses use the bus car park, which also has the disabled spaces.",
+    },
+    booking: [
+      {
+        label: "Tickets and prices",
+        url: "https://djurssommerland.dk/en/tickets-and-prices/",
+        note: "1-day, 2-day and Season Pass prices",
+      },
+      { label: "1-day tickets", url: "https://djurssommerland.dk/en/tickets-and-prices/1-day-tickets/" },
+      {
+        label: "2-day tickets",
+        url: "https://djurssommerland.dk/en/tickets-and-prices/2-day-tickets/",
+        note: "Valid 2 consecutive opening days",
+      },
+      { label: "Season Pass", url: "https://djurssommerland.dk/en/tickets-and-prices/season-pass/" },
+    ],
+    orders: [],
+    openingTimes: openingTimes("https://djurssommerland.dk/en/plan-your-trip/opening-hours/"),
+    access: [
+      {
+        label: "Disability policy",
+        url: "https://djurssommerland.dk/en/plan-your-trip/disability-policy/",
+        note: "Consideration Card - entry via ride exits with up to 3 companions, return times at the busiest rides; free companion with a companion card",
+      },
+      {
+        label: "Blind and visually impaired guests",
+        url: "https://djurssommerland.dk/en/plan-your-trip/restrictions-for-blind-and-severely-visually-impaired-people/",
+        note: "Ride restrictions",
+      },
+      {
+        label: "Guests with prostheses",
+        url: "https://djurssommerland.dk/en/plan-your-trip/restrictions-for-guests-with-prostheses/",
+        note: "Ride restrictions",
+      },
+    ],
+    photos: [],
+    apps: [
+      {
+        name: "Djurs Sommerland",
+        ios: appStore("djurs-sommerland", "1108496946"),
+        android: playStore("com.app.p8262AF"),
+        note: "Live waiting times, park map and height limits; buy and store tickets",
+      },
+    ],
+    social: {
+      facebook: "https://www.facebook.com/djurssommerland",
+      instagram: "https://www.instagram.com/djurssommerland/",
+      tiktok: "https://www.tiktok.com/@djurssommerland",
+      youtube: "https://www.youtube.com/user/DjursSommerlandFilm",
+    },
+  },
   // Ride access goes through Nimbus: a free Pleasurewood Digital Access Pass or a
   // full Access Card unlocks the Ride Access Service and Essential Companion
   // tickets.

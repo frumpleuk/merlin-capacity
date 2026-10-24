@@ -368,7 +368,13 @@ async function fetchDjursHours(
   const hhmm = (m: RegExpExecArray) => `${m[1].padStart(2, "0")}:${m[2]}`;
 
   const snapshot: HoursSnapshot = {};
-  const day = (n: number) => isoDay(Date.UTC(year, 0, n));
+  // The page's calendar indexes a day as 31 * month (0-based) + date - 1.
+  const day = (n: number) => {
+    const month = Math.floor(n / 31);
+    const date = (n % 31) + 1;
+    const t = Date.UTC(year, month, date);
+    return new Date(t).getUTCDate() === date ? isoDay(t) : null;
+  };
   const at = (d: string) => (snapshot[d] ??= { locations: [] });
   const set = (d: string, loc: LocationHours) => {
     const ls = at(d).locations;
@@ -381,6 +387,7 @@ async function fetchDjursHours(
   for (const e of [...events.filter((e) => !named(e)), ...events.filter(named)]) {
     for (const n of e.days?.ranges ?? []) {
       const d = day(n);
+      if (!d) continue;
       if (named(e)) {
         const m = /^(\d{1,2}[:.]\d{2})\s*-\s*(\d{1,2}[:.]\d{2})$/.exec(e.end.trim());
         const a = m && time(m[1]);

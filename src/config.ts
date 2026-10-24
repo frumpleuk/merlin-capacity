@@ -229,9 +229,9 @@ export interface OpeningHoursLocation {
  *    Xtreme Scream Park; see docs/digitickets.md.
  *  - `djurs`: Djurs Sommerland's opening-hours page carries the season as a
  *    `data-model` attribute: `parkEvents[]`, each a type (1 park, 2 water park,
- *    4 park during an event), a start and end time and the days as day-of-year
- *    numbers for the year in the page's "Åbningstider YYYY" heading. One
- *    request.
+ *    4 park during an event), a start and end time and the days as indexes
+ *    31 * month + date - 1 (month 0-based, as the page's calendar script reads
+ *    them) in the year of the page's "Åbningstider YYYY" heading. One request.
  *  - `te2`: accesso's TE2 app API (Drayton Manor), `venue-hours` for the days
  *    and `calendars/events` for named events, behind the same anonymous token
  *    as its queues. */

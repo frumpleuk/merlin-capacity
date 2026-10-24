@@ -1,5 +1,6 @@
 import { localInstant, parkDay, parkTimeZone, type ParkConfig } from "./config";
 import { byMonth } from "./db";
+import type { HoursDay } from "./hours";
 import type { Env } from "./types";
 
 /**
@@ -14,8 +15,9 @@ import type { Env } from "./types";
  *    rewrites the day just gone with what happened, replacing its forecast.
  *
  * Every call is billed past 1,000 a day, so every call goes through the daily
- * budget below. Steady state is 23 calls an hour plus 23 every six hours, about
- * 650 a day; the rest drips into backfilling days from before the key existed.
+ * budget below. The hourly call goes only to parks open that day (maybeOpen);
+ * the calendar's is two calls a park every six hours. The rest drips into
+ * backfilling days from before the key existed.
  */
 
 const API = "https://api.openweathermap.org/data/4.0/onecall";
@@ -322,6 +324,19 @@ const weatherParks = (parks: ParkConfig[]) => parks.filter((p) => p.weather);
 const calendarParks = (parks: ParkConfig[]) =>
   weatherParks(parks).filter((p) => p.openingHours || p.products.length > 0);
 
+/** Whether a park may open on `date`, so its hours are worth a call. Closed
+ *  only when its hours month file says so: the date listed with every location
+ *  closed, or left out by a source that lists open days only. No file, or an
+ *  events-only calendar (Flamingo Land), counts as open. */
+async function maybeOpen(bucket: R2Bucket, park: ParkConfig, date: string): Promise<boolean> {
+  if (!park.openingHours || park.openingHours.kind === "flamingoland") return true;
+  const obj = await bucket.get(`calendar/${park.key}/hours/${date.slice(0, 7)}.json`);
+  if (!obj) return true;
+  const days = ((await obj.json().catch(() => null)) as { days?: Record<string, HoursDay> } | null)?.days;
+  if (!days) return true;
+  return (days[date]?.locations ?? []).some((l) => !/closed/i.test(l.hours));
+}
+
 /** A unit of work: one billed call. */
 type Job = { label: string; run: () => Promise<unknown> };
 
@@ -361,10 +376,11 @@ export async function runWeather(env: Env, parks: ParkConfig[], scheduledTime: n
   const wp = weatherParks(parks);
   const cp = calendarParks(parks);
 
-  const jobs: Job[] = wp.map((p) => {
-    const date = parkDay(scheduledTime, parkTimeZone(p));
-    return { label: `${p.key}/${date}`, run: () => writeDay(env, p, date, scheduledTime) };
-  });
+  const dated = wp.map((p) => ({ p, date: parkDay(scheduledTime, parkTimeZone(p)) }));
+  const open = await Promise.all(dated.map(({ p, date }) => maybeOpen(env.BUCKET, p, date)));
+  const jobs: Job[] = dated
+    .filter((_, i) => open[i])
+    .map(({ p, date }) => ({ label: `${p.key}/${date}`, run: () => writeDay(env, p, date, scheduledTime) }));
   if (hour % DAILY_EVERY_H === 0) jobs.push(...dailyJobs(env, cp, scheduledTime));
   const done = await spend(env, scheduledTime, jobs);
 
@@ -375,7 +391,7 @@ export async function runWeather(env: Env, parks: ParkConfig[], scheduledTime: n
 }
 
 /** Calls the scheduled runs still to come this UTC day will make: what a
- *  backfill must leave alone. */
+ *  backfill must leave alone. Counts every park, open or not, so it errs high. */
 export function scheduledLeft(parks: ParkConfig[], nowMs: number): number {
   const perHour = weatherParks(parks).length;
   const perDaily = 2 * calendarParks(parks).length;

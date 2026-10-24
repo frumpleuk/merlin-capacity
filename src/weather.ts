@@ -15,8 +15,9 @@ import type { Env } from "./types";
  *    rewrites the day just gone with what happened, replacing its forecast.
  *
  * Every call is billed past 1,000 a day, so every call goes through the daily
- * budget below. The hourly call goes only to parks open that day (maybeOpen);
- * the calendar's is two calls a park every six hours. The rest drips into
+ * budget below. The hourly call goes only to parks open that day, from an hour
+ * before they open to an hour after they close (callHours); the calendar's is
+ * two calls a park every twelve hours. The rest drips into
  * backfilling days from before the key existed.
  */
 
@@ -32,7 +33,7 @@ const BUDGET_KEY = "weather/budget.json";
 const DAY_START_HOUR = 7;
 
 /** The calendar forecast is refreshed every this many hours (UTC). */
-const DAILY_EVERY_H = 6;
+const DAILY_EVERY_H = 12;
 
 /** One hour, in the queue files' time encoding (minutes since `${date}T00:00:00Z`). */
 export interface WeatherHour {
@@ -324,17 +325,52 @@ const weatherParks = (parks: ParkConfig[]) => parks.filter((p) => p.weather);
 const calendarParks = (parks: ParkConfig[]) =>
   weatherParks(parks).filter((p) => p.openingHours || p.products.length > 0);
 
-/** Whether a park may open on `date`, so its hours are worth a call. Closed
- *  only when its hours month file says so: the date listed with every location
- *  closed, or left out by a source that lists open days only. No file, or an
- *  events-only calendar (Flamingo Land), counts as open. */
-async function maybeOpen(bucket: R2Bucket, park: ParkConfig, date: string): Promise<boolean> {
-  if (!park.openingHours || park.openingHours.kind === "flamingoland") return true;
+/** The local hours, counted from the park day's midnight (25 is 01:00 the next
+ *  morning), in which a park's hourly call is worth making: an hour either side
+ *  of its opening times, so the day's file holds what happened while it was
+ *  open. */
+interface CallHours {
+  from: number;
+  to: number;
+}
+
+/** The whole through-the-day window: what a park whose times can't be read
+ *  gets. */
+const ALL_DAY: CallHours = { from: DAY_START_HOUR, to: DAY_START_HOUR + 19 };
+
+/** "10am - 6pm", "9:30am - 5pm, 7pm - 11pm", "From 6:30pm" → the hours from
+ *  the first opening to the last closing. A lone time is an opening with no
+ *  close given, so the window runs to the end of the day. */
+export function hoursSpan(text: string): CallHours | null {
+  const times = [...text.matchAll(/(\d{1,2})(?::(\d{2}))?\s*(am|pm)/gi)].map(
+    (m) => ((Number(m[1]) % 12) + (m[3].toLowerCase() === "pm" ? 12 : 0)) + Number(m[2] ?? 0) / 60,
+  );
+  if (!times.length) return null;
+  const open = times[0];
+  let close = times.length > 1 ? times[times.length - 1] : ALL_DAY.to;
+  if (close <= open) close += 24; // past midnight
+  return { from: open, to: close };
+}
+
+/** When a park's hourly call is worth making on `date`, or null if it's
+ *  closed. Closed only when its hours month file says so: the date listed with
+ *  every location closed, or left out by a source that lists open days only.
+ *  No file, an events-only calendar (Flamingo Land), or times that don't parse
+ *  get the whole day. */
+async function callHours(bucket: R2Bucket, park: ParkConfig, date: string): Promise<CallHours | null> {
+  if (!park.openingHours || park.openingHours.kind === "flamingoland") return ALL_DAY;
   const obj = await bucket.get(`calendar/${park.key}/hours/${date.slice(0, 7)}.json`);
-  if (!obj) return true;
+  if (!obj) return ALL_DAY;
   const days = ((await obj.json().catch(() => null)) as { days?: Record<string, HoursDay> } | null)?.days;
-  if (!days) return true;
-  return (days[date]?.locations ?? []).some((l) => !/closed/i.test(l.hours));
+  if (!days) return ALL_DAY;
+  const open = (days[date]?.locations ?? []).filter((l) => !/closed/i.test(l.hours));
+  if (!open.length) return null;
+  const spans = open.map((l) => hoursSpan(l.hours));
+  if (spans.some((x) => !x)) return ALL_DAY;
+  return {
+    from: Math.min(...spans.map((x) => x!.from)) - 1,
+    to: Math.max(...spans.map((x) => x!.to)) + 1,
+  };
 }
 
 /** A unit of work: one billed call. */
@@ -368,7 +404,7 @@ async function spend(env: Env, nowMs: number, jobs: Job[], reserve = 0): Promise
 }
 
 /** The hourly run (its own cron, two minutes past): today's hours for every
- *  park, the calendar's ten days every six hours, and at 03:00 UTC whatever the
+ *  park, the calendar's ten days every twelve hours, and at 03:00 UTC whatever the
  *  rest of the day's budget can spare on backfill. */
 export async function runWeather(env: Env, parks: ParkConfig[], scheduledTime: number): Promise<string[]> {
   if (!env.OPENWEATHER_KEY) return [];
@@ -377,9 +413,14 @@ export async function runWeather(env: Env, parks: ParkConfig[], scheduledTime: n
   const cp = calendarParks(parks);
 
   const dated = wp.map((p) => ({ p, date: parkDay(scheduledTime, parkTimeZone(p)) }));
-  const open = await Promise.all(dated.map(({ p, date }) => maybeOpen(env.BUCKET, p, date)));
+  const windows = await Promise.all(dated.map(({ p, date }) => callHours(env.BUCKET, p, date)));
   const jobs: Job[] = dated
-    .filter((_, i) => open[i])
+    .filter(({ p, date }, i) => {
+      const w = windows[i];
+      if (!w) return false;
+      const local = (scheduledTime - localInstant(date, 0, parkTimeZone(p))) / 3_600_000;
+      return local >= w.from && local <= w.to;
+    })
     .map(({ p, date }) => ({ label: `${p.key}/${date}`, run: () => writeDay(env, p, date, scheduledTime) }));
   if (hour % DAILY_EVERY_H === 0) jobs.push(...dailyJobs(env, cp, scheduledTime));
   const done = await spend(env, scheduledTime, jobs);

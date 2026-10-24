@@ -1,0 +1,11 @@
+{
+  "id": "tpoffertje",
+  "name": "'t Poffertje",
+  "category": "Food & Drink",
+  "area": "Marerijk",
+  "lat": 51.651948,
+  "lon": 5.048848,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "efteling app api"
+}

@@ -1,0 +1,11 @@
+{
+  "id": "deparlevinker",
+  "name": "De Parlevincker",
+  "category": "Food & Drink",
+  "area": "Ruigrijk",
+  "lat": 51.647673,
+  "lon": 5.052684,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "efteling app api"
+}

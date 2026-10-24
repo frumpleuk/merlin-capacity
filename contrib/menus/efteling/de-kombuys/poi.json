@@ -1,0 +1,11 @@
+{
+  "id": "dekombuys",
+  "name": "De Kombuys",
+  "category": "Food & Drink",
+  "area": "Ruigrijk",
+  "lat": 51.647189,
+  "lon": 5.052839,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "efteling app api"
+}

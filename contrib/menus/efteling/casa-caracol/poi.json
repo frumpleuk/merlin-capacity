@@ -1,0 +1,11 @@
+{
+  "id": "casacaracol",
+  "name": "Casa Caracol",
+  "category": "Food & Drink",
+  "area": "Anderrijk",
+  "lat": 51.647533,
+  "lon": 5.049131,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "efteling app api"
+}

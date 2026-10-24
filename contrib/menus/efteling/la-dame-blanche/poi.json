@@ -1,0 +1,11 @@
+{
+  "id": "happinessstationwp",
+  "name": "La Dame Blanche",
+  "category": "Food & Drink",
+  "area": "Marerijk",
+  "lat": 51.652208,
+  "lon": 5.048346,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "efteling app api"
+}

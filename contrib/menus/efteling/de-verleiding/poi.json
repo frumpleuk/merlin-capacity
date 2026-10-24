@@ -1,0 +1,11 @@
+{
+  "id": "deverleiding",
+  "name": "De Verleiding",
+  "category": "Food & Drink",
+  "area": "Ruigrijk",
+  "lat": 51.648304,
+  "lon": 5.053014,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "efteling app api"
+}

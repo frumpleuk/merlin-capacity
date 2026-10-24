@@ -1,0 +1,11 @@
+{
+  "id": "demeermin",
+  "name": "De Meermin",
+  "category": "Food & Drink",
+  "area": "Ruigrijk",
+  "lat": 51.648602,
+  "lon": 5.052481,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "efteling app api"
+}

@@ -1,0 +1,11 @@
+{
+  "id": "backereikrumel",
+  "name": "Bäckerei Krümel",
+  "category": "Food & Drink",
+  "area": "Anderrijk",
+  "lat": 51.647595,
+  "lon": 5.047161,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "efteling app api"
+}

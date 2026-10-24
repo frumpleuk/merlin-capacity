@@ -1,0 +1,11 @@
+{
+  "id": "debrutaleaap",
+  "name": "Station de Oost: De Brutale Aap takeaway",
+  "category": "Food & Drink",
+  "area": "Ruigrijk",
+  "lat": 51.647733,
+  "lon": 5.054165,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "efteling app api"
+}

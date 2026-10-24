@@ -1,0 +1,11 @@
+{
+  "id": "tkoetshuys",
+  "name": "'t Koetshuys",
+  "category": "Food & Drink",
+  "area": "Anderrijk",
+  "lat": 51.648463,
+  "lon": 5.048367,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "efteling app api"
+}

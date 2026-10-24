@@ -1,0 +1,11 @@
+{
+  "id": "fabulasavannebar",
+  "name": "Fabula Savannebar",
+  "category": "Food & Drink",
+  "area": "Fantasierijk",
+  "lat": 51.648654,
+  "lon": 5.046941,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "efteling app api"
+}

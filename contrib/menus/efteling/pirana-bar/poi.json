@@ -1,0 +1,11 @@
+{
+  "id": "piranabar",
+  "name": "Piraña Bar",
+  "category": "Food & Drink",
+  "area": "Anderrijk",
+  "lat": 51.647697,
+  "lon": 5.048721,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "efteling app api"
+}

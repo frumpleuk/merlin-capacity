@@ -1,0 +1,11 @@
+{
+  "id": "wachtruimteeersteklas",
+  "name": "Station de Oost: First Class Waiting Room",
+  "category": "Food & Drink",
+  "area": "Ruigrijk",
+  "lat": 51.648141,
+  "lon": 5.05423,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "efteling app api"
+}

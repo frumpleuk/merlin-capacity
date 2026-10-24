@@ -155,6 +155,12 @@
     "priced": 0,
     "water": 0
   },
+  "efteling": {
+    "venues": 68,
+    "withMenus": 0,
+    "priced": 0,
+    "water": 0
+  },
   "disneyland_park": {
     "venues": 36,
     "withMenus": 36,

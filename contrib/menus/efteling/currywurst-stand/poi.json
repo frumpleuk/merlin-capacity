@@ -1,0 +1,11 @@
+{
+  "id": "braadworstchalet",
+  "name": "Currywurst stand",
+  "category": "Food & Drink",
+  "area": "Anderrijk",
+  "lat": 51.647833,
+  "lon": 5.047165,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "efteling app api"
+}

@@ -1,0 +1,11 @@
+{
+  "id": "restaurantfabula",
+  "name": "Fabula Wereldkeuken restaurant",
+  "category": "Food & Drink",
+  "area": "Fantasierijk",
+  "lat": 51.648752,
+  "lon": 5.046784,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "efteling app api"
+}

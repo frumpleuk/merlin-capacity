@@ -1,0 +1,11 @@
+{
+  "id": "flierefluiter",
+  "name": "Flierefluiter",
+  "category": "Food & Drink",
+  "area": "Reizenrijk",
+  "lat": 51.649549,
+  "lon": 5.053672,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "efteling app api"
+}

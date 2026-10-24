@@ -1,0 +1,11 @@
+{
+  "id": "barmystique",
+  "name": "Bar Mystique",
+  "category": "Food & Drink",
+  "area": null,
+  "lat": 51.649084,
+  "lon": 5.045466,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "efteling app api"
+}

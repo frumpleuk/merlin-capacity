@@ -1,0 +1,11 @@
+{
+  "id": "cafebiscuit",
+  "name": "Café Biscuit",
+  "category": "Food & Drink",
+  "area": null,
+  "lat": 51.649628,
+  "lon": 5.044818,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "efteling app api"
+}

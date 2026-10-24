@@ -1,0 +1,11 @@
+{
+  "id": "happinessstationpk",
+  "name": "De Vorstelijke Vrieskamer",
+  "category": "Food & Drink",
+  "area": "Fantasierijk",
+  "lat": 51.650002,
+  "lon": 5.048667,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "efteling app api"
+}

@@ -1,0 +1,11 @@
+{
+  "id": "mystique",
+  "name": "Restaurant Mystique",
+  "category": "Food & Drink",
+  "area": null,
+  "lat": 51.648882,
+  "lon": 5.045147,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "efteling app api"
+}

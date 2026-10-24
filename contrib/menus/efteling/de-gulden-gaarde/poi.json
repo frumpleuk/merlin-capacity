@@ -1,0 +1,11 @@
+{
+  "id": "denguldengaarde",
+  "name": "De Gulden Gaarde",
+  "category": "Food & Drink",
+  "area": "Marerijk",
+  "lat": 51.652195,
+  "lon": 5.045983,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "efteling app api"
+}

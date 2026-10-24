@@ -1,0 +1,11 @@
+{
+  "id": "oase",
+  "name": "Oase",
+  "category": "Food & Drink",
+  "area": "Anderrijk",
+  "lat": 51.647446,
+  "lon": 5.046154,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "efteling app api"
+}

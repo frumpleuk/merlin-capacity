@@ -1,0 +1,11 @@
+{
+  "id": "speelkwartier",
+  "name": "'t Speelkwartier",
+  "category": "Food & Drink",
+  "area": "Reizenrijk",
+  "lat": 51.651966,
+  "lon": 5.053727,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "efteling app api"
+}

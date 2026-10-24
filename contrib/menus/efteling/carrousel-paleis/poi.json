@@ -1,0 +1,11 @@
+{
+  "id": "carrouselbar",
+  "name": "Carrousel Paleis",
+  "category": "Food & Drink",
+  "area": "Marerijk",
+  "lat": 51.651024,
+  "lon": 5.049109,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "efteling app api"
+}

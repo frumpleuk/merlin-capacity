@@ -1,0 +1,11 @@
+{
+  "id": "desoeteinval",
+  "name": "De Soete Inval",
+  "category": "Food & Drink",
+  "area": "Marerijk",
+  "lat": 51.651819,
+  "lon": 5.04945,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "efteling app api"
+}

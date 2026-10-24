@@ -1,0 +1,11 @@
+{
+  "id": "burgerbackerij",
+  "name": "Burger Backery",
+  "category": "Food & Drink",
+  "area": "Anderrijk",
+  "lat": 51.647995,
+  "lon": 5.046512,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "efteling app api"
+}

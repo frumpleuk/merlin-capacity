@@ -24,6 +24,8 @@
 //                 positions). A venue is placed where the one OpenStreetMap
 //                 eatery inside the park outline with its name stands; a name
 //                 that matches none, or several (Max), stays unplaced.
+//   efteling      the app API's poi feed, category "restaurant", with latlon and
+//                 the themed land (empire). Needs the app key (APP_KEY_EFTELING).
 //   paultons      the app's bundled points_of_interest.json, type "restaurant".
 //                 It ships inside the APK rather than being served, so pass an
 //                 unpacked copy with --poi <file>; without it Paulton's is
@@ -381,7 +383,49 @@ async function liseberg() {
   });
 }
 
-const SOURCES = { blackpool, flamingoland, drayton_manor: drayton, plopsaland, liseberg };
+async function efteling() {
+  const cfg = config("efteling").queue;
+  const key = devVar("APP_KEY_EFTELING");
+  if (!key) {
+    console.warn("! efteling: no APP_KEY_EFTELING (set it in .dev.vars); skipped");
+    return null;
+  }
+  const resp = await fetch(`${cfg.apiUrl}poi`, {
+    headers: {
+      accept: "application/json",
+      "x-api-key": key,
+      "x-api-version": "9",
+      "x-app-version": cfg.appVersion,
+      "x-app-name": "Efteling",
+      "x-app-id": "nl.efteling.android",
+      "x-app-platform": "Android",
+      "x-app-language": "en",
+      "x-app-timezone": "Europe/Amsterdam",
+      "User-Agent": "okhttp/5.1.0",
+    },
+  });
+  if (!resp.ok) throw new Error(`poi ${resp.status}`);
+  const hits = (await resp.json()).hits?.hit ?? [];
+  return hits
+    .map((h) => h.fields)
+    .filter((f) => f?.category === "restaurant" && f.name)
+    .map((f) => {
+      const [lat, lon] = (f.latlon ?? "").split(",").map((n) => Number(n));
+      return {
+        id: f.id,
+        name: decode(f.name),
+        category: "Food & Drink",
+        area: f.empire?.trim() || null,
+        lat: coord(Number.isFinite(lat) ? lat : null),
+        lon: coord(Number.isFinite(lon) ? lon : null),
+        menuUrl: null,
+        appMissingSince: null,
+        source: "efteling app api",
+      };
+    });
+}
+
+const SOURCES = { blackpool, flamingoland, drayton_manor: drayton, plopsaland, liseberg, efteling };
 
 for (const key of Object.keys(INDIE_PARK_DIRS)) {
   if (wanted.length && !wanted.includes(key)) continue;

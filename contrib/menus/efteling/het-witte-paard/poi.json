@@ -1,0 +1,11 @@
+{
+  "id": "hetwittepaard",
+  "name": "Het Witte Paard",
+  "category": "Food & Drink",
+  "area": "Marerijk",
+  "lat": 51.652111,
+  "lon": 5.048458,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "efteling app api"
+}

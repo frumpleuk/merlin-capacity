@@ -1,0 +1,11 @@
+{
+  "id": "fabulaschepijs",
+  "name": "Fabula ice cream",
+  "category": "Food & Drink",
+  "area": "Fantasierijk",
+  "lat": 51.649036,
+  "lon": 5.046735,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "efteling app api"
+}

@@ -1,0 +1,11 @@
+{
+  "id": "restaurantkashba",
+  "name": "Kashba Restaurant",
+  "category": "Food & Drink",
+  "area": "Reizenrijk",
+  "lat": 51.651783,
+  "lon": 5.052788,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "efteling app api"
+}

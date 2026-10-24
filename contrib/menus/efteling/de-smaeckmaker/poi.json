@@ -1,0 +1,11 @@
+{
+  "id": "desmaeckmaker",
+  "name": "De Smaeckmaker",
+  "category": "Food & Drink",
+  "area": "Fantasierijk",
+  "lat": 51.650286,
+  "lon": 5.049512,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "efteling app api"
+}

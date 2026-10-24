@@ -1,0 +1,11 @@
+{
+  "id": "verwendenest",
+  "name": "'t Verwende Nest!",
+  "category": "Food & Drink",
+  "area": "Ruigrijk",
+  "lat": 51.648071,
+  "lon": 5.052995,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "efteling app api"
+}

@@ -1,0 +1,11 @@
+{
+  "id": "kogeloog",
+  "name": "Kogeloog",
+  "category": "Food & Drink",
+  "area": "Marerijk",
+  "lat": 51.649549,
+  "lon": 5.047818,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "efteling app api"
+}

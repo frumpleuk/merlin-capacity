@@ -1,0 +1,11 @@
+{
+  "id": "delikkebaerd",
+  "name": "De Likkebaerd",
+  "category": "Food & Drink",
+  "area": "Ruigrijk",
+  "lat": 51.647675,
+  "lon": 5.05337,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "efteling app api"
+}

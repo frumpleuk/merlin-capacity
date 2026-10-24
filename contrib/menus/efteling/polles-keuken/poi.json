@@ -1,0 +1,11 @@
+{
+  "id": "polleskeuken",
+  "name": "Polles Keuken",
+  "category": "Food & Drink",
+  "area": "Fantasierijk",
+  "lat": 51.650284,
+  "lon": 5.049064,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "efteling app api"
+}

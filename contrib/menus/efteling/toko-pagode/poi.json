@@ -1,0 +1,11 @@
+{
+  "id": "tokopagode",
+  "name": "Toko Pagode",
+  "category": "Food & Drink",
+  "area": "Reizenrijk",
+  "lat": 51.650733,
+  "lon": 5.051028,
+  "menuUrl": null,
+  "appMissingSince": null,
+  "source": "efteling app api"
+}

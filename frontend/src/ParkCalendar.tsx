@@ -492,7 +492,6 @@ function BandBlock({ b }: { b: BandDay }) {
           ))}
         </div>
       )}
-      <div className="rc-prebook-note">The ticket shop gives a band, not numbers.</div>
     </div>
   );
 }

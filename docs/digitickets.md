@@ -49,3 +49,19 @@ store's own flow, which `digiticketsSession` in src/hours.ts walks:
 
 Cookies are carried by hand (`redirect: "manual"`, `getSetCookie()`). Nothing
 is bought or held: the basket is abandoned with the session.
+
+## What we keep
+
+- **Hours:** `digitickets` in src/hours.ts (Xtreme only). Each night runs from
+  its first session's start to its last session's end.
+- **Ticket bands:** src/ticket-bands.ts, every 15 minutes, both parks.
+  - **Levels:** 0 sold out to 4 available, read from the phrase, not the class.
+    Tulleys sends "Low availability" with class `no-spaces`.
+  - **A night's band:** the store's own day band, or else the best of its
+    slots.
+  - **History:** D1 `ticket_band_observation` logs one row per change, per
+    night (`slot = ''`) and per slot.
+  - **Current state:** `calendar/<park>/bands.json` holds each night's band,
+    price, slots and band history, plus `soldOutAt`, set when we saw a night go
+    to 0.
+  - **Shown:** on the Calendar.

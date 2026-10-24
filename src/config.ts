@@ -170,6 +170,12 @@ export interface PlopsaConfig {
   park: string;
 }
 
+/** Liseberg's app API. Public, no key. See docs/liseberg-api.md. */
+export interface LisebergConfig {
+  /** Base, ending in `/` (`https://www.liseberg.se/en/api/app/`). */
+  apiUrl: string;
+}
+
 /** Where a queue-tracked park's live ride waits come from. A discriminated
  *  union: most parks are `attractions` (Attractions.io live feed + content
  *  bundle); Paulton's is `fos` (First Option Software custom backend); Flamingo
@@ -183,7 +189,8 @@ export type QueueSource =
   | ({ kind: "bpb" } & BpbConfig)
   | ({ kind: "dlp" } & DlpConfig)
   | ({ kind: "te2" } & Te2Config)
-  | ({ kind: "plopsa" } & PlopsaConfig);
+  | ({ kind: "plopsa" } & PlopsaConfig)
+  | ({ kind: "liseberg" } & LisebergConfig);
 
 export const liveFeedUrl = (apiKey: string) =>
   `https://live-data.attractions.io/${apiKey}.json`;
@@ -237,6 +244,8 @@ export interface OpeningHoursLocation {
  *    answers inside a session holding a basket, so the fetch walks the store's
  *    flow first: branch, event page, one ticket into the basket (never bought).
  *    Xtreme Scream Park; see docs/digitickets.md.
+ *  - `liseberg`: the app API's `calendar/<date>/<days>`, one entry a day,
+ *    closed or whole-hour from/to. One request.
  *  - `plopsa`: plopsa.com's opening-hours calendar, every date in a range,
  *    closed or open with ISO-offset slots and labels (events, and longer notes
  *    about the day). One request.
@@ -294,6 +303,13 @@ export type OpeningHoursConfig =
       kind: "pleasurewood";
       /** The opening-times page carrying `openArr` / `eventArr`. */
       pageUrl: string;
+      locationName: string;
+    }
+  | {
+      kind: "liseberg";
+      apiUrl: string;
+      /** Days ahead, today included, in the one calendar request. */
+      windowDays: number;
       locationName: string;
     }
   | {
@@ -1232,6 +1248,22 @@ export const PARKS: ParkConfig[] = [
       apiUrl: "https://apim-stp-gwc-prd-infra.azure-api.net/app-middleware",
       park: "plopsaland-de-panne",
     },
+    products: [],
+  },
+  // Liseberg (Gothenburg): the app's public API for queues and hours. On the
+  // Blackpool Pleasure Beach Platinum pass.
+  {
+    key: "liseberg",
+    weather: { lat: 57.692, lon: 11.994 },
+    label: "Liseberg",
+    timeZone: "Europe/Stockholm",
+    openingHours: {
+      kind: "liseberg",
+      apiUrl: "https://www.liseberg.se/en/api/app/",
+      windowDays: 120,
+      locationName: "Liseberg",
+    },
+    queue: { kind: "liseberg", apiUrl: "https://www.liseberg.se/en/api/app/" },
     products: [],
   },
   // Pleasurewood Hills (Looping Group, Lowestoft): Attractions.io queues; hours

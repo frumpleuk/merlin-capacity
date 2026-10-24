@@ -281,6 +281,14 @@ export const PARKS: ParkDef[] = [
     timeZone: "Europe/Brussels",
   },
   {
+    key: "liseberg",
+    slug: "liseberg",
+    country: "SE",
+    label: "Liseberg",
+    products: [],
+    timeZone: "Europe/Stockholm",
+  },
+  {
     key: "pleasurewood_hills",
     slug: "pleasurewood-hills",
     country: "GB",

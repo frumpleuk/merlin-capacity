@@ -7,6 +7,7 @@ import {
   loadParkIndex,
   loadAnomalies,
   loadProductMonth,
+  loadBands,
   loadRestrictions,
   loadSpecialDays,
   loadWeatherMonth,
@@ -16,6 +17,7 @@ import {
   type ProductFile,
   type RestrictionsFile,
   type SpecialDaysFile,
+  type BandsFile,
 } from "./api";
 import { findPark, PARK_HOME, parkPath } from "./catalog";
 import { ParkCalendar } from "./ParkCalendar";
@@ -89,6 +91,7 @@ export function ParkCalendarPage() {
     Record<string, { kind: AnomalyKind; note: string }>
   >({});
   const [restrictions, setRestrictions] = useState<RestrictionsFile | null>(null);
+  const [bands, setBands] = useState<BandsFile | null>(null);
 
   // Reset to the current month and refetch bounds whenever the park changes.
   useEffect(() => {
@@ -98,6 +101,7 @@ export function ParkCalendarPage() {
     setSpecial(null);
     setAnomalies({});
     setRestrictions(null);
+    setBands(null);
     let alive = true;
     loadParkIndex(park!).then((b) => alive && setBounds(b));
     // One file for the whole horizon, refreshed daily — fetched per park, not
@@ -111,6 +115,10 @@ export function ParkCalendarPage() {
     // The independents run their own pass schemes; nothing to show for them.
     if (parkDef.merlinPass) {
       loadRestrictions().then((f) => alive && setRestrictions(f));
+    }
+    // Band-only ticket stores: one file for the whole horizon, like the above.
+    if (parkDef.ticketBands) {
+      loadBands(park!).then((f) => alive && setBands(f));
     }
     return () => {
       alive = false;
@@ -174,6 +182,7 @@ export function ParkCalendarPage() {
         special={specialForMonth(special, month)}
         anomalies={anomalies}
         restrictions={restrictionsForMonth(restrictions, month)}
+        bands={bands}
         weather={current?.weather ?? {}}
         loading={current === undefined}
         month={month}

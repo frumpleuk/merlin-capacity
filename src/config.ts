@@ -1,3 +1,4 @@
+import type { DigiticketsConfig } from "./digitickets";
 /**
  * Parks and products to poll. All availability flows through the shared accesso
  * backend (HOST below), keyed by merchant id — the old per-park hosts block
@@ -282,18 +283,7 @@ export type OpeningHoursConfig =
       pageUrl: string;
       locationName: string;
     }
-  | {
-      kind: "digitickets";
-      /** The store's origin, e.g. https://twinlakes.digitickets.co.uk */
-      store: string;
-      /** The venue on a multi-venue store (`branches.branchID`). */
-      branchId: string;
-      /** The ticket category the event lives under (`catID`). */
-      catId: string;
-      /** Months to read, the current one included. */
-      months: number;
-      locationName: string;
-    }
+  | ({ kind: "digitickets"; locationName: string } & DigiticketsConfig)
   | {
       kind: "crealy";
       /** `…/umbraco/surface/OpeningTimesCalendar/RenderMonth`. */
@@ -512,6 +502,9 @@ export interface ParkConfig {
   merlinPass?: boolean;
   /** accesso ticket products to poll. Empty for a queue-only park. */
   products: ProductConfig[];
+  /** A ticket store that publishes availability as bands, not numbers
+   *  (ticket-bands.ts). Polled every 15 minutes. */
+  ticketBands?: DigiticketsConfig;
   /** IANA zone the park's published times are in. Default Europe/London.
    *  Mirrors `timeZone` in frontend/src/catalog.ts. */
   timeZone?: string;
@@ -1253,6 +1246,12 @@ export const PARKS: ParkConfig[] = [
       pageUrl: "https://www.shocktoberfest.co.uk/passes",
       locationName: "Shocktober Fest",
     },
+    // Timed arrival slots every 15 minutes, each with its own band.
+    ticketBands: {
+      store: "https://tulleyshalloween.digitickets.co.uk",
+      catId: "73365",
+      months: 2,
+    },
     queue: {
       kind: "attractions",
       apiKey: "",
@@ -1271,6 +1270,12 @@ export const PARKS: ParkConfig[] = [
       catId: "34521",
       months: 2,
       locationName: "Xtreme Scream Park",
+    },
+    ticketBands: {
+      store: "https://twinlakes.digitickets.co.uk",
+      branchId: "2340",
+      catId: "34521",
+      months: 2,
     },
     queue: {
       kind: "attractions",

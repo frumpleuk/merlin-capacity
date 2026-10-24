@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import {
   ANOMALY_SHORT,
   restrictionSummary,
@@ -18,9 +18,10 @@ import {
 import { AllocList, AllocMeter, CellMeter } from "./AllocMeter";
 import { colour, longDate, monthLabel } from "./Heatmap";
 import { useMediaQuery } from "./useMediaQuery";
-import { useParkToday } from "./parkDay";
+import { ParkTimeZoneContext, useParkToday } from "./parkDay";
 import { BodyWeather, CellWeather, WeatherDaysContext } from "./Weather";
-import type { WeatherDay } from "./api";
+import type { BandDay, BandsFile, WeatherDay } from "./api";
+import { BAND_EMOJI, BAND_LABELS } from "./api";
 
 const DOW = ["M", "T", "W", "T", "F", "S", "S"];
 const PREBOOK_NOTE =
@@ -80,6 +81,8 @@ export interface DayDetail {
   /** Before we started tracking this park's hours, so a missing entry means we
    *  don't know, not that the park was shut. */
   noData?: boolean;
+  /** Ticket availability as the store's band (DigiTickets parks). */
+  bands?: BandDay;
 }
 
 function getEventIcon(name: string): string {
@@ -157,6 +160,7 @@ export function mergeDetails(
   events: { label: string; file: ProductFile | null }[],
   anomalies: Record<string, { kind: AnomalyKind; note: string }>,
   restrictions: RestrictionsFile | null,
+  bands: BandsFile | null = null,
 ): Map<string, DayDetail> {
   const map = new Map<string, DayDetail>();
   const get = (iso: string): DayDetail => {
@@ -202,6 +206,8 @@ export function mergeDetails(
     if (blocked.length === 0) continue;
     get(iso).restricted = restrictionSummary(blocked, restrictions!.tiers);
   }
+  // A night the store sells is a night the park opens, so bands can create a date.
+  for (const [iso, b] of Object.entries(bands?.days ?? {})) get(iso).bands = b;
   return map;
 }
 
@@ -302,6 +308,11 @@ function CellContent({ d }: { d: DayDetail }) {
           title={e.label}
         />
       ))}
+      {d.bands && (
+        <div className="rc-line rc-avail" title={bandTitle(d.bands)}>
+          {BAND_EMOJI[d.bands.band]} 🎟️ {BAND_LABELS[d.bands.band]}
+        </div>
+      )}
       {hasAllocation(d.main) && !showSeason(d) &&
         (isUnallocated(d.main) ? (
           <div className="rc-line rc-avail rc-booked" title={BOOKED_NOTE}>
@@ -434,6 +445,54 @@ function DayBody({ d, seasonLabel }: { d: DayDetail; seasonLabel: string }) {
         ))}
         {hasAllocation(d.rap) && <AvailRow label="RAP" o={d.rap} past={past} />}
       </AllocList>
+      {d.bands && <BandBlock b={d.bands} />}
+    </div>
+  );
+}
+
+/** "Sold out" with what the store still lists, for the cell's tooltip. */
+function bandTitle(b: BandDay): string {
+  return `Tickets: ${BAND_LABELS[b.band]}${b.price ? ` - from ${b.price}` : ""}`;
+}
+
+/** A band-only store's night in the day sheet: the band, the price, when it sold
+ *  out, and the timed slots where the store sells them (Tulleys). */
+function BandBlock({ b }: { b: BandDay }) {
+  const tz = useContext(ParkTimeZoneContext);
+  const at = (iso: string) =>
+    new Date(iso).toLocaleString("en-GB", {
+      timeZone: tz,
+      weekday: "short",
+      day: "numeric",
+      month: "short",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  // The store says "sold out" from the moment it is; first seen already sold
+  // out, the history's first entry is the best we know.
+  const firstSoldOut = b.soldOutAt ?? b.history.find(([, band]) => band === 0)?.[0];
+  return (
+    <div className="rc-body-avail rc-bands">
+      <div>
+        🎟️ Tickets: {BAND_EMOJI[b.band]} {BAND_LABELS[b.band]}
+        {b.price && <span className="rc-band-price"> - from {b.price}</span>}
+      </div>
+      {b.band === 0 && firstSoldOut && (
+        <div className="rc-prebook-note">
+          {b.soldOutAt ? "Sold out at " : "Already sold out by "}
+          {at(firstSoldOut)}
+        </div>
+      )}
+      {b.slots && (
+        <div className="rc-band-slots" aria-label="Arrival slots">
+          {b.slots.map(([time, band]) => (
+            <span key={time} className={"rc-band-slot rc-band-" + band} title={BAND_LABELS[band]}>
+              {time} {BAND_EMOJI[band]}
+            </span>
+          ))}
+        </div>
+      )}
+      <div className="rc-prebook-note">The ticket shop gives a band, not numbers.</div>
     </div>
   );
 }
@@ -692,6 +751,7 @@ export function ParkCalendar({
   events,
   anomalies,
   restrictions,
+  bands,
   weather,
   month,
   loading,
@@ -709,6 +769,8 @@ export function ParkCalendar({
   events: { label: string; file: ProductFile | null }[];
   anomalies: Record<string, { kind: AnomalyKind; note: string }>;
   restrictions: RestrictionsFile | null;
+  /** Ticket availability bands, for a band-only store (DigiTickets). */
+  bands?: BandsFile | null;
   /** Daily weather by date. Annotates the days shown; never adds one. */
   weather: Record<string, WeatherDay>;
   month: string;
@@ -734,6 +796,7 @@ export function ParkCalendar({
     events,
     anomalies,
     restrictions,
+    bands ?? null,
   );
   // In the park's first month, the days before its earliest hours entry predate
   // tracking. The hours feeds only list days from the first poll onwards, so

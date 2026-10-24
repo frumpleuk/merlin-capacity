@@ -22,6 +22,9 @@ export interface ParkDef {
    *  Manor's new app, 2026-10). The worker still polls it, so history starts
    *  the day waits appear. */
   noQueues?: boolean;
+  /** The ticket store publishes availability as bands, not numbers
+   *  (calendar/<park>/bands.json; src/ticket-bands.ts). Shown on the Calendar. */
+  ticketBands?: boolean;
   /** One-off ticketed events with their own allocation, shown as extra lines on
    *  the Calendar tab. Deliberately NOT in `products`: those drive the nav, and
    *  a single night doesn't deserve a tab that goes dead the morning after. */
@@ -287,6 +290,7 @@ export const PARKS: ParkDef[] = [
     country: "GB",
     label: "Tulleys Shocktober Fest",
     products: [],
+    ticketBands: true,
   },
   {
     // At Twinlakes Park, Melton Mowbray.
@@ -295,6 +299,7 @@ export const PARKS: ParkDef[] = [
     country: "GB",
     label: "Xtreme Scream Park",
     products: [],
+    ticketBands: true,
   },
 ];
 

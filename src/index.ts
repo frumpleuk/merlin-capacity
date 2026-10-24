@@ -1,4 +1,5 @@
 import { refreshAnomalies } from "./anomalies";
+import { runBandsPoll } from "./ticket-bands";
 import { applyAppKeys } from "./app-keys";
 import { archiveObservations, archiveQueues } from "./archive";
 import { backfillQueueDay, backfillQueueDays } from "./backfill";
@@ -49,8 +50,15 @@ async function pollQueues(env: Env): Promise<void> {
 
 /** accesso ticket availability — RAP and main, every product, every minute
  *  (diff-on-write, so a poll only writes when a date's numbers actually moved). */
-async function pollTickets(env: Env): Promise<void> {
-  await Promise.all(allProducts().map(({ park, product }) => runPoll(env, park, product)));
+async function pollTickets(env: Env, scheduledTime: number): Promise<void> {
+  await Promise.all([
+    ...allProducts().map(({ park, product }) => runPoll(env, park, product)),
+    // Band-only stores (DigiTickets), every 15 minutes: each read opens a basket
+    // in a fresh session on the park's store, so every minute would be rude.
+    ...(Math.floor(scheduledTime / 60_000) % 15 === 0
+      ? PARKS.filter((p) => p.ticketBands).map((park) => runBandsPoll(env, park))
+      : []),
+  ]);
 }
 
 /** Opening-hours calendars — every park, hourly. Cheap GETs; hours change rarely
@@ -206,7 +214,7 @@ export default {
     applyAppKeys(env as unknown as Record<string, unknown>, PARKS);
     switch (event.cron) {
       case CRON_TICKETS:
-        return void ctx.waitUntil(pollTickets(env));
+        return void ctx.waitUntil(pollTickets(env, event.scheduledTime));
       case CRON_HOURS:
         return void ctx.waitUntil(pollHours(env, event.scheduledTime));
       case CRON_REBUILD:
@@ -342,6 +350,13 @@ export default {
           dates: await runHoursPoll(env, park),
         })),
       );
+      const bands = await Promise.all(
+        PARKS.filter((p) => p.ticketBands).map(async (park) => ({
+          park: park.key,
+          product: "bands",
+          changed: await runBandsPoll(env, park),
+        })),
+      );
       // Estate-wide, not per park — one fetch for every Merlin park's calendar.
       const restrictions = await refreshRestrictions(env, Date.now());
       const queues = await Promise.all(
@@ -390,6 +405,7 @@ export default {
         ok: true,
         results,
         hours,
+        bands,
         restrictions,
         queues,
         special,

@@ -3093,3 +3093,27 @@ h3.fd-area-head {
 .wx-gust {
   color: var(--muted);
 }
+
+/* Ticket bands (DigiTickets parks): the night's band, then its arrival slots
+   as small chips, the band in each chip's symbol. */
+.rc-band-price {
+  color: var(--muted);
+}
+.rc-band-slots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 4px 0 2px;
+}
+.rc-band-slot {
+  padding: 1px 6px;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  border: 1px solid var(--grid);
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.rc-band-slot.rc-band-0 {
+  color: var(--muted);
+  text-decoration: line-through;
+}

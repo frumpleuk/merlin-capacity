@@ -1,4 +1,5 @@
 import { parkDay, parkTimeZone, USER_AGENT, type OpeningHoursConfig, type ParkConfig } from "./config";
+import { readDigitickets } from "./digitickets";
 import { fetchDlpHours } from "./dlp";
 import { buildParkIcal, parkIcalKey, writeIcal, type SpecialDaysLike } from "./ical";
 import { readRestrictions } from "./restrictions";
@@ -393,58 +394,6 @@ async function fetchTulleysHours(
 
 /* ── DigiTickets stores (the ticket shop's availability calendar) ─────────────── */
 
-/** The DigiTickets availability calendar, as the store's own page reads it. */
-interface DigiAvailability {
-  events?: {
-    date?: string;
-    sessions?: { time?: string; endTime?: string }[];
-  }[];
-}
-
-/**
- * Walk a DigiTickets store's booking flow far enough for its availability
- * calendar to answer: the store keeps the venue, event and basket in a session
- * cookie and redirects `/availability` back to `/tickets` without them. One
- * ticket goes into the basket; nothing is bought or held. Returns the session
- * cookie, or null if the store didn't play along.
- */
-async function digiticketsSession(store: string, branchId: string, catId: string): Promise<string | null> {
-  const jar = new Map<string, string>();
-  const cookie = () => [...jar].map(([k, v]) => `${k}=${v}`).join("; ");
-  const go = async (url: string, init: RequestInit = {}): Promise<Response> => {
-    const resp = await fetch(url, {
-      ...init,
-      redirect: "manual",
-      headers: { "user-agent": USER_AGENT, cookie: cookie(), ...(init.headers ?? {}) },
-    });
-    for (const c of resp.headers.getSetCookie()) {
-      const [pair] = c.split(";");
-      const at = pair.indexOf("=");
-      if (at > 0) jar.set(pair.slice(0, at).trim(), pair.slice(at + 1).trim());
-    }
-    return resp;
-  };
-  await go(`${store}/tickets?branches.branchID=${branchId}`);
-  // The category redirects to its event page, which carries the form.
-  let resp = await go(`${store}/category/${catId}`);
-  for (let hop = 0; hop < 3 && resp.status >= 300 && resp.status < 400; hop++) {
-    const to = resp.headers.get("location");
-    if (!to) break;
-    resp = await go(new URL(to, store).toString());
-  }
-  if (!resp.ok) return null;
-  const page = await resp.text();
-  const token = /name="csrf-token" value="([^"]+)"/.exec(page)?.[1];
-  const ticket = /name="(tickets\[\d+\]\[qty\])"/.exec(page)?.[1];
-  if (!token || !ticket) return null;
-  const add = await go(`${store}/cart/add?catID=${catId}&date=`, {
-    method: "POST",
-    headers: { "content-type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams({ "csrf-token": token, [ticket]: "1" }).toString(),
-  });
-  return (add.headers.get("location") ?? "").includes("/availability") ? cookie() : null;
-}
-
 /**
  * Opening hours from a DigiTickets store: each bookable date, from its first
  * session's start to its last session's end ("6:30pm - 11pm"). A sold-out date
@@ -453,50 +402,19 @@ async function digiticketsSession(store: string, branchId: string, catId: string
 async function fetchDigiticketsHours(
   cfg: Extract<OpeningHoursConfig, { kind: "digitickets" }>,
 ): Promise<HoursFetch> {
-  let session: string | null;
-  try {
-    session = await digiticketsSession(cfg.store, cfg.branchId, cfg.catId);
-  } catch {
-    session = null;
-  }
-  if (!session) return { ok: false, httpStatus: 0, snapshot: {}, datesSeen: 0 };
-
-  const now = new Date();
+  const read = await readDigitickets(cfg);
+  if (!read.ok) return { ok: false, httpStatus: read.httpStatus, snapshot: {}, datesSeen: 0 };
   const snapshot: HoursSnapshot = {};
-  let status = 0;
-  for (let i = 0; i < cfg.months; i++) {
-    const d = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() + i, 1));
-    const url =
-      `${cfg.store}/availability?catID=${cfg.catId}&return=json` +
-      `&year=${d.getUTCFullYear()}&month=${d.getUTCMonth() + 1}`;
-    let data: DigiAvailability;
-    try {
-      const resp = await fetch(url, {
-        redirect: "manual",
-        headers: {
-          "user-agent": USER_AGENT,
-          cookie: session,
-          accept: "application/json",
-          "x-requested-with": "XMLHttpRequest",
-        },
-      });
-      status = resp.status;
-      if (!resp.ok) return { ok: false, httpStatus: status, snapshot: {}, datesSeen: 0 };
-      data = (await resp.json()) as DigiAvailability;
-    } catch {
-      return { ok: false, httpStatus: status, snapshot: {}, datesSeen: 0 };
-    }
-    for (const e of data.events ?? []) {
-      const times = (e.sessions ?? []).filter((s) => s.time && s.endTime);
-      if (!e.date || !/^\d{4}-\d{2}-\d{2}$/.test(e.date) || times.length === 0) continue;
-      const open = times.map((s) => s.time!).sort()[0];
-      const close = times.map((s) => s.endTime!).sort().at(-1)!;
-      snapshot[e.date] = {
-        locations: [{ kind: "themepark", name: cfg.locationName, hours: `${fmt24(open)} - ${fmt24(close)}` }],
-      };
-    }
+  for (const e of read.events) {
+    const times = (e.sessions ?? []).filter((s) => s.time && s.endTime);
+    if (!e.date || !/^\d{4}-\d{2}-\d{2}$/.test(e.date) || times.length === 0) continue;
+    const open = times.map((s) => s.time!).sort()[0];
+    const close = times.map((s) => s.endTime!).sort().at(-1)!;
+    snapshot[e.date] = {
+      locations: [{ kind: "themepark", name: cfg.locationName, hours: `${fmt24(open)} - ${fmt24(close)}` }],
+    };
   }
-  return { ok: true, httpStatus: status, snapshot, datesSeen: Object.keys(snapshot).length };
+  return { ok: true, httpStatus: read.httpStatus, snapshot, datesSeen: Object.keys(snapshot).length };
 }
 
 /* ── Crealy (one Umbraco month fragment per request) ──────────────────────────── */

@@ -182,6 +182,40 @@ export function specialLabel(name: string): string {
 
 /** A park's buyout days across the horizon. Null when the park has none, or has
  *  no ticket product to derive them from (the queue-only parks). */
+/* ── Ticket availability bands (DigiTickets stores) ───────────────────────────
+ *
+ * Parks whose ticket store publishes a band, not numbers (Xtreme Scream Park,
+ * Tulleys). One file per park, current state per night; mirrors BandsFile in
+ * src/ticket-bands.ts. */
+
+/** 0 sold out … 4 tickets available. */
+export interface BandDay {
+  band: number;
+  /** "From" price as the store shows it. */
+  price?: string;
+  /** Timed arrival slots, [time, band]. */
+  slots?: [string, number][];
+  /** When we saw the night go to sold out (absent if it was already). */
+  soldOutAt?: string;
+  /** Every change to the night's band, [observed_at, band]. */
+  history: [string, number][];
+}
+
+export interface BandsFile {
+  park: string;
+  generated_at: string;
+  days: Record<string, BandDay>;
+}
+
+export const BAND_LABELS = ["Sold out", "Very low", "Low", "Limited", "Available"];
+/** The same symbols the accesso parks' availability uses (ParkCalendar). */
+export const BAND_EMOJI = ["❌", "🟡", "🟡", "🟠", "✅"];
+
+export async function loadBands(park: string): Promise<BandsFile | null> {
+  const r = await fetch(`/calendar/${park}/bands.json`, { cache: "no-store" });
+  return r.ok ? ((await r.json()) as BandsFile) : null;
+}
+
 export async function loadSpecialDays(park: string): Promise<SpecialDaysFile | null> {
   const r = await fetch(`/calendar/${park}/special.json`, { cache: "no-store" });
   if (!r.ok) return null;
